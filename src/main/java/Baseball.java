@@ -32,13 +32,9 @@ public class Baseball {
                break;
             }
 
-            for (int i=0;i<com.length();++i){
-               if(st[i]==1) continue;
-               else if (com.contains(String.valueOf(usr.charAt(i)))){
-                  ball[i] = 1;
-               }
-            }
+            countBall(com,usr,st,ball);
 
+            
             int stsum=0;
             int ballsum=0;
 
@@ -114,6 +110,15 @@ public class Baseball {
       }
       else {
          return false;
+      }
+   }
+
+   public void countBall(String com, String usr, int[] st, int[]ball){
+      for (int i=0;i<com.length();++i){
+         if(st[i]==1) continue;
+         else if (com.contains(String.valueOf(usr.charAt(i)))){
+            ball[i] = 1;
+         }
       }
    }
 
