@@ -6,6 +6,7 @@ public class MainClass {
         RandomNumber rn = new RandomNumber();
         rn.setRandomNum();
     }
+    
     public static void main(String[] args){
         MainClass mc = new MainClass();
         mc.runGame();

@@ -26,6 +26,7 @@ public class RandomNumber {
     public void setRandC(int c){
         this.randC = c;
     }
+
     public int getRandA(){
         return this.randA;
     }
