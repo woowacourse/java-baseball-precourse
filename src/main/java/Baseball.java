@@ -25,12 +25,8 @@ public class Baseball {
          //선언은 한번만하고, 나중에 void clear()를 만들어서 배열 청소해줄 것.
          while(true){
             usr = br.readLine();
-            for (int i=0;i<com.length();++i){
-               if (com.charAt(i) == usr.charAt(i)){
-                  st[i] = 1;
-               }
-            }
 
+            countStrike(com,usr,st);
             if(Is3strike(st)){
                gameover=true;
                break;
@@ -99,6 +95,15 @@ public class Baseball {
       }
 
    }
+
+   public void countStrike(String com,String usr,int[] st){
+      for (int i=0;i<com.length();++i){
+         if (com.charAt(i) == usr.charAt(i)){
+            st[i] = 1;
+         }
+      }
+   }
+
    public boolean Is3strike(int[] st){
       int sum=0;
       for (int i=0;i<st.length;i++){
