@@ -3,16 +3,16 @@ import java.nio.Buffer;
 
 public class Baseball {
 
-   public static void main(String[] args) throws IOException {
+   String com;
+   String usr;
 
-      String com;
-      String usr;
+   int[] st = new int[3];
+   int[] ball = new int[3];
 
-      int[] st = {0, 0, 0};
-      int[] ball = {0, 0, 0};
+   BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+   BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-      BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+   public void startGame() throws IOException{
 
       while(true){
          int tmp = (int)(Math.random() * 1000) +1;
@@ -20,6 +20,8 @@ public class Baseball {
          boolean gameover = false;
 
          bw.write(String.valueOf("숫자를 입력해주세요 : "));
+         //bw.write(com);
+         bw.flush();
          //st,ball 을 계속 생성해버리면 주소가 다른 객체가 메모리에 계속 차임.
          //선언은 한번만하고, 나중에 void clear()를 만들어서 배열 청소해줄 것.
          while(true){
@@ -53,20 +55,21 @@ public class Baseball {
             }
             if (stsum!=0) {
                if (ballsum!=0){
-                  bw.write(stsum + " 스트라이크 " + ballsum + "볼");
+                  bw.write(stsum + " 스트라이크 " + ballsum + "볼" +"\n");
                }
                else{
-                  bw.write(stsum + " 스트라이크");
+                  bw.write(stsum + " 스트라이크" + "\n");
                }
             }
             else {
                if (ballsum!=0){
-                  bw.write(ballsum+"볼");
+                  bw.write(ballsum+"볼" + "\n");
                }
                else{
-                  bw.write("낫싱");
+                  bw.write("낫싱" + "\n");
                }
             }
+            bw.flush();
 
 
 
@@ -76,6 +79,7 @@ public class Baseball {
          if(gameover==true){
             bw.write("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             bw.write("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            bw.flush();
             int choose = Integer.parseInt(br.readLine());
             if (choose == 2) break;
             else {
@@ -86,7 +90,7 @@ public class Baseball {
                }
             }
          }
-
+         bw.flush();
          //if 3 st 2while break;
          // -> 3개의 숫자를 모두 맞히셨습니다!! 게임 종료
          //gameover -> yes
@@ -97,9 +101,11 @@ public class Baseball {
 
       }
 
-      bw.flush();
-      bw.close();
-      br.close();
+   }
+
+   public static void main(String[] args) throws IOException {
+      Baseball game = new Baseball();
+      game.startGame();
 
    }
 
