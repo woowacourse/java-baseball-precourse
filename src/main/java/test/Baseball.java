@@ -54,7 +54,34 @@ public class Baseball {
 	private static int genComNum() {
 		// TODO Auto-generated method stub
 		//컴퓨터 랜덤숫자 생성 메소드
-		return 0;
+		int value=0;
+		while(true) {
+			value= (int)(Math.random()*900)+100;
+			System.out.println("생성숫자: "+value);
+			if(effChk(value))
+				break;
+		}
+		
+		return value;
+	}
+
+	private static boolean effChk(int value) {
+		// TODO Auto-generated method stub
+		//genComNum()메소드 안에서, 야구 게임에 유효한 숫자인가?
+		//유효하면 true, 아니면 false 반환
+		int[] arr= new int[10];
+		int tmp=value;
+		while(tmp!=0) {
+			if(tmp%10==0)
+				return false;
+			arr[tmp%10]++;
+			tmp/=10;
+		}
+		for (int i = 0; i < arr.length; i++) {
+			if(arr[i]>1)
+				return false;
+		}
+		return true;
 	}
 
 }
