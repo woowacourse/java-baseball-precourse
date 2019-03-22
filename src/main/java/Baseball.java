@@ -19,7 +19,7 @@ public class Baseball {
          com = String.valueOf(tmp);
          boolean gameover = false;
          bw.write(String.valueOf("숫자를 입력해주세요 : "));
-         bw.write(com);
+         //bw.write(com);
          bw.flush();
          //st,ball 을 계속 생성해버리면 주소가 다른 객체가 메모리에 계속 차임.
          //선언은 한번만하고, 나중에 void clear()를 만들어서 배열 청소해줄 것.
@@ -34,12 +34,13 @@ public class Baseball {
             printScore(com,usr,st,ball);
          }
 
-         if(quitOrNot(gameover,st,ball)){
-            break;
+
+         if(gameover==true) {
+            if(quitOrNot(st,ball)){
+               break;
+            }
          }
-
       }
-
    }
 
    public void countStrike(String com,String usr,int[] st){
@@ -65,7 +66,7 @@ public class Baseball {
 
    public void countBall(String com, String usr, int[] st, int[]ball){
       for (int i=0;i<com.length();++i){
-         if(st[i]==1) continue;
+         if(st[i]==1) continue;                       //스트라이크는 제외하고 볼 카운트하기 위함
          else if (com.contains(String.valueOf(usr.charAt(i)))){
             ball[i] = 1;
          }
@@ -96,23 +97,26 @@ public class Baseball {
             bw.write("낫싱" + "\n");
          }
       }
+      for (int i=0;i<usr.length();i++){
+         st[i]=0;
+         ball[i]=0;
+      }
       bw.flush();
 
    }
-   public boolean quitOrNot(boolean gameover,int[] st, int[] ball) throws IOException{
-      if(gameover==true){
-         bw.write("3개의 숫자를 모두 맞히셨습니다! 게임 종료" + "\n");
-         bw.write("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요" + "\n");
-         bw.flush();
-         int choose = Integer.parseInt(br.readLine());
-         if (choose == 2) {
-            return true;
-         }
-         else {
-            clearScore(st,ball);
-         }
+   public boolean quitOrNot(int[] st, int[] ball) throws IOException{
+
+      bw.write("3개의 숫자를 모두 맞히셨습니다! 게임 종료" + "\n");
+      bw.write("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요" + "\n");
+      bw.flush();
+      int choose = Integer.parseInt(br.readLine());
+      if (choose == 2) {
+         return true;
       }
-      return false;
+      else {
+         clearScore(st,ball);
+         return false;
+      }
    }
    public void clearScore(int[] st,int[] ball){
       for (int i=0;i<usr.length();i++){
@@ -120,7 +124,6 @@ public class Baseball {
          ball[i]=0;
       }
    }
-
 
    public static void main(String[] args) throws IOException {
       Baseball game = new Baseball();
