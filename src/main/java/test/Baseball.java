@@ -17,8 +17,10 @@ public class Baseball {
 			if(isNew) 
 				comNum=genComNum();
 			
-			System.out.print("숫자를 입력해주세요 : ");
-			playerNum=sc.nextInt();
+			do {
+				System.out.print("숫자를 입력해주세요 : ");
+				playerNum=sc.nextInt();
+			}while(!playerNumEffChk(playerNum));
 			
 			//스트라이크 볼 낫싱 조건 등
 			
@@ -44,6 +46,14 @@ public class Baseball {
 			isNew=true;
 		}
 		System.out.println("게임을 종료합니다.");
+	}
+
+	private static boolean playerNumEffChk(int playerNum) {
+		// TODO Auto-generated method stub
+		boolean res = effChk(playerNum);
+		if(!res)
+			System.out.println("숫자를 제대로 입력해주세요.");
+		return res;
 	}
 
 	private static int[] chkNum(int comNum, int playerNum) {
@@ -76,7 +86,7 @@ public class Baseball {
 		int value=0;
 		while(true) {
 			value= (int)(Math.random()*900)+100;
-			System.out.println("생성숫자: "+value);
+			//System.out.println("생성숫자: "+value);
 			if(effChk(value))
 				break;
 		}
