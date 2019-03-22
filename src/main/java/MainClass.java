@@ -1,9 +1,10 @@
+import java.util.Scanner;
+
 public class MainClass {
 
     public void runGame(){
-        System.out.println("test runGame!");
-        System.out.println("test runGame!");
-        System.out.println("test!!");
+        RandomNumber rn = new RandomNumber();
+        rn.setRandomNum();
     }
     public static void main(String[] args){
         MainClass mc = new MainClass();
