@@ -21,9 +21,9 @@ public class Baseball {
 			playerNum=sc.nextInt();
 			
 			//스트라이크 볼 낫싱 조건 등
-			int strikeCnt=0,ballCnt=0;
-			chkNum(comNum,playerNum);
 			
+			int[] resultArr = chkNum(comNum,playerNum);
+			int strikeCnt=resultArr[0],ballCnt=resultArr[1];
 			if(strikeCnt!=0)
 				System.out.print(strikeCnt+" 스트라이크 ");
 			if(ballCnt!=0)
@@ -46,9 +46,28 @@ public class Baseball {
 		System.out.println("게임을 종료합니다.");
 	}
 
-	private static void chkNum(int comNum, int playerNum) {
+	private static int[] chkNum(int comNum, int playerNum) {
 		// TODO Auto-generated method stub
 		//두 숫자를 비교하고 경우에 따라 스트라이크, 볼 value 증가
+		int[] res = new int[2];
+		int[][] numArr = new int[2][10];
+		while(comNum!=0) {
+			if(comNum%10==playerNum%10)
+				res[0]++;
+			else {
+				numArr[0][comNum%10]++;
+				numArr[1][playerNum%10]++;
+			}
+			comNum/=10;
+			playerNum/=10;
+		}
+		for(int i=0;i<10;i++) {
+			if(numArr[0][i]*numArr[1][i]!=0) {
+				res[1]++;
+			}
+		}
+		
+		return res;
 	}
 
 	private static int genComNum() {
@@ -69,6 +88,8 @@ public class Baseball {
 		// TODO Auto-generated method stub
 		//genComNum()메소드 안에서, 야구 게임에 유효한 숫자인가?
 		//유효하면 true, 아니면 false 반환
+		if(value<100 || value>1000)
+			return false;
 		int[] arr= new int[10];
 		int tmp=value;
 		while(tmp!=0) {
