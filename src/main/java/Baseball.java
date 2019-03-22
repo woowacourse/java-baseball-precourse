@@ -18,9 +18,8 @@ public class Baseball {
          int tmp = (int)(Math.random() * 1000) +1;
          com = String.valueOf(tmp);
          boolean gameover = false;
-
          bw.write(String.valueOf("숫자를 입력해주세요 : "));
-         //bw.write(com);
+         bw.write(com);
          bw.flush();
          //st,ball 을 계속 생성해버리면 주소가 다른 객체가 메모리에 계속 차임.
          //선언은 한번만하고, 나중에 void clear()를 만들어서 배열 청소해줄 것.
@@ -31,14 +30,12 @@ public class Baseball {
                   st[i] = 1;
                }
             }
-            int sum=0;
-            for (int i=0;i<st.length;i++){
-               sum += st[i];
-            }
-            if (sum==3){
-               gameover = true;
+
+            if(Is3strike(st)){
+               gameover=true;
                break;
             }
+
             for (int i=0;i<com.length();++i){
                if(st[i]==1) continue;
                else if (com.contains(String.valueOf(usr.charAt(i)))){
@@ -101,6 +98,18 @@ public class Baseball {
 
       }
 
+   }
+   public boolean Is3strike(int[] st){
+      int sum=0;
+      for (int i=0;i<st.length;i++){
+         sum += st[i];
+      }
+      if (sum==3){
+         return true;
+      }
+      else {
+         return false;
+      }
    }
 
    public static void main(String[] args) throws IOException {
