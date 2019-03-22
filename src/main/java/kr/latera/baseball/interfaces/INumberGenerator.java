@@ -1,6 +1,6 @@
 package kr.latera.baseball.interfaces;
 
-public interface IGenerator {
+public interface INumberGenerator {
 
     int NUMS_LENGTH = 3;
 

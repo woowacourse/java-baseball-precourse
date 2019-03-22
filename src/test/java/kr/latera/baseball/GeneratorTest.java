@@ -1,19 +1,19 @@
-package kr.latera.baseball.GeneratorTest;
+package kr.latera.baseball;
 
-import kr.latera.baseball.NumberGenerator;
-import kr.latera.baseball.interfaces.IGenerator;
+import kr.latera.baseball.NumberGeneratorImpl;
+import kr.latera.baseball.interfaces.INumberGenerator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class GeneratorTest {
 
-    private IGenerator generator;
+    private INumberGenerator generator;
 
     @Before
     public void init() {
         // create generator
-        generator = new NumberGenerator();
+        generator = new NumberGeneratorImpl();
     }
 
     @Test
@@ -27,15 +27,15 @@ public class GeneratorTest {
     private void testNumberValidity() {
         int[] nums = generator.generateNumber();
 
-        Assert.assertEquals(IGenerator.NUMS_LENGTH, nums.length);
+        Assert.assertEquals(INumberGenerator.NUMS_LENGTH, nums.length);
 
         Assert.assertTrue(nums[0] != nums[1]);
         Assert.assertTrue(nums[1] != nums[2]);
         Assert.assertTrue(nums[2] != nums[0]);
 
         for (int n : nums) {
-            Assert.assertTrue(n >= IGenerator.MIN_FOR_EACH_NUM &&
-                n <= IGenerator.MAX_FOR_EACH_NUM);
+            Assert.assertTrue(n >= INumberGenerator.MIN_FOR_EACH_NUM &&
+                n <= INumberGenerator.MAX_FOR_EACH_NUM);
         }
     }
 }

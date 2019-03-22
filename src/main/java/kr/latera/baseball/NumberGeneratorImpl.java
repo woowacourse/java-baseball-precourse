@@ -1,10 +1,10 @@
 package kr.latera.baseball;
 
-import kr.latera.baseball.interfaces.IGenerator;
+import kr.latera.baseball.interfaces.INumberGenerator;
 
 import java.util.Random;
 
-public class NumberGenerator implements IGenerator {
+public class NumberGeneratorImpl implements INumberGenerator {
 
   private Random rand = new Random();
 
