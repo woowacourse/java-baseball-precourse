@@ -34,15 +34,9 @@ public class Baseball {
             printScore(com,usr,st,ball);
          }
 
-         quitOrNot(gameover,st,ball);
-
-         //if 3 st 2while break;
-         // -> 3개의 숫자를 모두 맞히셨습니다!! 게임 종료
-         //gameover -> yes
-         //choose -> 1,2
-         //if choose ==2 break;
-
-
+         if(quitOrNot(gameover,st,ball)){
+            break;
+         }
 
       }
 
@@ -105,23 +99,26 @@ public class Baseball {
       bw.flush();
 
    }
-   public void quitOrNot(boolean gameover,int[] st, int[] ball) throws IOException{
+   public boolean quitOrNot(boolean gameover,int[] st, int[] ball) throws IOException{
       if(gameover==true){
          bw.write("3개의 숫자를 모두 맞히셨습니다! 게임 종료" + "\n");
          bw.write("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요" + "\n");
          bw.flush();
          int choose = Integer.parseInt(br.readLine());
-         if (choose == 2) break;
+         if (choose == 2) {
+            return true;
+         }
          else {
-            //void clear()
-            for (int i=0;i<usr.length();i++){
-               st[i] = 0;
-               ball[i]=0;
-            }
+            clearScore(st,ball);
          }
       }
-      bw.flush();
-
+      return false;
+   }
+   public void clearScore(int[] st,int[] ball){
+      for (int i=0;i<usr.length();i++){
+         st[i] = 0;
+         ball[i]=0;
+      }
    }
 
 
