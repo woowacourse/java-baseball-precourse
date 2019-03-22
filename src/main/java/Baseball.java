@@ -25,61 +25,17 @@ public class Baseball {
          //선언은 한번만하고, 나중에 void clear()를 만들어서 배열 청소해줄 것.
          while(true){
             usr = br.readLine();
-
             countStrike(com,usr,st);
             if(Is3strike(st)){
                gameover=true;
                break;
             }
-
             countBall(com,usr,st,ball);
-
-            
-            int stsum=0;
-            int ballsum=0;
-
-            for (int i=0;i<usr.length();i++){
-               stsum += st[i];
-               ballsum += ball[i];
-            }
-            if (stsum!=0) {
-               if (ballsum!=0){
-                  bw.write(stsum + " 스트라이크 " + ballsum + "볼" +"\n");
-               }
-               else{
-                  bw.write(stsum + " 스트라이크" + "\n");
-               }
-            }
-            else {
-               if (ballsum!=0){
-                  bw.write(ballsum+"볼" + "\n");
-               }
-               else{
-                  bw.write("낫싱" + "\n");
-               }
-            }
-            bw.flush();
-
-
-
-
+            printScore(com,usr,st,ball);
          }
 
-         if(gameover==true){
-            bw.write("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            bw.write("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-            bw.flush();
-            int choose = Integer.parseInt(br.readLine());
-            if (choose == 2) break;
-            else {
-               //void clear()
-               for (int i=0;i<usr.length();i++){
-                  st[i] = 0;
-                  ball[i]=0;
-               }
-            }
-         }
-         bw.flush();
+         quitOrNot(gameover,st,ball);
+
          //if 3 st 2while break;
          // -> 3개의 숫자를 모두 맞히셨습니다!! 게임 종료
          //gameover -> yes
@@ -121,6 +77,53 @@ public class Baseball {
          }
       }
    }
+
+   public void printScore(String com,String usr,int[] st,int[] ball) throws IOException{
+      int stsum=0;
+      int ballsum=0;
+
+      for (int i=0;i<usr.length();i++){
+         stsum += st[i];
+         ballsum += ball[i];
+      }
+      if (stsum!=0) {
+         if (ballsum!=0){
+            bw.write(stsum + " 스트라이크 " + ballsum + "볼" +"\n");
+         }
+         else{
+            bw.write(stsum + " 스트라이크" + "\n");
+         }
+      }
+      else {
+         if (ballsum!=0){
+            bw.write(ballsum+"볼" + "\n");
+         }
+         else{
+            bw.write("낫싱" + "\n");
+         }
+      }
+      bw.flush();
+
+   }
+   public void quitOrNot(boolean gameover,int[] st, int[] ball) throws IOException{
+      if(gameover==true){
+         bw.write("3개의 숫자를 모두 맞히셨습니다! 게임 종료" + "\n");
+         bw.write("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요" + "\n");
+         bw.flush();
+         int choose = Integer.parseInt(br.readLine());
+         if (choose == 2) break;
+         else {
+            //void clear()
+            for (int i=0;i<usr.length();i++){
+               st[i] = 0;
+               ball[i]=0;
+            }
+         }
+      }
+      bw.flush();
+
+   }
+
 
    public static void main(String[] args) throws IOException {
       Baseball game = new Baseball();
