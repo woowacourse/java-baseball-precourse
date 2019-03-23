@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,8 +9,8 @@ class Game {
     }
 
     private char[] generateAnswer() {
-        char[] str = new char[3];
         Random random = new Random();
+        char[] str = new char[3];
         int[] randomCheck = new int[9];
 
         int i=0;
@@ -29,7 +28,7 @@ class Game {
     }
 
     public int[] CheckAnswer(String[] question){
-        int[] bs = {0, 0};
+        int[] bs = {0, 0}; // {ball, strike}
 
         for(int i=0; i < answer.length; i++){
             if (!String.valueOf(answer).contains(question[i])) {
@@ -45,6 +44,23 @@ class Game {
 
         return bs;
     }
+
+    public void print(int[] checkNum){
+        String response = "";
+
+        if(checkNum[1] != 0){
+            response += checkNum[1] + " 스트라이크 ";
+        }
+        if(checkNum[0] != 0){
+            response += checkNum[0] + " 볼";
+        }
+
+        if(response.equals("")){
+            response += "낫싱";
+        }
+
+        System.out.println(response);
+    }
 }
 
 public class Baseball {
@@ -58,6 +74,7 @@ public class Baseball {
         while(!flag){
             numArr = input.next().split("");
             checkNum = game.CheckAnswer(numArr);
+            game.print(checkNum);
         }
     }
 }
