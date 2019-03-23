@@ -48,5 +48,10 @@ public class Solution {
         System.out.println(bool);
         System.out.println();
 
+        bool  = oracle.checkBall("448","545",1);
+        System.out.println("is 2nd seat in 448 and 545 a ball?");
+        System.out.println(bool);
+        System.out.println();
+
     }
 }
