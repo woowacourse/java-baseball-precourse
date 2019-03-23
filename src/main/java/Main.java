@@ -16,7 +16,8 @@ public class Main {
 
             /* 추가된 숫자의 자리수까지 반복 */
             for (int i = 0; i < sb.length() + 1; i++) {
-                // 해당 숫자가 존재하지 않으면 추가
+
+                /* 해당 숫자가 존재하지 않으면 추가 */
                 if (sb.indexOf(ran) == -1) {
                     sb.append(ran);
                 }
@@ -40,10 +41,75 @@ public class Main {
 
     }
 
+    /* 컴퓨터 선택 수와 사용자 입력 수 비교하여 결과 출력 */
+    static boolean isResult(int[] checkNum) {
+
+        int strike = checkNum[0];
+        int ball = checkNum[1];
+        boolean isResult = false;
+
+        if (strike != 0) {
+            printMessage(strike, "스트라이크 ");
+        }
+
+        if (ball != 0) {
+            printMessage(ball, "볼");
+        }
+
+        printMessage("");
+
+        if (strike == 3) {
+            printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            printMessage("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            isResult = true;
+        }
+
+        return isResult;
+    }
+
+    /* 볼과 스트라이크를 확인 */
+    static int[] checkNum(String conputerNum, String userNum) {
+
+        /* 0번째 index 스트라이크, 1번째 index 볼 */
+        int[] arr = new int[2];
+
+        for (int i = 0; i < conputerNum.length(); i++) {
+            for (int j = 0; j < userNum.length(); j++) {
+                if (conputerNum.charAt(i) == userNum.charAt(j)) {
+                    if (i == j) {
+                        arr[0] += 1;
+                    } else {
+                        arr[1] += 1;
+                    }
+                }
+            }
+        }
+
+        return arr;
+    }
+
+    /* 결과를 출력하는 메소드 */
+    static void printMessage(String message) {
+        System.out.println(message);
+    }
+
+    static void printMessage(int num, String message) {
+        System.out.print(num + " " + message);
+    }
+
     /* 메인 메소드 */
     public static void main(String[] args) throws IOException{
 
-        System.out.println(setComputerNum());
-        System.out.println(setUserNum());
+        String computerNum = setComputerNum();
+
+        while (true) {
+
+            String userNum = setUserNum();
+            boolean result = isResult(checkNum(computerNum, userNum));
+
+            if (result == true) {
+                break;
+            }
+        }
     }
 }
