@@ -1,3 +1,6 @@
+import java.util.Random;
+
+
 public class Main {
 
   public static void main(String args[]) {
@@ -8,9 +11,25 @@ public class Main {
     }
   }
 
-  public static int[] createRandomNumber() {
+  public static boolean isDuplicate(int[] computerNumber, int i) {
+    for (int j = 0; j < i; j++) {
+      if (computerNumber[i] == computerNumber[j]) {
+        return true;
+      }
+    }
+    return false;
+  }
 
-    return null;
+  public static int[] createRandomNumber() {
+    Random rand = new Random();
+    int[] computerNumber = new int[3];
+    for (int i = 0; i < 3; i++) {
+      computerNumber[i] = rand.nextInt(9) + 1; // [1-9]
+      if (isDuplicate(computerNumber, i)) {
+        i--;
+      }
+    }
+    return computerNumber;
   }
 
   public static int[] Input() {
