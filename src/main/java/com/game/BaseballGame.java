@@ -11,7 +11,7 @@ public class BaseballGame {
             final int[] comNum = game.getRandomNum();
             int[] result;
 
-            if (true) {
+            if (false) {
                 System.out.println(comNum[0] + "" + comNum[1] + "" + comNum[2]);
             }
 
