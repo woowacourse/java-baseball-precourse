@@ -28,8 +28,13 @@ number의 길이가 3인지, 그리고 number이 실제 숫자인지 확인한�
 checkNumbers, checkLength 함수를 사용한다.
 
 
+
 class Oracle
-- class Oracle: int tells(string createdNumber, string inputNumber, int seat)
+- class Oracle: Result tells(String createdNumber, String inputNumber)
+총체적인 결과를 리턴한다. strike가 몇 개 나왔고, ball이 몇 개 나왔는지에 대한 정보를 Result Object에 담아 리턴한다.
+examines 함수를 사용한다.
+
+- class Oracle: int examines(String createdNumber, String inputNumber, int seat)
 주어진 자릿수(seat)에 대해 strike인지, ball인지, nothing인지 오라클이 판단한다. strike라면 1을, ball이라면 2를, nothing이라면 0을 리턴한다.
 checkStrike, checkBall 함수를 사용한다.
 
@@ -44,7 +49,11 @@ ball인지 아닌지에 대해 판단한다. extractNumber 함수를 사용한�
 
 
 
+class Result
+- int strike, int ball
+strike 개수와 ball 개수에 대한 정보를 담고 있다.
+
 
 구현 순서:
 checkLength -> checkNumber -> checkNumberString -> checkRecievedNumber -> recieveNumber -> generateNumber
-    -> extractNumber -> checkStrike -> checkBall -> tells -> playGame
+    Result class -> extractNumber -> checkStrike -> checkBall ->examines -> tells -> playGame
