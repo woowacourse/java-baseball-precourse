@@ -7,6 +7,7 @@ public class MainClass {
         Baseball b = new Baseball();
         rn.setRandomNum();
         b.setInputNum();
+        b.setCheckStrike(rn);
 
     }
     public static void main(String[] args){
