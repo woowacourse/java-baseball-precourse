@@ -31,6 +31,11 @@ public class FirstWeek {
         System.out.println(bool);
         System.out.println();
 
+        bool  = check.checkRecievedNumber("33");
+        System.out.println("is 33 is length 3 number?");
+        System.out.println(bool);
+        System.out.println();
+
 
     }
 }

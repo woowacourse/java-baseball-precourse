@@ -29,6 +29,17 @@ public class CheckSomething {
             return false;
     }
 
+    boolean checkRecievedNumber(String number) {
+        boolean flagForLength;
+        boolean flagForNumber;
 
+        flagForLength = checkLength(number, 3);
+        flagForNumber = checkNumberString(number);
+
+        if (flagForLength == true && flagForNumber == true)
+            return true;
+        else
+            return false;
+    }
 
 }
