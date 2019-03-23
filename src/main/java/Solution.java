@@ -6,6 +6,7 @@ public class Solution {
         String s = "hello";
         CheckSomething check = new CheckSomething();
         Game g = new Game();
+        Oracle oracle = new Oracle();
 
         bool = check.checkLength(s, 5);
         System.out.println("is hello is 5 word?");
@@ -41,6 +42,11 @@ public class Solution {
         String generatedNumber = g.generateNumber(3);
         System.out.print("generatedNumber: ");
         System.out.println(generatedNumber);
+
+        bool  = oracle.checkStrike("331","311",0);
+        System.out.println("is 1st seat in 331 and 311 a strike?");
+        System.out.println(bool);
+        System.out.println();
 
     }
 }
