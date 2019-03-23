@@ -100,8 +100,13 @@ public class Main {
   }
 
   public static int countStrike(int[] computerNum, int[] userNum) {
+    int strike = 0;
 
-    return 0;
+    for (int i = 0; i < 3; i++) {
+      if (computerNum[i] == userNum[i]) strike++;
+    }
+
+    return strike;
   }
 
   public static void output(int strike, int ball) {
