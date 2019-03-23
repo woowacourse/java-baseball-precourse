@@ -6,11 +6,12 @@ import java.util.Random;
 
 public class Main {
 
-  public static void main(String args[]) {
+  public static void main(String args[]) throws IOException {
     boolean gameContinue = true;
 
     while (gameContinue) {
-      gameContinue = playBaseball();
+      playBaseball();
+      gameContinue = isRegame();
     }
   }
 
@@ -35,7 +36,7 @@ public class Main {
     return computerNumber;
   }
 
-  public static int[] Input() throws IOException {
+  public static int[] input() throws IOException {
     boolean valid = false;
     String num = "";
     while (!valid) {
@@ -53,9 +54,25 @@ public class Main {
     return userNumber;
   }
 
-  public static boolean playBaseball() {
+  public static void playBaseball() throws IOException {
+    boolean success = false;
+    int[] computerNumber = createRandomNumber();
+    int[] userNumber;
+    int strike, ball;
+    while(!success){
+      userNumber = input();
+      strike = countStrike(computerNumber, userNumber);
+      ball = countBall(computerNumber, userNumber);
+      if(strike == 0 && ball == 0){
+        System.out.println("낫싱");
+      }else if(strike == 3){
+        output();
+        success = true;
+      }else{
+        output(strike, ball);
+      }
+    }
 
-    return true;
   }
 
   public static int countBall(int[] computerNum, int[] userNum) {
