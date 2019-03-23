@@ -59,16 +59,16 @@ public class Main {
     int[] computerNumber = createRandomNumber();
     int[] userNumber;
     int strike, ball;
-    while(!success){
+    while (!success) {
       userNumber = input();
-      strike = countStrike(computerNumber, userNumber);
       ball = countBall(computerNumber, userNumber);
-      if(strike == 0 && ball == 0){
+      strike = countStrike(computerNumber, userNumber);
+      if (strike == 0 && ball == 0) {
         System.out.println("낫싱");
-      }else if(strike == 3){
+      } else if (strike == 3) {
         output();
         success = true;
-      }else{
+      } else {
         output(strike, ball);
       }
     }
@@ -76,8 +76,27 @@ public class Main {
   }
 
   public static int countBall(int[] computerNum, int[] userNum) {
+    int ball = 0;
+//    for(int i=0; i<3; i++){
+//      for(int j=0; j<3; j++){
+//        if(i != j){
+//          if(computerNum[i] == userNum[j]){
+//            ball ++;
+//          }
+//        }
+//      }
+//    } depth가 커지고, 기능을 나누기에는 애매해서 밑의 방식으로 만듬.
+    if (computerNum[0] == userNum[1] || computerNum[0] == userNum[2]) {
+      ball++;
+    }
+    if (computerNum[1] == userNum[0] || computerNum[1] == userNum[2]) {
+      ball++;
+    }
+    if (computerNum[2] == userNum[0] || computerNum[2] == userNum[1]) {
+      ball++;
+    }
 
-    return 0;
+    return ball;
   }
 
   public static int countStrike(int[] computerNum, int[] userNum) {
