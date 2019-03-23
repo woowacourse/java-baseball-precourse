@@ -5,7 +5,7 @@ public class Solution {
         boolean bool;
         String s = "hello";
         CheckSomething check = new CheckSomething();
-        Game g = new Game();
+        Game game = new Game();
         Oracle oracle = new Oracle();
 
         bool = check.checkLength(s, 5);
@@ -39,7 +39,7 @@ public class Solution {
         System.out.println();
 
 
-        String generatedNumber = g.generateNumber(3);
+        String generatedNumber = game.generateNumber(3);
         System.out.print("generatedNumber: ");
         System.out.println(generatedNumber);
 
@@ -60,7 +60,7 @@ public class Solution {
         System.out.println(result.ball);
         System.out.println();
 
-        bool  = check.checkUserThought();
+        bool  = game.playGame("713");
         System.out.println("so your choice is...");
         System.out.println(bool);
         System.out.println();
