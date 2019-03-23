@@ -124,8 +124,19 @@ public class Main {
     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
   }
 
-  public static boolean isRegame() {
-
+  public static boolean isRegame() throws IOException {
+    boolean check = true;
+    while (check) {
+      System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+      BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+      String str = bf.readLine();
+      int keyward = Integer.parseInt(str); // 맨 뒤에서 isValid 구현
+      if (keyward == 2) {
+        return false;
+      } else if (keyward == 1) {
+        return true;
+      }
+    }
     return true;
   }
 
