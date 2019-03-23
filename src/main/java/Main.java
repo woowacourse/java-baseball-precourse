@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Random;
 
 
@@ -32,9 +35,22 @@ public class Main {
     return computerNumber;
   }
 
-  public static int[] Input() {
+  public static int[] Input() throws IOException {
+    boolean valid = false;
+    String num = "";
+    while (!valid) {
+      BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+      System.out.print("숫자를 입력해주세요 : ");
+      num = bf.readLine();
+      //valid = isValid(num); valid는 맨 뒤에서 구현 예정
+      valid = true; //우선은 정해진 값만 들어온다.
+    }
+    int[] userNumber = new int[3];
+    for (int i = 0; i < 3; i++) {
+      userNumber[i] = num.charAt(i) - '0';
+    }
 
-    return null;
+    return userNumber;
   }
 
   public static boolean playBaseball() {
@@ -65,7 +81,7 @@ public class Main {
     return true;
   }
 
-  public static boolean isValid(int[] inputNum) {
+  public static boolean isValid(String inputNum) {
 
     return true;
   }
