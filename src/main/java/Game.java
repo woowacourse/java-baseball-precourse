@@ -23,4 +23,19 @@ public class Game {
 
         return input;
     }
+
+    String generateNumber(int length) {
+        int random;
+        char zero = '1';
+        String number = "";
+
+        for (int i=0; i<3; i++) {
+            random = (int) (Math.random() * 9);
+            zero = (char) (zero + random);
+            number += zero;
+            zero = '1';
+        }
+
+        return number;
+    }
 }

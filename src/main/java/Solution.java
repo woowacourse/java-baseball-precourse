@@ -37,7 +37,10 @@ public class Solution {
         System.out.println(bool);
         System.out.println();
 
-        g.recieveNumber();
+
+        String generatedNumber = g.generateNumber(3);
+        System.out.print("generatedNumber: ");
+        System.out.println(generatedNumber);
 
     }
 }

@@ -2,7 +2,7 @@
 
 class Game
 - class Game: String generateNumber(int length)
-length 크기 숫자(string)를 랜덤으로 생성한다.
+length 크기 숫자(string)를 랜덤으로 생성한다. 하나의 숫자 범위는 1~9다.
 
 - class Game: int playGame(string createdNumber)
 생성된 수를 넘겨받아 게임을 진행한다. 게임을 새로 시작하는지(1), 종료하려고 하는지(2)에 대한 정보를 리턴한다.
