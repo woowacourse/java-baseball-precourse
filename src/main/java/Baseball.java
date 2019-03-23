@@ -84,6 +84,27 @@ class Game {
 }
 
 public class Baseball {
+
+    public static boolean validInput(String[] numArr) {
+        if (!(numArr.length == 3)) {
+            return false;
+        }
+
+        if (Arrays.toString(numArr).contains("0")) {
+            return false;
+        }
+
+        try {
+            for (String num : numArr) {
+                Integer.parseInt(num);
+            }
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Game game = new Game();
@@ -96,7 +117,7 @@ public class Baseball {
             do {
                 System.out.print("숫자를 입력해주세요: ");
                 numArr = input.next().split("");
-            } while (!(numArr.length == 3) || (Arrays.toString(numArr).contains("0")));
+            } while (!validInput(numArr));
 
             checkNum = game.compareAnswer(numArr);
             flag = game.checkAnswer(checkNum);
