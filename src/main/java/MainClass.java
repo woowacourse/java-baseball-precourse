@@ -4,7 +4,10 @@ public class MainClass {
 
     public void runGame(){
         RandomNumber rn = new RandomNumber();
+        Baseball b = new Baseball();
         rn.setRandomNum();
+        b.setInputNum();
+
     }
     public static void main(String[] args){
         MainClass mc = new MainClass();
