@@ -8,6 +8,7 @@ public class MainClass {
         rn.setRandomNum();
         b.setInputNum();
         b.setCheckStrike(rn);
+        b.setCheckBall(rn);
 
     }
     public static void main(String[] args){

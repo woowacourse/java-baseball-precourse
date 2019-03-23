@@ -4,7 +4,8 @@ public class Baseball {
     private int userNumA;
     private int userNumB;
     private int userNumC;
-    private int strike = 0;
+    private int strike;
+    private int ball;
 
     public void setInputNum(){
         Scanner sc = new Scanner(System.in);
@@ -43,6 +44,16 @@ public class Baseball {
     }
     public void resetStrike(){ this.strike = 0; }
     public void setUpStrike(){ this.strike += 1; }
+
+    public void setCheckBall(RandomNumber rn){
+        resetBall();
+        if(this.userNumA == rn.getRandB() || this.userNumA == rn.getRandC()) setUpBall();
+        if(this.userNumB == rn.getRandA() || this.userNumB == rn.getRandC()) setUpBall();
+        if(this.userNumC == rn.getRandA() || this.userNumC == rn.getRandB()) setUpBall();
+    }
+    public void resetBall(){ this.ball = 0; }
+    public void setUpBall(){ this.ball += 1; }
+
 
     public void setUserNumA(int n){ this.userNumA = n; }
     public void setUserNumB(int n){ this.userNumB = n; }
