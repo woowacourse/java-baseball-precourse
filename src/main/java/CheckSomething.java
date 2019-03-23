@@ -8,7 +8,7 @@ public class CheckSomething {
 
     }
 
-    boolean checkNumbers(String input) {
+    boolean checkNumberString(String input) {
         boolean flag =  true;
         for (int i = 0; i < input.length(); i++) {
             if (checkNumber(input.charAt(i)) == false) {
@@ -28,5 +28,7 @@ public class CheckSomething {
         else
             return false;
     }
+
+
 
 }

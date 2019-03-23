@@ -21,12 +21,12 @@ public class FirstWeek {
         System.out.println(bool);
         System.out.println();
 
-        bool  = check.checkNumbers("12833");
+        bool  = check.checkNumberString("12833");
         System.out.println("is 12833 is number?");
         System.out.println(bool);
         System.out.println();
 
-        bool  = check.checkNumbers("300aa3");
+        bool  = check.checkNumberString("300aa3");
         System.out.println("is 300a3 is number?");
         System.out.println(bool);
         System.out.println();
