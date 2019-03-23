@@ -28,7 +28,6 @@ public class MainClass {
         RandomNumber rn = new RandomNumber();
         Baseball b = new Baseball();
         rn.setRandomNum();
-        System.out.println(rn.getRandA() + ", " +rn.getRandB() + ", " +rn.getRandC());
         while(true){
             b.setInputNum();
             b.setCheckStrike(rn);
