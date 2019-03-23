@@ -77,4 +77,15 @@ public class User implements Player{
                 && (input.charAt(1) != input.charAt(2));
         /* 중복되는 수가 있으면 false, 없으면 true 반환 */
     }
+
+    /**
+     * 입력받은 input을 배열에 저장하기 위한 메서드.
+     * @param input
+     */
+    public void saveNumber(String input){
+        for(int i=0; i<3; i++){
+            this.getNumbers()[i]=input.charAt(i)-'0';
+        }
+    }
+
 }
