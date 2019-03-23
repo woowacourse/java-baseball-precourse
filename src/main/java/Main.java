@@ -110,11 +110,18 @@ public class Main {
   }
 
   public static void output(int strike, int ball) {
-
+    if (ball == 0) {
+      System.out.println(strike + " 스트라이크");
+    } else if (strike == 0) {
+      System.out.println(ball + "볼");
+    } else {
+      System.out.println(strike + " 스트라이크 " + ball + "볼");
+    }
   }
 
   public static void output() {
-
+    System.out.println("3 스트라이크");
+    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
   }
 
   public static boolean isRegame() {
