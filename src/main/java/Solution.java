@@ -1,5 +1,5 @@
 
-public class FirstWeek {
+public class Solution {
 
     public static void main (String[] args) {
         boolean bool;
