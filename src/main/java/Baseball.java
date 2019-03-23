@@ -30,13 +30,15 @@ class Game {
 
     public int[] compareAnswer(String[] question) {
         int[] bs = {0, 0}; // {ball, strike}
+        String str = String.valueOf(answer);
+        int i = 0;
 
-        for (int i = 0; i < answer.length; i++) {
-            if (!String.valueOf(answer).contains(question[i])) {
+        for (String e : question) {
+            if (!str.contains(e)) {
                 continue;
             }
 
-            if (answer[i] == question[i].charAt(0)) {
+            if (answer[i++] == e.charAt(0)) {
                 bs[1]++; // strike 증가
             } else {
                 bs[0]++; // ball 증가
@@ -71,11 +73,11 @@ class Game {
         System.out.println(response);
     }
 
-    public boolean exitGame(int temp){
-        if(temp == 1){
+    public boolean exitGame(int temp) {
+        if (temp == 1) {
             answer = generateAnswer();
             return false;
-        }else{
+        } else {
             return true;
         }
     }
@@ -100,7 +102,7 @@ public class Baseball {
             flag = game.checkAnswer(checkNum);
             game.print(checkNum);
 
-            if(flag){
+            if (flag) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
