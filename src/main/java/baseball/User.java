@@ -56,9 +56,25 @@ public class User implements Player{
         return br.readLine();
     }
 
-
+    /**
+     *  입력값이 유효한 값인지 확인하는 메서드.
+     *  유효한 값이란 세 자리수에 중복된 수가 없고, 각 수가 1~9 사이인 값이다.
+     * @param input inputNumbers()에서 받아온 입력값.
+     * @return  유효한 값이면 true반환, 아니면 false 반환
+     */
     @Override
     public boolean isValid(String input) {
-        return false;
+        if(input.length()!=3){
+            return false;                                           /* input의 길이가 3이 아닌 경우 */
+        }
+        for(int i=0; i<input.length(); i++) {                       /* 각 자리마다 확인 */
+            if ((input.charAt(i)<'1') && (input.charAt(i)>'9')) {
+                return false;                                       /* 1이상 9이하의 수가 아닌 경우 */
+            }
+        }
+        return (input.charAt(0) != input.charAt(1))
+                && (input.charAt(0) != input.charAt(2))
+                && (input.charAt(1) != input.charAt(2));
+        /* 중복되는 수가 있으면 false, 없으면 true 반환 */
     }
 }
