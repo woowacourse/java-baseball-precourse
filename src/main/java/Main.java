@@ -29,7 +29,7 @@ public class Main {
         return sb.toString();
     }
 
-    /* 사용자 입력 수 생성 */
+    /* 사용자가 입력한 수 */
     static String setUserNum() throws IOException{
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
