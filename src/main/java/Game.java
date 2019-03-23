@@ -57,7 +57,7 @@ public class Game {
                 System.out.print("볼");
             }
             if (result.ball == 0 && result.strike == 0)
-                System.out.println("Nothing");
+                System.out.print("Nothing");
             System.out.println();
             if (result.strike == 3)
                 break;

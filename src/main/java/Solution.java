@@ -3,8 +3,21 @@ public class Solution {
 
     public static void main (String[] args) {
         boolean bool;
-        String s = "hello";
+        Game game = new Game();
+        String createdNumber;
+
+        while(true) {
+            createdNumber = game.generateNumber(3);
+            bool = game.playGame(createdNumber);
+            if (bool == false)
+                break;
+        }
+    }
+
+    void test() {
+        boolean bool;
         CheckSomething check = new CheckSomething();
+        String s = "hello";
         Game game = new Game();
         Oracle oracle = new Oracle();
 
@@ -58,11 +71,6 @@ public class Solution {
         System.out.println(result.strike);
         System.out.print("ball: ");
         System.out.println(result.ball);
-        System.out.println();
-
-        bool  = game.playGame("713");
-        System.out.println("so your choice is...");
-        System.out.println(bool);
         System.out.println();
     }
 }
