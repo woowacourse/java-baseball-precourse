@@ -6,5 +6,6 @@ public interface IUserInterface {
   int[] promptInput();
   UserSelection promptRestart();
   void displayResult(int strike, int ball);
+  void displayForInvalidInput();
 
 }

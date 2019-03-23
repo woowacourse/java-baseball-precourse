@@ -4,7 +4,7 @@ import kr.latera.baseball.interfaces.INumberGenerator;
 
 import java.util.Random;
 
-public class NumberGeneratorImpl implements INumberGenerator {
+public class RandomNumberGenerator implements INumberGenerator {
 
   private Random rand = new Random();
 

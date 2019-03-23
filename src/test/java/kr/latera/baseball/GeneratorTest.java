@@ -1,6 +1,5 @@
 package kr.latera.baseball;
 
-import kr.latera.baseball.NumberGeneratorImpl;
 import kr.latera.baseball.interfaces.INumberGenerator;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,7 +12,7 @@ public class GeneratorTest {
     @Before
     public void init() {
         // create generator
-        generator = new NumberGeneratorImpl();
+        generator = new RandomNumberGenerator();
     }
 
     @Test

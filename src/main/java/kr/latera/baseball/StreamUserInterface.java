@@ -34,13 +34,7 @@ public class StreamUserInterface implements IUserInterface {
     try {
       os.write("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n".getBytes());
       int selection = sc.nextInt();
-
-      switch(selection) {
-        case 1:
-          return UserSelection.RESTART;
-        case 2:
-          return UserSelection.EXIT;
-      }
+      return convertIntToUserSelection(selection);
     } catch(IOException e) {
       e.printStackTrace();
     }
@@ -69,6 +63,15 @@ public class StreamUserInterface implements IUserInterface {
     }
   }
 
+  @Override
+  public void displayForInvalidInput() {
+    try {
+      os.write("잘못된 입력입니다.\n".getBytes());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
   private int[] separateNum(String n) {
     int length = n.length();
     int[] arr = new int[length];
@@ -85,6 +88,17 @@ public class StreamUserInterface implements IUserInterface {
       os.write(str.getBytes());
     } catch(IOException e) {
       e.printStackTrace();
+    }
+  }
+
+  private UserSelection convertIntToUserSelection(int n) {
+    switch(n) {
+      case 1:
+        return UserSelection.RESTART;
+      case 2:
+        return UserSelection.EXIT;
+      default:
+        return UserSelection.INVALID;
     }
   }
 }
