@@ -54,6 +54,19 @@ public class Baseball {
     public void resetBall(){ this.ball = 0; }
     public void setUpBall(){ this.ball += 1; }
 
+    public boolean printResult(){
+        if(this.strike == 0 && this.ball != 0)
+            System.out.println(this.ball + " 볼");
+        else if(this.strike != 0 && this.ball == 0)
+            System.out.println(this.strike + " 스트라이크");
+        else if(this.strike != 0 && this.ball != 0)
+            System.out.println(this.strike + " 스트라이크 " + this.ball + " 볼");
+        else
+            System.out.println("낫싱");
+
+        if(this.strike == 3) return true;
+        else return false;
+    }
 
     public void setUserNumA(int n){ this.userNumA = n; }
     public void setUserNumB(int n){ this.userNumB = n; }
