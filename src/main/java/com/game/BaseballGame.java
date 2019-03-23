@@ -16,7 +16,6 @@ public class BaseballGame {
             }
 
             do {
-                System.out.print("숫자를 입력해주세요: ");
                 final int[] userNum = game.getUserNum(scan);
                 result = game.compareNumber(comNum, userNum);
 
@@ -56,12 +55,35 @@ public class BaseballGame {
      **/
     int[] getUserNum(Scanner scan) {
         int[] ret = new int[3];
-        String in = scan.nextLine();
-        ret[0] = in.charAt(0) - '0';
-        ret[1] = in.charAt(1) - '0';
-        ret[2] = in.charAt(2) - '0';
+
+        while (true) {
+            System.out.print("숫자를 입력해주세요: ");
+            String in = scan.nextLine();
+
+            if (in.length() != 3) {
+                System.out.println("옳바르게 입력하세요.");
+                continue;
+            }
+            if (!isInteger(in.charAt(0)) ||
+                    !isInteger(in.charAt(1)) || !isInteger(in.charAt(2))) {
+                System.out.println("옳바르게 입력하세요.");
+                continue;
+            }
+
+            ret[0] = in.charAt(0) - '0';
+            ret[1] = in.charAt(1) - '0';
+            ret[2] = in.charAt(2) - '0';
+            break;
+        }
 
         return ret;
+    }
+
+    /**
+     * 매개변수 c가 1~9 정수로 변경될 수 있는지 판단 하는 함수
+     */
+    boolean isInteger(final char c) {
+        return ('1' <= c && c <= '9') ? true : false;
     }
 
     /**
