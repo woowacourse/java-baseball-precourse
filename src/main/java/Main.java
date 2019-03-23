@@ -1,4 +1,8 @@
- public class Main {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
 
     /* 컴퓨터가 선택할 수 (각 자리 서로 다른 수) */
     static String setComputerNum() {
@@ -25,9 +29,21 @@
         return sb.toString();
     }
 
+    /* 사용자 입력 수 생성 */
+    static String setUserNum() throws IOException{
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.print("숫자를 입력해주세요 : ");
+
+        return br.readLine();
+
+    }
+
     /* 메인 메소드 */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
 
         System.out.println(setComputerNum());
+        System.out.println(setUserNum());
     }
 }
