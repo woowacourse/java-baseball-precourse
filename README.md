@@ -20,22 +20,24 @@
   
 * 주요 기능 
 
- 1. StartGame : 게임을 시작하는 기능
+ 1. StartBaseBallGame : 게임을 시작하고 운영하는 기능
  
- 2. ChooseNumber : 게임을 시작할 때 중복되지 않는 3개의 숫자를 지정하고 저장하는 기능
+ 2. SelectRandomNumber : 1~9까지의 난수를 생성해서 리턴해주는 기능
  
- 3. InputNumber : 게임 중 사용자의 입력을 받는 기능
+ 3. SaveComputerNumber : 컴퓨터가 선택한 숫자를 Model에 저장하는 기능
+ 
+ 4. InputNumber : 게임 중 사용자의 입력을 받는 기능
   
- 4. JudgeStrike : 입력된 데이터를 기반으로 스트라이크, 볼, 낫싱을 판단하는 기능
+ 5. JudgeStrike : 입력된 데이터를 기반으로 스트라이크, 볼, 낫싱을 판단하는 기능
  
- 5. PrintResult  : 처리된 데이터를 기반으로 출력을 해주는 기능
+ 6. PrintResult  : 처리된 데이터를 기반으로 출력을 해주는 기능
   
- 6. IsGameOver :  결과를 출력한 뒤  경기가 끝났는 지 아닌지 판단하는 기능
+ 7. IsGameOver :  결과를 출력한 뒤  경기가 끝났는 지 아닌지 판단하는 기능
  
- 7. InputReGame : 경기가 끝났다면 게임을 다시 시작할지 사용자의 입력을 받는 기능
+ 8. InputReGame : 경기가 끝났다면 게임을 다시 시작할지 사용자의 입력을 받는 기능
   
- 8. ReStart : 게임을 다시 시작하는 기능
+ 9. ReStart : 게임을 다시 시작하는 기능
  
- 9. ExitGame : 게임을 종료하는 기능
+ 10. ExitGame : 게임을 종료하는 기능
  
  ※ 기능의 숫자는 프로그램이 실행되는 순서를 의미합니다.
