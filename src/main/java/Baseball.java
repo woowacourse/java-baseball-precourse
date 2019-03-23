@@ -45,6 +45,14 @@ class Game {
         return bs;
     }
 
+    public boolean checkAnswer(int[] checkNum){
+        if(checkNum[1] == 3){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public void print(int[] checkNum){
         String response = "";
 
@@ -74,6 +82,7 @@ public class Baseball {
         while(!flag){
             numArr = input.next().split("");
             checkNum = game.compareAnswer(numArr);
+            flag = game.checkAnswer(checkNum);
             game.print(checkNum);
         }
     }
