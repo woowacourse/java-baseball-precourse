@@ -15,12 +15,12 @@ public class CheckSomething {
         }
     }
     */
-    /*
+
     boolean checkNumber(char character) {
         if (character >= '1' && character <= '9')
             return true;
         else
             return false;
     }
-    */
+
 }
