@@ -35,4 +35,19 @@ public class Oracle {
             return 0;
     }
 
+    Result tells(String createdNumber, String inputNumber) {
+        Result result = new Result();
+        int temp;
+
+        for(int i = 0; i < 3; i ++) {
+            temp = examines(createdNumber, inputNumber, i);
+            if (temp == 1)
+                result.strike++;
+            else if(temp == 2)
+                result.ball++;
+        }
+
+        return result;
+    }
+
 }

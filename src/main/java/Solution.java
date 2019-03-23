@@ -53,9 +53,11 @@ public class Solution {
         System.out.println(bool);
         System.out.println();
 
-        int result  = oracle.examines("713","145",1);
-        System.out.println("what is result of 1nd seat in 448 and 545?");
-        System.out.println(result);
+        Result result  = oracle.tells("713","713");
+        System.out.print("strike: ");
+        System.out.println(result.strike);
+        System.out.print("ball: ");
+        System.out.println(result.ball);
         System.out.println();
     }
 }
