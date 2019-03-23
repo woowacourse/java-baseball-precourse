@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 class Game {
-    private char[] answer = new char[3];
+    private char[] answer;
 
     public Game() {
         answer = generateAnswer();
@@ -27,7 +27,7 @@ class Game {
         return str;
     }
 
-    public int[] CheckAnswer(String[] question){
+    public int[] compareAnswer(String[] question){
         int[] bs = {0, 0}; // {ball, strike}
 
         for(int i=0; i < answer.length; i++){
@@ -73,7 +73,7 @@ public class Baseball {
 
         while(!flag){
             numArr = input.next().split("");
-            checkNum = game.CheckAnswer(numArr);
+            checkNum = game.compareAnswer(numArr);
             game.print(checkNum);
         }
     }
