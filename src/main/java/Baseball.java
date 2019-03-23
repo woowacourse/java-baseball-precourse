@@ -1,5 +1,6 @@
 import java.io.*;
 import java.nio.Buffer;
+import java.util.Random;
 
 public class Baseball {
 
@@ -9,31 +10,31 @@ public class Baseball {
    int[] st = new int[3];
    int[] ball = new int[3];
 
+   Random random = new Random();
    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
    public void startGame() throws IOException{
 
       while(true){
-         int tmp = (int)(Math.random() * 1000) +1;
-         com = String.valueOf(tmp);
+
+         com = comRandom();
          boolean gameover = false;
-         bw.write(String.valueOf("숫자를 입력해주세요 : "));
-         //bw.write(com);
+         bw.write("숫자를 입력해주세요 : ");
          bw.flush();
-         //st,ball 을 계속 생성해버리면 주소가 다른 객체가 메모리에 계속 차임.
-         //선언은 한번만하고, 나중에 void clear()를 만들어서 배열 청소해줄 것.
-         while(true){
+
+         while(true) {
             usr = br.readLine();
-            countStrike(com,usr,st);
-            if(Is3strike(st)){
-               gameover=true;
+            countStrike(com, usr, st);
+            if (Is3strike(st)) {
+               gameover = true;
                break;
             }
-            countBall(com,usr,st,ball);
-            printScore(com,usr,st,ball);
+            else {
+               countBall(com, usr, st, ball);
+               printScore(usr, st, ball);
+            }
          }
-
 
          if(gameover==true) {
             if(quitOrNot(st,ball)){
@@ -43,6 +44,16 @@ public class Baseball {
       }
    }
 
+   public String comRandom(){
+      int first = random.nextInt(9) + 1;
+      int second = random.nextInt(9) + 1;
+      int third = random.nextInt(9) + 1;
+      String s = String.valueOf(first) + String.valueOf(second) + String.valueOf(third);
+
+      return s;
+   }
+
+
    public void countStrike(String com,String usr,int[] st){
       for (int i=0;i<com.length();++i){
          if (com.charAt(i) == usr.charAt(i)){
@@ -51,12 +62,13 @@ public class Baseball {
       }
    }
 
-   public boolean Is3strike(int[] st){
+   public boolean Is3strike(int[] st) throws IOException{
       int sum=0;
       for (int i=0;i<st.length;i++){
          sum += st[i];
       }
       if (sum==3){
+         bw.write(sum+ " 스트라이크" + "\n");
          return true;
       }
       else {
@@ -65,15 +77,22 @@ public class Baseball {
    }
 
    public void countBall(String com, String usr, int[] st, int[]ball){
-      for (int i=0;i<com.length();++i){
+      for (int i=0;i<usr.length();++i){
+
+         if (st[i]==0 && com.contains(String.valueOf(usr.charAt(i)))){
+            ball[i] = 1;
+         }
+
+         /*
          if(st[i]==1) continue;                       //스트라이크는 제외하고 볼 카운트하기 위함
          else if (com.contains(String.valueOf(usr.charAt(i)))){
             ball[i] = 1;
-         }
+         }*/
+      
       }
    }
 
-   public void printScore(String com,String usr,int[] st,int[] ball) throws IOException{
+   public void printScore(String usr,int[] st,int[] ball) throws IOException{
       int stsum=0;
       int ballsum=0;
 
