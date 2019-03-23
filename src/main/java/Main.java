@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 import java.util.Random;
 
 
@@ -43,8 +44,7 @@ public class Main {
       BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
       System.out.print("숫자를 입력해주세요 : ");
       num = bf.readLine();
-      //valid = isValid(num); valid는 맨 뒤에서 구현 예정
-      valid = true; //우선은 정해진 값만 들어온다.
+      valid = isValid(num);
     }
     int[] userNumber = new int[3];
     for (int i = 0; i < 3; i++) {
@@ -126,21 +126,46 @@ public class Main {
 
   public static boolean isRegame() throws IOException {
     boolean check = true;
+    int temp;
     while (check) {
       System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
       BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
       String str = bf.readLine();
-      int keyward = Integer.parseInt(str); // 맨 뒤에서 isValid 구현
-      if (keyward == 2) {
+      try {
+        temp = Integer.parseInt(str);
+      } catch (NumberFormatException e) {
+        System.out.println("잘못된 형식입니다.");
+        temp = 0;
+      }
+      if (temp == 2) {
         return false;
-      } else if (keyward == 1) {
+      } else if (temp == 1) {
         return true;
+      } else {
+        System.out.println("1과 2중에서 다시 선택해주세요.");
       }
     }
     return true;
   }
 
   public static boolean isValid(String inputNum) {
+
+    if (inputNum.length() != 3) {
+      System.out.println("숫자를 3자리로 맞춰주세요.");
+      return false;
+    }
+
+    if (inputNum.charAt(0) == inputNum.charAt(1) || inputNum.charAt(0) == inputNum.charAt(2) || inputNum.charAt(1) == inputNum.charAt(2)) {
+      System.out.println("서로 다른 숫자를 입력해야 합니다.");
+      return false;
+    }
+
+    try {
+      Integer.parseInt(inputNum);
+    } catch (NumberFormatException e) {
+      System.out.println("잘못된 형식입니다.");
+      return false;
+    }
 
     return true;
   }
