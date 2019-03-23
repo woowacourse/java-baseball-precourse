@@ -38,4 +38,35 @@ public class Game {
 
         return number;
     }
+
+    boolean playGame(String createdNumber) {
+        String inputNumber;
+        Oracle oracle = new Oracle();
+        Result result;
+        CheckSomething check = new CheckSomething();
+
+        while (true) {
+            inputNumber = recieveNumber();
+            result = oracle.tells(createdNumber, inputNumber);
+            if (result.strike != 0) {
+                System.out.print(result.strike);
+                System.out.print(" 스트라이크 ");
+            }
+            if (result.ball != 0) {
+                System.out.print(result.ball);
+                System.out.print("볼");
+            }
+            System.out.println();
+            if (result.strike == 3)
+                break;
+        }
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+
+        return true;
+
+    }
+
 }

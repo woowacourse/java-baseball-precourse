@@ -59,5 +59,10 @@ public class Solution {
         System.out.print("ball: ");
         System.out.println(result.ball);
         System.out.println();
+
+        bool  = check.checkUserThought();
+        System.out.println("so your choice is...");
+        System.out.println(bool);
+        System.out.println();
     }
 }
