@@ -5,6 +5,7 @@ public class FirstWeek {
         boolean bool;
         String s = "hello";
         CheckSomething check = new CheckSomething();
+        Game g = new Game();
 
         bool = check.checkLength(s, 5);
         System.out.println("is hello is 5 word?");
@@ -36,6 +37,7 @@ public class FirstWeek {
         System.out.println(bool);
         System.out.println();
 
+        g.recieveNumber();
 
     }
 }

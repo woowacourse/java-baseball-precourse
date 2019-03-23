@@ -3,22 +3,21 @@ import java.util.Scanner;
 public class Game {
 
     String recieveNumber() {
-        boolean flagForLength;
-        boolean flagForNumber;
+        boolean flag;
         String input;
         Scanner scan = new Scanner(System.in);
         CheckSomething check = new CheckSomething();
 
         while(true) {
+            System.out.print("숫자를 입력해주세요 : ");
             input = scan.nextLine();
-            flagForLength = check.checkLength(input, 3);
-            flagForNumber = check.checkNumberString(input);
+            flag = check.checkRecievedNumber(input);
 
-            if (flagForLength == true && flagForNumber == true) {
+            if (flag) {
                 break;
             }
             else {
-                System.out.println("");
+                System.out.println("공백을 제외한 3자리 숫자(1~9)를 입력하셔야 합니다.");
             }
         }
 
