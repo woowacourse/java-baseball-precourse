@@ -1,8 +1,67 @@
 package com.game;
 
-public class BaseballGame {
+import java.util.Scanner;
 
+public class BaseballGame {
     public static void main(String[] args) {
+        BaseballGame game = new BaseballGame();
+        Scanner scan = new Scanner(System.in);
+
+        do {
+            final int[] comNum = game.getRandomNum();
+            int[] result;
+
+            if (true) {
+                System.out.println(comNum[0] + "" + comNum[1] + "" + comNum[2]);
+            }
+
+            do {
+                System.out.print("숫자를 입력해주세요: ");
+                final int[] userNum = game.getUserNum(scan);
+                result = game.compareNumber(comNum, userNum);
+
+                game.resultPrint(result);
+            } while (result[0] != 3);
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            int what = scan.nextInt();
+            if (what == 2) {
+                break;
+            }
+            scan.nextLine(); // 개행문자 제거
+
+        } while (true);
+    }
+
+    /**
+     * 결과를 출력하는 함수
+     */
+    void resultPrint(final int[] result) {
+        if (0 < result[0]) {
+            System.out.print(result[0] + " 스트라이크 ");
+        }
+        if (0 < result[1]) {
+            System.out.print(result[1] + " 볼");
+        }
+        if ((result[0] == 0) && (result[1] == 0)) {
+            System.out.print("포볼");
+        }
+        System.out.println();
+    }
+
+    /**
+     * 유저가 입력한 문자열을 integer 배열로 반환
+     **/
+    int[] getUserNum(Scanner scan) {
+        int[] ret = new int[3];
+        String in = scan.nextLine();
+        ret[0] = in.charAt(0) - '0';
+        ret[1] = in.charAt(1) - '0';
+        ret[2] = in.charAt(2) - '0';
+
+        return ret;
     }
 
     /**
