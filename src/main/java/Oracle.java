@@ -26,4 +26,13 @@ public class Oracle {
         return flag;
     }
 
+    int examines(String createdNumber, String inputNumber, int seat) {
+        if (checkStrike(createdNumber, inputNumber, seat))
+            return 1;
+        else if (checkBall(createdNumber, inputNumber, seat))
+            return 2;
+        else
+            return 0;
+    }
+
 }

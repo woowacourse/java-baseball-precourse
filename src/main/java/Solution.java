@@ -53,5 +53,9 @@ public class Solution {
         System.out.println(bool);
         System.out.println();
 
+        int result  = oracle.examines("713","145",1);
+        System.out.println("what is result of 1nd seat in 448 and 545?");
+        System.out.println(result);
+        System.out.println();
     }
 }

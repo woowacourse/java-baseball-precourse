@@ -41,9 +41,6 @@ checkStrike, checkBall 함수를 사용한다.
 - class Oracle: boolean checkStrike(string createdNumber, string inputNumber, int seat)
 주어진 자릿수(seat)에 대해 strike인지 판단한다. extractNumber 함수를 사용한다.
 
-- class Oracle: string extractNumber(string Number, int seat)
-string number의 seat번째에 해당하는 string을 반환한다.
-
 - class Oracle: boolean checkBall(string createdNumber, string inputNumber, int seat)
 ball인지 아닌지에 대해 판단한다. extractNumber 함수를 사용한다.
 
@@ -56,4 +53,4 @@ strike 개수와 ball 개수에 대한 정보를 담고 있다.
 
 구현 순서:
 checkLength -> checkNumber -> checkNumberString -> checkRecievedNumber -> recieveNumber -> generateNumber
-    Result class -> extractNumber -> checkStrike -> checkBall ->examines -> tells -> playGame
+    Result class  -> checkStrike -> checkBall ->examines -> tells -> playGame
