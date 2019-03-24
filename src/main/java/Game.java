@@ -29,4 +29,12 @@ public class Game {
         if(strkes == 3) return 1;
         else return 0;
     }
+
+    public boolean continueGame(){
+        System.out.println("1. 계속 2. 끝");
+        Scanner sc = new Scanner(System.in);
+        int choice = sc.nextInt();
+        if(choice == 1) return true;
+        else return false;
+    }
 }
