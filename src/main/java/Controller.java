@@ -3,7 +3,6 @@ import java.util.*;
 /*
  * 숫자야구 게임을 시작하고, 전반적인 동작을 관리하는 클래스
  *
- * @verison         1.00 2019년 3월 23일
  * @author          김강민
  */
 public class Controller {
@@ -123,10 +122,12 @@ public class Controller {
         this.StartBaseBallGame();
     }
 
+    /*
+     * 프로그램을 종료합니다.
+     */
     public void ExitGame(){
-        System.out.println("ExitGame 실행!");
+        System.exit(0);
     }
-
 
     public static void main(String[] args) {
 

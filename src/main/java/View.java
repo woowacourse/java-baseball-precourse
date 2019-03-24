@@ -5,7 +5,6 @@ import java.util.stream.Stream;
 /*
  * 숫자야구 게임에서 사용자의 입력을 받고, 사용자에게 출력을 해주는 클래스
  *
- * @verison         1.00 2019년 3월 23일
  * @author          김강민
  */
 public class View {
