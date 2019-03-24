@@ -1,13 +1,24 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class BaseballGame {
     static boolean isWin() {
         return true;
     }
 
+    static int[] makeArray() {
+        Random rand = new Random(System.currentTimeMillis());
+        int[] arr = new int[3];
+        for (int i = 0; i < 3; i++) {
+            arr[i] = rand.nextInt(8) + 1;
+        }
+        return arr;
+    }
+
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
         while(true) {
+            int[] arr = makeArray();
             boolean win = false;
             while(!win) {
 
