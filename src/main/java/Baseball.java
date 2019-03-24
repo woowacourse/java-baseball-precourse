@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 class Game {
     private char[] answer;
+    private int[] bs; // {ball, strike}
 
     public Game() {
         answer = generateAnswer();
@@ -29,7 +30,7 @@ class Game {
     }
 
     public int[] compareAnswer(String[] question) {
-        int[] bs = {0, 0}; // {ball, strike}
+        bs = new int[2]; 
         String str = String.valueOf(answer);
         int i = 0;
 
@@ -48,22 +49,22 @@ class Game {
         return bs;
     }
 
-    public boolean checkAnswer(int[] checkNum) {
-        if (checkNum[1] == 3) {
+    public boolean checkAnswer() {
+        if (bs[1] == 3) {
             return true;
         } else {
             return false;
         }
     }
 
-    public void print(int[] checkNum) {
+    public void print() {
         String response = "";
 
-        if (checkNum[1] != 0) {
-            response += checkNum[1] + " 스트라이크 ";
+        if (bs[1] != 0) {
+            response += bs[1] + " 스트라이크 ";
         }
-        if (checkNum[0] != 0) {
-            response += checkNum[0] + " 볼";
+        if (bs[0] != 0) {
+            response += bs[0] + " 볼";
         }
 
         if (response.equals("")) {
@@ -86,14 +87,17 @@ class Game {
 public class Baseball {
 
     public static boolean validInput(String[] numArr) {
+        // 입력값이 3자리인지
         if (!(numArr.length == 3)) {
             return false;
         }
 
+        // 입력값에 0이 포함이 되어 있는지
         if (Arrays.toString(numArr).contains("0")) {
             return false;
         }
 
+        // 입력값이 숫자로 입력했는지
         try {
             for (String num : numArr) {
                 Integer.parseInt(num);
@@ -109,19 +113,17 @@ public class Baseball {
         Scanner input = new Scanner(System.in);
         Game game = new Game();
         String[] numArr;
-        int[] checkNum;
-        boolean flag = false; // 정답인지 확인을 하기 위해
+        boolean flag = false; // while문을 탈출하기 위한 변수
 
         while (!flag) {
-            // 입력한 숫자가 3자리일 때 + 0이 포함 안 된 경우
             do {
                 System.out.print("숫자를 입력해주세요: ");
                 numArr = input.next().split("");
             } while (!validInput(numArr));
 
-            checkNum = game.compareAnswer(numArr);
-            flag = game.checkAnswer(checkNum);
-            game.print(checkNum);
+            game.compareAnswer(numArr);
+            flag = game.checkAnswer();
+            game.print();
 
             if (flag) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
