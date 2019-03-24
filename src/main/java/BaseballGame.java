@@ -8,7 +8,7 @@ import java.util.*;
  * 숫자야구게임을 진행하는 클래스
  *
  * @author 이도원
- * @version 0.3 2019/03/24
+ * @version 0.4 2019/03/25
  */
 public class BaseballGame {
 
@@ -40,6 +40,7 @@ public class BaseballGame {
         System.out.print("게임을 시작합니다!\n");
         selectNumber();
         inputNumber();
+        printStrike(inputNumber);
     }
 
     /* 임의의 3자리의 수를 선택하는 메소드. */
@@ -84,5 +85,22 @@ public class BaseballGame {
         int num = Integer.parseInt(str);
 
         return ((str.length() == DIGIT) && (num >= 0) && (num < Math.pow(10, DIGIT)));
+    }
+
+    /* 스트라이크의 갯수 출력하는 메소드 */
+    private void printStrike(String str) {
+
+        /* 스트라이크의 갯수 */
+        int count = 0;
+
+        for (int i = 0; i < DIGIT; i++) {
+
+            /* 같은 자리에 있으면서 수가 같으면 스프라이크의 갯수 1 증가 */
+            if (str.charAt(i) == number.charAt(i)) {
+                count++;
+            }
+        }
+
+        System.out.printf("%d 스트라이크 ", count);
     }
 }
