@@ -72,6 +72,7 @@ public class Controller {
         this.model.setComputerNumber(computerNumberArray);
 
     }
+
     /*
      * 난수를 생성해 1~9까지의 범위의 숫자만 리턴하도록 하는 메소드 입니다.
      */
@@ -83,6 +84,27 @@ public class Controller {
                 this.hashSet.add(temp);
                 return temp;
             }
+        }
+
+    }
+
+    /*
+     * 입력을받은 숫자를 올바른 숫자인지 판단하는 메소드 입니다.
+     * @return 올바른숫자이면 true, 아니면 false를 리턴합니다.
+     */
+    public boolean JudgeValidNumber(int[] userNumber){
+
+        this.hashSet.clear();
+        for(int i=0; i<3; i++){
+            if(userNumber[i]<1 || userNumber[i]>9){
+                break;
+            }
+            this.hashSet.add(userNumber[i]);
+        }
+        if(this.hashSet.size() ==3){
+            return true;
+        }else{
+            return false;
         }
 
     }
