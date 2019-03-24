@@ -3,8 +3,9 @@ import java.util.Random;
 import java.util.Arrays;
 
 public class BaseballGame {
-    static boolean isWin() {
-        return true;
+    static boolean isWin(int strike) {
+        if(strike == 3) return true;
+        return false;
     }
 
     static int[] makeArray() {
@@ -72,7 +73,7 @@ public class BaseballGame {
 
                 printResult(strike, ball);
 
-                win = isWin();
+                win = isWin(strike);
             }
 
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
