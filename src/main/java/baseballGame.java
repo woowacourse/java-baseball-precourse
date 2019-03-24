@@ -57,6 +57,65 @@ public class baseballGame {
 		        comNumTemp = comNumTemp / 10;
 		        myNumTemp = myNumTemp / 10;
 		    }
+		    
+		    /* 
+		     * 판정 배열에 comNum 위치 값 입력
+		     * 
+		     * 예)
+		     * comNum = 234 인 경우
+		     * tempArr[2] = (0+1)*-1 (2의 위치가 0번째)
+		     * tempArr[3] = (1+1)*-1 (3의 위치가 1번째)
+		     * tempArr[4] = (2+1)*-1 (4의 위치가 2번째)
+		     * 
+		     * */
+		    for(int i = 0; i < 3; i++) {
+		    	int comNumVal = comNumArr[i];
+		    	tempArr[comNumVal] = (i+1)*-1;
+		    }
+		    
+		    /* 
+		     * myNum 위치 값을 판정 배열과 비교
+		     * 
+		     * 예)
+		     * myNum = 432 인 경우
+		     * tempArr[2] != (2+1)*-1 (2의 위치가 2번째) 
+		     * tempArr[3] == (1+1)*-1 (3의 위치가 1번째)
+		     * tempArr[4] != (0+1)*-1 (4의 위치가 0번째) 
+		     * 
+		     * */
+		    for(int i = 0; i < 3; i++) {
+		    	int myNumVal = myNumArr[i];
+		    	
+		    	/* 스트라이크인 경우 (값, 자리수 일치) */
+		    	if((tempArr[myNumVal] != 0) 
+		    		&& (tempArr[myNumVal] == (i+1)*-1)) {
+		    		tempArr[myNumVal] = 1; 
+		    	}
+		    	/* 볼인 경우 (값 일치, 자리수 불일치) */
+		    	else if((tempArr[myNumVal] != 0) 
+		    		&& (tempArr[myNumVal] != (i+1)*-1)) {
+		    		tempArr[myNumVal] = 2;
+		    	}
+		    	/* 나머지 경우 (값, 자리수 불일치) */
+		    	else {
+		    		tempArr[myNumVal] = 3;
+		    	}
+		    }
+		    
+		    
+		    int strike = 0;				// 스트라이크 수
+		    int ball = 0;				// 볼 수
+		    
+		    /* 스트라이크와 볼의 수를 센다 */
+		    for(int i = 0; i < 10; i++) {
+		    	if(tempArr[i] == 1) {
+		    		strike++;
+		    	}
+		    	else if(tempArr[i] == 2) {
+		    		ball++;
+		    	}
+		    }
+
 	    }
 	}
 }
