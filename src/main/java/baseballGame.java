@@ -115,7 +115,24 @@ public class baseballGame {
 		    		ball++;
 		    	}
 		    }
-
+		    
+		    /* 결과물 출력 */
+		    if(strike != 0) {
+		    	System.out.print(strike + "스트라이크 ");
+		    }
+		    if(ball != 0) {
+		    	System.out.print(ball + "볼");
+		    }
+		    System.out.println();
+		    
+		    /* 3스트라이크 시 게임모드 선택*/
+		    if(strike == 3) {
+		    	System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+		    	System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		    	gameMode = sc.nextInt();
+		    	comNum = getComNum();		// 새로운 임의의 세자리수
+		    }
 	    }
+	    sc.close();
 	}
 }
