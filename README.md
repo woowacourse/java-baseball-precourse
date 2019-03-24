@@ -1,30 +1,33 @@
-# ¼ýÀÚ¾ß±¸ °ÔÀÓ (Java)
+# ìˆ«ìžì•¼êµ¬ ê²Œìž„ (Java)
 ---
-## ±¸Çö ¸ñ·Ï
--Class BaseballGame
-	- runProgram()
-	- runBaseball()
-	- isValid()
-	- printHint()
-	- makeRandomNumber()
+## êµ¬í˜„ ëª©ë¡
+- BaseballGame (Class)
+	- runProgram() : main program ì‹¤í–‰ (ê²Œìž„ ë°˜ë³µ ì—¬ë¶€)
+	- runBaseball() : baseball game ì‹¤í–‰
+	- isValid() : ì‚¬ìš© ê°€ëŠ¥í•œ ìž…ë ¥ê°’ì¸ì§€ í™•ì¸
+	- isStrike() : strike ì—¬ë¶€ í™•ì¸
+	- isBall() : ball ì—¬ë¶€ í™•ì¸
+	- printHint() : ížŒíŠ¸(strike, ball ê°œìˆ˜) ì¶œë ¥
+	- setRandomNumber() : 3ìžë¦¬ì˜ 
+- BaseballNumber (Class)
+	- getter, setter
+	- compareTo() : ê°ì²´ ìƒì„±ì‹œ ë§Œë“¤ì–´ì§„ ë‚œìˆ˜ë¥¼ ì‚¬ìš©í•˜ì—¬ ë¹„êµ
 
-- Class BaseballNumber
+### ê¸°ëŠ¥ ìš”êµ¬ì‚¬í•­
+- ê¸°ë³¸ì ìœ¼ë¡œ 1ë¶€í„° 9ê¹Œì§€ ì„œë¡œ ë‹¤ë¥¸ ìˆ˜ë¡œ ì´ë£¨ì–´ì§„ 3ìžë¦¬ì˜ ìˆ˜ë¥¼ ë§žì¶”ëŠ” ê²Œìž„ì´ë‹¤.
+- ê°™ì€ ìˆ˜ê°€ ê°™ì€ ìžë¦¬ì— ìžˆìœ¼ë©´ ìŠ¤íŠ¸ë¼ì´í¬,ë‹¤ë¥¸ìžë¦¬ì—ìžˆìœ¼ë©´ë³¼,ê°™ì€ìˆ˜ê°€ì „í˜€ì—†ìœ¼ë©´í¬ë³¼ë˜ëŠ”ë‚«ì‹±ì´ëž€ížŒíŠ¸ ì–»ê³ ,ê·¸ížŒíŠ¸ë¥¼ì´ìš©í•´ì„œë¨¼ì €ìƒëŒ€ë°©(ì»´í“¨í„°)ì˜ìˆ˜ë¥¼ë§žì¶”ë©´ìŠ¹ë¦¬í•œë‹¤.
+- [ì˜ˆ] ìƒëŒ€ë°©(ì»´í“¨í„°) ì˜ìˆ˜ê°€ 425ì¼ ë•Œ,123ì„ì œì‹œí•œê²½ìš°:1ìŠ¤íŠ¸ë¼ì´í¬,456ì„ì œì‹œí•œê²½ìš°:1ìŠ¤íŠ¸ë¼ì´í¬1ë³¼, 789ë¥¼ ì œì‹œí•œ ê²½ìš°:ë‚«ì‹±
+- ìœ„ ìˆ«ìž ì•¼êµ¬ê²Œìž„ì—ì„œ ìƒëŒ€ë°©ì˜ ì—­í• ì„ ì»´í“¨í„°ê°€ í•œë‹¤.ì»´í“¨í„°ëŠ”1ì—ì„œ9ê¹Œì§€ì„œë¡œë‹¤ë¥¸ìž„ì˜ì˜ìˆ˜3ê°œë¥¼ì„ íƒí•œë‹¤.ê²Œìž„í”Œë ˆì´ì–´ëŠ”ì»´í“¨í„°ê°€ìƒê°í•˜ê³ ìžˆëŠ”3ê°œì˜ìˆ«ìžë¥¼ìž…ë ¥í•˜ê³ ,ì»´í“¨í„°ëŠ”ìž…ë ¥í•œìˆ«ìžì—ëŒ€í•œê²°ê³¼ë¥¼ì¶œë ¥í•œë‹¤.
+- ì´ëŸ° ê³¼ì •ì„ ë°˜ë³µí•´ ì»´í“¨í„°ê°€ ì„ íƒí•œ 3ê°œì˜ ìˆ«ìžë¥¼ ëª¨ë‘ ë§žížˆë©´ ê²Œìž„ì´ ì¢…ë£Œëœë‹¤.
+- ê²Œìž„ì„ ì¢…ë£Œí•œ í›„ê³„ìž„ì„ ë‹¤ì‹œ ì‹œìž‘í•˜ê±°ë‚˜ ì™„ì „ížˆ ì¢…ë£Œí•  ìˆ˜ ìžˆë‹¤.
 
-### ±â´É ¿ä±¸»çÇ×
-- ±âº»ÀûÀ¸·Î 1ºÎÅÍ 9±îÁö ¼­·Î ´Ù¸¥ ¼ö·Î ÀÌ·ç¾îÁø 3ÀÚ¸®ÀÇ ¼ö¸¦ ¸ÂÃß´Â °ÔÀÓÀÌ´Ù.
-- °°Àº ¼ö°¡ °°Àº ÀÚ¸®¿¡ ÀÖÀ¸¸é ½ºÆ®¶óÀÌÅ©,´Ù¸¥ÀÚ¸®¿¡ÀÖÀ¸¸éº¼,°°Àº¼ö°¡ÀüÇô¾øÀ¸¸éÆ÷º¼¶Ç´Â³´½ÌÀÌ¶õÈùÆ® ¾ò°í,±×ÈùÆ®¸¦ÀÌ¿ëÇØ¼­¸ÕÀú»ó´ë¹æ(ÄÄÇ»ÅÍ)ÀÇ¼ö¸¦¸ÂÃß¸é½Â¸®ÇÑ´Ù.
-- [¿¹] »ó´ë¹æ(ÄÄÇ»ÅÍ) ÀÇ¼ö°¡ 425ÀÏ ¶§,123À»Á¦½ÃÇÑ°æ¿ì:1½ºÆ®¶óÀÌÅ©,456À»Á¦½ÃÇÑ°æ¿ì:1½ºÆ®¶óÀÌÅ©1º¼, 789¸¦ Á¦½ÃÇÑ °æ¿ì:³´½Ì
-- À§ ¼ýÀÚ ¾ß±¸°ÔÀÓ¿¡¼­ »ó´ë¹æÀÇ ¿ªÇÒÀ» ÄÄÇ»ÅÍ°¡ ÇÑ´Ù.ÄÄÇ»ÅÍ´Â1¿¡¼­9±îÁö¼­·Î´Ù¸¥ÀÓÀÇÀÇ¼ö3°³¸¦¼±ÅÃÇÑ´Ù.°ÔÀÓÇÃ·¹ÀÌ¾î´ÂÄÄÇ»ÅÍ°¡»ý°¢ÇÏ°íÀÖ´Â3°³ÀÇ¼ýÀÚ¸¦ÀÔ·ÂÇÏ°í,ÄÄÇ»ÅÍ´ÂÀÔ·ÂÇÑ¼ýÀÚ¿¡´ëÇÑ°á°ú¸¦Ãâ·ÂÇÑ´Ù.
-- ÀÌ·± °úÁ¤À» ¹Ýº¹ÇØ ÄÄÇ»ÅÍ°¡ ¼±ÅÃÇÑ 3°³ÀÇ ¼ýÀÚ¸¦ ¸ðµÎ ¸ÂÈ÷¸é °ÔÀÓÀÌ Á¾·áµÈ´Ù.
-- °ÔÀÓÀ» Á¾·áÇÑ ÈÄ°èÀÓÀ» ´Ù½Ã ½ÃÀÛÇÏ°Å³ª ¿ÏÀüÈ÷ Á¾·áÇÒ ¼ö ÀÖ´Ù.
-
-### ÇÁ·Î±×·¡¹Ö ¿ä±¸»çÇ×
-- ÀÚ¹Ù ÄÚµå ÄÁº¥¼Ç
+### í”„ë¡œê·¸ëž˜ë° ìš”êµ¬ì‚¬í•­
+- ìžë°” ì½”ë“œ ì»¨ë²¤ì…˜
 	- https://google.github.io/styleguide/javaguide.html
 	- https://myeonguni.tistory.com/1596
-- indent depth¸¦ 3ÀÌ ³ÑÁö ¾Êµµ·Ï ±¸ÇöÇÑ´Ù. (2±îÁö¸¸ Çã¿ë)
-- ÇÔ¼ö(¶Ç´Â ¸Þ¼Òµå)°¡ ÇÑ °¡Áö ÀÏ¸¸ ÇÏµµ·Ï ÃÖ´ëÇÑ ÀÛ°Ô
+- indent depthë¥¼ 3ì´ ë„˜ì§€ ì•Šë„ë¡ êµ¬í˜„í•œë‹¤. (2ê¹Œì§€ë§Œ í—ˆìš©)
+- í•¨ìˆ˜(ë˜ëŠ” ë©”ì†Œë“œ)ê°€ í•œ ê°€ì§€ ì¼ë§Œ í•˜ë„ë¡ ìµœëŒ€í•œ ìž‘ê²Œ
 
-### Âü°í
-- ¹Ì¼Ç ÀúÀå¼Ò : https://github.com/woowacourse/java-baseball
-- °úÁ¦Á¦Ãâ : https://github.com/woowacourse/woowacourse-docs/tree/master/precourse
+### ì°¸ê³ 
+- ë¯¸ì…˜ ì €ìž¥ì†Œ : https://github.com/woowacourse/java-baseball
+- ê³¼ì œì œì¶œ : https://github.com/woowacourse/woowacourse-docs/tree/master/precourse
