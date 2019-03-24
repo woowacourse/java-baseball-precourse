@@ -1,5 +1,4 @@
-import java.util.HashSet;
-import java.util.Random;
+import java.util.*;
 
 /*
  * 숫자야구 게임을 시작하고, 전반적인 동작을 관리하는 클래스
@@ -15,7 +14,8 @@ public class Controller {
     private int isReGame;
     private int temp;
     private static Controller controller;
-    private HashSet<Integer> hashSet;
+    private HashSet<Integer> computerNumberSet = new HashSet<>();
+    private HashSet<Integer> userNumberSet = new HashSet<>();
 
     /*
      * Controller에 대한 생성자는 handlingData, model, view의 변수 초기화로 합니다.
@@ -24,7 +24,7 @@ public class Controller {
         this.handlingData = HandlingData.getHandlingData();
         this.model = Model.getModel();
         this.view = View.getView();
-        this.hashSet = new HashSet<>();
+
     }
     /*
      * Controller는 프로그램 내에서 하나만 존재해야 합니다.
@@ -43,11 +43,14 @@ public class Controller {
     private void StartBaseBallGame(){
 
         this.SaveComuputerNumber();
-        view.InputNumber();
-        handlingData.JudgeStrike();
-        view.PrintResult();
-        if(this.IsGameOver()){
-            this.isReGame = view.InputReGame();
+        while(true){
+            view.InputNumber();
+            handlingData.JudgeStrike();
+            view.PrintResult();
+            if(this.IsGameOver()){
+                this.isReGame = view.InputReGame();
+                break;
+            }
         }
         switch (this.isReGame){
             case 1:
@@ -63,13 +66,14 @@ public class Controller {
      * SelectRandomNumber 메소드를 호출하여 배열에 난수를 저장하고 Model에 있는 data를 Update 해주었습니다.
      */
     public void SaveComuputerNumber(){
-        int[] computerNumberArray = this.model.getComputerNumber();
+
+        int[] computerNumberArray = new int[3];
 
         for(int i=0; i<3; i++){
             computerNumberArray[i] = SelectRandomNumber();
         }
-
         this.model.setComputerNumber(computerNumberArray);
+        this.model.setHashSet(this.computerNumberSet);
 
     }
 
@@ -80,8 +84,8 @@ public class Controller {
 
         while(true){
             temp = (int)(Math.random()*9)+1;
-            if(!this.hashSet.contains(temp)){
-                this.hashSet.add(temp);
+            if(!this.computerNumberSet.contains(temp)){
+                this.computerNumberSet.add(temp);
                 return temp;
             }
         }
@@ -94,14 +98,14 @@ public class Controller {
      */
     public boolean JudgeValidNumber(int[] userNumber){
 
-        this.hashSet.clear();
+        this.userNumberSet.clear();
         for(int i=0; i<3; i++){
             if(userNumber[i]<1 || userNumber[i]>9){
                 break;
             }
-            this.hashSet.add(userNumber[i]);
+            this.userNumberSet.add(userNumber[i]);
         }
-        if(this.hashSet.size() ==3){
+        if(this.userNumberSet.size() == 3){
             return true;
         }else{
             return false;
