@@ -1,6 +1,8 @@
 package com.molt3nrock.baseball;
 
 
+import com.molt3nrock.collection.DiscreteNumber;
+
 /**
  * 게임에 사용될 숫자.
  *
@@ -8,7 +10,7 @@ package com.molt3nrock.baseball;
  *
  * @see #GameDigit
  */
-public class GameDigit implements Comparable {
+public class GameDigit extends DiscreteNumber {
 
   static final int MIN = 1;
   static final int MAX = 9;
@@ -59,6 +61,11 @@ public class GameDigit implements Comparable {
   @Override
   public String toString() {
     return String.format("%d", this.value);
+  }
+
+  @Override
+  public int intValue() {
+    return this.value;
   }
 }
 
