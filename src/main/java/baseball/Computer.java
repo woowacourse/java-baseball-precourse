@@ -8,7 +8,6 @@
 
 package baseball;
 
-import java.io.IOException;
 
 /**
  * Computer Class는 컴퓨터를 위한 클래스이다.
@@ -53,13 +52,24 @@ public class Computer implements Player{
     public int[] makeRandomNumber(){
         int[] randomNumber=new int[3];
         for(int i=0;i<3;i++){
-            randomNumber[i]=(int)(Math.random()*9)+1;
+            randomNumber[i]=(int)(Math.random()*9)+1;       // 1~9까지의 수를 랜덤하게 만들어서 배열에 저장.
         }
         return randomNumber;
     }
 
+    /**
+     * makerRandomNumber에서 만든 랜덤 수 배열을 확인하기 위한 메서드.
+     * @param randomNumber  makeRandomNumber 메서드에서 만든 배열을 파라미터로 넣음
+     * @return   세 숫자가 모두 다르면 true, 같은 숫자가 있을 경우 false 반환.
+     */
+    public boolean isValid(int[] randomNumber){
+        /* 세 숫자가 모두 다르면 true, 같은 숫자가 있을 경우 false 반환 */
+        return (randomNumber[0]!=randomNumber[1]) && (randomNumber[1]!=randomNumber[2])
+                && (randomNumber[0]!=randomNumber[2]);
+    }
+
     @Override
-    public void makeNewNumber() throws IOException {
+    public void makeNewNumber() {
 
     }
 }
