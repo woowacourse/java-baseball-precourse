@@ -39,7 +39,6 @@ public class BaseBallGame {
 				picked[currentPick] = true;
 			}
 		}
-		System.out.println(targetNo[0] + " " + targetNo[1] + " " + targetNo[2]);
 	}
 	
 	private boolean isCorrectInput(String s) {
