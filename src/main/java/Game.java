@@ -42,4 +42,15 @@ public class Game {
         this.strkes = 0;
         this.balls = 0;
     }
+
+    public void showScore(){
+        if(strkes == 0 && balls == 0)
+            System.out.println("낫띵!!");
+        else if(strkes == 0){
+            System.out.println(balls + "볼");
+        }
+        else {
+            System.out.println(strkes + "스트라이크" + balls + "볼");
+        }
+    }
 }
