@@ -3,8 +3,23 @@ package src.main.java;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Baseball Game
+ * 게임 규칙 : README.md 참조
+ * @author 강연욱
+ * @version 2019.03.24
+ */
 
 public class Baseball {
+	/**
+	 * 구현한 기능
+	 * 1. 정답 숫자 생성
+	 * 2. 정답 숫자 분리
+	 * 3. 사용자 입력 받기
+	 * 4. 정답 판별
+	 * 5. 정답 출력
+	 * 6. 재시작 or 종료
+	 */
 	
 	/**
 	 * strike와 ball의 개수를 통해
@@ -132,6 +147,31 @@ public class Baseball {
 	}
 	
 	/**
+	 * 게임 종료 시, 재시작 or 완전 종료
+	 * @return
+	 */
+	public static boolean replay() {
+		int input;
+		
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+		
+		Scanner sc = new Scanner(System.in);
+		input = sc.nextInt();
+		
+		return input == 2;
+	}
+	
+	public void intro() {
+		System.out.println("게임을 시작합니다!");
+		System.out.println("숫자 생성 중...");
+		try {
+			Thread.sleep(1000);
+		} catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
 	 * Baseball 게임 진행
 	 */
 	public void game() {
@@ -140,6 +180,8 @@ public class Baseball {
 		int[] answer = new int[3];
 		int[] input_num = new int[3];
 		int[] ball_cnt = new int[2];
+		
+		intro();
 		
 		createNum(answer);
 		
@@ -161,7 +203,13 @@ public class Baseball {
 	
 	public static void main(String[] args) {
 		
-		Baseball bb_obj = new Baseball();
-		bb_obj.game();
+		while(true) {
+			Baseball bb_obj = new Baseball();
+			bb_obj.game();
+			
+			if(replay()) break;
+		}
+		
+		System.out.println("게임을 종료합니다.");
 	}
 }
