@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 public class BaseBallGame {
 
   private static final int DIGITS_LENGTH = 3;
+  static final int MAX_STRIKES = DIGITS_LENGTH;
   private static BufferedReader br;
 
   public static void main(String[] args) {
