@@ -102,4 +102,34 @@ public class BaseBallGame {
       return DistinctList.empty();
     }
   }
+
+  /**
+   * 사용자의 숫자 리스트와 컴퓨터의 숫자 리스트 비교.
+   *
+   * 컴퓨터가 생성한 임의의 {@code Distinct<GameDigit>}와 사용자가 입력한 문자열을 파싱하여 생성한
+   * {@code Distinct<GameDigit>}를 비교하여 {@code Hint}를 리턴합니다.
+   *
+   * @param strikeZone 컴퓨터가 생성한 중복이 없는 숫자 리스트.
+   * @param pitch      사용자의 입력을 파싱해 생성한 중복이 없는 숫자 리스트.
+   *
+   * @return {@code strikeZone}와 {@code pitch} 비교결과인 스트라이크와 볼 상태를 담고 있습니다.
+   *
+   * @see Hint
+   */
+  static Hint umpireDecides(DistinctList<GameDigit> strikeZone, DistinctList<GameDigit> pitch) {
+    assert (strikeZone.size() == DIGITS_LENGTH);
+    assert (pitch.size() == DIGITS_LENGTH);
+    long strikes = IntStream
+        .range(0, DIGITS_LENGTH)
+        .filter(i -> strikeZone.get(i).equals(pitch.get(i)))
+        .count();
+    long uniques = strikeZone.concat(pitch).count();
+    long duplicates = DIGITS_LENGTH * 2 - uniques;
+
+    long balls = duplicates - strikes;
+    if (strikes == 0 && balls == 0 && strikeZone.isConsecutive()) {
+      balls = MAX_STRIKES + 1;
+    }
+    return new Hint((int) strikes, (int) balls);
+  }
 }
