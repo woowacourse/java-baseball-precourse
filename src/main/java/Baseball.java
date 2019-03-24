@@ -1,12 +1,55 @@
 package src.main.java;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Baseball {
 	
 	/**
-	 * 1ºÎÅÍ 9±îÁö ·£´ıÇÑ ¼ıÀÚ 3°³ »ı¼º
-	 * »ı¼ºµÈ 3°³ ¼ıÀÚ´Â ¼­·Î ´Ù¸¥ ¼ö
+	 * 3ìë¦¬ ìˆ˜ë¥¼ ê°ê°ì˜ ìë¦¬ìˆ˜ì— ë”°ë¼ ë¶„ë¦¬í•œë‹¤
+	 * ex) 123 -> 1, 2, 3
+	 * @param num 3ìë¦¬ ìˆ˜
+	 * @return res ìë¦¬ ìˆ˜ì— ë”°ë¥¸ ë¶„ë¦¬ëœ ìˆ˜
+	 */
+	public int[] splitNum(int num) {
+		int[] res = new int[3];
+		
+		res[0] = num / 100;
+		num = num % 100;
+		
+		res[1] = num / 10;
+		num = num % 10;
+		
+		res[2] = num;
+		
+		return res;
+	}
+	
+	/**
+	 * ê²Œì„ í”Œë ˆì´ì–´ëŠ” 3ê°œì˜ ìˆ«ìë¥¼ ì…ë ¥í•œë‹¤
+	 * @return
+	 */
+	public int[] input() {
+		String str;
+		int input_num;
+		int[] split_num = new int[3];
+		
+		System.out.print("ìˆ«ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” : ");
+		
+		Scanner sc = new Scanner(System.in);
+		str = sc.nextLine();
+		input_num = Integer.parseInt(str);
+		
+		split_num = splitNum(input_num);
+		
+		return split_num;
+	}
+	
+	/**
+	 * 1ë¶€í„° 9ê¹Œì§€ ëœë¤í•œ ìˆ«ì 3ê°œ ìƒì„±
+	 * ìƒì„±ëœ ìˆ«ìëŠ” ì„œë¡œ ë‹¤ë¥¸ ìˆ˜ (ì¤‘ë³µ x)
 	 * @param randNum
 	 */
 	public void createNum(int[] randNum) {
@@ -15,10 +58,10 @@ public class Baseball {
 		
 		cnt = 0;
 		while(cnt <= 2) {
-			// 1ºÎÅÍ 9±îÁö
+			// 1~9 ìˆ«ì ìƒì„±
 			temp = (int) (Math.random() * 9) + 1;
 			
-			// Áßº¹ »ı¼ºµÈ ¼ıÀÚ ÆÇº°
+			// ì¤‘ë³µ íŒë³„
 			if(num_list.contains(temp))
 				continue;
 			
@@ -30,13 +73,25 @@ public class Baseball {
 
 	public void game() {
 		
+		int strike, ball;
 		int[] answer = new int[3];
+		int[] num = new int[3];
 		
 		createNum(answer);
 		
-		for(int i = 0; i < 3; i++) {
-			System.out.println(answer[i]);
+		while(true) {
+			strike = 0;
+			ball = 0;
+			
+			num = input();
+			
+			for(int i = 0; i < 3; i++) {
+				System.out.println(num[i]);
+			}
+			
+			break;
 		}
+		
 	}
 	
 	public static void main(String[] args) {
