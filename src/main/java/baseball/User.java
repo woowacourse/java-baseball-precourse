@@ -88,15 +88,24 @@ public class User implements Player{
         }
     }
 
-
     /**
-     * 종료 여부를 입력받아 처리하는 메서드
+     * 종료 여부를 입력받아 처리하는 메서드. 잘못된 입력은 다시 입력 요청.
      * @return  계속한다면('1'입력) true 반환, 종료한다면('2'입력) false 반환.
      * @throws IOException
      */
     public boolean isContinue() throws IOException {
-        String str=br.readLine();
-        return true;
+        while (true){
+            String str=br.readLine();
+            if(str.equals("1")) {
+                return true;            // 1 입력 시
+            }
+            else if(str.equals("2")){
+                return false;           // 2 입력 시
+            }
+            else{
+                System.out.println("잘못된 입력입니다. 다시 입력하세요.");     // 1 또는 2가 아니라 다른 입력 시
+            }
+        }
     }
 
 }
