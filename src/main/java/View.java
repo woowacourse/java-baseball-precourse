@@ -14,6 +14,7 @@ public class View {
     private static View view;
     private Scanner scan = new Scanner(System.in);
     private int userNumber;
+    private int reGameNumber;
     private Controller controller;
     private int strikeCount;
     private int ballCount;
@@ -71,9 +72,25 @@ public class View {
         }
     }
 
-    public int InputReGame(){
-        System.out.println("InputReGame 실행!");
-        return 2;
+
+    /*
+     * 게임을 새로 시작할지, 종료할지를 입력받는 메소드 입니다.
+     */
+    public void InputReGame(){
+        System.out.println("게임을 새로 시작하려면1, 종료하려면 2를 입력하세요.");
+        this.reGameNumber = scan.nextInt();
+        switch (this.reGameNumber) {
+            case 1:
+                controller.ReStart();
+                break;
+            case 2:
+                controller.ExitGame();
+                break;
+            default:
+                System.out.println("잘못된 입력입니다.");
+                this.InputReGame();
+                break;
+        }
     }
 
 

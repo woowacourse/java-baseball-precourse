@@ -59,10 +59,6 @@ public class Model {
         return userNumber;
     }
 
-    public static void setModel(Model model) {
-        Model.model = model;
-    }
-
     public void setUserNumber(int[] userNumber) {
         this.userNumber = userNumber;
     }

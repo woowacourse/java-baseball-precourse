@@ -11,11 +11,11 @@ public class Controller {
     private HandlingData handlingData;
     private Model model;
     private View view;
-    private int isReGame;
     private int temp;
     private static Controller controller;
     private HashSet<Integer> computerNumberSet = new HashSet<>();
     private HashSet<Integer> userNumberSet = new HashSet<>();
+    int[] computerNumberArray = new int[3];
 
     /*
      * Controller에 대한 생성자는 handlingData, model, view의 변수 초기화로 합니다.
@@ -43,33 +43,25 @@ public class Controller {
     private void StartBaseBallGame(){
 
         this.SaveComuputerNumber();
-        while(true){
+        while(true) {
             view.InputNumber();
             handlingData.JudgeStrike();
             view.PrintResult();
-            if(this.IsGameOver()){
-                System.out.println("게임종료!");
-                this.isReGame = view.InputReGame();
+            if (this.IsGameOver()) {
+                System.out.println("게임종료");
                 break;
             }
         }
-        switch (this.isReGame){
-            case 1:
-                this.ReStart();
-                break;
-            case 2:
-                this.ExitGame();
-                break;
-        }
-
+        view.InputReGame();
     }
+
+
     /*
      * SelectRandomNumber 메소드를 호출하여 배열에 난수를 저장하고 Model에 있는 data를 Update 해주었습니다.
      */
     public void SaveComuputerNumber(){
 
-        int[] computerNumberArray = new int[3];
-
+        this.computerNumberSet.clear();
         for(int i=0; i<3; i++){
             computerNumberArray[i] = SelectRandomNumber();
         }
@@ -92,6 +84,7 @@ public class Controller {
         }
 
     }
+
     /*
      * 입력을받은 숫자를 올바른 숫자인지 판단하는 메소드 입니다.
      * @return 올바른숫자이면 true, 아니면 false를 리턴합니다.
@@ -113,8 +106,8 @@ public class Controller {
     }
 
     /*
-     * 3스트라이크 이면 게임종료 입니다.
-     */
+     * @return 3스트라이크이면 true리턴, 아니면 false 리턴턴
+    */
     public boolean IsGameOver(){
         if(model.getStrikeCount() == 3){
             return true;
