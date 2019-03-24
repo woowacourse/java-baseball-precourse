@@ -16,7 +16,9 @@ package com.woowa.baseball;
  */
 public class UniqueNumber {
 
+    /* 정답을 담은 배열 변수 */
     private int[] answerNumber;
+
 
     /**
      * @param answerNumber UniqueNumberMaker 객체로부터 생성된 유니크한 숫자 배열
@@ -85,5 +87,9 @@ public class UniqueNumber {
         return ((answerNumberPos == queryNumberPos)
                 ? HintType.STRIKE
                 : HintType.BALL);
+    }
+
+    public int[] getAnswerNumber() {
+        return answerNumber;
     }
 }
