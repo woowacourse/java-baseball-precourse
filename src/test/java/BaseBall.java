@@ -41,11 +41,11 @@ public class BaseBall {
         int strike = check.get(0);
         int ball = check.get(1);
         if (strike > 0 && ball > 0) {
-            System.out.printf("%d Strike, %d Ball", strike, ball);
+            System.out.printf("%d Strike, %d Ball\n", strike, ball);
         } else if (strike > 0) {
-            System.out.printf("%d Strike", strike);
+            System.out.printf("%d Strike\n", strike);
         } else if (ball > 0) {
-            System.out.printf("%d Ball", ball);
+            System.out.printf("%d Ball\n", ball);
         } else {
             System.out.println("Nothing");
         }
@@ -66,18 +66,31 @@ public class BaseBall {
         return user;
     }
 
+    private static void play(Scanner sc) {
+        List<Integer> answer = answerInit();
+        System.out.println(answer);
+        while (true) {
+            System.out.println("숫자를 입력해주세요");
+            List<Integer> user = getUser(sc);
+            List<Integer> check = comparing(answer, user);
+            printResult(check);
+            if (check.get(0) > 2) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+    }
+
     public static void main(String[] args) {
-//        List<Integer> answer = answerInit();
-//        System.out.println(answer);
-//        List<Integer> check = checkInit();
-//        System.out.println(check.get(0));
-//        System.out.println(check.get(1));
-//        List<Integer> user = answerInit();
-//        System.out.println(user);
-//        List<Integer> result = comparing(answer, user);
-//        System.out.println(result);
-//        printResult(check);
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println(getUser(sc));
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            play(sc);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int game = sc.nextInt();
+            if (game > 1) {
+                break;
+            }
+        }
+
     }
 }
