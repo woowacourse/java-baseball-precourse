@@ -20,12 +20,31 @@ public class BaseBall {
         return check;
     }
 
+    private static List<Integer> comparing(List<Integer> answer, List<Integer> user) {
+        List<Integer> check = checkInit();
+        for (int i = 0; i < 3; i ++) {
+            if (answer.get(i).equals(user.get(i))) {
+                int strike = check.get(0);
+                strike += 1;
+                check.set(0, strike);
+            } else if (answer.contains(user.get(i))) {
+                int ball = check.get(1);
+                ball += 1;
+                check.set(1, ball);
+            }
+        }
+        return check;
+    }
+
     public static void main(String[] args) {
 //        List<Integer> answer = answerInit();
 //        System.out.println(answer);
 //        List<Integer> check = checkInit();
 //        System.out.println(check.get(0));
 //        System.out.println(check.get(1));
-
+//        List<Integer> user = answerInit();
+//        System.out.println(user);
+//        List<Integer> result = comparing(answer, user);
+//        System.out.println(result);
     }
 }
