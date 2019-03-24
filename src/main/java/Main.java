@@ -28,17 +28,16 @@ public class Main {
     }
 
     // 정답 생성 함수
-    public static String makeAnswer() {
+    private static String makeAnswer() {
         // 이미 사용된 숫자인지 확인
-        boolean number[] = new boolean[10];
+        boolean[] number = new boolean[10];
 
         StringBuilder answer = new StringBuilder();
 
         int count = 0;
         while (count < 3) {
             int num = (int) (Math.random() * 10);
-            if (num == 0 || number[num-1]) continue;
-            else {
+            if (num != 0 && !number[num-1]) {
                 answer.append(num);
                 number[num-1] = true;
                 count++;
@@ -49,7 +48,7 @@ public class Main {
     }
 
     // 게임 실행
-    public static boolean playGame(Scanner sc, String ans) {
+    private static boolean playGame(Scanner sc, String ans) {
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -68,8 +67,22 @@ public class Main {
     }
 
     // 대답 검증
-    public static String checkAnswer(String ans, String input) {
-        return null;
+    private static String checkAnswer(String ans, String input) {
+        int strike = 0, ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (!ans.contains(input.charAt(i) + "")) continue;
+
+            if (ans.charAt(i) == input.charAt(i)) strike++;
+            else ball++;
+        }
+
+        StringBuilder result = new StringBuilder();
+        result.append((strike > 0) ? strike + " 스트라이크 " : "");
+        result.append((ball > 0) ? ball + "볼" : "");
+        result.append((result.length() == 0) ? "낫싱" : "");
+
+        return result.toString();
     }
 
 }
