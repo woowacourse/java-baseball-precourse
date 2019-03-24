@@ -8,6 +8,7 @@ public class BaseBallGame {
 	boolean[] picked;
 	int[] targetNo;
 	int pickCount;
+	boolean isFinished;
 	
 	
 	
@@ -17,6 +18,7 @@ public class BaseBallGame {
 		picked = new boolean[10];
 		targetNo = new int[3];
 		pickCount = 0;
+		isFinished = false;
 	}
 
 	private void init() {
@@ -33,4 +35,24 @@ public class BaseBallGame {
 			}
 		}
 	}
+	
+	public boolean isCorrectInput(String s) {
+		boolean isCorrect = s.matches("\\d\\d\\d");
+		if(!isCorrect) {
+			System.out.println("잘 못된 입력입니다.");
+		}
+		return isCorrect;
+	}
+	
+//	private void evaluate() {
+//		
+//	}
+	
+//	private void start() {
+//		init();
+//		while(!isFinished) {
+//			
+//		}
+//		
+//	}
 }
