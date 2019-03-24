@@ -100,6 +100,44 @@ public class Baseball {
 		return res;
 	}
 	
+	public static boolean isNumber(String input) {
+		
+		try {
+			Double.parseDouble(input);
+			return true;
+		} catch (Exception e){
+			System.out.println(e);
+			return false;
+		}
+	}
+	
+	/**
+	 * String input이 valid한지 검사한다
+	 * 1. 3자리인지
+	 * 2. 숫자인지
+	 * 3. 서로 다른 수인지
+	 * @param input
+	 * @return
+	 */
+	public boolean isValidInput(String input) {
+		
+		//3자리가 아닐 경우
+		if(input.length() != 3) 
+			return false;
+		
+		//숫자가 아닐 경우
+		if(!isNumber(input)) 
+			return false;
+		
+		//중복된 숫자가 포함될 경우
+		if((input.charAt(0) == input.charAt(1)) 
+				|| (input.charAt(0) == input.charAt(2))
+				|| (input.charAt(1) == input.charAt(2))) 
+			return false;
+		
+		return true;
+	}
+	
 	/**
 	 * 게임 플레이어는 3개의 숫자를 입력한다
 	 * @return
@@ -110,10 +148,15 @@ public class Baseball {
 		int input_num;
 		int[] split_num = new int[3];
 		
-		System.out.print("숫자를 입력해주세요 : ");
-		
+		//입력 검증
 		Scanner sc = new Scanner(System.in);
-		str = sc.nextLine();
+		while(true) {
+			System.out.print("숫자를 입력해주세요 : ");
+			str = sc.nextLine();
+			if(isValidInput(str)) break;
+			
+			System.out.println("서로 다른 3자리의 수를 입력하세요");
+		}
 		input_num = Integer.parseInt(str);
 		
 		//입력한 숫자를 분리
@@ -121,6 +164,7 @@ public class Baseball {
 		
 		return split_num;
 	}
+	
 	
 	/**
 	 * 1부터 9까지 랜덤한 숫자 3개 생성
