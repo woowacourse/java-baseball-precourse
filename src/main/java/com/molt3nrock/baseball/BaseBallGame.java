@@ -19,10 +19,50 @@ public class BaseBallGame {
   public static void main(String[] args) {
     br = new BufferedReader(new InputStreamReader(System.in));
     try {
-      singleGameLoop();
+      gameLoop();
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  /**
+   * 전체 게임 반복 루프.
+   *
+   * 한 경기를 {@code singleGameLoop}을 통해 치른후 또다른 게임을 계속할 지 사용자에게 물어봅니다.
+   *
+   * @throws IOException 게임 입력을 위하여{@code BufferedReader}를 사용하고 출력을 위하여 {@code System.out}을
+   *                     사용하므로 입출력 오류시 {@code IOException}이 발생할 수 있습니다.
+   */
+  private static void gameLoop() throws IOException {
+    do {
+      singleGameLoop();
+    } while (willContinueGame());
+  }
+
+  /**
+   * 새 게임 다시 시작 여부 묻기.
+   *
+   * 사용자에게 새로운 게임을 더 할지에 대한 선택지를 보여준 후 그것이 올바르게 골라질 때 까지 무한히 루프를 반복합니다. 사용자가 1을
+   * 입력할 경우 새로운 게임을 다시 시작하고, 2를 입력할 경우 게임을 그만 둡니다. 이 이외의 값을 입력 할 경우 에러메세지를 출력하고
+   * 입력을 다시 받습니다.
+   *
+   * @return {@code true} 일 경우 새 게임을 계속, {@code false}일 경우 게임을 그만둔다는 의미입니다.
+   *
+   * @throws IOException 게임 입력을 위하여{@code BufferedReader}를 사용하고 출력을 위하여 {@code System.out}을
+   *                     사용하므로 입출력 오류시 {@code IOException}이 발생할 수 있습니다.
+   */
+  private static boolean willContinueGame() throws IOException {
+    String selection;
+    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    while (true) {
+      selection = br.readLine();
+      if (selection.equals("1") || selection.equals("2")) {
+        break;
+      } else {
+        System.out.println("잘못된 선택입니다. 계속 하시려면 1, 그만하시려면 2 를 입력해주세요.");
+      }
+    }
+    return selection.equals("1");
   }
 
   /**
@@ -63,10 +103,6 @@ public class BaseBallGame {
    * @see GameDigit
    */
   static DistinctList<GameDigit> generateStrikeZone() {
-    assert (GameDigit.MAX <= 9);
-    assert (GameDigit.MIN >= 1);
-    assert (GameDigit.MAX > GameDigit.MIN);
-    assert (GameDigit.MAX - GameDigit.MIN + 1 >= DIGITS_LENGTH);
     ArrayList<Integer> validDigits = IntStream
         .range(GameDigit.MIN, 1 + GameDigit.MAX)
         .boxed()
