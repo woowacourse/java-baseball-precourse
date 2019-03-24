@@ -9,6 +9,7 @@ public class BaseBallGame {
 	int[] targetNo;
 	int pickCount;
 	boolean isFinished;
+	int[] evalResult;
 	
 	
 	
@@ -19,6 +20,7 @@ public class BaseBallGame {
 		targetNo = new int[3];
 		pickCount = 0;
 		isFinished = false;
+		evalResult = new int[2];
 	}
 
 	private void init() {
@@ -37,16 +39,36 @@ public class BaseBallGame {
 	}
 	
 	public boolean isCorrectInput(String s) {
-		boolean isCorrect = s.matches("\\d\\d\\d");
+		boolean isCorrect = s.matches("^(?!.*(.).*\\1)\\d{3}$");
 		if(!isCorrect) {
 			System.out.println("잘 못된 입력입니다.");
 		}
 		return isCorrect;
 	}
 	
-//	private void evaluate() {
-//		
-//	}
+	/**
+	 * 낫싱일 경우 false,
+	 * 일치 하는 부분이 있을 경우 true 리턴 과 동시에 evalResult[0]에 스트라크 갯수 evalResult[1]에 볼 갯수
+	 */
+	private boolean evaluate(String s) {
+		int strikeCount = 0;
+		int ballCount = 0;
+		boolean matchFound = false;
+		for(int i = 0; i < 3; i++) {
+			int currentInputNo = s.charAt(i)-'0';
+			if(targetNo[i] == currentInputNo) {
+				++strikeCount;
+				matchFound = true;
+			}
+			if(picked[currentInputNo]) {
+				++ballCount;
+				matchFound = true;
+			}
+		}
+		evalResult[0] = strikeCount;
+		evalResult[1] = ballCount-strikeCount;
+		return matchFound;
+	}
 	
 //	private void start() {
 //		init();
