@@ -14,6 +14,7 @@ public class NumberBaseball{
     /**
      * 컴퓨터에 난수를 발생시키는 메소드
      * 중복을 피하며 1~9의 범위의 난수를 hashmap에 저장한다.
+     * 기능 목록 1
      */
     public void setComNumber(){
         int num = 0;
@@ -32,10 +33,15 @@ public class NumberBaseball{
     /**
      * 사용자가 입력한 숫자를 hashmap에 저장하는 메소드
      * 문자열로 받은 숫자를 문자열 배열로 쪼개고 user에 저장한다.
+     * 기능 목록 2
      */
     public void setUserNumber(){
         System.out.print("숫자를 입력해주세요 : ");
         String[] str = sc.next().split("");
+
+        if(str.length > 3){
+            System.out.println("앞에 세자리 정수만 입력됩니다.");
+        }
 
         for(int i=0; i<3; i++){
             user.put(i, Integer.parseInt(str[i]));
@@ -45,6 +51,7 @@ public class NumberBaseball{
     /**
      * 데이터 구조(strike, ball)만 가지는 StrikeBall 클래스 객체에
      * 난수와 사용자 입력 숫자를 비교하여 strike와 ball를 갱신해준다.
+     * 기능 목록 3
      * @param strikeBall
      * @return strikeBall
      */
@@ -85,6 +92,7 @@ public class NumberBaseball{
     /**
      * 컴퓨터 난수와 사용자 입력 수가 같은지를 확인하는 메소드
      * 정답을 맞혔는지 확인하기 위해 구현
+     * 기능 목록 4
      * @return
      */
     public boolean compare(){
@@ -99,6 +107,7 @@ public class NumberBaseball{
     /**
      * 사용자가 입력한 수와 난수가 같았을때 종료 여부를 확인하는 메소드
      * 다시 시작을 의미하는 1을 입력하면 true, 종료를 위해 2를 입력하면 false를 반환한다.
+     * 기능 목록 5
      * @return true / false
      */
     public boolean checkEndOrNot(){
@@ -121,6 +130,7 @@ public class NumberBaseball{
     /**
      * 사용자의 입력, 두 수 비교, 결과 출력, 두 수가 같은지 여부를 확인하는 메소드들을 묶어논 메소드
      * do while로 묶어서 정답을 맞힐때까지 반복하게 해준다.
+     * 기능 목록 4
      */
     public void guessComNumber(){
         do{
