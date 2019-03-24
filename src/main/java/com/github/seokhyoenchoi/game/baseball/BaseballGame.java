@@ -14,7 +14,7 @@ import java.util.Set;
 * @author : 최석현
 * 
 */
-public class BaseballGame {
+public class BaseballGame { 
 	
 	/**
 	 * @desc 난수를 저장할 List
