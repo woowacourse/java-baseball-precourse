@@ -6,6 +6,30 @@ import java.util.Scanner;
 
 public class Baseball {
 	
+	/**
+	 * strike와 ball의 개수를 통해
+	 * 정답인지 판별
+	 * @param ball_cnt	[0] : strike, [1] : ball
+	 * @return	오답일 경우 다시하기 위해
+	 */
+	public boolean checkAnswer(int[] ball_cnt) {
+		
+		//정답
+		if(ball_cnt[0] == 3){
+			System.out.println("3 스트라이크");
+			return true;
+		} else if((ball_cnt[0] == 0) && (ball_cnt[1] == 0)) {	// 낫싱
+			System.out.println("낫싱");
+		} else if(ball_cnt[1] == 0) {							// strike만 있을 경우
+			System.out.println(ball_cnt[0] + " 스트라이크");
+		} else if(ball_cnt[0] == 0) {							// ball만 있을 경우
+			System.out.println(ball_cnt[1] + " 볼");
+		} else {
+			System.out.println(ball_cnt[0] + " 스트라이크 " + ball_cnt[1] + " 볼 ");
+		}
+		return false;
+	}
+	
 	//strike 여부
 	public boolean isStrike(int a, int b) {
 		return a == b;
@@ -106,16 +130,20 @@ public class Baseball {
 			cnt++;
 		}
 	}
-
+	
+	/**
+	 * Baseball 게임 진행
+	 */
 	public void game() {
 		
+		boolean isAnswer;
 		int[] answer = new int[3];
 		int[] input_num = new int[3];
 		int[] ball_cnt = new int[2];
 		
 		createNum(answer);
 		
-		while(true) {
+		do {
 			
 			input_num = input();
 			
@@ -124,9 +152,11 @@ public class Baseball {
 			ball_cnt[1] = 0;
 			compareNum(answer, input_num, ball_cnt);
 			
-			break;
-		}
+			isAnswer = checkAnswer(ball_cnt);
 		
+		} while(!isAnswer);
+		
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 	}
 	
 	public static void main(String[] args) {
