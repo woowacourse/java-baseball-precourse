@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -45,6 +46,7 @@ public class Main {
 
     /**
      * 사용자가 3자리의 숫자만을 입력했는지 확인하는 함수
+     *
      * @param line 사용자가 입력한 값
      * @return 예외가 맞는지 아닌지 판단하는 boolean
      * 예외가 맞으면 true 아니면 false를 반환

@@ -8,20 +8,21 @@ public class BaseBall {
     BaseBall() {
 
     }
+
     public int getStrike() {
         return strike;
     }
 
-
     public int getBall() {
         return ball;
     }
+
     /**
      * 스트라이크와 볼의 값을 초기화 하는 함수
      */
-    public void init(){
-        this.ball=0;
-        this.strike=0;
+    public void init() {
+        this.ball = 0;
+        this.strike = 0;
     }
 
     /**
@@ -60,28 +61,27 @@ public class BaseBall {
                 ball++;
             }
         }
-
     }
 
     /**
      * 스트라이크와 볼의 개수에 따른 결과를 반환하는 함수
+     *
      * @return 숫자비교의 결과
      */
-    public String toString(){
+    public String toString() {
 
-        if(this.strike==0 && this.ball==0){
+        if (this.strike == 0 && this.ball == 0) {
             return "낫싱";
         }
 
-        String ans="";
-        if(this.strike!=0) {
-            ans+=this.strike+" 스트라이크 ";
+        String ans = "";
+        if (this.strike != 0) {
+            ans += this.strike + " 스트라이크 ";
         }
-        if(this.ball!=0){
-            ans+=this.ball+" 볼";
+        if (this.ball != 0) {
+            ans += this.ball + " 볼";
         }
 
         return ans;
     }
-
 }
