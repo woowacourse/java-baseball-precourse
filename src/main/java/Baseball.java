@@ -5,17 +5,18 @@ import java.util.Scanner;
 
 public class Baseball {
     static HashSet<Integer>num = new HashSet<Integer>();
+    static int[] inputNum = new int[3];
+    static int[] comNum = new int[3];
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        int[] inputNum = new int[3];
-        int[] comNum = new int[3];
+
 
         createNumber();
-        inputNum = inputNumber();
+        inputNumber();
         comNum = resave(num);
-
-
+        check(inputNum,comNum);
+        repeat();
 
 //		printNumber();
     }
@@ -37,17 +38,17 @@ public class Baseball {
         }
     }
 
-    static int[] inputNumber() {
-        int[] inputNum = new int[3];
+    static void inputNumber() {
+//		int[] inputNum = new int[3];
         Scanner scan = new Scanner(System.in);
         String tmp = "";
 
-        System.out.println("숫자를 입력해주세요(3자리의 수) : ");
+        System.out.print("숫자를 입력해주세요(3자리의 수) : ");
         tmp = scan.next();
         int num = Integer.parseInt(tmp);
         inputNum = resave(num);
 
-        return inputNum;
+//		return inputNum;
     }
 
     static int[] resave(int num) {
@@ -73,4 +74,42 @@ public class Baseball {
 
         return comNum;
     }
+
+    static void check(int[] input, int[] com) {
+        int strike = 0;
+        int ball = 0;
+        for(int i=0; i<3; i++) {
+            if(input[i] == com[i])
+                strike++;
+        }
+        if((input[0]==com[1]) || input[0] == com[2])
+            ball++;
+        if(input[1]==com[2])
+            ball++;
+
+        if(strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+        else if((strike > 0) && (ball > 0)) {
+            System.out.println(strike + "스트라이크" + ball + "볼");
+        }
+        else if(strike > 0) {
+            System.out.println(strike + "스트라이크");
+        }
+        else if(ball > 0) {
+            System.out.println(ball + "볼");
+        }
+        else
+        {
+            System.out.println("0 스트라이크 0볼입니다.");
+        }
+    }
+
+    static void repeat() {
+        inputNumber();
+        comNum = resave(num);
+        check(inputNum,comNum);
+    }
+
 }
