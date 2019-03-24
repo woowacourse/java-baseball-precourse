@@ -39,4 +39,8 @@ public class Computer {
         }
         System.out.println();
     }
+
+    public void reset(){
+        makeRandomNum();
+    }
 }
