@@ -36,6 +36,20 @@ public class BaseBall {
         return check;
     }
 
+    private static void printResult(List<Integer> check) {
+        int strike = check.get(0);
+        int ball = check.get(1);
+        if (strike > 0 && ball > 0) {
+            System.out.printf("%d Strike, %d Ball", strike, ball);
+        } else if (strike > 0) {
+            System.out.printf("%d Strike", strike);
+        } else if (ball > 0) {
+            System.out.printf("%d Ball", ball);
+        } else {
+            System.out.println("Nothing");
+        }
+    }
+
     public static void main(String[] args) {
 //        List<Integer> answer = answerInit();
 //        System.out.println(answer);
@@ -46,5 +60,6 @@ public class BaseBall {
 //        System.out.println(user);
 //        List<Integer> result = comparing(answer, user);
 //        System.out.println(result);
+//        printResult(check);
     }
 }
