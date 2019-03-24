@@ -8,6 +8,14 @@ public class BaseBall {
     BaseBall() {
 
     }
+    public int getStrike() {
+        return strike;
+    }
+
+
+    public int getBall() {
+        return ball;
+    }
     /**
      * 스트라이크와 볼의 값을 초기화 하는 함수
      */
