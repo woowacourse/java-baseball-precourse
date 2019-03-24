@@ -31,4 +31,20 @@ public class BaseBall {
             cont++;
         }
     }
+
+    /**
+     * 숫자들을 비교하여 스트라이크와 볼의 개수를 구하는 함수
+     * 유저의 숫자가 컴퓨터의 다른자리에 있는지 확인하는 방법은 check[]을 이용
+     */
+    public void compareNumbers(int[] user) {
+
+        for (int i = 0; i < user.length; i++) {
+            if (user[i] == result[i]) {
+                strike++;
+            } else if (check[user[i]]) {
+                ball++;
+            }
+        }
+
+    }
 }
