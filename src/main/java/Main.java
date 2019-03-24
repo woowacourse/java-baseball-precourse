@@ -4,27 +4,31 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // 정답 생성
-        StringBuilder ans = makeAnswer();
-        System.out.println(ans.toString());
-
-        /*boolean isContinued = true;
+        boolean isContinued;
         do {
-            int result = playGame(sc);
+            isContinued = false;
+
+            // 정답 생성
+            String ans = makeAnswer();
+            System.out.println(ans);
+
+            // 게임 시작
+            boolean result = playGame(sc, ans);
 
             // 정답일 때
-            if (result == 0) {
+            if (result) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 isContinued = (sc.nextInt() == 1);
+                sc.nextLine();
             }
 
-        } while(isContinued);*/
+        } while(isContinued);
 
     }
 
     // 정답 생성 함수
-    public static StringBuilder makeAnswer() {
+    public static String makeAnswer() {
         // 이미 사용된 숫자인지 확인
         boolean number[] = new boolean[10];
 
@@ -41,17 +45,31 @@ public class Main {
             }
         }
 
-        return answer;
+        return answer.toString();
     }
 
     // 게임 실행
-    public static int playGame(Scanner sc) {
+    public static boolean playGame(Scanner sc, String ans) {
 
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = sc.nextLine();
-        System.out.println();
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = sc.nextLine();
+            if (input.length() != 3) {
+                System.out.println("입력 오류!");
+                return false;
+            }
 
-        return 0;
+            String result = checkAnswer(ans, input);
+            System.out.println(result);
+
+            if (result.equals("3 스트라이크 ")) return true;
+        }
+
+    }
+
+    // 대답 검증
+    public static String checkAnswer(String ans, String input) {
+        return null;
     }
 
 }
