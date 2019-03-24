@@ -88,4 +88,15 @@ public class User implements Player{
         }
     }
 
+
+    /**
+     * 종료 여부를 입력받아 처리하는 메서드
+     * @return  계속한다면('1'입력) true 반환, 종료한다면('2'입력) false 반환.
+     * @throws IOException
+     */
+    public boolean isContinue() throws IOException {
+        String str=br.readLine();
+        return true;
+    }
+
 }
