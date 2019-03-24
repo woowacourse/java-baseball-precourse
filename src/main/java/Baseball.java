@@ -9,6 +9,8 @@ public class Baseball {
 
    int[] st = new int[3];
    int[] ball = new int[3];
+   int stsum;
+   int ballsum;
 
    Random random = new Random();
    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,27 +19,29 @@ public class Baseball {
    public void startGame() throws IOException{
 
       while(true){
-
          com = comRandom();
          boolean gameover = false;
          bw.write("숫자를 입력해주세요 : ");
+         bw.write(com);
          bw.flush();
 
          while(true) {
             usr = br.readLine();
-            countStrike(com, usr, st);
-            if (Is3strike(st)) {
+            countStrike();
+            if (Is3strike()) {
                gameover = true;
                break;
             }
             else {
-               countBall(com, usr, st, ball);
-               printScore(usr, st, ball);
+               countBall();
+               countScore();
+               printScore();
+               clearScore();
             }
          }
 
          if(gameover==true) {
-            if(quitOrNot(st,ball)){
+            if(quitOrNot()){
                break;
             }
          }
@@ -54,7 +58,7 @@ public class Baseball {
    }
 
 
-   public void countStrike(String com,String usr,int[] st){
+   public void countStrike(){
       for (int i=0;i<com.length();++i){
          if (com.charAt(i) == usr.charAt(i)){
             st[i] = 1;
@@ -62,7 +66,7 @@ public class Baseball {
       }
    }
 
-   public boolean Is3strike(int[] st) throws IOException{
+   public boolean Is3strike() throws IOException{
       int sum=0;
       for (int i=0;i<st.length;i++){
          sum += st[i];
@@ -76,7 +80,7 @@ public class Baseball {
       }
    }
 
-   public void countBall(String com, String usr, int[] st, int[]ball){
+   public void countBall(){
       for (int i=0;i<usr.length();++i){
 
          if (st[i]==0 && com.contains(String.valueOf(usr.charAt(i)))){
@@ -88,18 +92,18 @@ public class Baseball {
          else if (com.contains(String.valueOf(usr.charAt(i)))){
             ball[i] = 1;
          }*/
-      
+
+      }
+   }
+   public void countScore(){
+      for (int i=0;i<usr.length();i++){
+         stsum+= st[i];
+         ballsum += ball[i];
       }
    }
 
-   public void printScore(String usr,int[] st,int[] ball) throws IOException{
-      int stsum=0;
-      int ballsum=0;
+   public void printScore() throws IOException{
 
-      for (int i=0;i<usr.length();i++){
-         stsum += st[i];
-         ballsum += ball[i];
-      }
       if (stsum!=0) {
          if (ballsum!=0){
             bw.write(stsum + " 스트라이크 " + ballsum + "볼" +"\n");
@@ -116,14 +120,20 @@ public class Baseball {
             bw.write("낫싱" + "\n");
          }
       }
-      for (int i=0;i<usr.length();i++){
-         st[i]=0;
-         ball[i]=0;
-      }
       bw.flush();
 
    }
-   public boolean quitOrNot(int[] st, int[] ball) throws IOException{
+
+   public void clearScore(){
+      for (int i=0;i<usr.length();i++){
+         st[i] = 0;
+         ball[i]=0;
+      }
+      stsum=0;
+      ballsum=0;
+   }
+
+   public boolean quitOrNot() throws IOException{
 
       bw.write("3개의 숫자를 모두 맞히셨습니다! 게임 종료" + "\n");
       bw.write("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요" + "\n");
@@ -133,16 +143,11 @@ public class Baseball {
          return true;
       }
       else {
-         clearScore(st,ball);
+         clearScore();
          return false;
       }
    }
-   public void clearScore(int[] st,int[] ball){
-      for (int i=0;i<usr.length();i++){
-         st[i] = 0;
-         ball[i]=0;
-      }
-   }
+
 
    public static void main(String[] args) throws IOException {
       Baseball game = new Baseball();
