@@ -62,7 +62,7 @@ public class User implements Player{
      * @param input inputNumbers()에서 받아온 입력값.
      * @return  유효한 값이면 true반환, 아니면 false 반환
      */
-    public boolean isValid(String input) {
+    private boolean isValid(String input) {
         if(input.length()!=3){
             return false;                                           /* input의 길이가 3이 아닌 경우 */
         }
@@ -81,7 +81,7 @@ public class User implements Player{
      * 입력받은 input을 배열에 저장하기 위한 메서드.
      * @param input
      */
-    public void saveNumber(String input){
+    private void saveNumber(String input){
         for(int i=0; i<3; i++){
             this.getNumbers()[i]=input.charAt(i)-'0';
         }
@@ -115,6 +115,7 @@ public class User implements Player{
     @Override
     public void makeNewNumber() throws IOException {
         String input;
+
         while (true){
             input=this.inputNumbers();  // 새로운 수를 저장하기위해 입력 받기.
             if(this.isValid(input)){

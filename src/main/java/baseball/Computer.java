@@ -49,7 +49,7 @@ public class Computer implements Player{
      * 랜덤한 수를 만들어서 배열에 담아 배열을 반환하는 메서드.
      * @return randomNumber Array
      */
-    public int[] makeRandomNumber(){
+    private int[] makeRandomNumber(){
         int[] randomNumber=new int[3];
         for(int i=0;i<3;i++){
             randomNumber[i]=(int)(Math.random()*9)+1;       // 1~9까지의 수를 랜덤하게 만들어서 배열에 저장.
@@ -68,8 +68,17 @@ public class Computer implements Player{
                 && (randomNumber[0]!=randomNumber[2]);
     }
 
+    /**
+     * 랜덤한 수를 만들어 저장하는 과정까지 담은 메서드.
+     */
     @Override
     public void makeNewNumber() {
+        int[] randomNumber;         // 임시 저장 배열
 
+        do {
+            randomNumber = this.makeRandomNumber();     // 임시 배열에 랜덤 수 만든 배열 넣음.
+        } while (!isValid(randomNumber));               // 유효한지 판단. 중복된 수가 있으면 다시 랜덤수 만듬.
+
+        this.setNumbers(randomNumber);                  // 랜덤 배열을 setter를 사용해 인스턴스 변수에 저장.
     }
 }
