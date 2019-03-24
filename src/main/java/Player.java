@@ -24,7 +24,7 @@ public class Player {
         while(true) {
             int intGuess = rd.nextInt();
             int intArrGuess[] = {intGuess / 100, (intGuess / 10) % 10, intGuess % 10};  // e.g., 432 -> {4, 3, 2}
-            boolean isThreeDigits = intGuess / 1000 == 0 && intGuess / 100 == 1;
+            boolean isThreeDigits = (intGuess / 1000) == 0 && (intGuess / 100) >= 1;
             boolean isDifferent = intArrGuess[0] != intArrGuess[1] && intArrGuess[0] != intArrGuess[2]
                                                                    && intArrGuess[1] != intArrGuess[2];
             boolean isThereZero = intArrGuess[0] == 0 || intArrGuess[1] == 0 || intArrGuess[2] == 0;
@@ -34,6 +34,7 @@ public class Player {
             }
             System.out.println("[ERROR] 잘못된 입력입니다. 1 이상 9 이하의 서로 다른 3 개의 수를 입력해주십시오." +
                     " e.g., 729");
+            Computer.askNumbers();
         }
     }
 
@@ -50,9 +51,9 @@ public class Player {
         while(true) {
             userInput = rd.nextInt();
             if (userInput == 1) {
-                return true;
-            } else if (userInput == 2) {
                 return false;
+            } else if (userInput == 2) {
+                return true;
             } else {
                 System.out.println("[ERROR] 잘못된 입력입니다. 1 혹은 2 만 입력하실 수 있습니다." +
                         " 다시 입력해 주십시오.");

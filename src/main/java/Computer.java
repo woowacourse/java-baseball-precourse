@@ -22,8 +22,8 @@ public class Computer {
     }
 
     /** 컴퓨터가 숫자를 입력하라는 메세지를 콘솔에 출력하여 플레이어에게 전달합니다. */
-    public void askNumbers() {
-        System.out.println("숫자를 입력해주세요 : ");
+    public static void askNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     /** 플레이어의 추측과 자신의 정답을 비교하여 플레이어가 정답을 맞췄는지 아닌지를 알려줍니다. */
@@ -85,6 +85,7 @@ public class Computer {
 
     /** answer 멤버변수의 값을 초기화합니다. */
     public void initAnswer() {
+        answer = new int[3];
         int curIndex = 0;
         while (curIndex < answer.length) {
             int intVal = (int)(Math.random() * 9) + 1;  // range: 1 ~ 9
