@@ -16,4 +16,17 @@ public class Game {
         }
         return -1;
     }
+
+    public int judgingScore(int[] humanNumArray, int[] comNumArray){
+        for(int i = 0; i< 3;i++) {
+            //인덱스오브로 인덱스값 반환받아서 i랑 비교 인덱스가 -1이면 continue i랑 똑같다면 strike
+            // 다르다면 ball
+            int comIdx = isThereNumber(comNumArray, humanNumArray[i]);
+            if (comIdx == -1) continue;
+            else if (i == comIdx) strkes = strkes + 1;
+            else if (i != comIdx) balls = balls + 1;
+        }
+        if(strkes == 3) return 1;
+        else return 0;
+    }
 }
