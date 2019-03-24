@@ -15,6 +15,8 @@ public class View {
     private Scanner scan = new Scanner(System.in);
     private int userNumber;
     private Controller controller;
+    private int strikeCount;
+    private int ballCount;
 
     View(){
         this.model = Model.getModel();
@@ -26,6 +28,7 @@ public class View {
         }
         return view;
     }
+
     /*
      * 사용자의 첫번째 입력을 받는 곳입니다.
      * @exception JudgeValidNumber을 이용해 예외처리를 하였습니다.
@@ -51,10 +54,21 @@ public class View {
 
     }
 
-
-
+    /*
+     * model의 데이터를 바탕으로 낫싱,볼,스트라이크를 판단합니다.
+     */
     public void PrintResult(){
-        System.out.println("PrintResult 실행!");
+        this.strikeCount = model.getStrikeCount();
+        this.ballCount = model.getBallCount();
+        if(strikeCount == 0 && ballCount == 0){
+            System.out.println("낫싱");
+        }else if(strikeCount == 0){
+            System.out.println(ballCount+" 볼");
+        }else if(ballCount == 0){
+            System.out.println(strikeCount+" 스트라이크");
+        }else{
+            System.out.println(strikeCount+" 스트라이크 "+ballCount+"볼");
+        }
     }
 
     public int InputReGame(){
