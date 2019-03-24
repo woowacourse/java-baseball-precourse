@@ -41,6 +41,7 @@ public class Computer implements Player{
      * 인스턴스 변수 numbers의 getter
      * @return
      */
+    @Override
     public int[] getNumbers() {
         return numbers;
     }

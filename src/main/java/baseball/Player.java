@@ -23,4 +23,6 @@ public interface Player {
 
     public void makeNewNumber() throws IOException;
 
+    public int[] getNumbers();
+
 }

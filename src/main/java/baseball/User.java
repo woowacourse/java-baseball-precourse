@@ -42,6 +42,7 @@ public class User implements Player{
      * 인스턴스 변수인 numbers 배열의 getter
      * @return numbers  인스턴스 변수인 numbers 배열
      */
+    @Override
     public int[] getNumbers(){
         return numbers;
     }
