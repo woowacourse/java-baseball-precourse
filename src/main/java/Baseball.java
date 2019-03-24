@@ -29,7 +29,7 @@ class Game {
         return str;
     }
 
-    public int[] compareAnswer(String[] question) {
+    public void compareAnswer(String[] question) {
         bs = new int[2]; 
         String str = String.valueOf(answer);
         int i = 0;
@@ -45,8 +45,6 @@ class Game {
                 bs[0]++; // ball 증가
             }
         }
-
-        return bs;
     }
 
     public boolean checkAnswer() {
