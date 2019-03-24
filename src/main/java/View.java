@@ -30,7 +30,6 @@ public class View {
     }
 
     /*
-     * 사용자의 첫번째 입력을 받는 곳입니다.
      * @exception JudgeValidNumber을 이용해 예외처리를 하였습니다.
      */
     public void InputNumber(){
@@ -54,13 +53,10 @@ public class View {
 
     }
 
-    /*
-     * model의 데이터를 바탕으로 낫싱,볼,스트라이크를 판단합니다.
-     */
     public void PrintResult(){
         this.strikeCount = model.getStrikeCount();
         this.ballCount = model.getBallCount();
-        if(strikeCount == 0 && ballCount == 0){
+        if((strikeCount == 0) && (ballCount == 0)){
             System.out.println("낫싱");
         }else if(strikeCount == 0){
             System.out.println(ballCount+" 볼");
@@ -71,10 +67,6 @@ public class View {
         }
     }
 
-
-    /*
-     * 게임을 새로 시작할지, 종료할지를 입력받는 메소드 입니다.
-     */
     public void InputReGame(){
         System.out.println("게임을 새로 시작하려면1, 종료하려면 2를 입력하세요.");
         this.reGameNumber = scan.nextInt();
@@ -91,8 +83,4 @@ public class View {
                 break;
         }
     }
-
-
-
-
 }

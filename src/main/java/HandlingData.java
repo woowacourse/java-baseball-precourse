@@ -29,7 +29,6 @@ public class HandlingData {
         return handlingData;
     }
 
-
     /*
      * Model의 데이터를 가져와서 데이터를 비교하고 스트라이크, 볼을 판단합니다.
      */
@@ -41,10 +40,6 @@ public class HandlingData {
         this.computerNumber = model.getComputerNumber();
         this.userNumber = model.getUserNumber();
         this.hashSet = model.getHashSet();
-
-        for(int i=0; i<3; i++){
-            System.out.println(this.computerNumber[i]+" " +this.userNumber[i]);
-        }
 
         for(int i=0; i<3; i++){
             if(this.computerNumber[i] == this.userNumber[i]){

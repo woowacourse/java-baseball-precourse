@@ -23,7 +23,6 @@ public class Controller {
         this.handlingData = HandlingData.getHandlingData();
         this.model = Model.getModel();
         this.view = View.getView();
-
     }
     /*
      * Controller는 프로그램 내에서 하나만 존재해야 합니다.
@@ -54,10 +53,6 @@ public class Controller {
         view.InputReGame();
     }
 
-
-    /*
-     * SelectRandomNumber 메소드를 호출하여 배열에 난수를 저장하고 Model에 있는 data를 Update 해주었습니다.
-     */
     public void SaveComuputerNumber(){
 
         this.computerNumberSet.clear();
@@ -69,9 +64,6 @@ public class Controller {
 
     }
 
-    /*
-     * 난수를 생성해 1~9까지의 범위의 숫자만 리턴하도록 하는 메소드 입니다.
-     */
     public int SelectRandomNumber(){
 
         while(true){
@@ -84,10 +76,6 @@ public class Controller {
 
     }
 
-    /*
-     * 입력을받은 숫자를 올바른 숫자인지 판단하는 메소드 입니다.
-     * @return 올바른숫자이면 true, 아니면 false를 리턴합니다.
-     */
     public boolean JudgeValidNumber(int[] userNumber){
 
         this.userNumberSet.clear();
@@ -97,16 +85,10 @@ public class Controller {
                 }
             this.userNumberSet.add(userNumber[i]);
             }
-        if(this.userNumberSet.size() == 3){
-            return true;
-        }else{
-            return false;
-            }
+
+        return (this.userNumberSet.size() == 3) ? true:false;
     }
 
-    /*
-     * @return 3스트라이크이면 true리턴, 아니면 false 리턴턴
-    */
     public boolean IsGameOver(){
         if(model.getStrikeCount() == 3){
             return true;
@@ -115,16 +97,10 @@ public class Controller {
         }
     }
 
-    /*
-     * StartBaseBallGame을 다시 시작합니다!
-     */
     public void ReStart(){
         this.StartBaseBallGame();
     }
 
-    /*
-     * 프로그램을 종료합니다.
-     */
     public void ExitGame(){
         System.exit(0);
     }
