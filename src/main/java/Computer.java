@@ -12,4 +12,12 @@ public class Computer {
     public int[] getComNumArray(){
         return comNumArray;
     }
+
+    public void makeRandomNum(){
+        while (true){
+            Random ran = new Random();
+            this.randomNum = ran.nextInt(989) + 10;
+            if(isValid(randomNum)) break;
+        }
+    }
 }
