@@ -8,6 +8,13 @@ public class BaseBall {
     BaseBall() {
 
     }
+    /**
+     * 스트라이크와 볼의 값을 초기화 하는 함수
+     */
+    public void init(){
+        this.ball=0;
+        this.strike=0;
+    }
 
     /**
      * 3자리의 숫자를 랜덤 생성하는 함수 구현
