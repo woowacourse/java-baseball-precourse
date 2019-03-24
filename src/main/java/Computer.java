@@ -32,4 +32,11 @@ public class Computer {
             return false;
         return true;
     }
+
+    public void showNum(){
+        for(int i:comNumArray){
+            System.out.print("i: " + i);
+        }
+        System.out.println();
+    }
 }
