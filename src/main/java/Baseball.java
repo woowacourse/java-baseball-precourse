@@ -9,7 +9,6 @@ import java.util.Scanner;
  * Ver. 1.0.0
  * 2019년03월25일
  * github URL : https://github.com/YuSeongChoi/java-baseball/tree/yuseong
- *
  */
 
 public class Baseball {
