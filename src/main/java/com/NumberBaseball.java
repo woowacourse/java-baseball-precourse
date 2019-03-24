@@ -34,6 +34,8 @@ public class NumberBaseball{
         printResult(sb);            // StrikeBall 객체에 들어있는 결과 값을 출력
 
         guessComNumber();           // 난수 발생을 제외한 위 과정을 반복 수행
+
+        System.out.println(checkEndOrNot());    // 종료 여부를 물어 입력값에 따른 boolean 값 출력
     }
 
     /**
@@ -122,7 +124,29 @@ public class NumberBaseball{
     }
 
     /**
-     * 사용자의 입력, 두 수 비교, 결과 출력, 두 수가 같은지 여부를 확인하는 메소드들을묶어논 메소드
+     * 사용자가 입력한 수와 난수가 같았을때 종료 여부를 확인하는 메소드
+     * 다시 시작을 의미하는 1을 입력하면 true, 종료를 위해 2를 입력하면 false를 반환한다.
+     * @return true / false
+     */
+    static boolean checkEndOrNot(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+                + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        while(true){
+            int input = sc.nextInt();
+
+            if(input == 1){
+                return true;
+            }else if(input == 2){
+                return false;
+            }else{
+                System.out.println("올바른 숫자를 입력하세요");
+            }
+        }
+    }
+
+    /**
+     * 사용자의 입력, 두 수 비교, 결과 출력, 두 수가 같은지 여부를 확인하는 메소드들을 묶어논 메소드
      * do while로 묶어서 정답을 맞힐때까지 반복하게 해준다.
      */
     static void guessComNumber(){
