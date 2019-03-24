@@ -1,6 +1,7 @@
 package com;
 
 import java.util.*;
+import com.StrikeBall;
 
 /**
  * 숫자야구를 실행시킬 수 있는 클래스이다.
@@ -16,13 +17,16 @@ public class NumberBaseball{
 
         Arrays.asList(com)
                 .stream()
-                    .forEach(System.out::print);    // 난수 출력
+                .forEach(System.out::print);    // 난수 출력
 
         setUserNumber();        // 사용자 숫자 입력
 
         Arrays.asList(user)
                 .stream()
                 .forEach(System.out::print);    // 입력된 숫자 출력
+
+        StrikeBall sb = calc(new StrikeBall(0, 0));     // 컴퓨터의 난수와 사용자 입력 숫자 비교
+        System.out.println("strike is " + sb.strike + " ball is "+sb.ball);     // 비교 후 갱신된 strike, ball 출력
     }
 
     /**
@@ -54,5 +58,22 @@ public class NumberBaseball{
         for(int i=0; i<3; i++){
             user.put(i, Integer.parseInt(str[i]));
         }
+    }
+
+    /**
+     * 데이터 구조(strike, ball)만 가지는 StrikeBall 클래스 객체에
+     * 난수와 사용자 입력 숫자를 비교하여 strike와 ball를 갱신해준다.
+     * @param strikeBall
+     * @return strikeBall
+     */
+    static StrikeBall calc(StrikeBall strikeBall){
+        for(int i=0; i<3; i++){
+            if(com.get(i) == user.get(i)){
+                ++strikeBall.strike;
+            }else if(com.containsValue(user.get(i))){
+                ++strikeBall.ball;
+            }
+        }
+        return strikeBall;
     }
 }
