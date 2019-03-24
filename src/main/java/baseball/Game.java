@@ -15,7 +15,7 @@ package baseball;
  *
  *
  *
- * @version        1.00     2019년   3월  23일
+ * @version        1.00     2019년   3월  25일
  * @author         사명기
  */
 public class Game {
@@ -48,7 +48,7 @@ public class Game {
      * @return Inning 객체를 반환한다. Inning 객체에는 스트라이크, 볼 갯수가 저장되어있다.
      */
     public Inning getInningResult(){
-        Inning inning=new Inning();
+        Inning inning=new Inning(0,0);
         for(int i=0; i<3; i++){
             if(this.user.getNumbers()[i] == this.computer.getNumbers()[i]){
                 inning.strike++;                                                // 해당 자리수에 유저와 컴퓨터의 수가 같으면
@@ -59,6 +59,14 @@ public class Game {
             }
         }
         return inning;
+    }
+
+    /**
+     * 한 이닝의 결과를 받아서 출력하는 메서드.
+     * @param inning  getInningResult의 결과로 받은 파라미터.
+     */
+    public void printInningResult(Inning inning){
+        System.out.println(inning.getResultToString());
     }
 
 }
