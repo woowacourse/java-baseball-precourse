@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class BaseBall {
 
@@ -50,6 +51,21 @@ public class BaseBall {
         }
     }
 
+    private static List<Integer> getUser(Scanner sc) {
+        List<Integer> user = new ArrayList<>();
+        int number = sc.nextInt();
+        List<Integer> unit = new ArrayList<>();
+        unit.add(100);
+        unit.add(10);
+        unit.add(1);
+        for (int i = 0; i < 3; i++) {
+            int quotient = number / unit.get(i);
+            user.add(quotient);
+            number %= unit.get(i);
+        }
+        return user;
+    }
+
     public static void main(String[] args) {
 //        List<Integer> answer = answerInit();
 //        System.out.println(answer);
@@ -61,5 +77,7 @@ public class BaseBall {
 //        List<Integer> result = comparing(answer, user);
 //        System.out.println(result);
 //        printResult(check);
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println(getUser(sc));
     }
 }
