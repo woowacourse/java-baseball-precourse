@@ -116,8 +116,11 @@ public class Controller {
         }
     }
 
+    /*
+     * StartBaseBallGame을 다시 시작합니다!
+     */
     public void ReStart(){
-        System.out.println("ReStart 실행!");
+        this.StartBaseBallGame();
     }
 
     public void ExitGame(){
