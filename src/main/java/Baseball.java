@@ -8,9 +8,16 @@ public class Baseball {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
+        int[] inputNum = new int[3];
+        int[] comNum = new int[3];
+
         createNumber();
-        inputNumber();
-        printNumber();
+        inputNum = inputNumber();
+        comNum = resave(num);
+
+
+
+//		printNumber();
     }
 
     static void createNumber() {
@@ -54,5 +61,16 @@ public class Baseball {
         arr[2] = check / 1;
 
         return arr;
+    }
+
+    static int[] resave(HashSet num) {
+        int[] comNum = new int[3];
+
+        Iterator<Integer> iterator = num.iterator();
+        for(int i=0; i<3; i++) {
+            comNum[i] = iterator.next();
+        }
+
+        return comNum;
     }
 }
