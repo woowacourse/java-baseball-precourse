@@ -37,4 +37,9 @@ public class Game {
         if(choice == 1) return true;
         else return false;
     }
+
+    public void initializeAgain(){
+        this.strkes = 0;
+        this.balls = 0;
+    }
 }
