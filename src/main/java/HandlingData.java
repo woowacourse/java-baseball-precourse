@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class HandlingData {
 
-    private Model model;
     private static HandlingData handlingData;
+    private Model model;
     private int[] computerNumber;
     private int[] userNumber;
     private int strikeCount;

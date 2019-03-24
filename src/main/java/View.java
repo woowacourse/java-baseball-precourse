@@ -65,7 +65,7 @@ public class View {
         }else if(strikeCount == 0){
             System.out.println(ballCount+" 볼");
         }else if(ballCount == 0){
-            System.out.println(strikeCount+" 스트라이크");
+            System.out.println(strikeCount+" 스트라이크 ");
         }else{
             System.out.println(strikeCount+" 스트라이크 "+ballCount+"볼");
         }

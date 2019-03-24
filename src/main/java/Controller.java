@@ -48,6 +48,7 @@ public class Controller {
             handlingData.JudgeStrike();
             view.PrintResult();
             if(this.IsGameOver()){
+                System.out.println("게임종료!");
                 this.isReGame = view.InputReGame();
                 break;
             }
@@ -91,7 +92,6 @@ public class Controller {
         }
 
     }
-
     /*
      * 입력을받은 숫자를 올바른 숫자인지 판단하는 메소드 입니다.
      * @return 올바른숫자이면 true, 아니면 false를 리턴합니다.
@@ -102,20 +102,25 @@ public class Controller {
         for(int i=0; i<3; i++){
             if(userNumber[i]<1 || userNumber[i]>9){
                 break;
-            }
+                }
             this.userNumberSet.add(userNumber[i]);
-        }
+            }
         if(this.userNumberSet.size() == 3){
             return true;
         }else{
             return false;
-        }
-
+            }
     }
 
+    /*
+     * 3스트라이크 이면 게임종료 입니다.
+     */
     public boolean IsGameOver(){
-        System.out.println("IsGameOver 실행!");
-        return true;
+        if(model.getStrikeCount() == 3){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void ReStart(){
