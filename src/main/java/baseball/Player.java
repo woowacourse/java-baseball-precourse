@@ -9,6 +9,7 @@
 package baseball;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
@@ -20,5 +21,6 @@ import java.io.InputStreamReader;
 public interface Player {
     BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
-    public boolean isValid(String input);
+    public void makeNewNumber() throws IOException;
+
 }

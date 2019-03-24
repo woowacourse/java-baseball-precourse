@@ -62,7 +62,6 @@ public class User implements Player{
      * @param input inputNumbers()에서 받아온 입력값.
      * @return  유효한 값이면 true반환, 아니면 false 반환
      */
-    @Override
     public boolean isValid(String input) {
         if(input.length()!=3){
             return false;                                           /* input의 길이가 3이 아닌 경우 */
@@ -103,9 +102,28 @@ public class User implements Player{
                 return false;           // 2 입력 시
             }
             else{
-                System.out.println("잘못된 입력입니다. 다시 입력하세요.");     // 1 또는 2가 아니라 다른 입력 시
+                System.out.println("잘못된 입력입니다. 게임을 시작하려면 1, 종료하려면 2를 입력하세요.");     // 1 또는 2가 아니라 다른 입력 시
             }
         }
     }
 
+    /**
+     * 세 자리의 수를 입력받아 저장하는 메서드.
+     * 즉, 각각 만들어놓은 메서드를 사용해서 입력과 저장을 한 메서드로 만듬.
+     * @throws IOException
+     */
+    @Override
+    public void makeNewNumber() throws IOException {
+        String input;
+        while (true){
+            input=this.inputNumbers();  // 새로운 수를 저장하기위해 입력 받기.
+            if(this.isValid(input)){
+                break;                  // 올바른 입력이면 while문 종료.
+            }
+            else{
+                System.out.println("잘못된 입력입니다. 중복되지 않는 세 자리의 수를 입력하세요.");   // 올바른 입력이 아니면 오류 출력
+            }
+        }
+        this.saveNumber(input);     // 입력받은 세자리의 수를 저장.
+    }
 }
