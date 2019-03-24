@@ -10,7 +10,7 @@ public class UniqueNumberTest {
         int[] customNum = {4, 9, 2};
         UniqueNumber answer = new UniqueNumber(answerNum);
 
-        int[] hint = answer.compareAnswer(customNum);
+        int[] hint = answer.compareTo(customNum);
         System.out.println("Strike : " + hint[0]);
         System.out.println("Ball : " + hint[1]);
     }

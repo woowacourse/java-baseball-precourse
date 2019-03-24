@@ -32,7 +32,7 @@ public class UniqueNumber {
      * @return 사용자가 입력한 숫자와 정답을 비교하여 생성한 힌트 배열
      *          [0] = Strike 개수, [1] = Ball 개수를 나타냄
      */
-    public int[] compareAnswer(int[] queryNumber) {
+    public int[] compareTo(int[] queryNumber) {
 
         /* hint[0] = Strike 개수, hint[1] = Ball 개수 */
         int[] hint = {0, 0};
