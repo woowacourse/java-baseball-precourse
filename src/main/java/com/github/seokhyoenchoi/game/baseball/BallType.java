@@ -7,7 +7,7 @@ package com.github.seokhyoenchoi.game.baseball;
 * @author : 최석현
 * 
 */
-public class BallType {
+public class BallType { 
 	private int strikes;
 	private int balls;
 
