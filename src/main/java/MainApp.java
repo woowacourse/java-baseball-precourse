@@ -23,7 +23,7 @@ public class MainApp {
             p.makeGuess();
             int guess[] = p.tellGuess();
             boolean isCorrect = c.checkGuess(guess);
-            c.giveHint();
+            c.giveHint(guess);
             if (!isCorrect) {
                 continue;
             }
@@ -32,6 +32,7 @@ public class MainApp {
             if (isEnd) {
                 break;
             }
+            c.initAnswer();
         }
 
     }
