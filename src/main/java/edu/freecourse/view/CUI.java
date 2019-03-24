@@ -10,8 +10,13 @@ public class CUI {
         computer.newGame();
 
         for(int i : computer.getNumbers()){
-            System.out.println(i);
+            System.out.print(i);
         }
+        System.out.println();
+        int[] result = computer.solution(368);
+
+        System.out.println("strike = " + result[0]
+                + ",ball = " + result[1]);
 
     }
 
