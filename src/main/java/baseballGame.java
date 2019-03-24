@@ -41,6 +41,22 @@ public class baseballGame {
 	    	
 	    	System.out.print("숫자를 입력해주세요 : ");
 		    int myNum = sc.nextInt();				// 사용자의 세자리 수
+		    
+		    int [] comNumArr = new int[3];			// comNum의 각 자리수 저장
+		    int [] myNumArr = new int[3];			// myNum의 각 자리수 저장
+		    int [] tempArr = new int[10];			// 판정을 위한 배열
+		    
+		    int comNumTemp = comNum;				// comNum 임시 저장
+		    int myNumTemp = myNum;					// myNum 임시 저장
+		    
+		    /* 세자리 수를 자리수 순으로 배열에 저장 */
+		    for(int i = 0; i < 3; i++) {
+		        comNumArr[i] = comNumTemp % 10;
+		        myNumArr[i] = myNumTemp % 10;
+		        
+		        comNumTemp = comNumTemp / 10;
+		        myNumTemp = myNumTemp / 10;
+		    }
 	    }
 	}
 }
