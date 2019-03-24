@@ -18,6 +18,39 @@ public class BaseBallGame {
 
   public static void main(String[] args) {
     br = new BufferedReader(new InputStreamReader(System.in));
+    try {
+      singleGameLoop();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * 한 게임 반복 루프.
+   *
+   * {@code generateStrikeZone}으로 {@code GameDigit}으로 이루어진 중복되지 않는 {@value DIGITS_LENGTH}자리의 숫자
+   * {@code strikeZone}을 한번 생성한 이후 사용자에게 {@code pitching}를 통해 {@code pitch}를 입력 받고 이 둘을
+   * {@code umpireDecides}를 이용하여 비교 합니다. 그 비교 결과가 {@value MAX_STRIKES}스트라이크가 될 때까지 루프를 무한히
+   * 반복합니다.
+   *
+   * @throws IOException 게임 입력을 위하여{@code BufferedReader}를 사용하고 출력을 위하여 {@code System.out}을
+   *                     사용하므로 입출력 오류시 {@code IOException}이 발생할 수 있습니다.
+   * @see Hint
+   * @see GameDigit
+   * @see #pitching
+   */
+  private static void singleGameLoop() throws IOException {
+    DistinctList<GameDigit> strikeZone = generateStrikeZone();
+    final Hint outHint = new Hint(MAX_STRIKES, 0);
+    while (true) {
+      DistinctList<GameDigit> pitch = pitching();
+      Hint currentHint = umpireDecides(strikeZone, pitch);
+      System.out.println(currentHint);
+      if (currentHint.equals(outHint)) {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        break;
+      }
+    }
   }
 
   /**
