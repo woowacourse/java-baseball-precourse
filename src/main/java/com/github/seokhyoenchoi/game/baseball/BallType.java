@@ -1,5 +1,12 @@
 package com.github.seokhyoenchoi.game.baseball;
 
+/**
+*
+* @description : Ball Type 출력을 위한 Class
+* @package : com.github.seokhyoenchoi.game.baseball
+* @author : 최석현
+* 
+*/
 public class BallType {
 	private int strikes;
 	private int balls;
@@ -8,7 +15,10 @@ public class BallType {
 		this.strikes = strikes;
 		this.balls = balls;
 	}
-
+	
+	/**
+	 * @desc toString Overriding
+	 */
 	@Override
 	public String toString() {
 		if (strikes == 0 && balls == 0) {
