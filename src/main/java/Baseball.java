@@ -2,6 +2,8 @@
  * @이 코드는 누구나 열람할 수 있으며 사용하셔도 됩니다.
  */
 import java.util.HashSet;
+
+
 import java.util.Iterator;
 import java.util.Scanner;
 /*
@@ -9,6 +11,7 @@ import java.util.Scanner;
  * Ver. 1.0.0
  * 2019년03월25일
  * github URL : https://github.com/YuSeongChoi/java-baseball/tree/yuseong
+ *
  */
 
 public class Baseball {
@@ -99,15 +102,12 @@ public class Baseball {
                 strike+=1;
         }
         if((input[0]==com[1]) || (input[0] == com[2])) {
-            System.out.println("ball이 증가하였습니다.");
             ball+=1;
         }
         if((input[1]==com[0]) || (input[1] == com[2])) {
-            System.out.println("ball이 증가하였습니다.");
             ball+=1;
         }
         if((input[2]==com[0]) || (input[2] == com[1])) {
-            System.out.println("ball이 증가하였습니다.");
             ball+=1;
         }
 
@@ -139,7 +139,7 @@ public class Baseball {
         }
         else
         {
-            System.out.println("0 스트라이크 0볼입니다.");
+            System.out.println("낫싱");
             repeat();
         }
     }
