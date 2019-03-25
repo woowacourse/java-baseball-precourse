@@ -76,5 +76,11 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    /**
+     * 정답을 입력할 경우 출력하는 메서드.
+     */
+    public void printIsRightAnswer(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+    }
 }
 
