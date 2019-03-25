@@ -33,11 +33,26 @@ public class baseball {
 		Random rand = new Random();
 		for(int i = 0 ; i < num.length ; i++) {
 			num[i] = rand.nextInt(9) + 1;
+			i = deDupl(i,num);
+		}
+		
+		for(int i = 0 ; i < num.length ; i++) {
 			number += num[i]*Math.pow(10, i);
 		}
-		//System.out.println(number);
+//		System.out.println(number);
 		
 		return number;
+	}
+	
+	public static int deDupl(int i, int[] num) {
+		for(int j = 0 ; j < i ; j++) {
+			if(num[j] == num[i]) {
+				i--;
+				break;
+			}
+		}
+		
+		return i;
 	}
 
 }
