@@ -1,3 +1,10 @@
+/**
+ * @class Computer
+ * @vesrion 1.0.0
+ * @date 2019-03-25
+ * @author YUN,SUNG HO (itlockit@gmail.com)
+ * @brief Computer information is stored
+ */
 import java.util.Random;
 
 public class Computer {
