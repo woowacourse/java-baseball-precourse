@@ -21,4 +21,4 @@
 - 메인 게임로직 설계 : baseballGame()
 - 랜덤숫자 생성 : generateKey()
 - 정답여부 판별 : matchKey()
-- 사용자 입력 처리 및 success/continue 결정
+- 유효하지않은 User_Input값 처리
