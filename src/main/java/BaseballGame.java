@@ -30,7 +30,7 @@ public class BaseballGame {
 			System.out.print("숫자를 입력해 주세요 : ");
 			String inputNumber = SCANNER.nextLine();
 
-			if (!isValid(inputNumber)) {
+			if (isInvalid(inputNumber)) {
 				continue;
 			}
 
@@ -75,24 +75,25 @@ public class BaseballGame {
 	 * @param inputNumber 입력한 값
 	 * @return 3개의 서로 다른 1~9까지 숫자일 경우 true
 	 */
-	private boolean isValid(String inputNumber) {
+	private boolean isInvalid(String inputNumber) {
 		if(inputNumber.length() != BASEBALL_LENGTH) {
-			return false;
+			System.out.println("서로 다른 3개의 숫자를 입력해주세요. ex)916");
+			return true;
 		}
 		Set<Character> inputNumbers = new HashSet<>();
 		for (char input : inputNumber.toCharArray()) {
 			if (input < '1' || input > '9') {
 				System.out.println("숫자만 입력해주세요.");
-				return false;
+				return true;
 			}
 			inputNumbers.add(input);
 		}
 
 		if (inputNumbers.size() != BASEBALL_LENGTH) {
 			System.out.println("서로 다른 숫자를 입력해주세요.");
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	/**
