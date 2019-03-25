@@ -8,7 +8,6 @@
 
 package baseball;
 
-import java.io.IOException;
 
 /**
  * User Class는 사용자를 위한 클래스이다.
@@ -52,7 +51,6 @@ public class User implements Player{
      * [README.md]<1-i>
      * 사용자의 입력을 받는 메서드.
      * @return String   사용자의 입력 값을 반환
-     * @throws IOException  어떠한 입출력 예외의 발생을 통지하는 시그널을 발생
      */
     public String inputNumbers() {
         return sc.nextLine();
@@ -69,7 +67,7 @@ public class User implements Player{
             return false;                                           /* input의 길이가 3이 아닌 경우 */
         }
         for(int i=0; i<input.length(); i++) {                       /* 각 자리마다 확인 */
-            if ((input.charAt(i)<'1') && (input.charAt(i)>'9')) {
+            if ((input.charAt(i)<'1') || (input.charAt(i)>'9')) {
                 return false;                                       /* 1이상 9이하의 수가 아닌 경우 */
             }
         }
@@ -92,7 +90,6 @@ public class User implements Player{
     /**
      * 종료 여부를 입력받아 처리하는 메서드. 잘못된 입력은 다시 입력 요청.
      * @return  계속한다면('1'입력) true 반환, 종료한다면('2'입력) false 반환.
-     * @throws IOException
      */
     public boolean isContinue() {
         while (true){
@@ -112,7 +109,6 @@ public class User implements Player{
     /**
      * 세 자리의 수를 입력받아 저장하는 메서드.
      * 즉, 각각 만들어놓은 메서드를 사용해서 입력과 저장을 한 메서드로 만듬.
-     * @throws IOException
      */
     @Override
     public void makeNewNumber() {
