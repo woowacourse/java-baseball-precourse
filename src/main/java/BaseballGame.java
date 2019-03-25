@@ -4,7 +4,7 @@ import java.io.Console;
 public class BaseballGame {
     // 1에서 9 사이의 서로 다른 임의의 정수 3개를 생성하여 배열로 반환.
     private static int[] randIntArray() {
-        int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         Random rand = new Random();
 
         // Fisher–Yates shuffle
@@ -73,11 +73,33 @@ public class BaseballGame {
         }
     }
 
+    // 실제 게임을 진행하는 함수.
+    private static void game() {
+        int[] right = randIntArray();
+        int[] answer;
+        String result;
+
+        // cheat code - 주석처리
+        // for (int var : right) {
+        //     System.out.print(var);
+        // }
+        // System.out.println();
+
+        do {
+            answer = getIntArray(3, "숫자를 입력해주세요 : ");
+            result = judgement(right, answer);
+            System.out.println(result);
+        } while (!"3 스트라이크 ".equals(result));
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     // 메인 함수.
     public static void main(String[] args) {
-        // judgement() 동작 테스트
-        int[] array1 = new int[] {1, 2, 3};
-        int[] array2 = new int[] {1, 2, 3};
-        System.out.println(judgement(array1, array2));
+        int[] running = new int[]{1};
+        while (running[0] == 1) {
+            game();
+            running = getIntArray(1, "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        }
     }
 }
