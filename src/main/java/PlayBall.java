@@ -53,4 +53,16 @@ public class PlayBall {
         printVictory();
         wantContinue();
     }
+
+    /**
+     * 사용자가 콘솔에 입력한 값을 가져온다.
+     * @return string, 콘솔 입력값
+     */
+    String getInputConsole() {
+        String result;
+        Scanner sc = new Scanner(System.in);
+        result = sc.nextLine();
+        return result;
+    }
+
 }
