@@ -1,5 +1,5 @@
 /*
- * @(#)BaseballGame.java       0.6 2019/03/25
+ * @(#)BaseballGame.java       0.7 2019/03/25
  */
 
 import java.util.*;
@@ -8,7 +8,7 @@ import java.util.*;
  * 숫자야구게임을 진행하는 클래스
  *
  * @author 이도원
- * @version 0.6 2019/03/25
+ * @version 0.7 2019/03/25
  */
 public class BaseballGame {
 
@@ -45,6 +45,12 @@ public class BaseballGame {
         int ball = getBall(inputNumber);
 
         printResult(strike, ball);
+
+        if (isSuccess(strike)) {
+
+            /* 3개의 숫자를 모두 맞혔을 경우에 실행 */
+            printSuccessGame();
+        }
     }
 
     /* 임의의 3자리의 수를 선택하는 메소드. */
@@ -94,7 +100,7 @@ public class BaseballGame {
      * 스트라이크의 갯수를 구하는 메소드
      *
      * @param str 스트라이크의 갯수를 얻고자 하는 숫자의 문자열
-     * @return    스트라이크의 갯수
+     * @return 스트라이크의 갯수
      */
     private int getStrike(String str) {
 
@@ -116,7 +122,7 @@ public class BaseballGame {
      * 볼의 갯수를 구하는 메소드
      *
      * @param str 볼의 갯수를 얻고자 하는 숫자의 문자열
-     * @return    볼의 갯수
+     * @return 볼의 갯수
      */
     private int getBall(String str) {
 
@@ -149,5 +155,15 @@ public class BaseballGame {
         }
 
         System.out.println();
+    }
+
+    /* 3개의 숫자를 모두 맞혔는지 여부를 판단하는 메소드 */
+    private boolean isSuccess(int strikeCount) {
+        return (strikeCount == DIGIT);
+    }
+
+    /* 게임종료 메시지를 출력하는 메소드 */
+    private void printSuccessGame() {
+        System.out.println(DIGIT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
