@@ -30,7 +30,7 @@ public class baseball {
 	 * */
 	public static boolean playGame() {
 		int answer = makeAnswer();
-		System.out.println(answer);
+		System.out.println(answer);				/* 정답 확인시 주석 해제 */
 		
 		int[] hint = new int[2];
 		while(true) {
@@ -113,8 +113,16 @@ public class baseball {
 	 * */
 	public static void printHint(int[] hint) {
 		String str = "";
-
-		str += hint[0] + " 스트라이크 ";
+		
+		/* 스트라이크 출력 */
+		if(hint[0] != 0) {
+			str += hint[0] + " 스트라이크 ";
+		}
+		
+		/* 볼 출력 */
+		if(hint[1] != 0) {
+			str += hint[1] + "볼";
+		}
 		
 		System.out.println(str);
 	}
@@ -132,9 +140,8 @@ public class baseball {
 		int numarr[] = splitInt(number);
 		
 		for(int i = 0 ; i < ansarr.length ; i++) {
-			if(ansarr[i] == numarr[i]) {
-				hint[0] += 1;
-			}
+			hint[0] += setHint(i,ansarr,numarr)[0];
+			hint[1] += setHint(i,ansarr,numarr)[1];
 		}
 		return hint;
 	}
@@ -155,6 +162,33 @@ public class baseball {
 		}
 		
 		return number;
+	}
+	
+	/*
+	 * 결과(힌트) 설정
+	 * param : i, ansarr[], numarr[]
+	 * return : hint[]
+	 * 스트라이크와 볼을 확인해 힌트변수를 설정.
+	 * */
+	public static int[] setHint(int i, int[] ansarr, int[] numarr) {
+		int hint[] = new int[2];
+		
+		/* 스트라이크 설정 */
+		if(ansarr[i] == numarr[i]) {
+			hint[0] += 1;
+		}
+		
+		/* 볼 설정 */
+		for(int j = 0 ; j < ansarr.length ; j++) {
+			if(i == j) {
+				continue;
+			}
+			if(ansarr[i] == numarr[j]) {
+				hint[1] += 1;
+			}
+		}
+		
+		return hint;
 	}
 
 }
