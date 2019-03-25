@@ -1,5 +1,5 @@
 /*
- * @(#)BaseballGame.java       0.5 2019/03/25
+ * @(#)BaseballGame.java       0.6 2019/03/25
  */
 
 import java.util.*;
@@ -8,7 +8,7 @@ import java.util.*;
  * 숫자야구게임을 진행하는 클래스
  *
  * @author 이도원
- * @version 0.5 2019/03/25
+ * @version 0.6 2019/03/25
  */
 public class BaseballGame {
 
@@ -23,9 +23,6 @@ public class BaseballGame {
 
     /* 컴퓨터가 선택한 숫자의 문자열 */
     private String number;
-
-    /* 플레이어가 입력한 숫자의 문자열 */
-    private String inputNumber;
 
     /* 선택한 한자릿수 정수를 저장하는 Set */
     private HashSet<Integer> set = new HashSet<>();
@@ -42,9 +39,12 @@ public class BaseballGame {
     public void start() {
         System.out.print("게임을 시작합니다!\n");
         selectNumber();
-        inputNumber();
-        printStrike(inputNumber);
-        printBall(inputNumber);
+
+        String inputNumber = inputNumber();
+        int strike = getStrike(inputNumber);
+        int ball = getBall(inputNumber);
+
+        printResult(strike, ball);
     }
 
     /* 임의의 3자리의 수를 선택하는 메소드. */
@@ -68,8 +68,10 @@ public class BaseballGame {
     }
 
     /* 플레이어로부터 숫자를 입력받는 메소드 */
-    private void inputNumber() {
+    private String inputNumber() {
         Scanner scanner = new Scanner(System.in);
+
+        /* 플레이어가 입력한 숫자의 문자열 */
         String inputString;
 
         /* 입력받은 수가 3자리 정수가 아니면 다시 입력받음 */
@@ -78,7 +80,7 @@ public class BaseballGame {
             inputString = scanner.nextLine();
         } while (!isCorrectNumber(inputString));
 
-        inputNumber = inputString;
+        return inputString;
     }
 
     /* 입력받은 문자열이 3자리의 정수로 이루어진 문자열인지 판단하는 메소드 */
@@ -88,8 +90,13 @@ public class BaseballGame {
         return ((str.length() == DIGIT) && (num >= 0) && (num < Math.pow(10, DIGIT)));
     }
 
-    /* 스트라이크의 갯수 출력하는 메소드 */
-    private void printStrike(String str) {
+    /**
+     * 스트라이크의 갯수를 구하는 메소드
+     *
+     * @param str 스트라이크의 갯수를 얻고자 하는 숫자의 문자열
+     * @return    스트라이크의 갯수
+     */
+    private int getStrike(String str) {
 
         /* 스트라이크의 갯수 */
         int strikeCount = 0;
@@ -102,11 +109,16 @@ public class BaseballGame {
             }
         }
 
-        System.out.print(strikeCount + " 스트라이크 ");
+        return strikeCount;
     }
 
-    /* 볼의 갯수 출력하는 메소드 */
-    private void printBall(String str) {
+    /**
+     * 볼의 갯수를 구하는 메소드
+     *
+     * @param str 볼의 갯수를 얻고자 하는 숫자의 문자열
+     * @return    볼의 갯수
+     */
+    private int getBall(String str) {
 
         /* 볼의 갯수 */
         int ballCount = 0;
@@ -119,6 +131,23 @@ public class BaseballGame {
             }
         }
 
-        System.out.println(ballCount + " 볼");
+        return ballCount;
+    }
+
+    /* 스트라이크, 볼의 갯수에 대한 결과를 출력하는 메소드 */
+    private void printResult(int strikeCount, int ballCount) {
+        if (strikeCount != 0) {
+            System.out.print(strikeCount + " 스트라이크 ");
+        }
+
+        if (ballCount != 0) {
+            System.out.print(ballCount + " 볼");
+        }
+
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.print("Nothing");
+        }
+
+        System.out.println();
     }
 }
