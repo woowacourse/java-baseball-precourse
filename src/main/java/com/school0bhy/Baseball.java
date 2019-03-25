@@ -1,5 +1,5 @@
 /*
- * Baseball.java    1.00 20190325
+ * Baseball.java    1.00 20190326
  *
  * Copyright (c) 2019 Hyeonyeong Baek.
  * All rights reserved.
@@ -11,13 +11,14 @@ import java.util.Random;
 /**
  * 숫자야구 게임을 위한 클래스
  *
- * @version     1.00 2019년 3월 25일
+ * @version     1.00 2019년 3월 26일
  * @author      school0bhy
  */
 public class Baseball {
     private final int SIZE;    //숫자야구에서 사용할 수열의 크기
     private final int FROM, TO;    //수열을 구성할 숫자의 범위를 표현
     private int[] goal;
+    private int strike, ball;
 
     /**
      *  매개변수를 이용해 숫자야구 게임의 설정값을 초기화
@@ -44,8 +45,7 @@ public class Baseball {
     }
 
     /**
-     * nums 수열의 1번째 요소부터 index-1번째 요소를 tmp와 비교하여
-     * 수열 내에 tmp와 동일한 값이 있는지 확인
+     * nums 수열의 요소 중 tmp와 동일한 값이 있는지 확인
      * @param nums, tmp, index
      * @return true, false
      */
@@ -59,37 +59,78 @@ public class Baseball {
     }
 
     /**
-     * 숫자야구 게임을 시작하기 위한 메소드로,
-     * 사용자로부터 값을 입력받아 검증하고 그 결과를 출력
+     * 숫자야구 게임을 시작하기 위한 메소드
      */
-    public void play(){
+    public void play() {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            int user = UserInput.getIntInput();
-            if (!validate(user)) {
+            int userInput = UserInput.getIntInput();
+            if (!validate(userInput)) {
                 System.out.println("1~9 범위이고 중복되는 숫자가 없는 3자리 수를 입력하세요");
-                continue;
+                continue; //입력값 검증에 실패하여 재입력 요청
             }
-            break;
+            compare(userInput);
+            System.out.println(getResultString());
+            if (strike == SIZE) {
+                System.out.println(SIZE+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
 
     /**
-     * 필드값을 이용하여 input이 올바른 범위에 있음과
-     * input을 구성하는 숫자에 중복이 없음을 검증
-     * @param input
+     * input의 유효성을 검증
+     * @param userInput
      * @return true, false
      */
-    private boolean validate(int input){
+    private boolean validate(int userInput) {
         int[] tmp = new int[SIZE];
         for (int i = 0; i < SIZE; i++) {
-            tmp[i] = input % 10;
-            if ((tmp[i] < FROM) || (tmp[i] > TO)
-                    || checkDup(tmp, tmp[i], i)) {
+            tmp[i] = userInput % 10;
+            if ((tmp[i] < FROM) || (tmp[i] > TO)    //범위 체크
+                    || checkDup(tmp, tmp[i], i)) {  //중복 체크
                 return false;
             }
-            input /= 10;
+            userInput /= 10;
         }
-        return (input == 0);
+        return (userInput == 0);
+    }
+
+    /**
+     * input과 goal을 비교하여 스트라이크와 볼의 개수를 구함
+     * @param userInput
+     */
+    private void compare(int userInput) {
+        strike = 0;
+        ball = 0;
+        String user = Integer.toString(userInput);
+        int index;
+        for (int i = 0; i < SIZE; i++) {
+            index = user.indexOf(Integer.toString(goal[i]));
+            if (index == i) {
+                strike++;
+            }
+            else if (index != -1) {
+                ball++;
+            }
+        }
+    }
+
+    /**
+     * strike와 ball 값으로 생성한 결과 문자열을 리턴
+     * @return result
+     */
+    private String getResultString() {
+        String result = "";
+        if (strike > 0) {
+            result = strike + "스트라이크 ";
+        }
+        if (ball > 0) {
+            result += ball + "볼 ";
+        }
+        if ((strike == 0) && (ball == 0)){
+            result = "낫싱";
+        }
+        return result;
     }
 }

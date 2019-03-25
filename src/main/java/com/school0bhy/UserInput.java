@@ -18,13 +18,12 @@ public class UserInput {
 
     /**
      * 사용자에게 정수값을 입력받아 이를 리턴
-     * 입력값이 정수값이 아니라면 정수값을 입력받을 때까지 반복
      * @return input
      */
-    public static int getIntInput(){
+    public static int getIntInput() {
         Scanner sc = new Scanner(System.in);
         int input;
-        while (true) {
+        while (true) {  //정수값을 입력받을 때까지 반복
             try {
                 input = Integer.parseInt(sc.nextLine());
                 break;
