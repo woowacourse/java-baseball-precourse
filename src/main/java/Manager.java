@@ -10,10 +10,13 @@ public class Manager {
         scanner = new Scanner(System.in);
     }
 
+    private void initScore() {
+        computer = new Computer();
+    }
+
     void startGame(){
         int[] comNums = computer.getComputerNum();
         int[] userInput;
-
         System.out.println(comNums[0] + "," + comNums[1] + "," + comNums[2]);
 
         while (true) {
@@ -31,7 +34,7 @@ public class Manager {
 
             if (strikeNum == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.exit(0);
+                endGame();
                 break;
             }
         }
@@ -49,6 +52,23 @@ public class Manager {
     }
 
     private boolean checkUserInput(String input){
+        try{
+            Integer.parseInt(input);
+        }catch (NumberFormatException e){
+            System.out.println("입력은 숫자만 가능합니다.!");
+            return true;
+        }
+
+        if (input.length() != 3){
+            System.out.println("숫자는 3 자리만 입력해주세요.!");
+            return true;
+        }
+
+        if(input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)){
+            System.out.println("중복되지않는 서로다른 세자리숫자를 입력하세요!!");
+            return true;
+        }
+
         return false;
     }
 
@@ -81,6 +101,44 @@ public class Manager {
             System.out.println(strikeNum + " 스트라이크");
         }else{
             System.out.println(strikeNum + " 스트라이크 " + ballNum + " 볼");
+        }
+    }
+
+    private boolean checkEndCommand(String endOption){
+
+        try{
+            Integer.parseInt(endOption);
+        }catch (NumberFormatException e){
+            System.out.println("숫자만 입력해주세요.");
+            return true;
+        }
+
+        if (endOption.length() == 1){
+            if (endOption.equals("2")) {
+                System.exit(0);
+                return false;
+            }else if(endOption.equals("1")){
+                initScore();
+                startGame();
+                return false;
+            }else{
+                System.out.println("숫자는 1 또는 2만 입력해주세요");
+                return true;
+            }
+
+        }else{
+            System.out.println("숫자는 1과 2중에 하나만 입력해주세요");
+            return true;
+        }
+    }
+
+    private void endGame() {
+        boolean endOptionValid = true;
+
+        while(endOptionValid){
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String endCommand = scanner.next();
+            endOptionValid = checkEndCommand(endCommand);
         }
     }
 
