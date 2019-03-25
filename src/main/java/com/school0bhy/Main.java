@@ -16,9 +16,11 @@ public class Main {
 
     /**
      * Baseball 객체를 생성하여 숫자야구 게임을 수행
+     * @param args
      */
     public static void main(String[] args) {
         Baseball baseball = new Baseball(3, 1, 9);
-
+        baseball.play();
     }
+
 }
