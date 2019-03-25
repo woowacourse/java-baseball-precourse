@@ -19,7 +19,8 @@ import com.woowatechcourse.woung717.baseball.BaseballDriver;
 
 public class BaseballDriverTest {
     @Test
-    public void testisValid() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    public void testisValid() throws NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException {
         BaseballDriver baseballDriver = new BaseballDriver();
         Method method = BaseballDriver.class.getDeclaredMethod("isValid", String.class);
         method.setAccessible(true);
