@@ -39,9 +39,13 @@ public class BaseballGame {
             input.clear();
 
             System.out.print("숫자를 입력해주세요 : ");
-            inputStr = scanner.nextLine();
-            for (int i = 0; i < 3; i++)
-                input.add(Integer.parseInt(inputStr.substring(i, i + 1)));
+            inputStr = scanner.next();
+            scanner.nextLine();
+            if (!checkInput(inputStr))
+                continue;
+            if (!addInputToArray(inputStr))
+                continue;
+
             checkCount();
 
             if (strike == 3)
@@ -56,12 +60,16 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         inputStr = scanner.next();
         scanner.nextLine();
-        if (inputStr.equals("1"))
+        if (inputStr.equals("1")) {
+            System.out.println("다시 시작합니다.");
             return true;
-        else if (inputStr.equals("2"))
+        } else if (inputStr.equals("2")) {
+            System.out.println("종료합니다.");
             return false;
-        else
+        } else {
+            System.out.println("잘못된 입력입니다. 종료합니다.");
             return false;
+        }
     }
 
     public void close() {
@@ -76,6 +84,40 @@ public class BaseballGame {
             if (!answer.contains(i))
                 answer.add(i);
         } while (answer.size() < 3);
+    }
+
+    private boolean checkInput(String inputStr) {
+        try {
+            int i = Integer.parseInt(inputStr);
+            if (i < 100 || i >= 1000) {
+                System.out.println("잘못된 범위입니다. 다시 입력해주세요.");
+                return false;
+            }
+            return true;
+        } catch (NumberFormatException e) {
+            System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+            return false;
+        }
+    }
+
+    private boolean addInputToArray(String inputStr) {
+        int j;
+
+        for (int i = 0; i < 3; i++) {
+            j = Integer.parseInt(inputStr.substring(i, i + 1));
+            if (j == 0) {
+                System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
+                return false;
+            }
+            if (!input.contains(j))
+                input.add(j);
+            else {
+                System.out.println("중복된 숫자가 존재합니다. 다시 입력해주세요.");
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private void checkCount() {
@@ -96,5 +138,4 @@ public class BaseballGame {
         else
             System.out.println(strike + " 스트라이크, " + ball + " 볼");
     }
-
 }
