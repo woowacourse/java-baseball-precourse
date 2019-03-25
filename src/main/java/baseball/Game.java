@@ -69,5 +69,12 @@ public class Game {
         System.out.println(inning.getResultToString());
     }
 
+    /**
+     * User가 정답을 맞추면 진행 여부를 출력하는 메서드
+     */
+    public void printIsContinue(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
 }
 
