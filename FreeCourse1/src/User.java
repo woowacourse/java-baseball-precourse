@@ -1,3 +1,16 @@
+/*
+ * class : User
+ * 
+ * Ver : 1.0.0 
+ * 
+ * 2019-03-22
+ * 
+ * Copyright : Jeongho Park
+ * 
+ * url : https://github.com/qkrjh0904/java-baseball
+ * 
+ */
+
 import java.util.Scanner;
 
 public class User {

@@ -1,4 +1,15 @@
-
+/*
+ * class : Computer
+ * 
+ * Ver : 1.0.0 
+ * 
+ * 2019-03-22
+ * 
+ * Copyright : Jeongho Park
+ * 
+ * url : https://github.com/qkrjh0904/java-baseball
+ * 
+ */
 
 public class Computer {
 	private int answer=0;	//세자리 랜덤수
