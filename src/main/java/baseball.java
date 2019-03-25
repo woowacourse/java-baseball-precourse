@@ -30,7 +30,7 @@ public class baseball {
 	 * */
 	public static boolean playGame() {
 		int answer = makeAnswer();
-//		System.out.println(answer);
+		System.out.println(answer);
 		
 		int[] hint = new int[2];
 		while(true) {
@@ -40,10 +40,6 @@ public class baseball {
 				break;
 			}
 		}
-		
-		System.out.print("숫자를 입력해주세요 : ");
-		Scanner num = new Scanner(System.in);
-		int number = num.nextInt();
 		
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -105,7 +101,7 @@ public class baseball {
 		Scanner num = new Scanner(System.in);
 		int number = num.nextInt();
 		
-		int hint[] = new int[2];
+		int hint[] = getHint(answer, number);
 		return hint;
 	}
 	
@@ -121,6 +117,44 @@ public class baseball {
 		str += hint[0] + " 스트라이크 ";
 		
 		System.out.println(str);
+	}
+	
+	/*
+	 * 결과(힌트) 가져오기
+	 * param : answer, number
+	 * return : hint[]
+	 * hint의 값을 모두 설정해 전달한다.
+	 * */
+	public static int[] getHint(int answer, int number) {
+		int[] hint = new int[2];
+		
+		int ansarr[] = splitInt(answer);
+		int numarr[] = splitInt(number);
+		
+		for(int i = 0 ; i < ansarr.length ; i++) {
+			if(ansarr[i] == numarr[i]) {
+				hint[0] += 1;
+			}
+		}
+		return hint;
+	}
+	
+	/*
+	 * 정수 자릿수대로 나누기
+	 * param : num
+	 * return : number[]
+	 * 자리마다 비교를 위해 자릿수대로 나누기
+	 * */
+	public static int[] splitInt(int num) {
+		int[] number = new int[3];
+		int divi = 100;
+		for(int i = 0 ; i < number.length ; i++) {
+			number[i] = num/divi;
+			num = num%divi;
+			divi = divi/10;
+		}
+		
+		return number;
 	}
 
 }
