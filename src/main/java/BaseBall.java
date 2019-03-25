@@ -46,4 +46,35 @@ public class BaseBall {
     boolean hasZero(int number) {
         return hasZero(Integer.toString(number));
     }
+
+    /**
+     * 인자에 중복이 있는지 확인
+     * @param   string 문자 형식의 숫자
+     * @return  중복이 있으면 true
+     */
+    boolean isDuplicate(String string) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < 2; i++) {
+            sb.append(string);
+            sb.deleteCharAt(i);
+            String haystack = sb.toString();
+            if (haystack.indexOf(string.charAt(i)) != -1) {
+                return true;
+            }
+            sb.setLength(0);
+        }
+
+        return false;
+    }
+
+    /**
+     * Overload
+     *
+     * @param number 숫자
+     * @return 중복이 있으면 true
+     */
+    boolean isDuplicate(int number) {
+        return isDuplicate(Integer.toString(number));
+    }
 }
