@@ -23,8 +23,6 @@ public class BaseballTest {
     @BeforeClass
     public static void beforeClass() {
         baseball = new Baseball(new BaseballAnswer());
-
-
     }
 
     @Test
