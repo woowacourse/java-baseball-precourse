@@ -1,6 +1,7 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
-public class Manager {
+class Manager {
 
     private Computer computer;
     private Scanner scanner;
@@ -12,6 +13,8 @@ public class Manager {
 
     private void initScore() {
         computer = new Computer();
+        computer.getComputerNumMap().clear();
+        computer.saveComputerNums();
     }
 
     void startGame(){
@@ -19,32 +22,54 @@ public class Manager {
         int[] userInput;
         System.out.println(comNums[0] + "," + comNums[1] + "," + comNums[2]);
 
-        while (true) {
+        do {
             String validInput = userNumInput();
             userInput = parseArr(Integer.parseInt(validInput));
+        } while (!getScore(userInput));
+    }
 
-            int strikeNum = getStrikeCount(comNums, userInput);
-            int ballNum = getBallCount(comNums, userInput);
+    private boolean getScore(int[] userinput) {
+        HashMap<Integer, ComputerNum> data = computer.getComputerNumMap();
+        int ball = 0;
+        int strike = 0;
+        int nothing = 0;
 
-            if (strikeNum == 0 && ballNum == 0){
-                System.out.println("낫싱");
+        for (int i = 0; i < userinput.length; i++) {
+            if (!data.containsKey(userinput[i])){
+                nothing++;
+            }else if (data.get(userinput[i]).getIndex() == i && data.get(userinput[i]).getNumInfo() == userinput[i]){
+                strike++;
             }else{
-                printResult(strikeNum,ballNum);
-            }
-
-            if (strikeNum == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                endGame();
-                break;
+                ball++;
             }
         }
+
+        if (nothing == 3){
+            System.out.print("낫싱");
+        }
+
+        if(strike == 3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            endGame();
+            return true;
+        }else if (strike > 0){
+            System.out.print(strike + " 스트라이크 ");
+        }
+
+        if (ball > 0){
+            System.out.print(ball + " 볼");
+        }
+
+        System.out.println();
+
+        return false;
     }
 
     private String userNumInput(){
         boolean checkInput = true;
         String input = "";
         while(checkInput){
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             input = scanner.next();
             checkInput = checkUserInput(input);
         }
@@ -70,38 +95,6 @@ public class Manager {
         }
 
         return false;
-    }
-
-    private int getStrikeCount(int[] comNums, int[] userInput) {
-        int strikeNum = 0;
-        for (int i = 0; i < userInput.length; i++) {
-            if (comNums[i] == userInput[i]) {
-                strikeNum++;
-            }
-        }
-        return strikeNum;
-    }
-
-    private int getBallCount(int[] comNums, int[] userInput) {
-        int ball = 0;
-        for (int i = 0; i < userInput.length; i++) {
-            for (int j = 0; j < comNums.length; j++) {
-                if (comNums[i] == userInput[j] && i != j) {
-                    ball++;
-                }
-            }
-        }
-        return ball;
-    }
-
-    private void printResult(int strikeNum, int ballNum){
-        if(strikeNum == 0){
-            System.out.println(ballNum + " 볼");
-        }else if(ballNum == 0){
-            System.out.println(strikeNum + " 스트라이크");
-        }else{
-            System.out.println(strikeNum + " 스트라이크 " + ballNum + " 볼");
-        }
     }
 
     private boolean checkEndCommand(String endOption){

@@ -1,13 +1,17 @@
-public class Computer {
+import java.util.HashMap;
+
+class Computer {
 
     private int[] computerNum;
+    private HashMap<Integer,ComputerNum> computerNumMap;
 
     Computer() {
         computerNum = new int[3];
+        computerNumMap = new HashMap<>();
         saveComputerNums();
     }
 
-    private void saveComputerNums() {
+    void saveComputerNums() {
         boolean flag = true;
         int second, third;
         computerNum[0] = makeRandom();
@@ -23,6 +27,14 @@ public class Computer {
                 flag = false;
             }
         }
+
+        for (int i = 0; i < computerNum.length; i++) {
+            computerNumMap.put(computerNum[i], new ComputerNum(i,computerNum[i]));
+        }
+    }
+
+    HashMap<Integer, ComputerNum> getComputerNumMap() {
+        return computerNumMap;
     }
 
     private int makeRandom() {
