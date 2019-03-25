@@ -13,6 +13,10 @@ public class BaseBallGameOutput {
             stringBuilder.append(baseBallGameResult.getBall() + " 볼");
         }
 
+        if(baseBallGameResult.getStrike() == 0 && baseBallGameResult.getBall() == 0) {
+            stringBuilder.append("낫싱");
+        }
+
         System.out.println(stringBuilder);
     }
 } 
