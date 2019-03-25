@@ -43,14 +43,15 @@ public class Game {
     public void compareAnswer(String[] question) {
         bs = new int[2];
         String str = String.valueOf(answer);
-        int i = 0;
+        int i = -1;
 
         for (String e : question) {
+            i++;
             if (!str.contains(e)) {
                 continue;
             }
 
-            if (answer[i++] == e.charAt(0)) {
+            if (answer[i] == e.charAt(0)) {
                 bs[1]++; // strike 증가
             } else {
                 bs[0]++; // ball 증가
