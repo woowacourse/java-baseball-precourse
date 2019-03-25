@@ -10,4 +10,12 @@ public class Scores {
         this.strike = strike;
         this.ball = ball;
     }
+
+    /**
+     * 스트라이크값을 반환
+     */
+
+    int getStrike() {
+        return strike;
+    }
 }
