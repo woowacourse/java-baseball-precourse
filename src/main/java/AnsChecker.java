@@ -1,6 +1,7 @@
 public class AnsChecker {
     // TODO
-    public static void checkAns(String input, String target){
+    public static void compareWith(String target){
+        String input = InputResolver.getInput();
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
