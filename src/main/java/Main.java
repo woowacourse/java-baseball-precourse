@@ -5,8 +5,8 @@ public class Main {
         Computer computer = new Computer();
         computer.getComputerNum();
 
-
-
+        Manager manager = new Manager();
+        manager.startGame();
 
     }
 }
