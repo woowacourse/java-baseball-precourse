@@ -30,7 +30,7 @@ public class baseball {
 	 * */
 	public static boolean playGame() {
 		int answer = makeAnswer();
-		System.out.println(answer);				/* 정답 확인시 주석 해제 */
+//		System.out.println(answer);				/* 정답 확인시 주석 해제 */
 		
 		int[] hint = new int[2];
 		while(true) {
