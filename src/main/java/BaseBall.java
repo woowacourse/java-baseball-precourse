@@ -137,19 +137,19 @@ public class BaseBall {
      * ex) 367 입력 -> [3, 6, 7] 반환
      * */
     private static List<Integer> getUser(Scanner sc) {
-        List<Integer> user, unit;
-        int number;
+        List<Integer> user;
+        int number; // 유저가 입력한 3자리 수
+        int unit; // number를 분리하기 위한 나누는 수
+        int quotient; // number를 unit으로 나눈 몫
 
         user = new ArrayList<>();
         number = sc.nextInt();
-        unit = new ArrayList<>();
-        unit.add(100);
-        unit.add(10);
-        unit.add(1);
-        for (int i = 0; i < 3; i++) {
-            int quotient = number / unit.get(i);
+        unit = 100; // number가 3자리라서 100으로 초기화
+        for (int i = 0; i < 3; i++) { // 100, 10, 1의 자리를 구하기 위해 3번 반복
+            quotient = number / unit;
             user.add(quotient);
-            number %= unit.get(i);
+            number %= unit;
+            unit /= 10;
         }
         return user;
     }
