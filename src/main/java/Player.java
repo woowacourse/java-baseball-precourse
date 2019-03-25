@@ -5,6 +5,7 @@
  * All rights reserved.
  */
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -21,8 +22,17 @@ public class Player {
     /** 플레이어가 컴퓨터를 상대로 정답을 추측하는 메소드입니다. 추측한 정답은 guess 멤버변수에 저장됩니다. */
     public void makeGuess() {
         Scanner rd = new Scanner(System.in);
+        int intGuess;
+
         while(true) {
-            int intGuess = rd.nextInt();
+            try {
+                intGuess = rd.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("[ERROR] 잘못된 입력입니다. 정수형이 아닌 타입을 입력하실 수 없습니다. 다시 입력해 주십시오.");
+                Computer.askNumbers();
+                rd.nextLine();  // 입력 버퍼를 비웁니다.
+                continue;
+            }
             int intArrGuess[] = {intGuess / 100, (intGuess / 10) % 10, intGuess % 10};  // e.g., 432 -> {4, 3, 2}
             boolean isThreeDigits = (intGuess / 1000) == 0 && (intGuess / 100) >= 1;
             boolean isDifferent = intArrGuess[0] != intArrGuess[1] && intArrGuess[0] != intArrGuess[2]
@@ -49,14 +59,21 @@ public class Player {
         int userInput;
 
         while(true) {
-            userInput = rd.nextInt();
+            try {
+                userInput = rd.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("[ERROR] 잘못된 입력입니다. 정수형이 아닌 타입을 입력하실 수 없습니다.");
+                Computer.askEnd();
+                rd.nextLine();  // 입력 버퍼를 비웁니다.
+                continue;
+            }
             if (userInput == 1) {
                 return false;
             } else if (userInput == 2) {
                 return true;
             } else {
-                System.out.println("[ERROR] 잘못된 입력입니다. 1 혹은 2 만 입력하실 수 있습니다." +
-                        " 다시 입력해 주십시오.");
+                System.out.println("[ERROR] 잘못된 입력입니다. 1 혹은 2 만 입력하실 수 있습니다.");
+                Computer.askEnd();
             }
         }
     }

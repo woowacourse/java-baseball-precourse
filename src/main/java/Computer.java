@@ -78,7 +78,7 @@ public class Computer {
     }
 
     /** 플레이어에게 게임을 끝낼 것인지, 지속할 것인지를 묻는 메세지를 콘솔에 출력하여 플레이어에게 전달합니다. */
-    public void askEnd() {
+    public static void askEnd() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
