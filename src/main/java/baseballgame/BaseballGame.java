@@ -1,5 +1,5 @@
 /*
- * @(#)BaseballGame.java        0.2 2019/03/25
+ * @(#)BaseballGame.java        0.3 2019/03/25
  *
  *
  */
@@ -11,8 +11,9 @@ import java.util.Scanner;
 /**
  * 기능 목록 4 - 전체적인 게임 시작 기능
  * 기능 목록 5 - 사용자의 3자리 수를 컴퓨터가 생성한 수와 비교 기능
+ * 기능 목록 6 - 스트라이크, 볼, 낫싱(포볼) 판정 기능
  *
- * @version         0.2 2019년 3월 25일
+ * @version         0.3 2019년 3월 25일
  * @author          반선호
  */
 public class BaseballGame {
@@ -25,6 +26,9 @@ public class BaseballGame {
 
     /** 사용자의 시도횟수를 초기화하기 위한 상수*/
     private static final int RESET_NUMBER = 0;
+
+    /** 스트라이크, 볼의 개수가 0인지 확인을 위한 상수*/
+    private static final int ZERO = 0;
 
     /** com 객체 선언, 새 게임을 시작할 때마다 인스턴스를 생성 한다.*/
     private Computer com;
@@ -102,7 +106,7 @@ public class BaseballGame {
                 break;
             }
             else{
-                /*스트라이크 볼의 개수를 count할 메소드가 입력될 곳입니다.*/
+                checkStrikeAndBall();
             }
         }
     }
@@ -120,5 +124,63 @@ public class BaseballGame {
             status = true;
         }
         return status;
+    }
+
+    /**
+     * 스트라이크와 볼의 개수를 구하는 메소드입니다.
+     */
+    private void checkStrikeAndBall(){
+        int stike = 0;
+        int ball = 0;
+        for(int i = 0; i < user.number.length(); i++){
+            if(checkStrike(i)){
+                stike++;
+            }
+            else if(checkBall(i)){
+                ball++;
+            }
+        }
+        printResult(stike, ball);
+    }
+
+    /**
+     * 스트라이크 여부를 판단하는 메소드입니다.
+     *
+     * @return user와 com의 n번째 숫자가 동일하다면 true를 return합니다.
+     */
+    private boolean checkStrike(int n){
+        return (user.number.charAt(n) == com.number.charAt(n));
+    }
+
+    /**
+     * 볼 여부를 판단하는 메소드입니다.
+     *
+     * @return user의 n번째 숫자가 com의 n번째 자리가 아닌 다른 자리에
+    포함되어 있다면 true를 return합니다.
+     */
+    private boolean checkBall(int n){
+        return (com.number.contains(String.valueOf(user.number.charAt(n))));
+    }
+
+    /**
+     * 결과를 출력합니다.
+     * 만약 스트라이크와 볼이 모두 0인 경우 '낫싱'을 출력합니다.
+     *
+     * @param strike = 스트라이크의 개수입니다.
+     * @param ball = ball의 개수입니다.
+     */
+    private void printResult(int strike, int ball){
+        String result = "";
+        if(strike != ZERO){
+            result += strike+" 스트라이크 ";
+        }
+        if(ball != ZERO){
+            result += ball+" 볼 ";
+        }
+        if(result.length() == ZERO){
+            result = "낫싱";
+        }
+
+        System.out.println(result);
     }
 }

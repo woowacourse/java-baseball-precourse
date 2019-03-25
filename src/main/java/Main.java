@@ -5,6 +5,8 @@
  */
 
 
+import baseballgame.BaseballGame;
+
 /**
  * BaseballGame 실행을 위한 Main클래스 입니다.
  *
@@ -14,6 +16,7 @@
 
 public class Main {
     public static void main(String[] args){
-
+        BaseballGame game = new BaseballGame();
+        game.run();
     }
 }
