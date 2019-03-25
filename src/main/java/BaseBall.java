@@ -91,4 +91,14 @@ public class BaseBall {
             return false;
         }
     }
+
+    /**
+     * 문자열 길이가 3인지 확인
+     *
+     * @param string 문자
+     * @return 3이면 true
+     */
+    boolean isInRange(String string) {
+        return string.length() == 3;
+    }
 }
