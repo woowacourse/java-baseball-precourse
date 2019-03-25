@@ -1,3 +1,14 @@
+/*
+ * baseball
+ * 
+ * 1.0
+ * 
+ * 2019.03.25
+ * 
+ * heebg2
+ * 
+ * */
+
 import java.util.*;
 
 public class baseball {
@@ -11,6 +22,12 @@ public class baseball {
 		System.out.println("게임을 종료합니다.");
 	}
 	
+	/*
+	 * 게임 실행
+	 * param : 
+	 * return : res
+	 * 게임을 계속할지, 그만 할지 결정.
+	 * */
 	public static boolean playGame() {
 		int answer = makeAnswer();
 		
@@ -27,6 +44,12 @@ public class baseball {
 		return res;
 	}
 	
+	/*
+	 * 컴퓨터 정답 생성
+	 * param :
+	 * return : number
+	 * 3자리 난수 생성(1~9 / 중복 안됨)
+	 * */
 	public static int makeAnswer() {
 		int num[] = new int[3];
 		int number = 0;
@@ -44,6 +67,12 @@ public class baseball {
 		return number;
 	}
 	
+	/*
+	 * 중복 값 제거
+	 * param : i, num
+	 * return : i
+	 * 3자리 난수 생성 중 중복된 값이 있으면 i값을 감소.
+	 * */
 	public static int deDupl(int i, int[] num) {
 		for(int j = 0 ; j < i ; j++) {
 			if(num[j] == num[i]) {
