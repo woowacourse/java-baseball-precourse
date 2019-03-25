@@ -18,6 +18,9 @@ public class BaseNumber {
         return number;
     }
 
+    public static BaseNumber valueOf(int number) {
+        return new BaseNumber(number);
+    }
     @Override
     public String toString() {
         return String.valueOf(number);
