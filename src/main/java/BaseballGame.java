@@ -1,5 +1,5 @@
 /*
- * @(#)BaseballGame.java       0.8 2019/03/25
+ * @(#)BaseballGame.java       0.9 2019/03/25
  */
 
 import java.util.*;
@@ -8,7 +8,7 @@ import java.util.*;
  * 숫자야구게임을 진행하는 클래스
  *
  * @author 이도원
- * @version 0.8 2019/03/25
+ * @version 0.9 2019/03/25
  */
 public class BaseballGame {
 
@@ -21,11 +21,17 @@ public class BaseballGame {
     /* 숫자의 최소 값 */
     private static final int MIN_NUMBER = 1;
 
+    /* 게임을 재시작하는 값 */
+    private static final int RESTART = 1;
+
+    /* 게임을 종료하는 값 */
+    private static final int QUIT = 2;
+
     /* 컴퓨터가 선택한 숫자의 문자열 */
     private String number;
 
     /* 선택한 한자릿수 정수를 저장하는 Set */
-    private HashSet<Integer> set = new HashSet<>();
+    private HashSet<Integer> set;
 
     /**
      * BaseballGame 클래스의 생성자
@@ -34,28 +40,31 @@ public class BaseballGame {
     }
 
     /**
-     * 숫자야구게임을 진행하는 메소드
+     * 게임을 시작시키는 메소드
      */
-    public void start() {
+    public void turnOn() {
+
+        /* 플레이어가 원할 경우에 게임을 재시작 */
+        do {
+            start();
+        } while (isRestart());
+    }
+
+    /* 숫자야구게임을 시작하는 메소드 */
+    private void start() {
         System.out.print("게임을 시작합니다!\n");
+
+        /* 먼저 컴퓨터가 숫자를 선택한다 */
         selectNumber();
 
-        String inputNumber = inputNumber();
-        int strike = getStrike(inputNumber);
-        int ball = getBall(inputNumber);
-
-        printResult(strike, ball);
-
-        if (isSuccess(strike)) {
-
-            /* 3개의 숫자를 모두 맞혔을 경우에 실행 */
-            printSuccessGame();
-        }
+        /* 숫자가 선택된 후, 게임이 진행된다. */
+        progress();
     }
 
     /* 임의의 3자리의 수를 선택하는 메소드. */
     private void selectNumber() {
         Random random = new Random();
+        set = new HashSet<>();
         number = "";
 
         /* 임의의 한자릿수 정수가 3개 선택될 때까지 반복 */
@@ -69,6 +78,31 @@ public class BaseballGame {
                 /* 생성된 한자릿수 정수가 이미 생성된 정수와 같지 않은 경우에 실행 */
                 number += randomNumber;
                 set.add(randomNumber);
+            }
+        }
+    }
+
+    /* 숫자야구게임을 진행하는 메소드 */
+    private void progress() {
+        while (true) {
+
+            /* 플레이어가 입력한 수를 저장 */
+            String inputNumber = inputNumber();
+
+            /* 스트라이크의 갯수를 결정 */
+            int strike = getStrike(inputNumber);
+
+            /* 볼의 갯수를 결정 */
+            int ball = getBall(inputNumber);
+
+            /* 스트라이크와 볼의 갯수를 출력 */
+            printResult(strike, ball);
+
+            if (isSuccess(strike)) {
+
+                /* 3개의 숫자를 모두 맞혔을 경우에 게임종료 메시지 출력하고 종료 */
+                printSuccessGame();
+                break;
             }
         }
     }
@@ -151,6 +185,8 @@ public class BaseballGame {
         }
 
         if (strikeCount == 0 && ballCount == 0) {
+
+            /* 입력한 수와 같은 수가 없는 경우에 실행 */
             System.out.print("Nothing");
         }
 
@@ -175,8 +211,13 @@ public class BaseballGame {
         do {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             answer = sc.nextInt();
-        } while (!(answer == 1 || answer == 2));
+        } while (!(answer == RESTART || answer == QUIT));
 
         return answer;
+    }
+
+    /* 게임을 재시작할지 여부를 확인하는 메소드 */
+    private boolean isRestart() {
+        return (inputRestart() == RESTART);
     }
 }
