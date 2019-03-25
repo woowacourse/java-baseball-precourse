@@ -77,4 +77,18 @@ public class BaseBall {
     boolean isDuplicate(int number) {
         return isDuplicate(Integer.toString(number));
     }
+
+    /**
+     *숫자로 바꿀 수 있는 문자인지 확인한다.
+     * @param   string 숫자문자
+     * @return  숫자로 바꿀 수 있으면 true
+     */
+    boolean isDigit(String string) {
+        try {
+            Integer.parseInt(string);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+    }
 }
