@@ -69,4 +69,19 @@ public class BaseballGame {
 
         return isWrong;
     }
+
+    static void doGame() {
+        BaseballGame game = new BaseballGame();
+        Scanner scan = new Scanner(System.in);
+        int[] comNum = game.makeComNum();
+        boolean isWrong = true;
+
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            int userInput = scan.nextInt();
+            int[] userNum = game.makeUserNum(userInput);
+            int[] result = game.countResult(comNum, userNum);
+            isWrong = game.printResult(result);
+        } while (isWrong);
+    }
 }
