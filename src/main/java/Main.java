@@ -68,14 +68,14 @@ public class Main {
     }
 
     /* 볼과 스트라이크를 확인 */
-    static int[] checkNum(String conputerNum, String userNum) {
+    static int[] checkNum(String computerNum, String userNum) {
 
         /* 0번째 index 스트라이크, 1번째 index 볼 */
         int[] arr = new int[2];
 
-        for (int i = 0; i < conputerNum.length(); i++) {
+        for (int i = 0; i < computerNum.length(); i++) {
             for (int j = 0; j < userNum.length(); j++) {
-                if (conputerNum.charAt(i) == userNum.charAt(j)) {
+                if (computerNum.charAt(i) == userNum.charAt(j)) {
                     if (i == j) {
                         arr[0] += 1;
                     } else {
@@ -97,19 +97,31 @@ public class Main {
         System.out.print(num + " " + message);
     }
 
+    /* 게임 시작 여부 */
+    static void startGame(String computerNum) throws IOException{
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        if (isResult(checkNum(computerNum, setUserNum()))) {
+
+            String selectGame = br.readLine();
+
+            if (selectGame.equals("1")) {
+                /* 게임 재 시작시 컴퓨터가 새로 수를 선택 */
+                startGame(setComputerNum());
+            } else {
+                /* 게임 종료 */
+            }
+
+        } else {
+            startGame(computerNum);
+        }
+    }
+
     /* 메인 메소드 */
     public static void main(String[] args) throws IOException{
 
-        String computerNum = setComputerNum();
+        startGame(setComputerNum());
 
-        while (true) {
-
-            String userNum = setUserNum();
-            boolean result = isResult(checkNum(computerNum, userNum));
-
-            if (result == true) {
-                break;
-            }
-        }
     }
 }
