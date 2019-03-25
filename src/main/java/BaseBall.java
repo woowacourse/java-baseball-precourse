@@ -101,4 +101,42 @@ public class BaseBall {
     boolean isInRange(String string) {
         return string.length() == 3;
     }
+
+    /**
+     * 게임에 쓸 수 있는 유효한 문자인지 확인
+     * @param   string 문자
+     * @return  유효하면 true
+     */
+    boolean isValid(String string) {
+        if (isDigit(string) && isInRange(string) && !hasZero(string) && !isDuplicate(string)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 점수를 Scores 형식으로 반환
+     * @see   Scores
+     * @param gameNumber 랜덤숫자
+     * @param input 유저 입력
+     * @return Scores
+     */
+    Scores getReferee(int gameNumber, String input) {
+        int strike = 0;
+        int ball = 0;
+        String gameString = Integer.toString(gameNumber);
+
+        for (int i = 0; i < 3; i++) {
+            char needle = input.charAt(i);
+
+            if (gameString.charAt(i) == needle) {
+                strike++;
+            } else if (gameString.indexOf(needle) > -1) {
+                ball++;
+            }
+        }
+
+        return new Scores(strike,ball);
+    }
 }
