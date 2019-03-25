@@ -20,6 +20,7 @@ public class Main {
      */
     public static void main(String[] args) {
         Baseball baseball = new Baseball(3, 1, 9);
+
         do {
             baseball.play();
         } while (checkContinue());
@@ -29,10 +30,14 @@ public class Main {
      * 게임 재시작 여부를 확인
      * @return true, false
      */
-    private static boolean checkContinue(){
+    private static boolean checkContinue() {
+        int check;
+
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
         while (true) {
-            int check =UserInput.getIntInput();
+            check = UserInput.getIntInput();
+
             if (check == 1) {
                 return true;
             } else if (check == 2) {

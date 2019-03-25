@@ -23,6 +23,7 @@ public class UserInput {
     public static int getIntInput() {
         Scanner sc = new Scanner(System.in);
         int input;
+
         while (true) {  //정수값을 입력받을 때까지 반복
             try {
                 input = Integer.parseInt(sc.nextLine());

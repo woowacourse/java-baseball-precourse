@@ -35,8 +35,10 @@ public class Baseball {
      */
     private void setGoal() {
         Random random = new Random();
+
         for (int i = 0; i < SIZE; i++) {
             goal[i] = random.nextInt(TO + 1 - FROM) + FROM;
+
             if (checkDup(goal, goal[i], i)) {    //중복된 랜덤값이 생성된 경우
                 i--;
             }
@@ -62,15 +64,20 @@ public class Baseball {
      */
     public void play() {
         setGoal();
+
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
+
             int userInput = UserInput.getIntInput();
+
             if (!validate(userInput)) {
                 System.out.println("1~9 범위이고 중복되는 숫자가 없는 3자리 수를 입력하세요");
                 continue; //입력값 검증에 실패하여 재입력 요청
             }
+
             compare(userInput);
             System.out.println(getResultString());
+
             if (strike == SIZE) {
                 System.out.println(SIZE+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
@@ -85,12 +92,15 @@ public class Baseball {
      */
     private boolean validate(int userInput) {
         int[] tmp = new int[SIZE];
+
         for (int i = 0; i < SIZE; i++) {
             tmp[i] = userInput % 10;
+
             if ((tmp[i] < FROM) || (tmp[i] > TO)    //범위 체크
                     || checkDup(tmp, tmp[i], i)) {  //중복 체크
                 return false;
             }
+
             userInput /= 10;
         }
         return (userInput == 0);
@@ -105,8 +115,10 @@ public class Baseball {
         ball = 0;
         String user = Integer.toString(userInput);
         int index;
+
         for (int i = 0; i < SIZE; i++) {
             index = user.indexOf(Integer.toString(goal[i]));
+
             if (index == i) {
                 strike++;
             }
@@ -122,13 +134,14 @@ public class Baseball {
      */
     private String getResultString() {
         String result = "";
+
         if (strike > 0) {
             result = strike + "스트라이크 ";
         }
         if (ball > 0) {
             result += ball + "볼 ";
         }
-        if ((strike == 0) && (ball == 0)){
+        if ((strike == 0) && (ball == 0)) {
             result = "낫싱";
         }
         return result;
