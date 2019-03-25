@@ -4,7 +4,14 @@ public class BaseNumber {
     private int number;
 
     public BaseNumber(int number) {
+        assertNumber(number);
         this.number = number;
+    }
+
+    private void assertNumber(int number) {
+        if((BASE_NUMBER_MIN > number) || (number > BASE_NUMBER_MAX)) {
+            throw new IllegalArgumentException("1에서 9까지의 값을 입력해주세요");
+        }
     }
 
     public int getNumber() {
