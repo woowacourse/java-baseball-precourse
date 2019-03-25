@@ -1,4 +1,5 @@
 
+
 public class Computer {
 	private int answer=0;	//세자리 랜덤수
 	
