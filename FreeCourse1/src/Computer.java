@@ -58,4 +58,21 @@ public class Computer {
 		
 		return cnt;
 	}
+	
+	/*스트라이크와 볼 갯수에 따른 출력*/
+	public boolean print(int s, int b){
+		if(s>0)	//스트라이크가 있으면 스트라이크 출력
+			System.out.print(s + "스트라이크  ");
+		if(b>0)	//볼이 있다면 볼 출력
+			System.out.print(b + "볼");
+		if(s==0 && b==0)	//스트라이크도, 볼도 없다면 낫싱
+			System.out.print("낫싱");
+		System.out.println();
+		
+		if(s==3){	//스트라이크가 3이면 정답!, false를 return해 게임 종료.
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			return false;
+		}
+		return true;	//3스트라이크가 아니므로 계속 진행
+	}
 }
