@@ -1,5 +1,4 @@
 public class AnsChecker {
-    // TODO
     public static void compareWith(String target){
         while(true){
             String input = InputResolver.getInput();
