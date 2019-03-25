@@ -5,6 +5,11 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
+/**
+ * 숫자야구를 진행
+ * @version 1.00 19.03.25
+ * @author ep1stas1s
+ */
 public class BaseballGame {
 	private static final int MAX_TRY = 9 * 8 * 7;
 	private static final Scanner SCANNER = new Scanner(System.in);
@@ -23,6 +28,7 @@ public class BaseballGame {
 	 * 1~9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
 	 */
 	private void runBaseball() {
+
 		int count = 0;
 		BaseballNumber[] baseballNumbers = new BaseballNumber[9];
 		String randomNumber = makeRandomNumber(baseballNumbers);
@@ -35,7 +41,6 @@ public class BaseballGame {
 			}
 
 			++count;
-
 			printHint(inputNumber, randomNumber);
 
 			if (randomNumber.equals(inputNumber)) {
@@ -53,6 +58,7 @@ public class BaseballGame {
 	 * 2 : 프로그램 종료<br>
 	 */
 	private void restartGame() {
+
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		String inputFlag = SCANNER.nextLine();
 		switch (inputFlag) {
@@ -76,7 +82,8 @@ public class BaseballGame {
 	 * @return 3개의 서로 다른 1~9까지 숫자일 경우 true
 	 */
 	private boolean isInvalid(String inputNumber) {
-		if(inputNumber.length() != BASEBALL_LENGTH) {
+
+		if (inputNumber.length() != BASEBALL_LENGTH) {
 			System.out.println("서로 다른 3개의 숫자를 입력해주세요. ex)916");
 			return true;
 		}
@@ -102,6 +109,7 @@ public class BaseballGame {
 	 * @param randomNumber 상대방(컴퓨터)의 지정된 서로다른 무작위 3자리
 	 */
 	private void printHint(String inputNumber, String randomNumber) {
+
 		int strikeCount = 0;
 		int ballCount = 0;
 		Set<Character> randomNumbers = new HashSet<>();
@@ -138,6 +146,7 @@ public class BaseballGame {
 	 * @return randomNumber 3자리 난수
 	 */
 	private String makeRandomNumber(BaseballNumber[] baseballNumbers) {
+
 		for (int i = 0; i < baseballNumbers.length; i++) {
 			baseballNumbers[i] = new BaseballNumber(i + 1);
 		}
