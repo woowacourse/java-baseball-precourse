@@ -5,33 +5,33 @@ import java.util.*;
  *
  * @author          김강민
  */
-public class Controller {
+public class RunBaseBall {
 
     private HandlingData handlingData;
-    private Model model;
-    private View view;
+    private BaseballData baseballData;
+    private UserInterface userInterface;
     private int temp;
-    private static Controller controller;
+    private static RunBaseBall runBaseBall;
     private HashSet<Integer> computerNumberSet = new HashSet<>();
     private HashSet<Integer> userNumberSet = new HashSet<>();
     int[] computerNumberArray = new int[3];
 
     /*
-     * Controller에 대한 생성자는 handlingData, model, view의 변수 초기화로 합니다.
+     * RunBaseBall에 대한 생성자는 handlingData, BaseballData, UserInterface의 변수 초기화로 합니다.
      */
-    Controller(){
+    RunBaseBall(){
         this.handlingData = HandlingData.getHandlingData();
-        this.model = Model.getModel();
-        this.view = View.getView();
+        this.baseballData = BaseballData.getBaseballData();
+        this.userInterface = userInterface.getUserInterface();
     }
     /*
-     * Controller는 프로그램 내에서 하나만 존재해야 합니다.
+     * RunBaseBall는 프로그램 내에서 하나만 존재해야 합니다.
      */
-    public static Controller getController() {
-        if(controller ==null){
-            controller = new Controller();
+    public static RunBaseBall getRunBaseBall() {
+        if(runBaseBall ==null){
+            runBaseBall = new RunBaseBall();
         }
-        return controller;
+        return runBaseBall;
     }
 
     /*
@@ -42,15 +42,15 @@ public class Controller {
 
         this.SaveComuputerNumber();
         while(true) {
-            view.InputNumber();
+            userInterface.InputNumber();
             handlingData.JudgeStrike();
-            view.PrintResult();
+            userInterface.PrintResult();
             if (this.IsGameOver()) {
                 System.out.println("게임종료");
                 break;
             }
         }
-        view.InputReGame();
+        userInterface.InputReGame();
     }
 
     public void SaveComuputerNumber(){
@@ -59,8 +59,8 @@ public class Controller {
         for(int i=0; i<3; i++){
             computerNumberArray[i] = SelectRandomNumber();
         }
-        this.model.setComputerNumber(computerNumberArray);
-        this.model.setHashSet(this.computerNumberSet);
+        this.baseballData.setComputerNumber(computerNumberArray);
+        this.baseballData.setHashSet(this.computerNumberSet);
 
     }
 
@@ -90,7 +90,7 @@ public class Controller {
     }
 
     public boolean IsGameOver(){
-        if(model.getStrikeCount() == 3){
+        if(baseballData.getStrikeCount() == 3){
             return true;
         }else{
             return false;
@@ -107,8 +107,8 @@ public class Controller {
 
     public static void main(String[] args) {
 
-        Controller controller = Controller.getController();
-        controller.StartBaseBallGame();
+        RunBaseBall RunBaseBall = runBaseBall.getRunBaseBall();
+        RunBaseBall.StartBaseBallGame();
 
     }
 }

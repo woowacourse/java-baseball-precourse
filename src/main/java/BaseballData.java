@@ -1,23 +1,21 @@
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+
 
 /*
  * 숫자야구 게임에 필요한 데이터들을 보관하는 클래스
  *
  * @author          김강민
  */
-public class Model {
+public class BaseballData {
 
-    private static Model model;
+    private static BaseballData baseballData;
     private int[] computerNumber;
     private int[] userNumber;
     private int strikeCount;
     private int ballCount;
     private HashSet<Integer> computerNumberSet;
 
-    Model(){
+    BaseballData(){
         computerNumber = new int[3];
         userNumber = new int[3];
         computerNumberSet = new HashSet<>();
@@ -39,11 +37,11 @@ public class Model {
         this.computerNumberSet = hashSet;
     }
 
-    public static Model getModel() {
-        if(model ==null){
-            model = new Model();
+    public static BaseballData getBaseballData() {
+        if(baseballData ==null){
+            baseballData = new BaseballData();
         }
-        return model;
+        return baseballData;
     }
 
     public int getStrikeCount() {

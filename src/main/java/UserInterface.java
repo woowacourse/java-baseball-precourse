@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
@@ -7,26 +6,26 @@ import java.util.stream.Stream;
  *
  * @author          김강민
  */
-public class View {
+public class UserInterface {
 
-    private Model model;
-    private static View view;
+    private BaseballData baseballData;
+    private static UserInterface userInterface;
     private Scanner scan = new Scanner(System.in);
     private int userNumber;
     private int reGameNumber;
-    private Controller controller;
+    private RunBaseBall RunBaseBall;
     private int strikeCount;
     private int ballCount;
 
-    View(){
-        this.model = Model.getModel();
+    UserInterface(){
+        this.baseballData = BaseballData.getBaseballData();
     }
 
-    public static View getView() {
-        if(view==null){
-            view = new View();
+    public static UserInterface getUserInterface() {
+        if(userInterface==null){
+            userInterface = new UserInterface();
         }
-        return view;
+        return userInterface;
     }
 
     /*
@@ -34,16 +33,16 @@ public class View {
      */
     public void InputNumber(){
 
-        controller = Controller.getController();
+        RunBaseBall = RunBaseBall.getRunBaseBall();
 
         try {
             System.out.print("숫자를 입력해주세요 : ");
             userNumber = scan.nextInt();
             int[] userNumberArray = Stream.of(String.valueOf(userNumber).split("")).mapToInt(Integer::parseInt).toArray();
-            if (!controller.JudgeValidNumber(userNumberArray)) {
+            if (!RunBaseBall.JudgeValidNumber(userNumberArray)) {
                 throw new Exception();
             }else{
-                model.setUserNumber(userNumberArray);
+                baseballData.setUserNumber(userNumberArray);
             }
         } catch(Exception e){
             System.out.println("잘못된 입력입니다.");
@@ -54,8 +53,8 @@ public class View {
     }
 
     public void PrintResult(){
-        this.strikeCount = model.getStrikeCount();
-        this.ballCount = model.getBallCount();
+        this.strikeCount = baseballData.getStrikeCount();
+        this.ballCount = baseballData.getBallCount();
         if((strikeCount == 0) && (ballCount == 0)){
             System.out.println("낫싱");
         }else if(strikeCount == 0){
@@ -72,10 +71,10 @@ public class View {
         this.reGameNumber = scan.nextInt();
         switch (this.reGameNumber) {
             case 1:
-                controller.ReStart();
+                RunBaseBall.ReStart();
                 break;
             case 2:
-                controller.ExitGame();
+                RunBaseBall.ExitGame();
                 break;
             default:
                 System.out.println("잘못된 입력입니다.");
