@@ -26,21 +26,35 @@ public class Baseball {
 
         // generateKey()
 
+        /* receive input and match Number. */
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             num = sc.nextInt();
+
+            if(num<111 || 999<num) { /* minimum Value-verification. */
+                System.out.println("잘못 입력하셨습니다.");
+                continue;
+            }
             if(matchKey(key, num)) {
                 break;
             }
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        nextGame = sc.nextInt();
-        if(nextGame == 1) {
-            result = true;
-        } else {
-            result = false;
+        /* determine restart Game or not. */
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            nextGame = sc.nextInt();
+
+            if(nextGame == 1) {
+                result = true;
+                break;
+            } else if(nextGame == 2) {
+                result = false;
+                break;
+            } else {
+                System.out.println("잘못 입력하셨습니다.");
+            }
         }
 
         return result;
