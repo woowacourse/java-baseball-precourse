@@ -32,4 +32,33 @@ public class Baseball {
         return strikeNumbers;
     }
 
+    private Set<String> getExclusives(String one, Set<String> other) {
+        Set<String> exclusives = new HashSet<>();
+
+        for (char ch: one.toCharArray()) {
+            String s = Character.toString((ch));
+
+            if (!other.contains(s)) {
+                exclusives.add(s);
+            }
+        }
+
+        return exclusives;
+    }
+
+    private Set<String> getBalls(String query, Set<String> strikes) {
+        Set<String> answerBallCandidates = this.getExclusives(this.answer, strikes);
+        Set<String> queryBallCandidates = this.getExclusives(query, strikes);
+
+        Set<String> ballNumbers = new HashSet<>();
+
+        for (String answerElement: answerBallCandidates) {
+            if (queryBallCandidates.contains(answerElement)) {
+                ballNumbers.add(answerElement);
+            }
+        }
+
+        return ballNumbers;
+    }
+
 }
