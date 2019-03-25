@@ -20,4 +20,15 @@ public class BaseballGame {
         }
         return comNum;
     }
+
+    int[] makeUserNum(int userInput) {
+        int[] userNum = new int[3];
+
+        for (int i = 2; i >= 0; i--) {
+            userNum[i] = userInput % 10;
+            userInput /= 10;
+        }
+
+        return userNum;
+    }
 }
