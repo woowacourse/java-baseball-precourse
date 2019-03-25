@@ -47,15 +47,27 @@ public class BaseballGame {
             if (strike == 3)
                 isCorrect = true;
         }
-
     }
 
-    public void reset() {
+    public boolean reset() {
+        String inputStr;
 
+        answer.clear();
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        inputStr = scanner.next();
+        scanner.nextLine();
+        if (inputStr.equals("1"))
+            return true;
+        else if (inputStr.equals("2"))
+            return false;
+        else
+            return false;
     }
 
     public void close() {
-
+        answer.clear();
+        input.clear();
+        scanner.close();
     }
 
     private void setAnswer() {
