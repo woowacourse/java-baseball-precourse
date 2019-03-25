@@ -6,12 +6,15 @@
  * @brief Game information is stored
  */
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class BaseBall{
     private int numbers[] = new int[3];
     private Computer computer;
     private Scanner scanner;
     private boolean isGamePlay = true;
+    private Pattern p = Pattern.compile("[1-9]{3}");
     BaseBall(){
         scanner = new Scanner(System.in);
         init();
@@ -24,6 +27,10 @@ public class BaseBall{
         while(isGamePlay) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = scanner.nextLine();
+            Matcher m = p.matcher(userInput);
+            if(m.matches()){
+                // correct input
+            }
         }
     }
 }
