@@ -16,7 +16,9 @@ public class Computer {
 	
 	/*컴퓨터가 랜덤한 세자리 숫자 구하는 함수*/
 	public void random(){
-		int n1, n2, n3;
+		int n1;	//100의자릿수
+		int n2;	//10의자릿수
+		int n3;	//1의자릿수
 		
 		while( true ){			
 			//1부터 9까지의수
