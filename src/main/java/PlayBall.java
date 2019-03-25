@@ -73,4 +73,13 @@ public class PlayBall {
         System.out.println("유효한 입력이 아닙니다. 다시 입력해 주세요.");
     }
 
+    /**
+     * 승리 메시지 출력
+     */
+
+    void printVictory() {
+        String message = "3개의 숫자를 모두 맞히셨습니다! 게임종료";
+        System.out.println(message);
+    }
+
 }
