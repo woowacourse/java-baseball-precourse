@@ -20,11 +20,14 @@ public class BaseballGame {
 
         while (true) {
             int[] myNum;
+            int[] result = {0,0}; //[0]은 strike, [1]은 ball
 
             System.out.print("숫자를 입력해주세요 : ");
             myNum = getMyNumbers();
 
-            for(int b : myNum) {
+            checkResult(randomMum, myNum, result);
+
+            for (int b : result ) {
                 System.out.print(b);
             }
 
@@ -32,6 +35,26 @@ public class BaseballGame {
         }
 
         return false;
+    }
+
+    /**
+     * 결과 확인 메소드
+     * @param randomNum
+     * @param myNum
+     * @param result
+     * @return
+     */
+    private void checkResult(int[] randomNum, int[] myNum, int[] result) {
+        for (int i = 0; i < randomNum.length; i++) {
+            if (randomNum[i] == myNum[i]) { //strike 체크
+                result[0]++;
+                continue;
+            }
+
+            if (isContains(randomNum[i], myNum)) { //ball 체크
+                result[1]++;
+            }
+        }
     }
 
     /**
