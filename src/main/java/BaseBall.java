@@ -14,4 +14,19 @@ public class BaseBall {
         result = rd.nextInt(899) + 100;
         return result;
     }
+
+    /**
+     *
+     * @return 3자리 게임에 쓸 수 있는 랜덤 숫자
+     */
+
+    int getGameNumber() {
+        int gameNumber;
+
+        do{
+            gameNumber = getRandomNumber();
+        }while(hasZero(gameNumber) || isDuplicate(gameNumber));
+
+        return gameNumber;
+    }
 }
