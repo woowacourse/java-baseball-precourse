@@ -14,10 +14,10 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.ArrayList;
 
-import woowatechcourse.woung717.baseball.BaseballAnswer;
+import com.woowatechcourse.woung717.baseball.BaseballAnswer;
 
 public class BaseballAnswerTest {
-    ArrayList<String> answerDB = new ArrayList<String>(
+    ArrayList<String> answerDB = new ArrayList<>(
             Arrays.asList("123", "124", "125", "126", "127", "128", "129", "132", "134", "135", "136", "137",
             "138", "139", "142", "143", "145", "146", "147", "148", "149", "152", "153", "154", "156", "157", "158",
             "159", "162", "163", "164", "165", "167", "168", "169", "172", "173", "174", "175", "176", "178", "179",

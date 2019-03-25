@@ -12,8 +12,8 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import woowatechcourse.woung717.baseball.Baseball;
-import woowatechcourse.woung717.baseball.BaseballAnswer;
+import com.woowatechcourse.woung717.baseball.Baseball;
+import com.woowatechcourse.woung717.baseball.BaseballAnswer;
 
 import java.lang.reflect.Field;
 

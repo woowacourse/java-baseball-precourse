@@ -11,10 +11,11 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import woowatechcourse.woung717.baseball.BaseballDriver;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
+import com.woowatechcourse.woung717.baseball.BaseballDriver;
+
 
 public class BaseballDriverTest {
     @Test
