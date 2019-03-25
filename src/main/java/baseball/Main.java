@@ -12,19 +12,24 @@
 package baseball;
 
 import java.util.Random;
+import java.util.Scanner;
 /**
- * Example 클래스는 ...
+ * Main 클래스는 다음과 같은 기능을 구현한다
+ * 1.1부터 9까지 서로 다른 수로 이루어진 3자리 수를 생성하는 기능
+ * 2.세 자리의 수를 입력 받는 기능
  */
 public class Main {
 
     public static void main(String args[]) {
         Main myTest = new Main();
-        //randNumGenerator함수로부터 랜덤 값을 받아온다
-        int a[] = myTest.randNumGenerator();
+
+        int a[] = myTest.randNumGenerator();    //randNumGenerator함수로부터 랜덤 값을 받아온다
         //테스트용 출력
-        for (int i = 0; i<a.length; i++) {
-            System.out.print(a[i]);
-        }
+//        for (int i = 0; i<a.length; i++) {
+//            System.out.print(a[i]);
+//        }
+        int b = myTest.numReader();     //numReader로 부터 값을 입력 받음
+        System.out.println(b);     //Test용 출력
     }
 
     private int[] randNumGenerator(){
@@ -51,5 +56,10 @@ public class Main {
         }
         return computer;
     }
-
+    //numReader은 사용자로 부터 숫자를 입력받는 함수 이다.
+    private int numReader(){
+        System.out.print("숫자를 입력해주세요 : ");
+        Scanner sc = new Scanner(System.in);
+        return sc.nextInt();//입력받은 숫자를 반환한다.
+    }
 }
