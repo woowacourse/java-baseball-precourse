@@ -65,4 +65,12 @@ public class PlayBall {
         return result;
     }
 
+    /**
+     * 사용자가 콘솔에 입력한 값이 적절치 않을 경우, 사용자에게 알리고 재시도를 유도한다.
+     */
+
+    void printInvalidArgMessage() {
+        System.out.println("유효한 입력이 아닙니다. 다시 입력해 주세요.");
+    }
+
 }
