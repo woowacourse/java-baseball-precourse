@@ -48,20 +48,20 @@ public class BaseBall {
     }
 
     /**
-     * checkInit
+     * countInit
      * @return List
      *
      * 정답과 입력을 비교를 기록하는 List
-     * check = [0, 0]
+     * count = [0, 0]
      * List의 첫번째 원소는 Strike의 수, 두번째는 Ball의 수 기록
      * */
-    private static List<Integer> checkInit() {
-        List<Integer> check;
-        check = new ArrayList<>();
+    private static List<Integer> countInit() {
+        List<Integer> count;
+        count = new ArrayList<>();
 
-        check.add(0);
-        check.add(0);
-        return check;
+        count.add(0);
+        count.add(0);
+        return count;
     }
 
     /**
@@ -70,49 +70,49 @@ public class BaseBall {
      * @param user 유저의 입력 배열
      * @return List
      *
-     * 정답과 입력을 비교하고 그 결과를 check 배열에 기록
+     * 정답과 입력을 비교하고 그 결과를 count 배열에 기록
      * loop를 3번 돌면서 정답의 i번째 원소와 입력의 i번째 원소를 비교
-     * 같으면 check[0] + 1,
-     * 다르면 정답이 입력 i번째 원소를 포함하면 check[1] + 1
+     * 같으면 count[0] + 1,
+     * 다르면 정답이 입력 i번째 원소를 포함하면 count[1] + 1
      * */
     private static List<Integer> comparing(List<Integer> answer,
                                            List<Integer> user) {
-        List<Integer> check;
+        List<Integer> count;
         int answerNumber, userNumber;
         int strike, ball;
 
-        check = checkInit(); // check = [0, 0], 비교 결과를 저장
+        count = countInit(); // count = [0, 0], 비교 결과를 저장
         for (int i = 0; i < 3; i ++) {
             answerNumber = answer.get(i);
             userNumber = user.get(i);
             if (answerNumber == userNumber) { // 정답의 i번째 값과 입력의 i번째 값이 같은지 확인
-                strike = check.get(0);
+                strike = count.get(0);
                 strike += 1;
-                check.set(0, strike);
+                count.set(0, strike);
             } else if (answer.contains(userNumber)) { // 입력의 i번째 값이 정답 List에 있는지 확인
-                ball = check.get(1);
+                ball = count.get(1);
                 ball += 1;
-                check.set(1, ball);
+                count.set(1, ball);
             }
         }
-        return check;
+        return count;
     }
 
     /**
      * printResult
-     * @param check comparing의 return 값
+     * @param count comparing의 return 값
      *
-     * comparing의 return 값인 check List로 Strike, Ball, Nothing을 출력
-     * check[0], check[1] 둘다 0 보다 큼 -> Strike, Ball 출력
-     * check[0] 0 보다 큼 -> Strike 출력
-     * check[1] 0 보다 큼 -> Ball 출력
-     * check[0], check[1] 둘다 0 이면 Nothing 출력
+     * comparing의 return 값인 count List로 Strike, Ball, Nothing을 출력
+     * count[0], count[1] 둘다 0 보다 큼 -> Strike, Ball 출력
+     * count[0] 0 보다 큼 -> Strike 출력
+     * count[1] 0 보다 큼 -> Ball 출력
+     * count[0], count[1] 둘다 0 이면 Nothing 출력
      * */
-    private static void printResult(List<Integer> check) {
+    private static void printResult(List<Integer> count) {
         int strike, ball;
 
-        strike = check.get(0);
-        ball = check.get(1);
+        strike = count.get(0);
+        ball = count.get(1);
         if (strike > 0 && ball > 0) { // Strike, Ball 둘다 있을 때
             System.out.printf("%d Strike, %d Ball\n", strike, ball);
         } else if (strike > 0) { // Strike만 있을 때
@@ -166,16 +166,16 @@ public class BaseBall {
      * 3 Strike이면 종료, 그렇지 않으면 계속 반복
      * */
     private static void play(Scanner sc) {
-        List<Integer> answer, user, check;
+        List<Integer> answer, user, count;
         int strike;
 
         answer = answerInit(); // 정답 할당
         while (true) {
             System.out.println("숫자를 입력해주세요");
             user = getUser(sc); // 유저 입력을 받아 크기 3인 List로 반환
-            check = comparing(answer, user); // 정답과 입력 비교한 크기 2인 List 반환
-            printResult(check); // 비교 결과에 대한 출력
-            strike = check.get(0);
+            count = comparing(answer, user); // 정답과 입력 비교한 크기 2인 List 반환
+            printResult(count); // 비교 결과에 대한 출력
+            strike = count.get(0);
             if (strike > 2) { // 3 Strike이면 종료
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
