@@ -1,11 +1,14 @@
 package main.java;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class BaseballGame {
 	private static final int MAX_TRY = 9 * 8 * 7;
 	private static final Scanner SCANNER = new Scanner(System.in);
+	private static final int BASEBALL_LENGTH = 3;
 
 	private static final String RESTART = "1";
 	private static final String EXIT = "2";
@@ -27,8 +30,10 @@ public class BaseballGame {
 			System.out.print("숫자를 입력해 주세요 : ");
 			String inputNumber = SCANNER.nextLine();
 
-			// TODO check input value
-			
+			if (!isValid(inputNumber)) {
+				continue;
+			}
+
 			++count;
 			
 			// TODO print hint
@@ -64,6 +69,29 @@ public class BaseballGame {
 				restartGame();
 				break;
 		}
+	}
+
+	/**
+	 * 입략힌 값을 숫자야구에 사용할 수 있는 값인 지 확인
+	 * @param randomNumber 상대방(컴퓨터)의 지정된 서로다른 무작위 3자리
+	 * @param inputNumber 입력한 값
+	 * @return 3개의 서로 다른 1~9까지 숫자일 경우 true
+	 */
+	private boolean isValid(String inputNumber) {
+		Set<Character> inputNumbers = new HashSet<>();
+		for (char input : inputNumber.toCharArray()) {
+			if (input < '1' || input > '9') {
+				System.out.println("숫자만 입력해주세요.");
+				return false;
+			}
+			inputNumbers.add(input);
+		}
+
+		if (inputNumbers.size() != BASEBALL_LENGTH) {
+			System.out.println("서로 다른 숫자를 입력해주세요.");
+			return false;
+		}
+		return true;
 	}
 
 	/**
