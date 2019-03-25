@@ -13,7 +13,7 @@ package woowatechcourse.woung717.baseball;
 import java.util.Scanner;
 
 public class BaseballDriver {
-    static boolean isValid(String s) {
+    private static boolean isValid(String s) {
         StringBuilder newString = new StringBuilder();
 
         s.chars().distinct().forEach(c -> newString.append((char) c));
@@ -21,7 +21,7 @@ public class BaseballDriver {
         return s.equals(newString.toString()) && s.matches("^[1-9]{3}$");
     }
 
-    static void gameStart() {
+    private static void gameStart() {
         final int STRIKE_SCORE = 3;
         Baseball game = new Baseball(new BaseballAnswer());
         Scanner scan = new Scanner(System.in);
@@ -48,5 +48,12 @@ public class BaseballDriver {
     }
 
     public static void main(String[] args) {
+        final int EXIT = 2;
+        Scanner scan = new Scanner(System.in);
+
+        do {
+            gameStart();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        } while (Integer.parseInt(scan.nextLine()) != EXIT);
     }
 }

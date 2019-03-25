@@ -24,6 +24,7 @@ public class BaseballDriverTest {
         method.setAccessible(true);
 
         assertTrue((boolean)method.invoke(baseballDriver, "123"));
+        assertTrue((boolean)method.invoke(baseballDriver, "986"));
         assertFalse((boolean)method.invoke(baseballDriver, "023"));
         assertFalse((boolean)method.invoke(baseballDriver, "111"));
         assertFalse((boolean)method.invoke(baseballDriver, "1234"));
