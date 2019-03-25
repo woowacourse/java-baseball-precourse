@@ -61,4 +61,77 @@ public class Baseball {
         return ballNumbers;
     }
 
+    public Result getResponse(String query) {
+        StringBuilder resultMessage = new StringBuilder();
+        Set<String> strikes = getStrikes(query);
+        Set<String> balls = getBalls(query, strikes);
+
+        if (strikes.size() == 0 && balls.size() == 0) {
+            resultMessage.append("포볼");
+        } else {
+            if (strikes.size() > 0) {
+                resultMessage.append(Integer.toString(strikes.size()) + " 스트라이크 ");
+            }
+
+            if (balls.size() > 0) {
+                resultMessage.append(Integer.toString(balls.size()) + " 볼");
+            }
+        }
+
+        return new Result(resultMessage.toString(), strikes.size(), balls.size());
+    }
+
+    public static class Result {
+        private String message;
+        private int nStrikes;
+        private int nBalls;
+
+        public Result(String message, int nStrikes, int nBalls) {
+            this.message = message;
+            this.nStrikes = nStrikes;
+            this.nBalls = nBalls;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public int getnStrikes() {
+            return nStrikes;
+        }
+
+        public int getnBalls() {
+            return nBalls;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this) {
+                return true;
+            }
+
+            if (!(obj instanceof Result)) {
+                return false;
+            }
+
+            Result result = (Result)obj;
+
+            return (result.message.equals(this.message) &&
+                    result.nStrikes == this.nStrikes &&
+                    result.nBalls == this.nBalls);
+        }
+
+        @Override
+        public int hashCode() {
+            final int prime = 31;
+            int result = 1;
+
+            result = prime * result + ((this.message == null) ? 0 : this.message.hashCode());
+            result = prime * result + this.nStrikes;
+            result = prime * result + this.nBalls;
+
+            return result;
+        }
+    }
+
 }
