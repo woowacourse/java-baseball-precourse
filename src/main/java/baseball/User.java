@@ -28,6 +28,7 @@ public class User implements Player{
      *  매개변수가 없는 기본 생성자
      */
     public User(){
+        this.numbers=new int[3];
     }
 
     /**
@@ -53,8 +54,8 @@ public class User implements Player{
      * @return String   사용자의 입력 값을 반환
      * @throws IOException  어떠한 입출력 예외의 발생을 통지하는 시그널을 발생
      */
-    public String inputNumbers() throws IOException {
-        return br.readLine();
+    public String inputNumbers() {
+        return sc.nextLine();
     }
 
     /**
@@ -82,7 +83,7 @@ public class User implements Player{
      * 입력받은 input을 배열에 저장하기 위한 메서드.
      * @param input
      */
-    private void saveNumber(String input){
+    private void saveNumber(String input) {
         for(int i=0; i<3; i++){
             this.getNumbers()[i]=input.charAt(i)-'0';
         }
@@ -93,9 +94,9 @@ public class User implements Player{
      * @return  계속한다면('1'입력) true 반환, 종료한다면('2'입력) false 반환.
      * @throws IOException
      */
-    public boolean isContinue() throws IOException {
+    public boolean isContinue() {
         while (true){
-            String str=br.readLine();
+            String str=sc.nextLine();
             if(str.equals("1")) {
                 return true;            // 1 입력 시
             }
@@ -114,7 +115,7 @@ public class User implements Player{
      * @throws IOException
      */
     @Override
-    public void makeNewNumber() throws IOException {
+    public void makeNewNumber() {
         String input;
 
         while (true){
@@ -127,5 +128,10 @@ public class User implements Player{
             }
         }
         this.saveNumber(input);     // 입력받은 세자리의 수를 저장.
+    }
+
+    @Override
+    public String toString(){
+        return this.getNumbers()[0]+""+this.getNumbers()[1]+""+this.getNumbers()[2];
     }
 }

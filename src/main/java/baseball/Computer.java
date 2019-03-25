@@ -9,6 +9,8 @@
 package baseball;
 
 
+import java.io.IOException;
+
 /**
  * Computer Class는 컴퓨터를 위한 클래스이다.
  * Player interface를 구현한다.
@@ -46,6 +48,11 @@ public class Computer implements Player{
         return numbers;
     }
 
+    @Override
+    public boolean isContinue() {
+        return false;
+    }
+
     /**
      * 랜덤한 수를 만들어서 배열에 담아 배열을 반환하는 메서드.
      * @return randomNumber Array
@@ -81,5 +88,10 @@ public class Computer implements Player{
         } while (!isValid(randomNumber));               // 유효한지 판단. 중복된 수가 있으면 다시 랜덤수 만듬.
 
         this.setNumbers(randomNumber);                  // 랜덤 배열을 setter를 사용해 인스턴스 변수에 저장.
+    }
+
+    @Override
+    public String toString(){
+        return this.getNumbers()[0]+""+this.getNumbers()[1]+""+this.getNumbers()[2];
     }
 }

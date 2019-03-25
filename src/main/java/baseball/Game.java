@@ -90,7 +90,7 @@ public class Game {
      * 정답을 맞출 때까지 계속 수를 입력받는다.
      * @throws IOException
      */
-    public void runInning() throws IOException {
+    public void runInning() {
         while (true) {
             this.printGetNumber();                          // 숫자 입력하라는 문구 출력
             this.user.makeNewNumber();                      // 세 자리수 입력받음
@@ -104,6 +104,21 @@ public class Game {
         }
     }
 
+    /**
+     * 게임 전체를 실행하기 위한 메서드
+     * @throws IOException
+     */
+    public void run() {
+        while (true){
+            this.computer.makeNewNumber();      // 컴퓨터의 랜덤 세자리수 만듬
+            this.runInning();                   // 사용자가 답을 입력하는것을 반복하는 running 메서드 실행(답을 맞추면 종료되는 메서드)
+            this.printIsContinue();             // 새로운 게임을 진행할지 물어보는 출력
+
+            if(!this.user.isContinue()){
+                break;                          // 사용자가 종료(2) 입력 시
+            }
+        }
+    }
 
 }
 

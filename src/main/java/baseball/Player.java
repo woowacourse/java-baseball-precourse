@@ -8,9 +8,8 @@
 
 package baseball;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
+import java.util.Scanner;
 
 /**
  *
@@ -19,10 +18,11 @@ import java.io.InputStreamReader;
  */
 
 public interface Player {
-    BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+    Scanner sc=new Scanner(System.in);
 
-    public void makeNewNumber() throws IOException;
+    void makeNewNumber();
 
-    public int[] getNumbers();
+    int[] getNumbers();
 
+    boolean isContinue();
 }
