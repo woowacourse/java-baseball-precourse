@@ -82,4 +82,23 @@ public class PlayBall {
         System.out.println(message);
     }
 
+    /**
+     * 게임을 계속할 것인지 확인한다.
+     * 실행의 결과로 isContinue를 변경한다.
+     */
+
+    void wantContinue() {
+        String input;
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        input = getInputConsole();
+
+        if (!input.equals("1") && !input.equals("2")) {
+            printInvalidArgMessage();
+            wantContinue();
+        } else {
+            isContinue = Integer.parseInt(input);
+        }
+    }
+
 }
