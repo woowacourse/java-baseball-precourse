@@ -39,4 +39,15 @@ public class Display {
 
     }
 
+    /* 3스트라이크 일경우 게임 종료 문구 출력 */
+    public static void getResultDisplay(int[] baseballResult){
+
+        if(baseballResult[0] == 3){
+
+            /* 3스트라이크일 때 */
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        }
+    }
+
+
 }
