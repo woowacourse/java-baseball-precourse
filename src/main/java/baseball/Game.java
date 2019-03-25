@@ -116,7 +116,7 @@ public class Game {
     public void run() {
         while (true){
             this.computer.makeNewNumber();      // 컴퓨터의 랜덤 세자리수 만듬
-            System.out.println(this.computer.toString());
+//             System.out.println(this.computer.toString());        // 컴퓨터가 만든 숫자 확인하기 위한 Test code
             this.runInning();                   // 사용자가 답을 입력하는것을 반복하는 running 메서드 실행(답을 맞추면 종료되는 메서드)
             this.printIsContinue();             // 새로운 게임을 진행할지 물어보는 출력
 
