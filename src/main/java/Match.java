@@ -75,4 +75,18 @@ public class Match {
 
         return baseballResult;      // 저장된 baseballResult배열 반환
     }
+
+    /* 3스트라이크 판별하는 기능을 가진 메소드 */
+    boolean getBaseballResult(int[] baseballResult){
+
+        boolean findOut = false;        // 3스트라이크인지 아닌지 상태를 저장하는 변수
+
+        if(baseballResult[0] == 3){
+
+            /* 3스트라이크 일 경우 */
+            findOut = true;
+        }
+
+        return  findOut;
+    }
 }
