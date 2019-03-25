@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class BaseNumber {
     public static final int BASE_NUMBER_MIN = 1;
     public static final int BASE_NUMBER_MAX = 9;
@@ -21,6 +23,20 @@ public class BaseNumber {
     public static BaseNumber valueOf(int number) {
         return new BaseNumber(number);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        BaseNumber baseNumber = (BaseNumber) o;
+        return number == baseNumber.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
+    }
+
     @Override
     public String toString() {
         return String.valueOf(number);

@@ -11,6 +11,7 @@ public class BaseBallGameResult {
         this.userBaseBallNumber = userBaseBallNumber;
         this.computerBaseBallNumber = computerBaseBallNumber;
         checkStrike();
+        checkBall();
     }
 
     public int getStrike() {
@@ -25,6 +26,14 @@ public class BaseBallGameResult {
         for(int i = 0; i < BASEBALL_NUMBER_COUNTING_SIZE; i++) {
             if (userBaseBallNumber.get(i).getNumber() == computerBaseBallNumber.get(i).getNumber())
                 strike++;
+        }
+    }
+
+    private void checkBall() {
+        for(int i = 0; i < BASEBALL_NUMBER_COUNTING_SIZE; i++) {
+            if (computerBaseBallNumber.contains(userBaseBallNumber.get(i))
+                    && userBaseBallNumber.get(i).getNumber() != computerBaseBallNumber.get(i).getNumber())
+                ball++;
         }
     }
 } 
