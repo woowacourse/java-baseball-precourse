@@ -34,4 +34,15 @@ public class Computer {
         number[1] = rd.nextInt(9) + 1;
         number[2] = rd.nextInt(9) + 1;
     }
+
+    /**
+     * 유저의 입력이 정답인지 판별
+     * @param userNumber 유저로부터 입력받은 세자리 수
+     * @return 정답 일시 : true / 정답이 아닐시 : false
+     */
+    public boolean correctCheck(int[] userNumber) {
+        return number.equals(userNumber);
+    }
+
+
 }
