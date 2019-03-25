@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Game {
 
-    String recieveNumber() {
+    static String recieveNumber() {
         boolean flag;
         String input;
         Scanner scan = new Scanner(System.in);
@@ -24,7 +24,7 @@ public class Game {
         return input;
     }
 
-    String generateNumber(int length) {
+    static String generateNumber(int length) {
         int random;
         char zero = '1';
         String number = "";
@@ -39,7 +39,7 @@ public class Game {
         return number;
     }
 
-    boolean playGame(String createdNumber) {
+    static boolean playGame(String createdNumber) {
         String inputNumber;
         Oracle oracle = new Oracle();
         Result result;

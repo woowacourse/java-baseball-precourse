@@ -1,6 +1,6 @@
 public class Oracle {
 
-    boolean checkStrike(String createdNumber, String inputNumber, int seat) {
+    static boolean checkStrike(String createdNumber, String inputNumber, int seat) {
         char c;
         char i;
 
@@ -13,7 +13,7 @@ public class Oracle {
             return false;
     }
 
-    boolean checkBall(String createdNumber, String inputNumber, int seat) {
+    static boolean checkBall(String createdNumber, String inputNumber, int seat) {
         char number = inputNumber.charAt(seat);
         boolean flag = false;
 
@@ -26,7 +26,7 @@ public class Oracle {
         return flag;
     }
 
-    int examines(String createdNumber, String inputNumber, int seat) {
+    static int examines(String createdNumber, String inputNumber, int seat) {
         if (checkStrike(createdNumber, inputNumber, seat))
             return 1;
         else if (checkBall(createdNumber, inputNumber, seat))
@@ -35,7 +35,7 @@ public class Oracle {
             return 0;
     }
 
-    Result tells(String createdNumber, String inputNumber) {
+    static Result tells(String createdNumber, String inputNumber) {
         Result result = new Result();
         int temp;
 

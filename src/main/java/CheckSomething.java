@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class CheckSomething {
 
-    boolean checkLength(String input, int length) {
+    static boolean checkLength(String input, int length) {
         if (input.length() != length)
             return false;
         else
@@ -10,7 +10,7 @@ public class CheckSomething {
 
     }
 
-    boolean checkNumberString(String input) {
+    static boolean checkNumberString(String input) {
         boolean flag =  true;
         for (int i = 0; i < input.length(); i++) {
             if (checkNumber(input.charAt(i)) == false) {
@@ -24,14 +24,14 @@ public class CheckSomething {
             return true;
     }
 
-    boolean checkNumber(char character) {
+    static boolean checkNumber(char character) {
         if (character >= '1' && character <= '9')
             return true;
         else
             return false;
     }
 
-    boolean checkRecievedNumber(String number) {
+    static boolean checkRecievedNumber(String number) {
         boolean flagForLength;
         boolean flagForNumber;
 
@@ -44,7 +44,7 @@ public class CheckSomething {
             return false;
     }
 
-    boolean checkUserThought() {
+    static boolean checkUserThought() {
         Scanner s = new Scanner(System.in);
         String input;
 
