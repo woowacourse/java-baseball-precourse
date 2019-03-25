@@ -25,7 +25,6 @@
 - getInputConsole   : 콘솔 입력을 가져온다.  
 - printInvalidArgMessage : 유효한 입력이 아님을 콘솔에 출력한다.
 
-- printScore        : 점수를 콘솔에 출력한다.
 - printVictory      : 승리 메시지를 콘솔에 출력한다.
 - wantContinue      : 게임을 계속할 것인지 확인한다.
 

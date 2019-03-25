@@ -23,4 +23,34 @@ public class PlayBall {
             playOneGame();
         }
     }
+
+    /**
+     * 야구게임 한판을 실행한다.
+     */
+
+    void playOneGame() {
+        int strike = 0;
+        int gameNumber;
+
+        BaseBall bs = new BaseBall();
+        gameNumber = bs.getGameNumber();
+
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = getInputConsole();
+
+            if (!bs.isValid(input)) {
+                printInvalidArgMessage();
+                continue;
+            }
+
+            Scores scores = bs.getReferee(gameNumber,input);
+            strike = scores.getStrike();
+            System.out.println(scores.getScore());
+
+        } while (strike != 3);
+
+        printVictory();
+        wantContinue();
+    }
 }
