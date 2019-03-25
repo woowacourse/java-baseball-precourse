@@ -1,5 +1,5 @@
 /*
- * @(#)BaseballGame.java       0.2 2019/03/23
+ * @(#)BaseballGame.java       0.5 2019/03/25
  */
 
 import java.util.*;
@@ -8,7 +8,7 @@ import java.util.*;
  * 숫자야구게임을 진행하는 클래스
  *
  * @author 이도원
- * @version 0.4 2019/03/25
+ * @version 0.5 2019/03/25
  */
 public class BaseballGame {
 
@@ -27,6 +27,9 @@ public class BaseballGame {
     /* 플레이어가 입력한 숫자의 문자열 */
     private String inputNumber;
 
+    /* 선택한 한자릿수 정수를 저장하는 Set */
+    private HashSet<Integer> set = new HashSet<>();
+
     /**
      * BaseballGame 클래스의 생성자
      */
@@ -41,15 +44,13 @@ public class BaseballGame {
         selectNumber();
         inputNumber();
         printStrike(inputNumber);
+        printBall(inputNumber);
     }
 
     /* 임의의 3자리의 수를 선택하는 메소드. */
     private void selectNumber() {
         Random random = new Random();
         number = "";
-
-        /* 선택한 한자릿수 정수를 저장하는 Set */
-        HashSet<Integer> set = new HashSet<>();
 
         /* 임의의 한자릿수 정수가 3개 선택될 때까지 반복 */
         while (number.length() < DIGIT) {
@@ -91,16 +92,33 @@ public class BaseballGame {
     private void printStrike(String str) {
 
         /* 스트라이크의 갯수 */
-        int count = 0;
+        int strikeCount = 0;
 
         for (int i = 0; i < DIGIT; i++) {
 
             /* 같은 자리에 있으면서 수가 같으면 스프라이크의 갯수 1 증가 */
             if (str.charAt(i) == number.charAt(i)) {
-                count++;
+                strikeCount++;
             }
         }
 
-        System.out.printf("%d 스트라이크 ", count);
+        System.out.print(strikeCount + " 스트라이크 ");
+    }
+
+    /* 볼의 갯수 출력하는 메소드 */
+    private void printBall(String str) {
+
+        /* 볼의 갯수 */
+        int ballCount = 0;
+
+        for (int i = 0; i < DIGIT; i++) {
+
+            /* 다른 자리에 있으면서 수가 같으면 볼의 갯수 1 증가 */
+            if ((str.charAt(i) != number.charAt(i)) && (set.contains(str.charAt(i) - '0'))) {
+                ballCount++;
+            }
+        }
+
+        System.out.println(ballCount + " 볼");
     }
 }
