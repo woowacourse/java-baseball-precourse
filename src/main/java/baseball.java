@@ -30,6 +30,16 @@ public class baseball {
 	 * */
 	public static boolean playGame() {
 		int answer = makeAnswer();
+//		System.out.println(answer);
+		
+		int[] hint = new int[2];
+		while(true) {
+			hint = rightAnswer(answer);
+			printHint(hint);
+			if(hint[0] == 3) {
+				break;
+			}
+		}
 		
 		System.out.print("숫자를 입력해주세요 : ");
 		Scanner num = new Scanner(System.in);
@@ -63,7 +73,6 @@ public class baseball {
 		for(int i = 0 ; i < num.length ; i++) {
 			number += num[i]*Math.pow(10, i);
 		}
-//		System.out.println(number);
 		
 		return number;
 	}
@@ -72,7 +81,7 @@ public class baseball {
 	 * 중복 값 제거
 	 * param : i, num
 	 * return : i
-	 * 3자리 난수 생성 중 중복된 값이 있으면 i값을 감소.
+	 * 컴퓨터 정답 생성 시 3자리 난수 생성 중 중복된 값이 있으면 i값을 감소.
 	 * */
 	public static int deDupl(int i, int[] num) {
 		for(int j = 0 ; j < i ; j++) {
@@ -83,6 +92,35 @@ public class baseball {
 		}
 		
 		return i;
+	}
+	
+	/*
+	 * 숫자 입력받아 맞추기
+	 * param : answer
+	 * return : hint
+	 * 값을 입력받아 정답(힌트들) 전달.
+	 * */
+	public static int[] rightAnswer(int answer) {
+		System.out.print("숫자를 입력하세요 : ");
+		Scanner num = new Scanner(System.in);
+		int number = num.nextInt();
+		
+		int hint[] = new int[2];
+		return hint;
+	}
+	
+	/*
+	 * 결과(힌트) 출력
+	 * param : hint
+	 * return : 
+	 * hint의 값에 따라서 스트라이크 or 볼 or 낫싱 출력
+	 * */
+	public static void printHint(int[] hint) {
+		String str = "";
+
+		str += hint[0] + " 스트라이크 ";
+		
+		System.out.println(str);
 	}
 
 }
