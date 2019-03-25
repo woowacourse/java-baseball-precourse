@@ -1,3 +1,9 @@
+/*
+ * 클래스 이름: BaseballGame
+ *
+ * 날짜: 2019년 3월 25일
+ */
+
 import java.util.Scanner;
 
 public class BaseballGame {
@@ -22,6 +28,9 @@ public class BaseballGame {
         scan.close();
     }
 
+    /*
+     * 1부터 9까지 서로 다른 숫자로 이루어진 3자리의 수를 만들어 배열로 리턴한다.
+     */
     int[] makeComNum() {
         int[] comNum = new int[3];
         int[] checkOverlap = new int[10];
@@ -39,6 +48,9 @@ public class BaseballGame {
         return comNum;
     }
 
+    /*
+     * 사용자의 입력을 받아 배열로 리턴한다.
+     */
     int[] makeUserNum(int userInput) {
         int[] userNum = new int[3];
 
@@ -50,6 +62,10 @@ public class BaseballGame {
         return userNum;
     }
 
+    /*
+     * 컴퓨터의 숫자 배열, 사용자의 숫자 배열을 받아 스트라이크와 볼을 계산한다.
+     * result[0]은 스트라이크, result[1]은 볼을 의미.
+     */
     int[] countResult(int[] comNum, int[] userNum) {
         int[] result = new int[2];
         int[] num = new int[10];
@@ -69,6 +85,10 @@ public class BaseballGame {
         return result;
     }
 
+    /*
+     * 결과를 출력한다.
+     * 3 스트라이크면 false, 아니면 true를 리턴한다.
+     */
     boolean printResult(int[] result) {
         boolean isWrong = true;
 
@@ -88,6 +108,10 @@ public class BaseballGame {
         return isWrong;
     }
 
+    /*
+     * 게임을 진행한다.
+     * 3 스트라이크면 printResult()에서 false를 리턴받아 do-while문을 끝낸다.
+     */
     static void doGame() {
         BaseballGame game = new BaseballGame();
         Scanner scan = new Scanner(System.in);
