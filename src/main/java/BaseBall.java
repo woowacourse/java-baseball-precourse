@@ -78,21 +78,22 @@ public class BaseBall {
     private static List<Integer> comparing(List<Integer> answer,
                                            List<Integer> user) {
         List<Integer> count;
-        int answerNumber, userNumber;
-        int strike, ball;
+        int answerNumber; // answer List의 i번째 값
+        int userNumber; // user List의 i번째 값
+        int strike, ball; // count List의 0번째, 1번째 값
 
-        count = countInit(); // count = [0, 0], 비교 결과를 저장
+        count = countInit(); // [0, 0]
         for (int i = 0; i < 3; i ++) {
             answerNumber = answer.get(i);
             userNumber = user.get(i);
-            if (answerNumber == userNumber) { // 정답의 i번째 값과 입력의 i번째 값이 같은지 확인
+            if (answerNumber == userNumber) {
                 strike = count.get(0);
                 strike += 1;
-                count.set(0, strike);
+                count.set(0, strike); // count[0] + 1
             } else if (answer.contains(userNumber)) { // 입력의 i번째 값이 정답 List에 있는지 확인
                 ball = count.get(1);
                 ball += 1;
-                count.set(1, ball);
+                count.set(1, ball); // count[1] + 1
             }
         }
         return count;
@@ -166,17 +167,19 @@ public class BaseBall {
      * 3 Strike이면 종료, 그렇지 않으면 계속 반복
      * */
     private static void play(Scanner sc) {
-        List<Integer> answer, user, count;
-        int strike;
+        List<Integer> answer; // 정답 List
+        List<Integer> user; // 유저 입력을 받아 크기 3인 List로 반환
+        List<Integer> count; // 정답과 입력 비교한 크기 2인 List 반환
+        int strike; // 3 Strike이면 종료
 
         answer = answerInit(); // 정답 할당
         while (true) {
             System.out.println("숫자를 입력해주세요");
-            user = getUser(sc); // 유저 입력을 받아 크기 3인 List로 반환
-            count = comparing(answer, user); // 정답과 입력 비교한 크기 2인 List 반환
+            user = getUser(sc);
+            count = comparing(answer, user);
             printResult(count); // 비교 결과에 대한 출력
             strike = count.get(0);
-            if (strike > 2) { // 3 Strike이면 종료
+            if (strike > 2) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
@@ -192,13 +195,13 @@ public class BaseBall {
      * */
     public static void main(String[] args) {
         Scanner sc; // 외부 입력을 받을 수 있는 Scanner instance 초기화
-        int game;
+        int game; // 게임을 더 할 것인지 선택
 
         sc = new Scanner(System.in);
         do {
             play(sc); // 게임 시작
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            game = sc.nextInt(); // 게임을 더 할 것인지 선택
+            game = sc.nextInt();
         } while (game <= 1);
 
     }
