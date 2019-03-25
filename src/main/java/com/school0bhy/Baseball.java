@@ -28,7 +28,6 @@ public class Baseball {
         FROM = from;
         TO = to;
         goal = new int[SIZE];
-        setGoal();
     }
 
     /**
@@ -62,6 +61,7 @@ public class Baseball {
      * 숫자야구 게임을 시작하기 위한 메소드
      */
     public void play() {
+        setGoal();
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             int userInput = UserInput.getIntInput();

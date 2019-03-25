@@ -1,5 +1,5 @@
 /*
- * Main.java    1.0 20190325
+ * Main.java    1.0 20190326
  *
  * Copyright (c) 2019 Hyeonyeong Baek.
  * All rights reserved.
@@ -20,7 +20,27 @@ public class Main {
      */
     public static void main(String[] args) {
         Baseball baseball = new Baseball(3, 1, 9);
-        baseball.play();
+        do {
+            baseball.play();
+        } while (checkContinue());
     }
 
+    /**
+     * 게임 재시작 여부를 확인
+     * @return true, false
+     */
+    private static boolean checkContinue(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        while (true) {
+            int check =UserInput.getIntInput();
+            if (check == 1) {
+                return true;
+            } else if (check == 2) {
+                System.out.println("게임을 종료합니다.");
+                return false;
+            } else {
+                System.out.println("1 또는 2를 입력하세요.");
+            }
+        }
+    }
 }
