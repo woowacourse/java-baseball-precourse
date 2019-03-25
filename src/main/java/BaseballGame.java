@@ -76,6 +76,9 @@ public class BaseballGame {
 	 * @return 3개의 서로 다른 1~9까지 숫자일 경우 true
 	 */
 	private boolean isValid(String inputNumber) {
+		if(inputNumber.length() != BASEBALL_LENGTH) {
+			return false;
+		}
 		Set<Character> inputNumbers = new HashSet<>();
 		for (char input : inputNumber.toCharArray()) {
 			if (input < '1' || input > '9') {
