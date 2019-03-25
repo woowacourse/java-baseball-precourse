@@ -1,5 +1,5 @@
 /*
- * BaseballAnswer class
+ * BaseballAnswerTest class
  *
  * v0.1
  *
@@ -8,12 +8,17 @@
  * Copyrights
  */
 
-package woowatechcourse.woung717.baseball;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import java.util.Random;
+import java.util.Arrays;
+import java.util.ArrayList;
 
-public class BaseballAnswer {
-    String[] answerDB = {"123", "124", "125", "126", "127", "128", "129", "132", "134", "135", "136", "137",
+import woowatechcourse.woung717.baseball.BaseballAnswer;
+
+public class BaseballAnswerTest {
+    ArrayList<String> answerDB = new ArrayList<String>(
+            Arrays.asList("123", "124", "125", "126", "127", "128", "129", "132", "134", "135", "136", "137",
             "138", "139", "142", "143", "145", "146", "147", "148", "149", "152", "153", "154", "156", "157", "158",
             "159", "162", "163", "164", "165", "167", "168", "169", "172", "173", "174", "175", "176", "178", "179",
             "182", "183", "184", "185", "186", "187", "189", "192", "193", "194", "195", "196", "197", "198", "213",
@@ -46,11 +51,12 @@ public class BaseballAnswer {
             "897", "912", "913", "914", "915", "916", "917", "918", "921", "923", "924", "925", "926", "927", "928",
             "931", "932", "934", "935", "936", "937", "938", "941", "942", "943", "945", "946", "947", "948", "951",
             "952", "953", "954", "956", "957", "958", "961", "962", "963", "964", "965", "967", "968", "971", "972",
-            "973", "974", "975", "976", "978", "981", "982", "983", "984", "985", "986", "987"};
+            "973", "974", "975", "976", "978", "981", "982", "983", "984", "985", "986", "987"));
 
-    public String getAnswer() {
-        Random random = new Random();
+    @Test
+    public void testgetAnswer() {
+        BaseballAnswer answer = new BaseballAnswer();
 
-        return this.answerDB[random.nextInt(this.answerDB.length)];
+        assertTrue(answerDB.contains(answer.getAnswer()));
     }
 }
