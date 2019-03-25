@@ -124,6 +124,11 @@ public class baseball {
 			str += hint[1] + "º¼";
 		}
 		
+		/* ³´½Ì Ãâ·Â */
+		if(hint[0] == 0 && hint[1] == 0) {
+			str = "³´½Ì";
+		}
+		
 		System.out.println(str);
 	}
 	
