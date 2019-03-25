@@ -50,4 +50,23 @@ public class BaseballGame {
 
         return result;
     }
+
+    boolean printResult(int[] result) {
+        boolean isWrong = true;
+
+        if (result[0] == 3) {
+            System.out.println("3 스트라이크");
+            isWrong = false;
+        } else if (result[0] > 0 && result[1] > 0) {
+            System.out.println(result[0] + " 스트라이크 " + result[1] + " 볼");
+        } else if (result[0] > 0) {
+            System.out.println(result[0] + " 스트라이크");
+        } else if (result[1] > 0) {
+            System.out.println(result[1] + " 볼");
+        } else if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+        }
+
+        return isWrong;
+    }
 }
