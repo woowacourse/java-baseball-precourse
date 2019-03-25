@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 /*
@@ -24,7 +25,7 @@ public class Baseball {
         int nextGame = 0;
         boolean result = false;
 
-        // generateKey()
+        key = generateKey();
 
         /* receive input and match Number. */
         while (true) {
@@ -56,6 +57,17 @@ public class Baseball {
                 System.out.println("잘못 입력하셨습니다.");
             }
         }
+
+        return result;
+    }
+
+    public static int generateKey() {
+        int result = 0;
+
+        Random rand = new Random();
+        result += (rand.nextInt(9) + 1) * 100;
+        result += (rand.nextInt(9) + 1) * 10;
+        result += (rand.nextInt(9) + 1);
 
         return result;
     }
