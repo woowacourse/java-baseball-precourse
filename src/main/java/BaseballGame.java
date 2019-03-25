@@ -35,15 +35,14 @@ public class BaseballGame {
 			}
 
 			++count;
-			
-			// TODO print hint
+
+			printHint(inputNumber, randomNumber);
 
 			if (randomNumber.equals(inputNumber)) {
 				System.out.println(count + "번만에 숫자를 모두 맞히셨습니다! 게임 종료");
 				return;
 			}
 		}
-
 		// 최대 횟수가 초과 하면 정답 출력
 		System.out.println("최대 회수를 초과했습니다! 정답은" + randomNumber + "입니다. 게임 종료");
 	}
@@ -73,7 +72,6 @@ public class BaseballGame {
 
 	/**
 	 * 입략힌 값을 숫자야구에 사용할 수 있는 값인 지 확인
-	 * @param randomNumber 상대방(컴퓨터)의 지정된 서로다른 무작위 3자리
 	 * @param inputNumber 입력한 값
 	 * @return 3개의 서로 다른 1~9까지 숫자일 경우 true
 	 */
@@ -92,6 +90,42 @@ public class BaseballGame {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * 같은 수가 같은 자리에 있으면 스트라이크, 다른자리에 있으면 볼, 같은 수가 전혀 없으면 포볼 또는 낫싱이란 힌트를 출력
+	 * @param inputNumber 사용자가 입력한 값
+	 * @param randomNumber 상대방(컴퓨터)의 지정된 서로다른 무작위 3자리
+	 */
+	private void printHint(String inputNumber, String randomNumber) {
+		int strikeCount = 0;
+		int ballCount = 0;
+		Set<Character> randomNumbers = new HashSet<>();
+
+		for (int i = 0; i < inputNumber.length(); i++) {
+			randomNumbers.add(randomNumber.charAt(i));
+		}
+		for (int i = 0; i < inputNumber.length(); i++) {
+
+			if (inputNumber.charAt(i) == randomNumber.charAt(i)) {
+				++strikeCount;
+			} else if (randomNumbers.contains(inputNumber.charAt(i))) {
+				++ballCount;
+			}
+		}
+
+		if (strikeCount == 0 && ballCount == 0) {
+			System.out.println("낫싱");
+			return;
+		}
+
+		if (strikeCount > 0) {
+			System.out.print(strikeCount + "스트라이크 ");
+		}
+		if (ballCount > 0) {
+			System.out.print(ballCount + "볼 ");
+		}
+		System.out.println();
 	}
 
 	/**
