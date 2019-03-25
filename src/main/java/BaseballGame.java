@@ -48,12 +48,36 @@ public class BaseballGame {
         return arr;
     }
 
+    // 두 개의 배열을 받아, 게임 결과 판정을 문자열로 반환한다.
+    private static String judgement(int[] right, int[] answer) {
+        int[] judge = new int[2];
+
+        for (int i = 0; i < answer.length; i++) {
+            for (int j = 0; j < right.length; j++) {
+                if (answer[i] == right[j]) {
+                    if (i == j)
+                        judge[0]++;
+                    else
+                        judge[1]++;
+                }
+            }
+        }
+
+        String strike = judge[0] > 0 ? String.format("%s 스트라이크 ", judge[0]) : "";
+        String ball = judge[1] > 0 ? String.format("%s볼", judge[1]) : "";
+
+        if (judge[0] == 0 && judge[1] == 0) {
+            return "낫싱";
+        } else {
+            return strike + ball;
+        }
+    }
+
     // 메인 함수.
     public static void main(String[] args) {
-        // getIntArray 동작 테스트
-        int[] array1 = getIntArray(3, "3개 : ");
-        for (int i: array1) {
-            System.out.println(i);
-        }
+        // judgement() 동작 테스트
+        int[] array1 = new int[] {1, 2, 3};
+        int[] array2 = new int[] {1, 2, 3};
+        System.out.println(judgement(array1, array2));
     }
 }
