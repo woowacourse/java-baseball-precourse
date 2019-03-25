@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Match 클래스는 두 입력값을 비교하는 클래스 입니다
  *
@@ -77,7 +79,7 @@ public class Match {
     }
 
     /* 3스트라이크 판별하는 기능을 가진 메소드 */
-    boolean getBaseballResult(int[] baseballResult){
+    public static boolean getBaseballResult(int[] baseballResult){
 
         boolean findOut = false;        // 3스트라이크인지 아닌지 상태를 저장하는 변수
 
@@ -88,5 +90,19 @@ public class Match {
         }
 
         return  findOut;
+    }
+
+    public static int getGameState(boolean getResult){
+
+        Scanner getState = new Scanner(System.in);
+        int gameState = 0;          // 다음게임의 상태를 저장하는 변수 선언
+
+        if(getResult == true){
+
+            /* 3스트라이크 일경우*/
+            gameState = getState.nextInt();
+        }
+
+        return gameState;
     }
 }
