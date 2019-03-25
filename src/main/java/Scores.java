@@ -18,4 +18,25 @@ public class Scores {
     int getStrike() {
         return strike;
     }
+
+    /**
+     * 문자열로 변환된 점수를 반환.
+     * @return 점수에 단위를 붙인 문자열을 반환.
+     */
+
+    String getScore() {
+        StringBuilder sb = new StringBuilder();
+
+        if (strike != 0) {
+            sb.append(strike + " 스트라이크 ");
+        }
+        if (ball != 0) {
+            sb.append(ball + "볼");
+        }
+        if (strike == 0 && ball == 0) {
+            sb.append("낫싱");
+        }
+
+        return sb.toString();
+    }
 }
