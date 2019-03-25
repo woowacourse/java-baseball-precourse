@@ -65,7 +65,8 @@ public class UniqueNumber {
         for (int i = 0; i < answerNumber.length; i++) {
             if (answerNumber[i] == number) {
 
-                /* 정답 숫자 중에 number와 같은 숫자가 있다면
+                /*
+                 * 정답 숫자 중에 number와 같은 숫자가 있다면
                  * 두 숫자의 위치가 같은지 확인한다.
                  */
                 hintType = checkPosition(i, numberPosition);

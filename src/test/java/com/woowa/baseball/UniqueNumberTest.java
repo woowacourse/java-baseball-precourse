@@ -7,7 +7,7 @@ public class UniqueNumberTest {
     @Test
     public void compareAnswerTest(){
         int[] answerNum = {3, 5, 8};
-        int[] customNum = {4, 9, 2};
+        int[] customNum = {3, 8, 5};
         UniqueNumber answer = new UniqueNumber(answerNum);
 
         int[] hint = answer.compareTo(customNum);
