@@ -27,14 +27,33 @@ public class BaseballGame {
 
             checkResult(randomMum, myNum, result);
 
-            for (int b : result ) {
-                System.out.print(b);
-            }
+            getResult(result);
 
             break;
         }
 
         return false;
+    }
+
+    /**
+     * 결과 출력 메소드
+     * @param result
+     */
+    private void getResult(int[] result) {
+        if (result[0] + result[1] == 0){
+            System.out.println("낫싱");
+            return;
+        }
+
+        if (result[0] != 0){
+            System.out.print(result[0] + " 스트라이크 ");
+        }
+
+        if (result[1] != 0){
+            System.out.print(result[1] + "볼");
+        }
+
+        System.out.println();
     }
 
     /**
