@@ -61,15 +61,26 @@ public class Baseball {
         return result;
     }
 
+    /* get 3 random number between 1~9 with no duplication. */
     public static int generateKey() {
-        int result = 0;
-
         Random rand = new Random();
-        result += (rand.nextInt(9) + 1) * 100;
-        result += (rand.nextInt(9) + 1) * 10;
-        result += (rand.nextInt(9) + 1);
+        int r1, r2, r3;
 
-        return result;
+        r1 = rand.nextInt(9) + 1;
+        while (true) {
+            r2 = rand.nextInt(9) + 1;
+            if(r2 != r1) {
+                break;
+            }
+        }
+        while (true) {
+            r3 = rand.nextInt(9) + 1;
+            if(r3 != r1 && r3 != r2) {
+                break;
+            }
+        }
+
+        return r1*100 + r2*10 + r3;
     }
 
     public static boolean matchKey(int key, int num) {
