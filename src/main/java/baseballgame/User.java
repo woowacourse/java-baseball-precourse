@@ -1,5 +1,5 @@
 /*
- * @(#)User.java        0.1 2019/03/25
+ * @(#)User.java        0.2 2019/03/26
  *
  *
  */
@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  * 기능 목록 3 - 사용자가 3자리 숫자를 입력하는 기능을 위한 클래스입니다.
  *
- * @version         0.1 2019년 3월 25일
+ * @version         0.2 2019년 3월 26일
  * @author          반선호
  */
 class User {

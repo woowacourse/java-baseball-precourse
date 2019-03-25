@@ -1,5 +1,5 @@
 /*
- * @(#)Computer.java        0.1 2019/03/25
+ * @(#)Computer.java        0.2 2019/03/26
  *
  *
  */
@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  * 기능 목록 2 - 컴퓨터가 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 생성 하는 클래스입니다.
  *
- * @version         0.1 2019년 3월 25일
+ * @version         0.2 2019년 3월 26일
  * @author          반선호
  */
 class Computer {
