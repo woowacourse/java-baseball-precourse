@@ -16,10 +16,8 @@ public class BaseBall {
     }
 
     /**
-     *
      * @return 3자리 게임에 쓸 수 있는 랜덤 숫자
      */
-
     int getGameNumber() {
         int gameNumber;
 
@@ -28,5 +26,24 @@ public class BaseBall {
         }while(hasZero(gameNumber) || isDuplicate(gameNumber));
 
         return gameNumber;
+    }
+
+    /**
+     *
+     * @param   string 문자 형식의 숫자
+     * @return  0을 포함하면 true
+     */
+    boolean hasZero(String string) {
+        return string.contains("0");
+    }
+
+    /**
+     * Overload
+     *
+     * @param number 세자리 숫자
+     * @return 0을 포함하면 true
+     */
+    boolean hasZero(int number) {
+        return hasZero(Integer.toString(number));
     }
 }
