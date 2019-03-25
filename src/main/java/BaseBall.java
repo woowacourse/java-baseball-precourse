@@ -2,13 +2,14 @@
  * BaseBall 클래스는 야구게임의 기본 규칙과 로직을 담는다.
  * 메서드별 @param, @return 표시한다.
  */
+
 import java.util.Random;
 
 public class BaseBall {
     /**
-     * @return  3자리 랜덤 숫자
+     * @return 3자리 랜덤 숫자
      */
-    int getRandomNumber() {
+    private int getRandomNumber() {
         int result;
         Random rd = new Random();
         result = rd.nextInt(899) + 100;
@@ -21,19 +22,18 @@ public class BaseBall {
     int getGameNumber() {
         int gameNumber;
 
-        do{
+        do {
             gameNumber = getRandomNumber();
-        }while(hasZero(gameNumber) || isDuplicate(gameNumber));
+        } while (hasZero(gameNumber) || isDuplicate(gameNumber));
 
         return gameNumber;
     }
 
     /**
-     *
-     * @param   string 문자 형식의 숫자
-     * @return  0을 포함하면 true
+     * @param string 문자 형식의 숫자
+     * @return 0을 포함하면 true
      */
-    boolean hasZero(String string) {
+    private boolean hasZero(String string) {
         return string.contains("0");
     }
 
@@ -43,16 +43,17 @@ public class BaseBall {
      * @param number 세자리 숫자
      * @return 0을 포함하면 true
      */
-    boolean hasZero(int number) {
+    private boolean hasZero(int number) {
         return hasZero(Integer.toString(number));
     }
 
     /**
      * 인자에 중복이 있는지 확인
-     * @param   string 문자 형식의 숫자
-     * @return  중복이 있으면 true
+     *
+     * @param string 문자 형식의 숫자
+     * @return 중복이 있으면 true
      */
-    boolean isDuplicate(String string) {
+    private boolean isDuplicate(String string) {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < 2; i++) {
@@ -74,16 +75,17 @@ public class BaseBall {
      * @param number 숫자
      * @return 중복이 있으면 true
      */
-    boolean isDuplicate(int number) {
+    private boolean isDuplicate(int number) {
         return isDuplicate(Integer.toString(number));
     }
 
     /**
-     *숫자로 바꿀 수 있는 문자인지 확인한다.
-     * @param   string 숫자문자
-     * @return  숫자로 바꿀 수 있으면 true
+     * 숫자로 바꿀 수 있는 문자인지 확인한다.
+     *
+     * @param string 숫자문자
+     * @return 숫자로 바꿀 수 있으면 true
      */
-    boolean isDigit(String string) {
+    private boolean isDigit(String string) {
         try {
             Integer.parseInt(string);
             return true;
@@ -98,14 +100,15 @@ public class BaseBall {
      * @param string 문자
      * @return 3이면 true
      */
-    boolean isInRange(String string) {
+    private boolean isInRange(String string) {
         return string.length() == 3;
     }
 
     /**
      * 게임에 쓸 수 있는 유효한 문자인지 확인
-     * @param   string 문자
-     * @return  유효하면 true
+     *
+     * @param string 문자
+     * @return 유효하면 true
      */
     boolean isValid(String string) {
         if (isDigit(string) && isInRange(string) && !hasZero(string) && !isDuplicate(string)) {
@@ -117,10 +120,11 @@ public class BaseBall {
 
     /**
      * 점수를 Scores 형식으로 반환
-     * @see   Scores
+     *
      * @param gameNumber 랜덤숫자
-     * @param input 유저 입력
+     * @param input      유저 입력
      * @return Scores
+     * @see Scores
      */
     Scores getReferee(int gameNumber, String input) {
         int strike = 0;
@@ -137,6 +141,6 @@ public class BaseBall {
             }
         }
 
-        return new Scores(strike,ball);
+        return new Scores(strike, ball);
     }
 }

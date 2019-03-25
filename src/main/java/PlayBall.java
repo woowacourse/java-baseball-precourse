@@ -2,6 +2,7 @@
  * PlayBall은 콘솔 in-out으로 유저와 상호작용한다.
  * 상호작용의 근거는 BaseBall클래스에서 가져온다.
  */
+
 import java.util.Scanner;
 
 public class PlayBall {
@@ -17,7 +18,6 @@ public class PlayBall {
     /**
      * Main의 메인 메서드의 진입점
      */
-
     void playGame() {
         while (isContinue == 1) {
             playOneGame();
@@ -27,8 +27,7 @@ public class PlayBall {
     /**
      * 야구게임 한판을 실행한다.
      */
-
-    void playOneGame() {
+    private void playOneGame() {
         int strike = 0;
         int gameNumber;
 
@@ -44,7 +43,7 @@ public class PlayBall {
                 continue;
             }
 
-            Scores scores = bs.getReferee(gameNumber,input);
+            Scores scores = bs.getReferee(gameNumber, input);
             strike = scores.getStrike();
             System.out.println(scores.getScore());
 
@@ -56,9 +55,10 @@ public class PlayBall {
 
     /**
      * 사용자가 콘솔에 입력한 값을 가져온다.
+     *
      * @return string, 콘솔 입력값
      */
-    String getInputConsole() {
+    private String getInputConsole() {
         String result;
         Scanner sc = new Scanner(System.in);
         result = sc.nextLine();
@@ -68,16 +68,14 @@ public class PlayBall {
     /**
      * 사용자가 콘솔에 입력한 값이 적절치 않을 경우, 사용자에게 알리고 재시도를 유도한다.
      */
-
-    void printInvalidArgMessage() {
+    private void printInvalidArgMessage() {
         System.out.println("유효한 입력이 아닙니다. 다시 입력해 주세요.");
     }
 
     /**
      * 승리 메시지 출력
      */
-
-    void printVictory() {
+    private void printVictory() {
         String message = "3개의 숫자를 모두 맞히셨습니다! 게임종료";
         System.out.println(message);
     }
@@ -86,8 +84,7 @@ public class PlayBall {
      * 게임을 계속할 것인지 확인한다.
      * 실행의 결과로 isContinue를 변경한다.
      */
-
-    void wantContinue() {
+    private void wantContinue() {
         String input;
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -100,5 +97,4 @@ public class PlayBall {
             isContinue = Integer.parseInt(input);
         }
     }
-
 }

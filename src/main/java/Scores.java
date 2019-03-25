@@ -14,16 +14,15 @@ public class Scores {
     /**
      * 스트라이크값을 반환
      */
-
     int getStrike() {
         return strike;
     }
 
     /**
      * 문자열로 변환된 점수를 반환.
+     *
      * @return 점수에 단위를 붙인 문자열을 반환.
      */
-
     String getScore() {
         StringBuilder sb = new StringBuilder();
 
