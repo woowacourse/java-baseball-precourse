@@ -1,5 +1,5 @@
 /*
- * @(#)BaseballGame.java        0.3 2019/03/25
+ * @(#)BaseballGame.java        0.4 2019/03/25
  *
  *
  */
@@ -13,7 +13,7 @@ import java.util.Scanner;
  * 기능 목록 5 - 사용자의 3자리 수를 컴퓨터가 생성한 수와 비교 기능
  * 기능 목록 6 - 스트라이크, 볼, 낫싱(포볼) 판정 기능
  *
- * @version         0.3 2019년 3월 25일
+ * @version         0.4 2019년 3월 25일
  * @author          반선호
  */
 public class BaseballGame {
@@ -92,7 +92,6 @@ public class BaseballGame {
     private void resetComAndCnt(){
         com = new Computer();
         cnt = RESET_NUMBER;
-        System.out.println(com.number);
     }
 
     /**
