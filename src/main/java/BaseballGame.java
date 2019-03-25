@@ -31,4 +31,23 @@ public class BaseballGame {
 
         return userNum;
     }
+
+    int[] countResult(int[] comNum, int[] userNum) {
+        int[] result = new int[2];
+        int[] num = new int[10];
+
+        for (int i = 0; i < 3; i++) {
+            num[comNum[i]]++;
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (comNum[i] == userNum[i]) {
+                result[0]++;
+            } else if (num[userNum[i]] != 0) {
+                result[1]++;
+            }
+        }
+
+        return result;
+    }
 }
