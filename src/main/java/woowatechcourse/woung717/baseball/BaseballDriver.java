@@ -18,7 +18,7 @@ public class BaseballDriver {
 
         s.chars().distinct().forEach(c -> newString.append((char) c));
 
-        return s.equals(newString.toString()) && s.matches("^[1-9]{3}$");
+        return s.length() == newString.toString().length() && s.matches("^[1-9]{3}$");
     }
 
     private static void gameStart() {
