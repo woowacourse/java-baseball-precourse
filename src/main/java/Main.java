@@ -12,7 +12,7 @@
 public class Main {
     /*메뉴 출력*/
     public static void main(String[] args) {
-        Menu menu = new Menu();
-        menu.printMenu();
+        Menu.printMenu();
+        System.out.println(Menu.selectMenu());
     }
 }
