@@ -13,7 +13,7 @@ public class UserInterface {
     private Scanner scan = new Scanner(System.in);
     private int userNumber;
     private int reGameNumber;
-    private RunBaseBall RunBaseBall;
+    private RunBaseball runBaseball;
     private int strikeCount;
     private int ballCount;
 
@@ -33,13 +33,13 @@ public class UserInterface {
      */
     public void InputNumber(){
 
-        RunBaseBall = RunBaseBall.getRunBaseBall();
+        runBaseball = runBaseball.getRunBaseball();
 
         try {
             System.out.print("숫자를 입력해주세요 : ");
             userNumber = scan.nextInt();
             int[] userNumberArray = Stream.of(String.valueOf(userNumber).split("")).mapToInt(Integer::parseInt).toArray();
-            if (!RunBaseBall.JudgeValidNumber(userNumberArray)) {
+            if (!runBaseball.JudgeValidNumber(userNumberArray)) {
                 throw new Exception();
             }else{
                 baseballData.setUserNumber(userNumberArray);
@@ -71,10 +71,10 @@ public class UserInterface {
         this.reGameNumber = scan.nextInt();
         switch (this.reGameNumber) {
             case 1:
-                RunBaseBall.ReStart();
+                runBaseball.ReStart();
                 break;
             case 2:
-                RunBaseBall.ExitGame();
+                runBaseball.ExitGame();
                 break;
             default:
                 System.out.println("잘못된 입력입니다.");

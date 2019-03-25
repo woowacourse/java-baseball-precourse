@@ -2,11 +2,11 @@
 
 * 주요 클래스 
 
- 1. View : 입력과 출력을 담당하는 클래스  <br/>
+ 1. UserInterface : 입력과 출력을 담당하는 클래스  <br/>
   1.1 참조할 클래스 :  2의 클래스를 참조 해야합니다. <br/>
   1.2 포함하고 있는 메소드 : InputNumber, PrintResult, InputReGame<br/>
    
- 2. Model : 입력한 Data를 보관하는 클래스  <br/>
+ 2. BaseballData : 입력한 Data를 보관하는 클래스  <br/>
   2.1 참조할 클래스 : 없음 <br/>
   2.2 포함하고 있는 메소드 : 없음 <br/>
   
@@ -14,7 +14,7 @@
   3.1 참조할 클래스 : 2의 클래스를 참조 해야합니다. <br/>
   3.2 포함하고 있는 메소드 : JudgeStrike <br/>
   
- 4. Controller(main함수 포함) : 전체적인 게임을 컨트롤하고 운영하는 클래스 <br/>
+ 4. RunBaseball(main함수 포함) : 전체적인 게임을 컨트롤하고 운영하는 클래스 <br/>
   4.1 참조할 클래스 : 1,2,3의 모든 클래스를 참조할 필요가 있습니다. 
   4.2 포함하고 있는 메소드 :  StartGame , ChooseNumber, IsGameOver, ReStart, ExitGame, JudgeValidNumber <br/>
   

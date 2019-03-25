@@ -5,33 +5,33 @@ import java.util.*;
  *
  * @author          김강민
  */
-public class RunBaseBall {
+public class RunBaseball {
 
     private HandlingData handlingData;
     private BaseballData baseballData;
     private UserInterface userInterface;
     private int temp;
-    private static RunBaseBall runBaseBall;
+    private static RunBaseball runBaseball;
     private HashSet<Integer> computerNumberSet = new HashSet<>();
     private HashSet<Integer> userNumberSet = new HashSet<>();
     int[] computerNumberArray = new int[3];
 
     /*
-     * RunBaseBall에 대한 생성자는 handlingData, BaseballData, UserInterface의 변수 초기화로 합니다.
+     * RunBaseball에 대한 생성자는 handlingData, BaseballData, UserInterface의 변수 초기화로 합니다.
      */
-    RunBaseBall(){
+    RunBaseball(){
         this.handlingData = HandlingData.getHandlingData();
         this.baseballData = BaseballData.getBaseballData();
         this.userInterface = userInterface.getUserInterface();
     }
     /*
-     * RunBaseBall는 프로그램 내에서 하나만 존재해야 합니다.
+     * RunBaseball는 프로그램 내에서 하나만 존재해야 합니다.
      */
-    public static RunBaseBall getRunBaseBall() {
-        if(runBaseBall ==null){
-            runBaseBall = new RunBaseBall();
+    public static RunBaseball getRunBaseball() {
+        if(runBaseball ==null){
+            runBaseball = new RunBaseball();
         }
-        return runBaseBall;
+        return runBaseball;
     }
 
     /*
@@ -107,8 +107,8 @@ public class RunBaseBall {
 
     public static void main(String[] args) {
 
-        RunBaseBall RunBaseBall = runBaseBall.getRunBaseBall();
-        RunBaseBall.StartBaseBallGame();
+        RunBaseball runBaseball = RunBaseball.getRunBaseball();
+        runBaseball.StartBaseBallGame();
 
     }
 }
