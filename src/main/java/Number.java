@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class Number {
@@ -21,5 +23,8 @@ public class Number {
         return hashMap;
     }
 
+    public String[] playerNum(BufferedReader br) throws IOException {
+        return br.readLine().split("");
+    }
 
 }
