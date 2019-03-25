@@ -12,7 +12,6 @@ public class Computer {
         int second, third;
         computerNum[0] = makeRandom();
 
-
         while (flag) {
 
             second = makeRandom();

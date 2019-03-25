@@ -55,17 +55,17 @@ public class Manager {
         try{
             Integer.parseInt(input);
         }catch (NumberFormatException e){
-            System.out.println("입력은 숫자만 가능합니다.!");
+            System.out.println(ErrorCodes.INPUT_FORMAT_ERROR);
             return true;
         }
 
         if (input.length() != 3){
-            System.out.println("숫자는 3 자리만 입력해주세요.!");
+            System.out.println(ErrorCodes.INPUT_LENGTH_ERROR);
             return true;
         }
 
         if(input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)){
-            System.out.println("중복되지않는 서로다른 세자리숫자를 입력하세요!!");
+            System.out.println(ErrorCodes.INPUT_DUPLICATE_ERROR);
             return true;
         }
 
@@ -109,7 +109,7 @@ public class Manager {
         try{
             Integer.parseInt(endOption);
         }catch (NumberFormatException e){
-            System.out.println("숫자만 입력해주세요.");
+            System.out.println(ErrorCodes.INPUT_FORMAT_ERROR);
             return true;
         }
 
@@ -122,12 +122,12 @@ public class Manager {
                 startGame();
                 return false;
             }else{
-                System.out.println("숫자는 1 또는 2만 입력해주세요");
+                System.out.println(ErrorCodes.INPUT_OTHER_NUM_ERROR);
                 return true;
             }
 
         }else{
-            System.out.println("숫자는 1과 2중에 하나만 입력해주세요");
+            System.out.println(ErrorCodes.INPUT_OTHER_NUM_ERROR);
             return true;
         }
     }
