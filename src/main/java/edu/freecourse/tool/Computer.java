@@ -16,7 +16,6 @@ public class Computer {
         int temp = 0;
 
         for (int i = 0; i < numbers.length; i++) {
-
             while (flag) {
                 temp = random.nextInt(BOUND) + 1;       /* 1 ~ 9 */
                 flag = checkNumber(temp, i);         /* 중복이면 true */
@@ -30,14 +29,15 @@ public class Computer {
 
     /**
      * 유저가 입력한 숫자를 입력해서 결과를 반환
-     * @param userNum 유저가 입력한 숫자
+     * @param userNum 유저가 입력한 숫자, 3자리수만 들어와야함
      * @return result[0]: 스트라이크 수, result[1]: 볼 수
      */
-    public int[] solution (int userNum) {
+    public int[] answerResult (int userNum){
         int[] result = new int[2];
-        String num = String.valueOf(userNum);
         int strike = 0;
         int ball = 0;
+        String num = String.valueOf(userNum);
+
 
         /* 유저가 입력한 숫자 하나씩 판별하기 */
         for (int i = 0; i < num.length(); i++) {
