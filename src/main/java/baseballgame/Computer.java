@@ -14,7 +14,7 @@ import java.util.Random;
  * @version         0.1 2019년 3월 25일
  * @author          반선호
  */
-public class Computer {
+class Computer {
 
     /** 난수 생성 시 범위를 지정해주기 위한 상수 - (0~8)의 범위로 설정 */
     private static final int MAX_NUM = 9;
@@ -31,7 +31,7 @@ public class Computer {
     /**
      * Computer 생성자이며 서로 다른 수로 이루어진 3자리의 수를 만들어 낸다.
      */
-    public Computer(){
+    Computer(){
         Random random;
         int temp;
 

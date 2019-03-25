@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @version         0.1 2019년 3월 25일
  * @author          반선호
  */
-public class User {
+class User {
 
     /** 사용자가 입력한 각 자리의 수가 1이상인지 확인을 위한 상수*/
     private static final char START_WORD = '1';
@@ -32,7 +32,7 @@ public class User {
     /**
      * 사용자에게 입력을 요청하는 메소드이다.
      */
-    public void requestNumber(){
+    void requestNumber(){
         Scanner sc = new Scanner(System.in);
 
         while(true){

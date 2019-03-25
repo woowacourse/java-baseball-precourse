@@ -13,7 +13,6 @@ import baseballgame.BaseballGame;
  * @version         0.1 2019년 3월 25일
  * @author          반선호
  */
-
 public class Main {
     public static void main(String[] args){
         BaseballGame game = new BaseballGame();
