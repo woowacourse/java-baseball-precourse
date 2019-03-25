@@ -32,6 +32,16 @@ public class Baseball {
             return false;
         }
 
+        for(int i=1; i<numArr.length; i++){
+            if(numArr[i].equals(numArr[0])){
+                return false;
+            }
+        }
+
+        if(numArr[1].equals(numArr[2])){
+            return false;
+        }
+
         return true;
     }
 
