@@ -58,7 +58,7 @@ class Game {
             scanner.next();
            test = false;
         }
-        if (digits < 0 || digits >= 1000) {
+        if (digits < 123 || digits >= 1000) {
             test = false;
         } else {
             myNumbers[0] = digits / 100;
@@ -75,7 +75,27 @@ class Game {
         }
     }
 
-
+    private void play() { // 게임 진행
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < 9; i++) {
+            if (myNumbers[i / 3] == yourNumbers[i % 3]) {
+                int temp = (i / 3) == (i % 3) ? strike++ : ball++;
+            }
+        }
+        if (strike + ball == 0) {
+            System.out.println("낫싱");
+        } else {
+            String strikeString = strike > 0 ? strike + " 스트라이크" : "";
+            String space = strike > 0 && ball > 0 ? " " : "";
+            String ballString = ball > 0 ? ball + "볼" : "";
+            System.out.println(strikeString + space + ballString);
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                state = 3;
+            }
+        }
+    }
 
     private void choice() { // 게임 종료 후 재시작 혹은 완전 종료 선택
     }
