@@ -33,4 +33,29 @@ public class Computer {
 		}
 		return cnt;
 	}
+	
+	/*볼 개수 반환*/
+	public int check_b(int input){
+		int cnt=0;
+		int temp = this.answer;
+		
+		// in, ans 배열에 input과 answer의 자릿수 저장
+		int in [] = new int[3];
+		int ans [] = new int[3];
+		for(int i=0; i<3; ++i){
+			in[i] = input % 10;
+			ans[i] = temp % 10;
+			input /= 10;
+			temp /= 10;
+		}
+		//같은 수가 존재하면서 자릿수가 다르면 cnt 1개 추가
+		if(in[0]==ans[1] || in[0]==ans[2])
+			cnt++;
+		if(in[1]==ans[0] || in[1]==ans[2])
+			cnt++;
+		if(in[2]==ans[0] || in[2]==ans[1])
+			cnt++;
+		
+		return cnt;
+	}
 }
