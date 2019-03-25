@@ -1,5 +1,5 @@
 /*
- * @(#)BaseballGame.java       0.7 2019/03/25
+ * @(#)BaseballGame.java       0.8 2019/03/25
  */
 
 import java.util.*;
@@ -8,7 +8,7 @@ import java.util.*;
  * 숫자야구게임을 진행하는 클래스
  *
  * @author 이도원
- * @version 0.7 2019/03/25
+ * @version 0.8 2019/03/25
  */
 public class BaseballGame {
 
@@ -165,5 +165,18 @@ public class BaseballGame {
     /* 게임종료 메시지를 출력하는 메소드 */
     private void printSuccessGame() {
         System.out.println(DIGIT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    /* 플레이어로부터 게임을 재시작할지 입력받는 메소드 */
+    private int inputRestart() {
+        Scanner sc = new Scanner(System.in);
+        int answer;
+
+        do {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            answer = sc.nextInt();
+        } while (!(answer == 1 || answer == 2));
+
+        return answer;
     }
 }
