@@ -48,18 +48,28 @@ public class BaseballGame {
         return arr;
     }
 
+    // 정수 배열에서 사용하는 간단한 indexOf() 함수.
+    private static int intArrayIndexOf(int[] array, int target) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     // 두 개의 배열을 받아, 게임 결과 판정을 문자열로 반환한다.
     private static String judgement(int[] right, int[] answer) {
         int[] judge = new int[2];
+        int temp;
 
+        // 들여쓰기 깊이 제한을 충족하기 위한 코드 변경
         for (int i = 0; i < answer.length; i++) {
-            for (int j = 0; j < right.length; j++) {
-                if (answer[i] == right[j]) {
-                    if (i == j)
-                        judge[0]++;
-                    else
-                        judge[1]++;
-                }
+            temp = intArrayIndexOf(right, answer[i]);
+            if (temp == i) {
+                judge[0]++;
+            } else if (temp != -1) {
+                judge[1]++;
             }
         }
 
@@ -99,7 +109,8 @@ public class BaseballGame {
         int[] running = new int[]{1};
         while (running[0] == 1) {
             game();
-            running = getIntArray(1, "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            running = getIntArray(1,
+                    "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
         }
     }
 }
