@@ -19,4 +19,18 @@ public class Computer {
 		//answer = n1을 100의자리, n2를 10의자리, n3을 1의자리로 초기화
 		this.answer =  (n1 * 100) + (n2 * 10) + n3 ;
 	}
+	
+	/*스트라이크 개수 반환*/
+	public int check_s(int input){
+		int cnt=0;
+		int temp = this.answer;
+		 
+		for(int i=0; i<3; ++i){
+			if(temp % 10 == input % 10)	//자릿수와 숫자까지 같으면 cnt 1증가
+				cnt++;
+			temp /= 10;
+			input /= 10;
+		}
+		return cnt;
+	}
 }
