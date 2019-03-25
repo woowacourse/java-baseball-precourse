@@ -1,101 +1,29 @@
+/*
+ * 클래스 이름: Baseball
+ *
+ * 날짜: 2019.03.22~2019.03.28
+ */
+
 import java.util.Arrays;
-import java.util.Random;
 import java.util.Scanner;
 
-class Game {
-    private char[] answer;
-    private int[] bs; // {ball, strike}
-
-    public Game() {
-        answer = generateAnswer();
-    }
-
-    private char[] generateAnswer() {
-        Random random = new Random();
-        char[] str = new char[3];
-        int[] randomCheck = new int[9];
-
-        int i = 0;
-        while (i < str.length) {
-            int num = random.nextInt(9) + 1;
-
-            if (randomCheck[num - 1] != 1) {
-                str[i] = (char) (num + '0');
-                randomCheck[num - 1]++;
-                i++;
-            }
-        }
-
-        return str;
-    }
-
-    public void compareAnswer(String[] question) {
-        bs = new int[2]; 
-        String str = String.valueOf(answer);
-        int i = 0;
-
-        for (String e : question) {
-            if (!str.contains(e)) {
-                continue;
-            }
-
-            if (answer[i++] == e.charAt(0)) {
-                bs[1]++; // strike 증가
-            } else {
-                bs[0]++; // ball 증가
-            }
-        }
-    }
-
-    public boolean checkAnswer() {
-        if (bs[1] == 3) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public void print() {
-        String response = "";
-
-        if (bs[1] != 0) {
-            response += bs[1] + " 스트라이크 ";
-        }
-        if (bs[0] != 0) {
-            response += bs[0] + " 볼";
-        }
-
-        if (response.equals("")) {
-            response += "낫싱";
-        }
-
-        System.out.println(response);
-    }
-
-    public boolean exitGame(int temp) {
-        if (temp == 1) {
-            answer = generateAnswer();
-            return false;
-        } else {
-            return true;
-        }
-    }
-}
-
 public class Baseball {
-
+    /*
+     * 입력 값이 유효한지 검사하는 매서드
+     * 유효성 검사
+     *  (1) 입력 숫자가 3자리인지 확인
+     *  (2) 입력 숫자에 0이 있는지 확인
+     *  (3) 입력 값이 숫자만 있는지 확인
+     */
     public static boolean validInput(String[] numArr) {
-        // 입력값이 3자리인지
         if (!(numArr.length == 3)) {
             return false;
         }
 
-        // 입력값에 0이 포함이 되어 있는지
         if (Arrays.toString(numArr).contains("0")) {
             return false;
         }
 
-        // 입력값이 숫자로 입력했는지
         try {
             for (String num : numArr) {
                 Integer.parseInt(num);
