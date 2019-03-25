@@ -11,8 +11,8 @@ class Baseball {
 
 class Game {
     Scanner scanner = new Scanner(System.in);
-    int[] myNumbers = new int[3]; // 사용자 숫자
-    int[] yourNumbers = {1, 2, 3, 4, 5, 6, 7, 8, 9}; // 컴퓨터 숫자
+    int[] myNumbers = new int[3]; // 사용자 입력 숫자
+    int[] yourNumbers = {1, 2, 3, 4, 5, 6, 7, 8, 9}; // 컴퓨터 랜덤 숫자, 섞은 후 앞 3자리만 사용
     int state = 1; // 상태 변수, 0 : 종료, 1 : 초기화, 2 : 게임 한 판, 3 : 종료 혹은 재시작 선택
 
     Game() {
@@ -98,5 +98,26 @@ class Game {
     }
 
     private void choice() { // 게임 종료 후 재시작 혹은 완전 종료 선택
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int command = 0;
+        boolean test = true;
+        try {
+            command = scanner.nextInt();
+            if (command != 1 && command != 2) {
+                test = false;
+            }
+        } catch (InputMismatchException e) {
+            scanner.next();
+            test = false;
+        }
+        if (test) {
+            if (command == 1) {
+                state = 1;
+            } else {
+                state = 0;
+            }
+        } else {
+            System.out.println("잘못된 입력입니다.");
+        }
     }
 }
