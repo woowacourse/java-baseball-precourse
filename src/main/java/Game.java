@@ -41,13 +41,11 @@ public class Game {
 
     static boolean playGame(String createdNumber) {
         String inputNumber;
-        Oracle oracle = new Oracle();
         Result result;
-        CheckSomething check = new CheckSomething();
 
         while (true) {
             inputNumber = recieveNumber();
-            result = oracle.tells(createdNumber, inputNumber);
+            result = Oracle.tells(createdNumber, inputNumber);
             if (result.strike != 0) {
                 System.out.print(result.strike);
                 System.out.print(" 스트라이크 ");
@@ -64,7 +62,7 @@ public class Game {
         }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        return check.checkUserThought();
+        return CheckSomething.checkUserThought();
 
 
     }
