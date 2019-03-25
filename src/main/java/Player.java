@@ -54,7 +54,7 @@ public class Player {
     }
 
     /** 플레이어가 자신이 게임을 지속하기를 원하는지 아닌지를 알려주는 메소드입니다. */
-    public boolean wantToEnd() {
+    public static boolean wantToEnd() {
         Scanner rd = new Scanner(System.in);
         int userInput;
 
