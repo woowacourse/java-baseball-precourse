@@ -1,5 +1,5 @@
 /*
- * @(#)BaseballGame.java        0.4 2019/03/25
+ * @(#)BaseballGame.java        0.5 2019/03/26
  *
  *
  */
@@ -13,15 +13,15 @@ import java.util.Scanner;
  * 기능 목록 5 - 사용자의 3자리 수를 컴퓨터가 생성한 수와 비교 기능
  * 기능 목록 6 - 스트라이크, 볼, 낫싱(포볼) 판정 기능
  *
- * @version         0.4 2019년 3월 25일
+ * @version         0.5 2019년 3월 26일
  * @author          반선호
  */
 public class BaseballGame {
 
-    /** 게임 시작을 판단하기 위한 상수*/
+    /** 게임 시작을 판단하기 위한 문자열*/
     private static final String CONTINUE = "1";
 
-    /** 게임 중지를 판단하기 위한 상수*/
+    /** 게임 중지를 판단하기 위한 문자열*/
     private static final String STOP = "2";
 
     /** 사용자의 시도횟수를 초기화하기 위한 상수*/
