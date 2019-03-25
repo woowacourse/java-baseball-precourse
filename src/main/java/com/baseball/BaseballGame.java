@@ -3,6 +3,16 @@ package com.baseball;
 import java.util.Random;
 import java.util.Scanner;
 
+/*
+ * BaseballGame
+ *
+ * @version 1
+ *
+ * @date 2019-3-25
+ *
+ * @author younghyun
+ */
+
 public class BaseballGame {
 
     public void run() {
@@ -10,13 +20,7 @@ public class BaseballGame {
     }
 
     private boolean round() {
-        int[] randomMum = getRandomNumbers();
-
-        for(int a : randomMum) {
-            System.out.print(a);
-        }
-
-        System.out.println();
+        int[] randomNum = getRandomNumbers();
 
         while (true) {
             int[] myNum;
@@ -25,7 +29,7 @@ public class BaseballGame {
             System.out.print("숫자를 입력해주세요 : ");
             myNum = getMyNumbers();
 
-            checkResult(randomMum, myNum, result);
+            checkResult(randomNum, myNum, result);
 
             getResult(result);
 
