@@ -136,11 +136,9 @@ class Manager {
     }
 
     private int[] parseArr(int input) {
-
         int first = input / 100;
         int second = (input % 100) / 10;
         int third = input % 10;
-
         return new int[]{first, second, third};
     }
 
