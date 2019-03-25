@@ -105,18 +105,13 @@ public class Computer {
     private boolean checkNumber(int num, int index) {
         boolean result = false;
 
-        for(int i = 0; i < index; i++){
-            if(num == numbers[i]){
+        for (int i = 0; i < index; i++) {
+            if (num == numbers[i]) {
                 result = true;
             }
         }
 
         return result;
-    }
-
-    public int[] getNumbers() {
-
-        return numbers;
     }
 
 }

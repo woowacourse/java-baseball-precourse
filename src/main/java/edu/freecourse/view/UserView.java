@@ -5,17 +5,20 @@ import edu.freecourse.tool.Computer;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CUI {
+public class UserView {
 
     private  static Computer computer = new Computer();
     private  static Scanner sc = new Scanner(System.in);
 
     public static void main (String[] args) {
 
+        /*게임을 종료하면 벗어남*/
         while (true) {
             computer.newGame();
+
             boolean flag = true;
 
+            /* 사용자가 정답을 맞출 때 벗어남*/
             while (flag) {
                 flag = playGame();
             }
@@ -34,7 +37,7 @@ public class CUI {
     /**
      * 사용자의 입력을 받아서 게임의 시작유무를 판별하는 함수
      * 1 : 새로운 게임, 2 : 종료, 그외 잘못된 입력 다시 입력
-     * @return
+     * @return false : 종료, true : 새 게임
      */
     private static boolean isReGame () {
         boolean result = true;
@@ -48,10 +51,10 @@ public class CUI {
             if (userNum == 2) {
                 result = false;
                 break;
-            }else if (userNum == 1) {
+            } else if (userNum == 1) {
                 result = true;
                 break;
-            }else {
+            } else {
                 System.out.println("다시 입력해주세요.");
             }
 
@@ -64,7 +67,7 @@ public class CUI {
      * 사용자의 입력을 받아서 게임의 결과를 출력하는 함수
      * @return  false : 3스트라이크, 그 외 true
      */
-    private static boolean playGame (){
+    private static boolean playGame () {
         boolean flag = true;
 
         try {
@@ -96,7 +99,7 @@ public class CUI {
      */
     private static void showResult(int strike, int ball){
 
-        if (strike == 0 && ball == 0) {
+        if ((strike == 0) && (ball == 0)) {
             System.out.print("아웃");
         }
 
@@ -114,7 +117,7 @@ public class CUI {
      * 사용자가 숫자 이외의 문자를 입력했을 경우를 처리하는 함수
      * @return 0 : 숫자가 아닌입력, 그 외 사용자가 입력한 숫자
      */
-    private static int inputUserNum(){
+    private static int inputUserNum() {
         int result;
 
         try {
