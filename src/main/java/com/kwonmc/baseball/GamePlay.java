@@ -19,12 +19,19 @@ import java.util.Scanner;
  * @author KwonMC
  */
 public class GamePlay {
-    private int[] com = new int[3];         // 컴퓨터가 생성하는 숫자를 저장할 배열
-    private int[] user = new int[3];        // 유저가 입력하는 숫자를 저장할 배열
+    /** 컴퓨터가 생성하는 숫자를 저장할 배열 */
+    private int[] com = new int[3];
 
-    private boolean isFirstTime = true;     // 게임을 시작하는 처음을 알리는 boolean
-    private boolean continueGame = true;    // 게임을 계속할지 여부를 결정하는 boolean
+    /** 유저가 입력하는 숫자를 저장할 배열 */
+    private int[] user = new int[3];
 
+    /** 게임을 시작하는 처음을 알리는 boolean */
+    private boolean isFirstTime = true;
+
+    /** 게임을 계속할지 여부를 결정하는 boolean */
+    private boolean continueGame = true;
+
+    /** GameResult 인스턴스 변수 gameResult */
     private GameResult gameResult = new GameResult();
 
     /**
@@ -92,18 +99,18 @@ public class GamePlay {
 
     /**
      * 게임을 초기화 하는 메서드
+     * 게임 한판 하는 동안 컴퓨터가 정한 숫자가 바뀌면 안되므로 isFirstTime 의 값을 확인
      */
     public void init() {
         if (this.isFirstTime) {
+            // 게임을 진행하는 동안 처음에만 init
             ArrayList<Integer> tmpArr = makeRandomArrayList();
             this.com = arrayListToArray(tmpArr);
             this.isFirstTime = false;
         }
     }
 
-    /**
-     * 숫자를 입력해주세요 메시지를 출력하는 메서드
-     */
+    /** "숫자를 입력해주세요" 메시지를 출력하는 메서드 */
     public void requestInputMessage() {
         System.out.print("숫자를 입력해주세요: ");
     }
@@ -119,9 +126,7 @@ public class GamePlay {
         }
     }
 
-    /**
-     * countStrike 메서드와 countBall 메서드를 실행하는 메서드
-     */
+    /** countStrike 메서드와 countBall 메서드를 실행하는 메서드 */
     public void countResult() {
         countStrike();
         countBall();
