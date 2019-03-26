@@ -10,6 +10,8 @@
  * @author                김효건
  */
 public class Number {
+    /*세자리 숫자 세팅, 반환 구현*/
+
     /*세개의 숫자 중 첫번째 숫자를 나타내는 변수*/
     private int first;
 
@@ -27,7 +29,14 @@ public class Number {
     }
 
     /*세자리 숫자의 값들 가진 객체를 return 함*/
-    public Number returnNumber(){
+    public Number getNumber(){
         return this;
+    }
+
+    /*세자리 숫자의 값을 지정함*/
+    public void setNumber(int first,int second, int third){
+        this.first = first;
+        this.second = second;
+        this.third = third;
     }
 }
