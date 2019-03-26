@@ -113,10 +113,19 @@ public class BaseballGame implements Baseball {
         return duplicate;
     }
 
+    /**
+     * 인자로 받은 String값을 int[]로 변환하는 메서드
+     *
+     * @param Scanner로 입력 받은 String
+     * @return String을 int[]로 변환한 값
+     */
     @Override
     public int[] convertStringToIntArray(String inputNumber) {
-        // TODO Auto-generated method stub
-        return null;
+        for (int i = 0; i < inputNumber.length(); i++) {
+            userNumbers[i] = (int)inputNumber.charAt(i)-48;
+        }
+        
+        return userNumbers;
     }
 
     @Override
