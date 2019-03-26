@@ -51,4 +51,15 @@ public class Game {
 		/* 답변자에게 점수를 준다. */
 		answerer.setScore(score);
 	}
+
+	/**
+	 * 답변자의 답을 기준으로 같은 숫자가 같은 자리에 있으면 스트라이크(Strike) 이다.
+	 * @param problem 문제자의 정답 숫자 배열
+	 * @param answer 답변자의 정답 숫자 배열
+	 * @param index 답변자의 정답 숫자 배열의 위치
+	 * @return 스트라이크 유무
+	 * */
+	private boolean checkStrike(int[] problem, int[] answer, int index) {
+		return ( ( problem[index] == answer[index] ) ? true : false );
+	}
 }
