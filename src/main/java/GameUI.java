@@ -21,4 +21,16 @@ public class GameUI {
 
 		run(questioner, answerer);
 	}
+
+	/**
+	 * 사용자에게 정답을 요구하고, 정답를 반환한다.
+	 * @param sc 입력을 위한 Scanner 객체
+	 * @return 사용자가 입력한 3자리수
+	 * */
+	private static String askNumber(Scanner sc) {
+
+		System.out.print("숫자를 입력해주세요: ");
+		String str_number = sc.nextLine();
+		return str_number;
+	}
 }
