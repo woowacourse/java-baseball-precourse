@@ -20,9 +20,10 @@ public class Game {
 
 	/**
 	 * questioner(질문자), answerer(답변자) 객체를 입력받아 초기화 한다.
+	 *
 	 * @param questioner 질문자
-	 * @param answerer 답변자
-	 * */
+	 * @param answerer   답변자
+	 */
 	public Game(Questioner questioner, Answerer answerer) {
 
 		this.questioner = questioner;
