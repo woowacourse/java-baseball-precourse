@@ -28,6 +28,20 @@ public class GamaManager {
         System.out.println("-------------------------------");
         System.out.println("Start : 1              Exit : 0");
     }
+
+    /**
+     * 게임 시작 / 종료 메시지를 출력해주는 메소드
+     */
+    private static void startMessage(boolean input) {
+        if(input) {
+            System.out.println("게임을 시작합니다!");
+        } else {
+            System.out.println("게임을 종료합니다.");
+            System.exit(0);
+        }
+
+    }
+
 }
 
 

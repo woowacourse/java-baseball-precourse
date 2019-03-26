@@ -22,6 +22,7 @@ public class Computer {
      * 게임이 시작되어 클래스가 생성되면 자동으로 난수를 생성하도록 하는 생성자
      */
     public Computer() {
+
         setRndNumber();
     }
 
@@ -41,6 +42,7 @@ public class Computer {
      * @return 정답 일시 : true / 정답이 아닐시 : false
      */
     public boolean correctCheck(int[] userNumber) {
+
         return number.equals(userNumber);
     }
 
