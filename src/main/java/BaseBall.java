@@ -54,6 +54,11 @@ public class BaseBall{
                 System.out.println("게임을새로시작하려면 1, 종료하려면2를입력하세요.");
                 finishFlag = scanner.nextInt();
             }
+            if(finishFlag == 1){
+                init();
+            } else if (finishFlag == 2){
+                isGamePlay = false;
+            }
         }
     }
     public int checkStrike(int[] userNumbers, int[]compNumbers){
