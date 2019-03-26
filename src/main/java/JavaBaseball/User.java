@@ -1,5 +1,5 @@
 /**
- * User.class        0.5 2019/03/26
+ * User.class        1.0 2019/03/26
  *
  * <Copyright 2019. LeeNamJun. All rights reserved.>
  */
@@ -11,8 +11,8 @@ import java.util.Scanner;
 /**
  * 게임의 유저역할을 하는 클래스
  *
- * @version         0.5 2019/03/26
- * @author          이남준
+ * @author 이남준
+ * @version 1.0 2019/03/26
  */
 public class User {
 
