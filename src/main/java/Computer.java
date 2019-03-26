@@ -95,4 +95,22 @@ public class Computer {
 		}
 		return strikeCnt;
 	}
+	
+	/**
+	 * 컴퓨터 숫자와 사용자 숫자 비교해 얻은 변수 hint(스트라이크 횟수)를 통해서 사용자로부터 숫자를
+	 * 계속 받는지 다음 단계로 진행되는지를 판단하는 메소드입니다.
+	 * @param hint - giveHint() 메소드에서 strikeCnt를 리턴 받아 판단의 근거인 hint 변수에
+	 * 		         저장하여 isCorrectAnswer() 메소드에서 파라미터로 참조
+	 * @param correct - 사용자로부터 숫자를 계속 입력 받을지를 결정하는 boolean 타입 파라미터
+	 * @return correct - 사용자로부터 숫자를 계속 입력 받을지를 결정하는 boolean 타입 파라미터
+	 */
+	public boolean isCorrectAnswer(int hint, boolean correct) {
+		if (hint == 3) {
+			correct = true;
+		} else {
+			correct = false;
+		}
+		
+		return correct;
+	}
 }
