@@ -4,6 +4,8 @@
  * Released under the MIT license
  */
 
+import java.util.Scanner;
+
 /**
  * GameUI 클래스는 사용자와 게임을 진행을 위한 사용자인터페이스다.
  *
@@ -57,5 +59,28 @@ public class GameUI {
 			}
 			System.out.println();
 		}
+	}
+
+	/**
+	 * 사용자에게 재시작 여부를 묻는다.
+	 * @param sc 입력을 위한 Scanner 객체
+	 * @return 사용자의 재시작 여부
+	 * */
+	private static boolean askRestart(Scanner sc) {
+
+		boolean isRestart = false;
+		String flagNum; // 사용자가 입력한 숫자
+
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		flagNum = sc.nextLine();
+
+		if (flagNum.equals("1")) {
+			isRestart = true;
+		} else if (flagNum.equals("2")) {
+			isRestart = false;
+		}
+
+		return isRestart;
 	}
 }
