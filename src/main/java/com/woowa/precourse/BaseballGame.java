@@ -91,11 +91,26 @@ public class BaseballGame implements Baseball {
         // TODO Auto-generated method stub
         return false;
     }
-
+    
+    /**
+     * 매개변수로 주어진 index에 위치한 값이 배열 내에서 중복값인지 확인하는 메소드
+     *
+     * @param  int[]   검사의 대상이 되는 int[]배열
+     * @param  int     배열에서 검사의 기준이 되는 값의 index
+     * @return boolean 중복값이 없을 경우 false, 중복값이 있을 경우 true 
+     */
     @Override
     public boolean checkDuplicate(int[] intArray, int index) {
-        // TODO Auto-generated method stub
-        return false;
+        boolean duplicate = false; 
+        
+        for (int i = 0; i < index; i++) {
+            if (intArray[i] == intArray[index]) {
+                duplicate = true;
+                return duplicate;
+            }
+        }  // end for
+        
+        return duplicate;
     }
 
     @Override
