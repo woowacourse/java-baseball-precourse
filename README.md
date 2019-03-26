@@ -5,16 +5,16 @@
   |:-------|:-------|:-------|:-------:|
   |*Menu*|**printMenu()**|메뉴 화면 출력 (1.게임 시작, 2.게임 종료)|O|
   |*Menu*|**selectMenu()**|메뉴 입력 (1.게임 시작, 2.게임 종료)|O|
-  |*Game*|**startGame()**|게임 시작|ing|
+  |*Game*|**startGame()**|게임 시작|O|
   |*Game*|**exitGame()**|게임 종료|O|
   |*Game*|**printGame()**|게임 화면 출력|O|
   |*Game*|**makeRandomNumber()**|랜덤 3자리 숫자 생성|O|
   |*Game*|**inputNumber()**|세자리 숫자 입력|O|
   |*Game*|**checkNumber()**|숫자 검사|O|
-  |*Game*|**printCorrect()**|정답 출력 화면|X|
+  |*Game*|**printCorrect()**|정답 출력 화면|O|
   |*Game*|**printResult()**|결과 출력 화면 strike/ball/nothing|X|
-  |*Game*|**countStrike()**|스타이크 수 셈|X|
-  |*Game*|**countBall()**|볼 수 |X|
+  |*Game*|**countStrike()**|스타이크 수 셈|O|
+  |*Game*|**countBall()**|볼 수 |O|
   |*Number*|**getFirst()**|첫번째 숫자 읽어옴|O|
   |*Number*|**getSecond()**|두번째 숫자 읽어옴|O|
   |*Number*|**getThird()**|세번째 숫자 읽어옴|O|
