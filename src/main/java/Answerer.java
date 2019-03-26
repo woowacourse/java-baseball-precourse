@@ -58,4 +58,12 @@ public class Answerer {
 	public void setScore(Score score) {
 		this.score = score;
 	}
+
+	/**
+	 * 받은 점수 객체를 반환한다.
+	 * @return 받은 점수객체
+	 * */
+	public Score getScore() {
+		return this.score;
+	}
 }
