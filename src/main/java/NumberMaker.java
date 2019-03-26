@@ -21,7 +21,7 @@ public class NumberMaker {
 		String randomNumber;
 
 		do {
-			int number = randomMaker.nextInt(9) + 1;        // 1 ~ 9 생성
+			int number = randomMaker.nextInt(9) + 1;
 			String tempStr = Integer.toString(number);
 
 			linkedSet.add(tempStr);
@@ -42,7 +42,6 @@ public class NumberMaker {
 		for (int i = 0; i < strArr.length; i++) {
 			str.append(strArr[i]);
 		}
-
 		return str.toString();
 	}
 }

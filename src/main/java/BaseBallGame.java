@@ -22,13 +22,9 @@ public class BaseBallGame {
 	}
 
 	/**
-	 * BaseBallGame 객체의 randomNumber값 변경
-	 * @param randomNumber
+	 * 입력 문자열과 정답을 비교해 strike, ball 설정
+	 * @param inputString
 	 */
-	public void setRandomNumber(String randomNumber) {
-		this.randomNumber = randomNumber;
-	}
-
 	private void answerCheck(String inputString) {
 		for (int i = 0; i < inputString.length(); i++) {
 			char curChar = inputString.charAt(i);
@@ -41,6 +37,10 @@ public class BaseBallGame {
 		}
 	}
 
+	/**
+	 * strike, ball값에 따라 결과 값 출력
+	 * @param inputString
+	 */
 	public void printResult(String inputString) {
 
 		answerCheck(inputString);
@@ -61,9 +61,12 @@ public class BaseBallGame {
 		System.out.println(res);
 	}
 
+	/**
+	 * strike 수가 3이면 true 반환
+	 * @return
+	 */
 	public boolean isCorrect() {
 		if (strike == 3) {
-			//System.out.println("난수: " + randomNumber);
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료!");
 			return true;
 		} else {

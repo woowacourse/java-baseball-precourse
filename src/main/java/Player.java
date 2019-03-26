@@ -17,11 +17,9 @@ public class Player {
 	public static void main(String args[]) {
 		Player player = new Player();
 
-		/* 일단 1번만 실행 */
 		do {
 			player.play();
-		} while (false);
-
+		} while (player.askRestart());
 	}
 
 	/**
@@ -29,13 +27,33 @@ public class Player {
 	 */
 	private void play() {
 		String randomNumber = NumberMaker.makeRandomNumber();
-		String userInput = null;
 		BaseBallGame game = new BaseBallGame(randomNumber);
+		String userInput = null;
 
 		do {
 			userInput = getGameNumberInput();
 			game.printResult(userInput);
 		} while (!game.isCorrect());
+	}
+
+	/**
+	 * 게임을 다시 시작할 것인지 묻는 함수
+	 * @return
+	 */
+	private boolean askRestart() {
+		String input = null;
+
+		while (true) {
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			input = getInput();
+			if (input.equals("1")) {
+				return true;
+			} else if (input.equals("2")) {
+				return false;
+			} else {
+				System.out.println("1 또는 2를 입력하세요");
+			}
+		}
 	}
 
 	/**
@@ -47,7 +65,6 @@ public class Player {
 		Scanner scanner = new Scanner(System.in);
 
 		input = scanner.nextLine();
-
 		return input;
 	}
 
@@ -66,7 +83,6 @@ public class Player {
 			}
 			System.out.println("3자리 숫자를 입력해주세요 (0 제외)");
 		}
-
 		return gameInput;
 	}
 }

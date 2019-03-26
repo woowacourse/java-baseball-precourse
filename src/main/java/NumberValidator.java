@@ -7,6 +7,7 @@
  * 입력한 문자열에 예외사항이 있는지 검사하는 클래스
  */
 public class NumberValidator {
+
 	/**
 	 * 입력받은 문자열이 3자리 길이의 숫자인지 확인
 	 * @param inputString
@@ -52,5 +53,4 @@ public class NumberValidator {
 			return false;
 		}
 	}
-
 }
