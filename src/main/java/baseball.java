@@ -108,6 +108,7 @@ public class baseball {
             game_Restart_Select();
 
         } else if ((strike | ball) > 0){
+            game_Score_Print();
             score_Reset();
 
         } else if ((strike & ball) == 0) {
@@ -116,6 +117,11 @@ public class baseball {
         } else {
             score_Reset();
         }
+    }
+
+    /* 게임 스코어 출력 메소드 */
+    private static void game_Score_Print(){
+        System.out.println(strike+" 스트라이크 "+ ball+" 볼");
     }
 
     /* 게임 재시작 메소드 */
@@ -170,7 +176,7 @@ public class baseball {
 
 
     public static void main(String[] args){
-
+        start();
     }
 }
 
