@@ -74,4 +74,25 @@ public class Computer {
 		}
 		ballCnt -= strikeCnt;
 	}
+	
+	/**
+	 * 변수 strikeCnt와 ballCnt를 바탕으로 개수를 콘솔창에 출력합니다.
+	 * @return strikeCnt - 변수 strikeCnt를 리턴하여 이후에 실행되는 isCorrectAnswer() 메소드 논리의
+	 * 					   근거를 마련
+	 */
+	public int giveHint() {
+		if (strikeCnt == 0 && ballCnt == 0) {
+			System.out.println("낫싱");
+		} else if (ballCnt == 0) {
+			System.out.println(strikeCnt + " 스트라이크");
+			if (strikeCnt == 3) {
+				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			}
+		} else if (strikeCnt == 0) {
+			System.out.println(ballCnt + "볼");
+		} else {
+			System.out.println(strikeCnt + " 스트라이크 " + ballCnt + "볼");
+		}
+		return strikeCnt;
+	}
 }
