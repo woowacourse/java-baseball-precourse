@@ -57,4 +57,32 @@ public class User {
 			}
 		}
 	}
+	
+	/**
+	 * 사용자로부터 숫자(1 혹은 2)를 입력 받아서 1일 경우는 게임을 다시 시작, 2일 경우는 게임을 종료하는
+	 * 메소드입니다. while문을 통해서 숫자를 입력 받은 후 if문에는 1 혹은 2만 통과할 수 있도록 논리를 설계하여
+	 * 사용자에게는 1과 2가 아닌 입력을 하면 다시 입력하라는 메세지가 나타나게 됩니다.
+	 * @param restart - 사용자의 입력하는 숫자에 따라서 true 혹은 false를 저장하는 boolean 타입
+	 * @return restart - 사용자의 입력하는 숫자에 따라서 true 혹은 false를 저장하는 boolean 타입 
+	 */
+	public boolean isRestart(boolean restart) {
+		
+		while (true) {
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			while (!sc.hasNextInt()) {
+				System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+				sc.next();
+			}
+			
+			userInput = sc.nextInt();
+			
+			boolean isOneOrTwo = userInput == 1 || userInput ==2;
+		
+			if (isOneOrTwo && userInput == 1) {
+				return restart = true;
+			} else if (isOneOrTwo && userInput == 2) {
+				return restart = false;
+			}
+		}	
+	}
 }
