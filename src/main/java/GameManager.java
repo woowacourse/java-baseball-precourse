@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -84,7 +83,8 @@ public class GameManager {
         }
         if(ball>0) {
             System.out.print(ball+" 볼");
-        }else {
+        }
+        if(strike==0 && ball==0){
             System.out.print("낫싱!");
         }
         System.out.println();
@@ -95,7 +95,7 @@ public class GameManager {
 
     private void endGame() throws Exception {
         boolean end = false;
-        while(!end){
+        while(!end) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String command = bufferdreader.readLine();
             end = checkEndCommand(command);
