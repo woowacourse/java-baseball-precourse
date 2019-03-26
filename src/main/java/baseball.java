@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * @version 1.00 2019년 3월 28일까지
@@ -58,9 +59,30 @@ public class baseball {
         System.out.println("숫자를 입력해주세요 : ");
         user_Number =  sc.nextLine();
 
+        /* 사용자 입력 검사 */
+        check_User_Number();
         user_Array = user_Number.split("");
 
     }
+
+    /**
+     *  사용자 입력 검사 메소드
+     *  문자열 숫자 3개 맞는지 검사
+     *  불일치시 초기화 메소드 이동
+     *  */
+    private static void check_User_Number(){
+        String regExp ="\\d{3}";
+        boolean result = Pattern.matches(regExp,user_Number);
+
+        if (!result) {
+            System.out.println("다시 입력하세요");
+            user_Number_Reset();
+            score_Reset();
+            getUser_Input_Number();
+        }
+    }
+
+
 
     /* 스트라이크 체크 메소드 */
     private static void check_Staike(){
