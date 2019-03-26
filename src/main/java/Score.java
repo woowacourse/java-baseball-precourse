@@ -25,4 +25,12 @@ public class Score {
 		this.strike = 0;
 		this.ball = 0;
 	}
+
+	/**
+	 * 스트라이크의 개수를 반환한다.
+	 * @return 스트라이크 개수
+	 * */
+	public int getStrike() {
+		return this.strike;
+	}
 }
