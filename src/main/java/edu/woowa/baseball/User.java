@@ -1,5 +1,5 @@
 /*
- * @User.java		1.00 2019/03/26
+ * @User.java		1.01 2019/03/26
  * 
  * Copyright(c)2019 	HwiJin Hong.
  * All right reserved.
@@ -7,7 +7,7 @@
  * 숫자 야구 게임 프로그램
  * 1~9까지 서로 다른 수로 이루어진 3자리 수를 맞추는 게임입니다.
  * 같은 수가 같은 자리에 있다면 스트라이크, 다른 자리에 있으면 볼, 해당하는 숫자가 전혀 없으면 "포볼"을 출력합니다.
- * 사용자는 컴퓨터 클래스에 접근할 수 있는 객체와 Scanner객체를 내장하고 있ㅅ브니다.
+ * 사용자는 컴퓨터 클래스에 접근할 수 있는 객체와 Scanner객체를 내장하고 있습니다.
  * Scanner 객체를 통해 입력값을 입력 받으면, 입력값에 따라 조건 분기가 나뉘어지게 됩니다.
  * 값이 정상적일 경우 원래 흐름대로 로직이 수행되며, 값이 비정상적일 경우 재입력받게 됩니다.
  * 서로 다른 3자리 숫자를 입력받으면 컴퓨터가 가지고 있는 숫자와 비교 연산한 결과를 토대로
@@ -21,7 +21,7 @@ import java.util.Scanner;
 
 /**
  * 숫자 야구 게임의 사용자 역할을 하는 사용자 클래스
- * @version 1.00 2019년 03월 26일
+ * @version 1.01 2019년 03월 26일
  * @author 홍휘진
  */
 public class User {
@@ -53,7 +53,7 @@ public class User {
 			process = scanInput();
 			switch (process) {
 			case "1":
-				matchNumber();
+				baseBallGame();
 				break;
 			case "2":
 				System.out.println("게임이 정상적으로 종료되었습니다!");
@@ -66,7 +66,7 @@ public class User {
 			}
 		}
 	}
-
+	
 	/**
 	 * 클래스 변수 객체를 생성시켜주는 메서드
 	 */
@@ -74,14 +74,16 @@ public class User {
 		sc = new Scanner(System.in);
 		cp = new Computer();
 	}
-
+	
 	/**
-	 * 입력값을 받아서 리턴하는 메서드
+	 * 입력값을 받아서 String 클래스로 리턴하는 메서드
+	 * 
+	 * @return 입력받은 값을 리턴
 	 */
 	private String scanInput() {
 		return sc.nextLine();
 	}
-
+	
 	/**
 	 * 숫자 야구 게임을 진행하는 메서드
 	 * 먼저 컴퓨터에게 3가지 다른 숫자를 생성하라고 명령한다.
@@ -111,7 +113,7 @@ public class User {
 			}
 		}
 	}
-
+	
 	/**
 	 * 사용자로부터 입력받은 값이 잘못된 값이면 true를 리턴, 올바르면 false를 리턴한다.
 	 * 올바른 값 = 서로 다른 3자리 숫자
@@ -137,7 +139,7 @@ public class User {
 		
 		return false;
 	}
-
+	
 	/**
 	 * 컴퓨터로부터 받은 결과값을 분석하여, 결과를 출력하는 메서드
 	 * 게임이 끝나면 true, 아니면 false를 리턴한다.
