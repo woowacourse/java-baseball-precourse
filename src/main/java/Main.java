@@ -6,6 +6,25 @@ import java.util.Scanner;
 public class Main {
 
     /**
+     * 야구게임 1판 실행한다
+     */
+    public static void startGame(){
+        String computerAnswer = createComputerAnswer(); // 컴퓨터의 정답
+
+        while (true){
+            String inputStr = getUserPredict();                             // 사용자의 예측 정답
+            int strikeCount = getStrikeCount(computerAnswer, inputStr);     // Strike 개수
+            int ballCount = getBallCount(computerAnswer, inputStr);         // Ball 개수
+
+
+            printStatements(strikeCount, ballCount);                        // strike, ball 에따른 응답 출력
+            if(strikeCount == 3){                                           // strike가 3일경우, 게임 종료
+                break;
+            }
+        }
+    }
+
+    /**
      * 컴퓨터의 3자릿수 넘버를 랜덤으로 생성해 반환
      *
      * @return String 3자릿수 랜덤넘버 스트링
@@ -19,7 +38,7 @@ public class Main {
             leftNumList.add(i);
         }
 
-        // leftNumList에서 숫자를 랜덤으로 1개씩빼면서 랜덤숫자 생성
+        // leftNumList에서 숫자를 랜덤으로 1개씩 빼면서 랜덤숫자 생성
         for (int i = 0; i < 3; i++) {
             Random random = new Random();
             int nextIndex = random.nextInt(leftNumList.size());       //
@@ -35,13 +54,13 @@ public class Main {
     }
 
     /**
-     * 입력받은 String이 유저의 predict String조건을 모두 만족하는지 체크
+     * 유저로부터 입력받은 3자릿수 String이 조건을 모두 만족하는지 체크
      * 조건1: 각자릿수는 1~9 사이 일 것
      * 조건2: 입력 String이 3자릿수 일 것
      * 조건3: 중복되는 숫자가없을 것
      *
      * @param inputStr      체크할 String
-     * @return boolean      모든조건을 만족하는지 여부 반환
+     * @return boolean      모든조건을 만족하는지 여부
      */
     public static boolean checkUserInput(String inputStr){
 
@@ -215,6 +234,6 @@ public class Main {
     }
 
     public static void main(String[] args){
-        System.out.print("hi");
+
     }
 }
