@@ -1,11 +1,11 @@
 /**
- * ÀÌ Å¬·¹½º´Â  baseball game ½ÇÇàÀ» À§ÇÑ Å¬·¡½º ÀÌ´Ù.
- * playingGame class¸¦ »ı¼ºÇØ  start ¸Å¼­µå¸¦ ½ÇÇàÇÏ¸é °ÔÀÓÀÌ ½ÃÀÛµÈ´Ù.
+ * ì´ í´ë ˆìŠ¤ëŠ”  baseball game ì‹¤í–‰ì„ ìœ„í•œ í´ë˜ìŠ¤ ì´ë‹¤.
+ * playingGame classë¥¼ ìƒì„±í•´  start ë§¤ì„œë“œë¥¼ ì‹¤í–‰í•˜ë©´ ê²Œì„ì´ ì‹œì‘ëœë‹¤.
  * 
- *className Main
+ *className     Main
  *version 	1.0.0
  *Date		26/03/2019
- *author	±Ç°æµ¿  
+ *author	ê¶Œê²½ë™  
  */
 
 public class Main {
