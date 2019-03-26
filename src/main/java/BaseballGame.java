@@ -156,6 +156,23 @@ public class BaseballGame
         return false;
     }
 
+    public static int checkStrikes(String strComputerNumber, String strUserNumber)
+    {
+        int count = 0;
+        String combined = strComputerNumber + strUserNumber;
+        for(int i = 0, n = combined.length(); i<n-3; i++)
+        {
+            if(combined.charAt(i) == combined.charAt(i+3))
+            {
+                count++;
+            }
+
+        }
+        return count;
+    }
+
+
+
 
 
 
