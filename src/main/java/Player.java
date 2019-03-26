@@ -31,11 +31,11 @@ public class Player {
 		String randomNumber = NumberMaker.makeRandomNumber();
 		String userInput = null;
 
-		System.out.print("숫자를 입력해주세요: ");
-		userInput = getInput();
+		do {
+			System.out.print("숫자를 입력해주세요: ");
+			userInput = getInput();
+		} while (!NumberValidator.isValidNumbers(userInput));
 
-		System.out.println(randomNumber);
-		System.out.println(userInput);
 	}
 
 	/**
@@ -47,7 +47,6 @@ public class Player {
 		Scanner scanner = new Scanner(System.in);
 
 		input = scanner.nextLine();
-		scanner.close();
 
 		return input;
 	}
