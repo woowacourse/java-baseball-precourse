@@ -1,5 +1,5 @@
 /*
- * @User.java		1.01 2019/03/26
+ * @User.java		1.02 2019/03/27
  * 
  * Copyright(c)2019 	HwiJin Hong.
  * All right reserved.
@@ -21,7 +21,7 @@ import java.util.Scanner;
 
 /**
  * 숫자 야구 게임의 사용자 역할을 하는 사용자 클래스
- * @version 1.01 2019년 03월 26일
+ * @version 1.02 2019년 03월 27일
  * @author 홍휘진
  */
 public class User {
@@ -34,7 +34,7 @@ public class User {
 	/**
 	 * 컴퓨터 클래스에 접근하기 위한 객체
 	 */
-	private Computer cp;
+	private Computer computer;
 	
 	/**
 	 * 생성자를 따로 두지 않는 클래스이므로, 메인 로직 시작시 객체를 생성시키고 시작한다.
@@ -72,7 +72,7 @@ public class User {
 	 */
 	private void init() {
 		sc = new Scanner(System.in);
-		cp = new Computer();
+		computer = new Computer();
 	}
 	
 	/**
@@ -97,7 +97,7 @@ public class User {
 		String number;
 		int[] result = new int[3];
 		
-		cp.createNumber();
+		computer.createNumber();
 		while (true) {
 			System.out.print("숫자를 입력해주세요 : ");
 			number = scanInput();
@@ -107,7 +107,7 @@ public class User {
 			}
 			
 			int numberConvert = Integer.parseInt(number);
-			result = cp.compareNumber(numberConvert);
+			result = computer.compareNumber(numberConvert);
 			if (analyzeResult(result)) {
 				break;
 			}
