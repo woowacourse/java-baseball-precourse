@@ -11,4 +11,14 @@
  * @author   조남균
  */
 public class GameUI {
+
+	/**
+	 * 질문자(컴퓨터)와 답변자(사용자)를 생성한 후 게임에 참여한다.
+	 * */
+	public static void main(String[] args) {
+		Questioner questioner = new Questioner(); // 질문자(컴퓨터)
+		Answerer answerer = new Answerer(); // 답변자(사용자)
+
+		run(questioner, answerer);
+	}
 }
