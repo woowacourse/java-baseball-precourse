@@ -146,7 +146,7 @@ public class BaseballGame
         {
             String letter = String.valueOf(strUserInput.charAt(i));
             int count = strUserInput.length() - strUserInput.replace(letter, "").length();
-            if(count > 1);
+            if(count > 1)
             {
                 return true;
             }
@@ -202,7 +202,7 @@ public class BaseballGame
             }
             else
             {
-                System.out.println("1이나 2를 입렬해주세요!");
+                System.out.println("1이나 2를 입력해주세요!");
             }
         }
         return result;
