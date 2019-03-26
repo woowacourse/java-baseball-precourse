@@ -1,5 +1,3 @@
-package com.kwonmc.baseball;
-
 /*
  * 클래스 이름 : GameResult
  *
@@ -8,6 +6,14 @@ package com.kwonmc.baseball;
  * 날짜 : 2019-03-27
  *
  * Copyright 2019 KwonMC
+ */
+package com.kwonmc.baseball;
+
+/**
+ * 게임 결과인 strike 와 ball 을 저장하고 이 둘과 관련된 메서드가 있는 클래스
+ *
+ * @version 0.0.4
+ * @author kwonmc
  */
 public class GameResult {
     private static int INT_ZERO = 0;

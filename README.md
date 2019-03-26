@@ -30,6 +30,17 @@
 6. 게임이 끝났는지 아닌지를 반환해주는 기능
 - (추가 혹은 수정이 필요할 경우 수정)
 
+## 클래스
+### Game
+Game 클래스는 Baseball game 을 실행하는 몸통 ``public static void main(String[] args) { }`` 이 위치한 클래스
+
+### GamePlay
+GamePlay 클래스는 Baseball 게임을 진행하는데 있어서 필요한 데이터와 메서드가 있는 클래스
+
+### GameResult
+게임 결과인 strike 와 ball 을 저장하고 이 둘과 관련된 메서드가 있는 클래스
+
+
 ## 개발 일지
 1. 기능만 구현하는 스파게티 코드로 작성
 2. 1차 리팩토링, 모든 기능 함수화

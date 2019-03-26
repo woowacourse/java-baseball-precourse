@@ -1,7 +1,3 @@
-package com.kwonmc.baseball;
-
-import java.util.Scanner;
-
 /*
  * 클래스 이름 : Game
  *
@@ -10,6 +6,16 @@ import java.util.Scanner;
  * 날짜 : 2019-03-27
  *
  * Copyright 2019 KwonMC
+ */
+package com.kwonmc.baseball;
+
+import java.util.Scanner;
+
+/**
+ * Baseball 게임을 진행하는 몸통 부분이 있는 클래스
+ *
+ * @version 0.0.4
+ * @author kwonmc
  */
 public class Game {
     public static void main(String[] args) {
