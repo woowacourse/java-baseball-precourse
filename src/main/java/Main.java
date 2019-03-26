@@ -2,6 +2,12 @@ package src.main.java;
 
 import java.util.Scanner;
 
+/**
+ * 프로그램을 시작하는 main
+ * 재시작 및 종료
+ * @author 강연욱
+ *
+ */
 public class Main {
 	
 	/**

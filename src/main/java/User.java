@@ -2,6 +2,13 @@ package src.main.java;
 
 import java.util.Scanner;
 
+/**
+ * 사용자의 입력을 받음
+ * 받은 입력이 올바른지 검증
+ * 정답과 비교하기 위해 자릿수로 분리
+ * @author 강연욱
+ *
+ */
 public class User {
 	
 	/**
@@ -25,6 +32,7 @@ public class User {
 		return res;
 	}
 	
+	//입력이 숫자인지
 	public static boolean isNumber(String input) {
 		boolean is_num;
 		is_num = true;
@@ -76,13 +84,16 @@ public class User {
 		int input_num;
 		int[] split_num = new int[3];
 		
-		//입력 검증
+		//입력
 		Scanner sc = new Scanner(System.in);
 		while(true) {
 			System.out.print("숫자를 입력해주세요 : ");
 			str = sc.nextLine();
+			
+			//서로 다른 3자리 수인지 판별
 			if(isValidInput(str)) break;
 			
+			//아닐 경우 다시 입력
 			System.out.println("서로 다른 3자리의 수를 입력하세요");
 		}
 		input_num = Integer.parseInt(str);

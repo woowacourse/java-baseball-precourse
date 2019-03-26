@@ -2,6 +2,12 @@ package src.main.java;
 
 import java.util.ArrayList;
 
+/**
+ * 정답 숫자를 생성하고
+ * 사용자 입력을 정답과 비교하는 클래스
+ * @author 강연욱
+ *
+ */
 public class Computer {
 	
 	/**
@@ -35,6 +41,8 @@ public class Computer {
 
 	//ball 여부
 	public static boolean isBall(int[] answer, int[] input, int digit) {
+		boolean is_ball;
+		is_ball = false;
 		
 		for(int i = 0; i < 3; i++) {
 			
@@ -42,10 +50,13 @@ public class Computer {
 			if(i == digit) continue;
 			
 			//ball일 경우
-			if(input[digit] == answer[i]) return true;
+			if(input[digit] == answer[i]) {
+				is_ball = true;
+				break;
+			}
 		}
 		
-		return false;
+		return is_ball;
 	}
 	
 	/**
@@ -60,7 +71,6 @@ public class Computer {
 			if(isStrike(answer[i], input[i])) ball_cnt[0]++;
 			else if(isBall(answer, input, i)) ball_cnt[1]++;
 		}
-		
 	}
 	
 	/**
@@ -81,6 +91,7 @@ public class Computer {
 			// 중복 판별
 			if(num_list.contains(temp)) continue;
 			
+			//생성된 수 저장
 			randNum[cnt] = temp;
 			num_list.add(temp);
 			cnt++;
