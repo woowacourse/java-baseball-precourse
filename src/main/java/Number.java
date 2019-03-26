@@ -41,6 +41,7 @@ public class Number {
 
     // player 세자리 입력 함수
     public String[] playerNum(BufferedReader br) throws IOException {
+        System.out.print("숫자를 입력해 주세요 : ");
         return br.readLine().split("");
     }
 

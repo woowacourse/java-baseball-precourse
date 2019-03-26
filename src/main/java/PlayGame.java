@@ -19,6 +19,7 @@ public class PlayGame {
         for (Object data : hashMap.values()) {
             System.out.print(data);
         }
+        System.out.println("");
 
         while (true) {
             playerNum = Number.getInstance().playerNum(br);
