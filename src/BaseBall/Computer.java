@@ -54,7 +54,9 @@ public class Computer {
         if(strike!=0)
             System.out.print(strike + "스트라이크 ");
         if(ball!=0)
-            System.out.println(ball + "볼");          
+            System.out.println(ball + "볼");   
+        if(strike==0 && ball==0)
+            System.out.println("낫씽"); 
     }
     
     public int isGameEnd(int num1, int num2, int num3)
