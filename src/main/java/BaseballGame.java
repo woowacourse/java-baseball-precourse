@@ -44,5 +44,28 @@ public class BaseballGame
             doGame();
         }
     }
+    public static String generateComputerNumber()
+    {
+        int result = 0;
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for(int i=1; i<10; i++)
+        {
+            list.add(i);
+        }
+        int i = 0;
+        int digit = 100;
+        while(i < 3)
+        {
+            int index = (int) (Math.random()*list.size());
+            result += list.get(index)*digit;
+            list.remove(index);
+            i++;
+            digit/=10;
+        }
+        System.out.println(result);
+        String strResult = Integer.toString(result);
+        return strResult;
+    }
+
 
 }
