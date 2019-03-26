@@ -111,4 +111,30 @@ public class User {
 			}
 		}
 	}
+
+	/**
+	 * 사용자로부터 입력받은 값이 잘못된 값이면 true를 리턴, 올바르면 false를 리턴한다.
+	 * 올바른 값 = 서로 다른 3자리 숫자
+	 * 
+	 * @param num 입력받은 데이터
+	 * @return 잘못된 값이면 true, 올바른 값 false
+	 */
+	private boolean isWrong(String num) {
+		if (num.length() != 3) {
+			return true;
+		}
+		
+		for (int i = 0; i < num.length(); i++) {
+			if (num.charAt(i) - '0' < 1 || num.charAt(i) - '0' > 9) {
+				return true;
+			}
+		}
+		
+		if ((num.charAt(0) == num.charAt(1)) || (num.charAt(1) == num.charAt(2))
+				|| (num.charAt(0) == num.charAt(2))) {
+			return true;
+		}
+		
+		return false;
+	}
 }
