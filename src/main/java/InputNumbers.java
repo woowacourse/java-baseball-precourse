@@ -1,11 +1,11 @@
 /**
- * ÀÌ Å¬·¡½º´Â 3°³ÀÇ ¼­·Î ´Ù¸¥ ¼ö¸¦ ÀÔ·Â¹Þ±âÀ§ÇÏ³ª Å¬·¡½ºÀÌ´Ù.
- * Å¬·¡½º »ý¼º°ú µ¿½Ã¿¡ ¿¬¼ÓµÈ 1~9 »çÀÌÀÇ ¼­·Î ´Ù¸¥ ÀÚ¿¬¼ö¸¦ ÀÔ·Â¹Þ¾Æ ¹è¿­¿¡ ÀúÀåÇÑ´Ù.
+ * ì´ í´ëž˜ìŠ¤ëŠ” 3ê°œì˜ ì„œë¡œ ë‹¤ë¥¸ ìˆ˜ë¥¼ ìž…ë ¥ë°›ê¸°ìœ„í•˜ë‚˜ í´ëž˜ìŠ¤ì´ë‹¤.
+ * í´ëž˜ìŠ¤ ìƒì„±ê³¼ ë™ì‹œì— ì—°ì†ëœ 1~9 ì‚¬ì´ì˜ ì„œë¡œ ë‹¤ë¥¸ ìžì—°ìˆ˜ë¥¼ ìž…ë ¥ë°›ì•„ ë°°ì—´ì— ì €ìž¥í•œë‹¤.
  * 
- *className InputNumbers
+ *className     InputNumbers
  *version 	1.0.0
  *Date		26/03/2019 
- *author	±Ç°æµ¿ 
+ *author	ê¶Œê²½ë™ 
  */
 import java.util.Scanner;
 
