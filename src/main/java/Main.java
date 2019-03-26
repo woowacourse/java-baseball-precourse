@@ -33,6 +33,58 @@ public class Main {
         return answer;
     }
 
+    /**
+     * 입력받은 String이 유저의 predict String조건을 모두 만족하는지 체크
+     * 조건1: 각자릿수는 1~9 사이 일 것
+     * 조건2: 입력 String이 3자릿수 일 것
+     * 조건3: 중복되는 숫자가없을 것
+     *
+     * @param inputStr      체크할 String
+     * @return boolean      모든조건을 만족하는지 여부 반환
+     */
+    public static boolean checkUserInput(String inputStr){
+
+        // 조건1: 3자리 아닐시  -> continue
+        if(inputStr.length() != 3){
+            System.out.println("3자리 숫자를 입력해주세요");
+            return false;
+        }
+        // 조건2: 하나라도 1~9가 아닐시  -> continue
+        boolean allComplete = true;
+        for (int i = 0; i < 3; i++) {
+            if((inputStr.charAt(i) < '1') || (inputStr.charAt(i) > '9')){
+                allComplete = false;
+                break;
+            }
+        }
+        if (!allComplete){
+            System.out.println("각 자리는 1이상 9이하의 숫자 이어야 합니다");
+            return false;
+        }
+        // 조건3: 하나라도 같은것이 있을시 -> continue
+        boolean checkArr[] = new boolean[10];
+        for (int i = 0; i < checkArr.length; i++) {
+            checkArr[i] = false;
+        }
+        boolean noOverlap = true;
+        for (int i = 0; i < 3; i++) {
+            int num = (int) (inputStr.charAt(i) - '0');
+
+            if(checkArr[num]){
+                noOverlap = false;
+                break;
+            }
+
+            checkArr[num] = true;
+        }
+        if (!noOverlap){
+            System.out.println("각 자리는 모두 다른 숫자로 이루어져 있어야 합니다.");
+            return false;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args){
         System.out.print("hi");
     }
