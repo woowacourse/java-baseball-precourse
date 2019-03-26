@@ -162,6 +162,32 @@ public class Main {
         return ballCount;
     }
 
+    /**
+     * ball, strike 갯수에 따른 반응을 출력
+     *
+     * @param strikeCount   strike 갯수
+     * @param ballCount     ball 갯수
+     */
+    public static void printStatements(int strikeCount, int ballCount){
+
+        if ((strikeCount > 0) && (ballCount > 0)){
+            System.out.println(strikeCount + " 스트라이크 " + ballCount +" 볼");
+        }
+        else if(strikeCount > 0){
+            System.out.println(strikeCount + " 스트라이크");
+            if(strikeCount == 3){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+        }
+        else if(ballCount > 0){
+            System.out.println(ballCount + " 볼");
+        }
+        else{
+            System.out.println("Nothing");
+        }
+
+    }
+
     public static void main(String[] args){
         System.out.print("hi");
     }
