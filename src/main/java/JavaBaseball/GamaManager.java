@@ -15,8 +15,12 @@ package JavaBaseball;
  */
 public class GamaManager {
 
-    public static void main(String[] args) {
+    private static User user;
+    private static Computer cpu;
 
+    public static void main(String[] args) {
+        user = new User();
+        cpu = new Computer();
     }
 
     /**
@@ -45,10 +49,9 @@ public class GamaManager {
 
     /**
      * 유저에게 세자리 수를 입력하라는 메시지를 출력하는 메소드
-     * @param user User 오브젝트
      * @return 유저가 입력한 세자리 수
      */
-    private static int[] getUserNumber(User user) {
+    private static int[] getUserNumber() {
         System.out.println("세자리 수를 입력 하세요 :");
         return user.getNumber();
     }
@@ -58,7 +61,9 @@ public class GamaManager {
      */
     private static void correctMessager() {
         System.out.println("정답입니다!");
+        startMenu();
     }
+
 
 }
 
