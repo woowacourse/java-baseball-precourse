@@ -75,13 +75,22 @@ public class baseball {
         boolean result = Pattern.matches(regExp,user_Number);
 
         if (!result) {
-            System.out.println("다시 입력하세요");
-            user_Number_Reset();
-            score_Reset();
-            getUser_Input_Number();
+            fail_User_Input();
         }
     }
 
+    /**
+     * 사용자 불일치결과 입력 초기화 메소드
+     * 유저 입력 문자열 초기화
+     * 스트라이크 볼 초기화
+     * 사용자 입력 메소드 이동
+     * */
+    private static void fail_User_Input (){
+        System.out.println("다시 입력하세요");
+        user_Number_Reset();
+        score_Reset();
+        getUser_Input_Number();
+    }
 
 
     /* 스트라이크 체크 메소드 */
