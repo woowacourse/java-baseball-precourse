@@ -1,9 +1,39 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GamePlay {
     private int[] com = new int[3];
     private int[] user = new int[3];
+
+    
+    private boolean isFirstTime = true;
+    private boolean continueGame = true;
+
     private GameResult gameResult = new GameResult();
+
+    /**
+     * continueGame getter 메서드
+     * @return this.continueGame
+     */
+    public boolean isContinueGame() {
+        return continueGame;
+    }
+
+    /**
+     * continueGame setter 메서드
+     * @param continueGame 가 this.continueGame 에 배정됨
+     */
+    public void setContinueGame(boolean continueGame) {
+        this.continueGame = continueGame;
+    }
+
+    /**
+     *
+     * @param firstTime
+     */
+    public void setFirstTime(boolean firstTime) {
+        isFirstTime = firstTime;
+    }
 
     public GameResult getGameResult() {
         return gameResult;
@@ -38,12 +68,12 @@ public class GamePlay {
         for (int i = 0; i < arrayList.size(); i++) {
             result[i] = arrayList.get(i);
         }
-        // com
-        System.out.println("com");
-        for (int i : result) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
+//        // com
+//        System.out.println("com");
+//        for (int i : result) {
+//            System.out.print(i + " ");
+//        }
+//        System.out.println();
 
         return result;
     }
@@ -51,12 +81,12 @@ public class GamePlay {
     /**
      * 게임을 초기화 하는 메서드
      */
-    public boolean init(boolean flag) {
-        if (flag) {
+    public void init() {
+        if (this.isFirstTime) {
             ArrayList<Integer> tmpArr = makeRandomArrayList();
             this.com = arrayListToArray(tmpArr);
+            this.isFirstTime = false;
         }
-        return false;
     }
 
     /**
@@ -128,6 +158,18 @@ public class GamePlay {
     private void ballCounter(int i, int j) {
         if (i != j && this.com[i] == this.user[j]) {
             gameResult.oneMoreBall();
+        }
+    }
+
+    public void checkEndOrContinum(Scanner sc) {
+        if (this.getGameResult().isEnd()) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int input = sc.nextInt();
+            if (input == 2) {
+                this.setContinueGame(false);
+            } else {
+                this.setFirstTime(true);
+            }
         }
     }
 }

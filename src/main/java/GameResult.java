@@ -1,7 +1,7 @@
 public class GameResult {
     private static int ZERO = 0;
     private static int ONE = 1;
-    private static int THREESTRIKE = 3;
+    private static int STRIKETHREE = 3;
 
     protected int strike;
     protected int ball;
@@ -41,7 +41,7 @@ public class GameResult {
      * @return strike 가 3일때 true
      */
     protected boolean isEnd() {
-        return this.strike == THREESTRIKE;
+        return this.strike == STRIKETHREE;
     }
 
     /**
@@ -56,9 +56,16 @@ public class GameResult {
         }
         else if (this.ball == ZERO) {
             System.out.printf("%d 스트라이크\n", this.strike);
+            printSuccess();
         }
         else {
             System.out.printf("%d 스트라이크 %d 볼\n", this.strike, this.ball);
+        }
+    }
+
+    private void printSuccess() {
+        if (this.strike == STRIKETHREE) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 }
