@@ -41,4 +41,13 @@ public class Computer {
 		this.arr = new int[SIZE];
 	}
 	
+	/**
+	 * 이미 썼던 데이터는 지우고 다시 배열을 초기화하는 메서드
+	 */
+	public void initNumber() {
+		for (int i = 0; i < SIZE; i++) {
+			arr[i] = 0;
+		}
+	}
+	
 }
