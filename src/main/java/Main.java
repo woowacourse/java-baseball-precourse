@@ -109,6 +109,23 @@ public class Main {
         return inputStr;
     }
 
+    /**
+     * String을 2개 입력받아 Strike가 몇개인지 반환
+     * @param str1          String 1
+     * @param str2          String 2
+     * @return int          Strike 개수 반환
+     */
+    public static int getStrikeCount(String str1, String str2){
+        int strikeCount =0;
+
+        for (int i = 0; i < 3; i++) {
+            if (str1.charAt(i) == str2.charAt(i)){
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
 
     public static void main(String[] args){
         System.out.print("hi");
