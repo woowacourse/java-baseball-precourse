@@ -44,6 +44,7 @@ public class BaseballGame
             doGame();
         }
     }
+
     public static String generateComputerNumber()
     {
         int result = 0;
@@ -66,6 +67,24 @@ public class BaseballGame
         String strResult = Integer.toString(result);
         return strResult;
     }
+
+    public static String getUserNumber()
+    {
+        String strUserInput;
+        while(true)
+        {
+            Scanner reader = new Scanner(System.in);
+            System.out.print("숫자를 입력해주세요: ");
+            strUserInput = reader.nextLine();
+            boolean isUserInputRight = checkUserInput(strUserInput);
+            if(isUserInputRight)
+            {
+                break;
+            }
+        }
+        return strUserInput;
+    }
+
 
 
 }
