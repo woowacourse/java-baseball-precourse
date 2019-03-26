@@ -10,9 +10,11 @@
   |*Game*|**printGame()**|게임 화면 출력|O|
   |*Game*|**makeRandomNumber()**|랜덤 3자리 숫자 생성|O|
   |*Game*|**inputNumber()**|세자리 숫자 입력|O|
-  |*Game*|**checkNumber()**|숫자 검사|X|
+  |*Game*|**checkNumber()**|숫자 검사|O|
   |*Game*|**printCorrect()**|정답 출력 화면|X|
   |*Game*|**printResult()**|결과 출력 화면 strike/ball/nothing|X|
+  |*Game*|**countStrike()**|스타이크 수 셈|X|
+  |*Game*|**countBall()**|볼 수 |X|
   |*Number*|**getFirst()**|첫번째 숫자 읽어옴|O|
   |*Number*|**getSecond()**|두번째 숫자 읽어옴|O|
   |*Number*|**getThird()**|세번째 숫자 읽어옴|O|
