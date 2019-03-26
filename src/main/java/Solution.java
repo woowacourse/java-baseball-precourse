@@ -8,8 +8,9 @@ public class Solution {
         while(true) {
             createdNumber = Game.generateNumber(3);
             bool = Game.playGame(createdNumber);
-            if (bool == false)
+            if (bool == false) {
                 break;
+            }
         }
     }
 

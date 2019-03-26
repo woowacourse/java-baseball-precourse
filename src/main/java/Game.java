@@ -54,11 +54,15 @@ public class Game {
                 System.out.print(result.ball);
                 System.out.print("볼");
             }
-            if (result.ball == 0 && result.strike == 0)
+            if (result.ball == 0 && result.strike == 0) {
                 System.out.print("Nothing");
+            }
+
             System.out.println();
-            if (result.strike == 3)
+
+            if (result.strike == 3) {
                 break;
+            }
         }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
