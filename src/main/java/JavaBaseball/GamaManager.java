@@ -17,10 +17,12 @@ public class GamaManager {
 
     private static User user;
     private static Computer cpu;
+    private static int[] curUserNumber;
 
     public static void main(String[] args) {
         user = new User();
         cpu = new Computer();
+        playGame();
     }
 
     /**
@@ -59,11 +61,37 @@ public class GamaManager {
     /**
      * 정답임을 알려주는 메시지를 출력하는 메소드
      */
-    private static void correctMessager() {
+    private static void correctMessage() {
         System.out.println("정답입니다!");
-        startMenu();
     }
 
+    /**
+     * 스트라이크와 볼의 갯수를 출력하는 메소드
+     */
+    private static void printScore() {
+        int[] score = cpu.countScore(curUserNumber);
+        System.out.println(score[0] + " Strikes  " + score[1] + " Balls");
+    }
+
+    /**
+     * 게임을 실행하는 메소드
+     */
+    private static void playGame() {
+
+        while(true) {
+            startMenu();
+            startMessage(user.startChecker());
+            while(true) {
+                curUserNumber = getUserNumber();
+                if(cpu.correctCheck(curUserNumber)) {
+                    correctMessage();
+                    break;
+                } else {
+                    printScore();
+                }
+            }
+        }
+    }
 
 }
 

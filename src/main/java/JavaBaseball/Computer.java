@@ -6,6 +6,7 @@
 
 package JavaBaseball;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -43,7 +44,7 @@ public class Computer {
      */
     public boolean correctCheck(int[] userNumber) {
 
-        return number.equals(userNumber);
+        return Arrays.equals(number, userNumber);
     }
 
     /**

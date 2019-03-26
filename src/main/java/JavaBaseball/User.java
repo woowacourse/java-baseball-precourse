@@ -25,7 +25,6 @@ public class User {
     public boolean startChecker() {
         SC = new Scanner(System.in);
         int start = SC.nextInt();
-        SC.close();
 
         if(start == 1) {
             return true;
@@ -49,7 +48,6 @@ public class User {
         userNumber[0] = SC.nextInt();
         userNumber[1] = SC.nextInt();
         userNumber[2] = SC.nextInt();
-        SC.close();
 
         return userNumber;
     }
