@@ -232,10 +232,40 @@ public class BaseballGame implements Baseball {
         return strikeAndBall;
     }
 
+    /**
+     * 컴퓨터의 배열과 사용자의 배열을 생성해 strike와 ball인지 판별 후 결과를 프린트하는 메서드
+     * 게임 종료 후 reGame()을 실행해 재게임 실행 여부를 물음
+     */
     @Override
     public void runGame() {
-        // TODO Auto-generated method stub
+        boolean gameContinue = true;
         
+        /** 컴퓨터의 난수 생성 */
+        computerNums = makeThreeRandomNumbers();
+
+        while (gameContinue) {
+            /** 사용자 수 입력 받기 */
+            userNumbers = inputUserNumbers();
+            
+            /** 스트라이크인지 볼인지 판정하기 */
+            result = checkStrikeOrBall(computerNums, userNumbers);
+            
+            /** 결과 출력 */
+            if (result[0] == 0 && result[1] == 0) {
+                System.out.println("낫싱");
+            } else if(result[0] == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                gameContinue = false;
+            } else if(result[0] == 0) {
+                System.out.println(result[1] + " 볼");
+            } else if(result[1] == 0) {
+                System.out.println(result[0] + " 스트라이크 ");
+            } else {
+                System.out.println(result[0] + " 스트라이크 " + result[1] + " 볼");
+            }  
+        }  // end while 
+        
+        reGame();
     }
 
     @Override
