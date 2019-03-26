@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -32,7 +33,7 @@ public class Baseball {
             System.out.print("숫자를 입력해주세요 : ");
             num = sc.nextInt();
 
-            if(num<111 || 999<num) { /* minimum Value-verification. */
+            if(num<111 || 999<num) {        /* minimum Value-verification. */
                 System.out.println("잘못 입력하셨습니다.");
                 continue;
             }
@@ -83,7 +84,49 @@ public class Baseball {
         return r1*100 + r2*10 + r3;
     }
 
+    /* match key with number. */
     public static boolean matchKey(int key, int num) {
-        return true;
+        Integer[] keyArr = new Integer[3];
+        Integer[] numArr = new Integer[3];
+        int strike = 0;
+        int ball = 0;
+        boolean result = false;
+
+        getDigit(key, keyArr);
+        getDigit(num, numArr);
+
+        for(int i=0; i<3; i++) {
+            if(keyArr[i] == numArr[i]) {
+                strike++;
+            }
+        }
+
+        for(int i=0; i<3; i++) {
+            if(Arrays.asList(keyArr).contains(numArr[i])) {
+                ball++;
+            }
+        }
+        ball -= strike;
+
+        if(strike==0 && ball==0) {
+            System.out.println("낫싱");
+        } else if(strike>0 && ball>0) {
+            System.out.println(strike+" 스트라이크 "+ball+"볼");
+        } else if(ball>0) {
+            System.out.println(ball+"볼");
+        } else if(strike>0) {
+            System.out.println(strike+" 스트라이크");
+            if(strike == 3) {
+                result = true;
+            }
+        }
+
+        return result;
+    }
+
+    public static void getDigit(int number, Integer[] numberArr) {
+        numberArr[0] = number / 100;
+        numberArr[1] = (number / 10) % 10;
+        numberArr[2] = number % 10;
     }
 }
