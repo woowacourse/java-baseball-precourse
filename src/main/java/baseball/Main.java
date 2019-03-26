@@ -13,7 +13,6 @@ package baseball;
 
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Arrays;
 import java.util.stream.Stream;
 /**
  * Main 클래스는 다음과 같은 기능을 구현한다
@@ -23,24 +22,33 @@ import java.util.stream.Stream;
  */
 public class Main {
     public static void main(String args[]) {
-        int strike = 0;
+        int flag = 0;
+        int[] count = {0};
         Main myTest = new Main();
 
         int comnum[] = myTest.randNumGenerator();    //randNumGenerator함수로부터 랜덤 값을 받아온다
         //테스트용 출력
-        for (int i = 0; i<comnum.length; i++) {
-            System.out.print(comnum[i]);
-        }
-        while(strike < 3) {  //스트라이크 3이 안되면 반복
+//        for (int i = 0; i<comnum.length; i++) {
+//            System.out.print(comnum[i]);
+//        }
+        while(flag != 2) {  //restGame 으로부터 입력받은 flag가 2이면 게임을 종료한다.
             int a = myTest.numReader();     //numReader로 부터 값을 입력 받음
             int usernum[] = myTest.checkNum(a);
 //            for (int i = 0; i<usernum.length; i++) {
 //                System.out.print(usernum[i]);
 //            }
             if (usernum.length != 1){ //유저가 입력한 숫자가 제대로 된 숫자일때만 진행한다.
-            int[] count = myTest.compNum(comnum, usernum);
+            count = myTest.compNum(comnum, usernum);
                 myTest.prtResult(count);
                 System.out.println("");
+            }
+            if(count[0] == 3){ // 스트라이크가 3일경우에 새로운 랜덤숫자를 만들고 restGame 함수를 실행한다.
+                count[0] = 0;
+                comnum = myTest.randNumGenerator();
+//                for (int i = 0; i<comnum.length; i++) {
+//                    System.out.print(comnum[i]);
+//                }
+                flag = myTest.resetGame();
             }
 
         }
@@ -109,7 +117,7 @@ public class Main {
     //prtResult는 strike와 ball수를 바탕으로 낫싱 , 스트라이크, 볼을 판단하여 출력한다
     private void prtResult(int[] count){
         if(count[0] == 0 && count[1] == 0){
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
         if(count[0] > 0){
             System.out.print(count[0]+" 스트라이크 ");
@@ -117,5 +125,12 @@ public class Main {
         if(count[1] > 0){
             System.out.print(count[1]+" 볼");
         }
+    }
+    //resetGame 함수는 문구를 출력하고 입력받은 숫자를 반환한다.
+    private int resetGame(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Scanner sc = new Scanner(System.in);
+        return sc.nextInt();//입력받은 숫자를 반환한다.
     }
 }
