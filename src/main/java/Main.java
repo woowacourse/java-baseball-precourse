@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// 19-03-26 리팩토링
+// 19-03-26 1차 리팩토링
 public class Main {
     /**
      * 게임을 시작하기 위해 1부터 9까지의 중복되지 않는 임의의 숫자 세개를 반환하는 메서드
@@ -12,7 +12,7 @@ public class Main {
         ArrayList<Integer> tmpResult = new ArrayList<>();
         while (tmpResult.size() < 3) {
             int tmp = (int) (Math.random() * 9 + 1);
-            // indent depth 3 이상
+            // !!--indent depth 3 이상--!!
             if (!tmpResult.contains(tmp)) {
                 tmpResult.add(tmp);
             }
@@ -53,7 +53,7 @@ public class Main {
 
         // 스트라이크 체크
         for (int i = 0; i < user.length; i++) {
-            // indent depth 3이상
+            // !!--indent depth 3 이상--!!
             if (com[i] == user[i]) {
                 result++;
             }
@@ -73,6 +73,7 @@ public class Main {
         int result = 0;
         // 볼 체크
         for (int i = 0; i < com.length; i++) {
+            // !!--indent depth 3 이상--!!
             for (int j = 0; j < user.length; j++) {
                 if (i != j && com[i] == user[j]) {
                     result++;
@@ -103,37 +104,61 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
-        // 최초로 컴퓨터가 중복되지 않는 임의의 수 3개 생성
-        int[] com = gameInit();
+    /**
+     * 스트라이크가 3으로 게임이 끝나는지 아닌지를 반환해주는 메서드
+     * @param strike 스트라이크 수
+     * @return 게임이 끝나면 true, 게임이 끝나지 않으면 false
+     */
+    private static boolean isGameEnd(int strike) {
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
 
-        boolean go = true;
-        while (go) {
+    /**
+     * 게임의 본체 메서드, 이 메서드가 실행되면 게임이 1회 실행된다.
+     * @param com 컴퓨터가 생성한 임의의 중복되지 않는 3개의 숫자를 담는 배열
+     * @return 게임이 끝나면 true 를 반환
+     */
+    private static boolean gameStart(int[] com) {
+        boolean isAllStrike = false;
+        while (!isAllStrike) {
             int[] user = getUserInput();
 
-            // user 확인용
-            System.out.print("USER 배열 : ");
-            for (int i : user)
-                System.out.print(i + " ");
-            System.out.println();
+//            // user 확인용
+//            System.out.print("USER 배열 : ");
+//            for (int i : user)
+//                System.out.print(i + " ");
+//            System.out.println();
+//
+//            // user 확인용
+//            System.out.print("COM 배열 : ");
+//            for (int i : com)
+//                System.out.print(i + " ");
+//            System.out.println();
 
-            // user 확인용
-            System.out.print("COM 배열 : ");
-            for (int i : com)
-                System.out.print(i + " ");
-            System.out.println();
-
-
-            // 스트라이크는 위치랑 숫자가 동일한 것
-            // 볼은 위치는 다르고 숫자가 둘다 포함
             int strike = countStrike(com, user);
             int ball = countBall(com, user);
 
             printGameResult(strike, ball);
 
-            if (strike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다!게임 종료");
-                go = false;
+            isAllStrike = isGameEnd(strike);
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            int[] com = gameInit();
+            gameStart(com);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            if (sc.nextInt() == 2) {
+                break;
             }
         }
     }
