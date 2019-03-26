@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
@@ -84,6 +85,30 @@ public class Main {
 
         return true;
     }
+
+    /**
+     * 유저의 predict를 입력받아 반환한다. predict가 조건을 만족하지않으면, 재입력을 요청한다.
+     * 그렇기때문에, 반환되는 String은 모든 조건을 만족하는함을 보장한다.
+     *
+     * @return String       입력받은 유저의 3자리 predict 넘버
+     */
+    public static String getUserPredict(){
+        Scanner sc = new Scanner(System.in);
+        String inputStr = "";   // 반환할 String(유저의 input)
+
+        while(true){
+            System.out.print("숫자를 입력해주세요 : ");
+            inputStr = sc.next();
+
+            if(checkUserInput(inputStr)){
+                break;
+            }
+
+        }
+
+        return inputStr;
+    }
+
 
     public static void main(String[] args){
         System.out.print("hi");
