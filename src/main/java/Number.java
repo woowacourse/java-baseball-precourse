@@ -1,12 +1,12 @@
 /*
- *@(#)Number.java           1.1 2019/03/26
+ *@(#)Number.java           1.2 2019/03/26
  *Copyright (c) 2019 Hyogeon Kim.
  *Number Baseball Game, Java, Mungyeong, KOREA
  */
 
 /*
  * 야구게임에서 세개의 숫자에 대한 클래스
- * @version               1.1 2019년 03월 26일
+ * @version               1.2 2019년 03월 26일
  * @author                김효건
  */
 public class Number {
@@ -36,22 +36,6 @@ public class Number {
      * @return 첫번째 숫자 반환
      */
 
-    /*두번째 숫자를 반환*/
-    public int getSecond(){
-        return this.second;
-    }
-    /*
-     * @return 두번째 숫자 반환
-     */
-
-    /*세번째 숫자를 반환*/
-    public int getThird(){
-        return this.third;
-    }
-    /*
-     * @return 세번째 숫자 반환
-     */
-
     /*첫번째 숫자를 세팅*/
     public void setFirst(){
         this.first = first;
@@ -60,12 +44,28 @@ public class Number {
      * @param 첫번째 숫자 세팅
      */
 
+    /*두번째 숫자를 반환*/
+    public int getSecond(){
+        return this.second;
+    }
+    /*
+     * @return 두번째 숫자 반환
+     */
+
     /*두번째 숫자를 세팅*/
     public void setSecond(){
         this.second = second;
     }
     /*
      * @param 두번째 숫자 세팅
+     */
+
+    /*세번째 숫자를 반환*/
+    public int getThird(){
+        return this.third;
+    }
+    /*
+     * @return 세번째 숫자 반환
      */
 
     /*세번째 숫자를 세팅*/

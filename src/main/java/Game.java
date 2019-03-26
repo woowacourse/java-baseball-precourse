@@ -47,9 +47,19 @@ public class Game {
 
     /*게임 시작 함수 (전체적인 게임 진행)*/
     private void startGame(){
-        printGame();
         makeRandomNumber();
-        inputNumber();
+        do{
+            printGame();
+            inputNumber();
+            if(checkNumber()) {
+                printCorrect();
+                break;
+            }
+            if(countStrike()!=0)
+                System.out.println(countStrike() +" 스트라이크  ");
+            if(countBall()!=0)
+                System.out.println(countBall() +" 볼  ");
+        }while(true);
     }
 
     /*게임 종료(프로그램 종료 함수)*/
@@ -97,13 +107,61 @@ public class Game {
     }
 
     /*컴퓨터의 숫자와 사용자의 입력 숫자를 비교*/
-    private boolean checkNumber(Number playerNumber, Number gameNumber){
+    private boolean checkNumber(){
         return (playerNumber.getFirst() == gameNumber.getFirst() &&
                 playerNumber.getSecond() == gameNumber.getSecond() &&
                 playerNumber.getThird() == gameNumber.getThird());
     }
     /*
-     * @param 세개의 숫자가 같은지 비교할 Number 객체
      * @return 같다면 true 다르다면 false 반환
+     */
+
+    /*정답 화면을 출력*/
+    private void printCorrect(){
+        System.out.println("세개의 숫자를 모두 맞히셨습니다!");
+    }
+
+    /*스트라이크 갯수를 카운팅*/
+    private int countStrike(){
+        /*스트라이크의 수를 세아릴 변수*/
+        int count = 0;
+
+        if(playerNumber.getFirst() == gameNumber.getFirst())
+            count++;
+        if(playerNumber.getSecond() == gameNumber.getSecond())
+            count++;
+        if(playerNumber.getThird() == gameNumber.getThird())
+            count++;
+
+        return count;
+    }
+    /*
+     * @return 스트라이크 수를 나타내는 count 변수 값을 반환
+     */
+
+    /*볼 갯수를 카운팅*/
+    private int countBall(){
+        /*스트라이크의 수를 세아릴 변수*/
+        int count = 0;
+
+        if(playerNumber.getFirst() == gameNumber.getSecond())
+            count++;
+        if(playerNumber.getFirst() == gameNumber.getThird())
+            count++;
+
+        if(playerNumber.getSecond() == gameNumber.getFirst())
+            count++;
+        if(playerNumber.getSecond() == gameNumber.getThird())
+            count++;
+
+        if(playerNumber.getThird() == gameNumber.getFirst())
+            count++;
+        if(playerNumber.getThird() == gameNumber.getSecond())
+            count++;
+
+        return count;
+    }
+    /*
+     * @return 볼 수를 나타내는 count 변수 값을 반환
      */
 }
