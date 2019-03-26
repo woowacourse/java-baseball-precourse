@@ -59,4 +59,17 @@ public class Computer {
             System.out.println("낫씽"); 
     }
     
+    public int isGameEnd(int num1, int num2, int num3)
+    {
+        int isEnd=0;
+        if(calcuate(num1,num2,num3)==true)    //숫자를 다 찾았을 때
+        {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            isEnd=sc.nextInt();    
+            return isEnd;
+        }
+        return isEnd;    //숫자를 찾지 못했을 경우 0을 리턴한다
+    }
+    
 }
