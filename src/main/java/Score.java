@@ -22,6 +22,7 @@ public class Score {
 	 * Score 를 생성시 스트라이크의 개수와 볼의 개수를 0으로 초기화 한다.
 	 */
 	public Score() {
+
 		this.strike = 0;
 		this.ball = 0;
 	}
@@ -31,6 +32,7 @@ public class Score {
 	 * @return 스트라이크 개수
 	 * */
 	public int getStrike() {
+
 		return this.strike;
 	}
 
@@ -39,6 +41,7 @@ public class Score {
 	 * @param strike 스트라이크 개수
 	 * */
 	public void setStrike(int strike) {
+
 		this.strike = strike;
 	}
 
@@ -47,6 +50,7 @@ public class Score {
 	 * @return 볼의 개수
 	 * */
 	public int getBall() {
+
 		return this.ball;
 	}
 
@@ -55,6 +59,7 @@ public class Score {
 	 * @param ball 볼의 개수
 	 * */
 	public void setBall(int ball) {
+
 		this.ball = ball;
 	}
 
@@ -63,6 +68,7 @@ public class Score {
 	 * @return 낫씽 유무
 	 * */
 	public boolean isNothing() {
+
 		return ( ( (this.strike == 0) && (this.ball == 0) ) ? true : false );
 	}
 
@@ -71,6 +77,7 @@ public class Score {
 	 * @return 정답 유무
 	 * */
 	public boolean isCorrect() {
+
 		return ( (this.strike == 3) ? true : false );
 	}
 }

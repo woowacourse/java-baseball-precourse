@@ -22,6 +22,7 @@ public class Answerer {
 	 * 답변자의 정답을 3자리 수로 초기화고 점수객체를 null 로 초기화한다.
 	 */
 	public Answerer() {
+
 		this.number = new int[3]; // 3자리 수
 		score = null;
 	}
@@ -48,6 +49,7 @@ public class Answerer {
 	 * @return 정답(3자리 숫자 배열)
 	 * */
 	public int[] getNumber() {
+
 		return this.number;
 	}
 
@@ -56,6 +58,7 @@ public class Answerer {
 	 * @param score 받은 점수객체
 	 * */
 	public void setScore(Score score) {
+
 		this.score = score;
 	}
 
@@ -64,6 +67,7 @@ public class Answerer {
 	 * @return 받은 점수객체
 	 * */
 	public Score getScore() {
+
 		return this.score;
 	}
 }

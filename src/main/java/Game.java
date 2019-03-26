@@ -60,6 +60,7 @@ public class Game {
 	 * @return 스트라이크 유무
 	 * */
 	private boolean checkStrike(int[] problem, int[] answer, int index) {
+
 		return ( ( problem[index] == answer[index] ) ? true : false );
 	}
 }
