@@ -17,6 +17,7 @@
 package com.woowa.precourse;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * 야구게임을 구현한 클래스입니다.
@@ -25,8 +26,13 @@ import java.util.Random;
  * @author     노수진
  */
 public class BaseballGame implements Baseball {
+    Scanner sc = new Scanner(System.in);
+    
     /** 상대방(컴퓨터)의 수 */
     protected int[] computerNums = new int[3]; 
+    
+    /** 입력받은 유저의 수 */
+    protected int[] userNumbers = new int[3];
 
     /**
      * 상대방(컴퓨터)의 1~9까지의 세 개의 정수를 생성하는 메서드
@@ -58,10 +64,26 @@ public class BaseballGame implements Baseball {
         return computerNums;
     }
 
+    /**
+     * 사용자의 입력 값을 받는 메서드
+     *
+     * @return 1~9까지의 서로 다른 세 개의 정수를 담은 int[] 
+     */
     @Override
     public int[] inputUserNumbers() {
-        // TODO Auto-generated method stub
-        return null;
+        String inputNumber = "";
+
+        boolean notValidated = true;
+       
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            inputNumber = sc.nextLine();
+            
+            /** 입력 받은 값이 정수인지, 3자리인지, 중복하지 않는지 검사  */
+            notValidated = checkInputNumbers(inputNumber);  
+        } while (notValidated);
+
+        return userNumbers;
     }
 
     @Override
