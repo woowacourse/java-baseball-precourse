@@ -13,7 +13,7 @@
  */
 
 public class Computer {
-
+	
 	/** 컴퓨터가 만든 세 자리 숫자를 저장하는 배열 */
 	public int[] comNum = new int[3];
 	
@@ -57,5 +57,21 @@ public class Computer {
 				strikeCnt++;
 			}
 		}
+	}
+	
+	/**
+	 * 컴퓨터 숫자와 사용자의 숫자들을 비교해서 볼의 개수를 의미하는 변수 ballCnt 계산합니다.
+	 * 개수를 계산하는 조건에서 스트라이크의 값도 중복해서 계산되므로 최종 값에서 strikeCnt의 값을 뺍니다.
+	 * @param userNum - 컴퓨터 숫자와 사용자 숫자들을 비교하기 위해서 파라미터로 참조
+	 */
+	public void countBall(int[] userNum) {
+		
+		for(int i=0; i<comNum.length; i++) {
+			if (comNum[i] == userNum[0] || comNum[i] == userNum[1] 
+					|| comNum[i] == userNum[2]) {
+				ballCnt++;
+			}	
+		}
+		ballCnt -= strikeCnt;
 	}
 }
