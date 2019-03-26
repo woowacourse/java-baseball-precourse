@@ -35,4 +35,35 @@ public class User {
 	 * 컴퓨터 클래스에 접근하기 위한 객체
 	 */
 	private Computer cp;
+	
+	/**
+	 * 생성자를 따로 두지 않는 클래스이므로, 메인 로직 시작시 객체를 생성시키고 시작한다.
+	 * process의 입력값에 따라서, 게임을 진행할 것인지 종료할 것인지 결정하게 된다.
+	 * 주어진 입력 외의 다른값이 오게 된다면, 입력 오류 메세지를 띄우고 재입력 받게 된다.
+	 * 게임이 종료될 때는 안내 메세지와 함께 사용했던 Scanner객체를 close()하여
+	 * 정상적으로 입력스트림을 닫고 프로그램이 종료된다.
+	 */
+	public void gameBegin() {
+		init();
+		String process;
+		boolean logic = true;
+		
+		while (logic) {
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			process = scanInput();
+			switch (process) {
+			case "1":
+				matchNumber();
+				break;
+			case "2":
+				System.out.println("게임이 정상적으로 종료되었습니다!");
+				sc.close();
+				logic = false;
+				break;
+			default:
+				System.out.println("[입력오류] 잘못된 값을 입력하셨습니다.");
+				break;
+			}
+		}
+	}
 }
