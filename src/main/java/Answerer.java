@@ -42,4 +42,12 @@ public class Answerer {
 		}
 		return this.number;
 	}
+
+	/**
+	 * 정답(3자리 숫자 배열)을 반환한다.
+	 * @return 정답(3자리 숫자 배열)
+	 * */
+	public int[] getNumber() {
+		return this.number;
+	}
 }
