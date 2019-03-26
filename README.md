@@ -7,6 +7,7 @@
 > Main Class 기능
 >```
 > void go() : 메인 Logic을 담고 있는 메서드, 게임을 진행할 것인지 그만할 것인지 선택하게 된다!
+> void init() : 클래스 객체를 생성하는 메서드
 > void matchNumber() : User가 컴퓨터랑 숫자 야구 게임을 진행하는 메서드
 > String scanInput() : User의 입력값을 받아오는 메서드
 > boolean isWrong(String num) : 입력받은 숫자가 1~9까지 서로 다른 3자리 숫자로 구성되어 있으면 true, 아니면 false를 리턴
