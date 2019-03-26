@@ -13,21 +13,18 @@ public class PlayGame {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        while(true){
-            hashMap = Number.getInstance().comNum();
-           // playerNum = Number.getInstance().playerNum(br);
-            System.out.print("컴퓨터 숫자 : ");
+        hashMap = Number.getInstance().comNum();
 
-            for(Object data : hashMap.values()){
-                System.out.print(data);
+        System.out.print("컴퓨터 숫자 : ");
+        for (Object data : hashMap.values()) {
+            System.out.print(data);
+        }
+
+        while (true) {
+            playerNum = Number.getInstance().playerNum(br);
+            if(Feature.getInstance().checkNum(hashMap, playerNum) == 3){
+                break;
             }
-
-            /*for(String data : playerNum){
-                System.out.print(data);
-            }*/
-
-
-
         }
 
     }
