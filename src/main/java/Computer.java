@@ -37,20 +37,16 @@ public class Computer {
         while (true){
             Random ran = new Random();
             this.randomNum = ran.nextInt(990) + 10;
-            if(isValid(randomNum)) break;
+            divideNum(randomNum);
+            if(isValid()) break;
         }
     }
 
     /**
      * 랜덤으로 뽑은 수에 같은 숫자가 포함되어 있는지 확인한다.
-     * @param inputNum 뽑은 숫자를 인자로 받는다.
 .    * @return 같은 숫자가 있다면 true를 그렇지 않다면 false를 반환한다.
      */
-    public boolean isValid(int inputNum){
-        comNumArray[0] = inputNum / 100;
-        inputNum = inputNum % 100;
-        comNumArray[1] = inputNum / 10;
-        comNumArray[2] = inputNum % 10;
+    public boolean isValid(){
         if((comNumArray[0] == comNumArray[1])
                 || (comNumArray[0] == comNumArray[2])
                 || (comNumArray[1] == comNumArray[2])){
@@ -74,5 +70,16 @@ public class Computer {
      */
     public void reset(){
         makeRandomNum();
+    }
+
+    /**
+     * 뽑은 숫자를 배열에 나눈다.
+     * @param inputNum 뽑은 숫자를 인자로 받는다.
+     */
+    public void divideNum(int inputNum){
+        comNumArray[0] = inputNum / 100;
+        inputNum = inputNum % 100;
+        comNumArray[1] = inputNum / 10;
+        comNumArray[2] = inputNum % 10;
     }
 }
