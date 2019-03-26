@@ -1,8 +1,15 @@
+/*
+ * 클래스 이름  : BaseballGame
+ * 버전 정보    : 1.0.7
+ * 날짜         : 2019-03-26
+ * 작성자       : 조진식 (kunggom@gmail.com)
+ */
+
 import java.util.*;
 import java.io.Console;
 
 public class BaseballGame {
-    // 1에서 9 사이의 서로 다른 임의의 정수 3개를 생성하여 배열로 반환.
+    /** 1에서 9 사이의 서로 다른 임의의 정수 3개를 생성하여 배열로 반환. */
     private static int[] randIntArray() {
         int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         Random rand = new Random();
@@ -19,9 +26,11 @@ public class BaseballGame {
         return Arrays.copyOfRange(arr, 0, 3);
     }
 
-    // 지정된 길이만큼의 숫자열을 입력받아 각각 배열에 넣어 반환하는 함수.
-    // 사용자 입력을 유도하는 메시지 또한 출력한다.
-    // 입력 오류가 있으면 0으로 초기화된 배열을 반환한다.
+    /**
+     * 지정된 길이만큼의 숫자열을 입력받아 각각 배열에 넣어 반환하는 함수.
+     * 사용자 입력을 유도하는 메시지 또한 출력한다.
+     * 입력 오류가 있으면 0으로 초기화된 배열을 반환한다.
+     */
     private static int[] getInputToArray(int length, String msg) {
         int[] array = new int[length];
         Console console = System.console();
@@ -43,7 +52,7 @@ public class BaseballGame {
         return array;
     }
 
-    // 정수 배열에서 사용하는 간단한 indexOf() 함수.
+    /** 정수 배열에서 사용하기 위한 간단한 indexOf() 함수. */
     private static int intArrayIndexOf(int[] array, int target) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == target) {
@@ -53,7 +62,7 @@ public class BaseballGame {
         return -1;
     }
 
-    // 두 개의 배열을 받아, 게임 결과 판정을 문자열로 반환한다.
+    /** 두 개의 배열을 받아, 게임 결과 판정을 문자열로 반환한다. */
     private static String judgement(int[] right, int[] answer) {
         int[] judge = new int[2];
         int temp;
@@ -68,8 +77,10 @@ public class BaseballGame {
             }
         }
 
-        String strike = judge[0] > 0 ? String.format("%s 스트라이크 ", judge[0]) : "";
-        String ball = judge[1] > 0 ? String.format("%s볼", judge[1]) : "";
+        String strike = (judge[0] > 0)
+                        ? String.format("%s 스트라이크 ", judge[0])
+                        : "";
+        String ball = (judge[1] > 0) ? String.format("%s볼", judge[1]) : "";
 
         if (judge[0] == 0 && judge[1] == 0) {
             return "낫싱";
@@ -78,13 +89,13 @@ public class BaseballGame {
         }
     }
 
-    // 실제 게임을 진행하는 함수.
+    /** 실제 게임을 진행하는 함수. */
     private static void game() {
         int[] right = randIntArray();
         int[] answer;
         String result;
 
-        // cheat code - 주석처리
+        /* cheat code - 주석처리 */
         // for (int var : right) {
         //     System.out.print(var);
         // }
@@ -99,7 +110,7 @@ public class BaseballGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    // 메인 함수.
+    /** 메인 함수. */
     public static void main(String[] args) {
         int[] running = new int[]{1};
         while (running[0] == 1) {
