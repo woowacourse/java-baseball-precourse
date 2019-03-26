@@ -1,18 +1,34 @@
+/*
+ * 클래스 이름 : GamePlay
+ *
+ * 버전 정보 : v 0.0.4
+ *
+ * 날짜 : 2019-03-27
+ *
+ * Copyright 2019 KwonMC
+ */
+package com.kwonmc.baseball;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Baseball 게임을 진행하는데 있어서 필요한 데이터와 메서드가 있는 클래스
+ *
+ * @version 0.0.4
+ * @author KwonMC
+ */
 public class GamePlay {
-    private int[] com = new int[3];
-    private int[] user = new int[3];
+    private int[] com = new int[3];         // 컴퓨터가 생성하는 숫자를 저장할 배열
+    private int[] user = new int[3];        // 유저가 입력하는 숫자를 저장할 배열
 
-    
-    private boolean isFirstTime = true;
-    private boolean continueGame = true;
+    private boolean isFirstTime = true;     // 게임을 시작하는 처음을 알리는 boolean
+    private boolean continueGame = true;    // 게임을 계속할지 여부를 결정하는 boolean
 
     private GameResult gameResult = new GameResult();
 
     /**
-     * continueGame getter 메서드
+     * continueGame getter
      * @return this.continueGame
      */
     public boolean isContinueGame() {
@@ -20,7 +36,7 @@ public class GamePlay {
     }
 
     /**
-     * continueGame setter 메서드
+     * continueGame setter
      * @param continueGame 가 this.continueGame 에 배정됨
      */
     public void setContinueGame(boolean continueGame) {
@@ -28,13 +44,17 @@ public class GamePlay {
     }
 
     /**
-     *
-     * @param firstTime
+     * firstTime setter
+     * @param firstTime 가 this.isFirstTime 에 배정됨
      */
     public void setFirstTime(boolean firstTime) {
-        isFirstTime = firstTime;
+        this.isFirstTime = firstTime;
     }
 
+    /**
+     * gameResult getter
+     * @return gameResult
+     */
     public GameResult getGameResult() {
         return gameResult;
     }
@@ -47,8 +67,10 @@ public class GamePlay {
     private ArrayList<Integer> makeRandomArrayList() {
         ArrayList<Integer> result = new ArrayList<>();
         while (result.size() < 3) {
+            // 원소가 세개 모일 때까지 반복문을 실행
             int tmp = (int) (Math.random() * 9 + 1);
             if (!result.contains(tmp)) {
+                // result 에 있는 원소와 중복되지 않으면 추가
                 result.add(tmp);
             }
         }
@@ -61,20 +83,10 @@ public class GamePlay {
      * @return primitive int 형 배열로 바뀐 ArrayList
      */
     private int[] arrayListToArray(ArrayList<Integer> arrayList) {
-        if (arrayList.size() != 3) {
-            throw new RuntimeException("Something Wrong While Making Random Array");
-        }
         int[] result = new int[3];
         for (int i = 0; i < arrayList.size(); i++) {
             result[i] = arrayList.get(i);
         }
-//        // com
-//        System.out.println("com");
-//        for (int i : result) {
-//            System.out.print(i + " ");
-//        }
-//        System.out.println();
-
         return result;
     }
 
@@ -98,13 +110,18 @@ public class GamePlay {
 
     /**
      * 사용자의 입력을 받는 메서드
+     * @param sc 사용자의 입력을 받을 Scanner
      */
-    public void getUserInput(String[] userInput) {
+    public void getUserInput(Scanner sc) {
+        String[] userInput = sc.next().split("");
         for (int i = 0; i < this.user.length; i++) {
             this.user[i] = Integer.parseInt(userInput[i]);
         }
     }
 
+    /**
+     * countStrike 메서드와 countBall 메서드를 실행하는 메서드
+     */
     public void countResult() {
         countStrike();
         countBall();
@@ -161,15 +178,28 @@ public class GamePlay {
         }
     }
 
-    public void checkEndOrContinum(Scanner sc) {
+    /**
+     * 게임이 끝났을 때 다음 게임을 계속할 지 종료할 지 정하는 메서드
+     * @param sc 유저의 입력을 받기 위한 scanner
+     */
+    public void getUserEndOrContinue(Scanner sc) {
         if (this.getGameResult().isEnd()) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int input = sc.nextInt();
-            if (input == 2) {
-                this.setContinueGame(false);
-            } else {
-                this.setFirstTime(true);
-            }
+            gameEndOrContinue(input);
+        }
+    }
+
+    /**
+     * 사용자의 input 에 따라 게임을 종료할지 계속할지 결정할 수 있는
+     * boolean 값을 조정하는 메서드
+     * @param input 유저의 인풋
+     */
+    private void gameEndOrContinue(int input) {
+        if (input == 2) {
+            this.setContinueGame(false);
+        } else {
+            this.setFirstTime(true);
         }
     }
 }
