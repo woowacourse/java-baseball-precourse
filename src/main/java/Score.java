@@ -41,4 +41,12 @@ public class Score {
 	public void setStrike(int strike) {
 		this.strike = strike;
 	}
+
+	/**
+	 * 볼의 개수를 반환한다.
+	 * @return 볼의 개수
+	 * */
+	public int getBall() {
+		return this.ball;
+	}
 }
