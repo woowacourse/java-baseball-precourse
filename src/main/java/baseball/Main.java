@@ -28,13 +28,20 @@ public class Main {
 
         int comnum[] = myTest.randNumGenerator();    //randNumGenerator함수로부터 랜덤 값을 받아온다
         //테스트용 출력
-//        for (int i = 0; i<a.length; i++) {
-//            System.out.print(a[i]);
-//        }
+        for (int i = 0; i<comnum.length; i++) {
+            System.out.print(comnum[i]);
+        }
         while(strike < 3) {  //스트라이크 3이 안되면 반복
             int a = myTest.numReader();     //numReader로 부터 값을 입력 받음
             int usernum[] = myTest.checkNum(a);
+//            for (int i = 0; i<usernum.length; i++) {
+//                System.out.print(usernum[i]);
+//            }
+            if (usernum.length != 1){ //유저가 입력한 숫자가 제대로 된 숫자일때만 진행한다.
             int[] count = myTest.compNum(comnum, usernum);
+                myTest.prtResult(count);
+                System.out.println("");
+            }
 
         }
     }
@@ -78,13 +85,12 @@ public class Main {
         }
         //입력받은 수를 배열 형태로 바꾸어준다
         int[] digits = Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
-        for (int i = 0; i < digits.length; i++) {    //입력 받은 수가 세자리 수인지 확인해준다.
-            if (digits.length >= 4 || digits.length <= 2) {
-                System.out.println("세자리 수를 입력하세요");
-                return digits;
-            }
+
+        if (digits.length >= 4 || digits.length <= 2) {
+            System.out.println("세자리 수를 입력하세요");
+            return a;
         }
-        return a;
+        return digits;
     }
     // compNum 은 사용자가 만든 숫자와 컴퓨터가 만든 숫자를 비교하여 ball 과 strike를 세는 역할을 한다.
     private int[] compNum(int[] comnum, int[] usernum){
@@ -99,5 +105,17 @@ public class Main {
 
         }
         return count;
+    }
+    //prtResult는 strike와 ball수를 바탕으로 낫싱 , 스트라이크, 볼을 판단하여 출력한다
+    private void prtResult(int[] count){
+        if(count[0] == 0 && count[1] == 0){
+            System.out.println("낫싱");
+        }
+        if(count[0] > 0){
+            System.out.print(count[0]+" 스트라이크 ");
+        }
+        if(count[1] > 0){
+            System.out.print(count[1]+" 볼");
+        }
     }
 }
