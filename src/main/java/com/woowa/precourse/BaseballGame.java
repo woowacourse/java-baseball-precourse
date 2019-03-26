@@ -85,11 +85,45 @@ public class BaseballGame implements Baseball {
 
         return userNumbers;
     }
-
+    
+    /**
+     * 사용자가 입력한 값의 유효성을 검사하는 메서드
+     *
+     * @param   사용자로부터 입력 받은 String값
+     * @return  입력 받은 값이 1~9의 서로 다른 정수이고 3자리이면 false를 리턴 
+     */
     @Override
     public boolean checkInputNumbers(String inputNumber) {
-        // TODO Auto-generated method stub
-        return false;
+        boolean isNotValidate = true;
+        boolean isDuplicate1 = true;
+        boolean isDuplicate2 = true;
+        boolean isNotAllNumber = true;
+        boolean isNotThreeNumber = true;
+        
+        /* 입력 값이 1~9까지의 정수인지 확인 */
+        isNotAllNumber = checkNumberOrNot(inputNumber);
+        
+        /* 입력 값이 3자리인지 확인 */
+        isNotThreeNumber = checkInputNumberLength(inputNumber);
+
+        if (isNotAllNumber == true || isNotThreeNumber == true) {
+            return isNotValidate;
+        }
+        
+        /* String으로 입력 받은 문자열을 int[]로 변환 */
+        userNumbers = convertStringToIntArray(inputNumber);
+        
+        /* 두 번째 값 중복 확인 */
+        isDuplicate1 = checkDuplicate(userNumbers, 1);
+        
+        /* 세 번째 값 중복 확인 */
+        isDuplicate2 = checkDuplicate(userNumbers, 2);
+        
+        if (isDuplicate1 == false && isDuplicate2 == false) {
+            isNotValidate = false;
+        }
+        
+        return isNotValidate;
     }
     
     /**
