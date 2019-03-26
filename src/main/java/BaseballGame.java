@@ -1,5 +1,5 @@
 /*
- * @(#)BaseballGame.java       0.9 2019/03/25
+ * @(#)BaseballGame.java       1.0 2019/03/26
  */
 
 import java.util.*;
@@ -8,7 +8,7 @@ import java.util.*;
  * 숫자야구게임을 진행하는 클래스
  *
  * @author 이도원
- * @version 0.9 2019/03/25
+ * @version 1.0 2019/03/26
  */
 public class BaseballGame {
 
@@ -26,6 +26,9 @@ public class BaseballGame {
 
     /* 게임을 종료하는 값 */
     private static final int QUIT = 2;
+
+    /* 오류 값 */
+    private static final int ERROR = -1;
 
     /* 컴퓨터가 선택한 숫자의 문자열 */
     private String number;
@@ -96,7 +99,7 @@ public class BaseballGame {
             int ball = getBall(inputNumber);
 
             /* 스트라이크와 볼의 갯수를 출력 */
-            printResult(strike, ball);
+            printHint(strike, ball);
 
             if (isSuccess(strike)) {
 
@@ -125,7 +128,13 @@ public class BaseballGame {
 
     /* 입력받은 문자열이 3자리의 정수로 이루어진 문자열인지 판단하는 메소드 */
     private boolean isCorrectNumber(String str) {
-        int num = Integer.parseInt(str);
+        int num;
+
+        try {
+            num = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            num = ERROR;
+        }
 
         return ((str.length() == DIGIT) && (num >= 0) && (num < Math.pow(10, DIGIT)));
     }
@@ -174,23 +183,36 @@ public class BaseballGame {
         return ballCount;
     }
 
-    /* 스트라이크, 볼의 갯수에 대한 결과를 출력하는 메소드 */
-    private void printResult(int strikeCount, int ballCount) {
+    /* 스트라이크, 볼에 대한 결과를 출력하는 메소드 */
+    private void printHint(int strikeCount, int ballCount) {
+        printStrike(strikeCount);
+        printBall(ballCount);
+        printNothing(strikeCount, ballCount);
+
+        System.out.println();
+    }
+
+    /* 스트라이크의 갯수를 출력하는 메소드 */
+    private void printStrike(int strikeCount) {
         if (strikeCount != 0) {
             System.out.print(strikeCount + " 스트라이크 ");
         }
+    }
 
+    /* 볼의 갯수를 출력하는 메소드 */
+    private void printBall(int ballCount) {
         if (ballCount != 0) {
             System.out.print(ballCount + " 볼");
         }
+    }
 
+    /* Nothing 출력하는 메소드 */
+    private void printNothing(int strikeCount, int ballCount) {
         if (strikeCount == 0 && ballCount == 0) {
 
             /* 입력한 수와 같은 수가 없는 경우에 실행 */
             System.out.print("Nothing");
         }
-
-        System.out.println();
     }
 
     /* 3개의 숫자를 모두 맞혔는지 여부를 판단하는 메소드 */
@@ -210,7 +232,12 @@ public class BaseballGame {
 
         do {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            answer = sc.nextInt();
+
+            try {
+                answer = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                answer = ERROR;
+            }
         } while (!(answer == RESTART || answer == QUIT));
 
         return answer;
