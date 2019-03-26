@@ -1,19 +1,31 @@
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
-// 먼저 기능만 같도록 스파게티 코드로 작성
+// 19-03-26 리팩토링
 public class Main {
-    private static int[] com = new int[3];
+    /**
+     * 게임을 시작하기 위해 1부터 9까지의 중복되지 않는 임의의 숫자 세개를 반환하는 메서드
+     * @return result 1부터 9까지의 중복되지 않는 임의의 숫자 세개 담은 배열
+     */
+    private static int[] gameInit() {
+        ArrayList<Integer> tmpResult = new ArrayList<>();
+        while (tmpResult.size() < 3) {
+            int tmp = (int) (Math.random() * 9 + 1);
+            if (!tmpResult.contains(tmp))
+                tmpResult.add(tmp);
+        }
+
+        int[] result = new int[3];
+        for (int i = 0; i < tmpResult.size(); i++) {
+            result[i] = tmpResult.get(i);
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         // 최초로 컴퓨터가 중복되지 않는 임의의 수 3개 생성
-        for (int i = 0; i < com.length; i++) {
-            com[i] = (int) (Math.random() * 9 + 1);
-
-            for (int j = 0; j < i; j++)
-                if (com[j] == com[i]) {
-                    i--;
-                    break;
-                }
-        }
+        int[] com = gameInit();
 
         boolean go = true;
         while (go) {
