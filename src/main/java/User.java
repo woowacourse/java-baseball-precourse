@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class User {
 	
 	/**
-	 * 3자리 수를 각각의 자리수에 따라 분리한다
+	 * 3자리 수를 각각의 자릿수에 따라 분리한다
 	 * ex) 123 -> 1, 2, 3
 	 * @param num 	3자리 수
 	 * @return res 	자리 수에 따른 분리된 수
@@ -32,6 +32,11 @@ public class User {
 		return res;
 	}
 	
+	//3자리가 아닐 경우
+	public static boolean isLength(String input) {
+		return input.length() == 3;
+	}
+	
 	//입력이 숫자인지
 	public static boolean isNumber(String input) {
 		boolean is_num;
@@ -46,6 +51,13 @@ public class User {
 		return is_num;
 	}
 	
+	//서로 다른 수인지
+	public static boolean isDuplicate(String input) {
+		return (input.charAt(0) != input.charAt(1)
+			&& (input.charAt(0) != input.charAt(2))
+			&& (input.charAt(1) != input.charAt(2))); 
+	}
+	
 	/**
 	 * String input이 valid한지 검사한다
 	 * 1. 3자리인지
@@ -55,23 +67,9 @@ public class User {
 	 * @return
 	 */
 	public static boolean isValidInput(String input) {
-		boolean valid;
-		
-		valid = true;
-		//3자리가 아닐 경우
-		if(input.length() != 3) 
-			valid = false;
-		
-		//숫자가 아닐 경우
-		if(!isNumber(input)) 
-			valid = false;
-		
-		//중복된 숫자가 포함될 경우
-		if(input.charAt(0) == input.charAt(1)) valid = false;
-		else if (input.charAt(0) == input.charAt(2)) valid = false;
-		else if (input.charAt(1) == input.charAt(2)) valid = false; 
-		
-		return valid;
+		return isLength(input) 
+			&& isNumber(input) 
+			&& isDuplicate(input);
 	}
 	
 	/**
