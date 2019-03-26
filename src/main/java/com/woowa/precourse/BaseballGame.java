@@ -194,13 +194,8 @@ public class BaseballGame implements Baseball {
      */
     @Override
     public boolean checkInputNumberLength(String inputNumber) {
-        boolean isNotThree = false;
 
-        if (inputNumber.length() != 3) {
-            isNotThree = true;
-        } 
-
-        return isNotThree;
+        return inputNumber.length() != 3 ? true : false;
     }
 
     /**
