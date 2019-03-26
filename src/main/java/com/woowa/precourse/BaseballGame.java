@@ -128,10 +128,24 @@ public class BaseballGame implements Baseball {
         return userNumbers;
     }
 
+    /**
+     * 인자로 받은 String값이 1~9까지의 정수로만 이루어졌는지 확인하는 메서드
+     *
+     * @param Scanner로 입력 받은 String
+     * @return 정수로만 이루어졌으면 false를 리턴
+     */
     @Override
     public boolean checkNumberOrNot(String inputNumber) {
-        // TODO Auto-generated method stub
-        return false;
+        boolean isNotAllNumber = false;
+        
+        for (int i = 0; i < inputNumber.length(); i++) {
+            if (inputNumber.charAt(i) < 49 || inputNumber.charAt(i) > 57) {
+                isNotAllNumber = true;
+                return isNotAllNumber;
+            } 
+        }  // end for 
+        
+        return isNotAllNumber;
     }
 
     @Override
