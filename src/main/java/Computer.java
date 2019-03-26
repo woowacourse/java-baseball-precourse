@@ -113,4 +113,16 @@ public class Computer {
 		
 		return correct;
 	}
+	
+	/**
+	 * 숫자 야구 게임을 다시 시작하기 위해서 사용자로부터 입력 받은 숫자를 저장한 배열과 스트라이크 횟수
+	 * 볼 횟수를 초기화하는 메소드입니다.
+	 * @param userNum - 사용자로부터 입력 받은 숫자를 저장하는 배열을 초기화하기 위해 파라미터로 참조
+	 */
+	public void reset(int[] userNum) {
+		userNum = new int[3];
+		strikeCnt = 0;
+		ballCnt = 0;
+	}
+	
 }
