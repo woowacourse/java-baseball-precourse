@@ -127,6 +127,41 @@ public class Main {
         return strikeCount;
     }
 
+    /**
+     * String을 2개 입력받아 Ball이 몇개인지 반환
+     * @param str1          String 1
+     * @param str2          String 2
+     * @return int          ball 개수 반환
+     */
+    public static int getBallCount(String str1, String str2){
+        int ballCount =0;                           // 반환 ball Count
+        boolean[] numArray = new boolean[10];       // number 체크용 array
+
+        // numArray Initialize
+        for (int i = 1; i < 10; i++) {
+            numArray[i] = false;
+        }
+
+        // str1을 numArray에 체크
+        for (int i = 0; i < 3; i++) {
+            int num = str1.charAt(i) - '0';
+
+            numArray[num] = true;
+        }
+
+        // str2에서 ball갯수 세기
+        for (int i = 0; i < 3; i++) {
+            int num = str2.charAt(i) - '0';
+
+            // 같은 index끼리는 다르지만, 해당 number를 포함하고있다면 ball
+            if( (str1.charAt(i) != str2.charAt(i)) && numArray[num] ){
+                ballCount++;
+            }
+        }
+
+        return ballCount;
+    }
+
     public static void main(String[] args){
         System.out.print("hi");
     }
