@@ -64,4 +64,48 @@ public class Computer {
 		} while ( (arr[0] == arr[2]) || (arr[1] == arr[2]) );
 	}
 	
+	/**
+	 * 사용자의 번호 정보를 입력받아서,
+	 * 컴퓨터의 번호 정보와 비교하여 스트라이크, 볼, 아웃의 개수를 카운팅하는 메서드
+	 * 
+	 * @param userNum 사용자의 번호
+	 * @return [스트라이크, 볼, 아웃] 개수를 저장한 배열
+	 */
+	public int []compareNumber(int userNum){
+		int []result = new int[SIZE];
+		int []user = new int[SIZE];
+		boolean []detect = new boolean[SIZE];
+		
+		for (int i = SIZE - 1; i >= 0; i--) {
+			user[i] = userNum % 10;
+			userNum /= 10;
+		}
+		// 스트라이크
+		for (int i = 0; i < SIZE; i++) {
+			if (user[i] == arr[i]) {
+				result[0]++;
+				detect[i] = true;
+			}
+		}
+		// 볼
+		if (!detect[0]) {
+			if ((user[0] == arr[1]) || (user[0] == arr[2])) {
+				result[1]++;
+			}
+		}
+		if (!detect[1]) {
+			if ((user[1] == arr[0]) || (user[1] == arr[2])) {
+				result[1]++;
+			}
+		}
+		if (!detect[2]) {
+			if ((user[2] == arr[0]) || (user[2] == arr[1])) {
+				result[1]++;
+			}
+		}
+		// 아웃
+		result[2] = 3 - (result[0] + result[1]);
+		
+		return result;
+	}
 }
