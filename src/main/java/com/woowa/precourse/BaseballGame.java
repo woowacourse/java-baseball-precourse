@@ -22,8 +22,70 @@ package com.woowa.precourse;
  * @version    1.00 2019년 3월 26일
  * @author     노수진
  */
-public class BaseballGame {
-    public static void main(String[] args) {
-        System.out.println("Hello World");       
+public class BaseballGame implements Baseball {
+
+    @Override
+    public int[] makeThreeRandomNumbers() {
+        // TODO Auto-generated method stub
+        return null;
     }
+
+    @Override
+    public int[] inputUserNumbers() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean checkInputNumbers(String inputNumber) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean checkDuplicate(int[] intArray, int index) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public int[] convertStringToIntArray(String inputNumber) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean checkNumberOrNot(String inputNumber) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean checkInputNumberLength(String inputNumber) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public int[] checkStrikeOrBall(int[] comNumbers, int[] userNumbers) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void runGame() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void reGame() {
+        // TODO Auto-generated method stub
+        
+    }
+    
+    public static void main(String[] args) {
+        
+    }
+
 }
