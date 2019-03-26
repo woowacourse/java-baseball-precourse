@@ -65,4 +65,12 @@ public class Score {
 	public boolean isNothing() {
 		return ( ( (this.strike == 0) && (this.ball == 0) ) ? true : false );
 	}
+
+	/**
+	 * 정답인지 반환한다.
+	 * @return 정답 유무
+	 * */
+	public boolean isCorrect() {
+		return ( (this.strike == 3) ? true : false );
+	}
 }
