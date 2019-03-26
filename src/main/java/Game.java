@@ -73,7 +73,7 @@ public class Game {
      * @return 지속한다면 true를 그렇지 않다면 false를 반환한다.
      */
     public boolean continueGame(){
-        System.out.println("1. 계속 2. 끝");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
         if(choice == 1) {
