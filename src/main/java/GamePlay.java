@@ -5,6 +5,10 @@ public class GamePlay {
     private int[] user = new int[3];
     private GameResult gameResult = new GameResult();
 
+    public GameResult getGameResult() {
+        return gameResult;
+    }
+
     /**
      * 길이가 3이고 중복되지 않는 1부터 9까지의 임의의 수를 만드는 메서드
      * init 을 위한 helper method
@@ -34,17 +38,30 @@ public class GamePlay {
         for (int i = 0; i < arrayList.size(); i++) {
             result[i] = arrayList.get(i);
         }
+        // com
+        System.out.println("com");
+        for (int i : result) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
         return result;
     }
 
     /**
      * 게임을 초기화 하는 메서드
      */
-    public void init() {
-        ArrayList<Integer> tmpArr = makeRandomArrayList();
-        this.com = arrayListToArray(tmpArr);
+    public boolean init(boolean flag) {
+        if (flag) {
+            ArrayList<Integer> tmpArr = makeRandomArrayList();
+            this.com = arrayListToArray(tmpArr);
+        }
+        return false;
     }
 
+    /**
+     * 숫자를 입력해주세요 메시지를 출력하는 메서드
+     */
     public void requestInputMessage() {
         System.out.print("숫자를 입력해주세요: ");
     }
@@ -112,28 +129,5 @@ public class GamePlay {
         if (i != j && this.com[i] == this.user[j]) {
             gameResult.oneMoreBall();
         }
-    }
-
-    /**
-     * 맞추지 못하면 매번 strike 와 ball 은 0 으로 초기화 되어야 함.
-     */
-    public void initGameResult() {
-        gameResult.initStrikeAndBall();
-    }
-
-    /**
-     * 게임의 결과를 콘솔에 출력하는 메서드
-     */
-    public void printGameResult() {
-        gameResult.printStrikeAndBall();
-    }
-
-    /**
-     * 게임이 끝인지 아닌지 체크하는 메서드
-     * strike 가 3개이면 게임이 끝난다
-     * @return 게임이 끝인지 아닌지 체크하는 메서드
-     */
-    public boolean isGameEnd() {
-        return gameResult.isThreeStrike();
     }
 }
