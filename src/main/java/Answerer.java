@@ -25,4 +25,21 @@ public class Answerer {
 		this.number = new int[3]; // 3자리 수
 		score = null;
 	}
+
+	/**
+	 * 정답자로부터 입력받은 숫자 문자열을 숫자인 배열로 담는다.
+	 * @param strNumber 문자열 형태의 3자리 수
+	 * @return 정답(3자리 숫자 배열)
+	 * */
+	public int[] setNumber(String strNumber) {
+
+		/* 새로운 숫자를 입력 받으므로, 점수를 null 로 초기화 한다. */
+		score = null;
+
+		for(int i = 0; i < this.number.length; i++) {
+			char c = strNumber.charAt(i);
+			this.number[i] = c - '0'; /* 문자를 숫자로 변환 */
+		}
+		return this.number;
+	}
 }
