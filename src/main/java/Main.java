@@ -188,6 +188,32 @@ public class Main {
 
     }
 
+    /**
+     * 유저에게 1 혹은 2를 입력받아, 재시작을원하는지 혹은 아닌지를 반환
+     *
+     * @return boolean      재시작 여부 반환
+     */
+    public static boolean getRestartAnswer(){
+        boolean isRestart = false;
+
+        while (true){
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            Scanner scc = new Scanner(System.in);
+            String inputString = scc.next();
+
+            if (inputString.equals("1") ){
+                isRestart = true;
+                break;
+            }
+            else if(inputString.equals("2")){
+                isRestart = false;
+                break;
+            }
+
+        }
+        return isRestart;
+    }
+
     public static void main(String[] args){
         System.out.print("hi");
     }
