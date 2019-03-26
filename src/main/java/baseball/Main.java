@@ -13,13 +13,17 @@ package baseball;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.stream.Stream;
 /**
  * Main 클래스는 다음과 같은 기능을 구현한다
  * 1.1부터 9까지 서로 다른 수로 이루어진 3자리 수를 생성하는 기능
  * 2.세 자리의 수를 입력 받는 기능
+ * 3. 입력 받은 수가 세자리 수 인지 확인하는 기능
  */
 public class Main {
-
+    static int strike = 0;
+    static int ball = 0;
     public static void main(String args[]) {
         Main myTest = new Main();
 
@@ -28,8 +32,11 @@ public class Main {
 //        for (int i = 0; i<a.length; i++) {
 //            System.out.print(a[i]);
 //        }
-        int b = myTest.numReader();     //numReader로 부터 값을 입력 받음
-        System.out.println(b);     //Test용 출력
+        while(strike < 3) {  //스트라이크 3이 안되면 반복
+            int b = myTest.numReader();     //numReader로 부터 값을 입력 받음
+            myTest.checkNum(b);
+            System.out.println(b);     //Test용 출력
+        }
     }
 
     private int[] randNumGenerator(){
@@ -61,5 +68,21 @@ public class Main {
         System.out.print("숫자를 입력해주세요 : ");
         Scanner sc = new Scanner(System.in);
         return sc.nextInt();//입력받은 숫자를 반환한다.
+    }
+    // checkNum은 사용자로 입력받은 숫자가 3자리 수인지, 양의 정수인지 판별해 준다.
+    private void checkNum(int number){
+        //정수를 배열 형태로 바꾸어줌
+        if(number < 0){
+            System.out.println("음수는 입력할 수 없습니다");
+            return;
+        }
+        int[] digits = Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
+        for (int i = 0; i < digits.length; i++) {
+            if (digits.length >= 4 || digits.length <= 2) {
+                System.out.println("세자리 수를 입력하세요");
+                return;
+            }
+        }
+        return;
     }
 }
