@@ -166,15 +166,22 @@ public class BaseballGame
             {
                 count++;
             }
-
         }
         return count;
     }
 
-
-
-
-
-
+    public static int checkBalls(String strComputerNumber, String strUserNumber)
+    {
+        int count = 0;
+        for (int i =0, n = strComputerNumber.length();i<n;i++)
+        {
+            int index = strUserNumber.indexOf(strComputerNumber.charAt(i));
+            if(index != -1 && index != i)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
 
 }
