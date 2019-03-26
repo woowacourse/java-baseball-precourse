@@ -291,7 +291,8 @@ public class BaseballGame implements Baseball {
     }
     
     public static void main(String[] args) {
-        
+        BaseballGame bg = new BaseballGame();
+        bg.runGame();
     }
 
 }
