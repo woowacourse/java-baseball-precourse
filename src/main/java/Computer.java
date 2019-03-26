@@ -72,4 +72,12 @@ public class Computer {
         return isEnd;    //숫자를 찾지 못했을 경우 0을 리턴한다
     }
     
+    public int playGame()
+    {
+        System.out.println("숫자입력하세요");
+        int num;
+        num=sc.nextInt();    //숫자를 입력받는다
+        return num;
+    }
+    
 }
