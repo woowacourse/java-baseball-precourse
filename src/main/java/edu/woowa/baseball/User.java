@@ -66,12 +66,19 @@ public class User {
 			}
 		}
 	}
-	
+
 	/**
 	 * 클래스 변수 객체를 생성시켜주는 메서드
 	 */
 	private void init() {
 		sc = new Scanner(System.in);
 		cp = new Computer();
+	}
+	
+	/**
+	 * 입력값을 받아서 리턴하는 메서드
+	 */
+	private String scanInput() {
+		return sc.nextLine();
 	}
 }
