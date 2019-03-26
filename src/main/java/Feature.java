@@ -13,12 +13,10 @@ public class Feature {
         for(int i = 0 ; i < playerNum.length ; i++){
             if(!hashMap.containsValue(Integer.parseInt(playerNum[i]))){
                 nothing++;
+            } else if((int)hashMap.get(i) == Integer.parseInt(playerNum[i])){
+                strike++;
             } else{
-                if((int)hashMap.get(i) == Integer.parseInt(playerNum[i])){
-                    strike++;
-                } else{
-                    ball++;
-                }
+                ball++;
             }
         }
 
