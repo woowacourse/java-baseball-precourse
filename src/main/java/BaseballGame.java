@@ -102,6 +102,32 @@ public class BaseballGame
         return true;
     }
 
+    public static boolean isZeroThere(String strUserInput)
+    {
+        for(int i=0, n=strUserInput.length(); i<n; i++)
+        {
+            if(strUserInput.charAt(i) == '0')
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isRepeating(String strUserInput)
+    {
+        for(int i=0, n = strUserInput.length(); i < n-1; i++)
+        {
+            if(strUserInput.charAt(i) == strUserInput.charAt(i+1))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 
 
 }
