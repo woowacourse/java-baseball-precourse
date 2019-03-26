@@ -108,7 +108,6 @@ public class baseball {
      *  contains 메서드 통해 컴퓨터리스트와 유저 배열 포함 판별
      *  */
     private static void check_Ball(){
-
         for (int i = 0; i < DIGIT; i++) {
             if ((!com_Array[i].equals(user_Array[i])) &&
                     (Arrays.asList(com_Array).contains(user_Array[i]))) {
@@ -128,7 +127,7 @@ public class baseball {
         getUser_Input_Number();
         check_Staike();
         check_Ball();
-
+        game_Result_Process();
     }
 
     /* 게임 결과 프로세스 메소드 */
@@ -197,14 +196,12 @@ public class baseball {
         user_Number = "";
     }
 
-
     /* 숫자야구게임 시작 메소드 */
     private static void start(){
         while (selector) {
             process();
         }
     }
-
 
     public static void main(String[] args){
         start();
