@@ -25,6 +25,48 @@ public class GameUI {
 	}
 
 	/**
+	 * 질문자(컴퓨터)와 답변자(사용자)가 게임에 참여 후 진행한다.
+	 * @param questioner 게임에 참여할 질문자(컴퓨터)
+	 * @param answerer 게임에 참여할 답변자(사용자)
+	 * */
+	private static void run(Questioner questioner, Answerer answerer) {
+
+		/* 게임 참여 */
+		Game game = new Game(questioner, answerer);
+
+		try(Scanner sc = new Scanner(System.in)) {
+
+			/* 질문자(컴퓨터)가 문제를 만든다. */
+			questioner.setNumber();
+
+			while (true) {
+
+				/* 답변자에게 정답을 요구하고, 답변자가 답을 입력한다. */
+				String str_number = askNumber(sc);
+				answerer.setNumber(str_number);
+
+				/* 게임 진행 후 게임결과를 출력한다. */
+				game.play();
+				printScore( answerer.getScore() );
+
+				if( answerer.getScore().isCorrect() ) {
+
+					/* 답변자가 문제를 맞췄을 경우, 다시 시작할지를 묻는다. */
+					if( askRestart(sc) ) {
+
+						/* 재시작을 요청하면, 문제를 다시 만든다. */
+						questioner.setNumber();
+					} else {
+
+						/* 재시작을 거절하면, 게임을 종료한다. */
+						return;
+					}
+				}
+			}
+		}
+	}
+
+	/**
 	 * 사용자에게 정답을 요구하고, 정답를 반환한다.
 	 * @param sc 입력을 위한 Scanner 객체
 	 * @return 사용자가 입력한 3자리수
