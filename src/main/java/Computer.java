@@ -48,4 +48,15 @@ public class Computer {
         return false;
     }
     
+    public void print(int strike, int ball)
+    {
+        /* 각 상황에 맞게 strike와 ball을 출력 */
+        if(strike!=0)
+            System.out.print(strike + "스트라이크 ");
+        if(ball!=0)
+            System.out.println(ball + "볼");   
+        if(strike==0 && ball==0)
+            System.out.println("낫씽"); 
+    }
+    
 }
