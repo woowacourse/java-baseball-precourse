@@ -28,6 +28,7 @@ public class Human {
      */
     public void setInputNum(int inputNum){
         this.inputNum = inputNum;
+        divideNum();
     }
 
     /**
@@ -43,15 +44,21 @@ public class Human {
     .* @return 같은 숫자가 있다면 true를 그렇지 않다면 false를 반환한다.
      */
     public boolean isValid(){
-        humanNumArray[0] = inputNum / 100;
-        inputNum = inputNum % 100;
-        humanNumArray[1] = inputNum / 10;
-        humanNumArray[2] = inputNum % 10;
         if((humanNumArray[0] == humanNumArray[1])
                 || (humanNumArray[0] == humanNumArray[2])
                 || (humanNumArray[1] == humanNumArray[2])){
             return false;
         }
         return true;
+    }
+
+    /**
+     * 사용자가 넣은 수를 배열에 나눈다.
+     */
+    public void divideNum(){
+        humanNumArray[0] = inputNum / 100;
+        inputNum = inputNum % 100;
+        humanNumArray[1] = inputNum / 10;
+        humanNumArray[2] = inputNum % 10;
     }
 }
