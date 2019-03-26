@@ -49,5 +49,19 @@ public class Computer {
 			arr[i] = 0;
 		}
 	}
+	/**
+	 * 이전에 사용했던 데이터는 지우고,
+	 * 서로 다른 3가지 숫자를 생성하기 위한 메서드
+	 */
+	public void createNumber() {
+		initNumber();
+		arr[0] = (int) (Math.random()*9) + 1;
+		do {
+			arr[1] = (int) (Math.random()*9) + 1;
+		} while(arr[0] == arr[1]);
+		do {
+			arr[2] = (int) (Math.random()*9) + 1;
+		} while ( (arr[0] == arr[2]) || (arr[1] == arr[2]) );
+	}
 	
 }
