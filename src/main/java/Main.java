@@ -5,8 +5,7 @@
  *className Main
  *version 	1.0.0
  *Date		26/03/2019
- *author	권경동 
- *병합 테스트
+ *author	권경동  
  */
 
 public class Main {
