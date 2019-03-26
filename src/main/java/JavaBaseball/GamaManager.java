@@ -30,7 +30,8 @@ public class GamaManager {
     }
 
     /**
-     * 게임 시작 / 종료 메시지를 출력해주는 메소드
+     * 시작 / 종료 메시지를 출력해주는 메소드
+     * @param input 유저의 스타트 메뉴에서의 입력 값
      */
     private static void startMessage(boolean input) {
         if(input) {
@@ -40,6 +41,16 @@ public class GamaManager {
             System.exit(0);
         }
 
+    }
+
+    /**
+     * 유저에게 세자리 수를 입력하라는 메시지를 출력하는 메소드
+     * @param user User 오브젝트
+     * @return 유저가 입력한 세자리 수
+     */
+    private static int[] getUserNumber(User user) {
+        System.out.println("세자리 수를 입력 하세요 :");
+        return user.getNumber();
     }
 
 }

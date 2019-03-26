@@ -42,7 +42,7 @@ public class User {
      * 유저에게 세자리 수를 입력받는 메소드
      * @return 유저가 입력한 세자리 수
      */
-    public int[] getUserNumber() {
+    public int[] getNumber() {
         SC = new Scanner(System.in);
         int[] userNumber = new int[3];
 
