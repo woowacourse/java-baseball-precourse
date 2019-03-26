@@ -44,9 +44,9 @@ public class Main {
     /**
      * 파라미터 배열 두개를 비교하여 위치와 숫자 모두 같은 스트라이크의 개수를
      * 카운트하여 결과로 반환하는 메서드
-     * @param com computer 가 생성한 배열
+     * @param com computer 가 생성한 배열, 기준이 되는 배열
      * @param user user 입력으로 생성된 배열
-     * @return 스트라이크의 개수 반환
+     * @return 스트라이크의 개수
      */
     private static int countStrike(int[] com, int[] user) {
         int result = 0;
@@ -56,6 +56,27 @@ public class Main {
             // indent depth 3이상
             if (com[i] == user[i]) {
                 result++;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * 파라미터 배열 두개를 비교하여 위치가 같지 않고 숫자만 같은 볼의 개수를
+     * 카운트하여 결과로 반환하는 메서드
+     * @param com computer 가 생성한 배열, 기준이 되는 배열
+     * @param user user 입력으로 생성된 배열
+     * @return 볼의 개수
+     */
+    private static int countBall(int[] com, int[] user) {
+        int result = 0;
+        // 볼 체크
+        for (int i = 0; i < com.length; i++) {
+            for (int j = 0; j < user.length; j++) {
+                if (i != j && com[i] == user[j]) {
+                    result++;
+                }
             }
         }
 
@@ -85,22 +106,8 @@ public class Main {
 
             // 스트라이크는 위치랑 숫자가 동일한 것
             // 볼은 위치는 다르고 숫자가 둘다 포함
-            int strike = 0;
-            int ball = 0;
-
-            // 스트라이크 체크
-            for (int i = 0; i < user.length; i++) {
-                if (com[i] == user[i])
-                    strike++;
-            }
-
-            // 볼 체크
-            for (int i = 0; i < com.length; i++) {
-                for (int j = 0; j < user.length; j++) {
-                    if (i != j && com[i] == user[j])
-                        ball++;
-                }
-            }
+            int strike = countStrike(com, user);
+            int ball = countBall(com, user);
 
             if (strike == 0 && ball == 0)
                 System.out.println("포볼");
