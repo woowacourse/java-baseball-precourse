@@ -69,6 +69,22 @@ public class baseball {
         }
     }
 
+    /** 볼 체크 메소드
+     *  배열위치의 값이 일치 하지 않아야 함
+     *  Arrays.asList 배열을 리스트로 반환
+     *  contains 메서드 통해 컴퓨터리스트와 유저 배열 포함 판별
+     *  */
+    private static void check_Ball(){
+
+        for (int i = 0; i < DIGIT; i++) {
+            if ((!com_Array[i].equals(user_Array[i])) &&
+                    (Arrays.asList(com_Array).contains(user_Array[i]))) {
+                ball++;
+            }
+        }
+    }
+
+
     public static void main(String[] args){
 
     }
