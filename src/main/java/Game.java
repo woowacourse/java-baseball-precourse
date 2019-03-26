@@ -5,6 +5,7 @@
  */
 
 import java.util.Random;
+import java.util.Scanner;
 
 /*
  * 야구게임에 관련 된 클래스
@@ -20,7 +21,10 @@ public class Game {
      *  */
 
     /*게임시작 시 랜덤으로 지정 될 세자리 숫자*/
-    private Number number;
+    private Number gameNumber;
+
+    /*사용자가 입력한 세자리 숫자*/
+    private Number playerNumber;
 
     /*Game 클래스 생성자
      * 메뉴 출력 및 에러 출력
@@ -41,19 +45,32 @@ public class Game {
         }
     }
 
-    /**/
-    public void startGame(){
-
+    /*게임 시작 함수 (전체적인 게임 진행)*/
+    private void startGame(){
+        printGame();
+        inputNumber();
     }
 
     /*게임 종료(프로그램 종료 함수)*/
-    public void exitGame(){
+    private void exitGame(){
         System.exit(0);
     }
 
-    /**/
-    public void printGame(){
-
+    /*게임 화면 출력*/
+    private void printGame(){
+        System.out.println("숫자를 입력해주세요 : ");
     }
 
+    /*세개의 숫자를 입력받음*/
+    private void inputNumber(){
+        /*세자리 숫자를 입력받을 문자열*/
+        String input;
+
+        Scanner scan = new Scanner(System.in);
+        input = scan.nextLine();
+
+        this.playerNumber = new Number(input.charAt(0)-'0',
+                input.charAt(1)-'0',
+                input.charAt(2)-'0');
+    }
 }
