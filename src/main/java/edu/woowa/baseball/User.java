@@ -17,6 +17,8 @@
 
 package edu.woowa.baseball;
 
+import java.util.Scanner;
+
 /**
  * 숫자 야구 게임의 사용자 역할을 하는 사용자 클래스
  * @version 1.00 2019년 03월 26일
@@ -24,4 +26,13 @@ package edu.woowa.baseball;
  */
 public class User {
 	
+	/**
+	 * 사용자로부터 입력값을 받고 저장하기 위한 객체
+	 */
+	private Scanner sc;
+	
+	/**
+	 * 컴퓨터 클래스에 접근하기 위한 객체
+	 */
+	private Computer cp;
 }
