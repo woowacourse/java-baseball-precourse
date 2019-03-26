@@ -47,8 +47,8 @@ public class BaseballGame {
     public void run(){
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(true){
-            if(isStop()){
+        while (true) {
+            if (isStop()) {
 
                 /* 해당 조건을 만족한다면 2를 입력한 경우이기 때문에 게임을 종료합니다.*/
                 System.out.println("숫자 야구 게임을 종료합니다.");
@@ -69,11 +69,11 @@ public class BaseballGame {
         Scanner sc = new Scanner(System.in);
         String input;
 
-        while(true){
+        while (true) {
             System.out.println("게임을 시작하시려면 1, 종료하시려면 2를 입력해주세요.");
             input = sc.next();
 
-            if(input.equals(CONTINUE) || input.equals(STOP)){
+            if (input.equals(CONTINUE) || input.equals(STOP)) {
                 break;
             }
             else {
@@ -98,13 +98,13 @@ public class BaseballGame {
      * 사용자가 정답을 맞출 때까지 숫자 입력을 요청하고 시도 횟수를 증가 시키는 메소드입니다.
      */
     private void requestNumAndCheck(){
-        while(true){
+        while (true) {
             user.requestNumber();
             cnt++;
-            if(isCorrect()){
+            if (isCorrect()) {
                 break;
             }
-            else{
+            else {
                 checkStrikeAndBall();
             }
         }
@@ -116,7 +116,7 @@ public class BaseballGame {
      */
     private boolean isCorrect(){
         boolean status = false;
-        if(user.number.equals(com.number)){
+        if (user.getNumber().equals(com.getNumber())) {
             System.out.println("정답입니다! " + cnt + "번 만에 성공 하셨습니다.");
             System.out.println();
             System.out.print("새로운 ");
@@ -131,11 +131,11 @@ public class BaseballGame {
     private void checkStrikeAndBall(){
         int stike = 0;
         int ball = 0;
-        for(int i = 0; i < user.number.length(); i++){
-            if(checkStrike(i)){
+        for (int i = 0; i < user.getNumber().length(); i++) {
+            if (checkStrike(i)) {
                 stike++;
             }
-            else if(checkBall(i)){
+            else if (checkBall(i)) {
                 ball++;
             }
         }
@@ -148,7 +148,7 @@ public class BaseballGame {
      * @return user와 com의 n번째 숫자가 동일하다면 true를 return합니다.
      */
     private boolean checkStrike(int n){
-        return (user.number.charAt(n) == com.number.charAt(n));
+        return (user.getNumber().charAt(n) == com.getNumber().charAt(n));
     }
 
     /**
@@ -158,7 +158,7 @@ public class BaseballGame {
     포함되어 있다면 true를 return합니다.
      */
     private boolean checkBall(int n){
-        return (com.number.contains(String.valueOf(user.number.charAt(n))));
+        return (com.getNumber().contains(String.valueOf(user.getNumber().charAt(n))));
     }
 
     /**
@@ -170,13 +170,13 @@ public class BaseballGame {
      */
     private void printResult(int strike, int ball){
         String result = "";
-        if(strike != ZERO){
+        if (strike != ZERO) {
             result += strike+" 스트라이크 ";
         }
-        if(ball != ZERO){
+        if (ball != ZERO) {
             result += ball+" 볼 ";
         }
-        if(result.length() == ZERO){
+        if (result.length() == ZERO) {
             result = "낫싱";
         }
 

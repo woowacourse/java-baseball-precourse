@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  * 기능 목록 2 - 컴퓨터가 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 생성 하는 클래스입니다.
  *
- * @version         0.3 2019년 3월 26일
+ * @version         0.4 2019년 3월 26일
  * @author          반선호
  */
 class Computer {
@@ -26,7 +26,7 @@ class Computer {
     private static final int BALL_LEN = 3;
 
     /** 생성된 숫자를 담을 문자열 */
-    String number = "";
+    private String number = "";
 
     /**
      * Computer 생성자이며 서로 다른 수로 이루어진 3자리의 수를 만들어 낸다.
@@ -54,5 +54,13 @@ class Computer {
      */
     private boolean checkDuplicate(int temp){
         return number.contains(String.valueOf(temp));
+    }
+
+    /**
+     * 3자리 숫자를 return해주는 메소드이다.
+     * @return 3자리 숫자(문자열)을 return 한다.
+     */
+    public String getNumber(){
+        return number;
     }
 }

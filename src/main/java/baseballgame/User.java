@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  * 기능 목록 3 - 사용자가 3자리 숫자를 입력하는 기능을 위한 클래스입니다.
  *
- * @version         0.3 2019년 3월 26일
+ * @version         0.4 2019년 3월 26일
  * @author          반선호
  */
 class User {
@@ -26,7 +26,7 @@ class User {
     private static final int BALL_LEN = 3;
 
     /** 입력받은 숫자를 담을 문자열 */
-    String number;
+    private String number = "";
 
 
     /**
@@ -35,11 +35,11 @@ class User {
     void requestNumber(){
         Scanner sc = new Scanner(System.in);
 
-        while(true){
+        while (true) {
             System.out.print("중복되지 않는 3자리의 수를 입력해주세요 : ");
             number = sc.next();
 
-            if(checkLen() && checkNum() && checkDuplicate()){
+            if (checkLen() && checkNum() && checkDuplicate()) {
 
                 /* 길이가 3, 모두 숫자, 중복이 아님을 모두 만족한다면 종료한다.*/
                 break;
@@ -66,8 +66,8 @@ class User {
     private boolean checkNum(){
         boolean status = true;
 
-        for(int i = 0; i < number.length(); i++){
-            if((number.charAt(i) < START_WORD) || (number.charAt(i) > END_WORD) ){
+        for (int i = 0; i < number.length(); i++) {
+            if ((number.charAt(i) < START_WORD) || (number.charAt(i) > END_WORD)) {
                 status = false;
                 break;
             }
@@ -84,14 +84,22 @@ class User {
         boolean status = true;
         String temp;                    //중복 검사를 위한 임시 문자열
 
-        for(int i = 0; i < number.length(); i++){
+        for (int i = 0; i < number.length(); i++) {
             temp = number.replaceFirst(String.valueOf(number.charAt(i)),"");
-            if(temp.contains(String.valueOf(number.charAt(i)))){
+            if (temp.contains(String.valueOf(number.charAt(i)))) {
                 status = false;
                 break;
             }
         }
 
         return status;
+    }
+
+    /**
+     * 3자리 숫자를 return해주는 메소드이다.
+     * @return 3자리 숫자(문자열)을 return 한다.
+     */
+    public String getNumber(){
+        return number;
     }
 }
