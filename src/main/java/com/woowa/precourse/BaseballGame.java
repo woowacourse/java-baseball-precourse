@@ -268,10 +268,26 @@ public class BaseballGame implements Baseball {
         reGame();
     }
 
+    /**
+     * 사용자에게 값을 입력 받아 1이면 runGame()을 호출해 게임을 다시 시작, 2면 게임을 종료하는 메서드
+     */
     @Override
     public void reGame() {
-        // TODO Auto-generated method stub
-        
+        String reGame = "";
+
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            
+            reGame = sc.nextLine();
+
+            if (reGame.equals("1")) {
+                runGame();
+                break;
+            } else if (reGame.equals("2")) {
+                break;
+            }
+            
+        }  // end while
     }
     
     public static void main(String[] args) {
