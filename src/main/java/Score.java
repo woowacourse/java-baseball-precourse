@@ -49,4 +49,12 @@ public class Score {
 	public int getBall() {
 		return this.ball;
 	}
+
+	/**
+	 * 볼을 개수를 변경한다.
+	 * @param ball 볼의 개수
+	 * */
+	public void setBall(int ball) {
+		this.ball = ball;
+	}
 }
