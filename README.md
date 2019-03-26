@@ -8,7 +8,7 @@
   |*Game*|**startGame()**|게임 시작|ing|
   |*Game*|**exitGame()**|게임 종료|O|
   |*Game*|**printGame()**|게임 화면 출력|O|
-  |*Game*|**makeRandomNumber()**|랜덤 3자리 숫자 생성|X|
+  |*Game*|**makeRandomNumber()**|랜덤 3자리 숫자 생성|O|
   |*Game*|**inputNumber()**|세자리 숫자 입력|O|
   |*Game*|**checkNumber()**|숫자 검사|X|
   |*Game*|**printCorrect()**|정답 출력 화면|X|
