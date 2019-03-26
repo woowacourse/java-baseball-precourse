@@ -44,11 +44,13 @@ public class Number {
         try {
             String[] num = br.readLine().split("");
 
+            // num의 길이가 3이 안될경우 예외처리
             if (num.length != 3) {
                 System.out.println(ErrorMessage.LENGTH_ERROR.getErrorMessage());
                 return playerNum(br);
             }
 
+            // 1~9까지의 숫자가 안올경우 예외처리
             for (String data : num) {
                 char charData = data.charAt(data.length() - 1);
                 if (charData <= 48 || charData >= 58) {
@@ -57,6 +59,7 @@ public class Number {
                 }
             }
 
+            // 중복일경우 예외처리
             if (num[0].equals(num[1]) || num[1].equals(num[2]) || num[0].equals(num[2])) {
                 System.out.println(ErrorMessage.OVERLAP_ERROR.getErrorMessage());
                 return playerNum(br);

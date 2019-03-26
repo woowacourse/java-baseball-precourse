@@ -36,6 +36,7 @@ public class PlayGame {
             } else if (exitNum.equals("2")) {
                 return false;
             } else {
+                // 다른 문자가 올경우 예외처리
                 System.out.println(ErrorMessage.OTHER_NUMBER_ERROR.getErrorMessage());
                 return isExit(br);
             }
