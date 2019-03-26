@@ -16,6 +16,8 @@
 
 package com.woowa.precourse;
 
+import java.util.Random;
+
 /**
  * 야구게임을 구현한 클래스입니다.
  * 
@@ -23,11 +25,37 @@ package com.woowa.precourse;
  * @author     노수진
  */
 public class BaseballGame implements Baseball {
+    /** 상대방(컴퓨터)의 수 */
+    protected int[] computerNums = new int[3]; 
 
+    /**
+     * 상대방(컴퓨터)의 1~9까지의 세 개의 정수를 생성하는 메서드
+     *
+     * @return 1~9까지의 서로 다른 세 개의 정수를 담은 int[] 
+     */
     @Override
     public int[] makeThreeRandomNumbers() {
-        // TODO Auto-generated method stub
-        return null;
+        Random random = new Random();
+        boolean duplicate = true;
+
+        /* 첫 번째 값 생성 */
+        computerNums[0] = 1 + random.nextInt(9);
+
+        /* 두 번째 값 생성 */
+        while (duplicate) {
+            computerNums[1] = 1 + random.nextInt(9);
+            duplicate = checkDuplicate(computerNums, 1);
+        }
+
+        duplicate = true;
+
+        /* 세 번째 값 생성 */
+        while (duplicate) {
+            computerNums[2] = 1 + random.nextInt(9);
+            duplicate = checkDuplicate(computerNums, 2);
+        }
+
+        return computerNums;
     }
 
     @Override
