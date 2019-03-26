@@ -57,4 +57,12 @@ public class Score {
 	public void setBall(int ball) {
 		this.ball = ball;
 	}
+
+	/**
+	 * 낫씽을 유무를 반환한다.
+	 * @return 낫씽 유무
+	 * */
+	public boolean isNothing() {
+		return ( ( (this.strike == 0) && (this.ball == 0) ) ? true : false );
+	}
 }
