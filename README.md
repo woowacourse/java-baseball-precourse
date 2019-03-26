@@ -6,8 +6,8 @@
 
 1. 난수 생성
 
-	int createRandomNumber
-		- 난수 3개를 생성하여 반환
+	int[] createRandomNumber
+		- 난수 3개를 생성하여 배열 반환
 
 
 2. 사용자 입력 문구 출력
@@ -37,7 +37,7 @@
 6. 4번의 결과에 따라 게임 상태 반환
 	
 	boolean getBaseballResult
-		- 4번과정에서 반환된 배열을 확인하여 3스트라이크(true) or 3스트라이크 (false) 값 반환
+		- 4번과정에서 반환된 배열을 확인하여 3스트라이크(true) or 3스트라이크외 (false) 값 반환
 
 7. 6번에서 3스트라이크(true)시 문구 출력
 		
@@ -49,3 +49,9 @@
 	
 	int getGameState
 		- 6번과정에서 3스트라이크시 게임종료, 게임 새로시작 값 반환
+
+9. 8번과정에서 잘못된 값 입력시 문구 출력
+
+    void getWrongDisplay
+        - 게임 새로시작(1), 게임종료(2) 외 다른값 입력시 오류 문구 출력
+        

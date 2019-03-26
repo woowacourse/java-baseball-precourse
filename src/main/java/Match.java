@@ -10,78 +10,77 @@ import java.util.Scanner;
 public class Match {
 
     /* 난수와 사용자 입력값을 비교하여 스트라이크,볼 상태로 저장하는 메소드 */
-    public static int[] matchNumber(int randomNumber, int userNumber){
+    public static int[] matchNumber(int[] randomNumber, int userNumber){
 
         int[] baseballResult = new int[2];      // 스트라이크, 볼 값을 저장하기 위한 배열 생성
 
-        int firstRN = randomNumber / 100;                                 // 난수 1번째 숫자
-        int secondRN = (randomNumber - (firstRN*100)) / 10;               // 난수 2번째 숫자
-        int thirdRN = randomNumber - (firstRN*100) - (secondRN*10);       // 난수 3번째 숫자
+        int firstRN = randomNumber[0];                                 // 난수 1번째 숫자
+        int secondRN = randomNumber[1];                                // 난수 2번째 숫자
+        int thirdRN = randomNumber[2];                                 // 난수 3번째 숫자
 
         int firstUN = userNumber/100;                                   // 사용자 1번째 숫자
         int secondUN = (userNumber - (firstUN*100)) / 10;               // 사용자 2번쨰 숫자
         int thirdUN = userNumber - (firstUN*100) - (secondUN*10);       // 사용자 3번째 숫자
 
-
         if (firstRN == firstUN){
 
             /* 난수의 첫번째와 사용자의 첫번째 수가 같을때 */
-            baseballResult[0] += 1;         /* 스트라이크 1증가 */
+            baseballResult[0] += 1;                                     // 스트라이크 1증가
         }
 
         if (firstRN == secondUN){
 
             /* 난수의 첫번째와 사용자의 두번째 수가 같을때 */
-            baseballResult[1] += 1;         /* 볼 1증가 */
+            baseballResult[1] += 1;                                     // 볼 1증가
         }
 
         if (firstRN == thirdUN){
 
             /* 난수의 첫번째와 사용자의 세번째 수가 같을때 */
-            baseballResult[1] += 1;         /* 볼 1증가 */
+            baseballResult[1] += 1;                                     // 볼 1증가
         }
 
         if (secondRN == secondUN){
 
             /* 난수의 두번째와 사용자의 두번째 수가 같을때 */
-            baseballResult[0] += 1;         /* 스트라이크 1증가 */
+            baseballResult[0] += 1;                                     // 스트라이크 1증가
         }
 
         if (secondRN == firstUN){
 
             /* 난수의 두번째와 사용자의 첫번째 수가 같을때 */
-            baseballResult[1] += 1;         /* 볼 1증가 */
+            baseballResult[1] += 1;                                     // 볼 1증가
         }
 
         if (secondRN == thirdUN){
 
             /* 난수의 두번째와 사용자의 세번째 수가 같을때 */
-            baseballResult[1] += 1;         /* 볼 1증가 */
+            baseballResult[1] += 1;                                     // 볼 1증가
         }
 
         if (thirdRN == thirdUN){
 
             /* 난수 세번째와 사용자의 세번째 수가 같을때 */
-            baseballResult[0] += 1;         /* 스트라이크 1증가 */
+            baseballResult[0] += 1;                                     // 스트라이크 1증가
         }
         if (thirdRN == firstUN){
 
             /* 난수 세번째와 사용자의 첫번째 수가 같을때 */
-            baseballResult[1] += 1;         /* 볼 1증가 */
+            baseballResult[1] += 1;                                     // 볼 1증가
         }
         if (thirdRN == secondUN){
 
             /* 난수 세번째와 사용자의 두번째 수가 같을때 */
-            baseballResult[1] += 1;         /* 볼 1증가 */
+            baseballResult[1] += 1;                                     // 볼 1증가
         }
 
-        return baseballResult;      // 저장된 baseballResult배열 반환
+        return baseballResult;                                          // 저장된 baseballResult배열 반환
     }
 
     /* 3스트라이크 판별하는 기능을 가진 메소드 */
     public static boolean getBaseballResult(int[] baseballResult){
 
-        boolean findOut = false;        // 3스트라이크인지 아닌지 상태를 저장하는 변수
+        boolean findOut = false;                                        // 3스트라이크인지 아닌지 상태를 저장하는 변수
 
         if(baseballResult[0] == 3){
 
@@ -95,13 +94,26 @@ public class Match {
     public static int getGameState(boolean getResult){
 
         Scanner getState = new Scanner(System.in);
-        int gameState = 0;          // 다음게임의 상태를 저장하는 변수 선언
+        int gameState = 0;                                              // 다음게임의 상태를 저장하는 변수 선언
 
-        if(getResult == true){
 
-            /* 3스트라이크 일경우*/
+        /* gameState 값이 1또는 2 가 들어 올때 까지 반복 */
+        while((gameState !=1) || (gameState !=2))
+        {
             gameState = getState.nextInt();
+
+            if((gameState == 1) || (gameState == 2))
+            {
+
+                /* 다음게임 진행 1  게임종료 2 일경우 */
+                break;
+            } else {
+
+                /* 1또는 2 입력이 아닐경우 */
+                Display.getWrongDisplay();                              //오류 문구 출력
+            }
         }
+
 
         return gameState;
     }

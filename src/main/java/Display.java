@@ -4,21 +4,22 @@
  * @version         1.0 2019년 3월 25일
  * @author          이중혁
  */
+
 public class Display {
 
     /* 사용자 입력을 요구하는 문구를 출력하는 메소드 */
     public static void inputDisplay() {
 
-        System.out.print("숫자를 입력해주세요 : ");  // 사용자 입력 문구 출력
+        System.out.print("숫자를 입력해주세요 : ");              // 사용자 입력 문구 출력
     }
 
-    /*비교 결과 출력, 비교 결과가 저장되있는 배열을 매개변수로 받는다*/
+    /* 비교 결과 출력, 비교 결과가 저장되있는 배열을 매개변수로 받는다 */
     public static void matchDisplay(int[] baseballResult){
 
         if((baseballResult[0] == 0) && (baseballResult[1] == 0)){
 
             /* 0스트라이크 0볼 일때 */
-            System.out.println(" ");
+            System.out.println("낫싱");
 
         } else if((baseballResult[0] != 0) && (baseballResult[1] == 0)){
 
@@ -48,6 +49,13 @@ public class Display {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         }
+    }
+
+    /* 게임 상태 값이 잘못들어왔을경우(게임상태 (gameState값이 1 or 2 가아닌경우) 문구 출력 */
+    public static void getWrongDisplay(){
+
+        System.out.println("잘못된 값을 입력하셨습니다");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
     }
 
 
