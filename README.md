@@ -10,12 +10,12 @@
 - 게임 프로세스 
 
 |  <center>메소드 명</center> |  <center>구현 기능</center> |   
-|:--------|:--------:|
-|**start** | <center>시작</center> |* O * |    
-|**process** | <center> 게임 진행 </center> | 
-|**game_Result_Process** | <center> 게임 결과 프로세스 </center> |
-|**game_Restart_Select** | <center> 게임 재시작 선택 </center> |
-|**score_Reset,com_Number_Reset,user_Number_Reset** | <center> 스코어,컴퓨터,사용자 초기화</center> |
-|**game_Score_Print** | <center>스코어 출력 </center> |
-|**check_User_Number** | <center>사용자 입력 검사 </center> |
-|**fail_User_Input** | <center>불일치 재입력 </center> |
+|:---:|:---:|
+|start | <center>시작</center> | 
+|process | <center> 게임 진행 </center> | 
+|game_Result_Process | <center> 게임 결과 프로세스 </center> |
+|game_Restart_Select | <center> 게임 재시작 선택 </center> |
+|score,com_Number,user_Number _Reset| <center> 스코어,컴퓨터,사용자 초기화</center> |
+|game_Score_Print | <center>스코어 출력 </center> |
+|check_User_Number | <center>사용자 입력 검사 </center> |
+|fail_User_Input | <center>불일치 재입력 </center> |
