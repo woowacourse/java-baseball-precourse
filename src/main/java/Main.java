@@ -12,13 +12,31 @@ public class Main {
         ArrayList<Integer> tmpResult = new ArrayList<>();
         while (tmpResult.size() < 3) {
             int tmp = (int) (Math.random() * 9 + 1);
-            if (!tmpResult.contains(tmp))
+            // indent depth 3 이상
+            if (!tmpResult.contains(tmp)) {
                 tmpResult.add(tmp);
+            }
         }
 
         int[] result = new int[3];
         for (int i = 0; i < tmpResult.size(); i++) {
             result[i] = tmpResult.get(i);
+        }
+        return result;
+    }
+
+    /**
+     * 사용자의 숫자 3개 입력을 받는 메서드
+     * 문자열로 입력을 받아 int 로 형변환하는 과정을 거친다.
+     * @return result 사용자가 입력한 숫자 3개를 담고 있는 int 형 배열
+     */
+    private static int[] getUserInput() {
+        int[] result = new int[3];
+        Scanner sc = new Scanner(System.in);
+        System.out.print("숫자를 입력해주세요: ");
+        String[] userInput = sc.next().split("");
+        for (int i = 0; i < result.length; i++) {
+            result[i] = Integer.parseInt(userInput[i]);
         }
         return result;
     }
@@ -29,13 +47,7 @@ public class Main {
 
         boolean go = true;
         while (go) {
-            int[] user = new int[3];
-            Scanner sc = new Scanner(System.in);
-            System.out.print("숫자를 입력해주세요: ");
-            String[] input = sc.next().split("");
-            for (int i = 0; i < user.length; i++) {
-                user[i] = Integer.parseInt(input[i]);
-            }
+            int[] user = getUserInput();
 
             // user 확인용
             System.out.print("USER 배열 : ");
