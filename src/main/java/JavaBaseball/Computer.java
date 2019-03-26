@@ -1,5 +1,5 @@
 /**
-* Computer.class        0.25 2019/03/25
+* Computer.class        1.0 2019/03/25
 *
 * <Copyright 2019. 이남준. All rights reserved.>
 */
@@ -10,7 +10,7 @@ import java.util.Random;
 
 /**
 * 게임의 컴퓨터 역할을 하는 클래스
-* @version              0.25 2019/03/25
+* @version              1.0 2019/03/25
 * @author               이남준
 */
 public class Computer {
