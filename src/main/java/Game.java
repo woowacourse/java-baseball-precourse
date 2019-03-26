@@ -95,4 +95,15 @@ public class Game {
                 input.charAt(1)-'0',
                 input.charAt(2)-'0');
     }
+
+    /*컴퓨터의 숫자와 사용자의 입력 숫자를 비교*/
+    private boolean checkNumber(Number playerNumber, Number gameNumber){
+        return (playerNumber.getFirst() == gameNumber.getFirst() &&
+                playerNumber.getSecond() == gameNumber.getSecond() &&
+                playerNumber.getThird() == gameNumber.getThird());
+    }
+    /*
+     * @param 세개의 숫자가 같은지 비교할 Number 객체
+     * @return 같다면 true 다르다면 false 반환
+     */
 }

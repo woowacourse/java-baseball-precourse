@@ -28,21 +28,51 @@ public class Number {
         this.third = third;
     }
 
-    /*세자리 숫자의 값들 가진 객체를 return 함*/
-    public Number getNumber(){
-        return this;
+    /*첫번째 숫자를 반환*/
+    public int getFirst(){
+        return this.first;
     }
     /*
-     * @return 객체 자체를 반환 (세수를 모두 반환하기 위해)
+     * @return 첫번째 숫자 반환
      */
 
-    /*세자리 숫자의 값을 지정함*/
-    public void setNumber(int first,int second, int third){
+    /*두번째 숫자를 반환*/
+    public int getSecond(){
+        return this.second;
+    }
+    /*
+     * @return 두번째 숫자 반환
+     */
+
+    /*세번째 숫자를 반환*/
+    public int getThird(){
+        return this.third;
+    }
+    /*
+     * @return 세번째 숫자 반환
+     */
+
+    /*첫번째 숫자를 세팅*/
+    public void setFirst(){
         this.first = first;
+    }
+    /*
+     * @param 첫번째 숫자 세팅
+     */
+
+    /*두번째 숫자를 세팅*/
+    public void setSecond(){
         this.second = second;
+    }
+    /*
+     * @param 두번째 숫자 세팅
+     */
+
+    /*세번째 숫자를 세팅*/
+    public void setThird(){
         this.third = third;
     }
     /*
-     * @param 세팅할 세 개의 숫자를 각각 매개변수로 받음
+     * @param 세번째 숫자 세팅
      */
 }
