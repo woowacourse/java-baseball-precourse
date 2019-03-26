@@ -97,7 +97,25 @@ public class baseball {
         getUser_Input_Number();
         check_Staike();
         check_Ball();
+
     }
+
+    /* 게임 결과 프로세스 메소드 */
+    private static void game_Result_Process() {
+
+        if (strike == DIGIT){
+            System.out.println(DIGIT+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+        } else if ((strike | ball) > 0){
+
+
+        } else if ((strike & ball) == 0) {
+
+        } else {
+
+        }
+    }
+
 
     /* 숫자야구게임 시작 메소드 */
     private static void start(){
