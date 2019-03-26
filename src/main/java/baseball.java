@@ -22,6 +22,10 @@ public class baseball {
     /* 사용사 숫자 저장하는 배열 */
     private static String[] user_Array = new String[DIGIT];
 
+    /* 스트라이크 볼 생성 */
+    private static int strike = 0;
+    private static int ball = 0;
+
 
     /* 컴퓨터 임의의 3자리의 수를 선택하는 메소드 */
     private static void com_Create_Number(){
@@ -54,6 +58,15 @@ public class baseball {
 
         user_Array = user_Number.split("");
 
+    }
+
+    /* 스트라이크 체크 메소드 */
+    private static void check_Staike(){
+        for (int i = 0; i<DIGIT; i++){
+            if (com_Array[i].equals(user_Array[i])) {
+                strike++;
+            }
+        }
     }
 
     public static void main(String[] args){
