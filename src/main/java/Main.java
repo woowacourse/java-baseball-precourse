@@ -83,6 +83,26 @@ public class Main {
         return result;
     }
 
+    /**
+     * 매개변수로 전달 받은 strike 와 ball 로 결과를 콘솔에 출력하는 메서드
+     * @param strike count 된 strike 의 개수
+     * @param ball count 된 ball 의 개수
+     */
+    private static void printGameResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("포볼");
+        }
+        else if (strike == 0) {
+            System.out.printf("%d 볼\n", ball);
+        }
+        else if (ball == 0) {
+            System.out.printf("%d 스트라이크\n", strike);
+        }
+        else {
+            System.out.printf("%d 스트라이크 %d 볼\n", strike, ball);
+        }
+    }
+
     public static void main(String[] args) {
         // 최초로 컴퓨터가 중복되지 않는 임의의 수 3개 생성
         int[] com = gameInit();
@@ -109,14 +129,7 @@ public class Main {
             int strike = countStrike(com, user);
             int ball = countBall(com, user);
 
-            if (strike == 0 && ball == 0)
-                System.out.println("포볼");
-            else if (strike == 0)
-                System.out.printf("%d 볼\n", ball);
-            else if (ball == 0)
-                System.out.printf("%d 스트라이크\n", strike);
-            else
-                System.out.printf("%d 스트라이크 %d 볼\n", strike, ball);
+            printGameResult(strike, ball);
 
             if (strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다!게임 종료");
