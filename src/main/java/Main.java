@@ -234,6 +234,13 @@ public class Main {
     }
 
     public static void main(String[] args){
+        while (true){
 
+            startGame();
+
+            if (!getRestartAnswer()){
+                break;
+            }
+        }
     }
 }
