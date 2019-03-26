@@ -41,7 +41,7 @@ public class BaseballGame implements Baseball {
     /**
      * 상대방(컴퓨터)의 1~9까지의 세 개의 정수를 생성하는 메서드
      *
-     * @return 1~9까지의 서로 다른 세 개의 정수를 담은 int[] 
+     * @return 1~9까지의 서로 다른 세 개의 정수를 담은 컴퓨터의 int[] 
      */
     @Override
     public int[] makeThreeRandomNumbers() {
@@ -69,9 +69,9 @@ public class BaseballGame implements Baseball {
     }
 
     /**
-     * 사용자의 입력 값을 받는 메서드
+     * 사용자의 값을 입력 받는 메서드
      *
-     * @return 1~9까지의 서로 다른 세 개의 정수를 담은 int[] 
+     * @return 1~9까지의 서로 다른 세 개의 정수를 담은 사용자의 int[] 
      */
     @Override
     public int[] inputUserNumbers() {
@@ -83,7 +83,7 @@ public class BaseballGame implements Baseball {
             System.out.print("숫자를 입력해주세요 : ");
             inputNumber = sc.nextLine();
             
-            /** 입력 받은 값이 정수인지, 3자리인지, 중복하지 않는지 검사  */
+            /* 입력 받은 값이 정수인지, 3자리인지, 중복값이 없는지 검사  */
             notValidated = checkInputNumbers(inputNumber);  
         } while (notValidated);
 
@@ -93,7 +93,7 @@ public class BaseballGame implements Baseball {
     /**
      * 사용자가 입력한 값의 유효성을 검사하는 메서드
      *
-     * @param   사용자로부터 입력 받은 String값
+     * @param   사용자로부터 입력 받은 String
      * @return  입력 받은 값이 1~9의 서로 다른 정수이고 3자리이면 false를 리턴 
      */
     @Override
@@ -104,23 +104,23 @@ public class BaseballGame implements Baseball {
         boolean isNotAllNumber = true;
         boolean isNotThreeNumber = true;
         
-        /* 입력 값이 1~9까지의 정수인지 확인 */
+        /* 입력 값이 1~9까지의 정수인지 확인, 맞으면 false */
         isNotAllNumber = checkNumberOrNot(inputNumber);
         
-        /* 입력 값이 3자리인지 확인 */
+        /* 입력 값이 3자리인지 확인, 맞으면 false */
         isNotThreeNumber = checkInputNumberLength(inputNumber);
 
-        if (isNotAllNumber == true || isNotThreeNumber == true) {
-            return isNotValidate;
+        if (isNotAllNumber == true || isNotThreeNumber == true) {       // 입력 받은 값이 숫자가 아니고 세 자리가 아니면 true를 리턴해 다시 입력 받음
+            return isNotValidate; 
         }
         
         /* String으로 입력 받은 문자열을 int[]로 변환 */
         userNumbers = convertStringToIntArray(inputNumber);
         
-        /* 두 번째 값 중복 확인 */
+        /* 두 번째 값 중복 확인, 중복이 아니면 false */
         isDuplicate1 = checkDuplicate(userNumbers, 1);
         
-        /* 세 번째 값 중복 확인 */
+        /* 세 번째 값 중복 확인, 중복이 아니면 false */
         isDuplicate2 = checkDuplicate(userNumbers, 2);
         
         if (isDuplicate1 == false && isDuplicate2 == false) {
@@ -131,7 +131,7 @@ public class BaseballGame implements Baseball {
     }
     
     /**
-     * 매개변수로 주어진 index에 위치한 값이 배열 내에서 중복값인지 확인하는 메소드
+     * 매개변수로 주어진 index에 위치한 값과 배열 내에서 중복되는 값이 있는지 확인하는 메소드
      *
      * @param  int[]   검사의 대상이 되는 int[]배열
      * @param  int     배열에서 검사의 기준이 되는 값의 index
@@ -152,15 +152,15 @@ public class BaseballGame implements Baseball {
     }
 
     /**
-     * 인자로 받은 String값을 int[]로 변환하는 메서드
+     * 컴퓨터의 값과 비교를 위해 인자로 받은 사용자의 입력값을 int[]로 변환하는 메서드
      *
-     * @param Scanner로 입력 받은 String
+     * @param  Scanner로 입력 받은 사용자의 입력 값
      * @return String을 int[]로 변환한 값
      */
     @Override
     public int[] convertStringToIntArray(String inputNumber) {
         for (int i = 0; i < inputNumber.length(); i++) {
-            userNumbers[i] = (int)inputNumber.charAt(i)-48;
+            userNumbers[i] = (int) inputNumber.charAt(i) - 48;
         }
         
         return userNumbers;
@@ -169,8 +169,8 @@ public class BaseballGame implements Baseball {
     /**
      * 인자로 받은 String값이 1~9까지의 정수로만 이루어졌는지 확인하는 메서드
      *
-     * @param Scanner로 입력 받은 String
-     * @return 정수로만 이루어졌으면 false를 리턴
+     * @param   Scanner로 입력 받은 String
+     * @return  정수로만 이루어졌으면 false를 리턴
      */
     @Override
     public boolean checkNumberOrNot(String inputNumber) {
@@ -189,22 +189,21 @@ public class BaseballGame implements Baseball {
     /**
      * 인자로 받은 String값의 길이가 3인지 확인하는 메서드
      *
-     * @param Scanner로 입력 받은 String
+     * @param  Scanner로 입력 받은 String
      * @return boolean 길이가 3이면 false를 리턴
      */
     @Override
     public boolean checkInputNumberLength(String inputNumber) {
-
-        return inputNumber.length() != 3 ? true : false;
+        return (inputNumber.length() != 3) ? true : false;
     }
 
     /**
-     * 컴퓨터의 int[]과 사용자의 int[]배열을 비교해 Stike인지 Ball인지 판별하는 메서드
+     * 컴퓨터의 int[]과 사용자의 int[]배열을 비교해 strike인지 ball인지 판별하는 메서드
      * 사용자의 배열 안에 있는 값과 컴퓨터의 배열 안에 있는 값의 index와 값이 모두 같으면 strike
      * 사용자의 배열 안에 있는 값과 컴퓨터의 배열 안에 있는 값이 같으나 index가 다를 경우 ball
      *
-     * @param int[] 컴퓨터의 수를 담은 배열
-     * @param int[] 사용자의 수를 담은 배열
+     * @param  int[] 컴퓨터의 수를 담은 배열
+     * @param  int[] 사용자의 수를 담은 배열
      * @return int[] strike와 ball값을 담은 배열
      */
     @Override
@@ -216,7 +215,7 @@ public class BaseballGame implements Baseball {
         comNumList.add(comNumbers[1]);
         comNumList.add(comNumbers[2]);
         
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < comNumList.size(); i++) {
             if (userNumbers[i] == comNumbers[i]) {
                 strikeAndBall[0] += 1;
             } else if (comNumList.contains(userNumbers[i])) {
@@ -235,25 +234,25 @@ public class BaseballGame implements Baseball {
     public void runGame() {
         boolean gameContinue = true;
         
-        /** 컴퓨터의 난수 생성 */
+        /* 컴퓨터의 난수 생성 */
         computerNums = makeThreeRandomNumbers();
 
         while (gameContinue) {
-            /** 사용자 수 입력 받기 */
+            /* 사용자 수 입력 받기 */
             userNumbers = inputUserNumbers();
             
-            /** 스트라이크인지 볼인지 판정하기 */
+            /* 스트라이크인지 볼인지 판정하기 */
             result = checkStrikeOrBall(computerNums, userNumbers);
             
-            /** 결과 출력 */
+            /* 결과 출력 */
             if (result[0] == 0 && result[1] == 0) {
                 System.out.println("낫싱");
-            } else if(result[0] == 3) {
+            } else if (result[0] == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 gameContinue = false;
-            } else if(result[0] == 0) {
+            } else if (result[0] == 0) {
                 System.out.println(result[1] + " 볼");
-            } else if(result[1] == 0) {
+            } else if (result[1] == 0) {
                 System.out.println(result[0] + " 스트라이크 ");
             } else {
                 System.out.println(result[0] + " 스트라이크 " + result[1] + " 볼");
@@ -269,20 +268,21 @@ public class BaseballGame implements Baseball {
     @Override
     public void reGame() {
         String reGame = "";
-
-        while (true) {
+        boolean continueGame = true;
+        
+        do {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             
             reGame = sc.nextLine();
 
             if (reGame.equals("1")) {
                 runGame();
-                break;
+                continueGame = false;
             } else if (reGame.equals("2")) {
-                break;
+                continueGame = false;
             }
             
-        }  // end while
+        } while (continueGame);
     }
     
     public static void main(String[] args) {
