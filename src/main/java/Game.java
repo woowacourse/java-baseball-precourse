@@ -63,4 +63,23 @@ public class Game {
 
 		return ( ( problem[index] == answer[index] ) ? true : false );
 	}
+
+	/**
+	 * 답변자의 답을 기준으로 같은 숫자가 다른 자리에 있으면 볼(Ball) 이다.
+	 * @param problem 문제자의 정답 숫자 배열
+	 * @param answer 답변자의 정답 숫자 배열
+	 * @param index 답변자의 정답 숫자 배열의 위치
+	 * @return 볼의 유무
+	 * */
+	private boolean checkBall(int[] problem, int[] answer, int index) {
+
+		boolean isBall = false;
+		for(int i = 0; i < problem.length; i++) {
+			if( (i != index) && (problem[i] == answer[index]) ) {
+				isBall = true;
+				break;
+			}
+		}
+		return isBall;
+	}
 }
