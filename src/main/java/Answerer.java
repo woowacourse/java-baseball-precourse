@@ -50,4 +50,12 @@ public class Answerer {
 	public int[] getNumber() {
 		return this.number;
 	}
+
+	/**
+	 * 새로운 점수를 받아 저장한다.
+	 * @param score 받은 점수객체
+	 * */
+	public void setScore(Score score) {
+		this.score = score;
+	}
 }
