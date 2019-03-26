@@ -33,4 +33,12 @@ public class Score {
 	public int getStrike() {
 		return this.strike;
 	}
+
+	/**
+	 * 스트라이크의 개수를 변경한다.
+	 * @param strike 스트라이크 개수
+	 * */
+	public void setStrike(int strike) {
+		this.strike = strike;
+	}
 }
