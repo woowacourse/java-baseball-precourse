@@ -156,7 +156,7 @@ public class Main {
         int ballCount =0;                           // 반환 ball Count
         boolean[] numArray = new boolean[10];       // number 체크용 array
 
-        // numArray Initialize
+        // numArray 를 false로 초기화
         for (int i = 1; i < 10; i++) {
             numArray[i] = false;
         }
