@@ -74,11 +74,41 @@ public class User {
 		sc = new Scanner(System.in);
 		cp = new Computer();
 	}
-	
+
 	/**
 	 * 입력값을 받아서 리턴하는 메서드
 	 */
 	private String scanInput() {
 		return sc.nextLine();
+	}
+
+	/**
+	 * 숫자 야구 게임을 진행하는 메서드
+	 * 먼저 컴퓨터에게 3가지 다른 숫자를 생성하라고 명령한다.
+	 * 그 후에 사용자는 숫자를 입력 받게 되는데,
+	 * 3자리, 숫자, 서로 다른 숫자에 위배되는 입력이 들어간다면
+	 * 예외처리를 통해 다시 입력을 받게 된다.
+	 * 정상적인 입력이 들어간다면, 해당하는 결과출력 메소드를 통해 화면에 뿌려지게 된다.
+	 * 만일 결과가 3스트라이크로 정답이라면 게임은 종료하게 된다!
+	 */
+	private void baseBallGame() {
+		String number;
+		int[] result = new int[3];
+		
+		cp.createNumber();
+		while (true) {
+			System.out.print("숫자를 입력해주세요 : ");
+			number = scanInput();
+			if (isWrong(number)) {
+				System.out.println("[입력오류] 서로 다른 3자리 숫자를 입력해주세요!");
+				continue;
+			}
+			
+			int numberConvert = Integer.parseInt(number);
+			result = cp.compareNumber(numberConvert);
+			if (analyzeResult(result)) {
+				break;
+			}
+		}
 	}
 }
