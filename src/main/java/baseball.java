@@ -105,15 +105,59 @@ public class baseball {
 
         if (strike == DIGIT){
             System.out.println(DIGIT+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            game_Restart_Select();
 
         } else if ((strike | ball) > 0){
-
+            score_Reset();
 
         } else if ((strike & ball) == 0) {
+            System.out.println("낫싱");
 
         } else {
-
+            score_Reset();
         }
+    }
+
+    /* 게임 재시작 메소드 */
+    private static boolean game_Restart_Select() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int choice = scan.nextInt();
+
+        if (choice == 1 ) {
+            com_Number_Reset();
+            score_Reset();
+            return true;
+
+        } else if (choice == 2) {
+            return selector = false;
+
+        } else {
+            System.out.println("다시 입력하세요");
+            return game_Restart_Select();
+        }
+    }
+
+    /**
+     * 컴퓨터 숫자 초기화 메소드
+     * Iterator 인터페이스 통해 Set 클래스 순회 및 제거
+     * */
+    private static void com_Number_Reset(){
+        for (Iterator<String> iterator = com.iterator(); iterator.hasNext();) {
+            iterator.next();
+            iterator.remove();
+        }
+    }
+
+    /* 스트라이크, 볼 초기화 메소드 */
+    private static void score_Reset(){
+        strike=0;
+        ball=0;
+    }
+
+    /* 사용자 문자열 초기화 메소드 */
+    private static void user_Number_Reset(){
+        user_Number = "";
     }
 
 
