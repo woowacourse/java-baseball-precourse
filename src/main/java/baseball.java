@@ -26,6 +26,8 @@ public class baseball {
     private static int strike = 0;
     private static int ball = 0;
 
+    /* 게임 재시작 변수 */
+    private static boolean selector = true;
 
     /* 컴퓨터 임의의 3자리의 수를 선택하는 메소드 */
     private static void com_Create_Number(){
@@ -81,6 +83,26 @@ public class baseball {
                     (Arrays.asList(com_Array).contains(user_Array[i]))) {
                 ball++;
             }
+        }
+    }
+
+    /* 숫자야구 게임 진행 메소드 */
+    private static void process(){
+
+        getCom_Array();
+
+        /*컴퓨터 숫자 출력*/
+        //for (int i = 0; i < DIGIT; i++) System.out.println(com_Array[i]);
+
+        getUser_Input_Number();
+        check_Staike();
+        check_Ball();
+    }
+
+    /* 숫자야구게임 시작 메소드 */
+    private static void start(){
+        while (selector) {
+            process();
         }
     }
 
