@@ -39,20 +39,37 @@ public class Questioner {
 
 				int bound = 9;
 				int addNum = 1;
-				num = rand.nextInt(bound) + addNum; // 1~9사이의 랜덤 숫자
+				num = rand.nextInt(bound) + addNum; /* 1~9사이의 랜덤 숫자 */
 
 				/* 중복되는 숫자가 존재하는지 확인한다. */
 			} while ( checkReduplicate(num, this.number, i) );
 
-			this.number[i] = num; // 중복되지 않은 숫자를 자리에 넣는다.
+			this.number[i] = num; /* 중복되지 않은 숫자를 자리에 넣는다. */
 		}
 		return this.number;
 	}
 
+	/**
+	 * 숫자가 이전 숫자들과 중복됬는지 확인한다.
+	 * @param num 확인할 숫자
+	 * @param number 수 배열
+	 * @param index 배열 위치 index 전 까지 중복 검사
+	 * @return 중복됬으면 true, 아니라면 false
+	 * */
 	private boolean checkReduplicate(int num, int[] number, int index) {
+
 		boolean isReduplicate = false;
 
-		// 중복 검사
+		for(int i = 0; i < index; i++) {
+
+			/* index 위치 이전 까지 중복 확인 */
+			if(num == number[i]) {
+
+				/* 중복될 경우 */
+				isReduplicate = true;
+				break;
+			}
+		}
 
 		return isReduplicate;
 	}
