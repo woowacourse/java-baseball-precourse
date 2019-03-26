@@ -1,6 +1,8 @@
 package com.github.offMomySon.game;
 
 import com.github.offMomySon.resource.Computer;
+import com.github.offMomySon.resource.User;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -16,21 +18,21 @@ public class AppMain {
      * @desc 어플리케이션의 시작, 종료  메인스트림
      * @desc 테스트
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
+
         System.out.println("Test");
+        User user = new User();
+        user.inputNums();
 
-        Computer computer = new Computer();
-        HashMap<Integer, Integer> computerNum =  computer.getNumsMap();
-
+        HashMap<Integer, Integer> computerNum = user.getNumsMap();
         Set<Integer> keys = computerNum.keySet();
-        List<Integer> list = computer.getNumsList();
-        for(Integer key: keys){
+
+        List<Integer> list = user.getNumsList();
+
+        for (Integer key : keys) {
             System.out.println(computerNum.get(key));
         }
-
-        for(Integer n : list)
-        {
+        for (Integer n : list) {
             System.out.println(n);
         }
     }
