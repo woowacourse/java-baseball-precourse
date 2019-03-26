@@ -53,6 +53,13 @@ public class GamaManager {
         return user.getNumber();
     }
 
+    /**
+     * 정답임을 알려주는 메시지를 출력하는 메소드
+     */
+    private static void correctMessager() {
+        System.out.println("정답입니다!");
+    }
+
 }
 
 
