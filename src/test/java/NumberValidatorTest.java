@@ -1,5 +1,4 @@
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class NumberValidatorTest {
@@ -12,7 +11,8 @@ class NumberValidatorTest {
 		for (int i = 0; i < strArr.length; i++) {
 			System.out.println(strArr[i]);
 			flag = NumberValidator.isValidNumbers(strArr[i]);
-			assertFalse(flag);
 		}
+
+		assertFalse(flag);
 	}
 }

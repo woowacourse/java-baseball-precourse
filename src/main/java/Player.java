@@ -30,12 +30,12 @@ public class Player {
 	private void play() {
 		String randomNumber = NumberMaker.makeRandomNumber();
 		String userInput = null;
+		BaseBallGame game = new BaseBallGame(randomNumber);
 
 		do {
-			System.out.print("숫자를 입력해주세요: ");
-			userInput = getInput();
-		} while (!NumberValidator.isValidNumbers(userInput));
-
+			userInput = getGameNumberInput();
+			game.printResult(userInput);
+		} while (!game.isCorrect());
 	}
 
 	/**
@@ -49,5 +49,24 @@ public class Player {
 		input = scanner.nextLine();
 
 		return input;
+	}
+
+	/**
+	 * 게임 중 3자리 숫자를 리턴하는 함수
+	 * @return
+	 */
+	private String getGameNumberInput() {
+		String gameInput = null;
+
+		while (true) {
+			System.out.print("숫자를 입력해주세요: ");
+			gameInput = getInput();
+			if(NumberValidator.isValidNumbers(gameInput)) {
+				break;
+			}
+			System.out.println("3자리 숫자를 입력해주세요 (0 제외)");
+		}
+
+		return gameInput;
 	}
 }

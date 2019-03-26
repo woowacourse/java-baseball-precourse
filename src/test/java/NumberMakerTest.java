@@ -1,12 +1,9 @@
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class NumberMakerTest {
 
 	@Test
-	@RepeatedTest(100)
 	void testTrue() {
 		boolean testFlag = true;
 		String randomNumber = NumberMaker.makeRandomNumber();
