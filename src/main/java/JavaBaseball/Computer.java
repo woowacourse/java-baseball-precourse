@@ -44,5 +44,56 @@ public class Computer {
         return number.equals(userNumber);
     }
 
+    /**
+     * 유저의 입력의 결과를 판별
+     * @param userNumber 유저가 입력한 세자리수
+     * @return [0] : 스트라이크의 갯수, [1] : 볼의 갯수
+     */
+    public int[] countScore(int[] userNumber) {
 
+        int[] score = new int[2];
+        score[0] = countStrikes(userNumber);
+        score[1] = countBalls(userNumber);
+
+        return score;
+    }
+
+    /**
+     * 스트라이크 갯수를 판별
+     * @param userNumber 유저가 입력한 세자리수
+     * @return 스트라이크의 갯수
+     */
+    private static int countStrikes(int[] userNumber) {
+
+        int strikes = 0;
+
+        for(int i = 0; i < 3; i++) {
+            if(number[i] == userNumber[i]) {
+                strikes++;
+            }
+        }
+
+        return strikes;
+    }
+
+    /**
+     * 볼의 갯수를 판별
+     * @param userNumber 유저가 입력한 세자리수
+     * @return 볼의 갯수
+     */
+    private static int countBalls(int[] userNumber) {
+
+        int balls = 0;
+
+        for(int i = 0; i < 3; i++) {
+            for(int j = 1; j < 3; j++) {
+                if(number[i] == userNumber[(i + j) % 3]) {
+                    balls++;
+                    userNumber[(i + j) % 3] = -1;
+                }
+            }
+        }
+
+        return balls;
+    }
 }
