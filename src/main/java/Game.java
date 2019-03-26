@@ -48,6 +48,7 @@ public class Game {
     /*게임 시작 함수 (전체적인 게임 진행)*/
     private void startGame(){
         printGame();
+        makeRandomNumber();
         inputNumber();
     }
 
@@ -58,7 +59,28 @@ public class Game {
 
     /*게임 화면 출력*/
     private void printGame(){
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    /*컴퓨터의 숫자를 랜덤으로 지정*/
+    private void makeRandomNumber(){
+        /*세 개의 숫자를 임시로 담을 변수, 최종적으로 gameNumber에 세팅*/
+        int first=0, second=0, third=0;
+
+        /*하나의 랜덤 숫자를 임의로 담을 변수*/
+        Random rand = new Random();
+
+        first = rand.nextInt(9)+1;
+
+        do{
+            second = rand.nextInt(9)+1;
+        }while(first==second);
+
+        do{
+            third = rand.nextInt(9)+1;
+        }while(first==third || second==third);
+
+        gameNumber = new Number(first,second,third);
     }
 
     /*세개의 숫자를 입력받음*/
