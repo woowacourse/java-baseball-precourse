@@ -33,4 +33,29 @@ public class GameUI {
 		String str_number = sc.nextLine();
 		return str_number;
 	}
+
+	/**
+	 * 게임 결과를 사용자에게 보여준다.
+	 * @param score 사용자의 게임결과
+	 * */
+	private static void printScore(Score score) {
+		if (score.isNothing()) {
+
+			/* 사용자가 모두 틀렸을 경우 */
+			System.out.println("낫씽");
+		} else {
+
+			/* 사용자가 모두 맞거나 일부 맞았을 경우 */
+			if (score.getStrike() > 0) {
+				System.out.printf("%d 스트라이크", score.getStrike());
+			}
+			if (score.getStrike() > 0 && score.getBall() > 0) {
+				System.out.print(" ");
+			}
+			if (score.getBall() > 0) {
+				System.out.printf("%d 볼", score.getBall());
+			}
+			System.out.println();
+		}
+	}
 }
