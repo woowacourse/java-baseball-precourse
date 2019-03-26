@@ -21,4 +21,31 @@ public class Computer {
         }while(num1 == num2 || num3 == num2 || num1 == num3); /* 숫자를 생성할 때 숫자가 겹치지 않을때까지 반복한다*/
     }
     
+    public boolean calcuate(int n1, int n2, int n3)
+    {
+        int ball=0, strike=0; //현재 몇개의 볼과 몇개의 스트라이크를 했는지 저장하기 위한 변수
+        
+        /* 각각의 상황이 ball인지 strike인지 판별 */
+        if(num1 == n1) 
+            strike++;
+        if(num2 == n2)
+            strike++;
+        if(num3 == n3)
+            strike++;
+        if(num1 == n2 || num1 == n3 )
+            ball++;
+        if(num2 == n1 || num2 == n3 )
+            ball++;
+        if(num3 == n2 || num3 == n1 )
+            ball++;
+        
+        /* 현재의 상황을 print */
+        print(strike, ball);
+        
+        /* strike가 3이라면 게임이 끝난경우 이므로 true를 반환 */
+        if(strike==3)
+            return true;
+        return false;
+    }
+    
 }
