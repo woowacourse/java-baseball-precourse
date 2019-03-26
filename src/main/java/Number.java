@@ -32,6 +32,9 @@ public class Number {
     public Number getNumber(){
         return this;
     }
+    /*
+     * @return 객체 자체를 반환 (세수를 모두 반환하기 위해)
+     */
 
     /*세자리 숫자의 값을 지정함*/
     public void setNumber(int first,int second, int third){
@@ -39,4 +42,7 @@ public class Number {
         this.second = second;
         this.third = third;
     }
+    /*
+     * @param 세팅할 세 개의 숫자를 각각 매개변수로 받음
+     */
 }

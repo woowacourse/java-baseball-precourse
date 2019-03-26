@@ -12,7 +12,6 @@
 public class Main {
     /*메뉴 출력*/
     public static void main(String[] args) {
-        Menu.printMenu();
-        System.out.println(Menu.selectMenu());
+        Game game = new Game();
     }
 }
