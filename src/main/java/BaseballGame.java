@@ -1,5 +1,3 @@
-import com.sun.tools.javac.util.StringUtils;
-
 import java.util.*;
 public class BaseballGame
 {
@@ -184,4 +182,29 @@ public class BaseballGame
         return count;
     }
 
+    public static boolean getUserAnswer()
+    {
+        boolean result;
+        while(true)
+        {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+            String strUserInput = scanner.nextLine();
+            if(strUserInput.length() == 1 && strUserInput.charAt(0) == '1')
+            {
+                result = true;
+                break;
+            }
+            else if(strUserInput.length() == 1 && strUserInput.charAt(0) == '2')
+            {
+                result = false;
+                break;
+            }
+            else
+            {
+                System.out.println("1이나 2를 입렬해주세요!");
+            }
+        }
+        return result;
+    }
 }
