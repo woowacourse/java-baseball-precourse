@@ -41,6 +41,27 @@ public class Main {
         return result;
     }
 
+    /**
+     * 파라미터 배열 두개를 비교하여 위치와 숫자 모두 같은 스트라이크의 개수를
+     * 카운트하여 결과로 반환하는 메서드
+     * @param com computer 가 생성한 배열
+     * @param user user 입력으로 생성된 배열
+     * @return 스트라이크의 개수 반환
+     */
+    private static int countStrike(int[] com, int[] user) {
+        int result = 0;
+
+        // 스트라이크 체크
+        for (int i = 0; i < user.length; i++) {
+            // indent depth 3이상
+            if (com[i] == user[i]) {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         // 최초로 컴퓨터가 중복되지 않는 임의의 수 3개 생성
         int[] com = gameInit();
