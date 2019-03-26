@@ -137,4 +137,33 @@ public class User {
 		
 		return false;
 	}
+
+	/**
+	 * 컴퓨터로부터 받은 결과값을 분석하여, 결과를 출력하는 메서드
+	 * 게임이 끝나면 true, 아니면 false를 리턴한다.
+	 * 
+	 * @param result [스트라이크, 볼, 아웃]의 개수로 이루어진 배열
+	 * @return 게임이 끝나면 true, 아니면 false
+	 */
+	private boolean analyzeResult(int[] result) {
+		
+		boolean gameEnd = false;
+		
+		if (result[0] > 0) {
+			System.out.print(result[0] + " 스트라이크 ");
+		}
+		if (result[1] > 0) {
+			System.out.print(result[1] + " 볼 ");
+		}
+		if (result[2] == 3) {
+			System.out.print("포볼");
+		}
+		System.out.println();
+		if (result[0] == 3) {
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+			gameEnd = true;
+		}
+		
+		return gameEnd;
+	}
 }
