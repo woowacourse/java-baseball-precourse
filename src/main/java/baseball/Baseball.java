@@ -1,14 +1,22 @@
 package baseball;
 
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Baseball {
     private static final String FIRST_SELECTION = "1";
+    private static final int COUNT_OF_NUMBERS = 3;
     private Scanner scan;
+    private Integer[] com;
 
     public Baseball() {
         scan = new Scanner(System.in);
+        com = new Integer[COUNT_OF_NUMBERS];
+
+        menu();
+    }
+
+    public void menu() {
         String sel = FIRST_SELECTION;
 
         Loop: while (true) {
@@ -30,8 +38,19 @@ public class Baseball {
     }
 
     public void startGame() {
+        generateComNumbers();
         System.out.println("게임 진행중...");
         pause();
+    }
+
+    public void generateComNumbers() {
+        Set<Integer> set = new LinkedHashSet<>();
+
+        while(set.size() != COUNT_OF_NUMBERS){
+            set.add((int) (Math.random() * 9 + 1));
+        }
+
+        com = set.toArray(new Integer[set.size()]);
     }
 
     public static void pause() {
