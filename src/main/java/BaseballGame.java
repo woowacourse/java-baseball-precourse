@@ -1,3 +1,5 @@
+import com.sun.tools.javac.util.StringUtils;
+
 import java.util.*;
 public class BaseballGame
 {
@@ -87,6 +89,16 @@ public class BaseballGame
 
     public static boolean checkUserInput(String strUserInput)
     {
+        if(strUserInput.length() != 3)
+        {
+            System.out.println("서로 다른 세 숫자를 입력해 주세요!");
+            return false;
+        }
+        if(isNonNumberThere(strUserInput))
+        {
+            System.out.println("숫자만 입력가능합니다!");
+            return false;
+        }
         //check zero
         if(isZeroThere(strUserInput))
         {
@@ -100,6 +112,22 @@ public class BaseballGame
             return false;
         }
         return true;
+    }
+
+    public static boolean isNonNumberThere(String strUserInput)
+    {
+        for(int i = 0, n = strUserInput.length(); i<n; i++)
+        {
+            if(Character.isDigit(strUserInput.charAt(i)))
+            {
+                continue;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static boolean isZeroThere(String strUserInput)
@@ -116,9 +144,11 @@ public class BaseballGame
 
     public static boolean isRepeating(String strUserInput)
     {
-        for(int i=0, n = strUserInput.length(); i < n-1; i++)
+        for(int i=0, n = strUserInput.length(); i < n; i++)
         {
-            if(strUserInput.charAt(i) == strUserInput.charAt(i+1))
+            String letter = String.valueOf(strUserInput.charAt(i));
+            int count = strUserInput.length() - strUserInput.replace(letter, "").length();
+            if(count > 1);
             {
                 return true;
             }
