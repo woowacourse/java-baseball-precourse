@@ -148,10 +148,21 @@ public class BaseballGame implements Baseball {
         return isNotAllNumber;
     }
 
+    /**
+     * 인자로 받은 String값의 길이가 3인지 확인하는 메서드
+     *
+     * @param Scanner로 입력 받은 String
+     * @return boolean 길이가 3이면 false를 리턴
+     */
     @Override
     public boolean checkInputNumberLength(String inputNumber) {
-        // TODO Auto-generated method stub
-        return false;
+        boolean isNotThree = false;
+
+        if (inputNumber.length() != 3) {
+            isNotThree = true;
+        } 
+
+        return isNotThree;
     }
 
     @Override
