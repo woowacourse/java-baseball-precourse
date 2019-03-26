@@ -15,11 +15,30 @@
  */
 
 package edu.woowa.baseball;
+
 /**
  * 숫자 야구 게임의 상대방 역할을 하는 컴퓨터 클래스
  * @version 1.00 2019년 03월 26일
  * @author 홍휘진
  */
 public class Computer {
+	
+	/**
+	 * 컴퓨터는 항상 3가지의 숫자 배열을 지니고 있어야 한다.
+	 * 배열의 size는 항상 3으로 유지
+	 */
+	private static final int SIZE = 3;
+	
+	/**
+	 * 컴퓨터가 저장할 서로 다른 3자리 숫자의 정보를 나타내는 객체
+	 */
+	private int[] arr;
+	
+	/**
+	 * Computer 객체 생성시 메모리 할당을 위한 생성자
+	 */
+	public Computer() {
+		this.arr = new int[SIZE];
+	}
 	
 }
