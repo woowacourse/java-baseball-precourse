@@ -73,4 +73,13 @@ public class Questioner {
 
 		return isReduplicate;
 	}
+
+	/**
+	 * 만들어진 문제(서로다른 3자리 수 배열)를 반환한다.
+	 * @return 문제(서로다른 3자리 수 배열)
+	 * */
+	public int[] getNumber() {
+
+		return this.number;
+	}
 }
