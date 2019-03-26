@@ -16,6 +16,7 @@
 
 package com.woowa.precourse;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -33,6 +34,9 @@ public class BaseballGame implements Baseball {
     
     /** 입력받은 유저의 수 */
     protected int[] userNumbers = new int[3];
+    
+    /** strike와 ball 결과, index 0은 strike, 1은 ball */
+    protected int[] result = new int[2];
 
     /**
      * 상대방(컴퓨터)의 1~9까지의 세 개의 정수를 생성하는 메서드
@@ -199,10 +203,33 @@ public class BaseballGame implements Baseball {
         return isNotThree;
     }
 
+    /**
+     * 컴퓨터의 int[]과 사용자의 int[]배열을 비교해 Stike인지 Ball인지 판별하는 메서드
+     * 사용자의 배열 안에 있는 값과 컴퓨터의 배열 안에 있는 값의 index와 값이 모두 같으면 strike
+     * 사용자의 배열 안에 있는 값과 컴퓨터의 배열 안에 있는 값이 같으나 index가 다를 경우 ball
+     *
+     * @param int[] 컴퓨터의 수를 담은 배열
+     * @param int[] 사용자의 수를 담은 배열
+     * @return int[] strike와 ball값을 담은 배열
+     */
     @Override
     public int[] checkStrikeOrBall(int[] comNumbers, int[] userNumbers) {
-        // TODO Auto-generated method stub
-        return null;
+        int[] strikeAndBall = new int[2];
+        
+        ArrayList<Integer> comNumList = new ArrayList<Integer>();
+        comNumList.add(comNumbers[0]);
+        comNumList.add(comNumbers[1]);
+        comNumList.add(comNumbers[2]);
+        
+        for (int i = 0; i < 3; i++) {
+            if (userNumbers[i] == comNumbers[i]) {
+                strikeAndBall[0] += 1;
+            } else if (comNumList.contains(userNumbers[i])) {
+                strikeAndBall[1] += 1;
+            }  
+        }   // end for  
+
+        return strikeAndBall;
     }
 
     @Override
