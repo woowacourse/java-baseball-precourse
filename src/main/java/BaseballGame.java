@@ -85,6 +85,23 @@ public class BaseballGame
         return strUserInput;
     }
 
+    public static boolean checkUserInput(String strUserInput)
+    {
+        //check zero
+        if(isZeroThere(strUserInput))
+        {
+            System.out.println("숫자는 1~9까지만 입력해주세요!");
+            return false;
+        }
+        //check repeating
+        if(isRepeating(strUserInput))
+        {
+            System.out.println("숫자는 모두 다른 숫자를 입력하십시오!");
+            return false;
+        }
+        return true;
+    }
+
 
 
 }
