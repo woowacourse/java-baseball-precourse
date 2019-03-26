@@ -13,5 +13,4 @@
   |*Game*|**checkNumber()**|숫자 검사|
   |*Game*|**printCorrect()**|정답 출력 화면|
   |*Game*|**printResult()**|결과 출력 화면 strike/ball/nothing|
-  |*Number*|**getNumber()**|세자리 숫자 읽어옴|
-  |*Number*|**setNumber()**|세자리 숫자 설정|
+  |*Number*|**returnNumber()**|세자리 숫자 읽어옴|
