@@ -5,12 +5,14 @@ import java.util.Arrays;
 public class Stage implements Stageface {
 
     User user = new User();
-
+    Computer computer = new Computer();
     @Override
     public void play(String commend) {
         System.out.println("게임이 시작되었습니다.");
-        Computer computer = new Computer();
         int[] problem = computer.makeRandomNum();
+        while(true) {
+            int[] answer = user.receiveNum();
+        }
     }
 
     @Override

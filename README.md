@@ -34,27 +34,38 @@ Version 1.0.0
 
 ## Class User
 * 유저
+    * Inheritance : Config
     * Class :
     * Method :
          * int[] receiveNum() -> 사용자에게 서로 다른 1~9까지의 정답 3개를 입력받음
-         * int[] makeNumArray() -> receiveNum()의 리턴값을 배열로 리턴
+         * (Config)int[] makeNumArray() -> receiveNum()의 리턴값을 배열로 리턴
     * Variable :
-         * int[] answer -> makeNumArray()의 리턴값을 가질 변수
+         * int[] answer -> makeNumArray()의 리턴값을 가질 변수 // 정답을 시도
+
 
 ## Class Computer
 * 컴퓨터
+    * Inheritance : Config
     * Class :
     * Method :
          * int[] makeRandomNum() -> 1~9까지의 서로 다른 수 3개를 배열에 담아 리턴한다.
+         * (Config)int[] makeNumArray() -> receiveNum()의 리턴값을 배열로 리턴
     * Variable :
-         * int[] answer -> makeNumArray()의 리턴값을 가질 변수
+         * int[] problem -> makeNumArray()의 리턴값을 가질 변수 // 문제 생성
+
+## Class Config
+* 도구 - 다른 클래스에서 사용하는 공통적인 메소드와 변수를 담음
+    * Class :
+    * Method :
+         * int[] makeNumArray() -> receiveNum()의 리턴값을 배열로 리턴
+    * Variable :
 
 기능 단위 Commit 체크
 ---------------------
 - [ x] 인터페이스 구현하기
 - [ x] 시작 종료
 - [ x] 랜덤 문제 생성
-- [ ] 정답 시도
+- [ x] 정답 시도
 - [ ] 정답 비교
 - [ ] 문제에 대한 정답 결과 출력
 - [ ] 정답 시 재시작

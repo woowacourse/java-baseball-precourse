@@ -2,7 +2,7 @@ package indi.moon.firstweek;
 
 import java.util.stream.Stream;
 
-public class Computer implements Computerface {
+public class Computer extends Config implements Computerface {
 
     @Override
     public int[] makeRandomNum(){
@@ -31,11 +31,5 @@ public class Computer implements Computerface {
             }
         }
         return tmp[i];
-    }
-
-    public int[] makeNumArray(String num){
-        int[] arrayNum = Stream.of(num.split("")).mapToInt(Integer::parseInt).toArray();
-
-        return arrayNum;
     }
 }
