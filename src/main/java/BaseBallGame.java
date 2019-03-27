@@ -31,11 +31,16 @@ public class BaseBallGame {
     public BaseBallGame(){
         this.num = new int[3];
         this.userNum = new int[3];
+        this.hasNextGame = true;
+        this.br = new BufferedReader(new InputStreamReader(System.in));
+    }
+
+    /** 게임에 사용되는 변수 초기화 */
+    public void init() {
         this.strike = 0;
         this.ball = 0;
         this.gameOver = false;
-        this.hasNextGame = true;
-        this.br = new BufferedReader(new InputStreamReader(System.in));
+        this.setRandomNum();
     }
 
     /** 임의의 3수를 저장 */
