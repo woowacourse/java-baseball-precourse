@@ -31,10 +31,10 @@ public class User {
     }
 
     /**
-     * 사용자로 부터 받아온 String 을 int로 변환하여 저장한다.
      * @param input (1~9)까지의 3가지 수로 변환 가능한 String
+     * @desc :사용자로 부터 받아온 String 을 int 로 변환하여 저장한다.
      */
-    private void saveNums(String input){
+    private void saveNums(String input) {
         for (int i = 0; i < input.length(); i++) {
             int num = input.charAt(i) - '0';
             numsMap.put(num, num);
@@ -88,23 +88,22 @@ public class User {
     }
 
     /**
+     * @return 게임 재시작이면 true 리턴, 종료면 false 리턴
      * @desc 게임 재시작 여부를 묻는 함수.
      * 1을 입력하면 재시작,
      * 2를 입력하면 종료,
      * 다른 키를 입력하면 다시 게임 재시작 여부를 묻는다.
-     * 
-     * @return 게임 재시작이면 true 리턴, 종료면 false 리턴
      */
-    public boolean isContinue(){
+    public boolean isContinue() {
         String string;
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        while(true){
+        while (true) {
             string = scanner.nextLine();
 
-            if(string.equals("1"))
+            if (string.equals("1"))
                 return true;
-            else if(string.equals("2"))
+            else if (string.equals("2"))
                 return false;
             else
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");

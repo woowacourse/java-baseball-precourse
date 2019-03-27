@@ -1,5 +1,6 @@
 package com.github.offMomySon.game;
 
+import com.github.offMomySon.game.baseball.BallType;
 import com.github.offMomySon.resource.Computer;
 import com.github.offMomySon.resource.User;
 
@@ -12,7 +13,6 @@ import java.util.Set;
  * @pakage : com.github.offMomySon.game
  * @authon : 오지훈
  */
-
 public class AppMain {
     /**
      * @desc 어플리케이션의 시작, 종료  메인스트림
@@ -21,19 +21,8 @@ public class AppMain {
     public static void main(String[] args) {
 
         System.out.println("Test");
-        User user = new User();
-        user.inputNums();
+        BallType ballType = new BallType(1,1);
+        System.out.println(ballType);
 
-        HashMap<Integer, Integer> computerNum = user.getNumsMap();
-        Set<Integer> keys = computerNum.keySet();
-
-        List<Integer> list = user.getNumsList();
-
-        for (Integer key : keys) {
-            System.out.println(computerNum.get(key));
-        }
-        for (Integer n : list) {
-            System.out.println(n);
-        }
     }
 }
