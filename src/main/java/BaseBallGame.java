@@ -43,6 +43,16 @@ public class BaseBallGame {
         this.setRandomNum();
     }
 
+    /** 3수를 맞출때까지 게임을 진행 */
+    public void doGame() {
+        while(!this.gameOver) {
+            while(!setUserNum());
+            setStrikeAndBall();
+            setGameResult();
+            showGameResult();
+        }
+    }
+
     /** 임의의 3수를 저장 */
     public void setRandomNum() {
         for(int i=0; i<3; i++) {
