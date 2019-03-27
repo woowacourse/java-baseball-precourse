@@ -5,7 +5,19 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class NumberBaseball {
-	static int[] defenseArr() {
+	
+	static void playGame(BufferedReader br) {
+		int[] defense = defenseArr();
+		int[] attack;
+		int[] result = new int[] {0,0};
+		while(result[0] != 3) {
+			attack = attackArr(br);
+			result = attackResult(defense, attack);
+		}
+		System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임종료");
+	}
+	
+	private static int[] defenseArr() {
 		Set<Integer> set = new LinkedHashSet<>();
 		int[] arr = new int[] {0,0,0};
 		while(set.size()<3) {
@@ -18,7 +30,7 @@ public class NumberBaseball {
 		return arr;
 	}
 	
-	static int[] attackArr(BufferedReader br) {
+	private static int[] attackArr(BufferedReader br) {
 		int[] ret = new int[] {0,0,0};
 		int tmp2 = 0;
 		String tmp =null;
@@ -63,7 +75,7 @@ public class NumberBaseball {
 		return counter;
 	}
 	
-	static int[] attackResult(int[] defense, int[] attack) { // {# Strike, # Ball} 로 리턴 
+	private static int[] attackResult(int[] defense, int[] attack) { // {# Strike, # Ball} 로 리턴 
 		int strike = countStrike(defense, attack);
 		int hitable = 0;
 		for (int i = 0; i < 3; i++) {
