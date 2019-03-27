@@ -1,6 +1,8 @@
 package com.isbee.game.baseball;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -19,6 +21,16 @@ public class MyBaseballGame implements BaseballGame {
     public MyBaseballGame() {
         baseballInfo = BaseballInfo.INSTANCE;
         baseballInput = new UserInput(baseballInfo.getDigitNum());
+    }
+
+    /** 플레이어가 게임을 완전히 종료하기 전까지, 계속해서 게임을 진행한다 */
+    @Override
+    public void play() {
+        do {
+            baseballInfo.setComNum(generateRandomNum());
+            System.out.println("com:" + baseballInfo.getComNum());
+            playOneGame();
+        } while (playMoreOrNot());
     }
 
     /**
@@ -52,6 +64,65 @@ public class MyBaseballGame implements BaseballGame {
     }
 
     /**
+     * 생성된 난수와 플레이어의 입력 숫자를 비교한 결과를 리턴. 시간복잡도 = O(NlogN), N = 야구 게임 자리수 (default = 3)
+     *
+     * @return 3 스트라이크 성공 여부
+     */
+    @Override
+    public boolean compareNum() {
+        int strikeAndBall[] = new int[2];       // [0]: strike, [1]: ball
+
+        countStrikeAndBall(strikeAndBall, baseballInfo.getComNum(), baseballInfo.getUserNum());
+        /* TODO: 결과 출력 */
+        return doesGuessCorrect(strikeAndBall[0]);
+    }
+
+    /**
+     * strike/ball 갯수를 카운트한다.
+     * O(N^2)의 완전탐색 대신, Set을 사용해 O(NlogN)으로 카운트.
+     *
+     * @param strikeAndBall strike/ball 갯수를 저장하는 배열
+     * @param com           사용자가 맞춰야 할 숫자
+     * @param user          사용자가 입력한 숫자
+     */
+    private void countStrikeAndBall(int strikeAndBall[], int com, int user) {
+        Set<Integer> comSet = new HashSet<>();
+        Set<Integer> userSet = new HashSet<>();
+        int divider = getUpperBound();
+
+        while (divider > 0) {
+            int c = com / divider;
+            int u = user / divider;
+            if (c == u) {
+                strikeAndBall[0]++;
+            } else {            // strike가 아닌 숫자는 set에 넣은 뒤 ball 체크 하는데 쓴다.
+                comSet.add(c);
+                userSet.add(u);
+            }
+            com %= divider;
+            user %= divider;
+            divider /= 10;
+        }
+        countBall(strikeAndBall, comSet, userSet);
+    }
+
+    /**
+     * Set에 저장된 숫자를 비교하여 ball 갯수를 카운트한다
+     *
+     * @param strikeAndBall strike/ball 갯수를 저장하는 배열
+     * @param comSet        사용자가 맞춰야할 숫자 중, strike가 아닌 나머지
+     * @param userSet       사용자의 입력 숫자 중, strike가 아닌 나머지
+     * */
+    private void countBall(int strikeAndBall[], Set<Integer> comSet, Set<Integer> userSet) {
+        for (int num : userSet) {
+            if (comSet.contains(num)) {
+                strikeAndBall[1]++;
+                comSet.remove(num);
+            }
+        }
+    }
+
+    /**
      * 야구 게임 자리수에 맞는 숫자 생성
      *
      * @return 생성한 숫자
@@ -68,6 +139,15 @@ public class MyBaseballGame implements BaseballGame {
     }
 
     /**
+     * 3 strike 여부
+     *
+     * @param strikeNum strike 갯수
+     * */
+    private boolean doesGuessCorrect(int strikeNum) {
+        return strikeNum == baseballInfo.getDigitNum() ? true : false;
+    }
+
+    /**
      * 1~9 까지의 중복없는 난수 생성를 생성하여, 사용자가 맞춰야 할 수를 구성하는데 사용한다.
      *
      * @param check 현재까지 생성된 난수를 기록한 배열
@@ -81,6 +161,13 @@ public class MyBaseballGame implements BaseballGame {
                 return r;
             }
         }
+    }
+
+    /** 정답을 맞출때 까지 게임을 계속한다 */
+    private void playOneGame() {
+        do {
+            baseballInfo.setUserNum(getUserNum());
+        } while (!compareNum());
     }
 
     /**
