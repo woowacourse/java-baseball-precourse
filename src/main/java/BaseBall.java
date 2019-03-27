@@ -25,6 +25,7 @@ public class BaseBall{
     public void init(){
         computer = new Computer();
         compNumbers = computer.getNumbers();
+        //System.out.println(compNumbers[0] +"-" + compNumbers[1] + "-" + compNumbers[2]);
     }
     public void play(){
         while(isGamePlay) {
@@ -44,15 +45,23 @@ public class BaseBall{
             userNumbers[2] = Integer.parseInt(userInput.substring(2,3));
             strike = checkStrike(userNumbers, compNumbers);
             ball = checkBall(userNumbers,compNumbers);
-            if(strike != 0 && strike != 3 && ball == 0){
-                System.out.println(strike + "스트라이크 ");
-            } else if(ball != 0){
-                System.out.print(strike + "스트라이크 ");
-                System.out.println(ball + "볼");
-            } else if(strike == 3){
+            // correct!
+            if(strike == 3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
                 System.out.println("게임을새로시작하려면 1, 종료하려면2를입력하세요.");
                 finishFlag = scanner.nextInt();
+                // only strike!
+            } else if(strike != 0 && ball == 0){
+                System.out.println(strike + "스트라이크 ");
+                // only ball
+            } else if(ball != 0  && strike == 0){
+                System.out.println(ball + "볼");
+                // strike with ball
+            } else if(ball != 0 && strike != 0){
+                System.out.print(strike + "스트라이크 ");
+                System.out.println(ball + "볼");
+            } else {
+                System.out.println("Nothing!!");
             }
             if(finishFlag == 1){
                 init();
