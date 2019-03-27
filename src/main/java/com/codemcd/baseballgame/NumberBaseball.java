@@ -1,24 +1,57 @@
+/*
+ * @(#)NumberBaseball.java
+ * v1.00
+ * 2019/03/27
+ */
+
 package com.codemcd.baseballgame;
 
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * 숫자 야구 게임에 필요한 모든 기능을 가지는 NumberBaseball 클래스
+ *
+ * @version v1.00
+ * @author 박성범
+ */
 public class NumberBaseball {
+
+    private static final int BASEBALL_NUMBER_LENGTH = 3;
+    private static final int MAX_NUMBER_VALUE = 9;
+    private static final int RESTART = 1;
+    private static final int EXIT = 2;
 
     private int[] computerBaseballNumber;
     private int[] userBaseballNumber;
+
+    /** ball 이 있는지 검사하기 위한 배열이다. */
     private boolean[] bCheckBall;
     private int strikeCount;
     private int ballCount;
 
     NumberBaseball() {
+
         System.out.println("숫자 야구 게임 시작!");
 
-        computerBaseballNumber = new int[3];
-        userBaseballNumber = new int[3];
-        bCheckBall = new boolean[10];
+        computerBaseballNumber = new int[BASEBALL_NUMBER_LENGTH];
+        userBaseballNumber = new int[BASEBALL_NUMBER_LENGTH];
+        bCheckBall = new boolean[MAX_NUMBER_VALUE + 1];
     }
 
+    public void initialize() {
+        for (int i = 0; i < BASEBALL_NUMBER_LENGTH; ++i) {
+            computerBaseballNumber[i] = 0;
+            userBaseballNumber[i] = 0;
+        }
+    }
+
+    /**
+     * 파라미터로 받은 배열의 처음부터 현재 인덱스까지 중복이 있는지 검사한다.
+     * @param checkNumberArray 중복이 있는지 검사할 숫자 배열
+     * @param currentIndex     checkNumberArray 배열의 현재 인덱스
+     * @return 중복이 있으면 -1, 중복이 없으면 1을 반환
+     */
     private static int checkOverlapNumber(int[] checkNumberArray, int currentIndex) {
         for (int i = 0; i < currentIndex; ++i) {
             if (checkNumberArray[currentIndex] == checkNumberArray[i]) {
@@ -33,21 +66,21 @@ public class NumberBaseball {
 
         Random random = new Random();
 
-        /*
-         * for 문의 i 값을 증가시키는 조건은 현재 숫자가 이전의 숫자들과 비교했을 때
-         * 중복이 없는 경우이다.
-         */
-        for (int i = 0; i < 3; i += checkOverlapNumber(computerBaseballNumber, i)) {
-            computerBaseballNumber[i] = random.nextInt(9) + 1;
+        /* for 문의 i 값을 증가시키는 조건은 현재까지 중복이 없는 경우이다. */
+        for (int i = 0; i < BASEBALL_NUMBER_LENGTH;
+                i += checkOverlapNumber(computerBaseballNumber, i)) {
+            computerBaseballNumber[i] = random.nextInt(MAX_NUMBER_VALUE) + 1;
         }
 
-        /* 기능 확인을 위해 잠시 추가해둠 */
-        for (int i = 0; i < 3; ++i) {
-            System.out.print(computerBaseballNumber[i]);
-        }
-        System.out.println();
+        for(int i=0; i<3; ++i)
+            System.out.println((computerBaseballNumber[i]));
     }
 
+    /**
+     * 전달받은 문자열의 모든 문자가 숫자 1 ~ 9 범위내에 있는지 검사한다.
+     * @param str 검사할 문자열
+     * @return 모든 문자가 1 ~ 9 범위 내에 있다면 true, 그렇지 않으면 false 를 반환한다.
+     */
     private static boolean isNumeric(String str) {
         for (int i = 0; i < str.length(); ++i) {
             if (str.charAt(i) < '1' || str.charAt(i) > '9') {
@@ -75,7 +108,8 @@ public class NumberBaseball {
                 continue;
             }
             /* 입력받은 문자열이 3자리 숫자인지 검사한다. */
-            if (inputBaseballNumber.length() > 3 || inputBaseballNumber.length() < 3) {
+            if (inputBaseballNumber.length() > BASEBALL_NUMBER_LENGTH
+                    || inputBaseballNumber.length() < BASEBALL_NUMBER_LENGTH) {
                 System.out.println("<오류: 잘못된 입력입니다. 숫자 3자리를 입력해주세요.>");
                 continue;
             }
@@ -101,13 +135,13 @@ public class NumberBaseball {
 
         strikeCount = 0;
         ballCount = 0;
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < MAX_NUMBER_VALUE + 1; ++i) {
             bCheckBall[i] = false;
         }
     }
 
     private void calculateStrikeAndBallCount() {
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < BASEBALL_NUMBER_LENGTH; ++i) {
             if (computerBaseballNumber[i] == userBaseballNumber[i]) {
                 strikeCount++;
             } else {
@@ -115,22 +149,26 @@ public class NumberBaseball {
             }
         }
 
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < BASEBALL_NUMBER_LENGTH; ++i) {
             if (bCheckBall[computerBaseballNumber[i]] == true) {
                 ballCount++;
             }
         }
     }
 
+    /**
+     * 컴퓨터가 뽑은 숫자와 유저가 입력한 숫자를 비교한다.
+     * @return 3 스트라이크로 게임을 종료해야 하면 true, 그렇지 않으면 false 를 반환한다.
+     */
     public boolean matchUserAndComputer() {
         initializeData();
         calculateStrikeAndBallCount();
 
-        return (strikeCount == 3) ? true : false;
+        return (strikeCount == BASEBALL_NUMBER_LENGTH) ? true : false;
     }
 
     public void printMatchResult() {
-        if (strikeCount == 3) {
+        if (strikeCount == BASEBALL_NUMBER_LENGTH) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
         } else if (strikeCount == 0 && ballCount == 0) {
@@ -161,9 +199,9 @@ public class NumberBaseball {
 
             reGameFlag = Integer.parseInt(inputReGameFlag);
 
-            if (reGameFlag == 1) {
+            if (reGameFlag == RESTART) {
                 return true;
-            } else if (reGameFlag == 2) {
+            } else if (reGameFlag == EXIT) {
                 return false;
             } else {
                 System.out.println("<오류: 잘못된 입력입니다. 다시 입력해주세요!>");
