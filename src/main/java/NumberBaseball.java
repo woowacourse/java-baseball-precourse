@@ -1,5 +1,7 @@
-/**
+/*
  *NumberBaseball.class
+ *
+ *2019.03.28
  *
  * @author 최여진
  *
@@ -14,6 +16,8 @@ public class NumberBaseball {
 		int comNum[] = new int[3];
 		
 		comNum=getComNum();
+		userNum=getUserNum();
+		
 	}
 
 	
@@ -41,6 +45,23 @@ public class NumberBaseball {
 		}
 		
 		return comNum;
+	}
+	
+	
+	/*사용자의 세자리 수 입력 메소드*/
+	public static int[] getUserNum() {
+		int userNum[]=new int[3];
+		
+		int input = scan.nextInt();
+		
+		
+		/*숫자 중복 되지 않도록 확인*/
+		userNum[0]=input/100; //100의 자리
+		input-=input/100*100; //100의 자리 날리기
+		userNum[1]=input/10; //10의 자리
+		userNum[2]=input%10; //1의 자리
+		
+		return userNum;
 	}
 }
 
