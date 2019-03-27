@@ -9,16 +9,13 @@ package indi.moon.firstweek;
 
 public interface Indexface {
 
-    /* 게임을 종료하기 위한 명령어 */
-    public static final String endCommend = "exit()";
-
     /**
      *  게임을 시작하는 메소드
      *  시작시 아무키나 누르고, 종료시에 exit()을 입력
      */
     public abstract String start();
 
-    /** 게임을 시작하는 메소드 */
+    /** 게임을 종료하는 메소드 */
     public abstract void end();
 
 }

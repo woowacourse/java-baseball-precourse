@@ -2,8 +2,11 @@ package indi.moon.firstweek;
 
 public interface Stageface {
 
-    /** 실질적으로 게임이 진행되는 메소드 */
-    public abstract void play(String commend);
+    /** 실질적으로 singlePlay 게임이 진행되는 메소드 */
+    public abstract void singlePlay();
+
+    /** 실질적으로 multiPlay 게임이 진행되는 메소드 */
+    public abstract void multiPlay();
 
     /** 답을 체크하고 스트라이크와 볼의 갯수 리턴 */
     public abstract int[] check(int[] answer,int[] myAnswer);

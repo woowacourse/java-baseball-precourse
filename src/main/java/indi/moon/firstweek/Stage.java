@@ -7,10 +7,12 @@ public class Stage implements Stageface {
     User user = new User();
     Computer computer = new Computer();
     Referee referee = new Referee();
+
     @Override
-    public void play(String commend) {
-        System.out.println("게임이 시작되었습니다.");
-        int[] problem = computer.makeRandomNum();
+    public void singlePlay() {
+        System.out.println("싱글플레이를 시작합니다.");
+//        int[] problem = computer.makeRandomNum();
+        int[] problem = {1,2,3};
         while(true) {
             int[] answer = user.receiveNum();
             int[] result = check(problem,answer);
@@ -20,6 +22,10 @@ public class Stage implements Stageface {
             }
             checkLog(result);
         }
+    }
+    @Override
+    public void multiPlay(){
+        System.out.println("멀티플레이를 시작합니다.");
     }
 
     @Override
