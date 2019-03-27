@@ -25,7 +25,7 @@ public class Baseball {
 				continue;
 			}
 			
-			if (player.isNumber() && !player.hasDuplicated()) {
+			if (player.isNumber() && (!player.hasDuplicated())) {
 				player.convertCharacterToInt();
 			} else {
 				System.out.println("1-9까지 서로 다른 세개의 수를 입력하세요.");
@@ -35,6 +35,7 @@ public class Baseball {
 		} while(true);
 		
 		result = baseball.compareNumbers(computer.numbers, player.numbers);
+		result.print();
 	}
 	
 	public Result compareNumbers(int[] computerNumbers, int[] playerNumbers) {
