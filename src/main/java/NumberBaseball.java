@@ -11,7 +11,9 @@ public class NumberBaseball {
     int[] guessingNumber = user.enterGuessingNumber();
 
     NumberBaseball baseballGame = new NumberBaseball();
-    baseballGame.judgePlayerGuess(selectedNumber, guessingNumber);
+    Score gameScore = baseballGame.judgePlayerGuess(selectedNumber,
+                                                    guessingNumber);
+    baseballGame.displayGameResult(gameScore);
   }
 
   public Score judgePlayerGuess(int[] selectedNumber, int[] guessingNumber) {
@@ -36,5 +38,21 @@ public class NumberBaseball {
   public void initializeGameScore() {
     strikeCount = 0;
     ballCount = 0;
+  }
+
+  private void displayGameResult(Score gamescore) {
+    int strike = gamescore.getStrike();
+    int ball = gamescore.getBall();
+    if (strike == 0 && ball == 0) {
+      System.out.println("낫싱");
+      return;
+    }
+    if (strike > 0) {
+      System.out.print(strike + " 스트라이크 ");
+    }
+    if (ball > 0) {
+      System.out.println(ball + " 볼");
+    }
+    System.out.println();
   }
 }
