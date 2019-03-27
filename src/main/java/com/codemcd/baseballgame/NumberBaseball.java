@@ -71,6 +71,15 @@ public class NumberBaseball {
         System.out.println();
     }
 
+    private void initializeData() {
+
+        strikeCount = 0;
+        ballCount = 0;
+        for (int i = 0; i < 10; ++i) {
+            bCheckBall[i] = false;
+        }
+    }
+
     private void calculateStrikeAndBallCount() {
         for (int i = 0; i < 3; ++i) {
             if (computerBaseballNumber[i] == userBaseballNumber[i]) {
@@ -88,6 +97,7 @@ public class NumberBaseball {
     }
 
     public boolean matchUserAndComputer() {
+        initializeData();
         calculateStrikeAndBallCount();
 
         return (strikeCount == 3) ? true : false;
