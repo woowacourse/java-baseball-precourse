@@ -7,19 +7,22 @@ public class BaseballGame {
     int[] computerNum = new int[3];
     int[] playerNum = new int[3];
     int[] results = new int[2]; // Index 0 : strike, Index 1 : ball info
+    boolean nothing = false;
 
     //get 3 different random numbers
     computerNum = fillArray(computerNum);
-    //System.out.println(Arrays.toString(computerNum));
+    System.out.println(Arrays.toString(computerNum));
 
     //get input from user
     playerNum = getInput(playerNum);
-    //System.out.println(Arrays.toString(playerNum));
+    System.out.println(Arrays.toString(playerNum));
 
     results[0] = getStrikeInfo(computerNum, playerNum);
     results[1] = getBallInfo(computerNum, playerNum);
+    if (results[0] == 0 & results[1] == 0)
+        nothing = true;
     //System.out.println(Arrays.toString(results));
-
+    System.out.println(nothing);
     }
 
     private static int[] fillArray(int[] myArray) {
