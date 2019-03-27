@@ -25,6 +25,7 @@ public class NumberBaseball {
 				userNum=getUserNum();
 				
 				int strike=getStrike(comNum, userNum);
+				int ball=getBall(comNum, userNum);
 				
 			}
 		}
@@ -89,5 +90,20 @@ public class NumberBaseball {
 		return strike;
 	}
 	
+	
+	/*comNum과 userNum에 따른 볼의 카운팅*/
+	public static int getBall (int[] comNum, int[] userNum) {
+		int ball=0;
+		
+		for (int i=0; i<3; ++i) {
+			if (comNum[i]==userNum[(i + 1) % 3]) {
+				ball++;
+			}
+			else if (comNum[i]==userNum[(i + 2) % 3]) {
+				ball++;
+			}
+		}
+		return ball;
+	}
 }
 
