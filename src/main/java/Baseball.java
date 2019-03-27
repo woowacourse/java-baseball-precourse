@@ -1,5 +1,5 @@
 /*
- * baseball
+ * Baseball
  * 
  * 1.0
  * 
@@ -11,7 +11,7 @@
 
 import java.util.*;
 
-public class baseball {
+public class Baseball {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -28,7 +28,7 @@ public class baseball {
 	 * return : res
 	 * 게임을 계속할지, 그만 할지 결정.
 	 * */
-	public static boolean playGame() {
+	private static boolean playGame() {
 		int answer = makeAnswer();
 //		System.out.println(answer);				/* 정답 확인시 주석 해제 */
 		
@@ -57,13 +57,13 @@ public class baseball {
 	 * return : number
 	 * 3자리 난수 생성(1~9 / 중복 안됨)
 	 * */
-	public static int makeAnswer() {
+	private static int makeAnswer() {
 		int num[] = new int[3];
 		int number = 0;
 		Random rand = new Random();
 		for(int i = 0 ; i < num.length ; i++) {
 			num[i] = rand.nextInt(9) + 1;
-			i = deDupl(i,num);
+			i = deduplNum(i,num);
 		}
 		
 		for(int i = 0 ; i < num.length ; i++) {
@@ -79,7 +79,7 @@ public class baseball {
 	 * return : i
 	 * 컴퓨터 정답 생성 시 3자리 난수 생성 중 중복된 값이 있으면 i값을 감소.
 	 * */
-	public static int deDupl(int i, int[] num) {
+	private static int deduplNum(int i, int[] num) {
 		for(int j = 0 ; j < i ; j++) {
 			if(num[j] == num[i]) {
 				i--;
@@ -96,7 +96,7 @@ public class baseball {
 	 * return : hint
 	 * 값을 입력받아 정답(힌트들) 전달.
 	 * */
-	public static int[] rightAnswer(int answer) {
+	private static int[] rightAnswer(int answer) {
 		System.out.print("숫자를 입력하세요 : ");
 		Scanner num = new Scanner(System.in);
 		int number = num.nextInt();
@@ -111,7 +111,7 @@ public class baseball {
 	 * return : 
 	 * hint의 값에 따라서 스트라이크 or 볼 or 낫싱 출력
 	 * */
-	public static void printHint(int[] hint) {
+	private static void printHint(int[] hint) {
 		String str = "";
 		
 		/* 스트라이크 출력 */
@@ -138,7 +138,7 @@ public class baseball {
 	 * return : hint[]
 	 * hint의 값을 모두 설정해 전달한다.
 	 * */
-	public static int[] getHint(int answer, int number) {
+	private static int[] getHint(int answer, int number) {
 		int[] hint = new int[2];
 		
 		int ansarr[] = splitInt(answer);
@@ -157,7 +157,7 @@ public class baseball {
 	 * return : number[]
 	 * 자리마다 비교를 위해 자릿수대로 나누기
 	 * */
-	public static int[] splitInt(int num) {
+	private static int[] splitInt(int num) {
 		int[] number = new int[3];
 		int divi = 100;
 		for(int i = 0 ; i < number.length ; i++) {
@@ -175,7 +175,7 @@ public class baseball {
 	 * return : hint[]
 	 * 스트라이크와 볼을 확인해 힌트변수를 설정.
 	 * */
-	public static int[] setHint(int i, int[] ansarr, int[] numarr) {
+	private static int[] setHint(int i, int[] ansarr, int[] numarr) {
 		int hint[] = new int[2];
 		
 		/* 스트라이크 설정 */
