@@ -20,10 +20,31 @@ public class Baseball {
         String comNum = "";         // Computer number(Random Number)
         String userNum;             // User number (Input)
         boolean inputFlag = true;   // for check 3 strike
-        comNum = "123";             // generate Random Number
+        comNum = generateRandomNumber();
         while (inputFlag) {
             userNum = "123";        // Receive Input
             inputFlag = false;      // check 3 strike
         }
     }
+
+    /*
+     * Method for Computer Number(Random Number)
+     * Use Collections.shuffle
+     */
+    private static String generateRandomNumber() {
+        String ranNum = "";                                 // return value (3 digit)
+        List<Integer> numList= new ArrayList<Integer>();    // 1 to 9 number list
+
+        for (int i = 1; i < 10; i++) {
+            numList.add(i);
+        }
+        Collections.shuffle(numList);           // Randomize number list
+
+        for (int i = 0; i < 3; i++) {
+            ranNum += numList.get(i).toString();
+        }
+
+        return ranNum;
+    }
+
 }
