@@ -54,6 +54,11 @@ public class GameUI {
 		}
 	}
 
+	/**
+	 * 정답이 모두 맞아 게임을 종료할 수 있는지 확인한다.	 *
+	 * @param game 진행중인 게임
+	 * @return 게임 종료 유무
+	 */
 	private static boolean checkGameEnd(Game game) {
 
 		/* 정답이 모두 맞아 게임을 종료 할수 있는지 확인한다. */
