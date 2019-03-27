@@ -48,6 +48,15 @@ public class NumberBaseball {
         System.out.println();
     }
 
+    private static boolean isNumeric(String str) {
+        for (int i = 0; i < str.length(); ++i) {
+            if (str.charAt(i) < '1' || str.charAt(i) > '9') {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void inputUserNumber() {
 
         Scanner scanner = new Scanner(System.in);
@@ -56,19 +65,36 @@ public class NumberBaseball {
         /* 입력받은 문자열을 정수로 변환하여 저장하는 변수 */
         int stringToInteger;
 
-        System.out.print("숫자를 입력하세요.: ");
-        inputBaseballNumber = scanner.nextLine();
+        while (true) {
+            System.out.print("숫자를 입력하세요.: ");
+            inputBaseballNumber = scanner.nextLine();
 
-        stringToInteger = Integer.parseInt(inputBaseballNumber);
-        userBaseballNumber[0] = stringToInteger / 100;
-        userBaseballNumber[1] = stringToInteger % 100 / 10;
-        userBaseballNumber[2] = stringToInteger % 100 % 10;
+            /* 입력받은 문자열이 1 ~ 9 범위 내의 숫자인지 검사한다. */
+            if (isNumeric(inputBaseballNumber) == false) {
+                System.out.println("<오류: 잘못된 입력입니다. 1 ~ 9 범위 내의 숫자를 입력해주세요.>");
+                continue;
+            }
+            /* 입력받은 문자열이 3자리 숫자인지 검사한다. */
+            if (inputBaseballNumber.length() > 3 || inputBaseballNumber.length() < 3) {
+                System.out.println("<오류: 잘못된 입력입니다. 숫자 3자리를 입력해주세요.>");
+                continue;
+            }
 
-        /* 기능 확인을 위해 잠시 추가해둠 */
-        for (int i = 0; i < 3; ++i) {
-            System.out.print(userBaseballNumber[i]);
+            stringToInteger = Integer.parseInt(inputBaseballNumber);
+            userBaseballNumber[0] = stringToInteger / 100;
+            userBaseballNumber[1] = stringToInteger % 100 / 10;
+            userBaseballNumber[2] = stringToInteger % 100 % 10;
+
+            /* 입력받은 3자리 숫자 중 중복이 존재하는지 검사한다. */
+            if (checkOverlapNumber(userBaseballNumber, 2) == 1
+                    && checkOverlapNumber(userBaseballNumber, 1) == 1) {
+                break;
+            } else {
+                System.out.println("<오류: 잘못된 입력입니다. 서로 다른 숫자 3자리를 입력해주세요.>");
+            }
+
         }
-        System.out.println();
+
     }
 
     private void initializeData() {
@@ -124,18 +150,26 @@ public class NumberBaseball {
         String inputReGameFlag;
         int reGameFlag;
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        inputReGameFlag = scanner.nextLine();
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            inputReGameFlag = scanner.nextLine();
 
-        reGameFlag = Integer.parseInt(inputReGameFlag);
+            if (isNumeric(inputReGameFlag) == false || inputReGameFlag.length() == 0) {
+                System.out.println("<오류: 잘못된 입력입니다. 올바른 숫자를 입력해주세요.>");
+                continue;
+            }
 
-        if (reGameFlag == 1) {
-            return true;
-        } else if (reGameFlag == 2) {
-            return false;
+            reGameFlag = Integer.parseInt(inputReGameFlag);
+
+            if (reGameFlag == 1) {
+                return true;
+            } else if (reGameFlag == 2) {
+                return false;
+            } else {
+                System.out.println("<오류: 잘못된 입력입니다. 다시 입력해주세요!>");
+                continue;
+            }
         }
-
-        return false;
     }
 
 }
