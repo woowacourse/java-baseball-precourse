@@ -15,6 +15,7 @@ public class InputUtil {
     public static List<Integer> getUserNumber() {
         String userNumber = InputView.getNumber();
         while (!checkValidNumber(userNumber)) {
+            OutputView.printInputError();
             userNumber = InputView.getNumber();
         }
         return StringParseUtil.parseToInteger(userNumber);
