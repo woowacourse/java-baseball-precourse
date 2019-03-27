@@ -29,7 +29,9 @@ public class Baseball {
                 print();
             }while(strike_num < 3);
 
-            // TODO 기능 6: 새로시작 or 종료
+            if(isFinish()){
+                break;
+            }
         }
     }
 
@@ -118,6 +120,27 @@ public class Baseball {
         }
         else {
             System.out.println("낫싱");
+        }
+    }
+
+    //기능 6
+    private boolean isFinish() {
+        int finish;         // 입력받을 숫자를 저장
+        Scanner scan = new Scanner(System.in);
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+        while(true) {
+            finish = scan.nextInt();
+            if(finish == 1) {
+                return false;
+            }
+            else if(finish == 2) {
+                return true;
+            }
+            else {
+                System.out.print("Error, 1 또는 2를 입력해주세요: ");
+                continue;
+            }
         }
     }
 }
