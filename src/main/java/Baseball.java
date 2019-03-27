@@ -35,6 +35,5 @@ public class Baseball {
 		
 		Baseball bs = new Baseball();
 		bs.gameMenu();
-		
 	}
 }
