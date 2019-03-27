@@ -9,7 +9,12 @@ import java.util.*;
 
 public class Baseball {
     public static void main(String[] args) {
+        boolean restartFlag = true;     // for check restart
+        while(restartFlag) {
             startBaseball();
+            restartFlag = checkRestart();
+        }
+
     }
 
     /*
