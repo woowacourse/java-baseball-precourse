@@ -15,11 +15,7 @@ public class PlayGame {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         do {
-            hashMap = Number.getInstance().comNum();
-            for(Object data : hashMap.values()){
-                System.out.print(data);
-            }
-            System.out.println();
+           hashMap = Number.getInstance().comNum();
             do {
                 playerNum = Number.getInstance().playerNum(br);
                 gameResult = Feature.getInstance().checkNum(hashMap, playerNum);
