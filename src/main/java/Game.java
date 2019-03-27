@@ -55,10 +55,25 @@ public class Game {
                 printCorrect();
                 break;
             }
-            if(countStrike()!=0)
-                System.out.println(countStrike() +" 스트라이크  ");
-            if(countBall()!=0)
-                System.out.println(countBall() +" 볼  ");
+
+            /*스트라이크 수를 담을 변수*/
+            int strike = countStrike();
+
+            /*볼 수를 담을 변수*/
+            int ball = countBall();
+
+            /*출력할 결과 메세지를 담을 변수*/
+            String message ="";
+
+            if(strike==0 && ball==0)
+                message += "낫싱";
+            else{
+                if(strike!=0)
+                    message += strike + " 스트라이크  ";
+                if(ball!=0)
+                    message += ball + " 볼";
+            }
+            System.out.println(message);
         }while(true);
     }
 
@@ -89,7 +104,6 @@ public class Game {
         do{
             third = rand.nextInt(9)+1;
         }while(first==third || second==third);
-
         gameNumber = new Number(first,second,third);
     }
 
@@ -118,7 +132,7 @@ public class Game {
 
     /*정답 화면을 출력*/
     private void printCorrect(){
-        System.out.println("세개의 숫자를 모두 맞히셨습니다!");
+        System.out.println("세개의 숫자를 모두 맞히셨습니다!\n");
     }
 
     /*스트라이크 갯수를 카운팅*/

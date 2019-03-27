@@ -16,8 +16,8 @@ public class Menu {
 
     /*게임 시작,종료에 대한 메뉴를 출력*/
     public static void printMenu(){
-        System.out.println("게임 시작 (1)");
-        System.out.println("게임 종료 (2)");
+        System.out.print(" << 게임 시작(1)  ");
+        System.out.println("게임 종료(2) >>");
     }
 
     /*게임 시작,종료에 대한 메뉴를 입력*/
