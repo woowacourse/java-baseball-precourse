@@ -17,7 +17,8 @@ public class BaseballGame {
     //System.out.println(Arrays.toString(playerNum));
 
     results[0] = getStrikeInfo(computerNum, playerNum);
-    //System.out.println(results[0]);
+    results[1] = getBallInfo(computerNum, playerNum);
+    //System.out.println(Arrays.toString(results));
 
     }
 
@@ -46,16 +47,29 @@ public class BaseballGame {
         while (!correctInput) {
             System.out.print("숫자를 입력해주세요: ");
             temp = myScanner.nextInt();
-            if (100 <= temp & temp <= 999 )
+            if (inRange(temp) & noDuplicates(temp, myArray))
                 correctInput = true;
             else
                 System.out.println("잘못된 값 입니다");
         }
+
+        return myArray;
+    }
+
+    private static boolean inRange(int temp) {
+        if (100 <= temp & temp <= 999)
+            return true;
+        return false;
+    }
+
+    private static boolean noDuplicates(int temp, int[] myArray) {
         myArray[0] = temp/100;
         temp = temp%100;
         myArray[1] = temp/10;
+        if (myArray[0]==myArray[1] || myArray[1] == 0)
+            return false;
         myArray[2] = temp%10;
-        return myArray;
+        return !(myArray[0] == myArray[2] ||myArray[1] == myArray[2] || myArray[2] == 0);
     }
 
     private static int getStrikeInfo(int[]array1, int[]array2) {
@@ -65,5 +79,17 @@ public class BaseballGame {
                 strikeNum += 1;
         }
         return strikeNum;
+    }
+
+    private static int getBallInfo(int[] array1, int[] array2) {
+        int ballNum = 0;
+        if ((array1[0] == array2[1]) | (array1[0] == array2[2]))
+            ballNum += 1;
+        if ((array1[1] == array2[0]) | (array1[1] == array2[2]))
+            ballNum += 1;
+        if ((array1[2] == array2[1]) | (array1[2] == array2[0]))
+            ballNum += 1;
+
+        return ballNum;
     }
 }
