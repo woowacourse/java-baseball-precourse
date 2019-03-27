@@ -9,9 +9,15 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class GameManager {
+    private boolean continueGame;
     private Computer computer;
 
+    public boolean isContinueGame() {
+        return continueGame;
+    }
+
     private GameManager() {
+        this.continueGame = true;
         this.computer = Computer.getInstance();
     }
 
@@ -33,7 +39,7 @@ public class GameManager {
         List<Integer> userNumbers = InputUtil.getUserNumber();
         List<Integer> results = GameResultUtil.generateResult(userNumbers, computerNumbers);
         OutputUtil.printResult(results);
-        judgeResult(results);
+        continueGame(results);
     }
 
     public boolean judgeResult(List<Integer> results) {
@@ -46,4 +52,26 @@ public class GameManager {
         }
     }
 
+    public void continueGame(List<Integer> results) {
+        if (judgeResult(results)) {
+            askContinue();
+        } else {
+            playGame(computer.getComputerNumbers());
+        }
+    }
+
+    public void askContinue() {
+        int answer = InputView.continueNumber();
+
+        if (answer == 1) {
+            initGame();
+        } else {
+            endGame();
+        }
+    }
+
+    public void endGame() {
+        continueGame = false;
+        OutputView.printEnd();
+    }
 }
