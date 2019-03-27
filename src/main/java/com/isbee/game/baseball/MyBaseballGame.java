@@ -73,7 +73,7 @@ public class MyBaseballGame implements BaseballGame {
         int strikeAndBall[] = new int[2];       // [0]: strike, [1]: ball
 
         countStrikeAndBall(strikeAndBall, baseballInfo.getComNum(), baseballInfo.getUserNum());
-        /* TODO: 결과 출력 */
+        showResult(strikeAndBall[0], strikeAndBall[1]);
         return doesGuessCorrect(strikeAndBall[0]);
     }
 
@@ -177,5 +177,14 @@ public class MyBaseballGame implements BaseballGame {
      * */
     private boolean playMoreOrNot() {
         return baseballInput.playMoreOrNot();
+    }
+
+    /** 게임 결과를 BaseballResult에 위임하여 출력
+     *
+     * @param strikeNum strike 갯수
+     * @param ballNum   ball 갯수
+     * */
+    private void showResult(int strikeNum, int ballNum) {
+        new BaseballResult().parseResult(strikeNum, ballNum).printResult();
     }
 }
