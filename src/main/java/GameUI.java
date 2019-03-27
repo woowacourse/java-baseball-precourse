@@ -39,7 +39,7 @@ public class GameUI {
 			/* 질문자(컴퓨터)가 문제를 만든다. */
 			questioner.setNumber();
 
-			while (true) {
+			do {
 
 				/* 답변자에게 정답을 요구하고, 답변자가 답을 입력한다. */
 				String str_number = askNumber(sc);
@@ -49,21 +49,16 @@ public class GameUI {
 				game.play();
 				printScore( answerer.getScore() );
 
-				if( answerer.getScore().isCorrect() ) {
-
-					/* 답변자가 문제를 맞췄을 경우, 다시 시작할지를 묻는다. */
-					if( askRestart(sc) ) {
-
-						/* 재시작을 요청하면, 문제를 다시 만든다. */
-						questioner.setNumber();
-					} else {
-
-						/* 재시작을 거절하면, 게임을 종료한다. */
-						return;
-					}
-				}
-			}
+				/* 사용자의 점수결과와 사용자의 결정에 따라 게임을 종료를 결정한다. */
+			} while ( checkGameEnd(game) && askRestart(game, sc) );
 		}
+	}
+
+	private static boolean checkGameEnd(Game game) {
+
+		/* 정답이 모두 맞아 게임을 종료 할수 있는지 확인한다. */
+		boolean isGameEnd = game.getAnswerer().getScore().isCorrect();
+		return isGameEnd;
 	}
 
 	/**
