@@ -15,17 +15,21 @@ public class baseball {
         return us_input;
     }
 
+    public static void DivideByDigit(int n, int arr[]){
+        for(int i=0;i<3;i++){
+            arr[2-i]=n%10;
+            n=n/10;
+        }
+    }
+
     public static void main(String[] args){
         int num[] = new int[4];
+        int user_arr[] = new int[4];
         int user_num;
         baseball b = new baseball();
         b.RandomSave(num);
-        /*
-        for(int i=0;i<3;i++){
-            System.out.print(num[i] + " ");
-        }
-        */
+
         user_num = UserInput();
-        System.out.println(user_num);
+        DivideByDigit(user_num, user_arr);
     }
 }
