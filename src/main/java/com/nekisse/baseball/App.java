@@ -4,10 +4,10 @@ import com.nekisse.baseball.view.InputView;
 
 public class App {
     public static final int GAME_END_COMMAND = 1;
-    private BaseBallGame baseBallGame;
+    private BaseballGame baseBallGame;
 
     public App() {
-        this.baseBallGame = new BaseBallGame();
+        this.baseBallGame = new BaseballGame();
     }
 
     public void start() {

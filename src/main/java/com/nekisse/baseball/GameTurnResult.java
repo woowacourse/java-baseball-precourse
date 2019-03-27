@@ -13,6 +13,15 @@ public class GameTurnResult {
     public GameTurnResult() {
 
     }
+
+    public boolean checkBall() {
+        return getBallCount() > 0;
+    }
+
+    public boolean checkStrike() {
+        return getStrikeCount() > 0;
+    }
+
     public void initialization() {
         strikeCount = 0;
         ballCount = 0;

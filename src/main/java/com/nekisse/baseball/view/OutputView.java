@@ -5,7 +5,6 @@ import com.nekisse.baseball.GameTurnResult;
 public class OutputView {
 
 
-
     public static void printException(Exception e) {
         System.out.println(e.getMessage());
 
@@ -16,14 +15,36 @@ public class OutputView {
             printNothing();
             return;
         }
+        System.out.println(printStrike(gameTurnResult) + printBall(gameTurnResult));
 
-        System.out.println(gameTurnResult.getStrikeCount()+"스트라이크 " + gameTurnResult.getBallCount() + "볼");
+    }
 
+    private static String printBall(GameTurnResult gameTurnResult) {
+        String ballCount = "";
+        if (gameTurnResult.checkBall()) {
+            ballCount = printBall(gameTurnResult.getBallCount());
+        }
+        return ballCount;
+    }
+
+    private static String printBall(int ballCount) {
+        return ballCount + " 볼    ";
+    }
+
+    private static String printStrike(GameTurnResult gameTurnResult) {
+        String strikeCount = "";
+        if (gameTurnResult.checkStrike()) {
+            strikeCount = printStrike(gameTurnResult.getStrikeCount());
+        }
+        return strikeCount;
+    }
+
+    private static String printStrike(int strikeCount) {
+        return strikeCount + " 스트라이크    ";
     }
 
     private static void printNothing() {
         System.out.println("낫싱");
-
     }
 
     public static void printThreeStrikeGameEnd() {
