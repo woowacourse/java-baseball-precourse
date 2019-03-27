@@ -71,9 +71,6 @@ public class NumberBaseball {
                 i += checkOverlapNumber(computerBaseballNumber, i)) {
             computerBaseballNumber[i] = random.nextInt(MAX_NUMBER_VALUE) + 1;
         }
-
-        for(int i=0; i<3; ++i)
-            System.out.println((computerBaseballNumber[i]));
     }
 
     /**
@@ -131,7 +128,7 @@ public class NumberBaseball {
 
     }
 
-    private void initializeData() {
+    private void initializeMatchingData() {
 
         strikeCount = 0;
         ballCount = 0;
@@ -161,7 +158,7 @@ public class NumberBaseball {
      * @return 3 스트라이크로 게임을 종료해야 하면 true, 그렇지 않으면 false 를 반환한다.
      */
     public boolean matchUserAndComputer() {
-        initializeData();
+        initializeMatchingData();
         calculateStrikeAndBallCount();
 
         return (strikeCount == BASEBALL_NUMBER_LENGTH) ? true : false;
