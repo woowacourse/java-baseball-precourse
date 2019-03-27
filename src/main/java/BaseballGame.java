@@ -6,15 +6,18 @@ public class BaseballGame {
     public static void main(String[] args) {
     int[] computerNum = new int[3];
     int[] playerNum = new int[3];
+    int[] results = new int[2]; // Index 0 : strike, Index 1 : ball info
 
     //get 3 different random numbers
     computerNum = fillArray(computerNum);
-    // System.out.print(Arrays.toString(computerNum));
+    //System.out.println(Arrays.toString(computerNum));
 
     //get input from user
     playerNum = getInput(playerNum);
-    //System.out.print(Arrays.toString(playerNum));
+    //System.out.println(Arrays.toString(playerNum));
 
+    results[0] = getStrikeInfo(computerNum, playerNum);
+    //System.out.println(results[0]);
 
     }
 
@@ -53,5 +56,14 @@ public class BaseballGame {
         myArray[1] = temp/10;
         myArray[2] = temp%10;
         return myArray;
+    }
+
+    private static int getStrikeInfo(int[]array1, int[]array2) {
+        int strikeNum = 0;
+        for (int i = 0; i < 3; i ++) {
+            if (array1[i] == array2[i])
+                strikeNum += 1;
+        }
+        return strikeNum;
     }
 }
