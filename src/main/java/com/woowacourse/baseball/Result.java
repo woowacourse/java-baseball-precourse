@@ -1,7 +1,7 @@
 /*
  *  클래스 이름 : Result.java
  *
- *  버전 정보 :
+ *  버전 정보 : 1.0.0
  *
  *  날짜 : 2019-03-27
  *
@@ -32,7 +32,7 @@ public class Result {
         return ballCount;
     }
 
-    //비교 결과를 출력하는 메소드.
+    /* 비교 결과를 출력하는 메소드 */
     @Override
     public String toString() {
 
