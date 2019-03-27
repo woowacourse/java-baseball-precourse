@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Baseball {
 
@@ -23,8 +24,7 @@ public class Baseball {
             do{
                 strike_num = 0;
                 ball_num = 0;
-
-                // TODO 기능 3: 사용자 입력
+                input_number = input();
 
                 /*
                 기능 4: strike, ball 개수 확인
@@ -57,5 +57,28 @@ public class Baseball {
         }while(ret.length() < 3);
 
         return ret;
+    }
+
+    // 기능 3 - 1
+    private String input() {
+        String ret ="";         // 리턴할 입력받은 3자리 숫자
+        while(true) {
+            System.out.print("숫자를 입력해 주세요: ");
+            Scanner scan = new Scanner(System.in);
+            ret = scan.nextLine();
+            // TODO 기능 3-2: 중복과 3자리 확인 후 재입력 시도
+            if(inputCheck(ret)) {
+                break;
+            }
+            else {
+                System.out.println("올바르지 않은 입력입니다. 3자리 중복 없는 숫자로 입력해주세요");
+            }
+        }
+        return ret;
+    }
+
+    // TODO 기능 3 - 2
+    public boolean inputCheck(String str){
+        return true;
     }
 }
