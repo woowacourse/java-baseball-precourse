@@ -20,6 +20,7 @@ public class Game {
 
 	/**
 	 * questioner(질문자), answerer(답변자) 객체를 입력받아 초기화 한다.
+	 *
 	 * @param questioner 질문자
 	 * @param answerer   답변자
 	 */
@@ -54,6 +55,7 @@ public class Game {
 
 	/**
 	 * 답변자의 답을 기준으로 같은 숫자가 같은 자리에 있으면 스트라이크(Strike) 이다.
+	 *
 	 * @param problem 문제자의 정답 숫자 배열
 	 * @param answer 답변자의 정답 숫자 배열
 	 * @param index 답변자의 정답 숫자 배열의 위치
@@ -66,6 +68,7 @@ public class Game {
 
 	/**
 	 * 답변자의 답을 기준으로 같은 숫자가 다른 자리에 있으면 볼(Ball) 이다.
+	 *
 	 * @param problem 문제자의 정답 숫자 배열
 	 * @param answer 답변자의 정답 숫자 배열
 	 * @param index 답변자의 정답 숫자 배열의 위치
@@ -84,11 +87,22 @@ public class Game {
 	}
 
 	/**
-	 * 문제를 만드는 객체를 반환한다.
-	 * @return 문제를 만드는 객체
+	 * 질문자를 반환한다.
+	 *
+	 * @return 질문자 객체
 	 */
 	public Questioner getQuestioner() {
 
 		return this.questioner;
+	}
+
+	/**
+	 * 답변자를 반환한다.
+	 *
+	 * @return 답변자 객체
+	 */
+	public Answerer getAnswerer() {
+
+		return this.answerer;
 	}
 }
