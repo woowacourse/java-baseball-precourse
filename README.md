@@ -28,3 +28,9 @@
 
 ##### 8. 볼 카운트 메세지 출력
 - X 스트라이크 X 볼 : printBallCount()
+---
+
+##### 게임시작 서비스 생성 
+- main() : Numberbaseballgame class
+- 게임시작 loop : Service 객체 생성
+
