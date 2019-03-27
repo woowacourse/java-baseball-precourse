@@ -9,49 +9,74 @@ public class Baseball {
 
    int[] st = new int[3];
    int[] ball = new int[3];
+   boolean gameover = false;
+   int quit = 1; //게임을 종료 시킬지 말지 결정하기 위한 변수
    int stsum;
-   int ballsum;
+   int ballsum; //각 시점에서 스트라이크가 총 몇개인지, 볼이 총 몇개인지 세기 위한 변수
+
 
    Random random = new Random();
    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
    public void startGame() throws IOException{
+      /* 숫자 입력을 받고 게임을 시작하는 함수 */
 
       while(true){
-         com = comRandom();
-         boolean gameover = false;
-         bw.write("숫자를 입력해주세요 : ");
-         bw.write(com);
-         bw.flush();
-
-         while(true) {
-            usr = br.readLine();
-            countStrike();
-            if (Is3strike()) {
-               gameover = true;
-               break;
-            }
-            else {
-               countBall();
-               countScore();
-               printScore();
-               clearScore();
-            }
-         }
-
-         if(gameover==true) {
-            if(quitOrNot()){
-               break;
-            }
+         if (quit==1){
+            com = comRandom();
+            boolean gameover = false;
+            bw.write("숫자를 입력해주세요 : ");
+            bw.flush();
+            doGame();
+         } else {
+            return;
          }
       }
    }
 
+   public void doGame() throws IOException {
+      /* 게임 프로세스를 진행되는 함수 */
+      while(true) {
+         usr = br.readLine();
+         countStrike();
+         if (Is3strike()) {
+            gameover = true;
+            break;
+         }
+         else {
+            countBall();
+            countScore();
+            printScore();
+            clearScore();
+         }
+      }
+
+      if(gameover==true) {
+         if(quitOrNot()){
+            quit=2;
+         } else{
+            quit=1;
+         }
+      }
+   }
+
+
+
    public String comRandom(){
-      int first = random.nextInt(9) + 1;
-      int second = random.nextInt(9) + 1;
-      int third = random.nextInt(9) + 1;
+      /* 중복없이 세 자리 수를 생성하는 함수*/
+
+      int first;
+      int second;
+      int third;
+      while (true){
+         first = random.nextInt(9) + 1;
+         second = random.nextInt(9) + 1;
+         third = random.nextInt(9) + 1;
+         if(first != second && second != third && third != first){
+            break;
+         }
+      }
       String s = String.valueOf(first) + String.valueOf(second) + String.valueOf(third);
 
       return s;
@@ -82,17 +107,9 @@ public class Baseball {
 
    public void countBall(){
       for (int i=0;i<usr.length();++i){
-
          if (st[i]==0 && com.contains(String.valueOf(usr.charAt(i)))){
             ball[i] = 1;
          }
-
-         /*
-         if(st[i]==1) continue;                       //스트라이크는 제외하고 볼 카운트하기 위함
-         else if (com.contains(String.valueOf(usr.charAt(i)))){
-            ball[i] = 1;
-         }*/
-
       }
    }
    public void countScore(){
@@ -107,16 +124,13 @@ public class Baseball {
       if (stsum!=0) {
          if (ballsum!=0){
             bw.write(stsum + " 스트라이크 " + ballsum + "볼" +"\n");
-         }
-         else{
+         } else{
             bw.write(stsum + " 스트라이크" + "\n");
          }
-      }
-      else {
+      } else {
          if (ballsum!=0){
             bw.write(ballsum+"볼" + "\n");
-         }
-         else{
+         } else{
             bw.write("낫싱" + "\n");
          }
       }
