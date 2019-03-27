@@ -1,12 +1,32 @@
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class NumberBaseball {
 	
-	static void playGame(BufferedReader br) {
+	public static void shell() {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String swit = null;
+		playGame(br);
+		while(true) {
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			try {
+				swit =  br.readLine();
+			} catch (IOException e) {}
+			if(swit.toCharArray()[0] == '1') {
+				playGame(br);
+			} else if(swit.toCharArray()[0] == '2') {
+				break;
+			} else {
+				System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+			}
+		}
+	}
+	
+	private static void playGame(BufferedReader br) {
 		int[] defense = defenseArr();
 		int[] attack;
 		int[] result = new int[] {0,0};
