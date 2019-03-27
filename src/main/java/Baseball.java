@@ -22,7 +22,7 @@ public class Baseball {
         boolean inputFlag = true;   // for check 3 strike
         comNum = generateRandomNumber();
         while (inputFlag) {
-            userNum = "123";        // Receive Input
+            userNum = receiveInput();
             inputFlag = false;      // check 3 strike
         }
     }
@@ -46,5 +46,42 @@ public class Baseball {
 
         return ranNum;
     }
+
+
+    /*
+     * Method for receive user input
+     * Check invalid input (not 3 digit, zero, same number)
+     */
+    private static String receiveInput() {
+        String num;
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("숫자를 입력해주세요:");
+        num = s.nextLine();
+        if (num.length() != 3) {
+            System.out.println("잘못된 입력입니다.");
+            return receiveInput();
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (num.charAt(i) == '0') {
+                System.out.println("잘못된 입력입니다.");
+                return receiveInput();
+            }
+        }
+        if (num.charAt(0) == num.charAt(1)) {
+            System.out.println("잘못된 입력입니다.");
+            return receiveInput();
+        } else if (num.charAt(0) == num.charAt(2)) {
+            System.out.println("잘못된 입력입니다.");
+            return receiveInput();
+        } else if (num.charAt(1) == num.charAt(2)) {
+            System.out.println("잘못된 입력입니다.");
+            return receiveInput();
+        } else {
+            return num;
+        }
+    }
+
 
 }
