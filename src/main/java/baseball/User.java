@@ -9,8 +9,7 @@ public class User {
     private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
     public int[] sendMessage() throws IOException {
-        int num[] = Arrays.stream(bufferedReader.readLine().split("")).mapToInt(Integer::parseInt).toArray();
-        return num;
+        return Arrays.stream(bufferedReader.readLine().split("")).mapToInt(Integer::parseInt).toArray();
     }
 
     public void readMessage(String message){

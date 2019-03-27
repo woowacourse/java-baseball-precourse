@@ -13,6 +13,7 @@ public class Main {
         while (gameState){
             user.readMessage(computer.sendMessage());
             computer.readMessage(user.sendMessage());
+            gameState = computer.endGame;
         }
     }
 }

@@ -5,6 +5,13 @@ import java.util.stream.IntStream;
 public class Computer {
     private int num[];
     private String message = "";
+    private final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private final String CONTINUE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ";
+    private final String ENTER_MESSAGE = "\n";
+    private final String STRIKE_MESSAGE = " 스트라이크 ";
+    private final String BALL_MESSAGE = " 볼 ";
+    private final String NOTHING_MESSAGE = "낫싱";
+    boolean endGame = true;
 
     Computer(){
         init();
@@ -12,7 +19,7 @@ public class Computer {
 
     private void init(){
         makeRandomNumber();
-        message = "숫자를 입력해주세요 : ";
+        message = INPUT_MESSAGE;
     }
 
     private void makeRandomNumber(){
@@ -36,17 +43,17 @@ public class Computer {
         int ball = countBall(userNum);
 
         if (ball == 0 && strike == 0){
-            message = "낫싱";
+            message = NOTHING_MESSAGE;
         }
         if (ball >= 1) {
-            message = ball + " 볼 ";
+            message = ball + BALL_MESSAGE;
         }
         if (strike >= 1){
-            message = strike + " 스트라이크 " + message;
+            message = strike + STRIKE_MESSAGE + message;
         }
-        message += "\n" + "숫자를 입력해주세요 : ";
+        message += ENTER_MESSAGE + INPUT_MESSAGE;
         if (strike == 3){
-            message = strike + " 스트라이크 " + "\n" + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ";
+            message = strike + STRIKE_MESSAGE + ENTER_MESSAGE + CONTINUE_MESSAGE;
         }
 
     }
@@ -68,8 +75,16 @@ public class Computer {
     }
 
     public void readMessage(int[] message){
+        this.message = "";
         if (message.length == 3){
             checkNum(message);
+        }
+        if (message.length == 1){
+            if (message[0] == 1){
+                init();
+            }else if (message[0] == 2){
+                endGame = false;
+            }
         }
     }
 
