@@ -21,9 +21,14 @@ public class BaseballGame {
     static final int FINISH = 2;
 
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
         do {
-            playGame();
-        } while (restartOrFinishGame()==RESTART);
+            playGame(scanner);
+        } while (restartOrFinishGame(scanner)==RESTART);
+
+        scanner.close();
     }
 
     /* 1. 컴퓨터의 수(정답)를 선택하는 기능. */
@@ -50,8 +55,7 @@ public class BaseballGame {
     }
 
     /* 2. 사용자의 수를 입력받는 기능 */
-    static int inputPlayerNumber(){
-        Scanner scanner = new Scanner(System.in);
+    static int inputPlayerNumber(Scanner scanner){
 
         System.out.println("숫자를 입력해주세요.");
 
@@ -65,7 +69,7 @@ public class BaseballGame {
         } else {
             System.out.println("올바르지 않은 형식입니다. 3개의 숫자를 입력해주세요.");
            // scanner.close();
-            return inputPlayerNumber();
+            return inputPlayerNumber(scanner);
         }
     }
 
@@ -91,9 +95,8 @@ public class BaseballGame {
     }
 
     /* 4. 게임이 종료된 후 게임을 다시 시작하거나 완전히 끝내는 기능 */
-    static int restartOrFinishGame(){
+    static int restartOrFinishGame(Scanner scanner){
 
-        Scanner scanner = new Scanner(System.in);
         int restartOrFinish = 0;
         String s;
 
@@ -120,14 +123,14 @@ public class BaseballGame {
     }
 
     /* 5. 게임을 진행하는 기능 */
-    static void playGame(){
+    static void playGame(Scanner scanner){
 
         List<Integer> computerNumber = createRandomNumber();
         int playerNumber;
         Result compareResult;
 
         do {
-            playerNumber = inputPlayerNumber();
+            playerNumber = inputPlayerNumber(scanner);
             compareResult = compareNumber(computerNumber, playerNumber);
             System.out.println(compareResult.toString());
         } while (compareResult.getStrikeCount()!=3);
