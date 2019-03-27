@@ -24,10 +24,13 @@ public class Hint {
     }
 
     private void calculateStrikeOrBall(int answerNum, int answerDigit, int guessNum, int guessDigit) {
-        if (answerNum == guessNum)
-            if (answerDigit == guessDigit) strikeCount++;
-            else ballCount++;
-
+        if (answerNum == guessNum) {
+            if (answerDigit == guessDigit) {
+                strikeCount++;
+            } else {
+                ballCount++;
+            }
+        }
     }
 
     public String getHint() {
