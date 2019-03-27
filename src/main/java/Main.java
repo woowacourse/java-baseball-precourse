@@ -3,13 +3,15 @@ public class Main {
         Baseball baseball = new Baseball();
 
         for (int i = 0; i < 3; i++) {
-            System.out.println((baseball.computer[i]));
+            System.out.println(baseball.computer.get(i));
         }
 
         baseball.getUserInput();
 
+        baseball.checkResult();
+
         for (int j = 0; j < 3; j++) {
-            System.out.println(baseball.user[j]);
+            System.out.println(baseball.user.get(j));
         }
     }
 }
