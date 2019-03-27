@@ -1,5 +1,7 @@
 package indi.moon.firstweek;
 
+import java.util.Arrays;
+
 public class Stage implements Stageface {
 
     User user = new User();
@@ -7,7 +9,8 @@ public class Stage implements Stageface {
     @Override
     public void play(String commend) {
         System.out.println("게임이 시작되었습니다.");
-
+        Computer computer = new Computer();
+        int[] problem = computer.makeRandomNum();
     }
 
     @Override

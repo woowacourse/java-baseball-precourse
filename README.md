@@ -41,12 +41,19 @@ Version 1.0.0
     * Variable :
          * int[] answer -> makeNumArray()의 리턴값을 가질 변수
 
+## Class Computer
+* 컴퓨터
+    * Class :
+    * Method :
+         * int[] makeRandomNum() -> 1~9까지의 서로 다른 수 3개를 배열에 담아 리턴한다.
+    * Variable :
+         * int[] answer -> makeNumArray()의 리턴값을 가질 변수
 
 기능 단위 Commit 체크
 ---------------------
-- [ ] 인터페이스 구현하기
-- [ ] 시작 종료
-- [ ] 랜덤 문제 생성
+- [ x] 인터페이스 구현하기
+- [ x] 시작 종료
+- [ x] 랜덤 문제 생성
 - [ ] 정답 시도
 - [ ] 정답 비교
 - [ ] 문제에 대한 정답 결과 출력
