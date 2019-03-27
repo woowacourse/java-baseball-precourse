@@ -22,6 +22,8 @@ public class BaseBallGame {
     private int ball;
     /** 게임의 종료 여부 */
     private boolean gameOver;
+    /** 다음 게임 진행 여부 */
+    private boolean hasNextGame;
     /** 사용자 입력을 받을 객체 */
     private BufferedReader br;
 
@@ -32,6 +34,7 @@ public class BaseBallGame {
         this.strike = 0;
         this.ball = 0;
         this.gameOver = false;
+        this.hasNextGame = true;
         this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
@@ -150,5 +153,23 @@ public class BaseBallGame {
         }
 
         this.showMessage(outPutString);
+    }
+
+    /** 게임 진행 여부(사용자 입력)을 받아와 저장 */
+    public boolean setNextGameState() {
+        String userInput = null;
+        boolean res = false;
+        try {
+            userInput = br.readLine();
+            if(!userInput.equals("1") && !userInput.equals("2")) {
+                this.showMessage("유요하지 않은 입력 입니다. 1 또는 2를 입력해주세요.");
+            }else {
+                this.hasNextGame = userInput.equals("1") ? true : false;
+                res = true;
+            }
+        } catch (Exception e) {
+            this.showMessage("입력 오류입니다. 다시 입력해주세요.");
+        }
+        return res;
     }
 }
