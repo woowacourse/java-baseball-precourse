@@ -19,11 +19,14 @@ public class BaseballGame {
 
     public static void main(String[] args) {
         List<Integer> computerNumber = createRandomNumber();
-        int playerNumber = inputPlayerNumber();
+        int playerNumber;
+        Result compareResult;
 
-        System.out.println(computerNumber.toString());
-        System.out.println("사용자가 입력한 수 : "+playerNumber);
-        System.out.println("비교 결과 " + compareNumber(computerNumber, playerNumber));
+        do{
+            playerNumber = inputPlayerNumber();
+            compareResult = compareNumber(computerNumber, playerNumber);
+            System.out.println(compareResult.toString());
+        }while(compareResult.getStrikeCount()!=3);
 
     }
 
@@ -61,7 +64,7 @@ public class BaseballGame {
         System.out.println("s는"+s);
 
         if (s.matches("[1-9]{3}")) {
-            scanner.close();
+           // scanner.close();
             return Integer.parseInt(s);
         } else {
             System.out.println("올바르지 않은 형식입니다. 3개의 숫자를 입력해주세요.");
@@ -70,7 +73,7 @@ public class BaseballGame {
         }
     }
 
-    /* 3. 컴퓨터의 수와 사용자가 입력한 수를 비교하는 메소드 */
+    /* 3. 컴퓨터의 수와 사용자가 입력한 수를 비교하는 기능 */
     static Result compareNumber(List<Integer> computerNumber, int playerNumber) {
 
         int n;
@@ -89,7 +92,6 @@ public class BaseballGame {
         }
 
         return new Result(strikeCount, ballCount);
-
     }
 
 }
