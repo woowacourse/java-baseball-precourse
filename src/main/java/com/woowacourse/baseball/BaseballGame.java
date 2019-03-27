@@ -21,17 +21,8 @@ public class BaseballGame {
     static final int FINISH = 2;
 
     public static void main(String[] args) {
-        List<Integer> computerNumber;
-        int playerNumber;
-        Result compareResult;
-
         do {
-            computerNumber = createRandomNumber();
-            do {
-                playerNumber = inputPlayerNumber();
-                compareResult = compareNumber(computerNumber, playerNumber);
-                System.out.println(compareResult.toString());
-            } while (compareResult.getStrikeCount() != 3);
+            playGame();
         } while (restartOrFinishGame()==RESTART);
     }
 
@@ -128,5 +119,19 @@ public class BaseballGame {
         return restartOrFinish;
     }
 
+    /* 5. 게임을 진행하는 기능 */
+    static void playGame(){
+
+        List<Integer> computerNumber = createRandomNumber();
+        int playerNumber;
+        Result compareResult;
+
+        do {
+            playerNumber = inputPlayerNumber();
+            compareResult = compareNumber(computerNumber, playerNumber);
+            System.out.println(compareResult.toString());
+        } while (compareResult.getStrikeCount()!=3);
+
+    }
 
 }
