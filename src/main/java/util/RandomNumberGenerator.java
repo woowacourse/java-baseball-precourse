@@ -9,8 +9,8 @@ import java.util.Set;
  * 난수를 생성한다. 생성되는 난수는 정수이며, 생성되는 난수의 범위와 개수를 지정할 수 있다. 생성된 난수는
  * {@link RandomNumbers} 객체에 담아 반환한다.
  *
- * @see RandomNumbers
  * @author delf
+ * @see RandomNumbers
  */
 public class RandomNumberGenerator {
     private static Random r = new Random();
@@ -21,7 +21,6 @@ public class RandomNumberGenerator {
      * @param max 생성 난수의 최댓값
      * @return min과 max 사이에서 중복되지 않는 크기가 n인 난수(정수)가 담겨있는
      * {@link RandomNumbers} 객체
-     *
      * @see RandomNumbers
      */
     public static RandomNumbers getUniqueNumbers(int n, int min, int max) {
@@ -32,7 +31,6 @@ public class RandomNumberGenerator {
 
         return new RandomNumbers(set);
     }
-
 
     /**
      * 생성된 난수를 저장하고 있는 객체. 임의의 값으로 반환 가능하다.
@@ -62,10 +60,10 @@ public class RandomNumberGenerator {
          * @return 생성된 난수로 이루어진 정수 배열
          */
         public int[] byIntegerArray() {
-            int[] result = new int[numbers.size()];
+             int[] result = new int[numbers.size()];
             int index = 0;
             for (E n : numbers) {
-                result[index++] = (int) n;
+                result[index++] = (Integer) n;
             }
             return result;
         }
