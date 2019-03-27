@@ -1,5 +1,7 @@
 package me.bactoria.baseball.utils;
 
+import me.bactoria.baseball.Constant;
+
 public class IntegerUtils {
 
     public static boolean containZero(int num) {
@@ -9,6 +11,14 @@ public class IntegerUtils {
             num /= 10;
         }
         return false;
+    }
+
+    public static boolean isNthDigitsNumber(int num) {
+        return getLength(num) == Constant.NUMBER_OF_DIGITS;
+    }
+
+    private static int getLength(int num) {
+        return (int) Math.log10(num) + 1;
     }
 
     public static boolean isEachDigitUnique(int num) {

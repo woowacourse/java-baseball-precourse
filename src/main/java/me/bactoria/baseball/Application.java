@@ -5,16 +5,7 @@ import me.bactoria.baseball.domain.*;
 public class Application {
     public static void main(String[] args) {
         Computer computer = new ComputerImpl();
-        Player player = new Player() {
-            @Override
-            public void setPlayerNumber(int playerNumber) {
-            }
-
-            @Override
-            public int getPlayerNumber() {
-                return 789;
-            }
-        };
+        Player player = new PlayerImpl();
 
         State state = State.PLAY_CONTINUE;
 
