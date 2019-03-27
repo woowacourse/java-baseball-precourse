@@ -4,28 +4,39 @@ import java.util.Scanner;
 
 public class BaseballGame {
     public static void main(String[] args) {
-    int[] computerNum = new int[3];
-    int[] playerNum = new int[3];
-    int[] results = new int[2]; // Index 0 : strike, Index 1 : ball info
-    boolean nothing = false;
-    boolean gameEnd = false;
+        boolean playGameFlag = true;
+        while(playGameFlag) {
+            playGame();
+            playGameFlag = checkNewGame();
+        }
+    }
 
-    //get 3 different random numbers
-    computerNum = fillArray(computerNum);
-    System.out.println(Arrays.toString(computerNum));
-    while(!gameEnd) {
-        //get input from user
-        playerNum = getInput(playerNum);
-        System.out.println(Arrays.toString(playerNum));
+    private static void playGame() {
 
-        results[0] = getStrikeInfo(computerNum, playerNum);
-        results[1] = getBallInfo(computerNum, playerNum);
-        if (results[0] == 0 & results[1] == 0)
-            nothing = true;
-        //System.out.println(Arrays.toString(results));
-        //System.out.println(nothing);
+        int[] computerNum = new int[3];
+        int[] playerNum = new int[3];
+        int[] results = new int[2]; // Index 0 : strike, Index 1 : ball info
+        boolean nothing = false;
+        boolean gameEnd = false;
 
-        gameEnd = getResults(results, nothing, gameEnd);
+        //get 3 different random numbers
+        computerNum = fillArray(computerNum);
+        //System.out.println(Arrays.toString(computerNum));
+
+        while(!gameEnd) {
+            nothing = false;
+            //get input from user
+            playerNum = getInput(playerNum);
+            //System.out.println(Arrays.toString(playerNum));
+
+            results[0] = getStrikeInfo(computerNum, playerNum);
+            results[1] = getBallInfo(computerNum, playerNum);
+            if (results[0] == 0 & results[1] == 0)
+                nothing = true;
+            //System.out.println(Arrays.toString(results));
+            //System.out.println(nothing);
+
+            gameEnd = getResults(results, nothing);
         }
     }
 
@@ -98,10 +109,10 @@ public class BaseballGame {
         return ballNum;
     }
 
-    private static boolean getResults(int[] resultArray, boolean nothing, boolean gameEnd) {
+    private static boolean getResults(int[] resultArray, boolean nothing) {
         if (nothing) {
             System.out.println("낫싱");
-            return gameEnd;
+            return false;
         }
 
         if (resultArray[0] != 0)
@@ -110,10 +121,26 @@ public class BaseballGame {
             System.out.print(resultArray[1] + " 볼");
         if (resultArray[0] == 3) {
             System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임종료");
-            gameEnd = true;
-            return gameEnd;
+            return true;
         }
         System.out.print("\n");
-        return gameEnd;
+        return false;
+    }
+
+    private static boolean checkNewGame() {
+        Scanner myScanner = new Scanner(System.in);
+        boolean correctInput = false;
+        int temp = -1;
+        while (!correctInput) {
+            System.out.print("게임을 새로 시작하려면 1,종료하려면 2를 입력하세요.");
+            temp = myScanner.nextInt();
+            if (temp == 1)
+                return true;
+            else if (temp == 2)
+                return false;
+            else
+                System.out.print("잘못된 값 입니다");
+        }
+        return false;
     }
 }
