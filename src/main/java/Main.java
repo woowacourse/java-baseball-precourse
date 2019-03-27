@@ -10,8 +10,8 @@
  * @author                김효건
  */
 public class Main {
-    /*메인 메소드*/
-    public static void main(String[] args) {
-        Game game = new Game();
-    }
+        /*메인 메소드*/
+        public static void main(String[] args) {
+                Game game = new Game();
+        }
 }
