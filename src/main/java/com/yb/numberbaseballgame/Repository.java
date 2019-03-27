@@ -164,4 +164,37 @@ public class Repository implements Service {
 		return true;
 	}
 
+	/*
+	 * @param comNumber[0],[1],[2] 숫자와 @param userNumber[0],[1],[2]를 반복 비교해서 같은 자리에
+	 * 같은 수가 있다면 st_cnt 증가 같은 수가 다른 자리에 있다면 ball_cnt ball 증가
+	 * 
+	 * result strike에 st_cnt 저장 result ball에 ball_cnt 저장
+	 * 
+	 * @return result
+	 */
+	public Ballcount playGame(Number comNumber, Number userNumber, Ballcount ballCnt) {
+
+		Ballcount result = new Ballcount();
+
+		int st_cnt = 0;
+		int ball_cnt = 0;
+
+		for (int i = 0; i < 3; i++) {
+			if (comNumber.getNumber(i) == userNumber.getNumber(i)) {
+				st_cnt++;
+			} else {
+				for (int j = 0; j < 3; j++) {
+					if (i != j && comNumber.getNumber(i) == userNumber.getNumber(j))
+						ball_cnt++;
+				}
+			}
+		}
+
+		result.setStrike(st_cnt);
+		result.setBall(ball_cnt);
+
+		return result;
+
+	}
+
 }
