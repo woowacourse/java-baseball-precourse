@@ -1,14 +1,14 @@
 
 public class Computer {
-    private int computerNumber[];
-    private boolean overlapNumber[];
+    private int computerNumber[]; // 컴퓨터 세자리 수 저장
+    private boolean overlapNumber[]; // 각 자리수마다 중복 상태 체크
 
     Computer() {
         getRandomNumber();
     }
 
     /*
-     *  랜덤번호 얻어 저장하는 메소드
+     *  랜덤번호를 얻어 저장하는 메소드
      */
     private void getRandomNumber() {
         computerNumber = new int[3];
@@ -32,7 +32,7 @@ public class Computer {
     }
 
     /*
-     *  번호가 중복인지 체크하는 메소드
+     *  생성된 번호가 중복인지 체크하는 메소드
      */
     private boolean checkOverlapNum(int num) {
         if (num == 0) return false;

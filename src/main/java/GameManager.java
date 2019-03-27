@@ -11,14 +11,14 @@ public class GameManager {
     }
 
     /*
-     *  초기화 메소드로 computer 객체 새로 생성
+     *  초기화, 컴퓨터 객체 새로 생성
      */
     private void init() {
         computer = new Computer();
     }
 
     /*
-     *  게임 시작하는 메소드
+     *  게임 시작 메소드
      */
     public void startGame() throws Exception {
         init();
@@ -42,7 +42,7 @@ public class GameManager {
     }
 
     /*
-     *  사용자가 숫자 입력하는 메소드
+     *  사용자가 숫자를 입력하는 메소드
      */
     private String userNumber() throws Exception {
         String number = "";
@@ -60,7 +60,8 @@ public class GameManager {
      *  사용자가 입력한 숫자가 유효한지 체크하는 메소드
      */
     private boolean checkUserNumber(String number) {
-        if (number.charAt(0) == ' ' || number.charAt(1) == ' ' || number.charAt(2) == ' ') {
+
+        if (number.equals("") || number.charAt(0) == ' ' || number.charAt(1) == ' ' || number.charAt(2) == ' ') {
             System.out.println("공백 없이 세자리 수를 입력해야합니다.");
             return false;
         }
@@ -118,6 +119,7 @@ public class GameManager {
     /*
      *  게임종료와 새로운 게임시작 중 선택하는 메소드
      */
+
     private void endGame() throws Exception {
         boolean end = false;
         while (!end) {
