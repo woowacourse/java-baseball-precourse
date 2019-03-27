@@ -14,6 +14,8 @@ public class NumberBaseball {
 	public static void main (String[] args) {
 		int userNum[] = new int[3];
 		int comNum[] = new int[3];
+		boolean result=false;
+		boolean continued=true;
 		
 		
 		while (true) {
@@ -26,6 +28,8 @@ public class NumberBaseball {
 				
 				int strike=getStrike(comNum, userNum);
 				int ball=getBall(comNum, userNum);
+				
+				result=printResult(strike, ball);
 				
 			}
 		}
@@ -104,6 +108,25 @@ public class NumberBaseball {
 			}
 		}
 		return ball;
+	}
+	
+	
+	/*결과 값 출력에 관한 메소드*/
+	public static boolean printResult(int strike, int ball) {
+		if(strike != 0) {
+			System.out.print(strike + " 스트라이크");
+		}
+		if(ball != 0) {
+			System.out.print(ball + "볼");
+		}
+		if(strike+ball==0) {
+			System.out.print("낫싱");
+		}
+		
+		System.out.println();
+		
+		return(strike==3);
+		
 	}
 }
 
