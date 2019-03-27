@@ -26,14 +26,10 @@ public class Baseball {
                 ball_num = 0;
                 input_number = input();
                 strikeBallCheck(computer_number, input_number);
-
-                // TODO 기능 5: 결과 print
-
+                print();
             }while(strike_num < 3);
 
-            /*
-            기능 6: 새로시작 or 종료
-             */
+            // TODO 기능 6: 새로시작 or 종료
         }
     }
 
@@ -106,6 +102,22 @@ public class Baseball {
             else if(number_check[number.charAt(i) - '0']) {
                 ball_num++;
             }
+        }
+    }
+
+    //기능 5
+    private void print() {
+        if(strike_num > 0 && ball_num > 0) {
+            System.out.println(strike_num + "스트라이크 " + ball_num + " 볼");
+        }
+        else if(strike_num > 0) {
+            System.out.println(strike_num + "스트라이크 ");
+        }
+        else if(ball_num > 0) {
+            System.out.println(ball_num + " 볼");
+        }
+        else {
+            System.out.println("낫싱");
         }
     }
 }
