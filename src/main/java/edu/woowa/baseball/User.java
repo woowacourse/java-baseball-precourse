@@ -1,5 +1,5 @@
 /*
- * @User.java		1.02 2019/03/27
+ * @User.java		1.03 2019/03/27
  * 
  * Copyright(c)2019 	HwiJin Hong.
  * All right reserved.
@@ -21,7 +21,7 @@ import java.util.Scanner;
 
 /**
  * 숫자 야구 게임의 사용자 역할을 하는 사용자 클래스
- * @version 1.02 2019년 03월 27일
+ * @version 1.03 2019년 03월 27일
  * @author 홍휘진
  */
 public class User {
@@ -142,15 +142,13 @@ public class User {
 	
 	/**
 	 * 컴퓨터로부터 받은 결과값을 분석하여, 결과를 출력하는 메서드
+	 * isGameEnd 메서드로부터 결과값을 받아서
 	 * 게임이 끝나면 true, 아니면 false를 리턴한다.
 	 * 
 	 * @param result [스트라이크, 볼, 아웃]의 개수로 이루어진 배열
 	 * @return 게임이 끝나면 true, 아니면 false
 	 */
 	private boolean analyzeResult(int[] result) {
-		
-		boolean gameEnd = false;
-		
 		if (result[0] > 0) {
 			System.out.print(result[0] + " 스트라이크 ");
 		}
@@ -161,7 +159,20 @@ public class User {
 			System.out.print("포볼");
 		}
 		System.out.println();
-		if (result[0] == 3) {
+		
+		return isGameEnd(result[0]);
+	}
+	
+	/**
+	 * 게임이 끝났는지 안끝났는지의 여부를 판단하게 된다.
+	 * 3스트라이크면 게임이 끝난 것이다.
+	 * 
+	 * @param strike 스트라이크의 개수
+	 * @return 게임이 끝나면 true, 아니면 false
+	 */
+	private boolean isGameEnd(int strike) {
+		boolean gameEnd = false;
+		if (strike == 3) {
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
 			gameEnd = true;
 		}

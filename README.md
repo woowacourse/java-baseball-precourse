@@ -12,6 +12,7 @@
 > String scanInput() : User의 입력값을 받아오는 메서드
 > boolean isWrong(String num) : 입력받은 숫자가 1~9까지 서로 다른 3자리 숫자로 구성되어 있으면 true, 아니면 false를 리턴
 > boolean analyzeResult(int []result) : 컴퓨터로 받은 결과값을 분석하여 출력해주는 메서드, 게임이 끝나면 true, 아니면 false를 리턴
+> boolean isGameEnd(int strike) : 스트라이크의 개수를 분석하여, 게임이 끝나면 true, 아니면 false로 리턴
 >```
 
 > Computer Class 기능
