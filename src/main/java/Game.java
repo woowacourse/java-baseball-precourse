@@ -82,4 +82,13 @@ public class Game {
 		}
 		return isBall;
 	}
+
+	/**
+	 * 문제를 만드는 객체를 반환한다.
+	 * @return 문제를 만드는 객체
+	 */
+	public Questioner getQuestioner() {
+
+		return this.questioner;
+	}
 }
