@@ -54,6 +54,6 @@
 
 ### 4. 주요 메서드
 
-- `getRandomNumbers` - `int[]`, 1~9 사이의 서로 다른 숫자 3개를 골라 반환한다.
+- `getRandomNumbers` - `void`, 1~9 사이의 서로 다른 숫자 3개를 골라 `computer` 변수에 담는다.
 - `checkResult` - `boolean`, 게임의 결과를 확인하여, 맞추면 True, 틀리면 False 를 반환한다. 
 - `choose` - `boolean`, 사용자에게 게임 종료 여부를 묻고, 재게임 시 True, 완전 종료 시 False 를 반환한다.
