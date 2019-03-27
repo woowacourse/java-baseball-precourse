@@ -11,6 +11,7 @@ public class Baseball {
     public final static int BASIC_NUMBER_MAX = 9;
 
     private int[] numbers;
+    private boolean isDone = false;
 
     /***
      * 랜덤 숫자를 생성하고 게임을 시작한다. 숫자의 개수, 숫자의 범위는 기본값을 따른다.
@@ -36,8 +37,8 @@ public class Baseball {
     }
 
     /**
-     * 한 세트를 실행한다. 한 세트는 사용자가 입력한 숫자들과 생성된 숫자들을 비교하여 본 게임의
-     * 규칙에 따라 힌트에 해당하는 결과를 반환하는 과정이다. 규칙은를 다음은 참조하라.
+     * 한 세트를 실행한다. 한 세트는 사용자가 입력한 숫자들과 생성된 숫자들을 비교하여 본 게임의 규칙에
+     * 따라 힌트에 해당하는 결과를 반환하는 과정이다. 규칙은를 다음은 참조하라.
      * https://github.com/Delf-Lee/java-baseball/blob/delf/README.md
      *
      * @param inputNumbers 사용자가 입력한 숫자들로 이루어진 정수 배열
