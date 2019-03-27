@@ -18,11 +18,17 @@ public class BaseBallGame {
     private int[] userNum;
     /** 사용자 입력을 받을 객체 */
     private BufferedReader br;
+    /** 스트라이크 갯수 */
+    private int strike;
+    /** 볼의 갯수 */
+    private int ball;
 
     /** 클래스 변수 초기화 */
     public BaseBallGame(){
         this.num = new int[3];
         this.userNum = new int[3];
+        this.strike = 0;
+        this.ball = 0;
         this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
@@ -78,6 +84,45 @@ public class BaseBallGame {
         for(int i=0; i<3; i++) {
             this.userNum[i] = Integer.parseInt(arr[i]);
         }
+    }
+
+    /** 저장되어있는 임의의 수와 사용자 입력수를 비교하여 strike ball 값을 저장 */
+    public void setStrikeAndBall() {
+
+        int strike = 0;
+        int ball = 0;
+
+        for(int i=0; i<3; i++) {
+            int[] value = this.compareToUserNum(i);
+            strike += value[0];
+            ball += value[1];
+        }
+
+        this.strike = strike;
+        this.ball = ball;
+    }
+
+    /** 임의의 수 1자리와 사용자 입력 수 3자리를 비교하여 strike ball 값 반환
+     * @param idx 비교할 임의의 수의 인덱스
+     * @return int[0] = strike 값, int[1] = ball 값
+     * */
+    public int[] compareToUserNum(int idx){
+
+        int[] res = new int[2];
+        int strike = 0;
+        int ball = 0;
+
+        for(int j=0; j<3; j++) {
+            if(this.num[idx] == this.userNum[j]) {
+                if(idx == j) { strike++; }
+                else { ball++; }
+            }
+        }
+
+        res[0] = strike;
+        res[1] = ball;
+
+        return res;
     }
 
     /** 사용자에게 메세지를 보여주는 기능 */
