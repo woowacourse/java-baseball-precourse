@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Computer {
+public class GenerateRandomNumber {
     public static final int BASEBALL_GAME_LIMIT_NUM = 3;
     public static final int BASEBALL_MIN_NUMBER = 1;
     public static final int BASEBALL_MAX_NUMBER = 9;
