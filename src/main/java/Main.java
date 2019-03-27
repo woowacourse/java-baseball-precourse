@@ -10,7 +10,7 @@
  * @author                김효건
  */
 public class Main {
-    /*메뉴 출력*/
+    /*메인 메소드*/
     public static void main(String[] args) {
         Game game = new Game();
     }

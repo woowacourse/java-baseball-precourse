@@ -55,25 +55,7 @@ public class Game {
                 printCorrect();
                 break;
             }
-
-            /*스트라이크 수를 담을 변수*/
-            int strike = countStrike();
-
-            /*볼 수를 담을 변수*/
-            int ball = countBall();
-
-            /*출력할 결과 메세지를 담을 변수*/
-            String message ="";
-
-            if(strike==0 && ball==0)
-                message += "낫싱";
-            else{
-                if(strike!=0)
-                    message += strike + " 스트라이크  ";
-                if(ball!=0)
-                    message += ball + " 볼";
-            }
-            System.out.println(message);
+            printResult(countStrike(),countBall());
         }while(true);
     }
 
@@ -155,7 +137,7 @@ public class Game {
 
     /*볼 갯수를 카운팅*/
     private int countBall(){
-        /*스트라이크의 수를 세아릴 변수*/
+        /*볼의 수를 세아릴 변수*/
         int count = 0;
 
         if(playerNumber.getFirst() == gameNumber.getSecond())
@@ -177,5 +159,27 @@ public class Game {
     }
     /*
      * @return 볼 수를 나타내는 count 변수 값을 반환
+     */
+
+    /*볼 갯수를 카운팅*/
+    private void printResult(int strike, int ball){
+        /*결과를 출력하는 메소드*/
+
+        /*출력할 메세지를 담을 변수*/
+        String message = "";
+
+        if(strike==0 && ball==0)
+            message += "낫싱";
+        else {
+            if (strike != 0)
+                message += strike + " 스트라이크  ";
+            if (ball != 0)
+                message += ball + " 볼";
+        }
+
+        System.out.println(message);
+    }
+    /*
+     * @param 스트라이크 수와 볼 수를 매개변수로 가짐
      */
 }
