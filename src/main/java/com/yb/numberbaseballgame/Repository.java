@@ -24,6 +24,50 @@ import java.util.Scanner;
 
 public class Repository implements Service {
 
-	
+	/*
+	 * 컴퓨터,사용자, 볼 카운트를 담는 객성을 생성
+	 * 
+	 * 라이프사이클 3 -> 4 -> 5 -> 6-> 7-> 8-> 9.계속 or 종료
+	 *
+	 * 게임을 계속 하게 된다면 while 실행 게임을 종료 하게된다면 while 탈출
+	 *
+	 */
+
+	public void run() {
+
+		/* 컴퓨터 숫자를 담을 객체 생성 */
+		Number comNumber = new Number();
+
+		/* 사용자 숫자를 담을 객체 생성 */
+		Number userNumber = new Number();
+
+		/* 볼 카운트를 담을 객체 생성 */
+		Ballcount ballCnt = new Ballcount();
+
+		/* 사용자 입력을 받는 String 타입 변수 */
+		String inputNum;
+
+		createNumber(comNumber);
+
+		while (true) {
+
+			guideMessage("ready");
+
+			inputNum = input();
+
+			if (!userNumCheck(userNumber, inputNum)) {
+				continue;
+			}
+
+			ballCnt = playGame(comNumber, userNumber, ballCnt);
+
+			printBallCount(ballCnt);
+
+			if (ballCnt.getStrike() == 3) {
+				guideMessage("correct");
+				break;
+			}
+		}
+	}
 
 }

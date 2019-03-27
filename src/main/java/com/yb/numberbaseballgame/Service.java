@@ -18,6 +18,5 @@ package com.yb.numberbaseballgame;
 
 public interface Service {
 
-	
+	void run();
 }
- 
