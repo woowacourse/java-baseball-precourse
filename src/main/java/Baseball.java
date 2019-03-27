@@ -46,12 +46,21 @@ public class Baseball {
         return isEnd;
     }
 
+    public static boolean toContinue(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Scanner scan = new Scanner(System.in);
+        int num = scan.nextInt();
+        boolean cont = true;
+        if(num!=1) cont = false;
+        return cont;
+    }
     public static void main(String args[]){
         List<Integer> baseballNum = getNum3();
         List<Integer> yourNum = get3();
         int strike = strikeNum(baseballNum, yourNum);
         int ball = ballNum(baseballNum, yourNum);
         boolean end = tellAns(strike, ball);
+        boolean cont = toContinue();
         return;
     }
 }
