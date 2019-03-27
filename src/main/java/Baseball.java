@@ -23,7 +23,7 @@ public class Baseball {
         comNum = generateRandomNumber();
         while (inputFlag) {
             userNum = receiveInput();
-            inputFlag = false;      // check 3 strike
+            inputFlag = calcSB();      // check 3 strike
         }
     }
 
@@ -46,7 +46,6 @@ public class Baseball {
 
         return ranNum;
     }
-
 
     /*
      * Method for receive user input
@@ -81,6 +80,46 @@ public class Baseball {
         } else {
             return num;
         }
+    }
+
+    /*
+     * Method for calculate strike and ball
+     * Print strike and ball information
+     * if 3 strike false, else true
+     */
+    private static boolean calcSB(String comNum, String userNum) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (comNum.charAt(i) == userNum.charAt(i)) {
+                strike++;
+            }
+
+            if (comNum.charAt(i) == userNum.charAt(0)) {
+                ball++;
+            } else if (comNum.charAt(i) == userNum.charAt(1)) {
+                ball++;
+            } else if (comNum.charAt(i) == userNum.charAt(2)) {
+                ball++;
+            } else {
+                ; //Pass
+            }
+        }
+        ball = ball - strike;
+        if (strike == 3) {
+            System.out.println("3 스트라이크");
+        } else if ((strike != 0) && (ball != 0)) {
+            System.out.println(strike + " 스트라이크 " + ball + " 볼");
+        } else if ((strike != 0) && (ball == 0)) {
+            System.out.println(strike + " 스트라이크");
+        } else if ((strike == 0) && (ball != 0)) {
+            System.out.println(ball + " 볼");
+        } else {
+            System.out.println("낫싱");
+        }
+
+        return ((strike != 3) ? true : false);
     }
 
 
