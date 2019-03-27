@@ -16,9 +16,9 @@ public enum State {
 
 	public static State findState(int i) {
 		return Arrays.stream(State.values())
-				.filter(x -> x.getValue() == i)
-				.findAny()
-				.orElseThrow(() -> new IllegalArgumentException("잘못된 입력 값 입니다. :: " + i));
+				        .filter(x -> x.getValue() == i)
+				        .findAny()
+				        .orElseThrow(() -> new IllegalArgumentException("잘못된 입력 값 입니다. :: " + i));
 	}
 
 	public int getValue() {
