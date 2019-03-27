@@ -7,12 +7,13 @@
  */
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Baseball {
-    int[] computer = new int[3];
-    int[] user = new int[3];
+    ArrayList<Integer> computer = new ArrayList<>();
+    ArrayList<Integer> user = new ArrayList<>();
 
     Baseball() {
         this.getRandomNumbers();
@@ -31,7 +32,7 @@ public class Baseball {
             int index;
 
             index = rand.nextInt(8 - j);
-            this.computer[j] = numbers.get(index);
+            computer.add(numbers.get(index));
             numbers.remove(index);
         }
     }
@@ -43,13 +44,51 @@ public class Baseball {
         System.out.print("숫자를 입력해주세요 : ");
         userInput = scan.nextInt();
 
-        this.parseUserInput(userInput, this.user.length);
+        this.parseUserInput(userInput);
     }
 
-    private void parseUserInput(int userInput, int inputSize) {
-        for (int i = inputSize - 1; i >= 0; i--) {
-            this.user[i] = userInput % 10;
+    private void parseUserInput(int userInput) {
+        for (int i = 2; i >= 0; i--) {
+            user.add(userInput % 10);
             userInput = userInput / 10;
+        }
+        Collections.reverse(user);
+    }
+
+    public boolean checkResult() {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computer.indexOf(user.get(i)) == i) {
+                strike++;
+            } else if (computer.indexOf(user.get(i)) != -1) {
+                ball++;
+            }
+        }
+
+        this.printResult(strike, ball);
+
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void printResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        }
+        if (strike > 0 && ball > 0) {
+            System.out.print(strike + " 스트라이크 ");
+        } else if (strike > 0) {
+            System.out.println(strike + " 스트라이크");
+        }
+        if (ball > 0) {
+            System.out.println(ball + " 볼");
         }
     }
 }
