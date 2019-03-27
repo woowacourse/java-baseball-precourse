@@ -109,14 +109,31 @@ public class BaseballGame {
 		return false;
 	}
 	
-	/* 테스트 코드 */
-	public static void main(String[] args) {
+	/* 게임을 실행하는 메서드 */
+	public static void playGame() {
 		int[] answer = createProblem();
-		for(int i : answer) {
-			System.out.println(i);
+		boolean checkAnswer = false;
+		
+		while(!checkAnswer) {
+			checkAnswer = printCount(countStrikeBall(answer, inputNums()));
 		}
-		int[] playerNums = inputNums();
-		int[] strikeBallCount = countStrikeBall(answer, playerNums);
-		printCount(strikeBallCount);
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		
+		while(true) {
+			int checkEnd = scan.nextInt();
+			if(checkEnd == 1) {
+				playGame();
+			} else if(checkEnd == 2) {
+				System.out.println("게임을 종료합니다.");
+				return;
+			} else {
+				System.out.println("잘못 입력하셨습니다. 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			}
+		}
+	}
+	
+	/* 게임이 실행되는 공간 */
+	public static void main(String[] args) {
+		playGame();
 	}
 }
