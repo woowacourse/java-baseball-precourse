@@ -75,6 +75,9 @@ class Game {
         final int CYCLE = myNumbers.length;
         int strike = 0;
         int ball = 0;
+        String strikeString;
+        String space;
+        String ballString;
 
         for (int i = 0; i < yourNumbers.length; i++) {
             if (myNumbers[i / CYCLE] == yourNumbers[i % CYCLE]) {
@@ -85,9 +88,9 @@ class Game {
             System.out.println("낫싱");
             numbersInput();
         } else {
-            String strikeString = (strike > 0) ? strike + " 스트라이크" : "";
-            String space = (strike > 0 && ball > 0) ? " " : "";
-            String ballString = (ball > 0) ? ball + "볼" : "";
+            strikeString = (strike > 0) ? strike + " 스트라이크" : "";
+            space = (strike > 0 && ball > 0) ? " " : "";
+            ballString = (ball > 0) ? ball + "볼" : "";
             System.out.println(strikeString + space + ballString);
             if (strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
