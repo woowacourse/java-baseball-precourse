@@ -16,7 +16,8 @@ public class PlayerImpl implements Player {
 			throw new IllegalArgumentException("숫자는 " + Constant.NUMBER_OF_DIGITS + "자리 정수이어야 합니다.");
 		if (!IntegerUtils.isEachDigitUnique(playerNumber))
 			throw new IllegalArgumentException("각 자리는 다른 수로 이루어져야 합니다.");
-
+		if (!IntegerUtils.containZero(playerNumber))
+			throw new IllegalArgumentException("숫자는 0을 포함할 수 없습니다.");
 		this.playerNumber = playerNumber;
 	}
 
