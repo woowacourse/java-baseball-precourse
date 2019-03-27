@@ -14,7 +14,7 @@
 
 기능 프리뷰
 --------------
-Version 1.00
+Version 1.0.0
 ### Class indi.moon.firstweek.Indexface.Index
 * 앱의 전체적인 시작과 종료를 담당
     * Class : Index
