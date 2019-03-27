@@ -5,15 +5,12 @@ public class Baseball {
         ArrayList<Integer> arr = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
         Collections.shuffle(arr);
         List<Integer> subList = arr.subList(0, 3);
-        Collections.sort(subList);
         return subList;
     }
     public static List<Integer> get3(){
         Scanner scan = new Scanner(System.in);
         int num = scan.nextInt();
-        int a = num/100;
-        num%=100;
-        List<Integer> thisList = new ArrayList<Integer>(Arrays.asList(a, num/10, num%10));
+        List<Integer> thisList = new ArrayList<Integer>(Arrays.asList(num/100, num%100/10, num%10));
         return thisList;
     }
 
@@ -55,12 +52,18 @@ public class Baseball {
         return cont;
     }
     public static void main(String args[]){
-        List<Integer> baseballNum = getNum3();
-        List<Integer> yourNum = get3();
-        int strike = strikeNum(baseballNum, yourNum);
-        int ball = ballNum(baseballNum, yourNum);
-        boolean end = tellAns(strike, ball);
-        boolean cont = toContinue();
+        boolean cont = true;
+        while(cont){
+            List<Integer> baseballNum = getNum3();
+            boolean end = false;
+            while(!end) {
+                List<Integer> yourNum = get3();
+                int strike = strikeNum(baseballNum, yourNum);
+                int ball = ballNum(baseballNum, yourNum);
+                end = tellAns(strike, ball);
+            }
+            cont = toContinue();
+        }
         return;
     }
 }
