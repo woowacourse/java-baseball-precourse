@@ -1,23 +1,10 @@
 package me.bactoria.baseball;
 
-import me.bactoria.baseball.domain.BaseballGame;
-import me.bactoria.baseball.domain.Computer;
-import me.bactoria.baseball.domain.Player;
-import me.bactoria.baseball.domain.State;
+import me.bactoria.baseball.domain.*;
 
 public class Application {
     public static void main(String[] args) {
-        Computer computer = new Computer() {
-            @Override
-            public boolean isAnswer(int playerNumber) {
-                return true;
-            }
-
-            @Override
-            public String getHint(int playerNumber) {
-                return "힌트";
-            }
-        };
+        Computer computer = new ComputerImpl();
         Player player = new Player() {
             @Override
             public void setPlayerNumber(int playerNumber) {
