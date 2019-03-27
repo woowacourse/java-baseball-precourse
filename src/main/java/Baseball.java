@@ -41,6 +41,10 @@ public class Baseball {
         int userInput;
         Scanner scan = new Scanner(System.in);
 
+        if (!user.isEmpty()) {
+            user.clear();
+        }
+
         System.out.print("숫자를 입력해주세요 : ");
         userInput = scan.nextInt();
 
