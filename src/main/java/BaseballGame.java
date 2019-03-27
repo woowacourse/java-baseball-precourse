@@ -8,23 +8,25 @@ public class BaseballGame {
     int[] playerNum = new int[3];
     int[] results = new int[2]; // Index 0 : strike, Index 1 : ball info
     boolean nothing = false;
+    boolean gameEnd = false;
 
     //get 3 different random numbers
     computerNum = fillArray(computerNum);
     System.out.println(Arrays.toString(computerNum));
+    while(!gameEnd) {
+        //get input from user
+        playerNum = getInput(playerNum);
+        System.out.println(Arrays.toString(playerNum));
 
-    //get input from user
-    playerNum = getInput(playerNum);
-    System.out.println(Arrays.toString(playerNum));
+        results[0] = getStrikeInfo(computerNum, playerNum);
+        results[1] = getBallInfo(computerNum, playerNum);
+        if (results[0] == 0 & results[1] == 0)
+            nothing = true;
+        //System.out.println(Arrays.toString(results));
+        //System.out.println(nothing);
 
-    results[0] = getStrikeInfo(computerNum, playerNum);
-    results[1] = getBallInfo(computerNum, playerNum);
-    if (results[0] == 0 & results[1] == 0)
-        nothing = true;
-    //System.out.println(Arrays.toString(results));
-    //System.out.println(nothing);
-
-    printResults(results, nothing);
+        gameEnd = getResults(results, nothing, gameEnd);
+        }
     }
 
     private static int[] fillArray(int[] myArray) {
@@ -96,17 +98,22 @@ public class BaseballGame {
         return ballNum;
     }
 
-    private static void printResults(int[] resultArray, boolean nothing) {
+    private static boolean getResults(int[] resultArray, boolean nothing, boolean gameEnd) {
         if (nothing) {
             System.out.println("낫싱");
-            return;
+            return gameEnd;
         }
 
         if (resultArray[0] != 0)
             System.out.print(resultArray[0] + " 스크라이크 ");
         if (resultArray[1] != 0)
-            System.out.println(resultArray[1] + " 볼");
-        if (resultArray[0] == 3)
-            System.out.println("\n3개의숫자를모두맞히셨습니다!게임종료");
+            System.out.print(resultArray[1] + " 볼");
+        if (resultArray[0] == 3) {
+            System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            gameEnd = true;
+            return gameEnd;
+        }
+        System.out.print("\n");
+        return gameEnd;
     }
 }
