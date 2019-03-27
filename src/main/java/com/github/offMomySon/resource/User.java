@@ -27,7 +27,6 @@ public class User {
     public void inputNums() {
         String num_string;
         num_string = inputNumStirng();
-
         saveNums(num_string);
     }
 
@@ -69,21 +68,48 @@ public class User {
     private boolean isValidNums(String num_string) {
         HashSet<Integer> numsSet = new HashSet<>();
 
-        if (num_string.length() > 3)                     //입력된 Stirng 의 길이가 3을 넘지 말아야 한다.
+        /*입력된 Stirng 의 길이가 3을 넘지 말아야 한다.*/
+        if (num_string.length() > 3)
             return false;
 
-        for (int i = 0; i < num_string.length(); i++) {  //입력된 각각의 문자가 1~9 사이의 수여야 한다.
+        /*입력된 각각의 문자가 1~9 사이의 수여야 한다.*/
+        for (int i = 0; i < num_string.length(); i++) {
             int eachNum = num_string.charAt(i) - '0';
-
             if (eachNum <= 0 || eachNum >= 10)
                 return false;
             numsSet.add(eachNum);
         }
-        if (numsSet.size() != 3)                         // 입력된 숫자중에 중복된 숫자가 있으면 안된다.
+
+        /*입력된 숫자중에 중복된 숫자가 있으면 안된다.*/
+        if (numsSet.size() != 3)
             return false;
+
         return true;
     }
 
+    /**
+     * @desc 게임 재시작 여부를 묻는 함수.
+     * 1을 입력하면 재시작,
+     * 2를 입력하면 종료,
+     * 다른 키를 입력하면 다시 게임 재시작 여부를 묻는다.
+     * 
+     * @return 게임 재시작이면 true 리턴, 종료면 false 리턴
+     */
+    public boolean isContinue(){
+        String string;
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        while(true){
+            string = scanner.nextLine();
+
+            if(string.equals("1"))
+                return true;
+            else if(string.equals("2"))
+                return false;
+            else
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+    }
 
     /**
      * @return 유저가 입력한 (1~9)까지의 3가지 수를 List Class 로 Return
