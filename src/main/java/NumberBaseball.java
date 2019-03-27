@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class NumberBaseball {
 
   private int strikeCount = 0;
@@ -8,7 +10,20 @@ public class NumberBaseball {
     Player user = new Player();
     NumberBaseball baseballGame = new NumberBaseball();
 
-    baseballGame.playGame(counterpart, user);
+    while (true) {
+      baseballGame.playGame(counterpart, user);
+      Scanner prompt = new Scanner(System.in);
+      int playerInput = prompt.nextInt();
+      if (playerInput == 1) {
+        continue;
+      }
+      else if (playerInput == 2) {
+        break;
+      }
+      else {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+      }
+    }
   }
 
   private void playGame(Computer counterpart, Player user) {
@@ -17,6 +32,7 @@ public class NumberBaseball {
       int[] guessingNumber = user.enterGuessingNumber();
       if (isSame(selectedNumber, guessingNumber)) {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         break;
       }
       Score gameScore = this.judgePlayerGuess(selectedNumber, guessingNumber);
