@@ -1,13 +1,6 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 public class PlayTestGame {
 	public static void main(String[] args) {
-		NumberBaseball nb = new NumberBaseball();
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int[] test = nb.attackArr(br);
-		for (int i = 0; i < 3; i++) {
-			System.out.print(test[i]);
-		}
+		int[] result = NumberBaseball.attackResult(new int[] {3,2,1}, new int[] {1,2,3});
+		System.out.print("Strike : " + result[0] + ", Ball :" + result[1]);
 	}
 }

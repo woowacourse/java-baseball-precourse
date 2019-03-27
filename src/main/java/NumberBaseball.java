@@ -47,4 +47,31 @@ public class NumberBaseball {
 		}
 		return ret;
 	}
+	
+	private static boolean isHitable(int[] defense, int attack) {
+		for (int i = 0; i < defense.length; i++) {
+			if(defense[i] == attack) return true;
+		}
+		return false;
+	}
+	
+	private static int countStrike(int[] defense, int[] attack) {
+		int counter = 0;
+		for (int i = 0; i < 3; i++) {
+			if(defense[i] == attack[i]) counter++;
+		}
+		return counter;
+	}
+	
+	static int[] attackResult(int[] defense, int[] attack) { // {# Strike, # Ball} ·Î ¸®ÅÏ 
+		int strike = countStrike(defense, attack);
+		int hitable = 0;
+		for (int i = 0; i < 3; i++) {
+			if(isHitable(defense, attack[i])) hitable++;
+		}
+		if(strike != 0) 	System.out.printf("%d ½ºÆ®¶óÀÌÅ©",strike);
+		if(hitable != strike) System.out.printf("%d º¼\n",hitable-strike);
+		if(hitable == 0) System.out.println("³´½Ì");
+		return new int[] {strike, hitable-strike};
+	}
 }
