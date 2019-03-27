@@ -11,12 +11,23 @@ import java.util.Scanner;
 
 public class NumberBaseball {
 	public static Scanner scan = new Scanner(System.in);
-	public static void main(String[] args) {
+	public static void main (String[] args) {
 		int userNum[] = new int[3];
 		int comNum[] = new int[3];
 		
+		
+		while (true) {
 		comNum=getComNum();
-		userNum=getUserNum();
+		
+			while (true) {
+				System.out.print("숫자를 입력해주세요 : ");
+				
+				userNum=getUserNum();
+				
+				int strike=getStrike(comNum, userNum);
+				
+			}
+		}
 		
 	}
 
@@ -37,10 +48,10 @@ public class NumberBaseball {
 			}
 		}
 		
-		while(true) {
+		while (true) {
 			comNum[2]=(int)(Math.random()*9+1);
 			
-			if((comNum[2]!=comNum[1])&&comNum[2]!=comNum[0])
+			if ((comNum[2]!=comNum[1])&&comNum[2]!=comNum[0])
 				break;
 		}
 		
@@ -63,5 +74,20 @@ public class NumberBaseball {
 		
 		return userNum;
 	}
+	
+	
+	/*comNum과 userNum에 따른 스트라이크의 카운팅*/
+	public static int getStrike (int[] comNum, int[] userNum) {
+		int strike=0;
+		
+		for (int i=0; i<3; ++i) {
+			if (comNum[i]==userNum[i]) {
+				strike++;
+			}
+		}
+		
+		return strike;
+	}
+	
 }
 
