@@ -21,7 +21,22 @@ public class App {
             System.out.println(gameExplanation);//게임 설명 출력
 
             answerNumber=makeRandomNumber();    //난수(정답) 생성
+
+//            테스트용 정답 출력
+//            System.out.println(answerNumber[0]);
+//            System.out.println(answerNumber[1]);
+//            System.out.println(answerNumber[2]);
+
             userNumber=saveUserInput();         //유저 입력 저장
+
+            //두 수가 같은지 비교
+            if(Arrays.equals(answerNumber, userNumber)){
+                //같을 시 재시작 선택 출력
+            }else{
+                //다를 시 힌트 출력
+                printHint(answerNumber, userNumber);
+            }
+
         } while(gameEnd == true);               //게임 종료 시 반복문 종료
     }
 
@@ -106,6 +121,13 @@ public class App {
         numberArray[1] = (inputNumber%100)/10;
         numberArray[2] = inputNumber%10;
         return numberArray;
+    }
+
+    /*
+     * 힌트 출력
+     */
+    private static void printHint(int computer[], int user[]){
+
     }
 
 
