@@ -197,4 +197,27 @@ public class Repository implements Service {
 
 	}
 
+	/*
+	 * @param ballCnt에 저장되어 있는 strike와 ball 갯수 출력 둘 다 없다면 "낫싱" 출력
+	 */
+	public void printBallCount(Ballcount ballCnt) {
+
+		int strike = ballCnt.getStrike();
+		int ball = ballCnt.getBall();
+
+		if (strike > 0) {
+			System.out.print(strike + "스트라이크 ");
+		}
+
+		if (ball > 0) {
+			System.out.print(ball + "볼 ");
+		}
+
+		if (strike == 0 && ball == 0) {
+			System.out.print("낫싱");
+		}
+
+		System.out.println();
+	}
+
 }

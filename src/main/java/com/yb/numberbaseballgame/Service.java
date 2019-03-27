@@ -24,4 +24,5 @@ public interface Service {
 	String input();
 	boolean userNumCheck(Number userNumber, String inputNum);
 	Ballcount playGame(Number number, Number userNumber, Ballcount ballCnt);
+	void printBallCount(Ballcount ballCnt);
 }
