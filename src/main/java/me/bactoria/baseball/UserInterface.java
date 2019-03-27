@@ -11,6 +11,11 @@ public interface UserInterface {
         return scanner.nextInt();
     }
 
+    static int getState() {
+        System.out.print("게임을 새로 시작하려면 " + Constant.PLAY_CONTINUE_NUMBER + ", 종료하려면 " + Constant.EXIT_GAME_NUMBER + "를 입력하세요.");
+        return scanner.nextInt();
+    }
+
     static void printGameEnd() {
         System.out.println(Constant.NUMBER_OF_DIGITS + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
