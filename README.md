@@ -3,3 +3,4 @@
 - strikeNum : 사용자의 답 중 스트라이크의 총 수를 구함
 - ballNum : 사용자의 답 중 볼의 총 수를 구함
 - tellAns : 사용자의 답을 출력
+- toContinue : 게임을 계속할지 여부를 확인
