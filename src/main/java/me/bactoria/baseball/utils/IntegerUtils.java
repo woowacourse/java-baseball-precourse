@@ -13,12 +13,19 @@ public class IntegerUtils {
         return false;
     }
 
-    public static boolean isNthDigitsNumber(int num) {
-        return getLength(num) == Constant.NUMBER_OF_DIGITS;
+    public static int[] to1DigitArray(int num) {
+        int numLength = getLength(num);
+        int[] numbers = new int[numLength];
+
+        for (int i = 0; i < numLength; i++) {
+            numbers[i] = num % 10;
+            num /= 10;
+        }
+        return numbers;
     }
 
-    private static int getLength(int num) {
-        return (int) Math.log10(num) + 1;
+    public static boolean isNthDigitsNumber(int num) {
+        return getLength(num) == Constant.NUMBER_OF_DIGITS;
     }
 
     public static boolean isEachDigitUnique(int num) {
@@ -31,5 +38,9 @@ public class IntegerUtils {
             num /= 10;
         }
         return true;
+    }
+
+    private static int getLength(int num) {
+        return (int) Math.log10(num) + 1;
     }
 }

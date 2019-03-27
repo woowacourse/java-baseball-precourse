@@ -13,12 +13,7 @@ public class ComputerImpl implements Computer {
 
     @Override
     public String getHint(int guessNumber) {
-        Hint hint = new Hint() {
-            @Override
-            public String getHint() {
-                return "낫싱";
-            }
-        };
+        Hint hint = new Hint(answerNumber, guessNumber);
         return hint.getHint();
     }
 
