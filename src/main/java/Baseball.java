@@ -26,8 +26,9 @@ public class Baseball {
                 ball_num = 0;
                 input_number = input();
 
+                // TODO 기능 4: strike, ball 개수 확인
+                
                 /*
-                기능 4: strike, ball 개수 확인
                 기능 5: 결과 print
                  */
 
@@ -66,7 +67,6 @@ public class Baseball {
             System.out.print("숫자를 입력해 주세요: ");
             Scanner scan = new Scanner(System.in);
             ret = scan.nextLine();
-            // TODO 기능 3-2: 중복과 3자리 확인 후 재입력 시도
             if(inputCheck(ret)) {
                 break;
             }
@@ -77,8 +77,24 @@ public class Baseball {
         return ret;
     }
 
-    // TODO 기능 3 - 2
-    public boolean inputCheck(String str){
+    // 기능 3 - 2
+    private boolean inputCheck(String str){
+        // 3자리수가 아니면 false
+        if(str.length() != 3) {
+            return false;
+        }
+
+        // 임시 string 변수 temp에 str의 숫자를 하나씩 옮기면서 중복확인
+        String temp = "";
+        for(int i = 0; i < 3; i++) {
+            if(temp.contains(String.valueOf(str.charAt(i)))) {
+                return false;
+            }
+            else {
+                temp += str.charAt(i);
+            }
+        }
+
         return true;
     }
 }
