@@ -5,15 +5,33 @@ public class NumberBaseball {
 
   public static void main(String[] args) {
     Computer counterpart = new Computer();
-    int[] selectedNumber = counterpart.selectRandomNumber();
-
     Player user = new Player();
-    int[] guessingNumber = user.enterGuessingNumber();
-
     NumberBaseball baseballGame = new NumberBaseball();
-    Score gameScore = baseballGame.judgePlayerGuess(selectedNumber,
-                                                    guessingNumber);
-    baseballGame.displayGameResult(gameScore);
+
+    baseballGame.playGame(counterpart, user);
+  }
+
+  private void playGame(Computer counterpart, Player user) {
+    int[] selectedNumber = counterpart.selectRandomNumber();
+    while (true) {
+      int[] guessingNumber = user.enterGuessingNumber();
+      if (isSame(selectedNumber, guessingNumber)) {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        break;
+      }
+      Score gameScore = this.judgePlayerGuess(selectedNumber, guessingNumber);
+      this.displayGameResult(gameScore);
+      this.initializeGameScore();
+    }
+  }
+
+  private boolean isSame(int[] selectedNumber, int[] guessingNumber) {
+    for (int i = 0; i < selectedNumber.length; i++) {
+      if (selectedNumber[i] != guessingNumber[i]) {
+        return false;
+      }
+    }
+    return true;
   }
 
   public Score judgePlayerGuess(int[] selectedNumber, int[] guessingNumber) {
@@ -51,7 +69,7 @@ public class NumberBaseball {
       System.out.print(strike + " 스트라이크 ");
     }
     if (ball > 0) {
-      System.out.println(ball + " 볼");
+      System.out.print(ball + " 볼");
     }
     System.out.println();
   }
