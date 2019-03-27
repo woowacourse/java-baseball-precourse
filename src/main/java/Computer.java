@@ -1,5 +1,7 @@
 
 public class Computer {
+	int s_cnt = 0; // strike count;
+	int b_cnt = 0; // ball count;
 	
 	public int[] target_num = new int[3];
 	
@@ -20,15 +22,25 @@ public class Computer {
 	}
 	
 	// 타겟 넘버를 받아 스트라이크 횟수를 카운트 합니다. 
-	public int count_s(int[] input_num) {
-		int s_cnt = 0;
-		
+	public void count_s(int[] input_num) {
 		// 입력 숫자와 각 자리를 비교하여 같은 숫자가 있을 경우 스트라이크 카운터를 증가시킨다. 
 		for(int i = 0; i < target_num.length; i++) {
 			if( target_num[i] == input_num[i]) {
-				s_cnt++;
+				this.s_cnt++;
 			}
 		}
-		return s_cnt;
+	}
+	// 입력 숫자를 한자리 씩을 타겟넘버 전체를 순환하며 한자리 씩 비교하고 같을 경우 볼 카운터를 증가시킨다.
+	public void count_b(int[] input_num) {
+		
+		for (int i = 0; i < target_num.length; i++) {
+			for ( int j = 0; j < input_num.length; j++) {
+				if(target_num[i] == input_num[j]) {
+					b_cnt++;
+				}
+			}
+		}
+		// 전체 순환하는 과정에서 스트라이크 개수 또한 볼 카운트 조건에 해당하므로 스트라이크 개수를 차감함
+		this.b_cnt -= this.s_cnt;
 	}
 }
