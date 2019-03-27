@@ -7,6 +7,8 @@ public class Main {
         NumberBaseball newGame = new NumberBaseball();
         newGame.makeRandomNumber();
         newGame.inputUserNumber();
+        newGame.matchUserAndComputer();
+        newGame.printMatchResult();
 
         System.out.println("게임이 종료되었습니다.");
 

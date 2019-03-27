@@ -7,12 +7,16 @@ public class NumberBaseball {
 
     private int[] computerBaseballNumber;
     private int[] userBaseballNumber;
+    private boolean[] bCheckBall;
+    private int strikeCount;
+    private int ballCount;
 
     NumberBaseball() {
         System.out.println("숫자 야구 게임 시작!");
 
         computerBaseballNumber = new int[3];
         userBaseballNumber = new int[3];
+        bCheckBall = new boolean[10];
     }
 
     private static int checkOverlapNumber(int[] checkNumberArray, int currentIndex) {
@@ -65,7 +69,43 @@ public class NumberBaseball {
             System.out.print(userBaseballNumber[i]);
         }
         System.out.println();
+    }
 
+    private void calculateStrikeAndBallCount() {
+        for (int i = 0; i < 3; ++i) {
+            if (computerBaseballNumber[i] == userBaseballNumber[i]) {
+                strikeCount++;
+            } else {
+                bCheckBall[userBaseballNumber[i]] = true;
+            }
+        }
+
+        for (int i = 0; i < 3; ++i) {
+            if (bCheckBall[computerBaseballNumber[i]] == true) {
+                ballCount++;
+            }
+        }
+    }
+
+    public boolean matchUserAndComputer() {
+        calculateStrikeAndBallCount();
+
+        return (strikeCount == 3) ? true : false;
+    }
+
+    public void printMatchResult() {
+        if (strikeCount == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
+        } else if (strikeCount == 0 && ballCount == 0) {
+            System.out.println("낫싱");
+        } else if (strikeCount > 0 && ballCount == 0) {
+            System.out.println(strikeCount + "스트라이크");
+        } else if (strikeCount == 0 && ballCount > 0) {
+            System.out.println(ballCount + "볼");
+        } else if (strikeCount > 0 && ballCount > 0) {
+            System.out.println(strikeCount + "스트라이크" + " " + ballCount + "볼");
+        }
     }
 
 }
