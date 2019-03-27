@@ -7,7 +7,9 @@ public class IntegerUtils {
     public static boolean containZero(int num) {
         while (num > 0) {
             int curN = num % 10;
-            if (curN == 0) return true;
+            if (curN == 0) {
+                return true;
+            }
             num /= 10;
         }
         return false;

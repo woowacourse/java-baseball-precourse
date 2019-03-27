@@ -40,9 +40,12 @@ public class Hint {
             result.append("낫싱");
             return result.toString();
         }
-
-        if (strikeCount > 0) result.append(strikeCount).append("스트라이크 ");
-        if (ballCount > 0) result.append(ballCount).append("볼");
+        if (strikeCount > 0) {
+            result.append(strikeCount).append("스트라이크 ");
+        }
+        if (ballCount > 0) {
+            result.append(ballCount).append("볼");
+        }
 
         return result.toString();
     }
