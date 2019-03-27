@@ -18,6 +18,7 @@ import java.util.Scanner;
 
 public class BaseballGame {
 	/* 숫자 야구 게임 */
+	
 	static Random random = new Random();
 	static Scanner scan = new Scanner(System.in);
 
@@ -28,12 +29,14 @@ public class BaseballGame {
 	 * ex) return {6, 3, 9} */
 	public static int[] createProblem() {
 		ArrayList<Integer> nums = new ArrayList<Integer>();
-		for(int i=1; i<10; i++) {
+		int[] answer = new int[3];
+		
+		for(int i = 1; i < 10; i++) {
 			nums.add(i);
 		}
-		int[] answer = new int[3];
+		
 		int count = -1;
-		for(int i=nums.size(); i>6; i--) {
+		for(int i = nums.size(); i > 6; i--) {
 			count++;
 			int RanIndex = random.nextInt(i);
 			answer[count] = nums.remove(RanIndex);
@@ -47,21 +50,73 @@ public class BaseballGame {
 		int[] playerNums = new int[3];
 		System.out.println("숫자를 입력해 주세요 :");
 		String inputStr = scan.next();
-		for(int i=0; i<3; i++) {
+		
+		for(int i = 0; i < 3; i++) {
 			playerNums[i] = inputStr.charAt(i) - '0';
 		}
 		return playerNums;
 	}
 	
+	/* 해당 정수가 해당 int[]에 들어있는지 알려주는 메서드
+	 * ex) isInArray(3, {4, 3, 2}) --> return true
+	 * 	   isInArray(1, {2, 5, 6}) --> return false */
+	public static boolean isInArray(int num, int[] numArray) {
+		for(int i : numArray) {
+			if(num == i) {
+				return true;
+			}	
+		}
+		return false;
+	}
+	
+	/* 정답과 플레이어가 입력한 값을 비교하고
+	 * 스트라이크와 볼의 개수를 Array에 저장하는 메서드
+	 * ex) countStrikeBall({4, 6, 2}, {4, 3, 2})
+	 *     --> return {2, 1} */
+	public static int[] countStrikeBall(int[] answer, int[] playerNums) {
+		int strike = 0;
+		int ball = 0;
+		
+		for(int i = 0; i < 3; i++) {
+			if(playerNums[i] == answer[i]) {
+				strike++;
+			} else if(isInArray(playerNums[i], answer)) {
+				ball++;
+			}
+		}
+		int[] strikeBallCount = {strike, ball};
+		return strikeBallCount;
+	}
+	
+	/* countStrikeBall()에서 얻은 Array를 바탕으로 결과를 출력한다.
+	 * 정답을 맞췄을 경우 true, 정답이 아닐경우 false을 리턴한다.
+	 * ex) printCount({1, 2})
+	 *     출력문: 1 스트라이크 2볼
+	 *     --> return false */
+	public static boolean printCount(int[] strikeBallCount) {
+		int strike = strikeBallCount[0];
+		int ball = strikeBallCount[1];
+		
+		if(strike == 3) {
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			return true;	
+		}
+		
+		String count = "";
+		count += strike != 0 ? (strike + " 스트라이크 ") : "";
+		count += ball != 0 ? (ball + "볼") : ""; 
+		System.out.println((count.equals("")) ? "낫싱" : count);
+		return false;
+	}
+	
 	/* 테스트 코드 */
 	public static void main(String[] args) {
 		int[] answer = createProblem();
-		for (int i : answer) {
+		for(int i : answer) {
 			System.out.println(i);
 		}
-		int[] input = inputNums();
-		for (int j : input) {
-			System.out.println(j);
-		}
+		int[] playerNums = inputNums();
+		int[] strikeBallCount = countStrikeBall(answer, playerNums);
+		printCount(strikeBallCount);
 	}
 }
