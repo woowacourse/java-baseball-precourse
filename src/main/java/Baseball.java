@@ -25,12 +25,9 @@ public class Baseball {
                 strike_num = 0;
                 ball_num = 0;
                 input_number = input();
+                strikeBallCheck(computer_number, input_number);
 
-                // TODO 기능 4: strike, ball 개수 확인
-                
-                /*
-                기능 5: 결과 print
-                 */
+                // TODO 기능 5: 결과 print
 
             }while(strike_num < 3);
 
@@ -96,5 +93,19 @@ public class Baseball {
         }
 
         return true;
+    }
+
+    //기능 4
+    private void strikeBallCheck(String answer, String number) {
+
+        // 맞힐 숫자(answer)와 입력한 숫자(number)를 한자리씩 비교하며 strike와 ball의 개수를 count up.
+        for(int i = 0; i < 3; i++) {
+            if(answer.charAt(i) == number.charAt(i)) {
+                strike_num++;
+            }
+            else if(number_check[number.charAt(i) - '0']) {
+                ball_num++;
+            }
+        }
     }
 }
