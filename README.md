@@ -2,30 +2,24 @@
 
 > 우아한 테크 코스 :: 온라인 과제 1주차
    
+&nbsp;
+
 ## 기능 목록
 
-- 유저 인터페이스
-    - 사용자 출력
-        + 숫자를 입력해주세요
-        + 게임 종료
-        + 힌트
-        + 리플레이 여부
-    - 사용자 입력
-        + guessNumber
-        + 리플레이 여부
-- Computer 인터페이스
-    + 정답 여부
-    + 힌트 얻기
-- Player 인터페이스
-    + guessNumber setter
-    + guessNumber getter
-- 게임 1회 진행
-    + guessNumber 받기 `(a)`
-        * 정답 : 게임 종료
-        * 오답 : 힌트 출력 후, `(a)` 로 이동
-- 리플레이 구현 (게임 N회 진행)
-- Computer 클래스 구현
-    + randomNumber(answer) 생성
-- Player 클래스 구현
-    + guessNumber 주입 시 유효하지 않은 범위는 IllegalArgumentException
-
+- Baseball
+    + Player 숫자 입력받기
+    + 정답 여부에 따른 처리
+        * 정답 : 게임종료
+        * 오답 : 힌트 출력 후, 숫자 다시 입력받기
+    + 게임 재시작 여부에 따른 처리
+        * 1 : 게임 재시작
+        * 2 : 프로세스 종료
+- Computer
+    + 랜덤 3자리 정수 생성
+    + 정답 여부를 알려주는 기능
+    + 힌트를 알려주는 기능
+- Player
+    + 숫자 setter 기능
+    + 숫자 getter 기능
+- Hint
+    + 힌트를 계산하는 기능
