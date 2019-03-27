@@ -11,6 +11,7 @@ public class Computer {
     private final String STRIKE_MESSAGE = " 스트라이크 ";
     private final String BALL_MESSAGE = " 볼 ";
     private final String NOTHING_MESSAGE = "낫싱";
+    private final String WARMING_MESSAGE = "잘못된 숫자를 입력했습니다." + ENTER_MESSAGE + "3자리의 모두 다른 숫자만 가능합니다.";
     boolean endGame = true;
 
     Computer(){
@@ -70,21 +71,29 @@ public class Computer {
                 .sum();
     }
 
+    private boolean checkOverlap(int[] userNum){
+        return (userNum[0] != userNum[1]) &&
+                (userNum[0] != userNum[2]) &&
+                (userNum[1] != userNum[2]);
+    }
+
     public String sendMessage(){
         return message;
     }
 
     public void readMessage(int[] message){
-        this.message = "";
-        if (message.length == 3){
+
+        if (message.length == 3 && checkOverlap(message)){
+            this.message = "";
             checkNum(message);
-        }
-        if (message.length == 1){
+        }else if (this.message.split("")[0].equals("3") && message.length == 1){
             if (message[0] == 1){
                 init();
             }else if (message[0] == 2){
                 endGame = false;
             }
+        }else {
+            this.message = WARMING_MESSAGE + ENTER_MESSAGE + INPUT_MESSAGE;
         }
     }
 
