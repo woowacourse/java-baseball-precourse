@@ -22,7 +22,9 @@ public class BaseballGame {
     if (results[0] == 0 & results[1] == 0)
         nothing = true;
     //System.out.println(Arrays.toString(results));
-    System.out.println(nothing);
+    //System.out.println(nothing);
+
+    printResults(results, nothing);
     }
 
     private static int[] fillArray(int[] myArray) {
@@ -60,9 +62,7 @@ public class BaseballGame {
     }
 
     private static boolean inRange(int temp) {
-        if (100 <= temp & temp <= 999)
-            return true;
-        return false;
+        return (100 <= temp & temp <= 999);
     }
 
     private static boolean noDuplicates(int temp, int[] myArray) {
@@ -94,5 +94,19 @@ public class BaseballGame {
             ballNum += 1;
 
         return ballNum;
+    }
+
+    private static void printResults(int[] resultArray, boolean nothing) {
+        if (nothing) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        if (resultArray[0] != 0)
+            System.out.print(resultArray[0] + " 스크라이크 ");
+        if (resultArray[1] != 0)
+            System.out.println(resultArray[1] + " 볼");
+        if (resultArray[0] == 3)
+            System.out.println("\n3개의숫자를모두맞히셨습니다!게임종료");
     }
 }
