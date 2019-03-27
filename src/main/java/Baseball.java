@@ -17,9 +17,18 @@ public class Baseball {
         return thisList;
     }
 
+    public static int strikeNum(List<Integer> bN, List<Integer> yN){
+        int strike = 0;
+        if(bN.get(0)==yN.get(0)) strike++;
+        if(bN.get(1)==yN.get(1)) strike++;
+        if(bN.get(2)==yN.get(2)) strike++;
+        return strike;
+    }
+
     public static void main(String args[]){
         List<Integer> baseballNum = getNum3();
         List<Integer> yourNum = get3();
+        int strike = strikeNum(baseballNum, yourNum);
         return;
     }
 }
