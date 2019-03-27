@@ -17,17 +17,22 @@ import java.util.Scanner;
 
 public class BaseballGame {
 
+    static final int RESTART = 1;
+    static final int FINISH = 2;
+
     public static void main(String[] args) {
-        List<Integer> computerNumber = createRandomNumber();
+        List<Integer> computerNumber;
         int playerNumber;
         Result compareResult;
 
-        do{
-            playerNumber = inputPlayerNumber();
-            compareResult = compareNumber(computerNumber, playerNumber);
-            System.out.println(compareResult.toString());
-        }while(compareResult.getStrikeCount()!=3);
-
+        do {
+            computerNumber = createRandomNumber();
+            do {
+                playerNumber = inputPlayerNumber();
+                compareResult = compareNumber(computerNumber, playerNumber);
+                System.out.println(compareResult.toString());
+            } while (compareResult.getStrikeCount() != 3);
+        } while (restartOrFinishGame()==RESTART);
     }
 
     /* 1. 컴퓨터의 수(정답)를 선택하는 기능. */
@@ -93,5 +98,35 @@ public class BaseballGame {
 
         return new Result(strikeCount, ballCount);
     }
+
+    /* 4. 게임이 종료된 후 게임을 다시 시작하거나 완전히 끝내는 기능 */
+    static int restartOrFinishGame(){
+
+        Scanner scanner = new Scanner(System.in);
+        int restartOrFinish = 0;
+        String s;
+
+        do {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            s = scanner.nextLine();
+
+            if (!s.matches("[1,2]")) {
+                continue;
+            }
+
+            restartOrFinish = Integer.parseInt(s);
+
+            if (restartOrFinish == RESTART) {
+                System.out.println("게임을 새로 시작합니다.");
+                break;
+            } else if (restartOrFinish == FINISH) {
+                System.out.println("게임을 종료합니다.");
+                break;
+            }
+        } while (!(restartOrFinish == RESTART || restartOrFinish == FINISH));
+
+        return restartOrFinish;
+    }
+
 
 }
