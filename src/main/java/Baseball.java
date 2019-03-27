@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 public class Baseball {
 
@@ -18,13 +19,14 @@ public class Baseball {
     public void runGame(){
         while(true){
             Arrays.fill(number_check, false);
-            //TODO 기능 2: 임의의 세자리수 생성
+            computer_number = generateNumber();
             do{
                 strike_num = 0;
                 ball_num = 0;
 
+                // TODO 기능 3: 사용자 입력
+
                 /*
-                기능 3: 사용자 입력
                 기능 4: strike, ball 개수 확인
                 기능 5: 결과 print
                  */
@@ -35,5 +37,25 @@ public class Baseball {
             기능 6: 새로시작 or 종료
              */
         }
+    }
+
+    // 기능 2
+    private String generateNumber() {
+        String ret = "";        //리턴할 3자리 숫자
+        int random_number;
+        Random random = new Random();
+
+        // 전체 숫자의 길이가 3일때 까지 1~9까지 숫자를 하나씩 생성
+        do {
+            random_number = random.nextInt(8) + 1;
+            // 중복 확인
+            if(ret.contains(Integer.toString(random_number))) {
+                continue;
+            }
+            ret += Integer.toString(random_number);
+            number_check[random_number] = true;
+        }while(ret.length() < 3);
+
+        return ret;
     }
 }
