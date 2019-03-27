@@ -6,8 +6,8 @@ import java.util.List;
 
 /**
  * @desc : Computer Class
- * 랜덤한 수 3개를 생성하며,
- * List와 HashMap 을 이용하여 저장한다.
+ * 컴퓨터가 가져야 하는 랜덤한 수 3개를 생성하며,
+ * 램덤한 수 3개를 List와 HashMap 을 이용하여 저장한다.
  * @pakage : com.github.offMomySon.resource
  * @authon : 오지훈
  */
@@ -18,7 +18,6 @@ public class Computer {
     public Computer() {
         numsMap = new HashMap<>();
         numsList = new ArrayList<>();
-        create_randnum();
     }
 
     /**
@@ -44,7 +43,7 @@ public class Computer {
      * @param : 새로 만들어진 수
      * @desc : 새로 만들어진 수가 중복하지 않으며, 유효한 수인지 검사
      */
-    public boolean is_keyValid(int new_number) {
+    private boolean is_keyValid(int new_number) {
         if (new_number >= 10 || numsMap.containsKey(new_number))
             return false;
         else

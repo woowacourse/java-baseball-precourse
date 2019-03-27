@@ -21,8 +21,10 @@ public class AppMain {
     public static void main(String[] args) {
 
         System.out.println("Test");
-        BallType ballType = new BallType(1,1);
-        System.out.println(ballType);
+
+        Game g = new Game();
+        g.init();
+        g.run();
 
     }
 }

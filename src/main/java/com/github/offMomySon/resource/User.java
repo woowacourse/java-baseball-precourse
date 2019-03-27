@@ -49,7 +49,6 @@ public class User {
     private String inputNumStirng() {
         String num_string;
 
-        System.out.print("숫자를 입력해주세요 : ");
         while (true) {
             num_string = scanner.nextLine();
             if (isValidNums(num_string))

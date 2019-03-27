@@ -1,7 +1,7 @@
 package com.github.offMomySon.game.baseball;
 
 /**
- * @desc : BallType Calss
+ * @desc : BallType Class
  * 사용자의 입력값과 컴퓨터의 입력값을 비교한, Strike, Ball 개수를 인스턴스 변수로 가진다.
  * Strike, Ball 개수에 따라 toString() 메서드를 통해 사용자에게 게임의 결과를 String 형식으로 반환한다.
  * @pakage : com.github.offMomySon.game.baseball
