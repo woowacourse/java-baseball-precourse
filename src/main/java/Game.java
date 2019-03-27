@@ -36,12 +36,13 @@ public class Game {
 
                         /*선택 번호를 저장할 변수*/
                         int select = Menu.selectMenu();
+
                         if (select == 1)
                                 startGame();
                         else if (select == 2)
                                 exitGame();
                         else
-                                System.out.println("잘못 입력 하셨습니다.");
+                                continue;
                 }
         }
 

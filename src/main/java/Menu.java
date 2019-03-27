@@ -4,6 +4,7 @@
  *Number Baseball Game, Java, Mungyeong, KOREA
  */
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /*
@@ -22,10 +23,27 @@ public class Menu {
 
         /*게임 시작,종료에 대한 메뉴를 입력*/
         public static int selectMenu() {
+                /*메뉴 선택 입력 값을 받을 변수*/
+                int select;
                 Scanner scan = new Scanner(System.in);
-                return scan.nextInt();
+                try {
+                        select = scan.nextInt();
+                        if (select != 1 && select != 2)
+                                throw new selectMenuInputException();
+                }catch(selectMenuInputException e){
+                        System.err.println("1또는 2를 입력 해주세요.");
+                        return -1;
+                }catch(InputMismatchException e){
+                        System.err.println("1또는 2를 입력 해주세요.");
+                        return -1;
+                }
+                return select;
         }
         /*
          * @return int 시작(1) 종료(2)에 대해 입력받은 값을 반환
          */
+
+        /*메뉴를 입력 받을 때 예외처리 - 게임시작(1) 게임종료(2) 이 외의 값이 입력 된 경우*/
+        public static class selectMenuInputException extends RuntimeException{
+        }
 }
