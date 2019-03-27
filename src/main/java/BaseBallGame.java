@@ -16,12 +16,14 @@ public class BaseBallGame {
     private int[] num;
     /** 사용자 입력 3자리 수 */
     private int[] userNum;
-    /** 사용자 입력을 받을 객체 */
-    private BufferedReader br;
     /** 스트라이크 갯수 */
     private int strike;
     /** 볼의 갯수 */
     private int ball;
+    /** 게임의 종료 여부 */
+    private boolean gameOver;
+    /** 사용자 입력을 받을 객체 */
+    private BufferedReader br;
 
     /** 클래스 변수 초기화 */
     public BaseBallGame(){
@@ -29,6 +31,7 @@ public class BaseBallGame {
         this.userNum = new int[3];
         this.strike = 0;
         this.ball = 0;
+        this.gameOver = false;
         this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
@@ -123,6 +126,11 @@ public class BaseBallGame {
         res[1] = ball;
 
         return res;
+    }
+
+    /** 게임 결과를 저장 */
+    public void setGameResult() {
+        this.gameOver = (this.strike == 3) ? true : false;
     }
 
     /** 사용자에게 메세지를 보여주는 기능 */
