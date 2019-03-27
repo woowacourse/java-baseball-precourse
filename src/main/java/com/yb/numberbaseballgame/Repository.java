@@ -117,4 +117,17 @@ public class Repository implements Service {
 		}
 	}
 
+	/*
+	 * Scanner를 이용하여 사용자 숫자를 String input에 저장 한 후
+	 * 
+	 * @return input
+	 */
+	public String input() {
+
+		Scanner scan = new Scanner(System.in);
+		String input = scan.nextLine();
+
+		return input;
+	}
+
 }
