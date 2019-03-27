@@ -7,11 +7,9 @@ public class Baseball {
     private static final String FIRST_SELECTION = "1";
     private static final int COUNT_OF_NUMBERS = 3;
     private Scanner scan;
-    private Integer[] com;
 
     public Baseball() {
         scan = new Scanner(System.in);
-        com = new Integer[COUNT_OF_NUMBERS];
 
         menu();
     }
@@ -40,7 +38,7 @@ public class Baseball {
     }
 
     public void startGame() {
-        generateComNumbers();
+        int[] com = generateComNumbers();
 
         while (true) {
             int[] user = getCorrectUserInput();
@@ -48,14 +46,15 @@ public class Baseball {
         }
     }
 
-    public void generateComNumbers() {
+    public int[] generateComNumbers() {
         Set<Integer> set = new LinkedHashSet<>();
 
         while (set.size() != COUNT_OF_NUMBERS) {
             set.add((int) (Math.random() * 9 + 1));
         }
 
-        com = set.toArray(new Integer[set.size()]);
+        Integer[] com = set.toArray(new Integer[set.size()]);
+        return Arrays.stream(com).mapToInt(i->i).toArray();
     }
 
     public int[] getCorrectUserInput() {
