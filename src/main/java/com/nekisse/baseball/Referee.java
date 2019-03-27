@@ -8,7 +8,6 @@ public class Referee {
 
     public Referee(List<Integer> baseballGameNumbers) {
         this.baseballGameNumbers = baseballGameNumbers;
-
     }
 
     public GameTurnResult compareGameNumberResult(List<Integer> userBaseBallNumbers) {

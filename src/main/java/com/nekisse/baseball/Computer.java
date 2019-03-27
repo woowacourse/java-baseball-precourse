@@ -24,6 +24,7 @@ public class Computer {
         for (int i = 0; i < BASEBALL_GAME_LIMIT_NUM; i++) {
             gameNumbers.add(numbers.get(i));
         }
+        System.out.println("gameRandomNumbers = " + gameNumbers);
         return gameNumbers;
     }
 
