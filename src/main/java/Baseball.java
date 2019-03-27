@@ -33,11 +33,25 @@ public class Baseball {
         return ball;
     }
 
+    public static boolean tellAns(int s, int b){
+        if(s==0&&b==0) System.out.println("낫싱");
+        else if(b==0) System.out.printf("%d 스트라이크\n", s);
+        else if(s==0) System.out.printf("%d 볼\n", b);
+        else System.out.printf("%d 스트라이크 %d 볼\n", s, b);
+        boolean isEnd = false;
+        if(s==3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isEnd = true;
+        }
+        return isEnd;
+    }
+
     public static void main(String args[]){
         List<Integer> baseballNum = getNum3();
         List<Integer> yourNum = get3();
         int strike = strikeNum(baseballNum, yourNum);
         int ball = ballNum(baseballNum, yourNum);
+        boolean end = tellAns(strike, ball);
         return;
     }
 }
