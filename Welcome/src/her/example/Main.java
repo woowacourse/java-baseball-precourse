@@ -15,7 +15,7 @@ public class Main {
 	static int i=0,j=0;
 	
 	//메인
-	//depth 2
+	//indent depth 2
 	public static void main(String[] args) {
 		
 		Randommake();
@@ -35,7 +35,7 @@ public class Main {
 	
 	
 	//컴퓨터가 3자리 수 정하기
-	//depth 1
+	//indent depth 1
 	static void Randommake(){
 	
 		// 랜덤으로 값 설정 (겹치지 않는 세 자리 수)
@@ -51,7 +51,7 @@ public class Main {
 	}
 	
 	//값 넣기
-	//depth 0
+	//indent depth 0
 	static void Putnumber() {
 		
 		System.out.println("숫자를 입력해주세요 : ");
@@ -65,7 +65,7 @@ public class Main {
 	}
 	
 	//스트라이크 & 볼 갯수 찾기
-	//depth 2
+	//indent depth 2
 	static void FindSB() {
 		
 		strike = 0;
@@ -79,7 +79,7 @@ public class Main {
 	}
 	
 	//실제로 스트라이크 & 볼 갯수 세기
-	//depth 1
+	//indent depth 1
 	static void check() {
 		if (i == j && com[i] == me[j])
 			strike++;
@@ -88,7 +88,7 @@ public class Main {
 	}
 	
 	//종료하기 -> 1. 게임 새로 시작, 2. 종료 선택
-	//depth 1
+	//indent depth 1
 	static void Finish() {
 		
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
