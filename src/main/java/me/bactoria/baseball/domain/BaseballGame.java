@@ -16,8 +16,7 @@ public class BaseballGame {
 
         while (!isCorrectNumber) {
 
-            int playerNumber = UserInterface.getPlayerNumber();
-            player.setPlayerNumber(playerNumber);
+            player.setPlayerNumber(UserInterface.getPlayerNumber());
 
             if (computer.isAnswer(player.getPlayerNumber())) {
                 isCorrectNumber = true;
