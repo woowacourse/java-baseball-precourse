@@ -23,6 +23,7 @@ public class BaseballGame {
 
         System.out.println(computerNumber.toString());
         System.out.println("사용자가 입력한 수 : "+playerNumber);
+        System.out.println("비교 결과 " + compareNumber(computerNumber, playerNumber));
 
     }
 
@@ -69,6 +70,26 @@ public class BaseballGame {
         }
     }
 
+    /* 3. 컴퓨터의 수와 사용자가 입력한 수를 비교하는 메소드 */
+    static Result compareNumber(List<Integer> computerNumber, int playerNumber) {
 
+        int n;
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int i = computerNumber.size() - 1; i >= 0; --i) {
+            n = playerNumber % 10;
+            playerNumber /= 10;
+
+            if (n == computerNumber.get(i)) {
+                strikeCount++;
+            } else if (computerNumber.contains(n)) {
+                ballCount++;
+            }
+        }
+
+        return new Result(strikeCount, ballCount);
+
+    }
 
 }
