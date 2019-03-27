@@ -25,10 +25,19 @@ public class Baseball {
         return strike;
     }
 
+    public static int ballNum(List<Integer> bN, List<Integer> yN){
+        int ball = 0;
+        if(bN.get(0)==yN.get(1)||bN.get(0)==yN.get(2)) ball++;
+        if(bN.get(1)==yN.get(0)||bN.get(1)==yN.get(2)) ball++;
+        if(bN.get(2)==yN.get(0)||bN.get(2)==yN.get(1)) ball++;
+        return ball;
+    }
+
     public static void main(String args[]){
         List<Integer> baseballNum = getNum3();
         List<Integer> yourNum = get3();
         int strike = strikeNum(baseballNum, yourNum);
+        int ball = ballNum(baseballNum, yourNum);
         return;
     }
 }
