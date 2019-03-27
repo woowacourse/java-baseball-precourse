@@ -26,8 +26,9 @@ public class Questioner {
 
 	/**
 	 * 문제(서로 다른 3자리 수)를 만든다.
+	 *
 	 * @return 문제(서로다른 3자리수 배열)
-	 * */
+	 */
 	public int[] setNumber() {
 
 		Random rand = new Random(); // 랜덤숫자를 반환을 위한 rand 객체
@@ -51,11 +52,12 @@ public class Questioner {
 
 	/**
 	 * 숫자가 이전 숫자들과 중복됬는지 확인한다.
+	 *
 	 * @param num 확인할 숫자
 	 * @param number 수 배열
 	 * @param index 배열 위치 index 전 까지 중복 검사
 	 * @return 중복됬으면 true, 아니라면 false
-	 * */
+	 */
 	private boolean checkReduplicate(int num, int[] number, int index) {
 
 		boolean isReduplicate = false;
@@ -76,8 +78,9 @@ public class Questioner {
 
 	/**
 	 * 만들어진 문제(서로다른 3자리 수 배열)를 반환한다.
+	 *
 	 * @return 문제(서로다른 3자리 수 배열)
-	 * */
+	 */
 	public int[] getNumber() {
 
 		return this.number;

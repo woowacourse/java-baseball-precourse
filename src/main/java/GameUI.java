@@ -51,7 +51,7 @@ public class GameUI {
 				printScore( answerer.getScore() );
 
 				/* 사용자의 점수결과와 사용자의 결정에 따라 게임을 종료를 결정한다. */
-			} while ( !checkGameEnd(game) ||  askRestart(game, sc) );
+			} while ( !checkGameEnd(game) || askRestart(game, sc) );
 		}
 	}
 
@@ -130,6 +130,7 @@ public class GameUI {
 			isRestart = true;
 		} else if (flagNum.equals("2")) {
 
+			/* 게임을 종료 한다. */
 			isRestart = false;
 		}
 

@@ -32,7 +32,7 @@ public class Game {
 
 	/**
 	 * 질문자의 문제와 답변자의 정답을 비교하고, 답변자의 점수를 매긴다.
-	 * */
+	 */
 	public void play() {
 
 		int[] problem = questioner.getNumber(); /* 문제자의 3자리수 */
@@ -60,7 +60,7 @@ public class Game {
 	 * @param answer 답변자의 정답 숫자 배열
 	 * @param index 답변자의 정답 숫자 배열의 위치
 	 * @return 스트라이크 유무
-	 * */
+	 */
 	private boolean checkStrike(int[] problem, int[] answer, int index) {
 
 		return ( ( problem[index] == answer[index] ) ? true : false );
@@ -73,7 +73,7 @@ public class Game {
 	 * @param answer 답변자의 정답 숫자 배열
 	 * @param index 답변자의 정답 숫자 배열의 위치
 	 * @return 볼의 유무
-	 * */
+	 */
 	private boolean checkBall(int[] problem, int[] answer, int index) {
 
 		boolean isBall = false;
@@ -87,7 +87,7 @@ public class Game {
 	}
 
 	/**
-	 * 질문자를 반환한다.
+	 * 게임에 참여한 질문자를 반환한다.
 	 *
 	 * @return 질문자 객체
 	 */
@@ -97,7 +97,7 @@ public class Game {
 	}
 
 	/**
-	 * 답변자를 반환한다.
+	 * 게임에 참여한 답변자를 반환한다.
 	 *
 	 * @return 답변자 객체
 	 */
