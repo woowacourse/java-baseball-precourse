@@ -130,4 +130,38 @@ public class Repository implements Service {
 		return input;
 	}
 
+	/*
+	 * 입력 받은 사용자 숫자 @param inputNum에서 발생 할 수 있는 예외를 검사한다.
+	 * 
+	 * 1. 입력 받은 숫자가 3자리가 아닐 경우 @return false 2. 입력 받은 숫자가 1~9가 범위, 중복 입력 시 @ return
+	 * false
+	 * 
+	 * 1,2 검사를 통과한다면 @parm userNumber[0],[1],[2] 자리에 저장
+	 * 
+	 * 3자리 입력이 끝나며 @return true
+	 */
+	public boolean userNumCheck(Number userNumber, String inputNum) {
+
+		String[] tmp = inputNum.split("");
+		boolean[] visit = new boolean[10];
+
+		if (inputNum.length() != 3) {
+			return false;
+		}
+
+		for (int i = 0; i < 3; i++) {
+
+			int value = ((int) tmp[i].charAt(0)) - 48;
+
+			if (value < 1 || value > 9 || visit[value]) {
+				return false;
+			}
+
+			userNumber.setNumber(i, Integer.parseInt(tmp[i]));
+			visit[value] = true;
+		}
+
+		return true;
+	}
+
 }

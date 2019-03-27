@@ -22,4 +22,5 @@ public interface Service {
 	void createNumber(Number comNumber);
 	void guideMessage(String message);
 	String input();
+	boolean userNumCheck(Number userNumber, String inputNum);
 }
