@@ -30,14 +30,12 @@ public class PlayGame {
     private boolean isExit(BufferedReader br) throws IOException{
         while(true){
             String exitNum = br.readLine();
-            if (exitNum.equals("1")) {
-                return true;
-            } else if (exitNum.equals("2")) {
-                return false;
-            } else {
-                // 다른 문자가 올경우 예외처리
-                System.out.println(ErrorMessage.OTHER_NUMBER_ERROR.getErrorMessage());
-            }
+
+            if (exitNum.equals("1")) return true;
+            else if (exitNum.equals("2")) return false;
+            // 다른 문자가 올경우 예외처리
+            else System.out.println(ErrorMessage.OTHER_NUMBER_ERROR.getErrorMessage());
+
         }
     }
 

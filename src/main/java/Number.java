@@ -4,26 +4,16 @@ import java.util.HashMap;
 
 public class Number {
     // 클래스 안에 클래스 holder를 두는 Singleton
-    private Number() {
-        hashMap = new HashMap<>();
-    }
-
-    private static class NumberHolder {
-        public static final Number INSTANCE = new Number();
-    }
-
-    public static Number getInstance() {
-        return NumberHolder.INSTANCE;
-    }
+    private Number() { hashMap = new HashMap<>(); }
+    private static class NumberHolder { public static final Number INSTANCE = new Number();}
+    public static Number getInstance() { return NumberHolder.INSTANCE; }
 
     private HashMap<Integer, Integer> hashMap;
 
     //컴퓨터 3자리 난수 생성 함수
     public HashMap comNum() {
 
-        if (!hashMap.isEmpty()) {
-            hashMap.clear();
-        }
+        if (!hashMap.isEmpty()) hashMap.clear();
 
         for (int i = 0; i < 3; i++) {
             int num = (int) (Math.random() * 9) + 1;
@@ -39,13 +29,12 @@ public class Number {
     //컴퓨터 3자리난수 중복처리 함수
     private boolean isOverLap(HashMap hashMap, int num) {
         for (Object data : hashMap.values()) {
-            if ((int) data == num) {
-                return true;
-            }
+            if ((int) data == num) return true;
         }
         return false;
     }
 
+    //playerNum 입력 함수
     public String[] playerNum(BufferedReader br) throws IOException {
 
         System.out.print("숫자를 입력해 주세요 : ");
@@ -54,7 +43,7 @@ public class Number {
 
     }
 
-    // player 세자리 입력 함수
+    // playerNum이 Exception 생길때 예외처리 함수
     private String[] ExceptionPlayerNum(String[] num) {
 
         if (num.length != 3) {
