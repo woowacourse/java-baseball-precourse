@@ -8,6 +8,7 @@
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Baseball {
     int[] computer = new int[3];
@@ -32,6 +33,23 @@ public class Baseball {
             index = rand.nextInt(8 - j);
             this.computer[j] = numbers.get(index);
             numbers.remove(index);
+        }
+    }
+
+    public void getUserInput() {
+        int userInput;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("숫자를 입력해주세요 : ");
+        userInput = scan.nextInt();
+
+        this.parseUserInput(userInput, this.user.length);
+    }
+
+    private void parseUserInput(int userInput, int inputSize) {
+        for (int i = inputSize - 1; i >= 0; i--) {
+            this.user[i] = userInput % 10;
+            userInput = userInput / 10;
         }
     }
 }
