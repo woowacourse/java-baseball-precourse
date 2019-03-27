@@ -75,9 +75,9 @@ class Game {
         final int CYCLE = myNumbers.length;
         int strike = 0;
         int ball = 0;
-        String strikeString;
-        String space;
-        String ballString;
+        final String strikeString;
+        final String space;
+        final String ballString;
 
         for (int i = 0; i < yourNumbers.length; i++) {
             if (myNumbers[i / CYCLE] == yourNumbers[i % CYCLE]) {
