@@ -105,12 +105,19 @@ public class Game {
                                 ||input.charAt(1)<'1' || input.charAt(1)>'9'
                                 ||input.charAt(2)<'1' || input.charAt(2)>'9')
                                         throw new inputNumberNaturalNumberException();
+                        if(input.charAt(0) == input.charAt(1)
+                                ||input.charAt(0) == input.charAt(2)
+                                ||input.charAt(1) == input.charAt(2))
+                                        throw new inputNumberOverlapException();
                 }catch(StringIndexOutOfBoundsException e){
                         System.err.println("입력 수 오류");
                         return false;
                 }
                 catch(inputNumberNaturalNumberException e){
                         System.err.println("입력 값 오류");
+                        return false;
+                }catch(inputNumberOverlapException e){
+                        System.err.println("중복 입력 오류");
                         return false;
                 }
                 this.playerNumber = new Number(input.charAt(0) - '0',
@@ -121,6 +128,10 @@ public class Game {
 
         /*세자리 숫자를 입력 받을 때의 예외처리 - 자연수 이외의 값이 입력 된 경우*/
         public class inputNumberNaturalNumberException extends RuntimeException{
+        }
+
+        /*세자리 숫자를 입력 받을 때의 예외처리 - 중복 숫자 오류*/
+        public class inputNumberOverlapException extends RuntimeException{
         }
 
         /*컴퓨터의 숫자와 사용자의 입력 숫자를 비교*/
