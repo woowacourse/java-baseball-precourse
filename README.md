@@ -60,6 +60,15 @@ Version 1.0.0
          * int[] makeNumArray() -> receiveNum()의 리턴값을 배열로 리턴
     * Variable :
 
+## Class Referee
+* 심판 - Stage 클래스의 check메소드를 도와 스트라이크와 볼에 대한 판단
+    * Class :
+    * Method :
+         * int countStrike() -> receiveNum()의 리턴값을 배열로 리턴
+         * int countBall() -> receiveNum()의 리턴값을 배열로 리턴
+         * int indexOf() -> receiveNum()의 리턴값을 배열로 리턴
+    * Variable :
+
 기능 단위 Commit 체크
 ---------------------
 - [ x] 인터페이스 구현하기
@@ -68,6 +77,6 @@ Version 1.0.0
 - [ x] 정답 시도
 - [ x] 정답 비교
 - [ x] 문제에 대한 정답 결과 출력
-- [ ] 정답 시 재시작
-- [ ] 정답 시 게임 종료
+- [ x] 정답 시 재시작
+- [ x] 정답 시 게임 종료
 

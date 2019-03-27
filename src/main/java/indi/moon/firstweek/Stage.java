@@ -14,6 +14,10 @@ public class Stage implements Stageface {
         while(true) {
             int[] answer = user.receiveNum();
             int[] result = check(problem,answer);
+            if(result[0] == 3){
+                System.out.println("정답을 맞췄습니다.");
+                break;
+            }
             checkLog(result);
         }
     }

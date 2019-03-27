@@ -8,9 +8,14 @@ public class Index implements Indexface {
 
         Index index = new Index();
         Stage stage = new Stage();
-        String commend = index.start();
-        while(!commend.equals(endCommend)) {
-            stage.play(commend);
+
+        while(true) {
+            String commend = index.start();
+            if(commend.equals(endCommend)){
+                break;
+            }else {
+                stage.play(commend);
+            }
         }
         index.end();
     }
