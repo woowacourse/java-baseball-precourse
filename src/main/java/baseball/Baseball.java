@@ -1,123 +1,112 @@
+/*
+* Baseball
+*
+* Ver 1.0
+*
+* Mar 25 2019
+*
+* Copyright 2019 KKW
+*/
+
 package baseball;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
-class Baseball {
+
+public class Baseball {
     public static void main(String[] args) {
         new Game();
     }
 }
 
+
 class Game {
-    Scanner scanner = new Scanner(System.in);
-    int[] myNumbers = new int[3]; // 사용자 입력 숫자
-    int[] yourNumbers = {1, 2, 3, 4, 5, 6, 7, 8, 9}; // 컴퓨터 랜덤 숫자, 섞은 후 앞 3자리만 사용
-    int state = 1; // 상태 변수, 0 : 종료, 1 : 초기화, 2 : 게임 한 판, 3 : 종료 혹은 재시작 선택
+    private Scanner scanner = new Scanner(System.in);
+    private int[] myNumbers = new int[3];
+    private int[] yourNumbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     Game() {
-        while (state > 0) {
-            loop();
-        }
+        initGame();
     }
 
-    private void loop() { // 상태에 따른 반복
-        switch (state) {
-            case 1 :
-                init();
-                break;
-            case 2 :
-                input();
-                break;
-            case 3 :
-                choice();
-                break;
-            default :
-                state = 0;
-                break;
-        }
-    }
-
-    private void init() { // 컴퓨터 초기화
+    private void initGame() {
         for (int i = 0; i < 8; i++) {
-            final int j = (int)(Math.random() * (8 - i)) + 2;
+            final int j = (int) (Math.random() * (8 - i)) + 1;
             final int temp = yourNumbers[i];
             yourNumbers[i] = yourNumbers[j];
             yourNumbers[j] = temp;
         }
-        state = 2;
+        numbersInput();
     }
 
-    private void input() { // 사용자 입력
-        boolean test = true;
-        int digits = 0;
+    private void numbersInput() {
+        int input = 0;
+
         System.out.println("숫자를 입력해주세요 : ");
         try {
-            digits = scanner.nextInt();
+            input = scanner.nextInt();
+            myNumbers[0] = input / 100;
+            myNumbers[1] = input % 100 / 10;
+            myNumbers[2] = input % 10;
+            if (input < 123 || input > 987
+                    || myNumbers[0] == myNumbers[1]
+                    || myNumbers[1] == myNumbers[2]
+                    || myNumbers[2] == myNumbers[0]) {
+                System.out.println("잘못된 입력입니다.");
+                numbersInput();
+            } else {
+                play();
+            }
         } catch (InputMismatchException e) {
             scanner.next();
-           test = false;
-        }
-        if (digits < 123 || digits >= 1000) {
-            test = false;
-        } else {
-            myNumbers[0] = digits / 100;
-            myNumbers[1] = digits % 100 / 10;
-            myNumbers[2] = digits % 10;
-            if (myNumbers[0] == myNumbers[1] || myNumbers[1] == myNumbers[2] || myNumbers[2] == myNumbers[0]) {
-                test = false;
-            }
-        }
-        if (test) {
-            play();
-        } else {
             System.out.println("잘못된 입력입니다.");
+            numbersInput();
         }
     }
 
-    private void play() { // 게임 진행
+    private void play() {
         int strike = 0;
         int ball = 0;
+
         for (int i = 0; i < 9; i++) {
             if (myNumbers[i / 3] == yourNumbers[i % 3]) {
-                int temp = (i / 3) == (i % 3) ? strike++ : ball++;
+                int temp = (i / 3 == i % 3) ? strike++ : ball++;
             }
         }
         if (strike + ball == 0) {
             System.out.println("낫싱");
+            numbersInput();
         } else {
-            String strikeString = strike > 0 ? strike + " 스트라이크" : "";
-            String space = strike > 0 && ball > 0 ? " " : "";
-            String ballString = ball > 0 ? ball + "볼" : "";
+            String strikeString = (strike > 0) ? strike + " 스트라이크" : "";
+            String space = (strike > 0 && ball > 0) ? " " : "";
+            String ballString = (ball > 0) ? ball + "볼" : "";
             System.out.println(strikeString + space + ballString);
             if (strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                state = 3;
+                commandInput();
+            } else {
+                numbersInput();
             }
         }
     }
 
-    private void choice() { // 게임 종료 후 재시작 혹은 완전 종료 선택
+    private void commandInput() {
+        int input = 0;
+
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int command = 0;
-        boolean test = true;
         try {
-            command = scanner.nextInt();
-            if (command != 1 && command != 2) {
-                test = false;
+            input = scanner.nextInt();
+            if (input == 1) {
+                initGame();
+            } else if (input != 2) {
+                System.out.println("잘못된 입력입니다.");
+                commandInput();
             }
         } catch (InputMismatchException e) {
             scanner.next();
-            test = false;
-        }
-        if (test) {
-            if (command == 1) {
-                state = 1;
-            } else {
-                state = 0;
-            }
-        } else {
             System.out.println("잘못된 입력입니다.");
+            commandInput();
         }
     }
 }
