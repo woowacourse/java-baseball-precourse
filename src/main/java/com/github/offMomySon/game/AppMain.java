@@ -8,13 +8,11 @@
  * Copyright (c) 2019 Jihun oh.
  * All rights reserved.
  */
-
 package com.github.offMomySon.game;
 
 import com.github.offMomySon.game.baseball.BallType;
 import com.github.offMomySon.resource.Computer;
 import com.github.offMomySon.resource.User;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;

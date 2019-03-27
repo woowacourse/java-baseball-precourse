@@ -8,7 +8,6 @@
  * Copyright (c) 2019 Jihun oh.
  * All rights reserved.
  */
-
 package com.github.offMomySon.game.baseball;
 
 /**
