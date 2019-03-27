@@ -11,6 +11,10 @@ public class Feature {
     public int checkNum(HashMap hashMap, String[] playerNum){
         int strike = 0, ball = 0, nothing=0;
 
+        if(playerNum[0].equals("0")){
+            return -1;
+        }
+
         for(int i = 0 ; i < playerNum.length ; i++){
             if(!hashMap.containsValue(Integer.parseInt(playerNum[i]))){
                 nothing++;

@@ -4,9 +4,17 @@ import java.util.HashMap;
 
 public class Number {
     // 클래스 안에 클래스 holder를 두는 Singleton
-    private Number() { hashMap = new HashMap<>(); }
-    private static class NumberHolder { public static final Number INSTANCE = new Number();}
-    public static Number getInstance() { return NumberHolder.INSTANCE; }
+    private Number() {
+        hashMap = new HashMap<>();
+    }
+
+    private static class NumberHolder {
+        public static final Number INSTANCE = new Number();
+    }
+
+    public static Number getInstance() {
+        return NumberHolder.INSTANCE;
+    }
 
     private HashMap<Integer, Integer> hashMap;
 
@@ -38,38 +46,41 @@ public class Number {
         return false;
     }
 
-    // player 세자리 입력 함수
-    public String[] playerNum(BufferedReader br) {
+    public String[] playerNum(BufferedReader br) throws IOException {
+
         System.out.print("숫자를 입력해 주세요 : ");
-        try {
-            String[] num = br.readLine().split("");
+        String[] num = br.readLine().split("");
+        return Number.getInstance().ExceptionPlayerNum(num);
 
-            // num의 길이가 3이 안될경우 예외처리
-            if (num.length != 3) {
-                System.out.println(ErrorMessage.LENGTH_ERROR.getErrorMessage());
-                return playerNum(br);
-            }
+    }
 
-            // 1~9까지의 숫자가 안올경우 예외처리
-            for (String data : num) {
-                char charData = data.charAt(data.length() - 1);
-                if (charData <= 48 || charData >= 58) {
-                    System.out.println(ErrorMessage.NUMBER_FORMAT_ERROR.getErrorMessage());
-                    return playerNum(br);
-                }
-            }
+    // player 세자리 입력 함수
+    private String[] ExceptionPlayerNum(String[] num) {
 
-            // 중복일경우 예외처리
-            if (num[0].equals(num[1]) || num[1].equals(num[2]) || num[0].equals(num[2])) {
-                System.out.println(ErrorMessage.OVERLAP_ERROR.getErrorMessage());
-                return playerNum(br);
-            }
-
+        if (num.length != 3) {
+            System.out.println(ErrorMessage.LENGTH_ERROR.getErrorMessage());
+            num[0] = "0";
             return num;
-        } catch (IOException e) {
-            System.out.println(ErrorMessage.IOEXCEPTION_ERROR.getErrorMessage());
-            return playerNum(br);
         }
+
+        // 1~9까지의 숫자가 안올경우 예외처리
+        for (String data : num) {
+            char charData = data.charAt(data.length() - 1);
+            if (charData <= 48 || charData >= 58) {
+                System.out.println(ErrorMessage.NUMBER_FORMAT_ERROR.getErrorMessage());
+                num[0] = "0";
+                return num;
+            }
+        }
+
+        // 중복일경우 예외처리
+        if (num[0].equals(num[1]) || num[1].equals(num[2]) || num[0].equals(num[2])) {
+            System.out.println(ErrorMessage.OVERLAP_ERROR.getErrorMessage());
+            num[0] = "0";
+            return num;
+        }
+
+        return num;
     }
 
 }
