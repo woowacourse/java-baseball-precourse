@@ -137,4 +137,18 @@ public class BaseBallGame {
     public void showMessage(String msg) {
         System.out.println(msg);
     }
+
+    /** 게임 결과를 사용자에게 보여주는 기능 */
+    public void showGameResult() {
+        String outPutString = "";
+        if(this.strike > 0) { outPutString += this.strike+" 스트라이크 "; }
+        if(this.ball > 0) { outPutString += this.ball+" 볼"; }
+        if(this.strike == 0 && ball == 0) { outPutString = "낫싱";}
+        if(this.strike == 3) {
+            outPutString += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+                    + "\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+        }
+
+        this.showMessage(outPutString);
+    }
 }
