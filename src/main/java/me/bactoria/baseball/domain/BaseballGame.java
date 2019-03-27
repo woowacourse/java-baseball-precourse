@@ -24,5 +24,6 @@ public class BaseballGame {
                 UserInterface.printHint(computer.getHint(player.getPlayerNumber()));
             }
         }
+        UserInterface.printGameEnd();
     }
 }

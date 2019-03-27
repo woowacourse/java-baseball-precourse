@@ -11,6 +11,9 @@ public interface UserInterface {
         return scanner.nextInt();
     }
 
+    static void printGameEnd() {
+        System.out.println(Constant.NUMBER_OF_DIGITS + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
     static void printHint(String hint) {
         System.out.println(hint);
     }
