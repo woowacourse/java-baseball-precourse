@@ -88,4 +88,4 @@
     * private :: askNumber() : 답변자(사용자)에게 정답을 요구한다.
     * private :: askRestart() : 답변자(사용자)에게 숫자야구게임 재시작을 묻는다.
     * private :: printScore() : 답변자(사용자)에게 게임 결과를 보여준다.
-    * private :: checkResult() : 게임의 결과와 사용자의 결정에 따라 게임종료를 결정한다.
+    * private :: checkGameEnd() : 게임을 종료(모두 맞음)할 수 있는지 확인한다.
