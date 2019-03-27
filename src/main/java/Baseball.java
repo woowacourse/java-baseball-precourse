@@ -23,7 +23,7 @@ public class Baseball {
         comNum = generateRandomNumber();
         while (inputFlag) {
             userNum = receiveInput();
-            inputFlag = calcSB();      // check 3 strike
+            inputFlag = calcSB(comNum, userNum);      // check 3 strike
         }
     }
 
@@ -122,5 +122,26 @@ public class Baseball {
         return ((strike != 3) ? true : false);
     }
 
+    /*
+     * Method for restart check
+     * Restart: true, End Game: false
+     */
+    private static boolean checkRestart() {
+        int num;        // User input
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("세개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            num = s.nextInt();
+            if (num == 1) {
+                return true;
+            } else if (num == 2) {
+                return false;
+            } else {
+                System.out.println("잘못된 입력입니다!");
+            }
+        }
+    }
 
 }
