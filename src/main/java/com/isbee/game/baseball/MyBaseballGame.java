@@ -14,9 +14,21 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MyBaseballGame implements BaseballGame {
 
     private BaseballInfo baseballInfo;
+    private BaseballInput baseballInput;
 
     public MyBaseballGame() {
         baseballInfo = BaseballInfo.INSTANCE;
+        baseballInput = new UserInput(baseballInfo.getDigitNum());
+    }
+
+    /**
+     * 플레이어의 숫자를 BaseballInput에게 위임하여 가져온다
+     *
+     * @return 플레이어 입력 숫자
+     */
+    @Override
+    public int getUserNum() {
+        return baseballInput.getUserNum();
     }
 
     /**
@@ -69,5 +81,14 @@ public class MyBaseballGame implements BaseballGame {
                 return r;
             }
         }
+    }
+
+    /**
+     * 야구 게임 재시작 여부를 BaseballInput에 위임하여 리턴
+     *
+     * @return 재시작 여부
+     * */
+    private boolean playMoreOrNot() {
+        return baseballInput.playMoreOrNot();
     }
 }
