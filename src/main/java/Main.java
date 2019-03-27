@@ -1,17 +1,19 @@
 public class Main {
     public static void main(String[] args) {
-        Baseball baseball = new Baseball();
+        boolean play = true;
 
-        for (int i = 0; i < 3; i++) {
-            System.out.println(baseball.computer.get(i));
-        }
+        while (play) {
+            Baseball baseball = new Baseball();
 
-        baseball.getUserInput();
+            boolean result = false;
 
-        baseball.checkResult();
+            while (!result) {
+                baseball.getUserInput();
 
-        for (int j = 0; j < 3; j++) {
-            System.out.println(baseball.user.get(j));
+                result = baseball.checkResult();
+            }
+
+            play = baseball.choose();
         }
     }
 }

@@ -21,7 +21,6 @@ public class Baseball {
 
     private void getRandomNumbers() {
         Random rand = new Random();
-
         ArrayList<Integer> numbers = new ArrayList<>();
 
         for (int i = 1; i < 10; i++) {
@@ -38,8 +37,9 @@ public class Baseball {
     }
 
     public void getUserInput() {
-        int userInput;
         Scanner scan = new Scanner(System.in);
+
+        int userInput;
 
         if (!user.isEmpty()) {
             user.clear();
@@ -93,6 +93,23 @@ public class Baseball {
         }
         if (ball > 0) {
             System.out.println(ball + " 볼");
+        }
+    }
+
+    public boolean choose() {
+        Scanner scan = new Scanner(System.in);
+
+        int choice;
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        choice = scan.nextInt();
+
+        if (choice == 1) {
+            return true;
+        } else if (choice == 2) {
+            return false;
+        } else {
+            return this.choose();
         }
     }
 }
