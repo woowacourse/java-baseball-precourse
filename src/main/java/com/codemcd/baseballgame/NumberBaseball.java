@@ -108,4 +108,24 @@ public class NumberBaseball {
         }
     }
 
+    public boolean isContinue() {
+
+        Scanner scanner = new Scanner(System.in);
+        String inputReGameFlag;
+        int reGameFlag;
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        inputReGameFlag = scanner.nextLine();
+
+        reGameFlag = Integer.parseInt(inputReGameFlag);
+
+        if (reGameFlag == 1) {
+            return true;
+        } else if (reGameFlag == 2) {
+            return false;
+        }
+
+        return false;
+    }
+
 }

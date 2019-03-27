@@ -9,6 +9,7 @@ public class Main {
         newGame.inputUserNumber();
         newGame.matchUserAndComputer();
         newGame.printMatchResult();
+        newGame.isContinue();
 
         System.out.println("게임이 종료되었습니다.");
 
