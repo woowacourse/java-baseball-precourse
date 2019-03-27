@@ -1,7 +1,22 @@
+/*
+ * Game
+ *
+ * @version 1.1
+ *
+ * @date 2019-3-28
+ *
+ * Copyright (c) 2019 Jihun oh.
+ * All rights reserved.
+ */
+
 package com.github.offMomySon.game;
 
 import com.github.offMomySon.resource.Computer;
 import com.github.offMomySon.resource.User;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -11,7 +26,6 @@ import com.github.offMomySon.resource.User;
  * Random 수와 사용자 입력값을 비교하여 BallType 을 통해 결과값을 받아온다.
  * User Class를 통해 게임 진행여부를 묻고 받아온다.
  * @pakage : com.github.offMomySon.game
- * @authon : 오지훈
  */
 public class Game {
     private Computer computer;
@@ -35,8 +49,7 @@ public class Game {
      */
     public void run() {
         while (true) {
-            request_input();
-
+            request_Input();
         }
     }
 
@@ -44,10 +57,8 @@ public class Game {
      * @desc : 사용자로 부터 입력을 요청,
      * 잘못된 수 입력시, 재입력 요청
      */
-    private void request_input() {
+    private void request_Input() {
         System.out.print("숫자를 입력해주세요 : ");
         user.inputNums();
     }
-
-
 }

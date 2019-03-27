@@ -1,3 +1,13 @@
+/*
+ * User
+ *
+ * @version 1.1
+ *
+ * @date 2019-3-28
+ *
+ * Copyright (c) 2019 Jihun oh.
+ * All rights reserved.
+ */
 package com.github.offMomySon.resource;
 
 import java.util.*;
@@ -8,7 +18,6 @@ import java.util.*;
  * 사용자로 부터 게임 시작, 종료를 입력 받는다.
  * 입력 받은 수를 List와 HashMap 을 이용하여 저장한다.
  * @pakage : com.github.offMomySon.resource
- * @authon : 오지훈
  */
 public class User {
     static Scanner scanner = new Scanner(System.in);
@@ -26,8 +35,17 @@ public class User {
      */
     public void inputNums() {
         String num_string;
+        initValue();
         num_string = inputNumStirng();
         saveNums(num_string);
+    }
+
+    /**
+     * @desc : 이미 입력되었던 값들 초기화
+     */
+    public void initValue() {
+        numsMap.clear();
+        numsList.clear();
     }
 
     /**

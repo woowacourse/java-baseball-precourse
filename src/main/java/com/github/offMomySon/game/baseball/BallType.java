@@ -1,3 +1,14 @@
+/*
+ * BallType
+ *
+ * @version 1
+ *
+ * @date 2019-3-28
+ *
+ * Copyright (c) 2019 Jihun oh.
+ * All rights reserved.
+ */
+
 package com.github.offMomySon.game.baseball;
 
 /**
@@ -5,7 +16,6 @@ package com.github.offMomySon.game.baseball;
  * 사용자의 입력값과 컴퓨터의 입력값을 비교한, Strike, Ball 개수를 인스턴스 변수로 가진다.
  * Strike, Ball 개수에 따라 toString() 메서드를 통해 사용자에게 게임의 결과를 String 형식으로 반환한다.
  * @pakage : com.github.offMomySon.game.baseball
- * @authon : 오지훈
  */
 public class BallType {
     private int strike;

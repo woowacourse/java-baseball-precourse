@@ -1,3 +1,14 @@
+/*
+ * AppMain
+ *
+ * @version 1
+ *
+ * @date 2019-3-28
+ *
+ * Copyright (c) 2019 Jihun oh.
+ * All rights reserved.
+ */
+
 package com.github.offMomySon.game;
 
 import com.github.offMomySon.game.baseball.BallType;
@@ -11,7 +22,6 @@ import java.util.Set;
 /**
  * @desc : AppMain Class
  * @pakage : com.github.offMomySon.game
- * @authon : 오지훈
  */
 public class AppMain {
     /**

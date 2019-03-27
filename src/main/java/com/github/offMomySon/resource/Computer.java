@@ -1,3 +1,13 @@
+/*
+ * Computer
+ *
+ * @version 1
+ *
+ * @date 2019-3-28
+ *
+ * Copyright (c) 2019 Jihun oh.
+ * All rights reserved.
+ */
 package com.github.offMomySon.resource;
 
 import java.util.ArrayList;
@@ -9,7 +19,6 @@ import java.util.List;
  * 컴퓨터가 가져야 하는 랜덤한 수 3개를 생성하며,
  * 램덤한 수 3개를 List와 HashMap 을 이용하여 저장한다.
  * @pakage : com.github.offMomySon.resource
- * @authon : 오지훈
  */
 public class Computer {
     private HashMap<Integer, Integer> numsMap;
@@ -30,12 +39,9 @@ public class Computer {
 
             if (is_keyValid(new_number) == false)
                 continue;
-            numsMap.put(new_number, new_number);
-        }
 
-        for (Integer num : numsMap.keySet()) {
-            System.out.println(num);
-            numsList.add(num);
+            numsList.add(new_number);
+            numsMap.put(new_number, new_number);
         }
     }
 
