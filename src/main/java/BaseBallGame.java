@@ -53,6 +53,15 @@ public class BaseBallGame {
         }
     }
 
+    /** 게임 시작 */
+    public void start(){
+        while(this.hasNextGame) {
+            this.init();
+            this.doGame();
+            while(!this.setNextGameState());
+        }
+    }
+
     /** 임의의 3수를 저장 */
     public void setRandomNum() {
         for(int i=0; i<3; i++) {
