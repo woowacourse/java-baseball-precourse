@@ -1,4 +1,4 @@
-package game;
+package game.model;
 
 import util.RandomNumberGenerator;
 
@@ -11,7 +11,6 @@ public class Baseball {
     public final static int BASIC_NUMBER_MAX = 9;
 
     private int[] numbers;
-    private boolean isDone = false;
 
     /***
      * 랜덤 숫자를 생성하고 게임을 시작한다. 숫자의 개수, 숫자의 범위는 기본값을 따른다.
@@ -37,7 +36,7 @@ public class Baseball {
     }
 
     /**
-     * 한 세트를 실행한다. 한 세트는 사용자가 입력한 숫자들과 생성된 숫자들을 비교하여 본 게임의 규칙에
+     * 게임 한 세트를 실행한다. 한 세트는 사용자가 입력한 숫자들과 생성된 숫자들을 비교하여 본 게임의 규칙에
      * 따라 힌트에 해당하는 결과를 반환하는 과정이다. 규칙은를 다음은 참조하라.
      * https://github.com/Delf-Lee/java-baseball/blob/delf/README.md
      *
@@ -49,7 +48,6 @@ public class Baseball {
         int ball = 0;
 
         /* Note: 성능 이슈를 감안하여 문자열이 아닌 배열로 처리한다. */
-
         for (int i = 0; i < inputNumbers.length; i++) {
             int index = findIndex(inputNumbers[i]);
             if (index != -1 && index == i) {
@@ -64,8 +62,8 @@ public class Baseball {
     }
 
     /**
-     * @param num
-     * @return
+     * @param num 사용자가 입력한 임의의 숫자 중 임의의 정수
+     * @return num이 numbers에 존재하면 해당 인덱스, 없으면 -1을 반환한다.
      */
     private int findIndex(int num) {
         for (int i = 0; i < numbers.length; i++) {
