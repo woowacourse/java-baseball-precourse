@@ -15,7 +15,7 @@ public class IntegerUtils {
         return false;
     }
 
-    public static int[] to1DigitArray(int num) {
+    public static int[] toArray(int num) {
         int numLength = getLength(num);
         int[] numbers = new int[numLength];
 

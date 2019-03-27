@@ -13,8 +13,8 @@ public class Hint {
     }
 
     private void calculateStrikeAndBallCounts(int answerNumber, int guessNumber) {
-        int[] answerArray = IntegerUtils.to1DigitArray(answerNumber);
-        int[] guessArray = IntegerUtils.to1DigitArray(guessNumber);
+        int[] answerArray = IntegerUtils.toArray(answerNumber);
+        int[] guessArray = IntegerUtils.toArray(guessNumber);
 
         for (int i = 1; i <= Constant.NUMBER_OF_DIGITS; i++) {
             for (int j = 1; j <= Constant.NUMBER_OF_DIGITS; j++) {
