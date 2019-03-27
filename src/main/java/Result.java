@@ -24,6 +24,10 @@ public class Result {
 		ball++;
 	}
 	
+	public boolean isCollect() {
+		return strike == 3;
+	}
+	
 	public boolean isNotting() {
 		return (strike == 0) && (ball == 0);
 	}

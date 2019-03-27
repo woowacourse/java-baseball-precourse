@@ -16,26 +16,12 @@ public class Baseball {
 		
 		computer.generateNumbers();
 		do {
-			player.inputNumbers();
-			
-			if (player.isCollectLength()) {
-				player.convertStringToCharacter();
-			} else {
-				System.out.println("1-9까지 서로 다른 세개의 수를 입력하세요.");
-				continue;
-			}
-			
-			if (player.isNumber() && (!player.hasDuplicated())) {
-				player.convertCharacterToInt();
-			} else {
-				System.out.println("1-9까지 서로 다른 세개의 수를 입력하세요.");
-				continue;
-			}
-			break;
-		} while(true);
-		
-		result = baseball.compareNumbers(computer.numbers, player.numbers);
-		result.print();
+			baseball.inputPlayerNumbers(player);
+			result = baseball.compareNumbers(computer.numbers, player.numbers);
+			result.print();
+		} while (!result.isCollect());
+
+		System.out.println("3개의 숫자를 맞추셧습니다! 게임종료");
 	}
 	
 	public Result compareNumbers(int[] computerNumbers, int[] playerNumbers) {
@@ -66,5 +52,26 @@ public class Baseball {
 		}
 		
 		return result;
+	}
+	
+	public void inputPlayerNumbers(Player player) {
+		do {
+			player.inputNumbers();
+			
+			if (player.isCollectLength()) {
+				player.convertStringToCharacter();
+			} else {
+				System.out.println("1-9까지 서로 다른 세개의 수를 입력하세요.");
+				continue;
+			}
+			
+			if (player.isNumber() && (!player.hasDuplicated())) {
+				player.convertCharacterToInt();
+			} else {
+				System.out.println("1-9까지 서로 다른 세개의 수를 입력하세요.");
+				continue;
+			}
+			break;
+		} while(true);
 	}
 }
