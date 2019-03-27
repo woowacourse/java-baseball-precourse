@@ -1,4 +1,13 @@
-//enum class 로 예외처리 메세지 만들기
+/*
+ * 클래스 이름: ErrorMessage.java
+ * 버전 정보: 1.0.0
+ * 날짜: 2019/03/27
+ * Copyright 2018 Inkwon Lee
+ */
+
+/*
+ * enum을 통해 errormessage 들을 출력
+ */
 public enum ErrorMessage {
 
     // 에러메세지 선언

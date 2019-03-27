@@ -1,8 +1,18 @@
+/*
+ * 클래스 이름: Main.java
+ * 버전 정보: 1.0.0
+ * 날짜: 2019/03/27
+ * Copyright 2018 Inkwon Lee
+ */
+
 import java.io.IOException;
 
+/*
+ * 메인 함수만 구현
+ * 플레이 게임 함수를 불러온다.
+*/
 public class Main {
 
-    // 메인 함수
     public static void main(String[] args) {
         PlayGame playGame = new PlayGame();
         try {
