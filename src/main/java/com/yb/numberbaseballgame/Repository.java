@@ -70,4 +70,33 @@ public class Repository implements Service {
 		}
 	}
 
+	/*
+	 * Computer 숫자를 생성하는 함수
+	 * 
+	 * @param comNumber[0],[1],[2] 자리에 1~9자리 숫자 생성
+	 * 
+	 * Math.random() 함수는 0.0 ~ 1.0 값을 생성하기 때문에 *10를 증가 후 범위를 0~10 만들어 0, 10만 제외한
+	 * 1~9의 수 를 comNumber[0],[1],[2] 자리에 저장
+	 * 
+	 */
+	public void createNumber(Number comNumber) {
+
+		int index = 0;
+		int value = 0;
+		boolean[] visit = new boolean[10];
+
+		while (index < 3) {
+
+			value = (int) (Math.random() * 10);
+
+			if (value == 0 || value == 10 || visit[value]) {
+				continue;
+			} else {
+				comNumber.setNumber(index, value);
+				visit[value] = true;
+				index++;
+			}
+		}
+
+	}
 }
