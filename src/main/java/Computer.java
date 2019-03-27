@@ -9,6 +9,9 @@ import java.util.Random;
 public class Computer {
     /*클래스의 구현 주석*/
 
+    /** 100의 자리, 10의 자리, 1의 자리 등 총 3개의 숫자를 일컫는 변수 **/
+    static final int NUM_OF_BALLS = 3;
+
     /** 컴퓨터가 뽑은 숫자를 자릿수로 나눠서 보관하는 변수 **/
     private int[] comNumArray;
 
@@ -19,7 +22,7 @@ public class Computer {
      * comNumArray에 자릿수만큼 공간을 할당한다.
      */
     public Computer() {
-        this.comNumArray = new int[3];
+        this.comNumArray = new int[NUM_OF_BALLS ];
     }
 
     /**
