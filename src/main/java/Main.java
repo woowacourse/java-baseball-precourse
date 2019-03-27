@@ -24,15 +24,22 @@ public class Main {
         /*3 스트라이크를 확인하는 변수*/
         int finishedFlag = 0;
 
-
-        com.makeRandomNum();
-        com.showNum();
-
         Scanner sc = new Scanner(System.in);
+        
+        /*컴퓨터가 랜덤 숫자를 만든다.*/ 
+        com.makeRandomNum();
+        
+        /*테스트용으로, 컴퓨터가 만든 숫자를 보여준다. */
+        //com.showNum();
 
+        /*
+         * 사용자가 3 스트라이크 이후 게임을 계속하는지 여부를 확인하여
+         * 아니라면 이 루프를 탈출한다.
+         */
         while(continueFlag){
+        
             System.out.print("숫자를 입력해주세요: ");
-
+            /*사용자에게 숫자를 입력받는다. */
             humanNum = sc.nextInt();
             human.setInputNum(humanNum);
             if(human.isValid() != true){
@@ -41,12 +48,20 @@ public class Main {
             }
 
             finishedFlag = game.judgingScore(human.getHumanNumArray(),com.getComNumArray());
+            
+            /*추측이 끝나고 스트라이크와 볼을 보여준다. */
             game.showScore();
+            
+            /*추측이 끝나고 다시 게임을 초기화한다. */
             game.initializeAgain();
 
+            /*3 스트라이크라면 */
             if(finishedFlag == 1){
+                /*게임을 리셋 */
                 com.reset();
-                com.showNum();
+                //com.showNum();
+                
+                /*사용자에게 게임을 계속하는지 물어본다. */
                 continueFlag = game.continueGame();
                 continue;
             }
