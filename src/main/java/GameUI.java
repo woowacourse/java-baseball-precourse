@@ -16,7 +16,7 @@ public class GameUI {
 
 	/**
 	 * 질문자(컴퓨터)와 답변자(사용자)를 생성한 후 게임에 참여한다.
-	 * */
+	 */
 	public static void main(String[] args) {
 		Questioner questioner = new Questioner(); // 질문자(컴퓨터)
 		Answerer answerer = new Answerer(); // 답변자(사용자)
@@ -26,9 +26,10 @@ public class GameUI {
 
 	/**
 	 * 질문자(컴퓨터)와 답변자(사용자)가 게임에 참여 후 진행한다.
+	 *
 	 * @param questioner 게임에 참여할 질문자(컴퓨터)
 	 * @param answerer 게임에 참여할 답변자(사용자)
-	 * */
+	 */
 	private static void run(Questioner questioner, Answerer answerer) {
 
 		/* 게임 참여 */
@@ -50,12 +51,13 @@ public class GameUI {
 				printScore( answerer.getScore() );
 
 				/* 사용자의 점수결과와 사용자의 결정에 따라 게임을 종료를 결정한다. */
-			} while ( checkGameEnd(game) && askRestart(game, sc) );
+			} while ( !checkGameEnd(game) ||  askRestart(game, sc) );
 		}
 	}
 
 	/**
-	 * 정답이 모두 맞아 게임을 종료할 수 있는지 확인한다.	 *
+	 * 정답이 모두 맞아 게임을 종료할 수 있는지 확인한다.
+	 *
 	 * @param game 진행중인 게임
 	 * @return 게임 종료 유무
 	 */
@@ -68,9 +70,10 @@ public class GameUI {
 
 	/**
 	 * 사용자에게 정답을 요구하고, 정답를 반환한다.
+	 *
 	 * @param sc 입력을 위한 Scanner 객체
 	 * @return 사용자가 입력한 3자리수
-	 * */
+	 */
 	private static String askNumber(Scanner sc) {
 
 		System.out.print("숫자를 입력해주세요: ");
@@ -80,8 +83,9 @@ public class GameUI {
 
 	/**
 	 * 게임 결과를 사용자에게 보여준다.
+	 *
 	 * @param score 사용자의 게임결과
-	 * */
+	 */
 	private static void printScore(Score score) {
 		if (score.isNothing()) {
 
@@ -104,11 +108,13 @@ public class GameUI {
 	}
 
 	/**
-	 * 사용자에게 재시작 여부를 묻는다.
+	 * 사용자에게 재시작 여부를 묻고 게임 재시작결정을 한다.
+	 *
+	 * @param game 진행 중인 게임
 	 * @param sc 입력을 위한 Scanner 객체
 	 * @return 사용자의 재시작 여부
-	 * */
-	private static boolean askRestart(Scanner sc) {
+	 */
+	private static boolean askRestart(Game game, Scanner sc) {
 
 		boolean isRestart = false;
 		String flagNum; // 사용자가 입력한 숫자
@@ -118,8 +124,12 @@ public class GameUI {
 		flagNum = sc.nextLine();
 
 		if (flagNum.equals("1")) {
+
+			/* 게임을 재시작 한다. */
+			game.getQuestioner().setNumber();
 			isRestart = true;
 		} else if (flagNum.equals("2")) {
+
 			isRestart = false;
 		}
 
