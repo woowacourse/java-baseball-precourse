@@ -5,20 +5,27 @@
 ## 기능 목록
 
 - 유저 인터페이스
-    + 입력
-    + 출력
+    - 사용자 출력
+        + 숫자를 입력해주세요
+        + 게임 종료
+        + 힌트
+        + 리플레이 여부
+    - 사용자 입력
+        + guessNumber
+        + 리플레이 여부
 - Computer 인터페이스
+    + 정답 여부
+    + 힌트 얻기
 - Player 인터페이스
-- 게임 1회 진행 구현(Answer에 임의의 값 부여)
-    + RandomNumberGenerator
-- 게임 N회 진행 구현
-    + 게임 재시작 여부
+    + guessNumber setter
+    + guessNumber getter
+- 게임 1회 진행
+    + guessNumber 받기 `(a)`
+        * 정답 : 게임 종료
+        * 오답 : 힌트 출력 후, `(a)` 로 이동
+- 리플레이 구현 (게임 N회 진행)
 - Computer 클래스 구현
-    + answerNumber가 3자리가 아닐 경우 IllegalArgumentException
-    + answerNumber가 각 자리가 다른수가 아니면 IllegalArgumentException
-    + answerNumber에 0이 포함되어 있으면 IllegalArgumentException
+    + randomNumber(answer) 생성
 - Player 클래스 구현
-    + guessNumber가 3자리가 아닐 경우 IllegalArgumentException
-    + guessNumber가 각 자리가 다른수가 아니면 IllegalArgumentException
-    + guessNumber에 0이 포함되어 있으면 IllegalArgumentException
+    + guessNumber 주입 시 유효하지 않은 범위는 IllegalArgumentException
 
