@@ -1,6 +1,8 @@
 /*
- * Player.java
+ * Player.java    1.00  2019/03/27
  *
+ * copyright by yuyu154
+ * All rights reserved.
  */
 
 import java.util.Scanner;
@@ -11,7 +13,7 @@ import java.util.Scanner;
 public class Player {
 
 	/**
-	 * player.play() 함수를 반복하면서 게임을 진행
+	 * play() 함수를 반복하면서 게임을 진행
 	 * @param args
 	 */
 	public static void main(String args[]) {
@@ -27,8 +29,8 @@ public class Player {
 	 */
 	private void play() {
 		String randomNumber = NumberMaker.makeRandomNumber();
-		BaseBallGame game = new BaseBallGame(randomNumber);
 		String userInput = null;
+		BaseBallGame game = new BaseBallGame(randomNumber);
 
 		do {
 			userInput = getGameNumberInput();
@@ -38,7 +40,7 @@ public class Player {
 
 	/**
 	 * 게임을 다시 시작할 것인지 묻는 함수
-	 * @return
+	 * @return boolean
 	 */
 	private boolean askRestart() {
 		String input = null;
@@ -58,7 +60,7 @@ public class Player {
 
 	/**
 	 * 문자열을 입력받아 리턴하는 함수
-	 * @return input
+	 * @return String
 	 */
 	private String getInput() {
 		String input = null;
@@ -70,7 +72,7 @@ public class Player {
 
 	/**
 	 * 게임 중 3자리 숫자를 리턴하는 함수
-	 * @return
+	 * @return String
 	 */
 	private String getGameNumberInput() {
 		String gameInput = null;
