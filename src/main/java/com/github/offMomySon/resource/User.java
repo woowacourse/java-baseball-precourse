@@ -26,10 +26,18 @@ public class User {
      */
     public void inputNums() {
         String num_string;
-        num_string = getValid_NumStirng();
+        num_string = inputNumStirng();
 
-        for (int i = 0; i < num_string.length(); i++) {
-            int num = num_string.charAt(i) - '0';
+        saveNums(num_string);
+    }
+
+    /**
+     * 사용자로 부터 받아온 String 을 int로 변환하여 저장한다.
+     * @param input (1~9)까지의 3가지 수로 변환 가능한 String
+     */
+    private void saveNums(String input){
+        for (int i = 0; i < input.length(); i++) {
+            int num = input.charAt(i) - '0';
             numsMap.put(num, num);
             numsList.add(num);
         }
@@ -39,7 +47,7 @@ public class User {
      * @return (1 ~ 9)까지의 3가지 수로 변환가능한 String
      * @desc : 사용자로부터 변환가능한 String 을 입력받을 때까지 반복.
      */
-    private String getValid_NumStirng() {
+    private String inputNumStirng() {
         String num_string;
 
         System.out.print("숫자를 입력해주세요 : ");
@@ -61,22 +69,21 @@ public class User {
     private boolean isValidNums(String num_string) {
         HashSet<Integer> numsSet = new HashSet<>();
 
-        if (num_string.length() > 3)
+        if (num_string.length() > 3)                     //입력된 Stirng 의 길이가 3을 넘지 말아야 한다.
             return false;
-        for (int i = 0; i < num_string.length(); i++) {
+
+        for (int i = 0; i < num_string.length(); i++) {  //입력된 각각의 문자가 1~9 사이의 수여야 한다.
             int eachNum = num_string.charAt(i) - '0';
 
             if (eachNum <= 0 || eachNum >= 10)
                 return false;
-
             numsSet.add(eachNum);
         }
-
-        if (numsSet.size() != 3)
+        if (numsSet.size() != 3)                         // 입력된 숫자중에 중복된 숫자가 있으면 안된다.
             return false;
-
         return true;
     }
+
 
     /**
      * @return 유저가 입력한 (1~9)까지의 3가지 수를 List Class 로 Return
