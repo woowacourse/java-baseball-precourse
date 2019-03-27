@@ -13,7 +13,8 @@
   |*Game*|**checkNumber()**|숫자 검사|O|
   |*Game*|**printCorrect()**|정답 출력 화면|O|
   |*Game*|**countStrike()**|스타이크 수 셈|O|
-  |*Game*|**countBall()**|볼 수 |O|
+  |*Game*|**countBall()**|볼 수 셈|O|
+  |*Game*|**printResult()**|결과 출력|O|
   |*Number*|**getFirst()**|첫번째 숫자 읽어옴|O|
   |*Number*|**getSecond()**|두번째 숫자 읽어옴|O|
   |*Number*|**getThird()**|세번째 숫자 읽어옴|O|
