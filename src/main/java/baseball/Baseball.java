@@ -8,12 +8,10 @@ public class Baseball {
     private static final int COUNT_OF_NUMBERS = 3;
     private Scanner scan;
     private Integer[] com;
-    private int[] user;
 
     public Baseball() {
         scan = new Scanner(System.in);
         com = new Integer[COUNT_OF_NUMBERS];
-        user = new int[COUNT_OF_NUMBERS];
 
         menu();
     }
@@ -44,8 +42,8 @@ public class Baseball {
     public void startGame() {
         generateComNumbers();
 
-        if (getCorrectUserInput()) {
-            // user와 com 비교
+        while (true) {
+            int[] user = getCorrectUserInput();
 
         }
     }
@@ -53,14 +51,14 @@ public class Baseball {
     public void generateComNumbers() {
         Set<Integer> set = new LinkedHashSet<>();
 
-        while(set.size() != COUNT_OF_NUMBERS){
+        while (set.size() != COUNT_OF_NUMBERS) {
             set.add((int) (Math.random() * 9 + 1));
         }
 
         com = set.toArray(new Integer[set.size()]);
     }
 
-    public boolean getCorrectUserInput() {
+    public int[] getCorrectUserInput() {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = scan.next();
@@ -90,10 +88,11 @@ public class Baseball {
             }
 
             // generate user integer array from userInput
+            int[] user = new int[COUNT_OF_NUMBERS];
             for (int i = 0; i < userInput.length(); i++) {
                 user[i] = userInput.charAt(i) - '0';
             }
-            return true;
+            return user;
         }
     }
 
