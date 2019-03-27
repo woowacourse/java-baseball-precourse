@@ -40,10 +40,30 @@ public class Baseball {
     public void startGame() {
         int[] com = generateComNumbers();
 
-        while (true) {
+        int strike = 0;
+        int ball = 0;
+        while (strike != 3) {
             int[] user = getCorrectUserInput();
 
+            strike = countStrikes(com, user);
+            ball = countBalls(com, user);
+
+            if ((strike == 0) && (ball == 0)) {
+                System.out.println("낫싱");
+                continue;
+            }
+
+            if (strike != 0) {
+                System.out.print(strike + " 스트라이크 ");
+            }
+            if (ball != 0) {
+                System.out.print(ball + " 볼 ");
+            }
+            System.out.println();
         }
+
+        System.out.print(COUNT_OF_NUMBERS + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        pause();
     }
 
     public int[] generateComNumbers() {
@@ -132,6 +152,39 @@ public class Baseball {
         }
 
         return hasDuplicateCharacters(candidate.substring(1));
+    }
+
+    public int countStrikes(int[] com, int[] user) {
+        int ret = (com[0] == user[0]) ? 1 : 0;
+
+        // base case
+        if (user.length == 1) {
+            return ret;
+        }
+
+        int[] subCom = Arrays.copyOfRange(com, 1, com.length);
+        int[] subUser = Arrays.copyOfRange(user, 1, user.length);
+
+        return ret + countStrikes(subCom, subUser);
+    }
+
+    public int countBalls(int[] com, int[] user) {
+        int ret = 0;
+        for (int i = 0; i < com.length; i++) {
+            if ((com[i] == user[0]) && (i != com.length - user.length)) {
+                ret = 1;
+                break;
+            }
+        }
+
+        // base case
+        if (user.length == 1) {
+            return ret;
+        }
+
+        int[] subUser = Arrays.copyOfRange(user, 1, user.length);
+
+        return ret + countBalls(com, subUser);
     }
 
     public static void pause() {
