@@ -20,4 +20,5 @@ public interface Service {
 
 	void run();
 	void createNumber(Number comNumber);
+	void guideMessage(String message);
 }
