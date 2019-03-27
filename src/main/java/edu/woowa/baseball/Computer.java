@@ -1,5 +1,5 @@
 /*
- * @Computer.java		1.00 2019/03/26
+ * @Computer.java		1.01 2019/03/27
  * 
  * Copyright(c)2019 	HwiJin Hong.
  * All right reserved.
@@ -18,7 +18,7 @@ package edu.woowa.baseball;
 
 /**
  * 숫자 야구 게임의 상대방 역할을 하는 컴퓨터 클래스
- * @version 1.00 2019년 03월 26일
+ * @version 1.01 2019년 03월 27일
  * @author 홍휘진
  */
 public class Computer {
@@ -49,6 +49,7 @@ public class Computer {
 			arr[i] = 0;
 		}
 	}
+	
 	/**
 	 * 이전에 사용했던 데이터는 지우고,
 	 * 서로 다른 3가지 숫자를 생성하기 위한 메서드
@@ -80,14 +81,16 @@ public class Computer {
 			user[i] = userNum % 10;
 			userNum /= 10;
 		}
-		// 스트라이크
+		
+		/* 스트라이크의 개수 구하기 */
 		for (int i = 0; i < SIZE; i++) {
 			if (user[i] == arr[i]) {
 				result[0]++;
 				detect[i] = true;
 			}
 		}
-		// 볼
+		
+		/* 스트라이크가 아닌 것 중에서 볼의 개수 구하기 */
 		if (!detect[0]) {
 			if ((user[0] == arr[1]) || (user[0] == arr[2])) {
 				result[1]++;
@@ -103,8 +106,9 @@ public class Computer {
 				result[1]++;
 			}
 		}
-		// 아웃
-		result[2] = 3 - (result[0] + result[1]);
+		
+		/* 그 외의 것들은 모두 아웃 */
+		result[2] = SIZE - (result[0] + result[1]);
 		
 		return result;
 	}

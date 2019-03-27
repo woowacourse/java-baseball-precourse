@@ -1,5 +1,5 @@
 /*
- * @User.java		1.03 2019/03/27
+ * @User.java		1.04 2019/03/27
  * 
  * Copyright(c)2019 	HwiJin Hong.
  * All right reserved.
@@ -21,7 +21,7 @@ import java.util.Scanner;
 
 /**
  * 숫자 야구 게임의 사용자 역할을 하는 사용자 클래스
- * @version 1.03 2019년 03월 27일
+ * @version 1.04 2019년 03월 27일
  * @author 홍휘진
  */
 public class User {
@@ -95,6 +95,7 @@ public class User {
 	 */
 	private void baseBallGame() {
 		String number;
+		int numberConvert;
 		int[] result = new int[3];
 		
 		computer.createNumber();
@@ -106,7 +107,7 @@ public class User {
 				continue;
 			}
 			
-			int numberConvert = Integer.parseInt(number);
+			numberConvert = Integer.parseInt(number);
 			result = computer.compareNumber(numberConvert);
 			if (analyzeResult(result)) {
 				break;
