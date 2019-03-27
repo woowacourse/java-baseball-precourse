@@ -26,6 +26,7 @@ public class BaseBallGame {
 
             compareDigits(computer.getDigits(), player.getDigits());
 
+            System.out.println(getResult());
         } while (true);
 
     }
@@ -57,4 +58,24 @@ public class BaseBallGame {
         }
         return false;
     }
+
+    private String getResult() {
+        if (isNothing())
+            return "낫싱";
+
+        return printStrike() + printBall();
+    }
+
+    private Boolean isNothing() {
+        return strike == 0 && ball == 0;
+    }
+
+    private String printStrike() {
+        return (strike == 0) ? "" : strike + " 스트라이크";
+    }
+
+    private String printBall() {
+        return (ball == 0) ? "" : ball + " 볼";
+    }
+
 }
