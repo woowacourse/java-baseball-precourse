@@ -11,7 +11,6 @@ import java.util.List;
  * @pakage : com.github.offMomySon.resource
  * @authon : 오지훈
  */
-
 public class Computer {
     private HashMap<Integer, Integer> numsMap;
     private List<Integer> numsList;
@@ -52,13 +51,13 @@ public class Computer {
             return true;
     }
 
-    /**
-     * @desc : Computer class의  인스턴스 변수 getter
-     */
+    /** @desc : Computer가 랜덤으로 생성한 3가지 수를 List Class로 Return */
     public List<Integer> getNumsList() {
         return numsList;
     }
-
+    /**
+     * @return Computer가 랜덤으로 생성한 3가지 수를 HashMap Class로 Return
+     */
     public HashMap<Integer, Integer> getNumsMap() {
         return numsMap;
     }
