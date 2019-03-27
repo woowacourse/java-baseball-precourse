@@ -12,7 +12,18 @@ public class BaseballGame {
     }
 
     public void play() {
-        int playerNumber = UserInterface.getPlayerNumber();
-        player.setPlayerNumber(playerNumber);
+        boolean isCorrectNumber = false;
+
+        while (!isCorrectNumber) {
+
+            int playerNumber = UserInterface.getPlayerNumber();
+            player.setPlayerNumber(playerNumber);
+
+            if (computer.isAnswer(player.getPlayerNumber())) {
+                isCorrectNumber = true;
+            } else {
+                UserInterface.printHint(computer.getHint(player.getPlayerNumber()));
+            }
+        }
     }
 }
