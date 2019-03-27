@@ -10,6 +10,17 @@ public class GameTurnResult {
         this.ballCount = ballCount;
     }
 
+    public GameTurnResult() {
+
+    }
+    public void initialization() {
+        strikeCount = 0;
+        ballCount = 0;
+    }
+    public boolean isNothing() {
+        return (strikeCount + ballCount) == 0;
+    }
+
     public int getStrikeCount() {
         return strikeCount;
     }

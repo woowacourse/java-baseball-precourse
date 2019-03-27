@@ -1,6 +1,7 @@
 package com.nekisse.baseball;
 
-import java.util.List;
+import com.nekisse.baseball.view.InputView;
+import com.nekisse.baseball.view.OutputView;
 
 public class BaseBallGame {
     private GenerateRandomNumber generateRandomNumber;
@@ -10,11 +11,15 @@ public class BaseBallGame {
     }
 
     public void startGame() {
-        GameTurnResult turnResult;
+        GameTurnResult turnResult = new GameTurnResult();
         Referee referee = new Referee(generateRandomNumber.createBaseballGameNumbers());
         do {
-            List<Integer> userInputNumber = InputUtils.convertInputToBaseBallNumbers(InputView.printMenu());
-            turnResult = referee.compareGameNumberResult(userInputNumber);
+            try {
+                BaseballNumbers userInputNumber = InputUtils.convertInputToBaseBallNumbersAndDuplicateNumberCheck(InputView.printMenu());
+                turnResult = referee.compareGameNumberResult(userInputNumber);
+            } catch (Exception e) {
+                OutputView.printException(e);
+            }
             OutputView.printTurnResult(turnResult);
         }
         while (!turnResult.isEnd());

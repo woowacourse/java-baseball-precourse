@@ -1,4 +1,4 @@
-package com.nekisse.baseball;
+package com.nekisse.baseball.view;
 
 import java.util.Scanner;
 

@@ -5,11 +5,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class GenerateRandomNumber {
-    public static final int BASEBALL_GAME_LIMIT_NUM = 3;
-    public static final int BASEBALL_MIN_NUMBER = 1;
-    public static final int BASEBALL_MAX_NUMBER = 9;
+    static final int BASEBALL_GAME_LIMIT_NUM = 3;
+    private static final int BASEBALL_MIN_NUMBER = 1;
+    private static final int BASEBALL_MAX_NUMBER = 9;
 
-    public List<Integer> createBaseballGameNumbers() {
+    public BaseballNumbers createBaseballGameNumbers() {
         List<Integer> numbers = new ArrayList<>();
         for (int i = BASEBALL_MIN_NUMBER; i <= BASEBALL_MAX_NUMBER; i++) {
             numbers.add(i);
@@ -18,14 +18,14 @@ public class GenerateRandomNumber {
     }
 
 
-    private List<Integer> getRandomNumbers(List<Integer> numbers) {
-        List<Integer> gameNumbers = new ArrayList<>();
+    private BaseballNumbers getRandomNumbers(List<Integer> numbers) {
+        List<Number> gameNumbers = new ArrayList<>();
         shuffleNum(numbers);
         for (int i = 0; i < BASEBALL_GAME_LIMIT_NUM; i++) {
-            gameNumbers.add(numbers.get(i));
+            gameNumbers.add(Number.getNumber(numbers.get(i)));
         }
         System.out.println("gameRandomNumbers = " + gameNumbers);
-        return gameNumbers;
+        return new BaseballNumbers(gameNumbers);
     }
 
     protected void shuffleNum(List<Integer> numbers) {

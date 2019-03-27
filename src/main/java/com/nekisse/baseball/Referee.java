@@ -1,38 +1,36 @@
 package com.nekisse.baseball;
 
-import java.util.List;
-
 public class Referee {
 
-    private final List<Integer> baseballGameNumbers;
+    private final BaseballNumbers baseballGameNumbers;
 
-    public Referee(List<Integer> baseballGameNumbers) {
+    Referee(BaseballNumbers baseballGameNumbers) {
         this.baseballGameNumbers = baseballGameNumbers;
     }
 
-    public GameTurnResult compareGameNumberResult(List<Integer> userBaseBallNumbers) {
+    GameTurnResult compareGameNumberResult(BaseballNumbers userBaseBallNumbers) {
         int strikeCount = 0;
         int ballCount = 0;
-        for (int i = 0; i < baseballGameNumbers.size(); i++) {
+        for (int i = 0; i < baseballGameNumbers.getThreeNumber().size(); i++) {
             strikeCount += matchStrikeCount(userBaseBallNumbers, i);
             ballCount += matchBallCount(userBaseBallNumbers, i);
         }
         return new GameTurnResult(strikeCount, ballCount);
     }
 
-    private int matchStrikeCount(List<Integer> userBaseBallNumbers, int index) {
+    private int matchStrikeCount(BaseballNumbers userBaseBallNumbers, int index) {
         return isStrike(userBaseBallNumbers, index) ? 1 : 0;
     }
 
-    private boolean isStrike(List<Integer> userBaseBallNumbers, int index) {
-        return baseballGameNumbers.get(index).equals(userBaseBallNumbers.get(index));
+    private boolean isStrike(BaseballNumbers userBaseBallNumbers, int index) {
+        return baseballGameNumbers.getThreeNumber().get(index).equals(userBaseBallNumbers.getThreeNumber().get(index));
     }
 
-    private int matchBallCount(List<Integer> userBaseBallNumbers, int index) {
+    private int matchBallCount(BaseballNumbers userBaseBallNumbers, int index) {
         return isaBall(userBaseBallNumbers, index) ? 1 : 0;
     }
 
-    private boolean isaBall(List<Integer> userBaseBallNumbers, int index) {
-        return !isStrike(userBaseBallNumbers, index) && baseballGameNumbers.contains(userBaseBallNumbers.get(index));
+    private boolean isaBall(BaseballNumbers userBaseBallNumbers, int index) {
+        return !isStrike(userBaseBallNumbers, index) && baseballGameNumbers.getThreeNumber().contains(userBaseBallNumbers.getNumber(index));
     }
 }

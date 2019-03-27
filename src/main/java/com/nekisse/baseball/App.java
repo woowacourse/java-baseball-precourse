@@ -1,5 +1,7 @@
 package com.nekisse.baseball;
 
+import com.nekisse.baseball.view.InputView;
+
 public class App {
     public static final int GAME_END_COMMAND = 1;
     private BaseBallGame baseBallGame;

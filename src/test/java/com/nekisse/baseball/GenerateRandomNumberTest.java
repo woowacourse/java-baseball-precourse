@@ -14,9 +14,9 @@ public class GenerateRandomNumberTest {
 
         GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
 
-        List<Integer> baseballGameNumbers = generateRandomNumber.createBaseballGameNumbers();
+        BaseballNumbers baseballGameNumbers = generateRandomNumber.createBaseballGameNumbers();
 
-        assertThat(baseballGameNumbers.size()).isEqualTo(GenerateRandomNumber.BASEBALL_GAME_LIMIT_NUM);
+        assertThat(baseballGameNumbers.getThreeNumber().size()).isEqualTo(GenerateRandomNumber.BASEBALL_GAME_LIMIT_NUM);
     }
 
     @Test
@@ -25,13 +25,13 @@ public class GenerateRandomNumberTest {
         GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber() {
             @Override
             protected void shuffleNum(List<Integer> numbers) {
-                //섞지 않는다.
+                //섞지 않는다
             }
         };
 
-        List<Integer> gameNumbers = generateRandomNumber.createBaseballGameNumbers();
+        BaseballNumbers baseballGameNumbers = generateRandomNumber.createBaseballGameNumbers();
 
-        List<Integer> distinctGameNumbers = gameNumbers.stream()
+        List<Number> distinctGameNumbers = baseballGameNumbers.getThreeNumber().stream()
             .distinct()
             .collect(Collectors.toList());
         assertThat(distinctGameNumbers.size()).isEqualTo(GenerateRandomNumber.BASEBALL_GAME_LIMIT_NUM);
