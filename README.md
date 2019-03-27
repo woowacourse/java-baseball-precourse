@@ -33,6 +33,8 @@
   * public :: play() : 질문자의 문제와 답변자의 정답을 비교하고, 답변자의 점수를 매긴다.
     * private :: checkStrike() : 같은 숫자가 같은 자리에 있으면 스트라이크
     * private :: checkBall() : 같은 숫자가 다른 자리에 있으면 볼
+  * public :: getQuestioner() : 질문자를 반환한다.
+  * public :: getAnswerer() : 답변자를 반환한다.
   
 ##### class Questioner
 * Questioner 클래스는 숫자야구게임의 문제를 내는 컴퓨터이다.
@@ -86,3 +88,4 @@
     * private :: askNumber() : 답변자(사용자)에게 정답을 요구한다.
     * private :: askRestart() : 답변자(사용자)에게 숫자야구게임 재시작을 묻는다.
     * private :: printScore() : 답변자(사용자)에게 게임 결과를 보여준다.
+    * private :: checkResult() : 게임의 결과와 사용자의 결정에 따라 게임종료를 결정한다.
