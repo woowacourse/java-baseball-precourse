@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel" value="0"/>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="file:///C:\Users\sky93\Documents\github\java-baseball"/>
+	</list>
+	<section name="GitImportWizard">
+	</section>
+</section>
