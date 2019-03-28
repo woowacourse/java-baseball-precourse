@@ -3,14 +3,17 @@ package me.bactoria.baseball.utils;
 public class IntegerUtils {
 
     public static boolean containZero(int num) {
-        while (num > 0) {
-            int curN = num % 10;
-            if (curN == 0) {
-                return true;
+        boolean result = false;
+        int[] numArray = toArray(num);
+
+        for (int n : numArray) {
+            if (n == 0) {
+                result = true;
+                break;
             }
-            num /= 10;
         }
-        return false;
+
+        return result;
     }
 
     public static int[] toArray(int num) {
