@@ -1,7 +1,7 @@
 /*
  *  Number.java
  *
- *  ver 1.0.2
+ *  ver 1.0.3
  *
  *  2019/03/28
  *
@@ -9,7 +9,7 @@
 
 /*
  *  Number 클래스
- *  숫자야구
+ *
  *
  */
 public class Number {

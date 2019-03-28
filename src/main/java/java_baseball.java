@@ -1,7 +1,7 @@
 /*
  *  java_baseball.java
  *
- *  ver 1.0.2
+ *  ver 1.0.3
  *
  *  2019/03/28
  *
@@ -13,6 +13,8 @@ public class java_baseball {
     public static void main(String[] args) {
         Number comNum = new Number();
         int[] userNum = new int[3];
+        Judge judge = new Judge();
+
         int input;
         Scanner sc = new Scanner(System.in);
 
@@ -21,6 +23,8 @@ public class java_baseball {
         System.out.print("숫자를 입력하세요 : ");
         input = sc.nextInt();
         separateNum(userNum, input);
+
+        judge.count(userNum, comNum.number);
     }
 
     public static void separateNum(int[] userNum, int input){
