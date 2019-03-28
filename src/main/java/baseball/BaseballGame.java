@@ -251,6 +251,10 @@ public class BaseballGame {
 	
 	public static void main(String[] args) {
 		BaseballGame game = new BaseballGame();
-		game.startGame(); /* 확인용 실행 */
+		int moreGame = game.startGame();
+		
+		while (moreGame==1) {
+			moreGame = game.startGame();
+		}
 	}
 }
