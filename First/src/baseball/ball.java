@@ -34,6 +34,7 @@ public class ball {
     //indent depth 1
     static void Randommake(){
     
+    	for(int k=0; k<3; k++) com[k] =0;
         // 랜덤으로 값 설정 (겹치지 않는 세 자리 수)
         while (com[0] == 0)
             com[0] = ran.nextInt(10);
