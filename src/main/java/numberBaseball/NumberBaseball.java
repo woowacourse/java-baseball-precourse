@@ -38,7 +38,17 @@ public class NumberBaseball {
     }
 
     public void startGame(Player guesser, Player answerer) {
+        int[] guessed;
 
+        answerer.setThreeNumber();
+        while (true) {
+            guessed =  guesser.guessThreeNumber();
+            answerer.answerHintOf(guessed);
+            if (answerer.checkCorrect(guessed)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
     public static void main(String args[]) {
