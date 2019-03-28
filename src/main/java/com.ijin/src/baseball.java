@@ -69,28 +69,30 @@ public class baseball {
         else {return false;}
     }
 
-
-    public static void main(String[] args){
+    public static int ContinueGame(){
         int com_arr[] = new int[4];
         int user_arr[] = new int[4];
         int user_num;
+
+        RandomSave(com_arr);
+        Scanner sc = new Scanner(System.in);
+        do {
+            user_num = UserInput();
+            DivideByDigit(user_num, user_arr);
+
+        } while (!IsRightNumber(com_arr, user_arr));
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int game = sc.nextInt();
+
+        return game;
+    }
+
+    public static void main(String[] args){
         int game = 1;
-        baseball b = new baseball();
-
         while(game != 2) {
-            b.RandomSave(com_arr);
-            Scanner sc = new Scanner(System.in);;
-
-            //for (int i = 0; i < 3; i++) System.out.print(com_arr[i] + " ");
-            do {
-                user_num = UserInput();
-                DivideByDigit(user_num, user_arr);
-
-            } while (!IsRightNumber(com_arr, user_arr));
-
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            game = sc.nextInt();
+            game = ContinueGame();
         }
     }
 }
