@@ -4,7 +4,7 @@ public class App {
 
         //게임 종료 여부 저장
         boolean gameEnd = false;
-
+        boolean correctAnswer = false;
         //게임 설명
         final String gameExplanation = "***숫자야구게임***\n" +
                 "컴퓨터가 생각한 1~9사이의 서로 다른 세 숫자를 맞춰주세요\n" +
@@ -17,27 +17,23 @@ public class App {
         do{
             int [] answerNumber = new int [3];  //정답인 세숫자
             int [] userNumber = new int [3];    //입력한 세숫자
-
             System.out.println(gameExplanation);//게임 설명 출력
-
             answerNumber=makeRandomNumber();    //난수(정답) 생성
-
 //            테스트용 정답 출력
 //            System.out.println(answerNumber[0]);
 //            System.out.println(answerNumber[1]);
 //            System.out.println(answerNumber[2]);
 
-            userNumber=saveUserInput();         //유저 입력 저장
+            do {
+                userNumber = saveUserInput();         //유저 입력 저장
+                //두 수가 같은지 비교하여 정답일시 끝남
+                correctAnswer = isCorrectAnswer(userNumber,answerNumber);
+                printHint (userNumber,answerNumber);
+            }while(correctAnswer == false);
 
-            //두 수가 같은지 비교
-            if(Arrays.equals(answerNumber, userNumber)){
-                //같을 시 재시작 선택 출력
-            }else{
-                //다를 시 힌트 출력
-                printHint(answerNumber, userNumber);
-            }
 
-        } while(gameEnd == true);               //게임 종료 시 반복문 종료
+
+        } while(gameEnd == false);               //게임 종료 시 반복문 종료
     }
 
 
@@ -82,7 +78,7 @@ public class App {
         boolean inputCorrect=false;
         int [] numberArray = new int[3];         //세 숫자를 담을 배열을 생성
 
-        System.out.println("세 숫자를 입력해주세요!");
+        System.out.print("세 숫자를 입력해주세요: ");
         do {
             int userInput;
             //숫자 외의 입력이 있을시 예외처리
@@ -124,11 +120,56 @@ public class App {
     }
 
     /*
+     * 두 배열이 같은지 비교 해주는 함수
+     */
+    private static boolean isCorrectAnswer(int answerNumber[], int userNumber[]){
+        boolean isCorrect = false;
+        if (Arrays.equals(answerNumber, userNumber)) {
+            isCorrect = true;
+        }
+        return isCorrect;
+    }
+
+    /*
      * 힌트 출력
      */
     private static void printHint(int computer[], int user[]){
-
+        int strike =0;
+        int ball=0;
+        String printString = "";
+        strike = countStrike(computer,user);
+        ball = countBall(computer,user, strike);
+        if (strike != 3) { // 3스트라이크면 정답
+            if (strike > 0) {
+                printString += strike + " 스트라이크 ";
+            }
+            if (ball > 0) {
+                printString += ball + " 볼";
+            }
+            System.out.println(printString);
+        }
     }
+    private static int countStrike(int computer[], int user[]){
+        int count=0;
+        for (int i = 0; i < 3; i++){
+            if (computer[i] == user[i]){ //같은 위치 같은 숫자
+                count++;
+            }
+        }
+        return count;
+    }
+    private static int countBall(int computer[], int user[], int strike) {
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            if (user[i] == computer[0] || user[i] == computer[1] || user[i] == computer[2]) { //같은 숫자 세기
+                count++;
+            }
+        }
+        count = count - strike; //스트라이크도 같은 숫자이므로 중복되지 않게 빼줌
+        return count;
+    }
+
+
 
 
 }
