@@ -54,5 +54,25 @@ public class Baseball {
         }
         return user;
     }
+
+    public static int[] getScore(int[] user, int[] computer) {
+        int getStrike = 0;
+        int getBall = 0;
+        int[] score = new int[2];
+
+        for (int i = 0; i < 3; i++) {
+            int j = i;
+            if (computer[i] == user[i]) {
+                getStrike++;
+            } else if (computer[++j % 3] == user[i]) {
+                getBall++;
+            } else if (computer[++j % 3] == user[i]) {
+                getBall++;
+            }
+        }
+        score[0] = getStrike;
+        score[1] = getBall;
+        return score;
+    }
 }
 
