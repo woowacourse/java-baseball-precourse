@@ -98,6 +98,26 @@ public class JavaBaseball {
 			numbSeqArr.remove(popIdx);				// 선택된 ArrayList의 값은 remove하여 값의 중복을 피한다.
 		}
 	}
+	
+	/** startGame():	게임 시작 메서드
+	 *					ansArr배열과 userInArr배열이 일치할 경우 현재 게임을 종료한다. 
+	 */
+	public static void startGame () {
+		boolean isEnd = false;
+		int userInNum;
+		while(!isEnd) {
+            strike = 0;
+            ball = 0;
+            
+            System.out.print("숫자를 입력해주세요: ");
+			userInNum = scanner.nextInt();
+			
+//			numDivider(userInNum);		//2-1
+//			idxCounter();				//2-2
+			
+//			isEnd = is3Strike();		//2-3
+		}
+	}
 }
 
 
