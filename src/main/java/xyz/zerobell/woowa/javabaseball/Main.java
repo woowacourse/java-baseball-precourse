@@ -4,11 +4,26 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static int[] numCheck; //사용된 번호를 확인하기 위한 배열 전역변수. 중복값 방지를 위함.
+
     private static String genRandNum() {
-        /*
-         * TO-DO : 난수 생성
-         */
-        return "123";
+        numCheck = new int[10];
+        int tmpDigit;
+        int digitCount = 0;     //자릿수를 세기 위한 변수
+        String result = "";
+
+        while (digitCount < 3) {
+            tmpDigit = (int)(Math.random() * 9 + 1);
+            if (numCheck[tmpDigit] > 0) {
+                continue;   // 이미 numCheck에 존재한다면 중복으로 간주하고 while을 다시 실행한다.
+            }
+            else {
+                digitCount++;
+                result += tmpDigit;
+            }
+        }
+
+        return result;
     }
 
     private static boolean isValid(String s1) {
