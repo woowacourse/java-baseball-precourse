@@ -87,4 +87,24 @@ public class Baseball {
 		return false;
 	}
 
+	// 입력한 숫자 user배열에 넣어 return
+	public int[] makeUserNumber() {
+
+		while (true) {
+			System.out.println("(1과 9사이의 서로 다른 세자리 숫자를 입력해 주세요.)");
+			System.out.print("Input number> ");
+			String userinput = scanner.nextLine();
+			if (isnotValidNumber(userinput)) {
+				continue;
+			} else {
+				int[] user = new int[3];
+				int usernum = Integer.parseInt(userinput);
+				user[0] = usernum / 100;
+				user[1] = usernum / 10 % 10;
+				user[2] = usernum % 10;
+				return user;
+			}
+		}
+	}
+
 }
