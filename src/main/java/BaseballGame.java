@@ -139,7 +139,7 @@ public class BaseballGame {
             else if (temp == 2)
                 return false;
             else
-                System.out.print("잘못된 값 입니다");
+                System.out.println("잘못된 값 입니다");
         }
         return false;
     }
