@@ -27,8 +27,34 @@ public class PlayerBot implements Player {
         return new int[3];
     }
 
-    public void answerHintOf(int[] guessed) {
+    public boolean contains(final int[] arr, final int key) {
+        return Arrays.stream(arr).anyMatch(n -> n == key);
+    }
 
+    public StringBuffer makeHintMsg(int strikeCount, int ballCount) {
+        StringBuffer hintMsg = new StringBuffer();
+
+        if (strikeCount != 0)
+            hintMsg.append(strikeCount + " 스트라이크 ");
+        if (ballCount != 0)
+            hintMsg.append(ballCount + " 볼 ");
+        if ((strikeCount == 0) && (ballCount == 0))
+            hintMsg.append("낫싱");
+        return hintMsg;
+    }
+
+    public void answerHintOf(int[] guessed) {
+        final int oneScore = 1;
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for (int i = 0; i < guessed.length; i++) {
+            if (guessed[i] == this.answerNumber[i])
+                strikeCount += oneScore;
+            else if (contains(this.answerNumber, guessed[i]))
+                ballCount += oneScore;
+        }
+        System.out.println(makeHintMsg(strikeCount, ballCount));
     }
 
     public boolean checkCorrect(int[] guessed) {
