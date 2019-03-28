@@ -23,7 +23,7 @@ public class Number {
      */
     public void setNumber(){
         for (int i = 0; i < 3; ++i) {
-            this.number[i] = (int) (Math.random() * 10);
+            this.number[i] = (int) (Math.random() * 9) + 1;
             if (this.isOverlap(i)) i--;
         }
     }

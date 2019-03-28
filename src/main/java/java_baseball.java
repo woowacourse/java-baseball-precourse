@@ -1,7 +1,7 @@
 /*
  *  java_baseball.java
  *
- *  ver 1.0.5
+ *  ver 1.0.6
  *
  *  2019/03/28
  *
@@ -14,7 +14,6 @@ public class java_baseball {
         Number comNum = new Number();
         int[] userNum = new int[3];
         Judge judge = new Judge();
-
 
         int input;
         Scanner sc = new Scanner(System.in);
@@ -32,11 +31,17 @@ public class java_baseball {
 
             if (judge.strike == 3){
                 System.out.println("3개의 숫자를 모두 맞히쳤습니다! 게임종료");
-                break;
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+                input = sc.nextInt();
             }
+            if (input == 1) {
+                comNum.setNumber();
+                continue;
+            }
+            if (input == 2) break;
         }
-
     }
+
 
     public static void separateNum(int[] userNum, int input){
         int index = 0;
