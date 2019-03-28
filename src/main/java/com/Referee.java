@@ -55,4 +55,27 @@ public class Referee {
         }
     }
 
+    /* 결과 및 볼, 스트라이크 리셋기능 */
+    public void getResult() {
+        if ((strike == 0) && (ball == 0)) {
+            System.out.println("포볼");
+        } else if ((strike != 0) && (ball != 0)) {
+            System.out.printf("%d 스트라이크 %d 볼\n", strike, ball);
+        } else if ((strike == 0) && (ball != 0)) {
+            System.out.printf("%d 볼\n", ball);
+        } else if ((strike != 0) && (ball == 0)) {
+            System.out.printf("%d 스트라이크\n", strike);
+        }
+        reset();        /* 다 출력하고 리셋 시켜줘야 한다.*/
+    }
+
+    public void reset() {
+        ball = 0;
+        strike = 0;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+    
 }
