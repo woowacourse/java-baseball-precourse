@@ -81,7 +81,39 @@ public class Main {
         /*
          * TO-DO : 정답과 입력값을 match하여 반환. [Strike, Ball]의 형식으로 반환한다.
          */
-        return new int[] {3, 0};
+        int[] result = new int[2];
+
+        if (answer.charAt(0) == input.charAt(0)) {
+            result[0]++;
+        }
+        if (answer.charAt(0) == input.charAt(1)) {
+            result[1]++;
+        }
+        if (answer.charAt(0) == input.charAt(2)) {
+            result[1]++;
+        }
+
+        if (answer.charAt(1) == input.charAt(0)) {
+            result[1]++;
+        }
+        if (answer.charAt(1) == input.charAt(1)) {
+            result[0]++;
+        }
+        if (answer.charAt(1) == input.charAt(2)) {
+            result[1]++;
+        }
+
+        if (answer.charAt(2) == input.charAt(0)) {
+            result[1]++;
+        }
+        if (answer.charAt(2) == input.charAt(1)) {
+            result[1]++;
+        }
+        if (answer.charAt(2) == input.charAt(2)) {
+            result[0]++;
+        }
+
+        return result;
     }
 
     private static String toMatchResult(int[] matchResult) {
@@ -119,6 +151,7 @@ public class Main {
             else {
                 // 오답일 경우 다시 반복
                 System.out.println(toMatchResult(matchResult));
+                inputValue = sc.next();
             }
         }
 
