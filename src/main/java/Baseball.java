@@ -93,5 +93,41 @@ public class Baseball {
             return 0;
         }
     }
+
+    public static void main (String[]args){
+
+        Scanner scan = new Scanner(System.in);
+        int computer[] = new int[3]; // 컴퓨터 지정값
+        int beforeUser[] = new int[100]; // 유저값 받기 위한 공간
+
+        int strike = 0; // 스트라이크 변수 선언
+        int ball = 0; // 볼 변수 선언
+
+        computer = randomNumber(computer); // 1) 컴퓨터 랜덤값 가져오기
+        boolean finish = false;
+        while (!finish) {
+            getUser(beforeUser); // 2) 유저 입력값 가져오기
+
+            int[] user = beforeUser;  // 유저 추측값
+
+            if(user[0] == 0) {
+                System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                continue;
+            }
+
+            int[] result = getScore(user, computer);  // 결과 저장소
+            // 3) strike, ball 개수 구하기
+            strike = result[0];
+            ball = result[1];
+
+            // 4) 결과
+            int input = printResult(strike, ball);
+            if (input == 1) {
+                computer = randomNumber(computer);
+            } else if(input == 2){
+                finish = true;
+            }
+        }
+    }
 }
 
