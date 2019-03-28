@@ -50,7 +50,8 @@ public class baseball {
         int strike = 0;
         int ball = 0;
         for(int i=0;i<3;i++){
-            switch(CompareNumber(com[i], i, usr)){
+            int op = CompareNumber(com[i], i, usr);
+            switch(op){
                 case 0:
                     break;
                 case 1:
@@ -61,7 +62,6 @@ public class baseball {
                     break;
             }
         }
-
         System.out.println(strike + " 스트라이크 " + ball + "볼");
         if(strike ==3) {
             return true;
@@ -71,18 +71,26 @@ public class baseball {
 
 
     public static void main(String[] args){
-        int num[] = new int[4];
+        int com_arr[] = new int[4];
         int user_arr[] = new int[4];
         int user_num;
+        int game = 1;
         baseball b = new baseball();
-        b.RandomSave(num);
 
-        for(int i=0;i<3;i++)System.out.print(num[i]+" ");
-        do{
-            user_num = UserInput();
-            DivideByDigit(user_num, user_arr);
+        while(game != 2) {
+            b.RandomSave(com_arr);
+            Scanner sc = new Scanner(System.in);;
 
-        }while(!IsRightNumber(num, user_arr));
+            //for (int i = 0; i < 3; i++) System.out.print(com_arr[i] + " ");
+            do {
+                user_num = UserInput();
+                DivideByDigit(user_num, user_arr);
 
+            } while (!IsRightNumber(com_arr, user_arr));
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            game = sc.nextInt();
+        }
     }
 }
