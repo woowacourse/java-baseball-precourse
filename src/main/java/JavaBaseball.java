@@ -53,7 +53,7 @@ public class JavaBaseball {
 		while (status) {
             setAnsArr();			/* 0 ~ 9의 수를 무작위로 뽑아 ansArr배열에 저장한다. */
             startGame();			/* 현재 게임을 시작한다. 게임은 ansArr배열과 userInArr배열이 일치할 경우 종료된다. */
-//			status = exitMode();	/* 사용자에게 다음 게임을 시작할지에 대해 입력받는다. */
+			status = exitMode();	/* 사용자에게 다음 게임을 시작할지에 대해 입력받는다. */
 		}
 		scanner.close();
 	}
@@ -99,7 +99,8 @@ public class JavaBaseball {
 		}
 	}
 	
-	/** startGame():	게임 시작 메서드
+	/** 
+	 * startGame():	게임 시작 메서드
 	 *					ansArr배열과 userInArr배열이 일치할 경우 현재 게임을 종료한다. 
 	 */
 	public static void startGame () {
@@ -163,7 +164,8 @@ public class JavaBaseball {
 		}
 	}
 	
-	/** 스트라이크가 THREE_DIGITS일 경우 게임을 종료한다. 그 외의 경우 strike와 ball의 개수에 관한 메세지만 출력.
+	/** 
+	 * 스트라이크가 THREE_DIGITS일 경우 게임을 종료한다. 그 외의 경우 strike와 ball의 개수에 관한 메세지만 출력.
 	 * 
 	 * @return	boolean변수를 반환한다.
 	 * 			true: 게임을 종료, false: 게임을 계속함
@@ -184,6 +186,28 @@ public class JavaBaseball {
 				System.out.println(strike + " 스트라이크 " + ball + " 볼");	
 			}
 			return false;	/* 3 strike가 아닌 경우 게임 계속 */
+		}
+	}
+	
+	/** 
+	 * 게임을 계속 할지에 대해 사용자에게 입력을 받는다.
+	 *
+	 * @return	boolean변수를 반환한다.
+	 * 			입력 1. true: 게임을 새로 시작
+	 * 			입력 2. false: 게임을 종료
+	 * 			else. false: 게임을 종료
+	 */
+	public static boolean exitMode() {
+		int userInStatus;
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		userInStatus = scanner.nextInt();
+		if (userInStatus == 1) {
+			return true;	/* 게임을 새로 시작 */
+		} else if (userInStatus == 2) {
+			return false;	/* 게임을 종료 */
+		} else {
+			System.out.println("입력 2로 처리합니다.");
+			return false;	/* 게임을 종료 */
 		}
 	}
 }
