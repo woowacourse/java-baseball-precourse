@@ -222,12 +222,31 @@ public class BaseballGame {
 	 */
 	private int moreGame() {
 		Scanner sc = new Scanner(System.in);
+		boolean isSuccess = false; 
 		String isMore = "";
 		
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		isMore = sc.nextLine();
-		
+		while (!isSuccess) {
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			isMore = sc.nextLine();
+			isSuccess = checkPattern2(isMore);
+		}
 		return Integer.parseInt(isMore);
+	}
+	
+	/**
+	 * 유저가 입력한 수가 '1 또는 2'인지 유효성 검사를 하는 함수
+	 * 
+	 * @param	: 유저가 입력한 수(1자리). 유효성 검사 시 사용됨.
+	 * @return 	: 유저가 입력한 수가 '1 또는 2'이면 true, 아니면 false를 반환.
+	 */
+	public boolean checkPattern2(String isMore) {
+		String numberPattern = "^([1-2]{1})$";
+		
+		if (Pattern.matches(numberPattern, isMore)) {
+			return true;
+		}
+		System.out.println("1 또는 2만 입력할 수 있습니다.");
+		return false;
 	}
 	
 	public static void main(String[] args) {
