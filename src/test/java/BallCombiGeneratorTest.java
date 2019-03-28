@@ -15,7 +15,7 @@ public class BallCombiGeneratorTest {
     }
 
     @Test
-    public void testGeneratedBallCombiisAllValid() {
+    public void genBallCombi_generatedBallCombiAllValid() {
         int n = 100;
 
         for (int i = 0; i < n; i++) {
@@ -29,33 +29,8 @@ public class BallCombiGeneratorTest {
         }
     }
 
-    private int[][] genPossibleBallCombis() {
-        int used[] = new int [10];
-
-        ArrayList<int[]> combis = new ArrayList<int[]>();
-
-        for (int p1 = 1; p1 <= 9; p1++) {
-            used[p1]++;
-            for (int p2 = 1; p2 <= 9; p2++) {
-                if (used[p2] != 0) continue;
-                used[p2]++;
-                for(int p3 = 1; p3 <= 9; p3++) {
-                   if (used[p3] != 0) continue;
-
-                   // 생성해서 바로 넣는 방법이 없으려나??..
-                   int [] ballCombi = {p1, p2, p3};
-                   combis.add(ballCombi);
-                }
-                used[p2]--;
-            }
-            used[p1]--;
-        }
-
-        return combis.toArray(new int[combis.size()][]);
-    }
-
     @Test
-    public void testValidBallCombi() {
+    public void isValid_possibleValidBallCombis() {
         // 입력
         int [][] possibleBallCombis = genPossibleBallCombis();
 
@@ -69,7 +44,7 @@ public class BallCombiGeneratorTest {
 
 
     @Test
-    public void testInvalidBallCombi() {
+    public void isValid_invalidBallCombis() {
         // 입력
         int [][] ballCombis = {
                 {1, 1, 1, 1},
@@ -88,7 +63,7 @@ public class BallCombiGeneratorTest {
     }
 
     @Test
-    public void testToBallCombi() {
+    public void toBallCombi_usualInputStr() {
         //
         String [] strs = {
                 "hello",
@@ -120,5 +95,30 @@ public class BallCombiGeneratorTest {
                     got
             );
         }
+    }
+
+    private int[][] genPossibleBallCombis() {
+        int used[] = new int [10];
+
+        ArrayList<int[]> combis = new ArrayList<>();
+
+        for (int p1 = 1; p1 <= 9; p1++) {
+            used[p1]++;
+            for (int p2 = 1; p2 <= 9; p2++) {
+                if (used[p2] != 0) continue;
+                used[p2]++;
+                for(int p3 = 1; p3 <= 9; p3++) {
+                    if (used[p3] != 0) continue;
+
+                    // 생성해서 바로 넣는 방법이 없으려나??..
+                    int [] ballCombi = {p1, p2, p3};
+                    combis.add(ballCombi);
+                }
+                used[p2]--;
+            }
+            used[p1]--;
+        }
+
+        return combis.toArray(new int[combis.size()][]);
     }
 }

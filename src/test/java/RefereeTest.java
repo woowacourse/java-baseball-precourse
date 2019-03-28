@@ -14,7 +14,7 @@ public class RefereeTest {
     }
 
     @Test
-    public void testJudge() {
+    public void judge_usualCases() {
         int [] ansBallCombi = {1, 2, 3};
         int [][] inpBallCombis = {
                 {1, 2, 3}, // 3s, 0b

@@ -32,3 +32,10 @@ https://medium.com/@SlackBeck/mock-object%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%E
 // Intellij Idea junit
 https://examples.javacodegeeks.com/desktop-java/ide/intellij-idea-create-test-tutorial/
 https://www.jetbrains.com/help/idea/tdd-with-intellij-idea.html
+
+
+### 자바 익숙해지기...
+https://1nyoung.tistory.com/14
+https://jdm.kr/blog/181
+https://github.com/winterbe/java8-tutorial
+https://www.acmicpc.net/blog/view/3

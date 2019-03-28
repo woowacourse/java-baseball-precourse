@@ -9,6 +9,7 @@ public class BallCombiGenerator {
 
         int [] ballPnts = IntStream.range(1, 10).toArray();
 
+        // shuffle ballPnts
         for (int from = 0; from < ballPnts.length; from++) {
             int to = rand.nextInt(ballPnts.length);
 
@@ -46,10 +47,10 @@ public class BallCombiGenerator {
 
         int [] ballCombi = new int[3];
         for (int i = 0; i < ballCombiStr.length(); i++) {
-            char ch = ballCombiStr.charAt(i);
-            if (ch <= '0' || '9' < ch) return new int[0];
+            char c = ballCombiStr.charAt(i);
+            if (c <= '0' || '9' < c) return new int[0];
 
-            ballCombi[i] = ch - '0';
+            ballCombi[i] = c - '0';
         }
 
         return ballCombi;
