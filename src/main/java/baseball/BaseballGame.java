@@ -31,7 +31,7 @@ public class BaseballGame {
 	/**
 	 * 다른 자리의 수와 '중복되지 않는 1~9사이의 수'를 추출하는 함수 (1개의 숫자)
 	 * 
-	 * @param	: 컴퓨터가 선택한 수가 담긴 리스트. 중복되는 값이 있는 지 확인 할 때 사용됨. 
+	 * @param	: 컴퓨터가 선택한 수가 담긴 리스트. 중복되는 값이 있는지 확인 할 때 사용됨. 
 	 * @return 	: 중복되지 않는 1~9사이의 수
 	 */
 	private int noOverlap(List<Integer> questionNums) {
@@ -83,12 +83,12 @@ public class BaseballGame {
 
 		/*
 		 * 유저가 입력한 수가 유효할 때까지 입력을 반복.
-		 * 유저가 입력한 수가 '1~9까지의 수로 이루어진 3자리의 수'일 때 while문 종료.
+		 * 유저가 입력한 수가 '1~9까지의 수로 이루어진 3자리의 수'이고, '각 자리 수가 중복 되지 않을 때' while문 종료.
 		 */
 		do {
 			System.out.print("숫자를 입력해주세요 : ");
 			nums = sc.nextLine();
-		} while (!checkPattern(nums));
+		} while (!checkPattern(nums) || !checkOverlap(nums));
 		
 		return nums;
 	}
@@ -108,6 +108,30 @@ public class BaseballGame {
 		System.out.println("1부터 9사이의 숫자 3개만 입력 가능합니다.");
 		return false;
 	} 
+	
+	/**
+	 * 유저가 입력한 수에 중복이 있는지 확인하는 함수
+	 * 
+	 * @param	: 유저가 입력한 수(3자리). 유효성 검사 시 사용됨.
+	 * @return 	: 유저가 입력한 수에 '중복'이 없으면 true, 있으면 false를 반환.
+	 */
+	private boolean checkOverlap (String nums) {
+		String[] str_nums = nums.split("");
+		String str = "";
+		
+		/* 
+		 * 사용자 입력수의 크기 만큼 반복.(3자리수)
+		 * str에 중복되는 값이 있을 시 false를 리턴, 없을 시 str에 해당 수를 추가. 
+		 */
+		for (int i=0; i<str_nums.length; i++) {
+			if (str.contains(str_nums[i])) {
+				System.out.println("각 자리의 수는 중복되지 않아야 합니다.");
+				return false;
+			}
+			str += str_nums[i];
+		}
+		return true;
+	}
 	
 	public static void main(String[] args) {
 		BaseballGame game = new BaseballGame();
