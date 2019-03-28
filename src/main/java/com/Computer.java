@@ -45,4 +45,14 @@ public class Computer {
 
     }
 
+    public void reSetComNumber() {
+        guessNumber="";
+        numberTable = new int[10];      /* 1~9까지 초기화 */
+        makeNumber();
+    }
+
+    public String getComputerNumber() {
+        return guessNumber;
+    }
+
 }
