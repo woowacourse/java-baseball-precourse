@@ -29,4 +29,20 @@ public class Computer {
         numberTable = new int[10];      /* 1~9까지 숫자중복 확인 위해서 사용여부 확인하는 변수 */
     }
 
+    public void makeNumber() {
+        int randomNum;
+        int numberCount = numberLength;
+
+        while (numberCount != 0) {
+            randomNum = (int) (Math.random() * 9) + 1;
+
+            if (numberTable[randomNum] == 0 ) { /* 1 이 나오게 되면 이미 나온수가 된다. */
+                numberTable[randomNum] = 1;     /* 이미 나온 수에 1을 삽입 */
+                numberCount--;                  /* 정해진 수만큼 임의의 수를 만들기 위해서 */
+                guessNumber += Integer.toString(randomNum); /* 확인이 끝난 수는 String으로 붙인다.*/
+            }
+        }
+
+    }
+
 }
