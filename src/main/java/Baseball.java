@@ -121,4 +121,15 @@ public class Baseball {
 		return count;
 	}
 
+	// 플레이어에게 hint를 제공하기위한 메소드
+	public void showHint(int[] hint) {
+		if (hint[0] == 0 && hint[1] == 0) {
+			System.out.println("\n[Hint]낫싱");
+		} else if (hint[0] == 3) {
+			System.out.println("\n축하합니다! 3개의 숫자를 모두 맞히셨습니다.");
+		} else {
+			System.out.printf("\n[Hint] %d 스트라이크 %d 볼\n\n", hint[0], hint[1]);
+		}
+	}
+
 }
