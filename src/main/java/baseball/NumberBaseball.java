@@ -1,3 +1,4 @@
+
 /*
  * NumberBaseball
  *
@@ -43,7 +44,8 @@ public class NumberBaseball {
         return userAnswer;
     }
 
-    private static String judgeAnswer(ArrayList<Integer> userAnswer, ArrayList<Integer> correctAnswer) {
+    private static String judgeAnswer(ArrayList<Integer> userAnswer,
+                                      ArrayList<Integer> correctAnswer) {
 
         // 스트라이크 & 볼 판단
         int ball = 0;
@@ -54,14 +56,14 @@ public class NumberBaseball {
             if (userAnswer.get(index).equals(correctAnswer.get(index))) {
                 strike++;
             } else if (correctAnswer.contains(e)) {
-                ball ++;
+                ball++;
             }
-            index ++;
+            index++;
         }
 
         String result;
 
-        if (ball == 0 && strike == 0) {
+        if ((ball == 0) && (strike == 0)) {
             result = "낫싱";
         } else if (strike == 0) {
             result = ball + "볼";
