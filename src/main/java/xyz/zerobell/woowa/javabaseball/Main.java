@@ -120,7 +120,21 @@ public class Main {
         /*
          * TO-DO : 매칭된 결과에 따라 스트링 포맷을 적절하게 출력
          */
-        return "2 스트라이크";
+
+        String result = "";
+
+        if (matchResult[0] > 0) {
+            result += String.format("%d 스트라이크 ", matchResult[0]);
+        }
+        if (matchResult[1] > 0) {
+            result += String.format("%d 볼", matchResult[1]);
+        }
+
+        if (result.equals("")) {
+            return "낫싱";
+        }
+
+        return result;
     }
 
     private static boolean makeGame() {
