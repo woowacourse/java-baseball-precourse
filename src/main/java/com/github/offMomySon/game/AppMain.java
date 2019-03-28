@@ -1,7 +1,7 @@
 /*
  * AppMain
  *
- * @version 1
+ * @version 1.1
  *
  * @date 2019-3-28
  *
@@ -10,12 +10,7 @@
  */
 package com.github.offMomySon.game;
 
-import com.github.offMomySon.game.baseball.BallType;
-import com.github.offMomySon.resource.Computer;
 import com.github.offMomySon.resource.User;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
 
 /**
  * @desc : AppMain Class
@@ -23,18 +18,17 @@ import java.util.Set;
  */
 public class AppMain {
     /**
-     * @desc 어플리케이션의 시작, 종료  메인스트림
-     * @desc 테스트
+     * @desc 어플리케이션을 통해, 게임의 흐름을 제어하고, 재시작 여부를 유저에게서 받아오는 메인 메소드.
      */
     public static void main(String[] args) {
-
-        System.out.println("Test");
         User user = new User();
         Game g = new Game(user);
 
-        do{
+        while (true) {
             g.init();
             g.run();
-        }while (user.isContinue());
+            if (!user.isContinue())
+                break;
+        }
     }
 }

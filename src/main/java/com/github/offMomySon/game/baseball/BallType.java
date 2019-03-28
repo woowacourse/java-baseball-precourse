@@ -26,7 +26,7 @@ public class BallType {
     }
 
     /**
-     * @return 스트라이크의 갯수와 볼의 갯수에 따라 힌트 String 을 리턴하는 메소드
+     * @return 스트라이크의 개수와 볼의 개수에 따라 힌트 String 을 리턴.
      */
     @Override
     public String toString() {
