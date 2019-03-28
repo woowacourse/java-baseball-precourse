@@ -75,5 +75,24 @@ public class Baseball {
         score[1] = getBall;
         return score;
     }
+
+    public static int printResult(int strike, int ball){
+        Scanner scan = new Scanner(System.in);
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            String input = "continue?";
+            while (!(input.equals("1") || input.equals("2"))){
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                input = scan.nextLine(); // 게임할지 말지 1 혹은 2 입력
+            }
+            return Integer.parseInt(input);
+        } else {
+            String result1 = (strike > 0) ? String.format("%d %s", strike, "스트라이크 ") : "";
+            String result2 = (ball > 0) ? String.format("%d %s", ball, "볼 ") : "";
+            String result3 = ((result1 + result2).length() > 0) ? result1 + result2 : "낫씽";
+            System.out.println(result3);
+            return 0;
+        }
+    }
 }
 
