@@ -3,6 +3,12 @@ import java.util.Random;
 
 public class baseball{
 
+    public static int find_pos(int[] arr, int val){
+        for(int i=1; i<=3; i++){
+            if(arr[i]==val) return i;
+        }   
+        return -1;
+    }
     public static int match_check(int answer, int input){
         int strike = 0;
         int ball = 0;
