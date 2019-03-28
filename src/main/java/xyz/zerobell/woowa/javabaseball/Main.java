@@ -6,8 +6,24 @@ public class Main {
 
     private static int[] numCheck; //사용된 번호를 확인하기 위한 배열 전역변수. 중복값 방지를 위함.
 
+    private static void resetNumCheck() {
+        /*
+         * numCheck를 리셋시키는 함수. 할당되기 전이라면 새로 할당하고, 할당이 이미 된 후라면 0으로 초기화한다. 새로운 배열 생성을 막기 위함.
+         */
+
+        if (numCheck == null) {
+            numCheck = new int[10];
+            return;
+        }
+
+        for (int i = 0; i < 10; i++) {
+            numCheck[i] = 0;
+        }
+
+    }
+
     private static String genRandNum() {
-        numCheck = new int[10];
+        resetNumCheck();
         int tmpDigit;
         int digitCount = 0;     //자릿수를 세기 위한 변수
         String result = "";
@@ -27,9 +43,37 @@ public class Main {
     }
 
     private static boolean isValid(String s1) {
-        /*
-         * TO-DO : Check validity of input value.
-         */
+
+        int currentDigit;
+
+        // 문자열의 길이가 3인지 체크함.
+        if (s1.length() != 3) {
+            return false;
+        }
+
+        // 해당 문자가 int형으로 parse될 수 있는지 체크함.
+        try {
+            Integer.parseInt(s1);
+        }
+        catch (Exception e) {
+            return false;
+        }
+
+        resetNumCheck(); //중복값 방지를 위한 numCheck 초기화
+
+        for (int i = 0; i < 3; i++) {
+            currentDigit = s1.charAt(i) - '0';
+            if (currentDigit == 0) {
+                return false;
+            }
+            else if (numCheck[currentDigit] > 0) {
+                return false;
+            }
+            else {
+                numCheck[currentDigit]++;
+            }
+        }
+
         return true;
     }
 
