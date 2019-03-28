@@ -12,15 +12,39 @@ public class BaseballGame {
 	 */
 	public List<Integer> question() {
 		List<Integer> questionNums = new ArrayList<Integer>();
-		Random rd = new Random();
 		
 		for (int i=0; i<3; i++) {
-			int num = rd.nextInt(9)+1;
+			/* 
+			 * 다른 자리의 수와 '중복되지 않는 1~9사이의 수'를 추출 - 함수: noOverlap
+			 * 수를 '리스트에 할당'
+			 */
+			int num = noOverlap(questionNums);
 			questionNums.add(num);
-			System.out.println(num+","); /* 확인용 출력  */
+			System.out.print(num+","); /* 확인용 출력  */
 		}
 		System.out.println(); /* 확인용 출력  */
 		return questionNums;
+	}
+	
+	/**
+	 * 다른 자리의 수와 '중복되지 않는 1~9사이의 수'를 추출하는 함수 (1개의 숫자)
+	 * 
+	 * @param	: 컴퓨터가 선택한 수가 담긴 리스트. 중복되는 값이 있는 지 확인 할 때 사용됨. 
+	 * @return 	: 중복되지 않는 1~9사이의 수
+	 */
+	private int noOverlap(List<Integer> questionNums) {
+		Random rd = new Random();
+		int num = 0;
+		
+		while (true) {
+			num = rd.nextInt(9)+1;
+
+			/* 랜덤값이 리스트에 포함(기존의 수와 중복)되지 않으면  while문 종료.*/
+			if (!questionNums.contains(num)) {
+				break;
+			}
+		}
+		return num;
 	}
 	
 	public static void main(String[] args) {
