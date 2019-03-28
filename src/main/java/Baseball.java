@@ -50,10 +50,29 @@ public class Baseball {
 	
 	// 사용자에게서 숫자를 입력받는 함수
 	public void getUserNumbers() {
-		System.out.print("숫자를 입력해주세요 : ");
-		int input = scanner.nextInt();
-		userNumbers[0] = input / 100;
-		userNumbers[1] = (input / 10) % 10;
-		userNumbers[2] = input % 10;
+		do {
+			System.out.print("숫자를 입력해주세요 : ");
+			int input = scanner.nextInt();
+			userNumbers[0] = input / 100;
+			userNumbers[1] = (input / 10) % 10;
+			userNumbers[2] = input % 10;
+		}while(!checkUserNumbers());
+	}
+	
+	// 사용자가 입력한 숫자를 확인하는 함수
+	public boolean checkUserNumbers() {
+		if(userNumbers[0] == 0 || userNumbers[0] > 9) {
+			System.out.println("숫자는 3자리여야 합니다.");
+			return false;
+		}
+		
+		if((userNumbers[0] == userNumbers[1])
+			|| (userNumbers[0] == userNumbers[2])
+			|| (userNumbers[1] == userNumbers[2])) {
+			System.out.println("숫자의 각 자리는 서로 달라야 합니다.");
+			return false;
+		}
+		
+		return true;
 	}
 }
