@@ -106,4 +106,18 @@ public class Baseball {
 			countStrike(i);
 		}
 	}
+	
+	// 결과를 출력하는 함수
+	public void showResult() {
+		if(strike > 0) {
+			System.out.print(strike+" 스트라이크 ");
+		}
+		if(ball > 0) {
+			System.out.print(ball+" 볼 ");
+		}
+		if(strike == 0 && ball == 0) {
+			System.out.print("낫싱");
+		}
+		System.out.print("\n");
+	}
 }
