@@ -38,4 +38,21 @@ public class Referee {
         return getStrike();
     }
 
+    /* 볼과 스트라이크 여부 확인
+     * userBall 은 던진것이고 batting은 친것인지 아닌지 알기 위한 변수
+     */
+    public void getStrikeZon(int userBall, int batting) {
+        int comNumLen = comNumber.length();
+
+        for (int i = 0; i < comNumLen; i++) {
+            if((batting == i) && (comNumber.charAt(i) == userBall)) {   /*위치와 수가 같다면*/
+                strike++;
+            }
+
+            if((batting != i) && (comNumber.charAt(i) == userBall)) {  /* 위치는 다르지만 수가 같다면*/
+                ball++;
+            }
+        }
+    }
+
 }
