@@ -62,5 +62,20 @@ public class Catcher {
 	}
 
 	private void printResult() {
+		StringBuilder sb = new StringBuilder();
+
+		if (this.strike > 0) {
+			sb.append(this.strike);
+			sb.append(STRIKE);
+		}
+		if (this.ball > 0) {
+			sb.append(this.ball);
+			sb.append(BALL);
+		}
+		if (this.strike == 0 && this.ball == 0) {
+			sb.append(NOTHING);
+		}
+
+		System.out.println(sb.toString());
 	}
 }
