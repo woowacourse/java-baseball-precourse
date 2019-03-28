@@ -22,9 +22,7 @@ public class BaseballGame {
 			 */
 			int num = noOverlap(questionNums);
 			questionNums.add(num);
-			System.out.print(num+","); /* 확인용 출력  */
 		}
-		System.out.println(); /* 확인용 출력  */
 		return questionNums;
 	}
 	
@@ -63,9 +61,7 @@ public class BaseballGame {
 		for (int i=0; i<nums.length(); i++) {
 			int num = nums.charAt(i)-48;
 			userNums.add(num);
-			System.out.print(num+","); /* 확인용 출력  */
 		}
-		System.out.println(); /* 확인용 출력  */
 		return userNums;
 	}
 	
