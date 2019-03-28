@@ -2,13 +2,18 @@ public class Judge {
     /*
      *  Judge.java
      *
-     *  ver 1.0.4
+     *  ver 1.0.5
      *
      *  2019/03/28
      *
      */
     protected int strike = 0;
     protected int ball = 0;
+
+    public void clear(){
+        this.strike = 0;
+        this.ball = 0;
+    }
 
     public void count(int[] userNum, int[] comNum){
         for (int i = 0; i < 3; ++i){
