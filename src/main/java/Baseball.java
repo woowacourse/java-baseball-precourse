@@ -19,26 +19,8 @@ public class Baseball {
         this.getRandomNumbers();
     }
 
-    private void getRandomNumbers() {
-        Random rand = new Random();
-        ArrayList<Integer> numbers = new ArrayList<>();
-
-        for (int i = 1; i < 10; i++) {
-            numbers.add(i);
-        }
-
-        for (int j=0; j<3; j++) {
-            int index;
-
-            index = rand.nextInt(8 - j);
-            computer.add(numbers.get(index));
-            numbers.remove(index);
-        }
-    }
-
     public void getUserInput() {
         Scanner scan = new Scanner(System.in);
-
         int userInput;
 
         if (!user.isEmpty()) {
@@ -47,16 +29,7 @@ public class Baseball {
 
         System.out.print("숫자를 입력해주세요 : ");
         userInput = scan.nextInt();
-
         this.parseUserInput(userInput);
-    }
-
-    private void parseUserInput(int userInput) {
-        for (int i = 2; i >= 0; i--) {
-            user.add(userInput % 10);
-            userInput = userInput / 10;
-        }
-        Collections.reverse(user);
     }
 
     public boolean checkResult() {
@@ -82,23 +55,8 @@ public class Baseball {
         }
     }
 
-    private void printResult(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-        }
-        if (strike > 0 && ball > 0) {
-            System.out.print(strike + " 스트라이크 ");
-        } else if (strike > 0) {
-            System.out.println(strike + " 스트라이크");
-        }
-        if (ball > 0) {
-            System.out.println(ball + " 볼");
-        }
-    }
-
     public boolean choose() {
         Scanner scan = new Scanner(System.in);
-
         int choice;
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -110,6 +68,46 @@ public class Baseball {
             return false;
         } else {
             return this.choose();
+        }
+    }
+
+    private void getRandomNumbers() {
+        Random rand = new Random();
+        ArrayList<Integer> numbers = new ArrayList<>();
+
+        for (int i = 1; i < 10; i++) {
+            numbers.add(i);
+        }
+
+        for (int j=0; j<3; j++) {
+            int index;
+
+            index = rand.nextInt(8 - j);
+            computer.add(numbers.get(index));
+            numbers.remove(index);
+        }
+    }
+
+    private void parseUserInput(int userInput) {
+        for (int i = 2; i >= 0; i--) {
+            user.add(userInput % 10);
+            userInput = userInput / 10;
+        }
+
+        Collections.reverse(user);
+    }
+
+    private void printResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        }
+        if (strike > 0 && ball > 0) {
+            System.out.print(strike + " 스트라이크 ");
+        } else if (strike > 0) {
+            System.out.println(strike + " 스트라이크");
+        }
+        if (ball > 0) {
+            System.out.println(ball + " 볼");
         }
     }
 }
