@@ -1,4 +1,4 @@
-package util;
+package game.util;
 
 import org.junit.Test;
 

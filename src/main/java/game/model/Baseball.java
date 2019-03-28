@@ -1,6 +1,9 @@
 package game.model;
 
-import util.RandomNumberGenerator;
+import exception.DuplicatedElementsException;
+import exception.NotMatchedNumbersSize;
+import exception.OutOfNumberBoundaryException;
+import game.util.RandomNumberGenerator;
 
 import java.util.HashSet;
 import java.util.NoSuchElementException;
@@ -102,21 +105,21 @@ public class Baseball {
     private void checkInput(int[] arr) {
         if(arr.length != numbers.length) {
             /* 원소의 수가 일치하지 않음 */
-            throw new IllegalArgumentException();
+            throw new NotMatchedNumbersSize();
         }
 
         Set<Integer> set = new HashSet<>();
         for (int n : arr) {
             if(n == 0) {
                 /* 올바른 원소가 아님 */
-                throw new IllegalArgumentException();
+                throw new OutOfNumberBoundaryException();
             }
             set.add(n);
         }
 
         if(set.size() != arr.length) {
             /* 중복되는 원소가 있음 */
-            throw new IllegalArgumentException();
+            throw new DuplicatedElementsException();
         }
     }
 }

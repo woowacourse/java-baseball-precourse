@@ -1,9 +1,9 @@
 package ui;
 
+import exception.NotDigitException;
 import game.model.OneSetResult;
 import resources.GameMessage;
 
-import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -16,11 +16,14 @@ public class ConsoleInterface implements BaseballGameInterface {
     private Scanner scanner = new Scanner(System.in);
 
     @Override
-    public int[] getInputArray() {
+    public int[] getInputArray() throws IllegalArgumentException {
         String line = getInputString("숫자를 입력해주세요: ");
 
         int[] arr = new int[line.length()];
         for (int i = 0; i < line.length(); i++) {
+            if (!Character.isDigit(line.charAt(i))) {
+                throw new NotDigitException();
+            }
             arr[i] = line.charAt(i) - '0';
         }
         return arr;
@@ -51,5 +54,10 @@ public class ConsoleInterface implements BaseballGameInterface {
     private String getInputString(String instructions) {
         System.out.print(instructions);
         return scanner.nextLine();
+    }
+
+    @Override
+    public void showMessage(String s) {
+        System.out.println(s);
     }
 }

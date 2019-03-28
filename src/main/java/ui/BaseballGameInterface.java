@@ -25,4 +25,10 @@ public interface BaseballGameInterface {
      * @see OneSetResult
      */
     void presentResult(OneSetResult oneSetResult);
+
+    /**
+     *
+     * @param s 사용자에게 보여줄 메시지
+     */
+    void showMessage(String s);
 }

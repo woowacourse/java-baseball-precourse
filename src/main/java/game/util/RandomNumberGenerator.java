@@ -1,4 +1,4 @@
-package util;
+package game.util;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -43,8 +43,8 @@ public class RandomNumberGenerator {
         }
 
         /**
-         * 생성된 난수로 이루어진 문자열을 반환한다. 각 숫자 사이에는 공백을 포함하여 다른 문자이 없다.
-         * 생성되는 랜덤 숫자가 두 자리 이상이라면 사용하지 않는 것이 좋다.
+         * 생성된 난수로 이루어진 문자열을 반환한다. 각 숫자 사이에는 공백을 포함하여 다른 문자가 없다.
+         * 생성되는 랜덤 숫자가 두 자리(10 이상의 정수) 이상이라면 사용하지 않는 것이 좋다.
          *
          * @return 생성된 난수로 이루어진 문자열
          */

@@ -47,17 +47,16 @@ public class BaseballGameRunner {
         baseball.start();
 
         while (true) {
-            int[] inputArr;
 
+            OneSetResult result;
             try {
-                inputArr = baseballGameInterface.getInputArray();
+                int[] inputArr = baseballGameInterface.getInputArray();
+                result = baseball.playOneSetGame(inputArr);
+                baseballGameInterface.presentResult(result);
             } catch (IllegalArgumentException e) {
+                baseballGameInterface.showMessage(e.getMessage());
                 continue;
             }
-
-            OneSetResult result = baseball.playOneSetGame(inputArr);
-            baseballGameInterface.presentResult(result);
-            
             if (result.isHit()) {
                 break;
             }
