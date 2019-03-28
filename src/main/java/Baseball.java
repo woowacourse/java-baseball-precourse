@@ -96,4 +96,14 @@ public class Baseball {
 			strike++;
 		}
 	}
+	
+	// Ball 검사, Strike 검사 함수를 호출
+	public void makeResult() {
+		strike = 0;
+		ball = 0;
+		for(int i = 0; i < NUM_SIZE; i++) {
+			countBall(i);
+			countStrike(i);
+		}
+	}
 }
