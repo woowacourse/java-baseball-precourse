@@ -34,7 +34,7 @@ package com;
 *  @author 이종민
 */
 
-public class BaseBall {
+public class BaseBallGame {
 
     public static void main(String[] args) {
         GameController controller = new GameController();
