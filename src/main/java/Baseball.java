@@ -13,8 +13,23 @@ public class Baseball {
 	int [] userNumbers = new int[NUM_SIZE];		// 사용자 입력 숫자
 	int strike = 0;
 	int ball = 0;
+	int userMessage = 0;						// 게임 진행 여부 (0: 게임 반복, 1: 게임 새로 시작, 2: 게임 종료)
 	Scanner scanner = new Scanner(System.in);
 	
+	
+	// 기능을 호출하는 함수
+	public void run() {
+		initComputerNumbers();
+		while(userMessage != 2) {
+			if(userMessage == 1) {
+				initComputerNumbers();
+			}
+			getUserNumbers();
+			makeResult();
+			showResult();
+			userMessage = manageGame();
+		}
+	}
 	
 	// 컴퓨터 난수를 생성하는 함수
 	public void initComputerNumbers() {
