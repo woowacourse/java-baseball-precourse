@@ -19,10 +19,6 @@ public class App {
             int [] userNumber = new int [3];    //입력한 세숫자
             System.out.println(gameExplanation);//게임 설명 출력
             answerNumber=makeRandomNumber();    //난수(정답) 생성
-//            테스트용 정답 출력
-            System.out.println(answerNumber[0]);
-            System.out.println(answerNumber[1]);
-            System.out.println(answerNumber[2]);
 
             do {
                 userNumber = saveUserInput();         //유저 입력 저장
@@ -30,7 +26,8 @@ public class App {
                 correctAnswer = isCorrectAnswer(userNumber,answerNumber);
                 printHint (userNumber,answerNumber);
             }while(correctAnswer == false);
-            System.out.println("정답입니다!");//게임 설명 출력
+            gameEnd = askRestart(); //재시작 여부를 물어보고 재시작 시 false를 종료 시 true를 반환
+
 
 
 
@@ -147,9 +144,17 @@ public class App {
             if (ball > 0) {
                 printString += ball + " 볼";
             }
+            if (ball == 0 && strike ==0){
+                String noSBString = noOrFour(); //나씽과 포볼 중 랜덤하게 저장
+                printString = noSBString;
+            }
             System.out.println(printString);
         }
     }
+
+    /*
+     * 스트라이크 카운팅
+     */
     private static int countStrike(int computer[], int user[]){
         int count=0;
         for (int i = 0; i < 3; i++){
@@ -159,6 +164,10 @@ public class App {
         }
         return count;
     }
+
+    /*
+     * 볼 카운팅
+     */
     private static int countBall(int computer[], int user[], int strike) {
         int count = 0;
         for (int i = 0; i < 3; i++) {
@@ -170,6 +179,62 @@ public class App {
         return count;
     }
 
+    /*
+     * 포볼 나씽 랜덤 함수
+     */
+    private static String noOrFour(){
+        String output = "";
+        double randomNumber = Math.random();            //랜덤한 0이상 1미만의 실수를 저장
+        int intNumber = (int) (randomNumber * 2);       //0 혹은 1 출력
+        if (intNumber == 0){
+            output = "낫씽";
+        } else{
+            output = "포볼";
+        }
+        return output;
+    }
+
+    /*
+     * 재시작 여부 입력
+     */
+    private static boolean askRestart(){
+
+        Scanner scan = new Scanner(System.in);
+        boolean inputCorrect=false;
+        int userInput = 0;
+        boolean end = false;
+        System.out.println("정답입니다!");
+        System.out.println("재시작을 원하시면 1, 종료를 원하시면 2를 입력해 주세요");
+
+        //유저 종료 여부 입력
+        do {
+            //숫자 외의 입력이 있을시 예외처리
+            try{
+                userInput = scan.nextInt();
+            }catch(InputMismatchException ime){ //정수가 아닌 문자열이 들어 왔을 때 처리할 문장
+                System.out.println("숫자를 입력해주세요!");
+                scan.next();
+                continue;
+            }
+
+            //1,2 외의 숫자를 입력시 재입력 요구
+            if (userInput != 1 && userInput !=2 ) {
+                //세자리 숫자가 아닐 시 재입력
+                System.out.println("1 혹은 2를 입력해 주세요.");
+            }else{
+                inputCorrect = true; //탈출
+            }
+        } while(inputCorrect == false);
+
+        //1일시 종료하지 않음 2일시 종료
+        if (userInput == 1){
+            end = false;
+        } else if (userInput == 2){
+            end = true;
+        }
+
+        return end;
+    }
 
 
 
