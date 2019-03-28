@@ -107,4 +107,18 @@ public class Baseball {
 		}
 	}
 
+	// 컴퓨터의 숫자와 플레이어의 숫자를 비교하여 볼카운트를 하기위한 메소드
+	public int[] ballCount(int[] com, int[] user) {
+
+		int[] count = new int[2];
+		for (int i = 0; i < 3; i++) {
+			if (com[i] == user[i]) {
+				count[0] += 1;
+			} else if (contains(com, user[i])) {
+				count[1] += 1;
+			}
+		}
+		return count;
+	}
+
 }
