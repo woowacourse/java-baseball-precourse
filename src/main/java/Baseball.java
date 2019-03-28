@@ -89,4 +89,11 @@ public class Baseball {
 			}
 		}
 	}
+	
+	// Strike 개수를 검사하는 함수
+	public void countStrike(int index) {
+		if(computerNumbers[index] == userNumbers[index]) {
+			strike++;
+		}
+	}
 }
