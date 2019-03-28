@@ -12,6 +12,7 @@ public class Main {
 
     /**
      * 게임 종료 시, 재시작 or 완전 종료
+     * game이 종료 된 후 동작하는 method로 main에서 이용할 수 있도록 구현
      * @return
      */
     public static boolean replay() {

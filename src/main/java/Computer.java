@@ -54,7 +54,7 @@ public class Computer {
             
             // ball일 경우
             if (input[digit] == answer[i]) {
-            	okBall = true;
+            	okBall = !okBall;
                 break;
             }
         }

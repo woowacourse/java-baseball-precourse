@@ -82,4 +82,4 @@ ex) (정답 : 425)
 3. isLength()       : 입력이 3자리인지
 4. isNumber()       : 입력이 숫자인지
 5. isDuplicate()    : 입력이 서로 다른 수인지
-6. splitNum()       : 3자리 수를 자릿수에 따라 분리
+6. calSplitNum()    : 3자리 수를 자릿수에 따라 분리

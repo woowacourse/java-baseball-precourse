@@ -46,7 +46,7 @@ public class User {
             Double.parseDouble(input);
         } catch (Exception e){
             System.out.println(e);
-            isNum = false;
+            isNum = !isNum;
         }
 		
         return isNum;
