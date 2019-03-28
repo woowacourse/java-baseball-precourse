@@ -2,6 +2,18 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class baseball{
+    public static void baseball_game(){
+        int answer, state=1;
+        answer = baseball.makeanswer(); // 컴퓨터의 정답
+        System.out.println("난수 생성 완료.");
+        Scanner scan = new Scanner(System.in);
+        while(state==1) {
+            int input;
+            System.out.print("숫자를 입력해주세요 : ");
+            input = scan.nextInt();
+            state = baseball.match_check(answer, input);
+        }
+    }
     public static void main(String[] args){
         int keep_going = 1;
         Scanner scan = new Scanner(System.in);
