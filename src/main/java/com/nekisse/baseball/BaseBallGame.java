@@ -3,10 +3,10 @@ package com.nekisse.baseball;
 import com.nekisse.baseball.view.InputView;
 import com.nekisse.baseball.view.OutputView;
 
-public class BaseBallGame {
+public class BaseballGame {
     private GenerateRandomNumber generateRandomNumber;
 
-    public BaseBallGame() {
+    public BaseballGame() {
         this.generateRandomNumber = new GenerateRandomNumber();
     }
 
