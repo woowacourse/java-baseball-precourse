@@ -1,7 +1,10 @@
 package me.bactoria.baseball.domain;
 
 import me.bactoria.baseball.Constant;
-import me.bactoria.baseball.utils.IntegerUtils;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ComputerImpl implements Computer {
 
@@ -9,6 +12,23 @@ public class ComputerImpl implements Computer {
 
     public ComputerImpl() {
         this.answerNumber = generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS);
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
+        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
     }
 
     @Override
@@ -23,14 +43,16 @@ public class ComputerImpl implements Computer {
     }
 
     private int generateEachDifferentRandomNumber(int digits) {
-        while (true) {
-            int randomNumber = (int) (Math.random() * (int) Math.pow(10, digits));
-            if (IntegerUtils.isEachDigitUnique(randomNumber)
-                    && IntegerUtils.isNthDigitsNumber(randomNumber, Constant.NUMBER_OF_DIGITS)
-                    && !IntegerUtils.containZero(randomNumber)) {
-                return randomNumber;
-            }
+        List<Integer> list = new LinkedList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+        StringBuilder result = new StringBuilder();
+
+        while (digits-- > 0) {
+            int idx = (int) (Math.random() * list.size());
+            result.append(list.get(idx));
+            list.remove(idx);
         }
+
+        return Integer.parseInt(result.toString());
     }
 
 }
