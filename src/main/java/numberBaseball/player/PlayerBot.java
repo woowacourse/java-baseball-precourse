@@ -1,6 +1,7 @@
 package numberBaseball.player;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class PlayerBot implements Player {
@@ -31,6 +32,6 @@ public class PlayerBot implements Player {
     }
 
     public boolean checkCorrect(int[] guessed) {
-        return true;
+        return Arrays.equals(this.answerNumber, guessed);
     }
 }
