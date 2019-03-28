@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class PlayerBot implements Player {
-    private int[] answerNumber = new int[] {0, 0, 0};
+    private int[] answerNumber = {0, 0, 0};
 
     public int randomPop(ArrayList<Integer> numberSet) {
         int randomIdx = (new Random()).nextInt(numberSet.size());
