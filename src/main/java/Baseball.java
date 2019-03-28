@@ -57,4 +57,16 @@ public class Baseball {
 		return false;
 	}
 
+	// 입력한 숫자중에 중복된 숫자가 있는지 체크하는 메소드
+	public boolean duplicateNumber(String userinput) {
+		if (userinput.charAt(0) == userinput.charAt(1)) {
+			return true;
+		} else if (userinput.charAt(1) == userinput.charAt(2)) {
+			return true;
+		} else if (userinput.charAt(2) == userinput.charAt(0)) {
+			return true;
+		}
+		return false;
+	}
+
 }
