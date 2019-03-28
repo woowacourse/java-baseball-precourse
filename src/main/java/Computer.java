@@ -2,7 +2,7 @@
 public class Computer {
 	int s_cnt = 0; // strike count;
 	int b_cnt = 0; // ball count;
-	
+	Baseball bs = new Baseball();
 	public int[] target_num = new int[3];
 	
 	public void create_num() {
@@ -42,5 +42,20 @@ public class Computer {
 		}
 		// 전체 순환하는 과정에서 스트라이크 개수 또한 볼 카운트 조건에 해당하므로 스트라이크 개수를 차감함
 		this.b_cnt -= this.s_cnt;
+	}
+	
+	public void result() {
+		// 스트라이크와 볼 모두 없는 경우
+		if (s_cnt == 0 && b_cnt == 0) {
+			System.out.println("낫싱");
+		}
+		else {
+			System.out.println(s_cnt + "스트라이크" + b_cnt + "볼");
+			if(s_cnt == 3) {
+				System.out.println("정답! 숫자를 모두 맞히셨습니다. 게임 끝");
+				bs.gameMenu();
+			}
+		}
+		
 	}
 }
