@@ -5,7 +5,7 @@ import java.util.Scanner;
 import numberBaseball.player.*;
 
 public class NumberBaseball {
-    private String gameMode = "시작 모드";
+    private String gameMode = "메인 메뉴";
     private ArrayList<String> menu = new ArrayList<String>();
 
     public NumberBaseball() {
@@ -22,6 +22,10 @@ public class NumberBaseball {
         return this.gameMode;
     }
 
+    public void setGameMode(String mode) {
+        this.gameMode = mode;
+    }
+
     public void showMenu() {
         System.out.println("");
         for (int i = 0; i < this.menu.size(); i++) {
@@ -34,7 +38,7 @@ public class NumberBaseball {
         showMenu();
         System.out.print("어떤 모드로 게임하시겠어요? ");
         int selectedIdx = new Scanner(System.in).nextInt() - 1;
-        this.gameMode = this.menu.get(selectedIdx);
+        setGameMode(this.menu.get(selectedIdx));
     }
 
     public void startGame(Player guesser, Player answerer) {
@@ -46,7 +50,8 @@ public class NumberBaseball {
             answerer.answerHintOf(guessed);
             if (answerer.checkCorrect(guessed)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
+                setGameMode("메인 메뉴");
+                return;
             }
         }
     }
