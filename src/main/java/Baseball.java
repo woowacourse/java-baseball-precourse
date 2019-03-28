@@ -1,3 +1,6 @@
+import java.util.Random;
+import java.util.Scanner;
+
 public class Baseball {
     
     public static int[] randomNumber(int[] computer) {
@@ -32,6 +35,24 @@ public class Baseball {
             return false;
         }
         return true;
+    }
+
+    public static int[] getUser(int[] user) {
+        // 사용자 입력숫자 받기
+        Scanner scan = new Scanner(System.in);
+        boolean right;
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = scan.nextLine();// 사용자 입력
+        char[] charArray = input.toCharArray(); // 문자열을 char배열로 전환
+
+        right = checkUser(charArray);// 입력값이 제대로 됐는지 체크
+        if(!right){
+            charArray[0] = '0';
+        }
+        for (int i = 0; i < charArray.length; i++) {
+            user[i] = Character.getNumericValue(charArray[i]);
+        }
+        return user;
     }
 }
 
