@@ -9,6 +9,7 @@ public class Stage implements Stageface {
     Computer computer = new Computer();
     Brain brain = new Brain();
     Referee referee = new Referee();
+    Config config = new Config();
 
     @Override
     public void singlePlay() {
@@ -28,6 +29,11 @@ public class Stage implements Stageface {
     @Override
     public void multiPlay(){
         System.out.println("멀티플레이를 시작합니다.");
+        String player = playStart();
+        boolean playing = true;
+        int[] userResult = new int[3];
+        int[] comResult = new int[3];
+        int[][] problem = makeAnswer();
         int[] result = {0,0,0};
         int[] countarr = {0};
         int[] totalCountarr = {0};
@@ -40,38 +46,61 @@ public class Stage implements Stageface {
         ArrayList<int[]> state = new ArrayList<int[]>();
         ArrayList number = new ArrayList();
         ArrayList []info = {TB,TS,Pre,resultedLog,count,totalCount,state};
-
-//        int[] comnum = {3,2,1};
-        int[] comnum;
-        comnum = computer.makeRandomNum();
-        System.out.println("랜덤값: "+ Arrays.toString(comnum));
-        int[] problem = {1,2,3};
-
         number.clear();
         for(int i=1; i<11; i++) {
             number.add(i);
         }
-        result = check(problem,comnum);
-        for(int i =0; i<25; i++) {
-            System.out.println("number: "+Arrays.toString(number.toArray()));
-            System.out.println("학습할 데이터 :"+Arrays.toString(comnum)+"학습할 결과:"+Arrays.toString(result));
-            info = brain.getLearningData(comnum,result,info,number);
-            comnum = brain.getData(info);
-            result = check(problem,comnum);
-            System.out.println("comnum: "+ Arrays.toString(comnum));
-            System.out.println("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
-            if(referee.indexOf(comnum,10)!=-1) {
+        int[] computerAnswer;
+        computerAnswer = computer.makeRandomNum();
+
+        while(playing){
+            if (player == user.USER_NAME) {
+                System.out.println("정답을 시도하세요");
+                int[] userAnswer = user.receiveNum();
+                userResult = check(problem, userAnswer, player);
+                checkLog(userResult);
+                player = computer.COMPUTER_NAME;
+                computer.lookComNum(computerAnswer);
+                comResult = check(problem, computerAnswer, player);
+                checkLog(comResult);
+                info = brain.getLearningData(computerAnswer,comResult,info,number);
+                computerAnswer = brain.getData(info);
+                player = user.USER_NAME;
+            }else{
+                computer.lookComNum(computerAnswer);
+                comResult = check(problem, computerAnswer, player);
+                checkLog(comResult);
+                info = brain.getLearningData(computerAnswer,comResult,info,number);
+                computerAnswer = brain.getData(info);
+                player = user.USER_NAME;
+                int[] userAnswer = user.receiveNum();
+                userResult = check(problem, userAnswer, player);
+                checkLog(userResult);
+                player = computer.COMPUTER_NAME;
+            }
+            if(referee.indexOf(computerAnswer,10)!=-1) {
                 System.out.println("컴퓨터가 항복하였습니다.");
                 break;
             }
-            if(result[0]==3) {
-                System.out.println("디엔드");
+            if(userResult[0]==3) {
+                System.out.println("유저님이 승리하셨습니다!");
+                break;
+            }
+            if(comResult[0]==3) {
+                System.out.println("컴퓨터가 승리하였습니다!");
                 break;
             }
         }
     }
 
     @Override
+    public int[] check(int[][] problem,int[] answer, String player){
+        int strike = referee.countStrike(problem,answer,player);
+        int ball = referee.countBall(problem,answer,player) - strike;
+        int[] counter = {strike,ball};
+        return counter;
+    }
+
     public int[] check(int[] problem,int[] answer){
         int strike = referee.countStrike(problem,answer);
         int ball = referee.countBall(problem,answer) - strike;
@@ -81,11 +110,35 @@ public class Stage implements Stageface {
 
     @Override
     public String checkLog(int[] result){
-        String log = result[0]+"스트라이크\n"+result[1]+"볼";
+        String log = result[0]+"스트라이크\n"+result[1]+"볼\nㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ";
         if(result[0] == 0 && result[1] ==0){
             log = "포볼";
         }
         System.out.println(log);
         return log;
+    }
+
+    public String playStart(){
+        boolean preOrder = config.choosePre();
+        String prePlayer = "";
+        if(preOrder){
+            System.out.println("User님의 선공입니다.");
+            prePlayer = user.USER_NAME;
+
+        }else{
+            System.out.println("Computer님의 선공입니다.");
+            prePlayer = computer.COMPUTER_NAME;
+        }
+        return prePlayer;
+    }
+
+    public int[][] makeAnswer(){
+        System.out.println("문제를 생성해주세요.");
+        int[] myAnswer = user.receiveNum();
+        int[] comAnswer = computer.makeRandomNum();
+        int[][] Answer = new int[2][3];
+        Answer[0] = myAnswer;
+        Answer[1] = comAnswer;
+        return Answer;
     }
 }

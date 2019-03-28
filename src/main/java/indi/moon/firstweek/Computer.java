@@ -33,4 +33,9 @@ public class Computer extends Config implements Computerface {
         }
         return tmp[i];
     }
+
+    public void lookComNum(int [] arr){
+        String str = arr[0]+""+arr[1]+""+arr[2];
+        System.out.println("컴퓨터의 입력값: \n"+str);
+    }
 }
