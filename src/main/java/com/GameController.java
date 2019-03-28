@@ -70,7 +70,32 @@ public class GameController {
             gameState = false;
         }
     }
-    
+
+    /* 사용자가 입력하는 값이 3개이상 같은수 인지 확인 */
+    public boolean checkTheInput() {
+
+        if (userNumber.length() > BALL_LENGTH) {       /* 입력받은 길이와 기준치를 비교 */
+            return false;
+        }
+
+        for (int i=0; i < BALL_LENGTH; i++) {
+            if (checkSameNumber(userNumber.charAt(i),i+1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /* userNumber를 하나씩 받아서 중복된 수가 있는지 확인 */
+    public boolean checkSameNumber(char each, int start) {
+        for (int k = start; k < BALL_LENGTH; k++) {
+            if (each == userNumber.charAt(k)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 
 
