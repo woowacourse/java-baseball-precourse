@@ -7,7 +7,10 @@ import java.io.*;
 import java.util.Scanner;
 
 /**
+ * {@link ui.BaseballGameInterface}를 implements하여 콘솔 환경에서 입출력이 가능하도록 구현한 클래스.
+ *
  * @author delf
+ * @see ui.BaseballGameInterface
  */
 public class ConsoleInterface implements BaseballGameInterface {
     private Scanner scanner = new Scanner(System.in);
@@ -15,7 +18,7 @@ public class ConsoleInterface implements BaseballGameInterface {
     @Override
     public int[] getInputArray() {
         String line = getInputString("숫자를 입력해주세요: ");
-        
+
         int[] arr = new int[line.length()];
         for (int i = 0; i < line.length(); i++) {
             arr[i] = line.charAt(i) - '0';
