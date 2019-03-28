@@ -26,6 +26,7 @@ public class ComputerImpl implements Computer {
         while (true) {
             int randomNumber = (int) (Math.random() * (int) Math.pow(10, digits));
             if (IntegerUtils.isEachDigitUnique(randomNumber)
+                    && IntegerUtils.isNthDigitsNumber(randomNumber, Constant.NUMBER_OF_DIGITS)
                     && !IntegerUtils.containZero(randomNumber)) {
                 return randomNumber;
             }
