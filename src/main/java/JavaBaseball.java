@@ -52,7 +52,7 @@ public class JavaBaseball {
 		
 		while (status) {
             setAnsArr();			/* 0 ~ 9의 수를 무작위로 뽑아 ansArr배열에 저장한다. */
-//            startGame();			/* 현재 게임을 시작한다. 게임은 ansArr배열과 userInArr배열이 일치할 경우 종료된다. */
+            startGame();			/* 현재 게임을 시작한다. 게임은 ansArr배열과 userInArr배열이 일치할 경우 종료된다. */
 //			status = exitMode();	/* 사용자에게 다음 게임을 시작할지에 대해 입력받는다. */
 		}
 		scanner.close();
@@ -142,7 +142,23 @@ public class JavaBaseball {
 	public static void idxCounter() {
 		for (int ansIdx = 0; ansIdx < THREE_DIGITS; ++ansIdx) {
 			for (int inIdx = 0; inIdx < THREE_DIGITS; ++inIdx) {
-//				compareValue(ansIdx, inIdx);		// 2-2-1
+				compareValue(ansIdx, inIdx);		// 2-2-1
+			}
+		}
+	}
+	
+	/**
+	 * compareValue(ansIdx, inIdx): idxCounter메소드로부터 얻은 참조값을 이용하여 ansArr배열의 값과 userInArr배열의 값을 비교하는 메소드.
+	 * 								
+	 * @param ansIdx:	arrAns배열의 방에 참조할 값이다.
+	 * @param inIdx:	userInArr배열의 방에 참조할 값이다.
+	 */
+	public static void compareValue(int ansIdx, int inIdx) {
+		if (ansArr[ansIdx] == userInArr[inIdx]) {
+			if (ansIdx == inIdx) {
+				strike++;
+			} else {
+				ball++;
 			}
 		}
 	}
