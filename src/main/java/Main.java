@@ -10,7 +10,7 @@ public class Main {
 
             // 정답 생성
             String ans = makeAnswer();
-            System.out.println(ans);
+            //System.out.println(ans);
 
             // 게임 시작
             boolean result = playGame(sc, ans);
