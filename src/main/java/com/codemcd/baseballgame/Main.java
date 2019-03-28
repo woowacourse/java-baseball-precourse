@@ -1,6 +1,6 @@
 /*
  * @(#)Main.java
- * v1.00
+ * v2.00
  * 2019/03/27
  */
 
@@ -9,7 +9,7 @@ package com.codemcd.baseballgame;
 /**
  * 숫자 야구 게임을 진행하는 Main 클래스
  *
- * @version v1.00
+ * @version v2.00
  * @author 박성범
  */
 public class Main {
