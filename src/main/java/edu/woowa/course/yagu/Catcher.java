@@ -14,11 +14,26 @@ public class Catcher {
 	private static final int COUNT = 3;
 	private static final int RANDOM_SCOPE = 9;
 
+	/** NumberMap is used to check if the number is generated first or not */
+	private NumberMap catcherMap;
 	private Random random;
 	private	int ball;
 	private	int strike;
 
 	public void init() {
+		catcherMap = new NumberMap();
+		random = new Random();
+		int value = 0;
+		int i = 0;
+
+		while (i < COUNT) {
+			value = 1 + random.nextInt(RANDOM_SCOPE);
+			if(catcherMap.getIndex(value) >= 0) {
+				continue;
+			}
+			catcherMap.setIndex(value, i);
+			i++;
+		}
 	}
 
 	public boolean catching(int[] pitchingBallArr) {
