@@ -8,7 +8,8 @@ public class App {
         //게임 설명
         final String gameExplanation = "***숫자야구게임***\n" +
                 "컴퓨터가 생각한 1~9사이의 서로 다른 세 숫자를 맞춰주세요\n" +
-                "만약 정답이 아니라면 같은 수가 같은자리에 있으면 스트라이크\n" +
+                "만약 정답이 아니라면 정답이 같은자리에 있으면 스트라이크\n" +
+                "다른 자리에 있으면 볼\n" +
                 "같은 수가 전혀 없으면 포볼 혹은 나씽이라는 힌트를 드립니다!";
 
         /*
@@ -90,13 +91,13 @@ public class App {
 
             numberArray= intToArray(userInput); //정수를 배열로 변환
 
-            if (userInput < 99 || userInput > 999 ) {
+            if ((userInput < 99) || (userInput > 999)) {
                 //세자리 숫자가 아닐 시 재입력
                 System.out.println("세자리 숫자를 입력해 주세요");
-            } else if(numberArray[0] == numberArray[1] || numberArray[1] == numberArray[2] || numberArray[2] == numberArray[0]){
+            } else if((numberArray[0] == numberArray[1]) || (numberArray[1] == numberArray[2]) || (numberArray[2] == numberArray[0])){
                 //같은 숫자가 있을 시 재입력
                 System.out.println("중복되지 않은 숫자를 입력해 주세요");
-            } else if (numberArray[1] == 0 || numberArray[2] == 0){
+            } else if ((numberArray[1] == 0) || (numberArray[2] == 0)){
                 //숫자에 0이 있을 시 재입력
                 System.out.println("0이 아닌 숫자를 입력해 주세요");
             }else{
@@ -171,7 +172,7 @@ public class App {
     private static int countBall(int computer[], int user[], int strike) {
         int count = 0;
         for (int i = 0; i < 3; i++) {
-            if (user[i] == computer[0] || user[i] == computer[1] || user[i] == computer[2]) { //같은 숫자 세기
+            if ((user[i] == computer[0]) || (user[i] == computer[1]) || (user[i] == computer[2])) { //같은 숫자 세기
                 count++;
             }
         }
