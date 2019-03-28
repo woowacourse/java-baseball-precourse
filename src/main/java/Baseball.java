@@ -120,4 +120,16 @@ public class Baseball {
 		}
 		System.out.print("\n");
 	}
+	
+	// 게임을 진행하는 함수
+	public int manageGame() {
+		if(strike != 3) {
+			return 0;
+		}else {
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			int exitCommand = scanner.nextInt();
+			return exitCommand;
+		}
+	}
 }
