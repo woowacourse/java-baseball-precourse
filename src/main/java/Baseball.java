@@ -69,4 +69,22 @@ public class Baseball {
 		return false;
 	}
 
+	// 플레이어가 입력한 숫자의 유효성을 검증하는 메소드
+	public boolean isnotValidNumber(String userinput) {
+		if (isnotNumber(userinput)) {
+			System.out.println("[ERROR] 숫자만 입력하세요.\n");
+			return true;
+		} else if (isnotThreeNumber(userinput)) {
+			System.out.println("[ERROR] 3자리 숫자가 아닙니다. 3자리 숫자를 입력하세요.\n");
+			return true;
+		} else if (includeZero(userinput)) {
+			System.out.println("[ERROR] 1~9사이의 숫자를 입력하세요.\n");
+			return true;
+		} else if (duplicateNumber(userinput)) {
+			System.out.println("[ERROR] 중복된 숫자가 있습니다. 다시 입력해 주세요.\n");
+			return true;
+		}
+		return false;
+	}
+
 }
