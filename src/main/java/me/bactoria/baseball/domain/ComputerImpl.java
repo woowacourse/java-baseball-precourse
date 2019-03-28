@@ -12,23 +12,6 @@ public class ComputerImpl implements Computer {
 
     public ComputerImpl() {
         this.answerNumber = generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS);
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
-        System.out.println(generateEachDifferentRandomNumber(Constant.NUMBER_OF_DIGITS));
     }
 
     @Override
