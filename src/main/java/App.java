@@ -20,9 +20,9 @@ public class App {
             System.out.println(gameExplanation);//게임 설명 출력
             answerNumber=makeRandomNumber();    //난수(정답) 생성
 //            테스트용 정답 출력
-//            System.out.println(answerNumber[0]);
-//            System.out.println(answerNumber[1]);
-//            System.out.println(answerNumber[2]);
+            System.out.println(answerNumber[0]);
+            System.out.println(answerNumber[1]);
+            System.out.println(answerNumber[2]);
 
             do {
                 userNumber = saveUserInput();         //유저 입력 저장
@@ -30,6 +30,7 @@ public class App {
                 correctAnswer = isCorrectAnswer(userNumber,answerNumber);
                 printHint (userNumber,answerNumber);
             }while(correctAnswer == false);
+            System.out.println("정답입니다!");//게임 설명 출력
 
 
 
