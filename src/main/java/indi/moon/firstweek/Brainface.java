@@ -44,5 +44,7 @@ import java.util.ArrayList;
  * 6) OUT일 경우 TB의 모든 수에 새로운 넘버를 추가한다.
  */
 public interface Brainface {
+    /* 현재데이터, 데이터에 대한 결과값, 이전학습데이터, 남은 경우의수 를 이용하여 학습 데이터를 얻는다. */
     ArrayList[] getLearningData(int[] comnum, int[] result, ArrayList[] info, ArrayList number);
+    int[] getData(ArrayList[] info);
 }

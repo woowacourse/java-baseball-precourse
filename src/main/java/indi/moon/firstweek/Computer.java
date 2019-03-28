@@ -1,8 +1,5 @@
 package indi.moon.firstweek;
 
-import java.util.ArrayList;
-import java.util.stream.Stream;
-
 public class Computer extends Config implements Computerface {
 
     @Override

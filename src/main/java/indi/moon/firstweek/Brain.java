@@ -1,7 +1,6 @@
 package indi.moon.firstweek;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Brain extends Computer implements Brainface {
 
@@ -108,7 +107,6 @@ public class Brain extends Computer implements Brainface {
             arr[2] = (Integer)info[0].get(2);
             info[0].clear();
         }else {
-            System.out.println("에러");
         }
         return arr;
     }
@@ -121,18 +119,32 @@ public class Brain extends Computer implements Brainface {
 
 
     public void loopReset2S0B(ArrayList[] info,ArrayList number) {
-        int[] tmp1 = {((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[0],((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[1],(int)number.get(0)};
-        int[] tmp2 = {(int)number.get(0),((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[1],((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[2]};
-        int[] tmp3 = {((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[0],(int)number.get(0),((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[2]};
+        int[] tmp1 = {((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[0]
+                    ,((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[1]
+                    ,(int)number.get(0)};
+
+        int[] tmp2 = {(int)number.get(0)
+                    ,((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[1]
+                    ,((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[2]};
+
+        int[] tmp3 = {((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[0]
+                    ,(int)number.get(0)
+                    ,((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[2]};
         info[1].add(tmp1);
         info[1].add(tmp2);
         info[1].add(tmp3);
     }
 
     public void loopReset1S0B(ArrayList[] info,ArrayList number) {
-        int[] tmp1 = {((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[0],(int)number.get(0),(int)number.get(1)};
-        int[] tmp2 = {(int)number.get(0),((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[1],(int)number.get(1)};
-        int[] tmp3 = {(int)number.get(0),(int)number.get(1),((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[2]};
+        int[] tmp1 = {((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[0]
+                    ,(int)number.get(0)
+                    ,(int)number.get(1)};
+        int[] tmp2 = {(int)number.get(0)
+                    ,((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[1]
+                    ,(int)number.get(1)};
+        int[] tmp3 = {(int)number.get(0)
+                    ,(int)number.get(1)
+                    ,((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[2]};
         info[1].add(tmp1);
         info[1].add(tmp2);
         info[1].add(tmp3);

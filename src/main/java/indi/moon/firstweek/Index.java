@@ -1,7 +1,7 @@
 package indi.moon.firstweek;
 
-import java.lang.annotation.*;
 import java.util.Scanner;
+
 public class Index implements Indexface {
 
     private static final String END_COMMAND = "exit";

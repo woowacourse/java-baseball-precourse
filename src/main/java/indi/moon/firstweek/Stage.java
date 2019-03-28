@@ -1,7 +1,6 @@
 package indi.moon.firstweek;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Stage implements Stageface {
 
@@ -17,7 +16,7 @@ public class Stage implements Stageface {
 //        int[] problem = computer.makeRandomNum();
         int[] problem = {1,2,3};
         while(true) {
-            int[] answer = user.receiveNum();
+            int[] answer = checkReceiveNum();
             int[] result = check(problem,answer);
             if(result[0] == 3){
                 System.out.println("정답을 맞췄습니다.");
@@ -26,6 +25,7 @@ public class Stage implements Stageface {
             checkLog(result);
         }
     }
+
     @Override
     public void multiPlay(){
         System.out.println("멀티플레이를 시작합니다.");
@@ -56,13 +56,14 @@ public class Stage implements Stageface {
         while(playing){
             if (player == user.USER_NAME) {
                 System.out.println("정답을 시도하세요");
-                int[] userAnswer = user.receiveNum();
+                int[] userAnswer = checkReceiveNum();
                 userResult = check(problem, userAnswer, player);
                 checkLog(userResult);
                 player = computer.COMPUTER_NAME;
                 computer.lookComNum(computerAnswer);
                 comResult = check(problem, computerAnswer, player);
                 checkLog(comResult);
+                playing = checkWinner(userResult,comResult);
                 info = brain.getLearningData(computerAnswer,comResult,info,number);
                 computerAnswer = brain.getData(info);
                 player = user.USER_NAME;
@@ -73,21 +74,14 @@ public class Stage implements Stageface {
                 info = brain.getLearningData(computerAnswer,comResult,info,number);
                 computerAnswer = brain.getData(info);
                 player = user.USER_NAME;
-                int[] userAnswer = user.receiveNum();
+                int[] userAnswer = checkReceiveNum();
                 userResult = check(problem, userAnswer, player);
                 checkLog(userResult);
+                playing = checkWinner(userResult,comResult);
                 player = computer.COMPUTER_NAME;
             }
             if(referee.indexOf(computerAnswer,10)!=-1) {
                 System.out.println("컴퓨터가 항복하였습니다.");
-                break;
-            }
-            if(userResult[0]==3) {
-                System.out.println("유저님이 승리하셨습니다!");
-                break;
-            }
-            if(comResult[0]==3) {
-                System.out.println("컴퓨터가 승리하였습니다!");
                 break;
             }
         }
@@ -135,10 +129,44 @@ public class Stage implements Stageface {
     public int[][] makeAnswer(){
         System.out.println("문제를 생성해주세요.");
         int[] myAnswer = user.receiveNum();
+        while(myAnswer.length!=3){
+            System.out.println("세자리수로 입력해 주세요.");
+            myAnswer = user.receiveNum();
+        }
         int[] comAnswer = computer.makeRandomNum();
         int[][] Answer = new int[2][3];
         Answer[0] = myAnswer;
         Answer[1] = comAnswer;
         return Answer;
     }
+
+    public int[] checkReceiveNum(){
+        int[] answer = user.receiveNum();
+        if(answer.length!=3) {
+            do {
+                System.out.println("세자리수로 입력해 주세요.");
+                answer = user.receiveNum();
+            } while (answer.length != 3);
+        }
+        if(answer[0] == answer[1] ||answer[1] == answer[2]||answer[0] == answer[2]){
+            do {
+                System.out.println("중복된 값은 허용하지 않습니다.");
+                answer = user.receiveNum();
+            }while(answer[0] == answer[1] ||answer[1] == answer[2]||answer[0] == answer[2]);
+        }
+        return answer;
+    }
+
+    public boolean checkWinner(int[] userResult,int[] comResult){
+        if(userResult[0]==3) {
+            System.out.println("유저님이 승리하셨습니다!");
+            return false;
+        }
+        if(comResult[0]==3) {
+            System.out.println("컴퓨터가 승리하였습니다!");
+            return false;
+        }
+        return true;
+    }
+
 }
