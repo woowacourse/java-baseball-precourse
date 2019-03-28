@@ -1,5 +1,5 @@
 /*
- * AppMain
+ * AppMain Class
  *
  * @version 1.1
  *
@@ -13,8 +13,8 @@ package com.github.offMomySon.game;
 import com.github.offMomySon.resource.User;
 
 /**
- * @desc : AppMain Class
- * @pakage : com.github.offMomySon.game
+ * @desc AppMain Class
+ * @pakage com.github.offMomySon.game
  */
 public class AppMain {
     /**

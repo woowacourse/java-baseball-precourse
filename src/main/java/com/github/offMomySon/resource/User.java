@@ -1,5 +1,5 @@
 /*
- * User
+ * User Class
  *
  * @version 1.1
  *
@@ -13,11 +13,11 @@ package com.github.offMomySon.resource;
 import java.util.*;
 
 /**
- * @desc : User Class
+ * @desc User Class
  * 사용자로부터 유효한 3개의 수를 입력받는다.
  * 사용자로부터 게임 시작, 종료를 입력받는다.
- * 입력받은 수를 List와 HashMap 을 이용하여 저장한다.
- * @pakage : com.github.offMomySon.resource
+ * 입력받은 수를 List 와 HashMap 을 이용하여 저장한다.
+ * @pakage com.github.offMomySon.resource
  */
 public class User {
     static Scanner scanner = new Scanner(System.in);
@@ -31,7 +31,7 @@ public class User {
     }
 
     /**
-     * @desc : 사용자로부터 숫자를 입력받아. 인스턴스 변수, numsMap, numsList 에 저장.
+     * @desc 사용자로부터 숫자를 입력받아. 인스턴스 변수, numsMap, numsList 에 저장.
      */
     public void inputNums() {
         String num_string;
@@ -41,7 +41,7 @@ public class User {
     }
 
     /**
-     * @desc : 사용자로부터 입력되었던 값들 초기화
+     * @desc 사용자로부터 입력되었던 값들 초기화
      */
     public void initValue() {
         numsMap.clear();
@@ -50,7 +50,7 @@ public class User {
 
     /**
      * @param input (1~9)까지의 3가지 수로 변환 가능한 String
-     * @desc : 사용자로부터 받아온 String 을 int 로 변환하여 저장한다.
+     * @desc 사용자로부터 받아온 String 을 int 로 변환하여 저장한다.
      */
     private void saveNums(String input) {
         for (int i = 0; i < input.length(); i++) {
@@ -62,7 +62,7 @@ public class User {
 
     /**
      * @return (1 ~ 9)까지의 3가지 수로 변환 가능한 String
-     * @desc : 사용자로부터 변환 가능한 String 을 입력받을 때까지 반복.
+     * @desc 사용자로부터 변환 가능한 String 을 입력받을 때까지 반복한다.
      */
     private String inputNumStirng() {
         String num_string;
@@ -71,16 +71,16 @@ public class User {
             num_string = scanner.nextLine();
             if (isValidNums(num_string))
                 break;
-
             System.out.print("유효한 숫자를 입력해 주세요 : ");
         }
+
         return num_string;
     }
 
     /**
-     * @param num_string : 사용자로부터 입력받은 String
+     * @param num_string 사용자로부터 입력받은 String
      * @return 입력받은 String 이 유효하면 true 리턴.
-     * @desc : 사용자로부터 입력받은 String 이 서로 다른 (1~9 까지의) 3가지의 숫자가 될 수 있는지 검사.
+     * @desc 사용자로부터 입력받은 String 이 서로 다른 (1~9 까지의) 3가지의 숫자가 될 수 있는지 검사.
      */
     private boolean isValidNums(String num_string) {
         HashSet<Integer> numsSet = new HashSet<>();
@@ -128,14 +128,14 @@ public class User {
     }
 
     /**
-     * @return 유저가 입력한 (1~9)까지의 3가지 수를 List Class 로 리턴.
+     * @return 유저가 입력한 (1~9)까지의 3가지 수를 List 로 리턴.
      */
     public List<Integer> getNumsList() {
         return numsList;
     }
 
     /**
-     * @return 유저가 입력한 (1~9)까지의 3가지 수를 HashMap Class 로 리턴.
+     * @return 유저가 입력한 (1~9)까지의 3가지 수를 HashMap 으로 리턴.
      */
     public HashMap<Integer, Integer> getNumsMap() {
         return numsMap;
