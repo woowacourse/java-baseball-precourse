@@ -1,7 +1,7 @@
 /*
 * 클래스 이름 : baseball.java
 *
-* 버전 정보 : 1.0.0
+* 버전 정보 : 1.0.1
 *
 * 날짜 : 2019.03.28
 *
@@ -107,7 +107,12 @@ public class baseball {
                     break;
             }
         }
-        System.out.println(strike + " 스트라이크 " + ball + "볼");
+        if(ball==0&&strike==0){
+            System.out.println("낫싱");
+        }
+        else {
+            System.out.println(strike + " 스트라이크 " + ball + "볼");
+        }
         if(strike ==3) {
             /*3스트라이크일 경우 true 반환*/
             return true;
@@ -134,7 +139,7 @@ public class baseball {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int game = sc.nextInt();
-        
+
         return game;
     }
 
