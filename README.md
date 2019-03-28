@@ -1,4 +1,4 @@
-# 숫자 야구 게임 _ okskna
+# 숫자 야구 게임 _ 우아한 테크코스 1주차 미션
 
 https://github.com/okskna/java-baseball
 
