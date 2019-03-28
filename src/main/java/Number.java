@@ -1,9 +1,9 @@
 /*
  *  Number.java
  *
- *  ver 1.0.0
+ *  ver 1.0.1
  *
- *  2019/03/25
+ *  2019/03/28
  *
  */
 
@@ -16,6 +16,17 @@ public class Number {
     // 숫자 3개를 가지는 배열
     protected int[] number = new int[3];
 
+    /*
+     * setNum 메서드
+     * 전달인자 : 없음
+     * 난수를 발생 시켜 인스턴스 변수에 할당하는 메서드
+     */
+    public void setNumber(){
+        for (int i = 0; i < 3; ++i) {
+            this.number[i] = (int) (Math.random() * 10);
+            if (this.isOverlap(i)) i--;
+        }
+    }
 
     /*
      * isOverlap 메서드
