@@ -11,6 +11,8 @@ public class Baseball {
 	static int NUM_SIZE = 3;
 	int[] computerNumbers = new int[NUM_SIZE];	// 컴퓨터 난수
 	int [] userNumbers = new int[NUM_SIZE];		// 사용자 입력 숫자
+	int strike = 0;
+	int ball = 0;
 	Scanner scanner = new Scanner(System.in);
 	
 	
@@ -74,5 +76,17 @@ public class Baseball {
 		}
 		
 		return true;
+	}
+	
+	// Ball 개수를 검사하는 함수
+	public void countBall(int index) {
+		for(int i = 0; i < NUM_SIZE; i++){
+			if(i == index) {
+				continue;
+			}
+			if(computerNumbers[index] == userNumbers[i]) {
+				ball++;
+			}
+		}
 	}
 }
