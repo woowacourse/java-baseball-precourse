@@ -5,12 +5,13 @@ public class first{
 
     public static void main(String[] arg)
     {
+        System.out.println("숫자를 입력해주세요 : ");
         int user[];
         int com[];
         int cnt = 0;
         int endn = 0;
         Scanner sc = new Scanner(System.in);
-        while(endn == 2){
+        while(endn != 2){
             System.out.println("숫자를 입력해주세요 : ");
             int usr = sc.nextInt();
             user = usrinit(usr);
@@ -25,7 +26,7 @@ public class first{
         return;
         
     }
-    public static int[] cominit()
+    public static int[] cominit()   //컴퓨터 랜덤 숫자 제작
     {
         Random random = new Random();
         int cnum[] = new int[3];
@@ -42,7 +43,7 @@ public class first{
 
         return cnum;
     }
-    public static int[] usrinit(int user)
+    public static int[] usrinit(int user)   //유저 랜덤 숫자 자리수 나눔
     {
         int num[] = new int[3];
         
@@ -79,12 +80,13 @@ public class first{
         {
             if(cnt!=0)
             {
-                System.out.println(cnt + " 스트라이크 ");
+                System.out.print(cnt + " 스트라이크 ");
             }
             if(bll!=0)
             {
-                System.out.println(bll+"볼");
+                System.out.print(bll+"볼");
             }
+            //System.out.println(com[0]+" "+com[1]+" "+com[2]);
         }
         return cnt;
     }
