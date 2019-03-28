@@ -1,11 +1,13 @@
 package indi.moon.firstweek;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Stage implements Stageface {
 
     User user = new User();
     Computer computer = new Computer();
+    Brain brain = new Brain();
     Referee referee = new Referee();
 
     @Override
@@ -26,6 +28,13 @@ public class Stage implements Stageface {
     @Override
     public void multiPlay(){
         System.out.println("멀티플레이를 시작합니다.");
+        int[] comnum = computer.makeRandomNum();
+        int[] problem = {1,2,3};
+        int[] result = check(problem,comnum);
+        ArrayList number = computer.number;
+        ArrayList info[] = computer.info;
+        info = brain.getLearningData(comnum,result,info,number);
+        result = check(problem,comnum);
     }
 
     @Override

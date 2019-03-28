@@ -1,6 +1,6 @@
 package indi.moon.firstweek;
 
-/**
+/*
  * 숫자야구 인터페이스
  * @date        2019-03-23
  * @author      문지원
