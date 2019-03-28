@@ -1,3 +1,5 @@
+package hsycamp.baseball;
+
 import java.util.Scanner;
 
 public class Main {
