@@ -28,6 +28,25 @@ public class Player {
 	
 	public boolean input_vaild(int input_num) {
 		
-		return true;
+		boolean vaild_num = true; // 판별 여부 함수
+		int one = input_num / 100; // 100의자리
+		int two = (input_num / 10) % 10; // 10의 자리
+		int three = input_num % 10;	 //1의 자리
+		// 숫자가 3자리 인지 검증
+		if (input_num > 99 && input_num < 1000 ) {
+			System.out.println("입력값이 3자리 수가 아닙니다. 입력값을 확인해주세요");
+			vaild_num = false;
+		}
+		// 서로 다른 숫자인지 검증
+		if (one == two && two == three && three == one) {
+			System.out.println("중복 되는 숫자가 입력되었습니다. 입력값을 확인해주세요");
+			vaild_num = false;
+		}
+		// 숫자가 0 이 포함되어 있는지 검증
+		if (one == 0 && two == 0 && three == 0) {
+			System.out.println("입력 값에 0이 포함 되어 있습니다. 입력값을 확인해주세요");
+			vaild_num = false;
+		}
+		return vaild_num;
 	}
 }
