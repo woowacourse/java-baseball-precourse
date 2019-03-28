@@ -10,8 +10,10 @@
  */
 package com.github.offMomySon.game;
 
+import com.github.offMomySon.game.baseball.BallType;
 import com.github.offMomySon.resource.Computer;
 import com.github.offMomySon.resource.User;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,9 +30,9 @@ public class Game {
     private Computer computer;
     private User user;
 
-    public Game() {
+    public Game(User user) {
+        this.user = user;
         this.computer = new Computer();
-        this.user = new User();
     }
 
     /**
@@ -40,16 +42,31 @@ public class Game {
         computer.create_randnum();
     }
 
-
     /**
      * @desc : 게임의 Sequence [ 입력요청, 입력, 힌트출력, 게임종료 선택 ] 를 순서대로 수행한다.
      */
     public void run() {
-        while (true) {
+        List<Integer> score;
+
+        do {
             request_Input();
-            List<Integer> score = count_Score();
-            System.out.println(score);
-        }
+            score = count_Score();
+            print_hint(score);
+            if (score.get(0) == 3)
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+        } while (user.isContinue());
+    }
+
+    /**
+     * @param score Strike, Ball count 가 담긴 List Class를 파라미터로 받는다.
+     * @desc : Strike, Ball count를 문자열로 표현한다.
+     */
+    private void print_hint(List<Integer> score) {
+        int strike_count = score.get(0);
+        int ball_count = score.get(1);
+
+        System.out.println(new BallType(strike_count, ball_count));
     }
 
     /**
@@ -61,27 +78,26 @@ public class Game {
         user.inputNums();
     }
 
-
     /**
      * @return : Strike, Ball 의 개수를 List Class 를 통해 반환.
      * @desc : 컴퓨터의 수와, 사용자의 수를 비교하여 Strike, Ball 개수를 반환하는 함수.
      */
     private List<Integer> count_Score() {
         HashMap<Integer, Integer> com_NumMap = computer.getNumsMap();
-        List<Integer> user_NumList = user.getNumsList();
         List<Integer> com_NumList = computer.getNumsList();
+        List<Integer> user_NumList = user.getNumsList();
         List<Integer> score = new ArrayList<>();
         int strike = 0;
         int ball = 0;
 
-        for (int i = 0; i < user_NumList.size(); i++)       //사용자에게 입력받은 숫자 순서대로 검사한다.
+        for (int i = 0; i < user_NumList.size(); i++)       // 사용자에게 입력받은 숫자 순서대로 검사한다.
         {
-            Integer user_num = user_NumList.get(i);
             Integer computer_num = com_NumList.get(i);
+            Integer user_num = user_NumList.get(i);
 
-            if (computer_num.equals(user_num))              //같은 자리에 같은 수가 있으면 strike count 1증가 시킨다.
+            if (computer_num.equals(user_num))              // 같은 자리에 같은 수가 있으면 strike count 1증가 시킨다.
                 strike += 1;
-            else if (com_NumMap.containsKey(user_num))      //다른 자리에 같은 수가 있으면 ball count 1증가 시킨다.
+            else if (com_NumMap.containsKey(user_num))      // 다른 자리에 같은 수가 있으면 ball count 1증가 시킨다.
                 ball += 1;
         }
         score.add(strike);

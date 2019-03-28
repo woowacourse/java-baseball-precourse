@@ -29,10 +29,12 @@ public class AppMain {
     public static void main(String[] args) {
 
         System.out.println("Test");
+        User user = new User();
+        Game g = new Game(user);
 
-        Game g = new Game();
-        g.init();
-        g.run();
-
+        do{
+            g.init();
+            g.run();
+        }while (user.isContinue());
     }
 }

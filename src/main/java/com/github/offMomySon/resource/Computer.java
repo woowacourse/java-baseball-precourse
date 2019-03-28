@@ -42,7 +42,9 @@ public class Computer {
 
             numsList.add(new_number);
             numsMap.put(new_number, new_number);
+            System.out.print(new_number);
         }
+
     }
 
     /**
@@ -56,10 +58,13 @@ public class Computer {
             return true;
     }
 
-    /** @desc : Computer가 랜덤으로 생성한 3가지 수를 List Class로 Return */
+    /**
+     * @desc : Computer가 랜덤으로 생성한 3가지 수를 List Class로 Return
+     */
     public List<Integer> getNumsList() {
         return numsList;
     }
+
     /**
      * @return Computer가 랜덤으로 생성한 3가지 수를 HashMap Class로 Return
      */
