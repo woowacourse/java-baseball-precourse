@@ -26,13 +26,14 @@ public class first{
     }
     public static int[] cominit()
     {
+        Random random = new Random();
         int cnum[] = new int[3];
         while(true)
         {
             cnum[0] = random.nextInt(10);
             cnum[1] = random.nextInt(10);
             cnum[2] = random.nextInt(10);
-            if((cnum[0]!=cum[1]) && (cum[0]!=cum[2])&& (cum[1]!=cum[2]))
+            if((cnum[0]!=cnum[1]) && (cnum[0]!=cnum[2])&& (cnum[1]!=cnum[2]))
             {
                 break;
             }
