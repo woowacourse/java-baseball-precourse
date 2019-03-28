@@ -15,9 +15,6 @@ public class Brain extends Computer implements Brainface {
         info[6].add(0);
         int countNum =((int[])info[4].get(0))[0];
         int totalcountNum =((int[])info[5].get(0))[0];
-        for(int i=1; i<11; i++) {
-            number.add(i);
-        }
         info[2].add(comnum);
         info[3].add(result);
         ((int[])info[5].get(0))[0]++;
@@ -28,30 +25,51 @@ public class Brain extends Computer implements Brainface {
         /* state Learning */
         switch((Integer)info[6].get(0)) {
             case 1:
+                System.out.println("case1");
                 info = learnState2S(info,result,number);
                 return info;
-            case 2:
+            case 2 :
+                System.out.println("case2");
                 info = learnState1S1B(info,result,number,comnum);
                 return info;
-            case 3:
+            case 3 :
+                System.out.println("case3");
                 info = learnState0S2B(info,result,number,comnum);
                 break;
-            case 4:
+            case 4 :
+                System.out.println("case4");
                 info = learnState1S0B(info,result,number,comnum);
                 return info;
-            case 5:
+            case 5 :
+                System.out.println("case5");
                 info = learnState0S1B(info,result,comnum);
+                break;
+            case 6 :
+                System.out.println("case5");
+                info = learnState1S2B(info,comnum);
+            default :
+                System.out.println("case7");
+                learnOut(info,number,result);
                 break;
         }
 
         /* basic Learning */
+        if(result[0]==1 && result[1] ==2) {
+            info[6].clear();
+            info[6].add(6);
+            loop1S1B(info,comnum);
+            return info;
+        }
+
         if(result[0]==2 && result[1] ==0) {
+            System.out.println("2Slearn");
             loop2S0B(info,number,comnum);
             ((int[])info[4].get(0))[0] = 0;
             return info;
         }
 
         if(result[0]==1 && result[1] ==1) {
+            System.out.println("1S1Blearn");
             info[6].clear();
             info[6].add(2);
             loop1S1B(info,comnum);
@@ -60,6 +78,7 @@ public class Brain extends Computer implements Brainface {
         }
 
         if(result[0]==0 && result[1] ==2) {
+            System.out.println("0S2Blearn");
             info[6].clear();
             info[6].add(3);
             loop0SNB(info,comnum);
@@ -68,6 +87,7 @@ public class Brain extends Computer implements Brainface {
         }
 
         if(result[0]==1 && result[1] ==0) {
+            System.out.println("1S0Blearn");
             info[6].clear();
             info[6].add(4);
             loop1S0B(info,number,comnum);
@@ -75,21 +95,44 @@ public class Brain extends Computer implements Brainface {
         }
 
         if(result[0]==0 && result[1] ==1) {
+            System.out.println("0S1Blearn");
             info[6].clear();
             info[6].add(5);
             loop0SNB(info,comnum);
         }
 
         if(result[0]==0 && result[1] ==0) {
+            System.out.println("OUTlearn");
             loopOut(info,number);
         }
         return info;
+    }
+
+    public int[] getData(ArrayList[] info) {
+        int[] arr = new int[3];
+        if(info[1].size()>0) {
+            System.out.println("STGET");
+            arr[0] = ((int[])info[1].get(0))[0];
+            arr[1] = ((int[])info[1].get(0))[1];
+            arr[2] = ((int[])info[1].get(0))[2];
+        }else if(info[0].size()>0) {
+            System.out.println("BALLGET");
+            arr[0] = (Integer)info[0].get(0);
+            arr[1] = (Integer)info[0].get(1);
+            arr[2] = (Integer)info[0].get(2);
+            info[0].clear();
+        }else {
+            System.out.println("에러");
+        }
+        return arr;
     }
 //////////////////////////////////////////////////////////////////////
 
     /**
      * 루프
      */
+
+
 
     public void loopReset2S0B(ArrayList[] info,ArrayList number) {
         int[] tmp1 = {((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[0],((int[])info[2].get((((int[])info[5].get(0))[0])-(((int[])info[4].get(0))[0])-1))[1],(int)number.get(0)};
@@ -146,6 +189,11 @@ public class Brain extends Computer implements Brainface {
     /**
      * 상황별 학습
      */
+
+    public static ArrayList[] learnState1S2B(ArrayList[] info, int[] comnum) {
+        info[1].remove(0);
+        return info;
+    }
 
     public ArrayList[] learnState2S(ArrayList[] info, int[] result, ArrayList number){
         if(result[0]+result[1] == 1) {
@@ -254,14 +302,22 @@ public class Brain extends Computer implements Brainface {
     }
 
     public ArrayList[] learnState0S1B(ArrayList[] info, int[] result,int[] comnum){
-        System.out.println("심화학습5");
         if(result[0]==1) {
             info[6].clear();
         }else {
-            loop0SNB(info,comnum);
+            info[0].add(comnum[1]);
+            info[0].add(comnum[2]);
+            info[0].add(comnum[0]);
         }
         return info;
     }
 
+    public ArrayList[] learnOut(ArrayList[] info, ArrayList number, int[] result){
+        if(result[0]==0 && result[1] ==0) {
+            loopOut(info,number);
+
+        }
+        return info;
+    }
 
 }

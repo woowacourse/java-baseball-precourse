@@ -28,13 +28,47 @@ public class Stage implements Stageface {
     @Override
     public void multiPlay(){
         System.out.println("멀티플레이를 시작합니다.");
-        int[] comnum = computer.makeRandomNum();
+        int[] result = {0,0,0};
+        int[] countarr = {0};
+        int[] totalCountarr = {0};
+        ArrayList<int[]> TB = new ArrayList<int[]>();
+        ArrayList<int[]> TS = new ArrayList<int[]>();
+        ArrayList<int[]> Pre = new ArrayList<int[]>();
+        ArrayList<int[]> resultedLog = new ArrayList<int[]>();
+        ArrayList<int[]> count = new ArrayList<int[]>();
+        ArrayList<int[]> totalCount = new ArrayList<int[]>();
+        ArrayList<int[]> state = new ArrayList<int[]>();
+        ArrayList number = new ArrayList();
+        ArrayList []info = {TB,TS,Pre,resultedLog,count,totalCount,state};
+
+//        int[] comnum = {3,2,1};
+        int[] comnum;
+        comnum = computer.makeRandomNum();
+        System.out.println("랜덤값: "+ Arrays.toString(comnum));
         int[] problem = {1,2,3};
-        int[] result = check(problem,comnum);
-        ArrayList number = computer.number;
-        ArrayList info[] = computer.info;
-        info = brain.getLearningData(comnum,result,info,number);
+
+        number.clear();
+        for(int i=1; i<11; i++) {
+            number.add(i);
+        }
         result = check(problem,comnum);
+        for(int i =0; i<25; i++) {
+            System.out.println("number: "+Arrays.toString(number.toArray()));
+            System.out.println("학습할 데이터 :"+Arrays.toString(comnum)+"학습할 결과:"+Arrays.toString(result));
+            info = brain.getLearningData(comnum,result,info,number);
+            comnum = brain.getData(info);
+            result = check(problem,comnum);
+            System.out.println("comnum: "+ Arrays.toString(comnum));
+            System.out.println("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+            if(referee.indexOf(comnum,10)!=-1) {
+                System.out.println("컴퓨터가 항복하였습니다.");
+                break;
+            }
+            if(result[0]==3) {
+                System.out.println("디엔드");
+                break;
+            }
+        }
     }
 
     @Override
