@@ -2,16 +2,16 @@ apply plugin: 'java'
 //apply plugin: 'eclipse'
 
 version = '1.0.0'
-group = 'com.main.BaseBall'
+//group = 'com.main.BaseBall'
 sourceCompatibility = 1.8 // java source의 java 언어 레벨
 
 jar {
     manifest {
         attributes 'Main-Class': 'BaseBall'
     }
-//    from {
-//        configurations.compile.collect {it.isDirectory()? it: zipTree(it)}
-//    }
+    from {
+        configurations.compile.collect {it.isDirectory()? it: zipTree(it)}
+    }
 }
 
 repositories {
@@ -21,8 +21,8 @@ repositories {
 dependencies {
     testCompile('junit:junit:4.12')
     testCompile('org.assertj:assertj-core:3.11.1')
-//    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
-//    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
 }
 
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8' // build 시 한글 깨질 때
