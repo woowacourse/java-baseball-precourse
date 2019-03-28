@@ -12,7 +12,7 @@ public class PlayerImpl implements Player {
 
 	@Override
 	public void setPlayerNumber(int playerNumber) {
-		if (!IntegerUtils.isNthDigitsNumber(playerNumber)){
+		if (!IntegerUtils.isNthDigitsNumber(playerNumber, Constant.NUMBER_OF_DIGITS)){
 			throw new IllegalArgumentException("숫자는 " + Constant.NUMBER_OF_DIGITS + "자리 정수이어야 합니다.");
 		}
 		if (!IntegerUtils.isEachDigitUnique(playerNumber)) {
