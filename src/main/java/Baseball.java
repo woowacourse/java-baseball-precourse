@@ -14,7 +14,7 @@ public class Baseball {
 	public void playBaseball() {
 		do {
 			this.playGame();
-		} while(this.endOrRestart());
+		} while (this.endOrRestart());
 	}
 	
 	public void playGame() {
@@ -87,7 +87,7 @@ public class Baseball {
 		Scanner scan = new Scanner(System.in);
 		int select;
 		
-		while(true) {
+		while (true) {
 			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 			select = scan.nextInt();
 			

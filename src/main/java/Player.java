@@ -47,9 +47,9 @@ public class Player {
 	 * @return 모두 숫자면 true, 아니면 false
 	 */
 	public boolean isNumber() {
-		return ('0' <= charNumbers[0] && charNumbers[0] <= '9') 
-					&& ('0' <= charNumbers[1] && charNumbers[1] <= '9')
-					&& ('0' <= charNumbers[2] && charNumbers[2] <= '9');
+		return (('0' <= charNumbers[0]) && (charNumbers[0] <= '9')) 
+					&& (('0' <= charNumbers[1]) && (charNumbers[1] <= '9'))
+					&& (('0' <= charNumbers[2]) && (charNumbers[2] <= '9'));
 	}
 	
 	/**
