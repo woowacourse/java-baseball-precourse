@@ -15,10 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @desc Computer Class
  * 컴퓨터가 가져야 하는 랜덤 한 수 3개를 생성하며,
- * 램덤 한 수 3개를 List 와 HashMap 을 이용하여 저장한다.
- * @pakage com.github.offMomySon.resource
+ * 램덤 한 수 3개를 List 와 HashMap 을 이용하여 저장하는 클래스.
  */
 public class Computer {
     private HashMap<Integer, Integer> numsMap;
@@ -30,7 +28,7 @@ public class Computer {
     }
 
     /**
-     * @desc create_randnum() 에서 만들어진 3개의 수를 초기화하는 메서드.
+     * Computer Class가 가지고 있는 3개의 수를 초기화하는 메서드.
      */
     public void init() {
         numsMap.clear();
@@ -38,8 +36,8 @@ public class Computer {
     }
 
     /**
-     * @desc 서로 다른 1~9인 정수 3개를 만드는 메서드.
-     * 이미 존재하는 수를 만들거나, 유효하지 않은 수이면 다시 만든다.
+     * 서로 다른 1~9인 정수 3개를 만드는 메서드.
+     * 이미 존재하거나 유효하지 않은 수를 생성하면, 서로 다른 3개의 수를 만들 때까지 다시 만든다.
      */
     public void create_randnum() {
         while (numsMap.size() < 3) {
@@ -56,7 +54,7 @@ public class Computer {
     }
 
     /**
-     * @param new_number random() 메서드를 통해 새롭게 만들어진 수.
+     * @param new_number Math.random()을 통해 새롭게 만들어진 수.
      * @return 유효한 수이면 true 를 리턴.
      */
     private boolean is_keyValid(int new_number) {

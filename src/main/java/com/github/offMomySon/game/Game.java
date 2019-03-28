@@ -19,11 +19,10 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @desc Game Class
  * 야구게임 전체의 흐름을 주관하는 Class 이다.
- * Computer Class 를 이용하여 Random 한 수를 가져오고, User Class 를 통해 3자릿수를 입력받는다.
- * Random 수와 사용자 입력값을 비교하여 BallType 을 통해 결과 값을 받아온다.
- * @pakage com.github.offMomySon.game
+ * Computer Class 를 이용하여 Random 한 수를 가져오고,
+ * User Class 를 통해 3자릿수를 입력받는다.
+ * Random 수와 사용자 입력값을 비교하여 BallType Class 를 통해 결과 값을 받아오는 클래스.
  */
 public class Game {
     private Computer computer;
@@ -35,7 +34,7 @@ public class Game {
     }
 
     /**
-     * @desc 게임 시작 전, 이전에 셋팅 되었던 Computer Class 의 3개의 수를 초기화한다.
+     * 게임 시작 전, 이전에 셋팅 되었던 Computer Class 의 3개의 수를 초기화한다.
      * Computer Class 의 3개의 Random 숫자를 셋팅한다.
      */
     public void init() {
@@ -44,7 +43,7 @@ public class Game {
     }
 
     /**
-     * @desc 게임의 Sequence 를 순서대로 실행한다.
+     * 게임의 Sequence 를 순서대로 실행한다.
      * Sequence 로는 입력 요청, 결과 계산, 결과 출력, 게임 종료의 순서로 이루어져 있다.
      */
     public void run() {
@@ -63,8 +62,9 @@ public class Game {
     }
 
     /**
+     * Strike, Ball count 의 결과를 문자열로 표현한다.
+     *
      * @param score Strike, Ball count 가 담긴 List Class 를 파라미터로 받는다.
-     * @desc Strike, Ball count 의 결과를 문자열로 표현한다.
      */
     private void print_hint(List<Integer> score) {
         int strike_count = score.get(0);
@@ -74,7 +74,7 @@ public class Game {
     }
 
     /**
-     * @desc 사용자로부터 입력을 요청한다. 잘못된 수 입력 시, 재입력 요청한다.
+     * 사용자로부터 입력을 요청한다. 잘못된 수 입력 시, 재입력 요청한다.
      */
     private void request_Input() {
         System.out.print("숫자를 입력해주세요 : ");
@@ -82,8 +82,9 @@ public class Game {
     }
 
     /**
+     * 컴퓨터의 수와, 사용자의 수를 비교하여 Strike, Ball 개수를 반환하는 메소드.
+     *
      * @return Strike, Ball 의 개수를 List Class 를 통해 반환한다.
-     * @desc 컴퓨터의 수와, 사용자의 수를 비교하여 Strike, Ball 개수를 반환하는 메소드.
      */
     private List<Integer> count_Score() {
         // Computer 와 User 가 입력한 숫자들을 가져온다.

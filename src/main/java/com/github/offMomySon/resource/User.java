@@ -13,11 +13,9 @@ package com.github.offMomySon.resource;
 import java.util.*;
 
 /**
- * @desc User Class
- * 사용자로부터 유효한 3개의 수를 입력받는다.
- * 사용자로부터 게임 시작, 종료를 입력받는다.
- * 입력받은 수를 List 와 HashMap 을 이용하여 저장한다.
- * @pakage com.github.offMomySon.resource
+ * 사용자로부터 유효한 3개의 수를 입력받으며,
+ * 사용자로부터 게임 시작, 종료를 입력받으며,
+ * 입력받은 수를 List 와 HashMap 을 이용하여 저장하는 클래스.
  */
 public class User {
     static Scanner scanner = new Scanner(System.in);
@@ -31,7 +29,7 @@ public class User {
     }
 
     /**
-     * @desc 사용자로부터 숫자를 입력받아. 인스턴스 변수, numsMap, numsList 에 저장.
+     * 사용자로부터 숫자를 입력받아. 인스턴스 변수, numsMap, numsList 에 저장.
      */
     public void inputNums() {
         String num_string;
@@ -41,7 +39,7 @@ public class User {
     }
 
     /**
-     * @desc 사용자로부터 입력되었던 값들 초기화
+     * 사용자로부터 입력되었던 값들 초기화 한다.
      */
     public void initValue() {
         numsMap.clear();
@@ -49,8 +47,9 @@ public class User {
     }
 
     /**
+     * 사용자로부터 받아온 String 을 int 로 변환하여 저장한다.
+     *
      * @param input (1~9)까지의 3가지 수로 변환 가능한 String
-     * @desc 사용자로부터 받아온 String 을 int 로 변환하여 저장한다.
      */
     private void saveNums(String input) {
         for (int i = 0; i < input.length(); i++) {
@@ -61,8 +60,9 @@ public class User {
     }
 
     /**
+     * 사용자로부터 변환 가능한 String 을 입력받을 때까지 반복한다.
+     *
      * @return (1 ~ 9)까지의 3가지 수로 변환 가능한 String
-     * @desc 사용자로부터 변환 가능한 String 을 입력받을 때까지 반복한다.
      */
     private String inputNumStirng() {
         String num_string;
@@ -78,9 +78,10 @@ public class User {
     }
 
     /**
+     * 사용자로부터 입력받은 String이 서로 다른 (1~9 까지의) 3가지의 숫자가 될 수 있는지 검사한다.
+     *
      * @param num_string 사용자로부터 입력받은 String
      * @return 입력받은 String 이 유효하면 true 리턴.
-     * @desc 사용자로부터 입력받은 String 이 서로 다른 (1~9 까지의) 3가지의 숫자가 될 수 있는지 검사.
      */
     private boolean isValidNums(String num_string) {
         HashSet<Integer> numsSet = new HashSet<>();
@@ -105,11 +106,12 @@ public class User {
     }
 
     /**
-     * @return 게임 재시작이면 true 리턴, 종료 면 false 리턴
-     * @desc 게임 재시작 여부를 묻는 함수.
+     * 게임 재시작 여부를 묻는 함수.
      * 1을 입력하면 재시작,
      * 2를 입력하면 종료,
      * 다른 키를 입력하면 다시 게임 재시작 여부를 묻는다.
+     *
+     * @return 게임 재시작이면 true 리턴, 종료 면 false 리턴
      */
     public boolean isContinue() {
         String string;
