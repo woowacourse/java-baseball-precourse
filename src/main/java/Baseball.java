@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /* 
  * 클래스 이름 : Baseball
  * 작성자 : Moonyoung Chae
@@ -8,6 +10,9 @@
 public class Baseball {
 	static int NUM_SIZE = 3;
 	int[] computerNumbers = new int[NUM_SIZE];	// 컴퓨터 난수
+	int [] userNumbers = new int[NUM_SIZE];		// 사용자 입력 숫자
+	Scanner scanner = new Scanner(System.in);
+	
 	
 	// 컴퓨터 난수를 생성하는 함수
 	public void initComputerNumbers() {
@@ -41,5 +46,14 @@ public class Baseball {
 				break;
 			}
 		}
-	}	
+	}
+	
+	// 사용자에게서 숫자를 입력받는 함수
+	public void getUserNumbers() {
+		System.out.print("숫자를 입력해주세요 : ");
+		int input = scanner.nextInt();
+		userNumbers[0] = input / 100;
+		userNumbers[1] = (input / 10) % 10;
+		userNumbers[2] = input % 10;
+	}
 }
