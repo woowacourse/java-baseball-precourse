@@ -34,17 +34,33 @@ public class baseball {
         }
     }
 
+    public static int CompareNumber(int num, int idx, int usr[]){
+        for(int i=0;i<3;i++){
+            if(num==usr[i] && idx == i) {
+                return 2;
+            }
+            else if (num==usr[i]){
+                return 1;
+            }
+        }
+        return 0;
+    }
+
     public static boolean IsRightNumber(int com[], int usr[]){
         int strike = 0;
         int ball = 0;
-        for(int i=0;i<3;i++)
-            for(int j=0;j<3;j++) {
-                if(i==j && com[i]==usr[j]){
-                    strike++;
-                } else if(com[i]==usr[j]){
+        for(int i=0;i<3;i++){
+            switch(CompareNumber(com[i], i, usr)){
+                case 0:
+                    break;
+                case 1:
                     ball++;
-                }
+                    break;
+                case 2:
+                    strike++;
+                    break;
             }
+        }
 
         System.out.println(strike + " 스트라이크 " + ball + "볼");
         if(strike ==3) {
@@ -53,6 +69,7 @@ public class baseball {
         else {return false;}
     }
 
+
     public static void main(String[] args){
         int num[] = new int[4];
         int user_arr[] = new int[4];
@@ -60,7 +77,7 @@ public class baseball {
         baseball b = new baseball();
         b.RandomSave(num);
 
-        /*for(int i=0;i<3;i++)System.out.print(num[i]+" ");*/
+        for(int i=0;i<3;i++)System.out.print(num[i]+" ");
         do{
             user_num = UserInput();
             DivideByDigit(user_num, user_arr);
