@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class BaseballGame {
 	/**
@@ -80,11 +81,33 @@ public class BaseballGame {
 		Scanner sc = new Scanner(System.in);
 		String nums = "";
 
-		System.out.print("숫자를 입력해주세요 : ");
-		nums = sc.nextLine();
+		/*
+		 * 유저가 입력한 수가 유효할 때까지 입력을 반복.
+		 * 유저가 입력한 수가 '1~9까지의 수로 이루어진 3자리의 수'일 때 while문 종료.
+		 */
+		do {
+			System.out.print("숫자를 입력해주세요 : ");
+			nums = sc.nextLine();
+		} while (!checkPattern(nums));
 		
 		return nums;
 	}
+	
+	/**
+	 * 유저가 입력한 수가 '1~9까지의 수로 이루어진 3자리의 수'인지 확인하는 함수
+	 * 
+	 * @param	: 유저가 입력한 수(3자리). 유효성 검사 시 사용됨.
+	 * @return 	: 유저가 입력한 수가 '1~9까지의 수로 이루어진 3자리의 수'이면 true, 아니면 false를 반환.
+	 */
+	private boolean checkPattern(String nums) {
+		String numberPattern = "^([1-9]{3})$";
+		
+		if (Pattern.matches(numberPattern, nums)) {
+			return true;
+		}
+		System.out.println("1부터 9사이의 숫자 3개만 입력 가능합니다.");
+		return false;
+	} 
 	
 	public static void main(String[] args) {
 		BaseballGame game = new BaseballGame();
