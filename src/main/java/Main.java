@@ -10,7 +10,7 @@ public class Main {
 
             // 정답 생성
             String ans = makeAnswer();
-            //System.out.println(ans);
+            System.out.println(ans);
 
             // 게임 시작
             boolean result = playGame(sc, ans);
@@ -53,10 +53,8 @@ public class Main {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = sc.nextLine();
-            if (input.length() != 3) {
-                System.out.println("입력 오류!");
-                return false;
-            }
+
+            if (!checkInput(input)) return false;
 
             String result = checkAnswer(ans, input);
             System.out.println(result);
@@ -83,6 +81,17 @@ public class Main {
         result.append((result.length() == 0) ? "낫싱" : "");
 
         return result.toString();
+    }
+
+    // 대답 입력값 체크
+    private static boolean checkInput(String input) {
+        if (input.length() != 3) return false;
+
+        for (int i = 0; i < 3; i++) {
+            int integer = input.charAt(i) - '0';
+            if (integer <= 0 || integer > 9) return false;
+        }
+        return true;
     }
 
 }
