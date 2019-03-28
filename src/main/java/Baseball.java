@@ -29,4 +29,14 @@ public class Baseball {
 		return comnums;
 	}
 
+	// 숫자인지 체크하는 메소드
+	public boolean isnotNumber(String userinput) {
+		try {
+			Integer.parseInt(userinput);
+			return false;
+		} catch (NumberFormatException e) {
+			return true;
+		}
+	}
+
 }
