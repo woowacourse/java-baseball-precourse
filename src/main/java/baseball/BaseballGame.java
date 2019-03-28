@@ -152,7 +152,9 @@ public class BaseballGame {
 			int[] result = compareNums(questionNums);
 			isSuccess = printResult(result);
 		}
-				
+		/* '게임을 계속 할 지에 대한 입력'을 저장 - 함수: moreGame */
+		moreGame = moreGame();
+
 		return moreGame; 
 	}
 	
@@ -210,6 +212,24 @@ public class BaseballGame {
 
 		return isSuccess;
 	}
+	
+	/**
+	 * 게임 진행 여부를 리턴하는 함수.
+	 * 유저가 입력한 수가 1 또는 2가 맞는 지 유효성 검사(checkPattern2),
+	 * 유효한 입력이 나올 때까지 반복 후  값 리턴.
+	 * 
+	 * @return 	: 게임을 새로 시작하려면 1, 종료하려면 2를 반환
+	 */
+	private int moreGame() {
+		Scanner sc = new Scanner(System.in);
+		String isMore = "";
+		
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		isMore = sc.nextLine();
+		
+		return Integer.parseInt(isMore);
+	}
+	
 	public static void main(String[] args) {
 		BaseballGame game = new BaseballGame();
 		game.startGame(); /* 확인용 실행 */
