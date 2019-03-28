@@ -1,6 +1,7 @@
 package numberBaseball;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import numberBaseball.player.*;
 
@@ -13,8 +14,7 @@ public class NumberBaseball {
     }
 
     public void setMenu() {
-        this.menu.add("연습 모드");
-        this.menu.add("대전 모드");
+        this.menu.add("게임 실행");
         this.menu.add("게임 종료");
     }
 
@@ -34,11 +34,22 @@ public class NumberBaseball {
         System.out.println("");
     }
 
-    public void selectGameMode() {
+    public String selectGameMode() {
+        int selectedIdx;
+
         showMenu();
-        System.out.print("어떤 모드로 게임하시겠어요? ");
-        int selectedIdx = new Scanner(System.in).nextInt() - 1;
-        setGameMode(this.menu.get(selectedIdx));
+        System.out.print("어떤 동작을 할까요? ");
+        while (true) {
+            try {
+                selectedIdx = (new Scanner(System.in)).nextInt() - 1;
+                setGameMode(this.menu.get(selectedIdx));
+                return getGameMode();
+            } catch (IndexOutOfBoundsException e) {
+                System.out.print("메뉴에 없는 번호입니다.\n올바른 번호를 입력해주세요 :");
+            } catch (InputMismatchException e) {
+                System.out.print("번호로 입력해주세요 : ");
+            }
+        }
     }
 
     public void startGame(Player guesser, Player answerer) {
@@ -61,8 +72,7 @@ public class NumberBaseball {
         Player player = new User();
         Player playerBot = new PlayerBot();
 
-        while (numberBaseball.getGameMode() != "게임 종료") {
-            numberBaseball.selectGameMode();
+        while (numberBaseball.selectGameMode() != "게임 종료") {
             numberBaseball.startGame(player, playerBot);
         }
     }
