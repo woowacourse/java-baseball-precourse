@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     private static int[] numCheck; //사용된 번호를 확인하기 위한 배열 전역변수. 중복값 방지를 위함.
+    private static Scanner sc; //Scanner 전역변수. getInput()에서 사용함.
 
     private static void resetNumCheck() {
         /*
@@ -34,6 +35,7 @@ public class Main {
                 continue;   // 이미 numCheck에 존재한다면 중복으로 간주하고 while을 다시 실행한다.
             }
             else {
+                numCheck[tmpDigit]++;
                 digitCount++;
                 result += tmpDigit;
             }
@@ -137,22 +139,34 @@ public class Main {
         return result;
     }
 
+    private static String getInput() {
+
+        String result;
+
+        if (sc==null) {
+            sc = new Scanner(System.in);
+        }
+
+        System.out.print("숫자를 입력해주세요 : ");
+        result = sc.next();
+        while (!isValid(result)) {
+            // 유효하지 않을 경우
+            System.out.println("유효하지 않은 값입니다. 1. 1부터 9까지의 숫자 중에서, 2. 중복 없이, 3. 3자리인 수를 입력해주세요.");
+            System.out.print("숫자를 입력해주세요 : ");
+            result = sc.next();
+        }
+
+        return result;
+    }
+
     private static boolean makeGame() {
         int[] matchResult;
         int nextGame;
         String answer;
         String inputValue;
-        Scanner sc = new Scanner(System.in);
 
         answer = genRandNum();
-        System.out.print("숫자를 입력해주세요 : ");
-        inputValue = sc.next();
-
-        while (!isValid(inputValue)) {
-            // 유효하지 않을 경우
-            System.out.println("유효하지 않은 값입니다. 1. 1부터 9까지의 숫자 중에서, 2. 중복 없이, 3. 3자리인 수를 입력해주세요.");
-            inputValue = sc.next();
-        }
+        inputValue = getInput();
 
         while (true) {
             matchResult = match(answer, inputValue);
@@ -165,7 +179,7 @@ public class Main {
             else {
                 // 오답일 경우 다시 반복
                 System.out.println(toMatchResult(matchResult));
-                inputValue = sc.next();
+                inputValue = getInput();
             }
         }
 
