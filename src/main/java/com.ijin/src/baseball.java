@@ -1,10 +1,22 @@
 import java.util.Random;
 import java.util.Scanner;
 public class baseball {
-    public static void RandomSave(int[] num) {
+    public static void RandomSave(int[] com_num) {
         Random random = new Random();
-        for (int i = 0; i < 3; i++)
-            num[i] = random.nextInt(10)+1;
+        boolean check_num[] = new boolean[10];
+        for(int i=0;i<10;i++){
+            check_num[i] = false;
+        }
+        int i=0;
+        while (i<3) {
+            int k = random.nextInt(9) + 1;
+            if(check_num[k]){
+               continue;
+            }
+            com_num[i] = k;
+            check_num[k]=true;
+            i++;
+        }
     }
 
     public static int UserInput(){
@@ -31,5 +43,6 @@ public class baseball {
 
         user_num = UserInput();
         DivideByDigit(user_num, user_arr);
+        /*for(int i=0;i<3;i++)System.out.print(num[i]+" ");*/
     }
 }
