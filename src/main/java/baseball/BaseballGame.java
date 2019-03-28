@@ -133,9 +133,33 @@ public class BaseballGame {
 		return true;
 	}
 	
+	/**
+	 * 컴퓨터가 선택한 수와 유저가 입력한 수를 비교하는 함수.
+	 * 
+	 * @param	: 컴퓨터가 선택한 수. 유저가 입력한 수와 비교할 때 사용됨.
+	 * @return 	: 게임의 결과를 담은 배열. (스트라이크 : result[0], 볼 : result[1])
+	 */
+	public int[] compareNums() {
+		/* 컴퓨터가 선택한 수  - 함수: question  */
+		List<Integer> questionNums = question();
+		
+		/* 유저가 입력한 수  - 함수: user  */
+		List<Integer> userNums = user();
+		int[] result = new int[2];
+		
+		for (int i=0; i<questionNums.size(); i++) {
+			if (userNums.get(i)==questionNums.get(i)) { 
+				result[0]++;
+			}else if (questionNums.contains(userNums.get(i))) { 
+				result[1]++;
+			}
+		}
+		System.out.println(result[0]+","+result[1]); /* 확인용 출력  */
+		
+		return result;
+	}
 	public static void main(String[] args) {
 		BaseballGame game = new BaseballGame();
-		game.question(); /* 확인용 실행  */
-		game.user(); /* 확인용 실행  */
+		game.compareNums();
 	}
 }
