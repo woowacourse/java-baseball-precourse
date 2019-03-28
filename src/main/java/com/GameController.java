@@ -50,6 +50,27 @@ public class GameController {
         }
     }
 
+    public void askUsersGuessNumber() {
+        System.out.print("숫자를 입력해주세요 :");
+        scanner = new Scanner(System.in);
+        userNumber = scanner.nextLine();
+    }
+
+    /* 게임이 다 끝나고 재시작여부 확인 및 리셋 */
+    public void askGameRestart() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+
+        int e = scanner.nextInt();      /* 1과 2 받는 임의의 변수 */
+
+        if(e == 1){
+            computer.reSetComNumber();  /* 컴퓨터가 갖고 있는 중복체크 판을 초기화 */
+            referee.reset();            /* 심판이 갖고 있는 볼, 스트라이크 수를 초기화 */
+        }else{
+            gameState = false;
+        }
+    }
+    
 }
 
 
