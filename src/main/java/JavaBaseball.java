@@ -112,10 +112,62 @@ public class JavaBaseball {
             System.out.print("숫자를 입력해주세요: ");
 			userInNum = scanner.nextInt();
 			
-//			numDivider(userInNum);		//2-1
-//			idxCounter();				//2-2
+			numDivider(userInNum);		
+			idxCounter();				
 			
-//			isEnd = is3Strike();		//2-3
+			isEnd = is3Strike();		
+		}
+	}
+	
+	/**
+	 * numDivider(userInNum):	userInNum의 각 자리수를 분리하여 userInArr에 순차적으로 저장시키는 메서드이다.
+	 * 
+	 * @param userInNum:	사용자가 입력한 수가 저장되어 있는 변수
+	 */
+	public static void numDivider(int userInNum) {
+		int divider;
+		for (int i = 0; i < THREE_DIGITS; ++i) {
+			divider = 1;
+			for (int j = i; j < THREE_DIGITS - 1; ++j) {
+				divider *= NUMBERS;
+			}
+			userInArr[i] = userInNum / divider;
+			userInNum = userInNum % divider;
+		}
+	}
+	
+	/**
+	 * idxCounter():	ansArr과 userInArr을 비교하기 위해 index를 순차적으로 증가시키는 메서드.
+	 */
+	public static void idxCounter() {
+		for (int ansIdx = 0; ansIdx < THREE_DIGITS; ++ansIdx) {
+			for (int inIdx = 0; inIdx < THREE_DIGITS; ++inIdx) {
+//				compareValue(ansIdx, inIdx);		// 2-2-1
+			}
+		}
+	}
+	
+	/** 스트라이크가 THREE_DIGITS일 경우 게임을 종료한다. 그 외의 경우 strike와 ball의 개수에 관한 메세지만 출력.
+	 * 
+	 * @return	boolean변수를 반환한다.
+	 * 			true: 게임을 종료, false: 게임을 계속함
+	 */
+	public static boolean is3Strike () {
+		if (strike == THREE_DIGITS) {
+			System.out.println(strike + "스트라이크");
+			System.out.println(THREE_DIGITS + "개의 숫자를 모두 맞히셨습니다! 게임종료");
+			return true;	/* 3 strike인 경우 게임 종료 */
+		} else {
+			if ((strike == 0) && (ball == 0)) {
+				System.out.println("낫싱");
+			} else if (strike == 0) {
+				System.out.println(ball + " 볼");
+			} else if(ball == 0) {
+				System.out.println(strike + " 스트라이크");
+			} else {
+				System.out.println(strike + " 스트라이크 " + ball + " 볼");	
+			}
+			return false;	/* 3 strike가 아닌 경우 게임 계속 */
 		}
 	}
 }
