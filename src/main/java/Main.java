@@ -21,7 +21,30 @@ public class Main {
 				break;
 			}
 		}
+		replay();
 		scanner.close();
+	}
+
+	public void replay() {
+
+		while (true) {
+			System.out.println("\n게임을 새로 시작하시려면 1 , 종료하려면 2 를 입력하세요.");
+			System.out.print("Input> ");
+			String end = scanner.nextLine();
+			if (bsb.isnotNumber(end)) {
+				System.out.println("[ERROR] 숫자만 입력하세요.\n");
+				System.out.print("Input> ");
+				continue;
+			} else if (Integer.parseInt(end) == 1) {
+				runPrompt();
+			} else if (Integer.parseInt(end) == 2) {
+				System.out.println("[[게임 종료]]");
+				System.exit(0);
+			} else {
+				System.out.println("[ERROR] 1과 2중에서 선택하세요.");
+				System.out.print("Input> ");
+			}
+		}
 	}
 
 	public static void main(String[] args) {
