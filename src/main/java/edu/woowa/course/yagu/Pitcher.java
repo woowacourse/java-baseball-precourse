@@ -33,6 +33,24 @@ public class Pitcher {
 	 * 3) the length of param is over 3
 	 */
 	private boolean isValid(int pitcherBalls) {
-		return true;
+		isSaved = new boolean[DIGIT];
+		int len = COUNT - 1;
+		int radix = -1;
+
+		while (len >= 0) {
+			radix = pitcherBalls % DIGIT;
+			if (radix <= 0) {
+				return false;
+			}
+			if (isSaved[radix]) {
+				return false;
+			}
+			isSaved[radix] = true;
+			pitcherBallArr[len] = radix;
+			pitcherBalls /= DIGIT;
+			len--;
+		}
+
+		return ((pitcherBalls > 0) ? false : true);
 	}
 }

@@ -6,6 +6,14 @@ package edu.woowa.course.yagu;
 */
 public class BaseBallGame {
 
+	private static final int NEWGAME = 1;
+	private static final int EXIT = 2;
+	private static final String GAME_MESSEAGE = "3개의 숫자를 모두 맞히셨습니다!"
+												+" 게임 종료\n게임을 새로 시작하려면"
+												+ NEWGAME 
+												+ ", 종료하려면"
+												+ EXIT
+												+ "를 입력하세요.";
 	private Pitcher pitcher;
 	private Catcher catcher;
 
@@ -22,10 +30,25 @@ public class BaseBallGame {
 	}
 
 	private void playGame() {
+		boolean isPlaying = true;
+
+		this.catcher.init();
+		while (isPlaying) {
+			isPlaying = catcher.catching(pitcher.pitching());
+		}
 	}
 
 	private boolean isContinue() {
-		return true;
+		while (true) {
+			System.out.println(GAME_MESSEAGE);
+
+			int selectionInput = Utils.getInput();
+			if ( selectionInput == NEWGAME ) {
+				return true;
+			} else if ( selectionInput == EXIT ) {
+				return false;
+			}
+		}
 	}
 
 	public static void main(String[] args) {

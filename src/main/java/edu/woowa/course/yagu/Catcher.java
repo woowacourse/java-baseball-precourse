@@ -1,7 +1,5 @@
 package edu.woowa.course.yagu;
 
-import java.util.Random;
-
 /**
 *@version 1.00 2019/03/28
 *@author 조재훈
