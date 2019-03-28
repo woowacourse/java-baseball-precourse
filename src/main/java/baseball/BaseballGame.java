@@ -34,7 +34,7 @@ public class BaseballGame {
 	 * @param	: 컴퓨터가 선택한 수가 담긴 리스트. 중복되는 값이 있는지 확인 할 때 사용됨. 
 	 * @return 	: 중복되지 않는 1~9사이의 수
 	 */
-	private int noOverlap(List<Integer> questionNums) {
+	public int noOverlap(List<Integer> questionNums) {
 		Random rd = new Random();
 		int num = 0;
 		
@@ -99,7 +99,7 @@ public class BaseballGame {
 	 * @param	: 유저가 입력한 수(3자리). 유효성 검사 시 사용됨.
 	 * @return 	: 유저가 입력한 수가 '1~9까지의 수로 이루어진 3자리의 수'이면 true, 아니면 false를 반환.
 	 */
-	private boolean checkPattern(String nums) {
+	public boolean checkPattern(String nums) {
 		String numberPattern = "^([1-9]{3})$";
 		
 		if (Pattern.matches(numberPattern, nums)) {
@@ -115,7 +115,7 @@ public class BaseballGame {
 	 * @param	: 유저가 입력한 수(3자리). 유효성 검사 시 사용됨.
 	 * @return 	: 유저가 입력한 수에 '중복'이 없으면 true, 있으면 false를 반환.
 	 */
-	private boolean checkOverlap (String nums) {
+	public boolean checkOverlap (String nums) {
 		String[] str_nums = nums.split("");
 		String str = "";
 		
@@ -158,8 +158,38 @@ public class BaseballGame {
 		
 		return result;
 	}
+	
+	/**
+	 * 게임의 결과를 출력하고 3개의 숫자를 모두 맞혔는 지 확인하는 함수
+	 * 
+	 * @param	: 스트라이크와 볼의 개수가 담긴 배열. (스트라이크 : result[0], 볼 : result[1])
+	 * @return 	: 3개의 숫자를 모두 맞혔으면 true, 아니면 false를 반환
+	 */
+	public boolean printResult(int[] result) {
+		String str = "";
+		boolean isSuccess = false;
+		
+		if(result[0]!=0) { 
+			str += result[0]+"스트라이크 ";
+		}
+		if(result[1]!=0) { 
+			str += result[1]+"볼 ";
+		}
+		if(str.equals("")) { 
+			str += "낫싱";
+		}
+		
+		if (result[0]==3) { 
+			isSuccess = true;
+			str += "\n"+"3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+		}
+		System.out.println(str);
+
+		return isSuccess;
+	}
 	public static void main(String[] args) {
 		BaseballGame game = new BaseballGame();
-		game.compareNums();
+		int[] test = game.compareNums(); /* 확인용 실행  */
+		game.printResult(test); /* 확인용 실행 */
 	}
 }
