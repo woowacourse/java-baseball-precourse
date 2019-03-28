@@ -134,19 +134,44 @@ public class BaseballGame {
 	}
 	
 	/**
+	 * 게임을 실행하는 함수.
+	 * 유저가 컴퓨터가 선택한 값을 맞출 때까지 반복, 
+	 * 성공했다면 '게임 진행 여부'를 리턴.
+	 *  
+	 * @param	: 컴퓨터가 선택한 수. 유저가 입력한 수와 비교할 때 사용됨.
+	 * @return 	: 게임의 결과를 담은 배열. (스트라이크 : result[0], 볼 : result[1])
+	 */
+	public int startGame() {
+		/* 컴퓨터가 선택한 수  - 함수: question  */
+		List<Integer> questionNums = question();
+		int moreGame = 0;
+		boolean isSuccess = false; 
+		
+		/* 유저가 컴퓨터가 선택한 값을 맞출 때까지 반복 - 함수: compareNums */
+		while (!isSuccess) {
+			int[] result = compareNums(questionNums);
+			isSuccess = printResult(result);
+		}
+				
+		return moreGame; 
+	}
+	
+	/**
 	 * 컴퓨터가 선택한 수와 유저가 입력한 수를 비교하는 함수.
 	 * 
 	 * @param	: 컴퓨터가 선택한 수. 유저가 입력한 수와 비교할 때 사용됨.
 	 * @return 	: 게임의 결과를 담은 배열. (스트라이크 : result[0], 볼 : result[1])
 	 */
-	public int[] compareNums() {
-		/* 컴퓨터가 선택한 수  - 함수: question  */
-		List<Integer> questionNums = question();
-		
+	public int[] compareNums(List<Integer> questionNums) {
 		/* 유저가 입력한 수  - 함수: user  */
 		List<Integer> userNums = user();
 		int[] result = new int[2];
 		
+		/* 
+		 * 컴퓨터가 선택한 수와 유저가 입력한 수를 비교 후 
+		 * 같은 수가 같은 자리에 있으면 '스트라이크 수 + 1',
+		 * 같은 수가 다른 자리에 있으면 '볼 + 1'
+		 */
 		for (int i=0; i<questionNums.size(); i++) {
 			if (userNums.get(i)==questionNums.get(i)) { 
 				result[0]++;
@@ -154,8 +179,6 @@ public class BaseballGame {
 				result[1]++;
 			}
 		}
-		System.out.println(result[0]+","+result[1]); /* 확인용 출력  */
-		
 		return result;
 	}
 	
@@ -189,7 +212,6 @@ public class BaseballGame {
 	}
 	public static void main(String[] args) {
 		BaseballGame game = new BaseballGame();
-		int[] test = game.compareNums(); /* 확인용 실행  */
-		game.printResult(test); /* 확인용 실행 */
+		game.startGame(); /* 확인용 실행 */
 	}
 }
