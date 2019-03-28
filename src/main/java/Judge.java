@@ -2,7 +2,7 @@ public class Judge {
     /*
      *  Judge.java
      *
-     *  ver 1.0.3
+     *  ver 1.0.4
      *
      *  2019/03/28
      *
@@ -25,6 +25,17 @@ public class Judge {
                 this.ball++;
                 break;
             }
+        }
+    }
+    public void printResult(){
+        if (this.ball == 0){
+            System.out.println(this.strike + "스트라이크");
+        }
+        else if (this.strike == 0){
+            System.out.println(this.ball + "볼");
+        }
+        else{
+            System.out.println(this.strike + "스트라이크 " + this.ball + "볼");
         }
     }
 }

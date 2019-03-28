@@ -1,7 +1,7 @@
 /*
  *  java_baseball.java
  *
- *  ver 1.0.3
+ *  ver 1.0.4
  *
  *  2019/03/28
  *
@@ -25,6 +25,7 @@ public class java_baseball {
         separateNum(userNum, input);
 
         judge.count(userNum, comNum.number);
+        judge.printResult();
     }
 
     public static void separateNum(int[] userNum, int input){
