@@ -12,9 +12,9 @@ public class BaseballGame {
 	 * 
 	 * @return 	: '1부터 9까지 서로 다른 수로 이루어진 3자리의 수'로 이루어진 리스트 반환.
 	 */
-	public List<Integer> question() {
-		List<Integer> questionNums = new ArrayList<Integer>();
-		
+	private List<Integer> question() {
+		List<Integer> questionNums = new ArrayList<>();
+
 		for (int i=0; i<3; i++) {
 			/* 
 			 * 다른 자리의 수와 '중복되지 않는 1~9사이의 수'를 추출 - 함수: noOverlap
@@ -32,18 +32,14 @@ public class BaseballGame {
 	 * @param	: 컴퓨터가 선택한 수가 담긴 리스트. 중복되는 값이 있는지 확인 할 때 사용됨. 
 	 * @return 	: 중복되지 않는 1~9사이의 수
 	 */
-	public int noOverlap(List<Integer> questionNums) {
+	private int noOverlap(List<Integer> questionNums) {
 		Random rd = new Random();
 		int num = 0;
-		
-		while (true) {
-			num = rd.nextInt(9)+1;
 
-			/* 랜덤값이 리스트에 포함(기존의 수와 중복)되지 않으면  while문 종료.*/
-			if (!questionNums.contains(num)) {
-				break;
-			}
-		}
+		do {
+			num = rd.nextInt(9) + 1;
+		/* 랜덤값이 리스트에 포함(기존의 수와 중복)되지 않으면  while문 종료.*/
+		} while (questionNums.contains(num));
 		return num;
 	}
 	
@@ -52,8 +48,8 @@ public class BaseballGame {
 	 * 
 	 * @return 	: '1부터 9까지 서로 다른 수로 이루어진 3자리의 수'로 이루어진 리스트
 	 */
-	public List<Integer> user() {
-		List<Integer> userNums = new ArrayList<Integer>();
+	private List<Integer> user() {
+		List<Integer> userNums = new ArrayList<>();
 		/* '1부터 9까지 서로 다른 수로 이루어진 3자리의 수'를 할당 - 함수: getValidNum */
 		String nums = getValidNum();
 		
@@ -73,9 +69,9 @@ public class BaseballGame {
 	 * 
 	 * @return 	: 유저가 입력한 수가 유효하면 true, 아니면 false를 반환.
 	 */
-	public String getValidNum() {
+	private String getValidNum() {
 		Scanner sc = new Scanner(System.in);
-		String nums = "";
+		String nums;
 
 		/*
 		 * 유저가 입력한 수가 유효할 때까지 입력을 반복.
@@ -95,7 +91,7 @@ public class BaseballGame {
 	 * @param	: 유저가 입력한 수(3자리). 유효성 검사 시 사용됨.
 	 * @return 	: 유저가 입력한 수가 '1~9까지의 수로 이루어진 3자리의 수'이면 true, 아니면 false를 반환.
 	 */
-	public boolean checkPattern(String nums) {
+	private boolean checkPattern(String nums) {
 		String numberPattern = "^([1-9]{3})$";
 		
 		if (Pattern.matches(numberPattern, nums)) {
@@ -111,7 +107,7 @@ public class BaseballGame {
 	 * @param	: 유저가 입력한 수(3자리). 유효성 검사 시 사용됨.
 	 * @return 	: 유저가 입력한 수에 '중복'이 없으면 true, 있으면 false를 반환.
 	 */
-	public boolean checkOverlap (String nums) {
+	private boolean checkOverlap(String nums) {
 		String[] str_nums = nums.split("");
 		String str = "";
 		
@@ -119,12 +115,12 @@ public class BaseballGame {
 		 * 사용자 입력수의 크기 만큼 반복.(3자리수)
 		 * str에 중복되는 값이 있을 시 false를 리턴, 없을 시 str에 해당 수를 추가. 
 		 */
-		for (int i=0; i<str_nums.length; i++) {
-			if (str.contains(str_nums[i])) {
+		for (String str_num : str_nums) {
+			if (str.contains(str_num)) {
 				System.out.println("각 자리의 수는 중복되지 않아야 합니다.");
 				return false;
 			}
-			str += str_nums[i];
+			str += str_num;
 		}
 		return true;
 	}
@@ -137,10 +133,10 @@ public class BaseballGame {
 	 * @param	: 컴퓨터가 선택한 수. 유저가 입력한 수와 비교할 때 사용됨.
 	 * @return 	: 게임의 결과를 담은 배열. (스트라이크 : result[0], 볼 : result[1])
 	 */
-	public int startGame() {
+	private int startGame() {
 		/* 컴퓨터가 선택한 수  - 함수: question  */
 		List<Integer> questionNums = question();
-		int moreGame = 0;
+		int moreGame;
 		boolean isSuccess = false; 
 		
 		/* 유저가 컴퓨터가 선택한 값을 맞출 때까지 반복 - 함수: compareNums */
@@ -160,7 +156,7 @@ public class BaseballGame {
 	 * @param	: 컴퓨터가 선택한 수. 유저가 입력한 수와 비교할 때 사용됨.
 	 * @return 	: 게임의 결과를 담은 배열. (스트라이크 : result[0], 볼 : result[1])
 	 */
-	public int[] compareNums(List<Integer> questionNums) {
+	private int[] compareNums(List<Integer> questionNums) {
 		/* 유저가 입력한 수  - 함수: user  */
 		List<Integer> userNums = user();
 		int[] result = new int[2];
@@ -171,7 +167,7 @@ public class BaseballGame {
 		 * 같은 수가 다른 자리에 있으면 '볼 + 1'
 		 */
 		for (int i=0; i<questionNums.size(); i++) {
-			if (userNums.get(i)==questionNums.get(i)) { 
+			if (userNums.get(i).equals(questionNums.get(i))) {
 				result[0]++;
 			}else if (questionNums.contains(userNums.get(i))) { 
 				result[1]++;
@@ -186,7 +182,7 @@ public class BaseballGame {
 	 * @param	: 스트라이크와 볼의 개수가 담긴 배열. (스트라이크 : result[0], 볼 : result[1])
 	 * @return 	: 3개의 숫자를 모두 맞혔으면 true, 아니면 false를 반환
 	 */
-	public boolean printResult(int[] result) {
+	private boolean printResult(int[] result) {
 		String str = "";
 		boolean isSuccess = false;
 		
@@ -235,7 +231,7 @@ public class BaseballGame {
 	 * @param	: 유저가 입력한 수(1자리). 유효성 검사 시 사용됨.
 	 * @return 	: 유저가 입력한 수가 '1 또는 2'이면 true, 아니면 false를 반환.
 	 */
-	public boolean checkPattern2(String isMore) {
+	private boolean checkPattern2(String isMore) {
 		String numberPattern = "^([1-2]{1})$";
 		
 		if (Pattern.matches(numberPattern, isMore)) {
