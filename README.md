@@ -46,8 +46,8 @@
 
 ### 3. 주요 변수
 
-- `computer` - `int[3]`, 컴퓨터가 선택한 숫자를 담는다.
-- `user` - `int[3]`, 사용자가 입력한 숫자를 담는다.
+- `computer` - `ArrayList<Integer>`, 컴퓨터가 선택한 숫자를 담는다.
+- `user` - `ArrayList<Integer>`, 사용자가 입력한 숫자를 담는다.
 - `strike` - `int`, 사용자 입력을 컴퓨터의 숫자와 비교한 결과 숫자와 자리가 모두 동일한 수의 개수를 담는다.
 - `ball` - `int`, 사용자 입력을 컴퓨터의 숫자와 비교한 결과 숫자만 같고 자리가 다른 수의 개수를 담는다.
 - `choice` - `int`, 한 게임 종료 후 게임을 계속할지 여부에 대한 사용자의 입력을 담는다.
@@ -55,5 +55,6 @@
 ### 4. 주요 메서드
 
 - `getRandomNumbers` - `void`, 1~9 사이의 서로 다른 숫자 3개를 골라 `computer` 변수에 담는다.
+- `getUserInput` - `void`, 사용자의 입력을 받아 `user` 변수에 담는다.
 - `checkResult` - `boolean`, 게임의 결과를 확인하여, 맞추면 True, 틀리면 False 를 반환한다. 
 - `choose` - `boolean`, 사용자에게 게임 종료 여부를 묻고, 재게임 시 True, 완전 종료 시 False 를 반환한다.
