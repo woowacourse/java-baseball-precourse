@@ -51,7 +51,7 @@ public class JavaBaseball {
 		boolean status = true;
 		
 		while (status) {
-//            setAnsArr();			/* 0 ~ 9의 수를 무작위로 뽑아 ansArr배열에 저장한다. */
+            setAnsArr();			/* 0 ~ 9의 수를 무작위로 뽑아 ansArr배열에 저장한다. */
 //            startGame();			/* 현재 게임을 시작한다. 게임은 ansArr배열과 userInArr배열이 일치할 경우 종료된다. */
 //			status = exitMode();	/* 사용자에게 다음 게임을 시작할지에 대해 입력받는다. */
 		}
@@ -68,8 +68,35 @@ public class JavaBaseball {
 	public static void setAnsArr() {
 		ArrayList<Integer> numbSeqArr = new ArrayList<>();
 		
-//		setArrayList(numbSeqArr);
-//		popArrayList(numbSeqArr);
+		setArrayList(numbSeqArr);
+		popArrayList(numbSeqArr);
+	}
+	
+	/**
+	 * setArrayList(numbSeqArr): 0 ~ 9 까지 순차적으로 저장된 ArrayList를 만든다.
+	 * 
+	 * @param numbSeqArr: 0 ~ 9 까지 순차적으로 저장되어 있는 ArrayList
+	 */
+	public static void setArrayList(ArrayList<Integer> numbSeqArr) {
+		for (int i = 0; i < NUMBERS; ++i) {
+			numbSeqArr.add(i);						// 0 ~ 9 까지 순차적으로 저장된 ArrayList를 만든다.
+		}
+	}
+	
+	/**
+	 * popArrayList(numbSeqArr): numbSeqArr의 무작위 번째 방의 값을 ansArr[i = 0 ~ THREE_DIGITS]에 저장한다.  
+	 * 
+	 * @param numbSeqArr: 0 ~ 9 까지 순차적으로 저장되어 있는 ArrayList
+	 */
+	public static void popArrayList(ArrayList<Integer> numbSeqArr) {
+		Random random = new Random();
+		int popIdx;
+		
+		for (int i = 0; i < THREE_DIGITS; ++i) {
+			popIdx = random.nextInt(NUMBERS - i);	// 무작위번째 ArrayList의 값을 ansArr[i]에 저장한다. 
+			ansArr[i] = numbSeqArr.get(popIdx);
+			numbSeqArr.remove(popIdx);				// 선택된 ArrayList의 값은 remove하여 값의 중복을 피한다.
+		}
 	}
 }
 
