@@ -57,6 +57,20 @@ public class JavaBaseball {
 		}
 		scanner.close();
 	}
+	
+	/** 
+	 * setAnsArr(): 	무작위로 숫자를 뽑아 ansArr에 저장하는 메서드.
+	 */
+	/*-
+	 * setAnsArr의 구현:	0 ~ 9의 수가 순차적으로 저장된 ArrayList에서 무작위 번째 방을 선택하여 pop한다.
+	 * 					이를 THREE_DIGITS번 만큼 반복한다. 결과적으로 THREE_DIGITS개수만큼의 서로다른 무작위 수를 만들 수 있다.
+	 */
+	public static void setAnsArr() {
+		ArrayList<Integer> numbSeqArr = new ArrayList<>();
+		
+//		setArrayList(numbSeqArr);
+//		popArrayList(numbSeqArr);
+	}
 }
 
 
