@@ -17,6 +17,7 @@ public class BaseBall {
         Collections.shuffle(numbers);
     }
 
+    /** 게임의 재시작과 종료를 다룸*/
     public void startProgram(){
         int endgame = 1;
         while(endgame == 1){
@@ -28,18 +29,17 @@ public class BaseBall {
         System.out.println("게임을 종료합니다.");
     }
 
+    /** 게임 구현 */
     public void startGame(){
         int gameState = 0;
         this.generateNumbers();
-        for (Integer i : numbers) {
-            System.out.println(i);
-        }
         while(gameState != 30){
             gameState = checkNumbers(inputThreeNumbers());
             showResult(gameState);
         }
     }
 
+    /** 사용자로부터 3자리 숫자를 입력 받음*/
     public int inputThreeNumbers(){
         int threeNumbers;
         Scanner scan = new Scanner(System.in);
@@ -75,6 +75,7 @@ public class BaseBall {
         return result;
     }
 
+    /** checkNumbers에서 변환된 상태를 출력*/
     public void showResult(int state){
         if (state == 0) {
             System.out.print("낫싱");
