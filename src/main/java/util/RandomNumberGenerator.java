@@ -60,7 +60,7 @@ public class RandomNumberGenerator {
          * @return 생성된 난수로 이루어진 정수 배열
          */
         public int[] byIntegerArray() {
-             int[] result = new int[numbers.size()];
+            int[] result = new int[numbers.size()];
             int index = 0;
             for (E n : numbers) {
                 result[index++] = (Integer) n;
