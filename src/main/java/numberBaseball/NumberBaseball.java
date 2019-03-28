@@ -26,6 +26,10 @@ public class NumberBaseball {
         this.gameMode = mode;
     }
 
+    public void showIntro() {
+        System.out.println("우아한 숫자야구 게임에 오신것을 환영합니다!");
+    }
+
     public void showMenu() {
         System.out.println("");
         for (int i = 0; i < this.menu.size(); i++) {
@@ -72,6 +76,7 @@ public class NumberBaseball {
         Player player = new User();
         Player playerBot = new PlayerBot();
 
+        numberBaseball.showIntro();
         while (numberBaseball.selectGameMode() != "게임 종료") {
             numberBaseball.startGame(player, playerBot);
         }
