@@ -47,4 +47,14 @@ public class Baseball {
 			return false;
 	}
 
+	// 입력한 숫자중에 0이 있는지 체크하는 메소드
+	public boolean includeZero(String userinput) {
+		for (int i = 0; i < 3; i++) {
+			if (userinput.charAt(i) - '0' == 0) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }
