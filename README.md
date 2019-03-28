@@ -2,7 +2,8 @@
 <ol>
     <li>컴퓨터 숫자 3자리를 저장할 Number 객체의 인스턴스 "comNum"을 생성 후 난수발생을 이용하여 3자리 설정
         + 중복되지 않게 하기 위해 Number 객체의 메소드로 "isOverlap" 메서드를 작성</li>
-    <li>사용자의 입력을 받을 userNum[3] 배열 생성 후 Scanner를 통해 입력받는 기능 구현</li>
+    <li>사용자의 입력을 받을 userNum[3] 배열 생성 후 Scanner를 통해 입력받는 기능 구현
+        + 3자리 수를 한 자리씩 나누어 각 배열에 저장하는 separateNum 메서드 생성</li>
     <li>comNum, userNum 배열을 전달인자로 하고, 변수 strike, ball을 선언하고, 두 수를 비교하여 
         스트라이크와 볼의 갯수를 판별하는 void judge(int comNum, int userNum); 메소드 구현</li>
     <li>judge 메소드 안에 strike, ball 두 변수를 전달인자로 하여 결과를 
