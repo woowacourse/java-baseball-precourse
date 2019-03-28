@@ -9,6 +9,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Arrays;
 /**
  * 숫자 야구 게임!
  *
@@ -21,25 +22,19 @@ public class BaseballGame {
 	
 	static Random random = new Random();
 	static Scanner scan = new Scanner(System.in);
+	static Integer[] numsArray = {1,2,3,4,5,6,7,8,9};
 
-	/* 문제 생성  메서드
-	 * 첫 번째 for문은 1~9 정수를 포함하는 ArrayList를 생성한다.
-	 * 두 번쨰 for문은 1~9 정수 중 중복되지 않게 3개 수를 뽑는다.
-	 * int[3] Array를 리턴한다.
+	/* 정답 생성  메서드
+	 * numsArray를 ArrayList로 변환한다.
+	 * 로또 추첨기에서 공 뽑듯이 중복되지 않게 3개 수를 뽑는다.
 	 * ex) return {6, 3, 9} */
-	public static int[] createProblem() {
-		ArrayList<Integer> nums = new ArrayList<Integer>();
+	public static int[] createAnswer() {
+		ArrayList<Integer> nums = new ArrayList<>(Arrays.asList(numsArray));
 		int[] answer = new int[3];
 		
-		for(int i = 1; i < 10; i++) {
-			nums.add(i);
-		}
-		
-		int count = -1;
-		for(int i = nums.size(); i > 6; i--) {
-			count++;
-			int RanIndex = random.nextInt(i);
-			answer[count] = nums.remove(RanIndex);
+		for(int index = 0; index < answer.length; index++) {
+			int randomIndex = random.nextInt(nums.size());
+			answer[index] = nums.remove(randomIndex);
 		}
 		return answer;
 	}
@@ -58,8 +53,8 @@ public class BaseballGame {
 	}
 	
 	/* 해당 정수가 해당 int[]에 들어있는지 알려주는 메서드
-	 * ex) isInArray(3, {4, 3, 2}) --> return true
-	 * 	   isInArray(1, {2, 5, 6}) --> return false */
+	 * ex) isInArray(3, new int[] {4, 3, 2}) --> return true 
+	 *     isInArray(1, new int[] {2, 5, 6}) --> return false */
 	public static boolean isInArray(int num, int[] numArray) {
 		for(int i : numArray) {
 			if(num == i) {
@@ -71,7 +66,7 @@ public class BaseballGame {
 	
 	/* 정답과 플레이어가 입력한 값을 비교하고
 	 * 스트라이크와 볼의 개수를 Array에 저장하는 메서드
-	 * ex) countStrikeBall({4, 6, 2}, {4, 3, 2})
+	 * ex) countStrikeBall(new int[] {4, 6, 2}, new int[] {4, 3, 2})
 	 *     --> return {2, 1} */
 	public static int[] countStrikeBall(int[] answer, int[] playerNums) {
 		int strike = 0;
@@ -90,7 +85,7 @@ public class BaseballGame {
 	
 	/* countStrikeBall()에서 얻은 Array를 바탕으로 결과를 출력한다.
 	 * 정답을 맞췄을 경우 true, 정답이 아닐경우 false을 리턴한다.
-	 * ex) printCount({1, 2})
+	 * ex) printCount(new int[] {1, 2})
 	 *     출력문: 1 스트라이크 2볼
 	 *     --> return false */
 	public static boolean printCount(int[] strikeBallCount) {
@@ -111,7 +106,7 @@ public class BaseballGame {
 	
 	/* 게임을 실행하는 메서드 */
 	public static void playGame() {
-		int[] answer = createProblem();
+		int[] answer = createAnswer();
 		boolean checkAnswer = false;
 		
 		while(!checkAnswer) {
