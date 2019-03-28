@@ -19,5 +19,19 @@ public class Baseball {
         }
         return computer;
     }
+    
+    public static boolean checkUser(char[] wrong) {
+
+        if(wrong.length != 3) {
+            return false;
+        } else if(wrong[0] == wrong[1] || wrong[0] == wrong[2] || wrong[1] == wrong[2]){
+            return false;
+        } else if(!Character.isDigit(wrong[0]) && !Character.isDigit(wrong[1]) && !Character.isDigit(wrong[2])){
+            return false;
+        } else if(wrong[0] == '0' || wrong[1] == '0' || wrong[2] == '0'){
+            return false;
+        }
+        return true;
+    }
 }
 
