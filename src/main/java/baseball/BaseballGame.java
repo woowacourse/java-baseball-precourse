@@ -55,8 +55,8 @@ public class BaseballGame {
 	 */
 	public List<Integer> user() {
 		List<Integer> userNums = new ArrayList<Integer>();
-		Scanner sc = new Scanner(System.in);
-		String nums = sc.nextLine();
+		/* '1부터 9까지 서로 다른 수로 이루어진 3자리의 수'를 할당 - 함수: getValidNum */
+		String nums = getValidNum();
 		
 		/* 리스트에 각 자리수 추가 */
 		for (int i=0; i<nums.length(); i++) {
@@ -66,6 +66,24 @@ public class BaseballGame {
 		}
 		System.out.println(); /* 확인용 출력  */
 		return userNums;
+	}
+	
+	/**
+	 * 유저가 입력한 수가 '1부터 9까지 서로 다른 수로 이루어진 3자리의 수'인지 유효성 검사하는 함수
+	 * '1~9까지의 수로 이루어진 3자리의 수'인지 확인하는 함수(checkPattern)와 
+	 * '중복여부 확인' 하는 함수(checkOverlap)를 호출하여 
+	 * 최종적인 유효성 검사를 함.
+	 * 
+	 * @return 	: 유저가 입력한 수가 유효하면 true, 아니면 false를 반환.
+	 */
+	public String getValidNum() {
+		Scanner sc = new Scanner(System.in);
+		String nums = "";
+
+		System.out.print("숫자를 입력해주세요 : ");
+		nums = sc.nextLine();
+		
+		return nums;
 	}
 	
 	public static void main(String[] args) {
