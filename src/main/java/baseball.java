@@ -2,11 +2,20 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class baseball{
-
+    public static int getrand(int[] check_dup){
+        int temp;
+        Random generator = new Random();
+        temp = generator.nextInt(10);
+        while(check_dup[temp]==1){
+            temp = generator.nextInt(10);
+            temp%=10;
+        }
+        return temp;
+    }
     public static int find_pos(int[] arr, int val){
         for(int i=1; i<=3; i++){
             if(arr[i]==val) return i;
-        }   
+        }
         return -1;
     }
     public static int match_check(int answer, int input){
