@@ -10,10 +10,10 @@ public class Referee {
             cnt[ansPnt]++;
         }
 
-        int strikeCnt = 0;
-        for (int i = 0; i < inpBallCombi.length; i++) {
-            if (inpBallCombi[i] == ansBallCombi[i]) strikeCnt++;
-        }
+        int strikeCnt = IntStream.range(0, inpBallCombi.length)
+                .map(i -> (ansBallCombi[i] == inpBallCombi[i]) ? 1 : 0)
+                .reduce((a, b) -> a + b)
+                .getAsInt();
 
         int ballCnt = Arrays.stream(inpBallCombi)
                 .map(pnt -> cnt[pnt])

@@ -2,6 +2,8 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
+import static java.lang.Integer.max;
+
 public class BallCombiGenerator {
 
     public int[] genBallCombi() {
@@ -29,17 +31,16 @@ public class BallCombiGenerator {
             if (pnt <= 0 || 10 <= pnt) return false;
         }
 
+        // check duplicated number
         int [] pntCnt = new int[10];
+        Arrays.stream(ballCombi).forEach((pnt) -> pntCnt[pnt]++);
 
-        for (int ballPnt: ballCombi) {
-            pntCnt[ballPnt]++;
-        }
+        int maxPntCnt =  Arrays.stream(ballCombi)
+                .map(pnt -> pntCnt[pnt])
+                .reduce((a, b) -> max(a, b))
+                .getAsInt();
 
-        for (int ballPnt: ballCombi) {
-            if (1 < pntCnt[ballPnt]) return false;
-        }
-
-        return true;
+        return maxPntCnt <= 1;
     }
 
     public int[] toBallCombi(String ballCombiStr) {
