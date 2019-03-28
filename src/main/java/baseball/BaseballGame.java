@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class BaseballGame {
 	/**
@@ -47,8 +48,29 @@ public class BaseballGame {
 		return num;
 	}
 	
+	/**
+	 * 유저가 입력한 '1부터 9까지 서로 다른 수로 이루어진 3자리의 수'를 리스트에 담는 함수 
+	 * 
+	 * @return 	: '1부터 9까지 서로 다른 수로 이루어진 3자리의 수'로 이루어진 리스트
+	 */
+	public List<Integer> user() {
+		List<Integer> userNums = new ArrayList<Integer>();
+		Scanner sc = new Scanner(System.in);
+		String nums = sc.nextLine();
+		
+		/* 리스트에 각 자리수 추가 */
+		for (int i=0; i<nums.length(); i++) {
+			int num = nums.charAt(i)-48;
+			userNums.add(num);
+			System.out.print(num+","); /* 확인용 출력  */
+		}
+		System.out.println(); /* 확인용 출력  */
+		return userNums;
+	}
+	
 	public static void main(String[] args) {
 		BaseballGame game = new BaseballGame();
 		game.question(); /* 확인용 실행  */
+		game.user(); /* 확인용 실행  */
 	}
 }
