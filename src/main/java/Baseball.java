@@ -39,4 +39,12 @@ public class Baseball {
 		}
 	}
 
+	// 3자리 수인지 체크하는 메소드
+	public boolean isnotThreeNumber(String userinput) {
+		if (userinput.length() != 3) {
+			return true;
+		} else
+			return false;
+	}
+
 }
