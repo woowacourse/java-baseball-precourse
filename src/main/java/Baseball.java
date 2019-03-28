@@ -53,6 +53,13 @@ public class Baseball {
 		} while(true);
 	}
 	
+	/**
+	 * 컴퓨터가 만들어낸 수와 플레이어가 예상한 수를 비교하는 메소드.
+	 * 자리와 숫자가 일치하면 스트라이크, 숫자만 일치하면 볼의 카운트를 증가시켜 그 결과를 담은 Result 객체 반환
+	 * @param computerNumbers 컴퓨터가 만들어낸 숫자
+	 * @param playerNumbers 플레이어가 예상한 숫자
+	 * @return 스트라이크와 볼의 개수를 담은 Result 객체
+	 */
 	public Result compareNumbers(int[] computerNumbers, int[] playerNumbers) {
 		Result result = new Result();
 		

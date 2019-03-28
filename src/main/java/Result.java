@@ -32,6 +32,9 @@ public class Result {
 		return (strike == 0) && (ball == 0);
 	}
 	
+	/**
+	 * strike와 ball의 개수에 따라 출력하는 메소드
+	 */
 	public void print() {
 		String message = "";
 		
