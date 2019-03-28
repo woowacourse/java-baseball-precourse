@@ -37,10 +37,28 @@ public class Catcher {
 	}
 
 	public boolean catching(int[] pitchingBallArr) {
-		return true;
+		this.strike = 0;
+		this.ball = 0;
+		int index = 0;
+
+		for (int i = 0; i < COUNT; i++) {
+			index = catcherMap.getIndex(pitchingBallArr[i]);
+			if ( index >= 0 ) {
+				countingScore(index, i);
+			}
+		}
+
+		printResult();
+
+		return ((this.strike == COUNT) ? false : true);
 	}
 
 	private void countingScore(int key, int index) {
+		if (key == index) {
+			this.strike++;
+		} else {
+			this.ball++;
+		}
 	}
 
 	private void printResult() {
