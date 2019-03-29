@@ -1,6 +1,7 @@
 ### 기능 명세 ###
 
 @git commit test
+@git commit msg test
 0. Baseball객체 생성
 1. 게임을 시작하는 함수 (큰 while 문 startGame()함수)
 2. 게임을 진행하는 함수 (작은 while 문, doGame()함수)
