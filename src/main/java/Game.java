@@ -7,6 +7,9 @@
 import java.util.Random;
 
 public class Game {
+    private final static int MAX_LENGTH = 3;
+    private final static int RANDOM_NUMBER = 9;
+
     private char[] answer;
     private int[] bs; // {ball, strike}
 
@@ -20,12 +23,12 @@ public class Game {
      */
     private char[] generateAnswer() {
         Random random = new Random();
-        char[] str = new char[3];
-        int[] randomCheck = new int[9];
+        char[] str = new char[MAX_LENGTH];
+        int[] randomCheck = new int[RANDOM_NUMBER];
 
         int i = 0;
         while (i < str.length) {
-            int num = random.nextInt(9) + 1;
+            int num = random.nextInt(RANDOM_NUMBER) + 1;
 
             if (randomCheck[num - 1] != 1) {
                 str[i] = (char) (num + '0');
@@ -37,8 +40,9 @@ public class Game {
         return str;
     }
 
-    /*
-     * 사용자가 입력한 숫자와 비교해 strike, ball 를 계산하는 매서드
+    /**
+     * \
+     * @param question 입력한 숫자
      */
     public void compareAnswer(String[] question) {
         bs = new int[2];
@@ -59,19 +63,20 @@ public class Game {
         }
     }
 
-    /*
-     * 3 Strike 인지 아닌지 확인하는 매서드
+    /**
+     *
+     * @return 정답이면 true, 정답이 아니면 false
      */
     public boolean checkAnswer() {
-        if (bs[1] == 3) {
+        if (bs[1] == MAX_LENGTH) {
             return true;
         } else {
             return false;
         }
     }
 
-    /*
-     * compareAnswer 매서드의 결과로 출려하는 매서드
+    /**
+     * compareAnswer에서 확인된 결과를 출려하는 함수
      */
     public void print() {
         String response = "";
@@ -90,8 +95,10 @@ public class Game {
         System.out.println(response);
     }
 
-    /*
-     * 게임을 다시 시작할지 끝낼지 결정하는 매서드
+    /**
+     *
+     * @param temp 1: 게임 끝 2:
+     * @return
      */
     public boolean exitGame(int temp) {
         if (temp == 1) {
