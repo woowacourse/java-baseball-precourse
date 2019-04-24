@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class BaseballGame {
 	
 		void init(){
-		
 	    
 	    int gameMode = 1;							
     	int comNum = ComNumReceiver.receive();				
@@ -22,26 +21,14 @@ public class BaseballGame {
 		    int [] myNumArr = Utils.numsToArr(myNum);
 		    int [] mergedArr = Utils.mergeArrs(comNumArr, myNumArr);
 		     
-		    int [] result = ResultProcessor.process(mergedArr);	
+		    int [] middleResult = Processor.cntBallStrike(mergedArr);	
 		
-		    int strike = 
-		    /* ����� ��� */
-		    if(strike != 0) {
-		    	System.out.print(strike + "��Ʈ����ũ ");
-		    }
-		    if(ball != 0) {
-		    	System.out.print(ball + "��");
-		    }
-		    System.out.println();
+		    int strike = middleResult[0];
+		    int ball = middleResult[1];
 		    
-		    /* 3��Ʈ����ũ �� ���Ӹ�� ����*/
-		    if(strike == 3) {
-		    	System.out.println("3���� ���ڸ� ��� �����̽��ϴ�! ��������");
-		    	System.out.println("������ ���� �����Ϸ��� 1, �����Ϸ��� 2�� �Է��ϼ���.");
-		    	gameMode = sc.nextInt();
-		    	comNum = getComNum();		// ���ο� ������ ���ڸ���
-		    }
+		    int [] finalResult = Processor.cntResult(strike, ball);
+		    gameMode = finalResult[0];
+		    comNum = finalResult[1];
 	    }
-	    sc.close();
 	}
 }

@@ -1,10 +1,11 @@
 import java.util.Scanner;
 
-public class MyNumReceiver {
+public class GameModeReceiver {
 	static int receive(){
 		Scanner sc = new Scanner(System.in);
 
-    	System.out.print(Msgs.MyNumReceive.getMsg());
+		System.out.println(Msgs.ThreeStrike.getMsg());
+    	System.out.print(Msgs.GameModeReceive.getMsg());
 	    int myNum = sc.nextInt();
 	    
 	    return myNum; 
