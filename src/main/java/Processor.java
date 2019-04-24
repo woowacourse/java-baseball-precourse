@@ -16,8 +16,12 @@ public class Processor {
 		return result;
 	}
 
-	public static int [] cntResult(int strike, int ball) {
-		int gameMode = 0;
+	public static boolean isThreeStrike(int strike) {
+		if(strike == 3) return true;
+		return false;
+	}
+	
+	public static void showResult(int strike, int ball) {
 		if(strike != 0) {
 	    	System.out.print(strike + Msgs.Strike.getMsg());
 	    }
@@ -27,10 +31,7 @@ public class Processor {
 	    System.out.println();
 	    
 	    if(strike == 3) {
-	    	gameMode = GameModeReceiver.receive();
+			System.out.println(Msgs.ThreeStrike.getMsg());
 	    }	
-	    
-	    int [] finalResult = {gameMode, ComNumReceiver.receive()};
-	    return finalResult;
 	}
 }

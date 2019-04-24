@@ -12,9 +12,9 @@ public class BaseballGame {
 	    
 	    int gameMode = 1;							
     	int comNum = ComNumReceiver.receive();				
-    	
+    	System.out.println(comNum);
+
 	    while(gameMode == 1) {
-	    	
 		    int myNum = MyNumReceiver.receive();				
 		    
 		    int [] comNumArr = Utils.numsToArr(comNum);		
@@ -26,9 +26,11 @@ public class BaseballGame {
 		    int strike = middleResult[0];
 		    int ball = middleResult[1];
 		    
-		    int [] finalResult = Processor.cntResult(strike, ball);
-		    gameMode = finalResult[0];
-		    comNum = finalResult[1];
+		    Processor.showResult(strike,ball);
+		    if(Processor.isThreeStrike(strike)) {
+			    gameMode = GameModeReceiver.receive();
+			    comNum = ComNumReceiver.receive();
+		    }
 	    }
 	}
 }
