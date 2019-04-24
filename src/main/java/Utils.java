@@ -13,7 +13,7 @@ public class Utils {
 	}
 
 	public static int[] mergeArrs(int[] comNumArr, int[] myNumArr) {
-		int[] mergedArr = new int[9];
+		int[] mergedArr = new int[10];
 		int count = 0;
 		for (int comNum : comNumArr) {
 			mergedArr[comNum] = (count + 1) * -1;

@@ -20,7 +20,7 @@ public class BaseballGame {
 		    int [] comNumArr = Utils.numsToArr(comNum);		
 		    int [] myNumArr = Utils.numsToArr(myNum);
 		    int [] mergedArr = Utils.mergeArrs(comNumArr, myNumArr);
-		     
+		    
 		    int [] middleResult = Processor.cntBallStrike(mergedArr);	
 		
 		    int strike = middleResult[0];
