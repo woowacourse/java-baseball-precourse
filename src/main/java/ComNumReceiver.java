@@ -9,7 +9,7 @@ public class ComNumReceiver {
 	 * 
 	 * @return 임의의 세자리수
 	 */
-	public int receive() {
+	public static int receive() {
 
 		List<Integer> comNums = new Random().ints(1, 9).distinct().limit(3).boxed().collect(Collectors.toList());
 		return (comNums.get(0) * 100 + comNums.get(1) * 10 + comNums.get(2));
