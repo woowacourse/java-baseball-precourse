@@ -52,7 +52,9 @@ class Game {
 
     private Set<Integer> parseStringArrayToSet(String[] userInputArr) {
         try {
+            /* 중복을 위한 Set 자료구조지만 저장 순서를 보장받기 위해 LinkedHashSet 으로 구현 */
             Set<Integer> userRandomNumbersSet = new LinkedHashSet<>();
+
             for (String userInput : userInputArr) {
                 userRandomNumbersSet.add(new RandomNumber(Integer.parseInt(userInput)).getRandomNumber());
             }
@@ -77,9 +79,8 @@ class Game {
     }
 
     private boolean decideEndOrNot() {
-        int userInput;
         try {
-            userInput = Integer.parseInt(userInterface.checkEndOrNot());
+            int userInput = Integer.parseInt(userInterface.checkEndOrNot());
             if (userInput == 1) {
                 return true;
             } else if (userInput == 2) {

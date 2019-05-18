@@ -12,19 +12,19 @@ public class StrikeBall {
         this.ball = ball;
     }
 
-    public void setBall(int ball) {
+    void setBall(int ball) {
         this.ball = ball;
     }
 
-    public void setStrike(int strike) {
+    void setStrike(int strike) {
         this.strike = strike;
     }
 
-    public int getBall() {
+    int getBall() {
         return ball;
     }
 
-    public int getStrike() {
+    int getStrike() {
         return strike;
     }
 }
