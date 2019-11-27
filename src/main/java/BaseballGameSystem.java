@@ -1,21 +1,17 @@
+import java.util.HashSet;
+
 public class BaseballGameSystem {
-    private int answerNumber;
+    private static final int DIGIT = 3;
+    private HashSet<Integer> answerNumberSet = new HashSet<>();
 
     BaseballGameSystem() {
-        answerNumber = generateRandomNumber();
+        while (answerNumberSet.size() < DIGIT) {
+            answerNumberSet.add(generateRandomNumber());
+        }
     }
 
     public int generateRandomNumber() {
-        final int DIGIT = 3;
-        int randomNumber = 0;
-        int adder = 1;
-
-        for (int i = 0; i < DIGIT; i++) {
-            randomNumber += (int) ((Math.random() * 9) + 1) * adder;
-            adder *= 10;
-        }
-
-        return randomNumber;
+        return (int) ((Math.random() * 9) + 1);
     }
 
     public void checkAnswer(int userNumber) {}
