@@ -30,11 +30,11 @@ public class Game {
 
     public void start() {
         do {
-            showInputMessage();
-            setPlayerNumbers(getInputsByScanner());
-        } while (isOverlap(playerNumbers) || isOutOfScope(playerNumbers));
-
-        showResult();
+            do {
+                showInputMessage();
+                setPlayerNumbers(getInputsByScanner());
+            } while (isOverlap(playerNumbers) || isOutOfScope(playerNumbers));
+        } while(!showResult());
     }
 
     public int[] randomGenerator() {
@@ -45,9 +45,6 @@ public class Game {
     }
 
     public void showInputMessage() {
-        if(playerNumbers != null){
-            System.out.println("잘못된 입력입니다.");
-        }
         System.out.print("숫자를 입력해주세요 : ");
     }
 
@@ -97,6 +94,10 @@ public class Game {
             System.out.println(strike + " 스트라이크 " + ball + " 볼");
         }
         return strike == 3;
+    }
+
+    public void showRestart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
     }
 
 }
