@@ -12,4 +12,8 @@ class Player {
     public int getPlayerInputNumber() {
         return input.nextInt();
     }
+
+    public void playerQuitGame() {
+        this.wantToContinue = false;
+    }
 }
