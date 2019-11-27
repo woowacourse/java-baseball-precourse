@@ -19,8 +19,7 @@ class GameTest {
     @Test
     public void testRandomGenerator(){
         Game game = new Game();
-        assertThat(Arrays
-                .stream(game.getComputerNumbers())
+        assertThat(Arrays.stream(game.getComputerNumbers())
                 .allMatch(x -> (x >= 1 && x <= 9))
         ).isTrue();
     }

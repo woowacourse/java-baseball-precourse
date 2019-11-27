@@ -32,7 +32,7 @@ public class Game {
         do {
             showInputMessage();
             setPlayerNumbers(getInputsByScanner());
-        } while (isOverlap(getPlayerNumbers()) || isOutOfScope(getPlayerNumbers()));
+        } while (isOverlap(playerNumbers) || isOutOfScope(playerNumbers));
 
     }
 
@@ -61,5 +61,26 @@ public class Game {
     public boolean isOutOfScope(int[] numbers) {
         return Arrays.stream(numbers).anyMatch(x -> (x < 1 || x > 9));
     }
+
+    public int checkStrike(){
+        int count = 0;
+        for(int i = 0; i < computerNumbers.length; i++){
+            if(computerNumbers[i] == playerNumbers[i]){
+                playerNumbers[i] = 0;
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int checkBall(){
+        int count = 0;
+        for(int i = 0; i < computerNumbers.length; i++){
+            final int index = i;
+            count += Arrays.stream(computerNumbers).filter(x -> x == playerNumbers[index]).count();
+        }
+        return count;
+    }
+
 
 }
