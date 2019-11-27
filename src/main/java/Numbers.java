@@ -9,8 +9,12 @@ public class Numbers {
 
     public Numbers() {
         firstNumber = makeRandomNumber();
-        secondNumber = makeRandomNumber();
-        thirdNumber = makeRandomNumber();
+        do {
+            secondNumber = makeRandomNumber();
+        } while (secondNumber != firstNumber);
+        do {
+            thirdNumber = makeRandomNumber();
+        } while ((thirdNumber != firstNumber) && (thirdNumber != secondNumber));
     }
 
     private int makeRandomNumber() {
