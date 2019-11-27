@@ -10,7 +10,7 @@ class Computer {
 
     }
 
-    private void makeBaseballGameAnswer() {
+    public void makeBaseballGameAnswer() {
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < MAX_NUMBER; ++i) {
             numbers.add(i + 1);
