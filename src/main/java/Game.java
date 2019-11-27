@@ -63,7 +63,7 @@ public class Game {
         return Arrays.stream(numbers).anyMatch(x -> (x < 1 || x > 9));
     }
 
-    public int checkStrike(){
+    public int checkStrike() {
         int count = 0;
         for(int i = 0; i < computerNumbers.length; i++){
             if(computerNumbers[i] == playerNumbers[i]){
@@ -74,7 +74,7 @@ public class Game {
         return count;
     }
 
-    public int checkBall(){
+    public int checkBall() {
         int count = 0;
         for(int i = 0; i < computerNumbers.length; i++){
             final int index = i;
@@ -83,7 +83,7 @@ public class Game {
         return count;
     }
 
-    public boolean showResult(){
+    public boolean showResult() {
         int strike = checkStrike();
         int ball = checkBall();
 
@@ -96,7 +96,6 @@ public class Game {
         } else {
             System.out.println(strike + " 스트라이크 " + ball + " 볼");
         }
-
         return strike == 3;
     }
 
