@@ -34,6 +34,7 @@ public class Game {
             setPlayerNumbers(getInputsByScanner());
         } while (isOverlap(playerNumbers) || isOutOfScope(playerNumbers));
 
+        showResult();
     }
 
     public int[] randomGenerator() {
@@ -82,5 +83,21 @@ public class Game {
         return count;
     }
 
+    public boolean showResult(){
+        int strike = checkStrike();
+        int ball = checkBall();
+
+        if(ball + strike == 0){
+            System.out.println("낫싱!");
+        } else if(strike == 0) {
+            System.out.println(ball + " 볼");
+        } else if(ball == 0){
+            System.out.println(strike + " 스트라이크");
+        } else {
+            System.out.println(strike + " 스트라이크 " + ball + " 볼");
+        }
+
+        return strike == 3;
+    }
 
 }
