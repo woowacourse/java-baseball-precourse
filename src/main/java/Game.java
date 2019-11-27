@@ -34,7 +34,7 @@ public class Game {
                 showInputMessage();
                 setPlayerNumbers(getInputsByScanner());
             } while (isOverlap(playerNumbers) || isOutOfScope(playerNumbers));
-        } while(!showResult());
+        } while(!showResult() || inputRestart());
     }
 
     public int[] randomGenerator() {
@@ -100,4 +100,8 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
     }
 
+    public boolean inputRestart(){
+        showRestart();
+        return input.nextInt() == 1;
+    }
 }
