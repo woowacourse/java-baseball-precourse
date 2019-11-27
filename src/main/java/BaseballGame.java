@@ -16,14 +16,37 @@ public class BaseballGame {
 
     private static void playBaseballGame(User user, Baseball baseball) {
         List<Integer> baseballs = baseball.getBaseball();
+        int gameState;
         while(true) {
             if(calculateScore(user.getUserBat(),baseballs)){
                 System.out.println("3개 숫자를 모두 맞히셨습니다! 게임종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                gameState = getGameState();
                 break;
             }
         }
+    }
 
+    private static int getGameState() {
+        int gameState;
+        while(true) {
+            try{
+                gameState = checkGameState();
+                break;
+            } catch(NumberFormatException e){
+                System.out.println("1 또는 2를 입력해주시기 바랍니다.");
+            }
+        }
+
+        return gameState;
+    }
+
+    private static int checkGameState() {
+        Scanner scanUserBat = new Scanner(System.in);
+        String gamStateValue = scanUserBat.next();
+        int gameState = Integer.parseInt(gamStateValue);
+        if(gameState != 1 && gameState != 2) { throw new NumberFormatException();}
+        return gameState;
     }
 
 
