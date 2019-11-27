@@ -1,5 +1,7 @@
 ## 구현해야 하는 기능
-#### 1. main 함수 작성 & 상수, 변수 정의하기
+#### 0. main 함수 작성 
+
+#### 1. run 함수 작성 & 상수, 변수 정의하기
     static final int INPUT_SIZE = 3;
     int answer;
     int userInput;
