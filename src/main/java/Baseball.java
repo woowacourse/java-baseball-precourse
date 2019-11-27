@@ -34,6 +34,9 @@ public class Baseball {
                 break;
             }
         }
+        if( !quitCode ) {
+            System.out.println("게임을 종료합니다.");
+        }
     }
 
     public static boolean checkOverlap(int num, int[] comNum, int i) {
