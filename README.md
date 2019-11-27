@@ -18,7 +18,7 @@
 
 ### Method
 
-- [ ] Random Generator 메소드
+- [x] Random Generator 메소드
 - [ ] 볼, 스트라이크여부 확인하는 메소드
 - [ ] 볼, 스트라이크여부 출력하는 메소드
 - [ ] 게임승리 확인 메소드
@@ -27,5 +27,5 @@
 
 ### Test
 
-- [ ] Game 클래스 init Test
-- [ ]
+- [x] Game 클래스 init Test
+- [x] randomGenerator 범위 테스트
