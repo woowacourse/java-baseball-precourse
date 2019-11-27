@@ -20,7 +20,7 @@ public class Baseball {
             int baseball = (int)(createBaseball*9)+1;
             if(!baseballList.contains(baseball)) { baseballList.add(baseball); }
         }
-
+        System.out.println(baseballList);
         return baseballList;
     }
 }
