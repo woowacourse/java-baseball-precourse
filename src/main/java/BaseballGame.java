@@ -25,6 +25,9 @@ public class BaseballGame {
                 break;
             }
         }
+        if(gameState == 1){
+            playBaseballGame(user,baseball);
+        }
     }
 
     private static int getGameState() {
