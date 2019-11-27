@@ -19,6 +19,7 @@
 ### Method
 
 - [x] Random Generator 메소드
+- [ ] 사용자 입력 받는 메소드
 - [ ] 볼, 스트라이크여부 확인하는 메소드
 - [ ] 볼, 스트라이크여부 출력하는 메소드
 - [ ] 게임승리 확인 메소드
@@ -29,3 +30,4 @@
 
 - [x] Game 클래스 init Test
 - [x] randomGenerator 범위 테스트
+- [ ] 사용자 입력 Test
