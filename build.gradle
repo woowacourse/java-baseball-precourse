@@ -15,4 +15,7 @@ dependencies {
     testCompile('org.assertj:assertj-core:3.14.0')
 }
 
+run {
+    standardInput = System.in
+}
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
