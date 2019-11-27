@@ -5,14 +5,14 @@ public class Baseball {
 
     private final int BASEBALL_LENGTH = 3;
 
-    public int[] getBaseball() {
+    public List<Integer> getBaseball() {
         int[] baseballArray = new int[BASEBALL_LENGTH];
         List<Integer> baseballList = new ArrayList<>();
 
         return createBaseball(baseballArray, baseballList);
     }
 
-    private int[] createBaseball(int[] baseballArray, List<Integer> baseballList) {
+    private List<Integer> createBaseball(int[] baseballArray, List<Integer> baseballList) {
 
         while(baseballList.size() != 3) {
 
@@ -21,16 +21,6 @@ public class Baseball {
             if(!baseballList.contains(baseball)) { baseballList.add(baseball); }
         }
 
-        return inputBaseballListToArray(baseballArray, baseballList);
-    }
-
-    private int[] inputBaseballListToArray(int[] baseballArray, List<Integer> baseballList) {
-
-        for(int i=0; i<baseballList.size(); i++) {
-
-            baseballArray[i] = baseballList.get(i);
-        }
-
-        return baseballArray;
+        return baseballList;
     }
 }

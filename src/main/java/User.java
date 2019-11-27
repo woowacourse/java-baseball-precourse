@@ -3,16 +3,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class User {
-    private final int USER_NUMBER_SIZE = 3;
     private final int DIVIDE_BAT_VALUE = 10;
 
-    public int[] getUserBat() {
+    public List<Integer> getUserBat() {
         displayGetUserBat();
-        int[] userBaseballBat;
+        List<Integer> userBaseballBat;
 
         while(true) {
             try {
-                userBaseballBat = userBatArray(checkUserBat());
+                userBaseballBat = userBatArray();
                 break;
             } catch (Exception e) {
                 System.out.println("서로 다른 1 ~ 9 까지의 숫자를 입력해주세요");
@@ -26,17 +25,8 @@ public class User {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    private int[] userBatArray(List<Integer> userBats) {
-        int[] userBatArray = new int[USER_NUMBER_SIZE];
 
-        for(int i=0; i<userBats.size(); i++) {
-            userBatArray[i] = userBats.get(i);
-        }
-
-        return userBatArray;
-    }
-
-    private List<Integer> checkUserBat() throws NumberFormatException {
+    private List<Integer> userBatArray() throws NumberFormatException {
         Scanner scanUserBat = new Scanner(System.in);
         String userBatValue = scanUserBat.next();
         int userBat = Integer.parseInt(userBatValue);
