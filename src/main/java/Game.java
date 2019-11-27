@@ -9,7 +9,6 @@ public class Game {
 
     public Game() {
         input = new Scanner(System.in);
-        setComputerNumbers(randomGenerator());
     }
 
     public int[] getComputerNumbers() {
@@ -30,6 +29,7 @@ public class Game {
 
     public void start() {
         do {
+            setComputerNumbers(randomGenerator());
             do {
                 showInputMessage();
                 setPlayerNumbers(getInputsByScanner());
