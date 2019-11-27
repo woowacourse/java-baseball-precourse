@@ -11,6 +11,7 @@ public class Baseball {
         int[] userNum = new int[3];
         int num;
         boolean strikeNumCheck;
+        boolean quitCode;
         Scanner sc = new Scanner(System.in);
 
         for(int i = 0; i < 3; i++) {
@@ -21,13 +22,17 @@ public class Baseball {
             }
         }
 
-        while (true) {
+        while ( true ) {
             for(int i=0; i<3; i++) {
                 userNum[i] = sc.nextInt();
             }
             //숫자 비교 후 힌트 && strike 3 나오면 종료
             strikeNumCheck = compare(comNum, userNum);
-
+            if( strikeNumCheck ) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다.! 게임 종료");
+                quitCode = quit();
+                break;
+            }
         }
     }
 
@@ -71,5 +76,13 @@ public class Baseball {
                 ball++;
             }
         }
+    }
+
+    public static boolean quit() {
+        int userCode;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        userCode = sc.nextInt();
+        return ((userCode == 1) ? true : false);
     }
 }
