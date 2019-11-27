@@ -17,6 +17,18 @@ public class UserInput {
         }
     }
 
+    public boolean isRestartingGame() {
+        while (true) {
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+            String choice = this.scanner.nextLine();
+            if (choice.equals("1")) {
+                return true;
+            } else if (choice.equals("2")) {
+                return false;
+            }
+        }
+    }
+
     private boolean isCorrectlyFormatted(String number) {
         if (number == null || number.length() != 3) {
             return false;
