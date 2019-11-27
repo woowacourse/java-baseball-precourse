@@ -4,7 +4,7 @@ public class Opponent {
     private String answer;
 
 
-    public int validate(String userInput) {
+    public boolean validate(String userInput) {
         int strike = 0;
         int ball = 0;
         char[] userInputToCharArray = userInput.toCharArray();
@@ -18,7 +18,7 @@ public class Opponent {
 
         printResult(strike, ball);
 
-        return 0;
+        return strike == 3;
     }
 
     private boolean isStrike(String userInput, int pos) {

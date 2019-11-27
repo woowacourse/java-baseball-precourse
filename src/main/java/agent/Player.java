@@ -15,6 +15,6 @@ public class Player {
 
     public void setUserInput() {
         System.out.print("숫자를 입력해주세요: ");
-        userInput = scanner.next();
+        userInput = scanner.nextLine();
     }
 }

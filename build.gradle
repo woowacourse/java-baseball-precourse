@@ -1,5 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
+mainClassName="manager.GameManager"
 
 version = '1.0.0'
 sourceCompatibility = 1.8
@@ -12,3 +14,5 @@ dependencies {
     testCompile('org.junit.jupiter:junit-jupiter:5.5.2')
     testCompile('org.assertj:assertj-core:3.14.0')
 }
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
