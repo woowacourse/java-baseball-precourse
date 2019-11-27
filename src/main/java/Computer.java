@@ -4,4 +4,8 @@ public class Computer {
     public Computer() {
         NumbersOfComputer = new Numbers();
     }
+
+    public void compareNumbersWith(Numbers numbersFormUser) {
+
+    }
 }
