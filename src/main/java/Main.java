@@ -105,7 +105,20 @@ public class Main {
     /** 같은 값을 입력으로 준 경우를 체크한다. */
     public static boolean isSameValue(String value)
     {
-       return false;
+        boolean isDuplicate = false;           // 중복 여부
+        char firstChar = value.charAt(0);       // value의 첫번째 값
+        char secondChar = value.charAt(1);      // value의 두번째 값
+        char thirdChar = value.charAt(2);       // value의 세번째 값
+
+        if (firstChar == secondChar){
+            isDuplicate = true;
+        }else if (firstChar == thirdChar){
+            isDuplicate = true;
+        }else if (secondChar == thirdChar){
+            isDuplicate = true;
+        }
+
+        return isDuplicate;
     }
 
 
