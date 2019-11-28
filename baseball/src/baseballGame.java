@@ -46,6 +46,24 @@ public class baseballGame {
     }
 
     /*
+    int형 정답 배열과 int형 사용자가 입력한 배열을 인자로 넣으면, Ball 횟수를 반환해주는 메소드이다.
+     */
+    int isBall(int answerNum[], int num[]) {
+        int ballNumber = 0;
+
+        for (int i=0; i<3; i++) {
+            if (isSame(answerNum[i], num[(i+1)%3])) {
+                ballNumber++;
+            }
+            if (isSame(answerNum[i], num[(i+2)%3])) {
+                ballNumber++;
+            }
+        }
+
+        return ballNumber;
+    }
+
+    /*
     인자로 들어온 두 int 형 숫자가 같으면 TRUE 를 반환하는 메소드이다.
      */
     boolean isSame(int answerNum, int num) {
