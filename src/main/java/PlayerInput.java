@@ -13,8 +13,23 @@ import java.util.Scanner;
 public class PlayerInput {
     private static Scanner scan = new Scanner(System.in);
 
-    public static String input() {
-        return scan.next().trim();
+    public static int inputNumber() {
+        Printer.printInputNumber();
+        String input = scan.nextLine().trim();
+        if(!Validator.isValidNumbers(input)) {
+            Printer.printError();
+            return inputNumber();
+        }
+        return Integer.parseInt(input);
     }
 
+    public static int inputMenuId() {
+        Printer.printMenu();
+        String input = scan.nextLine().trim();
+        if(!Validator.isValidMenuId(input)) {
+            Printer.printError();
+            return inputMenuId();
+        }
+        return Integer.parseInt(input);
+    }
 }
