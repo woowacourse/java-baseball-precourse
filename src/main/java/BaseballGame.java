@@ -119,10 +119,31 @@ public class BaseballGame {
 	 * @return how many strikes and how many balls as string
 	 */
 	private String ansControl(String guess) {
+		String ret;
 		
-		String ret = "";
+		int strikeCnt = strikeCnt(guess);
+		int ballCnt = ballCnt(guess);
 		
-		
+		if (strikeCnt == 0 && ballCnt == 0) {
+			
+			/* strike와 ball 중 아무것도 없으면 실행된다. */
+			ret = "낫싱";
+		}
+		else if (ballCnt == 0) {
+			
+			/* strike만 있고 ball이 없는 경우 실행된다. */
+			ret = strikeCnt + " 스트라이크";
+		}
+		else if (strikeCnt == 0) {
+			
+			/* ball만 있고 strike가 없는 경우 실행된다. */
+			ret = ballCnt + "볼";
+		}
+		else {
+			
+			/* strike와 ball 모두 한개 이상 있는 경우 실행된다. */
+			ret = strikeCnt + " 스트라이크 " + ballCnt + "볼";
+		}
 		
 		return ret;
 	}
