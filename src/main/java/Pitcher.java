@@ -1,8 +1,8 @@
-/*import java.lang.*;
+import java.lang.*;
 
 public class Pitcher {
-    final int PITCHING_COUNT = 3;
-    int pitching[];
+    private static final int PITCHING_COUNT = 3;
+    private int[] pitching;
 
     public Pitcher(){
         pitching = new int[PITCHING_COUNT];
@@ -11,8 +11,13 @@ public class Pitcher {
             pitching[i] = (int)(Math.random()*10 -1);
         }
     }
-    public int[] getPitching(){
-        return pitching;
+    public void setPitching(int a){
+        if(a<100 || a>=1000)    return;
+        for(int i=0;i<PITCHING_COUNT;i++){
+            int tmp = a%10;
+            pitching[i] = tmp;
+            a/=10;
+        }
     }
     public void printPitching(){
         for(int i=0;i<PITCHING_COUNT;i++){
@@ -20,4 +25,3 @@ public class Pitcher {
         }
     }
 }
-*/
