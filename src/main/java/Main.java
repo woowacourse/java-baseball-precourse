@@ -2,22 +2,19 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-	static Scanner sc = new Scanner(System.in);
+	private static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		init();
 	}
 
 	private static void init() {
-
 		while (true) {
 			String computerInput = randomize();
 
 			startGame(computerInput);
 
-			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
 			String command = command();
 			if (command.equals("1")) {
 				continue;
@@ -51,6 +48,7 @@ public class Main {
 
 			int strike = compare(userInput, computerInput);
 			if (strike == 3) {
+				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 				break;
 			}
 		}
@@ -94,7 +92,7 @@ public class Main {
 			} else if (command.equals("2")) {
 				break;
 			} else {
-				System.out.print("잘못된 숫자를 입력하셨습니다. 다시 입력해주세요!(새로 시작: 1, 종료: 2)");
+				System.out.println("잘못된 숫자를 입력하셨습니다. 다시 입력해주세요!(새로 시작: 1, 종료: 2)");
 			}
 		}
 		return command;
