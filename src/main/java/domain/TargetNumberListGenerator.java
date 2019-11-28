@@ -2,7 +2,7 @@
  * TargetNumberListGenerator.java
  * java-baseball-precourse
  *
- * Version 0.3
+ * Version 0.4
  *
  * Created by 김경준 on 27/11/2019.
  *
@@ -21,14 +21,22 @@ public class TargetNumberListGenerator {
     private static final int MIN_NUM = 123;
     private static final int BOUND_FROM_ZERO = MAX_NUM - MIN_NUM;
 
-    private ArrayList<Integer> targetNumberList;
+    private final ArrayList<Integer> targetNumberList;
 
-    private void setTargetNumberList() {
+    public TargetNumberListGenerator() {
+        targetNumberList = setTargetNumberList();
+    }
+
+    public ArrayList<Integer> getTargetNumberList() {
+        return targetNumberList;
+    }
+
+    private ArrayList<Integer> setTargetNumberList() {
         String targetNumberString;
         do {
             targetNumberString = generateRandomNumberString();
         } while(StringHandler.isDuplicated(targetNumberString));
-        targetNumberList = StringHandler.addToList(targetNumberString);
+        return StringHandler.addToList(targetNumberString);
     }
 
     private String generateRandomNumberString() {
