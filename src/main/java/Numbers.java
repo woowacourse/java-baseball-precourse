@@ -40,4 +40,32 @@ public class Numbers {
         }
         return false;
     }
+
+    public int countStrike(Numbers numbers) {
+        int strike = 0;
+        if (this.firstNumber == numbers.firstNumber) {
+            strike++;
+        }
+        if (this.secondNumber == numbers.secondNumber) {
+            strike++;
+        }
+        if (this.thirdNumber == numbers.thirdNumber) {
+            strike++;
+        }
+        return strike;
+    }
+
+    public int countBall(Numbers numbers) {
+        int ball = 0;
+        if ((this.firstNumber == numbers.secondNumber) || (this.firstNumber == numbers.thirdNumber)) {
+            ball++;
+        }
+        if ((this.secondNumber == numbers.firstNumber) || (this.secondNumber == numbers.thirdNumber)) {
+            ball++;
+        }
+        if ((this.thirdNumber == numbers.firstNumber) || (this.thirdNumber == numbers.secondNumber)) {
+            ball++;
+        }
+        return ball;
+    }
 }
