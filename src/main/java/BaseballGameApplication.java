@@ -2,13 +2,14 @@
  * BaseballGameApplication.java
  * java-baseball-precourse
  *
- * Version 0.2
+ * Version 0.3
  *
  * Created by 김경준 on 28/11/2019.
  *
  * Copyright © 2019 kouz95. All rights reserved.
  */
 
+import domain.BaseballGame;
 import domain.TargetNumberListGenerator;
 import domain.UserInputValidator;
 import utils.StringHandler;
@@ -24,6 +25,8 @@ public class BaseballGameApplication {
     private static void startBaseballGame() {
         ArrayList<Integer> targetNumberList = setTargetNumberList();
         ArrayList<Integer> userNumberList = setUserNumberList();
+        BaseballGame baseballGame = new BaseballGame(userNumberList, targetNumberList);
+
     }
 
     private static ArrayList<Integer> setTargetNumberList() {
