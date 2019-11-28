@@ -26,6 +26,16 @@ public class Baseball {
         }
     }
 
+    // 스트라이크를 세는 함수
+     static int getStrike(int n){
+        int cnt = 0;
+        for(int i = 0 ; i<3;i++){
+            if(randomdata[i] == user[i])
+                cnt++;
+        }
+        return cnt;
+    }
+
     // 실질적 게임을 작동하는 함수
     static int game(){
         Scanner sc = new Scanner(System.in);
@@ -33,6 +43,9 @@ public class Baseball {
             System.out.println("숫자를 입력해주세요 : ");
             int n = sc.nextInt();
             userInit(n);
+
+            int strike = getStrike(n);
+
         }
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int n = sc.nextInt();
