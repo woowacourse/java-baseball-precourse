@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class PlayerInput {
     private static Scanner scan = new Scanner(System.in);
 
-    public static String inputNumbers(){
+    public static String inputNumber(){
         return scan.next().trim();
     }
 

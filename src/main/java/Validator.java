@@ -13,13 +13,13 @@ import java.util.Set;
 
 public class Validator {
 
-    public static boolean isValidNumbers(int digit, String numbers) {
-        return numbers.length() == digit && isInteger(numbers) && isNotOverlap(numbers);
+    public static boolean isValidNumbers(String number) {
+        return number.length() == NumberBaseBallGame.DIGIT && isInteger(number) && isNotOverlap(number);
     }
 
-    private static boolean isInteger(String numbers) {
+    private static boolean isInteger(String number) {
         try {
-            Integer.valueOf(numbers);
+            Integer.valueOf(number);
         } catch (NumberFormatException e) {
             return false;
         }
