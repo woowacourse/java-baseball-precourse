@@ -19,8 +19,45 @@
 
 ## 구현할 기능 목록
 
-[ ] 1에서 9까지 서로 다른 임의의 수 3개 선택
+[x] 1에서 9까지 서로 다른 임의의 수 3개 선택
 
-[ ] 플레이어의 3자리 수 입력 받기
+[x] 플레이어의 3자리 수 입력 받기
 
-[ ] 입력값에 따른 힌트 혹은 결과 출력
+[x] 입력값에 따른 힌트 혹은 결과 출력
+
+
+
+## 더 공부할 내용
+
+
+
+### 1. Regular Expression(정규식)
+
+
+
+> 참고 [자바 정규식(Regular Expression 사용하기)](https://offbyone.tistory.com/400)
+
+
+
+### 2. StringTokenizer vs split
+
+
+
+|                       StringTokenizer                        |                            Split                             |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| StringTokenizer라는 클래스가 존재.<br />구분자를 생략하면 공백이 기본 구분자.<br /> 지정한 한 가지 구분자로만 문자열을 나눌 수 있음.<br />split과 달리 공백은 무시.<br />- int countTokens() : 남아있는 토큰 수 반환.<br />- boolean hasMoreTokens(): 토큰이 남아있는지 여부를 반환.<br />- String nextToken(): 토큰 String 반환.<br />split에 비해 속도가 빠르나 정규식 사용이 불가능. | String 클래스의 메서드.<br /> 구분자에 의해서 나눠진 문자열을 배열에 저장.<br />공백도 저장됨.<br />구분자로 정규식 사용 가능.<br />StringTokenizer에 비해 속도가 느림. |
+
+
+
+> 
+>
+> 참고 
+>
+> [StringTokenizer vs Split (1)](https://sas-study.tistory.com/102)
+>
+> [StringTokenizer vs Split (2)](https://jyosssss.tistory.com/77)
+>
+> [StringTokenizer 클래스](https://arer.tistory.com/48)
+>
+> 
+
