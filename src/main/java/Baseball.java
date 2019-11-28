@@ -36,16 +36,51 @@ public class Baseball {
         return cnt;
     }
 
+    // 인덱스를 비교하여 볼을 확인하는 함수
+    static int ballCompare(int i,int j){
+        if(i==j)  // 스트라이크 검사는 생략
+            return 0;
+        if(randomdata[i] == user[j]) // 같은 수가 있으면 볼
+            return 1;
+        return 0; // 나머지는 볼이 아니다.
+    }
+    // 볼카운트를 세는 함수
+    static int getBall(int n){
+        int cnt = 0;
+        for(int i = 0 ; i<3;i++){
+            for(int j = 0 ; j<3;j++){
+                cnt+= ballCompare(i,j);
+            }
+        }
+        return cnt;
+    }
+
     // 실질적 게임을 작동하는 함수
     static int game(){
         Scanner sc = new Scanner(System.in);
         while(true){
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             int n = sc.nextInt();
             userInit(n);
 
             int strike = getStrike(n);
+            int ball = getBall(n);
 
+            if(strike>0){
+                System.out.print(strike);
+                System.out.print(" 스트라이크 ");
+            }
+            if(ball > 0){
+                System.out.print(ball);
+                System.out.println("볼");
+            }
+            else{
+                System.out.println();
+            }
+
+            if(strike == 3){
+                break;
+            }
         }
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int n = sc.nextInt();
