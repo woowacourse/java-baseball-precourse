@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class HitterImpl implements Hitter {
+public class NumberHitter implements Hitter {
 
     private Scanner scanner;
 
-    public HitterImpl(Scanner scanner) {
+    public NumberHitter(Scanner scanner) {
         this.scanner = scanner;
     }
 

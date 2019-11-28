@@ -1,7 +1,7 @@
 package Baseball.errors;
 
-public class NotDigitException extends RuntimeException {
-    public NotDigitException(String message) {
+public class InvalidInputException extends RuntimeException {
+    public InvalidInputException(String message) {
         super(message);
     }
 }
