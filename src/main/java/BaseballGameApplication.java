@@ -15,5 +15,7 @@ public class BaseballGameApplication {
             game.setStrikeCount(0);
             game.setBallCount(0);
         }
+
+        OutputBaseballGame.printFinishMsg();
     }
 }
