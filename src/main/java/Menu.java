@@ -1,14 +1,14 @@
 import java.util.Scanner;
 
-public class Menu {
-    public void menu() {
+class Menu {
+    void menu() {
         char selected;
         do {
             selected = menuUI();
         } while (!(selected == '2'));
     }
 
-    public char menuUI() {
+    private char menuUI() {
         System.out.println("!! 숫자 야구 게임 !!");
         System.out.println();
         System.out.println("1. 게임 시작");
@@ -17,7 +17,7 @@ public class Menu {
 
         if (selected == '1') {
             Play game = new Play();
-            String result = "";
+            String result;
             do {
                 result = game.info(game.compare(game.guessNum()));
                 System.out.println(result);

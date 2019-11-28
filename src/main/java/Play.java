@@ -1,11 +1,15 @@
+import com.sun.corba.se.impl.io.TypeMismatchException;
+import com.sun.xml.internal.ws.api.model.ExceptionType;
+
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
-public class Play {
-    List<Integer> answer;
+class Play {
+    private List<Integer> answer;
     private int tryTimes;
 
     // 클래스 생성 시 랜덤으로 3자리 수를 만든다.
@@ -20,20 +24,26 @@ public class Play {
     }
 
     // 플레이어로부터 숫자를 입력 받고 입력 받은 숫자를 배열로 처리하는 메서드
-    public int[] guessNum() {
+    int[] guessNum() {
         int getNum;
-        int guessedNum[] = new int[3];
+        int[] guessedNum = new int[3];
         int check = -1;
 
         while (check != 0) {
             System.out.print("숫자를 입력해주세요 : ");
-            getNum = new Scanner(System.in).nextInt();
+            try {
+                getNum = new Scanner(System.in).nextInt();
 
-            guessedNum[0] = getNum / 100;
-            guessedNum[1] = getNum / 10 % 10;
-            guessedNum[2] = getNum % 10;
+                guessedNum[0] = getNum / 100;
+                guessedNum[1] = getNum / 10 % 10;
+                guessedNum[2] = getNum % 10;
 
-            check = numCheck(getNum, guessedNum);
+                check = numCheck(getNum, guessedNum);
+            }
+            catch (InputMismatchException e) {
+                System.out.println("숫자만 입력하세요!");
+            }
+
         }
         tryTimes++;
 
@@ -55,7 +65,7 @@ public class Play {
         return 0;
     }
 
-    // 추측 숫자 배열을 입력받아서 정답과 비교한 후 Strike, Ball의 수를 배열로 반환해주는 메서드
+    // 추측 숫자 배열을 입력받아서 정답과 비교한 후 Strike, Ball 수를 배열로 반환해주는 메서드
     public int[] compare(int[] guessedNum) {
         int[] result = new int[]{0, 0};
 
