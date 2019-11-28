@@ -12,6 +12,7 @@ public class NumberBaseBallGame {
     public static final int DIGIT = 3;
     public static final int MIN_VALUE = 1;
     public static final int MAX_VALUE = 9;
+    public static final int ANSWER_STRIKE = 3;
     private String randomNumber;
     private String playerNumber;
     private GameResult gameResult;
@@ -33,7 +34,9 @@ public class NumberBaseBallGame {
 
         return aGameResult;
     }
-
+    public boolean isAnswer() {
+        return gameResult.getStrike() == ANSWER_STRIKE;
+    }
     public void setGameResult(GameResult gameResult) {
         this.gameResult = gameResult;
     }
