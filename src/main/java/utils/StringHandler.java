@@ -2,7 +2,7 @@
  * StringHandler.java
  * java-baseball-precourse
  *
- * Version 0.1
+ * Version 0.2
  *
  * Created by 김경준 on 28/11/2019.
  *
@@ -30,7 +30,7 @@ public class StringHandler {
     public static ArrayList<Integer> addToList(String string) {
         ArrayList<Integer> numberList = new ArrayList<>();
         for(int i = 0 ; i < string.length(); i++) {
-            numberList.add((int)string.charAt(i));
+            numberList.add((int)string.charAt(i) - '0');
         }
         return numberList;
     }
