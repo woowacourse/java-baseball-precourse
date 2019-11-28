@@ -3,9 +3,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class User {
+
     private final int DIVIDE_BAT_VALUE = 10;
+    private final int FIRST_BALL = 2;
+    private final int LAST_BALL = 0;
+    private final int MIN_BASEBALL_NUMBER = 1;
+    private final int MAX_BASEBALL_NUMBER = 9;
+    private final int USER_BAT_SIZE = 3;
 
     public List<Integer> getUserBat() {
+
         displayGetUserBat();
         List<Integer> userBaseballBat;
 
@@ -27,31 +34,33 @@ public class User {
 
 
     private List<Integer> userBatArray() throws NumberFormatException {
+
         Scanner scanUserBat = new Scanner(System.in);
         String userBatValue = scanUserBat.next();
         int userBat = Integer.parseInt(userBatValue);
 
-        if(userBatValue.length() != 3) { throw new NumberFormatException(); }
+        if(userBatValue.length() != USER_BAT_SIZE) { throw new NumberFormatException(); }
 
         return checkSameBat(userBat);
     }
 
     private List<Integer> checkSameBat(int userBat) {
-        int refactorBat = userBat;
+
+        int batValue = userBat;
         List<Integer> userBats = new ArrayList<>();
 
-        for(int i=2; i>=0; i--) {
-            int temp = refactorBat/(int) (Math.pow(DIVIDE_BAT_VALUE,i));
-            checkUnsatisfactBat(userBats, temp);
-            userBats.add(temp);
-            refactorBat = refactorBat % (int) (Math.pow(DIVIDE_BAT_VALUE,i));
+        for(int i = FIRST_BALL; i >= LAST_BALL; i--) {
+            int bat = batValue/(int) (Math.pow(DIVIDE_BAT_VALUE,i));
+            checkUnsatisfactBat(userBats, bat);
+            batValue = batValue % (int) (Math.pow(DIVIDE_BAT_VALUE,i));
         }
 
         return userBats;
     }
 
-    private void checkUnsatisfactBat(List<Integer> userBats, int temp) {
-        if(temp < 1 || temp > 9) { throw new NumberFormatException(); }
-        if (userBats.contains(temp)) { throw new NumberFormatException(); }
+    private void checkUnsatisfactBat(List<Integer> userBats, int bat) {
+        if(bat < MIN_BASEBALL_NUMBER || bat > MAX_BASEBALL_NUMBER) { throw new NumberFormatException(); }
+        if (userBats.contains(bat)) { throw new NumberFormatException(); }
+        userBats.add(bat);
     }
 }

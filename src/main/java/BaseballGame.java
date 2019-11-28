@@ -7,31 +7,39 @@ public class BaseballGame {
     private static final int BALL = 1;
     private static final int SCORE_SIZE = 2;
     private static final int THREE_STRIKE = 3;
+    private static final int NEW_GAME = 1;
+    private static final int GAME_OVER = 2;
 
     public static void main(String[] args) {
         Baseball baseball = new Baseball();
         User user = new User();
-        playBaseballGame(user, baseball);
+        BaseballGame baseballGame = new BaseballGame();
+
+        baseballGame.playBaseballGame(user, baseball);
     }
 
-    private static void playBaseballGame(User user, Baseball baseball) {
+    private void playBaseballGame(User user, Baseball baseball) {
+
         List<Integer> baseballs = baseball.getBaseball();
         int gameState;
+
         while(true) {
             if(calculateScore(user.getUserBat(),baseballs)){
-                System.out.println("3개 숫자를 모두 맞히셨습니다! 게임종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                displayChooseGameState();
                 gameState = getGameState();
                 break;
             }
         }
-        if(gameState == 1){
+
+        if(gameState == NEW_GAME){
             playBaseballGame(user,baseball);
         }
     }
 
-    private static int getGameState() {
+    private int getGameState() {
+
         int gameState;
+
         while(true) {
             try{
                 gameState = checkGameState();
@@ -44,23 +52,22 @@ public class BaseballGame {
         return gameState;
     }
 
-    private static int checkGameState() {
+    private int checkGameState() {
         Scanner scanUserBat = new Scanner(System.in);
         String gamStateValue = scanUserBat.next();
         int gameState = Integer.parseInt(gamStateValue);
-        if(gameState != 1 && gameState != 2) { throw new NumberFormatException();}
+        if(gameState != NEW_GAME && gameState != GAME_OVER) { throw new NumberFormatException();}
         return gameState;
     }
 
-
-    private static boolean calculateScore(List<Integer> userBats, List<Integer> baseballs) {
+    private boolean calculateScore(List<Integer> userBats, List<Integer> baseballs) {
         int[] gameScore = new int[SCORE_SIZE];
-        for(int userBatLoc=0; userBatLoc<userBats.size(); userBatLoc++) {
-            if(baseballs.contains(userBats.get(userBatLoc)) && baseballs.get(userBatLoc).equals(userBats.get(userBatLoc))) {
+        for(int userBatLoc = 0; userBatLoc < userBats.size(); userBatLoc++) {
+            if(checkStrike(userBats, baseballs, userBatLoc)) {
                 gameScore[STRIKE]++;
                 continue;
             }
-            if(baseballs.contains(userBats.get(userBatLoc)) && !baseballs.get(userBatLoc).equals(userBats.get(userBatLoc))) {
+            if(checkBall(userBats, baseballs, userBatLoc)) {
                 gameScore[BALL]++;
             }
         }
@@ -69,13 +76,26 @@ public class BaseballGame {
 
     }
 
-    private static boolean checkStrike(int[] gameScore) {
+    private void displayChooseGameState() {
+        System.out.println("3개 숫자를 모두 맞히셨습니다! 게임종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    private void displayGameScore(int[] gameScore) {
+        System.out.println(gameScore[STRIKE] + "스트라이크" + gameScore[BALL] + "볼");
+    }
+
+    private boolean checkStrike(int[] gameScore) {
         if(gameScore[STRIKE] == THREE_STRIKE) { return true; }
         return false;
     }
 
-    private static void displayGameScore(int[] gameScore) {
-        System.out.println(gameScore[STRIKE] + "스트라이크" + gameScore[BALL] + "볼");
+    private boolean checkBall(List<Integer> userBats, List<Integer> baseballs, int userBatLoc) {
+        return baseballs.contains(userBats.get(userBatLoc)) && !baseballs.get(userBatLoc).equals(userBats.get(userBatLoc));
+    }
+
+    private boolean checkStrike(List<Integer> userBats, List<Integer> baseballs, int userBatLoc) {
+        return baseballs.contains(userBats.get(userBatLoc)) && baseballs.get(userBatLoc).equals(userBats.get(userBatLoc));
     }
 
 

@@ -3,24 +3,28 @@ import java.util.List;
 
 public class Baseball {
 
-    private final int BASEBALL_LENGTH = 3;
+    private final int BASEBALL_NUMBER_SIZE = 3;
+    private final int MIN_BASEBALL_NUMBER = 1;
+    private final int MAX_BASEBALL_NUMBER = 9;
 
     public List<Integer> getBaseball() {
-        int[] baseballArray = new int[BASEBALL_LENGTH];
+
         List<Integer> baseballList = new ArrayList<>();
 
-        return createBaseball(baseballArray, baseballList);
+        return createBaseball(baseballList);
     }
 
-    private List<Integer> createBaseball(int[] baseballArray, List<Integer> baseballList) {
+    private List<Integer> createBaseball(List<Integer> baseballList) {
 
-        while(baseballList.size() != 3) {
+        while(baseballList.size() != BASEBALL_NUMBER_SIZE) {
 
             double createBaseball = Math.random();
-            int baseball = (int)(createBaseball*9)+1;
+            int baseball = (int)(createBaseball*MAX_BASEBALL_NUMBER)+MIN_BASEBALL_NUMBER;
+
             if(!baseballList.contains(baseball)) { baseballList.add(baseball); }
+
         }
-        System.out.println(baseballList);
+
         return baseballList;
     }
 }
