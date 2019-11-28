@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 class Player {
@@ -9,8 +11,15 @@ class Player {
         this.input = new Scanner(System.in);
     }
 
-    public int getPlayerInputNumber() {
-        return input.nextInt();
+    public List<Integer> getPlayerInputNumbers() {
+        List<Integer> inputNumbers = new ArrayList<>();
+        String inputString = input.next();
+
+        for (int i = 0; i < BaseballGame.ANSWER_NUMBERS_COUNT; ++i) {
+            inputNumbers.add(inputString.charAt(i) - '0');
+        }
+
+        return inputNumbers;
     }
 
     public boolean toBeContinued() {
