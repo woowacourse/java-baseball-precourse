@@ -13,8 +13,11 @@ public class baseballGame {
         int answerNumB = 0;
         int answerNumC = 0;
 
-        int[] answerNum = initBaseballNumber(answerNumA, answerNumB, answerNumC);
-        System.out.println(answerNum[0]+" "+answerNum[1]+" "+answerNum[2]);
+        int[] answerNum = {0, 0, 0};
+        while (isOverlap(answerNum)) {
+            answerNum = initBaseballNumber(answerNumA, answerNumB, answerNumC);
+        }
+        
         int num[] = new int[3];
         boolean finish = false;
 
@@ -41,7 +44,7 @@ public class baseballGame {
     /*
     정답 숫자들을 랜덤으로 생성하여 int형 배열로 반환하여 주는 메소드이다.
      */
-    static private int[] initBaseballNumber (int answerNumA, int answerNumB, int answerNumC) {
+    static private int[] initBaseballNumber(int answerNumA, int answerNumB, int answerNumC) {
         Random random = new Random();
         answerNumA = random.nextInt(9)+1;
         answerNumB = random.nextInt(9)+1;
@@ -52,7 +55,16 @@ public class baseballGame {
         return answerNum;
     }
 
-    /*
+    static private boolean isOverlap(int[] answerNum) {
+        for(int i=0; i<3; i++) {
+            if ((answerNum[i] == answerNum[(i+1)%3]) || (answerNum[i] == answerNum[(i+2)%3])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+   /*
     int형 정답 배열과 int형 사용자가 입력한 배열을 인자로 넣으면, Strike 횟수를 반환해주는 메소드이다.
      */
     static private int isStrike(int answerNum[], int num[]) {
