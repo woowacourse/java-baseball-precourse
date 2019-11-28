@@ -13,6 +13,10 @@ class Player {
         return input.nextInt();
     }
 
+    public boolean toBeContinued() {
+        return this.wantToContinue;
+    }
+
     public void playerQuitGame() {
         this.wantToContinue = false;
     }
