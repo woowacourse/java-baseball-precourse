@@ -30,7 +30,7 @@ int isBall(int[] answerNum, int[] num)
 
 
 ```
-void printResult(int isStrike, int isBall)
+boolean printResult(int isStrike, int isBall)
 ```
 ##### STRIKE 횟수와 BALL 횟수를 넣으면 추측에 대한 결과 프린트해주는 메소드이다.
-##### * 메인 메소드에서는 이 메소드를 while 문으로 반복하여 돌려준다. 정답을 맞출때까지!
+##### * 메인 메소드에서는 이 메소드를 while 문으로 반복하여 돌려준다. 정답을 맞출때까지!(메소드가 TRUE를 반환할 때까지!)

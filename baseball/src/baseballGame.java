@@ -70,5 +70,23 @@ public class baseballGame {
         return (answerNum == num);
     }
 
+    static private boolean printResult(int strikeNumber, int ballNumber) {
+        boolean finish = false;
+        if (strikeNumber == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료" +
+                    "\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            finish = true;
+        } else if ((strikeNumber == 0) && (ballNumber == 0)) {
+            System.out.println("낫싱");
+        } else if ((strikeNumber == 0) && (ballNumber != 0)) {
+            System.out.println(ballNumber + "볼");
+        } else if ((strikeNumber != 0) && (ballNumber == 0)) {
+            System.out.println(strikeNumber + " 스트라이크");
+        } else {
+            System.out.println(strikeNumber + " 스트라이크 " + ballNumber + "볼");
+        }
+
+        return finish;
+    }
 
 }
