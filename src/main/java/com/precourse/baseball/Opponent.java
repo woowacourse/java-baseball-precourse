@@ -13,35 +13,40 @@ package com.precourse.baseball;
  * 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 1.1         getter/setter methods 구현
+ * @version 1.2         최댓값 제한 fianl 상수 구현,
+ *                      threeDigitNumbers -> digitNumbers 수정
  * @date 2019-11-28
  */
 public class Opponent {
-    private boolean[] digitMasks;
-    private int[] threeDigitNumbers;
+    private final int INF_MASK = 10;    // 마스크 크기 0 ~ 9
+    private final int INF_DIGIT = 3;    // 최대 자릿수
+    private boolean[] digitMasks;       // 수 마스킹용 array
+    private int[] digitNumbers;    // 생각한 수 array
 
     public Opponent() {
-        this.digitMasks = new boolean[10];
-        this.threeDigitNumbers = new int[3];
+        this.digitMasks = new boolean[INF_MASK];
+        this.digitNumbers = new int[INF_DIGIT];
     }
 
+    /* Getter Methods */
     public boolean[] getDigitMasks() {
         return this.digitMasks;
     }
 
-    public int[] getThreeDigitNumbers() {
-        return this.threeDigitNumbers;
+    public int[] getDigitNumbers() {
+        return this.digitNumbers;
     }
 
+    /* Setter Methods */
     public void setDigitMasks(boolean[] digitMasks) {
         for (int i = 0; i < digitMasks.length; i++) {
             this.digitMasks[i] = digitMasks[i];
         }
     }
 
-    public void setThreeDigitNumbers(int[] threeDigitNumbers) {
-        for (int i = 0; i < threeDigitNumbers.length; i++) {
-            this.threeDigitNumbers[i] = threeDigitNumbers[i];
+    public void setDigitNumbers(int[] digitNumbers) {
+        for (int i = 0; i < digitNumbers.length; i++) {
+            this.digitNumbers[i] = digitNumbers[i];
         }
     }
 }
