@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 class Computer {
     private List<Integer> baseballGameAnswer;
@@ -25,10 +24,42 @@ class Computer {
         this.baseballGameAnswer = baseBallGameAnswer;
     }
 
-
-
     private int getRandomNumber() {
         return (int) (Math.random() * BaseballGame.MAX_NUMBER);
+    }
+
+    private int getStrikeCount(List<Integer> playerInputNumbers) {
+        int strikeCount = 0;
+
+        for (int index = 0; index < BaseballGame.ANSWER_NUMBERS_COUNT; ++index) {
+            if (baseballGameAnswer.get(index).equals(playerInputNumbers.get(index))) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
+    private int getBallCount(List<Integer> playerInputNumbers) {
+        int ballCount = 0;
+
+        for (int number : playerInputNumbers) {
+            if (hasNumberInAnswer(number)) {
+                ballCount++;
+            }
+        }
+
+        for (int index = 0; index < BaseballGame.ANSWER_NUMBERS_COUNT; ++index) {
+            if (baseballGameAnswer.get(index).equals(playerInputNumbers.get(index))) {
+                ballCount--;
+            }
+        }
+
+        return ballCount;
+    }
+
+    private boolean hasNumberInAnswer(int number) {
+        return this.baseballGameAnswer.contains(number);
     }
 
 
