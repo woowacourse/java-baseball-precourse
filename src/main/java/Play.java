@@ -1,8 +1,11 @@
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 public class Play {
-    private int[] answer;
+    List<Integer> answer;
     private int tryTimes;
     private int[] guessedNum;
 
@@ -13,7 +16,7 @@ public class Play {
                 .ints(1, 10)
                 .distinct()
                 .limit(3)
-                .toArray();
+                .boxed().collect(Collectors.toList());
         this.tryTimes = 0;
     }
 
@@ -53,6 +56,25 @@ public class Play {
         return 0;
     }
 
+    // 추측 숫자 배열을 입력받아서 정답과 비교한 후 Strike, Ball의 수를 배열로 반환
+    public int[] compare(int[] guessedNum) {
+        int[] result = new int[]{0, 0};
+
+        if (guessedNum[0] == answer.get(0)) {
+            result[0]++;
+        }
+        if (guessedNum[1] == answer.get(1)) {
+            result[0]++;
+        }
+        if (guessedNum[2] == answer.get(2)) {
+            result[0]++;
+        }
+        result[1] = (int) Arrays.stream(guessedNum).filter(answer::contains).distinct().count();
+        result[1] -= result[0];
+
+        return result;
+    }
+
     // 생성된 3자리 수를 확인하기 위하여 구현한 메서드이다.
     public String whatIsAnswer() {
         String answerString = "";
@@ -62,5 +84,10 @@ public class Play {
         }
 
         return answerString;
+    }
+
+    // compare 메서드를 테스트하기 위해서 임시로 Setter 메서드 구현
+    public void setAnswer(List<Integer> answer) {
+        this.answer = answer;
     }
 }
