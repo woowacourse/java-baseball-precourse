@@ -4,5 +4,6 @@ public class BaseballGameApplication {
         BaseballGameSystem game = new BaseballGameSystem();
 
         userNumber = InputBaseballGame.inputUserNumber();
+        game.checkAnswer(userNumber);
     }
 }
