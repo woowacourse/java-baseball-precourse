@@ -27,8 +27,10 @@ int isBall(int[] answerNum, int[] num)
 ```
 ##### 정답 숫자 배열과 사용자가 입력한 숫자 배열을 인자로 넣으면, STRIKE 인 횟수를 반환해주는 메소드와,
 ##### 정답 숫자 배열과 사용자가 입력한 숫자 배열을 인자로 넣으면, BALL 인 횟수를 반환하는 메소드이다.
-
-
+```
+boolean isOverlap(int[] answerNum)
+```
+##### 생성된 정답 숫자열이 서로 중복되는지 확인해서 중복되었는지 확인하는 메소드이다.
 ```
 boolean printResult(int isStrike, int isBall)
 ```
