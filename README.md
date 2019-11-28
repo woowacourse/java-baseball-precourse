@@ -19,4 +19,4 @@
 
 
 # 기타
-1. getBall()을 구현하는 과정에서 
+1. getBall()을 구현하는 과정에서 indent의 depth가 많아져 추가적으로 BallCompare() 함수를 구현하게 되었다.
