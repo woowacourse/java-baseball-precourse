@@ -22,6 +22,14 @@ public class Results {
                 .count();
     }
 
+    public boolean hasStrike() {
+        return this.results.contains(Result.STRIKE);
+    }
+
+    public boolean hasBall() {
+        return this.results.contains(Result.BALL);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

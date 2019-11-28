@@ -38,4 +38,22 @@ class ResultsTest {
 
         assertThat(results.getBallAmount()).isEqualTo(answer);
     }
+
+    @DisplayName("스트라이크 있는지 없는지")
+    @ParameterizedTest
+    @CsvSource(value = {"STRIKE,true", "BALL,false"})
+    void hasStrike(Result result, boolean answer) {
+        Results results = new Results(Arrays.asList(result));
+
+        assertThat(results.hasStrike()).isEqualTo(answer);
+    }
+
+    @DisplayName("볼 있는지 없는지")
+    @ParameterizedTest
+    @CsvSource(value = {"STRIKE,false", "BALL,true"})
+    void hasBall(Result result, boolean answer) {
+        Results results = new Results(Arrays.asList(result));
+
+        assertThat(results.hasBall()).isEqualTo(answer);
+    }
 }
