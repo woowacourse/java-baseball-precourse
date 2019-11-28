@@ -1,8 +1,10 @@
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Play {
     private int[] answer;
     private int tryTimes;
+    private int[] guessedNum;
 
     // 클래스 생성 시 랜덤으로 3자리 수를 만든다.
     public Play() {
@@ -13,6 +15,42 @@ public class Play {
                 .limit(3)
                 .toArray();
         this.tryTimes = 0;
+    }
+
+    // 플레이어로부터 숫자를 입력 받고 입력 받은 숫자를 배열로 처리하는 메서드
+    public int[] guessNum() {
+        int getNum;
+        int guessedNum[] = new int[3];
+        int check = -1;
+
+        while (check != 0) {
+            System.out.print("숫자를 입력해주세요 : ");
+            getNum = new Scanner(System.in).nextInt();
+
+            guessedNum[0] = getNum / 100;
+            guessedNum[1] = getNum / 10 % 10;
+            guessedNum[2] = getNum % 10;
+
+            check = numCheck(getNum, guessedNum);
+        }
+        tryTimes++;
+
+        return guessedNum;
+    }
+
+    // 플레이어가 입력한 숫자가 문제없이 입력이 되었는지 확인하는 메서드
+    public int numCheck(int num, int[] guessedNum) {
+        if (num < 100 || num > 999) {
+            System.out.println("숫자의 길이가 3이 아닙니다.");
+            return 1;
+        }
+
+        if (guessedNum[0] == guessedNum[1] || guessedNum[1] == guessedNum[2] || guessedNum[2] == guessedNum[0]) {
+            System.out.println("중복된 숫자를 입력할 수 없습니다.");
+            return 2;
+        }
+
+        return 0;
     }
 
     // 생성된 3자리 수를 확인하기 위하여 구현한 메서드이다.

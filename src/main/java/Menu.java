@@ -12,6 +12,8 @@ public class Menu {
             selected = inputNum.next().charAt(0);
 
             if (selected == '1') {
+                Play game = new Play();
+                game.guessNum();
             }
             else if (selected == '2') {
                 System.out.println("Quit game...");
