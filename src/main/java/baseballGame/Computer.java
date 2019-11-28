@@ -3,9 +3,9 @@
  *
  *  기능: 1부터 9까지 서로 다른 수로 이뤄진 3자리 수를 생성
  *
- *  @Version: 0.1
+ *  @Version: 0.2
  *
- *  @Date: 2019.11.27
+ *  @Date: 2019.11.28
  *
  *  @Author: pandahun
  */
@@ -22,12 +22,12 @@ public class Computer {
 
     private static final int BALL_LENGTH = 3;
 
-    String number;
+    private String number;
 
     public Computer(){
         Random random;
 
-        while (number.length() < 3){
+        while (number.length() < BALL_LENGTH){
             random = new Random();
             int temp = random.nextInt(MAX_NUMBER) + ONE;
 
@@ -37,7 +37,11 @@ public class Computer {
         }
     }
 
-    public boolean isDifferent(int temp){
+    private boolean isDifferent(int temp){
         return !(number.contains(String.valueOf(temp)));
+    }
+
+    public String getNumber(){
+        return number;
     }
 }
