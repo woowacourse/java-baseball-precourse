@@ -13,19 +13,35 @@ package com.precourse.baseball;
  * 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 1.0
+ * @version 1.1         getter/setter methods 구현
  * @date 2019-11-28
  */
 public class Opponent {
-    private boolean[] mask;
-    private int[] threeDigitNumber;
+    private boolean[] digitMasks;
+    private int[] threeDigitNumbers;
 
     public Opponent() {
-        this.mask = new boolean[10];
-        this.threeDigitNumber = new int[3];
+        this.digitMasks = new boolean[10];
+        this.threeDigitNumbers = new int[3];
     }
 
-    public void setRandomNumbers() {
+    public boolean[] getDigitMasks() {
+        return this.digitMasks;
+    }
 
+    public int[] getThreeDigitNumbers() {
+        return this.threeDigitNumbers;
+    }
+
+    public void setDigitMasks(boolean[] digitMasks) {
+        for (int i = 0; i < digitMasks.length; i++) {
+            this.digitMasks[i] = digitMasks[i];
+        }
+    }
+
+    public void setThreeDigitNumbers(int[] threeDigitNumbers) {
+        for (int i = 0; i < threeDigitNumbers.length; i++) {
+            this.threeDigitNumbers[i] = threeDigitNumbers[i];
+        }
     }
 }
