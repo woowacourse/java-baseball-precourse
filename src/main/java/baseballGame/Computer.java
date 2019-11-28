@@ -3,7 +3,7 @@
  *
  *  기능: 1부터 9까지 서로 다른 수로 이뤄진 3자리 수를 생성
  *
- *  @Version: 0.2
+ *  @Version: 0.3
  *
  *  @Date: 2019.11.28
  *
@@ -22,7 +22,7 @@ public class Computer {
 
     private static final int BALL_LENGTH = 3;
 
-    private String number;
+    private String number="";
 
     public Computer(){
         Random random;
