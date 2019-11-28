@@ -18,13 +18,11 @@ public class Main {
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-			String command = sc.nextLine();
+			String command = command();
 			if (command.equals("1")) {
 				continue;
-			} else if (command.equals("2")) {
-				break;
 			} else {
-
+				break;
 			}
 		}
 	}
@@ -87,4 +85,18 @@ public class Main {
 		return strike;
 	}
 
+	private static String command() {
+		String command = "";
+		while (true) {
+			command = sc.nextLine();
+			if (command.equals("1")) {
+				break;
+			} else if (command.equals("2")) {
+				break;
+			} else {
+				System.out.print("잘못된 숫자를 입력하셨습니다. 다시 입력해주세요!(새로 시작: 1, 종료: 2)");
+			}
+		}
+		return command;
+	}
 }
