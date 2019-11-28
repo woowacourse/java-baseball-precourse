@@ -84,7 +84,25 @@ public class BaseballGame {
 	 * Logically, This method should be used first in a game.
 	 */
 	private void correctAnsRandomInit() {
+		correctAns = new int[3]; /* 게임에서 세자리 숫자를 사용하므로 배열길이가 3임 */
 		
+		/* file correctAns[0] */
+		correctAns[0] = (int)(Math.random() * 10);
+		
+		/* fill correctAns[1] */
+		do {
+			/* 두번째 랜덤숫자가 첫번째 랜덤숫자와 같지 않게 한다. */
+			correctAns[1] = (int)(Math.random() * 10);
+		
+		} while (correctAns[1] == correctAns[0]);
+		
+		/* fill correctAns[2] */
+		do {
+			/* 세번째 랜덤숫자가 첫번째, 두번째 랜덤숫자와 같지 않게 한다. */
+			correctAns[2] = (int)(Math.random() * 10);
+			
+		} while ( correctAns[2] == correctAns[0] 
+				|| correctAns[2] == correctAns[1] );
 	}
 	
 	
