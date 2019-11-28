@@ -21,7 +21,7 @@ import java.util.Scanner;
  */
 public class Main {
 
-    private static final int BASEBALL_SIZE = 3;
+    private static final int BASEBALL_SIZE = 3;         //야구게임 볼 수
 
     public static void main(String[] agrs)
     {
