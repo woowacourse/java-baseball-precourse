@@ -11,6 +11,10 @@ public class BaseBall {
         this.baseBallNumber = new BaseBallNumber(number);
     }
 
+    public BaseBallNumber getBaseBallNumber() {
+        return baseBallNumber;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

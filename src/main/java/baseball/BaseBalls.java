@@ -25,6 +25,19 @@ public class BaseBalls {
         }
     }
 
+    public boolean isStrike(BaseBall compare) {
+        return this.baseBalls.contains(compare);
+    }
+
+    public boolean isBall(BaseBall compare) {
+        BaseBallNumber baseBallNumber = compare.getBaseBallNumber();
+
+        return baseBalls.stream()
+                .map(BaseBall::getBaseBallNumber)
+                .collect(toList())
+                .contains(baseBallNumber);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
