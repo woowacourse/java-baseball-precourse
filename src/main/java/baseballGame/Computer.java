@@ -22,26 +22,26 @@ public class Computer {
 
     private static final int BALL_LENGTH = 3;
 
-    private String number="";
+    private String number = "";
 
-    public Computer(){
+    public Computer() {
         Random random;
 
-        while (number.length() < BALL_LENGTH){
+        while (number.length() < BALL_LENGTH) {
             random = new Random();
             int temp = random.nextInt(MAX_NUMBER) + ONE;
 
-            if(isDifferent(temp)){
-                number +=String.valueOf(temp);
+            if (isDifferent(temp)) {
+                number += String.valueOf(temp);
             }
         }
     }
 
-    private boolean isDifferent(int temp){
+    private boolean isDifferent( int temp ) {
         return !(number.contains(String.valueOf(temp)));
     }
 
-    public String getNumber(){
+    public String getNumber() {
         return number;
     }
 }

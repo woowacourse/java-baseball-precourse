@@ -7,7 +7,8 @@
  *
  *  @Author: pandahun
  */
-import baseballGame.*;
+
+import baseballGame.BaseballGame;
 
 public class Main {
 

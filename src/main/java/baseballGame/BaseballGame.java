@@ -30,41 +30,41 @@ public class BaseballGame {
 
     private Player player = new Player();
 
-    public void run(){
+    public void run() {
         System.out.println("START THE GAME");
 
-        while(true){
+        while (true) {
 
             initialSetting();
             playGame();
-            if(isStop()){
+            if (isStop()) {
                 System.out.println("END THE GAME");
                 break;
             }
         }
     }
 
-    private void initialSetting(){
+    private void initialSetting() {
         setCount();
         setComputer();
     }
 
-    private void setCount(){
+    private void setCount() {
         tryCount = RESET_COUNT;
     }
 
-    private void setComputer(){
+    private void setComputer() {
         computer = new Computer();
     }
 
-    private void playGame(){
+    private void playGame() {
         boolean status = false;
-        while(true){
+        while (true) {
             tryCount++;
             player.requestNumber();
-            if(isAnswer()){
+            if (isAnswer()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다!!");
-                System.out.println("총 "+tryCount+"번 만에 성공했습니다.");
+                System.out.println("총 " + tryCount + "번 만에 성공했습니다.");
                 System.out.println("게임 종료");
                 break;
             }
@@ -72,62 +72,60 @@ public class BaseballGame {
         }
     }
 
-    private boolean isAnswer(){
+    private boolean isAnswer() {
         boolean status = false;
-        if(player.getNumber().equals(computer.getNumber())){
+        if (player.getNumber().equals(computer.getNumber())) {
             status = true;
         }
 
         return status;
     }
 
-    private void makeHint(){
+    private void makeHint() {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for(int i = 0 ; i < BASEBALL_LENGTH; i++){
-            if(isStrike(i)){
+        for (int i = 0; i < BASEBALL_LENGTH; i++) {
+            if (isStrike(i)) {
                 strikeCount++;
-            }
-            else if(isBall(i)){
+            } else if (isBall(i)) {
                 ballCount++;
             }
         }
         printHint(strikeCount, ballCount);
     }
 
-    private boolean isStrike(int index){
+    private boolean isStrike( int index ) {
         return (player.getNumber().charAt(index) == computer.getNumber().charAt(index));
     }
 
-    private boolean isBall(int index){
+    private boolean isBall( int index ) {
         return (player.getNumber().contains(String.valueOf(computer.getNumber().charAt(index))));
     }
 
-    private void printHint(int strikeCount, int ballCount){
+    private void printHint( int strikeCount, int ballCount ) {
         String result = "";
-        if(strikeCount!=ZERO){
-            result += strikeCount +" 스트라이크 ";
+        if (strikeCount != ZERO) {
+            result += strikeCount + " 스트라이크 ";
         }
-        if(ballCount!=ZERO){
-            result += ballCount +" 볼 ";
+        if (ballCount != ZERO) {
+            result += ballCount + " 볼 ";
         }
-        if(result.length() == ZERO){
+        if (result.length() == ZERO) {
             result = "낫싱";
         }
         System.out.println(result);
     }
 
-    private boolean isStop(){
+    private boolean isStop() {
         Scanner sc = new Scanner(System.in);
         String input;
-        while(true) {
+        while (true) {
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
             input = sc.next();
-            if(input.equals(STOP) || input.equals(CONTINUE)){
+            if (input.equals(STOP) || input.equals(CONTINUE)) {
                 break;
-            }
-            else{
+            } else {
                 System.out.println("입력이 잘못 되었습니다. 다시 입력해주세요");
             }
         }
