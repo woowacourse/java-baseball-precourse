@@ -34,7 +34,7 @@
     2. UserNumberList 입력
     3. BaseballGame 생성
     4. 결과 출력
-        - 못 맞췄을 경우 -> 3.
+        - 못 맞췄을 경우 -> 2.
     5. New Game or Quit ?
         - New Game -> 1.
     6. Quit
