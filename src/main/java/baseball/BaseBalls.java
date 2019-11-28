@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
@@ -36,6 +37,10 @@ public class BaseBalls {
                 .map(BaseBall::getBaseBallNumber)
                 .collect(toList())
                 .contains(baseBallNumber);
+    }
+
+    public List<BaseBall> getBaseBalls() {
+        return Collections.unmodifiableList(baseBalls);
     }
 
     @Override

@@ -1,7 +1,9 @@
 package computer;
 
+import baseball.BaseBalls;
 import baseball.generator.BallGenerator;
 import baseball.generator.ManualBallGenerator;
+import computer.result.Result;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,5 +19,15 @@ class ComputerTest {
         BallGenerator ballGenerator = new ManualBallGenerator();
 
         assertThat(Computer.newGame(ballGenerator)).isEqualTo(new Computer(Arrays.asList(1, 2, 3)));
+    }
+
+    @DisplayName("결과 리스트 가져오기")
+    @Test
+    void getResults() {
+        Computer computer = Computer.newGame(new ManualBallGenerator());
+
+        BaseBalls compares = new BaseBalls(Arrays.asList(1, 3, 4));
+
+        assertThat(computer.getResults(compares)).isEqualTo(Arrays.asList(Result.STRIKE, Result.BALL, Result.NOTHING));
     }
 }

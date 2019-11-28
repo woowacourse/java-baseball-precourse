@@ -2,6 +2,7 @@ package computer;
 
 import baseball.BaseBalls;
 import baseball.generator.BallGenerator;
+import computer.result.Result;
 
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +28,12 @@ public class Computer {
     private static List<Integer> makeNumbers(BallGenerator ballGenerator) {
         return IntStream.rangeClosed(MIN_POSITION, MAX_POSITION)
                 .mapToObj(ballGenerator::getNumber)
+                .collect(toList());
+    }
+
+    public List<Result> getResults(BaseBalls compares) {
+        return compares.getBaseBalls().stream()
+                .map(compare -> Result.getResult(baseBalls, compare))
                 .collect(toList());
     }
 
