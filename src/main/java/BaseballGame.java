@@ -181,10 +181,34 @@ public class BaseballGame {
 	 * @return how many balls as integer
 	 */
 	private int ballCnt(String guess) {
-		
 		int ret = 0;
 		
+		/* String guess를 int 세개로 바꾼다.*/
+		int guessArr[] = new int[3];
 		
+		guessArr[0] = new Integer(guess.substring(0, 1));
+		guessArr[1] = new Integer(guess.substring(1, 2));
+		guessArr[2] = new Integer(guess.substring(2, 3));
+		
+		
+		if (guessArr[0] == correctAns[1]
+				|| guessArr[0] == correctAns[2]) {
+			
+			/* guess의  제일 왼쪽 숫자가 ball인 경우 실행된다. */
+			ret++;
+		}
+		if (guessArr[1] == correctAns[0]
+				|| guessArr[1] == correctAns[2]) {
+			
+			/* guess의  가운데 숫자가 ball인 경우 실행된다. */
+			ret++;
+		}
+		if (guessArr[2] == correctAns[0]
+				|| guessArr[2] == correctAns[1]) {
+			
+			/* guess의  제일 오른쪽 숫자가 ball인 경우 실행된다. */
+			ret++;
+		}
 		
 		return ret;
 	}
