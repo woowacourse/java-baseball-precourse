@@ -12,9 +12,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Validator {
+    private static final  String FIRST_MENU = "1";
+    private static final  String SECOND_MENU = "2";
 
     public static boolean isValidNumbers(String number) {
         return number.length() == NumberBaseBallGame.DIGIT && isInteger(number) && isNotOverlap(number);
+    }
+
+    public static boolean isValidMenu(String menu) {
+        return isInteger(menu) && menu.equals(FIRST_MENU) && menu.equals(SECOND_MENU);
     }
 
     private static boolean isInteger(String number) {
