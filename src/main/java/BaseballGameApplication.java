@@ -10,21 +10,14 @@ public class BaseballGameApplication {
     }
 
     public static void startNewGame() {
-        int userNumber;
-        int strikeCount, ballCount;
+        int userNumber, strikeCount;
         BaseballGameSystem game = new BaseballGameSystem();
 
         do {
             userNumber = InputBaseballGame.inputUserNumber();
-
+            game.initPitchCount();
             game.checkAnswer(userNumber);
-
             strikeCount = game.getStrikeCount();
-            ballCount = game.getBallCount();
-            OutputBaseballGame.printPitchResult(strikeCount, ballCount);
-
-            game.setStrikeCount(0);
-            game.setBallCount(0);
         } while (strikeCount != 3);
     }
 }
