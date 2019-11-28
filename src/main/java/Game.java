@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Stream;
 
 public class Game {
     private Scanner input;
@@ -49,7 +50,11 @@ public class Game {
     }
 
     public int[] getInputsByScanner() {
-        return new int[]{input.nextInt(), input.nextInt(), input.nextInt()};
+        try {
+            return Stream.of(input.next().split("")).mapToInt(Integer::parseInt).toArray();
+        } catch (NumberFormatException e){
+            return new int[]{-1};
+        }
     }
 
     public boolean isOverlap(int[] numbers) {
