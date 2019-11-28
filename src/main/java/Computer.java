@@ -28,6 +28,26 @@ class Computer {
         return (int) (Math.random() * BaseballGame.MAX_NUMBER);
     }
 
+    public void printHintMessage(List<Integer> playerInputNumbers) {
+        int strikeCount = getStrikeCount(playerInputNumbers);
+        int ballCount = getBallCount(playerInputNumbers);
+
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        if (strikeCount > 0) {
+            System.out.print(strikeCount + "스트라이크 ");
+        }
+
+        if (ballCount > 0) {
+            System.out.print(ballCount + "볼 ");
+        }
+
+        System.out.println();
+    }
+
     private int getStrikeCount(List<Integer> playerInputNumbers) {
         int strikeCount = 0;
 
@@ -61,6 +81,4 @@ class Computer {
     private boolean hasNumberInAnswer(int number) {
         return this.baseballGameAnswer.contains(number);
     }
-
-
 }
