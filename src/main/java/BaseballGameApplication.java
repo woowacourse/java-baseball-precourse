@@ -1,6 +1,22 @@
 public class BaseballGameApplication {
     public static void main(String[] args) {
-        int userNumber, nextStep;
+        int nextStep;
+
+        startNewGame();
+        OutputBaseballGame.printFinishMsg();
+        nextStep = InputBaseballGame.inputNextStep();
+
+        switch (nextStep) {
+            case 1:
+                startNewGame();
+
+            case 2:
+                return;
+        }
+    }
+
+    public static void startNewGame() {
+        int userNumber;
         int strikeCount = 0, ballCount;
         BaseballGameSystem game = new BaseballGameSystem();
 
@@ -15,8 +31,5 @@ public class BaseballGameApplication {
             game.setStrikeCount(0);
             game.setBallCount(0);
         }
-
-        OutputBaseballGame.printFinishMsg();
-        nextStep = InputBaseballGame.inputNextStep();
     }
 }
