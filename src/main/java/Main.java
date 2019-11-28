@@ -18,10 +18,10 @@ public class Main {
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-			int command = sc.nextInt();
-			if (command == 1) {
+			String command = sc.nextLine();
+			if (command.equals("1")) {
 				continue;
-			} else if (command == 2) {
+			} else if (command.equals("2")) {
 				break;
 			} else {
 
@@ -50,12 +50,41 @@ public class Main {
 		while (true) {
 			System.out.print("숫자를 입력해주세요: ");
 			String userInput = sc.nextLine();
-			
-			
+
+			int strike = compare(userInput, computerInput);
+			if (strike == 3) {
+				break;
+			}
 		}
 
 	}
 
-	
+	private static int compare(String userInput, String computerInput) {
+		int strike = 0;
+		int ball = 0;
+		int nothing = 0;
+
+		for (int i = 0; i < 3; i++) {
+			char digit = userInput.charAt(i);
+			if (computerInput.charAt(i) == digit) {
+				strike++;
+			} else if (computerInput.contains(digit + "")) {
+				ball++;
+			} else {
+				nothing++;
+			}
+		}
+		if (strike > 0) {
+			System.out.print(strike + "스트라이크 ");
+		}
+		if (ball > 0) {
+			System.out.print(ball + "볼 ");
+		}
+		if (nothing > 0) {
+			System.out.print(nothing + "낫싱 ");
+		}
+		System.out.println();
+		return strike;
+	}
 
 }
