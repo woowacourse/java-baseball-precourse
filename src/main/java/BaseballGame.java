@@ -60,7 +60,22 @@ public class BaseballGame {
 	 * This method is used in interactiveShell() method.
 	 */
 	private void oneGameInteractiveShell(Scanner scanner) {
+		String guess;
+		String ans;
 		
+		correctAnsRandomInit();		/* 정답이 될 세 개의 숫자를 랜덤 생성한다. */
+		
+		do {
+			System.out.print("숫자를 입력해주세요 : ");
+			
+			guess = scanner.next();		/* 사용자 입력을 읽어온다. */
+			
+			ans = ansControl(guess);	/* 판단 결과를 얻는다. */
+			System.out.println(ans);	/* 판단 결과를 출력한다. */
+		
+		} while (!ans.contentEquals("3 스트라이크"));
+		
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 	}
 	
 	
