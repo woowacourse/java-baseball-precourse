@@ -1,4 +1,7 @@
 class BaseballGame {
+    static final int MAX_NUMBER = 9;
+    static final int ANSWER_NUMBERS_COUNT = 3;
+
     public static void main(String[] args) {
         Player player = new Player();
         Computer computer = new Computer();
@@ -7,14 +10,14 @@ class BaseballGame {
             playBaseballGame(player, computer);
         }
 
-        endBaseballGame();
+        printEndMessage();
     }
 
-    public static void playBaseballGame(Player player, Computer computer) {
+    private static void playBaseballGame(Player player, Computer computer) {
         computer.makeBaseballGameAnswer();
     }
 
-    public static void endBaseballGame() {
+    private static void printEndMessage() {
         System.out.println("프로그램이 종료됩니다.");
     }
 }
