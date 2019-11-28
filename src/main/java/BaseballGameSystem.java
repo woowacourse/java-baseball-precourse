@@ -59,8 +59,4 @@ public class BaseballGameSystem {
     public void setBallCount(int ballCount) {
         this.ballCount = ballCount;
     }
-
-    public void finishGame(int nextStep) {}
-
-    public void startNewGame(int nextStep) {}
 }
