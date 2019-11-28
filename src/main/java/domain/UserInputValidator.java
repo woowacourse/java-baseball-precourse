@@ -2,7 +2,7 @@
  * UserInputValidator.java
  * java-baseball-precourse
  *
- * Version 0.4
+ * Version 0.5
  *
  * Created by 김경준 on 28/11/2019.
  *
@@ -20,6 +20,10 @@ public class UserInputValidator {
     public UserInputValidator(String inputString) {
         this.inputString = inputString;
         isValid = setIsValidString();
+    }
+
+    public boolean getIsValid() {
+        return isValid;
     }
 
     private boolean setIsValidString() {
