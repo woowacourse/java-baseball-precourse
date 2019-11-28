@@ -40,4 +40,16 @@ class PlayTest {
 
         assertThat(play.compare(nums)).isEqualTo(result);
     }
+
+    @Test
+    public void info() {
+        Play play = new Play();
+        int[] state = new int[]{1, 2};
+        int[] state2 = new int[]{3, 0};
+        int[] state3 = new int[]{0, 0};
+
+        assertThat(play.info(state)).isEqualTo("1스트라이크 2볼");
+        assertThat(play.info(state2)).isEqualTo("3개의 숫자를 모두 맞히셨습니다! (0번 만에 정답) 게임 종료");
+        assertThat(play.info(state3)).isEqualTo("낫싱");
+    }
 }

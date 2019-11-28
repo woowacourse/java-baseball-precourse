@@ -56,7 +56,7 @@ public class Play {
         return 0;
     }
 
-    // 추측 숫자 배열을 입력받아서 정답과 비교한 후 Strike, Ball의 수를 배열로 반환
+    // 추측 숫자 배열을 입력받아서 정답과 비교한 후 Strike, Ball의 수를 배열로 반환해주는 메서드
     public int[] compare(int[] guessedNum) {
         int[] result = new int[]{0, 0};
 
@@ -73,6 +73,18 @@ public class Play {
         result[1] -= result[0];
 
         return result;
+    }
+
+    // 스트라이크, 볼의 정보가 담긴 배열을 받아서 문자열로 출력해주는 메서드
+    public String info(int[] result) {
+        if (result[0] == 3) {
+            return "3개의 숫자를 모두 맞히셨습니다! (" + tryTimes + "번 만에 정답) 게임 종료";
+        }
+
+        if (result[0] == 0 && result[1] == 0) {
+            return "낫싱";
+        }
+        return result[0] + "스트라이크 " + result[1] + "볼";
     }
 
     // 생성된 3자리 수를 확인하기 위하여 구현한 메서드이다.

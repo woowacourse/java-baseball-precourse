@@ -1,25 +1,25 @@
+import javax.sound.sampled.Line;
 import java.util.Scanner;
 
 public class Menu {
     public void menu() {
-        Scanner inputNum = new Scanner(System.in);
         char selected = '0';
+
         while (!(selected == '2')) {
-            System.out.println("!! Number Baseball Game !!");
+            System.out.println("!! 숫자 야구 게임 !!");
             System.out.println();
-            System.out.println("1. Solution Mode");
-            System.out.println("2. Exit");
-            selected = inputNum.next().charAt(0);
+            System.out.println("1. 게임 시작");
+            System.out.println("2. 종료");
+            selected = new Scanner(System.in).next().charAt(0);
 
             if (selected == '1') {
-                Play game = new Play();
-                game.guessNum();
+
             }
             else if (selected == '2') {
-                System.out.println("Quit game...");
+                System.out.println("게임 종료...");
             }
             else {
-                System.out.println("Wrong input!!");
+                System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             }
             System.out.println();
         }
