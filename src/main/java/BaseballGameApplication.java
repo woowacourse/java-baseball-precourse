@@ -2,7 +2,7 @@
  * BaseballGameApplication.java
  * java-baseball-precourse
  *
- * Version 0.4
+ * Version 0.5
  *
  * Created by 김경준 on 28/11/2019.
  *
@@ -20,8 +20,10 @@ import java.util.ArrayList;
 
 public class BaseballGameApplication {
     public static void main(String[] args) {
+        do {
             ArrayList<Integer> targetNumberList = setTargetNumberList();
             startBaseballGame(targetNumberList);
+        } while(isNewGame());
     }
 
     private static void startBaseballGame(ArrayList<Integer> targetNumberList) {
@@ -30,6 +32,7 @@ public class BaseballGameApplication {
         if(!baseballGame.getIsWinning()) {
             printResult(baseballGame);
             startBaseballGame(targetNumberList);
+            return;
         }
         OutputView.printWinningMessage();
     }
@@ -54,5 +57,16 @@ public class BaseballGameApplication {
             return;
         }
         OutputView.printStrikeAndBall(baseballGame.getStrikeNumber(), baseballGame.getBallNumber());
+    }
+
+    private static boolean isNewGame() {
+        final int NEW_GAME = 1;
+        final int QUIT = 2;
+
+        int userIntent = InputView.getNewGameOrQuitNumber();
+        if(userIntent != NEW_GAME && userIntent != QUIT) {
+            throw new IllegalArgumentException("입력 오류");
+        }
+        return userIntent == NEW_GAME;
     }
 }
