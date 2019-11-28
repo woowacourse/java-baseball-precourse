@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 public class Play {
     List<Integer> answer;
     private int tryTimes;
-    private int[] guessedNum;
 
     // 클래스 생성 시 랜덤으로 3자리 수를 만든다.
     public Play() {
@@ -85,17 +84,6 @@ public class Play {
             return "낫싱";
         }
         return result[0] + "스트라이크 " + result[1] + "볼";
-    }
-
-    // 생성된 3자리 수를 확인하기 위하여 구현한 메서드이다.
-    public String whatIsAnswer() {
-        String answerString = "";
-
-        for (int num : answer) {
-            answerString += Integer.toString(num);
-        }
-
-        return answerString;
     }
 
     // compare 메서드를 테스트하기 위해서 임시로 Setter 메서드 구현

@@ -11,7 +11,6 @@ class PlayTest {
         Play play = new Play();
 
         assertThat(play).isNotNull();
-        System.out.println(play.whatIsAnswer());
     }
 
     @Test
