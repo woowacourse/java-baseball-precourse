@@ -32,7 +32,26 @@ public class BaseballGame {
 	 * 
 	 */
 	public void interactiveShell() {
+		/**
+		 *  사용자가 게임을 다시 하기를 원하면 1, 그만하길 원하면 2가 저장된다. 
+		 *  */
+		int userWant = 1;
+		final int RESTART = 1;
+		final int QUIT = 2;
 		
+		Scanner scanner = new Scanner(System.in);
+		
+		do {
+			/* 게임 한 판을 진행한다. 게임이 끝나면 다음줄로 넘어간다. */
+			oneGameInteractiveShell(scanner); 
+			
+			/* 세 개임을 진행할지 말지 선택하는 User Interface를 제공한다. */
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			userWant = scanner.nextInt();
+			
+		} while (userWant == RESTART);
+		
+		scanner.close();
 	}
 	
 	
