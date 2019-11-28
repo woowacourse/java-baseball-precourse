@@ -121,8 +121,6 @@ public class Main {
         return isDuplicate;
     }
 
-
-
 }
 
 /** 숫자 야구 게임의 입력값을 위한 예외처리를 담당 */
@@ -131,6 +129,7 @@ class MyBaseballSizeException extends Exception{
         super("[ERROR] 숫자 야구 게임의 입력 값은 "+baseballSize+"자리 입니다.");
     }
 }
+
 class MyBaseballSameValueException extends Exception{
     public MyBaseballSameValueException(){
         super("[ERROR] 숫자 야구 게임의 입력 값은 중복이 되면 안됩니다.");
