@@ -18,14 +18,19 @@ int[] initBaseballNumber (int answerNumA, int answerNumB, int answerNumC)
 ##### 메인 함수 초반에 미리 int answerNum 들을 0으로 초기화 시켜주고, 이 함수에 인자로 넣는다.
 
 ```
-boolean isStrike(int answerNum, int num)
-boolean isBall(int answerNum, int num, int num)
+boolean isSame(int answerNum, int num)
 ```
-##### 정답 숫자 A,B,C 중 하나와 그에 대응하는 순서의 사용자가 입력한 숫자 A,B,C 중 하나를 인자로 넣으면, STRIKE 면 TRUE 를 반환해주는 메소드와,
-##### 정답 숫자 A,B,C 중 하나와 그에 대응하지 않는 순서의 사용자가 입력한 숫자 A,B,C 중 두개를 인자로 넣으면, BALL 이면 TRUE 를 반환하는 메소드이다.
+##### 정답 숫자 A,B,C 중 하나와 사용자가 입력한 숫자 A,B,C 중 하나를 인자로 받아서 그 두 수가 같은지를 판별하기 위해 만든 메소드이다. 같으면 TRUE 를 반환한다.
+```
+int isStrike(int[] answerNum, int[] num)
+int isBall(int[] answerNum, int[] num)
+```
+##### 정답 숫자 배열과 사용자가 입력한 숫자 배열을 인자로 넣으면, STRIKE 인 횟수를 반환해주는 메소드와,
+##### 정답 숫자 배열과 사용자가 입력한 숫자 배열을 인자로 넣으면, BALL 인 횟수를 반환하는 메소드이다.
+
 
 ```
-void printIsRight(int answerNum[], int num[])
+void printResult(int isStrike, int isBall)
 ```
-##### 정답 숫자 배열과, 사용자가 입력한 숫자 배열을 넣으면 스트라이큰지 볼인지 낫싱인지 정답인지 프린트해주는 메소드이다.
-##### * 메인 메소드에서는 이 메소드를 while 문으로 반복하여 돌려준다.
+##### STRIKE 횟수와 BALL 횟수를 넣으면 추측에 대한 결과 프린트해주는 메소드이다.
+##### * 메인 메소드에서는 이 메소드를 while 문으로 반복하여 돌려준다. 정답을 맞출때까지!
