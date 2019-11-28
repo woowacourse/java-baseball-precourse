@@ -5,6 +5,7 @@ public class User {
 
     public Numbers inputNumbers() {
 
+        System.out.print("숫자를 입력해주세요 : ");
         String input = scanner.nextLine().trim();
 
         if (!isValidInput(input)) {
@@ -21,7 +22,7 @@ public class User {
     }
 
     private boolean isValidInput(String input) {
-        if (!consistOfNumbers(input) || isThreeDigits(input)) {
+        if (!consistOfNumbers(input) || !isThreeDigits(input)) {
             return false;
         }
         return true;
