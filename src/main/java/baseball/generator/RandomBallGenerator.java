@@ -15,11 +15,11 @@ public class RandomBallGenerator extends BallGenerator {
 
     @Override
     public int getNumber(int index) {
-        int number = ballNumbers.get(index);
+        int number = ballNumbers.get(index - PADDING);
 
         while (duplicateNumbers.contains(number)) {
             Collections.shuffle(ballNumbers);
-            number = ballNumbers.get(index);
+            number = ballNumbers.get(index - PADDING);
         }
         duplicateNumbers.add(number);
 

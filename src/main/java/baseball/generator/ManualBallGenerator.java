@@ -2,8 +2,9 @@ package baseball.generator;
 
 public class ManualBallGenerator extends BallGenerator {
 
+
     @Override
     public int getNumber(int number) {
-        return ballNumbers.get(number - 1);
+        return ballNumbers.get(number - PADDING);
     }
 }

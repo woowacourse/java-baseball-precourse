@@ -3,8 +3,8 @@ package baseball;
 import java.util.Objects;
 
 public class BaseBallPosition {
-    private static final int MIN_POSITION = 1;
-    private static final int MAX_POSITION = 3;
+    public static final int MIN_POSITION = 1;
+    public static final int MAX_POSITION = 3;
     private final int position;
 
     public BaseBallPosition(int position) {
