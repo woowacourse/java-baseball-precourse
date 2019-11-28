@@ -8,19 +8,16 @@
  * Copyright 2019. DunDung all rights reserved.
  */
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Validator {
-    private static final  String FIRST_MENU = "1";
-    private static final  String SECOND_MENU = "2";
+    private static final String FIRST_MENU = "1";
+    private static final String SECOND_MENU = "2";
 
     public static boolean isValidNumbers(String number) {
-        return number.length() == NumberBaseBallGame.DIGIT && isInteger(number) && isNotOverlap(number);
+        return number.length() == NumberBaseBallGame.DIGIT && isInteger(number);
     }
 
-    public static boolean isValidMenu(String menu) {
-        return isInteger(menu) && menu.equals(FIRST_MENU) && menu.equals(SECOND_MENU);
+    public static boolean isValidMenuId(String menuId) {
+        return isInteger(menuId) && menuId.equals(FIRST_MENU) || menuId.equals(SECOND_MENU);
     }
 
     private static boolean isInteger(String number) {
@@ -32,13 +29,4 @@ public class Validator {
         return true;
     }
 
-    private static boolean isNotOverlap(String numbers) {
-        Set<Character> overlapCheckSet = new HashSet<>();
-        for (int i=0; i<numbers.length(); i++) {
-            if (overlapCheckSet.add(numbers.charAt(i)) == false) {
-                return false;
-            }
-        }
-        return true;
-    }
 }
