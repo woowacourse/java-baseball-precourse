@@ -156,10 +156,19 @@ public class BaseballGame {
 	 * @return how many strikes as integer
 	 */
 	private int strikeCnt(String guess) {
-		
 		int ret = 0;
 		
+		/* String guess를 int 세개로 바꾼다.*/
+		int guessArr[] = new int[3];
 		
+		guessArr[0] = new Integer(guess.substring(0, 1));
+		guessArr[1] = new Integer(guess.substring(1, 2));
+		guessArr[2] = new Integer(guess.substring(2, 3));
+		
+		/* 각 자리마다 숫자를 비교하여 같은 갯수를 센다. */
+		if (guessArr[0] == correctAns[0]) ret++;
+		if (guessArr[1] == correctAns[1]) ret++;
+		if (guessArr[2] == correctAns[2]) ret++;
 		
 		return ret;
 	}
