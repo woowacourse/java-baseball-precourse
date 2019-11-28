@@ -1,8 +1,8 @@
-package view;
+package view.comment;
 
 import computer.result.Results;
 
 @FunctionalInterface
-public interface ViewSupporter {
+public interface CommentSelector {
     boolean support(Results results);
 }

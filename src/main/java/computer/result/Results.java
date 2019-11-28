@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Results {
+    private static final int OUT = 3;
+
     private final List<Result> results;
 
     public Results(List<Result> results) {
@@ -28,6 +30,10 @@ public class Results {
 
     public boolean hasBall() {
         return this.results.contains(Result.BALL);
+    }
+
+    public boolean isOut() {
+        return getStrikeAmount() == OUT;
     }
 
     @Override

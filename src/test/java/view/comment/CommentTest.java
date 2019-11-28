@@ -1,4 +1,4 @@
-package view;
+package view.comment;
 
 import computer.result.Results;
 import org.junit.jupiter.api.DisplayName;
@@ -11,13 +11,13 @@ import static computer.result.Result.NOTHING;
 import static computer.result.Result.STRIKE;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-class ResultViewTest {
+class CommentTest {
 
     @DisplayName("결과 문구 출력")
     @Test
     void getComment() {
         Results results = new Results(Arrays.asList(STRIKE, BALL, NOTHING));
 
-        assertThat(ResultView.getComment(results)).isEqualTo("1 스트라이크 1 볼");
+        assertThat(Comment.getComment(results)).isEqualTo("1 스트라이크 1 볼");
     }
 }

@@ -4,6 +4,7 @@ import baseball.BaseBalls;
 import baseball.generator.BallGenerator;
 import baseball.generator.ManualBallGenerator;
 import computer.result.Result;
+import computer.result.Results;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -28,6 +29,6 @@ class ComputerTest {
 
         BaseBalls compares = new BaseBalls(Arrays.asList(1, 3, 4));
 
-        assertThat(computer.getResults(compares)).isEqualTo(Arrays.asList(Result.STRIKE, Result.BALL, Result.NOTHING));
+        assertThat(computer.getResults(compares)).isEqualTo(new Results(Arrays.asList(Result.STRIKE, Result.BALL, Result.NOTHING)));
     }
 }

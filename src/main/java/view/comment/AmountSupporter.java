@@ -1,4 +1,4 @@
-package view;
+package view.comment;
 
 import computer.result.Results;
 
