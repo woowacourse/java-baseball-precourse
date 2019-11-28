@@ -2,7 +2,7 @@
  * UserInputValidator.java
  * java-baseball-precourse
  *
- * Version 0.5
+ * Version 0.6
  *
  * Created by 김경준 on 28/11/2019.
  *
@@ -30,6 +30,9 @@ public class UserInputValidator {
         if(!isValidLength()) {
             return false;
         }
+        if(isThereZero()) {
+            return false;
+        }
         if(isOutOfNumberRange()) {
             return false;
         }
@@ -42,6 +45,10 @@ public class UserInputValidator {
     private boolean isValidLength() {
         final int VALID_LENGTH = 3;
         return inputString.length() == VALID_LENGTH;
+    }
+
+    private boolean isThereZero() {
+        return inputString.contains("0");
     }
 
     private boolean isOutOfNumberRange() {
