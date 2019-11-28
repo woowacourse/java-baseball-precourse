@@ -21,11 +21,17 @@ public class Opponent {
     private final int INF_MASK = 10;    // 마스크 크기 0 ~ 9
     private final int INF_DIGIT = 3;    // 최대 자릿수
     private boolean[] digitMasks;       // 수 마스킹용 array
-    private int[] digitNumbers;    // 생각한 수 array
+    private int[] digitNumbers;         // 생각한 수 array
 
     public Opponent() {
         this.digitMasks = new boolean[INF_MASK];
         this.digitNumbers = new int[INF_DIGIT];
+    }
+
+    public void setRandomNumbers() {
+        for (int i = 0; i < INF_DIGIT; i++) {
+            digitNumbers[i] = (int) (Math.random() * 10);    // 0 ~ 9 까지
+        }
     }
 
     /* Getter Methods */
