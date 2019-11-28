@@ -1,9 +1,8 @@
-package baseball.computer;
+package computer;
 
-import baseball.BaseBall;
+import baseball.BaseBalls;
 import baseball.generator.BallGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
@@ -13,13 +12,11 @@ import static baseball.BaseBallPosition.MIN_POSITION;
 import static java.util.stream.Collectors.toList;
 
 public class Computer {
-    private static final int PADDING = 1;
-    private final List<BaseBall> baseBalls;
 
-    Computer(List<Integer> baseBalls) {
-        this.baseBalls = IntStream.rangeClosed(MIN_POSITION, MAX_POSITION)
-                .mapToObj(position -> new BaseBall(position, baseBalls.get(position - PADDING)))
-                .collect(toList());
+    private final BaseBalls baseBalls;
+
+    Computer(List<Integer> numbers) {
+        this.baseBalls = new BaseBalls(numbers);
     }
 
     public static Computer newGame(BallGenerator ballGenerator) {
@@ -28,11 +25,9 @@ public class Computer {
     }
 
     private static List<Integer> makeNumbers(BallGenerator ballGenerator) {
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 1; i <= 3; i++) {
-            numbers.add(ballGenerator.getNumber(i));
-        }
-        return numbers;
+        return IntStream.rangeClosed(MIN_POSITION, MAX_POSITION)
+                .mapToObj(ballGenerator::getNumber)
+                .collect(toList());
     }
 
     @Override
