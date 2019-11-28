@@ -39,9 +39,17 @@ public class BaseballGameSystem {
         for (int i = 0; i < DIGIT; i++) {
             if (i == index && userNumberArr[i] == ans)
                 strikeCount++;
-            else if(userNumberArr[i] == ans)
+            else if (userNumberArr[i] == ans)
                 ballCount++;
         }
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
     }
 
     public void finishGame(int nextStep) {}
