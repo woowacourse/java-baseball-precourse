@@ -34,7 +34,8 @@ public class Game {
             do {
                 showInputMessage();
                 setPlayerNumbers(getInputsByScanner());
-            } while (isOverlap(playerNumbers) || isOutOfScope(playerNumbers));
+            } while (isWrongArgs(playerNumbers) || isOverlap(playerNumbers) ||
+                    isOutOfScope(playerNumbers));
         } while(!showResult() || inputRestart());
     }
 
@@ -51,7 +52,9 @@ public class Game {
 
     public int[] getInputsByScanner() {
         try {
-            return Stream.of(input.next().split("")).mapToInt(Integer::parseInt).toArray();
+            return Stream.of(input.next().split(""))
+                    .mapToInt(Integer::parseInt)
+                    .toArray();
         } catch (NumberFormatException e){
             return new int[]{-1};
         }
@@ -63,6 +66,10 @@ public class Game {
 
     public boolean isOutOfScope(int[] numbers) {
         return Arrays.stream(numbers).anyMatch(x -> (x < 1 || x > 9));
+    }
+
+    public boolean isWrongArgs(int[] numbers){
+        return numbers.length != 3;
     }
 
     public int checkStrike() {
