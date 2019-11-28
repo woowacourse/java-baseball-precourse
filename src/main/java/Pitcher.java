@@ -1,4 +1,4 @@
-import java.lang.*;
+/*import java.lang.*;
 
 public class Pitcher {
     final int PITCHING_COUNT = 3;
@@ -8,7 +8,7 @@ public class Pitcher {
         pitching = new int[PITCHING_COUNT];
 
         for(int i=0;i<PITCHING_COUNT;i++){
-            pitching[i] = (int)(Math.random() * 9 +1);
+            pitching[i] = (int)(Math.random()*10 -1);
         }
     }
     public int[] getPitching(){
@@ -20,3 +20,4 @@ public class Pitcher {
         }
     }
 }
+*/

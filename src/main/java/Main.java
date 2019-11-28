@@ -4,8 +4,8 @@
  */
 public class Main {
     public static void main(String[] args){
-        Pitcher a = new Pitcher();
+        Batter a = new Batter();
 
-        a.printPitching();
+        a.printBatting();
     }
 }
