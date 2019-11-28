@@ -2,7 +2,7 @@
  * UserInputValidator.java
  * java-baseball-precourse
  *
- * Version 0.3
+ * Version 0.4
  *
  * Created by 김경준 on 28/11/2019.
  *
@@ -11,7 +11,7 @@
 
 package domain;
 
-import java.util.Arrays;
+import utils.StringHandler;
 
 public class UserInputValidator {
     private final String inputString;
@@ -29,7 +29,7 @@ public class UserInputValidator {
         if(isOutOfNumberRange()) {
             return false;
         }
-        if(isDuplicated()) {
+        if(StringHandler.isDuplicated(inputString)) {
             return false;
         }
         return true;
@@ -44,16 +44,5 @@ public class UserInputValidator {
         final int MAX_NUM = 987;
         final int MIN_NUM = 123;
         return Integer.parseInt(inputString) > MAX_NUM || Integer.parseInt(inputString) < MIN_NUM;
-    }
-
-    private boolean isDuplicated() {
-        String[] strings = inputString.split("");
-        Arrays.sort(strings);
-        for(int i = 0; i < strings.length - 1; i++) {
-            if(strings[i].equals(strings[i+1])) {
-                return true;
-            }
-        }
-        return false;
     }
 }
