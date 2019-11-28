@@ -1,3 +1,4 @@
+<h1>기능 목록</h1>
 <table>
 	<tr>
 		<td>ID</td>
