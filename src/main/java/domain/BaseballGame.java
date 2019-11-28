@@ -2,7 +2,7 @@
  * BaseballGame.java
  * java-baseball-precourse
  *
- * Version 0.2
+ * Version 0.3
  *
  * Created by 김경준 on 28/11/2019.
  *
@@ -31,6 +31,7 @@ public class BaseballGame {
 
     private void setGameState() {
         setStrikeAndBallNumber();
+        setIsNothing();
     }
 
     private void setStrikeAndBallNumber() {
@@ -51,5 +52,11 @@ public class BaseballGame {
 
     private boolean isBall(int listIndex) {
         return targetNumberList.contains(userInputNumberList.get(listIndex));
+    }
+
+    private void setIsNothing() {
+        if(strikeNumber == 0 && ballNumber == 0) {
+            isNothing = true;
+        }
     }
 }
