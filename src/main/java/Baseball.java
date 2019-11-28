@@ -18,6 +18,13 @@ public class Baseball {
             }
         }
     }
+    // 유저의 밸류를 배열에 넣어주는 함수
+    static void userInit(int n){
+        for(int i = 2; i>=0;i--){
+            user[i] = n % 10;
+            n/=10;
+        }
+    }
 
     // 실질적 게임을 작동하는 함수
     static int game(){
@@ -25,6 +32,7 @@ public class Baseball {
         while(true){
             System.out.println("숫자를 입력해주세요 : ");
             int n = sc.nextInt();
+            userInit(n);
         }
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int n = sc.nextInt();
