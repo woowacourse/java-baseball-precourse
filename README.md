@@ -19,9 +19,9 @@
   - baseball 게임을 실행한다.
   - 게임을 재시작한다.
   - 게임을 종료한다.
-- Game.startGame()
+- Game.start()
   - 게임을 시작한다.
-- Game.playGame() 
+- Game.play() 
   - 숫자를 입력받는다.
   - 결과를 출력한다.
 - Game.selectNextAction()
@@ -35,4 +35,3 @@
   - 사용자의 숫자를 입력받는다.
 - IOController.printResult()
   - match 결과를 출력한다.
-
