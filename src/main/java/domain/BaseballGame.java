@@ -2,9 +2,9 @@
  * BaseballGame.java
  * java-baseball-precourse
  *
- * Version 0.1
+ * Version 0.2
  *
- * Created by 김경준 on 27/11/2019.
+ * Created by 김경준 on 28/11/2019.
  *
  * Copyright © 2019 kouz95. All rights reserved.
  */
@@ -30,13 +30,26 @@ public class BaseballGame {
     }
 
     private void setGameState() {
-        setStrikeNumber();
+        setStrikeAndBallNumber();
     }
 
-    private void setStrikeNumber() {
+    private void setStrikeAndBallNumber() {
         for (int i = 0; i < NUM_LEN; i++) {
-            strikeNumber = userInputNumberList.get(i).equals(targetNumberList.get(i)) ?
-                    strikeNumber + 1 : strikeNumber;
+            if(isStrike(i)) {
+                strikeNumber++;
+                continue;
+            }
+            if(isBall(i)) {
+                ballNumber++;
+            }
         }
+    }
+
+    private boolean isStrike(int listIndex) {
+        return userInputNumberList.get(listIndex).equals(targetNumberList.get(listIndex));
+    }
+
+    private boolean isBall(int listIndex) {
+        return targetNumberList.contains(userInputNumberList.get(listIndex));
     }
 }
