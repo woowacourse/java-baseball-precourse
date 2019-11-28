@@ -22,12 +22,19 @@
 
 - #### 입력 메세지
     - 사용자 입력 안내
-    - Retry or Quit.
+    - New Game or Quit.
     
 - #### 출력 메세지
     - 게임 결과
         - 스트라이크, 볼 개수
         - 승리
-    
-- #### 재시작 및 종료 기능
-    - 승리 이후 호출한다.
+---
+- ## Application Logic
+    1. TargetNumberList 생성
+    2. UserNumberList 입력
+    3. BaseballGame 생성
+    4. 결과 출력
+        - 못 맞췄을 경우 -> 3.
+    5. New Game or Quit ?
+        - New Game -> 1.
+    6. Quit
