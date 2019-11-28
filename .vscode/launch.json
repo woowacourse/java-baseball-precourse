@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BaseBallGame",
+            "request": "launch",
+            "mainClass": "BaseBallGame",
+            "projectName": "java-baseball-precourse"
+        }
+    ]
+}
