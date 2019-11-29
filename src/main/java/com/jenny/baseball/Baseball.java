@@ -10,11 +10,13 @@ public class Baseball implements Gamable {
 
         int[] num = new int[3];
 
-        makeDigits:
+
         for(int i = 0 ; i < 3 ; i++){
+            makeDigits:
             while(true){
 
-                num[i] = (int)(Math.random()*10)/10;
+                num[i] = (int)(Math.random()*10);
+
                 if(num[i] == 0){
                     continue makeDigits;
                 }
