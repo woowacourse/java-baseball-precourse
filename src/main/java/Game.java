@@ -105,7 +105,7 @@ public class Game {
         } else {
             System.out.println(strike + " strike " + ball + " ball");
         }
-        return strike == 3;
+        return isWin(strike);
     }
 
     public void showRestart(){
@@ -116,5 +116,14 @@ public class Game {
         showRestart();
         setComputerNumbers(randomGenerator());
         return input.nextInt() == 1;
+    }
+
+    public boolean isWin(int strike){
+        if(strike == 3){
+            System.out.println("you win!! GameOver");
+            return true;
+        } else {
+            return false;
+        }
     }
 }
