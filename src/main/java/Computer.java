@@ -63,6 +63,9 @@ public class Computer {
         if(ball != 0) {
             System.out.print(ball + " 볼");
         }
+        if(strike == 0 && ball == 0) {
+            System.out.print("낫싱");
+        }
         System.out.println();
     }
 
