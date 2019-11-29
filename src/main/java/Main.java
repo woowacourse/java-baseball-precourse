@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        BaseballGame start =  new BaseballGame();
-        start.BaseballNumber();
+        baseballGame start =  new baseballGame();
+        start.baseballNumber();
     }
 }
