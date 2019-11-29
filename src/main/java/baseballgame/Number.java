@@ -42,7 +42,6 @@ public class Number {
         if (!NumberValidator.isNumber(string)) {
             throw new IllegalArgumentException(EXCEPTION_NOT_NUMBER);
         }
-
         if (NumberValidator.hasDuplicate(string)) {
             throw new IllegalArgumentException(EXCEPTION_HAS_DUPLICATE);
         }

@@ -24,15 +24,12 @@ public class BallCount {
         if (hasStrike() && hasBall()) {
             return String.format("%d %s %d %s", strike, STRIKE, ball, BALL);
         }
-
         if (hasStrike()) {
             return String.format("%d %s", strike, STRIKE);
         }
-
         if (hasBall()) {
             return String.format("%d %s", ball, BALL);
         }
-
         return NOTHING;
     }
 

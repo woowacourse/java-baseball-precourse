@@ -51,7 +51,6 @@ public class BaseballGame {
             System.out.println(MESSAGE_EXIT_GAME);
             return false;
         }
-
         return true;
     }
 }
