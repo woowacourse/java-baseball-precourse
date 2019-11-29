@@ -1,5 +1,5 @@
 /*
- * Player.java                   2.0.1   2019-11-29
+ * Player.java                     2.0.1   2019-11-29
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
