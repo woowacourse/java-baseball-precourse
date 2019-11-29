@@ -3,12 +3,13 @@ import java.util.Scanner;
 public class Main {
     private static Computer computer = new Computer();
     private static Scanner sc;
+
     public static void main(String[] args) {
         sc = new Scanner(System.in);
         boolean on_game = true; // 게임 추가 진행 플래그
-        while (on_game){
+        while (on_game) {
             play();
-            // 탈출 플래그 세워야 함
+            on_game = ask_retry();
         }
         sc.close();
     }
@@ -24,4 +25,10 @@ public class Main {
         }
     }
 
+    private static boolean ask_retry() {
+        int retry_answer;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        retry_answer = sc.nextInt();
+        return retry_answer == 1;
+    }
 }
