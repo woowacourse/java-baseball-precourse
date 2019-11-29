@@ -34,9 +34,9 @@ public class Game {
             do {
                 showInputMessage();
                 setPlayerNumbers(getInputsByScanner());
-            } while (isWrongArgs(playerNumbers) || isOverlap(playerNumbers) ||
-                    isOutOfScope(playerNumbers));
-        } while(!showResult() || inputRestart());
+            } while (isWrongArgs(playerNumbers) || isOverlap(playerNumbers)
+                    || isOutOfScope(playerNumbers));
+        } while (!showResult() || inputRestart());
     }
 
     public int[] randomGenerator() {
@@ -74,8 +74,8 @@ public class Game {
 
     public int checkStrike() {
         int count = 0;
-        for(int i = 0; i < computerNumbers.length; i++){
-            if(computerNumbers[i] == playerNumbers[i]){
+        for (int i = 0; i < computerNumbers.length; i++){
+            if (computerNumbers[i] == playerNumbers[i]){
                 playerNumbers[i] = 0;
                 count++;
             }
@@ -85,7 +85,7 @@ public class Game {
 
     public int checkBall() {
         int count = 0;
-        for(int i = 0; i < computerNumbers.length; i++){
+        for (int i = 0; i < computerNumbers.length; i++){
             final int index = i;
             count += Arrays.stream(computerNumbers).filter(x -> x == playerNumbers[index]).count();
         }
@@ -96,11 +96,11 @@ public class Game {
         int strike = checkStrike();
         int ball = checkBall();
 
-        if(ball + strike == 0){
+        if (ball + strike == 0){
             System.out.println("낫싱!");
-        } else if(strike == 0) {
+        } else if (strike == 0) {
             System.out.println(ball + " 볼");
-        } else if(ball == 0){
+        } else if (ball == 0){
             System.out.println(strike + " 스트라이크");
         } else {
             System.out.println(strike + " 스트라이크 " + ball + " 볼");
