@@ -8,10 +8,7 @@
  * Copyright 2019. DunDung all rights reserved.
  */
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class NumberBaseBallGame {
     public static final int DIGIT = 3;
@@ -20,30 +17,17 @@ public class NumberBaseBallGame {
     private static final int MAX_VALUE = 9;
     private static final int DIVISION_VALUE = 10;
     private static final int ANSWER_STRIKE = 3;
-    private int[] randomNumbers = new int[DIGIT];
+    private int[] randomNumbers;
     private int[] playerNumbers = new int[DIGIT];
     private int strike = 0;
     private int ball = 0;
 
     public NumberBaseBallGame() {
-        List<Integer> availableNumberList = new ArrayList<>();
-        for (int i=MIN_VALUE; i<=MAX_VALUE; i++) {
-            availableNumberList.add(i);
-        }
-
-        Collections.shuffle(availableNumberList);
-
-        for (int i=0; i<DIGIT; i++) {
-            randomNumbers[i] = availableNumberList.get(i);
-        }
-        for(int k : randomNumbers) {
-            System.out.print(k);
-        }
-        System.out.println();
+        randomNumbers = RandomNumber.create(DIGIT, MIN_VALUE, MAX_VALUE);
     }
 
     public void calculateResult() {
-        initStringAndBall();
+        initStrikeAndBall();
 
         int[] cloneRandomNumbers = randomNumbers.clone();
         Arrays.sort(cloneRandomNumbers);
@@ -55,19 +39,16 @@ public class NumberBaseBallGame {
                 ball++;
             }
         }
-
     }
 
-    public void initStringAndBall() {
+    public void initStrikeAndBall() {
         strike = ZERO;
         ball = ZERO;
     }
 
-
     public boolean isAnswer() {
         return this.strike == ANSWER_STRIKE;
     }
-
 
     public int getStrike() {
         return strike;
@@ -78,7 +59,7 @@ public class NumberBaseBallGame {
     }
 
     public void setPlayerNumber(int playerNumber) {
-        for(int i=DIGIT-1; i>=0; i--) {
+        for (int i=DIGIT-1; i>=0; i--) {
             playerNumbers[i] = playerNumber % DIVISION_VALUE;
             playerNumber /= DIVISION_VALUE;
         }
