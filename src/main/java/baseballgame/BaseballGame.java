@@ -66,6 +66,13 @@ public class BaseballGame {
         System.out.println(sb.toString());
     }
 
+    boolean isValidNumber(String number){
+        // 순서 중요! 숫자인지 먼저 확인해야한다.
+        if (!isNumeric(number) || !isValidLengthOfInputNumber(number) || hasZero(number) || hasDuplicatedNumber(number) ){
+            return false;
+        }
+        return true;
+    }
 
     private boolean hasZero(String number) {
         return number.contains("0");
@@ -81,6 +88,20 @@ public class BaseballGame {
             }
         }
         return false;
+    }
+
+    private boolean isValidLengthOfInputNumber(String inputNumber) {
+        if (inputNumber.length() == 3) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isNumeric(String inputNumber) {
+        if (inputNumber == null || inputNumber.length() == 0) {
+            return false;
+        }
+        return inputNumber.chars().allMatch(Character::isDigit);
     }
 
 }
