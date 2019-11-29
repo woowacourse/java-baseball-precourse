@@ -42,4 +42,10 @@ public class Computer {
         }
         return count;
     }
+
+    public static Result compute(int[] user, int[] computer) {
+        int strike = strikeCount(user, computer);
+        int ball = ballCount(user, computer);
+        return Result.of(strike, ball);
+    }
 }
