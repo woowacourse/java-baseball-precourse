@@ -1,7 +1,7 @@
 # 👉기능구현목록 👈
 
 ### 0. 자료구조생성
-* NumberDTO class : 세자리 숫자가 담길 자료구조
+* NumberDto class : 세자리 숫자가 담길 자료구조
 
 ### 1. 세자리 수 생성
 * createNumber()
