@@ -24,7 +24,7 @@ class Num{
     }
 
     public void setVal(){
-        System.out.println("type your answer : ");
+        System.out.print("숫자를 입력해주세요 : ");
         this.val=this.sc.nextInt();
         this.setPosition();
     }
@@ -42,7 +42,7 @@ public class NumberBaseball {
     private static boolean rtnHint(Num answer, Num player){
         int strike = 0;
         int ball = 0;
-        String rtnMsg="";
+        String rtnMsg = "";
 
         if(answer.position[0] == player.position[0]){
             strike++;
@@ -72,11 +72,11 @@ public class NumberBaseball {
         }
 
         if(strike > 0){
-            rtnMsg = strike + " Strike ";
+            rtnMsg = strike + " 스트라이크 ";
         }
 
         if(ball > 0){
-            rtnMsg += ball + " Ball";
+            rtnMsg += ball + " 볼";
         }
 
         if(strike == 0 && ball == 0){
@@ -106,11 +106,10 @@ public class NumberBaseball {
                 player.setVal();
                 stageKey=rtnHint(answer, player);
             }
-            System.out.println("Stage finished");
-            System.out.println("press 1 to restart, 2 to exit");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
             if(sc.nextInt() == 2) {
                 gameKey = false;
-                System.out.println("Game Over");
             }
         }
     }
