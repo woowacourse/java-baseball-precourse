@@ -1,12 +1,23 @@
 import java.util.Random;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class BaseballGame {
     int numbers[];
+    Scanner scan;
 
     public void BaseballNumber() {
         numbers = new int[] {1, 2, 3};
         this.SetNumbers();
+    }
+
+    public void Game() {
+        scan = new Scanner(System.in);
+        boolean judge = true;
+        for (int j=0; j < 5; j++) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String meg = scan.next();
+        }
     }
 
     public void SetNumbers() {
@@ -19,5 +30,6 @@ public class BaseballGame {
                 i--;
             }
         }
+        this.Game();
     }
 }
