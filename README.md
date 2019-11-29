@@ -37,7 +37,7 @@ boolean printResult(int isStrike, int isBall)
 ##### STRIKE 횟수와 BALL 횟수를 넣으면 추측에 대한 결과 프린트해주는 메소드이다.
 ##### * 메인 메소드에서는 이 메소드를 while 문으로 반복하여 돌려준다. 정답을 맞출때까지!(메소드가 TRUE를 반환할 때까지!)
 ```
-void print(String output, boolean isPrintln)
+void print(String output)
 ```
 ##### String 형 인자를 넣으면 출력해주는 메소드이다.
 ##### isPrintln 인자가 TRUE 이면 프린트 후 개행을 하고, FALSE 이면 개행을 하지 않는다.
