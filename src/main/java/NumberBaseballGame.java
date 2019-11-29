@@ -27,7 +27,12 @@ public class NumberBaseballGame {
         while (strike != 3) {
             System.out.print("숫자를 입력해주세요 : ");
             int userInput = sc.nextInt();
-            compare(answer, userInput);
+            if (userInput<100 || userInput>=1000) {
+                System.out.println("입력값은 세자리수여야 합니다.");
+            }
+            else {
+                compare(answer, userInput);
+            }
         }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -56,10 +61,6 @@ public class NumberBaseballGame {
         while (answer[0] == answer[2] || answer[1] == answer[2] || answer[2] == 0) {
             answer[2] = random.nextInt(10);
         }
-
-        System.out.println("answer[0]: " + answer[0]);
-        System.out.println("answer[1]: " + answer[1]);
-        System.out.println("answer[2]: " + answer[2]);
 
         return answer;
     }
