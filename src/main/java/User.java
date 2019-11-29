@@ -2,11 +2,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class User {
+    Scanner s = new Scanner(System.in);
     private int userInput;
 
     public void inputNumber() {
-        Scanner s = new Scanner(System.in);
-
         System.out.print("숫자를 입력해주세요 : ");
 
         try {
@@ -19,8 +18,6 @@ public class User {
             System.out.println("제대로 된 3자리 수를 입력해주세요!");
             inputNumber();
         }
-
-        s.close();
     }
 
     public boolean checkInput(int input) {
