@@ -4,8 +4,9 @@ import mypackage.minuyim.baseball.util.*;
 
 public class MainGame {
 	private static final int TARGET_NUMBER = 3;
+	private static final int ENDGAME_NUMBER = 2;
 	
-	private static void Onegame(int[] answerNumbers) {
+	private void oneGame(int[] answerNumbers) {
 		int userNumber;
 		int[] userNumbers;
 		
@@ -30,14 +31,21 @@ public class MainGame {
 		return;
 	}
 	
-	public static void main(String[] args) {
+	public void start() {
 		int[] answerNumbers;
 		
-		MakeRandomNumber makeRandomNumber = new MakeRandomNumber();
-		answerNumbers = makeRandomNumber.makeRandom();
+		while (true) {
+			MakeRandomNumber makeRandomNumber = new MakeRandomNumber();
+			answerNumbers = makeRandomNumber.makeRandom();
+			
+			oneGame(answerNumbers);
+			
+			AskAgain ask = new AskAgain();
+			if (ask.askAgain() == ENDGAME_NUMBER) {
+				break;
+			}
+		}
 		
-		Onegame(answerNumbers);
-
 		return;
 	}
 }
