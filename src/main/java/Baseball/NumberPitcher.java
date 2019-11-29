@@ -24,6 +24,15 @@ public class NumberPitcher implements Pitcher {
 
         return translateToBalls(input);
     }
+
+    @Override
+    public boolean wantToPlayAgain() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Integer input = scanner.nextInt();
+
+        return input.equals(Will.WantToPlay);
+    }
+
     private boolean isValid(String input) {
         // todo: change to config
         if (input.length() != 3) {
