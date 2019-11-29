@@ -24,13 +24,13 @@
 - Game.play() 
   - 숫자를 입력받는다.
   - 결과를 출력한다.
-- Game.selectNextAction()
-  - 게임 재시작 여부를 묻는다.
-  - 사용자 입력을 받는다.
 - Baseball.generateAnswer() 
   - 컴퓨터의 숫자를 생성한다.
 - Baseball.matchNumber() 
   - 입력한 숫자와 정답을 비교한다.
+- IOController.selectNextAction()
+  - 게임 재시작 여부를 묻는다.
+  - 사용자 입력을 받는다.
 - IOController.getNumberOfUser() 
   - 사용자의 숫자를 입력받는다.
 - IOController.printResult()
