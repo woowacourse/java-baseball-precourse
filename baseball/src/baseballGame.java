@@ -123,6 +123,9 @@ public class baseballGame {
         return finish;
     }
 
+    /*
+    String 형 인자를 넣으면 출력해주는 메소드이다.
+     */
     static private void println(String output) {
         System.out.println(output);
     }
