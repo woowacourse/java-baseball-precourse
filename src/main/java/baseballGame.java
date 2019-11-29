@@ -7,25 +7,63 @@ public class baseballGame {
     Scanner scan;
 
     public void baseballNumber() {
-        numbers = new int[]{1, 2, 3};
+        numbers = new int[3];
         this.setNumbers();
     }
 
     public void game() {
         scan = new Scanner(System.in);
-        boolean judge = true;
-        for (int j = 0; j < 5; j++) {
+        boolean judge = false;
+        while (!judge) {
             System.out.print("숫자를 입력해주세요 : ");
             String meg = scan.next();
-            int [] inputInt =  this.stringToint(meg);
-
-            System.out.println(Arrays.toString(inputInt));
+            int [] inputInt =  Arrays.stream(meg.split("")).mapToInt(Integer::parseInt).toArray();
+            judge = this.numberCheck(this.numbers, inputInt);
         }
     }
 
-    public int[] stringToint(String num) {
-        int [] intArray = Arrays.stream(num.split("")).mapToInt(Integer::parseInt).toArray();
-        return intArray;
+    public boolean numberCheck(int[] x, int[] y) {
+        boolean endGame = false;
+        String result = "";
+        int strikeInt =  this.strikeCheck(x, y);
+        int ballInt = this.ballCheck(x, y) - strikeInt;
+        if (strikeInt > 0) {
+            result += Integer.toString(strikeInt) + "스트라이크 ";
+        }
+        if (ballInt > 0) {
+            result += Integer.toString(ballInt) + "볼 ";
+        }
+        if (result.length() == 0) {
+            result += "낫싱";
+        }
+        System.out.println(Arrays.toString(x));
+        System.out.println(Arrays.toString(y));
+        System.out.println(result);
+        if (strikeInt == 3) {
+            endGame = true;
+        }
+        return endGame;
+    }
+
+    public int strikeCheck(int[] x, int[] y) {
+        int cnt = 0;
+        for (int i = 0; i < 3; i++) {
+            if (x[i] == y[i]) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
+    public int ballCheck(int[] x, int[] y) {
+        int cnt = 0;
+        for (int i = 0; i < 3; i++) {
+            int comp = y[i];
+            if (Arrays.stream(x).anyMatch(a -> a == comp)) {
+                cnt++;
+            }
+        }
+        return cnt;
     }
 
     public void setNumbers() {
