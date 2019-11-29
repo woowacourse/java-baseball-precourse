@@ -1,9 +1,15 @@
 import java.util.Random;
 
 public class Computer {
-    private int[] answer = new int[3];
-    private int strike = 0;
-    private int ball = 0;
+    private int[] answer;
+    private int strike;
+    private int ball;
+
+    public Computer() {
+        answer = new int[3];
+        strike = 0;
+        ball = 0;
+    }
 
     public void getRandom() {
         Random r = new Random();
