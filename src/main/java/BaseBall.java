@@ -17,9 +17,6 @@ public class BaseBall {
     static final int MAX_NUMBER = 9;
     private int answer;
     private int userInput;
-    private int strikeCount=0;
-    private int ballCount=0;
-    private boolean isNothing = false;
     private Scanner scanner;
 
     private int makeRandomNumber(int maxNumber) {
@@ -124,11 +121,111 @@ public class BaseBall {
         return false;
     }
 
+    private void printResult(int answer, int userInput) {
+        boolean Nothing = false;
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        Nothing = checkNothingExist(answer, userInput);
+        strikeCount = countStrike(answer, userInput);
+        ballCount = countBall(answer, userInput, strikeCount);
+
+        if (Nothing) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        if (strikeCount > 0) {
+            System.out.print(strikeCount+" 스트라이크 ");
+        }
+        if (ballCount > 0) {
+            System.out.print(ballCount + " 볼");
+        }
+        System.out.println();
+
+        return;
+    }
+
+    private boolean checkNothingExist(int answer, int userInput) {
+        boolean isNothing = true;
+        int[] checkArr = new int[MAX_NUMBER];
+        int answerIndex;
+        int userInputIndex;
+
+        for (int i=0; i<INPUT_SIZE; i++) {
+            answerIndex = answer % 10 - 1;
+            userInputIndex = userInput % 10 - 1;
+            checkArr[answerIndex]++;
+            checkArr[userInputIndex]++;
+            answer /= 10;
+            userInput /= 10;
+        }
+
+        for (int i=0; i<MAX_NUMBER; i++) {
+            if (checkArr[i] == 2) {
+                isNothing = false;
+            }
+        }
+
+        return isNothing;
+    }
+
+    private int countStrike(int answer, int userInput) {
+        int count = 0;
+
+        for (int i=0; i<INPUT_SIZE; i++) {
+            if ((answer%10) == (userInput%10)) {
+                count++;
+            }
+            answer /= 10;
+            userInput /= 10;
+        }
+
+        return count;
+    }
+
+    private int countBall(int answer, int userInput, int strikeCount) {
+        int count = 0;
+        int[] checkArr = new int[MAX_NUMBER];
+        int answerIndex;
+        int userInputIndex;
+
+        for (int i=0; i<INPUT_SIZE; i++) {
+            answerIndex = answer % 10 - 1;
+            userInputIndex = userInput % 10 - 1;
+            checkArr[answerIndex]++;
+            checkArr[userInputIndex]++;
+            answer /= 10;
+            userInput /= 10;
+        }
+
+        for (int i=0; i<MAX_NUMBER; i++) {
+            if (checkArr[i]==2) {
+                count++;
+            }
+        }
+
+        count -= strikeCount;
+
+        return count;
+    }
+
+
 
     public static void main(String[] args) {
         BaseBall baseBall = new BaseBall();
 //        baseBall.makeRandomNumber(MAX_NUMBER);
 //        while (!baseBall.getUserInput());
-
+//        baseBall.printResult(713, 123);
+//        baseBall.printResult(713, 145);
+//        baseBall.printResult(713, 671);
+//        baseBall.printResult(713, 216);
+//        baseBall.printResult(713, 713);
+//        baseBall.printResult(789, 123);
+//        baseBall.printResult(789, 456);
+//        baseBall.printResult(789, 567);
+//        baseBall.printResult(789, 678);
+//        baseBall.printResult(789, 987);
+//        baseBall.printResult(789, 789);
     }
 }
