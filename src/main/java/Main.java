@@ -1,5 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        while(true){
+            Baseball b_ball = new Baseball();
+            if(b_ball.doBaseball()){
+                break;
+            }
+        }
     }
 }
