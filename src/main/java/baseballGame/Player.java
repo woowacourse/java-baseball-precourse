@@ -3,9 +3,9 @@
  *
  *  1부터 9까지의 3자리 숫자를 입력한다.
  *
- *  @Version: 0.2
+ *  @Version: 0.3
  *
- *  @Date: 2019.11.28
+ *  @Date: 2019.11.29
  *
  *  @Author: pandahun
  */
@@ -13,12 +13,12 @@
 package baseballGame;
 
 import java.util.Scanner;
+import static baseballGame.BaseballGame.BASEBALL_LENGTH;
 
 class Player {
 
     private static final int MINIMUM_NUMBER = 1;
     private static final int MAXIMUM_NUMBER = 9;
-    private static final int BASEBALL_LENGTH = 3;
 
     private String number = "";
 
@@ -29,11 +29,11 @@ class Player {
             System.out.print("숫자를 입력해 주세요: ");
             number = sc.next();
 
-            if (isInLength() && isNumber() && isRepetition()) {
-                break;
-            } else {
+            if (!isInLength() || !isNumber() || !isRepetition()) {
                 System.out.println("값을 재 입력해 주세요");
+                continue;
             }
+            break;
         }
     }
 
@@ -60,7 +60,7 @@ class Player {
         for(int i = MINIMUM_NUMBER; i<=MAXIMUM_NUMBER;i++){
             count++;
         }
-        if(count!=3){
+        if(count!=BASEBALL_LENGTH){
             status = false;
         }
         return status;
