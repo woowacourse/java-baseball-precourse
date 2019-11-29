@@ -16,4 +16,12 @@ public class Result {
 
         return this.strikes == ((Result)object).strikes && this.B == ((Result)object).B;
     }
+
+    public int getStrikes() {
+        return strikes;
+    }
+
+    public int getB() {
+        return B;
+    }
 }

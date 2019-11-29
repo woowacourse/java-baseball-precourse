@@ -47,6 +47,19 @@ public class NumberReferee implements Referee {
 
     @Override
     public void announce(Result result) {
+        String sentence = "";
+        if (result.getStrikes() != 0) {
+            sentence += String.format("%d 스트라이크 ", result.getStrikes());
+        }
 
+        if (result.getB() != 0) {
+            sentence += String.format("%d볼", result.getB());
+        }
+
+        System.out.println(sentence.trim());
+
+        if (result.getStrikes() == 3 && result.getB() == 0) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 }
