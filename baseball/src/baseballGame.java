@@ -30,7 +30,8 @@ public class baseballGame {
             num[1] = (UserNumber%100)/10;
             num[2] = UserNumber%10;
 
-            finish = printResult(isStrike(answerNum, num), isBall(answerNum, num));
+            finish = printResult(isStrike(answerNum, num),
+                    isBall(answerNum, num));
 
             if(finish) {
                 if (scanner.nextInt() == 1)
@@ -44,7 +45,8 @@ public class baseballGame {
     /*
     정답 숫자들을 랜덤으로 생성하여 int형 배열로 반환하여 주는 메소드이다.
      */
-    static private int[] initBaseballNumber(int answerNumA, int answerNumB, int answerNumC) {
+    static private int[] initBaseballNumber(int answerNumA,
+                                            int answerNumB, int answerNumC) {
         Random random = new Random();
         answerNumA = random.nextInt(9)+1;
         answerNumB = random.nextInt(9)+1;
@@ -60,7 +62,8 @@ public class baseballGame {
      */
     static private boolean isOverlap(int[] answerNum) {
         for(int i=0; i<3; i++) {
-            if ((answerNum[i] == answerNum[(i+1)%3]) || (answerNum[i] == answerNum[(i+2)%3])) {
+            if ((answerNum[i] == answerNum[(i+1)%3])
+                    || (answerNum[i] == answerNum[(i+2)%3])) {
                 return true;
             }
         }
