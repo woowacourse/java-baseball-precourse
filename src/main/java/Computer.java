@@ -17,4 +17,14 @@ public class Computer {
                 .mapToInt(i -> i)
                 .toArray();
     }
+
+    private static int strikeCount(int[] user, int[] computer) {
+        int count = 0;
+        for (int i = 0; i < NUMBER_COUNT; i++) {
+            if (user[i] == computer[i]) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
