@@ -5,12 +5,14 @@ public class User {
     Scanner s = new Scanner(System.in);
     private int userInput;
 
+    // 숫자 입력받기
     public void inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
 
         try {
             userInput = s.nextInt();
         } catch (InputMismatchException e) {
+            // 숫자 이외를 입력했을 때
             System.out.println("제대로 된 3자리 수를 입력해주세요!");
         }
 

@@ -5,12 +5,14 @@ public class Computer {
     private int strike;
     private int ball;
 
+    // 생성자, 초기화
     public Computer() {
         answer = new int[3];
         strike = 0;
         ball = 0;
     }
 
+    // 난수 생성
     public void getRandom() {
         Random r = new Random();
         
@@ -23,6 +25,7 @@ public class Computer {
         }
     }
 
+    // 난수 중복 검사
     public boolean checkRandom(int n, int length) {
         for(int i = 0; i < length; i++) {
             if(answer[i] == n){
@@ -32,6 +35,7 @@ public class Computer {
         return true;
     }
 
+    // userInput 분할 및 계산, 결과 출력
     public void checkAnswer(int input) {
         strike = 0;
         ball = 0;
@@ -49,6 +53,7 @@ public class Computer {
         showResult();
     }
 
+    // 스트라이크, 볼 계산
     public void compare(int answer, int[] user, int idx) {
         for(int i = 0; i < 3; i++) {
             if(answer == user[i]) {
@@ -62,6 +67,7 @@ public class Computer {
         }
     }
 
+    // 결과 출력
     public void showResult() {
         if(strike != 0) {
             System.out.print(strike + " 스트라이크 ");
