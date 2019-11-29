@@ -152,9 +152,21 @@ public class Baseball implements Gamable {
 
     }
 
+    /*
+     * 성공 시 게임 재시작 여부를 묻는 메서드
+     */
     @Override
     public int wantRestart() {
-        return 0;
+
+        int answer = 0;
+
+        while(true){
+            showRestartMsg();
+            if(answer == 1 || answer == 2){
+                break;
+            }
+        }
+        return answer;
     }
 
     @Override
