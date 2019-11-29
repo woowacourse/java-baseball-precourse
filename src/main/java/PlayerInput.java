@@ -15,21 +15,29 @@ public class PlayerInput {
 
     public static int inputNumber() {
         Printer.printInputNumber();
-        String input = scan.nextLine().trim();
-        if(!Validator.isValidNumbers(input)) {
-            Printer.printError();
+        String input = input();
+        try {
+            Validator.isValidNumbers(input);
+            return Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            Printer.printError(e);
             return inputNumber();
         }
-        return Integer.parseInt(input);
     }
 
     public static int inputMenuId() {
         Printer.printMenu();
-        String input = scan.nextLine().trim();
-        if(!Validator.isValidMenuId(input)) {
-            Printer.printError();
+        String input = input();
+        try {
+            Validator.isValidMenuId(input);
+            return Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            Printer.printError(e);
             return inputMenuId();
         }
-        return Integer.parseInt(input);
+    }
+
+    private static String input() {
+        return scan.nextLine().trim();
     }
 }

@@ -32,7 +32,7 @@ public class Printer {
             builder.append(aNumberBaseBallGame.getBall()+"볼");
         }
         if (builder.length() == COMPARE_VALUE) {
-           builder.append("낫싱") ;
+            builder.append("낫싱") ;
         }
 
         System.out.println(builder.toString());
@@ -42,7 +42,7 @@ public class Printer {
         System.out.println("게임을 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static void printError() {
-        System.out.println("입력이 올바르지 않습니다. 다시 입력해주세요.");
+    public static void printError(IllegalArgumentException e) {
+        System.out.println(e.getMessage());
     }
 }
