@@ -57,7 +57,7 @@ public class Opponent {
 
     public boolean isDuplicate() {
         boolean result = false;
-        int count = 0;
+        int count = ZERO;
 
         for (int i = 0; i < MAX_MASK; i++) {
             if (digitMasks[i]) {
