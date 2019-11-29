@@ -17,10 +17,18 @@ public class NumberBaseballGame {
     }
 
     public static void Game() {
+        strike = 0;
+        ball = 0;
         Scanner sc = new Scanner(System.in);
 
         /* 랜덤으로 정답이 되는 세 숫자 배정 */
         int answer[] = setAnswer();
+
+        while (strike != 3) {
+            System.out.print("숫자를 입력해주세요 : ");
+            int userInput = sc.nextInt();
+            compare(answer, userInput);
+        }
     }
 
     public static int[] setAnswer() {
