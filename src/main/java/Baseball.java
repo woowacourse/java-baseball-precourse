@@ -8,7 +8,6 @@
 
 
 import java.util.Arrays;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
@@ -33,7 +32,7 @@ public class Baseball {
         }
 
     }
-
+    // 숫자를 입력받는다. 추후에 View로 분리
     public int[] inputNumber() {
         int[] userInput;
         Scanner sc = new Scanner(System.in);
@@ -48,6 +47,7 @@ public class Baseball {
         return userInput;
     }
 
+    // 숫자를 배열로 바꾸고 검증한다.
     public int[] inputAnswer(int number) {
         int[] digits = toArray(number);
         if (!verify(digits)) return null;               // 먼저 중복 검사를 한다.
@@ -68,6 +68,7 @@ public class Baseball {
         return true;
     }
 
+    //n자리 int를 array로 바꾼다.
     public int[] toArray(int number) {
         // int의 각 자릿수를 나누어 배열에 저장하는 코드
         int[] digits = Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
