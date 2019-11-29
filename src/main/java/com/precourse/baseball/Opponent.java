@@ -13,7 +13,7 @@ package com.precourse.baseball;
  * 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 1.3        랜덤으로 서로 다른 세자리의 수를 만드는 기능 구현
+ * @version 1.4            힌트 기능 구현
  * @date 2019-11-28
  */
 public class Opponent {
@@ -21,7 +21,6 @@ public class Opponent {
     private final String STRIKE = "스트라이크";
     private final String NOTHING = "낫싱";
     private final String SPACE = " ";
-    private final String NEW_LINE = "\n";
 
     private final int ZERO = 0;
     private final int TEN = 10;
