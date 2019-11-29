@@ -108,11 +108,11 @@ public class BaseballGame {
         while (true) {
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
             input = sc.next();
-            if (input.equals(STOP) || input.equals(CONTINUE)) {
-                break;
-            } else {
+            if (!input.equals(STOP) && !input.equals(CONTINUE)) {
                 System.out.println("입력이 잘못 되었습니다. 다시 입력해주세요");
+                continue;
             }
+            break;
         }
         return input.equals(STOP);
     }
