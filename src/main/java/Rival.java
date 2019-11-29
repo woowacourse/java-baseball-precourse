@@ -3,12 +3,13 @@ import java.util.HashSet;
 public class Rival {
     private static final int RANGE_MIN = 1;
     private static final int RANGE_MAX = 9;
-    private static final int HOLD_COUNT = 3;
+    private int holdCount;
     private HashSet<Integer> numbers;
     private RandomNumberGenerator generator;
 
-    public Rival() {
-        this.numbers = new HashSet<>(HOLD_COUNT);
+    public Rival(int holdCount) {
+        this.holdCount = holdCount;
+        this.numbers = new HashSet<>(holdCount);
         this.generator = new RandomNumberGenerator(RANGE_MIN, RANGE_MAX);
         resetNumbers();
     }
@@ -20,7 +21,7 @@ public class Rival {
     public void resetNumbers() {
         numbers.clear();
 
-        while (numbers.size() < HOLD_COUNT) {
+        while (numbers.size() < holdCount) {
             int randomNumber = generator.execute();
             numbers.add(randomNumber);
         }

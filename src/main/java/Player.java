@@ -3,12 +3,13 @@ import java.util.Scanner;
 public class Player {
     private static final int RANGE_MIN = 123;
     private static final int RANGE_MAX = 987;
-    private static final int HOLD_COUNT = 3;
+    private int holdCount;
     private Scanner scanner;
     private Integer[] numbers;
 
-    public Player() {
-        this.numbers = new Integer[HOLD_COUNT];
+    public Player(int holdCount) {
+        this.holdCount = holdCount;
+        this.numbers = new Integer[holdCount];
         this.scanner = new Scanner(System.in);
     }
 
@@ -49,7 +50,7 @@ public class Player {
     }
 
     private boolean hasDuplicate(String input) {
-        for (int i = 0; i < HOLD_COUNT; i++) {
+        for (int i = 0; i < holdCount; i++) {
             if (input.indexOf(input.charAt(i)) != i) {
                 return true;
             }
