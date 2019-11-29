@@ -8,15 +8,13 @@ public class Pitcher {
         pitching = new int[PITCHING_COUNT];
 
         for(int i=0;i<PITCHING_COUNT;i++){
-            pitching[i] = (int)(Math.random()*10 -1);
+            pitching[i] = 0;
         }
     }
-    public void setPitching(int a){
-        if(a<100 || a>=1000)    return;
-        for(int i=0;i<PITCHING_COUNT;i++){
-            int tmp = a%10;
-            pitching[i] = tmp;
-            a/=10;
+    public Pitcher(int n){
+        for(int i=PITCHING_COUNT-1;i>=0;i++){
+            pitching[i] = n%10;
+            n/=10;
         }
     }
     public void printPitching(){

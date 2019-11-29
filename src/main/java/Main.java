@@ -5,13 +5,14 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
-        Batter a = new Batter();
-        Pitcher b = new Pitcher();
+        Batter computer = new Batter();
+        Pitcher user;
         Scanner s = new Scanner(System.in);
         int n = s.nextInt();
+        user = new Pitcher(n);
 
-        b.setPitching(n);
-        b.printPitching();
-        a.printBatting();
+        computer.printBatting();
+        user.printPitching();
+
     }
 }
