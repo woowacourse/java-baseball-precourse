@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.2.1   2019-11-29
+ * Player.java                     2.3.1   2019-11-29
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -14,10 +14,11 @@ import java.io.InputStreamReader;
 /**
  * 플레이어 클래스입니다.
  * 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 랜덤하게 만들고
+ * 상대 플레이어의 수를 예측할 수 있습니다.
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.2.1        입력 에러 메시지 출력 기능 추가
+ * @version 2.3.1        자릿수 체크하는 기능 추가
  * @date 2019-11-29
  */
 public class Player {
@@ -44,9 +45,10 @@ public class Player {
 
         System.out.print("숫자를 입력해주세요: ");
         char[] input = br.readLine().toCharArray();
-        if (input.length > MAX_DIGIT) {
+        if (!isRightDigit(input)) {
             printWrongInputMessage();
             readNumbers();
+            return;
         }
 
         for (int i = 0; i < MAX_DIGIT; i++) {
@@ -56,11 +58,22 @@ public class Player {
         if (!isValidNumbers() || isDuplicate()) {
             printWrongInputMessage();
             readNumbers();
+            return;
         }
     }
 
-    public static void printWrongInputMessage() {
-        System.out.println("ERROR! 1부터 9까지의 서로 다른 수로 이루어진 3자리의 수를 입력해주세요.");
+    public boolean isRightDigit(char[] input) {
+        boolean result = false;
+
+        if (input.length == MAX_DIGIT) {
+            result = true;
+        }
+
+        return result;
+    }
+
+    public void printWrongInputMessage() {
+        System.out.println("ERROR! 1부터 9까지의 서로 다른 수로 이루어진 " + MAX_DIGIT + "자리의 수를 입력해주세요.");
     }
 
     public String giveHintAboutNumbers(int[] numbers) {
