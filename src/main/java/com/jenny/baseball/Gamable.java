@@ -36,7 +36,10 @@ public interface Gamable {
     // 5. 스트라이크,볼,낫씽 여부 판단
     boolean judgeNumber(int[] userNum, int[] answer);
 
-    // 6. 라이프사이클
+    // 6. 재실행 여부 입력받기
+    int wantRestart();
+
+    // 7. 라이프사이클
     void run();
 
 }
