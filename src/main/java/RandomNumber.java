@@ -4,16 +4,17 @@ import java.util.List;
 
 public class RandomNumber {
 
-    public static int[] create(int digit, int minValue, int maxValue) {
+    public static int[] create() {
         List<Integer> availableNumberList = new ArrayList<>();
-        for (int i=minValue; i<=maxValue; i++) {
+        int[] randomNumbers = new int[NumberBaseBallGame.DIGIT];
+
+        for (int i = NumberBaseBallGame.MIN_VALUE; i <= NumberBaseBallGame.MAX_VALUE; i++) {
             availableNumberList.add(i);
         }
 
         Collections.shuffle(availableNumberList);
 
-        int[] randomNumbers = new int[digit];
-        for (int i=0; i<digit; i++) {
+        for (int i = 0; i < NumberBaseBallGame.DIGIT; i++) {
             randomNumbers[i] = availableNumberList.get(i);
         }
 

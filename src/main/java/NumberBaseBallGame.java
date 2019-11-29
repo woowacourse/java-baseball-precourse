@@ -12,9 +12,10 @@ import java.util.Arrays;
 
 public class NumberBaseBallGame {
     public static final int DIGIT = 3;
-    private static final int ZERO = 0;
-    private static final int MIN_VALUE = 1;
-    private static final int MAX_VALUE = 9;
+    public static final int MIN_VALUE = 1;
+    public static final int MAX_VALUE = 9;
+    private static final int COMPARE_VALUE = 0;
+    private static final int RESET_VALUE = 0;
     private static final int DIVISION_VALUE = 10;
     private static final int ANSWER_STRIKE = 3;
     private int[] randomNumbers;
@@ -23,27 +24,27 @@ public class NumberBaseBallGame {
     private int ball = 0;
 
     public NumberBaseBallGame() {
-        randomNumbers = RandomNumber.create(DIGIT, MIN_VALUE, MAX_VALUE);
+        randomNumbers = RandomNumber.create();
     }
 
     public void calculateResult() {
+        int[] clonedRandomNumbers = randomNumbers.clone();
+
+        Arrays.sort(clonedRandomNumbers);
+
         initStrikeAndBall();
-
-        int[] cloneRandomNumbers = randomNumbers.clone();
-        Arrays.sort(cloneRandomNumbers);
-
-        for (int i=0; i<DIGIT; i++) {
-            if (randomNumbers[i] == playerNumbers[i]){
+        for (int i = 0; i < DIGIT; i++) {
+            if (randomNumbers[i] == playerNumbers[i]) {
                 strike++;
-            } else if (Arrays.binarySearch(cloneRandomNumbers, playerNumbers[i]) >= ZERO) {
+            } else if (Arrays.binarySearch(clonedRandomNumbers, playerNumbers[i]) >= COMPARE_VALUE) {
                 ball++;
             }
         }
     }
 
     public void initStrikeAndBall() {
-        strike = ZERO;
-        ball = ZERO;
+        strike = RESET_VALUE;
+        ball = RESET_VALUE;
     }
 
     public boolean isAnswer() {
@@ -59,7 +60,7 @@ public class NumberBaseBallGame {
     }
 
     public void setPlayerNumber(int playerNumber) {
-        for (int i=DIGIT-1; i>=0; i--) {
+        for (int i = DIGIT - 1; i >= 0; i--) {
             playerNumbers[i] = playerNumber % DIVISION_VALUE;
             playerNumber /= DIVISION_VALUE;
         }

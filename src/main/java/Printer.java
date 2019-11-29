@@ -26,10 +26,10 @@ public class Printer {
 
         StringBuilder builder = new StringBuilder();
         if (aNumberBaseBallGame.getStrike() > COMPARE_VALUE) {
-            builder.append(aNumberBaseBallGame.getStrike()+" 스트라이크 ");
+            builder.append(aNumberBaseBallGame.getStrike() + " 스트라이크 ");
         }
         if (aNumberBaseBallGame.getBall() > COMPARE_VALUE) {
-            builder.append(aNumberBaseBallGame.getBall()+"볼");
+            builder.append(aNumberBaseBallGame.getBall() + "볼");
         }
         if (builder.length() == COMPARE_VALUE) {
             builder.append("낫싱") ;

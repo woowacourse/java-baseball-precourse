@@ -12,7 +12,6 @@ public class NumberBaseBallGameDriver {
     private static final int CONTINUE_VALUE = 1;
 
     public static void main(String[] args) {
-
         while (true) {
             NumberBaseBallGame aNumberBaseBallGame = new NumberBaseBallGame();
 

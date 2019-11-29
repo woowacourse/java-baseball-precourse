@@ -26,12 +26,6 @@ public class Validator {
         isOneOrTwo(menuId);
     }
 
-    private static void isDigit(String number) {
-        if (number.length() != NumberBaseBallGame.DIGIT) {
-            throw new IllegalArgumentException("3자리를 입력해주세요.");
-        }
-    }
-
     private static void isInteger(String input) {
         try {
             Integer.valueOf(input);
@@ -40,10 +34,16 @@ public class Validator {
         }
     }
 
+    private static void isDigit(String number) {
+        if (number.length() != NumberBaseBallGame.DIGIT) {
+            throw new IllegalArgumentException("3자리를 입력해주세요.");
+        }
+    }
+
     private static void isNotOverlap(String numbers) {
         Set<Character> overlapCheckSet = new HashSet<>();
-        for (int i=0; i<numbers.length(); i++) {
-            if (overlapCheckSet.add(numbers.charAt(i)) == false) {
+        for (int i = 0; i < numbers.length(); i++) {
+            if (!overlapCheckSet.add(numbers.charAt(i))) {
                 throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
             }
         }
