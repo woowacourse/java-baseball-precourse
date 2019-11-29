@@ -18,7 +18,6 @@ public class gameMc {
 
     /**사용자가 입력한 숫자를 담는 변수*/
     private ArrayList userNum;
-    private Scanner inputNum;
 
     /**숫자를 몇번 입력했는지 확인*/
     private int round=1;
@@ -43,7 +42,7 @@ public class gameMc {
         Random rand = new Random();
         while (comNum.size()<3) {                                 //3자리의 난수;
             randomNum = rand.nextInt(9);
-            if (randomNum != 0 & !comNum.contains(randomNum)) {               //난수가 0 혹은 중복 되는 값이 없도록;
+            if (randomNum != 0 & !comNum.contains(randomNum)) {               //난수가 0이 아니면서 중복 되는 값이 없도록;
                 comNum.add(randomNum);
             }
         }
@@ -55,25 +54,31 @@ public class gameMc {
 
     /**
      * round 출력과 함께 숫자를 입력하는 함수;
-     * 숫자가 아닌 데이터가 들어오면 재입력 요청;
+     * 숫자가 아닌 데이터 혹은 3자리수가 아닌 것이 입력되면 재입력 요청;
      */
     public void setUserNum(){
         String temp;                                                 //입력한 숫자를 임시로 저장할 변수;
-        String[] arrayTemp;
+        String[] arrayTemp;                                          //입력한 숫자를 임시로 저장할 변수;
+        Scanner inputNum;
+
         System.out.println("-------"+round+"round--------");
-        System.out.println("서로다른 3자리 숫자를 입력해주세요 : ");
+        System.out.println("서로 다른 3개 숫자를 입력해주세요 : ");
+        userNum = new ArrayList();
+        inputNum = new Scanner(System.in);                        //숫자 입력;
+        temp = inputNum.next();
+
         try{
-            userNum = new ArrayList();
-            inputNum = new Scanner(System.in);                          //숫자 입력;
-            temp = inputNum.next();
-            arrayTemp = temp.split("");                          //입력한 3자리 숫자를 분할하여 int 타입으로 배열에 저장;
+            if(temp.length()>3 || temp.contains("0")){
+                throw new Exception();                                //3자리수 초과, 0 포함 예외처리;
+            }
+            arrayTemp = temp.split("");                         //입력한 3자리 숫자를 분할하여 int 타입으로 배열에 저장;
             for(int i=0;i<3;i++){
                 userNum.add(Integer.valueOf(arrayTemp[i]));
             }
             round+=1;
-        } catch(Exception e){                                            //입력한 값이 숫자가 아닐경우 재입력 요청;
-            System.out.println("3자리 숫자만 입력 해주세요");
-            setUserNum();
+        } catch(Exception e){
+            System.out.println("1~9 숫자 3개만 입력 해주세요");
+            setUserNum();                                              //예외발생시 재입력 요청;
         }
 
     }
