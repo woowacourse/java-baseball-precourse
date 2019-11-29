@@ -15,9 +15,19 @@ public class Test {
         }System.out.println();
     }
 
+    public static void getNumberTest(){
+        Gamable test = new Baseball();
+        int[] num = test.getNumber();
+
+        for(int i = 0 ; i < 3 ; i++){
+            System.out.print(num[i]);
+        }System.out.println();
+    }
+
     public static void main(String[] args) {
 
         createNumberTest();
+        getNumberTest();
 
     }
 }

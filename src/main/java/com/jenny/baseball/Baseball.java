@@ -62,23 +62,47 @@ public class Baseball implements Gamable {
     @Override
     public int[] getNumber() {
         int number = 0;
+        int[] userNum = new int[3];
 
         do{
             number = sc.nextInt();
+            userNum[0] = number/100;
+            userNum[1] = (number%100)/10;
+            userNum[2] = number%10;
 
-        }while(!isValidNumber(number));
-
-        int[] userNum = new int[3];
-        userNum[0] = number/100;
-        userNum[1] = (number%100)/10;
-        userNum[2] = number%10;
+        }while(!isValidNumber(userNum));
 
         return userNum;
     }
 
+    /*
+     * 사용자로부터 입력받은 숫자가 유효한지 여부를 반환하는 메서드
+     * 세자리 숫자로만 이루어져야 하며 중복된 숫자는 없어야 한다
+     */
     @Override
-    public boolean isValidNumber(int number) {
-        return false;
+    public boolean isValidNumber(int[] userNum) {
+
+        for(int i = 0 ; i < 3 ; i++ ){
+            // 각 자릿수는 1~9 사이 값이어야 하고, 중복되어 사용된 숫자가 없어야 한다
+            if(userNum[i] >= 10 || userNum[i] <= 0 || !isOverUse(userNum, i)){
+                System.out.println("1~9 사이의 숫자를 중복없이 사용하여 세자릿수를 입력해주세요.");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /*
+     * 중복되어 사용된 숫자가 있는지 검사하는 메서드
+     */
+    public boolean isOverUse(int[] userNum, int i){
+        for(int prev = 0 ; prev < i ; prev++){
+            if(userNum[i] == userNum[prev]){
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override

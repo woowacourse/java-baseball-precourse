@@ -31,7 +31,7 @@ public interface Gamable {
     int[] getNumber();
 
     // 4. 입력받은 숫자의 유효성 검사
-    boolean isValidNumber(int number);
+    boolean isValidNumber(int[] number);
 
     // 5. 스트라이크,볼,낫씽 여부 판단
     boolean judgeNumber(int[] userNum, int[] answer);
