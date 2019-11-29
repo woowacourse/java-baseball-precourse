@@ -1,3 +1,7 @@
+package baseballgame.system;
+
+import baseballgame.io.OutputBaseballGame;
+
 import java.util.HashSet;
 
 public class BaseballGameSystem {
@@ -6,7 +10,7 @@ public class BaseballGameSystem {
     private HashSet<Integer> answerNumberSet = new HashSet<>();
     private int[] userNumberArr;
 
-    BaseballGameSystem() {
+    public BaseballGameSystem() {
         while (answerNumberSet.size() < DIGIT) {
             answerNumberSet.add(generateRandomNumber());
         }

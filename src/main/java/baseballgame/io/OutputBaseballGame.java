@@ -1,3 +1,5 @@
+package baseballgame.io;
+
 public class OutputBaseballGame {
     public static void printPitchResult(int stCnt, int bCnt) {
         if (stCnt == 0 && bCnt == 0) {

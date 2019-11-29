@@ -1,3 +1,5 @@
+package baseballgame.io;
+
 import java.util.Scanner;
 
 public class InputBaseballGame {

@@ -1,3 +1,9 @@
+package baseballgame;
+
+import baseballgame.io.InputBaseballGame;
+import baseballgame.io.OutputBaseballGame;
+import baseballgame.system.BaseballGameSystem;
+
 public class BaseballGameApplication {
     public static void main(String[] args) {
         int nextStep;
