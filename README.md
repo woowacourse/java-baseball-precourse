@@ -25,15 +25,17 @@
  
  <br>  
     
-#### 5. 스트라이크/볼/낫싱 출력해주는 함수
+#### 4. 스트라이크/볼/낫싱 출력해주는 함수
 
 	void printResult(int answer, int userInput);
+	boolean Nothing = false;
     int strikeCount = 0;
     int ballCount = 0;
-    boolean isNothing = false;
-   - 스트라이크 체크해주는 함수 `int checkStrike(int answer, int userInput);`
-   - 볼 체크해주는 함수 `int checkBall(int answer, int userInput);`
-   - 낫싱 체크해주는 함수 `bool checkNothing(int answer, int userInput);`
+    
+   - 낫싱 체크해주는 함수 `boolean checkNothingExist(int answer, int userInput);` 
+   - 스트라이크 카운트해주는 함수 `int countStrike(int answer, int userInput);`
+   - 볼 카운트해주는 함수 `int countBall(int answer, int userInput, int strikeCount);`
+   
 
 <br>
    
