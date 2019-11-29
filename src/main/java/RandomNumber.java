@@ -1,5 +1,5 @@
 /**
- * 클래스 이름       RandomNumber
+ * 클래스 이름      RandomNumber
  * 버전 정보        1.0
  * 날짜            2019.11.28
  * 저작권          YebinK
@@ -14,6 +14,7 @@ public class RandomNumber {
 
     /* 1부터 9까지 서로 다른 3자리 수 뽑기 */
     public void setNumber() {
+
         Random r = new Random();
 
         while (numberIndex < 3) {
@@ -23,6 +24,8 @@ public class RandomNumber {
                 numberIndex++;
             }
         }
+
+        System.out.print("answer is " + number[0]+number[1]+number[2] +'\n');
     }
 
     /* 새로 뽑은 수가 이전 수들과 중복되는지 확인 */
