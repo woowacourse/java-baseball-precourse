@@ -55,6 +55,9 @@ public class baseballGame {
         return answerNum;
     }
 
+    /*
+    생성된 정답 숫자열이 서로 중복되는지 확인해서 중복되었는지 확인하는 메소드이다.
+     */
     static private boolean isOverlap(int[] answerNum) {
         for(int i=0; i<3; i++) {
             if ((answerNum[i] == answerNum[(i+1)%3]) || (answerNum[i] == answerNum[(i+2)%3])) {
@@ -104,6 +107,10 @@ public class baseballGame {
         return (answerNum == num);
     }
 
+    /*
+    STRIKE 횟수와 BALL 횟수를 넣으면 추측에 대한 결과 프린트해주는 메소드이다.
+    메인 메소드에서는 이 메소드를 while 문으로 반복하여 돌려준다. 정답을 맞출때까지!(메소드가 TRUE를 반환할 때까지!)
+     */
     static private boolean printResult(int strikeNumber, int ballNumber) {
         boolean finish = false;
         if (strikeNumber == 3) {
