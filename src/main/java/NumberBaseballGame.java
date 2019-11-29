@@ -65,4 +65,31 @@ public class NumberBaseballGame {
         }
     }
 
+    public static void compare(int[] answer, int userInput) {
+        strike = 0;
+        ball = 0;
+
+        int[] userInputArray = numberIntoArray(userInput);
+
+        for (int i=0; i<3; i++) {
+            for (int j=0; j<3; j++) {
+                count(i, j, answer, userInputArray);
+            }
+        }
+
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        }
+        else if (strike == 0) {
+            System.out.println(ball + "볼");
+        }
+        else if (ball == 0) {
+            System.out.println(strike + " 스트라이크");
+        }
+        else {
+            System.out.println(strike + " 스트라이크 " + ball + "볼");
+        }
+
+    }
+
 }
