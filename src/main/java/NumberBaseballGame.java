@@ -9,6 +9,9 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class NumberBaseballGame {
+    static int strike;
+    static int ball;
+
     public static void main(String[] args) {
         Game();
     }
@@ -49,6 +52,17 @@ public class NumberBaseballGame {
         userInput /= 10;
         userInputArray[0] = userInput % 10;
         return userInputArray;
+    }
+
+    public static void count(int answerIndex, int inputIndex, int[] answer, int[] userInputArray) {
+        if (answer[answerIndex] == userInputArray[inputIndex]) {
+            if (answerIndex == inputIndex) {
+                strike++;
+            }
+            else {
+                ball++;
+            }
+        }
     }
 
 }
