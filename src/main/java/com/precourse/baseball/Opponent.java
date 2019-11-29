@@ -17,16 +17,49 @@ package com.precourse.baseball;
  * @date 2019-11-28
  */
 public class Opponent {
+    private final String BALL = "볼";
+    private final String STRIKE = "스트라이크";
+    private final String NOTHING = "낫싱";
+    private final String SPACE = " ";
+    private final String NEW_LINE = "\n";
+
     private final int ZERO = 0;
     private final int TEN = 10;
     private final int MAX_MASK = 10;    // 마스크 크기 0 ~ 9
     private final int MAX_DIGIT = 3;    // 최대 자릿수
+
     private boolean[] digitMasks;       // 수 마스킹용 array
     private int[] digitNumbers;         // 생각한 수 array
 
     public Opponent() {
         this.digitMasks = new boolean[MAX_MASK];
         this.digitNumbers = new int[MAX_DIGIT];
+    }
+
+    public String getHint(int[] digitNumbers) {
+        StringBuilder hint = new StringBuilder();
+        int strikeCount = ZERO;
+        int ballCount = ZERO;
+
+        for (int i = 0; i < MAX_DIGIT; i++) {
+            if (this.digitNumbers[i] == digitNumbers[i]) {
+                strikeCount++;
+            } else if ((this.digitNumbers[i] != digitNumbers[i]) && this.digitMasks[digitNumbers[i]]) {
+                ballCount++;
+            }
+        }
+
+        if (strikeCount + ballCount == ZERO) {
+            hint.append(NOTHING);
+        } else if (strikeCount == ZERO) {
+            hint.append(ballCount).append(BALL);
+        } else if (ballCount == ZERO) {
+            hint.append(strikeCount).append(SPACE).append(STRIKE);
+        } else {
+            hint.append(strikeCount).append(SPACE).append(STRIKE).append(SPACE).append(ballCount).append(BALL);
+        }
+
+        return hint.toString();
     }
 
     public void setRandomNumbers() {
