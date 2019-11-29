@@ -1,7 +1,5 @@
 package baseballgame;
 
-import baseballgame.io.InputBaseballGame;
-import baseballgame.io.OutputBaseballGame;
 import baseballgame.system.BaseballGameSystem;
 
 public class BaseballGameApplication {
