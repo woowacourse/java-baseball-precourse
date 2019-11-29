@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Baseball {
@@ -6,16 +7,43 @@ public class Baseball {
     static final int ARR_MAX_NUM = 3;
 
     public static void main(String args[]) {
-        playGame();
+        boolean quitCode = true; //종료할지 게임을 다시 시작할지 boolean
+
+        /*
+        게임 종료 선택 시 quitCode = false가 되어 게임이 종료되고 아니라면 playGame() 호출하여 다시 시작
+         */
+        while( quitCode ) {
+            playGame();
+            quitCode = quit();
+        }
+        System.out.println("게임을 종료합니다.");
     }
 
     public static void playGame() {
         int[] comNum = new int[ARR_MAX_NUM];
         int[] userNum = new int[ARR_MAX_NUM];
-        boolean check; //중복 여부 확인하는 boolean
-        boolean strikeNumCheck; //strike 3가 나왔는지 여부 boolean
-        boolean quitCode; //종료할지 게임을 다시 시작할지 boolean
         Scanner sc = new Scanner(System.in);
+
+        comNum = makeRandomNumber(comNum);
+        
+        while ( true ) {
+            System.out.print("숫자를 입력해 주세요 : ");
+            for(int i = 0; i< ARR_MAX_NUM; i++) {
+                userNum[i] = sc.nextInt();
+            }
+            compare(comNum, userNum); //컴퓨터와 사용자의 숫자 배열 비교
+            hint(strike, ball);
+
+            if( strike == ARR_MAX_NUM ) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다.! 게임 종료");
+                break;
+            }
+        }
+    }
+
+    /** 컴퓨터의 수 3개 랜덤으로 생성 */
+    public static int[] makeRandomNumber(int[] comNum) {
+        boolean check; //중복 여부 확인하는 boolean
 
         for(int i = 0; i < ARR_MAX_NUM; i++) {
             comNum[i] = (int) (Math.random() * 9) + 1; //1~10까지 난수 생성
@@ -24,28 +52,7 @@ public class Baseball {
                 i -= 1;
             }
         }
-
-        while ( true ) {
-            for(int i = 0; i< ARR_MAX_NUM; i++) {
-                userNum[i] = sc.nextInt();
-            }
-            strikeNumCheck = compare(comNum, userNum); //컴퓨터와 사용자의 숫자 배열 비교
-
-            if( strikeNumCheck ) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다.! 게임 종료");
-                quitCode = quit();
-                break;
-            }
-        }
-
-        /*
-        게임 종료 선택 시 quitCode = false가 되어 게임이 종료되고 아니라면 playGame() 호출하여 다시 시작
-         */
-        if( !quitCode ) {
-            System.out.println("게임을 종료합니다.");
-        } else {
-            playGame();
-        }
+        return comNum;
     }
 
     /** 난수의 중복 여부를 검사하는 메서드 */
@@ -59,16 +66,20 @@ public class Baseball {
     }
 
     /** 숫자 비교 후 사용자에게 힌트를 주는 코드 */
-    public static boolean compare(int[] comNum, int[] userNum) {
+    public static void compare(int[] comNum, int[] userNum) {
         strike = 0;
         ball = 0;
+        int[] result = new int[2];
 
         for(int i = 0; i< ARR_MAX_NUM; i++) {
             for(int j = 0; j< ARR_MAX_NUM; j++) {
                 compare2(comNum[i], userNum[j], i, j);
             }
         }
+    }
 
+    /** 유저에게 hint를 출력 */
+    public static void hint(int strike, int ball) {
         if(strike != 0 && ball != 0) {
             System.out.println(strike+" 스트라이크 "+ball+" 볼");
         } else if(strike == 0 && ball != 0) {
@@ -77,12 +88,6 @@ public class Baseball {
             System.out.println(strike+ " 스트라이크");
         } else {
             System.out.println("낫싱");
-        }
-
-        if(strike == ARR_MAX_NUM) {
-            return true;
-        } else {
-            return false;
         }
     }
 
