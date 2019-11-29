@@ -5,9 +5,9 @@
  *  플레이어가 입력한 숫자의 힌트를 제공한다
  *  정답일 때 다시 시작할 지, 종료할지 묻는다
  *
- *  @Version: 0.1
+ *  @Version: 0.2
  *
- *  @Date: 2019.11.27
+ *  @Date: 2019.11.29
  *
  *  @Author: pandahun
  */
@@ -19,12 +19,9 @@ public class BaseballGame {
 
     private static final String CONTINUE = "1";
     private static final String STOP = "2";
-
-    private static final int BASEBALL_LENGTH = 3;
-    private static final int RESET_COUNT = 0;
     private static final int ZERO = 0;
 
-    private static int tryCount;
+    public static final int BASEBALL_LENGTH = 3;
 
     private Computer computer;
 
@@ -32,9 +29,7 @@ public class BaseballGame {
 
     public void run() {
         System.out.println("START THE GAME");
-
         while (true) {
-
             initialSetting();
             playGame();
             if (isStop()) {
@@ -45,12 +40,7 @@ public class BaseballGame {
     }
 
     private void initialSetting() {
-        setCount();
         setComputer();
-    }
-
-    private void setCount() {
-        tryCount = RESET_COUNT;
     }
 
     private void setComputer() {
@@ -58,14 +48,10 @@ public class BaseballGame {
     }
 
     private void playGame() {
-        boolean status = false;
         while (true) {
-            tryCount++;
             player.requestNumber();
             if (isAnswer()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다!!");
-                System.out.println("총 " + tryCount + "번 만에 성공했습니다.");
-                System.out.println("게임 종료");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다!! 게임 종료");
                 break;
             }
             makeHint();
@@ -77,7 +63,6 @@ public class BaseballGame {
         if (player.getNumber().equals(computer.getNumber())) {
             status = true;
         }
-
         return status;
     }
 

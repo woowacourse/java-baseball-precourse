@@ -5,7 +5,7 @@
  *
  *  @Version: 0.3
  *
- *  @Date: 2019.11.28
+ *  @Date: 2019.11.29
  *
  *  @Author: pandahun
  */
@@ -13,21 +13,19 @@
 package baseballGame;
 
 import java.util.Random;
+import static baseballGame.BaseballGame.BASEBALL_LENGTH;
 
 public class Computer {
 
     private static final int MAX_NUMBER = 9;
-
     private static final int ONE = 1;
-
-    private static final int BALL_LENGTH = 3;
 
     private String number = "";
 
     public Computer() {
         Random random;
 
-        while (number.length() < BALL_LENGTH) {
+        while (number.length() < BASEBALL_LENGTH) {
             random = new Random();
             int temp = random.nextInt(MAX_NUMBER) + ONE;
 
