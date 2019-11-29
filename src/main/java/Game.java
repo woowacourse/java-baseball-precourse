@@ -47,7 +47,7 @@ public class Game {
     }
 
     public void showInputMessage() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print("Input Number : ");
     }
 
     public int[] getInputsByScanner() {
@@ -97,19 +97,19 @@ public class Game {
         int ball = checkBall();
 
         if (ball + strike == 0){
-            System.out.println("낫싱!");
+            System.out.println("Nothing!");
         } else if (strike == 0) {
-            System.out.println(ball + " 볼");
+            System.out.println(ball + " ball");
         } else if (ball == 0){
-            System.out.println(strike + " 스트라이크");
+            System.out.println(strike + " strike");
         } else {
-            System.out.println(strike + " 스트라이크 " + ball + " 볼");
+            System.out.println(strike + " strike " + ball + " ball");
         }
         return strike == 3;
     }
 
     public void showRestart(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        System.out.println("Restart : 1, Quit : 2");
     }
 
     public boolean inputRestart(){
