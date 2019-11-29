@@ -58,7 +58,8 @@ class Player {
         }
         int count = 0;
         for(int i = MINIMUM_NUMBER; i<=MAXIMUM_NUMBER;i++){
-            count++;
+            if(isIn[i])
+                count++;
         }
         if(count!=BASEBALL_LENGTH){
             status = false;
