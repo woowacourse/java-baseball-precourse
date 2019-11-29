@@ -24,9 +24,9 @@ class Play {
     public int[] guessNum() {
         int getNum;
         int[] guessedNum = new int[3];
-        int check = -1;
+        boolean check = false;
 
-        while (check != 0) {
+        while (!check) {
             System.out.print("숫자를 입력해주세요 : ");
             try {
                 getNum = new Scanner(System.in).nextInt();
@@ -48,18 +48,21 @@ class Play {
     }
 
     // 플레이어가 입력한 숫자가 문제없이 입력이 되었는지 확인하는 메서드
-    public int numCheck(int num, int[] guessedNum) {
-        if (num < 100 || num > 999) {
+    public boolean numCheck(int num, int[] guessedNum) {
+        int minNum = 100;
+        int maxNum = 999;
+
+        if (num < minNum || num > maxNum) {
             System.out.println("숫자의 길이가 3이 아닙니다.");
-            return 1;
+            return false;
         }
 
         if (guessedNum[0] == guessedNum[1] || guessedNum[1] == guessedNum[2] || guessedNum[2] == guessedNum[0]) {
             System.out.println("중복된 숫자를 입력할 수 없습니다.");
-            return 2;
+            return false;
         }
 
-        return 0;
+        return true;
     }
 
     // 추측 숫자 배열을 입력받아서 정답과 비교한 후 Strike, Ball 수를 배열로 반환해주는 메서드

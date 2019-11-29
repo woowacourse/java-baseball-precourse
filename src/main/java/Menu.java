@@ -9,6 +9,8 @@ class Menu {
     }
 
     private char menuUI() {
+        int resultLength = 25;
+
         System.out.println("!! 숫자 야구 게임 !!");
         System.out.println();
         System.out.println("1. 게임 시작");
@@ -21,7 +23,7 @@ class Menu {
             do {
                 result = game.info(game.compare(game.guessNum()));
                 System.out.println(result);
-            } while (result.length() < 25);
+            } while (result.length() < resultLength);
         }
         else if (selected == '2') {
             System.out.println("게임 종료...");
