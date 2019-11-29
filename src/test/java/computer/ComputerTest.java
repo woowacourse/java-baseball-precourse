@@ -25,6 +25,7 @@ class ComputerTest {
     @DisplayName("결과 리스트 가져오기")
     @Test
     void getResults() {
+        //manual 은 1,2,3 을 생성
         Computer computer = Computer.newGame(new ManualBallGenerator());
 
         BaseBalls compares = new BaseBalls(Arrays.asList(1, 3, 4));

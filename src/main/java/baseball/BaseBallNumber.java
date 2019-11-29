@@ -31,5 +31,12 @@ public class BaseBallNumber {
     public int hashCode() {
         return Objects.hash(number);
     }
+
+    @Override
+    public String toString() {
+        return "BaseBallNumber{" +
+                "number=" + number +
+                '}';
+    }
 }
 

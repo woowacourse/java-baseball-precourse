@@ -31,12 +31,9 @@ public class BaseBalls {
     }
 
     public boolean isBall(BaseBall compare) {
-        BaseBallNumber baseBallNumber = compare.getBaseBallNumber();
-
         return baseBalls.stream()
-                .map(BaseBall::getBaseBallNumber)
-                .collect(toList())
-                .contains(baseBallNumber);
+                .filter(baseBall -> baseBall.isNotEqualPosition(compare))
+                .anyMatch(baseBall -> baseBall.isEqualNumber(compare));
     }
 
     public List<BaseBall> getBaseBalls() {
@@ -54,5 +51,12 @@ public class BaseBalls {
     @Override
     public int hashCode() {
         return Objects.hash(baseBalls);
+    }
+
+    @Override
+    public String toString() {
+        return "BaseBalls{" +
+                "baseBalls=" + baseBalls +
+                '}';
     }
 }

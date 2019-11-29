@@ -11,8 +11,12 @@ public class BaseBall {
         this.baseBallNumber = new BaseBallNumber(number);
     }
 
-    public BaseBallNumber getBaseBallNumber() {
-        return baseBallNumber;
+    public boolean isNotEqualPosition(BaseBall compare) {
+        return !baseBallPosition.equals(compare.baseBallPosition);
+    }
+
+    public boolean isEqualNumber(BaseBall compare) {
+        return baseBallNumber.equals(compare.baseBallNumber);
     }
 
     @Override
@@ -27,5 +31,13 @@ public class BaseBall {
     @Override
     public int hashCode() {
         return Objects.hash(baseBallPosition, baseBallNumber);
+    }
+
+    @Override
+    public String toString() {
+        return "BaseBall{" +
+                "baseBallPosition=" + baseBallPosition +
+                ", baseBallNumber=" + baseBallNumber +
+                '}';
     }
 }

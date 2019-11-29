@@ -10,10 +10,9 @@ public abstract class BallGenerator {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 9;
 
+    protected final List<Integer> ballNumbers = getInstance();
 
-    protected static final List<Integer> ballNumbers = getInstance();
-
-    private static List<Integer> getInstance() {
+    private List<Integer> getInstance() {
         return IntStream.rangeClosed(START_NUMBER, END_NUMBER)
                 .boxed()
                 .collect(toList());

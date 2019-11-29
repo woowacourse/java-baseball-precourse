@@ -51,4 +51,11 @@ public class Computer {
     public int hashCode() {
         return Objects.hash(baseBalls);
     }
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "baseBalls=" + baseBalls +
+                '}';
+    }
 }
