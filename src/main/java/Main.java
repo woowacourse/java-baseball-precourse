@@ -8,8 +8,8 @@ public class Main {
     public static void main(final String[] args) {
 
         while (true) {
-            // PlayGame playGame = new PlayGame();
-            // playGame.PlayGame();
+            PlayGame play = new PlayGame();
+            play.playGame();
             if (Terminator.terminator()) {
                 continue;
             } else {
