@@ -24,6 +24,49 @@ public class BaseballGame {
         return randomNum;
     }
 
+    void getScore(String targetNumber, String inputNumber) {
+
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (checkStrike(targetNumber, inputNumber, i)) {
+                strike++;
+            } else if (checkBall(targetNumber, inputNumber, i)) {
+                ball++;
+            }
+        }
+
+        printResult(strike, ball);
+    }
+
+    private boolean checkStrike(String targetNumber, String inputNumber, int i) {
+        return targetNumber.charAt(i) == inputNumber.charAt(i);
+    }
+
+    private boolean checkBall(String targetNumber, String inputNumber, int i) {
+        return targetNumber.contains(String.valueOf(inputNumber.charAt(i)));
+    }
+
+    private void printResult(int strike, int ball) {
+        StringBuilder sb = new StringBuilder();
+
+        if (strike != 0) {
+            sb.append(strike + " 스트라이크 ");
+        }
+
+        if (ball != 0) {
+            sb.append(ball + " 볼");
+        }
+
+        if (strike == 0 && ball == 0) {
+            sb.append("낫싱");
+        }
+
+        System.out.println(sb.toString());
+    }
+
+
     private boolean hasZero(String number) {
         return number.contains("0");
     }
