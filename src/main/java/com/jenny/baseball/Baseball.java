@@ -55,9 +55,25 @@ public class Baseball implements Gamable {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    /*
+     * 사용자로부터 숫자를 입력받는 메서드
+     * 유효한 숫자가 들어올때까지 요구한다
+     */
     @Override
     public int[] getNumber() {
-        return new int[0];
+        int number = 0;
+
+        do{
+            number = sc.nextInt();
+
+        }while(!isValidNumber(number));
+
+        int[] userNum = new int[3];
+        userNum[0] = number/100;
+        userNum[1] = (number%100)/10;
+        userNum[2] = number%10;
+
+        return userNum;
     }
 
     @Override
