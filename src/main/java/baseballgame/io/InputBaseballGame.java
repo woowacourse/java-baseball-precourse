@@ -22,7 +22,7 @@ public class InputBaseballGame {
     }
 
     public static int validateNextStep(int nextStep) {
-        if (nextStep == 1 || nextStep == 2)
+        if (nextStep != 1 && nextStep != 2)
             throw new IllegalStateException("'1', '2'만 입력할 수 있습니다.");
         return nextStep;
     }
