@@ -1,5 +1,5 @@
 /*
- * Opponent.java                     1.0   2019-11-28
+ * Player.java                   1.0.0   2019-11-29
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -8,15 +8,15 @@
 package com.precourse.baseball;
 
 /**
- * 상대방(컴퓨터) 클래스입니다.
+ * 플레이어 클래스입니다.
  * 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 랜덤하게 만들고
- * 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
+ * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 1.4            힌트 기능 구현
- * @date 2019-11-28
+ * @version 2.0.0            class명 변경 Opponent -> Player
+ * @date 2019-11-29
  */
-public class Opponent {
+public class Player {
     private final String BALL = "볼";
     private final String STRIKE = "스트라이크";
     private final String NOTHING = "낫싱";
@@ -30,7 +30,7 @@ public class Opponent {
     private boolean[] digitMasks;       // 수 마스킹용 array
     private int[] digitNumbers;         // 생각한 수 array
 
-    public Opponent() {
+    public Player() {
         this.digitMasks = new boolean[MAX_MASK];
         this.digitNumbers = new int[MAX_DIGIT];
     }
