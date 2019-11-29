@@ -2,7 +2,13 @@ package baseballgame.io;
 
 import java.util.Scanner;
 
+import static baseballgame.system.BaseballGameSystem.CONTINUE;
+import static baseballgame.system.BaseballGameSystem.GAMEOVER;
+
 public class InputBaseballGame {
+    private static final int MIN_NUM = 111;
+    private static final int MAX_NUM = 999;
+
     private static Scanner sc = new Scanner(System.in);
 
     public static int inputUserNumber() {
@@ -16,13 +22,13 @@ public class InputBaseballGame {
     }
 
     public static int validateUserNumber(int userNumber) {
-        if (userNumber < 99 || userNumber > 999)
-            throw new IllegalStateException("세 자리의 정수만 입력할 수 있습니다.");
+        if (userNumber < MIN_NUM || userNumber > MAX_NUM)
+            throw new IllegalStateException("111 ~ 999 정수만 입력할 수 있습니다.");
         return userNumber;
     }
 
     public static int validateNextStep(int nextStep) {
-        if (nextStep != 1 && nextStep != 2)
+        if (nextStep != CONTINUE && nextStep != GAMEOVER)
             throw new IllegalStateException("'1', '2'만 입력할 수 있습니다.");
         return nextStep;
     }

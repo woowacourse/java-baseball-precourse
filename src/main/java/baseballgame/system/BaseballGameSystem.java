@@ -8,19 +8,22 @@ import java.util.HashSet;
 public class BaseballGameSystem {
     private static final int DIGIT = 3;
 
+    public static final int CONTINUE = 1;
+    public static final int GAMEOVER = 2;
+
     private int strikeCount, ballCount;
     private int[] userNumberArr;
     private HashSet<Integer> answerNumberSet;
 
     public void startGame() {
-        int nextStep;
+        int nextStep = CONTINUE;
 
-        do {
+        while (nextStep == CONTINUE) {
             generateAnswerNumber();
-            initPitchCount();                               // nextStep == 1인 경우를 위해
+            initPitchCount();                               // 추가 게임을 진행한 경우를 위해
             playInGame();
             nextStep = InputBaseballGame.inputNextStep();
-        } while (nextStep == 1);
+        }
     }
 
     public void playInGame() {
