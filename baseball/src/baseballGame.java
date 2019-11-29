@@ -13,15 +13,15 @@ public class baseballGame {
         int answerNumB = 0;
         int answerNumC = 0;
 
-        int[] answerNum = {0, 0, 0};
-        while (isOverlap(answerNum)) {
-            answerNum = initBaseballNumber(answerNumA, answerNumB, answerNumC);
-        }
-
-        int num[] = new int[3];
-        boolean finish = false;
+        int answerNum[] = new int[3];        // 정답 숫자들을 넣을 배열
+        int num[] = new int[3];             // 사용자가 입력한 숫자들을 넣을 배열
+        boolean finish = false;             // 정답을 맞출 때까지 정답을 입력받을 수 있게 하는 while 문을 멈추게 할 boolean 형 변수
 
         Scanner scanner = new Scanner(System.in);
+
+        while (isOverlap(answerNum)) {      // 정답 숫자들이 서로 겹치지 않게 해주는 while 문. 겹치지 않을 때까지 돌린다.
+            answerNum = initBaseballNumber(answerNumA, answerNumB, answerNumC);
+        }
 
         while (!finish) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -50,7 +50,7 @@ public class baseballGame {
         answerNumB = random.nextInt(9)+1;
         answerNumC = random.nextInt(9)+1;
 
-        int[] answerNum = {answerNumA, answerNumB, answerNumC};
+        int answerNum[] = {answerNumA, answerNumB, answerNumC};
 
         return answerNum;
     }
