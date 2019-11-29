@@ -1,9 +1,17 @@
 public class BaseballGame {
-    public static void main(String[] args) {
+    public void playGame() {
         Computer com = new Computer();
-        com.getRandom();
-
         User player = new User();
+
+        com.getRandom();
+        com.showAnswer();
         player.inputNumber();
+        com.checkAnswer(player.getInput());
+    }
+
+    public static void main(String[] args) {
+        BaseballGame play = new BaseballGame();
+
+        play.playGame();
     }
 }
