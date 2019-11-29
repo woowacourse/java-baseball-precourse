@@ -13,8 +13,9 @@ public class Computer {
     private void setRandomNumber() {
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++) {
             checkList.add(false);
+        }
         addNumber(checkList);
     }
 
@@ -22,12 +23,22 @@ public class Computer {
         Random random = new Random();
         int ranNum;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; ) {
             ranNum = random.nextInt(9) + 1;
             while (list.get(ranNum).equals(false)) {
                 list.set(ranNum, true);
+                computerNumberSet.add(ranNum);
+                i = i + 1;
             }
-            computerNumberSet.add(ranNum);
         }
+    }
+
+    public ArrayList<Integer> getNumberSet() {
+        return computerNumberSet;
+    }
+
+    public void restartGame() {
+        computerNumberSet.clear();
+        setRandomNumber();
     }
 }
