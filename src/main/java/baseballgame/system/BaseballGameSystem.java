@@ -7,10 +7,16 @@ import java.util.HashSet;
 public class BaseballGameSystem {
     private static final int DIGIT = 3;
     private int strikeCount = 0, ballCount = 0;
-    private HashSet<Integer> answerNumberSet = new HashSet<>();
+    private HashSet<Integer> answerNumberSet;
     private int[] userNumberArr;
 
     public BaseballGameSystem() {
+        generateAnswerNumber();
+    }
+
+    public void generateAnswerNumber() {
+        answerNumberSet = new HashSet<>();
+
         while (answerNumberSet.size() < DIGIT) {
             answerNumberSet.add(generateRandomNumber());
         }
@@ -50,7 +56,7 @@ public class BaseballGameSystem {
         }
     }
 
-    public void initPitchCount(){
+    public void initPitchCount() {
         strikeCount = 0;
         ballCount = 0;
     }
