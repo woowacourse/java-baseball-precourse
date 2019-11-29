@@ -20,7 +20,7 @@ public class Main {
         while (!success) {
             System.out.print("숫자를 입력해주세요 :\n");
             suggested_answer = sc.nextInt();
-            success = computer.compare_answer(suggested_answer);
+            success = computer.compare_answer(suggested_answer); // 정답을 맞추면 탈출
         }
     }
 
