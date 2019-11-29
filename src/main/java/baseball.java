@@ -18,6 +18,7 @@ public class baseball {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        computer com = new computer();
         System.out.println("자바 숫자야구 게임!");
         while(true) {
             System.out.println("세 자리 숫자를 입력하세요: ");
@@ -25,6 +26,7 @@ public class baseball {
             if(inputAnswer(answer)) { break; }
             System.out.println("다시 입력해 주세요.");
         }
+        com.pickNumber(digitNumber);
     }
     public static boolean inputAnswer(int number) {
         int[] digits = toArray(number);
