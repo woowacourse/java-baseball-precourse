@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +23,20 @@ public class Computer {
         int count = 0;
         for (int i = 0; i < NUMBER_COUNT; i++) {
             if (user[i] == computer[i]) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static boolean in(int userNumber, int[] computer) {
+        return Arrays.stream(computer).anyMatch(number -> number == userNumber);
+    }
+
+    private static int ballCount(int[] user, int[] computer) {
+        int count = 0;
+        for (int i = 0; i < NUMBER_COUNT; i++) {
+            if (user[i] != computer[i] && in(user[i], computer)) {
                 count++;
             }
         }
