@@ -5,7 +5,7 @@ import java.util.Scanner;
  * @author SMJin
  * baseballGame Class
  * */
-public class baseballGame {
+public class Baseball {
 
     public static void main(String[] args) {
 
