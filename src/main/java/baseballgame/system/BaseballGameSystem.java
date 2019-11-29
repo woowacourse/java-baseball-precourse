@@ -1,17 +1,38 @@
 package baseballgame.system;
 
+import baseballgame.io.InputBaseballGame;
 import baseballgame.io.OutputBaseballGame;
 
 import java.util.HashSet;
 
 public class BaseballGameSystem {
     private static final int DIGIT = 3;
-    private int strikeCount = 0, ballCount = 0;
-    private HashSet<Integer> answerNumberSet;
-    private int[] userNumberArr;
 
-    public BaseballGameSystem() {
-        generateAnswerNumber();
+    private int strikeCount, ballCount;
+    private int[] userNumberArr;
+    private HashSet<Integer> answerNumberSet;
+
+    public void startGame() {
+        int nextStep;
+
+        do {
+            generateAnswerNumber();
+            initPitchCount();                               // nextStep == 1인 경우를 위해
+            playInGame();
+            nextStep = InputBaseballGame.inputNextStep();
+        } while (nextStep == 1);
+    }
+
+    public void playInGame() {
+        int userNumber;
+
+        while (strikeCount != 3) {
+            initPitchCount();
+            userNumber = InputBaseballGame.inputUserNumber();
+            checkAnswer(userNumber);
+            OutputBaseballGame.printPitchResult(strikeCount, ballCount);
+        }
+        OutputBaseballGame.printFinishMsg();
     }
 
     public void generateAnswerNumber() {
@@ -34,8 +55,6 @@ public class BaseballGameSystem {
             setPitchCount(ans, index);
             index++;
         }
-
-        OutputBaseballGame.printPitchResult(strikeCount, ballCount);
     }
 
     public void splitUserNumber(int userNumber) {
@@ -59,9 +78,5 @@ public class BaseballGameSystem {
     public void initPitchCount() {
         strikeCount = 0;
         ballCount = 0;
-    }
-
-    public int getStrikeCount() {
-        return strikeCount;
     }
 }
