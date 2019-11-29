@@ -1,7 +1,10 @@
 package com.jenny.baseball;
 
+import java.util.Scanner;
+
 public class Baseball implements Gamable {
 
+    Scanner sc = new Scanner(System.in);
     /*
      * 임의로 중복이 없는 1~9 숫자로 세자리 수를 만든다.
      */
@@ -75,5 +78,16 @@ public class Baseball implements Gamable {
     @Override
     public void run() {
 
+        int[] answer = createNumber();
+
+        while(true){
+
+            showAskMsg();
+            int[] userNum = getNumber();
+
+            if(judgeNumber(userNum, answer) == true){
+                break;
+            }
+        }
     }
 }
