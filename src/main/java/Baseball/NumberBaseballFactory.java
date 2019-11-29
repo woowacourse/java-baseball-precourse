@@ -2,7 +2,7 @@ package Baseball;
 
 public class NumberBaseballFactory implements BaseballFactory {
     @Override
-    public Baseball create(Pitcher pitcher, Hitter hitter, Referee referee) {
+    public Baseball create(Hitter hitter, Pitcher pitcher, Referee referee) {
         return null;
     }
 }

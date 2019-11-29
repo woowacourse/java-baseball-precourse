@@ -1,5 +1,5 @@
 package Baseball;
 
 public interface BaseballFactory {
-    public Baseball create(Pitcher pitcher, Hitter hitter, Referee referee);
+    public Baseball create(Hitter hitter, Pitcher pitcher, Referee referee);
 }

@@ -5,28 +5,30 @@ import java.util.List;
 
 public class NumberReferee implements Referee {
     @Override
-    public Result judge(List<Integer> ballsPitched, List<Integer> ballsHit) {
-        if (!isValid(ballsPitched, ballsHit)) {
+    public Result judge(List<Integer> ballsHit, List<Integer> ballsPitched
+    ) {
+        if (!isValid(ballsHit, ballsPitched)) {
             throw new InvalidParameterException("입력된 공들에 문제가 있습니다.");
         }
-        int strikes = countStrikes(ballsPitched, ballsHit);
-        int B = countB(ballsPitched, ballsHit);
+        int strikes = countStrikes(ballsHit, ballsPitched);
+        int B = countB(ballsHit, ballsPitched);
 
         return new Result(strikes, B);
     }
 
-    private boolean isValid(List<Integer> ballsPitched, List<Integer> ballsHit) {
-        if (ballsPitched == null || ballsHit == null) {
+    private boolean isValid(List<Integer> ballsHit, List<Integer> ballsPitched) {
+        if (ballsHit == null || ballsPitched == null) {
             return false;
         }
-        return ballsPitched.size() == 3 && ballsHit.size() == 3;
+        return ballsHit.size() == 3 && ballsPitched.size() == 3;
     }
 
-    private int countStrikes(List<Integer> ballsPitched, List<Integer> ballsHit) {
+    private int countStrikes(List<Integer> ballsHit, List<Integer> ballsPitched) {
         int strikes = 0;
 
-        for (int i = 0; i < ballsPitched.size(); i++) {
-            if (ballsPitched.get(i).equals(ballsHit.get(i))) {
+        for (int i = 0; i < ballsHit.size(); i++) {
+            if (ballsHit.get(i).equals(ballsPitched
+                    .get(i))) {
                 strikes += 1;
             }
         }
@@ -34,10 +36,12 @@ public class NumberReferee implements Referee {
     }
 
     //B는 야구에서 '볼'을 의미합니다. 현재 프로그램에서 'ball'이 '공'을 뜻하기 때문에, 야구 전광판에서 사용하는 용어 'B'를 이용했습니다.
-    private int countB(List<Integer> ballsPitched, List<Integer> ballsHit) {
+    private int countB(List<Integer> ballsHit, List<Integer> ballsPitched) {
         int B = 0;
-        for (int i = 0; i < ballsPitched.size(); i++) {
-            if (ballsHit.contains(ballsPitched.get(i)) && !ballsPitched.get(i).equals(ballsHit.get(i))) {
+        for (int i = 0; i < ballsHit.size(); i++) {
+            if (ballsPitched
+                    .contains(ballsHit.get(i)) && !ballsHit.get(i).equals(ballsPitched
+                    .get(i))) {
                 B += 1;
             }
         }
