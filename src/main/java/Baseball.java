@@ -17,14 +17,35 @@ public class Baseball {
         }
     }
     public boolean doBaseball(){
-        String input = getInput();
-        int strike = getStrike(input);
-        if(strike == 3){
-            System.out.println("3 strike");
-            System.out.println("You got an answer! end game");
+        while(true) {
+            String input = getInput();
+            int strike = getStrike(input);
+            if (strike == 3) {
+                System.out.println("3 strike");
+                System.out.println("You got an answer! end game");
+                break;
+            }
+            int ball = getBall(input);
+            if (strike + ball == 0) {
+                System.out.println("nothing");
+            }
+            else {
+                System.out.println(strike + " Strike, " + ball + " Ball");
+            }
         }
-
-        return true;
+        System.out.println("To start new game press 1, Finish the game press 2");
+        String option;
+        Scanner scan = new Scanner(System.in);
+        while (true){
+            option = scan.nextLine();
+            if(option.equals("1")){
+                return true;
+            }
+            if(option.equals("2")){
+                return false;
+            }
+            System.out.println("Input Correct option");
+        }
     }
     public String getInput(){
         String input;
@@ -61,5 +82,17 @@ public class Baseball {
             }
         }
         return strike;
+    }
+    public int getBall(String input){
+        int ball = 0;
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(i != j && input.charAt(i) == answer.charAt(j)){
+                    ball++;
+                    break;
+                }
+            }
+        }
+        return ball;
     }
 }
