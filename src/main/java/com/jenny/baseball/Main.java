@@ -23,9 +23,7 @@ public class Main {
         Gamable baseball = new Baseball();
 
         while(true){
-
             baseball.run();
-
             if(baseball.wantRestart() == 2){
                 break;
             }

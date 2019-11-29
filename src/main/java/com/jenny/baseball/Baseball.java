@@ -36,7 +36,7 @@ public class Baseball implements Gamable {
 
     @Override
     public void showAskMsg() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요.");
     }
 
     /*
@@ -77,7 +77,7 @@ public class Baseball implements Gamable {
         int[] userNum = new int[3];
 
         do{
-            number = sc.nextInt();
+            number = Integer.parseInt(sc.nextLine());
             userNum[0] = number/100;
             userNum[1] = (number%100)/10;
             userNum[2] = number%10;
@@ -162,6 +162,7 @@ public class Baseball implements Gamable {
 
         while(true){
             showRestartMsg();
+            answer = Integer.parseInt(sc.nextLine());
             if(answer == 1 || answer == 2){
                 break;
             }
@@ -174,8 +175,8 @@ public class Baseball implements Gamable {
 
         int[] answer = createNumber();
 
-        while(true){
 
+        while(true){
             showAskMsg();
             int[] userNum = getNumber();
 
