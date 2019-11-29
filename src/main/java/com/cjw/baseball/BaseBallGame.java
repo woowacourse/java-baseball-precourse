@@ -129,7 +129,7 @@ public class BaseBallGame {
      * answer, answerCheck
      * 입력받은 숫자와 컴퓨터 숫자를 비교하여 strike, ball 개수를 판별하는 메소
      * reqAns : 입력받은 숫자 리스트
-     * idx : 비교할 문자 인덱스
+     * idx : 비교할 문자 인덱
      */
 
     private boolean answer(int[] reqAns){
@@ -144,7 +144,9 @@ public class BaseBallGame {
                 ball++;
             }
         }
-        //System.out.println("strike : " + strike + " ball : " + ball);
+
+        printAns(strike, ball);
+
         return true;
     }
 
@@ -158,5 +160,19 @@ public class BaseBallGame {
             }
         }
         return "Not";
+    }
+
+    private void printAns(int strike, int ball){
+
+        if(strike == 0 && ball == 0){
+            System.out.print("낫싱");
+        }
+        if(strike > 0){
+            System.out.print(strike + " 스트라이크 ");
+        }
+        if(ball > 0){
+            System.out.print(ball + " 볼");
+        }
+        System.out.println("");
     }
 }
