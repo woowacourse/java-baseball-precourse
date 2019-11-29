@@ -17,7 +17,7 @@ public class baseballGame {
         while (isOverlap(answerNum)) {
             answerNum = initBaseballNumber(answerNumA, answerNumB, answerNumC);
         }
-        
+
         int num[] = new int[3];
         boolean finish = false;
 
