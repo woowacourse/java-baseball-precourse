@@ -73,7 +73,7 @@ public class gameMc {
             }
             arrayTemp = temp.split("");                         //입력한 3자리 숫자를 분할하여 int 타입으로 배열에 저장;
             for(int i=0;i<3;i++){
-                userNum.add(Integer.valueOf(arrayTemp[i]));
+                userNum.add(Integer.valueOf(arrayTemp[i]));           //문자입력 했을 경우 예외발생
             }
             round+=1;
         } catch(Exception e){
