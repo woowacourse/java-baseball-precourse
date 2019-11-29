@@ -1,11 +1,11 @@
 import java.util.Arrays;
 
 public class User {
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
-    private static final int NUMBER_COUNT = 3;
-    private static final int NEW_GAME = 1;
-    private static final int PROGRAM_EXIT = 2;
+    private static final int MIN_NUMBER = Constants.MIN_NUMBER;
+    private static final int MAX_NUMBER = Constants.MAX_NUMBER;
+    private static final int NUMBER_COUNT = Constants.NUMBER_COUNT;
+    private static final int NEW_GAME = Constants.NEW_GAME;
+    private static final int PROGRAM_EXIT = Constants.PROGRAM_EXIT;
 
     public static int[] readNumbers(String input) {
         int[] numbers = input.chars().map(c -> c - '0').toArray();

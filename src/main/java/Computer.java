@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Computer {
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
-    private static final int NUMBER_COUNT = 3;
+    private static final int MIN_NUMBER = Constants.MIN_NUMBER;
+    private static final int MAX_NUMBER = Constants.MAX_NUMBER;
+    private static final int NUMBER_COUNT = Constants.NUMBER_COUNT;
     private static final List<Integer> RANGE = IntStream.rangeClosed(MIN_NUMBER, MAX_NUMBER)
             .boxed().collect(Collectors.toList());
 

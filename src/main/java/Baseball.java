@@ -4,8 +4,8 @@ public class Baseball {
     private static final String INPUT_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String INPUT_MENU_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String CORRECT_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final int NEW_GAME = 1;
-    private static final int PROGRAM_EXIT = 2;
+    private static final int NEW_GAME = Constants.NEW_GAME;
+    private static final int PROGRAM_EXIT = Constants.PROGRAM_EXIT;
     private static final Scanner SCANNER = new Scanner(System.in);
 
     private boolean isRunning = true;

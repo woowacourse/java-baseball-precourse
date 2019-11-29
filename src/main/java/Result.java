@@ -1,5 +1,5 @@
 public class Result {
-    private static final int NUMBER_COUNT = 3;
+    private static final int NUMBER_COUNT = Constants.NUMBER_COUNT;
 
     private int strike;
     private int ball;
