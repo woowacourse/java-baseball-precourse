@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.0.1   2019-11-29
+ * Player.java                     2.2.1   2019-11-29
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -17,8 +17,7 @@ import java.io.InputStreamReader;
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.0.1        getHint 메소드 이름 및 파라미터 이름 변경
- * getHint -> giveHintAboutNumbers(int[] numbers)
+ * @version 2.2.1        입력 에러 메시지 출력 기능 추가
  * @date 2019-11-29
  */
 public class Player {
@@ -46,7 +45,7 @@ public class Player {
         System.out.print("숫자를 입력해주세요: ");
         char[] input = br.readLine().toCharArray();
         if (input.length > MAX_DIGIT) {
-            // 에러 메시지 출력 기능 추가 필요
+            printWrongInputMessage();
             readNumbers();
         }
 
@@ -55,9 +54,13 @@ public class Player {
         }
 
         if (!isValidNumbers() || isDuplicate()) {
-            // 에러 메시지 출력 기능 추가 필요
+            printWrongInputMessage();
             readNumbers();
         }
+    }
+
+    public static void printWrongInputMessage() {
+        System.out.println("ERROR! 1부터 9까지의 서로 다른 수로 이루어진 3자리의 수를 입력해주세요.");
     }
 
     public String giveHintAboutNumbers(int[] numbers) {
