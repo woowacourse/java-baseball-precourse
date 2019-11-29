@@ -1,6 +1,3 @@
-import com.sun.corba.se.impl.io.TypeMismatchException;
-import com.sun.xml.internal.ws.api.model.ExceptionType;
-
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -24,7 +21,7 @@ class Play {
     }
 
     // 플레이어로부터 숫자를 입력 받고 입력 받은 숫자를 배열로 처리하는 메서드
-    int[] guessNum() {
+    public int[] guessNum() {
         int getNum;
         int[] guessedNum = new int[3];
         int check = -1;
