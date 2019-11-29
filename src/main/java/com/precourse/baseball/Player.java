@@ -7,6 +7,10 @@
  */
 package com.precourse.baseball;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  * 플레이어 클래스입니다.
  * 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 랜덤하게 만들고
@@ -14,7 +18,7 @@ package com.precourse.baseball;
  *
  * @author HyungjuAn
  * @version 2.0.1        getHint 메소드 이름 및 파라미터 이름 변경
- *                       getHint -> giveHintAboutNumbers(int[] numbers)
+ * getHint -> giveHintAboutNumbers(int[] numbers)
  * @date 2019-11-29
  */
 public class Player {
@@ -34,6 +38,26 @@ public class Player {
     public Player() {
         this.digitMasks = new boolean[MAX_MASK];
         this.digitNumbers = new int[MAX_DIGIT];
+    }
+
+    public void readNumbers() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.print("숫자를 입력해주세요: ");
+        char[] input = br.readLine().toCharArray();
+        if (input.length > MAX_DIGIT) {
+            // 에러 메시지 출력 기능 추가 필요
+            readNumbers();
+        }
+
+        for (int i = 0; i < MAX_DIGIT; i++) {
+            digitNumbers[i] = Character.getNumericValue(input[i]);
+        }
+
+        if (!isValidNumbers() || isDuplicate()) {
+            // 에러 메시지 출력 기능 추가 필요
+            readNumbers();
+        }
     }
 
     public String giveHintAboutNumbers(int[] numbers) {
