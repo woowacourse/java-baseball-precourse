@@ -33,4 +33,25 @@ public class Baseball {
 //            System.out.print(input[i]);
 //        }
     }
+    public int check(){
+        int strike = 0;
+        int ball = 0;
+
+        if(ans[0]==input[0])
+            strike++;
+        if(ans[1]==input[1])
+            strike++;
+        if(ans[2]==input[2])
+            strike++;
+
+        if(ans[0]==input[1]||ans[0]==input[2])
+            ball++;
+        if(ans[1]==input[0]||ans[1]==input[2])
+            ball++;
+        if(ans[2]==input[0]||ans[2]==input[1])
+            ball++;
+        System.out.println(strike + "스트라이크" + ball + "볼");
+
+        return strike;
+    }
 }
