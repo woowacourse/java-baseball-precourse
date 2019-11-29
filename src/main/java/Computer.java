@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Random;
 
-public class computer {
+public class Computer {
 
     public int[] pickNumber(int digitNumber) {
         Random random = new Random();

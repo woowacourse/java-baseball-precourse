@@ -1,4 +1,4 @@
-# java-baseball-precourse
+# java-Baseball-precourse
 숫자 야구게임 미션을 진행하는 저장소
 
 ## 기능 요구 사항
