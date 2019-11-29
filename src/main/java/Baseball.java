@@ -18,7 +18,12 @@ public class Baseball {
     }
     public boolean doBaseball(){
         String input = getInput();
-        System.out.println(input);
+        int strike = getStrike(input);
+        if(strike == 3){
+            System.out.println("3 strike");
+            System.out.println("You got an answer! end game");
+        }
+
         return true;
     }
     public String getInput(){
@@ -47,5 +52,14 @@ public class Baseball {
             break;
         }
         return input;
+    }
+    public int getStrike(String input){
+        int strike = 0;
+        for(int i = 0; i < 3; i++){
+            if(input.charAt(i) == answer.charAt(i)){
+                strike++;
+            }
+        }
+        return strike;
     }
 }
