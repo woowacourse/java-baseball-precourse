@@ -27,6 +27,9 @@ public class Computer {
     }
 
     public void checkAnswer(int input) {
+        strike = 0;
+        ball = 0;
+
         int[] user = new int[3];
         for(int i = 2; i >= 0; i--) {
             user[i] = input % 10;
@@ -63,7 +66,7 @@ public class Computer {
         System.out.println();
     }
 
-    public void showAnswer() {
-        System.out.println(answer[0] + "" + answer[1] + "" + answer[2]);
+    public int getStrike() {
+        return strike;
     }
 }
