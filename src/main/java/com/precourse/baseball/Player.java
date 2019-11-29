@@ -1,5 +1,5 @@
 /*
- * Player.java                   1.0.0   2019-11-29
+ * Player.java                   2.0.1   2019-11-29
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -13,7 +13,8 @@ package com.precourse.baseball;
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.0.0            class명 변경 Opponent -> Player
+ * @version 2.0.1        getHint 메소드 이름 및 파라미터 이름 변경
+ *                       getHint -> giveHintAboutNumbers(int[] numbers)
  * @date 2019-11-29
  */
 public class Player {
@@ -35,15 +36,15 @@ public class Player {
         this.digitNumbers = new int[MAX_DIGIT];
     }
 
-    public String getHint(int[] digitNumbers) {
+    public String giveHintAboutNumbers(int[] numbers) {
         StringBuilder hint = new StringBuilder();
         int strikeCount = ZERO;
         int ballCount = ZERO;
 
         for (int i = 0; i < MAX_DIGIT; i++) {
-            if (this.digitNumbers[i] == digitNumbers[i]) {
+            if (digitNumbers[i] == numbers[i]) {
                 strikeCount++;
-            } else if ((this.digitNumbers[i] != digitNumbers[i]) && this.digitMasks[digitNumbers[i]]) {
+            } else if ((digitNumbers[i] != numbers[i]) && digitMasks[numbers[i]]) {
                 ballCount++;
             }
         }
