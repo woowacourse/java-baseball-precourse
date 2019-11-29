@@ -23,7 +23,7 @@ public interface Gamable {
 
     // 2. 화면에 표시될 메시지 출력
     void showAskMsg();
-    void showResult();
+    void showResult(int strike, int ball);
     void showSuccessMsg();
     void showRestartMsg();
 

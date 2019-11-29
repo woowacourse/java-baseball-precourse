@@ -13,7 +13,6 @@ public class Baseball implements Gamable {
 
         int[] num = new int[3];
 
-
         for(int i = 0 ; i < 3 ; i++){
             makeDigits:
             while(true){
@@ -40,9 +39,22 @@ public class Baseball implements Gamable {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
+    /*
+     * judgeNumber의 판단 결과에 따라 결과를 출력해주는 메서드
+     */
     @Override
-    public void showResult() {
-
+    public void showResult(int strike, int ball) {
+        if(strike == 0 && ball == 0){
+            System.out.println("낫싱");
+        }else{
+            if(strike > 0){
+                System.out.print(strike + " 스트라이크 ");
+            }
+            if(ball > 0){
+                System.out.print(ball + " 볼");
+            }
+            System.out.println();
+        }
     }
 
     @Override
@@ -105,9 +117,39 @@ public class Baseball implements Gamable {
         return true;
     }
 
+    /*
+     * 프로그램이 생성한 숫자와 유저가 입력한 숫자를 비교하여
+     * 결과를 만들어내는 함수
+     */
     @Override
     public boolean judgeNumber(int[] userNum, int[] answer) {
-        return false;
+
+        int strike = 0;
+        int ball = 0;
+
+        checkLoop:
+        for(int u = 0 ; u < 3 ; u++){
+            if(userNum[u] == answer[u]){
+                strike++;
+                continue checkLoop;
+            }else{
+                for(int a = 0 ; a < 3 ; a++){
+                    if(userNum[u] == answer[a]){
+                        ball++;
+                        continue checkLoop;
+                    }
+                }
+            }
+        }
+
+        if(strike == 3){
+            showSuccessMsg();
+            return true;
+        }else{
+            showResult(strike, ball);
+            return false;
+        }
+
     }
 
     @Override
