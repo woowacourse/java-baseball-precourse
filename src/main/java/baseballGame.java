@@ -1,3 +1,10 @@
+/*
+ * baseballGame.java
+ * v1.01
+ * 2019.11.29
+ *
+ */
+
 public class baseballGame {
 
     public static void main(String[] args) {
@@ -5,9 +12,8 @@ public class baseballGame {
         do{
             game.setUserNum();
             game.compare();
-            game.result();
-        }
-        while(game.checkStatus() != 2);
+            game.scoring();
+        } while(game.checkStatus() != 2);
 
     }
 }
