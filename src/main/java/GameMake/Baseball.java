@@ -54,4 +54,16 @@ public class Baseball {
 
         return strike;
     }
+    public void start(){
+        int checkStrike = 0;
+
+        while (true) {
+            makeInput();
+            checkStrike = check();
+            if(checkStrike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+    }
 }
