@@ -7,18 +7,30 @@
  */
 package baseball;
 
-import baseball.CreateList;
-
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args){
 
+    public static void main(String[] args){
         CreateList userYou = new CreateList();
         CreateList userComputer = new CreateList();
-        System.out.println("당신의 숫자 : "+userYou.nums);
-        System.out.println("컴퓨터의 숫자 : "+userComputer.nums);
+
+        int restart;
+        int RESTART = 1;
+        int EXIT = 2;
+
+        Scanner sc = new Scanner(System.in);
+
+
+        do {
+            PlayBall.run(userYou, userComputer);
+
+            System.out.println("게임이 종료되었습니다. 1. 다시하기 2. 종료하기");
+            restart = sc.nextInt();
+        }while(restart == RESTART);
+
 
     }
 }
