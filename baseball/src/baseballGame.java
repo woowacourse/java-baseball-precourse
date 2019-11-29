@@ -26,16 +26,17 @@ public class baseballGame {
         while (!finish) {
             System.out.print("숫자를 입력해주세요 : ");
             int UserNumber = scanner.nextInt();
-            num[0] = UserNumber/100;
-            num[1] = (UserNumber%100)/10;
-            num[2] = UserNumber%10;
+            num[0] = UserNumber / 100;
+            num[1] = (UserNumber % 100) / 10;
+            num[2] = UserNumber % 10;
 
             finish = printResult(isStrike(answerNum, num),
                     isBall(answerNum, num));
 
             if(finish) {
-                if (scanner.nextInt() == 1)
+                if (scanner.nextInt() == 1) {
                     finish = false;
+                }
             }
 
         }
@@ -48,9 +49,9 @@ public class baseballGame {
     static private int[] initBaseballNumber(int answerNumA,
                                             int answerNumB, int answerNumC) {
         Random random = new Random();
-        answerNumA = random.nextInt(9)+1;
-        answerNumB = random.nextInt(9)+1;
-        answerNumC = random.nextInt(9)+1;
+        answerNumA = random.nextInt(9) + 1;
+        answerNumB = random.nextInt(9) + 1;
+        answerNumC = random.nextInt(9) + 1;
 
         int answerNum[] = {answerNumA, answerNumB, answerNumC};
 
@@ -61,9 +62,9 @@ public class baseballGame {
     생성된 정답 숫자열이 서로 중복되는지 확인해서 중복되었는지 확인하는 메소드이다.
      */
     static private boolean isOverlap(int[] answerNum) {
-        for(int i=0; i<3; i++) {
-            if ((answerNum[i] == answerNum[(i+1)%3])
-                    || (answerNum[i] == answerNum[(i+2)%3])) {
+        for(int i = 0; i < 3; i ++) {
+            if ((answerNum[i] == answerNum[(i + 1) % 3])
+                    || (answerNum[i] == answerNum[(i + 2) % 3])) {
                 return true;
             }
         }
@@ -76,7 +77,7 @@ public class baseballGame {
     static private int isStrike(int answerNum[], int num[]) {
         int strikeNumber = 0;
 
-        for (int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i ++) {
             if (isSame(answerNum[i], num[i])) {
                 strikeNumber++;
             }
@@ -91,11 +92,11 @@ public class baseballGame {
     static private int isBall(int answerNum[], int num[]) {
         int ballNumber = 0;
 
-        for (int i=0; i<3; i++) {
-            if (isSame(answerNum[i], num[(i+1)%3])) {
+        for (int i = 0; i < 3; i ++) {
+            if (isSame(answerNum[i], num[(i + 1) % 3])) {
                 ballNumber++;
             }
-            if (isSame(answerNum[i], num[(i+2)%3])) {
+            if (isSame(answerNum[i], num[(i + 2) % 3])) {
                 ballNumber++;
             }
         }
