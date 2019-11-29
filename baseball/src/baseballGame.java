@@ -123,4 +123,12 @@ public class baseballGame {
         return finish;
     }
 
+    static private void print(String output, boolean isPrintln) {
+        if (isPrintln) {
+            System.out.println(output);
+        } else {
+            System.out.print(output);
+        }
+    }
+
 }
