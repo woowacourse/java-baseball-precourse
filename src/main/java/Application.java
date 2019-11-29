@@ -1,14 +1,18 @@
 import Baseball.*;
 
+import java.util.Scanner;
+
 public class Application {
     public static void main(String[] args) {
-        Pitcher pitcher = new PitcherImpl();
-        Hitter hitter = new HitterImpl();
-        Referee referee = new RefereeImpl();
+        Baseball baseball = setupBaseball();
+        baseball.play();
+    }
+    private static Baseball setupBaseball() {
+        Hitter hitter = new NumberHitter();
+        Scanner scanner = new Scanner(System.in);
+        Pitcher pitcher = new NumberPitcher(scanner);
+        Referee referee = new NumberReferee();
         BaseballFactory baseballFactory = new NumberBaseballFactory();
-        Baseball baseball = baseballFactory.create(pitcher, hitter, referee);
-
-        baseball.start();
-
+        return baseballFactory.create(hitter, pitcher, referee);
     }
 }
