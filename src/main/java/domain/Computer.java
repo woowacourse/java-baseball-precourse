@@ -35,6 +35,7 @@ public class Computer {
 				return true;
 			}
 		}
+		
 		return false;
 	}
 	
@@ -56,7 +57,7 @@ public class Computer {
 		if(strikeCounts == 0 && ballCounts == 0) {
 			System.out.print("¾Ï°Íµµ ¸ø¸ÂÃèÁö·Õ");
 		}
-//		System.out.print("\n");
+		System.out.print("\n");
 	}
 	
 	private int getStrikeCounts(int[] userNumbers) {
@@ -82,5 +83,13 @@ public class Computer {
 		}
 		
 		return ballCounts;
+	}
+	
+	public boolean isGameOver(int[] userNumbers) {
+		if(getStrikeCounts(userNumbers) == 3) {
+			return true;
+		}
+		
+		return false;
 	}
 }

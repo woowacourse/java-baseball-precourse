@@ -16,21 +16,21 @@ public class User {
 		return numbers;
 	}
 	
-	public void enterNumber() {
+	public void enterNumbers() {
 		Scanner numScanner = new Scanner(System.in);
 		
 		do {
 			System.out.print("숫자를 입력해주세요: ");
 			numbersStr = numScanner.nextLine();
-			if(!isValidNumber()) {
+			if(!isValidNumbers()) {
 				System.out.print("잘못된 입력입니다. 다시 ");
 			}
-		} while (!isValidNumber());
+		} while (!isValidNumbers());
 		
 		convertStrToNumbers();
 	}
 
-	private boolean isValidNumber() {
+	private boolean isValidNumbers() {
 		if(numbersStr.length() != LEN_NUMBERS) {
 			return false;
 		} else if (!isAllOneDigitNumber()) {
