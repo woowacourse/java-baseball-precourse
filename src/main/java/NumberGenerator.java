@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class NumberGenerator {
 
-    private static ArrayList<Integer> numberList;
+    private static ArrayList<Integer> numberList = new ArrayList<>();
 
     public static ArrayList<Integer> numberGenerator() {
         numberList = getRandomNonRepeatingIntegers(3, 1, 9);

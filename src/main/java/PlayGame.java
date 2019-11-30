@@ -6,15 +6,22 @@
 import java.util.ArrayList;
 
 public class PlayGame {
-    private static ArrayList<Integer> guessingNumberList;
+    private static ArrayList<Integer> guessingNumberList = new ArrayList<>();
+    private static ArrayList<Integer> userNumberList = new ArrayList<>();
 
     public static void playGame() {
         guessingNumberList = NumberGenerator.numberGenerator();
-
         // 테스트용.
         for (int i = 0; i < guessingNumberList.size(); i++) {
-            System.out.println("" + guessingNumberList.get(i));
+            System.out.println(guessingNumberList.get(i));
         }
+
+        userNumberList = IntegerToArrayList.integerToArrayList(NumberGetter.numberGetter());
+        // 테스트용.
+        for (int i = 0; i < userNumberList.size(); i++) {
+            System.out.println(userNumberList.get(i));
+        }
+
     }
 
 }
