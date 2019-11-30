@@ -1,5 +1,5 @@
 /*
- * Game.java                       1.4.0   2019-11-30
+ * Game.java                       1.5.0   2019-11-30
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -19,7 +19,7 @@ import java.io.InputStreamReader;
  * 게임이 끝나면 게임 재시작을 하거나, 게임을 완전히 종료한다.
  *
  * @author HyungjuAn
- * @version 1.4.0                          게임 시작 기능 추가
+ * @version 1.5.0              게임 종료 메시지 출력 기능 추가
  * @date 2019-11-30
  */
 public class Game {
@@ -40,11 +40,15 @@ public class Game {
             user.readNumbers();
             hint = computer.giveHintAboutNumbers(user.getDigitNumbers());
         } while (!hint.equals(THREE_STRIKE));
-        // 게임 종료 메시지 출력 기능 추가 위치
+        printGameFinishMessage();
 
         if (isRestart()) {
             startGame(computer, user);
         }
+    }
+
+    public static void printGameFinishMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static boolean isRestart() throws IOException {
