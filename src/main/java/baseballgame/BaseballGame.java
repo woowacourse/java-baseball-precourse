@@ -3,7 +3,9 @@ package baseballgame;
 import java.util.Random;
 
 public class BaseballGame {
-    private final int MAX_NUM = 900;
+    private static final int MAX_NUM = 900;
+    private static final int ZERO = 0;
+    private static final int INPUT_LENGTH = 3;
 
     String getRandomNumber() {
         String randomNumber;
@@ -25,7 +27,6 @@ public class BaseballGame {
     }
 
     void getScore(String targetNumber, String inputNumber) {
-
         int strike = 0;
         int ball = 0;
 
@@ -36,7 +37,6 @@ public class BaseballGame {
                 ball++;
             }
         }
-
         printResult(strike, ball);
     }
 
@@ -51,24 +51,24 @@ public class BaseballGame {
     private void printResult(int strike, int ball) {
         StringBuilder sb = new StringBuilder();
 
-        if (strike != 0) {
+        if (strike != ZERO) {
             sb.append(strike + " 스트라이크 ");
         }
 
-        if (ball != 0) {
+        if (ball != ZERO) {
             sb.append(ball + " 볼");
         }
 
-        if (strike == 0 && ball == 0) {
+        if (strike == ZERO && ball == ZERO) {
             sb.append("낫싱");
         }
 
         System.out.println(sb.toString());
     }
 
-    boolean isValidNumber(String number){
+    boolean isValidNumber(String number) {
         // 순서 중요! 숫자인지 먼저 확인해야한다.
-        if (!isNumeric(number) || !isValidLengthOfInputNumber(number) || hasZero(number) || hasDuplicatedNumber(number) ){
+        if (!isNumeric(number) || !isValidLengthOfInputNumber(number) || hasZero(number) || hasDuplicatedNumber(number)) {
             return false;
         }
         return true;
@@ -91,14 +91,14 @@ public class BaseballGame {
     }
 
     private boolean isValidLengthOfInputNumber(String inputNumber) {
-        if (inputNumber.length() == 3) {
+        if (inputNumber.length() == INPUT_LENGTH) {
             return true;
         }
         return false;
     }
 
     private boolean isNumeric(String inputNumber) {
-        if (inputNumber == null || inputNumber.length() == 0) {
+        if (inputNumber == null || inputNumber.length() == ZERO) {
             return false;
         }
         return inputNumber.chars().allMatch(Character::isDigit);

@@ -11,7 +11,7 @@ public class Playground {
 
         do {
             targetNumber = baseballGame.getRandomNumber();
-            System.out.println(targetNumber);
+            System.out.println(targetNumber); // 디버깅을 위한 출력
         } while (isInProgress(scanner, targetNumber));
 
         printGameOverMessage();
@@ -56,7 +56,7 @@ public class Playground {
 
         while (true) {
             printContinueGameOrNotMessage();
-            inputNumber = scanner.nextLine(); // 예외 처리: 1) 1,2 이외의 숫자가 들어왔을 때, 2) 숫자가 아닌 경우
+            inputNumber = scanner.nextLine();
 
             if (!inputNumber.equals(CONTINUE) && !inputNumber.equals(STOP)) {
                 printValidTypeOfNumber();
@@ -70,8 +70,9 @@ public class Playground {
     }
 
     private String getInputNumber(Scanner scanner) {
+        String inputNumber;
         System.out.println("숫자를 입력해주세요");
-        String inputNumber = scanner.nextLine();
+        inputNumber = scanner.nextLine();
         return inputNumber;
     }
 
