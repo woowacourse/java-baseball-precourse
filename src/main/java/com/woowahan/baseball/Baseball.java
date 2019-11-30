@@ -19,7 +19,13 @@ public class Baseball extends AbstractBaseball{
 
     @Override
     protected ArrayList<Integer> initializeBallRange() {
-        return null;
+        ArrayList<Integer> ballRange = new ArrayList<Integer>();
+
+        for(int i = 1; i <= 9; i++){
+            ballRange.add(i);
+        }
+        
+        return ballRange;
     }
 
     @Override
