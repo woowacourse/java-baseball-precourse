@@ -1,5 +1,5 @@
 /*
- * Game.java                       1.2.0   2019-11-30
+ * Game.java                       1.3.0   2019-11-30
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -19,7 +19,7 @@ import java.io.InputStreamReader;
  * 게임이 끝나면 게임 재시작을 하거나, 게임을 완전히 종료한다.
  *
  * @author HyungjuAn
- * @version 1.2.0               재시작 정보를 입력받는 기능 추가
+ * @version 1.3.0       잘못 입력된 재시작 정보를 알려주는 기능
  * @date 2019-11-30
  */
 public class Game {
@@ -38,15 +38,15 @@ public class Game {
     }
 
     public static boolean isRestart() throws IOException {
-        boolean result = false;
-
+        boolean result;
         int restartInfo = InputRestartInfo();
+
         if (restartInfo == 1) {
             result = true;
         } else if (restartInfo == 2) {
             result = false;
         } else {
-            // 잘못된 입력이라는 것을 알려주는 기능 추가
+            printWrongInputMessage();
             result = isRestart();
         }
 
@@ -61,5 +61,9 @@ public class Game {
         restartInfo = Integer.parseInt(br.readLine());
 
         return restartInfo;
+    }
+
+    public static void printWrongInputMessage() {
+        System.out.println("ERROR! 잘못된 입력입니다!");
     }
 }
