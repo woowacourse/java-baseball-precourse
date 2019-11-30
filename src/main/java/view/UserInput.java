@@ -12,7 +12,7 @@ public class UserInput {
     private static final int START_GAME = 1;
 
     public boolean endGame() throws IOException {
-        System.out.println("게임을 시작하려면 1번 종료하려면 2번을 입력해주세요 ! ");
+        System.out.println("게임을 재시작하려면 1번 종료하려면 2번을 입력해주세요 ! ");
         int userInput = makeNumberAndCheckStringError();
 
         while (true) {
@@ -29,11 +29,10 @@ public class UserInput {
     }
 
     public int makeNumber() throws IOException {
-        System.out.println("3자리 숫자를 입력해주세요! 입력 후 엔터를 누르시면 결과를 보여드립니다.");
         int userInput = makeNumberAndCheckStringError();
 
         while (String.valueOf(userInput).length() != 3) {
-            System.out.println("세 자리 수로 입력해주세요! 다른 자리수는 안돼요~");
+            System.out.print("세 자리 수로 입력해주세요! 다른 자리수는 안돼요~");
             userInput = makeNumberAndCheckStringError();
         }
         return userInput;
@@ -42,7 +41,7 @@ public class UserInput {
     private int makeNumberAndCheckStringError() throws IOException {
         int userInput = DEFAULT_INT_ZERO;
 
-        while (userInput > 0) {
+        while (userInput == 0) {
             try {
                 userInput = Integer.parseInt(br.readLine().trim());
             } catch (IllegalFormatConversionException e) {

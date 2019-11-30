@@ -15,7 +15,7 @@ public class Random {
 
         while (setForRandomNumber.size() < DIGIT_NUMBER) {
             setForRandomNumber.add(
-                    (int) Math.random() * RANGE_OF_NUMBER + START_NUMBER
+                    (int) (Math.random() * RANGE_OF_NUMBER) + START_NUMBER
             );
         }
         for (int s : setForRandomNumber)
