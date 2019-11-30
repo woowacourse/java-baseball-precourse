@@ -13,7 +13,9 @@ package domain;
 public class Main {
 	public static void main(String args[]) {
 		User me = new User();
-		me.enterNumber();
-		System.out.println(me.getNumber());
+		while(!me.isValidNumber()) {
+			me.enterNumber();
+			System.out.println(me.getNumber());
+		}
 	}
 }
