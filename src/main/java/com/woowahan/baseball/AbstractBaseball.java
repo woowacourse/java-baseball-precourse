@@ -1,3 +1,9 @@
+/*
+ * AbstractBaseBall
+ * 2019.11.30
+ * Baseball 클래스 프로토타입
+ */
+
 package com.woowahan.baseball;
 
 import java.util.ArrayList;
