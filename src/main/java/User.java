@@ -22,4 +22,8 @@ public class User {
             System.out.println(user_numbers[i]);
         }
     }
+
+    public int[] get_user_numbers() {
+        return user_numbers;
+    }
 }
