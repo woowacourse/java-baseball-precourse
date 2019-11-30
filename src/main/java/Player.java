@@ -34,4 +34,28 @@ public class Player {
 
         return inputNumber;
     }
+
+    /**
+     * 게임을 계속할지 종료할지 결정하는 메소드
+     * @return 추가 게임 진행 여부 (게임을 계속하면 true, 아니면 false)
+     */
+    public boolean doMoreGame() {
+        String input;                       // 입력받을 문자열
+        String continueGame = "1";          // 추가 게임
+        String quitGame = "2";              // 게임 종료
+        Scanner scan = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            input = scan.nextLine();
+
+            if (input.equals(continueGame)) {
+                return true;
+            } else if (input.equals(quitGame)) {
+                return false;
+            } else {
+                System.out.println("다시 입력해주세요.");
+            }
+        }
+    }
 }
