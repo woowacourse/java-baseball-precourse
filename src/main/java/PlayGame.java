@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class PlayGame {
     private static ArrayList<Integer> guessingNumberList = new ArrayList<>();
     private static ArrayList<Integer> userNumberList = new ArrayList<>();
+    private static ArrayList<Integer> ballStrikeList = new ArrayList<>();
 
     public static void playGame() {
         guessingNumberList = NumberGenerator.numberGenerator();
@@ -22,7 +23,12 @@ public class PlayGame {
             System.out.println(userNumberList.get(i));
         }
 
-
+        NumberComparer nc = new NumberComparer(guessingNumberList, userNumberList);
+        ballStrikeList = nc.numberComparer();
+        // 테스트용.
+        for (int i = 0; i < ballStrikeList.size(); i++) {
+            System.out.println("ballStrikeList: " + i + "  " + ballStrikeList.get(i));
+        }
 
     }
 
