@@ -3,7 +3,7 @@ package domain;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Random {
+public class RandomNumber {
     private static final String DEFALUT_STRING_BLANK = "";
     private static final int DIGIT_NUMBER = 3;
     private static final int RANGE_OF_NUMBER = 9;

@@ -12,9 +12,9 @@ public class ValidatorNumber implements Validator {
     public String compareRandomNumberWithUserInput(int randomNumber, int userInput) {
         strike = DEFALUT_INT_ZERO;
         int ball = DEFALUT_INT_ZERO;
-
         List<String> randomNumberList = Arrays.asList(String.valueOf(randomNumber).split(DEFALUT_STRING_BLANK));
         String[] userInputArray = String.valueOf(userInput).split(DEFALUT_STRING_BLANK);
+
         for (int i = 0; i < userInputArray.length; i++) {
             if (randomNumberList.get(i).equals(userInputArray[i]))
                 strike++;

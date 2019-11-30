@@ -18,8 +18,9 @@ public class UserInput {
             if (userInput != START_GAME && userInput != END_GAME) {
                 System.out.println("1또는 2의 수를 입력해주세요~(1번 : 시작, 2번 : 종료)");
                 userInput = makeNumberAndCheckStringError();
-            } else
+            } else {
                 break;
+            }
         }
 
         if (userInput == END_GAME)
