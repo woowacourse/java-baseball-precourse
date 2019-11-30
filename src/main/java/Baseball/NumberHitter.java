@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class NumberHitter implements Hitter {
+public class NumberHitter extends BasePlayer implements Hitter {
     //todo: move to config
     private final int ROUND = 3;
     private final int MIN_NUMBER = 1;
     private final int MAX_NUMBER = 9;
-
-
 
     @Override
     public List<Integer> hit() {

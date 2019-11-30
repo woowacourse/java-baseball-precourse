@@ -2,7 +2,6 @@ package Baseball;
 
 import java.util.List;
 
-public interface Pitcher {
+public interface Pitcher extends Player {
     public List<Integer> pitch();
-    public boolean wantToPlayAgain();
 }

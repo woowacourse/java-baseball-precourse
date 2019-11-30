@@ -24,7 +24,7 @@ public class NumberBaseball implements Baseball {
             referee.announce(result);
         }
 
-        if (pitcher.wantToPlayAgain()) {
+        if (pitcher.wantToPlayAgain()){
             play();
         }
 

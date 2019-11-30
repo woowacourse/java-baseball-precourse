@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class NumberPitcher implements Pitcher {
-
-    private Scanner scanner;
+public class NumberPitcher extends BasePlayer implements Pitcher {
 
     public NumberPitcher(Scanner scanner) {
-        this.scanner = scanner;
+        super(scanner);
     }
 
     @Override
@@ -23,14 +21,6 @@ public class NumberPitcher implements Pitcher {
         }
 
         return translateToBalls(input);
-    }
-
-    @Override
-    public boolean wantToPlayAgain() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Integer input = scanner.nextInt();
-
-        return input.equals(Will.WantToPlay);
     }
 
     private boolean isValid(String input) {
