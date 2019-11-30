@@ -9,16 +9,16 @@ public class Random {
     private static final int RANGE_OF_NUMBER = 9;
     private static final int START_NUMBER = 1;
 
-    public int makeNumber(){
+    public int makeNumber() {
         Set<Integer> setForRandomNumber = new HashSet<>();
         String randomNumber = DEFALUT_STRING_BLANK;
 
-        while(setForRandomNumber.size()<DIGIT_NUMBER){
+        while (setForRandomNumber.size() < DIGIT_NUMBER) {
             setForRandomNumber.add(
-                    (int)Math.random()*RANGE_OF_NUMBER + START_NUMBER
+                    (int) Math.random() * RANGE_OF_NUMBER + START_NUMBER
             );
         }
-        for(int s : setForRandomNumber)
+        for (int s : setForRandomNumber)
             randomNumber += String.valueOf(s);
         return Integer.parseInt(randomNumber);
     }
