@@ -8,7 +8,7 @@ public class Judgement {
     public boolean checkResult(Integer[] player, Integer[] rival) {
         int strike = 0;
         int ball = 0;
-        int nothing = 3;
+        int nothing = holdCount;
 
         for (int i = 0; i < player.length; i++) {
             if (player[i].equals(rival[i])) {
