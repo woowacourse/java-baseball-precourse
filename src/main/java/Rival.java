@@ -11,7 +11,6 @@ public class Rival {
         this.holdCount = holdCount;
         this.numbers = new HashSet<>(holdCount);
         this.generator = new RandomNumberGenerator(RANGE_MIN, RANGE_MAX);
-        resetNumbers();
     }
 
     public Integer[] getNumbers() {

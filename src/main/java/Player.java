@@ -36,8 +36,6 @@ public class Player {
                 System.out.println("1~9 사이의 서로 다른 세자리 숫자를 입력해야 합니다. 다시 입력해주세요.");
             }
         }
-
-        scanner.close();
     }
 
     private boolean isNumberInRange(String input) {
