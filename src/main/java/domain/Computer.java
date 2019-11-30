@@ -6,31 +6,41 @@ public class Computer {
 	private int numbers[];
 	private static final int LEN_NUMBERS = 3;
 	private static final int NUM_RANGE = 10;
+	private static final int GAMEOVER_COUNTS = 3;
 	
 	public Computer() {
 		numbers = new int[LEN_NUMBERS];
+		for(int i=0; i<LEN_NUMBERS; i++) {
+			numbers[i] = -1;
+		}
 	}
 	
 	public void printNumbers() {
+		System.out.print("generated numbers are: ");
 		for(int i=0; i<LEN_NUMBERS; i++) {
-			System.out.println(numbers[i]);
+			System.out.print(numbers[i]);
 		}
+		System.out.print("\n");
 	}
 	
 	public void generateNumbers() {
-		boolean isThereSame = false;
-		int newRandomNumber = -1;
-		
 		for(int i=0; i<LEN_NUMBERS; i++) {
-			do {
-				newRandomNumber = generateRandomNumber();
-			} while(isThereSameNumber(i, newRandomNumber));
-			numbers[i] = newRandomNumber;
+			numbers[i] = generateUnoverlappedNumber();
 		}
 	}
 	
-	private boolean isThereSameNumber(int index, int newNum) {
-		for(int i=0; i<index; i++) {
+	private int generateUnoverlappedNumber() {
+		int newRandomNumber;
+		
+		do {
+			newRandomNumber = generateRandomNumber();
+		} while(isThereSameNumber(newRandomNumber));
+		
+		return newRandomNumber;
+	}
+	
+	private boolean isThereSameNumber(int newNum) {
+		for(int i=0; i<LEN_NUMBERS; i++) {
 			if(numbers[i] == newNum) {
 				return true;
 			}
@@ -55,7 +65,7 @@ public class Computer {
 			System.out.print(ballCounts + "º¼");
 		}
 		if(strikeCounts == 0 && ballCounts == 0) {
-			System.out.print("¾Ï°Íµµ ¸ø¸ÂÃèÁö·Õ");
+			System.out.print("³´½Ì");
 		}
 		System.out.print("\n");
 	}
@@ -76,8 +86,7 @@ public class Computer {
 		int ballCounts = 0;
 		
 		for(int i=0; i<LEN_NUMBERS; i++) {
-			if((userNumbers[i] == numbers[(i + 1) % LEN_NUMBERS])
-					|| (userNumbers[i] == numbers[(i + 2) % LEN_NUMBERS])) {
+			if(isThereSameNumber(userNumbers[i])) {
 				ballCounts++;
 			}
 		}
@@ -86,7 +95,7 @@ public class Computer {
 	}
 	
 	public boolean isGameOver(int[] userNumbers) {
-		if(getStrikeCounts(userNumbers) == 3) {
+		if(getStrikeCounts(userNumbers) == GAMEOVER_COUNTS) {
 			return true;
 		}
 		
