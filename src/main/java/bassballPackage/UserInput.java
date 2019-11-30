@@ -1,5 +1,6 @@
 package bassballPackage;
 
+import java.util.InputMismatchException; //예외처리위해 필요.
 import java.util.Scanner; //사용자 입력위해 필요.
 
 public class UserInput {
@@ -19,9 +20,26 @@ public class UserInput {
 		return result;
 	}
 	
+	static int[] userInputValid() {
+		while (true) {
+			try {
+				return userInput();
+			} catch(InputMismatchException ime) {
+				System.out.println("잘못된 입력");
+				continue;
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		//userInput메서드 테스트
-		int[] result1 = userInput();
+//		int[] result1 = userInput();
+//		System.out.println("결괏값 백의자리 수:" + result1[0]);
+//		System.out.println("결괏값 십의자리 수:" + result1[1]);
+//		System.out.println("결괏값 일의자리 수:" + result1[2]);
+		
+		//userInputValid메서드 테스트
+		int[] result1 = userInputValid();
 		System.out.println("결괏값 백의자리 수:" + result1[0]);
 		System.out.println("결괏값 십의자리 수:" + result1[1]);
 		System.out.println("결괏값 일의자리 수:" + result1[2]);
