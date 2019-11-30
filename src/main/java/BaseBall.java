@@ -121,6 +121,13 @@ public class BaseBall {
         return false;
     }
 
+    private boolean isCorrect(int answer, int userInput) {
+        if (answer == userInput) {
+            return true;
+        }
+        return false;
+    }
+
     private void printResult(int answer, int userInput) {
         boolean Nothing = false;
         int strikeCount = 0;
