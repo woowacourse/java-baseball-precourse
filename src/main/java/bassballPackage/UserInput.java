@@ -6,7 +6,7 @@ import java.util.Scanner; //사용자 입력위해 필요.
 public class UserInput {
 	static int[] userInput(){
 		int[] result = new int[4];
-		Scanner input = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);			//이거 close해야될 것 같은데 어떻게 해야 할 지 모르겠다.(20줄 주석)
 		String introTxt = "사용자 입력: 1 ~ 9 사이의 서로다른 정수로 이루어진 세자리 수를 입력하세요 :";
 		System.out.println(introTxt);
 		
