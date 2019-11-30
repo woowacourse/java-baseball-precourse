@@ -1,5 +1,5 @@
 /*
- * Game.java                       1.3.0   2019-11-30
+ * Game.java                       1.4.0   2019-11-30
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -19,22 +19,32 @@ import java.io.InputStreamReader;
  * 게임이 끝나면 게임 재시작을 하거나, 게임을 완전히 종료한다.
  *
  * @author HyungjuAn
- * @version 1.3.0       잘못 입력된 재시작 정보를 알려주는 기능
+ * @version 1.4.0                          게임 시작 기능 추가
  * @date 2019-11-30
  */
 public class Game {
+    private static final String THREE_STRIKE = "3 스트라이크";
+
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         Player computer = new Player();
         Player user = new Player();
 
-
+        startGame(computer, user);
     }
 
     public static void startGame(Player computer, Player user) throws IOException {
-        do {
+        String hint;
 
-        } while (isRestart());
+        computer.setRandomNumbers();
+        do {
+            user.readNumbers();
+            hint = computer.giveHintAboutNumbers(user.getDigitNumbers());
+        } while (!hint.equals(THREE_STRIKE));
+        // 게임 종료 메시지 출력 기능 추가 위치
+
+        if (isRestart()) {
+            startGame(computer, user);
+        }
     }
 
     public static boolean isRestart() throws IOException {
