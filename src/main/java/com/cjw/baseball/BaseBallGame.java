@@ -4,24 +4,22 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class BaseBallGame {
-
     public static final int RANGE = 9;
     public static final int ANSWER_NUM = 3;
+
     private int computerAns[];                          //컴퓨터가 가질 숫자 리스트
     private Random random;
     private Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args){
         BaseBallGame game = new BaseBallGame();
-        game.init();
         game.startGame();
     }
 
     /**
      * init()
-     * 컴퓨터가 가질 숫자를 랜덤으로 설정하는 함
+     * 컴퓨터가 가질 숫자를 랜덤으로 설정하는 메소드
      */
-
     private void init(){
         int nowIdx = 0;
         boolean check;
@@ -41,13 +39,16 @@ public class BaseBallGame {
             }
         }
 
-        printComputerValue();
+        //printComputerValue();                               //테스팅용 컴퓨터 숫자 출력
     }
+
     private void printComputerValue(){
         for(int i = 0; i < ANSWER_NUM; i++){
             System.out.print(computerAns[i] + " ");
         }
+        System.out.println("");
     }
+
     private boolean overlapCheck(int idx, int val){
         for(int i = 0; i < idx; i++){
             if(computerAns[i] == val){
@@ -57,22 +58,72 @@ public class BaseBallGame {
         return false;
     }
 
+    /**
+     * startGame()
+     * 야구 게임을 시작하는 메소드
+     */
     private void startGame(){
         while(true){
-            int myAns[];
-            boolean check;
-
-            myAns = requestNumber();                    //입력 받은 숫자 저장
-            check = answer(myAns);
-
+            init();
+            progressGame();
+            if(!requestRestart()){
+                break;
+            }
         }
     }
 
     /**
-     * requestNumber
+     * progressGame()
+     *
+     */
+    private void progressGame(){
+        int myAns[];
+        boolean checkAns;
+
+        while(true) {
+            myAns = requestNumber();                    //입력 받은 숫자 저장
+            checkAns = answer(myAns);
+
+            if(checkAns) {                              //답을 맞췄다면
+                break;
+            }
+        }
+    }
+    private boolean requestRestart(){
+        int req;
+        boolean checkVal = false;
+
+        while(true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            req = scan.nextInt();
+            scan.nextLine();
+            checkVal = checkRestartValue(req);
+
+            if(checkVal){
+                break;
+            }
+        }
+
+        if(req == 1){                       //게임 다시 시작
+            return true;
+        } else {                            //게임 종료
+            return false;
+        }
+    }
+
+    private boolean checkRestartValue(int val){
+        if(val == 1 || val == 2) {
+            return true;
+        } else {
+            System.out.println("제대로 된 숫자를 입력해주세요");
+            return false;
+        }
+    }
+
+    /**
+     * requestNumber()
      * 숫자를 입력받는 기능을 하는 함
      */
-
     private int[] requestNumber(){
         int response[] = new int[ANSWER_NUM];
         boolean check;
@@ -102,7 +153,6 @@ public class BaseBallGame {
      * requestCheck, requestOverlapCheck
      * 각 자리 숫자와 다른 자리 숫자를 비교하여 같은지 판별하는 메소드
      */
-
     private boolean requestCheck(String req){
         if(req.length() != 3){                          //입력받은 문자길이가 3이면 제대로 입력한 것
             return false;
@@ -133,7 +183,8 @@ public class BaseBallGame {
      */
 
     private boolean answer(int[] reqAns){
-        int strike = 0, ball = 0;
+        int strike = 0;
+        int ball = 0;
         String rst;
 
         for(int i = 0; i < ANSWER_NUM; i++){
@@ -147,7 +198,7 @@ public class BaseBallGame {
 
         printAns(strike, ball);
 
-        return true;
+        return endCheck(strike);
     }
 
     private String answerCheck(int[] reqAns, int idx){
@@ -174,5 +225,14 @@ public class BaseBallGame {
             System.out.print(ball + " 볼");
         }
         System.out.println("");
+    }
+
+    private boolean endCheck(int strike){
+        if(strike == ANSWER_NUM) {
+            System.out.println("3개 숫자를 모두 맞추셨습니다! 게임 종료");
+            return true;
+        } else {
+            return false;
+        }
     }
 }
