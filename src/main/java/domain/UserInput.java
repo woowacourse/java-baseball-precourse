@@ -15,4 +15,10 @@ public class UserInput {
             return true;
         return false;
     }
+
+    public int makeNumber() throws IOException {
+        System.out.println("3자리 숫자를 입력해주세요! 입력 후 엔터를 누르시면 결과를 보여드립니다.");
+        int userInput = Integer.parseInt(br.readLine().trim());
+        return userInput;
+    }
 }
