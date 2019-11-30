@@ -1,11 +1,13 @@
 package com.woowahan.baseball;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Baseball extends AbstractBaseball{
     @Override
     protected Integer getRandomInteger(int min, int max) {
-        return null;
+        Random random = new Random();
+        return random.nextInt(max-min) + min;
     }
 
     @Override
