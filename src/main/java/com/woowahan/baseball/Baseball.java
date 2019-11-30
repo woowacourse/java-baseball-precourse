@@ -24,13 +24,16 @@ public class Baseball extends AbstractBaseball{
         for(int i = 1; i <= 9; i++){
             ballRange.add(i);
         }
-        
+
         return ballRange;
     }
 
     @Override
     protected Integer getRandomBall(ArrayList<Integer> range) {
-        return null;
+        int randIdx;
+        randIdx = getRandomInteger(0, range.size() - 1);
+
+        return range.get(randIdx);
     }
 
     @Override
