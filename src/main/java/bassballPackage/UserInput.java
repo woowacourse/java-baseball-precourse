@@ -26,7 +26,7 @@ public class UserInput {
 			try {
 				return userInput();
 			} catch(InputMismatchException ime) {
-				System.out.println("잘못된 입력");
+				System.out.println("잘못된 입력: 정수를 입력하세요.");
 				continue;
 			}
 		}
