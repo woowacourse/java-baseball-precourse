@@ -10,7 +10,11 @@
 
 ## Main Class
 
-**Main Method**
+**main Method**
+
+**print Method**
+
+**check_three_strike**
 
 
 
@@ -18,15 +22,17 @@
 
 ## Computer Class
 
-**Generate Method**
+**number_generate Method**
 
-**Check_ strike Method**
+**compare_number Method**
 
-**Check_boll Method**
+**check_ strike Method**
 
-**Check_four_boll Method**
+**check_boll Method**
 
-**Check_nothing Method**
+**set_result**
+
+**print_computer_numbers**
 
 
 
@@ -34,5 +40,8 @@
 
 ## User Class
 
-**Input Method**
+**input Method**
 
+**print_numbers Method**
+
+**get_user_numbers**
