@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 /**
- * 플레이어(사람)이 행하는 기능
+ * Player class - 플레이어(사람)의 기능을 정의
  *
- * @version         1.00 2019-1130
+ * @version         1.01 2019-11-30
  * @author          김범준(ddaaac)
  */
 public class Player {
@@ -26,8 +26,8 @@ public class Player {
             } catch (Exception e) {                             // 숫자가 아니라면 다시 입력
                 continue;
             }
-            // 1~999 사이 숫자가 아니라면 다시 입력
-            if (inputNumber > 0 && inputNumber < 1000) {
+            // 111~999 사이 숫자가 아니라면 다시 입력
+            if (inputNumber >= 111 && inputNumber < 1000) {
                 break;
             }
         }
