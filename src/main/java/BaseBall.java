@@ -68,7 +68,16 @@ public class BaseBall {
 	}
 
 	public static void main(String[] args) {
-		initBaseball();
+		Scanner scanner = new Scanner(System.in);
+		int flag = 1;
+		
+		while(flag == 1) {
+			initBaseball();
+			
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			flag = scanner.nextInt();
+		}
+		
 	}
 
 }
