@@ -15,10 +15,15 @@ public class User {
 	}
 	
 	void enterNumber() {
-		Scanner scanner = new Scanner(System.in);
+		Scanner numScanner = new Scanner(System.in);
 		
-		System.out.print("숫자를 입력해주세요: ");
-		number = scanner.nextLine();
+		do {
+			System.out.print("숫자를 입력해주세요: ");
+			number = numScanner.nextLine();
+			if(!isValidNumber()) {
+				System.out.print("잘못된 입력입니다. 다시 ");
+			}
+		} while (!isValidNumber());
 	}
 
 	boolean isValidNumber() {
@@ -33,7 +38,7 @@ public class User {
 	boolean isAllOneDigitNumber() {
 		for(int i=0;i<number.length();i++) {
 			char charAtI = number.charAt(i);
-			if( (charAtI < '0') || (charAtI > '9') ) {
+			if((charAtI < '0') || (charAtI > '9')) {
 				return false;
 			}
 		}
