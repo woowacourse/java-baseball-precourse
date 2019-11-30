@@ -91,6 +91,8 @@ public class Computer {
 			}
 		}
 		
+		ballCounts -= getStrikeCounts(userNumbers);
+		
 		return ballCounts;
 	}
 	
