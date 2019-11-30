@@ -1,6 +1,6 @@
 /*
 * Class Name: main.java
-* Version: 0.1
+* Version: ??
 * Date: 2019.11.28
 * Copyright(c) 2019 Sujin Cha(MIR013)
 * All rights reserved.
@@ -23,12 +23,13 @@ public class Main {
 
     private static final int BASEBALL_SIZE = 3;         //야구게임 볼 수
 
+    /** 전체 게임 진행 */
     public static void main(String[] agrs)
     {
-        System.out.println("hello! Wellcome to baseball game");
+        //System.out.println("hello! Wellcome to baseball game");
         //변수 생성
         Scanner scan = new Scanner(System.in);  // 입력용 스캐너
-        int isGoing;                // 게임 진행 여부
+        int isGoing;                            // 게임 진행 여부
 
         //게임 진행
         do{
@@ -52,9 +53,9 @@ public class Main {
     private static void playBaseballGame()
     {
         //변수 생성
-        Computer computer = new Computer();     // 컴퓨터 객체 생성
-        String value = new String();         // 입력값 저장용 변수
-        Scanner scan = new Scanner(System.in);  // 입력용 스캐너
+        Computer computer = new Computer();      // 컴퓨터 객체 생성
+        String value = new String();             // 입력값 저장용 변수
+        Scanner scan = new Scanner(System.in);   // 입력용 스캐너
 
         //게임 시작
         do{
@@ -72,8 +73,8 @@ public class Main {
     private static String generateValue()
     {
         //변수 생성
-        String value = new String();            // 입력값 저장용 변수
-        Scanner scan = new Scanner(System.in);  // 입력용 스캐너
+        String value = new String();                 // 입력값 저장용 변수
+        Scanner scan = new Scanner(System.in);       // 입력용 스캐너
 
         try{
             System.out.print("숫자를 입력해주세요: ");
@@ -105,10 +106,10 @@ public class Main {
     /** 같은 값을 입력으로 준 경우를 체크한다. */
     public static boolean isSameValue(String value)
     {
-        boolean isDuplicate = false;           // 중복 여부
-        char firstChar = value.charAt(0);       // value의 첫번째 값
-        char secondChar = value.charAt(1);      // value의 두번째 값
-        char thirdChar = value.charAt(2);       // value의 세번째 값
+        boolean isDuplicate = false;                 // 중복 여부
+        char firstChar = value.charAt(0);             // value의 첫번째 값
+        char secondChar = value.charAt(1);            // value의 두번째 값
+        char thirdChar = value.charAt(2);             // value의 세번째 값
 
         if (firstChar == secondChar){
             isDuplicate = true;

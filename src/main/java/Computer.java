@@ -24,7 +24,7 @@ public class Computer {
     /** 초기화와 동시에 야구게임 난수 생성 */
     public Computer()
     {
-        Random random = new Random();       // 난수 생성용 객체
+        Random random = new Random();           // 난수 생성용 객체
         Integer firstValue;                     // 첫 번째 수
         Integer secondValue;                    // 두 번째 수
         Integer thirdValue;                     // 세 번째 수
@@ -39,13 +39,13 @@ public class Computer {
         }while(thirdValue == firstValue || thirdValue == secondValue);
 
         this.number = firstValue.toString() + secondValue.toString() + thirdValue.toString();
-        System.out.println("computer: "+this.number);
+        //System.out.println("computer: "+this.number);
     }
 
     /** 특정값에 따라 결과 반환. */
     public boolean checkBaseball(String value)
     {
-        Integer[] result = new Integer[2];            // 스트라이크 개수, 볼 개수
+        Integer[] result = new Integer[2];              // 스트라이크 개수, 볼 개수
         boolean isNotStrike = true;                    // 3 스트라이크 여부
 
         //초기화
@@ -80,7 +80,7 @@ public class Computer {
     private void checkValue(char num,int location, String value,Integer[] result)
     {
         for(int i=0;i<BASEBALL_SIZE;i++){
-            char compare = value.charAt(i);
+            char compare = value.charAt(i);         // 정답과 비교하기 위함
             if(location == i && num == compare){
                 result[0] += 1;
             }else if(num == compare){
