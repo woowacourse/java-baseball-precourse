@@ -9,6 +9,7 @@
     static final int EXIT = 2;
     int answer;
     int userInput;
+    Scanner scanner;
 <br>
     
 #### 2. 1~9 사이의 서로 다른 수로 이루어진 3자리 수를 만들어 리턴하는 함수
@@ -39,11 +40,11 @@
 
 <br>
    
-#### 6. 맞췄는지 틀렸는지 true/false 리턴해주는 함수<br>
+#### 5. 맞췄는지 틀렸는지 true/false 리턴해주는 함수<br>
     boolean isCorrect(int answer, int userInput);
 <br>
     
-#### 7. 게임 시작/종료/반복 해주는 함수<br>
+#### 6. 게임 시작/종료/반복 해주는 함수<br>
     void start();
     boolean checkContinue();
     int getUserInputAOrB(int inputA, int inputB, String guideMessage);
