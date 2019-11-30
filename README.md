@@ -3,8 +3,8 @@
 ### 구현할 기능 목록 : 나의 세미 이슈!
 
 - [ ] 1 : 컴퓨터가 게임을 하나 생성하기 : BaseBallGame.class
-- [ ] 2 : 3개의 숫자의 순서 배열을 하나로 묶는 단위 : GameNumbers.class
-- [ ] 3 : 한개의 숫자의 단위 - 1~9 검증 : Number
+- [x] 2 : 3개의 숫자의 순서 배열을 하나로 묶는 단위 : GameNumbers.class
+- [x] 3 : 한개의 숫자의 단위 - 1~9 검증 : Number
 - [ ] 4 : BaseBallGame 클래스 하나에는 하나의 정답 GameNumbers 객체가 들어간다.
 - [ ] 5 : 사용자로부터 GameNumbers를 입력 받기위한 출력문이 있다.
 - [ ] 6 : 사용자로부터 GameNumbers를 입력받는다.
