@@ -10,3 +10,8 @@ Function list :
 4-2. Check strike or not.  
 4-3. Calculate final result.  
 5. Check the result and decide the game is done or not.
+
+Git Commit Keywords:  
+Add: Adding class or file.   
+Fix: Fixing bugs.  
+Modify: Modifying code for better code.
