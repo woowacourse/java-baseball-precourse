@@ -4,7 +4,9 @@ number baseball game
 
 ## Required Implementation list
 
-- [1] get input numbers
+- [1] enter numbers
+  - check if number is appropriate
+  - if input number is not appropriate, re-enter until appropriate number
 - [2] generate computer's numbers
 - [3] decide result of the game
 - [4] decide repeat or terminate game
