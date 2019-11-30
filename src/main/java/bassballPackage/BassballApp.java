@@ -5,14 +5,27 @@ public class BassballApp {
 		int[] result = {0, 0};
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
-				if(i == j && userArr[i] == cpuArr[j]) {
-					result[0] += 1;
-				}else if(userArr[i] == cpuArr[j]) {
-					result[1] += 1;
-				}
+				result[0] += SCountIf(userArr, cpuArr, i, j);
+				result[1] += BCountIf(userArr, cpuArr, i, j);
 			}
 		}
 		return result;
+	}
+	
+	static int SCountIf(int[] userArr, int[] cpuArr, int i, int j) {
+		if(i == j && userArr[i] == cpuArr[j]) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+	
+	static int BCountIf(int[] userArr, int[] cpuArr, int i, int j) {
+		if(i != j && userArr[i] == cpuArr[j]) {
+			return 1;
+		}else {
+			return 0;
+		}
 	}
 	
 	public static void main(String[] args) {
