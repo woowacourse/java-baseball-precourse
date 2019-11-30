@@ -8,7 +8,6 @@ public class NumberHitter extends BasePlayer implements Hitter {
 
     @Override
     public List<Integer> hit() {
-
         List<Integer> balls = new ArrayList<>();
         for (int i = 0; i < NumberBaseballConfig.Round; i++) {
             int ball = confirmBall(balls);
