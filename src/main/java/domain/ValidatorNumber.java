@@ -40,8 +40,9 @@ public class ValidatorNumber implements Validator {
             sb.append("BALL : ").append(ballCount);
         return sb.toString();
     }
-    public boolean gameOver(){
-        if(strike==3)
+
+    public boolean gameOver() {
+        if (strike == 3)
             return true;
         return false;
     }

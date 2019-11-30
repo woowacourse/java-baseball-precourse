@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         System.out.println("hello world");
-        while (true){
+        while (true) {
             System.out.println("hello world2");
             int randomNumber = random.makeNumber();
             System.out.println("hello world 3");
@@ -23,9 +23,9 @@ public class Main {
                 userNumber = userInput.makeNumber();
                 System.out.println(
                         validator.randomNumberCompareToUserInput(randomNumber, userNumber));
-            }while(randomNumber!=userNumber);
+            } while (randomNumber != userNumber);
             System.out.println("정답을 맞히셨습니다! ");
-            if(userInput.endGame())
+            if (userInput.endGame())
                 break;
         }
     }

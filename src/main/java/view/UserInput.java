@@ -3,7 +3,6 @@ package view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.IllegalFormatConversionException;
 
 public class UserInput {
     private static final int DEFAULT_INT_ZERO = 0;
@@ -32,7 +31,7 @@ public class UserInput {
         int userInput = makeNumberAndCheckStringError();
 
         while (String.valueOf(userInput).length() != 3) {
-            System.out.print("세 자리 수로 입력해주세요! 다른 자리수는 안돼요~");
+            System.out.println("세 자리 수로 입력해주세요! 다른 자리수는 안돼요~");
             userInput = makeNumberAndCheckStringError();
         }
         return userInput;
@@ -41,10 +40,11 @@ public class UserInput {
     private int makeNumberAndCheckStringError() throws IOException {
         int userInput = DEFAULT_INT_ZERO;
 
-        while (userInput == 0) {
+        while (true) {
             try {
                 userInput = Integer.parseInt(br.readLine().trim());
-            } catch (IllegalFormatConversionException e) {
+                break;
+            } catch (NumberFormatException e) {
                 System.out.println("문자는 입력이 되지 않아요. 숫자로 입력해주세요");
             }
         }
