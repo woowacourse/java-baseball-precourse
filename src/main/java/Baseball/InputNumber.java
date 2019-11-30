@@ -17,7 +17,7 @@ public class InputNumber {
         }
     }
 
-    public boolean inputCheck(int inputNumber){
+    private boolean inputCheck(int inputNumber){
         int temp = inputNumber;
         if((temp < 100) || (temp > 999)){
             return false;
