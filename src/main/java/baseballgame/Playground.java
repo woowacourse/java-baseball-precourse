@@ -3,6 +3,8 @@ package baseballgame;
 import java.util.Scanner;
 
 public class Playground {
+    private static final String STOP = "2";
+    private static final String CONTINUE = "1";
     private String targetNumber;
     private BaseballGame baseballGame = new BaseballGame();
     private Scanner scanner = new Scanner(System.in);
@@ -11,7 +13,6 @@ public class Playground {
 
         do {
             targetNumber = baseballGame.getRandomNumber();
-            System.out.println(targetNumber); // 디버깅을 위한 출력
         } while (isInProgress(scanner, targetNumber));
 
         printGameOverMessage();
@@ -50,8 +51,6 @@ public class Playground {
     }
 
     private boolean isGameOver(Scanner scanner) {
-        final String STOP = "2";
-        final String CONTINUE = "1";
         String inputNumber;
 
         while (true) {
