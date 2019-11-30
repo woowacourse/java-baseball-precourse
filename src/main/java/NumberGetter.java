@@ -1,5 +1,5 @@
 /**
- * NumberGetter 클래스에서는 플레이어의 세자리수를 입력받는다.
+ * NumberGetter 클래스에서는 플레이어의 수를 입력받는다.
  */
 
 import java.util.Scanner;

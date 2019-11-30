@@ -1,5 +1,5 @@
 /**
- * NumberGenerator 클래스에서는 플레이어가 맞춰야할 세자리수를 생성한다.
+ * NumberGenerator 클래스에서는 플레이어가 맞춰야할 수를 생성한다.
  */
 
 import java.util.ArrayList;
