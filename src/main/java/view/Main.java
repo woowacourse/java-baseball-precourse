@@ -1,30 +1,29 @@
 package view;
 
-import domain.RandomNumber;
-import domain.ValidatorNumber;
+import domain.Computer;
+import domain.NumberValidator;
 
 import java.io.IOException;
 
 public class Main {
-    private static final UserInput userInput = new UserInput();
-    private static final ValidatorNumber validator = new ValidatorNumber();
-    private static final RandomNumber random = new RandomNumber();
+    private static final User user = new User();
+    private static final NumberValidator validator = new NumberValidator();
+    private static final Computer computer = new Computer();
 
     private static int userNumber = 0;
 
     public static void main(String[] args) throws IOException {
         while (true) {
-            int randomNumber = random.makeNumber();
-
+            int randomNumber = computer.makeRandomNumber();
             do {
                 System.out.println("세자리 수를 입력해주세요! 결과가 표시됩니다. ");
-                userNumber = userInput.makeNumber();
+                userNumber = user.makeNumber();
                 System.out.println(
-                        validator.compareRandomNumberWithUserInput(randomNumber, userNumber));
+                        validator.compareRandomNumberWithUserNumber(randomNumber, userNumber));
             } while (randomNumber != userNumber);
             System.out.println("정답을 맞히셨습니다!");
 
-            if (userInput.endGame())
+            if (user.wantToEndGame())
                 break;
         }
     }

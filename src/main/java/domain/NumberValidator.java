@@ -3,18 +3,24 @@ package domain;
 import java.util.Arrays;
 import java.util.List;
 
-public class ValidatorNumber implements Validator {
+public class NumberValidator implements Validator {
     private static final String DEFALUT_STRING_BLANK = "";
     private static final int DEFALUT_INT_ZERO = 0;
-    private int strike = 0;
+    private int strike = DEFALUT_INT_ZERO;
 
     @Override
-    public String compareRandomNumberWithUserInput(int randomNumber, int userInput) {
+    public String compareRandomNumberWithUserNumber(int randomNumber, int userInput) {
         strike = DEFALUT_INT_ZERO;
         int ball = DEFALUT_INT_ZERO;
+        /*
+         * 사용자 입력 및 난수를 문자로 변환하여 처리하는 것이 좋을 것 같아, 배열과 리스트의 형태로 변환하였습니다.
+         */
         List<String> randomNumberList = Arrays.asList(String.valueOf(randomNumber).split(DEFALUT_STRING_BLANK));
         String[] userInputArray = String.valueOf(userInput).split(DEFALUT_STRING_BLANK);
-
+        /*
+         * 컴퓨터가 생성한 각 자리값이, 사용자 입력값의 각 자리값을 포함하고 있는지,
+         * 포함하고 있다면 인덱스는 일치하는지를 통해 Strike, Ball 값을 결정하는 부분입니다.
+         */
         for (int i = 0; i < userInputArray.length; i++) {
             if (randomNumberList.get(i).equals(userInputArray[i]))
                 strike++;
@@ -22,10 +28,10 @@ public class ValidatorNumber implements Validator {
                     && randomNumberList.indexOf(userInputArray[i]) != i)
                 ball++;
         }
-        return printResult(strike, ball);
+        return printValidatedResult(strike, ball);
     }
 
-    private String printResult(int strikeCount, int ballCount) {
+    private String printValidatedResult(int strikeCount, int ballCount) {
         StringBuilder sb = new StringBuilder();
 
         if (strikeCount == DEFALUT_INT_ZERO && ballCount == DEFALUT_INT_ZERO)

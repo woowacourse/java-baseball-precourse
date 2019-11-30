@@ -4,13 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class UserInput {
+public class User {
     private static final int DEFAULT_INT_ZERO = 0;
     private static final int END_GAME = 2;
     private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private static final int START_GAME = 1;
 
-    public boolean endGame() throws IOException {
+    public boolean wantToEndGame() throws IOException {
         System.out.println("게임을 재시작하려면 1번 종료하려면 2번을 입력해주세요 ! ");
         int userInput = makeNumberAndCheckStringError();
 

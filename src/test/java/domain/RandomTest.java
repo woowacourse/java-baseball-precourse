@@ -3,7 +3,6 @@ package domain;
 import annotation.TestDescription;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,15 +11,15 @@ import static junit.framework.TestCase.assertTrue;
 
 public class RandomTest {
     private static final int MILLION = 1000000;
-    private static final RandomNumber random = new RandomNumber();
+    private static final Computer random = new Computer();
 
     @Test
     @TestDescription("서로 다른 세 자리수임을 확인하는 테스트입니다.")
     public void testRandomNumberRange(){
-        RandomNumber random = new RandomNumber();
+        Computer random = new Computer();
 
         for(int i=0; i<MILLION; i++){
-            int randomNumber = random.makeNumber();
+            int randomNumber = random.makeRandomNumber();
             assertTrue(randomNumber >=100);
             assertTrue(randomNumber<1000);
         }
@@ -32,7 +31,7 @@ public class RandomTest {
 
         for(int i=0; i<MILLION; i++){
             setForDigitNumber.clear();
-            int randomNumber = random.makeNumber();
+            int randomNumber = random.makeRandomNumber();
             String[] randomArray = String.valueOf(randomNumber).split("");
             for(int j=0; j<randomArray.length; j++){
                 setForDigitNumber.add(randomArray[j]);
