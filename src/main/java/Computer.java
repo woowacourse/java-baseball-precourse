@@ -27,5 +27,16 @@ public class Computer {
         return check;
     }
 
+    private int check_boll(int user_number, int[] computer_numbers) {
+        int check = 0;
+        for (int i = 0; i < numbers.length; ++i) {
+            if (computer_numbers[i] != 0 && user_number == computer_numbers[i]) {
+                ++check;
+            }
+        }
+
+        return check;
+    }
+
     
 }
