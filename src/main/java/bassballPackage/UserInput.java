@@ -32,6 +32,21 @@ public class UserInput {
 		}
 	}
 	
+	static int[] userInputValid2() {			//자릿 수 검사
+		while (true) {
+			int[] result = userInputValid();
+			if (result[0] >= 1000 || result[0] < 100) {
+				System.out.println("잘못된 입력: 세자리 수를 입력하세요.");
+			} else if (result[2] == 0 || result[3] == 0) {
+				System.out.println("잘못된 입력: 1~9 사이 수를 입력하세요.");
+			} else if (result[1] == result[2] || result[1] == result[3] || result[2] == result[3]) {
+				System.out.println("잘못된 입력: 서로 다른 세 수를 입력하세요.");
+			} else {
+				return result;
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		//userInput메서드 테스트
 //		int[] result1 = userInput();
@@ -40,10 +55,13 @@ public class UserInput {
 //		System.out.println("결괏값 일의자리 수:" + result1[3]);
 		
 		//userInputValid메서드 테스트
-		int[] result1 = userInputValid();
-		System.out.println("결괏값 백의자리 수:" + result1[1]);
-		System.out.println("결괏값 십의자리 수:" + result1[2]);
-		System.out.println("결괏값 일의자리 수:" + result1[3]);
+//		int[] result1 = userInputValid();
+//		System.out.println("결괏값 백의자리 수:" + result1[1]);
+//		System.out.println("결괏값 십의자리 수:" + result1[2]);
+//		System.out.println("결괏값 일의자리 수:" + result1[3]);
+		
+		int[] result2 = userInputValid2();
+		System.out.println("결괏값 :" + result2[0]);
 	}
 }
 
