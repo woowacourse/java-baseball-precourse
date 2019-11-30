@@ -15,9 +15,64 @@ public class BaseBall {
 
     static final int INPUT_SIZE = 3;
     static final int MAX_NUMBER = 9;
+    static final int CONTINUE = 1;
+    static final int EXIT = 2;
     private int answer;
     private int userInput;
     private Scanner scanner;
+
+    private void start() {
+        this.answer = makeRandomNumber(MAX_NUMBER);
+
+        while (true) {
+            while (!getUserInput());
+
+            printResult(this.answer, this.userInput);
+
+            if (isCorrect(this.answer, this.userInput)) {
+                break;
+            }
+        }
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        checkContinue();
+    }
+
+    private void checkContinue() {
+        int input;
+        input = getUserInputAOrB(CONTINUE, EXIT);
+
+        if (input == CONTINUE) {
+            start();
+        }
+        if (input == EXIT) {
+            System.exit(0);
+        }
+    }
+
+    private int getUserInputAOrB(int inputA, int inputB) {
+        String input;
+        int inputValue;
+
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            input = this.scanner.nextLine();
+            if (checkInputContainsChar(input)) {
+                continue;
+            }
+
+            inputValue = Integer.parseInt(input);
+            if (inputValue == inputA) {
+                return inputA;
+            }
+            if (inputValue == inputB) {
+                return inputB;
+            }
+
+            System.out.println("잘못된 입력입니다. 다시 입력하세요.");
+        }
+    }
 
     private int makeRandomNumber(int maxNumber) {
         int randomNumber1 = 0;
