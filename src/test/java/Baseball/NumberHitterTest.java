@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class NumberHitterTest {
-    NumberHitter hitter;
+    private NumberHitter hitter;
 
     @BeforeEach
     void init() {
@@ -18,6 +18,6 @@ class NumberHitterTest {
     @Test
     void pitch() {
         List<Integer> balls = hitter.hit();
-        assertEquals(3, balls.size());
+        assertEquals(NumberBaseballConfig.Round, balls.size());
     }
 }

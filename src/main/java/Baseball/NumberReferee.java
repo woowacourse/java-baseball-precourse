@@ -4,6 +4,7 @@ import java.security.InvalidParameterException;
 import java.util.List;
 
 public class NumberReferee implements Referee {
+
     @Override
     public Result judge(List<Integer> ballsHit, List<Integer> ballsPitched
     ) {
@@ -15,14 +16,12 @@ public class NumberReferee implements Referee {
 
         return new Result(strikes, B);
     }
-
     private boolean isValid(List<Integer> ballsHit, List<Integer> ballsPitched) {
         if (ballsHit == null || ballsPitched == null) {
             return false;
         }
         return ballsHit.size() == 3 && ballsPitched.size() == 3;
     }
-
     private int countStrikes(List<Integer> ballsHit, List<Integer> ballsPitched) {
         int strikes = 0;
 
@@ -34,7 +33,6 @@ public class NumberReferee implements Referee {
         }
         return strikes;
     }
-
     //B는 야구에서 '볼'을 의미합니다. 현재 프로그램에서 'ball'이 '공'을 뜻하기 때문에, 야구 전광판에서 사용하는 용어 'B'를 이용했습니다.
     private int countB(List<Integer> ballsHit, List<Integer> ballsPitched) {
         int B = 0;

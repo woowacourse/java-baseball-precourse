@@ -10,7 +10,6 @@ public class BasePlayer implements Player {
     protected BasePlayer() {
         this.scanner = new Scanner(System.in);
     }
-
     protected BasePlayer(Scanner scanner) {
         this.scanner = scanner;
     }
@@ -25,7 +24,6 @@ public class BasePlayer implements Player {
 
         return input.equals(Will.WantToPlay.getValue());
     }
-
     private boolean isValid(Integer input) {
         return input.equals(1) || input.equals(2);
     }

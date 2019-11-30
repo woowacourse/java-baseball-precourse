@@ -33,12 +33,10 @@ public class NumberBaseball implements Baseball {
     private Result start() {
         return new Result(0,0);
     }
-
     private boolean isStrikeOut(Result result) {
         //todo: move to config
         return result.getStrikes() == 3 && result.getB() == 0;
     }
-
     private void finish() {
         System.out.println("게임이 완전히 종료되었습니다.");
     }

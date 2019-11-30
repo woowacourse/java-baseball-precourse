@@ -22,7 +22,6 @@ public class NumberPitcher extends BasePlayer implements Pitcher {
 
         return translateToBalls(input);
     }
-
     private boolean isValid(String input) {
         // todo: change to config
         if (input.length() != 3) {
@@ -37,7 +36,6 @@ public class NumberPitcher extends BasePlayer implements Pitcher {
 
         return true;
     }
-
     private List<Integer> translateToBalls(String input) {
         List<Integer> balls = new ArrayList<>();
         for (char syllable: input.toCharArray()) {

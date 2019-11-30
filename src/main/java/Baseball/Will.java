@@ -5,6 +5,7 @@ public enum Will {
     WantToStop(2);
 
     private int value;
+
     Will(int value) {
         this.value = value;
     }
@@ -12,6 +13,4 @@ public enum Will {
     public int getValue() {
         return value;
     }
-
-
 }
