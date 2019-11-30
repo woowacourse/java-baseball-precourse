@@ -20,42 +20,41 @@ public class Baseball {
         computerInput = computer.pickNumber(digitNumber);
         while(true) {
             strikeBall = referee.countStrikeBall(userInput, computerInput);
-            if(strikeBall[0] != 0) System.out.printf("%d스트라이크 ", strikeBall[0]);
-            if(strikeBall[1] != 0) System.out.printf("%d볼", strikeBall[1]);
-            if(strikeBall[0] == 0 && strikeBall[1] == 0) System.out.printf("낫싱");
-            System.out.println();
-            if (strikeBall[0] == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
+            if (printStrikeBall(strikeBall)) break;
             userInput = inputNumber();
         }
-
     }
-    // 숫자를 입력받는다. 추후에 View로 분리
-    public int[] inputNumber() {
-        int[] userInput;
+
+    private boolean printStrikeBall(int[] strikeBall) {
+        if(strikeBall[0] != 0) System.out.printf("%d스트라이크 ", strikeBall[0]);
+        if(strikeBall[1] != 0) System.out.printf("%d볼", strikeBall[1]);
+        if(strikeBall[0] == 0 && strikeBall[1] == 0) System.out.printf("낫싱");
+        System.out.println();
+        if (strikeBall[0] == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
+    // 숫자를 입력받는다.
+    private int[] inputNumber() {
         Scanner sc = new Scanner(System.in);
+        int[] digits;
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
-            userInput = inputAnswer(sc.nextInt());
-            if (userInput != null) {
+            digits = toArray(sc.nextInt());
+            if (verifyUniquity(digits) == true) {
                 break;
             }
             System.out.println("다시 입력해 주세요.");
         }
-        return userInput;
-    }
-
-    // 숫자를 배열로 바꾸고 검증한다.
-    public int[] inputAnswer(int number) {
-        int[] digits = toArray(number);
-        if (!verify(digits)) return null;               // 먼저 중복 검사를 한다.
         return digits;
     }
 
+
     // 모든 숫자가 unique해야 하므로 이를 테스트 한다.
-    private boolean verify(int[] digits) {
+    private boolean verifyUniquity(int[] digits) {
         if (digits.length != digitNumber) return false;
         int[] dictionary = new int[10];
         for (int i = 0; i < digits.length; i++) {

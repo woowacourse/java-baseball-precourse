@@ -15,7 +15,7 @@ public class Referee {
         for(int i = 0; i < userNum.length; i++) {
             userDic[userNum[i]] = 1;
             compDic[computerNum[i]] = 1;
-            if(compare(userNum[i], computerNum[i])) {
+            if(userNum[i] == computerNum[i]) {
                 strikeBall[0]++;
                 continue;
             }
@@ -28,11 +28,5 @@ public class Referee {
 
         }
         return strikeBall;
-    }
-
-    // 정수 두개 비교 메소드
-    public boolean compare(int a, int b) {
-        if(a == b) return true;
-        return false;
     }
 }
