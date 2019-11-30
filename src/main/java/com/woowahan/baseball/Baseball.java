@@ -38,7 +38,17 @@ public class Baseball extends AbstractBaseball{
 
     @Override
     protected ArrayList<Integer> getRandomBalls() {
-        return null;
+        ArrayList<Integer> range, randomBalls;
+        range = initializeBallRange();
+        randomBalls = new ArrayList<Integer>();
+
+        for(int i = 1; i <= 3; i++){
+            int randomBall = getRandomBall(range);
+            randomBalls.add(randomBall);
+            range.remove(range.indexOf(randomBall));
+        }
+
+        return randomBalls;
     }
 
     @Override
