@@ -40,7 +40,8 @@ public class BaseBall {
 
     private void checkContinue() {
         int input;
-        input = getUserInputAOrB(CONTINUE, EXIT);
+        String guideMessage = new String("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        input = getUserInputAOrB(CONTINUE, EXIT, guideMessage);
 
         if (input == CONTINUE) {
             start();
@@ -50,12 +51,14 @@ public class BaseBall {
         }
     }
 
-    private int getUserInputAOrB(int inputA, int inputB) {
+    private int getUserInputAOrB(int inputA, int inputB, String guideMessage) {
         String input;
         int inputValue;
 
         while (true) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            if (guideMessage.length() > 0) {
+                System.out.println(guideMessage);
+            }
 
             input = this.scanner.nextLine();
             if (checkInputContainsChar(input)) {
