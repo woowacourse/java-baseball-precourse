@@ -7,8 +7,10 @@ import java.util.Collections;
 
 public class IntegerToArrayList {
     private static ArrayList<Integer> numberList = new ArrayList<>();
+
     public static ArrayList<Integer> integerToArrayList(int userNumber) {
         int numberLength = String.valueOf(userNumber).length();
+        numberList.clear();
 
         for (int i = 0; i < numberLength; i++) {
             numberList.add(userNumber % 10);
