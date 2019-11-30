@@ -21,7 +21,11 @@ public class BaseBall {
     private int userInput;
     private Scanner scanner;
 
-    private void start() {
+    public BaseBall() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public void start() {
         this.answer = makeRandomNumber(MAX_NUMBER);
 
         while (true) {
@@ -60,7 +64,7 @@ public class BaseBall {
                 System.out.println(guideMessage);
             }
 
-            input = this.scanner.nextLine();
+            input = this.scanner.next();
             if (checkInputContainsChar(input)) {
                 continue;
             }
@@ -107,10 +111,9 @@ public class BaseBall {
     private boolean getUserInput() {
         String input;
         int inputValue;
-        Scanner scanner = new Scanner(System.in); //생성자에 추가
 
-        System.out.println("숫자를 입력해주세요 : ");
-        input  = scanner.next();
+        System.out.print("숫자를 입력해주세요 : ");
+        input  = this.scanner.next();
 
         if (checkInputContainsChar(input)) {
             return false;
@@ -273,24 +276,5 @@ public class BaseBall {
         count -= strikeCount;
 
         return count;
-    }
-
-
-
-    public static void main(String[] args) {
-        BaseBall baseBall = new BaseBall();
-//        baseBall.makeRandomNumber(MAX_NUMBER);
-//        while (!baseBall.getUserInput());
-//        baseBall.printResult(713, 123);
-//        baseBall.printResult(713, 145);
-//        baseBall.printResult(713, 671);
-//        baseBall.printResult(713, 216);
-//        baseBall.printResult(713, 713);
-//        baseBall.printResult(789, 123);
-//        baseBall.printResult(789, 456);
-//        baseBall.printResult(789, 567);
-//        baseBall.printResult(789, 678);
-//        baseBall.printResult(789, 987);
-//        baseBall.printResult(789, 789);
     }
 }
