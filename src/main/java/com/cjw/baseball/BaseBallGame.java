@@ -191,12 +191,26 @@ public class BaseBallGame {
                 return false;
             }
         }
+
+        if(!requestRangeCheck(req)) {                   //각 자리 0~9 범위 입력 확인
+            return false;
+        }
+
         return true;
     }
 
     private boolean requestOverlapCheck(String req, int idx) {
         for(int i = 0; i < ANSWER_NUM; i++) {
             if((i != idx) && (req.charAt(i) == req.charAt(idx))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean requestRangeCheck(String req) {
+        for(int i = 0; i < ANSWER_NUM; i++) {
+            if((req.charAt(i) < '0') || (req.charAt(i) > '9')) {
                 return false;
             }
         }
