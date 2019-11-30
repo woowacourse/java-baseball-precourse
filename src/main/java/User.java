@@ -16,4 +16,10 @@ public class User {
         }
 
     }
+
+    public void print_numbers() {
+        for (int i = 0; i < user_numbers.length; ++i) {
+            System.out.println(user_numbers[i]);
+        }
+    }
 }
