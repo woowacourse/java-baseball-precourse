@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Computer {
     private int[] randomNumber;
+    private boolean[] checkBoard;
 
     Computer(){
         generate_randomNumber();
@@ -11,11 +12,23 @@ public class Computer {
         return randomNumber;
     }
 
+    boolean[] get_checkBoard(){
+        return checkBoard;
+    }
+
     boolean check_randomNumber(int[] numbers){
         if ((numbers[0] != numbers[1]) && (numbers[0] != numbers[2]) && (numbers[1] != numbers[2]))
             return true;
 
         return false;
+    }
+
+    void make_checkBoard(int[] numbers){
+        checkBoard = new boolean[10];
+
+        for(int i=0; i<3; i++){
+            checkBoard[numbers[i]] = true;
+        }
     }
 
     void generate_randomNumber(){
@@ -27,8 +40,9 @@ public class Computer {
                 tempNumbers[i] = random.nextInt(9) + 1;
             }
         }while(!check_randomNumber(tempNumbers));
-        
+
         randomNumber = tempNumbers;
+        make_checkBoard(randomNumber);
     }
 
 }
