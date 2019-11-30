@@ -4,10 +4,6 @@ public class Computer {
     private int[] randomNumber;
     private boolean[] checkBoard;
 
-    Computer(){
-        generate_randomNumber();
-    }
-
     int[] get_randomNumber(){
         return randomNumber;
     }
@@ -67,5 +63,38 @@ public class Computer {
         }
 
         return true;
+    }
+
+    boolean count_strike_and_balls(boolean[] board, int[] comNumber, int[] userNumber){
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for(int i=0; i<3; i++){
+            if(comNumber[i] == userNumber[i]){
+                strikeCount++;
+            }else if(board[userNumber[i]]){
+                ballCount++;
+            }
+        }
+
+        if(strikeCount == 0 && ballCount == 0){
+            System.out.print("낫싱");
+        }
+        if(strikeCount > 0){
+            System.out.print(strikeCount);
+            System.out.print(" 스트라이크 ");
+        }
+        if(ballCount > 0){
+            System.out.print(ballCount);
+            System.out.print(" 볼 ");
+        }
+        System.out.println();
+
+        if(strikeCount == 3){
+            System.out.println("3개의 숫자를 모두맞히셨습니다! 게임 종료.");
+            return true;
+        }
+
+        return false;
     }
 }
