@@ -9,20 +9,19 @@
 import java.util.Scanner;
 
 public class Main {
-    static Baseball baseball = new Baseball();
     public static void main(String[] args) {
-
+        Baseball baseball = new Baseball();
         baseball.init();
-        while(retry()) {
+        while (askRetry()) {
             baseball.init();
         }
     }
-    // 다시 시작하기 물어보기
-    private static boolean retry() {
+
+    private static boolean askRetry() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력해주세요.");
         Scanner sc = new Scanner(System.in);
         int decision = sc.nextInt();
-        if(decision == 1 ) {
+        if (decision == 1) {
             return true;
         }
         return false;

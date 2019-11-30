@@ -9,16 +9,15 @@
 import java.util.Random;
 
 public class Computer {
-
-    public int[] pickNumber(int digitNumber) {
+    public int[] pickRandomNumber(int digitNumber) {
         Random random = new Random();
         int[] dictionary = new int[10];
         int[] generatedNumber = new int[digitNumber];
         int temp, i = 0;
-        while(i < digitNumber) {
+        while (i < digitNumber) {
             temp = random.nextInt(9) + 1;
             generatedNumber[i] = temp;
-            if(dictionary[temp] == 1) {
+            if (dictionary[temp] == 1) {
                 continue;
             }
             dictionary[temp] = 1;
