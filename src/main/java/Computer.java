@@ -43,5 +43,12 @@ public class Computer {
         result[1] = boll;
     }
 
+    public void print_computer_numbers() {
+        for (int i = 0; i < numbers.length; ++i) {
+            System.out.println(numbers[i]);
+        }
+
+    }
+
     
 }
