@@ -14,7 +14,7 @@ public class NumberPitcher extends BasePlayer implements Pitcher {
 
     @Override
     public List<Integer> pitch() {
-        System.out.print("숫자를 입력주세요 : ");;
+        System.out.print("숫자를 입력해주세요 : ");;
         String input = scanner.next();
         if (!isValid(input)) {
             throw new InvalidInputException("입력값이 옳바르지 않습니다.");

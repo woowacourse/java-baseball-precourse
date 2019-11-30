@@ -22,14 +22,11 @@ class NumberRefereeTest {
 
     private final ByteArrayOutputStream outView = new ByteArrayOutputStream();
 
-
-
     @BeforeEach
     void init() {
         referee = new NumberReferee();
         System.setOut(new PrintStream(outView));
     }
-
     @AfterEach
     void cleanUp() {
         System.setOut(null);
