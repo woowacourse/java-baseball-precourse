@@ -1,5 +1,5 @@
 /*
- * Game.java                       1.1.0   2019-11-29
+ * Game.java                       1.2.0   2019-11-30
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -19,8 +19,8 @@ import java.io.InputStreamReader;
  * 게임이 끝나면 게임 재시작을 하거나, 게임을 완전히 종료한다.
  *
  * @author HyungjuAn
- * @version 1.1.0                        게임 재시작 기능 추가
- * @date 2019-11-29
+ * @version 1.2.0               재시작 정보를 입력받는 기능 추가
+ * @date 2019-11-30
  */
 public class Game {
     public static void main(String[] args) throws IOException {
@@ -31,24 +31,35 @@ public class Game {
 
     }
 
-    public static void startGame(Player computer, Player user) throws IOException{
+    public static void startGame(Player computer, Player user) throws IOException {
         do {
 
         } while (isRestart());
     }
 
-    public static boolean isRestart() throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static boolean isRestart() throws IOException {
         boolean result = false;
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int temp = Integer.parseInt(br.readLine());
-        if (temp == 1) {
+        int restartInfo = InputRestartInfo();
+        if (restartInfo == 1) {
             result = true;
-        } else {
+        } else if (restartInfo == 2) {
             result = false;
+        } else {
+            // 잘못된 입력이라는 것을 알려주는 기능 추가
+            result = isRestart();
         }
 
         return result;
+    }
+
+    public static int InputRestartInfo() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int restartInfo;
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        restartInfo = Integer.parseInt(br.readLine());
+
+        return restartInfo;
     }
 }
