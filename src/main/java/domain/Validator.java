@@ -3,6 +3,6 @@ package domain;
 @FunctionalInterface
 public interface Validator {
 
-    public String randomNumberCompareToUserInput(int randomNumber, int userInput);
+    String compareRandomNumberWithUserInput(int randomNumber, int userInput);
 
 }

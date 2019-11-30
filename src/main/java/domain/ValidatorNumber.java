@@ -8,12 +8,8 @@ public class ValidatorNumber implements Validator {
     private static final int DEFALUT_INT_ZERO = 0;
     private int strike = 0;
 
-    public int getStrike() {
-        return strike;
-    }
-
     @Override
-    public String randomNumberCompareToUserInput(int randomNumber, int userInput) {
+    public String compareRandomNumberWithUserInput(int randomNumber, int userInput) {
         strike = DEFALUT_INT_ZERO;
         int ball = DEFALUT_INT_ZERO;
 
@@ -41,9 +37,4 @@ public class ValidatorNumber implements Validator {
         return sb.toString();
     }
 
-    public boolean gameOver() {
-        if (strike == 3)
-            return true;
-        return false;
-    }
 }
