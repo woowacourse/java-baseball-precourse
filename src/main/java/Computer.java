@@ -38,5 +38,10 @@ public class Computer {
         return check;
     }
 
+    private void set_result(int strike, int boll) {
+        result[0] = strike;
+        result[1] = boll;
+    }
+
     
 }
