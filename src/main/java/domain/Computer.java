@@ -18,9 +18,24 @@ public class Computer {
 	}
 	
 	public void generateNumbers() {
+		boolean isThereSame = false;
+		int newRandomNumber = -1;
+		
 		for(int i=0; i<LEN_NUMBERS; i++) {
-			numbers[i] = generateRandomNumber();
+			do {
+				newRandomNumber = generateRandomNumber();
+			} while(isThereSameNumber(i, newRandomNumber));
+			numbers[i] = newRandomNumber;
 		}
+	}
+	
+	private boolean isThereSameNumber(int index, int newNum) {
+		for(int i=0; i<index; i++) {
+			if(numbers[i] == newNum) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	private int generateRandomNumber() {

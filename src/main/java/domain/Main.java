@@ -18,9 +18,6 @@ public class Main {
 		myComputer.generateNumbers();
 		myComputer.printNumbers();
 		me.enterNumber();
-		System.out.println(me.getNumbers()[0]);
-		System.out.println(me.getNumbers()[1]);
-		System.out.println(me.getNumbers()[2]);
 		myComputer.printGameResult(me.getNumbers());
 	}
 }
