@@ -14,6 +14,4 @@ public class BaseballGame {
             numbersForComparison.compareWith(user.inputNumbers());
         }
     }
-
-
 }

@@ -29,8 +29,7 @@ public class Numbers {
     }
 
     public boolean hasDuplicatedNumber() {
-        // HashMap 활용 후 불필요
-        return true;
+        return numbers.size() != SIZE_OF_NUMBERS;
     }
 
     public void compareWith(Numbers numbersFromUser) {

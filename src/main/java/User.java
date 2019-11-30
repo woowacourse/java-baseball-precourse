@@ -4,44 +4,29 @@ public class User {
     private static Scanner scanner = new Scanner(System.in);
 
     public Numbers inputNumbers() {
+        return makeNumbersFromInput(getInput());
+    }
 
+    private String getInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        String input = scanner.nextLine().trim();
-
-        if (!isValidInput(input)) {
-            return inputNumbers();
-        }
-
-        Numbers numbersFromUser = new Numbers(input.charAt(0), input.charAt(1), input.charAt(2));
-
-        if (!isValidNumber(numbersFromUser)) {
-            return inputNumbers();
-        }
-
-        return numbersFromUser;
+        String input;
+        do {
+            input = scanner.nextLine().trim();
+        } while (!isValidInput(input));
+        return input;
     }
 
     private boolean isValidInput(String input) {
-        if (!consistOfNumbers(input) || !isThreeDigits(input)) {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean isValidNumber(Numbers numbersFromUser) {
-        if (includeZero(numbersFromUser) && !hasNoDuplicatedNumber(numbersFromUser)) {
-            return false;
-        }
-        return true;
+        return consistOfNumbers(input) && isThreeDigits(input);
     }
 
     private boolean consistOfNumbers(String input) {
         try {
             Integer.parseInt(input);
+            return true;
         } catch (Exception e) {
             return false;
         }
-        return true;
     }
 
     private boolean isThreeDigits(String input) {
@@ -51,17 +36,26 @@ public class User {
         return false;
     }
 
-    private boolean includeZero(Numbers numbersFromUser) {
-        if (numbersFromUser.hasNumber(0)) {
-            return true;
+    private Numbers makeNumbersFromInput(String input) {
+        int firstValue = Integer.parseInt(input.substring(0, 1));
+        int secondValue = Integer.parseInt(input.substring(1, 2));
+        int thirdValue = Integer.parseInt(input.substring(2, 3));
+        Numbers numbers = new Numbers(firstValue, secondValue, thirdValue);
+        if (!isValidNumbers(numbers)) {
+            return inputNumbers();
         }
-        return false;
+        return numbers;
     }
 
-    private boolean hasNoDuplicatedNumber(Numbers numbersFromUser) {
-        if (numbersFromUser.hasDuplicatedNumber()) {
-            return true;
-        }
-        return false;
+    private boolean isValidNumbers(Numbers numbers) {
+        return !includeZero(numbers) && !hasDuplicatedNumber(numbers);
+    }
+
+    private boolean includeZero(Numbers numbers) {
+        return numbers.hasNumber(0);
+    }
+
+    private boolean hasDuplicatedNumber(Numbers numbers) {
+        return numbers.hasDuplicatedNumber();
     }
 }
