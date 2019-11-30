@@ -4,7 +4,10 @@
 
 import java.util.Scanner;
 
+
 public class NumberGetter {
+
+    private static final int NUMBER_LENGTH = 3;
     private static int userNumber;
 
     public static int numberGetter() {
@@ -23,7 +26,7 @@ public class NumberGetter {
     }
 
     public static boolean userNumberLengthChecker() {
-        return String.valueOf(userNumber).length() == 3;
+        return String.valueOf(userNumber).length() == NUMBER_LENGTH;
     }
 
 }
