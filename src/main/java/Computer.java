@@ -20,5 +20,12 @@ public class Computer {
         }
     }
 
+    private int check_strike(int user_number, int index) {
+        int check = 0;
+        if (user_number == numbers[index])
+            ++check;
+        return check;
+    }
+
     
 }
