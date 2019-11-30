@@ -57,15 +57,15 @@ public class ScoreCheck {
     private void print(){
         if(strike == 0){
             if(ball == 0){
-                System.out.println("³´½Ì");
+                System.out.println("ë‚«ì‹±");
             }else{
-                System.out.println(ball+" º¼");
+                System.out.println(ball+" ë³¼");
             }
         }else{
             if(ball == 0){
-                System.out.println(strike +" ½ºÆ®¶óÀÌÅ©");
+                System.out.println(strike +" ìŠ¤íŠ¸ë¼ì´í¬");
             }else{
-                System.out.println(strike + " ½ºÆ®¶óÀÌÅ© " + ball + " º¼");
+                System.out.println(strike + " ìŠ¤íŠ¸ë¼ì´í¬ " + ball + " ë³¼");
             }
         }
     }

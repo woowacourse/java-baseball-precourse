@@ -10,7 +10,7 @@ public class InputNumber {
     public InputNumber(){}
 
     public void input(){
-        System.out.println("¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä : ");
+        System.out.println("ìˆ«ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” : ");
         inputNumber = sc.nextInt();
         if(!inputCheck(inputNumber)){
             input();
@@ -19,6 +19,7 @@ public class InputNumber {
 
     private boolean inputCheck(int inputNumber){
         int temp = inputNumber;
+        usedNumber = new boolean[10];
         if((temp < 100) || (temp > 999)){
             return false;
         }
