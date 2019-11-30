@@ -2,6 +2,7 @@ package com.woowahan.baseball;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Baseball extends AbstractBaseball{
     @Override
@@ -12,7 +13,8 @@ public class Baseball extends AbstractBaseball{
 
     @Override
     protected String getLine() {
-        return null;
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
     }
 
     @Override
