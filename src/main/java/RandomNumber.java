@@ -13,7 +13,7 @@ public class RandomNumber {
     private int numberIndex = 0;
 
     /* 1부터 9까지 서로 다른 3자리 수 뽑기 */
-    public void setNumber() {
+    public int [] setNumber() {
 
         Random r = new Random();
 
@@ -26,6 +26,7 @@ public class RandomNumber {
         }
 
         System.out.print("answer is " + number[0]+number[1]+number[2] +'\n');
+        return number;
     }
 
     /* 새로 뽑은 수가 이전 수들과 중복되는지 확인 */
