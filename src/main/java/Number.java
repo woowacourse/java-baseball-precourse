@@ -1,33 +1,34 @@
-import java.util.ArrayList;
+
 import java.util.Random;
 
 /**
  * Number
  */
 public class Number {
-    private int[] digits;
-    String num;
+    int[] digits = new int[10];
+    int len;
+    String num="";
 
-    public Number(int length) {
-        digits = new int[length];
+    public Number(int _len) {
+        len = _len;
         Random rand = new Random();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < len; i++) {
             int rand_int = rand.nextInt(10);
-            digits[i] = rand_int; 
-        }
-        System.out.println("!");
+            digits[rand_int] = i+1; 
+        }       
     }
 
     public String getDigits() {
-        for(int digit: digits){
-            num.concat(String.valueOf(digit));
+        int[] temp = new int[len];
+        for(int j=0; j<digits.length; j++){
+          if(digits[j]!=0){
+            temp[digits[j]-1]=j;
+          }
+        }
+        for(int digit : temp){
+            num = num + String.valueOf(digit);
         }
         return num;
     }
-
-    public void setDigits(int[] digits) {
-        this.digits = digits;
-    }
-
 
 }
