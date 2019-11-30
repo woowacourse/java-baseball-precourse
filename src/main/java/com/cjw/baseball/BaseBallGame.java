@@ -1,11 +1,27 @@
+/*
+ * @(#)BaseBallGame.java
+ *
+ * 버전 : 1.0
+ *
+ * 날짜 : 2019.11.30
+ */
 package com.cjw.baseball;
 
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * 우아한테크코스 프리코스 1주차 숫자 야구 게임
+ *
+ * @version             1.0     2019.11.30
+ * @author              최재우
+ */
+
 public class BaseBallGame {
-    public static final int RANGE = 9;
-    public static final int ANSWER_NUM = 3;
+    private static final int RANGE = 9;                 //1~9 범위를 정하기 위한 상수
+    private static final int ANSWER_NUM = 3;            //답의 개수가 3으로 설정한 상수
+    private static final int END_GAME = 2;              //게임 종료 상수
+    private static final int RESTART_GAME = 1;          //게임 재시작 상수
 
     private int computerAns[];                          //컴퓨터가 가질 숫자 리스트
     private Random random;
@@ -16,11 +32,11 @@ public class BaseBallGame {
         game.startGame();
     }
 
-    /**
+    /*
      * init()
      * 컴퓨터가 가질 숫자를 랜덤으로 설정하는 메소드
      */
-    private void init(){
+    private void init() {
         int nowIdx = 0;
         boolean check;
 
@@ -39,19 +55,30 @@ public class BaseBallGame {
             }
         }
 
-        //printComputerValue();                               //테스팅용 컴퓨터 숫자 출력
+        //printComputerValue();
     }
-
-    private void printComputerValue(){
-        for(int i = 0; i < ANSWER_NUM; i++){
+    /*
+     * printComputerValue()
+     * 컴퓨터 숫자 출력 메소드
+     * 테스트 전
+     */
+    private void printComputerValue() {
+        for(int i = 0; i < ANSWER_NUM; i++) {
             System.out.print(computerAns[i] + " ");
         }
         System.out.println("");
     }
 
-    private boolean overlapCheck(int idx, int val){
-        for(int i = 0; i < idx; i++){
-            if(computerAns[i] == val){
+    /**
+     * overlapCheck()
+     * 컴퓨터가 가질 숫자들의 중복 값 체크 메소
+     * @param idx : 결정된 숫자 개수
+     * @param val : 체크할 숫자
+     * @return
+     */
+    private boolean overlapCheck(int idx, int val) {
+        for(int i = 0; i < idx; i++) {                   //지금까지 결정된 숫자 들과 중복 비교
+            if(computerAns[i] == val) {                  //숫자 중복
                 return true;
             }
         }
@@ -62,11 +89,11 @@ public class BaseBallGame {
      * startGame()
      * 야구 게임을 시작하는 메소드
      */
-    private void startGame(){
-        while(true){
+    private void startGame() {
+        while(true) {
             init();
             progressGame();
-            if(!requestRestart()){
+            if(!requestRestart()) {                     //게임 종료
                 break;
             }
         }
@@ -76,7 +103,7 @@ public class BaseBallGame {
      * progressGame()
      *
      */
-    private void progressGame(){
+    private void progressGame() {
         int myAns[];
         boolean checkAns;
 
@@ -89,9 +116,10 @@ public class BaseBallGame {
             }
         }
     }
-    private boolean requestRestart(){
+
+    private boolean requestRestart() {
         int req;
-        boolean checkVal = false;
+        boolean checkVal;
 
         while(true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
@@ -99,20 +127,20 @@ public class BaseBallGame {
             scan.nextLine();
             checkVal = checkRestartValue(req);
 
-            if(checkVal){
+            if(checkVal) {
                 break;
             }
         }
 
-        if(req == 1){                       //게임 다시 시작
+        if(req == RESTART_GAME) {                       //게임 다시 시작
             return true;
-        } else {                            //게임 종료
+        } else {                                        //게임 종료
             return false;
         }
     }
 
-    private boolean checkRestartValue(int val){
-        if(val == 1 || val == 2) {
+    private boolean checkRestartValue(int val) {
+        if((val == RESTART_GAME) || (val == END_GAME)) {
             return true;
         } else {
             System.out.println("제대로 된 숫자를 입력해주세요");
@@ -122,9 +150,9 @@ public class BaseBallGame {
 
     /**
      * requestNumber()
-     * 숫자를 입력받는 기능을 하는 함
+     * 정답 숫자를 입력받는 메소드
      */
-    private int[] requestNumber(){
+    private int[] requestNumber() {
         int response[] = new int[ANSWER_NUM];
         boolean check;
         String ans;
@@ -135,9 +163,9 @@ public class BaseBallGame {
             ans = scan.nextLine();
             check = requestCheck(ans);
 
-            if(check){
+            if(check) {
                 break;
-            }else{
+            } else {
                 System.out.println("숫자를 제대로 입력해주세요");
             }
         }
@@ -153,22 +181,22 @@ public class BaseBallGame {
      * requestCheck, requestOverlapCheck
      * 각 자리 숫자와 다른 자리 숫자를 비교하여 같은지 판별하는 메소드
      */
-    private boolean requestCheck(String req){
+    private boolean requestCheck(String req) {
         if(req.length() != 3){                          //입력받은 문자길이가 3이면 제대로 입력한 것
             return false;
         }
 
-        for(int i = 0; i < ANSWER_NUM; i++){            //각 자리의 숫자와 중복 숫자 겹치는지 확인
-            if(!requestOverlapCheck(req, i)){
+        for(int i = 0; i < ANSWER_NUM; i++) {            //각 자리의 숫자와 중복 숫자 겹치는지 확인
+            if(!requestOverlapCheck(req, i)) {
                 return false;
             }
         }
         return true;
     }
 
-    private boolean requestOverlapCheck(String req, int idx){
-        for(int i = 0; i < ANSWER_NUM; i++){
-            if((i != idx) && (req.charAt(i) == req.charAt(idx))){
+    private boolean requestOverlapCheck(String req, int idx) {
+        for(int i = 0; i < ANSWER_NUM; i++) {
+            if((i != idx) && (req.charAt(i) == req.charAt(idx))) {
                 return false;
             }
         }
@@ -181,17 +209,17 @@ public class BaseBallGame {
      * reqAns : 입력받은 숫자 리스트
      * idx : 비교할 문자 인덱
      */
-
-    private boolean answer(int[] reqAns){
+    private boolean answer(int[] reqAns) {
         int strike = 0;
         int ball = 0;
         String rst;
 
-        for(int i = 0; i < ANSWER_NUM; i++){
+        for(int i = 0; i < ANSWER_NUM; i++) {
             rst = answerCheck(reqAns, i);
+
             if(rst.equals("Strike")) {
                 strike++;
-            }else if(rst.equals("Ball")){
+            } else if (rst.equals("Ball")) {
                 ball++;
             }
         }
@@ -201,33 +229,33 @@ public class BaseBallGame {
         return endCheck(strike);
     }
 
-    private String answerCheck(int[] reqAns, int idx){
+    private String answerCheck(int[] reqAns, int idx) {
 
-        for(int i = 0; i < ANSWER_NUM; i++){
-            if((idx == i) && (computerAns[i] == reqAns[idx])){
+        for(int i = 0; i < ANSWER_NUM; i++) {
+            if((idx == i) && (computerAns[i] == reqAns[idx])) {
                 return "Strike";
-            }else if(computerAns[i] == reqAns[idx]){
+            } else if (computerAns[i] == reqAns[idx]) {
                 return  "Ball";
             }
         }
         return "Not";
     }
 
-    private void printAns(int strike, int ball){
+    private void printAns(int strike, int ball) {
 
-        if(strike == 0 && ball == 0){
+        if(strike == 0 && ball == 0) {
             System.out.print("낫싱");
         }
-        if(strike > 0){
+        if(strike > 0) {
             System.out.print(strike + " 스트라이크 ");
         }
-        if(ball > 0){
+        if(ball > 0) {
             System.out.print(ball + " 볼");
         }
         System.out.println("");
     }
 
-    private boolean endCheck(int strike){
+    private boolean endCheck(int strike) {
         if(strike == ANSWER_NUM) {
             System.out.println("3개 숫자를 모두 맞추셨습니다! 게임 종료");
             return true;
