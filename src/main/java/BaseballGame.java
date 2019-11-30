@@ -1,17 +1,17 @@
 public class BaseballGame {
-    private Numbers numbersForComparison;
+    private NumbersGroup numbersGroupForComparison;
     private User user;
     private boolean gameIsRunning;
 
     public BaseballGame() {
-        numbersForComparison = new Numbers();
+        numbersGroupForComparison = NumbersGroup.makeNumbersGroupRandomly();
         user = new User();
         gameIsRunning = true;
     }
 
     public void run() {
         while(gameIsRunning) {
-            numbersForComparison.compareWith(user.inputNumbers());
+            numbersGroupForComparison.compareWith(user.inputNumbers());
         }
     }
 }
