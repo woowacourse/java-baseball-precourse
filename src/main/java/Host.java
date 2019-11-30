@@ -4,8 +4,8 @@ public class Host {
     private static final String RESTART = "1";
     private static final String EXIT = "2";
     private static final int HOLD_COUNT = 3;
-    private Player player;
-    private Rival rival;
+    private Entry player;
+    private Entry rival;
     private Judgement judgement;
     private Scanner scanner;
 
@@ -19,29 +19,34 @@ public class Host {
     public void startGame() {
         System.out.println("야구게임을 시작합니다.");
         rival.resetNumbers();
-        player.receiveNumbers();
+        player.resetNumbers();
 
         while (true) {
             if (judgement.checkResult(player.getNumbers(), rival.getNumbers())) {
                 System.out.println("정답입니다! 게임이 종료되었습니다.\n게임을 재시작하려면 1, 종료하려면 2를 입력해주세요.");
                 askGameProgress();
             } else {
-                player.receiveNumbers();
+                player.resetNumbers();
             }
         }
     }
 
     private void askGameProgress() {
-        while (true) {
-            String input = scanner.nextLine();
+        String input;
 
-            if (input.equals(RESTART)) {
-                startGame();
-            } else if (input.equals(EXIT)) {
-                endOfGame();
-                break;
-            } else {
-                System.out.println("숫자 1 또는 2를 입력해주세요.");
+        while (true) {
+            input = scanner.nextLine();
+
+            switch (input) {
+                case RESTART:
+                    startGame();
+                    break;
+                case EXIT:
+                    endOfGame();
+                    break;
+                default:
+                    System.out.println("숫자 1 또는 2를 입력해주세요.");
+                    break;
             }
         }
     }

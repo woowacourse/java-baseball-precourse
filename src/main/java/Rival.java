@@ -1,6 +1,6 @@
 import java.util.HashSet;
 
-public class Rival {
+public class Rival implements Entry {
     private static final int RANGE_MIN = 1;
     private static final int RANGE_MAX = 9;
     private int holdCount;
@@ -13,10 +13,12 @@ public class Rival {
         this.generator = new RandomNumberGenerator(RANGE_MIN, RANGE_MAX);
     }
 
+    @Override
     public Integer[] getNumbers() {
         return numbers.toArray(new Integer[0]);
     }
 
+    @Override
     public void resetNumbers() {
         numbers.clear();
 
@@ -24,5 +26,10 @@ public class Rival {
             int randomNumber = generator.execute();
             numbers.add(randomNumber);
         }
+    }
+
+    @Override
+    public void gameOver() {
+        // do nothing
     }
 }

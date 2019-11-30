@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Player {
+public class Player implements Entry {
     private static final int RANGE_MIN = 123;
     private static final int RANGE_MAX = 987;
     private int holdCount;
@@ -13,6 +13,7 @@ public class Player {
         this.scanner = new Scanner(System.in);
     }
 
+    @Override
     public Integer[] getNumbers() {
         return numbers;
     }
@@ -23,7 +24,8 @@ public class Player {
         }
     }
 
-    public void receiveNumbers() {
+    @Override
+    public void resetNumbers() {
         System.out.println("1~9 사이의 서로 다른 세자리 숫자를 입력해주세요.");
 
         while (true) {
@@ -61,6 +63,7 @@ public class Player {
         return input.contains("0");
     }
 
+    @Override
     public void gameOver() {
         scanner.close();
     }
