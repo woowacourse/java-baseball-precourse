@@ -70,6 +70,10 @@ public class Host {
         return false;
     }
 
+    public boolean matchAllNumbers(List<Integer> inputNumbers) {
+        return countNumOfStrikes(inputNumbers) == baseballGameSize;
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
