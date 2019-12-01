@@ -49,7 +49,7 @@ public class Main {
     private static ArrayList<Integer> getUserNumsList(String userInput) {
         ArrayList<Integer> userInputList = new ArrayList<>();
         for (int i=0; i<userInput.length(); i++) {
-            int num = (int)userInput.charAt(i);
+            int num = userInput.charAt(i) - '0';
             userInputList.add(num);
         }
         return userInputList;
