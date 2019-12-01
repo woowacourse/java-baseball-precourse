@@ -9,6 +9,7 @@ public class Main {
     private static final int MIN_PICK_NUM = 1;
     private static final int INVALID_VALUE = 0;
     private static final int NOT_MATCHED = 0;
+    private static final int FULL_STRIKE_COUNT = NUMS_MAX_LENGTH;
 
     private static ArrayList<Integer> pickComputerNums() {
         ArrayList<Integer> computerNums = new ArrayList<>();
@@ -136,4 +137,20 @@ public class Main {
         }
         System.out.println(sb.toString().trim());
     }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> computerNums = pickComputerNums();
+        while (true) {
+            ArrayList<Integer> userNums = getUserNums();
+            int strikeCount = countStrike(computerNums, userNums);
+            int ballCount = countBall(computerNums, userNums);
+            printScoreMessage(strikeCount, ballCount);
+            if (strikeCount == FULL_STRIKE_COUNT) {
+                break;
+            }
+        }
+        String overMessage = String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", NUMS_MAX_LENGTH);
+        System.out.println(overMessage);
+    }
+
 }
