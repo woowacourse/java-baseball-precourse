@@ -38,8 +38,27 @@ public class BaseballManager {
         }
     }
 
+    // 사용자로부터 숫자를 입력받는 함수
     public void getNumberFromUser(){
-        System.out.print("숫자를 입력해주세요. : ");
-        int inputNumber = scanner.nextInt();
+        System.out.println("숫자를 입력해주세요. : ");
+        String input = scanner.nextLine();
+        int inputNumber = 0;
+        try {
+            inputNumber = Integer.parseInt(input);
+        }catch (Exception e){
+            System.out.println("문자가 아닌 숫자를 입력해야 합니다.");
+            getNumberFromUser();
+            return;
+        }
+
+        if(this.userNumber == null)
+            this.userNumber = new BaseballNumber();
+
+        if (new BaseballNumber().checkNumber(inputNumber)){
+            this.userNumber.setNumber(inputNumber);
+        }else{
+            System.out.println("숫자를 잘못 입력했습니다.");
+            getNumberFromUser();
+        }
     }
 }
