@@ -1,9 +1,9 @@
-package domain;
+package domain.baseBalls;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import generator.GameNumbersGenerator;
+import domain.OneBaseBall;
 import lombok.Getter;
 
 @Getter
@@ -17,8 +17,8 @@ public class BaseBalls {
 		}
 	}
 
-	public static BaseBalls of(GameNumbersGenerator generator) {
-		return new BaseBalls(generator.getGeneratedNumbers());
+	public int getSize() {
+		return baseBalls.size();
 	}
 
 	public OneBaseBall findBaseBallByPosition(Integer position) {
@@ -28,4 +28,10 @@ public class BaseBalls {
 			.orElseThrow(() -> new IllegalArgumentException("존재하지 않은 position 입니다."));
 	}
 
+	public OneBaseBall findBaseBallByNumber(Integer number) {
+		return this.baseBalls.stream()
+			.filter(ball -> ball.getBaseBallNumber().getValue().equals(number))
+			.findFirst()
+			.orElseThrow(() -> new IllegalArgumentException("존재하지 않은 number 입니다."));
+	}
 }

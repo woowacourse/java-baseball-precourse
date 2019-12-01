@@ -8,9 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import domain.BaseBalls;
-import domain.OneBaseBall;
-
 @DisplayName("숫자 생성기로 컴퓨터의 정답 숫자를 생성한다")
 class RandomGameNumbersGeneratorTest {
 
@@ -31,18 +28,4 @@ class RandomGameNumbersGeneratorTest {
 		assertThat(generatedNumbers).contains(1, 3, 5);
 	}
 
-	@Test
-	@DisplayName("숫자 생성기로 BaseBalls가 생성되는지 확인")
-	void getBaseBallsFromGenerator() {
-		List<Integer> numbers = Arrays.asList(1, 3, 5);
-		GameNumbersGenerator gameNumbersGenerator = new CustomGameNumbersGenerator(numbers);
-		BaseBalls baseBalls = BaseBalls.of(gameNumbersGenerator);
-
-		for (int i = 0; i < numbers.size(); i++) {
-			OneBaseBall baseBallByPosition = baseBalls.findBaseBallByPosition(i);
-			assertThat(baseBallByPosition.getBaseBallPosition()).isEqualTo(i);
-			assertThat(baseBallByPosition.getBaseBallNumber().getValue()).isEqualTo(numbers.get(i));
-		}
-
-	}
 }

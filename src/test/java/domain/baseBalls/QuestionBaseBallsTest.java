@@ -1,4 +1,4 @@
-package domain;
+package domain.baseBalls;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.*;
 
@@ -8,16 +8,20 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import domain.OneBaseBall;
+import domain.baseBalls.AnswerBaseBalls;
 import domain.baseBalls.BaseBalls;
+import domain.baseBalls.QuestionBaseBalls;
+import generator.RandomGameNumbersGenerator;
 
-@DisplayName("baseBall 집합에 대한 테스트")
-class BaseBallsTest {
+@DisplayName("QuestionBaseBall 집합에 대한 테스트")
+class QuestionBaseBallsTest {
 
 	@Test
 	@DisplayName("BaseBall을 List<Integer>에 따라서 생성한다. Number 같은지 테스트")
 	void number() {
 		List<Integer> numbers = Arrays.asList(9, 7, 3);
-		List<OneBaseBall> baseBalls = new BaseBalls(numbers).getBaseBalls();
+		List<OneBaseBall> baseBalls = QuestionBaseBalls.ofManual(numbers).getBaseBalls();
 
 		for (int i = 0; i < numbers.size(); i++) {
 			Integer baseBallValue = baseBalls.get(i).getBaseBallNumber().getValue();
@@ -29,7 +33,7 @@ class BaseBallsTest {
 	@DisplayName("BaseBall을 List<Integer>에 따라서 생성한다. Position 같은지 테스트")
 	void position() {
 		List<Integer> numbers = Arrays.asList(9, 7, 3);
-		List<OneBaseBall> baseBalls = new BaseBalls(numbers).getBaseBalls();
+		List<OneBaseBall> baseBalls = QuestionBaseBalls.ofManual(numbers).getBaseBalls();
 
 		for (int i = 0; i < numbers.size(); i++) {
 			assertThat(baseBalls.get(i).getBaseBallPosition()).isEqualTo(i);
@@ -40,7 +44,7 @@ class BaseBallsTest {
 	@DisplayName("position에 따라 OneBaseBall 리턴하기")
 	void findBaseBallByPosition() {
 		List<Integer> numbers = Arrays.asList(9, 7, 3);
-		BaseBalls baseBalls = new BaseBalls(numbers);
+		BaseBalls baseBalls = QuestionBaseBalls.ofManual(numbers);
 
 		for (int i = 0; i < numbers.size(); i++) {
 			OneBaseBall baseBallByPosition = baseBalls.findBaseBallByPosition(i);
@@ -49,4 +53,5 @@ class BaseBallsTest {
 		}
 
 	}
+
 }
