@@ -5,8 +5,8 @@ import lombok.Getter;
 @Getter
 public class BaseBallNumber {
 
-	private static final int MIN_NUM = 1;
-	private static final int MAX_NUM = 9;
+	public static final int MIN_NUM = 1;
+	public static final int MAX_NUM = 9;
 
 	private Integer value;
 

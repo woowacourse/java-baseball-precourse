@@ -15,7 +15,7 @@ class BaseBallsTest {
 	@DisplayName("BaseBall을 List<Integer>에 따라서 생성한다. Number 같은지 테스트")
 	void number() {
 		List<Integer> numbers = Arrays.asList(9, 7, 3);
-		List<OneBaseBall> baseBalls = BaseBalls.of(numbers).getBaseBalls();
+		List<OneBaseBall> baseBalls = new BaseBalls(numbers).getBaseBalls();
 
 		for (int i = 0; i < numbers.size(); i++) {
 			Integer baseBallValue = baseBalls.get(i).getBaseBallNumber().getValue();
@@ -27,7 +27,7 @@ class BaseBallsTest {
 	@DisplayName("BaseBall을 List<Integer>에 따라서 생성한다. Position 같은지 테스트")
 	void position() {
 		List<Integer> numbers = Arrays.asList(9, 7, 3);
-		List<OneBaseBall> baseBalls = BaseBalls.of(numbers).getBaseBalls();
+		List<OneBaseBall> baseBalls = new BaseBalls(numbers).getBaseBalls();
 
 		for (int i = 0; i < numbers.size(); i++) {
 			assertThat(baseBalls.get(i).getBaseBallPosition()).isEqualTo(i);
@@ -38,7 +38,7 @@ class BaseBallsTest {
 	@DisplayName("position에 따라 OneBaseBall 리턴하기")
 	void findBaseBallByPosition() {
 		List<Integer> numbers = Arrays.asList(9, 7, 3);
-		BaseBalls baseBalls = BaseBalls.of(numbers);
+		BaseBalls baseBalls = new BaseBalls(numbers);
 
 		for (int i = 0; i < numbers.size(); i++) {
 			OneBaseBall baseBallByPosition = baseBalls.findBaseBallByPosition(i);
