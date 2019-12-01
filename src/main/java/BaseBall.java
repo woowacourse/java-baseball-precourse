@@ -112,10 +112,13 @@ public class BaseBall {
         String input;
         int inputValue;
 
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요 : ");
         input  = this.scanner.next();
 
         if (checkInputContainsChar(input)) {
+            return false;
+        }
+        if (checkInputIsMinus(input)) {
             return false;
         }
         if (!checkInputLengthIsCorrect(input, INPUT_SIZE)) {
@@ -150,6 +153,14 @@ public class BaseBall {
         }
         return false;
     }
+
+    private boolean checkInputIsMinus(String input) {
+        if (input.contains("-") == true) {
+            System.out.print("음수가 입력되었습니다. \n다시 ");
+        return true;
+    }
+        return false;
+}
 
     private boolean checkInputLengthIsCorrect(String input, int size) {
         if (input.length() != size) {
