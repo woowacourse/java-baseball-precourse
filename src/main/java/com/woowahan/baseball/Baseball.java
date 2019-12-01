@@ -24,7 +24,7 @@ public class Baseball extends AbstractBaseball{
         int ballsInt = Integer.parseInt(ballsString);
 
         balls.add(ballsInt/100);
-        balls.add(ballsInt/100%10);
+        balls.add(ballsInt/10%10);
         balls.add(ballsInt%10);
 
         return balls;
