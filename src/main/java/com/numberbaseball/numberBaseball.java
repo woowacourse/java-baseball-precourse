@@ -46,6 +46,18 @@ public class numberBaseball {
         return;
     }
 
+    public ArrayList makeRandomNumbers(){
+        ArrayList target = new ArrayList();
+
+        for (int i = 0; i < 3; i++) {
+            int tmp = (int) (Math.random() * 9 + 1);
+            while (target.contains(tmp)) {
+                tmp = (int) (Math.random() * 9 + 1);
+            }
+            target.add(tmp);
+        }
+        return target;
+    }
 
     public boolean isValidInput(String inputLine, List trial){
 
