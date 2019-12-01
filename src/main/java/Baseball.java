@@ -1,23 +1,30 @@
+/*
+ * 우아한 테크코스 프리코스 1주차 과제
+ */
+
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 
-/*
- * Baseball
+/**
+ * Baseball.java
  *
- * ver 0.9 - 예외 케이스 추가
- *
- * 2019.12.02
+ * @version 1.0 2019.12.02
+ * @author  hyesun.choi
  */
 public class Baseball {
-    // Scanner는 한 class에 하나만 있는게 좋다고 해서 class 변수로 추출
+
+    /** sc는 Baseball 클래스의 Scanner 타입의 인스턴스 변수 */
     Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
         Baseball game = new Baseball();
         game.startGame();
     }
 
-    // 1 ~ 9까지 서로 다른 임의의 수 3자리를 생성 (for-each로 했더니 정렬되어 방식 변경함)
+    /** 1 ~ 9까지 서로 다른 임의의 수 3자리를 생성
+     * @return 생성한 수를 문자열로 반환
+     */
     private String makeAnswer() {
         String answer = "";
         Random rd = new Random();
@@ -35,14 +42,17 @@ public class Baseball {
         return answer;
     }
 
+    /** 사용자로부터 1 ~ 9까지 서로 다른 임의의 수 3자리를 받아옴
+     * @return 받아온 수를 문자열로 반환
+     */
     private String inputNumbers() {
         String numbers = "";
-        boolean re = false;
+        boolean again = false;
         do {
-            re = false;
-            // 이 부분에서 print로 하면 인텔리j + gradle인 환경에서 출력이 먼저 나오지 않고 do-while 탈출 후 출력이 됨. 해당 부분 왜인지 나중에 확인해보자.
+            again = false;
             System.out.println("1 ~ 9까지 서로 다른 수로 이뤄진 3자리 수로 입력해주세요 : ");
             numbers = sc.nextLine();
+            // 3글자가 아니거나, 1 ~ 9가 아니거나, 중복이 있다면 값을 다시 받아야 함
             if (numbers.length() != 3
                     || !('0' < numbers.charAt(0) && numbers.charAt(0) <= '9')
                     || !('0' < numbers.charAt(1) && numbers.charAt(1) <= '9')
@@ -50,12 +60,17 @@ public class Baseball {
                     || numbers.charAt(0) == numbers.charAt(1)
                     || numbers.charAt(0) == numbers.charAt(2)
                     || numbers.charAt(1) == numbers.charAt(2)) {
-                re = true;
+                again = true;
             }
-        } while (re);
+        } while (again);
         return numbers;
     }
 
+    /** 생성된 수와 사용자가 입력한 수를 비교하여, 게임 진행 및 종
+     * @param numbers 사용자가 입력한 수
+     * @param answer  프로그램에서 생성한 수
+     * @return 체크한 후 사용자가 재입력해야하면 true, 아니면 false를 반환
+     */
     private boolean checkedNumbers(String numbers, String answer) {
         if (numbers.equals(answer)) {
             System.out.println("3 스트라이크");
@@ -86,9 +101,11 @@ public class Baseball {
         return true;
     }
 
+    /** 게임의 재시작 여부
+     * @return true 게임 재시작, false 게임 종료
+     */
     private boolean restart() {
         String num = "";
-        //Scanner sc = new Scanner(System.in);
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         do {
             num = sc.nextLine();
@@ -96,13 +113,14 @@ public class Baseball {
         return num.equals("1");
     }
 
+    /** 게임을 총괄하는 메서드, 전체 플로우가 나타나 있음 */
     public void startGame() {
         String answer = "";
         String numbers = "";
-        // 게임진행
+        // 게임 실행 - 종료, 재시작 가능
         do {
             answer = makeAnswer();
-            // 3 스트라이크가 나올 때까지 반복
+            // 사용자로부터 번호를 받아옴 - 틀릴 경우 재시작
             do {
                 numbers = inputNumbers();
             } while (checkedNumbers(numbers, answer));
