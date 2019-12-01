@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.3.6   2019-12-01
+ * Player.java                     2.3.7   2019-12-01
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -18,7 +18,8 @@ import java.io.InputStreamReader;
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.3.6    isValidNumbers method를 isInvalidNumbers로 수정
+ * @version 2.3.7                     giveHintAboutNumbers method의
+ *                                    불필요한 조건문 수정
  * @date 2019-12-01
  */
 public class Player {
@@ -85,7 +86,7 @@ public class Player {
         for (int i = 0; i < MAX_DIGIT; i++) {
             if (digitNumbers[i] == numbers[i]) {
                 strikeCount++;
-            } else if ((digitNumbers[i] != numbers[i]) && digitMasks[numbers[i]]) {
+            } else if (digitMasks[numbers[i]]) {
                 ballCount++;
             }
         }
