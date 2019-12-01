@@ -1,5 +1,5 @@
 /*
- * EarlyResults
+ * BallResults
  * 2019.11.30
  * 숫자야구 중간결과
  */
