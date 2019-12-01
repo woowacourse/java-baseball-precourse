@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3b26b07b-df23-4903-9ddf-f9fdc2a50226" name="Default Changelist" comment="사용자 입력 받기">
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/empty.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/gc.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1UJpnec3z8YMizlNaH1q4DLj0fv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="12" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../demo-pjt" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RunManager" selected="Application.User">
+    <configuration name="Computer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Computer" />
+      <module name="java-baseball-precourse.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComputerNumber" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ComputerNumber" />
+      <module name="java-baseball-precourse.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="User" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="User" />
+      <module name="java-baseball-precourse.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Computer" />
+      <item itemvalue="Application.ComputerNumber" />
+      <item itemvalue="Application.User" />
+      <item itemvalue="Spring Boot.DemoApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.User" />
+        <item itemvalue="Application.Computer" />
+        <item itemvalue="Application.ComputerNumber" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3b26b07b-df23-4903-9ddf-f9fdc2a50226" name="Default Changelist" comment="" />
+      <created>1575084720360</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575084720360</updated>
+      <workItem from="1575084722736" duration="196000" />
+      <workItem from="1575094757872" duration="290000" />
+      <workItem from="1575095122901" duration="2685000" />
+      <workItem from="1575105242449" duration="3120000" />
+      <workItem from="1575168889713" duration="6039000" />
+      <workItem from="1575177551051" duration="124000" />
+      <workItem from="1575177692053" duration="640000" />
+      <workItem from="1575178354525" duration="234000" />
+      <workItem from="1575179013008" duration="12000" />
+      <workItem from="1575184668640" duration="376000" />
+      <workItem from="1575185059462" duration="580000" />
+      <workItem from="1575185656285" duration="63000" />
+      <workItem from="1575185737757" duration="108000" />
+      <workItem from="1575185867843" duration="2333000" />
+    </task>
+    <task id="LOCAL-00001" summary="기능목록구현 작성">
+      <created>1575094989034</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1575094989034</updated>
+    </task>
+    <task id="LOCAL-00002" summary="컴퓨터(정답) 임의의 수 생성">
+      <created>1575176660791</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1575176660791</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="기능목록구현 작성" />
+    <MESSAGE value="컴퓨터(정답) 임의의 수 생성" />
+    <MESSAGE value="사용자 입력 받기" />
+    <option name="LAST_COMMIT_MESSAGE" value="사용자 입력 받기" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="379" y="93" width="827" height="679" key="#Project_Structure" timestamp="1575185212563">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="379" y="93" width="827" height="679" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1575185212563" />
+    <state x="301" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575178559646">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="301" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1575178559646" />
+    <state x="626" y="119" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1575178465569">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="626" y="119" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.824@0.0.1536.824" timestamp="1575178465569" />
+    <state x="536" y="9" key="CommitChangelistDialog2" timestamp="1575188580173">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="536" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575188580173" />
+    <state x="294" y="69" key="DiffContextDialog" timestamp="1575176629770">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="294" y="69" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1575176629770" />
+    <state x="549" y="166" key="FileChooserDialogImpl" timestamp="1575107082580">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1575107082580" />
+    <state width="1495" height="210" key="GridCell.Tab.0.bottom" timestamp="1575188580313">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1495" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575188580313" />
+    <state width="1495" height="210" key="GridCell.Tab.0.center" timestamp="1575188580313">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1495" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575188580313" />
+    <state width="1495" height="210" key="GridCell.Tab.0.left" timestamp="1575188580312">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1495" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575188580312" />
+    <state width="1495" height="210" key="GridCell.Tab.0.right" timestamp="1575188580313">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1495" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575188580313" />
+    <state x="615" y="75" key="SettingsEditor" timestamp="1575178171211">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="615" y="75" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575178171211" />
+    <state x="490" y="154" width="540" height="524" key="StructurePopup" timestamp="1575177065140">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="490" y="154" width="540" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1575177065140" />
+    <state x="459" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1575185868024">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="459" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1575185868024" />
+    <state x="180" y="26" key="new project wizard" timestamp="1575108007016">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="180" y="26" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1575108007016" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1575096302383">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1575096302383" />
+  </component>
+</project>
