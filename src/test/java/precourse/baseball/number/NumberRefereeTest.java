@@ -219,6 +219,18 @@ class NumberRefereeTest {
         assertEquals(String.format("%d볼\n", B), outView.toString());
     }
     @Test
+    void anoount_print_when_nothing() {
+        //given
+        Result result = new Result(0,0);
+
+        //when
+        referee.announce(result);
+
+        //then
+        assertEquals("낫싱\n", outView.toString());
+
+    }
+    @Test
     void announce_print_when_StrikeOut() {
         //given
         int strikes = 3;
