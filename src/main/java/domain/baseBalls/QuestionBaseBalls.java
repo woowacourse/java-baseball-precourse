@@ -16,8 +16,8 @@ public class QuestionBaseBalls extends BaseBalls {
 		return new QuestionBaseBalls(numbers);
 	}
 
-	public ResultQuestion getCalculateResult(AnswerBaseBalls answerBaseBalls) {
-		return new ResultQuestion(answerBaseBalls);
+	public Result getCalculateResult(AnswerBaseBalls answerBaseBalls) {
+		return new Result(answerBaseBalls);
 	}
 
 	private boolean strike(OneBaseBall answerOneBaseBall) {
@@ -51,13 +51,21 @@ public class QuestionBaseBalls extends BaseBalls {
 	}
 
 	@Getter
-	public class ResultQuestion {
+	public class Result {
 		private Integer ball;
 		private Integer strike;
 
-		ResultQuestion(AnswerBaseBalls answerBaseBalls) {
+		Result(AnswerBaseBalls answerBaseBalls) {
 			this.strike = calculateStrikeNumber(answerBaseBalls);
 			this.ball = calculateBallNumber(answerBaseBalls);
+		}
+
+		public boolean hasStrike() {
+			return this.strike != 0;
+		}
+
+		public boolean hasBall() {
+			return this.ball != 0;
 		}
 	}
 

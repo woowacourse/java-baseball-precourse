@@ -6,6 +6,7 @@ import domain.baseBalls.AnswerBaseBalls;
 import domain.baseBalls.QuestionBaseBalls;
 import generator.GameNumbersGenerator;
 import io.InputView;
+import io.OutputView;
 import parsing.NumberParsing;
 
 public class BaseBallGame {
@@ -13,12 +14,23 @@ public class BaseBallGame {
 
 	private AnswerBaseBalls collectBaseBalls;
 
-	public BaseBallGame(GameNumbersGenerator gameNumbersGenerator, InputView inputView) {
+	public BaseBallGame(GameNumbersGenerator gameNumbersGenerator) {
 		this.collectBaseBalls = AnswerBaseBalls.ofGenerator(gameNumbersGenerator);
-		while (true) {
-			getQuestionBaseBall(inputView).getCalculateResult(this.collectBaseBalls);
-			break;
-		}
+	}
+
+	public void executeUserInput(InputView inputView) {
+		this.collectBaseBalls.print();
+		QuestionBaseBalls.Result result;
+		do {
+			result = getQuestionBaseBall(inputView).getCalculateResult(this.collectBaseBalls);
+			OutputView.getBaseBallsResult(result);
+		} while (wrongAnswer(result));
+		OutputView.endOfOneBaseBallGame();
+
+	}
+
+	private boolean wrongAnswer(QuestionBaseBalls.Result result) {
+		return result.getStrike() != GAME_NUMBERS_SIZE;
 	}
 
 	private QuestionBaseBalls getQuestionBaseBall(InputView inputView) {

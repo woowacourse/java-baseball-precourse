@@ -46,9 +46,9 @@ class QuestionBaseBallsTest {
 		QuestionBaseBalls question2 = QuestionBaseBalls.ofManual(Arrays.asList(4, 7, 3));
 		QuestionBaseBalls question3 = QuestionBaseBalls.ofManual(Arrays.asList(1, 2, 3));
 
-		QuestionBaseBalls.ResultQuestion calculateResult = question1.getCalculateResult(answer);
-		QuestionBaseBalls.ResultQuestion calculateResult1 = question2.getCalculateResult(answer);
-		QuestionBaseBalls.ResultQuestion calculateResult2 = question3.getCalculateResult(answer);
+		QuestionBaseBalls.Result calculateResult = question1.getCalculateResult(answer);
+		QuestionBaseBalls.Result calculateResult1 = question2.getCalculateResult(answer);
+		QuestionBaseBalls.Result calculateResult2 = question3.getCalculateResult(answer);
 
 		assertThat(calculateResult.getBall()).isEqualTo(0);
 		assertThat(calculateResult.getStrike()).isEqualTo(2);
