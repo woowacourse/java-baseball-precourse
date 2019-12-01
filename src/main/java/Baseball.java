@@ -5,12 +5,20 @@ public class Baseball {
      * Baseball은 숫자야구 수행을 위한 클래스이다.
      *
      */
+    public Baseball(){
+        //
+    }
     public int[] makeData(){
         int[] randomNumber = new int[3];
         Random random = new Random();
         randomNumber[0] = (random.nextInt(9) + 1);
-        randomNumber[1] = (random.nextInt(9) + 1);
+        do {
+            randomNumber[1] = (random.nextInt(9) + 1);
+        }while(randomNumber[0] == randomNumber[1]);
+        do{
         randomNumber[2] = (random.nextInt(9) + 1);
+        }while( (randomNumber[0] == randomNumber[2]) || (randomNumber[1] == randomNumber[2]) );
+        //서로 다른 값이어야함!!
         return randomNumber;
     }
     public int findBall(int[] answerData, int userNum, int pos) {
@@ -61,6 +69,7 @@ public class Baseball {
         Scanner sc = new Scanner(System.in);
         input = sc.nextInt();
         //예외처리부
+        //해야할일 : 숫자가 엉뚱한 값 들어오는 경우 예외처리문 짜리
         data[0] = input/100;
         input %= 100;
         data[1] = input/10;
