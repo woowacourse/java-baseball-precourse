@@ -46,6 +46,29 @@ public class numberBaseball {
         return;
     }
 
+
+    public boolean isValidInput(String inputLine, List trial){
+
+        if (inputLine.length() != 3) {
+            return false;
+        }
+
+        try {
+            Integer.parseInt(inputLine);
+        } catch (Exception e) {
+            return false;
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (trial.contains(inputLine.charAt(i))) {
+                return false;
+            }
+            trial.add(inputLine.charAt(i)-'0');
+        }
+
+        return true;
+    }
+
     public void gameLogic() {
         Scanner scan = new Scanner(System.in);
         ArrayList target = makeRandomNumbers();
