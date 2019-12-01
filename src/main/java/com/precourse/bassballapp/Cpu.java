@@ -4,7 +4,7 @@ public class Cpu {
 	static int[] answerArr;
 	
 	static int getRandomNum() {		//1~9사이 정수 랜덤생성
-		return (int)(Math.random() * 9) + 1;
+		return (int) (Math.random() * 9) + 1;
 	}
 	
 	static int[] makeAnswer() {

@@ -2,7 +2,6 @@ package com.precourse.bassballapp;
 
 import java.util.InputMismatchException;
 import java.util.Scanner; //newGameQuery에서 사용자 입력위해 필요.
-
 import com.precourse.bassballapp.Cpu;
 
 public class Result {
@@ -46,7 +45,7 @@ public class Result {
 				System.out.println(tmp);
 				userInput = input.nextInt(); //사용자 입력
 				break;
-			} catch(InputMismatchException ime) {
+			} catch (InputMismatchException ime) {
 				System.out.println("잘못된 입력: 정수를 입력하세요.");
 			}
 		}
