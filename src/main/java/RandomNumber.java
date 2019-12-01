@@ -1,10 +1,20 @@
+/*
+ * @(#)RandomNumber.java
+ *
+ * v 0.0.0
+ *
+ * 2019.11.29
+ *
+ * Copyright 2019. DunDung all rights reserved.
+ */
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class RandomNumber {
 
-    public static int[] create() {
+    public int[] create() {
         List<Integer> availableNumberList = new ArrayList<>();
         int[] randomNumbers = new int[NumberBaseBallGame.DIGIT];
 

@@ -16,18 +16,17 @@ public class NumberBaseBallGame {
     public static final int MAX_VALUE = 9;
     private static final int COMPARE_VALUE = 0;
     private static final int RESET_VALUE = 0;
-    private static final int DIVISION_VALUE = 10;
     private static final int ANSWER_STRIKE = 3;
     private int[] randomNumbers;
-    private int[] playerNumbers = new int[DIGIT];
     private int strike = 0;
     private int ball = 0;
 
     public NumberBaseBallGame() {
-        randomNumbers = RandomNumber.create();
+        randomNumbers = new RandomNumber().create();
     }
 
-    public void calculateResult() {
+    public void calculateResult(int playerNumber) {
+        int[] playerNumbers = IntegerUtils.toIntegerArray(DIGIT, playerNumber);
         int[] clonedRandomNumbers = randomNumbers.clone();
 
         Arrays.sort(clonedRandomNumbers);
@@ -57,12 +56,5 @@ public class NumberBaseBallGame {
 
     public int getBall() {
         return ball;
-    }
-
-    public void setPlayerNumber(int playerNumber) {
-        for (int i = DIGIT - 1; i >= 0; i--) {
-            playerNumbers[i] = playerNumber % DIVISION_VALUE;
-            playerNumber /= DIVISION_VALUE;
-        }
     }
 }

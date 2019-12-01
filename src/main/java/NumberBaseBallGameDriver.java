@@ -12,20 +12,20 @@ public class NumberBaseBallGameDriver {
     private static final int CONTINUE_VALUE = 1;
 
     public static void main(String[] args) {
+        Printer aPrinter = new Printer();
+        Input aInput = new Input();
+
         while (true) {
             NumberBaseBallGame aNumberBaseBallGame = new NumberBaseBallGame();
 
             while (!aNumberBaseBallGame.isAnswer()) {
-                aNumberBaseBallGame.setPlayerNumber(PlayerInput.inputNumber());
-
-                aNumberBaseBallGame.calculateResult();
-                Printer.printHint(aNumberBaseBallGame);
+                aNumberBaseBallGame.calculateResult(aInput.inputNumber());
+                aPrinter.printHint(aNumberBaseBallGame);
             }
 
-            Printer.printAnswerText();
-            int menuId = PlayerInput.inputMenuId();
+            aPrinter.printAnswerText();
 
-            if (!isContinue(menuId)) {
+            if (!isContinue(aInput.inputMenuId())) {
                 break;
             }
         }

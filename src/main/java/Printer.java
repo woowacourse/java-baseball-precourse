@@ -11,15 +11,15 @@
 public class Printer {
     private static final int COMPARE_VALUE = 0;
 
-    public static void printInputNumber() {
+    public void printInputNumber() {
         System.out.print("숫자를 입력해주세요.: ");
     }
 
-    public static void printAnswerText() {
-        System.out.println(NumberBaseBallGame.DIGIT + "개의 숫자를 모두 맞히셨습니다! 게임종료");
+    public void printAnswerText() {
+        println(NumberBaseBallGame.DIGIT + "개의 숫자를 모두 맞히셨습니다! 게임종료");
     }
 
-    public static void printHint(NumberBaseBallGame aNumberBaseBallGame) {
+    public void printHint(NumberBaseBallGame aNumberBaseBallGame) {
         if (aNumberBaseBallGame.getStrike() == NumberBaseBallGame.DIGIT) {
             return;
         }
@@ -35,14 +35,18 @@ public class Printer {
             builder.append("낫싱") ;
         }
 
-        System.out.println(builder.toString());
+        println(builder.toString());
     }
 
-    public static void printMenu() {
-        System.out.println("게임을 시작하려면 1, 종료하려면 2를 입력하세요.");
+    public void printMenu() {
+        println("게임을 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static void printError(IllegalArgumentException e) {
-        System.out.println(e.getMessage());
+    public void printException(IllegalArgumentException e) {
+        println(e.getMessage());
+    }
+
+    private void println(String text) {
+        System.out.println(text);
     }
 }
