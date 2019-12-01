@@ -4,6 +4,5 @@ public class Main {
 
         PlayGame playGame = new PlayGame();
         playGame.playCmd();
-
     }
 }

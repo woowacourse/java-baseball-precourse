@@ -1,9 +1,10 @@
 /**
  * 클래스 이름      PlayGame
  * 버전 정보        1.0
- * 날짜            2019.11.30
+ * 날짜            2019.12.01
  * 저작권          YebinK
  */
+
 
 public class PlayGame {
 
@@ -17,11 +18,12 @@ public class PlayGame {
 
     public void playCmd() {
         answer = rn.setNumber();
-        //while (answer != userInput) {
+        while (true) {
+            initializeCount();
             userInput = p.getInput();
             compare();
-
-        //}
+            printResult();
+        }
     }
 
     public void compare() {
@@ -35,5 +37,36 @@ public class PlayGame {
     public void count(int i, int j) {
         if (answer[i] == userInput[j] && i == j) strikeCount++;
         if (answer[i] == userInput[j] && i != j) ballCount++;
+    }
+
+    public void printResult() {
+
+        if (strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return;
+        }
+
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        if (ballCount == 0) {
+            System.out.println(strikeCount + " 스트라이크");
+            return;
+        }
+
+        if (strikeCount == 0) {
+            System.out.println(ballCount + " 볼");
+            return;
+        }
+
+        System.out.println(strikeCount + " 스트라이크 " + ballCount + " 볼");
+    }
+
+    public void initializeCount() {
+        strikeCount = 0;
+        ballCount = 0;
     }
 }

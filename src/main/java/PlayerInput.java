@@ -9,12 +9,11 @@ import java.util.Scanner;
 
 public class PlayerInput {
 
-    int [] input = new int[3];
+    private int [] input = new int[3];
 
     public int[] getInput() {
-        System.out.print("숫자를 입력해주세요: ");
+        System.out.println("숫자를 입력해주세요: ");
         Scanner sc = new Scanner(System.in);
-
         String str_input = sc.next();
 
         input[0] = str_input.charAt(0) - '0';

@@ -25,7 +25,7 @@ public class RandomNumber {
             }
         }
 
-        System.out.print("answer is " + number[0]+number[1]+number[2] +'\n');
+        System.out.println("answer is " + number[0]+number[1]+number[2] +'\n');
         return number;
     }
 
