@@ -40,4 +40,15 @@ class Computer {
 		this.rand_answer=first*100 + second * 10 + third;
 	}
 	
+	/*스트라이크와 볼의 개수를 확인하고, 출력까지 해주는 함수*/
+	public boolean checkStrikeBall(int input) {
+		boolean finish;
+		
+		int s=checkStrike(input);
+		int b=checkBall(input);
+		
+		finish=print(s,b);
+		
+		return finish;
+	}
 }
