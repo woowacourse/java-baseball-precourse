@@ -18,10 +18,19 @@ public class BaseballManager {
 
     // 필요한 함수를 호출하고 게임을 관리하는 함수
     public void run() {
-        createComputerNumber();
-        getNumberFromUser();
-        makeResult();
-        showResult();
+        int manageNumber = 1;
+        while (true) {
+            if (manageNumber == 1) {
+                createComputerNumber();
+            }
+            if (manageNumber == 2) {
+                break;
+            }
+            getNumberFromUser();
+            makeResult();
+            showResult();
+            manageNumber = manageGame();
+        }
     }
 
     // 컴퓨터 난수를 생성하는 함수
@@ -107,5 +116,14 @@ public class BaseballManager {
             System.out.print("낫싱");
         }
         System.out.print("\n");
+    }
+
+    public int manageGame() {
+        if (strike < 3)
+            return 0;
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int response = scanner.nextInt();
+        return response;
     }
 }
