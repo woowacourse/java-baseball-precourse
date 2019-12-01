@@ -42,7 +42,7 @@ public class Match {
         return strike;
     }
     //비교하여 strike ball 갯수 측정
-    public void compare(int guess, int index) {
+    private void compare(int guess, int index) {
         for(int i=0; i<computer.length; i++){
            // System.out.println(computer[i] + "and" + guess);
             if (computer[i]==guess && i==index){
