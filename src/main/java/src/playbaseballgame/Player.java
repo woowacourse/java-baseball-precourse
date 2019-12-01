@@ -75,4 +75,15 @@ public class Player {
 		return len;
 	}
 	
+	/*플레이어가 입력한 값이 문자가 아닌 숫자 세개로 되어있는지 확인하는 함수*/
+	public boolean checkStr(String input) {
+		boolean str=false;
+		
+		/*입력받은 문자열이 정수로 변환되는지 확인하는 조건문*/
+		if(isStringDouble(input)) {	
+			str=true;
+		}
+		
+		return str;
+	}
 }
