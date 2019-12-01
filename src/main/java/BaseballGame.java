@@ -27,16 +27,19 @@ public class BaseballGame {
      * @param args not input args
      */
     public static void main(String[] args) {
-        /**game 재시작을 위한 exit 변수*/
+
+        /*game 재시작을 위한 exit 변수*/
         int exit = 0;
-        /**게임을 생성하기 위해 class 객체생성 */
+
+        /*게임을 생성하기 위해 class 객체생성 */
         Baseball game = new Baseball();
-        /**exit input을 받기위해 Scanner객체 생성*/
+
+        /*exit input을 받기위해 Scanner객체 생성*/
         Scanner sc = new Scanner(System.in);
 
-        /**
-         * 게임을 여러번 실행하기 위한 반복문
-         * exit조건에 따라 탈출
+        /*
+         게임을 여러번 실행하기 위한 반복문
+         exit조건에 따라 탈출
          */
         while(true) {
             game.start();
