@@ -1,7 +1,10 @@
+import java.util.HashSet;
+import java.util.Random;
+
 /*
  * Baseball
  *
- * ver 0.1 - 초안작성
+ * ver 0.2 - makeAnswer() 구현
  *
  * 2019.12.02
  */
@@ -19,9 +22,17 @@ public class Baseball {
         } while (restart());
     }
 
+    // 1 ~ 9까지 서로 다른 임의의 수 3자리를 생성
     private static String makeAnswer() {
         String answer = "";
-
+        Random rd = new Random();
+        HashSet<Integer> hs = new HashSet<Integer>();
+        while (hs.size() < 3) {
+            hs.add(rd.nextInt(8) + 1);
+        }
+        for (int i : hs) {
+            answer += i;
+        }
         return answer;
     }
 
