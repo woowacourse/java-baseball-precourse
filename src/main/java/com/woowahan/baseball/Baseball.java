@@ -94,6 +94,24 @@ public class Baseball extends AbstractBaseball{
 
     @Override
     public void Run() {
+        ArrayList<Integer> user, computer;
+        EarlyResults earlyResults;
+        String input;
+        boolean isEnd = false;
 
+        while (true) {
+            computer = getRandomBalls();
+
+            System.out.print("숫자를 입력해주세요 : ");
+            input = getLine();
+            user = stringToArrayList(input);
+
+            earlyResults = evaluateBalls(user, computer);
+            isEnd = earlyResults.printResults();
+
+            if ( isEnd ) {
+                break;
+            }
+        }
     }
 }
