@@ -68,7 +68,9 @@ public class Baseball {
             System.out.print(ans[j]);
     }
 
-    /**사용자에게 입력을 받는 메소드.*/
+    /**
+     * 사용자에게 입력을 받는 메소드.
+     */
     private void makeInput(){
         System.out.flush();
         System.out.print("숫자를 입력해주세요 : ");
