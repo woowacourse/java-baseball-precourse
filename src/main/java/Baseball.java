@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
@@ -6,26 +5,20 @@ import java.util.Scanner;
 /*
  * Baseball
  *
- * ver 0.6 - restart() 구현 - scanner 충돌 발생
+ * ver 0.7 - scanner 충돌 제거 및 기능 추가 분리
  *
  * 2019.12.02
  */
 public class Baseball {
+    // Scanner는 한 class에 하나만 있는게 좋다고 해서 class 변수로 추출
+    Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        String answer = "";
-        String numbers = "";
-        // 게임진행
-        do {
-            answer = makeAnswer();
-            // 3 스트라이크가 나올 때까지 반복
-            do {
-                numbers = inputNumbers();
-            } while (checkedNumbers(numbers, answer));
-        } while (restart());
+        Baseball game = new Baseball();
+        game.startGame();
     }
 
     // 1 ~ 9까지 서로 다른 임의의 수 3자리를 생성
-    private static String makeAnswer() {
+    private String makeAnswer() {
         String answer = "";
         Random rd = new Random();
         HashSet<Integer> hs = new HashSet<Integer>();
@@ -38,15 +31,15 @@ public class Baseball {
         return answer;
     }
 
-    private static String inputNumbers() {
+    private String inputNumbers() {
         String numbers = "";
         boolean re = false;
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
         do {
             re = false;
             // 이 부분에서 print로 하면 인텔리j + gradle인 환경에서 출력이 먼저 나오지 않고 do-while 탈출 후 출력이 됨. 해당 부분 왜인지 나중에 확인해보자.
             System.out.println("1 ~ 9까지 서로 다른 수로 이뤄진 3자리 수로 입력해주세요 : ");
-            numbers = sc.next();
+            numbers = sc.nextLine();
             if (numbers.length() != 3
                     || numbers.charAt(0) == numbers.charAt(1)
                     || numbers.charAt(0) == numbers.charAt(2)
@@ -57,7 +50,7 @@ public class Baseball {
         return numbers;
     }
 
-    private static boolean checkedNumbers(String numbers, String answer) {
+    private boolean checkedNumbers(String numbers, String answer) {
         if (numbers.equals(answer)) {
             System.out.println("3 스트라이크");
             System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
@@ -87,15 +80,27 @@ public class Baseball {
         return true;
     }
 
-    private static boolean restart() {
+    private boolean restart() {
         String num = "";
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         do {
-            num = sc.next();
+            num = sc.nextLine();
         } while (!num.equals("1") && !num.equals("2"));
-        sc.close();
         return num.equals("1");
+    }
+
+    public void startGame() {
+        String answer = "";
+        String numbers = "";
+        // 게임진행
+        do {
+            answer = makeAnswer();
+            // 3 스트라이크가 나올 때까지 반복
+            do {
+                numbers = inputNumbers();
+            } while (checkedNumbers(numbers, answer));
+        } while (restart());
     }
 }
 
