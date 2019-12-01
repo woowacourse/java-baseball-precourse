@@ -6,7 +6,7 @@ import java.util.Scanner;
 /*
  * Baseball
  *
- * ver 0.2 - makeAnswer() 구현
+ * ver 0.4 - checkedNumbers(String numbers, String answer) 구현
  *
  * 2019.12.02
  */
@@ -58,7 +58,10 @@ public class Baseball {
     }
 
     private static boolean checkedNumbers(String numbers, String answer) {
-        boolean recheck = false;
+        boolean recheck = true;
+        if (numbers.equals(answer)) {
+            recheck = false;
+        }
         return recheck;
     }
 
