@@ -3,13 +3,13 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class BaseballGame {
-    int[] numbers = new int[3];
-    Scanner scan = new Scanner(System.in);;
+    private int[] numbers = new int[3];
+    private Scanner scan = new Scanner(System.in);;
 
     public void baseballNumber() {
         int answer = 1;
         while (answer == 1) {
-            this.game();
+            game();
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             answer = scan.nextInt();
@@ -21,10 +21,11 @@ public class BaseballGame {
         this.setNumbers();
         while (!judge) {
             System.out.print("숫자를 입력해주세요 : ");
-            String meg = scan.next();
+            String meg = scan.nextLine();
+            System.out.println(meg);
             if (is3Check(meg) && isNumber(meg)) {
                 int [] inputInt =  Arrays.stream(meg.split("")).mapToInt(Integer::parseInt).toArray();
-                judge = this.numberCheck(this.numbers, inputInt);
+                judge = numberCheck(this.numbers, inputInt);
             }
         }
     }
@@ -33,14 +34,14 @@ public class BaseballGame {
         if (value.length() == 3) {
             return true;
         }
-        System.out.println("잘못된 입력입니다. 3개의 숫자를 입력해주세요.");
+        System.out.println("잘못된 입력입니다. 띄어쓰기없이 3개의 숫자만 입력해주세요.");
         return false;
     }
 
     private boolean isNumber(String value) {
         for (char c : value.toCharArray()) {
             if (c < 49 || c > 57) {
-                System.out.println("잘못된 입력입니다. 3개의 숫자를 입력해주세요.");
+                System.out.println("잘못된 입력입니다. 띄어쓰기없이 3개의 숫자만 입력해주세요.");
                 return false;
             }
         }
@@ -50,8 +51,8 @@ public class BaseballGame {
     private boolean numberCheck(int[] x, int[] y) {
         boolean endGame = false;
         String result = "";
-        int strikeInt =  this.strikeCheck(x, y);
-        int ballInt = this.ballCheck(x, y) - strikeInt;
+        int strikeInt =  strikeCheck(x, y);
+        int ballInt = ballCheck(x, y) - strikeInt;
 
         if (strikeInt > 0) {
             result += Integer.toString(strikeInt) + "스트라이크 ";
@@ -83,7 +84,7 @@ public class BaseballGame {
         return cnt;
     }
 
-    private  int ballCheck(int[] x, int[] y) {
+    private int ballCheck(int[] x, int[] y) {
         int cnt = 0;
         for (int i = 0; i < 3; i++) {
             int comp = y[i];
@@ -94,7 +95,7 @@ public class BaseballGame {
         return cnt;
     }
 
-    private  void setNumbers() {
+    private void setNumbers() {
         Random random = new Random();
         int i = 0;
         while (i != 3) {
