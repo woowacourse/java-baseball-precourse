@@ -2,7 +2,7 @@
 우아한테크코스 프리코스 1주차 미션 - 숫자야구 게임
 자세한 정보는 [여기서](https://github.com/woowacourse) 확인하세요.
 
-#Features
+#Functional Features
 - **랜덤 넘버 생성**
     - 사용자가 맞춰야 할 랜덤 넘버 생성 
 - **사용자 입력 받기**
@@ -15,3 +15,12 @@
     - 볼, 스트라이크 수 출력 
 - **종료**
     - 종료 혹은 다시 시작
+
+
+# Required Coding Convention
+- Indent Depth <= 2
+- 3항 연산자(Ternary Op.) 사용 금지
+- 메소드의 역할은 한 가지로
+- 인스턴스 변수의 수 <= 2
+- 메소드 인자 수 <= 3
+- 코드 한 줄에 점 하나
