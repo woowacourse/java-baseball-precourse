@@ -12,9 +12,9 @@
 2. BaseballGame
 	- startGame : 야구 게임을 시작한다.
 	- makeMyNumsAndCheckResult : 나의 숫자 생성과 결과 확인을 한다. 스트라이크가 3개가 될 때까지 나의 숫자를 계속 입력하도록 한다.
-	- checkResult : 스트라이크와 볼의 갯수를 확인한다.
-	- countStrike : 스트라이크의 갯수를 센다.
-	- countBall : 볼의 갯수를 센다.
+	- checkResult : 스트라이크와 볼의 개수를 확인한다.
+	- countStrike : 스트라이크의 개수를 센다.
+	- countBall : 볼의 개수를 센다.
 	- printResult : 맞춘 숫자에 대한 결과를 출력한다.
 	- restartGame : 게임을 완전히 종료할 것인지 확인한다.
 3. Player :
