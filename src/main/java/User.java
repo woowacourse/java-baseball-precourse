@@ -11,7 +11,7 @@ public class User {
 	
 	public int[] input() {
 		
-		System.out.println("숫자를 입력해주세요 : ");
+		System.out.print("숫자를 입력해주세요 : ");
 		try {
 			
 			input_num = scanner.nextInt();
