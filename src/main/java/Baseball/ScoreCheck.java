@@ -1,13 +1,11 @@
 package Baseball;
 
-import javax.swing.*;
-
 public class ScoreCheck {
-    static private int randomNumber;
-    static private int inputNumber;
-    static private int strike;
-    static private int ball;
-    static private boolean[] usedNumber_randomNumber;
+    private int randomNumber;
+    private int inputNumber;
+    private int strike;
+    private int ball;
+    private boolean[] usedNumber_randomNumber;
 
     public ScoreCheck(int randomNumber, int inputNumber,boolean[] usedNumber){
         this.randomNumber = randomNumber;
@@ -15,41 +13,27 @@ public class ScoreCheck {
         this.usedNumber_randomNumber = usedNumber;
     }
 
-    private void checkStrike(){
-        int temp_random = randomNumber;
-        int temp_input = inputNumber;
+    private void checkStrike_Ball(){
+        int toCheckRandomNumber = randomNumber;
+        int toCheckInputNumber = inputNumber;
         strike = 0;
 
-        while(temp_random != 0){
-            int sep_randomNumber = temp_random%10;
-            int sep_inputNumber = temp_input%10;
-            if(sep_randomNumber == sep_inputNumber){
+        while(toCheckRandomNumber != 0){
+            int digit_randomNumber = toCheckRandomNumber % 10;
+            int digit_inputNumber = toCheckInputNumber % 10;
+            if(digit_randomNumber == digit_inputNumber){
                 strike++;
-                usedNumber_randomNumber[sep_randomNumber] = false;
-            }
-
-            temp_random /= 10;
-            temp_input /= 10;
-        }
-    }
-
-    private void checkBall(){
-        int temp_input = inputNumber;
-        ball = 0;
-
-        while(temp_input != 0){
-            int sep_inputNumber = temp_input%10;
-            if(usedNumber_randomNumber[sep_inputNumber]){
+            }else if(usedNumber_randomNumber[digit_inputNumber]){
                 ball++;
             }
 
-            temp_input /= 10;
+            toCheckRandomNumber /= 10;
+            toCheckInputNumber /= 10;
         }
     }
 
     public int scoreResult(){
-        checkStrike();
-        checkBall();
+        checkStrike_Ball();
         print();
         return strike;
     }

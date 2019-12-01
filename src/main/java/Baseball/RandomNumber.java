@@ -3,10 +3,8 @@ package Baseball;
 import java.util.Random;
 
 public class RandomNumber {
-    private static boolean[] usedNumber;
-    private static int randomNumber;
-
-    public RandomNumber(){}
+    private boolean[] usedNumber;
+    private int randomNumber;
 
     private void resetRandomNumber(){
         this.randomNumber = 0;
@@ -15,17 +13,17 @@ public class RandomNumber {
 
     public void createRandomNumber(){
         Random random = new Random();
-        int iter = 0;
+        int digits = 0;
 
         resetRandomNumber();
-        while(iter < 3){
+        while(digits < 3){
             int x = random.nextInt(9) + 1;
             if(usedNumber[x]){
                 continue;
             }
-            randomNumber += x * Math.pow(10,iter);
+            randomNumber += x * Math.pow(10,digits);
             usedNumber[x] = true;
-            iter++;
+            digits++;
         }
     }
 
