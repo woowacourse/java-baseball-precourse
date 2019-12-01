@@ -32,6 +32,10 @@ boolean isOverlap(int[] answerNum)
 ```
 ##### 생성된 정답 숫자열이 서로 중복되는지 확인해서 중복되었는지 확인하는 메소드이다.
 ```
+int[] splitNumbers(int number)
+```
+##### Int 형 인자를 넣으면 각 자리수가 분리된 배열을 출력해주는 메소드이다.
+```
 boolean printResult(int isStrike, int isBall)
 ```
 ##### STRIKE 횟수와 BALL 횟수를 넣으면 추측에 대한 결과 프린트해주는 메소드이다.
