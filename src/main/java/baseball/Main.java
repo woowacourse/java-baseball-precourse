@@ -3,6 +3,8 @@ package baseball;
 import java.util.Scanner;
 
 public class Main {
+	private static final int RESTART = 1;
+	private static final int GAME_END = 2;
 	private static final int MAX_ARR_SIZE = 10; // 10진법 (0~9)
 	private static final int MAX_ANSWER_SIZE = 3; // 정답 배열의 크기
 	private static final int USED = 1; // 미사용 = 0, 사용 = 1
@@ -86,6 +88,11 @@ public class Main {
 	}
 
 	private static boolean checkRestart() {
-		return false;
+		int restartCheck;
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		do {
+			restartCheck = scanner.nextInt();
+		} while (!(restartCheck == RESTART || restartCheck == GAME_END)); // 1 또는 2가 아닐 경우 처리
+		return restartCheck == RESTART;
 	}
 }
