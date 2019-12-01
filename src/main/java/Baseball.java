@@ -5,7 +5,7 @@ import java.util.Scanner;
 /*
  * Baseball
  *
- * ver 0.7 - scanner 충돌 제거 및 기능 추가 분리
+ * ver 0.8 - 임의의 수 기능 수정(정렬되지 않도록)
  *
  * 2019.12.02
  */
@@ -17,24 +17,27 @@ public class Baseball {
         game.startGame();
     }
 
-    // 1 ~ 9까지 서로 다른 임의의 수 3자리를 생성
+    // 1 ~ 9까지 서로 다른 임의의 수 3자리를 생성 (for-each로 했더니 정렬되어 방식 변경함)
     private String makeAnswer() {
         String answer = "";
         Random rd = new Random();
         HashSet<Integer> hs = new HashSet<Integer>();
-        while (hs.size() < 3) {
-            hs.add(rd.nextInt(8) + 1);
+        for (int i = 1; i < 10; i++) {
+            hs.add(i);
         }
-        for (int i : hs) {
-            answer += i;
+        while (hs.size() > 6) {
+            int tmp = rd.nextInt(8) + 1;
+            if(hs.remove(tmp)) {
+                answer += tmp;
+            }
         }
+        System.out.println(answer);
         return answer;
     }
 
     private String inputNumbers() {
         String numbers = "";
         boolean re = false;
-        //Scanner sc = new Scanner(System.in);
         do {
             re = false;
             // 이 부분에서 print로 하면 인텔리j + gradle인 환경에서 출력이 먼저 나오지 않고 do-while 탈출 후 출력이 됨. 해당 부분 왜인지 나중에 확인해보자.
