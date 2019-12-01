@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
         Random random = new Random();
-
         ArrayList<Integer> targetList = new ArrayList<Integer>(3);  // 야구게임 시작 문제숫자를 추가할 리스트 선언
         while(targetList.size()!=3){
             int newNumber = random.nextInt(9) + 1;  // 난수 생성
@@ -36,6 +35,16 @@ public class Main {
             }
         }
         ballNumber -= strikeNumber;  // 볼 변수에 스트라이크 변수가 포함되기 때문에 스트라이크 변수만큼 감소
+
+        if(ballNumber==0 && strikeNumber==0){  // 숫자가 아무것도 겹치지 않을 때 출력
+            System.out.println("낫싱");
+        } else if(ballNumber==0){  // 스트라이크만 있을 때 출력
+            System.out.println(strikeNumber+" 스트라이크 ");
+        } else if(strikeNumber==0) {  // 볼만 있을 때 출력
+            System.out.println(ballNumber + " 볼");
+        } else {  // 둘 다 있을 때 출력
+            System.out.println(strikeNumber+" 스트라이크 " + ballNumber + " 볼");
+        }
 
     }
 }
