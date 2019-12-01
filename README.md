@@ -11,10 +11,12 @@
 - [ ] 7 : BaseBallGame의 메소드로 들어온 domain.baseBalls.BaseBalls 객체의 결과를 리턴한다.
 - [ ] 8 : 리턴한 메소드를 받아서 결과를 출력한다.
 - [ ] 9 : 게임을 재시작하기 위한 사용자로부터의 입력을 받는다.
-- [ ] 10 : 숫자 판단의 결과인 스트라이크 볼 나싱을 분류하기 위한 객체를 짜야하나? 아니면 이넘으로? - 구현하면서 생각해보자
+- [x] 10 : 숫자 판단의 결과인 스트라이크 볼 나싱을 분류하기 위한 객체 QuestionResult.java를 만들었다.
 - [x] 11 : 컴퓨터가 랜덤한 domain.baseBalls.BaseBalls.class를 생성할 때 영향을 주는 Generator 만들기
 - [x] 12 : 한개의 BaseBall은 위치와 숫자로 이루어짐 : domain.OneBaseBall.class
-- [x] 13 : BaseBall은 로직이 나뉠 수 있으므로, 
+- [x] 13 : BaseBall은 Answer이냐, Question이냐에 따라 로직이 나뉘므로 상속으로 해결한다.
+- [x] 14 : BaseBallNumber의 equal 로직을 오버라이드
+- [x] 15 : 두개의 OneBaseBall사이의 strike ball 관계를 파악한다.
 
 
 

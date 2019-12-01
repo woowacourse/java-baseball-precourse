@@ -24,4 +24,11 @@ public class BaseBallNumber {
 			throw new IllegalArgumentException("잘못된 숫자입니다.");
 		}
 	}
+
+	@Override
+	public boolean equals(Object object) {
+		BaseBallNumber otherBaseBallNumber = (BaseBallNumber)object;
+		return this.value.equals(otherBaseBallNumber.value);
+	}
+
 }
