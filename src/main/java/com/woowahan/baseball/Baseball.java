@@ -94,7 +94,7 @@ public class Baseball extends AbstractBaseball{
             BallResult ballResult;
             ballResult = evaluateBall(guess.get(i), i, answer);
 
-            ballsResult.addEarlyResult(ballResult);
+            ballsResult.addBallResult(ballResult);
         }
         return ballsResult;
     }

@@ -32,7 +32,7 @@ public class BallsResult {
         System.out.println();
     }
 
-    public void addEarlyResult(BallResult one){
+    public void addBallResult(BallResult one){
         if (one == BallResult.BALL){
             ballScore++;
         }
@@ -56,5 +56,4 @@ public class BallsResult {
 
         return false;
     }
-
 }
