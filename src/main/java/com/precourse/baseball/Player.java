@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.3.1   2019-11-29
+ * Player.java                     2.3.2   2019-12-01
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -18,8 +18,9 @@ import java.io.InputStreamReader;
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.3.1        자릿수 체크하는 기능 추가
- * @date 2019-11-29
+ * @version 2.3.2                        readNumbers 메소드에서
+ *                                      항상 error가 나는 버그 수정
+ * @date 2019-12-01
  */
 public class Player {
     private final String BALL = "볼";
@@ -53,12 +54,12 @@ public class Player {
 
         for (int i = 0; i < MAX_DIGIT; i++) {
             digitNumbers[i] = Character.getNumericValue(input[i]);
+            digitMasks[digitNumbers[i]] = true;
         }
 
         if (!isValidNumbers() || isDuplicate()) {
             printWrongInputMessage();
             readNumbers();
-            return;
         }
     }
 
