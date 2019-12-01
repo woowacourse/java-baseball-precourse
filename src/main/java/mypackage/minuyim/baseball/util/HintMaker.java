@@ -1,5 +1,19 @@
+/*
+ * @(#)HintMaker.java
+ * 
+ * version : 1.0
+ * 
+ * 2019.12.01
+ */
+
 package mypackage.minuyim.baseball.util;
 
+/**
+ * HintMaker : 사용자가 입력한 숫자와 정답을 비교하여 힌트를 만드는 클래스
+ * 
+ * @version 1.00 2019/12/01
+ * @author 임민우
+ */
 public class HintMaker {
     private static final int LENGTH_NUMBER = 3;
     public int strike;
@@ -20,6 +34,7 @@ public class HintMaker {
         for (int i = 0; i < LENGTH_NUMBER; i++) {
             count += compareN(answer[i], userAnswer[i]);
         }
+        
         return count;
     }
 
@@ -31,13 +46,15 @@ public class HintMaker {
                 count += compareN(answer[i], userAnswer[j]);
             }
         }
+        
         return count - makeStrike(answer, userAnswer);
     }
 
     private int compareN(int num1, int num2) {
         if (num1 == num2) {
             return 1;
+        } else {
+        	return 0;
         }
-        return 0;
     }
 }

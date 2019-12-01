@@ -1,7 +1,21 @@
+/*
+ * @(#)MainGame.java
+ * 
+ * version : 1.0
+ * 
+ * 2019.12.01
+ */
+
 package mypackage.minuyim.baseball;
 
 import mypackage.minuyim.baseball.util.*;
 
+/**
+ * MainGame : 숫자 야구를 실행, 반복하는 클래스
+ * 
+ * @version 1.00 2019/12/01
+ * @author 임민우
+ */
 public class MainGame {
     private static final int TARGET_NUMBER = 3;
     private static final int ENDGAME_NUMBER = 2;

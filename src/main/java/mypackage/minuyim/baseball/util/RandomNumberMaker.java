@@ -1,7 +1,21 @@
+/*
+ * @(#)RandomNumberMaker.java
+ * 
+ * version : 1.0
+ * 
+ * 2019.12.01
+ */
+
 package mypackage.minuyim.baseball.util;
 
 import java.util.Random;
 
+/**
+ * RandomNumberMaker : 야구 게임에 사용할 랜덤 숫자를 만들어주는 클래스
+ * 
+ * @version 1.00 2019/12/01
+ * @author 임민우
+ */
 public class RandomNumberMaker {
     private static final int LENGTH_NUMBER = 3;
 

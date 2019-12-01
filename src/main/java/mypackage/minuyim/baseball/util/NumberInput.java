@@ -1,7 +1,21 @@
+/*
+ * @(#)NumberInput.java
+ * 
+ * version : 1.0
+ * 
+ * 2019.12.01
+ */
+
 package mypackage.minuyim.baseball.util;
 
 import java.util.Scanner;
 
+/**
+ * NumberInput : 사용자에게 야구 게임에 사용할 입력을 받는 클래스
+ * 
+ * @version 1.00 2019/12/01
+ * @author 임민우
+ */
 public class NumberInput {
     private static final int LENGTH_NUMBER = 3;
 
@@ -37,7 +51,6 @@ public class NumberInput {
         if (stringNumber.length() != LENGTH_NUMBER) {
             isWrong = true;
         }
-
         for (int j = 0; j < LENGTH_NUMBER; j++) {
             i = stringNumber.charAt(j) - '0';
             temp[i] += 1;
@@ -45,7 +58,6 @@ public class NumberInput {
                 isWrong = true;
             }
         }
-
         count = 0;
         for (int j = 0; j < 10; j++) {
             if (temp[j] == 1) {

@@ -1,7 +1,21 @@
+/*
+ * @(#)Repeater.java
+ * 
+ * version : 1.0
+ * 
+ * 2019.12.01
+ */
+
 package mypackage.minuyim.baseball.util;
 
 import java.util.Scanner;
 
+/**
+ * Repeater : 게임의 재시작 여부를 사용자에게 묻는 클래스
+ * 
+ * @version 1.00 2019/12/01
+ * @author 임민우
+ */
 public class Repeater {
 
     public static int askAgain() {
