@@ -32,12 +32,10 @@ public class Baseball {
     public Baseball() {
         Random rand = new Random();
         int temp = 0;
-        int i = 1;      //ans배열의 길이
+        int i = 1;          //ans배열의 담긴 value개수
 
-        /*
-        처음에는 비교할숫자가 없으므로 그냥 대입
-        */
-        temp = rand.nextInt(9) + 1;          // 1 ~ 9 난수생성
+        /*처음에는 비교할숫자가 없으므로 그냥 대입*/
+        temp = rand.nextInt(9) + 1;     // 1 ~ 9 난수생성
         ans[0] = temp;
 
         temp = rand.nextInt(9) + 1;
