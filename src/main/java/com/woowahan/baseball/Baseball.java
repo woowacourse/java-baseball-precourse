@@ -17,6 +17,18 @@ public class Baseball extends AbstractBaseball{
         return sc.nextLine();
     }
 
+    protected ArrayList<Integer> stringToArrayList(String ballsString){
+        ArrayList<Integer> balls = new ArrayList<Integer>();
+
+        int ballsInt = Integer.parseInt(ballsString);
+
+        balls.add(ballsInt/100);
+        balls.add(ballsInt/100%10);
+        balls.add(ballsInt%10);
+
+        return balls;
+    }
+
     @Override
     protected ArrayList<Integer> initializeBallRange() {
         ArrayList<Integer> ballRange = new ArrayList<Integer>();
