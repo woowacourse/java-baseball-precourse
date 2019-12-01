@@ -74,9 +74,9 @@ public class Baseball {
         if(strike == 0 && ball == 0){
             System.out.println("낫싱");
         }
-        System.out.println("\n");
+        //ystem.out.println("\n");
     }
-    private boolean getResult(int[] answerData, int[] userData){
+    private boolean getResult(){
         int strike = 0;
         int ball = 0;
 
@@ -84,17 +84,17 @@ public class Baseball {
             strike += getStrike(i);
             ball += getBall(i);
         }
-        System.out.println("입력 데이터 : "+userData[0]+" "+userData[1]+" "+userData[2]+" \n");//log
+        System.out.println("입력 데이터 : "+userData[0]+" "+userData[1]+" "+userData[2]+" ");//log
         printState(strike, ball);
         return (strike == 3); //game이 끝날 수 있는지 여부만 리턴해줌.
     }
     public void playMethod(){
         answerData = makeData();
-        System.out.println("만든 데이터 : "+answerData[0]+" "+answerData[1]+" "+answerData[2]+" \n");//log
+        System.out.println("만든 데이터 : "+answerData[0]+" "+answerData[1]+" "+answerData[2]+" ");//log
         do{
             System.out.println("숫자를 입력해주세요 : ");
             getData();
-        }while(!getResult(answerData, userData));
+        }while(!getResult());
     }
     public boolean exitMethod() {
         /*
@@ -114,7 +114,7 @@ public class Baseball {
              * 일단 함수의 목적을 [나가느냐 마느냐에 대한 리턴]으로 두고,
              * 오류시 종료하는 것이 합리적이라 보고 true 리턴을 하였다.
              */
-            System.out.println("잘못된 입력값이 들어왔습니다. 프로그램을 종료합니다.\n");
+            System.out.println("잘못된 입력값이 들어왔습니다. 프로그램을 종료합니다.");
             return true;
         }
     }

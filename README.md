@@ -24,20 +24,48 @@
 
 ```java
 public class Baseball{  
-  public static void main();//메인 함수. 게임의 시작/종료 루프를 수행한다.
-  public void makeData();//시작시 컴퓨터가 가지는 정답 데이터를 만든다.
-  public void getData(int userData);//입력 데이터를 예외처리 검사하고 배열로 쪼개준다.
-  public boolean playMethod();//게임을 수행한다.
-  public boolean checkMethod();//볼/스트라이크 여부를 판단한다.
+  private void makeData();//컴퓨터가 가지는 정답 데이터를 만든다.
+  private void getData(int userData);//입력 데이터를 예외처리 검사하고 배열로 쪼개준다.
+  private int getBall(int pos);//특정 위치값이 볼로 판정되는지 검사해준다.
+  private int getStrike(int pos);//특정 위치값이 스트라이크로 판정되는지 검사해준다.
+  private void printState(int strike, int ball);//data간 비교한 결과를 출력해준다.
+  private boolean getResult();//스트라이크와 볼 판정을 기반으로, 게임이 끝나는지 여부를 확인해준다.
+  
+  public boolean playMethod();//게임을 수행한다. getResult값에 따라 종료된다.
+  public boolean exitMethod();//야구게임 바깥 루프(게임 계속하기/종료하기) 입력을 받고 종료여부를 확인한다.
 }
 ```
 
-프로그램의 이해를 용이하게 하기 위해, 또한 들여쓰기 제한을 지키기 위해서
+프로그램의 구조를 명확히 하기 위해, MainClass는 오직 동적 메서드 main만을 가진다.
 
-main 함수는 단 하나의 루프, 게임이 종료된 후 재시작/종료를 선택할 수 있는 바깥루프만을 가진다.
+main은 Baseball 객체를 생성해 야구 게임을 진행하며, playMethod와 exitMethod를 통해 야구게임을 진행한다.
 
-main함수를 통해 각 메서드가 호출되고, 각자 역할을 수행할 수 있도록 설계한다.
+playMethod는 야구게임의 내부 루프를 담당하며, 여기에서 진행하는 로직은 아래와 같다.
+
+> 정답값 지정 : makeData
+>
+> 사용자 입력 : getData
+>
+> 입력 간 비교 : getResult[getBall,getStrike, printState 호출]
+>
+> 볼과 스트라이크 개수 확인 : getBall, getStrike
+>
+> 볼과 스트라이크 개수 출력 : printState
 
 
 
-//추가기술
+
+
+---
+
+수정/고려해야 할 사항
+
+exitMethod는 mainClass와 Baseball Class 중 어느쪽에 있는것이 구조상 더 올바른가?
+
+입력 예외처리는 어디까지 필요한가?
+
+문자열에 대한 예외처리 해주고, 값이 큰지 작은지에 대한 예외처리 해줘야한다.
+
+이 부분에 대한 고려 필요.
+
+exitMethod 예외처리도 함꼐 고려...
