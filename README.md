@@ -24,9 +24,6 @@
 
 1. while(true) 
    - 숫자야구게임을 실행하는 메서드(Play) 호출
-   - 종료 / 새 게임 시작하는 메서드 호출(isEnd)
-     - false를 반환 : break
-     - true를 반환 : 아무 기능도 하지 않음
 
 
 
@@ -72,14 +69,15 @@
 
 1. Computer 객체 생성
 2. Player 객체 생성
-3. play 메서드
+3. run 메서드
    - Computer로부터 랜덤 값 획득
    - while(false)
      - 플레이어로부터 값을 입력받음
      - Computer의 print 메서드에서 true가 리턴 될 때 까지 반복
-4. isEnd 메서드
-   - 1을 입력 : 새 게임 시작, return true 
-   - 2를 입력 : 게임 종료, return false
+   - 게임을 종료할 지 판단 : isStop 호출
+4. isStop 메서드
+   - 1을 입력 : 새 게임 시작, run 호출
+   - 2를 입력 : 게임 종료
 
 
 
