@@ -70,4 +70,28 @@ public class numberBaseball {
         return;
     }
 
+    public boolean strikeBallCheck(List trial, List target) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            if (trial.get(i) == target.get(i)) {
+                strike += 1;
+            }
+        }
+
+        if (strike == 3) {
+            return true;  // game end
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (target.contains(trial.get(i))) {
+                ball += 1;
+            }
+        }
+        ball -= strike;
+
+        System.out.println(strike + "스트라이크 " + ball + "볼" + "\n");
+        return false;
+    }
+
 }
