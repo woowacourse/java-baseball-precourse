@@ -13,7 +13,7 @@
 - [ ] 9 : 게임을 재시작하기 위한 사용자로부터의 입력을 받는다.
 - [ ] 10 : 숫자 판단의 결과인 스트라이크 볼 나싱을 분류하기 위한 객체를 짜야하나? 아니면 이넘으로? - 구현하면서 생각해보자
 - [ ] 11 : 컴퓨터가 랜덤한 domain.BaseBalls.class를 생성하는 Generator 만들기
-- [ ] 12 : 한개의 BaseBall은 위치와 숫자로 이루어짐 : domain.OneBaseBall.class
+- [x] 12 : 한개의 BaseBall은 위치와 숫자로 이루어짐 : domain.OneBaseBall.class
 
 
 

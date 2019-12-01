@@ -1,5 +1,8 @@
 package domain;
 
+import lombok.Getter;
+
+@Getter
 public class OneBaseBall {
 	private BaseBallNumber baseBallNumber;
 	private Integer baseBallPosition;
@@ -10,6 +13,6 @@ public class OneBaseBall {
 	}
 
 	static OneBaseBall ofInteger(Integer baseBallNumber, Integer baseBallPosition) {
-		return new OneBaseBall(new BaseBallNumber(baseBallNumber), baseBallPosition);
+		return new OneBaseBall(BaseBallNumber.of(baseBallNumber), baseBallPosition);
 	}
 }

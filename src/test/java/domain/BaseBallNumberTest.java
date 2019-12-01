@@ -13,14 +13,13 @@ class BaseBallNumberTest {
 	@DisplayName("경계값을 넘었을 때의 BaseBallNumber 익셉션 체크")
 	void checkThrow() {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			BaseBallNumber baseBallNumber = new BaseBallNumber(0);
+			BaseBallNumber.of(0);
 		});
 	}
 
 	@Test
 	@DisplayName("경계값을 넘지 않았을 때 BaseBallNumber 객체 생성 체크")
 	void name() {
-		BaseBallNumber baseBallNumber = new BaseBallNumber(1);
-		assertThat(baseBallNumber.getValue()).isEqualTo(1);
+		assertThat(BaseBallNumber.of(1).getValue()).isEqualTo(1);
 	}
 }
