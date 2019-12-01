@@ -60,13 +60,13 @@ public class PlayBaseball {
                 countStrike = referee.countStrikeNum();
                 countBall = referee.countBallNum();
                 if(countStrike == COUNT_ZERO) {
-                    System.out.printf("%d볼", countBall);
+                    System.out.printf("%d 볼\n", countBall);
                 }
                 else if(countBall == COUNT_ZERO) {
-                    System.out.printf("%d스트라이크", countStrike);
+                    System.out.printf("%d 스트라이크\n", countStrike);
                 }
                 else {
-                    System.out.printf("%d스트라이크 %d볼", countStrike, countBall);
+                    System.out.printf("%d 스트라이크 %d볼\n", countStrike, countBall);
                 }
             }
         }while(!(countStrike == NUM_LEN));
@@ -77,7 +77,6 @@ public class PlayBaseball {
      * @return 게임을 다시 시작할 경우 true를 반환한다.
      */
     private boolean continuePlay() {
-        User user = new User();
-        return user.continueCheck();
+        return User.continueCheck();
     }
 }

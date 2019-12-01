@@ -59,10 +59,11 @@ public class User {
         }
         else {
             validCheck = inputNumberCheck(userInput);
-            if (!validCheck) {
-                System.out.println("잘못된 입력입니다! 조건을 확인한 후 다시 입력해주세요.\n" +
-                        "(조건 : 1부터 9까지 서로 다른 수로 이루어진 3자리의 수)");
-            }
+        }
+        
+        if (!validCheck) {
+            System.out.println("잘못된 입력입니다! 조건을 확인한 후 다시 입력해주세요.\n" +
+                    "(조건 : 1부터 9까지 서로 다른 수로 이루어진 3자리의 수)");
         }
         return validCheck;
     }
@@ -147,14 +148,14 @@ public class User {
      * 사용자로부터 입력을 받아서 1을 입력받으면 다시 시작, 2를 입력받으면 종료하는 상태를 반환하는 메서드.
      * @return 다시 시작을 입력받은 경우 true를 반환
      */
-    public boolean continueCheck() {
+    public static boolean continueCheck() {
         String userInput = "";
         boolean continueStat = true;
         boolean validCheck = true;
         Scanner sc = new Scanner(System.in);
 
         do {
-            System.out.println("게임을 새로 시작하려면 1,종료하려면 2를 입력하세요.");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             userInput = sc.next();
             if(userInput.equals(CONTINUE)) {
                 continueStat = true;
