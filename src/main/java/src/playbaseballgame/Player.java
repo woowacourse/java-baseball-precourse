@@ -153,4 +153,10 @@ public class Player {
 		return zero;
 	}
 	
+	
+	/*플레이어가 입력한 값을 리턴하는 함수*/
+	public int returnAns() {
+		return num;
+	}
+	
 }
