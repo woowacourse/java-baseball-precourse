@@ -12,7 +12,7 @@ public class Baseball extends AbstractBaseball{
     }
 
     @Override
-    protected String getLine() {
+    public String getLine() {
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
