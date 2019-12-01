@@ -1,9 +1,13 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 class HostTest {
+
+    private Host host = new Host();
 
     private boolean checkNumberBetweenOneAndNine(List<Integer> numbers) {
         boolean allBetweenOneAndNine = true;
@@ -38,9 +42,33 @@ class HostTest {
         List<Integer> numbers = host.getNumbers();
 
         /* then: numbers에 중복되지 않은 1에서 9까지의 숫자가 생성된다 */
-        Assertions.assertTrue(checkNumberBetweenOneAndNine(numbers));
-        Assertions.assertTrue(checkNoDuplication(numbers));
-        Assertions.assertTrue(numbers.size() == Host.baseballGameSize);
+        assertTrue(checkNumberBetweenOneAndNine(numbers));
+        assertTrue(checkNoDuplication(numbers));
+        assertTrue(numbers.size() == Host.baseballGameSize);
 
     }
+
+    @Test
+    void check_numOfStrikes_fromInput() {
+
+        /* given: host의 numbers로 5, 1, 7이 생성되었다. */
+        List<Integer> generatedNumbers = new ArrayList<>();
+        generatedNumbers.add(5);
+        generatedNumbers.add(1);
+        generatedNumbers.add(7);
+
+        host.setNumbers(generatedNumbers);
+
+        /* when: 입력 받은 숫자가 3, 1, 7이다. */
+        List<Integer> inputNumbers = new ArrayList<>();
+        inputNumbers.add(3);
+        inputNumbers.add(1);
+        inputNumbers.add(7);
+
+        /* then: host.countNumOfStrikes의 결과는 2 */
+        assertTrue(host.countNumOfStrikes(inputNumbers) == 2);
+    }
+
+
+
 }

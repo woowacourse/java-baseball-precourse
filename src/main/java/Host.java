@@ -27,7 +27,22 @@ public class Host {
         }
     }
 
+    public int countNumOfStrikes(List<Integer> inputNumbers) {
+        int numOfStrikes = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if ( numbers.get(i).equals(inputNumbers.get(i)) ) {
+                numOfStrikes++;
+            }
+        }
+        return numOfStrikes;
+    }
+
+
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public void setNumbers(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 }
