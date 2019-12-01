@@ -7,12 +7,12 @@ public class BaseballGame {
     private Scanner scan = new Scanner(System.in);;
 
     public void baseballNumber() {
-        int answer = 1;
-        while (answer == 1) {
+        String answer = "1";
+        while (answer.equals("1")) {
             game();
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            answer = scan.nextInt();
+            answer = scan.nextLine();
         }
     }
 
@@ -22,7 +22,6 @@ public class BaseballGame {
         while (!judge) {
             System.out.print("숫자를 입력해주세요 : ");
             String meg = scan.nextLine();
-            System.out.println(meg);
             if (is3Check(meg) && isNumber(meg)) {
                 int [] inputInt =  Arrays.stream(meg.split("")).mapToInt(Integer::parseInt).toArray();
                 judge = numberCheck(this.numbers, inputInt);
