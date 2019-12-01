@@ -40,24 +40,24 @@ public class NumberInput {
     }
 
     private static boolean isWrongNumber(int num) {
-        boolean isWrong;
         String stringNumber;
         int i;
         int count;
         int[] temp = new int[10];
 
         stringNumber = Integer.toString(num);
-        isWrong = false;
         if (stringNumber.length() != LENGTH_NUMBER) {
-            isWrong = true;
+            return true;
         }
+        
         for (int j = 0; j < LENGTH_NUMBER; j++) {
             i = stringNumber.charAt(j) - '0';
             temp[i] += 1;
             if (i == 0) {
-                isWrong = true;
+                return true;
             }
         }
+        
         count = 0;
         for (int j = 0; j < 10; j++) {
             if (temp[j] == 1) {
@@ -65,9 +65,9 @@ public class NumberInput {
             }
         }
         if (count != 3) {
-            isWrong = true;
+            return true;
         }
 
-        return isWrong;
+        return false;
     }
 }

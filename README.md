@@ -30,3 +30,4 @@
 
 ### 2.4 19.12.01. (일)
 > 1. Java Code Convention에 맞게 클래스 이름 수정 및 주석 추가
+> 2. NumberInput 버그 수정
