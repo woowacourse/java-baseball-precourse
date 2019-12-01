@@ -57,8 +57,13 @@ public class Player {
 			check = false;
 		}
 		
-		/*플레이어가 입력한 값이 서로 다른지 확인하는 조건*/
+		/*플레이어가 입력한 값이 서로 다른지 확인하는 조건문*/
 		if(check && checkSame(input)) {
+			check = false;
+		}
+		
+		/*플레이어가 입력한 값에 0이 있는지 확인하는 조건문*/
+		if(check && checkZero(input)) {
 			check = false;
 		}
 		
