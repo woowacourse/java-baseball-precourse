@@ -1,5 +1,5 @@
 /*
- * Game.java                       1.5.0   2019-11-30
+ * Game.java                       1.6.0   2019-12-01
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -19,8 +19,8 @@ import java.io.InputStreamReader;
  * 게임이 끝나면 게임 재시작을 하거나, 게임을 완전히 종료한다.
  *
  * @author HyungjuAn
- * @version 1.5.0              게임 종료 메시지 출력 기능 추가
- * @date 2019-11-30
+ * @version 1.6.0                     힌트를 출력하는 기능 추가
+ * @date 2019-12-31
  */
 public class Game {
     private static final String THREE_STRIKE = "3 스트라이크";
@@ -38,13 +38,19 @@ public class Game {
         computer.setRandomNumbers();
         do {
             user.readNumbers();
+
             hint = computer.giveHintAboutNumbers(user.getDigitNumbers());
+            printHint(hint);
         } while (!hint.equals(THREE_STRIKE));
         printGameFinishMessage();
 
         if (isRestart()) {
             startGame(computer, user);
         }
+    }
+
+    public static void printHint(String hint) {
+        System.out.println(hint);
     }
 
     public static void printGameFinishMessage() {
