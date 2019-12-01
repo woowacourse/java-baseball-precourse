@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
+class Game{
+
+}
 
 public class Main {
     public static void main(String[] args){
