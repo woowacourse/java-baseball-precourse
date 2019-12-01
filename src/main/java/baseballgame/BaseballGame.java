@@ -10,9 +10,9 @@ public class BaseballGame {
 	private static final int BALL_LEN = 3;
 	private static final int ZERO = 0;
 	private static final int THREE_STRIKE = 3;
-	Player player = new Player();
-	Computer computer = new Computer();
-	String restart;
+	private Player player = new Player();
+	private Computer computer = new Computer();
+	private String restart;
 	Scanner sc = new Scanner(System.in);
 	
 	public void startGame() {
@@ -43,7 +43,7 @@ public class BaseballGame {
 	}
 	private int countStrike(int i, int j) {
 		int strike = ZERO;
-		if((i == j) && (player.myNums.get(i) == computer.randomNums.get(j))) {
+		if ((i == j) && (player.getMyNums().get(i) == computer.getRandomNums().get(j))) {
 			strike++;
 		}
 		return strike;
@@ -53,7 +53,7 @@ public class BaseballGame {
 		if (i == j) {
 			ball = ZERO;
 		}
-		else if(player.myNums.get(i) == computer.randomNums.get(j)) {
+		else if (player.getMyNums().get(i) == computer.getRandomNums().get(j)) {
 			ball++;
 		}
 		return ball;
