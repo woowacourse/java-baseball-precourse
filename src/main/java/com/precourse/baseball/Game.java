@@ -1,5 +1,5 @@
 /*
- * Game.java                       1.6.0   2019-12-01
+ * Game.java                       1.6.1   2019-12-01
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -19,7 +19,8 @@ import java.io.InputStreamReader;
  * 게임이 끝나면 게임 재시작을 하거나, 게임을 완전히 종료한다.
  *
  * @author HyungjuAn
- * @version 1.6.0                     힌트를 출력하는 기능 추가
+ * @version 1.6.1                 외부 접근이 필요없는 methods
+ *                                접근 제어자를 private으로 수정
  * @date 2019-12-31
  */
 public class Game {
@@ -49,15 +50,15 @@ public class Game {
         }
     }
 
-    public static void printHint(String hint) {
+    private static void printHint(String hint) {
         System.out.println(hint);
     }
 
-    public static void printGameFinishMessage() {
+    private static void printGameFinishMessage() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public static boolean isRestart() throws IOException {
+    private static boolean isRestart() throws IOException {
         boolean result;
         int restartInfo = InputRestartInfo();
 
@@ -73,7 +74,7 @@ public class Game {
         return result;
     }
 
-    public static int InputRestartInfo() throws IOException {
+    private static int InputRestartInfo() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int restartInfo;
 
@@ -83,7 +84,7 @@ public class Game {
         return restartInfo;
     }
 
-    public static void printWrongInputMessage() {
+    private static void printWrongInputMessage() {
         System.out.println("ERROR! 잘못된 입력입니다!");
     }
 }
