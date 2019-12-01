@@ -32,9 +32,7 @@ public class Baseball {
         while (!finish) {
             System.out.print("숫자를 입력해주세요 : ");
             int number = scan.nextInt();
-            UserNumber[0] = (number % 1000) / 100;
-            UserNumber[1] = (number % 100) / 10;
-            UserNumber[2] = (number % 10) / 1;
+            UserNumber = splitNumbers(UserNumber, number);
 
             finish = printResult(isStrike(answerNumber, UserNumber),
                     isBall(answerNumber, UserNumber));
@@ -62,21 +60,31 @@ public class Baseball {
         return answerNum;
     }
 
+    /*
+    Int 형 인자를 넣으면 각 자리수가 분리된 (같이 인자로 넣어졌던) int 형 배열을 출력해주는 메소드이다.
+     */
     static private int[] splitNumbers(int[] UserNumber, int number) {
-        for(int i = 0; i < 3; i++) {
-            int j = 3 - i;
-            UserNumber[i] = (ROOT_NUMBER % square(ROOT_NUMBER, j))
+        for(int i = 0; i < NUMBER_LENGTH; i++) {
+            int j = NUMBER_LENGTH - i;
+            UserNumber[i] = (number % square(ROOT_NUMBER, j))
                     / square(ROOT_NUMBER, (j - 1));
         }
 
         return UserNumber;
     }
 
+    /*
+    Int 형 인자 root 를 squareNumber 만큼 제곱해주는 메소드이다. root^squareNumber 를 반환한다.
+     */
     static private int square(int root, int squareNumber) {
-        for(int i = 0; i < squareNumber - 1; i ++) {
-            root *= root;
+        int result = root;
+        if (squareNumber == 0) {
+            return 1;
         }
-        return root;
+        for(int i = 0; i < squareNumber - 1; i ++) {
+            result *= root;
+        }
+        return result;
     }
 
    /*
