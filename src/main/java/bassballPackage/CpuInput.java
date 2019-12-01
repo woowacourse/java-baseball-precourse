@@ -25,17 +25,4 @@ public class CpuInput {
 		
 		return result;
 	}
-	
-	public static void main(String[] args) {
-		//randomGenereation test
-		//System.out.println(randomGeneration());
-
-		//cpuInput test
-		int[] testArray = cpuInput();
-		System.out.println(testArray[0]);
-		System.out.println(testArray[1]);
-		System.out.println(testArray[2]);
-		
-	}
-
 }

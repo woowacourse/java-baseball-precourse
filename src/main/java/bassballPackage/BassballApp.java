@@ -35,28 +35,15 @@ public class BassballApp {
 	}
 	
 	public static void main(String[] args) {
-		//SBCount test
-//		int[] user1 = {123,1,2,3};
-//		int[] cpu1 = {1,2,3};
-//		int[] result1 = SBCount(user1, cpu1);
-//		System.out.println(result1[0]);
-//		System.out.println(result1[1]);
-		
 		/**프로그램 구조**/
 		boolean isLoopActive = true;
-		//cpuInput메서드 호출할 자리.
 		CpuInput.cpuNumArr = CpuInput.cpuInput();
 		while (isLoopActive) {
 			System.out.println("[[디버깅용 메세지]] - 컴퓨터 세자리 수 : " + CpuInput.cpuNumArr[0]
 					+","+CpuInput.cpuNumArr[1]+","+CpuInput.cpuNumArr[2]);
-			//userInputValid2메서드 호출할 자리.
 			UserInput.userNumArr = UserInput.userInputValid2();
-			//SBCount(유저, 컴퓨터); <<<변수이름 미정.
 			SBCountArr = SBCount(UserInput.userNumArr, CpuInput.cpuNumArr);
-			//printOut(S/B갯수 배열);
 			PrintOut.printOut(SBCountArr);
 		}
-		
 	}
-
 }
