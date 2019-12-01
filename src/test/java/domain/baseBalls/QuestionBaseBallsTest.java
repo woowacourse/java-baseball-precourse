@@ -8,6 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import domain.baseBalls.BaseBalls;
+
 @DisplayName("baseBall 집합에 대한 테스트")
 class BaseBallsTest {
 
