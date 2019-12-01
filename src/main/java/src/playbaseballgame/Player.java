@@ -86,4 +86,15 @@ public class Player {
 		
 		return str;
 	}
+	
+	/*입력받은 문자열이 정수면 true, 아니면 false 반환*/
+	public static boolean isStringDouble(String s) {
+	    try {
+	        Double.parseDouble(s);
+	        return true;
+	    } catch (NumberFormatException e) {
+	        return false;
+	    }
+	  }
+	
 }
