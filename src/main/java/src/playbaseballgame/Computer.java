@@ -22,19 +22,27 @@ class Computer {
 	/*랜덤한 세 자리의 수 만드는 함수*/
 	public void makeAnswer() {
 		
-		int first=0;			//각각 첫번째, 두번째, 세번째 자리 수 
-		int second=0;
-		int third=0;     
+		int first=0;			//각각 첫번째, 두번째, 세번째 자리 수     
 		first=(int)(Math.random()*9)+1;		//첫번째 자리 수 생성
-		while (first!=second) {
-			
-			/*두번째 자리의 수가 첫번째와 겹치지 않기 위한 반복문*/
+		
+		/*while문에 들어가기 위해, 첫번째 값과 똑같이 설정*/
+		int second=first;
+		
+		/*두번째 자리의 수가 첫번째와 겹치지 않기 위한 반복문*/
+		while (first==second) {
 			second=(int)(Math.random()*9)+1;
 		}
-		while((third!=second) && (third!=first)) {
-			
-			/*세번째 자리의 수가 첫번째, 두번째와 겹치지 않기 위한 반복문*/
+		
+		/*while문에 들어가기 위해, 두번째 값과 똑같이 설정*/
+		int third=second; 
+		
+		/*세번쨰 자리의 수가 첫번째, 두번째와 겹치지 않기 위한 반복문*/
+		while(third==second) {
 			third=(int)(Math.random()*9)+1;
+			
+			if(third==first) {
+				third=(int)(Math.random()*9)+1;
+			}
 		}
 		
 		this.rand_answer=first*100 + second * 10 + third;
@@ -93,7 +101,7 @@ class Computer {
 		int tmpin=input;
 		
 		int tmp_ans[] = new int [3];		//정답의 각 자리수를 저장할 배열 선언
-		int tmp_input[ ]= new int [3];		//사용자 입력값의 각 자리수를 저장할 배열 선언
+		int tmp_input[]= new int [3];		//사용자 입력값의 각 자리수를 저장할 배열 선언
 		
 		
 		/*
@@ -131,19 +139,20 @@ class Computer {
 		
 		/*스트라이크의 개수 출력, 1개 이상일 때만 출력*/
 		if(strike>=1) {
-			System.out.print(strike + "스트라이크 ");
+			System.out.print(strike + " 스트라이크 ");
 		}
 		
 		/*볼의 개수 출력, 1개 이상일 때만 출력*/
 		if(ball>=1) {
-			System.out.println(ball + "볼 ");
+			System.out.println(ball + " 볼 ");
 		}
 		
 		/*낫싱 출력, 스트라이크 볼 모두 0인 경우*/
 		if(strike==0 && ball==0) {
-			System.out.println("낫싱");
+			System.out.println(" 낫싱");
 		}
 		
+		System.out.println();
 		
 		/*스트라이크가 3개인경우, 3진 아웃 ㅇㅅㅇ!*/
 		if(strike==3) {
