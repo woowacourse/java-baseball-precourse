@@ -11,7 +11,7 @@ package playbaseballgame;
 
 /**
  * 
- * @version 0.2 2019년 12월 2일
+ * @version 0.3 2019년 12월 2일
  * @author YerinCho
  */
 
@@ -136,16 +136,18 @@ class Computer {
 		
 		/*볼의 개수 출력, 1개 이상일 때만 출력*/
 		if(ball>=1) {
-			System.out.print(ball + "볼 ");
+			System.out.println(ball + "볼 ");
 		}
 		
 		/*낫싱 출력, 스트라이크 볼 모두 0인 경우*/
 		if(strike==0 && ball==0) {
-			System.out.print("낫싱");
+			System.out.println("낫싱");
 		}
+		
 		
 		/*스트라이크가 3개인경우, 3진 아웃 ㅇㅅㅇ!*/
 		if(strike==3) {
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 			out=false;
 		}
 	
