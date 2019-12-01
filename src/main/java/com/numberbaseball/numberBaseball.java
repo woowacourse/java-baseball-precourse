@@ -72,7 +72,7 @@ public class numberBaseball {
         }
 
         for (int i = 0; i < 3; i++) {
-            if (trial.contains(inputLine.charAt(i))) {
+            if (trial.contains(inputLine.charAt(i)-'0')) {
                 return false;
             }
             trial.add(inputLine.charAt(i)-'0');
