@@ -20,10 +20,11 @@
     boolean getUserInput();
     
    - 사용자가 숫자가 아닌 문자를 섞어서 입력하는 경우 체크하는 함수<br>`boolean checkInputContainsChar(String input);`
+   - 사용자가 입력한 숫자가 음수인지 체크하는 함수 <br>`boolean checkInputIsMinus(int input);`
    - 사용자가 입력한 숫자의 길이를 체크하는 함수<br>`boolean checkInputLengthIsCorrect(String input, int size);`
    - 사용자가 숫자 0을 입력하는 경우 체크하는 함수 <br>`boolean checkInputContainsZero(String input);`
    - 사용자가 동일한 숫자를 입력한 경우를 체크하는 함수 <br>`boolean checkInputContainsSameNumber(int input);`
- 
+   
  <br>  
     
 #### 4. 스트라이크/볼/낫싱 출력해주는 함수
