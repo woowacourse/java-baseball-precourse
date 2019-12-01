@@ -1,9 +1,24 @@
-package Baseball;
+/*
+ * @(#)NumberReferee.java 2019/12/1
+ *
+ * Copyright (c) 2019 Geunwon Lim
+ * All rights reserved.
+ */
+
+package precourse.baseball.number;
+
+import precourse.baseball.Referee;
+import precourse.baseball.Result;
 
 import java.security.InvalidParameterException;
 import java.util.List;
 
+/**
+ * @version     1.00 2019년 12월 1일
+ * @author      임근원
+ */
 public class NumberReferee implements Referee {
+    /* NumberReferee는 숫자 야구 게임에 참여하는 심판입니다. */
 
     @Override
     public Result judge(List<Integer> ballsHit, List<Integer> ballsPitched
@@ -33,7 +48,7 @@ public class NumberReferee implements Referee {
         }
         return strikes;
     }
-    //B는 야구에서 '볼'을 의미합니다. 현재 프로그램에서 'ball'이 '공'을 뜻하기 때문에, 야구 전광판에서 사용하는 용어 'B'를 이용했습니다.
+    /** B는 야구에서 '볼'을 의미합니다. 현재 프로그램에서 'ball'이 '공'을 뜻하기 때문에, 야구 전광판에서 사용하는 용어 'B'를 이용했습니다 */
     private int countB(List<Integer> ballsHit, List<Integer> ballsPitched) {
         int B = 0;
         for (int i = 0; i < ballsHit.size(); i++) {

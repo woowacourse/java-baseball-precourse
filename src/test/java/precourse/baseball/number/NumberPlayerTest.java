@@ -1,4 +1,4 @@
-package Baseball;
+package precourse.baseball.number;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,9 +12,9 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BasePlayerTest {
+class NumberPlayerTest {
 
-    private BasePlayer player;
+    private NumberPlayer player;
 
     private final ByteArrayOutputStream outView = new ByteArrayOutputStream();
 
@@ -64,11 +64,11 @@ class BasePlayerTest {
         assertEquals("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n", outView.toString());
     }
 
-    private BasePlayer createBasePlayerForTest(String input) {
+    private NumberPlayer createBasePlayerForTest(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         Scanner scanner = new Scanner(System.in);
 
-        return new BasePlayer(scanner) {
+        return new NumberPlayer(scanner) {
             @Override
             public boolean wantToPlayAgain() {
                 return super.wantToPlayAgain();

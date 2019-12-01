@@ -1,12 +1,25 @@
-package Baseball;
+/*
+ * @(#)NumberPitcher.java 2019/12/1
+ *
+ * Copyright (c) 2019 Geunwon Lim
+ * All rights reserved.
+ */
 
-import Baseball.errors.InvalidInputException;
+package precourse.baseball.number;
+
+import precourse.baseball.number.errors.InvalidInputException;
+import precourse.baseball.Pitcher;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class NumberPitcher extends BasePlayer implements Pitcher {
+/**
+ * @version     1.00 2019년 12월 1일
+ * @author      임근원
+ */
+public class NumberPitcher extends NumberPlayer implements Pitcher {
+    /* NumberPitcher는 숫자 야구 게임에 참여하는 투수입니다. */
 
     public NumberPitcher(Scanner scanner) {
         super(scanner);
@@ -23,8 +36,7 @@ public class NumberPitcher extends BasePlayer implements Pitcher {
         return translateToBalls(input);
     }
     private boolean isValid(String input) {
-        // todo: change to config
-        if (input.length() != 3) {
+        if (input.length() != NumberBaseballConfig.ROUND) {
             return false;
         }
 

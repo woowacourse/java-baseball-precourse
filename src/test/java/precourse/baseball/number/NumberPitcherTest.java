@@ -1,6 +1,6 @@
-package Baseball;
+package precourse.baseball.number;
 
-import Baseball.errors.InvalidInputException;
+import precourse.baseball.number.errors.InvalidInputException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class NumberPitcherTest {

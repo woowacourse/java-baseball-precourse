@@ -1,6 +1,9 @@
-package Baseball;
+package precourse.baseball.number;
+
+import precourse.baseball.Result;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -44,7 +47,7 @@ class NumberRefereeTest {
         result = new Result(3,0);
 
         //when & then
-        assertEquals(result, referee.judge(ballsHit, ballsPitched));
+        Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
     void judge_return_result_2strikes_0B() {
@@ -58,7 +61,7 @@ class NumberRefereeTest {
         result = new Result(2,0);
 
         //when & then
-        assertEquals(result, referee.judge(ballsHit, ballsPitched));
+        Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
     void judge_return_result_1strike_0B() {
@@ -72,7 +75,7 @@ class NumberRefereeTest {
         result = new Result(1,0);
 
         //when & then
-        assertEquals(result, referee.judge(ballsHit, ballsPitched));
+        Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
     void judge_return_result_1strike_1B() {
@@ -86,7 +89,7 @@ class NumberRefereeTest {
         result = new Result(1,1);
 
         //when & then
-        assertEquals(result, referee.judge(ballsHit, ballsPitched));
+        Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
     void judge_return_result_1strike_2B() {
@@ -100,7 +103,7 @@ class NumberRefereeTest {
         result = new Result(1,2);
 
         //when & then
-        assertEquals(result, referee.judge(ballsHit, ballsPitched));
+        Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
     void judge_return_result_0strike_0B() {
@@ -114,7 +117,7 @@ class NumberRefereeTest {
         result = new Result(0,0);
 
         //when & then
-        assertEquals(result, referee.judge(ballsHit, ballsPitched));
+        Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
     void judge_return_result_0strike_1B() {
@@ -128,7 +131,7 @@ class NumberRefereeTest {
         result = new Result(0,1);
 
         //when & then
-        assertEquals(result, referee.judge(ballsHit, ballsPitched));
+        Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
     void judge_return_result_0strike_2B() {
@@ -142,7 +145,7 @@ class NumberRefereeTest {
         result = new Result(0,2);
 
         //when & then
-        assertEquals(result, referee.judge(ballsHit, ballsPitched));
+        Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
     void judge_return_result_0strike_3B() {
@@ -156,7 +159,7 @@ class NumberRefereeTest {
         result = new Result(0,3);
 
         //when & then
-        assertEquals(result, referee.judge(ballsHit, ballsPitched));
+        Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
 
     @Test
