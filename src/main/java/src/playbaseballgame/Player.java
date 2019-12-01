@@ -43,5 +43,26 @@ public class Player {
 		this.num=Integer.parseInt(tmpnum);
 	}
 	
+	/*플레이어가 입력한 값이 올바른지 판단하는 함수, true 리턴 : 올바름, false 리턴 : 올바르지 않음*/
+	public boolean checkInput(String input) {
+		boolean check=true;
+		
+		/*플레이어가 입력한 값이 세자리인지 확인하는 조건문*/
+		if(checkLen(input)) {
+			check = false;		//세자리가 아닌경우 check에 false값 넣음.
+		}
+		
+		/*플레이어가 입력한 값이 숫자 세개로 되어있는지 확인하는 조건문*/
+		if(check && checkStr(input)) {
+			check = false;
+		}
+		
+		/*플레이어가 입력한 값이 서로 다른지 확인하는 조건*/
+		if(check && checkSame(input)) {
+			check = false;
+		}
+		
+		return check;
+	}
 	
 }
