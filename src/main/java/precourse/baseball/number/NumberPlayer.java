@@ -40,6 +40,11 @@ public abstract class NumberPlayer implements Player {
         return input.equals(Will.WantToPlay.getValue());
     }
     private boolean isValid(Integer input) {
-        return input.equals(1) || input.equals(2);
+        for (Will will : Will.values()) {
+            if (input.equals(will.getValue())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
