@@ -6,7 +6,7 @@ import java.util.Scanner;
 /*
  * Baseball
  *
- * ver 0.5 - checkedNumbers(String numbers, String answer) 구현2
+ * ver 0.6 - restart() 구현 - scanner 충돌 발생
  *
  * 2019.12.02
  */
@@ -88,9 +88,14 @@ public class Baseball {
     }
 
     private static boolean restart() {
-        boolean restart = false;
-
-        return restart;
+        String num = "";
+        Scanner sc = new Scanner(System.in);
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        do {
+            num = sc.next();
+        } while (!num.equals("1") && !num.equals("2"));
+        sc.close();
+        return num.equals("1");
     }
 }
 
