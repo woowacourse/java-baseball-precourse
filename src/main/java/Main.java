@@ -8,6 +8,7 @@ public class Main {
     private static final int MAX_PICK_NUM = 9;
     private static final int MIN_PICK_NUM = 1;
     private static final int INVALID_VALUE = 0;
+    private static final int NOT_MATCHED = 0;
 
     private static ArrayList<Integer> pickComputerNums() {
         ArrayList<Integer> computerNums = new ArrayList<>();
@@ -122,19 +123,17 @@ public class Main {
         return ball;
     }
 
-    private static String getScoreMessage(ArrayList<Integer> computerNums, ArrayList<Integer> userNums) {
-        int strike = countStrike(computerNums, userNums);
-        int ball = countBall(computerNums, userNums);
-        if (strike == 0 && ball == 0) {
-            return "낫싱";
+    private static void printScoreMessage(int strike, int ball) {
+        if (strike == NOT_MATCHED && ball == NOT_MATCHED) {
+            System.out.println("낫싱");
         }
         StringBuilder sb = new StringBuilder();
-        if (strike != 0) {
+        if (strike != NOT_MATCHED) {
             sb.append(strike).append("스트라이크 ");
         }
-        if (ball != 0) {
+        if (ball != NOT_MATCHED) {
             sb.append(ball).append("볼");
         }
-        return sb.toString().trim();
+        System.out.println(sb.toString().trim());
     }
 }
