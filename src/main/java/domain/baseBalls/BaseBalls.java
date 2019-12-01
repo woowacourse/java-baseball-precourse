@@ -17,21 +17,15 @@ public class BaseBalls {
 		}
 	}
 
-	public int getSize() {
+	int getSize() {
 		return baseBalls.size();
 	}
 
-	public OneBaseBall findBaseBallByPosition(Integer position) {
+	OneBaseBall findBaseBallByPosition(Integer position) {
 		return this.baseBalls.stream()
 			.filter(ball -> ball.getBaseBallPosition().equals(position))
 			.findFirst()
 			.orElseThrow(() -> new IllegalArgumentException("존재하지 않은 position 입니다."));
 	}
 
-	public OneBaseBall findBaseBallByNumber(Integer number) {
-		return this.baseBalls.stream()
-			.filter(ball -> ball.getBaseBallNumber().getValue().equals(number))
-			.findFirst()
-			.orElseThrow(() -> new IllegalArgumentException("존재하지 않은 number 입니다."));
-	}
 }

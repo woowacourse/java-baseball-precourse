@@ -19,7 +19,6 @@ public class BaseBallGame {
 	}
 
 	public void executeUserInput(InputView inputView) {
-		this.collectBaseBalls.print();
 		QuestionBaseBalls.Result result;
 		do {
 			result = getQuestionBaseBall(inputView).getCalculateResult(this.collectBaseBalls);
