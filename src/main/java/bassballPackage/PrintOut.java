@@ -1,5 +1,6 @@
 package bassballPackage;
 
+import java.util.InputMismatchException;
 import java.util.Scanner; //newGameQuery에서 사용자 입력위해 필요.
 import bassballPackage.CpuInput;
 
@@ -22,23 +23,50 @@ public class PrintOut {
 		}
 	}
 	
+//	//사용자입력 유효성검사 기능이 없는 코드.
+//	static void newGameQuery() {
+//		Scanner input = new Scanner(System.in);
+//		System.out.println("새 게임을 시작하려면 1, 프로그램을 종료하려면 2를 입력하세요.");
+//		int userInput = input.nextInt(); //사용자 입력
+//		
+//		if (userInput == 1) {
+//			System.out.println("사용자 입력: " + userInput);
+//			System.out.println("새 게임을 시작합니다.");
+//			//새 게임 시작위해서 컴퓨터 세 자리수 초기화를 위해서 cpuInput 메서드 호출해야할 자리.
+//			CpuInput.cpuNumArr = CpuInput.cpuInput();
+//		} else if (userInput == 2) {
+//			System.out.println("사용자 입력: " + userInput);
+//			System.out.println("게임을 종료합니다.");
+//			System.exit(0);
+//		}
+//	}
+	
 	static void newGameQuery() {
-		Scanner input = new Scanner(System.in);
-		System.out.println("새 게임을 시작하려면 1, 프로그램을 종료하려면 2를 입력하세요.");
-		int userInput = input.nextInt(); //사용자 입력
+		int userInput = 0;
+		while(true) {
+			try {
+				Scanner input = new Scanner(System.in);
+				System.out.println("새 게임을 시작하려면 1, 프로그램을 종료하려면 2를 입력하세요.");
+				userInput = input.nextInt(); //사용자 입력
+				break;
+			} catch(InputMismatchException ime) {
+				System.out.println("잘못된 입력: 정수를 입력하세요.");
+			}
+		}
 		
-		if (userInput == 1) {
+		if (userInput != 1 && userInput != 2) {
+			System.out.println("잘못된 입력: 1 혹은 2를 입력하세요.");
+			newGameQuery();
+		} else if(userInput == 1) {
 			System.out.println("사용자 입력: " + userInput);
 			System.out.println("새 게임을 시작합니다.");
-			//새 게임 시작위해서 컴퓨터 세 자리수 초기화를 위해서 cpuInput 메서드 호출해야할 자리.
 			CpuInput.cpuNumArr = CpuInput.cpuInput();
-		} else if (userInput == 2) {
+		} else if(userInput == 2) {
 			System.out.println("사용자 입력: " + userInput);
 			System.out.println("게임을 종료합니다.");
 			System.exit(0);
 		}
 	}
-	
 	
 	public static void main(String[] args) {
 		// printOut test
@@ -62,6 +90,9 @@ public class PrintOut {
 //		printOut(test9);
 
 		//newGameQuery test
+//		newGameQuery();
+		
+		//testQuery test
 		newGameQuery();
 	}
 
