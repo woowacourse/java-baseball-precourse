@@ -2,16 +2,18 @@
 
 ### 구현할 기능 목록 : 나의 세미 이슈!
 
-- [ ] 1 : 컴퓨터가 게임을 하나 생성하기 : BaseBallGame.class
-- [x] 2 : 3개의 숫자의 순서 배열을 하나로 묶는 단위 : GameNumbers.class
-- [x] 3 : 한개의 숫자의 단위 - 1~9 검증 : Number
-- [ ] 4 : BaseBallGame 클래스 하나에는 하나의 정답 GameNumbers 객체가 들어간다.
+- [ ] 1 : 컴퓨터가 게임을 하나 생성하기 : domain.BaseBallGame.class
+- [x] 2 : 3개의 숫자, 순서 배열을 하나로 묶는 단위 : domain.BaseBalls.class
+- [x] 3 : 한개의 숫자의 단위 - 1~9 검증 : BaseBallNumber.class
+- [ ] 4 : domain.BaseBallGame 클래스 하나에는 하나의 정답 domain.BaseBalls 객체가 들어간다.
 - [ ] 5 : 사용자로부터 GameNumbers를 입력 받기위한 출력문이 있다.
 - [ ] 6 : 사용자로부터 GameNumbers를 입력받는다.
-- [ ] 7 : BaseBallGame의 메소드로 들어온 GameNumbers 객체의 결과를 리턴한다.
+- [ ] 7 : BaseBallGame의 메소드로 들어온 domain.BaseBalls 객체의 결과를 리턴한다.
 - [ ] 8 : 리턴한 메소드를 받아서 결과를 출력한다.
 - [ ] 9 : 게임을 재시작하기 위한 사용자로부터의 입력을 받는다.
 - [ ] 10 : 숫자 판단의 결과인 스트라이크 볼 나싱을 분류하기 위한 객체를 짜야하나? 아니면 이넘으로? - 구현하면서 생각해보자
+- [ ] 11 : 컴퓨터가 랜덤한 domain.BaseBalls.class를 생성하는 Generator 만들기
+- [ ] 12 : 한개의 BaseBall은 위치와 숫자로 이루어짐 : domain.OneBaseBall.class
 
 
 
