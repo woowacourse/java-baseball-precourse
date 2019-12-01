@@ -40,6 +40,10 @@ int squre(int root, int squareNumber)
 ```
 ##### Int 형 인자 root 를 squareNumber 만큼 제곱해주는 메소드이다. root^squareNumber 를 반환한다.
 ```
+boolean isZero(int number)
+```
+##### 해당 숫자가 0이면 TRUE를 반환하는 메소드
+```
 boolean printResult(int isStrike, int isBall)
 ```
 ##### STRIKE 횟수와 BALL 횟수를 넣으면 추측에 대한 결과 프린트해주는 메소드이다.
