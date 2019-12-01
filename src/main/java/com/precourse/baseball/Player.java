@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.3.5   2019-12-01
+ * Player.java                     2.3.6   2019-12-01
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -18,8 +18,7 @@ import java.io.InputStreamReader;
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.3.5         외부 접근이 필요없는 methods 접근 제어자를
- *                        private or protected 로 수정
+ * @version 2.3.6    isValidNumbers method를 isInvalidNumbers로 수정
  * @date 2019-12-01
  */
 public class Player {
@@ -58,7 +57,7 @@ public class Player {
             digitMasks[digitNumbers[i]] = true;
         }
 
-        if (!isValidNumbers() || isDuplicate()) {
+        if (isInvalidNumbers() || isDuplicate()) {
             printWrongInputMessage();
             readNumbers();
         }
@@ -112,17 +111,17 @@ public class Player {
             digitMasks[digitNumbers[i]] = true;
         }
 
-        if (!isValidNumbers() || isDuplicate()) {
+        if (isInvalidNumbers() || isDuplicate()) {
             setRandomNumbers();                               // 만든 세자리의 수가 유효하지 않는 경우
         }
     }
 
-    private boolean isValidNumbers() {
-        boolean result = true;
+    private boolean isInvalidNumbers() {
+        boolean result = false;
 
         for (int i = 0; i < MAX_DIGIT; i++) {
             if (digitNumbers[i] == ZERO) {
-                result = false;
+                result = true;
                 break;
             }
         }
