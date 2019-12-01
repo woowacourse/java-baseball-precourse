@@ -35,7 +35,7 @@ public class Number {
     }
 
     //String으로 디버깅용
-    private String showDigits() {
+    public String showDigits() {
         int[] temp = new int[len];
         for(int j=0; j<digits.length; j++){
           if(digits[j]!=0){
