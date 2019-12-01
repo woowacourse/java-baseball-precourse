@@ -22,7 +22,13 @@ public class Application {
     /** 전체 프로그램을 구동하는 함수입니다. */
     public static void main(String[] args) {
         Baseball baseball = setupBaseball();
-        baseball.play();
+        try {
+            baseball.play();
+        } catch (RuntimeException e) {
+            System.out.println(String.format("다음과 같은 오류로 숫자 야구 게임을 종료합니다: %s", e.getMessage()));
+            System.exit(-1);
+        }
+
     }
 
     /** 전체 프로그램을 작동시키기 위해 프로그램을 준비시키는 함수입니다. */
