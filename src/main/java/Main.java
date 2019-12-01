@@ -10,6 +10,8 @@ public class Main {
     private static final int INVALID_VALUE = 0;
     private static final int NOT_MATCHED = 0;
     private static final int FULL_STRIKE_COUNT = NUMS_MAX_LENGTH;
+    private static final String RESTART_GAME = "1";
+    private static final String STOP_GAME = "2";
 
     private static ArrayList<Integer> pickComputerNums() {
         ArrayList<Integer> computerNums = new ArrayList<>();
@@ -34,6 +36,7 @@ public class Main {
 
     private static ArrayList<Integer> getUserNums() {
         while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
             String userInput = getUserInput();
             if (isThreeDigitNums(userInput) && doesNotContainZero(userInput) && isNotDuplicatedNums(userInput)) {
                 return getUserNumsList(userInput);
@@ -43,7 +46,6 @@ public class Main {
     }
 
     private static String getUserInput() {
-        System.out.print("숫자를 입력해주세요 : ");
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
         return userInput;
@@ -138,7 +140,17 @@ public class Main {
         System.out.println(sb.toString().trim());
     }
 
-    public static void main(String[] args) {
+    private static String getRequestNumber() {
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String requestNumber = getUserInput();
+            if (requestNumber.equals(RESTART_GAME) || requestNumber.equals(STOP_GAME)) {
+                return requestNumber;
+            }
+        }
+    }
+
+    private static void playGame() {
         ArrayList<Integer> computerNums = pickComputerNums();
         while (true) {
             ArrayList<Integer> userNums = getUserNums();
@@ -153,4 +165,13 @@ public class Main {
         System.out.println(overMessage);
     }
 
+    public static void main(String[] args) {
+        while (true) {
+            playGame();
+            String requestNumber = getRequestNumber();
+            if (requestNumber.equals(STOP_GAME)) {
+                break;
+            }
+        }
+    }
 }
