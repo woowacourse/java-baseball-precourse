@@ -4,6 +4,8 @@ import java.util.InputMismatchException; //예외처리위해 필요.
 import java.util.Scanner; //사용자 입력위해 필요.
 
 public class UserInput {
+	static int[] userNumArr;
+	
 	static int[] userInput(){
 		int[] result = new int[4];
 		Scanner input = new Scanner(System.in);			//이거 close해야될 것 같은데 어떻게 해야 할 지 모르겠다.(20줄 주석)

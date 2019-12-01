@@ -1,6 +1,7 @@
 package bassballPackage;
 
 import java.util.Scanner; //newGameQuery에서 사용자 입력위해 필요.
+import bassballPackage.CpuInput;
 
 public class PrintOut {
 	static void printOut(int[] resultArr) {
@@ -30,6 +31,7 @@ public class PrintOut {
 			System.out.println("사용자 입력: " + userInput);
 			System.out.println("새 게임을 시작합니다.");
 			//새 게임 시작위해서 컴퓨터 세 자리수 초기화를 위해서 cpuInput 메서드 호출해야할 자리.
+			CpuInput.cpuNumArr = CpuInput.cpuInput();
 		} else if (userInput == 2) {
 			System.out.println("사용자 입력: " + userInput);
 			System.out.println("게임을 종료합니다.");

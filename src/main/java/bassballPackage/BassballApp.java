@@ -1,6 +1,8 @@
 package bassballPackage;
 
 public class BassballApp {
+	static int[] SBCountArr;
+	
 	static int[] SBCount(int[] userArr, int[] cpuArr){
 		int[] result = {0, 0};
 		for(int i = 1; i < 4; i++) {

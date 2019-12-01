@@ -1,6 +1,8 @@
 package bassballPackage;
 
 public class CpuInput {
+	static int[] cpuNumArr;
+	
 	static int randomGeneration() {		//1~9사이 정수 랜덤생성
 		return (int)(Math.random() * 9) + 1;
 	}
@@ -33,6 +35,7 @@ public class CpuInput {
 		System.out.println(testArray[0]);
 		System.out.println(testArray[1]);
 		System.out.println(testArray[2]);
+		
 	}
 
 }
