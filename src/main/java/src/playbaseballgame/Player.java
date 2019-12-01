@@ -65,4 +65,14 @@ public class Player {
 		return check;
 	}
 	
+	/*플레이어가 입력한 값이 세자리인지 확인하는 함수*/
+	public boolean checkLen(String input) {
+		boolean len=false;
+		
+		if (input.length()==3) {
+			len= true;
+		}
+		return len;
+	}
+	
 }
