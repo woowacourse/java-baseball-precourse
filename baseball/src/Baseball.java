@@ -17,25 +17,25 @@ public class Baseball {
 
     public static void main(String[] args) {
 
-        int answerNum[] = new int[NUMBER_LENGTH];        // 정답 숫자들을 넣을 배열
-        int num[] = new int[NUMBER_LENGTH];             // 사용자가 입력한 숫자들을 넣을 배열
+        int answerNumber[] = new int[NUMBER_LENGTH];        // 정답 숫자들을 넣을 배열
+        int UserNumber[] = new int[NUMBER_LENGTH];             // 사용자가 입력한 숫자들을 넣을 배열
         boolean finish = false;                         // 정답을 맞출 때까지 정답을 입력받을 수 있게 하는 while 문을 멈추게 할 boolean 형 변수
 
         Scanner scan = new Scanner(System.in);
 
-        while (isOverlap(answerNum)) {      // 정답 숫자들이 서로 겹치지 않게 해주는 while 문. 겹치지 않을 때까지 돌린다.
-            answerNum = initBaseballNumber(INIT_NUMBER, INIT_NUMBER, INIT_NUMBER);
+        while (isOverlap(answerNumber)) {      // 정답 숫자들이 서로 겹치지 않게 해주는 while 문. 겹치지 않을 때까지 돌린다.
+            answerNumber = initBaseballNumber(INIT_NUMBER, INIT_NUMBER, INIT_NUMBER);
         }
 
         while (!finish) {
             System.out.print("숫자를 입력해주세요 : ");
-            int UserNumber = scan.nextInt();
-            num[0] = UserNumber / 100;
-            num[1] = (UserNumber % 100) / 10;
-            num[2] = UserNumber % 10;
+            int number = scan.nextInt();
+            UserNumber[0] = number / 100;
+            UserNumber[1] = (number % 100) / 10;
+            UserNumber[2] = number % 10;
 
-            finish = printResult(isStrike(answerNum, num),
-                    isBall(answerNum, num));
+            finish = printResult(isStrike(answerNumber, UserNumber),
+                    isBall(answerNumber, UserNumber));
 
             if(finish) {
                 if (scan.nextInt() == CONTINUE_GAME) {
