@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        baseballGame start =  new baseballGame();
+        BaseballGame start =  new BaseballGame();
         start.baseballNumber();
     }
 }
