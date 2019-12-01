@@ -5,7 +5,7 @@ public class Baseball {
      * Baseball은 숫자야구 수행을 위한 클래스이다.
      *
      */
-    public static int[] makeData(){
+    public int[] makeData(){
         int[] randomNumber = new int[3];
         Random random = new Random();
         randomNumber[0] = (random.nextInt(9) + 1);
@@ -13,7 +13,7 @@ public class Baseball {
         randomNumber[2] = (random.nextInt(9) + 1);
         return randomNumber;
     }
-    public static int findBall(int[] answerData, int userNum, int pos) {
+    public int findBall(int[] answerData, int userNum, int pos) {
         for(int i=0;i<3;i++) {
             if (i != pos && answerData[i] == userNum){
                 return 1;
@@ -21,7 +21,7 @@ public class Baseball {
         }
         return 0;
     }
-    public static boolean checkMethod(int[] answerData, int[] userData){
+    public boolean checkMethod(int[] answerData, int[] userData){
         int strike = 0;
         int ball = 0;
         //strike = getStrike(answerData, userData);
@@ -44,7 +44,7 @@ public class Baseball {
         System.out.println("\n");
         return (strike == 3);
     }
-    public static void playMethod(){
+    public void playMethod(){
         int[] answerData = makeData();
         int[] userData;
         boolean isEnd=false;
@@ -55,7 +55,7 @@ public class Baseball {
             isEnd = checkMethod(answerData, userData);
         }
     }
-    public static int[] getData(){
+    public int[] getData(){
         int input;
         int[] data = new int[3];
         Scanner sc = new Scanner(System.in);
@@ -67,31 +67,23 @@ public class Baseball {
         data[2] = input%10;
         return data;
     }
-    public static boolean exitMethod(){
+    public boolean exitMethod() {
         int input;
         Scanner sc = new Scanner(System.in);
         input = sc.nextInt();
-        if(input == 1) {//이 부분의 로직이 마음에 들지는 않지만...더 직관적인 리턴법은?
+        if (input == 1) {//이 부분의 로직이 마음에 들지는 않지만...더 직관적인 리턴법은?
             return false;
-        }else if(input == 2){
+        } else if (input == 2) {
             return true;
-        }else{
+        } else {
             /*
              * 1,2 외의 입력이 들어온 경우 : true 리턴해주고 메세지 출력.
              * 리턴값을 boolean으로 하지 않고 int로 해서 state를 넘길 수 있다면 좋겠지만
              * 일단 함수의 목적을 [나가느냐 마느냐에 대한 리턴]으로 두고,
              * 오류시 종료하는 것이 합리적이라 보고 true 리턴을 하였다.
-            */
+             */
             System.out.println("잘못된 입력값이 들어왔습니다. 프로그램을 종료합니다.\n");
             return true;
-        }
-    }
-    public static void main(String[] args){
-        boolean isEnd = false;
-        while(isEnd == false){
-            playMethod();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 눌러주세요.");
-            isEnd = exitMethod();
         }
     }
 }
