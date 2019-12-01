@@ -64,15 +64,15 @@ public class Baseball extends AbstractBaseball{
     }
 
     @Override
-    protected EarlyResults.EarlyResult evaluateBall(int ball, int order, ArrayList<Integer> balls) {
+    protected EarlyResults.EarlyResult evaluateBall(int ball, int order, ArrayList<Integer> answer) {
         EarlyResults.EarlyResult ballResult;
         ballResult = EarlyResults.EarlyResult.NONE;
 
         for(int i = 0; i < BALLS; i++){
-            if ( ball == balls.get(i) ){
+            if ( ball == answer.get(i) ){
                 ballResult = EarlyResults.EarlyResult.BALL;
             }
-            if ( ball == balls.get(i) && order == i) {
+            if ( ball == answer.get(i) && order == i) {
                 ballResult = EarlyResults.EarlyResult.STRIKE;
             }
         }
@@ -80,12 +80,12 @@ public class Baseball extends AbstractBaseball{
     }
 
     @Override
-    protected EarlyResults evaluateBalls(ArrayList<Integer> user, ArrayList<Integer> answer) {
+    protected EarlyResults evaluateBalls(ArrayList<Integer> guess, ArrayList<Integer> answer) {
         EarlyResults ballsResult = new EarlyResults();
 
         for(int i = 0; i < BALLS; i++){
             EarlyResults.EarlyResult ballResult;
-            ballResult = evaluateBall(user.get(i), i, answer);
+            ballResult = evaluateBall(guess.get(i), i, answer);
 
             ballsResult.addEarlyResult(ballResult);
         }
@@ -94,7 +94,7 @@ public class Baseball extends AbstractBaseball{
 
     @Override
     public void Run() {
-        ArrayList<Integer> user, computer;
+        ArrayList<Integer> guess, computer;
 
         String input;
         boolean isEnd = false;
@@ -103,9 +103,9 @@ public class Baseball extends AbstractBaseball{
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             input = getLine();
-            user = stringToArrayList(input);
+            guess = stringToArrayList(input);
 
-            EarlyResults earlyResults = evaluateBalls(user, computer);
+            EarlyResults earlyResults = evaluateBalls(guess, computer);
             isEnd = earlyResults.printResults();
 
             if ( isEnd ) {
