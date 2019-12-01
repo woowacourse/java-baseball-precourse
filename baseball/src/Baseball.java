@@ -15,6 +15,8 @@ public class Baseball {
     private static final int RANDOM_MAX = 9;            // 컴퓨터가 숫자 초기화시, 랜덤으로 뽑을 숫자 중 가장 큰 값.
     private static final int RAND0M_MIN = 1;            // 컴퓨터가 숫자 초기화시, 랜덤으로 뽑을 숫자 중 가장 작은 값.
 
+    private static final int ROOT_NUMBER = 10;           // 자릿수를 표현하기 위해, 제곱하여 사용할 자리수.
+
     public static void main(String[] args) {
 
         int answerNumber[] = new int[NUMBER_LENGTH];        // 정답 숫자들을 넣을 배열
@@ -30,9 +32,9 @@ public class Baseball {
         while (!finish) {
             System.out.print("숫자를 입력해주세요 : ");
             int number = scan.nextInt();
-            UserNumber[0] = number / 100;
+            UserNumber[0] = (number % 1000) / 100;
             UserNumber[1] = (number % 100) / 10;
-            UserNumber[2] = number % 10;
+            UserNumber[2] = (number % 10) / 1;
 
             finish = printResult(isStrike(answerNumber, UserNumber),
                     isBall(answerNumber, UserNumber));
@@ -42,9 +44,7 @@ public class Baseball {
                     finish = false;
                 }
             }
-
         }
-
     }
 
     /*
@@ -62,7 +62,24 @@ public class Baseball {
         return answerNum;
     }
 
-    /*
+    static private int[] splitNumbers(int[] UserNumber, int number) {
+        for(int i = 0; i < 3; i++) {
+            int j = 3 - i;
+            UserNumber[i] = (ROOT_NUMBER % square(ROOT_NUMBER, j))
+                    / square(ROOT_NUMBER, (j - 1));
+        }
+
+        return UserNumber;
+    }
+
+    static private int square(int root, int squareNumber) {
+        for(int i = 0; i < squareNumber - 1; i ++) {
+            root *= root;
+        }
+        return root;
+    }
+
+   /*
     생성된 정답 숫자열이 서로 중복되는지 확인해서 중복되었는지 확인하는 메소드이다.
      */
     static private boolean isOverlap(int[] answerNum) {
