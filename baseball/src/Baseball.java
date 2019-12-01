@@ -78,13 +78,20 @@ public class Baseball {
      */
     static private int square(int root, int squareNumber) {
         int result = root;
-        if (squareNumber == 0) {
+        if (isZero(squareNumber)) {
             return 1;
         }
         for(int i = 0; i < squareNumber - 1; i ++) {
             result *= root;
         }
         return result;
+    }
+
+    /*
+    해당 숫자가 0이면 TRUE를 반환하는 메소드
+     */
+    static private boolean isZero(int number) {
+        return (number == 0);
     }
 
    /*
