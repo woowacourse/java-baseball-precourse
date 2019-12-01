@@ -1,5 +1,5 @@
 /*
- * @(#)Computer.java		 2019/12/01
+ * @(#)Computer.java		 2019/12/02
  * 
  * 
  * Copyright (c) YerinCho
@@ -11,7 +11,7 @@ package playbaseballgame;
 
 /**
  * 
- * @version 0.1 2019년 12월 1일
+ * @version 0.2 2019년 12월 2일
  * @author YerinCho
  */
 
@@ -122,5 +122,33 @@ class Computer {
 		}
 		
 		return ball;
+	}
+	
+	/*플레이어가 입력한 숫자에 대한 결과를 출력하는 함수*/
+	public boolean print(int strike,int ball) {
+		
+		boolean out=true;		//아웃인지 아닌지 판별, false면 아웃 : 플레이어 승리
+		
+		/*스트라이크의 개수 출력, 1개 이상일 때만 출력*/
+		if(strike>=1) {
+			System.out.print(strike + "스트라이크 ");
+		}
+		
+		/*볼의 개수 출력, 1개 이상일 때만 출력*/
+		if(ball>=1) {
+			System.out.print(ball + "볼 ");
+		}
+		
+		/*낫싱 출력, 스트라이크 볼 모두 0인 경우*/
+		if(strike==0 && ball==0) {
+			System.out.print("낫싱");
+		}
+		
+		/*스트라이크가 3개인경우, 3진 아웃 ㅇㅅㅇ!*/
+		if(strike==3) {
+			out=false;
+		}
+	
+		return out;
 	}
 }
