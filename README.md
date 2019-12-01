@@ -28,6 +28,10 @@
 #### void printScore();
 > '스트라이크' 점수와 '볼' 점수를 출력하는 메소드
 
+> <code>1볼</code>
+> <br><code>2 스트라이크</code>
+> <br><code>1 스트라이크 2볼</code>
+
 # BaseBall 클래스
 ## 숫자야구 게임을 진행하는 클래스
 
