@@ -9,16 +9,17 @@
  * Copyright 2019.11.29
  */
 
-package com.eunseok.baseballgame;
+package com.eunseok.BaseballGame;
 
 import java.util.Random;
 import java.util.Scanner;
 
+
 /**
  * 게임을 구성해서 만드는 Baseball class.
  *
- * @version 1.0 2019년 11월 29일
  * @author 정은석
+ * @version 1.0 2019년 11월 29일
  */
 public class Baseball {
     /**Baseballgame의 답을 나타내는 배열*/
@@ -26,7 +27,9 @@ public class Baseball {
     /**사용자의 입력을 담는 배열*/
     private static int[] input = new int[3];
 
-    /**클래스의 생성자. 클래스를 생성하면 게임의 정답이 ans배열에 저장.*/
+    /**
+     * 클래스의 생성자. 클래스를 생성하면 게임의 정답이 ans배열에 저장.
+     */
     public Baseball(){
         Random rand = new Random();
         for(int i=0;i<ans.length;i++) {
@@ -34,7 +37,7 @@ public class Baseball {
         }
     }
 
-    /**사용자에게 입력을 받는 메소드입니다.*/
+    /**사용자에게 입력을 받는 메소드.*/
     private void makeInput(){
         System.out.flush();
         System.out.print("숫자를 입력해주세요 : ");
@@ -53,10 +56,10 @@ public class Baseball {
     }
 
     /**
-     * strike 와 ball을 구하는 매소드입니다.
-     * 사용자의 input과 답을 저장하고있는 ans를 비교합니다.
+     * strike 와 ball을 구하는 매소드.
+     * 사용자의 input과 답을 저장하고있는 ans를 비교.
      * 각 자리 위치가 같으면 strike++, 다른위치이면 ball++
-     * @return stirke의 개수를 return함. start()메소드의 무한루프 탈출조건입니다.
+     * @return strike 의 개수를 return. start()메소드의 무한루프 탈출조건.
      */
     private int check(){
         int strike = 0;
@@ -86,7 +89,9 @@ public class Baseball {
         return strike;
     }
 
-    /**게임을 시작하는 start() 메소드*/
+    /**
+     * 게임을 시작하는 start() 메소드
+     */
     public void start(){
         /**strike개수를 리턴받는 변수.*/
         int checkStrike = 0;

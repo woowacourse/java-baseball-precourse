@@ -5,11 +5,11 @@
  *
  * date: 2019.11.29
  *
- * 이 프로그램의 저작권은 정은석에게 있습니다.
+ * 이 프로그램의 저작권은 정은석에게 있습니다.≤
  * Copyright 2019.11.29
  */
 
-import com.eunseok.baseballgame.Baseball;
+import com.eunseok.BaseballGame.Baseball;
 import java.util.Scanner;
 
 /**
@@ -17,12 +17,17 @@ import java.util.Scanner;
  * 게임을 생성하기 위해 Baseball 클래스를 생성하여 게임을 실행.
  * exit 를 입력받아 1이면 restart 2이면 exit 를 해서 게임을 종료.
  *
- * @version 1.0 2019년 11월 29일
  * @author 정 은 석
+ * @version 1.0 2019년 11월 29일
  */
 public class BaseballGame {
+    /**
+     * main BaseballGame을 실행함.
+     *
+     * @param args not input args
+     */
     public static void main(String[] args) {
-        /**game 재시작을 위한 exit변수*/
+        /**game 재시작을 위한 exit 변수*/
         int exit = 0;
         /**게임을 생성하기 위해 class 객체생성 */
         Baseball game = new Baseball();
