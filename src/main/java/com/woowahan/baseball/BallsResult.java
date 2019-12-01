@@ -6,11 +6,11 @@
 
 package com.woowahan.baseball;
 
-public class EarlyResults {
+public class BallsResult {
     private int ballScore;
     private int strikeScore;
 
-    public enum EarlyResult {
+    public enum BallResult {
         NONE, BALL, STRIKE
     };
 
@@ -32,11 +32,11 @@ public class EarlyResults {
         System.out.println();
     }
 
-    public void addEarlyResult(EarlyResult one){
-        if (one == EarlyResult.BALL){
+    public void addEarlyResult(BallResult one){
+        if (one == BallResult.BALL){
             ballScore++;
         }
-        if (one == EarlyResult.STRIKE){
+        if (one == BallResult.STRIKE){
             strikeScore++;
         }
     }

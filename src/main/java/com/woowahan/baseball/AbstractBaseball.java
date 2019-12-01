@@ -5,7 +5,7 @@
  */
 
 package com.woowahan.baseball;
-
+import com.woowahan.baseball.BallsResult.BallResult;
 import java.util.ArrayList;
 
 public abstract class AbstractBaseball {
@@ -18,8 +18,8 @@ public abstract class AbstractBaseball {
     protected abstract ArrayList<Integer> initializeBallRange();
     protected abstract Integer getRandomBall(ArrayList<Integer> range);
     protected abstract ArrayList<Integer> getRandomBalls();
-    protected abstract EarlyResults.EarlyResult evaluateBall(int ball, int order,  ArrayList<Integer> answer);
-    protected abstract EarlyResults evaluateBalls(ArrayList<Integer> guess, ArrayList<Integer> answer);
+    protected abstract BallResult evaluateBall(int ball, int order, ArrayList<Integer> answer);
+    protected abstract BallsResult evaluateBalls(ArrayList<Integer> guess, ArrayList<Integer> answer);
 
     public abstract void Run();
 }

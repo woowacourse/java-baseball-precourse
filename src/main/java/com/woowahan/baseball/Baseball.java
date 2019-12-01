@@ -3,6 +3,7 @@ package com.woowahan.baseball;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import com.woowahan.baseball.BallsResult.BallResult;
 
 public class Baseball extends AbstractBaseball{
     @Override
@@ -64,27 +65,28 @@ public class Baseball extends AbstractBaseball{
     }
 
     @Override
-    protected EarlyResults.EarlyResult evaluateBall(int ball, int order, ArrayList<Integer> answer) {
-        EarlyResults.EarlyResult ballResult;
-        ballResult = EarlyResults.EarlyResult.NONE;
+    protected BallResult evaluateBall(int ball, int order, ArrayList<Integer> answer) {
+        BallResult ballResult;
+        ballResult = BallResult.NONE;
 
         for(int i = 0; i < BALLS; i++){
             if ( ball == answer.get(i) ){
-                ballResult = EarlyResults.EarlyResult.BALL;
+                ballResult = BallResult.BALL;
             }
             if ( ball == answer.get(i) && order == i) {
-                ballResult = EarlyResults.EarlyResult.STRIKE;
+                ballResult = BallResult.STRIKE;
+                break;
             }
         }
         return ballResult;
     }
 
     @Override
-    protected EarlyResults evaluateBalls(ArrayList<Integer> guess, ArrayList<Integer> answer) {
-        EarlyResults ballsResult = new EarlyResults();
+    protected BallsResult evaluateBalls(ArrayList<Integer> guess, ArrayList<Integer> answer) {
+        BallsResult ballsResult = new BallsResult();
 
         for(int i = 0; i < BALLS; i++){
-            EarlyResults.EarlyResult ballResult;
+            BallResult ballResult;
             ballResult = evaluateBall(guess.get(i), i, answer);
 
             ballsResult.addEarlyResult(ballResult);
@@ -105,8 +107,8 @@ public class Baseball extends AbstractBaseball{
             input = getLine();
             guess = stringToArrayList(input);
 
-            EarlyResults earlyResults = evaluateBalls(guess, computer);
-            isEnd = earlyResults.printResults();
+            BallsResult ballsResult = evaluateBalls(guess, computer);
+            isEnd = ballsResult.printResults();
 
             if ( isEnd ) {
                 break;
