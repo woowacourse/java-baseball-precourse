@@ -85,4 +85,42 @@ class Computer {
 		return strike;
 	}
 	
+	/*볼 개수를 리턴하는 함수*/
+	int checkBall(int input) {
+		
+		int ball=0;			//볼 개수를 카운트할 변수
+		int tmpans=this.rand_answer;
+		int tmpin=input;
+		
+		int tmp_ans[] = new int [3];		//정답의 각 자리수를 저장할 배열 선언
+		int tmp_input[ ]= new int [3];		//사용자 입력값의 각 자리수를 저장할 배열 선언
+		
+		
+		/*
+		 * 정답과 사용자 입력값의 각 자리수를 저장하기 위한 반복문
+		 * 세번째 자리부터 저장한다
+		 * */
+		for (int i=2;i>=0;i--) {
+			tmp_ans[i]=tmpans%10;
+			tmp_input[i]=tmpin%10;
+			
+			tmpans/=10;
+			tmpin/=10;
+		}
+		
+		/*값은 같지만 자리수는 다른 경우에 ball 카운트*/
+		if ((tmp_ans[0]==tmp_input[1]) || (tmp_ans[0]==tmp_input[2])) {
+			ball++;
+		}
+		
+		if ((tmp_ans[1]==tmp_input[0]) || (tmp_ans[1]==tmp_input[2])) {
+			ball++;
+		}
+		
+		if ((tmp_ans[2]==tmp_input[0]) || (tmp_ans[2]==tmp_input[1])) {
+			ball++;
+		}
+		
+		return ball;
+	}
 }
