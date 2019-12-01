@@ -6,13 +6,18 @@
  * Copyright (c) 2019 Moonyoung Chae
  */
 
+import java.util.Scanner;
+
 public class BaseballManager {
     private final int NUMBER_SIZE = 3; // 숫자의 자리수
     public BaseballNumber computerNumber; // 컴퓨터 숫자
+    public BaseballNumber userNumber; // 사용자가 입력한 숫자
+    Scanner scanner = new Scanner(System.in);
 
     // 필요한 함수를 호출하고 게임을 관리하는 함수
     public void run(){
         createComputerNumber();
+        getNumberFromUser();
     }
 
     // 컴퓨터 난수를 생성하는 함수
@@ -31,5 +36,10 @@ public class BaseballManager {
         }else{
             createComputerNumber();
         }
+    }
+
+    public void getNumberFromUser(){
+        System.out.print("숫자를 입력해주세요. : ");
+        int inputNumber = scanner.nextInt();
     }
 }
