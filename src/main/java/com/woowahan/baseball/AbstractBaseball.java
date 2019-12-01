@@ -12,6 +12,8 @@ public abstract class AbstractBaseball {
     protected abstract Integer getRandomInteger(int min, int max);
     protected abstract String getLine();
 
+    protected final int BALLS = 3;
+
     protected abstract ArrayList<Integer> initializeBallRange();
     protected abstract Integer getRandomBall(ArrayList<Integer> range);
     protected abstract ArrayList<Integer> getRandomBalls();
