@@ -1,5 +1,7 @@
+import java.sql.SQLOutput;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.Scanner;
 
 /*
  * Baseball
@@ -38,13 +40,25 @@ public class Baseball {
 
     private static String inputNumbers() {
         String numbers = "";
-
+        boolean re = false;
+        Scanner sc = new Scanner(System.in);
+        do {
+            re = false;
+            // 이 부분에서 print로 하면 인텔리j + gradle인 환경에서 출력이 먼저 나오지 않고 do-while 탈출 후 출력이 됨. 해당 부분 왜인지 나중에 확인해보자.
+            System.out.println("1 ~ 9까지 서로 다른 수로 이뤄진 3자리 수로 입력해주세요 : ");
+            numbers = sc.next();
+            if (numbers.length() != 3
+                    || numbers.charAt(0) == numbers.charAt(1)
+                    || numbers.charAt(0) == numbers.charAt(2)
+                    || numbers.charAt(1) == numbers.charAt(2)) {
+                re = true;
+            }
+        } while (re);
         return numbers;
     }
 
     private static boolean checkedNumbers(String numbers, String answer) {
         boolean recheck = false;
-
         return recheck;
     }
 
