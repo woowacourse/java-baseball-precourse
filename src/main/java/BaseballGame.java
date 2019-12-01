@@ -67,9 +67,36 @@ public class BaseballGame {
         return result;
     }
 
+    public void printResult(int strike, int ball){
+        if(strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        System.out.println(strike + "스트라이크 " + ball + "볼");
+
+        if(strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+    }
+
+    public boolean restart(){
+        int option;
+        Scanner sc = new Scanner(System.in);
+        option = sc.nextInt();
+
+        if(option == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
         int[] answer;
         int[] userInput;
+        boolean check;
         int strike;
         int ball;
         BaseballGame game = new BaseballGame();
@@ -77,21 +104,24 @@ public class BaseballGame {
         game.startGame();
         answer = game.createRandomAnswer();
 
+        check = true;
         ball = 0;
         strike = 0;
-        while(true){
+        while(check){
             userInput = game.getUserInput();
             strike = game.checkStrike(answer, userInput);
             ball = game.checkBall(answer, userInput);
 
             if(strike == 3){
-                break;
+                game.printResult(strike, 0);
+                check = game.restart();
             }else if(strike > 0 || ball > 0){
-
+                game.printResult(strike, ball);
+                check = true;
             }else{
-
+                game.printResult(0, 0);
+                check = true;
             }
         }
-
     }
 }
