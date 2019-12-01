@@ -35,8 +35,6 @@ class HostTest {
     @Test
     void generate_baseball_numbers() {
 
-        Host host = new Host();
-
         /* when: host의 generateNumbers 메서드를 실행하면 */
         host.generateNumbers();
         List<Integer> numbers = host.getNumbers();
@@ -45,6 +43,29 @@ class HostTest {
         assertTrue(checkNumberBetweenOneAndNine(numbers));
         assertTrue(checkNoDuplication(numbers));
         assertTrue(numbers.size() == Host.baseballGameSize);
+
+    }
+
+    @Test
+    void make_result_statement() {
+        /* given: host의 numbers로 5, 1, 7이 생성되었다 */
+        List<Integer> generatedNumbers = new ArrayList<>();
+        generatedNumbers.add(5);
+        generatedNumbers.add(1);
+        generatedNumbers.add(7);
+
+        host.setNumbers(generatedNumbers);
+
+        /* when: 입력받은 number가 5, 6, 1이면 */
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(5);
+        numbers.add(6);
+        numbers.add(1);
+
+        String resultStatement = host.makeResultStatement(numbers);
+
+        /* then: 결과는 "1스트라이크 1볼" */
+        assertTrue(resultStatement.equals("1스트라이크 1볼"));
 
     }
 
@@ -69,6 +90,24 @@ class HostTest {
         assertTrue(host.countNumOfStrikes(inputNumbers) == 2);
     }
 
+    @Test
+    void check_numOfBall_fromInput() {
 
+        /* given: host의 numbers로 5, 1, 7이 생성되었다. */
+        List<Integer> generatedNumbers = new ArrayList<>();
+        generatedNumbers.add(5);
+        generatedNumbers.add(1);
+        generatedNumbers.add(7);
 
+        host.setNumbers(generatedNumbers);
+
+        /* when: 입력받은 number는 1, 7, 5이다. */
+        List<Integer> inputNumbers = new ArrayList<>();
+        inputNumbers.add(1);
+        inputNumbers.add(7);
+        inputNumbers.add(5);
+
+        /* then: host.countNumOfBalls의 결과는 3 */
+        assertTrue(host.countNumOfBalls(inputNumbers) == 3);
+    }
 }

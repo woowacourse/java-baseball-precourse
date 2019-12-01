@@ -7,12 +7,6 @@ public class Host {
 
     private List<Integer> numbers;
 
-    public static void main(String[] args) {
-        Host host = new Host();
-        host.generateNumbers();
-        System.out.println(host.getNumbers());
-    }
-
     Host() {
         this.numbers = new ArrayList<Integer>();
     }
@@ -27,6 +21,26 @@ public class Host {
         }
     }
 
+    public String makeResultStatement(List<Integer> inputNumbers) {
+        int numOfStrikes = countNumOfStrikes(inputNumbers);
+        int numOfBalls = countNumOfBalls(inputNumbers);
+
+        if (numOfStrikes == 0 && numOfBalls == 0) {
+            return "낫싱";
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        if (numOfStrikes != 0) {
+            result.append(numOfStrikes).append("스트라이크 ");
+        }
+        if (numOfBalls != 0) {
+            result.append(numOfBalls).append("볼");
+        }
+
+        return result.toString();
+    }
+
     public int countNumOfStrikes(List<Integer> inputNumbers) {
         int numOfStrikes = 0;
         for (int i = 0; i < numbers.size(); i++) {
@@ -37,6 +51,24 @@ public class Host {
         return numOfStrikes;
     }
 
+    public int countNumOfBalls(List<Integer> inputNumbers) {
+        int numOfBalls = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if ( findAnyMatch(inputNumbers, numbers.get(i)) ) {
+                numOfBalls++;
+            }
+        }
+        return numOfBalls - countNumOfStrikes(inputNumbers);
+    }
+
+    private boolean findAnyMatch(List<Integer> inputNumbers, Integer number) {
+        for (int i = 0; i < inputNumbers.size(); i++) {
+            if (inputNumbers.get(i).equals(number)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public List<Integer> getNumbers() {
         return numbers;
