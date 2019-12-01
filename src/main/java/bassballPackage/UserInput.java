@@ -41,6 +41,7 @@ public class UserInput {
 	static int[] userInputValid2() {			//자릿 수 검사
 		while (true) {
 			int[] result = userInputValid();
+			
 			if (result[0] >= 1000 || result[0] < 100) {
 				String tmpTxt = "잘못된 입력: 세자리 수를 입력하세요.";
 				System.out.println(tmpTxt);

@@ -35,12 +35,14 @@ public class BassballApp {
 	}
 	
 	public static void main(String[] args) {
-		/**프로그램 구조**/
+		/*프로그램 구조*/
 		boolean isLoopActive = true;
 		CpuInput.cpuNumArr = CpuInput.cpuInput();
 		while (isLoopActive) {
-			System.out.println("[[디버깅용 메세지]] - 컴퓨터 세자리 수 : " + CpuInput.cpuNumArr[0]
-					+","+CpuInput.cpuNumArr[1]+","+CpuInput.cpuNumArr[2]);
+			System.out.println("[[디버깅용 메세지]]-컴퓨터 세자리 수 : " 
+					+ CpuInput.cpuNumArr[0]+","
+					+ CpuInput.cpuNumArr[1]+","
+					+ CpuInput.cpuNumArr[2]);
 			UserInput.userNumArr = UserInput.userInputValid2();
 			SBCountArr = SBCount(UserInput.userNumArr, CpuInput.cpuNumArr);
 			PrintOut.printOut(SBCountArr);
