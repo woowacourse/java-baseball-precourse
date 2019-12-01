@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.3.4   2019-12-01
+ * Player.java                     2.3.5   2019-12-01
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -18,8 +18,8 @@ import java.io.InputStreamReader;
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.3.4         Gradle로 Run할 때, "숫자를 입력해주세요"가
- *                        입력 후에 나오는 버그 수정
+ * @version 2.3.5         외부 접근이 필요없는 methods 접근 제어자를
+ *                        private or protected 로 수정
  * @date 2019-12-01
  */
 public class Player {
@@ -41,7 +41,7 @@ public class Player {
         this.digitNumbers = new int[MAX_DIGIT];
     }
 
-    public void readNumbers() throws IOException {
+    protected void readNumbers() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("숫자를 입력해주세요: ");
@@ -64,7 +64,7 @@ public class Player {
         }
     }
 
-    public boolean isRightDigit(char[] input) {
+    private boolean isRightDigit(char[] input) {
         boolean result = false;
 
         if (input.length == MAX_DIGIT) {
@@ -74,11 +74,11 @@ public class Player {
         return result;
     }
 
-    public void printWrongInputMessage() {
+    private void printWrongInputMessage() {
         System.out.println("ERROR! 1부터 9까지의 서로 다른 수로 이루어진 " + MAX_DIGIT + "자리의 수를 입력해주세요.");
     }
 
-    public String giveHintAboutNumbers(int[] numbers) {
+    protected String giveHintAboutNumbers(int[] numbers) {
         StringBuilder hint = new StringBuilder();
         int strikeCount = ZERO;
         int ballCount = ZERO;
@@ -104,7 +104,7 @@ public class Player {
         return hint.toString();
     }
 
-    public void setRandomNumbers() {
+    protected void setRandomNumbers() {
         setDigitMasks(new boolean[MAX_MASK]);                 // digitMasks 초기화
 
         for (int i = 0; i < MAX_DIGIT; i++) {
@@ -117,7 +117,7 @@ public class Player {
         }
     }
 
-    public boolean isValidNumbers() {
+    private boolean isValidNumbers() {
         boolean result = true;
 
         for (int i = 0; i < MAX_DIGIT; i++) {
@@ -130,7 +130,7 @@ public class Player {
         return result;
     }
 
-    public boolean isDuplicate() {
+    private boolean isDuplicate() {
         boolean result = false;
         int count = ZERO;
 
