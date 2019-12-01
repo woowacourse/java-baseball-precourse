@@ -2,6 +2,7 @@ package precourse.baseball.number;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
@@ -19,7 +20,8 @@ class NumberHitterTest {
 
     /** hit()에 임의의 요소가 있기 때문에 현재 10,000번 테스트하고 있습니다. */
     @Test
-    void hit_return_balls() {
+    @DisplayName("test hit")
+    void hitReturnBalls() {
         for (int i = 0; i < 10000; i++) {
             //when
             List<Integer> balls = hitter.hit();

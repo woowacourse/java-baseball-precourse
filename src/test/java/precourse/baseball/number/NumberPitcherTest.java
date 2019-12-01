@@ -1,5 +1,6 @@
 package precourse.baseball.number;
 
+import org.junit.jupiter.api.DisplayName;
 import precourse.baseball.number.errors.InvalidInputException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,8 @@ class NumberPitcherTest {
     }
 
     @Test
-    void hit_return_balls_with_valid_input() {
+    @DisplayName("test pitch with valid input")
+    void pitchReturnBallsWithValidInput() {
         //given
         String input = "123";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -39,7 +41,8 @@ class NumberPitcherTest {
         assertEquals("숫자를 입력해주세요 : ", outView.toString());
     }
     @Test
-    void hit_throw_InvalidInputException_with_input_which_length_is_short() {
+    @DisplayName("test pitch with input which is too short")
+    void pitchThrowInvalidInputExceptionWithInputWhichLengthIsShort() {
         //given
         String shortInput = "12";
         System.setIn(new ByteArrayInputStream(shortInput.getBytes()));
@@ -51,7 +54,8 @@ class NumberPitcherTest {
         assertEquals("숫자를 입력해주세요 : ", outView.toString());
     }
     @Test
-    void hit_throw_InvalidInputException_with_input_which_length_is_long() {
+    @DisplayName("test pitch with input which is too long")
+    void pitchThrowInvalidInputExceptionWithInputWhichLengthIsLong() {
         //given
         String longInput = "1234";
         System.setIn(new ByteArrayInputStream(longInput.getBytes()));
@@ -64,7 +68,8 @@ class NumberPitcherTest {
     }
 
     @Test
-    void hit_throw_InvalidInputException_with_input_which_is_not_numeric() {
+    @DisplayName("test pitch with not numeric input")
+    void pitchThrowInvalidInputExceptionWithInputWhichIsNotNumeric() {
         //given
         String notNumericInput = "1a3";
         System.setIn(new ByteArrayInputStream(notNumericInput.getBytes()));

@@ -1,11 +1,7 @@
 package precourse.baseball.number;
 
+import org.junit.jupiter.api.*;
 import precourse.baseball.Result;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -36,7 +32,8 @@ class NumberRefereeTest {
     }
 
     @Test
-    void judge_return_result_3strikes_0B() {
+    @DisplayName("test judge with 3 strikes, 0 B")
+    void judgeReturnResult3strikes0B() {
         //given
         ballsHit = new ArrayList<>(
                 Arrays.asList(1,2,3)
@@ -50,7 +47,8 @@ class NumberRefereeTest {
         Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
-    void judge_return_result_2strikes_0B() {
+    @DisplayName("test judge with 2 strikes, 0 B")
+    void judgeReturnResult2strikes0B() {
         //given
         ballsHit = new ArrayList<>(
                 Arrays.asList(1,2,3)
@@ -64,7 +62,8 @@ class NumberRefereeTest {
         Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
-    void judge_return_result_1strike_0B() {
+    @DisplayName("test judge with 1 strike, 1 B")
+    void judgeReturnResult1strike0B() {
         //given
         ballsHit = new ArrayList<>(
                 Arrays.asList(1,2,3)
@@ -78,7 +77,8 @@ class NumberRefereeTest {
         Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
-    void judge_return_result_1strike_1B() {
+    @DisplayName("test judge with 1 strike, 1 B")
+    void judgeReturnResult1strike1B() {
         //given
         ballsHit = new ArrayList<>(
                 Arrays.asList(1,2,3)
@@ -92,7 +92,8 @@ class NumberRefereeTest {
         Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
-    void judge_return_result_1strike_2B() {
+    @DisplayName("test judge with 1 strike, 2 B")
+    void judgeReturnResult1strike2B() {
         //given
         ballsHit = new ArrayList<>(
                 Arrays.asList(1,2,3)
@@ -106,7 +107,8 @@ class NumberRefereeTest {
         Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
-    void judge_return_result_0strike_0B() {
+    @DisplayName("test judge with 0 strike, 0 B")
+    void judgeReturnResult0strike0B() {
         //given
         ballsHit = new ArrayList<>(
                 Arrays.asList(1,2,3)
@@ -120,7 +122,8 @@ class NumberRefereeTest {
         Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
-    void judge_return_result_0strike_1B() {
+    @DisplayName("test judge with 0 strike, 1 B")
+    void judgeReturnResult0strike1B() {
         //given
         ballsHit = new ArrayList<>(
                 Arrays.asList(1,2,3)
@@ -134,7 +137,8 @@ class NumberRefereeTest {
         Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
-    void judge_return_result_0strike_2B() {
+    @DisplayName("test judge with 0 strike, 2 B")
+    void judgeReturnResult0strike2B() {
         //given
         ballsHit = new ArrayList<>(
                 Arrays.asList(1,2,3)
@@ -148,7 +152,8 @@ class NumberRefereeTest {
         Assertions.assertEquals(result, referee.judge(ballsHit, ballsPitched));
     }
     @Test
-    void judge_return_result_0strike_3B() {
+    @DisplayName("test judge with 0 strike, 3 B")
+    void judgeReturnResult0strike3B() {
         //given
         ballsHit = new ArrayList<>(
                 Arrays.asList(1,2,3)
@@ -163,7 +168,8 @@ class NumberRefereeTest {
     }
 
     @Test
-    void judge_throw_InvalidParameterException_with_weird_balls() {
+    @DisplayName("test judge weird balls: null, too long, too short")
+    void judgeThrowInvalidParameterExceptionWithWeirdBalls() {
         //given
         List<Integer> nullBalls = null;
 
@@ -182,7 +188,8 @@ class NumberRefereeTest {
     }
 
     @Test
-    void announce_print_when_stirkes_exist_B_exist() {
+    @DisplayName("test announce when both strike and B exist")
+    void announcePrintWhenStirkesExistAndBexist() {
         //given
         int strikes = 1;
         int B = 2;
@@ -195,7 +202,8 @@ class NumberRefereeTest {
         assertEquals(String.format("%d 스트라이크 %d볼\n", strikes, B), outView.toString());
     }
     @Test
-    void announce_print_when_only_strikes_exist() {
+    @DisplayName("test announce when only strike exists")
+    void announcePrintWhenOnlyStrikesExist() {
         //given
         int strikes = 1;
         Result result = new Result(strikes,0);
@@ -207,7 +215,8 @@ class NumberRefereeTest {
         assertEquals(String.format("%d 스트라이크\n", strikes), outView.toString());
     }
     @Test
-    void announce_print_when_only_B_exist() {
+    @DisplayName("test announce when onlt B exists")
+    void announcePrintWhenOnlyBexist() {
         //given
         int B = 1;
         Result result = new Result(0,B);
@@ -219,7 +228,8 @@ class NumberRefereeTest {
         assertEquals(String.format("%d볼\n", B), outView.toString());
     }
     @Test
-    void anoount_print_when_nothing() {
+    @DisplayName("test announce when nothing")
+    void anoountPrintWhenNothing() {
         //given
         Result result = new Result(0,0);
 
@@ -231,7 +241,8 @@ class NumberRefereeTest {
 
     }
     @Test
-    void announce_print_when_StrikeOut() {
+    @DisplayName("test announce when StrikeOut")
+    void announcePrintWhenStrikeOut() {
         //given
         int strikes = 3;
         Result result = new Result(3, 0);

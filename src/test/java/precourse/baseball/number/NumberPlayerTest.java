@@ -1,6 +1,7 @@
 package precourse.baseball.number;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -24,7 +25,8 @@ class NumberPlayerTest {
     }
 
     @Test
-    void wantToPlayAgain_return_true_with_1() {
+    @DisplayName("test wantToPlayAgain with input: 1")
+    void wantToPlayAgainReturnTrueWith1() {
         //given
         String input = "1";
         player = createBasePlayerForTest(input);
@@ -34,7 +36,8 @@ class NumberPlayerTest {
         assertEquals("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n", outView.toString());
     }
     @Test
-    void wantToPlayAgain_return_false_with_2() {
+    @DisplayName("test wantToPlayAgain with input: 2")
+    void wantToPlayAgainReturnFalseWith2() {
         //given
         String input = "2";
         player = createBasePlayerForTest(input);
@@ -44,7 +47,8 @@ class NumberPlayerTest {
         assertEquals("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n", outView.toString());
     }
     @Test
-    void wantToPlayAgain_throw_InvalidParameterException_with_other_number() {
+    @DisplayName("test wantToPlayAgain with not appliable input")
+    void wantToPlayAgainThrowInvalidParameterExceptionWithOtherNumber() {
         //given
         String input = "3";
         player = createBasePlayerForTest(input);
@@ -54,7 +58,8 @@ class NumberPlayerTest {
         assertEquals("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n", outView.toString());
     }
     @Test
-    void wantToPlayAgain_throw_InputMismatchException_with_notNumeric() {
+    @DisplayName("test wantToPlayAgain with not numeric input")
+    void wantToPlayAgainThrowInputMismatchExceptionWithNotNumeric() {
         //given
         String input = "a";
         player = createBasePlayerForTest(input);
