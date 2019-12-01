@@ -37,10 +37,8 @@ public class Baseball {
             finish = printResult(isStrike(answerNumber, UserNumber),
                     isBall(answerNumber, UserNumber));
 
-            if(finish) {
-                if (scan.nextInt() == CONTINUE_GAME) {
-                    finish = false;
-                }
+            if(finish && scan.nextInt() == CONTINUE_GAME) {
+                finish = false;
             }
         }
     }
