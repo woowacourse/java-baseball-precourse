@@ -5,11 +5,16 @@ import java.util.Random;
 
 public class Baseball {
 	public static void main(String[] args){
+		Scanner scan = new Scanner(System.in);
 		while(true) {
 			int[] ans = GenerateThreeRandNum();
 			
-			//System.out.print("숫자를 입력해주세요 : ");
+			System.out.print("숫자를 입력해주세요 : ");
+			String str = scan.nextLine();
 			
+			//제대로 된 입력인지 판별. 아니면 예외처리
+			
+			int[] input = StringToIntArray(str);
 		
 		}
 	}
@@ -40,4 +45,14 @@ public class Baseball {
 		}
 		return false;	
 	}
+	
+	static int[] StringToIntArray(String str) {
+		int ans[] = new int[3];
+		for(int i = 0; i<3; i++) {
+			ans[i] = str.charAt(i) - '0';
+		}
+		return ans;
+	}
+	
+
 }
