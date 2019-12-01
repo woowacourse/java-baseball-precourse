@@ -13,11 +13,14 @@ public class BaseballManager {
     public BaseballNumber computerNumber; // 컴퓨터 숫자
     public BaseballNumber userNumber; // 사용자가 입력한 숫자
     Scanner scanner = new Scanner(System.in);
+    public int ball = 0;
+    public int strike = 0;
 
     // 필요한 함수를 호출하고 게임을 관리하는 함수
     public void run(){
         createComputerNumber();
         getNumberFromUser();
+        makeResult();
     }
 
     // 컴퓨터 난수를 생성하는 함수
@@ -59,6 +62,35 @@ public class BaseballManager {
         }else{
             System.out.println("숫자를 잘못 입력했습니다.");
             getNumberFromUser();
+        }
+    }
+
+    // Ball 개수를 검사하는 함수
+    public void countBall(int index) {
+        for(int i = 0; i < NUMBER_SIZE; i++){
+            if(i == index) {
+                continue;
+            }
+            if(computerNumber.getNumberFromIndex(index) == userNumber.getNumberFromIndex(i)) {
+                ball++;
+            }
+        }
+    }
+
+    // Strike 개수를 검사하는 함수
+    public void countStrike(int index) {
+        if(computerNumber.getNumberFromIndex(index) == userNumber.getNumberFromIndex(index)) {
+            strike++;
+        }
+    }
+
+    // Ball 검사, Strike 검사 함수를 호출
+    public void makeResult() {
+        strike = 0;
+        ball = 0;
+        for(int i = 0; i < NUMBER_SIZE; i++) {
+            countBall(i);
+            countStrike(i);
         }
     }
 }

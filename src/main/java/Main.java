@@ -6,12 +6,13 @@
  * Copyright (c) 2019 Moonyoung Chae
  */
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         // 게임이 구현된 baseball 함수 호출
-        BaseballManager baseballManager = new BaseballManager();
-        baseballManager.createComputerNumber();
-        System.out.println(baseballManager.computerNumber.getNumber());
+        BaseballManager bm = new BaseballManager();
+        bm.getNumberFromUser();
 
     }
 }

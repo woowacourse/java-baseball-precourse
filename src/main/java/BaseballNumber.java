@@ -14,6 +14,12 @@ class BaseballNumber {
         return number;
     }
 
+    public int getNumberFromIndex(int i){
+        if(i >= NUMBER_SIZE || i < 0)
+            return -1;
+        return number[i];
+    }
+
     public void setNumber(int inputNumber){
         for(int i = NUMBER_SIZE; i > 0; i--){
             number[i - 1] = inputNumber % 10;
