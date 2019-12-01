@@ -12,7 +12,17 @@ public class OneBaseBall {
 		this.baseBallPosition = baseBallPosition;
 	}
 
-	static OneBaseBall ofInteger(Integer baseBallNumber, Integer baseBallPosition) {
+	public static OneBaseBall ofInteger(Integer baseBallNumber, Integer baseBallPosition) {
 		return new OneBaseBall(BaseBallNumber.of(baseBallNumber), baseBallPosition);
+	}
+
+	public boolean equalStrike(OneBaseBall otherBaseBall) {
+		return this.baseBallNumber.equals(otherBaseBall.baseBallNumber)
+			&& this.baseBallPosition.equals(otherBaseBall.getBaseBallPosition());
+	}
+
+	public boolean equalBall(OneBaseBall otherBaseBall) {
+		return this.baseBallNumber.equals(otherBaseBall.baseBallNumber)
+			&& !this.baseBallPosition.equals(otherBaseBall.getBaseBallPosition());
 	}
 }
