@@ -63,14 +63,14 @@ public class Baseball {
     /*
     Int 형 인자를 넣으면 각 자리수가 분리된 (같이 인자로 넣어졌던) int 형 배열을 출력해주는 메소드이다.
      */
-    static private int[] splitNumbers(int[] UserNumber, int number) {
+    static private int[] splitNumbers(int[] userNumber, int number) {
         for(int i = 0; i < NUMBER_LENGTH; i++) {
             int j = NUMBER_LENGTH - i;
-            UserNumber[i] = (number % square(ROOT_NUMBER, j))
+            userNumber[i] = (number % square(ROOT_NUMBER, j))
                     / square(ROOT_NUMBER, (j - 1));
         }
 
-        return UserNumber;
+        return userNumber;
     }
 
     /*
