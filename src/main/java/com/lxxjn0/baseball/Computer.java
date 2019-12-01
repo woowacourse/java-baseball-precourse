@@ -12,7 +12,7 @@ import java.util.Random;
  * 1부터 9까지 서로 다른 수로 이루어진 3자리 수를 생성하는 클래스.
  *
  * @version         0.1 2019/12/01
- * @author          Junyoung Lee (lxxjn0)
+ * @author          JUNYOUNG LEE (lxxjn0)
  */
 public class Computer {
     /** 생성해야 하는 수의 길이를 저장한 상수 */
@@ -43,7 +43,7 @@ public class Computer {
 
     /**
      * numList getter
-     * @return      numList : 조건에 맞게 생성된 3자리 수를 반환
+     * @return numList 조건에 맞게 생성된 3자리 수를 반환
      */
     public ArrayList<Integer> getNumList() {
         return numList;
