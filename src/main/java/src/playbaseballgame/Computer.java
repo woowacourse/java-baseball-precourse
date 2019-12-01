@@ -51,4 +51,38 @@ class Computer {
 		
 		return finish;
 	}
+	
+	/*Strike 개수가 몇 개인지 리턴하는 함수*/
+	public int checkStrike(int input) {
+		
+		int strike=0;			//스트라이크의 개수 카운트할 변수
+		int tmp_ans=this.rand_answer;
+		int tmp_input=input;
+		
+		/*세번째 자리 수 비교*/
+		if ((tmp_ans%10) == (tmp_input%10)) {
+			strike++;			//같으면 개수 카운트
+		}
+		
+		/*두번째 자리 수 비교를 위한 값 수정*/
+		tmp_ans/=10;
+		tmp_input/=10;
+		
+		/*두번째 자리 수 비교*/
+		if((tmp_ans%10)==(tmp_input%10)) {
+			strike++;
+		}
+		
+		/*첫번째 자리 수 비교를 위한 값 수정*/
+		tmp_ans/=10;
+		tmp_input/=10;
+		
+		/*첫번째 자리 수 비교*/
+		if(tmp_ans==tmp_input) {
+			strike++;
+		}
+		
+		return strike;
+	}
+	
 }
