@@ -27,7 +27,7 @@ public class Result {
             return false;
         }
 
-        return this.strikes == ((Result)object).strikes && this.B == ((Result)object).B;
+        return (this.strikes == ((Result)object).strikes) && (this.B == ((Result)object).B);
     }
 
     public int getStrikes() {

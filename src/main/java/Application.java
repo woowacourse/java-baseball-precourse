@@ -28,7 +28,6 @@ public class Application {
             System.out.println(String.format("다음과 같은 오류로 숫자 야구 게임을 종료합니다: %s", e.getMessage()));
             System.exit(-1);
         }
-
     }
 
     /** 전체 프로그램을 작동시키기 위해 프로그램을 준비시키는 함수입니다. */
@@ -40,4 +39,6 @@ public class Application {
         BaseballFactory baseballFactory = new NumberBaseballFactory();
         return baseballFactory.create(hitter, pitcher, referee);
     }
+
+
 }

@@ -46,8 +46,8 @@ public class NumberBaseball implements Baseball {
 
         if (pitcher.wantToPlayAgain()){
             play();
+            return;
         }
-
         finish();
     }
     private Result start() {
@@ -59,4 +59,5 @@ public class NumberBaseball implements Baseball {
     private void finish() {
         System.out.println("게임이 완전히 종료되었습니다.");
     }
+
 }

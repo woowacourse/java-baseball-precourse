@@ -16,6 +16,6 @@ class NumberBaseballConfig {
     static final int MAX_BALL = 9;
     /** ROUND는 타자와 투수가 한 번 경합할 때, 투수가 던지는 공의 수를 의미합니다. */
     static final int ROUND = 3;
-    /** DEFAULT는 스트라이크, 볼의 초기값을 의미합니다. */
+    /** DEFAULT_VALUE는 스트라이크, 볼의 초기값을 의미합니다. */
     static final int DEFAULT_VALUE = 0;
 }
