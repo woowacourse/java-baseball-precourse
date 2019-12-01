@@ -68,3 +68,9 @@
 
 #### BallsResult evaluateBalls(ArrayList&lt;Integer&gt; guess, ArrayList&lt;Integer&gt; answer);
 > 3개의 Ball에 대한 판정 결과를 반환하는 메소드
+
+
+# Main
+
+* Baseball 객체를 이용해 게임을 진행
+* 1 또는 2를 입력받아 추가 게임을 진행하거나 종료함
