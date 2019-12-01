@@ -41,6 +41,6 @@ public class BallCountCalculator {
     }
 
     public boolean isStrike(int index, Number number) {
-        return answer.get(index) == number.get(index);
+        return answer.get(index).equals(number.get(index));
     }
 }
