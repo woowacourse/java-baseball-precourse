@@ -1,17 +1,21 @@
 public class BaseballGame {
-    private NumbersGroup numbersGroupForComparison;
+    private NumbersGroup answerNumbers;
     private User user;
-    private boolean gameIsRunning;
 
     public BaseballGame() {
-        numbersGroupForComparison = NumbersGroup.makeNumbersGroupRandomly();
-        user = new User();
-        gameIsRunning = true;
+        this.answerNumbers = NumbersGroup.makeNumbersRandomly();
+        this.user = new User();
     }
 
     public void run() {
-        while(gameIsRunning) {
-            numbersGroupForComparison.compareWith(user.inputNumbers());
-        }
+        ComparedResult comparedResult;
+        do {
+            comparedResult = answerNumbers.compareWith(user.inputNumbers());
+            comparedResult.printMessage();
+        } while (comparedResult.isGameRunning());
+    }
+
+    public boolean restart() {
+        return user.askIfRestart();
     }
 }
