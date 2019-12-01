@@ -147,7 +147,7 @@ class Computer {
 		
 		/*스트라이크가 3개인경우, 3진 아웃 ㅇㅅㅇ!*/
 		if(strike==3) {
-			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			out=false;
 		}
 	
