@@ -94,9 +94,9 @@ public class Baseball {
         return (number == 0);
     }
 
-   /*
-    생성된 정답 숫자열이 서로 중복되는지 확인해서 중복되었는지 확인하는 메소드이다.
-     */
+    /*
+     생성된 정답 숫자열이 서로 중복되는지 확인해서 중복되었는지 확인하는 메소드이다.
+      */
     static private boolean isOverlap(int[] answerNum) {
         for(int i = 0; i < 3; i ++) {
             if ((answerNum[i] == answerNum[(i + 1) % 3])
@@ -107,9 +107,9 @@ public class Baseball {
         return false;
     }
 
-   /*
-    int형 정답 배열과 int형 사용자가 입력한 배열을 인자로 넣으면, Strike 횟수를 반환해주는 메소드이다.
-     */
+    /*
+     int형 정답 배열과 int형 사용자가 입력한 배열을 인자로 넣으면, Strike 횟수를 반환해주는 메소드이다.
+      */
     static private int isStrike(int answerNum[], int num[]) {
         int strikeNumber = 0;
 
