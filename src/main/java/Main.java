@@ -5,11 +5,14 @@
  * @author 박두원
  *
  */
+
+import baseballgame.BaseballGame;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+			BaseballGame m = new BaseballGame();
+			m.startGame();
+			System.out.println("게임을 종료합니다.");
 	}
 
 }
