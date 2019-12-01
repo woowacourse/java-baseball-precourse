@@ -97,4 +97,24 @@ public class Player {
 	    }
 	  }
 	
+	/*플레이어가 입력한 수가 서로 다른지 확인하는 함수*/
+	public boolean checkSame(String input) {
+		boolean same=true;
+		
+		if(input.charAt(0)==input.charAt(1)) {
+			same=false;
+		}
+		
+		if(input.charAt(0)==input.charAt(2)) {
+			same=false;
+		}
+		
+		if(input.charAt(1)==input.charAt(2)) {
+			same=false;
+		}
+		
+		return same;
+	}
+	
+	
 }
