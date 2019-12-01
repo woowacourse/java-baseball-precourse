@@ -11,25 +11,28 @@ public class PlayGame {
     private static ArrayList<Integer> ballStrikeList = new ArrayList<>();
 
     public static void playGame() {
+
         guessingNumberList = NumberGenerator.numberGenerator();
         // 테스트용.
         for (int i = 0; i < guessingNumberList.size(); i++) {
             System.out.println(guessingNumberList.get(i));
         }
+        while (true) {
+            userNumberList = IntegerToArrayList.integerToArrayList(NumberGetter.numberGetter());
+            // 테스트용.
+            for (int i = 0; i < userNumberList.size(); i++) {
+                System.out.println(userNumberList.get(i));
+            }
 
-        userNumberList = IntegerToArrayList.integerToArrayList(NumberGetter.numberGetter());
-        // 테스트용.
-        for (int i = 0; i < userNumberList.size(); i++) {
-            System.out.println(userNumberList.get(i));
+            NumberComparer nc = new NumberComparer(guessingNumberList, userNumberList);
+            ballStrikeList = nc.numberComparer();
+            // 테스트용.
+            for (int i = 0; i < ballStrikeList.size(); i++) {
+                System.out.println("ballStrikeList: " + i + "  " + ballStrikeList.get(i));
+            }
+
+            if (ResultGenerator.resultGenerator(ballStrikeList)) break;
         }
-
-        NumberComparer nc = new NumberComparer(guessingNumberList, userNumberList);
-        ballStrikeList = nc.numberComparer();
-        // 테스트용.
-        for (int i = 0; i < ballStrikeList.size(); i++) {
-            System.out.println("ballStrikeList: " + i + "  " + ballStrikeList.get(i));
-        }
-
     }
 
 }
