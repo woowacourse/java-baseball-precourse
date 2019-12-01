@@ -1,5 +1,6 @@
 package precourse.baseball.number;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,12 +17,24 @@ import static org.junit.jupiter.api.Assertions.*;
 class NumberPlayerTest {
 
     private NumberPlayer player;
+    private Scanner scanner;
 
     private final ByteArrayOutputStream outView = new ByteArrayOutputStream();
 
     @BeforeEach
     void init() {
         System.setOut(new PrintStream(outView));
+    }
+
+    @AfterEach
+    void clear() {
+        try {
+            scanner.close();
+        } catch (RuntimeException e) {
+            System.out.println(String.format("테스트 중 다음과 같은 오류로 시스템을 종료합니다 : %s", e.getMessage()));
+            System.exit(-1);
+        }
+
     }
 
     @Test
@@ -71,7 +84,7 @@ class NumberPlayerTest {
 
     private NumberPlayer createBasePlayerForTest(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        Scanner scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in);
 
         return new NumberPlayer(scanner) {
             @Override

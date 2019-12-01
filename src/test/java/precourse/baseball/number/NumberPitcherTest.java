@@ -1,9 +1,7 @@
 package precourse.baseball.number;
 
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.*;
 import precourse.baseball.number.errors.InvalidInputException;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -18,10 +16,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class NumberPitcherTest {
     private NumberPitcher pitcher;
     private final ByteArrayOutputStream outView = new ByteArrayOutputStream();
+    private Scanner scanner;
 
     @BeforeEach
     void init() {
         System.setOut(new PrintStream(outView));
+    }
+
+    @AfterEach
+    void clear() {
+        try {
+            scanner.close();
+        } catch (RuntimeException e) {
+            System.out.println(String.format("테스트 중 다음과 같은 오류로 시스템을 종료합니다 : %s", e.getMessage()));
+            System.exit(-1);
+        }
+
     }
 
     @Test
@@ -29,9 +39,7 @@ class NumberPitcherTest {
     void pitchReturnBallsWithValidInput() {
         //given
         String input = "123";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-        Scanner scanner = new Scanner(System.in);
-        pitcher = new NumberPitcher(scanner);
+        pitcher = createPitcherForTest(input);
         List<Integer> balls = new ArrayList<>(
                 Arrays.asList(1,2,3)
         );
@@ -45,9 +53,7 @@ class NumberPitcherTest {
     void pitchThrowInvalidInputExceptionWithInputWhichLengthIsShort() {
         //given
         String shortInput = "12";
-        System.setIn(new ByteArrayInputStream(shortInput.getBytes()));
-        Scanner scanner = new Scanner(System.in);
-        pitcher = new NumberPitcher(scanner);
+        pitcher = createPitcherForTest(shortInput);
 
         //when & then
         assertThrows(InvalidInputException.class, () -> pitcher.pitch());
@@ -58,9 +64,7 @@ class NumberPitcherTest {
     void pitchThrowInvalidInputExceptionWithInputWhichLengthIsLong() {
         //given
         String longInput = "1234";
-        System.setIn(new ByteArrayInputStream(longInput.getBytes()));
-        Scanner scanner = new Scanner(System.in);
-        pitcher = new NumberPitcher(scanner);
+        pitcher = createPitcherForTest(longInput);
 
         //when & then
         assertThrows(InvalidInputException.class, () -> pitcher.pitch());
@@ -72,12 +76,16 @@ class NumberPitcherTest {
     void pitchThrowInvalidInputExceptionWithInputWhichIsNotNumeric() {
         //given
         String notNumericInput = "1a3";
-        System.setIn(new ByteArrayInputStream(notNumericInput.getBytes()));
-        Scanner scanner = new Scanner(System.in);
-        pitcher = new NumberPitcher(scanner);
+        pitcher = createPitcherForTest(notNumericInput);
 
         //when & then
         assertThrows(InvalidInputException.class, () -> pitcher.pitch());
         assertEquals("숫자를 입력해주세요 : ", outView.toString());
+    }
+
+    private NumberPitcher createPitcherForTest(String input) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        scanner = new Scanner(System.in);
+        return new NumberPitcher(scanner);
     }
 }
