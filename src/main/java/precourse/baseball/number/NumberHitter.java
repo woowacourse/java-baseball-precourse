@@ -34,8 +34,8 @@ public class NumberHitter extends NumberPlayer implements Hitter {
 
         int ball = NumberBaseballConfig.MIN_BALL - 1;
         while (!isConfirmed(balls, ball)) {
-            //todo: check if it is good
-            ball = randomGenerator.ints(NumberBaseballConfig.MIN_BALL, NumberBaseballConfig.MAX_BALL + 1).limit(1).findFirst().getAsInt();
+            ball = randomGenerator.ints(NumberBaseballConfig.MIN_BALL, NumberBaseballConfig.MAX_BALL + 1)
+                    .limit(1).findFirst().orElse(NumberBaseballConfig.MIN_BALL - 1);
         }
 
         return ball;
