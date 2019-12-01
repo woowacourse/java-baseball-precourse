@@ -16,10 +16,14 @@ public class PlayerInput {
         Scanner sc = new Scanner(System.in);
         String str_input = sc.next();
 
-        input[0] = str_input.charAt(0) - '0';
-        input[1] = str_input.charAt(1) - '0';
-        input[2] = str_input.charAt(2) - '0';
+        stringToIntArr(str_input);
 
         return input;
+    }
+
+    public void stringToIntArr(String s) {
+        input[0] = s.charAt(0) - '0';
+        input[1] = s.charAt(1) - '0';
+        input[2] = s.charAt(2) - '0';
     }
 }

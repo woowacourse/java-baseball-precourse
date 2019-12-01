@@ -5,13 +5,10 @@
  * 저작권          YebinK
  */
 
-import java.util.Arrays;
 import java.util.Scanner;
-
 
 public class PlayGame {
 
-    RandomNumber rn = new RandomNumber();
     PlayerInput p = new PlayerInput();
     int [] answer = new int[3];
     int [] userInput = new int[3];
@@ -20,8 +17,10 @@ public class PlayGame {
     int ballCount = 0;
 
     public void playCmd() {
+        RandomNumber rn = new RandomNumber();
         answer = rn.setNumber();
-        while (true) {
+
+        while (strikeCount != 3) {
             initializeCount();
             userInput = p.getInput();
             compare();
@@ -47,9 +46,7 @@ public class PlayGame {
         if (strikeCount == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            Scanner sc = new Scanner(System.in);
-            int cmd = sc.nextInt();
-            restart(cmd);
+            restart();
             return;
         }
 
@@ -76,9 +73,14 @@ public class PlayGame {
         ballCount = 0;
     }
 
-    public void restart(int cmd) {
+    public void restart() {
+        Scanner sc = new Scanner(System.in);
+        int cmd = sc.nextInt();
+
         if (cmd == 1) {
+            initializeCount();
             playCmd();
         }
+        return;
     }
 }
