@@ -83,7 +83,7 @@ public class Baseball extends AbstractBaseball{
     protected EarlyResults evaluateBalls(ArrayList<Integer> user, ArrayList<Integer> answer) {
         EarlyResults ballsResult = new EarlyResults();
 
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < BALLS; i++){
             EarlyResults.EarlyResult ballResult;
             ballResult = evaluateBall(user.get(i), i, answer);
 
