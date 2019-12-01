@@ -44,5 +44,30 @@ public class PlayBaseballGame {
 		return;
 		
 	}
+	
+	
+	/*게임을 새로 시작할지, 끝낼지 판단하는 함수*/
+	public void isStop() {
+		String restart;
+		
+		System.out.println("게임을 새로 시작하려면  1, 종료하려면 2를 입력하세요.");
+		restart=sc.next();
+		
+		switch (restart) {
+		case "1" :
+			run();
+			break;
+		
+		case "2":
+			System.out.println("게임을 종료합니다.");
+			break;
+		
+			
+		/*1,2 외 다른 값이 입력되었을 때 게임 강제 종료*/
+		default :
+			System.out.println("잘못된 입력입니다. 게임을 종료합니다.");
+			break;
+		}
+	}
 }
 
