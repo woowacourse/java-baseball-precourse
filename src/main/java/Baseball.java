@@ -109,7 +109,7 @@ public class Baseball {
      * @return playersNums와 computersNums가 같은지 여부
      */
     public boolean checkSame() {
-        return playersNums.compareTo(computersNums) == 0;
+        return playersNums.equals(computersNums);
     }
 
     /**
