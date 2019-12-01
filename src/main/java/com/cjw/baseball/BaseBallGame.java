@@ -32,7 +32,7 @@ public class BaseBallGame {
         game.startGame();
     }
 
-    /*
+    /**
      * init()
      * 컴퓨터가 가질 숫자를 랜덤으로 설정하는 메소드
      */
@@ -57,10 +57,10 @@ public class BaseBallGame {
 
         //printComputerValue();
     }
-    /*
+    /**
      * printComputerValue()
      * 컴퓨터 숫자 출력 메소드
-     * 테스트 전
+     * 테스트 전용
      */
     private void printComputerValue() {
         for(int i = 0; i < ANSWER_NUM; i++) {
@@ -72,9 +72,8 @@ public class BaseBallGame {
     /**
      * overlapCheck()
      * 컴퓨터가 가질 숫자들의 중복 값 체크 메소
-     * @param idx : 결정된 숫자 개수
-     * @param val : 체크할 숫자
-     * @return
+     * idx : 결정된 숫자 개수
+     * val : 체크할 숫자
      */
     private boolean overlapCheck(int idx, int val) {
         for(int i = 0; i < idx; i++) {                   //지금까지 결정된 숫자 들과 중복 비교
@@ -101,7 +100,7 @@ public class BaseBallGame {
 
     /**
      * progressGame()
-     *
+     * 게임 진행 메소드
      */
     private void progressGame() {
         int myAns[];
@@ -117,6 +116,10 @@ public class BaseBallGame {
         }
     }
 
+    /**
+     * requestRestart()
+     * 재시작 여부 묻는 메소
+     */
     private boolean requestRestart() {
         int req;
         boolean checkVal;
@@ -178,7 +181,8 @@ public class BaseBallGame {
     }
 
     /**
-     * requestCheck, requestOverlapCheck
+     * requestCheck(), requestOverlapCheck(), requestRangeCheck()
+     * req : 입력한 숫
      * 각 자리 숫자와 다른 자리 숫자를 비교하여 같은지 판별하는 메소드
      */
     private boolean requestCheck(String req) {
@@ -192,7 +196,7 @@ public class BaseBallGame {
             }
         }
 
-        if(!requestRangeCheck(req)) {                   //각 자리 0~9 범위 입력 확인
+        if(!requestRangeCheck(req)) {                   //각 자리 0~9 범위 입력확인
             return false;
         }
 
@@ -219,7 +223,7 @@ public class BaseBallGame {
 
     /**
      * answer, answerCheck
-     * 입력받은 숫자와 컴퓨터 숫자를 비교하여 strike, ball 개수를 판별하는 메소
+     * 입력받은 숫자와 컴퓨터 숫자를 비교하여 strike, ball 개수를 판별하는 메소드
      * reqAns : 입력받은 숫자 리스트
      * idx : 비교할 문자 인덱
      */
@@ -244,7 +248,6 @@ public class BaseBallGame {
     }
 
     private String answerCheck(int[] reqAns, int idx) {
-
         for(int i = 0; i < ANSWER_NUM; i++) {
             if((idx == i) && (computerAns[i] == reqAns[idx])) {
                 return "Strike";
@@ -255,8 +258,13 @@ public class BaseBallGame {
         return "Not";
     }
 
+    /**
+     * printAns()
+     * strike : 스트라이크 개수
+     * ball : 볼 개수
+     * 스트라이크, 볼 개수 출력 메소드
+     */
     private void printAns(int strike, int ball) {
-
         if(strike == 0 && ball == 0) {
             System.out.print("낫싱");
         }
@@ -268,6 +276,7 @@ public class BaseBallGame {
         }
         System.out.println("");
     }
+
 
     private boolean endCheck(int strike) {
         if(strike == ANSWER_NUM) {
