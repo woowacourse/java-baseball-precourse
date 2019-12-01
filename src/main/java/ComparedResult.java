@@ -1,4 +1,4 @@
-public interface Compared {
+public interface ComparedResult {
     void printMessage();
 
     boolean isGameRunning();
