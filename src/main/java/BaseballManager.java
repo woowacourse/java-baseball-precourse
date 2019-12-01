@@ -7,7 +7,8 @@
  */
 
 public class BaseballManager {
-    private final int NUMBER_SIZE = 3;
+    private final int NUMBER_SIZE = 3; // 숫자의 자리수
+    public BaseballNumber computerNumber; // 컴퓨터 숫자
 
     // 필요한 함수를 호출하고 게임을 관리하는 함수
     public void run(){
@@ -20,6 +21,15 @@ public class BaseballManager {
         for(int i = 0; i < NUMBER_SIZE; i++) {
             computerNumber *= 10;
             computerNumber += (int) (Math.random() * 10);
+        }
+
+        if(this.computerNumber == null)
+            this.computerNumber = new BaseballNumber();
+
+        if (new BaseballNumber().checkNumber(computerNumber)){
+            this.computerNumber.setNumber(computerNumber);
+        }else{
+            createComputerNumber();
         }
     }
 }
