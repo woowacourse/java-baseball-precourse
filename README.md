@@ -11,43 +11,50 @@
 ## 사용할 기능 미리 정의
 
 ```
-int[] initBaseballNumber (int answerNumA, int answerNumB, int answerNumC)
+int[] initBaseballNumber(int answerNumberA, int answerNumberB, int answerNumberC)
 ```
 ##### 정답이 되는 숫자들을 랜덤으로 선택하여 주는 메소드이다.
 ##### 매번 실행될 때마다 새로운 랜덤 숫자들을 초기화 시켜준다.
-##### 메인 함수 초반에 미리 int answerNum 들을 0으로 초기화 시켜주고, 이 함수에 인자로 넣는다.
 
 ```
-boolean isSame(int answerNum, int num)
+boolean isOverlap(int[] answerNum)
 ```
-##### 정답 숫자 A,B,C 중 하나와 사용자가 입력한 숫자 A,B,C 중 하나를 인자로 받아서 그 두 수가 같은지를 판별하기 위해 만든 메소드이다. 같으면 TRUE 를 반환한다.
+##### 생성된 정답 숫자열이 서로 중복되었다면 TRUE 를 반환하는 메소드이다.
+
 ```
 int isStrike(int[] answerNum, int[] num)
 int isBall(int[] answerNum, int[] num)
 ```
 ##### 정답 숫자 배열과 사용자가 입력한 숫자 배열을 인자로 넣으면, STRIKE 인 횟수를 반환해주는 메소드와,
 ##### 정답 숫자 배열과 사용자가 입력한 숫자 배열을 인자로 넣으면, BALL 인 횟수를 반환하는 메소드이다.
+
 ```
-boolean isOverlap(int[] answerNum)
+boolean isSame(int answerNumber, int number)
 ```
-##### 생성된 정답 숫자열이 서로 중복되는지 확인해서 중복되었는지 확인하는 메소드이다.
+##### 인자로 들어온 두 수가 같으면 TRUE 를 반환한다.
+##### 정답 숫자 A,B,C 중 하나와 사용자가 입력한 숫자 A,B,C 중 하나를 인자로 받아서 그 두 수가 같은지를 판별하기 위해 만든 메소드이다. 
+
 ```
 int[] splitNumbers(int[] UserNumber, int number)
 ```
 ##### Int 형 인자를 넣으면 각 자리수가 분리된 (같이 인자로 넣어졌던) int 형 배열을 출력해주는 메소드이다.
+
 ```
 int squre(int root, int squareNumber)
 ```
 ##### Int 형 인자 root 를 squareNumber 만큼 제곱해주는 메소드이다. root^squareNumber 를 반환한다.
+
 ```
 boolean isZero(int number)
 ```
-##### 해당 숫자가 0이면 TRUE를 반환하는 메소드
+##### 해당 숫자가 0이면 TRUE 를 반환하는 메소드
+
 ```
 boolean printResult(int isStrike, int isBall)
 ```
 ##### STRIKE 횟수와 BALL 횟수를 넣으면 추측에 대한 결과 프린트해주는 메소드이다.
-##### * 메인 메소드에서는 이 메소드를 while 문으로 반복하여 돌려준다. 정답을 맞출때까지!(메소드가 TRUE를 반환할 때까지!)
+##### * 메인 메소드에서는 이 메소드를 while 문으로 반복하여 돌려준다. 정답을 맞출때까지! (메소드가 TRUE를 반환할 때까지!)
+
 ```
 void println(String output)
 ```
