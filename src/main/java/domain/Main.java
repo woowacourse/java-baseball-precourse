@@ -21,9 +21,10 @@ public class Main {
 		
 		while(newStart == 1) {
 			newGame(me, myComputer);
-			System.out.println("°ÔÀÓÀ» ½ÃÀÛÇÏ·Á¸é 1, Á¾·áÇÏ·Á¸é 2¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+			System.out.println("ê²Œì„ì„ ì‹œì‘í•˜ë ¤ë©´ 1, ì¢…ë£Œí•˜ë ¤ë©´ 2ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 			newStart = scanner.nextInt();
 		}
+		System.out.println("ê²Œì„ ë!");
 	}
 	
 	private static void newGame(User player, Computer umpire) {
@@ -32,7 +33,7 @@ public class Main {
 			player.enterNumbers();
 			umpire.printGameResult(player.getNumbers());
 			if(umpire.isGameOver(player.getNumbers())) {
-				System.out.println("3°³ÀÇ ¼ıÀÚ¸¦ ¸ğµÎ ¸ÂÈ÷¼Ì½À´Ï´Ù! °ÔÀÓ Á¾·á");
+				System.out.println("3ê°œì˜ ìˆ«ìë¥¼ ëª¨ë‘ ë§íˆì…¨ìŠµë‹ˆë‹¤! ê²Œì„ ì¢…ë£Œ");
 				break;
 			}
 		}

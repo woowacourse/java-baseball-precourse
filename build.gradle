@@ -18,3 +18,7 @@ jar {
 		attributes 'Main-Class':'domain.Main'
 	}
 }
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'    
+}

@@ -20,10 +20,10 @@ public class User {
 		Scanner numScanner = new Scanner(System.in);
 		
 		do {
-			System.out.print("¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä: ");
+			System.out.print("ìˆ«ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”: ");
 			numbersStr = numScanner.nextLine();
 			if(!isValidNumbers()) {
-				System.out.print("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ");
+				System.out.print("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. ë‹¤ì‹œ ");
 			}
 		} while (!isValidNumbers());
 		

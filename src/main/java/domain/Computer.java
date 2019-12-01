@@ -59,13 +59,13 @@ public class Computer {
 		int ballCounts = getBallCounts(userNumbers);
 		
 		if(strikeCounts != 0) {
-			System.out.print(strikeCounts + " ½ºÆ®¶óÀÌÅ© ");
+			System.out.print(strikeCounts + " ìŠ¤íŠ¸ë¼ì´í¬");
 		}
 		if(ballCounts != 0) {
-			System.out.print(ballCounts + "º¼");
+			System.out.print(ballCounts + "ë³¼");
 		}
 		if(strikeCounts == 0 && ballCounts == 0) {
-			System.out.print("³´½Ì");
+			System.out.print("ë‚«ì‹±");
 		}
 		System.out.print("\n");
 	}
