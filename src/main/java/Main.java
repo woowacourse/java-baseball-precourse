@@ -16,13 +16,19 @@ public class Main {
         Baseball baseball = new Baseball();
         String input;
 
-        System.out.println("숫자를 입력해주세요: ");
+        System.out.println("세 개의 숫자를 입력해주세요: ");
         input = scanner.next();
         baseball.setPlayersNum(input);
         System.out.println("입력한 숫자: " + baseball.getPlayersNums());
-        for (int i = 0; i < 10; i++) {
-            baseball.setComputersNum();
-            System.out.println("컴퓨터의 숫자: " + baseball.getComputersNums());
+        baseball.setComputersNum();
+        System.out.println("컴퓨터의 숫자: " + baseball.getComputersNums());
+
+        while (!baseball.checkSame()) {
+            baseball.calculateStrikesAndBalls();
+            System.out.println(baseball.getHint());
+            input = scanner.next();
+            baseball.setPlayersNum(input);
         }
+        System.out.println("축하드립니다!! 맞추셨습니다!!");
     }
 }

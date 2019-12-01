@@ -19,6 +19,11 @@ public class Baseball {
     /** 컴퓨터의 임의의 3개의 수 */
     private String computersNums;
 
+    /** 스트라이크 개수 */
+    private int strikes;
+    /** 볼 개수 */
+    private int balls;
+
     /**
      * 생성자 Baseball()
      */
@@ -98,6 +103,91 @@ public class Baseball {
         }
 
         return list;
+    }
+
+    /**
+     * @return playersNums와 computersNums가 같은지 여부
+     */
+    public boolean checkSame() {
+        return playersNums.compareTo(computersNums) == 0;
+    }
+
+    /**
+     * @return 힌트 문자열
+     */
+    public String getHint() {
+        StringBuilder answer = new StringBuilder();
+
+        if (strikes == 0 && balls == 0) {
+            return "낫싱";
+        }
+        else if (strikes == 0) {
+            answer.append(balls);
+            answer.append("볼");
+        }
+        else if (balls == 0) {
+            answer.append(strikes);
+            answer.append("스트라이크");
+        }
+        else {
+            answer.append(strikes);
+            answer.append("스트라이크 ");
+            answer.append(balls);
+            answer.append("볼");
+        }
+
+        return answer.toString();
+    }
+
+    /**
+     * strike와 ball의 개수를 계산하여 멤버 strikes와 balls에 저장
+     */
+    public void calculateStrikesAndBalls() {
+        resetStrikesAndBalls();
+
+        for (int i = 0; i < 3; i++) {
+            if (checkStrike(i)) {
+                strikes++;
+            }
+            else if (checkBall(i)) {
+                balls++;
+            }
+        }
+    }
+
+    /**
+     * 기존의 멤버 strikes와 balls를 리셋
+     */
+    private void resetStrikesAndBalls() {
+        strikes = 0;
+        balls = 0;
+    }
+
+    /**
+     * @param index 비교하고자 하는 playersNums의 index
+     * @return playersNums가 스트라이크를 올려주는지 여부
+     */
+    private boolean checkStrike(int index) {
+        return playersNums.charAt(index) == computersNums.charAt(index);
+    }
+
+    /**
+     * @param index 비교하고자 하는 playersNums의 index
+     * @return playersNums가 볼을 올려주는지 여부
+     */
+    private boolean checkBall(int index) {
+        char c = playersNums.charAt(index);
+        for (int i = 0; i < 3; i++) {
+            if (i == index) {
+                continue;
+            }
+
+            if (c == computersNums.charAt(i)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 
