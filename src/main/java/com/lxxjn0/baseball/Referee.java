@@ -1,5 +1,5 @@
 /*
- * @(#)Referee.java        0.2 2019/12/01
+ * @(#)Referee.java        0.3 2019/12/01
  *
  * Copyright (c) 2019 lxxjn0.
  */
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * 스트라이크와 볼의 개수를 확인하고 낫싱 여부를 판단하는 클래스.
  *
- * @version         0.1 2019/12/01
+ * @version         0.3 2019/12/01
  * @author          JUNYOUNG LEE (lxxjn0)
  */
 public class Referee {
@@ -53,6 +53,14 @@ public class Referee {
             }
         }
         return countBall;
+    }
+
+    /**
+     * 스트라이크와 볼의 개수를 통해 낫싱인지 여부를 판단하는 메서드.
+     * @return 낫싱일 경우 true를 반환.
+     */
+    public boolean judgeNothing() {
+        return (countStrikeNum() == JUDGE_NOTHING && countBallNum() == JUDGE_NOTHING);
     }
 
     /**
