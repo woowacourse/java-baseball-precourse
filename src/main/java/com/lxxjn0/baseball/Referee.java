@@ -1,5 +1,5 @@
 /*
- * @(#)Referee.java        0.1 2019/12/01
+ * @(#)Referee.java        0.2 2019/12/01
  *
  * Copyright (c) 2019 lxxjn0.
  */
@@ -36,6 +36,23 @@ public class Referee {
             }
         }
         return countStrike;
+    }
+
+    /**
+     * 다른 자리에 같은 숫자인지 판단하여 볼의 개수를 측정하는 메서드.
+     * @return 볼의 개수를 반환한다.
+     */
+    public int countBallNum() {
+        int countBall = 0;
+
+        for(int i = 0; i < NUM_LEN; i++) {
+            if(!comNumList.get(i).equals(userNumList.get(i))) {
+                if(userNumList.contains(comNumList.get(i))) {
+                    countBall++;
+                }
+            }
+        }
+        return countBall;
     }
 
     /**
