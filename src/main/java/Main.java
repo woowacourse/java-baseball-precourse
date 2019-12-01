@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -90,7 +91,50 @@ public class Main {
         return numSet.size() == NUMS_MAX_LENGTH;
     }
 
-    public static void main(String[] args) {
-        System.out.println(pickComputerNums());
+    private static int countStrike(ArrayList<Integer> computerNums, ArrayList<Integer> userNums) {
+        int strike = 0;
+        for (int i=0; i<NUMS_MAX_LENGTH; i++) {
+            int computerNum = computerNums.get(i);
+            int userNum = userNums.get(i);
+            if(Objects.equals(computerNum, userNum)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    private static boolean isBall(int invalidIndex, int computerNum, ArrayList<Integer> userNums) {
+        for (int i=0; i<NUMS_MAX_LENGTH; i++) {
+            if (invalidIndex != i && computerNum == userNums.get(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static int countBall(ArrayList<Integer> computerNums, ArrayList<Integer> userNums) {
+        int ball = 0;
+        for (int i=0; i<NUMS_MAX_LENGTH; i++) {
+            if (isBall(i, computerNums.get(i), userNums)) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
+    private static String getScoreMessage(ArrayList<Integer> computerNums, ArrayList<Integer> userNums) {
+        int strike = countStrike(computerNums, userNums);
+        int ball = countBall(computerNums, userNums);
+        if (strike == 0 && ball == 0) {
+            return "낫싱";
+        }
+        StringBuilder sb = new StringBuilder();
+        if (strike != 0) {
+            sb.append(strike).append("스트라이크 ");
+        }
+        if (ball != 0) {
+            sb.append(ball).append("볼");
+        }
+        return sb.toString().trim();
     }
 }
