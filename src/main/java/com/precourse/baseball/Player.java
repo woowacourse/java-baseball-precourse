@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.3.7   2019-12-01
+ * Player.java                     2.3.8ㅎ   2019-12-01
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -18,8 +18,8 @@ import java.io.InputStreamReader;
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.3.7                     giveHintAboutNumbers method의
- *                                    불필요한 조건문 수정
+ * @version 2.3.8                     Setter methods 의 배열 복사를
+ *                               System.arraycopy를 사용하도록 변경
  * @date 2019-12-01
  */
 public class Player {
@@ -157,14 +157,10 @@ public class Player {
 
     /* Setter Methods */
     public void setDigitMasks(boolean[] digitMasks) {
-        for (int i = 0; i < digitMasks.length; i++) {
-            this.digitMasks[i] = digitMasks[i];
-        }
+        System.arraycopy(digitMasks, 0, this.digitMasks, 0, digitMasks.length);
     }
 
     public void setDigitNumbers(int[] digitNumbers) {
-        for (int i = 0; i < digitNumbers.length; i++) {
-            this.digitNumbers[i] = digitNumbers[i];
-        }
+        System.arraycopy(digitNumbers, 0, this.digitNumbers, 0, digitNumbers.length);
     }
 }
