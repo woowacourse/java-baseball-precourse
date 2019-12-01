@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.3.3   2019-12-01
+ * Player.java                     2.3.4   2019-12-01
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -18,8 +18,8 @@ import java.io.InputStreamReader;
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.3.3                        readNumbers 메소드에서
- *                                  digitMasks 를 초기화하도록 수정
+ * @version 2.3.4         Gradle로 Run할 때, "숫자를 입력해주세요"가
+ *                        입력 후에 나오는 버그 수정
  * @date 2019-12-01
  */
 public class Player {
@@ -44,7 +44,7 @@ public class Player {
     public void readNumbers() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.print("숫자를 입력해주세요: ");
+        System.out.println("숫자를 입력해주세요: ");
         char[] input = br.readLine().toCharArray();
         if (!isRightDigit(input)) {
             printWrongInputMessage();
