@@ -8,9 +8,8 @@ public class Player {
 	private static final int ZERO = 0;
 	private static final int MAX_NUM = 9;
 	private static final int MIN_NUM = 0;
-	int tempNum;
-	String myStringNums;
-	List<Integer> myNums = new ArrayList<Integer>(BALL_LEN);
+	private String myStringNums;
+	private List<Integer> myNums = new ArrayList<Integer>(BALL_LEN);
 	Scanner sc = new Scanner(System.in);
 	
 	public void makeMyNums() {
@@ -29,9 +28,9 @@ public class Player {
 	}
 	private boolean checkOverlap() {
 		boolean status = true;
-		for(int i = 0; i < BALL_LEN; i++) {
-			String temp = myStringNums.replaceFirst(String.valueOf(myStringNums.charAt(i)),"");
-			if(temp.contains(String.valueOf(myStringNums.charAt(i)))) {
+		for (int i = 0; i < BALL_LEN; i++) {
+			String temp = myStringNums.replaceFirst(String.valueOf(myStringNums.charAt(i)), "");
+			if (temp.contains(String.valueOf(myStringNums.charAt(i)))) {
 				status = false;
 				break;
 			}
@@ -40,19 +39,22 @@ public class Player {
 	}
 	private boolean checkLength() {
 		boolean status = false;
-		if(myStringNums.length() == BALL_LEN) {
+		if (myStringNums.length() == BALL_LEN) {
 			status = true;
 		}
 		return status;
 	}
 	private boolean checkRange() {
 		boolean status = true;
-		for(int i = ZERO; i < BALL_LEN; i++) {
+		for (int i = ZERO; i < BALL_LEN; i++) {
 			if (myStringNums.charAt(i) - '0' <= MIN_NUM || myStringNums.charAt(i) - '0' > MAX_NUM) {
 				status = false;
 				break;
 			}
 		}
 		return status;
+	}
+	List<Integer> getMyNums() {
+		return myNums;
 	}
 }
