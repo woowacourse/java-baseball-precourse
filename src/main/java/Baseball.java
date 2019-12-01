@@ -6,7 +6,7 @@ import java.util.Scanner;
 /*
  * Baseball
  *
- * ver 0.4 - checkedNumbers(String numbers, String answer) 구현
+ * ver 0.5 - checkedNumbers(String numbers, String answer) 구현2
  *
  * 2019.12.02
  */
@@ -58,11 +58,33 @@ public class Baseball {
     }
 
     private static boolean checkedNumbers(String numbers, String answer) {
-        boolean recheck = true;
         if (numbers.equals(answer)) {
-            recheck = false;
+            System.out.println("3 스트라이크");
+            System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
+            return false;
         }
-        return recheck;
+        int[] score = new int[2];
+        for(int i = 0; i < 3; i++) {
+            if(numbers.charAt(i) == answer.charAt(0)
+                    || numbers.charAt(i) == answer.charAt(1)
+                    || numbers.charAt(i) == answer.charAt(2)) {
+                score[1] += 1;
+            }
+            if(numbers.charAt(i) == answer.charAt(i)) {
+                score[1] -= 1;
+                score[0] += 1;
+            }
+        }
+        if(score[0] == 0 && score[1] == 0) {
+            System.out.println("낫싱");
+        } else if(score[0] == 0 && score[1] > 0) {
+            System.out.println(score[1] + "볼");
+        } else if(score[0] > 0 && score[1] == 0) {
+            System.out.println(score[0] + " 스트라이크");
+        } else {
+            System.out.println(score[0] + " 스트라이크 " + score[1] + "볼");
+        }
+        return true;
     }
 
     private static boolean restart() {
