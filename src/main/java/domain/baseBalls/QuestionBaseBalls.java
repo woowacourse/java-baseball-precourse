@@ -12,11 +12,11 @@ public class QuestionBaseBalls extends BaseBalls {
 		super(numbers);
 	}
 
-	public static BaseBalls ofManual(List<Integer> numbers) {
-		return new BaseBalls(numbers);
+	public static QuestionBaseBalls ofManual(List<Integer> numbers) {
+		return new QuestionBaseBalls(numbers);
 	}
 
-	public ResultQuestion getCalcuateResult(AnswerBaseBalls answerBaseBalls) {
+	public ResultQuestion getCalculateResult(AnswerBaseBalls answerBaseBalls) {
 		return new ResultQuestion(answerBaseBalls);
 	}
 

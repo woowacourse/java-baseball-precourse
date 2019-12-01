@@ -9,10 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import domain.OneBaseBall;
-import domain.baseBalls.AnswerBaseBalls;
-import domain.baseBalls.BaseBalls;
-import domain.baseBalls.QuestionBaseBalls;
-import generator.RandomGameNumbersGenerator;
+import generator.CustomGameNumbersGenerator;
 
 @DisplayName("QuestionBaseBall 집합에 대한 테스트")
 class QuestionBaseBallsTest {
@@ -41,16 +38,24 @@ class QuestionBaseBallsTest {
 	}
 
 	@Test
-	@DisplayName("position에 따라 OneBaseBall 리턴하기")
+	@DisplayName("baseBalls 정답 여부 확인하기")
 	void findBaseBallByPosition() {
-		List<Integer> numbers = Arrays.asList(9, 7, 3);
-		BaseBalls baseBalls = QuestionBaseBalls.ofManual(numbers);
+		AnswerBaseBalls answer = AnswerBaseBalls.ofGenerator(new CustomGameNumbersGenerator(Arrays.asList(9, 7, 4)));
 
-		for (int i = 0; i < numbers.size(); i++) {
-			OneBaseBall baseBallByPosition = baseBalls.findBaseBallByPosition(i);
-			assertThat(baseBallByPosition.getBaseBallPosition()).isEqualTo(i);
-			assertThat(baseBallByPosition.getBaseBallNumber().getValue()).isEqualTo(numbers.get(i));
-		}
+		QuestionBaseBalls question1 = QuestionBaseBalls.ofManual(Arrays.asList(9, 7, 3));
+		QuestionBaseBalls question2 = QuestionBaseBalls.ofManual(Arrays.asList(4, 7, 3));
+		QuestionBaseBalls question3 = QuestionBaseBalls.ofManual(Arrays.asList(1, 2, 3));
+
+		QuestionBaseBalls.ResultQuestion calculateResult = question1.getCalculateResult(answer);
+		QuestionBaseBalls.ResultQuestion calculateResult1 = question2.getCalculateResult(answer);
+		QuestionBaseBalls.ResultQuestion calculateResult2 = question3.getCalculateResult(answer);
+
+		assertThat(calculateResult.getBall()).isEqualTo(0);
+		assertThat(calculateResult.getStrike()).isEqualTo(2);
+		assertThat(calculateResult1.getBall()).isEqualTo(1);
+		assertThat(calculateResult1.getStrike()).isEqualTo(1);
+		assertThat(calculateResult2.getBall()).isEqualTo(0);
+		assertThat(calculateResult2.getStrike()).isEqualTo(0);
 
 	}
 

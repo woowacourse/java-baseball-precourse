@@ -8,7 +8,7 @@
 - [ ] 4 : domain.BaseBallGame 클래스 하나에는 하나의 정답 domain.baseBalls.BaseBalls 객체가 들어간다.
 - [x] 5 : 사용자로부터 GameNumbers를 입력 받기위한 출력문이 있다.
 - [x] 6 : 사용자로부터 GameNumbers를 입력받는다.
-- [ ] 7 : BaseBallGame의 메소드로 들어온 domain.baseBalls.BaseBalls 객체의 결과를 리턴한다.
+- [x] 7 : BaseBallGame의 메소드로 들어온 domain.baseBalls.BaseBalls 객체의 결과를 리턴한다 10번과 중복
 - [ ] 8 : 리턴한 메소드를 받아서 결과를 출력한다.
 - [ ] 9 : 게임을 재시작하기 위한 사용자로부터의 입력을 받는다.
 - [x] 10 : 숫자 판단의 결과인 스트라이크 볼 나싱을 분류하기 위한 객체 QuestionResult.java를 만들었다.
