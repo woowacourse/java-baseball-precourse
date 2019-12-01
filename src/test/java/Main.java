@@ -18,10 +18,10 @@ public class Main {
             input = baseball.getLine();
             input = input.trim();
 
-            if (input == "1") {
+            if (input.equals("1")) {
                 continue;
             }
-            if (input == "2"){
+            if (input.equals("2")){
                 break;
             }
         }
