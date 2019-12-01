@@ -5,7 +5,7 @@ import java.util.Scanner;
 /*
  * Baseball
  *
- * ver 0.8 - 임의의 수 기능 수정(정렬되지 않도록)
+ * ver 0.9 - 예외 케이스 추가
  *
  * 2019.12.02
  */
@@ -44,6 +44,9 @@ public class Baseball {
             System.out.println("1 ~ 9까지 서로 다른 수로 이뤄진 3자리 수로 입력해주세요 : ");
             numbers = sc.nextLine();
             if (numbers.length() != 3
+                    || !('0' < numbers.charAt(0) && numbers.charAt(0) <= '9')
+                    || !('0' < numbers.charAt(1) && numbers.charAt(1) <= '9')
+                    || !('0' < numbers.charAt(2) && numbers.charAt(2) <= '9')
                     || numbers.charAt(0) == numbers.charAt(1)
                     || numbers.charAt(0) == numbers.charAt(2)
                     || numbers.charAt(1) == numbers.charAt(2)) {
@@ -106,4 +109,3 @@ public class Baseball {
         } while (restart());
     }
 }
-
