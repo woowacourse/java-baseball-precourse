@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @version 0.1 2019년 12월 2일
+ * @version 0.2 2019년 12월 2일
  * @author YerinCho
  */
 
@@ -121,5 +121,23 @@ public class Player {
 		return same;
 	}
 	
+	/*플레이어가 입력한 수에 0이 있는지 확인하는 함수*/
+	public boolean checkZero(String input) {
+		boolean zero=true;
+		
+		if(input.charAt(0)=='0') {
+			zero=false;
+		}
+		
+		if(input.charAt(1)=='0') {
+			zero=false;
+		}
+		
+		if(input.charAt(2)=='0') {
+			zero=false;
+		}
+		
+		return zero;
+	}
 	
 }
