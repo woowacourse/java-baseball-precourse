@@ -25,9 +25,7 @@ public class Baseball {
 
         Scanner scan = new Scanner(System.in);
 
-        while (isOverlap(answerNumber)) {      // 정답 숫자들이 서로 겹치지 않게 해주는 while 문. 겹치지 않을 때까지 돌린다.
-            answerNumber = initBaseballNumber(INIT_NUMBER, INIT_NUMBER, INIT_NUMBER);
-        }
+        answerNumber = initBaseballNumber(INIT_NUMBER, INIT_NUMBER, INIT_NUMBER);
 
         while (!finish) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -39,6 +37,7 @@ public class Baseball {
 
             if(finish && (scan.nextInt() == CONTINUE_GAME)) {
                 finish = false;
+                answerNumber = initBaseballNumber(INIT_NUMBER, INIT_NUMBER, INIT_NUMBER);
             }
         }
     }
@@ -53,9 +52,12 @@ public class Baseball {
         answerNumB = random.nextInt(RANDOM_MAX) + RAND0M_MIN;
         answerNumC = random.nextInt(RANDOM_MAX) + RAND0M_MIN;
 
-        int answerNum[] = {answerNumA, answerNumB, answerNumC};
+        int answerNumber[] = {answerNumA, answerNumB, answerNumC};
 
-        return answerNum;
+        if (isOverlap(answerNumber))        // 정답 숫자들이 서로 겹치는지 안겹치는지 확인하는 단계. 겹치지 않을 때까지 재귀한다.
+            return initBaseballNumber(answerNumA, answerNumB, answerNumC);
+        else
+            return answerNumber;
     }
 
     /*
