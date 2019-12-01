@@ -20,7 +20,7 @@ public class Baseball {
     public static void main(String[] args) {
 
         int answerNumber[] = new int[NUMBER_LENGTH];        // 정답 숫자들을 넣을 배열
-        int UserNumber[] = new int[NUMBER_LENGTH];             // 사용자가 입력한 숫자들을 넣을 배열
+        int userNumber[] = new int[NUMBER_LENGTH];             // 사용자가 입력한 숫자들을 넣을 배열
         boolean finish = false;                         // 정답을 맞출 때까지 정답을 입력받을 수 있게 하는 while 문을 멈추게 할 boolean 형 변수
 
         Scanner scan = new Scanner(System.in);
@@ -30,10 +30,10 @@ public class Baseball {
         while (!finish) {
             System.out.print("숫자를 입력해주세요 : ");
             int number = scan.nextInt();
-            UserNumber = splitNumbers(UserNumber, number);
+            userNumber = splitNumbers(userNumber, number);
 
-            finish = printResult(isStrike(answerNumber, UserNumber),
-                    isBall(answerNumber, UserNumber));
+            finish = printResult(isStrike(answerNumber, userNumber),
+                    isBall(answerNumber, userNumber));
 
             if(finish && (scan.nextInt() == CONTINUE_GAME)) {
                 finish = false;
