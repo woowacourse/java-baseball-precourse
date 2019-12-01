@@ -48,23 +48,29 @@ public class Player {
 		boolean check=true;
 		
 		/*플레이어가 입력한 값이 세자리인지 확인하는 조건문*/
-		if(checkLen(input)) {
+		if(checkLen(input)==false) {
 			check = false;		//세자리가 아닌경우 check에 false값 넣음.
 		}
 		
 		/*플레이어가 입력한 값이 숫자 세개로 되어있는지 확인하는 조건문*/
-		if(check && checkStr(input)) {
-			check = false;
+		if(check) {
+			if(checkStr(input)==false) {
+				check = false;
+			}
 		}
 		
 		/*플레이어가 입력한 값이 서로 다른지 확인하는 조건문*/
-		if(check && checkSame(input)) {
-			check = false;
+		if(check) {
+			if(checkSame(input)==false) {
+				check = false;
+			}
 		}
 		
 		/*플레이어가 입력한 값에 0이 있는지 확인하는 조건문*/
-		if(check && checkZero(input)) {
-			check = false;
+		if(check) { 
+			if (checkZero(input)==false) {
+				check = false;
+			}
 		}
 		
 		return check;
