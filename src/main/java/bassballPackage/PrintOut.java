@@ -1,5 +1,7 @@
 package bassballPackage;
 
+import java.util.Scanner; //newGameQuery에서 사용자 입력위해 필요.
+
 public class PrintOut {
 	static void printOut(int[] resultArr) {
 		int strike = resultArr[0];
@@ -19,6 +21,21 @@ public class PrintOut {
 		}
 	}
 	
+	static void newGameQuery() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("새 게임을 시작하려면 1, 프로그램을 종료하려면 2를 입력하세요.");
+		int userInput = input.nextInt(); //사용자 입력
+		
+		if (userInput == 1) {
+			System.out.println("사용자 입력: " + userInput);
+			System.out.println("새 게임을 시작합니다.");
+			//새 게임 시작위해서 컴퓨터 세 자리수 초기화를 위해서 cpuInput 메서드 호출해야할 자리.
+		} else if (userInput == 2) {
+			System.out.println("사용자 입력: " + userInput);
+			System.out.println("게임을 종료합니다.");
+			System.exit(0);
+		}
+	}
 	
 	
 	public static void main(String[] args) {
@@ -42,6 +59,8 @@ public class PrintOut {
 //		printOut(test8);
 //		printOut(test9);
 
+		//newGameQuery test
+		newGameQuery();
 	}
 
 }
