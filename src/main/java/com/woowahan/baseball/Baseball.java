@@ -1,3 +1,9 @@
+/*
+ * Baseball
+ * 2019.12.1
+ * 숫자야구 게임
+ */
+
 package com.woowahan.baseball;
 
 import java.util.ArrayList;
