@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public abstract class AbstractBaseball {
     protected abstract Integer getRandomInteger(int min, int max);
     protected abstract String getLine();
+    protected abstract ArrayList<Integer> stringToArrayList(String ballsString);
 
     protected final int BALLS = 3;
 
