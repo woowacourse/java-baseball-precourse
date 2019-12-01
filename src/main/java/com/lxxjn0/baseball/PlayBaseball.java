@@ -1,5 +1,5 @@
 /*
- * @(#)PlayBaseball.java        0.1 2019/12/01
+ * @(#)PlayBaseball.java        0.2 2019/12/01
  *
  * Copyright (c) 2019 lxxjn0.
  */
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * 게임의 전체적인 진행을 담당하고 컴퓨터와 사용자로부터 3자리 숫자를 저장하고 이를 통해 스트라이크와 볼, 그리고 낫싱 여부를 구해서 저장.
  * 위 결과를 통해 답과 일치하는지 여부를 판단하고 사용자로부터 입력을 받아서 게임의 진행 여부 결정하는 클래스.
  *
- * @version         0.1 2019/12/01
+ * @version         0.2 2019/12/01
  * @author          JUNYOUNG LEE (lxxjn0)
  */
 public class PlayBaseball {
@@ -30,7 +30,7 @@ public class PlayBaseball {
     public void Play() {
         do {
             run();
-        }while(/* user로부터 1을 입력받을 시 true, 2를 입력받을 시 false*/);
+        }while(continuePlay());
     }
 
     /**
@@ -70,5 +70,14 @@ public class PlayBaseball {
                 }
             }
         }while(!(countStrike == NUM_LEN));
+    }
+
+    /**
+     * 사용자로부터 입력을 받아 게임을 다시 시작 또는 종료 여부를 결정하는 메서드.
+     * @return 게임을 다시 시작할 경우 true를 반환한다.
+     */
+    private boolean continuePlay() {
+        User user = new User();
+        return user.continueCheck();
     }
 }

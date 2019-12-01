@@ -21,6 +21,10 @@ public class User {
     private static final int MAX_NUM = '9';
     /** 각 자리에 입력될 숫자 범위의 하한 문자 상수 */
     private static final int MIN_NUM = '1';
+    /** 게임을 다시 시작하는 입력을 확인하기 위한 문자열 상수 */
+    private static final String CONTINUE = "1";
+    /** 게임을 종료하는 입력을 확인하기 위한 문자열 상수 */
+    private static final String STOP = "2";
     /** 조건에 맞게 사용자가 입력한 3자리 수를 저장할 ArrayList */
     private ArrayList<Integer> numList;
 
@@ -137,5 +141,35 @@ public class User {
      */
     public ArrayList<Integer> getNumList() {
         return numList;
+    }
+
+    /**
+     * 사용자로부터 입력을 받아서 1을 입력받으면 다시 시작, 2를 입력받으면 종료하는 상태를 반환하는 메서드.
+     * @return 다시 시작을 입력받은 경우 true를 반환
+     */
+    public boolean continueCheck() {
+        String userInput = "";
+        boolean continueStat = true;
+        boolean validCheck = true;
+        Scanner sc = new Scanner(System.in);
+
+        do {
+            System.out.println("게임을 새로 시작하려면 1,종료하려면 2를 입력하세요.");
+            userInput = sc.next();
+            if(userInput.equals(CONTINUE)) {
+                continueStat = true;
+                validCheck = true;
+            }
+            else if(userInput.equals(STOP)) {
+                continueStat = false;
+                validCheck = true;
+            }
+            else {
+                System.out.println("잘못된 입력입니다! 조건을 확인한 후 다시 입력해주세요.");
+                validCheck = false;
+            }
+        }while(!validCheck);
+
+        return continueStat;
     }
 }
