@@ -1,8 +1,8 @@
-package bassballPackage;
+package com.precourse.bassballapp;
 
-import bassballPackage.UserInput;
+import com.precourse.bassballapp.User;
 
-public class UserInputTest {
+public class UserTest {
 
 	public static void main(String[] args) {
 		/*
@@ -25,7 +25,7 @@ public class UserInputTest {
 		
 		//userInputValid2 test
 		System.out.println("==userInputValid2 test==");
-		int[] result3 = UserInput.userInputValid2();
+		int[] result3 = User.getValidAnswer2();
 		System.out.println("결괏값 :" + result3[0]);
 
 	}

@@ -1,29 +1,34 @@
-package bassballPackage;
+package com.precourse.bassballapp;
 
 import java.util.InputMismatchException;
 import java.util.Scanner; //newGameQuery에서 사용자 입력위해 필요.
-import bassballPackage.CpuInput;
 
-public class PrintOut {
-	static void printOut(int[] resultArr) {
+import com.precourse.bassballapp.Cpu;
+
+public class Result {
+	static void print(int[] resultArr) {
 		int strike = resultArr[0];
 		int ball = resultArr[1];
 		
 		if (strike == 0 && ball == 0) {
 			String tmp = "결과: 낫싱";
 			System.out.println(tmp);
+			
 		} else if (strike == 3) {
 			String tmp = "결과 :" + strike + " 스트라이크";
 			System.out.println(tmp);
 			String tmp2 = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 			System.out.println(tmp2);
 			newGameQuery();
+			
 		} else if (strike == 0) {
 			String tmp = "결과: " + ball + " 볼";
 			System.out.println(tmp);
+			
 		} else if (ball == 0) {
 			String tmp = "결과: " + strike + " 스트라이크";
 			System.out.println(tmp);
+			
 		} else {
 			String tmp = "결과: " +strike+ " 스트라이크 " +ball+ " 볼";
 			System.out.println(tmp);
@@ -52,7 +57,7 @@ public class PrintOut {
 		} else if (userInput == 1) {
 			System.out.println("사용자 입력: " + userInput);
 			System.out.println("새 게임을 시작합니다.");
-			CpuInput.cpuNumArr = CpuInput.cpuInput();
+			Cpu.answerArr = Cpu.makeAnswer();
 		} else if (userInput == 2) {
 			System.out.println("사용자 입력: " + userInput);
 			System.out.println("게임을 종료합니다.");

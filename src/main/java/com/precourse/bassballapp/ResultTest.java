@@ -1,8 +1,8 @@
-package bassballPackage;
+package com.precourse.bassballapp;
 
-import bassballPackage.PrintOut;
+import com.precourse.bassballapp.Result;
 
-public class PrintOutTest {
+public class ResultTest {
 
 	public static void main(String[] args) {
 		/*
@@ -30,7 +30,7 @@ public class PrintOutTest {
 		
 		//newGameQuery test
 		System.out.println("==newGameQuery test==");
-		PrintOut.newGameQuery();
+		Result.newGameQuery();
 	}
 
 }

@@ -1,17 +1,17 @@
-package bassballPackage;
+package com.precourse.bassballapp;
 
-import bassballPackage.CpuInput;
+import com.precourse.bassballapp.Cpu;
 
-public class CpuInputTest {
+public class CpuTest {
 
 	public static void main(String[] args) {
 		//randomGenereation test
 		System.out.println("==randomGeneration test==");
-		System.out.println(CpuInput.randomGeneration());
+		System.out.println(Cpu.getRandomNum());
 		
 		//cpuInput test
 		System.out.println("==cpuInput test==");
-		int[] testArray = CpuInput.cpuInput();
+		int[] testArray = Cpu.makeAnswer();
 		System.out.println(testArray[0]);
 		System.out.println(testArray[1]);
 		System.out.println(testArray[2]);

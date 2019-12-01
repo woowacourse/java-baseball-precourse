@@ -1,12 +1,12 @@
-package bassballPackage;
+package com.precourse.bassballapp;
 
 import java.util.InputMismatchException; //예외처리위해 필요.
 import java.util.Scanner; //사용자 입력위해 필요.
 
-public class UserInput {
-	static int[] userNumArr;
+public class User {
+	static int[] answerArr;
 	
-	static int[] userInput(){
+	static int[] getAnswer(){
 		int[] result = new int[4];
 		Scanner input = new Scanner(System.in);			//이거 close해야될 것 같은데 어떻게 해야 할 지 모르겠다.(20줄 주석)
 		
@@ -27,10 +27,10 @@ public class UserInput {
 		return result;
 	}
 	
-	static int[] userInputValid() {
+	static int[] getValidAnswer() {
 		while (true) {
 			try {
-				return userInput();
+				return getAnswer();
 			} catch(InputMismatchException ime) {
 				System.out.println("잘못된 입력: 정수를 입력하세요.");
 				continue;
@@ -38,9 +38,9 @@ public class UserInput {
 		}
 	}
 	
-	static int[] userInputValid2() {			//자릿 수 검사
+	static int[] getValidAnswer2() {			//자릿 수 검사
 		while (true) {
-			int[] result = userInputValid();
+			int[] result = getValidAnswer();
 			
 			if (result[0] >= 1000 || result[0] < 100) {
 				String tmpTxt = "잘못된 입력: 세자리 수를 입력하세요.";
