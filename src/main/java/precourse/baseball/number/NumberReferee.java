@@ -68,11 +68,12 @@ public class NumberReferee implements Referee {
         if (result.getStrikes() != 0) {
             sentence += String.format("%d 스트라이크 ", result.getStrikes());
         }
-
         if (result.getB() != 0) {
             sentence += String.format("%d볼", result.getB());
         }
-
+        if ((result.getStrikes() == 0) && (result.getB() == 0)) {
+            sentence += "낫싱";
+        }
         System.out.println(sentence.trim());
 
         if (result.getStrikes() == 3 && result.getB() == 0) {
