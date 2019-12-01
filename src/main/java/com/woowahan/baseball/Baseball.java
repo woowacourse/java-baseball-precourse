@@ -66,19 +66,18 @@ public class Baseball extends AbstractBaseball{
 
     @Override
     protected BallResult evaluateBall(int ball, int order, ArrayList<Integer> answer) {
-        BallResult ballResult;
-        ballResult = BallResult.NONE;
+        int ballIdx = answer.indexOf(ball);
 
-        for(int i = 0; i < BALLS; i++){
-            if ( ball == answer.get(i) ){
-                ballResult = BallResult.BALL;
-            }
-            if ( ball == answer.get(i) && order == i) {
-                ballResult = BallResult.STRIKE;
-                break;
-            }
+        if (ballIdx == -1){
+            return BallResult.NONE;
         }
-        return ballResult;
+
+        if (ballIdx == order){
+            return BallResult.STRIKE;
+        }
+        else {
+            return BallResult.BALL;
+        }
     }
 
     @Override
