@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @version 0.2 2019년 12월 2일
+ * @version 0.3 2019년 12월 2일
  * @author YerinCho
  */
 
@@ -51,6 +51,12 @@ public class Player {
 		if(checkLen(input)==false) {
 			check = false;		//세자리가 아닌경우 check에 false값 넣음.
 		}
+		
+		/*
+		 *입력한 값의 길이가 3이 아닌 경우, 다른 확인 조건을 볼 필요가 없으므로 
+		 *check 변수의 값을 먼저 확인 한 후에 다른 조건을 확인한다.
+		 *이후 조건들도 마찬가지이다. 
+		 * */
 		
 		/*플레이어가 입력한 값이 숫자 세개로 되어있는지 확인하는 조건문*/
 		if(check) {
@@ -106,7 +112,8 @@ public class Player {
 	    } catch (NumberFormatException e) {
 	        return false;
 	    }
-	  }
+	}
+	
 	
 	/*플레이어가 입력한 수가 서로 다른지 확인하는 함수*/
 	public boolean checkSame(String input) {
