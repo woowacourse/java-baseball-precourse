@@ -20,5 +20,5 @@ public abstract class AbstractBaseball {
     protected abstract EarlyResults.EarlyResult evaluateBall(int ball, int order,  ArrayList<Integer> balls);
     protected abstract EarlyResults evaluateBalls(ArrayList<Integer> user, ArrayList<Integer> answer);
 
-    public abstract void Process();
+    public abstract void Run();
 }
