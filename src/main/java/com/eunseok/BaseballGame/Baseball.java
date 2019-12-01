@@ -71,7 +71,7 @@ public class Baseball {
     /**
      * 사용자에게 입력을 받는 메소드.
      */
-    private void makeInput(){
+    public void makeInput(){
         System.out.flush();
         System.out.print("숫자를 입력해주세요 : ");
         Scanner sc = new Scanner(System.in);
@@ -94,7 +94,7 @@ public class Baseball {
      * 각 자리 위치가 같으면 strike++, 다른위치이면 ball++
      * @return strike 의 개수를 return. start()메소드의 무한루프 탈출조건,중복숫자나 0 입력시 -1 return.
      */
-    private int check(){
+    public int check(){
         int strike = 0;
         int ball = 0;
 
