@@ -17,49 +17,50 @@ public class BaseballManager {
     public int strike = 0;
 
     // 필요한 함수를 호출하고 게임을 관리하는 함수
-    public void run(){
+    public void run() {
         createComputerNumber();
         getNumberFromUser();
         makeResult();
+        showResult();
     }
 
     // 컴퓨터 난수를 생성하는 함수
-    public void createComputerNumber(){
+    public void createComputerNumber() {
         int computerNumber = 0;
-        for(int i = 0; i < NUMBER_SIZE; i++) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
             computerNumber *= 10;
             computerNumber += (int) (Math.random() * 10);
         }
 
-        if(this.computerNumber == null)
+        if (this.computerNumber == null)
             this.computerNumber = new BaseballNumber();
 
-        if (new BaseballNumber().checkNumber(computerNumber)){
+        if (new BaseballNumber().checkNumber(computerNumber)) {
             this.computerNumber.setNumber(computerNumber);
-        }else{
+        } else {
             createComputerNumber();
         }
     }
 
     // 사용자로부터 숫자를 입력받는 함수
-    public void getNumberFromUser(){
+    public void getNumberFromUser() {
         System.out.println("숫자를 입력해주세요. : ");
         String input = scanner.nextLine();
         int inputNumber = 0;
         try {
             inputNumber = Integer.parseInt(input);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("문자가 아닌 숫자를 입력해야 합니다.");
             getNumberFromUser();
             return;
         }
 
-        if(this.userNumber == null)
+        if (this.userNumber == null)
             this.userNumber = new BaseballNumber();
 
-        if (new BaseballNumber().checkNumber(inputNumber)){
+        if (new BaseballNumber().checkNumber(inputNumber)) {
             this.userNumber.setNumber(inputNumber);
-        }else{
+        } else {
             System.out.println("숫자를 잘못 입력했습니다.");
             getNumberFromUser();
         }
@@ -67,11 +68,11 @@ public class BaseballManager {
 
     // Ball 개수를 검사하는 함수
     public void countBall(int index) {
-        for(int i = 0; i < NUMBER_SIZE; i++){
-            if(i == index) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
+            if (i == index) {
                 continue;
             }
-            if(computerNumber.getNumberFromIndex(index) == userNumber.getNumberFromIndex(i)) {
+            if (computerNumber.getNumberFromIndex(index) == userNumber.getNumberFromIndex(i)) {
                 ball++;
             }
         }
@@ -79,7 +80,7 @@ public class BaseballManager {
 
     // Strike 개수를 검사하는 함수
     public void countStrike(int index) {
-        if(computerNumber.getNumberFromIndex(index) == userNumber.getNumberFromIndex(index)) {
+        if (computerNumber.getNumberFromIndex(index) == userNumber.getNumberFromIndex(index)) {
             strike++;
         }
     }
@@ -88,9 +89,23 @@ public class BaseballManager {
     public void makeResult() {
         strike = 0;
         ball = 0;
-        for(int i = 0; i < NUMBER_SIZE; i++) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
             countBall(i);
             countStrike(i);
         }
+    }
+
+    // 결과를 출력하는 함수
+    public void showResult() {
+        if (strike > 0) {
+            System.out.print(strike + " 스트라이크 ");
+        }
+        if (ball > 0) {
+            System.out.print(ball + " 볼 ");
+        }
+        if (strike == 0 && ball == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.print("\n");
     }
 }
