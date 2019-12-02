@@ -92,5 +92,17 @@ public class baseball {
         }
         return;
     }
+    //Main부분, 시작과 종료를 확인
+    public static void main(String[] args){
+        int input;
+        int check = 1;
+        Scanner n = new Scanner(System.in);
 
+        while(check==1) {
+            Game();
+            System.out.println("Continue : 1 , End : 2");
+            input = n.nextInt();
+            check = input;
+        }
+    }
 }
