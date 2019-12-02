@@ -30,8 +30,8 @@ public class BaseballGame {
 		int strike = ZERO;
 		int ball = ZERO;
 		boolean status = true;
-		for(int i = 0; i < BALL_LEN; i++) {
-			for(int j = 0; j < BALL_LEN; j++) {
+		for (int i = 0; i < BALL_LEN; i++) {
+			for (int j = 0; j < BALL_LEN; j++) {
 				strike += countStrike(i, j);
 				ball += countBall(i,j);
 			}
