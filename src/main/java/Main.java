@@ -4,7 +4,12 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        start(sc);
+        String replay = "";
+
+        do {
+            start(sc);
+            replay = askReplay(sc);
+        } while (replay.equals("1"));
     }
 
     public static void start(Scanner sc) {
