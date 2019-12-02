@@ -29,10 +29,15 @@ public class NumberGetter {
     /** 플레이어로부터 숫자를 입력받는 로직을 진행하는 메서드  */
     public static int numberGetter() {
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            userNumber = getInputNumber();
-            if (userNumberChecker()) {
-                break;
+            try {
+                System.out.print("숫자를 입력해주세요 : ");
+                userNumber = getInputNumber();
+                if (userNumberChecker()) {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("숫자가 아닌 문자가 입력되었습니다. ");
+                continue;
             }
         }
 
