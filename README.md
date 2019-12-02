@@ -20,9 +20,9 @@ static void main 함수 위치
 하나의 숫자 야구 그룹(BaseBalls)은 여러 개의 야구볼(OneBaseBalls)로 이루어져 있다.
 
 ```json
-[{number:3, position: 1}, 
- {number:7, position: 2},
- {number:2, position: 3}]
+[{"number":3, "position": 1}, 
+ {"number":7, "position": 2},
+ {"number":2, "position": 3}]
 ```
 
 **domain/baseBalls/AnswerBaseBalls.java**
@@ -47,7 +47,7 @@ Question 숫자 야구 그룹을 인자로 들어온 Answer 숫자 야구 그룹
 이때 position을 멤버변수로 설정한 이유는, OneBaseBall이 모여서 List화 되었는데 한 개의 값이 사라지게 되면, 인덱스로 position을 판단하는게 불명확하다고 판단했기 때문이다.
 
 ```json
-{number:3, position: 1}
+{"number":3, "position": 1}
 ```
 
 **domain/BaseBallNumber.java**  
