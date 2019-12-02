@@ -28,7 +28,7 @@ public class Player {
 		
 		while(true) {
 			System.out.print("1부터 9까지의 서로 다른 세자리 숫자를 입력해주세요 : ");
-			tmpnum=sc.next();
+			tmpnum=sc.nextLine();
 			
 			/*플레이어가 입력한 값이 올바른지 처리하는 함수*/
 			if(checkInput(tmpnum)) {
@@ -38,7 +38,6 @@ public class Player {
 				System.out.println("입력한 값이 올바르지 않습니다.");
 			}
 		}
-		
 		/*문자였던 값을 정수로 변환*/
 		this.num=Integer.parseInt(tmpnum);
 	}
