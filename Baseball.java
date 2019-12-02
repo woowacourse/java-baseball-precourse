@@ -8,6 +8,8 @@ public class Baseball {
         while (!isValid(guess)) {
             guess = userGuess();
         }
+        int strike_count = countStrikes(answer, guess);
+        System.out.println(strike_count + "스트라이크");
     }
 
     private static String threeDigitInteger() {
@@ -40,8 +42,7 @@ public class Baseball {
     private static String userGuess() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
-        String input = scanner.nextLine();
-        return input;
+        return scanner.nextLine();
     }
 
     private static boolean isValid(String guess) {
@@ -87,5 +88,19 @@ public class Baseball {
             lump.add(digitString);
         }
         return false;
+    }
+
+    private static int countStrikes(String answer, String guess) {
+        assert isValid(answer) : "Invalid answer";
+        assert isValid(guess) : "Invalid guess";
+        char[] answerArray = answer.toCharArray();
+        char[] guessArray = guess.toCharArray();
+        int strike_count = 0;
+        for (int i = 0; i < 3; i++) {
+            if (answerArray[i] == guessArray[i]) {
+                strike_count += 1;
+            }
+        }
+        return strike_count;
     }
 }
