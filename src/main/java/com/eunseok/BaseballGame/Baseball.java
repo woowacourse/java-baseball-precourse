@@ -62,8 +62,6 @@ public class Baseball {
                 break;
             }
         }
-        for(int j=0; j<3;j++)
-            System.out.print(ans[j]);
     }
 
     /**
