@@ -1,9 +1,6 @@
 package com.github.callmewaggs.javabaseballprecourse;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Computer {
     private List<Integer> numbers;
@@ -13,7 +10,7 @@ public class Computer {
     }
 
     public void generateRandomBall() {
-        Set<Integer> candidates = new HashSet<>();
+        LinkedHashSet<Integer> candidates = new LinkedHashSet<>();
 
         while (candidates.size() < 3) {
             int number = (int) (Math.random() * 1000) % 9 + 1;
