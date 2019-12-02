@@ -8,7 +8,7 @@
  * @author Jung dahee
  */
  
- import java.util.Scanner;
+import java.util.Scanner;
 
 public class BaseballGame {
 
@@ -21,4 +21,17 @@ public class BaseballGame {
     	setGame();
     	play();
     }
+ 
+    /*
+     * 게임을 시작하기 전에 player1을 셋팅하는 메소드
+     */
+    private void setGame() {
+        boolean isUnique = false;
+    	
+        while(!isUnique){
+            player1 = Computer.make();
+            isUnique = input.checkData(player1);
+        }
+    }
+
 }
