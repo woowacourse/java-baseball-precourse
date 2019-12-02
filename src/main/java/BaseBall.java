@@ -4,48 +4,24 @@ public class BaseBall {
 	
 	public static void initBaseball() {
 		Scanner scanner = new Scanner(System.in);
-		int first_num; 
-		int second_num;
-		int third_num;
+		Count countSB = new Count();
+		int strike;
+		int ball;
 		
-		first_num = (int)(Math.random()*9) + 1;
-		second_num = (int)(Math.random()*9) + 1;
-		third_num = (int)(Math.random()*9) + 1;
+		countSB.getFirst();
+		countSB.getSecond();
+		countSB.getThird();
 		
 		while(true) {
-			int strike = 0;
-			int ball = 0;
-			int input_first;
-			int input_second;
-			int input_third;
-			
 			System.out.print("숫자를 입력해주세요 : ");
 			int input = scanner.nextInt();
 			
-			input_first = input/100;
-			input_second = (input%100)/10;
-			input_third = input%10;
+			countSB.input_first = input/100;
+			countSB.input_second = (input%100)/10;
+			countSB.input_third = input%10;
 			
-			if(first_num == input_first) {
-				strike++;
-			}
-			else if(first_num == input_second || first_num == input_third) {
-				ball++;
-			}
-			
-			if(second_num == input_second) {
-				strike++;
-			}
-			else if(second_num == input_first || second_num == input_third) {
-				ball++;
-			}
-			
-			if(third_num == input_third) {
-				strike++;
-			}
-			else if(third_num == input_first || third_num == input_second) {
-				ball++;
-			}
+			strike = countSB.getS();
+			ball = countSB.getB();
 			
 			if(strike != 0) {
 				System.out.print(strike + " 스트라이크 ");
