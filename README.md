@@ -28,5 +28,5 @@
     
   * UserPlayer : BallPlayer 구현체
     - prepareBall() : 입력으로 받은 3자리 숫자 생성
-    - isValidate(userInput) : 입력으로 받은 문자열의 유효성 검증
+    - parseInput(userInput) : 입력으로 받은 문자열을 List로 리턴
     - getBall() : 멤버변수 ball의 getter method
