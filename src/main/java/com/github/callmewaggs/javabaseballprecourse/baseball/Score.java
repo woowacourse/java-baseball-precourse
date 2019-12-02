@@ -1,4 +1,4 @@
-package com.github.callmewaggs.javabaseballprecourse;
+package com.github.callmewaggs.javabaseballprecourse.baseball;
 
 import java.util.List;
 
@@ -24,7 +24,10 @@ public class Score {
         this.win = false;
     }
 
-    public void calculateWinning(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    public void calculateWinning(Ball computerBall, Ball userBall) {
+        List<Integer> computerNumbers = computerBall.getNumbers();
+        List<Integer> userNumbers = userBall.getNumbers();
+
         for(int i = 0 ; i < 3 ; ++i) {
             for(int j = 0 ; j < 3; ++j) {
                 calculateScore(computerNumbers.get(i), userNumbers.get(j), i, j);

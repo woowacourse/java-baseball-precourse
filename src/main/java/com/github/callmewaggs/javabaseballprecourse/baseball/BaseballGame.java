@@ -1,34 +1,31 @@
-package com.github.callmewaggs.javabaseballprecourse;
+package com.github.callmewaggs.javabaseballprecourse.baseball;
+
+import com.github.callmewaggs.javabaseballprecourse.baseball.player.ComputerPlayer;
+import com.github.callmewaggs.javabaseballprecourse.baseball.player.UserPlayer;
 
 import java.util.Scanner;
 
-public class Game {
-    private Computer computer;
-    private User user;
+public class BaseballGame {
+    private ComputerPlayer computerPlayer;
+    private UserPlayer userPlayer;
     private Score score;
     private boolean play;
 
-    public Game() {
-        computer = new Computer();
-        user = new User();
-        score = new Score();
-        play = true;
+    public BaseballGame() {
+        this.computerPlayer = new ComputerPlayer();
+        this.userPlayer = new UserPlayer();
+        this.score = new Score();
+        this.play = true;
     }
 
     public void gameStart() {
-        computer.generateRandomBall();
+        computerPlayer.prepareBall();
 
         while (play) {
-            System.out.print("computer : ");
-            for(int num : computer.getNumbers()) {
-                System.out.print(num);
-            }
-            System.out.println();
-
             score.init();
-            user.generateInputBall();
+            userPlayer.prepareBall();
 
-            score.calculateWinning(computer.getNumbers(), user.getNumbers());
+            score.calculateWinning(computerPlayer.getBall(), userPlayer.getBall());
             score.printScore();
 
             if (score.isWin()) {
@@ -51,7 +48,7 @@ public class Game {
         }
 
         if (flag == 1) {
-            computer.generateRandomBall();
+            computerPlayer.prepareBall();
             score.init();
         } else {
             play = false;
