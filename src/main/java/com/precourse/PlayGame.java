@@ -1,4 +1,13 @@
-package com.precourse; /**
+/**
+ * Copyright (c) 2019 Seungwan Park,
+ * All rights reserved.
+ */
+
+package com.precourse;
+
+import java.util.ArrayList;
+
+/**
  * 클래스 이름 : PlayGame.java
  *
  * @version 1.0
@@ -7,15 +16,12 @@ package com.precourse; /**
  *
  * @author Seungwan Park, github.com/toneyparky
  */
-
-import java.util.ArrayList;
-
-/**
- * PlayGame 클래스에서는 게임을 실행하는 로직을 담당한다.
- * NumberGenerator클래스의 numberGenerator를 이용하여 만든 세자리수를 guessingNumberList에 저장한다.
- */
-
 public class PlayGame {
+    /*
+     * PlayGame 클래스에서는 게임을 실행하는 로직을 담당한다.
+     * NumberGenerator클래스의 numberGenerator를 이용하여 만든 세자리수를 guessingNumberList에 저장한다.
+     */
+
     private static ArrayList<Integer> guessingNumberList = new ArrayList<>();
     private static ArrayList<Integer> userNumberList = new ArrayList<>();
     private static ArrayList<Integer> ballStrikeList = new ArrayList<>();

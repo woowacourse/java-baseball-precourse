@@ -1,4 +1,13 @@
 /**
+ * Copyright (c) 2019 Seungwan Park,
+ * All rights reserved.
+ */
+
+package com.precourse;
+
+import java.util.ArrayList;
+
+/**
  * 클래스 이름 : NumberComparer.java
  *
  * @version 1.0
@@ -7,16 +16,11 @@
  *
  * @author Seungwan Park, github.com/toneyparky
  */
-
-package com.precourse;
-
-import java.util.ArrayList;
-
-/**
- * NumberComparer 클래스에서는 맞춰야할 숫자와 플레이어의 숫자를 비교하여 볼, 스트라이크 판정을 내린다.
- */
-
 public class NumberComparer {
+    /*
+     * NumberComparer 클래스에서는 맞춰야할 숫자와 플레이어의 숫자를 비교하여 볼, 스트라이크 판정을 내린다.
+     */
+
     private static final int NUMBER_LENGTH = 3;
 
     private static ArrayList<Integer> guessingNumberList = new ArrayList<>();

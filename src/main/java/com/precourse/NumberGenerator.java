@@ -1,4 +1,14 @@
-package com.precourse; /**
+/**
+ * Copyright (c) 2019 Seungwan Park,
+ * All rights reserved.
+ */
+
+package com.precourse;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+/**
  * 클래스 이름 : NumberGenerator.java
  *
  * @version 1.0
@@ -7,15 +17,10 @@ package com.precourse; /**
  *
  * @author Seungwan Park, github.com/toneyparky
  */
-
-import java.util.ArrayList;
-import java.util.Random;
-
-/**
- * NumberGenerator 클래스에서는 플레이어가 맞춰야할 수를 생성한다.
- */
-
 public class NumberGenerator {
+    /*
+     * NumberGenerator 클래스에서는 플레이어가 맞춰야할 수를 생성한다.
+     */
 
     private static final int NUMBER_LENGTH = 3;
     private static ArrayList<Integer> numberList = new ArrayList<>();

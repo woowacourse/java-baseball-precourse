@@ -1,4 +1,13 @@
-package com.precourse; /**
+/**
+ * Copyright (c) 2019 Seungwan Park,
+ * All rights reserved.
+ */
+
+package com.precourse;
+
+import java.util.*;
+
+/**
  * 클래스 이름 : NumberGetter.java
  *
  * @version 1.0
@@ -7,14 +16,10 @@ package com.precourse; /**
  *
  * @author Seungwan Park, github.com/toneyparky
  */
-
-import java.util.*;
-
-/**
- * NumberGetter 클래스에서는 플레이어의 수를 입력받는다.
- */
-
 public class NumberGetter {
+    /*
+     * NumberGetter 클래스에서는 플레이어의 수를 입력받는다.
+     */
 
     private static final int NUMBER_LENGTH = 3;
     private static int userNumber;

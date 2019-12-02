@@ -1,4 +1,14 @@
-package com.precourse; /**
+/**
+ * Copyright (c) 2019 Seungwan Park,
+ * All rights reserved.
+ */
+
+package com.precourse;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+/**
  * 클래스 이름 : IntegerToArrayList.java
  *
  * @version 1.0
@@ -7,14 +17,11 @@ package com.precourse; /**
  *
  * @author Seungwan Park, github.com/toneyparky
  */
-
-import java.util.ArrayList;
-import java.util.Collections;
-
-/**
- * IntegerToArrayList 클래스에서는 플레이어의 입력 숫자를 ArrayList로 바꾸어준다.
- */
 public class IntegerToArrayList {
+    /*
+     * IntegerToArrayList 클래스에서는 플레이어의 입력 숫자를 ArrayList로 바꾸어준다.
+     */
+
     private static final int DEVIDE_NUMBER = 10;
 
     private static ArrayList<Integer> numberList = new ArrayList<>();
