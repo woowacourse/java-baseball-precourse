@@ -84,4 +84,25 @@ public class Main {
         }
         return result;
     }
+
+    public static void printResult(int[] result) {
+        int strike = result[0];
+        int ball = result[1];
+        String msg = "";
+
+        if ((strike == 3) && (ball == 0)) {         //3스트라이크, 0볼인 경우 정답
+            msg = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+            msg += "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+        } else if ((strike == 0) && (ball == 0)) {
+            msg = "낫싱";
+        } else {
+            if (strike != 0) {
+                msg += strike + "스트라이크 ";
+            }
+            if (ball != 0) {
+                msg += ball + "볼";
+            }
+        }
+        System.out.println(msg);
+    }
 }
