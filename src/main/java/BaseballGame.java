@@ -20,7 +20,7 @@ public class BaseballGame {
             resultArray.add(x);
         }
 
-        System.out.println(resultArray);
+//        System.out.println(resultArray);
 
         return resultArray;
     }
@@ -61,22 +61,34 @@ public class BaseballGame {
         return false;
     }
 
-    public static void main(String[] args) {
-
-        ArrayList<String> computerNumber = generateRandomNumber();
+    public static void playGame() {
 
         Scanner input = new Scanner(System.in);
+
+        ArrayList<String> computerNumber = generateRandomNumber();
 
         boolean isCorrect = false;
 
         do {
 
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.println("숫자를 입력해주세요 : ");
             String userNumber = input.next();
 
             isCorrect = checkResult(computerNumber, userNumber);
 
         } while(isCorrect == false);
 
+    }
+
+    public static void main(String[] args) {
+
+        String userChoice = "";
+        Scanner input = new Scanner(System.in);
+
+        while (!userChoice.equals("2")) {
+            playGame();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
+            userChoice = input.next();
+        }
     }
 }
