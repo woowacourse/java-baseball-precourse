@@ -7,9 +7,10 @@ import java.util.HashSet;
 
 public class BaseballGameSystem {
     public static final int CONTINUE = 1;
-    public static final int GAMEOVER = 2;
+    public static final int GAME_OVER = 2;
 
     private static final int DIGIT = 3;
+    private static final int FINISH_CONDITION = 3;
 
     private int strikeCount, ballCount;
     private int[] userNumberArr;
@@ -27,11 +28,9 @@ public class BaseballGameSystem {
     }
 
     public void playInGame() {
-        int userNumber;
-
-        while (strikeCount != 3) {
+        while (strikeCount != FINISH_CONDITION) {
             initPitchCount();
-            userNumber = InputBaseballGame.inputUserNumber();
+            int userNumber = InputBaseballGame.inputUserNumber();
             checkAnswer(userNumber);
             OutputBaseballGame.printPitchResult(strikeCount, ballCount);
         }
@@ -71,9 +70,9 @@ public class BaseballGameSystem {
 
     public void setPitchCount(int ans, int index) {
         for (int i = 0; i < DIGIT; i++) {
-            if (i == index && userNumberArr[i] == ans)
+            if (isStrike(index, ans, i))
                 strikeCount++;
-            else if (userNumberArr[i] == ans)
+            else if (isBall(ans, i))
                 ballCount++;
         }
     }
@@ -81,5 +80,13 @@ public class BaseballGameSystem {
     public void initPitchCount() {
         strikeCount = 0;
         ballCount = 0;
+    }
+
+    public boolean isStrike(int answerIndex, int answerNumber, int userIndex) {
+        return answerIndex == userIndex && userNumberArr[userIndex] == answerNumber;
+    }
+
+    public boolean isBall(int answerNumber, int userIndex) {
+        return userNumberArr[userIndex] == answerNumber;
     }
 }

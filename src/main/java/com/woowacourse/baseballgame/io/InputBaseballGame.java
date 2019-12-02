@@ -3,7 +3,7 @@ package com.woowacourse.baseballgame.io;
 import java.util.Scanner;
 
 import static com.woowacourse.baseballgame.system.BaseballGameSystem.CONTINUE;
-import static com.woowacourse.baseballgame.system.BaseballGameSystem.GAMEOVER;
+import static com.woowacourse.baseballgame.system.BaseballGameSystem.GAME_OVER;
 
 public class InputBaseballGame {
     private static final int MIN_NUM = 111;
@@ -28,7 +28,7 @@ public class InputBaseballGame {
     }
 
     public static int validateNextStep(int nextStep) {
-        if (nextStep != CONTINUE && nextStep != GAMEOVER)
+        if (nextStep != CONTINUE && nextStep != GAME_OVER)
             throw new IllegalStateException("'1', '2'만 입력할 수 있습니다.");
         return nextStep;
     }
