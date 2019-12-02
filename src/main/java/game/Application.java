@@ -16,7 +16,9 @@ import game.utils.OutputUtil;
 
 public class Application {
     public static void main(String[] args) throws Exception {
-        play();
+        do {
+            play();
+        } while(isOngoing());
     }
 
     /**
@@ -50,5 +52,9 @@ public class Application {
             OutputUtil.showError(e);
             return inputNumbers();
         }
+    }
+
+    private static boolean isOngoing() {
+        return InputUtil.inputIntentionOfReplay() == 1;
     }
 }
