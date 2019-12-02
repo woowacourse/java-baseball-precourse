@@ -1,7 +1,7 @@
 package generator;
 
-import static domain.BaseBallGame.*;
 import static domain.BaseBallNumber.*;
+import static gameRunner.BaseBallGame.*;
 
 import java.util.ArrayList;
 import java.util.Collections;

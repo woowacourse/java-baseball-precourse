@@ -1,19 +1,20 @@
-import domain.BaseBallGame;
+package gameRunner;
+
 import generator.RandomGameNumbersGenerator;
 import io.InputView;
 
-class GameMachine {
+public class GameMachine {
 
 	private final int START = 1;
 	private final int END = 2;
 
 	private InputView inputView;
 
-	GameMachine() {
+	public GameMachine() {
 		this.inputView = new InputView(System.in);
 	}
 
-	void runBaseBallGameOnce() {
+	public void runBaseBallGameOnce() {
 		BaseBallGame baseBallGame = new BaseBallGame(new RandomGameNumbersGenerator());
 		baseBallGame.executeUserInput(this.inputView);
 		startNewBaseBallGame();

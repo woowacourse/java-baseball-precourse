@@ -13,11 +13,4 @@ public class AnswerBaseBalls extends BaseBalls {
 	public static AnswerBaseBalls ofGenerator(GameNumbersGenerator generator) {
 		return new AnswerBaseBalls(generator.getGeneratedNumbers());
 	}
-
-	public void print() {
-		this.getBaseBalls().stream().forEach(x -> {
-			System.out.println(
-				String.format("pos : %d, value : %d", x.getBaseBallPosition(), x.getBaseBallNumber().getValue()));
-		});
-	}
 }

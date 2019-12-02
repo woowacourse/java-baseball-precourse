@@ -2,10 +2,10 @@
 
 ### 구현할 기능 목록 : 나의 세미 이슈!
 
-- [x] 1 : 컴퓨터가 게임을 하나 생성하기 : domain.BaseBallGame.class
+- [x] 1 : 컴퓨터가 게임을 하나 생성하기 : gameRunner.BaseBallGame.class
 - [x] 2 : 3개의 숫자, 순서 배열을 하나로 묶는 단위 : domain.baseBalls.BaseBalls.class
 - [x] 3 : 한개의 숫자의 단위 - 1~9 검증 : BaseBallNumber.class
-- [x] 4 : domain.BaseBallGame 클래스 하나에는 하나의 정답 domain.baseBalls.BaseBalls 객체가 들어간다.
+- [x] 4 : gameRunner.BaseBallGame 클래스 하나에는 하나의 정답 domain.baseBalls.BaseBalls 객체가 들어간다.
 - [x] 5 : 사용자로부터 GameNumbers를 입력 받기위한 출력문이 있다.
 - [x] 6 : 사용자로부터 GameNumbers를 입력받는다.
 - [x] 7 : BaseBallGame의 메소드로 들어온 domain.baseBalls.BaseBalls 객체의 결과를 리턴한다 10번과 중복

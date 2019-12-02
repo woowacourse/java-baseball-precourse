@@ -1,4 +1,4 @@
-package domain;
+package gameRunner;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ public class BaseBallGame {
 
 	private AnswerBaseBalls collectBaseBalls;
 
-	public BaseBallGame(GameNumbersGenerator gameNumbersGenerator) {
+	BaseBallGame(GameNumbersGenerator gameNumbersGenerator) {
 		this.collectBaseBalls = AnswerBaseBalls.ofGenerator(gameNumbersGenerator);
 	}
 
-	public void executeUserInput(InputView inputView) {
+	void executeUserInput(InputView inputView) {
 		QuestionBaseBalls.Result result;
 		do {
 			result = getQuestionBaseBall(inputView).getCalculateResult(this.collectBaseBalls);
