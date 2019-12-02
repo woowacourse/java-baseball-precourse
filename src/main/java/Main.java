@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -8,6 +9,7 @@ public class Main {
 //        System.out.println("정답: " + answer);
         String input = inputNumbers(sc);
 //        System.out.println("입력값: " + input);
+        boolean success = checkSuccess(answer, input);
     }
 
     public static String makeNumbers() {
@@ -52,6 +54,14 @@ public class Main {
             return "";
         }else{
             return numbers;
+        }
+    }
+
+    public static boolean checkSuccess(String ballNumbers, String inputNumbers) {
+        if (ballNumbers.equals(inputNumbers)) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
