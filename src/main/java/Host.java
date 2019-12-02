@@ -9,13 +9,14 @@ public class Host {
     private static final int DEFAULT_NUMBER_FOR_COUNTING = 0;
 
     private List<Integer> numbers;
+    private Random randomNumberGenerator;
 
     Host() {
         this.numbers = new ArrayList<>();
+        randomNumberGenerator = new Random();
     }
 
     public void generateRandomNumbers() {
-        Random randomNumberGenerator = new Random();
         while (numbers.size() != COUNT_SHOULD_BE_MATCHED) {
             Integer number = randomNumberGenerator.nextInt(MAX_NUMBER_BOUNDARY);
 
