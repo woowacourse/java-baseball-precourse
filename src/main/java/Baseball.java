@@ -47,8 +47,51 @@ public class Baseball {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
                 return;
             }
+
+            System.out.println(getHint());
         }
     }
+
+    private static String getHint() {
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int i = 0; i < secretNumber.length(); i++) {
+            if (inputNumber.charAt(i) == secretNumber.charAt(i)) {
+                strikeCount += 1;
+                continue;
+            }
+            ballCount += getBallCount(i);
+        }
+        return formatHint(strikeCount, ballCount);
+    }
+
+    private static int getBallCount(int index) {
+        int count = 0;
+        for (int j = 0; j < secretNumber.length(); j++) {
+            if (inputNumber.charAt(index) == secretNumber.charAt(j)) {
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    private static String formatHint(int strikeCount, int ballCount) {
+        String strikeForm = "";
+        String ballForm = "";
+
+        if (strikeCount != 0) {
+            strikeForm = strikeCount + " 스트라이크 ";
+        }
+        if (ballCount != 0) {
+            ballForm = ballCount + "볼";
+        }
+        if (strikeCount == 0 && ballCount == 0) {
+            ballForm = "낫싱";
+        }
+        return strikeForm + ballForm;
+    }
+
 
     private static String getInputString() {
         Scanner scanner = new Scanner(System.in);
