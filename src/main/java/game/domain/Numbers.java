@@ -12,13 +12,14 @@ import java.util.stream.Collectors;
 
 public class Numbers {
     public static final int SIZE = 3;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 9;
     public static final String INPUT_ERROR_MESSAGE = "잘못된 입력";
     private final List<Integer> numbers;
 
     /**
      * Create an numbers which is composed of three different digits from one to nine.
+     *
      * @param inputText
      * @throws RuntimeException
      */
@@ -29,6 +30,7 @@ public class Numbers {
     /**
      * This is a static factory method that converts input values
      * into three single digits after validation.
+     *
      * @param inputText
      * @return Numbers, that the inputText is divided into three single digits.
      */
@@ -42,7 +44,7 @@ public class Numbers {
                 .collect(Collectors.toList());
     }
 
-    private List<Integer> verify(List<Integer> inputNumbers) throws Exception{
+    private List<Integer> verify(List<Integer> inputNumbers) throws Exception {
         List<Integer> refinedNumbers = removeInvalidElement(inputNumbers);
         if (refinedNumbers.size() != SIZE) {
             throw new RuntimeException(INPUT_ERROR_MESSAGE);
@@ -63,5 +65,26 @@ public class Numbers {
 
     public int getSize() {
         return numbers.size();
+    }
+
+    public int matchStrike(Numbers otherNumbers) {
+        int countOfStrike = 0;
+        for (int index = 0; index < SIZE; index++) {
+            if (numbers.get(index).equals(otherNumbers.numbers.get(index))) {
+                countOfStrike++;
+            }
+        }
+        return countOfStrike;
+    }
+
+    public int matchBall(Numbers otherNumbers) {
+        int countOfBall = 0;
+        for (int index = 0; index < SIZE; index++) {
+            int number = this.numbers.get(index);
+            if (otherNumbers.numbers.contains(number) && otherNumbers.numbers.indexOf(number) != index) {
+                countOfBall++;
+            }
+        }
+        return countOfBall;
     }
 }

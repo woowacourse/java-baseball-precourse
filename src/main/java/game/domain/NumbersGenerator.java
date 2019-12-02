@@ -1,3 +1,4 @@
+package game.domain;
 
 /*
  * NumbersGenerator.java
@@ -5,7 +6,6 @@
  * @version 1.0.0
  * @date 2019-12-02
  */
-package game.domain;
-
-public class NumbersGenerator {
+public interface NumbersGenerator {
+    String generate();
 }
