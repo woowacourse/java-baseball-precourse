@@ -103,7 +103,7 @@ public class BaseballGame {
         int sameCnt = 0;
     	
         if(c == d) {
-    	       sameCnt++;
+            sameCnt++;
         } 
         return sameCnt;
     }
@@ -115,8 +115,23 @@ public class BaseballGame {
         String s = Character.toString(player2);
     	
         if(player1.contains(s)) {
-    	        return 1; 
+            return 1; 
         } 
         return 0;
+    }
+ 
+    private void end(){
+        String signal = null;
+    	
+        while (signal == null) {
+            printer.printMessage(3);
+            signal = inputData();
+        }
+
+        if(signal.equals("1")){
+            setGame();
+            play();
+        } 
+        System.exit(0);
     }
 }
