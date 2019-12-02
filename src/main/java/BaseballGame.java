@@ -8,40 +8,36 @@ public class BaseballGame {
 
     public static ArrayList<String> generateRandomNumber() {
         Random rand = new Random();
-
+        ArrayList<String> resultArray = new ArrayList<String>(3);
         Set<String> set = new LinkedHashSet<String>();
+
         while (set.size() < 3) {
             set.add(Integer.toString(rand.nextInt(9) + 1));
         }
 
-        ArrayList<String> resultArray = new ArrayList<String>(3);
-
         for (String x : set) {
             resultArray.add(x);
         }
-
-//        System.out.println(resultArray);
-
+        //  System.out.println(resultArray);
         return resultArray;
     }
 
     public static boolean checkResult(ArrayList<String> input1, String input2) {
-
         int strikeCount = 0;
         int ballCount = 0;
         boolean isNothing = false;
 
-        ArrayList<String> input1Array = input1;
-        ArrayList<String> input2Array = new ArrayList<String>();
+        ArrayList<String> computerInputArray = input1;
+        ArrayList<String> userInputArray = new ArrayList<String>();
 
         for(int i = 0; i < input2.length(); i++) {
-            input2Array.add(String.valueOf(input2.charAt(i)));
+            userInputArray.add(String.valueOf(input2.charAt(i)));
         }
 
-        for(int i = 0; i < input2Array.size(); i++) {
-            if (input1Array.get(i).equals(input2Array.get(i)) == true) {
+        for(int i = 0; i < userInputArray.size(); i++) {
+            if (computerInputArray.get(i).equals(userInputArray.get(i)) == true) {
                 strikeCount++;
-            } else if (input1Array.contains(input2Array.get(i)) == true) {
+            } else if (computerInputArray.contains(userInputArray.get(i)) == true) {
                 ballCount++;
             }
         }
@@ -62,26 +58,19 @@ public class BaseballGame {
     }
 
     public static void playGame() {
-
-        Scanner input = new Scanner(System.in);
-
+        Scanner userInput = new Scanner(System.in);
         ArrayList<String> computerNumber = generateRandomNumber();
-
         boolean isCorrect = false;
 
         do {
-
             System.out.println("숫자를 입력해주세요 : ");
-            String userNumber = input.next();
-
+            String userNumber = userInput.next();
             isCorrect = checkResult(computerNumber, userNumber);
-
-        } while(isCorrect == false);
+        } while (isCorrect == false);
 
     }
 
     public static void main(String[] args) {
-
         String userChoice = "";
         Scanner input = new Scanner(System.in);
 
