@@ -68,19 +68,19 @@ public class BaseballGame {
      * 플레이어로부터 입력 값을 받는 메소드
      */
     private String inputData() {
-    	   Scanner sc = new Scanner(System.in);
-    	   String data = sc.nextLine();
+        Scanner sc = new Scanner(System.in);
+        String data = sc.nextLine();
     	
-    	   if(data.equals("")) {
-    		      printer.printMessage(2);
-    		      return null;
-    	   } else {
-    		      return data;
+        if(data.equals("")) {
+            printer.printMessage(2);
+            return null;
+        } else {
+            return data;
     	   }
     }
  
     /*
-     * 스트라이크, 볼을 판단하는 메소드
+     * 채점하는 메소드
      */
     private boolean judge(){ 
         int strikeCnt = 0;
@@ -97,14 +97,26 @@ public class BaseballGame {
     }
  
     /*
-     * 숫자를 비교하는 메소드
+     * 스트라이크를 판단하는 메소드
      */
     private int compareNum(char c, char d) {
         int sameCnt = 0;
     	
         if(c == d) {
     	       sameCnt++;
-    	   } 
-    	   return sameCnt;
+        } 
+        return sameCnt;
+    }
+ 
+    /*
+     * 볼을 판단하는 메소드
+     */
+    private int containNum(char player2) {
+        String s = Character.toString(player2);
+    	
+        if(player1.contains(s)) {
+    	        return 1; 
+        } 
+        return 0;
     }
 }
