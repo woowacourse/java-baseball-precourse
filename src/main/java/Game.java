@@ -19,8 +19,17 @@ public class Game {
   }
 
   private boolean play() {
+    int inputNumber = this.io.getNumberOfUser();
 
-    return true;
+    int[] score = this.baseBall.matchNumber(inputNumber);
+
+    this.io.printResult(score);
+
+    if (score[0] >= 3) {
+      return true;
+    }
+    return false;
+
   }
 
 
