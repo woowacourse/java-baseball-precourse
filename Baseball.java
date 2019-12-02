@@ -4,9 +4,10 @@ import java.util.stream.*;
 public class Baseball {
     public static void main(String[] args) {
         String answer = threeDigitInteger();
-        System.out.println(answer);
         String guess = userGuess();
-        System.out.println(guess);
+        while (!isValid(guess)) {
+            guess = userGuess();
+        }
     }
 
     private static String threeDigitInteger() {
@@ -41,5 +42,50 @@ public class Baseball {
         System.out.print("숫자를 입력해주세요 : ");
         String input = scanner.nextLine();
         return input;
+    }
+
+    private static boolean isValid(String guess) {
+        // 1. 3개의 문자로 이루어진 문자열임
+        if (guess.length() != 3) {
+            System.out.println("3자리의 수만 입력 가능합니다.");
+            return false;
+        }
+        // 2. 모든 문자가 1부터 9사이의 숫자임
+        if (!allValidDigits(guess)) {
+            System.out.println("1부터 9까지의 숫자만 입력 가능합니다.");
+            return false;
+        }
+        // 3. 중복되는 숫자가 없음
+        if (hasDuplicates(guess)) {
+            System.out.println("숫자가 중복되면 안됩니다.");
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isValidDigit(char digit) {
+        String allowedDigits = toDigitString(allowedDigits());
+        return allowedDigits.indexOf(digit) >= 0;
+    }
+
+    private static boolean allValidDigits(String guess) {
+        for (char digit : guess.toCharArray()) {
+            if (!isValidDigit(digit)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean hasDuplicates(String guess) {
+        Set<String> lump = new HashSet<String>();
+        for (char digit : guess.toCharArray()) {
+            String digitString = Character.toString(digit);
+            if (lump.contains(digitString)) {
+                return true;
+            }
+            lump.add(digitString);
+        }
+        return false;
     }
 }
