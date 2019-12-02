@@ -1,5 +1,7 @@
-main : run program
-strike: calculate the strike value
-ball: calculate the ball value
-random: create the random value
-game: operate game
+<h1>숫자 야구게임</h1>
+<h2>기능 소개</h2>
+<p>매인: 프로그램 실행</p>
+<p>게임: 프로그램 제어</p>
+<p>볼: 볼 값 계산</p>
+<p>스트라이크: 스트라이크 값 계산</p>
+<p>랜덤: 랜덤변수 생성</p>
