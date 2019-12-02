@@ -111,4 +111,15 @@ public class Main {
         }
         System.out.println(msg);
     }
+
+    public static String askReplay(Scanner sc) {
+        String re = sc.nextLine();
+
+        while (!(re.equals("1") || re.equals("2"))) {
+            System.out.println("입력 형식이 잘못되었습니다.");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            re = sc.nextLine();
+        }
+        return re;
+    }
 }
