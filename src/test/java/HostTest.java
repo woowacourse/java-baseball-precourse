@@ -35,14 +35,14 @@ class HostTest {
     @Test
     void generate_baseball_numbers() {
 
-        /* when: host의 generateNumbers 메서드를 실행하면 */
-        host.generateNumbers();
+        /* when: host의 generateRandomNumbers 메서드를 실행하면 */
+        host.generateRandomNumbers();
         List<Integer> numbers = host.getNumbers();
 
         /* then: numbers에 중복되지 않은 1에서 9까지의 숫자가 생성된다 */
         assertTrue(checkNumberBetweenOneAndNine(numbers));
         assertTrue(checkNoDuplication(numbers));
-        assertTrue(numbers.size() == Host.baseballGameSize);
+        assertTrue(numbers.size() == Host.COUNT_SHOULD_BE_MATCHED);
 
     }
 

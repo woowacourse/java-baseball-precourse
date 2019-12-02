@@ -39,7 +39,7 @@ public class Game {
     }
 
     private void initGame() {
-        host.generateNumbers();
+        host.generateRandomNumbers();
     }
 
     private List<Integer> takeNumbersFromUser() {

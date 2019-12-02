@@ -1,19 +1,23 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Host {
 
-    public static final int baseballGameSize = 3;
+    public static final int COUNT_SHOULD_BE_MATCHED = 3;
+    private static final int MAX_NUMBER_BOUNDARY = 10;
+    private static final int DEFAULT_NUMBER_FOR_COUNTING = 0;
 
     private List<Integer> numbers;
 
     Host() {
-        this.numbers = new ArrayList<Integer>();
+        this.numbers = new ArrayList<>();
     }
 
-    public void generateNumbers() {
-        while (numbers.size() != baseballGameSize) {
-            Integer number = (int) (Math.random() * 10);
+    public void generateRandomNumbers() {
+        Random randomNumberGenerator = new Random();
+        while (numbers.size() != COUNT_SHOULD_BE_MATCHED) {
+            Integer number = randomNumberGenerator.nextInt(MAX_NUMBER_BOUNDARY);
 
             if (number != 0 && !numbers.contains(number)) {
                 numbers.add(number);
@@ -42,7 +46,7 @@ public class Host {
     }
 
     public int countNumOfStrikes(List<Integer> inputNumbers) {
-        int numOfStrikes = 0;
+        int numOfStrikes = DEFAULT_NUMBER_FOR_COUNTING;
         for (int i = 0; i < numbers.size(); i++) {
             if (numbers.get(i).equals(inputNumbers.get(i))) {
                 numOfStrikes++;
@@ -52,13 +56,13 @@ public class Host {
     }
 
     public int countNumOfBalls(List<Integer> inputNumbers) {
-        int numOfBalls = 0;
+        int numOfMatch = DEFAULT_NUMBER_FOR_COUNTING;
         for (int i = 0; i < numbers.size(); i++) {
             if (findAnyMatch(inputNumbers, numbers.get(i))) {
-                numOfBalls++;
+                numOfMatch++;
             }
         }
-        return numOfBalls - countNumOfStrikes(inputNumbers);
+        return numOfMatch - countNumOfStrikes(inputNumbers);
     }
 
     private boolean findAnyMatch(List<Integer> inputNumbers, Integer number) {
@@ -71,7 +75,7 @@ public class Host {
     }
 
     public boolean matchAllNumbers(List<Integer> inputNumbers) {
-        return countNumOfStrikes(inputNumbers) == baseballGameSize;
+        return countNumOfStrikes(inputNumbers) == COUNT_SHOULD_BE_MATCHED;
     }
 
     public List<Integer> getNumbers() {
