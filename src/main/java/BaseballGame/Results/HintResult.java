@@ -1,3 +1,7 @@
+package BaseballGame.Results;
+
+import BaseballGame.ComparedResult;
+
 public class HintResult implements ComparedResult {
     private int strike;
     private int ball;

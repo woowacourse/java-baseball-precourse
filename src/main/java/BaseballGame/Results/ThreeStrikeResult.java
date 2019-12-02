@@ -1,3 +1,7 @@
+package BaseballGame.Results;
+
+import BaseballGame.ComparedResult;
+
 public class ThreeStrikeResult implements ComparedResult {
     @Override
     public void printMessage() {

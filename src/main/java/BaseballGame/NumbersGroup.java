@@ -1,3 +1,9 @@
+package BaseballGame;
+
+import BaseballGame.Results.HintResult;
+import BaseballGame.Results.NothingResult;
+import BaseballGame.Results.ThreeStrikeResult;
+
 import java.util.*;
 
 public class NumbersGroup {

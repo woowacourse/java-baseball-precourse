@@ -1,3 +1,5 @@
+package BaseballGame;
+
 public class BaseballGame {
     private NumbersGroup answerNumbers;
     private User user;

@@ -1,3 +1,5 @@
+package BaseballGame;
+
 public interface ComparedResult {
     void printMessage();
 
