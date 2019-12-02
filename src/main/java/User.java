@@ -12,19 +12,16 @@ public class User {
     private final int USER_BAT_SIZE = 3;
 
     public List<Integer> getUserBat() {
-
         displayGetUserBat();
         List<Integer> userBaseballBat;
-
         while(true) {
             try {
-                userBaseballBat = userBatArray();
+                userBaseballBat = getUserBats();
                 break;
             } catch (Exception e) {
                 System.out.println("서로 다른 1 ~ 9 까지의 숫자를 입력해주세요");
             }
         }
-
         return userBaseballBat;
     }
 
@@ -32,35 +29,34 @@ public class User {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-
-    private List<Integer> userBatArray() throws NumberFormatException {
-
+    private List<Integer> getUserBats() throws NumberFormatException {
         Scanner scanUserBat = new Scanner(System.in);
         String userBatValue = scanUserBat.next();
         int userBat = Integer.parseInt(userBatValue);
-
-        if(userBatValue.length() != USER_BAT_SIZE) { throw new NumberFormatException(); }
-
-        return checkSameBat(userBat);
+        if(userBatValue.length() != USER_BAT_SIZE) {
+            throw new NumberFormatException();
+        }
+        return checkUserBats(userBat);
     }
 
-    private List<Integer> checkSameBat(int userBat) {
-
+    private List<Integer> checkUserBats(int userBat) {
         int batValue = userBat;
         List<Integer> userBats = new ArrayList<>();
-
         for(int i = FIRST_BALL; i >= LAST_BALL; i--) {
             int bat = batValue/(int) (Math.pow(DIVIDE_BAT_VALUE,i));
-            checkUnsatisfactBat(userBats, bat);
+            checkIncorrectUserBat(userBats, bat);
             batValue = batValue % (int) (Math.pow(DIVIDE_BAT_VALUE,i));
         }
-
         return userBats;
     }
 
-    private void checkUnsatisfactBat(List<Integer> userBats, int bat) {
-        if(bat < MIN_BASEBALL_NUMBER || bat > MAX_BASEBALL_NUMBER) { throw new NumberFormatException(); }
-        if (userBats.contains(bat)) { throw new NumberFormatException(); }
+    private void checkIncorrectUserBat(List<Integer> userBats, int bat) {
+        if(bat < MIN_BASEBALL_NUMBER || bat > MAX_BASEBALL_NUMBER) {
+            throw new NumberFormatException();
+        }
+        if (userBats.contains(bat)) {
+            throw new NumberFormatException();
+        }
         userBats.add(bat);
     }
 }
