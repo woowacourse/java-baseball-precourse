@@ -1,5 +1,8 @@
 package src.main.java;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class BaseballGame {
 
 	private static final int DIGITS = 3;
@@ -20,12 +23,16 @@ public class BaseballGame {
 
 
 	void play() {
-		com.createNumbers();
-		while(!checkAnswer()) {
-			player.createNumbers();
-			calculateScore();
-			showResult();
+		while(true) {
+			com.createNumbers();
+			while(!checkAnswer()) {
+				player.createNumbers();
+				calculateScore();
+				showResult();
+			}
+			restartOrExit();
 		}
+		
 		
 	}
 
@@ -60,5 +67,27 @@ public class BaseballGame {
 			return true;
 		}
 		return false;
+	}
+	
+	private void restartOrExit() {
+		Scanner input = new Scanner(System.in);
+		int inputValue = 0;
+		while (true) {
+			try {
+				inputValue = input.nextInt();
+				break;
+			} catch (InputMismatchException e) {
+				checkAnswer();
+				input = new Scanner(System.in);
+			} catch (Exception e) {
+			}
+		}
+		if (inputValue == EXIT) {
+			System.exit(0);
+		}
+
+		strike = 0;
+		ball = 0;
+
 	}
 }
