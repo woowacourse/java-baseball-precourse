@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.3.8ㅎ   2019-12-01
+ * Player.java                     2.3.8   2019-12-01
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -162,5 +162,10 @@ public class Player {
 
     public void setDigitNumbers(int[] digitNumbers) {
         System.arraycopy(digitNumbers, 0, this.digitNumbers, 0, digitNumbers.length);
+    }
+
+    @Override
+    protected final void finalize() throws Throwable {
+        // do nothing
     }
 }

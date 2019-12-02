@@ -87,4 +87,9 @@ public class Game {
     private static void printWrongInputMessage() {
         System.out.println("ERROR! 잘못된 입력입니다!");
     }
+
+    @Override
+    protected final void finalize() throws Throwable {
+        // do nothing
+    }
 }
