@@ -8,7 +8,14 @@ public class BullsAndCows {
 
         for (Object it : myNumber)
             System.out.print(it);
-        //Scanner sc = new Scanner(System.in);
-        //System.out.println(sc.next());
+        System.out.println();
+
+        //////////////////////////////////////
+        InputOutput io = new InputOutput();
+        List input = io.getInput(digit);
+
+//        for (Object it: input)
+//            System.out.print(it);
     }
+
 }

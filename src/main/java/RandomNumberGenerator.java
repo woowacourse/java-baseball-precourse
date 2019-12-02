@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
 /**
  * RandomNumberGenerator 클래스는 자릿수에 걸맞는 임의의 난수 조합을 생성합니다.
  */
