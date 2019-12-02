@@ -33,5 +33,34 @@ public class BaseballGame {
             isUnique = input.checkData(player1);
         }
     }
-
+ 
+    /*
+     * 전체적인 게임의 로직을 관리하는 메소드
+     */
+    private void play(){
+        boolean isCorrect = false;
+    	   boolean isUnique = false;
+    	   player2 = null;
+    	
+        while(true){
+            printer.printMessage(0);
+            player2 = inputData();
+            
+            if(player2 == null) {
+                continue;
+            }
+            
+            isUnique = input.checkData(player2); 
+            
+            if(isUnique) {
+                isCorrect = judge();
+            } else {
+                printer.printMessage(1);
+            }
+            
+            if(isCorrect) {
+            	   end();
+            }
+        }
+    }
 }
