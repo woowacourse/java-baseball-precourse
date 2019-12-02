@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b26b07b-df23-4903-9ddf-f9fdc2a50226" name="Default Changelist" comment="">
+    <list default="true" id="3b26b07b-df23-4903-9ddf-f9fdc2a50226" name="Default Changelist" comment="사용자 입력 오류 및 볼 체크 오류 수정">
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Computer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameCheck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
     </list>
@@ -62,8 +63,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ComputerNumber" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ComputerNumber" />
+    <configuration name="GameRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GameRun" />
+      <module name="java-baseball-precourse.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="java-baseball-precourse.main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -92,17 +100,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Computer" />
-      <item itemvalue="Application.ComputerNumber" />
       <item itemvalue="Application.User" />
-      <item itemvalue="Application.MainGame" />
       <item itemvalue="Spring Boot.DemoApplication" />
+      <item itemvalue="Application.GameRun" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.MainGame" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainGame" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GameRun" />
         <item itemvalue="Application.User" />
         <item itemvalue="Application.Computer" />
-        <item itemvalue="Application.ComputerNumber" />
       </list>
     </recent_temporary>
   </component>
@@ -142,7 +152,7 @@
       <workItem from="1575185656285" duration="63000" />
       <workItem from="1575185737757" duration="108000" />
       <workItem from="1575185867843" duration="4440000" />
-      <workItem from="1575255387480" duration="1379000" />
+      <workItem from="1575255387480" duration="3549000" />
     </task>
     <task id="LOCAL-00001" summary="기능목록구현 작성">
       <created>1575094989034</created>
@@ -172,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575256359506</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="사용자 입력 오류 및 볼 체크 오류 수정">
+      <created>1575256842864</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1575256842864</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +200,8 @@
     <MESSAGE value="컴퓨터(정답) 임의의 수 생성" />
     <MESSAGE value="사용자 입력 받기" />
     <MESSAGE value="사용자 값과 컴퓨터 값과 비교" />
-    <option name="LAST_COMMIT_MESSAGE" value="사용자 값과 컴퓨터 값과 비교" />
+    <MESSAGE value="사용자 입력 오류 및 볼 체크 오류 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="사용자 입력 오류 및 볼 체크 오류 수정" />
   </component>
   <component name="WindowStateProjectService">
     <state x="379" y="93" width="827" height="679" key="#Project_Structure" timestamp="1575185212563">
@@ -198,10 +216,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="626" y="119" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.824@0.0.1536.824" timestamp="1575178465569" />
-    <state x="536" y="9" key="CommitChangelistDialog2" timestamp="1575256358769">
+    <state x="494" y="9" key="CommitChangelistDialog2" timestamp="1575257583828">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="536" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575256358769" />
+    <state x="494" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575257583828" />
     <state x="294" y="69" key="DiffContextDialog" timestamp="1575176629770">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -210,22 +228,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1575107082580" />
-    <state width="1495" height="210" key="GridCell.Tab.0.bottom" timestamp="1575256787869">
+    <state width="1495" height="210" key="GridCell.Tab.0.bottom" timestamp="1575258853969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575256787869" />
-    <state width="1495" height="210" key="GridCell.Tab.0.center" timestamp="1575256787868">
+    <state width="1495" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575258853969" />
+    <state width="1495" height="210" key="GridCell.Tab.0.center" timestamp="1575258853969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575256787868" />
-    <state width="1495" height="210" key="GridCell.Tab.0.left" timestamp="1575256787868">
+    <state width="1495" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575258853969" />
+    <state width="1495" height="210" key="GridCell.Tab.0.left" timestamp="1575258853968">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575256787868" />
-    <state width="1495" height="210" key="GridCell.Tab.0.right" timestamp="1575256787868">
+    <state width="1495" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575258853968" />
+    <state width="1495" height="210" key="GridCell.Tab.0.right" timestamp="1575258853969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575256787868" />
+    <state width="1495" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575258853969" />
     <state width="1495" height="262" key="GridCell.Tab.1.bottom" timestamp="1575256631731">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -254,6 +272,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="459" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1575255397706" />
+    <state x="457" y="31" width="622" height="762" key="find.popup" timestamp="1575257580058">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="457" y="31" width="622" height="762" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1575257580058" />
     <state x="180" y="26" key="new project wizard" timestamp="1575108007016">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
