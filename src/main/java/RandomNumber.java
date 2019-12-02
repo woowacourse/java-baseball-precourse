@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * 클래스 이름      RandomNumber
  * 버전 정보        1.0
@@ -5,11 +7,14 @@
  * 저작권          YebinK
  */
 
-import java.util.Random;
-
 public class RandomNumber {
+    /* 랜덤으로 1부터 9까지 서로 다른 3자리 수를 뽑는 클래스 */
 
+
+    /** 정답 숫자를 저장하는 변수 */
     private int [] number = new int[3];
+
+    /** 서로 다른 숫자인지 확인하기 위해 number 변수의 index를 기록하는 변수 */
     private int numberIndex = 0;
 
     /* 1부터 9까지 서로 다른 3자리 수 뽑기 */
@@ -24,8 +29,6 @@ public class RandomNumber {
                 numberIndex++;
             }
         }
-
-        System.out.println("answer is " + number[0]+number[1]+number[2] +'\n');
         return number;
     }
 
