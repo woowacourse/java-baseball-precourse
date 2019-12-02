@@ -40,4 +40,11 @@ public class InputVerification {
     		&& (player.charAt(1) != player.charAt(2))
     		&& (player.charAt(0) != player.charAt(2));
     }
+
+    /*
+     * 들어온 데이터가 3자리 수가 맞는지 확인하는 메소드
+     */
+    private boolean checkNumCnt(String player) { 
+    	return player.length() == 3;
+    }
 }
