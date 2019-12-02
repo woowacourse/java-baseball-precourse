@@ -5,7 +5,7 @@
     
   * Game
     - gameStart() : 게임 실행 로직
-    - gameAgain() : 게임 다시시작/종료 여부
+    - askGameAgain() : 게임 다시시작/종료 여부
     
   * Score
     - init() : strike / ball 점수 초기화
