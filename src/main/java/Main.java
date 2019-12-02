@@ -28,6 +28,8 @@ public class Main {
 
         while (inputNumbers.equals("")) {
             inputNumbers = sc.nextLine();
+            inputNumbers = validate(inputNumbers);
+//            System.out.println("수정된 입력값: " + inputNumbers);
         }
         return inputNumbers;
     }
