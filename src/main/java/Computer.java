@@ -13,7 +13,7 @@ public class Computer {
     private void setRandomNumber() {
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < Constant.CHECKLIST_SIZE; i++) {
             checkList.add(false);
         }
         addNumber(checkList);
@@ -23,8 +23,8 @@ public class Computer {
         Random random = new Random();
         int ranNum;
 
-        for (int i = 0; i < 3; ) {
-            ranNum = random.nextInt(9) + 1;
+        for (int i = 0; i < Constant.NUM_SIZE; ) {
+            ranNum = random.nextInt(Constant.RAN_NUM_RANGE) + 1;
             while (list.get(ranNum).equals(false)) {
                 list.set(ranNum, true);
                 computerNumberSet.add(ranNum);

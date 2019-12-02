@@ -8,22 +8,22 @@ public class Player {
     }
 
     public String inputNumber(String input) {
-        if (input.length() != 3)
-            return "3자리의 수를 입력해주세요.";
-        if (!checkContainZero(input))
-            return "0을 제외하고 입력해주세요.";
+    	if (!checkContainZero(input))
+            return Constant.STR_ZERO_EXCEPT;
+    	if (input.length() != Constant.NUM_SIZE)
+            return Constant.STR_LENGTH_THREE;
         if (!checkValidation(input))
-            return "서로 다른 수로 이루어진 3자리 수를 입력해주세요.";
+            return Constant.STR_EACH_DIFF_NUM;
         playerNumberSet.clear();
         for (char c : input.toCharArray()) {
-            playerNumberSet.add(c - '0');
+            playerNumberSet.add(c - Constant.CHAR_ZERO);
         }
-        return "";
+        return Constant.STR_EMPTY;
     }
 
     private boolean checkContainZero(String input) {
         for (char c : input.toCharArray()) {
-            if (!(c >= 49 && c <= 57))
+            if (!(c >= Constant.ASCII_ONE && c <= Constant.ASCII_NINE))
                 return false;
         }
         return true;
@@ -32,12 +32,12 @@ public class Player {
     private boolean checkValidation(String input) {
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < Constant.CHECKLIST_SIZE; i++) {
             checkList.add(false);
         }
-        checkList.set(input.charAt(0) - '0', true);
+        checkList.set(input.charAt(0) - Constant.CHAR_ZERO, true);
         for (int i = 1; i < input.length(); i++) {
-            if (checkList.get(input.charAt(i) - '0').equals(true)) {
+            if (checkList.get(input.charAt(i) - Constant.CHAR_ZERO).equals(true)) {
                 return false;
             }
         }
