@@ -9,12 +9,9 @@ public class Baseball {
             guess = userGuess();
         }
         int strikeCount = countStrikes(answer, guess);
-        System.out.println(strikeCount + "스트라이크");
-        List<Integer> ballIndices = findBalls(answer, guess);
-        System.out.println(ballIndices);
         int ballCount = countBalls(answer, guess);
-        System.out.println(ballCount + "볼");
-
+        String result = formatResult(strikeCount, ballCount);
+        System.out.println(result);
     }
 
     private static String threeDigitInteger() {
@@ -144,5 +141,18 @@ public class Baseball {
             }
         }
         return ballIndices;
+    }
+
+    private static String formatResult(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount == 0) {
+            return "낫싱";
+        }
+        if (strikeCount == 0) {
+            return ballCount + "볼";
+        }
+        if (ballCount == 0) {
+            return strikeCount + "스트라이크";
+        }
+        return strikeCount + "스트라이크" + " " + ballCount + "볼";
     }
 }
