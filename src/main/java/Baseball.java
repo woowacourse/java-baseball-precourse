@@ -8,10 +8,7 @@ public class Baseball {
 
     public static void main(String[] args) {
         secretNumber = makeDifferentNumbers();
-
-        System.out.print("숫자를 입력해주세요 : ");
-        inputNumber = getInputString();
-        validateInput();
+        scoreInput();
     }
 
     private static String makeDifferentNumbers() {
@@ -39,16 +36,29 @@ public class Baseball {
         return false;
     }
 
+    private static void scoreInput() {
+
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            inputNumber = getInputString();
+            validateInput();
+
+            if (inputNumber.equals(secretNumber)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                return;
+            }
+        }
+    }
+
     private static String getInputString() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
     private static void validateInput() {
-        while(inputNumber.length() != secretNumber.length()){
+        while (inputNumber.length() != secretNumber.length()) {
             System.out.printf("%d 자리의 숫자를 입력해주세요.\n", secretNumber.length());
             inputNumber = getInputString();
         }
     }
-
 }
