@@ -26,7 +26,6 @@ public class NumberGetter {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             userNumber = getInputNumber();
-            System.out.println("hihi: " + userNumber);
             if (userNumberChecker()) {
                 break;
             }
@@ -73,7 +72,6 @@ public class NumberGetter {
         ArrayList<Integer> repeatCheckList = IntegerToArrayList.integerToArrayList(userNumber);
         Set<Integer> repeatCheckHash = new HashSet<>(repeatCheckList);
 
-        System.out.println("repeatCheckHash: "  + repeatCheckHash.size());
         if (repeatCheckHash.size() != NUMBER_LENGTH) {
             return false;
         }

@@ -34,7 +34,8 @@ public class NumberGenerator {
     }
 
     /** 반복되지 않는 수를 생성하도록 하는 메서드 */
-    public static ArrayList<Integer> getRandomNonRepeatingIntegers(int size, int min, int max) {
+    public static ArrayList<Integer> getRandomNonRepeatingIntegers(
+            int size, int min, int max) {
         ArrayList<Integer> numbers = new ArrayList<>();
 
         while (numbers.size() < size) {
