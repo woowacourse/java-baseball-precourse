@@ -69,4 +69,14 @@ public class baseball {
             strike++;
         return strike;
     }
+
+    // Check Answer 하는 부분
+    public static boolean checkAns() {
+        if(strCnt == 3){
+            System.out.println("You won the game!!!");
+            System.out.println("Game Over");
+            return true;
+        }
+        return false;
+    }
 }
