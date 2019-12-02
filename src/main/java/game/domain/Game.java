@@ -17,7 +17,6 @@ public class Game {
      */
     public Game(NumbersGenerator numbersGenerator) throws Exception {
         this.answerNumbers = Numbers.valueOf(numbersGenerator.generate());
-        System.out.println(answerNumbers);
     }
 
     /**
