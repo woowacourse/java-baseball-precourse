@@ -79,4 +79,18 @@ public class baseball {
         }
         return false;
     }
+    // Game을 들어가는 부분
+    public static void Game(){
+        setNum();
+        int input;
+        boolean check = false;
+        Scanner n = new Scanner(System.in);
+        while(!check) {
+            System.out.println("Insert Number");
+            input = n.nextInt();
+            check = getNum(input / 100, (input % 100) / 10, input % 10);
+        }
+        return;
+    }
+
 }
