@@ -64,4 +64,24 @@ public class Main {
             return false;
         }
     }
+
+    public static int[] calHint(String ballNumbers, String inputNumbers) {
+        int[] result = {0, 0};      //strike, ball 순으로 힌트를 담은 배열
+
+        for (int i = 0; i < 3; i++) {
+            char temp = inputNumbers.charAt(i);
+
+            /* strike  개수 계산 */
+            if (ballNumbers.charAt(i) == temp) {
+                result[0]++;
+                result[1]--;
+            }
+
+            /* ball 개수 계산*/
+            if (ballNumbers.indexOf(temp) != -1) {
+                result[1]++;
+            }
+        }
+        return result;
+    }
 }
