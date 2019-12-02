@@ -20,7 +20,7 @@ class Computer {
 
         for (int j = 0; j < BaseballGame.ANSWER_NUMBERS_COUNT; ++j) {
             int randomNumber = getRandomNumber() % numbers.size();
-            baseBallGameAnswer.add(randomNumber);
+            baseBallGameAnswer.add(numbers.get(randomNumber));
             numbers.remove(randomNumber);
         }
 
