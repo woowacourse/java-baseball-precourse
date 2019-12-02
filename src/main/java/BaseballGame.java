@@ -63,4 +63,19 @@ public class BaseballGame {
             }
         }
     }
+ 
+    /*
+     * 플레이어로부터 입력 값을 받는 메소드
+     */
+    private String inputData() {
+    	   Scanner sc = new Scanner(System.in);
+    	   String data = sc.nextLine();
+    	
+    	   if(data.equals("")) {
+    		      printer.printMessage(2);
+    		      return null;
+    	   } else {
+    		      return data;
+    	   }
+    }
 }
