@@ -4,6 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        start(sc);
+    }
+
+    public static void start(Scanner sc) {
         String answer = makeNumbers();
 //        System.out.println("정답: " + answer);
         String input = inputNumbers(sc);
