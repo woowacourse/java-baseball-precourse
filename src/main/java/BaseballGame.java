@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class BaseballGame {
 
-    public static ArrayList<String> generateRandomNumber() {
+    private static ArrayList<String> generateRandomNumber() {
         Random rand = new Random();
         ArrayList<String> resultArray = new ArrayList<String>(3);
         Set<String> set = new LinkedHashSet<String>();
@@ -15,19 +15,16 @@ public class BaseballGame {
             set.add(Integer.toString(rand.nextInt(9) + 1));
         }
 
-        for (String x : set) {
-            resultArray.add(x);
-        }
+        resultArray.addAll(set);
         //  System.out.println(resultArray);
         return resultArray;
     }
 
-    public static boolean checkResult(ArrayList<String> input1, String input2) {
+    private static boolean checkResult(ArrayList<String> computerInputArray, String input2) {
         int strikeCount = 0;
         int ballCount = 0;
         boolean isNothing = false;
 
-        ArrayList<String> computerInputArray = input1;
         ArrayList<String> userInputArray = new ArrayList<String>();
 
         for(int i = 0; i < input2.length(); i++) {
@@ -35,9 +32,9 @@ public class BaseballGame {
         }
 
         for(int i = 0; i < userInputArray.size(); i++) {
-            if (computerInputArray.get(i).equals(userInputArray.get(i)) == true) {
+            if (computerInputArray.get(i).equals(userInputArray.get(i))) {
                 strikeCount++;
-            } else if (computerInputArray.contains(userInputArray.get(i)) == true) {
+            } else if (computerInputArray.contains(userInputArray.get(i))) {
                 ballCount++;
             }
         }
@@ -46,7 +43,7 @@ public class BaseballGame {
             isNothing = true;
         }
 
-        if (isNothing == true) {
+        if (isNothing) {
             System.out.println("낫싱");
         } else if (strikeCount == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다. 게임 종료.");
@@ -57,16 +54,16 @@ public class BaseballGame {
         return false;
     }
 
-    public static void playGame() {
+    private static void playGame() {
         Scanner userInput = new Scanner(System.in);
         ArrayList<String> computerNumber = generateRandomNumber();
-        boolean isCorrect = false;
+        boolean isCorrect;
 
         do {
             System.out.println("숫자를 입력해주세요 : ");
             String userNumber = userInput.next();
             isCorrect = checkResult(computerNumber, userNumber);
-        } while (isCorrect == false);
+        } while (!isCorrect);
     }
 
     public static void main(String[] args) {
