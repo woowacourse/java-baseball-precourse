@@ -12,10 +12,19 @@ public class Baseball {
 
     private static boolean makeChoice() {
         String choice = userChoose();
-        if (choice.equals("1")) {
+        String validChoice = checkChoice(choice);
+        if (validChoice.equals("1")) {
             return true;
         }
         return false;
+    }
+
+    private static String checkChoice(String choice) {
+        while (!choice.equals("1") && !choice.equals("2")) {
+            System.out.println("1과 2중에 선택해주세요.");
+            choice = userChoose();
+        }
+        return choice;
     }
 
     private static String userChoose() {
@@ -51,9 +60,10 @@ public class Baseball {
         return strikeCount == 3;
     }
 
-    private static void showResult(int strikeCount, int ballCount) {
-        String result = formatResult(strikeCount, ballCount);
-        System.out.println(result);
+    private static String userGuess() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("숫자를 입력해주세요 : ");
+        return scanner.nextLine();
     }
 
     private static String threeDigitInteger() {
@@ -81,12 +91,6 @@ public class Baseball {
             digitString += digit;
         }
         return digitString;
-    }
-
-    private static String userGuess() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("숫자를 입력해주세요 : ");
-        return scanner.nextLine();
     }
 
     private static boolean isValid(String guess) {
@@ -196,5 +200,10 @@ public class Baseball {
             return strikeCount + "스트라이크";
         }
         return strikeCount + "스트라이크" + " " + ballCount + "볼";
+    }
+
+    private static void showResult(int strikeCount, int ballCount) {
+        String result = formatResult(strikeCount, ballCount);
+        System.out.println(result);
     }
 }
