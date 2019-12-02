@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class IOController {
 
-  private Scanner sc = new Scanner(System.in);
-
   private int reInputNumber() {
     System.out.println("1 ~ 9까지의 중복되지 않는 숫자 세 자리를 입력 해주세요.");
     return getNumberOfUser();
@@ -11,14 +9,23 @@ public class IOController {
 
 
   public int getNumberOfUser() {
+    Scanner sc = new Scanner(System.in);
     System.out.print("숫자를 입력해주세요.");
 
-    int inputNumber = sc.nextInt();
+    try {
+      int inputNumber = sc.nextInt();
 
-    if (!validInput(inputNumber)) {
+      if (!validInput(inputNumber)) {
+        return reInputNumber();
+      }
+
+      return inputNumber;
+
+    } catch (Exception e) {
+
       return reInputNumber();
     }
-    return inputNumber;
+
   }
 
   public void printResult(int[] score) {
@@ -40,19 +47,27 @@ public class IOController {
   }
 
   public boolean selectNextAction() {
+    Scanner sc = new Scanner(System.in);
+
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-    int input = sc.nextInt();
+    try {
+      int input = sc.nextInt();
 
-    if (input == 1) {
-      return true;
+      if (input == 1) {
+        return true;
+      }
+
+      if (input == 2) {
+        return false;
+      }
+
+      return selectNextAction();
+
+    } catch (Exception e) {
+      return selectNextAction();
     }
 
-    if (input == 2) {
-      return false;
-    }
-
-    return selectNextAction();
   }
 
 }
