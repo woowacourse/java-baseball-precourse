@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.3.9   2019-12-02
+ * Player.java                     2.4.0   2019-12-02
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -18,7 +18,9 @@ import java.io.InputStreamReader;
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.3.9
+ * @version 2.4.0                          isRightDigit() 메소드에서
+ *                                       사용자가 문자를 입력했을 때,
+ *                                            예외처리를 하도록 수정
  * @date 2019-12-02
  */
 public class Player {
@@ -28,6 +30,7 @@ public class Player {
     private final String SPACE = " ";
     private final String NUMBERS = "The number player has: ";
 
+    private final char CHAR_ZERO = '0';
     private final int ZERO = 0;
     private final int TEN = 10;
     private final int MAX_MASK = 10;    // 마스크 크기 0 ~ 9
@@ -35,7 +38,6 @@ public class Player {
 
     private boolean[] digitMasks;       // 수 마스킹용 array
     private int[] digitNumbers;         // 생각한 수 array
-    private Player result;
 
     public Player() {
         this.digitMasks = new boolean[MAX_MASK];
@@ -70,6 +72,15 @@ public class Player {
 
         if (input.length == MAX_DIGIT) {
             result = true;
+        }
+
+        for (int i = 0; i < MAX_DIGIT; i++) {
+            int digit = input[i] - CHAR_ZERO;
+
+            if (!((digit > ZERO) && (digit < TEN))) {
+                result = false;
+                break;
+            }
         }
 
         return result;
@@ -174,7 +185,7 @@ public class Player {
      * 이 플레이어가 생각하고 있는 수를 반환한다.
      * 다음은 이 설명의 일반적인 형태이나,
      * 상세 형식은 정해지지 않았으며 향후 변경될 수 있다.
-     *
+     * <p>
      * "The number player has: 456"
      */
     @Override
