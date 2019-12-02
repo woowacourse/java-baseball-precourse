@@ -29,20 +29,17 @@ public class Host {
     public String makeResultStatement(List<Integer> inputNumbers) {
         int numOfStrikes = countNumOfStrikes(inputNumbers);
         int numOfBalls = countNumOfBalls(inputNumbers);
-
-        if (numOfStrikes == 0 && numOfBalls == 0) {
-            return "낫싱";
-        }
-
         StringBuilder result = new StringBuilder();
 
-        if (numOfStrikes != 0) {
+        if (numOfStrikes == DEFAULT_NUMBER_FOR_COUNTING && numOfBalls == DEFAULT_NUMBER_FOR_COUNTING) {
+            result.append("낫싱");
+        }
+        if (numOfStrikes > DEFAULT_NUMBER_FOR_COUNTING) {
             result.append(numOfStrikes).append("스트라이크 ");
         }
-        if (numOfBalls != 0) {
+        if (numOfBalls > DEFAULT_NUMBER_FOR_COUNTING) {
             result.append(numOfBalls).append("볼");
         }
-
         return result.toString();
     }
 
