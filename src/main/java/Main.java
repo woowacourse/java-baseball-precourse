@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +9,13 @@ public class Main {
         String input = inputNumbers(sc);
 //        System.out.println("입력값: " + input);
         boolean success = checkSuccess(answer, input);
+        while (!success) {
+            int[] result = calHint(answer, input);
+            printResult(result);
+            input = inputNumbers(sc);
+            success = checkSuccess(answer, input);
+        }
+        printResult(new int[]{3, 0});
     }
 
     public static String makeNumbers() {
