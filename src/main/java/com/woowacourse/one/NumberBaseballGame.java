@@ -222,7 +222,38 @@ public class NumberBaseballGame {
         return false;
     }
 
-    public static void main(String[] args){
-        System.out.println("hello world");
+    /**
+     * 게임을 시작하는 메인 함수입니다. endGame()의 리턴값이 true면 종료합니다.
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int[] randNumList = new int[DIGIT];
+        makeRandNum(randNumList);
+
+        System.out.println("숫자야구게임을 시작합니다");
+
+        while (true) {
+
+            int[] playerNumList = inputPlayerNum(sc);
+            int[] strikeAndBallList = repeatNumList(randNumList, playerNumList);
+
+            int strikeCnt = strikeAndBallList[0];
+            int ballCnt = strikeAndBallList[1];
+
+            System.out.println("랜덤숫자는 " + Arrays.toString(randNumList) + "입니다.");
+            System.out.println("플레이어의 숫자는 " + Arrays.toString(playerNumList) + "입니다.");
+
+            printStrikeAndBall(strikeCnt, ballCnt);
+
+            if (endGame(strikeCnt, randNumList, sc)) {
+                return;
+            }
+
+        }
+
     }
 }
