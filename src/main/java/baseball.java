@@ -45,4 +45,28 @@ public class baseball {
         System.out.println(strCnt + "Strikes " + ballCnt + "Balls");
         return checkAns();
     }
+
+
+    // Ball, 즉 위치는 다르지만 같은 값을 입력하였는가
+    public static int Ball(int a, int b, int c) {
+        ball = 0;
+        if((a == ten) || (a == one))
+            ball++;
+        if((b == hun) || (b == one))
+            ball++;
+        if((c == hun) || (c == ten))
+            ball++;
+        return ball;
+    }
+    // Strike, 즉 위치와 데이터가 모두 같은 것 확인
+    public static int Strike(int a, int b, int c) {
+        strike = 0;
+        if((a == hun))
+            strike++;
+        if(b == ten)
+            strike++;
+        if(c == one)
+            strike++;
+        return strike;
+    }
 }
