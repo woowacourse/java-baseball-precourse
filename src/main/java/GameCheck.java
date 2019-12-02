@@ -22,9 +22,11 @@ public class GameCheck {
         ball = 0;
         if(user[0] == computer[1] || user[0] == computer[2]){
             ball++;
-        } else if(user[1] == computer[0] || user[1] == computer[2]){
+        }
+        if(user[1] == computer[0] || user[1] == computer[2]){
             ball++;
-        } else if(user[2] == computer[0] || user[0] == computer[1]){
+        }
+        if(user[2] == computer[0] || user[2] == computer[1]){
             ball++;
         }
         return ball;
