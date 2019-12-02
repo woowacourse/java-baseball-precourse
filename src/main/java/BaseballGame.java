@@ -1,22 +1,33 @@
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.Random;
+import java.util.Scanner;
+import java.util.Set;
 
 public class BaseballGame {
-    public static String generateRandomNumber() {
+
+    public static ArrayList<String> generateRandomNumber() {
         Random rand = new Random();
-        int n1 = rand.nextInt(9) + 1;
-        int n2 = rand.nextInt(9) + 1;
-        int n3 = rand.nextInt(9) + 1;
 
-        String n1s = String.valueOf(n1);
-        String n2s = String.valueOf(n2);
-        String n3s = String.valueOf(n3);
+        Set<String> set = new LinkedHashSet<String>();
+        while (set.size() < 3) {
+            set.add(Integer.toString(rand.nextInt(9) + 1));
+        }
 
-        String result = n1s + n2s + n3s;
+        ArrayList<String> resultArray = new ArrayList<String>(3);
 
-        return result;
+        for (String x : set) {
+            resultArray.add(x);
+        }
+
+        System.out.println(resultArray);
+
+        return resultArray;
     }
+
     public static void main(String[] args) {
-        String number = generateRandomNumber();
-        System.out.println(number);
+
+        ArrayList<String> computerNumber = generateRandomNumber();
+
     }
 }
