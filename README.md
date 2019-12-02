@@ -2,7 +2,7 @@ Main Class
 ---
 * #### Main Method
 ```
-1. Manage Class의 start Method 호출로 게임 시작.
+1. Manage Class의 startGame Method 호출로 게임 시작.
 2. 첫 게임 종료 후 재시작 및 프로그램 종료여부 확인. 
 ```
 
@@ -18,16 +18,16 @@ Computer Class
 * #### makeCheckBoard Method
 ```
 1. 볼 판정을 위한 boolean 배열 선언
-    1.1 generate_randomNumber Method에서 저장한 숫자를 boolean 배열에 기록.
+    1.1 generateRandomNumber Method에서 저장한 숫자를 boolean 배열에 기록.
 ```
 * #### getRandomNumber Method
 ```
-1. generate Method에서 저장한 숫자 반환.
+1. generateRandomNumber Method에서 저장한 숫자 반환.
 ```
 
 * #### getCheckBoard Method
 ```
-1. make_check_board Method에서 기록한 배열을 반환.
+1. makeCheckBoard Method에서 기록한 배열을 반환.
 ```
 
 * #### checkUserNumber Method
@@ -73,13 +73,13 @@ User Class
 ```
 1. 사용자의 숫자 입력 처리 및 저장 
     1.1 String 형태로 입력을 받음
-    1.2 Computer class의 check_userNumber Method를 통해 유효성 검사
+    1.2 Computer class의 checkUserNumber Method를 통해 유효성 검사
     1.3 유효할 경우 String을 정수 배열형태로 저장
 ```
 
 * #### getUserNumber Method
 ```
-1. input_user_number Method에서 저장된 정수 배열을 반환
+1. inputUserNumber Method에서 저장된 정수 배열을 반환
 ```
 
 
