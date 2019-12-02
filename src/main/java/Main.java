@@ -31,4 +31,25 @@ public class Main {
         }
         return inputNumbers;
     }
+
+    public static String validate(String numbers) {
+
+        /* 입력받은 값이 숫자인지 확인*/
+        try{
+            Integer.parseInt(numbers);
+        }catch (Exception e) {
+            System.out.println("입력 형식이 잘못되었습니다. 다시 입력해주세요.");
+            System.out.println("(입력 형식) 3자리 숫자 / ex. 123");
+            return "";
+        }
+
+        /* 입력받은 숫자의 자리수 확인*/
+        if (numbers.length() != 3) {
+            System.out.println("입력 형식이 잘못되었습니다. 다시 입력해주세요.");
+            System.out.println("(입력 형식) 3자리 숫자 / ex. 123");
+            return "";
+        }else{
+            return numbers;
+        }
+    }
 }
