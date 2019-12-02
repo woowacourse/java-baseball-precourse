@@ -9,20 +9,19 @@
 import java.util.Random;
 
 public class Computer {
-    public int[] pickRandomNumber(int digitNumber) {
-        Random random = new Random();
-        int[] dictionary = new int[10];
-        int[] generatedNumber = new int[digitNumber];
+    public int[] pickRandomNumbers(int digitNumber) {
+        boolean[] index = new boolean[10];
+        int[] newNumber = new int[digitNumber];
         int temp, i = 0;
         while (i < digitNumber) {
-            temp = random.nextInt(9) + 1;
-            generatedNumber[i] = temp;
-            if (dictionary[temp] == 1) {
+            temp = new Random().nextInt(9) + 1;
+            if (index[temp] == true) {
                 continue;
             }
-            dictionary[temp] = 1;
+            index[temp] = true;
+            newNumber[i] = temp;
             i++;
         }
-        return generatedNumber;
+        return newNumber;
     }
 }

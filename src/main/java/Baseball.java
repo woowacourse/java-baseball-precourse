@@ -8,6 +8,7 @@
 
 import java.util.Scanner;
 import java.util.stream.Stream;
+import static java.lang.Math.log;
 
 
 public class Baseball {
@@ -18,15 +19,15 @@ public class Baseball {
         Computer computer = new Computer();
         Referee referee = new Referee();
         userInput = inputNumber();
-        computerInput = computer.pickRandomNumber(digitNumber);
+        computerInput = computer.pickRandomNumbers(digitNumber);
         while (true) {
             strikeBall = referee.countStrikeBall(userInput, computerInput);
-            if (printStrikeBall(strikeBall)) break;
+            if (printHints(strikeBall)) break;
             userInput = inputNumber();
         }
     }
 
-    private boolean printStrikeBall(int[] strikeBall) {
+    private boolean printHints(int[] strikeBall) {
         if (strikeBall[0] != 0) {
             System.out.printf("%d스트라이크 ", strikeBall[0]);
         }
@@ -51,7 +52,7 @@ public class Baseball {
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
             digits = toArray(sc.nextInt());
-            if (verifyUniquity(digits) == true) {
+            if (verifyUnique(digits) == true) {
                 break;
             }
             System.out.println("다시 입력해 주세요.");
@@ -59,14 +60,16 @@ public class Baseball {
         return digits;
     }
 
-    private boolean verifyUniquity(int[] digits) {
-        if (digits.length != digitNumber) return false;
-        int[] dictionary = new int[10];
+    private boolean verifyUnique(int[] digits) {
+        if (digits.length != digitNumber) {
+            return false;
+        }
+        boolean[] index = new boolean[10];
         for (int i = 0; i < digits.length; i++) {
-            if (dictionary[digits[i]] == 1 || digits[i] == 0) {
+            if (index[digits[i]] == true || digits[i] == 0) {
                 return false;
             }
-            dictionary[digits[i]] = 1;
+            index[digits[i]] = true;
         }
         return true;
     }

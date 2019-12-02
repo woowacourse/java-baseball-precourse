@@ -9,19 +9,19 @@
 public class Referee {
     public int[] countStrikeBall(int[] userNum, int[] computerNum) {
         int[] strikeBall = new int[]{0, 0};
-        int[] userDic = new int[10];
-        int[] compDic = new int[10];
+        int[] userIndex = new int[10];
+        int[] computerIndex = new int[10];
         for (int i = 0; i < userNum.length; i++) {
-            userDic[userNum[i]] = 1;
-            compDic[computerNum[i]] = 1;
+            userIndex[userNum[i]] = 1;
+            computerIndex[computerNum[i]] = 1;
             if (userNum[i] == computerNum[i]) {
                 strikeBall[0]++;
                 continue;
             }
-            if (userDic[computerNum[i]] == 1) {
+            if (userIndex[computerNum[i]] == 1) {
                 strikeBall[1]++;
             }
-            if (compDic[userNum[i]] == 1) {
+            if (computerIndex[userNum[i]] == 1) {
                 strikeBall[1]++;
             }
 
