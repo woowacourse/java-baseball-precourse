@@ -23,6 +23,9 @@ public class NumberBaseballGame {
     /** 3자리의 숫자 야구 게임이므로 3자리수를 위한 DIGIT 상수 */
     private static final int DIGIT = 3;
 
+    /** 2를 입력했을 때 게임을 종료하기 위한 상수 */
+    private static final int END = 2;
+
     /**
      * 원소가 서로 다른 랜덤 배열을 만드는 메소드입니다. boolean배열을 체크해가면서 전에 있던 값은 넣지 않아 서로 다른 값이 들어가도록
      * 했습니다.
@@ -187,6 +190,36 @@ public class NumberBaseballGame {
         } else {
             System.out.println(strikeCnt + "스트라이크 " + ballCnt + "볼");
         }
+    }
+
+    /**
+     * 3 strike일 경우 게임을 종료하거나 다시 시작하는 것을 구현한 메소드입니다.
+     *
+     * @param strikeCnt
+     * @param randNumList
+     * @param sc
+     * @return
+     */
+    public static boolean endGame(int strikeCnt, int[] randNumList, Scanner sc) {
+
+        if (strikeCnt == DIGIT) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            int userInput = sc.nextInt();
+
+            if (userInput == END) {
+                System.out.println("게임을 종료합니다.");
+                return true;
+            } else {
+                System.out.println("게임을 다시 시작합니다.");
+                makeRandNum(randNumList);
+                return false;
+            }
+
+        }
+
+        return false;
     }
 
     public static void main(String[] args){
