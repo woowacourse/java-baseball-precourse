@@ -4,6 +4,23 @@ public class IOController {
 
   private Scanner sc = new Scanner(System.in);
 
+  public void printResult(int[] score) {
+    String[] SBO = {"스트라이크", "볼", "낫싱"};
+
+    for (int i = 0; i < score.length - 1; i++) {
+      if (score[i] == 0) {
+        continue;
+      }
+
+      System.out.print(score[i] + SBO[i] + " ");
+    }
+    System.out.printf("\n");
+
+    if (score[2] >= 3) {
+      System.out.println(SBO[2]);
+    }
+  }
+
   public boolean selectNextAction() {
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
