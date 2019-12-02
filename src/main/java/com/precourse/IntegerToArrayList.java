@@ -1,4 +1,4 @@
-/**
+package com.precourse; /**
  * 클래스 이름 : IntegerToArrayList.java
  *
  * @version 1.0

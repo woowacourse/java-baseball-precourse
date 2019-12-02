@@ -1,4 +1,4 @@
-/**
+package com.precourse; /**
  * 클래스 이름 : Terminator.java
  *
  * @version 1.0

@@ -8,6 +8,8 @@
  * @author Seungwan Park, github.com/toneyparky
  */
 
+package com.precourse;
+
 import java.util.ArrayList;
 
 /**
