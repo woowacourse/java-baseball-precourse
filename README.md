@@ -11,6 +11,7 @@
     - init() : strike / ball 점수 초기화
     - getStrike() : 멤버변수 strike 의 getter method
     - calculate(ball, ball) : 점수 계산
+    - printScore() : 현재 점수 출력
     
   * Computer
     - getNumbers() : 멤버변수 numbers 의 getter method

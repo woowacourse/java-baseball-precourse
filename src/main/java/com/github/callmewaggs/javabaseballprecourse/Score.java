@@ -25,11 +25,22 @@ public class Score {
             for(int j = 0 ; j < 3; ++j) {
                 if(numbers1[i] == numbers2[j]) {
                     if(i == j)
-                        ++this.strike;
+                        ++strike;
                     else
-                        ++this.ball;
+                        ++ball;
                 }
             }
+        }
+    }
+
+    public void printScore() {
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } else {
+            if (strike == 0 && ball == 0)
+                System.out.println("낫싱");
+            else
+                System.out.println(strike + " 스트라이크 " + ball + "볼");
         }
     }
 }

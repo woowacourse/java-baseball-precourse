@@ -19,6 +19,7 @@ public class Game {
             user.generateInputBall();
 
             score.calculate(computer.getNumbers(), user.getNumbers());
+            score.printScore();
 
             if (score.getStrike() == 3) {
                 if (gameAgain()) {
@@ -29,5 +30,9 @@ public class Game {
                 }
             }
         }
+    }
+
+    private boolean gameAgain() {
+
     }
 }
