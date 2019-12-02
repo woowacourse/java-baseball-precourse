@@ -17,6 +17,18 @@ public class BaseBall {
     static final int MAX_NUMBER = 9;
     static final int CONTINUE = 1;
     static final int EXIT = 2;
+    static final String MESSAGE_STRIKE = "스트라이크";
+    static final String MESSAGE_BALL = "볼";
+    static final String MESSAGE_NOTHING = "낫싱";
+    static final String MESSAGE_END_OF_GAME = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static final String MESSAGE_NEW_GAME_OR_QUIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    static final String MESSAGE_WRONG_INPUT = "잘못된 입력입니다. 다시 입력하세요.";
+    static final String MESSAGE_INPUT_NUMBER = "숫자를 입력해주세요 : ";
+    static final String ERROR_MESSAGE_CONTAINS_CHAR = "문자가 입력되었습니다.\n다시 ";
+    static final String ERROR_MESSAGE_IS_MINUS = "음수가 입력되었습니다. \n다시 ";
+    static final String ERROR_MESSAGE_INPUT_LENGTH_IS_WRONG = "세 숫자가 입력되지 않았습니다.\n다시" ;
+    static final String ERROR_MESSAGE_CONTAINS_ZERO = "입력한 문자 중 '0'이 포함되어 있습니다.\n다시 ";
+    static final String ERROR_MESSAGE_CONTAINS_SAME_NUMBER = "같은 숫자가 포함되어 있습니다.\n다시 ";
     private int answer;
     private int userInput;
     private Scanner scanner;
@@ -38,14 +50,14 @@ public class BaseBall {
             }
         }
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(INPUT_SIZE + MESSAGE_END_OF_GAME);
         checkContinue();
     }
 
     private void checkContinue() {
         int input;
-        String guideMessage = new String("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        input = getUserInputAOrB(CONTINUE, EXIT, guideMessage);
+
+        input = getUserInputAOrB(CONTINUE, EXIT, MESSAGE_NEW_GAME_OR_QUIT);
 
         if (input == CONTINUE) {
             start();
@@ -77,15 +89,15 @@ public class BaseBall {
                 return inputB;
             }
 
-            System.out.println("잘못된 입력입니다. 다시 입력하세요.");
+            System.out.println(MESSAGE_WRONG_INPUT);
         }
     }
 
     private int makeRandomNumber(int maxNumber) {
-        int randomNumber1 = 0;
-        int randomNumber2 = 0;
-        int randomNumber3 = 0;
-        int randomNumber = 0;
+        int randomNumber1;
+        int randomNumber2;
+        int randomNumber3;
+        int randomNumber;
 
         randomNumber1 = (int) (Math.random() * maxNumber + 1);
 
@@ -112,7 +124,7 @@ public class BaseBall {
         String input;
         int inputValue;
 
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.println(MESSAGE_INPUT_NUMBER);
         input  = this.scanner.next();
 
         if (checkInputContainsChar(input)) {
@@ -128,12 +140,6 @@ public class BaseBall {
             return false;
         }
 
-        /*try {
-            inputValue = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            System.out.print("문자가 입력되었습니다.\n다시 ");
-            return false;
-        }*/
         inputValue = Integer.parseInt(input);
 
         if (checkInputContainsSameNumber(inputValue)) {
@@ -148,7 +154,7 @@ public class BaseBall {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            System.out.print("문자가 입력되었습니다.\n다시 ");
+            System.out.print(ERROR_MESSAGE_CONTAINS_CHAR);
             return true;
         }
         return false;
@@ -156,15 +162,15 @@ public class BaseBall {
 
     private boolean checkInputIsMinus(String input) {
         if (input.contains("-") == true) {
-            System.out.print("음수가 입력되었습니다. \n다시 ");
-        return true;
-    }
+            System.out.print(ERROR_MESSAGE_IS_MINUS);
+            return true;
+        }
         return false;
 }
 
     private boolean checkInputLengthIsCorrect(String input, int size) {
         if (input.length() != size) {
-            System.out.print("세 숫자가 입력되지 않았습니다.\n다시 ");
+            System.out.print(ERROR_MESSAGE_INPUT_LENGTH_IS_WRONG);
             return false;
         }
         return true;
@@ -172,7 +178,7 @@ public class BaseBall {
 
     private boolean checkInputContainsZero(String input) {
         if (input.contains("0") == true) {
-            System.out.print("입력한 문자 중 '0'이 포함되어 있습니다.\n다시 ");
+            System.out.print(ERROR_MESSAGE_CONTAINS_ZERO);
             return true;
         }
         return false;
@@ -187,7 +193,7 @@ public class BaseBall {
         int diffBetween1N100 = inputValue1 - inputValue100;
 
         if ((diffBetween100N10 * diffBetween10N1 * diffBetween1N100) == 0 ) {
-            System.out.print("같은 숫자가 포함되어 있습니다.\n다시 ");
+            System.out.print(ERROR_MESSAGE_CONTAINS_SAME_NUMBER);
             return true;
         }
         return false;
@@ -201,24 +207,24 @@ public class BaseBall {
     }
 
     private void printResult(int answer, int userInput) {
-        boolean Nothing = false;
-        int strikeCount = 0;
-        int ballCount = 0;
+        boolean Nothing;
+        int strikeCount;
+        int ballCount;
 
         Nothing = checkNothingExist(answer, userInput);
         strikeCount = countStrike(answer, userInput);
         ballCount = countBall(answer, userInput, strikeCount);
 
         if (Nothing) {
-            System.out.println("낫싱");
+            System.out.println(MESSAGE_NOTHING);
             return;
         }
 
         if (strikeCount > 0) {
-            System.out.print(strikeCount+" 스트라이크 ");
+            System.out.print(strikeCount + " " + MESSAGE_STRIKE);
         }
         if (ballCount > 0) {
-            System.out.print(ballCount + " 볼");
+            System.out.print(ballCount + " " + MESSAGE_BALL);
         }
         System.out.println();
 
