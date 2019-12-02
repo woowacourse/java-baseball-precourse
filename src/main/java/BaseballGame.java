@@ -3,21 +3,21 @@ import java.util.Scanner;
 
 public class BaseballGame {
 
-    private int [] userInput;
-    private int [] answer;
+    private int[] userInput;
+    private int[] answer;
     private int numOfDigit;
 
     public static void main(String[] args) {
         BaseballGame game = new BaseballGame();
         game.setGame(3);
 
-        while(true){
+        while (true) {
             game.createRandomAnswer();
-            do{
+            do {
                 game.startGame();
-            }while(game.checkAnswer());
+            } while (game.checkAnswer());
 
-            if(!game.restart()){
+            if (!game.restart()) {
                 break;
             }
         }
@@ -41,7 +41,7 @@ public class BaseballGame {
         int randomIndex;
 
         visited[0] = true;
-        for(int i = 1; i < 10; i++){
+        for (int i = 1; i < 10; i++) {
             visited[i] = false;
         }
 
@@ -51,17 +51,17 @@ public class BaseballGame {
 
         for (int i = 0; i < this.numOfDigit; i++) {
             randomIndex = random.nextInt(8) + 1;
-            if(!visited[randomIndex]){
+            if (!visited[randomIndex]) {
                 visited[randomIndex] = true;
                 this.answer[i] = randomIndex;
-            }else{
+            } else {
                 i--;
             }
         }
     }
 
-    public void initializeAnswer(){
-        for(int i = 0; i < this.numOfDigit; i++){
+    public void initializeAnswer() {
+        for (int i = 0; i < this.numOfDigit; i++) {
             this.answer[i] = 0;
         }
     }
@@ -72,15 +72,15 @@ public class BaseballGame {
         Scanner sc = new Scanner(System.in);
         input = sc.nextInt();
 
-        while(!errorCheckRange(input)){
+        while (!errorCheckRange(input)) {
             input = sc.nextInt();
         }
 
-        while(!errorCheckDuplicate(input)){
+        while (!errorCheckDuplicate(input)) {
             input = sc.nextInt();
         }
 
-        while(!errorCheckZero(input)){
+        while (!errorCheckZero(input)) {
             input = sc.nextInt();
         }
 
@@ -93,10 +93,10 @@ public class BaseballGame {
     }
 
     public boolean errorCheckRange(int input) {
-        if(input < 100 || input > 1000){
+        if (input < 100 || input > 1000) {
             System.out.print("입력 에러: 3자리 숫자를 입력해 주세요!");
             return false;
-        }else{
+        } else {
             return true;
         }
     }
@@ -108,30 +108,30 @@ public class BaseballGame {
         b = input % 10;
         input /= 10;
         c = input % 10;
-        if(a != b && a != c && b != c){
+        if (a != b && a != c && b != c) {
             return true;
-        }else{
+        } else {
             System.out.print("입력 에러: 서로 다른 숫자를 입력해 주세요!");
             return false;
         }
     }
 
-    public boolean errorCheckZero(int input){
+    public boolean errorCheckZero(int input) {
         int a, b, c;
         a = input % 10;
         input /= 10;
         b = input % 10;
         input /= 10;
         c = input % 10;
-        if(a == 0 || b == 0 || c == 0){
+        if (a == 0 || b == 0 || c == 0) {
             System.out.print("입력 에러: 1~9의 숫자를 입력해주세요!");
             return false;
-        }else{
+        } else {
             return true;
         }
     }
 
-    public boolean checkAnswer(){
+    public boolean checkAnswer() {
         int strike = 0;
         int ball = 0;
         boolean result;
