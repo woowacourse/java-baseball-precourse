@@ -3,7 +3,7 @@ package com.github.callmewaggs.javabaseballprecourse.baseball.player;
 import com.github.callmewaggs.javabaseballprecourse.baseball.Ball;
 
 public interface BallPlayer {
-    void prepareBall();
+  void prepareBall();
 
-    Ball getBall();
+  Ball getBall();
 }
