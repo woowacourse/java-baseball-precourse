@@ -1,5 +1,7 @@
 package com.github.callmewaggs.javabaseballprecourse;
 
+import java.util.List;
+
 public class Score {
 
     private int strike;
@@ -22,10 +24,10 @@ public class Score {
         this.win = false;
     }
 
-    public void calculateWinning(int[] numbers1, int[] numbers2) {
+    public void calculateWinning(List<Integer> computerNumbers, List<Integer> userNumbers) {
         for(int i = 0 ; i < 3 ; ++i) {
             for(int j = 0 ; j < 3; ++j) {
-                calculateScore(numbers1[i], numbers2[j], i, j);
+                calculateScore(computerNumbers.get(i), userNumbers.get(j), i, j);
             }
         }
         if(strike == 3)

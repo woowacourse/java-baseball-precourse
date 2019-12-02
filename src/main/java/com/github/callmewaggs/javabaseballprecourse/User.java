@@ -1,21 +1,20 @@
 package com.github.callmewaggs.javabaseballprecourse;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class User {
-    private int[] numbers;
+    private List<Integer> numbers;
 
-    public User() {
-        numbers = new int[3];
-    }
-
-    public int[] getNumbers() {
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
     public void generateInputBall() {
         Scanner scan = new Scanner(System.in);
         while (true) {
+            this.numbers = new ArrayList<>();
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = scan.nextLine();
 
@@ -30,13 +29,10 @@ public class User {
     private boolean isValidate(String userInput) {
         if (userInput.length() != 3)
             return false;
-        int index = 0;
         for (char c : userInput.toCharArray()) {
             if (c >= '1' && c <= '9') {
-                this.numbers[index] = c - '0';
-                ++index;
-            }
-            else
+                this.numbers.add(c - '0');
+            } else
                 return false;
         }
         return true;

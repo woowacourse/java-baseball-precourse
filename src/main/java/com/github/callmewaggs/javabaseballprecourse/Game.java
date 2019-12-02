@@ -19,6 +19,12 @@ public class Game {
         computer.generateRandomBall();
 
         while (play) {
+            System.out.print("computer : ");
+            for(int num : computer.getNumbers()) {
+                System.out.print(num);
+            }
+            System.out.println();
+
             score.init();
             user.generateInputBall();
 
