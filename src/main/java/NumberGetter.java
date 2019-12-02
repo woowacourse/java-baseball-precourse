@@ -18,12 +18,15 @@ public class NumberGetter {
 
     private static final int NUMBER_LENGTH = 3;
     private static int userNumber;
+    private static String inputNumberString;
+    private static int inputNumber;
 
     /** 플레이어로부터 숫자를 입력받는 로직을 진행하는 메서드  */
     public static int numberGetter() {
         while (true) {
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             userNumber = getInputNumber();
+            System.out.println("hihi: " + userNumber);
             if (userNumberChecker()) {
                 break;
             }
@@ -34,6 +37,11 @@ public class NumberGetter {
 
     /** 플레이어로부터 입력받은 숫자가 예외조건을 통과하는지에 따라 에러를 출력하는 메서드 */
     public static boolean userNumberChecker() {
+        if (!userNumberContainZeroChecker()) {
+            System.out.println("0은 포함될 수 없습니다. 다시 입력하세요.");
+            return false;
+        }
+
         if (!userNumberLengthChecker()) {
             System.out.println("맞춰야할 숫자와 길이가 다릅니다. 다시 입력하세요.");
             return false;
@@ -44,11 +52,14 @@ public class NumberGetter {
             return false;
         }
 
-        if (!userNumberContainZeroChecker()) {
-            System.out.println("0은 포함될 수 없습니다. 다시 입력하세요.");
+        return true;
+    }
+
+    /** 플레이어가 입력한 숫자에 0이 포함되었는지 판단하는 메서드  */
+    public static boolean userNumberContainZeroChecker() {
+        if (inputNumberString.contains("0")) {
             return false;
         }
-
         return true;
     }
 
@@ -69,23 +80,18 @@ public class NumberGetter {
         return true;
     }
 
-    /** 플레이어가 입력한 숫자에 0이 포함되었는지 판단하는 메서드  */
-    public static boolean userNumberContainZeroChecker() {
-        ArrayList<Integer> repeatCheckList = IntegerToArrayList.integerToArrayList(userNumber);
-        Set<Integer> repeatCheckHash = new HashSet<>(repeatCheckList);
-
-        if (repeatCheckHash.contains(0)) {
-            return false;
-        }
-        return true;
+    /** 사용자로부터 받은 입력을 저장하는 메서드  */
+    public static int getInputNumber() {
+        inputNumberString = null;
+        Scanner scan = new Scanner(System.in);
+        inputNumberString = scan.nextLine();
+        inputNumber = stringToInteger();
+        return inputNumber;
     }
 
-    /** 사용자로부터 받은 입력을 정수로 저장하는 메서드  */
-    public static int getInputNumber() {
-        int inputNumber;
-        Scanner scan = new Scanner(System.in);
-        inputNumber = scan.nextInt();
-        return inputNumber;
+    /** String을 Int로 변환하는 메서드 */
+    public static int stringToInteger() {
+        return Integer.parseInt(inputNumberString);
     }
 
 }
