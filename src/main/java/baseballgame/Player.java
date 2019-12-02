@@ -22,7 +22,7 @@ public class Player {
 			}
 			System.out.print("잘못입력하셨습니다. 0~9까지의 숫자를 3개 입력해주세요 : ");
 		}
-		for(int i = ZERO; i < BALL_LEN; i++) {
+		for (int i = ZERO; i < BALL_LEN; i++) {
 			myNums.add(myStringNums.charAt(i) - '0');
 		}
 	}
