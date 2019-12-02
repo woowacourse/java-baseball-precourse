@@ -20,10 +20,10 @@ public class Game {
             score.init();
             user.generateInputBall();
 
-            score.calculate(computer.getNumbers(), user.getNumbers());
+            score.calculateWinning(computer.getNumbers(), user.getNumbers());
             score.printScore();
 
-            if (score.getStrike() == 3) {
+            if (score.isWin()) {
                 if (gameAgain()) {
                     computer.generateRandomBall();
                     score.init();
