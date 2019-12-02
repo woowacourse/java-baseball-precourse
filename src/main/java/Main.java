@@ -15,5 +15,6 @@ public class Main {
     	
     	baseballGame.setGame();
     	baseballGame.play();
+
     }
 }
