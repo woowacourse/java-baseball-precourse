@@ -8,8 +8,8 @@ public class Baseball {
         while (!isValid(guess)) {
             guess = userGuess();
         }
-        int strike_count = countStrikes(answer, guess);
-        System.out.println(strike_count + "스트라이크");
+        int strikeCount = countStrikes(answer, guess);
+        System.out.println(strikeCount + "스트라이크");
     }
 
     private static String threeDigitInteger() {
@@ -95,12 +95,12 @@ public class Baseball {
         assert isValid(guess) : "Invalid guess";
         char[] answerArray = answer.toCharArray();
         char[] guessArray = guess.toCharArray();
-        int strike_count = 0;
+        int strikeCount = 0;
         for (int i = 0; i < 3; i++) {
             if (answerArray[i] == guessArray[i]) {
-                strike_count += 1;
+                strikeCount += 1;
             }
         }
-        return strike_count;
+        return strikeCount;
     }
 }
