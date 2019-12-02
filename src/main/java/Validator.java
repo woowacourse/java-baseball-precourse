@@ -16,17 +16,18 @@ public class Validator {
     private static final String SECOND_MENU = "2";
 
     public void isValidNumbers(String number) {
-        isInteger(number);
+        isIntegerOrNull(number);
         isDigit(number);
+        isRange(number);
         isNotOverlap(number);
     }
 
     public void isValidMenuId(String menuId) {
-        isInteger(menuId);
+        isIntegerOrNull(menuId);
         isOneOrTwo(menuId);
     }
 
-    private void isInteger(String input) {
+    private void isIntegerOrNull(String input) {
         try {
             Integer.valueOf(input);
         } catch (NumberFormatException e) {
@@ -40,11 +41,20 @@ public class Validator {
         }
     }
 
-    private void isNotOverlap(String numbers) {
+    private void isNotOverlap(String number) {
         Set<Character> overlapCheckSet = new HashSet<>();
-        for (int i = 0; i < numbers.length(); i++) {
-            if (!overlapCheckSet.add(numbers.charAt(i))) {
+
+        for (int i = 0; i < number.length(); i++) {
+            if (!overlapCheckSet.add(number.charAt(i))) {
                 throw new IllegalArgumentException("서로 다른 숫자가 아닙니다.");
+            }
+        }
+    }
+
+    private void isRange(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            if ((number.charAt(i) < '1') || (number.charAt(i) > '9')) {
+                throw new IllegalArgumentException("1부터 9까지의 숫자가 아닌게 포함되어 있습니다.");
             }
         }
     }

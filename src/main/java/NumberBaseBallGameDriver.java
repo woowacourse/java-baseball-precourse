@@ -9,29 +9,34 @@
  */
 
 public class NumberBaseBallGameDriver {
-    private static final int CONTINUE_VALUE = 1;
+    private static final int BREAK_VALUE = 2;
+    private static final int ANSWER_STRIKE = 3;
 
     public static void main(String[] args) {
-        Printer aPrinter = new Printer();
-        Input aInput = new Input();
+        Player aPlayer = new Player();
 
         while (true) {
             NumberBaseBallGame aNumberBaseBallGame = new NumberBaseBallGame();
+            aNumberBaseBallGame.setRandomNumbers(new RandomNumber().create(NumberBaseBallGame.DIGIT,
+                    NumberBaseBallGame.MIN_VALUE, NumberBaseBallGame.MAX_VALUE));
 
-            while (!aNumberBaseBallGame.isAnswer()) {
-                aNumberBaseBallGame.calculateResult(aInput.inputNumber());
-                aPrinter.printHint(aNumberBaseBallGame);
-            }
+            startGame(aNumberBaseBallGame, aPlayer);
 
-            aPrinter.printAnswerText();
-
-            if (!isContinue(aInput.inputMenuId())) {
+            if (aPlayer.inputMenuId() == BREAK_VALUE) {
                 break;
             }
         }
     }
 
-    public static boolean isContinue(int menuId) {
-        return menuId == CONTINUE_VALUE;
+    private static void startGame(NumberBaseBallGame numberBaseBallGame, Player player) {
+        while (true) {
+            Result thisGameResult = numberBaseBallGame.createResult(player.inputNumber());
+
+            System.out.println(thisGameResult.toString());
+
+            if (thisGameResult.getStrike() == ANSWER_STRIKE) {
+                break;
+            }
+        }
     }
 }
