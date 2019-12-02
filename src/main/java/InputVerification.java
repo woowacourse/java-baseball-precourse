@@ -31,4 +31,13 @@ public class InputVerification {
     	    return false;
     	}
     }
+    
+    /*
+     * 들어온 데이터에 중복된 수가 없는지 확인하는 메소드
+     */
+    private boolean checkDupNum(String player) { 
+    	return (player.charAt(0) != player.charAt(1)) 
+    		&& (player.charAt(1) != player.charAt(2))
+    		&& (player.charAt(0) != player.charAt(2));
+    }
 }
