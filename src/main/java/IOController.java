@@ -4,6 +4,23 @@ public class IOController {
 
   private Scanner sc = new Scanner(System.in);
 
+  private int reInputNumber() {
+    System.out.println("1 ~ 9까지의 중복되지 않는 숫자 세 자리를 입력 해주세요.");
+    return getNumberOfUser();
+  }
+
+
+  public int getNumberOfUser() {
+    System.out.print("숫자를 입력해주세요.");
+
+    int inputNumber = sc.nextInt();
+
+    if (!validInput(inputNumber)) {
+      return reInputNumber();
+    }
+    return inputNumber;
+  }
+
   public void printResult(int[] score) {
     String[] SBO = {"스트라이크", "볼", "낫싱"};
 
