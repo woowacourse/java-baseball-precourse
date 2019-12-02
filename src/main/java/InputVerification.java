@@ -10,8 +10,6 @@
 
 public class InputVerification {
 	
-    Printer printer = new Printer();
-	
     /*
      * 들어온 데이터가 유효한 값인지 확인 후 반환하는 메소드
      */
@@ -46,5 +44,12 @@ public class InputVerification {
      */
     private boolean checkNumCnt(String player) { 
     	return player.length() == 3;
+    }
+	
+    /*
+     * 들어온 데이터에 0이 없는지 확인하는 메소드
+     */
+    private boolean checkZeroNum(String player) { 
+    	return !player.contains("0");
     }
 }
