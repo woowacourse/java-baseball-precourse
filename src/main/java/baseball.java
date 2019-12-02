@@ -37,5 +37,12 @@ public class baseball {
             return true;
         }
     }
-
+    // Input 영역
+    public static boolean getNum(int num1, int num2, int num3) {
+        strCnt = Strike(num1, num2, num3);
+        ballCnt = Ball(num1, num2, num3);
+        gameCnt++;
+        System.out.println(strCnt + "Strikes " + ballCnt + "Balls");
+        return checkAns();
+    }
 }
