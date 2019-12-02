@@ -17,31 +17,34 @@ public class Main {
         ArrayList<Integer> computerNums = new ArrayList<>();
         while (computerNums.size() < NUMS_MAX_LENGTH) {
             int num = (int)(Math.random()*MAX_PICK_NUM)+MIN_PICK_NUM;
-            if (isDuplicatedNum(num, computerNums)) {
+            computerNums.add(num);
+            if (isNotDuplicatedNums(computerNums)) {
                 continue;
             }
-            computerNums.add(num);
+            computerNums.remove(computerNums.size()-1);
         }
         return computerNums;
     }
 
-    private static boolean isDuplicatedNum(int num, ArrayList<Integer> numsList) {
-        for (int i=0; i<numsList.size(); i++) {
-            if (num == numsList.get(i)) {
-                return true;
-            }
-        }
-        return false;
+    private static boolean isNotDuplicatedNums(ArrayList<Integer> numsList) {
+        HashSet<Integer> numSet = new HashSet<>(numsList);
+        return numSet.size() == numsList.size();
     }
 
     private static ArrayList<Integer> getUserNums() {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = getUserInput();
-            if (isThreeDigitNums(userInput) && doesNotContainZero(userInput) && isNotDuplicatedNums(userInput)) {
-                return getUserNumsList(userInput);
+            String warningMessage = "★1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 입력해 주세요.";
+            if (isNotThreeDigitNums(userInput)) {
+                System.out.println(warningMessage);
+                continue;
             }
-            System.out.println("★1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 입력해 주세요.");
+            ArrayList<Integer> userNumsList = getUserNumsList(userInput);
+            if (doesNotContainZero(userNumsList) && isNotDuplicatedNums(userNumsList)) {
+                return userNumsList;
+            }
+            System.out.println(warningMessage);
         }
     }
 
@@ -60,39 +63,31 @@ public class Main {
         return userInputList;
     }
 
-    private static boolean isThreeDigitNums(String userInput) {
+    private static boolean isNotThreeDigitNums(String userInput) {
         if (userInput.length() != NUMS_MAX_LENGTH) {
-            return false;
+            return true;
         }
-
         for (int i=0; i<userInput.length(); i++) {
-            char userInputCh = userInput.charAt(i);
-            if (userInputCh < toCharacter(MIN_PICK_NUM) || toCharacter(MAX_PICK_NUM) < userInputCh) {
-                return false;
+            char userInputChar = userInput.charAt(i);
+            if (userInputChar < toCharacter(MIN_PICK_NUM) || toCharacter(MAX_PICK_NUM) < userInputChar) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     private static char toCharacter(int num) {
         return Character.forDigit(num, 10);
     }
 
-    private static boolean doesNotContainZero(String userInput) {
-        for (int i=0; i<userInput.length(); i++) {
-            if (userInput.charAt(i) == toCharacter(INVALID_VALUE)) {
+    private static boolean doesNotContainZero(ArrayList<Integer> numsList) {
+        for (int i=0; i<numsList.size(); i++) {
+            int userNum = numsList.get(i);
+            if (userNum == INVALID_VALUE) {
                 return false;
             }
         }
         return true;
-    }
-
-    private static boolean isNotDuplicatedNums(String userInput) {
-        HashSet<Character> numSet = new HashSet<>();
-        for (int i=0; i<userInput.length(); i++) {
-            numSet.add(userInput.charAt(i));
-        }
-        return numSet.size() == NUMS_MAX_LENGTH;
     }
 
     private static int countStrike(ArrayList<Integer> computerNums, ArrayList<Integer> userNums) {
