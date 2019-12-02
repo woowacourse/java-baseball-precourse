@@ -16,3 +16,4 @@
     
   * User
     - generateInputBall() : 입력으로 받은 3자리 숫자 생성
+    - isValidate(userInput) : 입력으로 받은 문자열의 유효성 검증
