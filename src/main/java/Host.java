@@ -48,6 +48,7 @@ public class Host {
 
     public int countNumOfStrikes(List<Integer> inputNumbers) {
         int numOfStrikes = DEFAULT_NUMBER_FOR_COUNTING;
+
         for (int i = 0; i < numbers.size(); i++) {
             if (numbers.get(i).equals(inputNumbers.get(i))) {
                 numOfStrikes++;
@@ -58,6 +59,7 @@ public class Host {
 
     public int countNumOfBalls(List<Integer> inputNumbers) {
         int numOfMatch = DEFAULT_NUMBER_FOR_COUNTING;
+
         for (int i = 0; i < numbers.size(); i++) {
             if (findAnyMatch(inputNumbers, numbers.get(i))) {
                 numOfMatch++;
