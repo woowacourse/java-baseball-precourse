@@ -3,54 +3,41 @@ import java.util.Scanner;
 
 public class BaseballGame {
 
+    private int [] userInput;
+    private int [] answer;
+    private int numOfDigit;
+
     public static void main(String[] args) {
-        int[] answer;
-        int[] userInput;
-        boolean finishGame;
-        int strike = 0;
-        int ball = 0;
         BaseballGame game = new BaseballGame();
+        game.setGame(3);
 
-        answer = game.createRandomAnswer();
+        while(true){
+            game.createRandomAnswer();
+            do{
+                game.startGame();
+            }while(game.checkAnswer());
 
-
-    }
-
-    public void startGame() {
-        int [] userInput;
-        int [] answer;
-        boolean finishGame;
-        int strike = 0;
-        int ball = 0;
-
-        answer = createRandomAnswer();
-        System.out.print("숫자를 입력해주세요: ");
-        userInput = getUserInput();
-
-        finishGame = false;
-        while (!finishGame) {
-            game.startGame();
-            userInput = game.getUserInput();
-            strike = game.checkStrike(answer, userInput);
-            ball = game.checkBall(answer, userInput);
-
-            if (strike == 3) {
-                game.printResult(strike, 0);
-                finishGame = game.restart();
-                answer = game.createRandomAnswer();
-            } else if (strike > 0 || ball > 0) {
-                game.printResult(strike, ball);
-                finishGame = false;
-            } else {
-                game.printResult(0, 0);
-                finishGame = false;
+            if(!game.restart()){
+                break;
             }
         }
     }
 
-    public int[] createRandomAnswer() {
+    public void setGame(int n) {
+        userInput = new int[n];
+        answer = new int[n];
+        numOfDigit = n;
+    }
+
+    public void startGame() {
+
+        System.out.print("숫자를 입력해주세요: ");
+        this.userInput = getUserInput();
+
+    }
+
+    public void createRandomAnswer() {
         boolean visited[] = new boolean[10];
-        int answer[] = new int[3];
         int randomIndex;
 
         visited[0] = true;
@@ -60,22 +47,28 @@ public class BaseballGame {
 
         Random random = new Random();
 
-        for (int i = 0; i < 3; i++) {
+        initializeAnswer();
+
+        for (int i = 0; i < this.numOfDigit; i++) {
             randomIndex = random.nextInt(8) + 1;
             if(!visited[randomIndex]){
                 visited[randomIndex] = true;
-                answer[i] = randomIndex;
+                this.answer[i] = randomIndex;
             }else{
                 i--;
             }
         }
+    }
 
-        return answer;
+    public void initializeAnswer(){
+        for(int i = 0; i < this.numOfDigit; i++){
+            this.answer[i] = 0;
+        }
     }
 
     public int[] getUserInput() {
         int input;
-        int[] userAnswer = new int[3];
+        int[] userAnswer = new int[this.numOfDigit];
         Scanner sc = new Scanner(System.in);
         input = sc.nextInt();
 
@@ -87,7 +80,11 @@ public class BaseballGame {
             input = sc.nextInt();
         }
 
-        for (int i = 2; i >= 0; i--) {
+        while(!errorCheckZero(input)){
+            input = sc.nextInt();
+        }
+
+        for (int i = this.numOfDigit - 1; i >= 0; i--) {
             userAnswer[i] = input % 10;
             input /= 10;
         }
@@ -97,7 +94,7 @@ public class BaseballGame {
 
     public boolean errorCheckRange(int input) {
         if(input < 100 || input > 1000){
-            System.out.println("3자리 숫자를 입력해 주세요!");
+            System.out.print("입력 에러: 3자리 숫자를 입력해 주세요!");
             return false;
         }else{
             return true;
@@ -111,20 +108,51 @@ public class BaseballGame {
         b = input % 10;
         input /= 10;
         c = input % 10;
-        if(a == b || a == c || b == c){
+        if(a != b && a != c && b != c){
+            return true;
+        }else{
+            System.out.print("입력 에러: 서로 다른 숫자를 입력해 주세요!");
             return false;
-        }else if(a == b && a == c){
+        }
+    }
+
+    public boolean errorCheckZero(int input){
+        int a, b, c;
+        a = input % 10;
+        input /= 10;
+        b = input % 10;
+        input /= 10;
+        c = input % 10;
+        if(a == 0 || b == 0 || c == 0){
+            System.out.print("입력 에러: 1~9의 숫자를 입력해주세요!");
             return false;
         }else{
             return true;
         }
     }
 
+    public boolean checkAnswer(){
+        int strike = 0;
+        int ball = 0;
+        boolean result;
+
+        strike = checkStrike(answer, userInput);
+        ball = checkBall(answer, userInput);
+
+        if (strike == this.numOfDigit) {
+            result = false;
+        } else {
+            result = true;
+        }
+        printResult(strike, ball);
+        return result;
+    }
+
     public int checkStrike(int[] answer, int[] userInput) {
         int result;
 
         result = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < this.numOfDigit; i++) {
             if (answer[i] == userInput[i]) {
                 result++;
             }
@@ -166,21 +194,21 @@ public class BaseballGame {
 
         System.out.println();
 
-        if (strike == 3) {
+        if (strike == this.numOfDigit) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
     }
 
     public boolean restart() {
-        int option;
+        int flagRestart;
         Scanner sc = new Scanner(System.in);
-        option = sc.nextInt();
+        flagRestart = sc.nextInt();
 
-        if (option == 1) {
-            return false;
-        } else {
+        if (flagRestart == 1) {
             return true;
+        } else {
+            return false;
         }
     }
 }
