@@ -12,6 +12,7 @@ public class User {
         try {
             return makeNumbersFromInput(getInput());
         } catch (Exception e) {
+            System.out.println("잘못 입력하셨습니다.");
             return inputNumbers();
         }
     }
