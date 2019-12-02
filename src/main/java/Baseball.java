@@ -7,8 +7,13 @@ public class Baseball {
     private static String inputNumber;
 
     public static void main(String[] args) {
-        secretNumber = makeDifferentNumbers();
-        scoreInput();
+        boolean playGame = true;
+
+        while (playGame) {
+            secretNumber = makeDifferentNumbers();
+            scoreInput();
+            playGame = playGameAgain();
+        }
     }
 
     private static String makeDifferentNumbers() {
@@ -92,6 +97,12 @@ public class Baseball {
         return strikeForm + ballForm;
     }
 
+    private static boolean playGameAgain() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String AgainStatus = getInputString();
+
+        return AgainStatus.equals("1");
+    }
 
     private static String getInputString() {
         Scanner scanner = new Scanner(System.in);
