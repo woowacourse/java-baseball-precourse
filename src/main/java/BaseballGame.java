@@ -18,8 +18,8 @@ public class BaseballGame {
     InputVerification input = new InputVerification();
 
     public BaseballGame() {
-    	setGame();
-    	play();
+        setGame();
+    	   play();
     }
  
     /*
@@ -39,8 +39,8 @@ public class BaseballGame {
      */
     private void play(){
         boolean isCorrect = false;
-    	   boolean isUnique = false;
-    	   player2 = null;
+        boolean isUnique = false;
+        player2 = null;
     	
         while(true){
             printer.printMessage(0);
@@ -59,7 +59,7 @@ public class BaseballGame {
             }
             
             if(isCorrect) {
-            	   end();
+                end();
             }
         }
     }
@@ -77,5 +77,22 @@ public class BaseballGame {
     	   } else {
     		      return data;
     	   }
+    }
+ 
+    /*
+     * 스트라이크, 볼을 판단하는 메소드
+     */
+    private boolean judge(){ 
+        int strikeCnt = 0;
+        int ballCnt = 0;
+        
+        for(int i = 0; i < 3; i++) {
+        	   strikeCnt += compareNum(player1.charAt(i), player2.charAt(i));
+        	   ballCnt += containNum(player2.charAt(i));
+        }
+
+        printer.printResult(strikeCnt, ballCnt);
+        
+        return (strikeCnt == 3);
     }
 }
