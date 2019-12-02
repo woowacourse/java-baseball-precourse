@@ -25,9 +25,7 @@ public class Main {
         while (true) {
             PlayGame play = new PlayGame();
             play.playGame();
-            if (Terminator.terminator()) {
-                continue;
-            } else {
+            if (!Terminator.terminator()) {
                 break;
             }
         }
