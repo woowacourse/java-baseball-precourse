@@ -6,18 +6,23 @@ public class Baseball {
         boolean newGame = true;
         while (newGame) {
             oneRound();
-            newGame = renewOrQuit();
+            newGame = makeChoice();
         }
     }
 
-    private static boolean renewOrQuit() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = scanner.nextLine();
-        if (input.equals("1")) {
+    private static boolean makeChoice() {
+        String choice = userChoose();
+        if (choice.equals("1")) {
             return true;
         }
         return false;
+    }
+
+    private static String userChoose() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = scanner.nextLine();
+        return input;
     }
 
     private static void oneRound() {
@@ -25,25 +30,30 @@ public class Baseball {
         String answer = threeDigitInteger();
         System.out.println("정답: " + answer);
         while(!threeStrikes) {
-            threeStrikes = guessAndCheck(answer);
+            String guess = makeGuess(answer);
+            threeStrikes = checkGuess(answer, guess);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
     }
 
-    private static boolean guessAndCheck(String answer) {
+    private static String makeGuess(String answer) {
         String guess = userGuess();
         while (!isValid(guess)) {
             guess = userGuess();
         }
-        return checkGuess(answer, guess);
+        return guess;
     }
 
     private static boolean checkGuess(String answer, String guess) {
         int strikeCount = countStrikes(answer, guess);
         int ballCount = countBalls(answer, guess);
+        showResult(strikeCount, ballCount);
+        return strikeCount == 3;
+    }
+
+    private static void showResult(int strikeCount, int ballCount) {
         String result = formatResult(strikeCount, ballCount);
         System.out.println(result);
-        return strikeCount == 3;
     }
 
     private static String threeDigitInteger() {
