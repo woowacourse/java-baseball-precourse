@@ -3,15 +3,28 @@ import java.util.stream.*;
 
 public class Baseball {
     public static void main(String[] args) {
+        boolean threeStrikes = false;
         String answer = threeDigitInteger();
+        System.out.println("정답: " + answer);
+        while(!threeStrikes) {
+            threeStrikes = guessAndCheck(answer);
+        }
+    }
+
+    private static boolean guessAndCheck(String answer) {
         String guess = userGuess();
         while (!isValid(guess)) {
             guess = userGuess();
         }
+        return checkGuess(answer, guess);
+    }
+
+    private static boolean checkGuess(String answer, String guess) {
         int strikeCount = countStrikes(answer, guess);
         int ballCount = countBalls(answer, guess);
         String result = formatResult(strikeCount, ballCount);
         System.out.println(result);
+        return strikeCount == 3;
     }
 
     private static String threeDigitInteger() {
