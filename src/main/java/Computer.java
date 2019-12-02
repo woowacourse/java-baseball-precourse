@@ -4,19 +4,11 @@ public class Computer {
     private int[] randomNumber;
     private boolean[] checkBoard;
 
-<<<<<<< HEAD
-    int[] get_randomNumber(){
-        return randomNumber;
-    }
-
-    boolean[] get_checkBoard(){
-=======
     int[] getRandomNumber(){
         return randomNumber;
     }
 
     boolean[] getCheckBoard(){
->>>>>>> master
         return checkBoard;
     }
 
@@ -24,11 +16,7 @@ public class Computer {
      컴퓨터가 생성한 난수 배열내 원소의 중복 검사
      */
 
-<<<<<<< HEAD
-    boolean check_randomNumber(int[] numbers){
-=======
     boolean checkRandomNumber(int[] numbers){
->>>>>>> master
         if ((numbers[0] != numbers[1])
                 && (numbers[0] != numbers[2])
                 && (numbers[1] != numbers[2]))
@@ -41,11 +29,7 @@ public class Computer {
      볼 판정을 위한 체크보드 배열 저장
      */
 
-<<<<<<< HEAD
-    void make_checkBoard(int[] numbers){
-=======
     void makeCheckBoard(int[] numbers){
->>>>>>> master
         checkBoard = new boolean[10];
 
         for(int i=0; i<3; i++){
@@ -58,11 +42,7 @@ public class Computer {
      임시저장된 배열의 중복 검사 후 최종저장
      */
 
-<<<<<<< HEAD
-    void generate_randomNumber(){
-=======
     void generateRandomNumber(){
->>>>>>> master
         Random random = new Random();
         int[] tempNumbers = new int[3];
 
@@ -70,28 +50,17 @@ public class Computer {
             for(int i=0; i<3; i++){
                 tempNumbers[i] = random.nextInt(9) + 1;
             }
-<<<<<<< HEAD
-        }while(!check_randomNumber(tempNumbers));
-
-        randomNumber = tempNumbers;
-        make_checkBoard(randomNumber);
-=======
         }while(!checkRandomNumber(tempNumbers));
 
         randomNumber = tempNumbers;
         makeCheckBoard(randomNumber);
->>>>>>> master
     }
 
     /*
      사용자가 입력한 번호의 유효성 검사
      */
 
-<<<<<<< HEAD
-    boolean check_userNumber(String number){
-=======
     boolean checkUserNumber(String number){
->>>>>>> master
         try{
             Integer.parseInt(number);
         }catch(NumberFormatException e){
@@ -120,11 +89,7 @@ public class Computer {
      난수와 사용자 입력이 같을 경우 종료를 위한 true 반환
      */
 
-<<<<<<< HEAD
-    boolean count_strike_and_balls(boolean[] board, int[] comNumber, int[] userNumber){
-=======
     boolean countStrikeAndBalls(boolean[] board, int[] comNumber, int[] userNumber){
->>>>>>> master
         int strikeCount = 0;
         int ballCount = 0;
 
