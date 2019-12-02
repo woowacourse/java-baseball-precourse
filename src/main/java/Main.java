@@ -4,9 +4,21 @@ public class Main {
     private static final int MAX_NUMBER = 9;
     private static final int MAX_ARRAY_SIZE = 3;
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner;
 
+    public static void main(String[] args) {
+        scanner = new Scanner(System.in);
+
+        while(true) {
+            boolean restart = playBaseball();
+
+            if (!restart) {
+                break;
+            }
+        }
+    }
+
+    private static boolean playBaseball() {
         List<Integer> numbers = createNumbers();
 
         while (true) {
@@ -16,6 +28,15 @@ public class Main {
             if (isGuessValid(guess, numbers)) {
                 break;
             }
+        }
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int reply = scanner.nextInt();
+
+        if (reply == 1) {
+            return true;
+        } else {
+            return false;
         }
     }
 
