@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @version 0.3 2019년 12월 2일
+ * @version 0.4 2019년 12월 2일
  * @author YerinCho
  */
 
@@ -30,6 +30,9 @@ public class Player {
 			System.out.print("1부터 9까지의 서로 다른 세자리 숫자를 입력해주세요 : ");
 			tmpnum=sc.nextLine();
 			
+			/*플레이어가 입력한 값 사이에 공백이 있는 경우, 공백 제거하는 함수 호출*/
+			tmpnum=checkBlank(tmpnum);
+			
 			/*플레이어가 입력한 값이 올바른지 처리하는 함수*/
 			if(checkInput(tmpnum)) {
 				break;
@@ -40,6 +43,20 @@ public class Player {
 		}
 		/*문자였던 값을 정수로 변환*/
 		this.num=Integer.parseInt(tmpnum);
+	}
+	
+	
+	/*플레이어가 입력한 값의 공백을 제거하는 함수*/
+	public String checkBlank(String input) {
+		String tmp="";
+		
+		/*입력값을 살펴보면서, 공백이 아닌 값만 tmp에 추가*/
+		for(int i=0;i<input.length();i++) {
+			if(input.charAt(i)!=' ') {
+				tmp=tmp+input.charAt(i);
+			}
+		}
+		return tmp;
 	}
 	
 	/*플레이어가 입력한 값이 올바른지 판단하는 함수, true 리턴 : 올바름, false 리턴 : 올바르지 않음*/
