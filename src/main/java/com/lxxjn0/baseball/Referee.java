@@ -1,5 +1,5 @@
 /*
- * @(#)Referee.java        0.5 2019/12/02
+ * @(#)Referee.java        0.6 2019/12/03
  *
  * Copyright (c) 2019 lxxjn0.
  */
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * 스트라이크와 볼의 개수를 확인하고 낫싱 여부를 판단하는 클래스.
  *
  * @author JUNYOUNG LEE (lxxjn0)
- * @version 0.5 2019/12/02
+ * @version 0.6 2019/12/03
  */
 public class Referee {
     /** 입력해야 하는 수의 길이를 저장한 상수 */
@@ -34,7 +34,8 @@ public class Referee {
      * @param comNumList  컴퓨터가 생성한 3자리 수
      * @param userNumList 사용자가 입력한 3자리 수
      */
-    public Referee(ArrayList<Integer> comNumList, ArrayList<Integer> userNumList) {
+    public Referee(ArrayList<Integer> comNumList,
+                   ArrayList<Integer> userNumList) {
         this.comNumList = comNumList;
         this.userNumList = userNumList;
 
@@ -60,13 +61,11 @@ public class Referee {
      * @return index의 위치 userNumList가 스트라이크이면 true를 반환.
      */
     private boolean isStrike(int index) {
-        return (userNumList.get(index).equals(comNumList.get(index)));
+        return userNumList.get(index).equals(comNumList.get(index));
     }
 
     /**
      * 다른 자리에 같은 숫자인지 판단하여 볼의 개수를 저장하는 메서드.
-     *
-     * @return 볼의 개수를 반환한다.
      */
     private void countBallNum() {
         for (int i = 0; i < NUM_LEN; i++) {

@@ -1,5 +1,5 @@
 /*
- * @(#)Computer.java        0.3 2019/12/02
+ * @(#)Computer.java        0.4 2019/12/03
  *
  * Copyright (c) 2019 lxxjn0.
  */
@@ -12,7 +12,7 @@ import java.util.Random;
  * 1부터 9까지 서로 다른 수로 이루어진 3자리 수를 생성하는 클래스.
  *
  * @author JUNYOUNG LEE (lxxjn0)
- * @version 0.3 2019/12/02
+ * @version 0.4 2019/12/03
  */
 public class Computer {
     /** 생성해야 하는 수의 길이를 저장한 상수 */
@@ -29,25 +29,21 @@ public class Computer {
      * 1부터 9까지 서로 다른 수로 이루어진 3자리 수를 저장.
      */
     public Computer() {
-        numList = numGenerator();
+        numGenerator();
     }
 
     /**
-     * 1부터 9까지 서로 다른 수로 이루어진 3자리 수를 생성하여 반환하는 메서드.
-     *
-     * @return 1부터 9까지의 서로 다른 수로 이루어진 3자리 수 tmpList 반환.
+     * 1부터 9까지 서로 다른 수로 이루어진 3자리 수를 생성하는 메서드.
      */
-    private ArrayList<Integer> numGenerator() {
-        ArrayList<Integer> tmpList = new ArrayList<Integer>();
+    private void numGenerator() {
+        numList = new ArrayList<Integer>();
 
-        while (tmpList.size() < NUM_LEN) {
+        while (numList.size() < NUM_LEN) {
             int tmp = new Random().nextInt(MAX_NUM) + MIN_NUM;
-            /* 이전에 생성된 수와 중복되지 않을 경우 tmpList에 추가 */
-            if (!tmpList.contains(tmp)) {
-                tmpList.add(tmp);
+            if (!numList.contains(tmp)) {
+                numList.add(tmp);
             }
         }
-        return tmpList;
     }
 
     /**
