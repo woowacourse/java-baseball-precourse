@@ -12,7 +12,7 @@ class HostTest {
     private boolean checkNumberBetweenOneAndNine(List<Integer> numbers) {
         boolean allBetweenOneAndNine = true;
         for (Integer number : numbers) {
-            if ( !(1 <= number && number <= 9) ) {
+            if (!(1 <= number && number <= 9)) {
                 allBetweenOneAndNine = false;
                 break;
             }

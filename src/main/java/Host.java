@@ -44,7 +44,7 @@ public class Host {
     public int countNumOfStrikes(List<Integer> inputNumbers) {
         int numOfStrikes = 0;
         for (int i = 0; i < numbers.size(); i++) {
-            if ( numbers.get(i).equals(inputNumbers.get(i)) ) {
+            if (numbers.get(i).equals(inputNumbers.get(i))) {
                 numOfStrikes++;
             }
         }
@@ -54,7 +54,7 @@ public class Host {
     public int countNumOfBalls(List<Integer> inputNumbers) {
         int numOfBalls = 0;
         for (int i = 0; i < numbers.size(); i++) {
-            if ( findAnyMatch(inputNumbers, numbers.get(i)) ) {
+            if (findAnyMatch(inputNumbers, numbers.get(i))) {
                 numOfBalls++;
             }
         }

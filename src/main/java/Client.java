@@ -4,7 +4,7 @@ import java.util.List;
 public class Client {
 
     static final int baseballGameSize = 3;
-    static final int notAllowedInteger  = 0;
+    static final int notAllowedInteger = 0;
 
     public List<Integer> makeNumbersFromString(String inputFromUser) {
         checkValidation(inputFromUser);
@@ -16,8 +16,8 @@ public class Client {
     }
 
     private boolean checkLength(String inputFromUser) {
-        if ( inputFromUser.length() != baseballGameSize ) {
-            throw new InvalidInputException("입력하신 문자의 길이가 " + baseballGameSize +"이 아닙니다.");
+        if (inputFromUser.length() != baseballGameSize) {
+            throw new InvalidInputException("입력하신 문자의 길이가 " + baseballGameSize + "이 아닙니다.");
         }
         return true;
     }
@@ -41,7 +41,7 @@ public class Client {
     }
 
     private boolean checkNoDuplication(String inputFromUser) {
-        if (inputFromUser.chars().distinct().count() != inputFromUser.length() ) {
+        if (inputFromUser.chars().distinct().count() != inputFromUser.length()) {
             throw new InvalidInputException("입력하신 숫자 중 중복된 수가 존재합니다.");
         }
         return true;

@@ -3,6 +3,9 @@ import java.util.Scanner;
 
 public class Game {
 
+    private static final String RESTART_GAME = "1";
+    private static final  String EXIT_GAME = "2";
+
     private Host host;
     private Client client;
     private Scanner gameScanner = new Scanner(System.in);
@@ -10,7 +13,7 @@ public class Game {
     public static void main(String[] args) {
         Game game = new Game();
         boolean continueGame = true;
-        while(continueGame) {
+        while (continueGame) {
             game.startOneGame();
             continueGame = game.checkContinueGame();
         }
@@ -24,7 +27,7 @@ public class Game {
     private void startOneGame() {
         initGame();
         boolean isFinished = false;
-        while(!isFinished) {
+        while (!isFinished) {
             try {
                 List<Integer> numbersFromClient = takeNumbersFromUser();
                 printWithNewline(host.makeResultStatement(numbersFromClient));
@@ -47,12 +50,12 @@ public class Game {
 
     private boolean checkContinueGame() {
         String input;
-        while(true) {
+        while (true) {
             input = gameScanner.nextLine().trim();
-            if (input.equals("1")) {
+            if (input.equals(RESTART_GAME)) {
                 return true;
             }
-            if (input.equals("2")) {
+            if (input.equals(EXIT_GAME)) {
                 return false;
             }
             printWithNewline("잘못된 값을 입력하셨습니다. 다시 입력해주세요(새로운 게임: 1, 게임 종료: 2)");
