@@ -1,4 +1,4 @@
-package baseballgame.io;
+package com.woowacourse.baseballgame.io;
 
 public class OutputBaseballGame {
     public static void printPitchResult(int stCnt, int bCnt) {

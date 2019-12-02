@@ -1,9 +1,9 @@
-package baseballgame.io;
+package com.woowacourse.baseballgame.io;
 
 import java.util.Scanner;
 
-import static baseballgame.system.BaseballGameSystem.CONTINUE;
-import static baseballgame.system.BaseballGameSystem.GAMEOVER;
+import static com.woowacourse.baseballgame.system.BaseballGameSystem.CONTINUE;
+import static com.woowacourse.baseballgame.system.BaseballGameSystem.GAMEOVER;
 
 public class InputBaseballGame {
     private static final int MIN_NUM = 111;

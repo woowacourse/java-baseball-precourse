@@ -1,6 +1,6 @@
-package baseballgame;
+package com.woowacourse.baseballgame;
 
-import baseballgame.system.BaseballGameSystem;
+import com.woowacourse.baseballgame.system.BaseballGameSystem;
 
 public class BaseballGameApplication {
     public static void main(String[] args) {

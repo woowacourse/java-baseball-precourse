@@ -1,15 +1,15 @@
-package baseballgame.system;
+package com.woowacourse.baseballgame.system;
 
-import baseballgame.io.InputBaseballGame;
-import baseballgame.io.OutputBaseballGame;
+import com.woowacourse.baseballgame.io.InputBaseballGame;
+import com.woowacourse.baseballgame.io.OutputBaseballGame;
 
 import java.util.HashSet;
 
 public class BaseballGameSystem {
-    private static final int DIGIT = 3;
-
     public static final int CONTINUE = 1;
     public static final int GAMEOVER = 2;
+
+    private static final int DIGIT = 3;
 
     private int strikeCount, ballCount;
     private int[] userNumberArr;
