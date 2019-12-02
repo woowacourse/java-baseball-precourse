@@ -1,5 +1,5 @@
 /*
- * Game.java                       1.6.1   2019-12-01
+ * Game.java                       1.6.3   2019-12-02
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -19,9 +19,8 @@ import java.io.InputStreamReader;
  * 게임이 끝나면 게임 재시작을 하거나, 게임을 완전히 종료한다.
  *
  * @author HyungjuAn
- * @version 1.6.1                 외부 접근이 필요없는 methods
- *                                접근 제어자를 private으로 수정
- * @date 2019-12-31
+ * @version 1.6.3                       toString method override
+ * @date 2019-12-02
  */
 public class Game {
     private static final String THREE_STRIKE = "3 스트라이크";
@@ -91,5 +90,10 @@ public class Game {
     @Override
     protected final void finalize() throws Throwable {
         // do nothing
+    }
+
+    @Override
+    public String toString() {
+        return Game.class.getName();
     }
 }
