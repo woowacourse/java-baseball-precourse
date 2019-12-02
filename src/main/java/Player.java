@@ -1,9 +1,11 @@
 package src.main.java;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Player {
 
@@ -13,8 +15,8 @@ public class Player {
 
 	public void createNumbers() {
 		List<Integer> list = inputIntValue();
-		
-		while (!isThreeDigits(list) | hasZero(list)) {
+
+		while (!isThreeDigits(list) | hasZero(list) | isDuplicated(list)) {
 			list = inputIntValue();
 		}
 		playerNums = new ArrayList<>(list);
@@ -47,8 +49,13 @@ public class Player {
 	private boolean isThreeDigits(List<Integer> list) {
 		return list.size() == DIGITS;
 	}
-	
+
 	private boolean hasZero(List<Integer> list) {
 		return list.contains(0);
+	}
+
+	private boolean isDuplicated(List<Integer> list) {
+		Set<Integer> set = new HashSet<Integer>(list);
+		return set.size() < list.size();
 	}
 }
