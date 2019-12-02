@@ -1,8 +1,18 @@
 /**
- * Terminator 클래스에서는 static으로 만들어진 terminator메서드를 이용하여 게임을 새로 시작할 것인지, 종료할 것인지에 따른 결과를 반환한다.
+ * 클래스 이름 : Terminator.java
+ *
+ * @version 1.0
+ *
+ * 날짜 : 2019.12.2 월요일
+ *
+ * @author Seungwan Park, github.com/toneyparky
  */
 
 import java.util.Scanner;
+
+/**
+ * Terminator 클래스에서는 static으로 만들어진 terminator메서드를 이용하여 게임을 새로 시작할 것인지, 종료할 것인지에 따른 결과를 반환한다.
+ */
 
 public class Terminator {
 
