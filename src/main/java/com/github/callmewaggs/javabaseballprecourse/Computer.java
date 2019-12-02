@@ -7,6 +7,10 @@ public class Computer {
         this.numbers = new int[3];
     }
 
+    public int[] getNumbers() {
+        return numbers;
+    }
+
     public void generateRandomBall() {
         int[] candidates = new int[9];
 

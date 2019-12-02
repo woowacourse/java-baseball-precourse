@@ -9,11 +9,14 @@
     
   * Score
     - init() : strike / ball 점수 초기화
+    - getStrike() : 멤버변수 strike 의 getter method
     - calculate(ball, ball) : 점수 계산
     
   * Computer
+    - getNumbers() : 멤버변수 numbers 의 getter method
     - generateRandomBall() : 랜덤한 3자리 숫자 생성
     
   * User
+    - getNumbers() : 멤버변수 numbers 의 getter method
     - generateInputBall() : 입력으로 받은 3자리 숫자 생성
     - isValidate(userInput) : 입력으로 받은 문자열의 유효성 검증

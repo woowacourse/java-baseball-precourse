@@ -13,15 +13,15 @@ public class Game {
 
     public void gameStart() {
         computer.generateRandomBall();
-        score.init();
 
-        while(true) {
+        while (true) {
+            score.init();
             user.generateInputBall();
 
-            score.calculate(computer.getBall(), user.getBall());
+            score.calculate(computer.getNumbers(), user.getNumbers());
 
-            if(score.getStrike() == 3) {
-                if(gameAgain()) {
+            if (score.getStrike() == 3) {
+                if (gameAgain()) {
                     computer.generateRandomBall();
                     score.init();
                 } else {

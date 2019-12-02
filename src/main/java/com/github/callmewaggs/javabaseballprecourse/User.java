@@ -9,6 +9,10 @@ public class User {
         numbers = new int[3];
     }
 
+    public int[] getNumbers() {
+        return numbers;
+    }
+
     public void generateInputBall() {
         Scanner scan = new Scanner(System.in);
         while (true) {
