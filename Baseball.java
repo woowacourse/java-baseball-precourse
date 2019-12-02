@@ -10,6 +10,8 @@ public class Baseball {
         }
         int strikeCount = countStrikes(answer, guess);
         System.out.println(strikeCount + "스트라이크");
+        List<Integer> ballIndices = findBalls(answer, guess);
+        System.out.println(ballIndices);
     }
 
     private static String threeDigitInteger() {
@@ -102,5 +104,19 @@ public class Baseball {
             }
         }
         return strikeCount;
+    }
+
+    private static List<Integer> findBalls(String answer, String guess) {
+        assert isValid(answer) : "Invalid answer";
+        assert isValid(guess) : "Invalid guess";
+        char[] answerArray = answer.toCharArray();
+        char[] guessArray = guess.toCharArray();
+        List<Integer> ballIndices = new ArrayList<Integer>();
+        for (int i = 0; i < 3; i++) {
+            if (answerArray[i] != guessArray[i]) {
+                ballIndices.add(i);
+            }
+        }
+        return ballIndices;
     }
 }
