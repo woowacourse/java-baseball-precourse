@@ -51,6 +51,10 @@ class Computer {
         System.out.println();
     }
 
+    public boolean isNumberCorrect(List<Integer> playerInputNumbers) {
+        return getStrikeCount(playerInputNumbers) == 3;
+    }
+
     private int getStrikeCount(List<Integer> playerInputNumbers) {
         int strikeCount = 0;
 
