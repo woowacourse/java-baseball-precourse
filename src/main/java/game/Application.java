@@ -16,10 +16,25 @@ import game.utils.OutputUtil;
 
 public class Application {
     public static void main(String[] args) throws Exception {
+        play();
+    }
+
+    /**
+     * This is a method that plays the whole process of the game.
+     * The game continues while the number of strikes is not three.
+     * @throws Exception
+     */
+    private static void play() throws Exception {
         Game game = new Game(new RandomNumbersGenerator());
-        Numbers userNumbers = inputNumbers();
-        MatchResult result = game.match(userNumbers);
-        OutputUtil.showHint(result);
+        while(true) {
+            Numbers userNumbers = inputNumbers();
+            MatchResult result = game.match(userNumbers);
+            OutputUtil.showHint(result);
+            if(result.isStrokeAll()) {
+                break;
+            }
+        }
+        OutputUtil.showFinalResult();
     }
 
     /**

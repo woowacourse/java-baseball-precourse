@@ -36,4 +36,9 @@ public class MatchResult {
     public int getBallCount() {
         return ballCount;
     }
+
+    public boolean isStrokeAll() {
+        return strikeCount == Numbers.SIZE;
+    }
+
 }
