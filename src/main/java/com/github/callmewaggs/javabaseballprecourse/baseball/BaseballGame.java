@@ -41,8 +41,11 @@ public class BaseballGame {
       Scanner scan = new Scanner(System.in);
       flag = scan.nextInt();
 
-      if (!(flag == 1 || flag == 2)) System.out.println("다시 입력해 주세요.");
-      else break;
+      if (!(flag == 1 || flag == 2)) {
+        System.out.println("다시 입력해 주세요.");
+      } else {
+        break;
+      }
     }
 
     if (flag == 1) {

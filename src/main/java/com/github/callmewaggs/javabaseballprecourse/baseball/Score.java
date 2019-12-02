@@ -33,13 +33,18 @@ public class Score {
         calculateScore(computerNumbers.get(i), userNumbers.get(j), i, j);
       }
     }
-    if (strike == 3) win = true;
+    if (strike == 3) {
+      win = true;
+    }
   }
 
   private void calculateScore(int number1, int number2, int index1, int index2) {
     if (number1 == number2) {
-      if (index1 == index2) ++strike;
-      else ++ball;
+      if (index1 == index2) {
+        ++strike;
+      } else {
+        ++ball;
+      }
     }
   }
 
@@ -47,8 +52,11 @@ public class Score {
     if (strike == 3) {
       System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     } else {
-      if (strike == 0 && ball == 0) System.out.println("낫싱");
-      else System.out.println(strike + " 스트라이크 " + ball + "볼");
+      if (strike == 0 && ball == 0) {
+        System.out.println("낫싱");
+      } else {
+        System.out.println(strike + " 스트라이크 " + ball + "볼");
+      }
     }
   }
 }
