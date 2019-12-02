@@ -7,7 +7,7 @@ public class BaseballGame {
 
 	private static final int DIGITS = 3;
 	private static final int EXIT = 2;
-	private static final int START = 1;
+	private static final int RESTART = 1;
 
 
 	private int strike;
@@ -75,6 +75,7 @@ public class BaseballGame {
 		while (true) {
 			try {
 				inputValue = input.nextInt();
+				createException(inputValue);
 				break;
 			} catch (InputMismatchException e) {
 				checkAnswer();
@@ -89,5 +90,11 @@ public class BaseballGame {
 		strike = 0;
 		ball = 0;
 
+	}
+	
+	private void createException(int inputValue) {
+		if (inputValue != RESTART && inputValue != EXIT) {
+			throw new InputMismatchException();
+		}
 	}
 }
