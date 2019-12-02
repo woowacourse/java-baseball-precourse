@@ -1,9 +1,11 @@
 package com.github.callmewaggs.javabaseballprecourse;
 
+import java.util.Scanner;
+
 public class Game {
-    Computer computer;
-    User user;
-    Score score;
+    private Computer computer;
+    private User user;
+    private Score score;
 
     public Game() {
         computer = new Computer();
@@ -33,6 +35,18 @@ public class Game {
     }
 
     private boolean gameAgain() {
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            Scanner scan = new Scanner(System.in);
+            int flag = scan.nextInt();
 
+            if (flag == 1)
+                return true;
+            else if (flag == 2)
+                return false;
+            else {
+                System.out.println("다시 입력해 주세요.");
+            }
+        }
     }
 }
