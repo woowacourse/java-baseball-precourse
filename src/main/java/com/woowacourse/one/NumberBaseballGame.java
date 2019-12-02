@@ -131,6 +131,46 @@ public class NumberBaseballGame {
 
     }
 
+    /**
+     * 입력받은 randNumList와 playerNumList를 비교하기 위한 반복 메소드입니다.
+     *
+     * @param randNumList
+     * @param playerNumList
+     * @return strikeAndBallCnt
+     */
+    public static int[] repeatNumList(int[] randNumList, int[] playerNumList) {
+
+        int[] strikeAndBallCnt = new int[2];
+
+        for (int i = 0; i < DIGIT; i++) {
+            for (int j = 0; j < DIGIT; j++) {
+                calculateStrikeAndBall(i, j, randNumList, playerNumList, strikeAndBallCnt);
+            }
+        }
+
+        return strikeAndBallCnt;
+    }
+
+    /**
+     * strike와 ball의 개수를 계산해주는 메소드입니다.
+     *
+     * @param i
+     * @param j
+     * @param randNumList
+     * @param playerNumList
+     * @param strikeAndBallCnt
+     */
+    public static void calculateStrikeAndBall(int i, int j, int[] randNumList, int[] playerNumList,
+                                              int[] strikeAndBallCnt) {
+        if (randNumList[i] == playerNumList[j]) {
+            if (i == j) {
+                strikeAndBallCnt[0]++;
+            } else {
+                strikeAndBallCnt[1]++;
+            }
+        }
+    }
+
     public static void main(String[] args){
         System.out.println("hello world");
     }
