@@ -27,4 +27,43 @@ public class Baseball {
 
   }
 
+  public int[] matchNumber(int inputNumber) {
+    int first = inputNumber / 100;
+    int second = inputNumber % 100 / 10;
+    int third = inputNumber % 10;
+
+    int[] score = {0, 0, 0};
+
+    if (this.answer[first] != 0) {
+      if (this.answer[first] == 1) {
+        score[0]++;
+      } else {
+        score[1]++;
+      }
+    } else {
+      score[2]++;
+    }
+
+    if (this.answer[second] != 0) {
+      if (this.answer[second] == 2) {
+        score[0]++;
+      } else {
+        score[1]++;
+      }
+    } else {
+      score[2]++;
+    }
+
+    if (this.answer[third] != 0) {
+      if (this.answer[third] == 3) {
+        score[0]++;
+      } else {
+        score[1]++;
+      }
+    } else {
+      score[2]++;
+    }
+
+    return score;
+  }
 }
