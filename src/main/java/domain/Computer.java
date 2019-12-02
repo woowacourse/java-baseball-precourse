@@ -3,6 +3,11 @@ package domain;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author :   김시영
+ * @version :   1.0 2019년 11월 30일
+ * @apiNote :   컴퓨터 역할을 수행하는 클래스로, 난수를 생성하는 기능을 가지고 있습니다.
+ */
 public class Computer {
     private static final String DEFALUT_STRING_BLANK = "";
     private static final int DIGIT_NUMBER = 3;
@@ -22,5 +27,4 @@ public class Computer {
             randomNumber += String.valueOf(s);
         return Integer.parseInt(randomNumber);
     }
-
 }

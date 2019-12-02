@@ -4,6 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * @author :   김시영
+ * @version :   2.0 2019년 12월 2일
+ * @apiNote :   게임진행을 위해 사용자 입력 및 입력 에러 처리를 위한 클래스입니다.
+ */
 public class User {
     private static final int DEFAULT_INT_ZERO = 0;
     private static final int END_GAME = 2;
@@ -19,12 +24,13 @@ public class User {
                 System.out.println("1또는 2의 수를 입력해주세요~(1번 : 시작, 2번 : 종료)");
                 userInput = makeNumberAndCheckStringError();
             } else {
-                break;
+                break;  /* 게임을 재 시작하고자 하는 경우 */
             }
         }
 
-        if (userInput == END_GAME)
+        if (userInput == END_GAME) {
             return true;
+        }
         return false;
     }
 
