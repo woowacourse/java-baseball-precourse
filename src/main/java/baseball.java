@@ -23,4 +23,19 @@ public class baseball {
             stop = Numchk();
         }
     }
+    //같은 숫자 재설정
+    public static boolean Numchk(){
+        Random random = new Random();
+        if((ten==hun) || (ten==one)) {
+            ten = random.nextInt(10);
+            return false;
+        }else if((one==hun) || (one==ten)) {
+            one = random.nextInt(10);
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
 }
