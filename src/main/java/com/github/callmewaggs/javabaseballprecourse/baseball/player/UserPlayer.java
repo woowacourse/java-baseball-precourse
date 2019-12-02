@@ -28,15 +28,13 @@ public class UserPlayer implements BallPlayer {
     }
 
     private List<Integer> parseInput(String userInput) {
-        if (userInput.length() != 3)
-            throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다.");
+        if (userInput.length() != 3) throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다.");
 
         List<Integer> numbers = new ArrayList<>();
         for (char number : userInput.toCharArray()) {
             if (number >= '1' && number <= '9') {
                 numbers.add(number - '0');
-            } else
-                throw new IllegalArgumentException("1부터 9사이의 숫자를 입력해야 합니다.");
+            } else throw new IllegalArgumentException("1부터 9사이의 숫자를 입력해야 합니다.");
         }
         return numbers;
     }
