@@ -5,6 +5,8 @@ public class Baseball {
     public static void main(String[] args) {
         String answer = threeDigitInteger();
         System.out.println(answer);
+        String guess = userGuess();
+        System.out.println(guess);
     }
 
     private static String threeDigitInteger() {
@@ -32,5 +34,12 @@ public class Baseball {
             digitString += digit;
         }
         return digitString;
+    }
+
+    private static String userGuess() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = scanner.nextLine();
+        return input;
     }
 }
