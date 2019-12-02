@@ -10,20 +10,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Baseball baseball = new Baseball();
-        baseball.init();
+        Game game = new Game();
+        game.init();
         while (askRetry()) {
-            baseball.init();
+            game.init();
         }
     }
 
     private static boolean askRetry() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력해주세요.");
         Scanner sc = new Scanner(System.in);
-        int decision = sc.nextInt();
-        if (decision == 1) {
+        String decision = sc.nextLine();
+        if (decision.charAt(0) == '1') {
             return true;
         }
-        return false;
+        if (decision.charAt(0) == '2') {
+            return false;
+        }
+        boolean retry = askRetry();
+        return retry;
     }
 }
