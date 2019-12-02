@@ -23,6 +23,7 @@ Git Commit Keywords:
 Add: Adding class or file.   
 Fix: Fixing bugs.  
 Modify: Modifying code for better code.
+Update : Updating document.
 
 Programming requirements :  
 - 자바 코드 컨벤션을 지키면서 프로그래밍한다.  

@@ -40,7 +40,7 @@ public class ResultGenerator {
         }
 
         if (resultList.get(1) == 0 && resultList.get(2) == 0) {
-            System.out.print(NUMBER_LENGTH + "개의 숫자를 다 틀렸습니다.");
+            System.out.print("낫싱");
         }
         System.out.print("\n");
         return false;
