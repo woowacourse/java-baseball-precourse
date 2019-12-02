@@ -14,11 +14,12 @@ public class IOController {
 
       System.out.print(score[i] + SBO[i] + " ");
     }
-    System.out.printf("\n");
 
     if (score[2] >= 3) {
-      System.out.println(SBO[2]);
+      System.out.print(SBO[2]);
     }
+
+    System.out.print("\n");
   }
 
   public boolean selectNextAction() {
