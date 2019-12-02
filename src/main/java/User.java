@@ -1,5 +1,12 @@
 import java.util.Scanner;
 
+/*
+ * ClassName : Computer
+ * ClassExplanation : 사용자 입력값 받기
+ * author : Kim SeYun
+ * Date : 2019. 12. 02
+ * Copyright (c) 2019 SeYun Kim
+ */
 public class User {
     static int[] userNumber = new int[3];
 
@@ -11,12 +18,13 @@ public class User {
             System.out.println("세자리 임의의 다른 숫자를 입력해주세요. : ");
             input = sc.nextLine();
 
-            if (input.length() != 3 || input.contains("0")) {                                                                                // 자리수가 3자리가 아니거나, 0이 들어올 경우 다시 받기
+            if (input.length() != 3 || input.contains("0")) {                                       // 자리수가 3자리가 아니거나, 0이 들어올 경우 다시 받기
                 continue;
-            } else if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {     // 중복되는 수가 있으면 입력 다시 받기
+            } else if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2)
+                    || input.charAt(1) == input.charAt(2)) {                                        // 중복되는 수가 있으면 입력 다시 받기
                 continue;
             }
-            try {                                                                                                                            // 숫자말고 다른 수가 들어오면 다시 입력 받기
+            try {                                                                                   // 숫자말고 다른 수가 들어오면 다시 입력 받기
                 Integer.parseInt(input);
                 break;
             } catch (NumberFormatException e) {

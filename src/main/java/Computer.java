@@ -3,6 +3,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+/*
+ * ClassName : Computer
+ * ClassExplanation : 숫자야구 정답
+ * author : Kim SeYun
+ * Date : 2019. 12. 02
+ * Copyright (c) 2019 SeYun Kim
+ */
 public class Computer {
     static int[] computerAnswer = new int[3];
 
