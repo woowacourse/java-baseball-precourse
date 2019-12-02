@@ -10,13 +10,25 @@
 
 public class InputVerification {
 	
-	Printer printer = new Printer();
+    Printer printer = new Printer();
 	
-	/*
-	 * 들어온 데이터가 유효한 값인지 확인 후 반환하는 메소드
-	 */
-	public boolean checkData(String player) {
-		return (checkNum(player) && checkNumCnt(player)
-				&& checkZeroNum(player) && checkDupNum(player));
+    /*
+     * 들어온 데이터가 유효한 값인지 확인 후 반환하는 메소드
+     */
+    public boolean checkData(String player) {
+        return checkNum(player) && checkNumCnt(player)
+		&& checkZeroNum(player) && checkDupNum(player);
+    }
+	
+    /*
+     * 숫자로만 이루어진 입력 값인지 확인하는 메소드
+     */
+    private boolean checkNum(String player) { 
+    	try {
+    	    Integer.parseInt(player);
+    	    return true;
+    	} catch(NumberFormatException e) {
+    	    return false;
+    	}
     }
 }
