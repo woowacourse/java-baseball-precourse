@@ -15,6 +15,8 @@ import java.util.Collections;
  * IntegerToArrayList 클래스에서는 플레이어의 입력 숫자를 ArrayList로 바꾸어준다.
  */
 public class IntegerToArrayList {
+    private static final int DEVIDE_NUMBER = 10;
+
     private static ArrayList<Integer> numberList = new ArrayList<>();
 
     /** n자릿수의 정수를 ArrayList로 바꾸는 메서드  */
@@ -23,8 +25,8 @@ public class IntegerToArrayList {
         numberList.clear();
 
         for (int i = 0; i < numberLength; i++) {
-            numberList.add(userNumber % 10);
-            userNumber = userNumber / 10;
+            numberList.add(userNumber % DEVIDE_NUMBER);
+            userNumber = userNumber / DEVIDE_NUMBER;
         }
 
         reverseArrayList();

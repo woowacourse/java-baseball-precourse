@@ -15,8 +15,11 @@ import java.util.ArrayList;
  */
 
 public class ResultGenerator {
-    private static ArrayList<Integer> resultList = new ArrayList<>();
     private static final int NUMBER_LENGTH = 3;
+    private static final int ZERO_STRIKE = 0;
+    private static final int ZERO_BALL = 0;
+
+    private static ArrayList<Integer> resultList = new ArrayList<>();
 
     /** 입력받은 ArrayList로 static변수를 초기화하고 게임의 결과를 구하는 함수를 호출하고 그 결과를 리턴하는 메서드 */
     public static boolean resultGenerator(ArrayList<Integer> inputList) {
@@ -31,15 +34,15 @@ public class ResultGenerator {
             return true;
         }
 
-        if (resultList.get(1) != 0) {
+        if (resultList.get(1) != ZERO_STRIKE) {
             System.out.print(resultList.get(1) + " 스트라이크 ");
         }
 
-        if (resultList.get(2) != 0) {
+        if (resultList.get(2) != ZERO_BALL) {
             System.out.print(resultList.get(2) + " 볼 ");
         }
 
-        if (resultList.get(1) == 0 && resultList.get(2) == 0) {
+        if (resultList.get(1) == ZERO_STRIKE && resultList.get(2) == ZERO_BALL) {
             System.out.print("낫싱");
         }
         System.out.print("\n");
