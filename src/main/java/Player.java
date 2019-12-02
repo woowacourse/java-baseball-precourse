@@ -14,7 +14,7 @@ public class Player {
 	public void createNumbers() {
 		List<Integer> list = inputIntValue();
 		
-		while (!isThreeDigits(list)) {
+		while (!isThreeDigits(list) | hasZero(list)) {
 			list = inputIntValue();
 		}
 		playerNums = new ArrayList<>(list);
@@ -46,5 +46,9 @@ public class Player {
 
 	private boolean isThreeDigits(List<Integer> list) {
 		return list.size() == DIGITS;
+	}
+	
+	private boolean hasZero(List<Integer> list) {
+		return list.contains(0);
 	}
 }
