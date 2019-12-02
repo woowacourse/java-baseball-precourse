@@ -3,12 +3,31 @@ import java.util.stream.*;
 
 public class Baseball {
     public static void main(String[] args) {
+        boolean newGame = true;
+        while (newGame) {
+            oneRound();
+            newGame = renewOrQuit();
+        }
+    }
+
+    private static boolean renewOrQuit() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = scanner.nextLine();
+        if (input.equals("1")) {
+            return true;
+        }
+        return false;
+    }
+
+    private static void oneRound() {
         boolean threeStrikes = false;
         String answer = threeDigitInteger();
         System.out.println("정답: " + answer);
         while(!threeStrikes) {
             threeStrikes = guessAndCheck(answer);
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
     }
 
     private static boolean guessAndCheck(String answer) {
