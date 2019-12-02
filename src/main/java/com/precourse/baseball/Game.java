@@ -1,5 +1,5 @@
 /*
- * Game.java                       1.6.3   2019-12-02
+ * Game.java                       1.6.4   2019-12-02
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -19,7 +19,8 @@ import java.io.InputStreamReader;
  * 게임이 끝나면 게임 재시작을 하거나, 게임을 완전히 종료한다.
  *
  * @author HyungjuAn
- * @version 1.6.3                       toString method override
+ * @version 1.6.4                           재시작 입력받을 때,
+ *                                   문자열 예외처리하도록 수정
  * @date 2019-12-02
  */
 public class Game {
@@ -77,9 +78,12 @@ public class Game {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int restartInfo;
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        restartInfo = Integer.parseInt(br.readLine());
-
+        try {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            restartInfo = Integer.parseInt(br.readLine());
+        } catch (NumberFormatException e) {
+            restartInfo = Integer.MAX_VALUE;                    // 잘못된 입력으로 넘어가도록 반환값 설정
+        }
         return restartInfo;
     }
 
