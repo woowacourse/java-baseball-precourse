@@ -19,7 +19,7 @@ public class BaseballGame {
 
     public BaseballGame() {
         setGame();
-    	   play();
+        play();
     }
  
     /*
@@ -87,12 +87,24 @@ public class BaseballGame {
         int ballCnt = 0;
         
         for(int i = 0; i < 3; i++) {
-        	   strikeCnt += compareNum(player1.charAt(i), player2.charAt(i));
-        	   ballCnt += containNum(player2.charAt(i));
+            strikeCnt += compareNum(player1.charAt(i), player2.charAt(i));
+            ballCnt += containNum(player2.charAt(i));
         }
 
         printer.printResult(strikeCnt, ballCnt);
         
         return (strikeCnt == 3);
+    }
+ 
+    /*
+     * 숫자를 비교하는 메소드
+     */
+    private int compareNum(char c, char d) {
+        int sameCnt = 0;
+    	
+        if(c == d) {
+    	       sameCnt++;
+    	   } 
+    	   return sameCnt;
     }
 }
