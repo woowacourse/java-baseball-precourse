@@ -1,6 +1,5 @@
 package com.woowacourse.one;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.HashSet;
 
@@ -243,9 +242,6 @@ public class NumberBaseballGame {
 
             int strikeCnt = strikeAndBallList[0];
             int ballCnt = strikeAndBallList[1];
-
-            System.out.println("랜덤숫자는 " + Arrays.toString(randNumList) + "입니다.");
-            System.out.println("플레이어의 숫자는 " + Arrays.toString(playerNumList) + "입니다.");
 
             printStrikeAndBall(strikeCnt, ballCnt);
 
