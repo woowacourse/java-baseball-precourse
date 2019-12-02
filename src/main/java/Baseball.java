@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
 public class Baseball {
@@ -10,17 +11,7 @@ public class Baseball {
     private int[] answerData;
     private int[] userData;
     Scanner sc;
-    private void getData(){
-        int input;
-        Scanner sc = new Scanner(System.in);
-        input = sc.nextInt();
-        //예외처리부
-        //해야할일 : 숫자가 엉뚱한 값 들어오는 경우 예외처리문 짜리
-        userData[0] = input/100;
-        input %= 100;
-        userData[1] = input/10;
-        userData[2] = input%10;
-    }
+
     private int[] makeData(){
         int[] randomNumber = new int[3];
         Random random = new Random();
@@ -33,6 +24,29 @@ public class Baseball {
         }while( (randomNumber[0] == randomNumber[2]) || (randomNumber[1] == randomNumber[2]) );
         //서로 다른 값이어야함!!
         return randomNumber;
+    }
+    /*
+     * 
+     *
+     * */
+    private void getData(){
+        int input;
+        try {
+            input = sc.nextInt();
+            //예외처리부
+            //해야할일 : 숫자가 엉뚱한 값 들어오는 경우 예외처리문 짜리
+            userData[0] = input / 100;
+            input %= 100;
+            userData[1] = input / 10;
+            userData[2] = input % 10;
+        }catch(InputMismatchException e){
+            //input exception. 0으로 값을 덮어씌워 아예 값을 배제한다.
+            sc = new Scanner(System.in);
+            userData[0] = 0;
+            userData[1] = 0;
+            userData[2] = 0;
+            System.out.println("잘못된 값을 입력하셨습니다.");
+        }
     }
 
     public Baseball(){
@@ -74,7 +88,6 @@ public class Baseball {
         if(strike == 0 && ball == 0){
             System.out.println("낫싱");
         }
-        //ystem.out.println("\n");
     }
     private boolean getResult(){
         int strike = 0;
@@ -102,18 +115,19 @@ public class Baseball {
         * 입력을 바탕으로, "끝낼 수 있는지" 여부를 판단하여 boolean으로 return.
         * */
         int input;
-        input = sc.nextInt();
-        if (input == 1) {//이 부분의 로직이 마음에 들지는 않지만...더 직관적인 리턴법은?
-            return false;
-        } else if (input == 2) {
+        try {
+            input = sc.nextInt();
+        }catch(InputMismatchException e){
+            //exception 발생할 경우, 아예 프로그램이 종료됨. 별도의 스캐너 처리 안해줬음.
+            System.out.println("잘못된 입력값이 들어왔습니다. 프로그램을 종료합니다.");
             return true;
-        } else {
-            /*
-             * 1,2 외의 입력이 들어온 경우 : true 리턴해주고 메세지 출력.
-             * 리턴값을 boolean으로 하지 않고 int로 해서 state를 넘길 수 있다면 좋겠지만
-             * 일단 함수의 목적을 [나가느냐 마느냐에 대한 리턴]으로 두고,
-             * 오류시 종료하는 것이 합리적이라 보고 true 리턴을 하였다.
-             */
+        }
+        switch(input){
+        case 1 :
+            return false;
+        case 2 :
+            return true;
+        default:
             System.out.println("잘못된 입력값이 들어왔습니다. 프로그램을 종료합니다.");
             return true;
         }
