@@ -171,6 +171,24 @@ public class NumberBaseballGame {
         }
     }
 
+    /**
+     * 스트라이크와 볼의 출력을 위한 메소드입니다.
+     *
+     * @param strikeCnt
+     * @param ballCnt
+     */
+    public static void printStrikeAndBall(int strikeCnt, int ballCnt) {
+        if (strikeCnt == 0 && ballCnt == 0) {
+            System.out.println("낫싱");
+        } else if (strikeCnt > 0 && ballCnt == 0) {
+            System.out.println(strikeCnt + "스트라이크");
+        } else if (strikeCnt == 0 && ballCnt > 0) {
+            System.out.println(ballCnt + "볼");
+        } else {
+            System.out.println(strikeCnt + "스트라이크 " + ballCnt + "볼");
+        }
+    }
+
     public static void main(String[] args){
         System.out.println("hello world");
     }
