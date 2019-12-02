@@ -7,5 +7,17 @@
  */
 package game.utils;
 
+import java.util.Scanner;
+
 public class InputUtil {
+    private static final String NUMBERS_REQUIREMENT_MESSAGE = "숫자를 입력해주세요 : ";
+
+    /**
+     * This method is used to receive numbers from users.
+     * @return String This returns input value.
+     */
+    public static String inputNumbers() {
+        System.out.print(NUMBERS_REQUIREMENT_MESSAGE);
+        return new Scanner(System.in).nextLine();
+    }
 }
