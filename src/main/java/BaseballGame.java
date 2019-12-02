@@ -20,15 +20,15 @@ public class BaseballGame {
         return resultArray;
     }
 
-    private static boolean checkResult(ArrayList<String> computerInputArray, String input2) {
+    private static boolean checkResult(ArrayList<String> computerInputArray, String userInputString) {
         int strikeCount = 0;
         int ballCount = 0;
         boolean isNothing = false;
 
         ArrayList<String> userInputArray = new ArrayList<String>();
 
-        for(int i = 0; i < input2.length(); i++) {
-            userInputArray.add(String.valueOf(input2.charAt(i)));
+        for(int i = 0; i < userInputString.length(); i++) {
+            userInputArray.add(String.valueOf(userInputString.charAt(i)));
         }
 
         for(int i = 0; i < userInputArray.size(); i++) {
