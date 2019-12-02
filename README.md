@@ -67,3 +67,9 @@ getUserInputAOrB() 함수가 사용자에게 inputA 또는 inputB의 입력을 �
 위 명령문을 getUserInputAOrB() 함수에 넣어버림.<br>
 함수의 네이밍&기능과 System.out.println() 문의 내용이 조금 다른 느낌<br>
 -> 함수에 인자로 String optionalMessage를 넣어서 출력하면 해결 될듯!~~<br>
+<br>
+4.상수화된 출력 메지지를 출력할때,<br> 
+값 변형 없이 그냥 출력만 할때 "this."을 붙이는 것이 좋은 가 아님 없애는 것이 좋은가..?<br>
+->  지금 현재는 상수화(static final) 처리된 것은 값이 변할 일이 없으므로<br> 
+그리고 이 값이 위에 정의된 상수임을 알려주기 위해(?) "this."를 붙이지 않았고<br>
+  answer, userInput 같이 값이 바뀌는 멤버변수는 "this."를 붙였다.<br>
