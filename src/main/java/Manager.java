@@ -11,6 +11,10 @@ public class Manager {
         scanner = new Scanner(System.in);
     }
 
+    /*
+     게임 시작 및 해당 게임의 종료여부 판별
+     */
+
     void start_game(){
         computer.generate_randomNumber();
 
@@ -26,6 +30,10 @@ public class Manager {
             break;
         }
     }
+
+    /*
+     이전 게임 종료 후 프로그램의 종료여부 판별
+     */
 
     void restart_or_end_game(){
         String choice;

@@ -12,6 +12,11 @@ public class User {
         return userNumber;
     }
 
+    /*
+     사용자가 추측한 번호를 문자열 형태로 수집
+     문자열 형태의 번호가 유효한지 검사, 정수 배열로 변환
+     */
+
     void input_userNumber(){
         Scanner scanner = new Scanner(System.in);
         String number;

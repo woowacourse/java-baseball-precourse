@@ -12,12 +12,22 @@ public class Computer {
         return checkBoard;
     }
 
+    /*
+     컴퓨터가 생성한 난수 배열내 원소의 중복 검사
+     */
+
     boolean check_randomNumber(int[] numbers){
-        if ((numbers[0] != numbers[1]) && (numbers[0] != numbers[2]) && (numbers[1] != numbers[2]))
+        if ((numbers[0] != numbers[1])
+                && (numbers[0] != numbers[2])
+                && (numbers[1] != numbers[2]))
             return true;
 
         return false;
     }
+
+    /*
+     볼 판정을 위한 체크보드 배열 저장
+     */
 
     void make_checkBoard(int[] numbers){
         checkBoard = new boolean[10];
@@ -26,6 +36,11 @@ public class Computer {
             checkBoard[numbers[i]] = true;
         }
     }
+
+    /*
+     1~9 사이의 난수 3자리를 임시저장
+     임시저장된 배열의 중복 검사 후 최종저장
+     */
 
     void generate_randomNumber(){
         Random random = new Random();
@@ -40,6 +55,10 @@ public class Computer {
         randomNumber = tempNumbers;
         make_checkBoard(randomNumber);
     }
+
+    /*
+     사용자가 입력한 번호의 유효성 검사
+     */
 
     boolean check_userNumber(String number){
         try{
@@ -64,6 +83,11 @@ public class Computer {
 
         return true;
     }
+
+    /*
+     스트라이크 및 볼 카운트
+     난수와 사용자 입력이 같을 경우 종료를 위한 true 반환
+     */
 
     boolean count_strike_and_balls(boolean[] board, int[] comNumber, int[] userNumber){
         int strikeCount = 0;
