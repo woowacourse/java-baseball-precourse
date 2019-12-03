@@ -23,27 +23,27 @@ public class BaseballGame {
     }
 
     public String makeNumbers() {
-        String ballNumbers = "";
+        String numbers = "";
         int temp;
 
-        while (ballNumbers.length() < 3) {
+        while (numbers.length() < 3) {
             temp = (int) Math.floor(Math.random() * 10);
-            if ((temp != 0) && !ballNumbers.contains(String.valueOf(temp))) {
-                ballNumbers += temp;
+            if ((temp != 0) && !numbers.contains(String.valueOf(temp))) {
+                numbers += temp;
             }
         }
-        return ballNumbers;
+        return numbers;
     }
 
     public String inputNumbers(Scanner sc) {
-        String inputNumbers = "";
+        String numbers = "";
 
-        while (inputNumbers.equals("")) {
-            inputNumbers = sc.nextLine();
-            inputNumbers = validate(inputNumbers);
+        while (numbers.equals("")) {
+            numbers = sc.nextLine();
+            numbers = validate(numbers);
 //            System.out.println("수정된 입력값: " + inputNumbers);
         }
-        return inputNumbers;
+        return numbers;
     }
 
     public String validate(String numbers) {
@@ -113,13 +113,13 @@ public class BaseballGame {
     }
 
     public String askReplay(Scanner sc) {
-        String re = sc.nextLine();
+        String replay = sc.nextLine();
 
-        while (!(re.equals("1") || re.equals("2"))) {
+        while (!(replay.equals("1") || replay.equals("2"))) {
             System.out.println("입력 형식이 잘못되었습니다.");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            re = sc.nextLine();
+            replay = sc.nextLine();
         }
-        return re;
+        return replay;
     }
 }
