@@ -23,4 +23,6 @@ public class Message{
     static final String NOTHING = "낫싱 ";
 
     static final String GAME_IS_END= "3개의 숫자를 모두 맞히셨습니다! 게임종료";
+    static final String GET_ANSWER_RESTART_OR_EXIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
 }

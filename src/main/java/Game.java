@@ -11,6 +11,10 @@
  */
 public class Game {
     static final int THREE_STRIKE = 3;
+
+    static final int REPLAY = 1;
+    static final int EXIT_GAME = 2;
+
     Computer computer;
     Player player;
 
@@ -27,6 +31,16 @@ public class Game {
             computer.printScore();
         }while(result.getNumberOfStrike() != THREE_STRIKE);
         System.out.println(Message.GAME_IS_END);
+        restartOrExit();
+    }
+
+    private void restartOrExit(){
+        int answer = player.wantReplay();
+        if(answer == REPLAY){
+            play();
+        }else{
+            System.exit(0);
+        }
     }
 
     public void run(){

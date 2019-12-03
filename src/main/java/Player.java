@@ -19,6 +19,7 @@ import java.util.Scanner;
 public class Player {
 
     String inputNumber;
+    Scanner scanner = new Scanner(System.in);
 
     private boolean checkInputValidation(){
         // 숫자 판단
@@ -51,11 +52,19 @@ public class Player {
     }
 
     public String getInput(){
-        Scanner scanner = new Scanner(System.in);
         System.out.print(Message.GET_ANSWER);
         do{
             inputNumber = scanner.next();
         }while(!checkInputValidation());
         return inputNumber;
+    }
+
+    public int wantReplay(){
+        int answer;
+        do{
+            System.out.println(Message.GET_ANSWER_RESTART_OR_EXIT);
+            answer = scanner.nextInt();
+        }while((answer != Game.REPLAY) && (answer != Game.EXIT_GAME));
+        return answer;
     }
 }
