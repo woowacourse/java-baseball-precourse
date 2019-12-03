@@ -68,11 +68,7 @@ public class BaseballGame {
     }
 
     public boolean checkSuccess(String ballNumbers, String inputNumbers) {
-        if (ballNumbers.equals(inputNumbers)) {
-            return true;
-        } else {
-            return false;
-        }
+        return ballNumbers.equals(inputNumbers);
     }
 
     public int[] calHint(String ballNumbers, String inputNumbers) {
