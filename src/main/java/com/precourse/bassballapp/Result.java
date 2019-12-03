@@ -1,16 +1,30 @@
+/**
+ * @(#)Result.java
+ * 0.0.0
+ * 2019/12/03
+ * 저작권 및 라이센스
+ */
+
 package com.precourse.bassballapp;
 
 import java.util.InputMismatchException;
 import java.util.Scanner; //newGameQuery에서 사용자 입력위해 필요.
 import com.precourse.bassballapp.Cpu;
 
+/**
+ * 연산결과를 출력하고, 새 게임을 세팅하는 역할을 담당한다.
+ * @version 0.0.0 2019년 12월 03일
+ * @author tiroring
+ */
 public class Result {
+	
+	/** 연산결과배열을 입력받아 콘솔창에 적절한 결과메세지를 출력한다. */
 	static void print(int[] resultArr) {
 		int strike = resultArr[0];
 		int ball = resultArr[1];
 		
 		if (strike == 0 && ball == 0) {
-			String tmp = "결과: 낫싱";
+			String tmp = "결과: Nothing";
 			System.out.println(tmp);
 			
 		} else if (strike == 3) {
@@ -18,7 +32,7 @@ public class Result {
 			System.out.println(tmp);
 			String tmp2 = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 			System.out.println(tmp2);
-			newGameQuery();
+			newGameQuery();		//새 게임 세팅
 			
 		} else if (strike == 0) {
 			String tmp = "결과: " + ball + " 볼";
@@ -34,7 +48,10 @@ public class Result {
 		}
 	}
 	
+	/** 정답을 맞춘 이후 호출되어서 새 게임을 세팅하거나, 게임을 종료한다. */
 	static void newGameQuery() {
+		
+		/** 사용자 입력을 저장할 변수 */
 		int userInput = 0;
 		
 		while (true) {
