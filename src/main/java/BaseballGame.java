@@ -1,23 +1,23 @@
 import java.util.Scanner;
 
 public class BaseballGame {
-    private String answer;
-    private String input;
+    private String ballNumbers;
+    private String inputNumbers;
 
     public BaseballGame() {
     }
 
     public void start(Scanner sc) {
-        answer = makeNumbers();
+        ballNumbers = makeNumbers();
 //        System.out.println("정답: " + answer);
-        input = inputNumbers(sc);
+        inputNumbers = inputNumbers(sc);
 //        System.out.println("입력값: " + input);
-        boolean success = checkSuccess(answer, input);
+        boolean success = checkSuccess(ballNumbers, inputNumbers);
         while (!success) {
-            int[] result = calHint(answer, input);
+            int[] result = calHint(ballNumbers, inputNumbers);
             printResult(result);
-            input = inputNumbers(sc);
-            success = checkSuccess(answer, input);
+            inputNumbers = inputNumbers(sc);
+            success = checkSuccess(ballNumbers, inputNumbers);
         }
         printResult(new int[]{3, 0});
     }
