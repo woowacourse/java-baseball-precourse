@@ -26,6 +26,7 @@ public class GameRound {
 			int[] inputNum = input.getInput();                    //사용자에게 입력값 받기
 			int[] scoreNum = score.getScore(answerNum,inputNum);  //정답값과 입력값을 기준으로 score 받기
 			printScore(scoreNum,answerNum);                       //score 프린트하기
+			correct = isCorrect(scoreNum);                        //정답값을 맞췄는지 확인하기
 		};
 	}
 	
@@ -37,4 +38,12 @@ public class GameRound {
 		System.out.println();
 	}
 	
+	/*정답값을 맞췄는지 확인하는 함수*/
+	public boolean isCorrect(int[] scoreNum) {
+		if(scoreNum[0]==3) { 
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			return true;
+			}
+		return false;
+	}	
 }
