@@ -51,7 +51,7 @@ public class Baseball {
                 continue;
             }
 
-            if(j==(i-1)) {
+            if (j == (i - 1)) {
                 ans[i] = temp;
                 temp = rand.nextInt(9) + 1;
                 j = 0;
@@ -67,7 +67,7 @@ public class Baseball {
     /**
      * 사용자에게 입력을 받는 메소드.
      */
-    public void makeInput(){
+    public void makeInput() {
         System.out.flush();
         System.out.print("숫자를 입력해주세요 : ");
         Scanner sc = new Scanner(System.in);
@@ -78,9 +78,9 @@ public class Baseball {
         sc.nextLine();
 
         /*배열에 한자리씩 저장하기 위한 반복문*/
-        for(int i=(input.length-1); i>=0; i--){
-            input[i] = temp%10;
-            temp/=10;
+        for (int i = (input.length - 1); i >= 0; i--) {
+            input[i] = temp % 10;
+            temp /= 10;
         }
     }
 
@@ -88,21 +88,22 @@ public class Baseball {
      * strike 와 ball을 구하는 매소드.
      * 사용자의 input과 답을 저장하고있는 ans를 비교.
      * 각 자리 위치가 같으면 strike++, 다른위치이면 ball++
+     *
      * @return strike 의 개수를 return. start()메소드의 무한루프 탈출조건,중복숫자나 0 입력시 -1 return.
      */
-    public int check(){
+    public int check() {
         int strike = 0;
         int ball = 0;
 
         /*중복숫자 또는 0 입력*/
-        if((input[0] == '0')
-                || (input[1] =='0')
-                || (input[2] =='0')) {
+        if ((input[0] == '0')
+                || (input[1] == '0')
+                || (input[2] == '0')) {
             return -1;
         }
-        if((input[0] ==input[1])
-                || (input[1] ==input[2])
-                || (input[2] ==input[0])) {
+        if ((input[0] == input[1])
+                || (input[1] == input[2])
+                || (input[2] == input[0])) {
             return -1;
         }
 
@@ -118,16 +119,26 @@ public class Baseball {
         }
 
         /*ball counting*/
-        if ((ans[0] == input[1])||(ans[0]==input[2])) {
+        if ((ans[0] == input[1]) || (ans[0] == input[2])) {
             ball++;
         }
-        if ((ans[1]==input[0])||(ans[1]==input[2])) {
+        if ((ans[1] == input[0]) || (ans[1] == input[2])) {
             ball++;
         }
-        if ((ans[2]==input[0])||(ans[2]==input[1])) {
+        if ((ans[2] == input[0]) || (ans[2] == input[1])) {
             ball++;
         }
-        System.out.println(strike + "스트라이크" + ball + "볼");
+
+        /*출력문*/
+        if ((strike == 0) && (ball == 0)) {
+            System.out.println("낫싱");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0) {
+            System.out.println(strike + " 스트라이크");
+        } else {
+            System.out.println(strike + " 스트라이크" + ball + "볼");
+        }
 
         return strike;
     }
@@ -135,7 +146,7 @@ public class Baseball {
     /**
      * 게임을 시작하는 start() 메소드
      */
-    public void start(){
+    public void start() {
 
         /*strike개수를 리턴받는 변수.*/
         int checkStrike = 0;
@@ -144,14 +155,14 @@ public class Baseball {
             makeInput();
             checkStrike = check();
 
-            if(checkStrike == -1){
+            if (checkStrike == -1) {
 
                 /*사용자가 0이나 같은숫자입력할경우 재입력*/
                 System.out.println("0또는 중복숫자 입력불가");
                 continue;
             }
 
-            if(checkStrike == 3) {
+            if (checkStrike == 3) {
 
                 /*check()에서 받은 strike개수가 3개일때 무한루프 탈출.*/
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
