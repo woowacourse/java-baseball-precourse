@@ -36,6 +36,11 @@ public class GameScore {
 		
 	}
 	
+	/*낫싱인지 아닌지 확인하는 함수*/
+	public void checkNothing() {
+		score[2]=0;                               //낫싱 초기화
+		if(score[0]==0 && score[1]==0) score[2]=1;
+	}
 
 	/*스트라이크,볼,낫싱값이 들어간 score를 함수*/
 	public int[] getScore(int[] answer, int[] input) {
@@ -43,6 +48,7 @@ public class GameScore {
 		this.input = input;
 		checkStrike();                           //스크라이크 확인
 		checkBool();                             //볼 확인
+		checkNothing();                          //낫싱 확인
 		return score;
 	}
 	
