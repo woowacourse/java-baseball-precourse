@@ -3,8 +3,6 @@ import java.util.List;
 import java.util.Scanner;
 
 class Player {
-
-
     private boolean wantToContinue;
     private Scanner input;
 
