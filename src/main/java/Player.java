@@ -10,35 +10,38 @@
  *
  */
 
+import lombok.Getter;
+
 import java.util.HashSet;
 import java.util.Scanner;
 
+@Getter
 public class Player {
 
-    String input;
+    String inputNumber;
 
-    private boolean checkInput(){
+    private boolean checkInputValidation(){
         // 숫자 판단
         try{
-            Integer.parseInt(input);
+            Integer.parseInt(inputNumber);
         }catch(NumberFormatException e){
             System.out.println(Message.INPUT_ERROR_NOT_A_NUMBER);
             return false;
         }
         // 자리수 판단
-        if(input.length()!=Computer.RANDOM_NUMBER_SIZE){
+        if(inputNumber.length()!=Computer.RANDOM_NUMBER_SIZE){
             System.out.println(Message.INPUT_ERROR_WRONG_DIGIT);
             return false;
         }
         // 범위 판단
-        if(input.contains("0")){
+        if(inputNumber.contains("0")){
             System.out.println(Message.INPUT_ERROR_WRONG_RANGE);
             return false;
         }
         // 중복 값 판단
         HashSet<Integer> answerSet = new HashSet<>();
-        for(int i=0; i<input.length(); i++){
-            answerSet.add(Character.getNumericValue(input.charAt(i)));
+        for(int i=0; i<inputNumber.length(); i++){
+            answerSet.add(Character.getNumericValue(inputNumber.charAt(i)));
         }
         if(answerSet.size()!=Computer.RANDOM_NUMBER_SIZE){
             System.out.println(Message.INPUT_ERROR_DUPLICATION);
@@ -47,11 +50,12 @@ public class Player {
         return true;
     }
 
-    public void getInput(){
+    public String getInput(){
         Scanner scanner = new Scanner(System.in);
         System.out.print(Message.GET_ANSWER);
         do{
-            input = scanner.next();
-        }while(!checkInput());
+            inputNumber = scanner.next();
+        }while(!checkInputValidation());
+        return inputNumber;
     }
 }
