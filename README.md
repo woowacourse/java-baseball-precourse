@@ -1,8 +1,8 @@
-#About
+# About
 우아한테크코스 프리코스 1주차 미션 - 숫자야구 게임
 자세한 정보는 [여기서](https://github.com/woowacourse) 확인하세요.
 
-#Functional Features
+# Functional Features
 - **랜덤 넘버 생성**
     - 사용자가 맞춰야 할 랜덤 넘버 생성 
 - **사용자 입출력**
