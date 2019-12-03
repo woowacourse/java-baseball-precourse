@@ -8,5 +8,6 @@ public class Game {
 
     public void run(){
         init();
+        computer.generateRandomNumber();
     }
 }
