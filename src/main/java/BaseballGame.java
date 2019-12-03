@@ -14,8 +14,8 @@ public class BaseballGame {
 //        System.out.println("입력값: " + input);
         boolean success = checkSuccess(ballNumbers, inputNumbers);
         while (!success) {
-            int[] result = calHint(ballNumbers, inputNumbers);
-            printResult(result);
+            int[] hint = calHint(ballNumbers, inputNumbers);
+            printResult(hint);
             inputNumbers = inputNumbers(sc);
             success = checkSuccess(ballNumbers, inputNumbers);
         }
@@ -89,9 +89,9 @@ public class BaseballGame {
         return result;
     }
 
-    public void printResult(int[] result) {
-        int strike = result[0];
-        int ball = result[1];
+    public void printResult(int[] hint) {
+        int strike = hint[0];
+        int ball = hint[1];
         String msg = "";
 
         if ((strike == 3) && (ball == 0)) {         //3스트라이크, 0볼인 경우 정답
