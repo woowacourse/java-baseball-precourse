@@ -4,11 +4,12 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        BaseballGame game = new BaseballGame();
         String replay = "";
 
         do {
-            BaseballGame.start(sc);
-            replay = BaseballGame.askReplay(sc);
+            game.start(sc);
+            replay = game.askReplay(sc);
         } while (replay.equals("1"));
     }
 }

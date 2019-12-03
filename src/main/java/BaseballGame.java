@@ -1,13 +1,16 @@
 import java.util.Scanner;
 
 public class BaseballGame {
+    private String answer;
+    private String input;
+
     public BaseballGame() {
     }
 
-    public static void start(Scanner sc) {
-        String answer = makeNumbers();
+    public void start(Scanner sc) {
+        answer = makeNumbers();
 //        System.out.println("정답: " + answer);
-        String input = inputNumbers(sc);
+        input = inputNumbers(sc);
 //        System.out.println("입력값: " + input);
         boolean success = checkSuccess(answer, input);
         while (!success) {
@@ -19,7 +22,7 @@ public class BaseballGame {
         printResult(new int[]{3, 0});
     }
 
-    public static String makeNumbers() {
+    public String makeNumbers() {
         String ballNumbers = "";
         int temp;
 
@@ -32,7 +35,7 @@ public class BaseballGame {
         return ballNumbers;
     }
 
-    public static String inputNumbers(Scanner sc) {
+    public String inputNumbers(Scanner sc) {
         String inputNumbers = "";
 
         while (inputNumbers.equals("")) {
@@ -43,7 +46,7 @@ public class BaseballGame {
         return inputNumbers;
     }
 
-    public static String validate(String numbers) {
+    public String validate(String numbers) {
 
         /* 입력받은 값이 숫자인지 확인*/
         try{
@@ -64,7 +67,7 @@ public class BaseballGame {
         }
     }
 
-    public static boolean checkSuccess(String ballNumbers, String inputNumbers) {
+    public boolean checkSuccess(String ballNumbers, String inputNumbers) {
         if (ballNumbers.equals(inputNumbers)) {
             return true;
         } else {
@@ -72,7 +75,7 @@ public class BaseballGame {
         }
     }
 
-    public static int[] calHint(String ballNumbers, String inputNumbers) {
+    public int[] calHint(String ballNumbers, String inputNumbers) {
         int[] result = {0, 0};      //strike, ball 순으로 힌트를 담은 배열
 
         for (int i = 0; i < 3; i++) {
@@ -92,7 +95,7 @@ public class BaseballGame {
         return result;
     }
 
-    public static void printResult(int[] result) {
+    public void printResult(int[] result) {
         int strike = result[0];
         int ball = result[1];
         String msg = "";
@@ -113,7 +116,7 @@ public class BaseballGame {
         System.out.println(msg);
     }
 
-    public static String askReplay(Scanner sc) {
+    public String askReplay(Scanner sc) {
         String re = sc.nextLine();
 
         while (!(re.equals("1") || re.equals("2"))) {
