@@ -18,19 +18,23 @@ public class BaseballGame {
     private void startBaseballGame() {
         BaseballNumberGenerator baseballNumberGenerator = new BaseballNumberGenerator();
         User user = new User();
+
         while(isNewGameOrGameOver(user, baseballNumberGenerator));
     }
 
     private boolean isNewGameOrGameOver(User user, BaseballNumberGenerator baseballNumberGenerator) {
         List<Integer> baseballs = baseballNumberGenerator.getBaseball();
         List<Integer> userInputNumbers;
+
         while(true) {
             userInputNumbers = user.getUserBat();
+
             if(isStrike(userInputNumbers,baseballs)) {
                 displayChooseGameState();
                 break;
             }
         }
+
         return getGameState();
     }
 
