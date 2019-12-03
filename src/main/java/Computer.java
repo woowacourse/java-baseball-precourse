@@ -2,13 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Computer {
-
-
     private List<Integer> baseballGameAnswer;
-
-    Computer() {
-
-    }
 
     public void makeBaseballGameAnswer() {
         List<Integer> numbers = new ArrayList<>();
