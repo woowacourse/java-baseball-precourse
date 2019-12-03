@@ -16,8 +16,8 @@ public class User {
     private static final String DEFAULT_STRING_BLANK = "";
     private static final int DIGIT_NUMBER = 3;
     private static final int END_GAME = 2;
-    private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private static final int START_GAME = 1;
+    private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public boolean wantToEndGame() throws IOException {
         System.out.println("게임을 재시작하려면 1번 종료하려면 2번을 입력해주세요 ! ");
@@ -42,7 +42,7 @@ public class User {
 
         while (true) {
             userInput = makeNumberAndCheckStringError();
-            if (checkDigitNumbersDiffrent(userInput)) {
+            if (checkDigitNumbersDifferent(userInput)) {
                 break;
             }
             System.out.println("서로 다른 세 자리수를 입력해주세요!");
@@ -54,7 +54,7 @@ public class User {
         return userInput;
     }
 
-    private boolean checkDigitNumbersDiffrent(int userInput) {
+    private boolean checkDigitNumbersDifferent(int userInput) {
         Set<String> setForCompareDigits = new HashSet<>();
         String[] userInputArray = String.valueOf(userInput).split(DEFAULT_STRING_BLANK);
 
