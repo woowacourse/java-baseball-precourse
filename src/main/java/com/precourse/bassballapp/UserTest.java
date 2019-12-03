@@ -11,7 +11,7 @@ import com.precourse.bassballapp.User;
 
 /**
  * User 클래스 멤버들의 정상작동여부 테스트
- * @version 0.0.0 2019년 12월 3일
+ * @version 0.0.0 2019년 12월 03일
  * @author tiroring
  */
 public class UserTest {

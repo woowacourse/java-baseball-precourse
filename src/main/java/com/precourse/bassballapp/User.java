@@ -16,10 +16,8 @@ import java.util.Scanner; //사용자 입력위해 필요.
  * @author tiroring
  */
 public class User {
-	/* 
-	 * getAnswer - getValidAnswer - getValidAnswer2 순으로
-	 * 유효성 검사가 적용되기 때문에, 제일 우측의 메서드를 사용해야 한다 
-	 */
+	/* getAnswer - getValidAnswer - getValidAnswer2 순으로
+	 * 유효성 검사가 적용되기 때문에, 제일 우측의 메서드를 사용해야 한다 */
 	
 	/** 입력받은 답안을 담는 변수 */
 	static int[] answerArr;

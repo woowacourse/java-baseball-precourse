@@ -13,6 +13,7 @@ package com.precourse.bassballapp;
  * @author tiroring
  */
 public class StrikeBall {
+	
 	/** 반환된 S&B 갯수를 저장하는 변수 */
 	static int[] resultArr;
 	
@@ -36,9 +37,9 @@ public class StrikeBall {
 	/** count메서드 내부에서 스트라이크가 있는지를 판별한다 */
 	static int existStrike(int[] userArr, int[] cpuArr,
 			int i, int j) {
-		if(i-1 == j && userArr[i] == cpuArr[j]) {
+		if (i-1 == j && userArr[i] == cpuArr[j]) {
 			return 1;
-		}else {
+		} else {
 			return 0;
 		}
 	}
@@ -46,9 +47,9 @@ public class StrikeBall {
 	/** count메서드 내부에서 볼이 있는지를 판별한다 */
 	static int existBall(int[] userArr, int[] cpuArr, 
 			int i, int j) {
-		if(i-1 != j && userArr[i] == cpuArr[j]) {
+		if (i-1 != j && userArr[i] == cpuArr[j]) {
 			return 1;
-		}else {
+		} else {
 			return 0;
 		}
 	}

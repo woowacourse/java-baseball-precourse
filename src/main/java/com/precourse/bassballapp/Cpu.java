@@ -29,12 +29,12 @@ public class Cpu {
 		
 		result[0] = getRandomNum();		//백의자리
 		int tmpVal1 = getRandomNum();
-		while(tmpVal1 == result[0]) {
+		while (tmpVal1 == result[0]) {
 			tmpVal1 = getRandomNum();
 		}
 		result[1] = tmpVal1;				//십의자리
 		int tmpVal2 = getRandomNum();
-		while(tmpVal2 == result[0] || tmpVal2 == result[1] ) {
+		while (tmpVal2 == result[0] || tmpVal2 == result[1] ) {
 			tmpVal2 = getRandomNum();
 		}
 		result[2] = tmpVal2;				//일의자리
