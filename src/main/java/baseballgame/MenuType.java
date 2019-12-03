@@ -9,7 +9,7 @@ public enum MenuType {
 
     RESTART("1"), EXIT("2");
 
-    private static final String EXCEPTION_NOT_MENU = "# 잘못된 메뉴를 선택하셨습니다.";
+    private static final String EXCEPTION_NOT_MENU = "유효하지 않은 메뉴입니다.";
 
     private final String code;
 
