@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class BaseballGame {
     public Scanner sc;
-    private String ballNumbers;
-    private String inputNumbers;
-    private int[] hint;
+    private String ballNumbers;     // 컴퓨터가 생성한 3자리 랜덤 숫자
+    private String inputNumbers;    // player가 입력한 3자리 숫자
+    private int[] hint;             // {strike 수, ball 수} 힌트가 담길 배열
 
     public BaseballGame() {
         String msg;
@@ -78,7 +78,7 @@ public class BaseballGame {
     }
 
     public int[] calHint() {
-        int[] result = {0, 0};      //strike, ball 순으로 힌트를 담은 배열
+        int[] result = {0, 0};      // {strike 수, ball 수} 힌트를 담을 배열
 
         for (int i = 0; i < 3; i++) {
             char temp = inputNumbers.charAt(i);
