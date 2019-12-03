@@ -18,10 +18,10 @@ public class BaseballGame {
     private void startBaseballGame() {
         BaseballNumberGenerator baseballNumberGenerator = new BaseballNumberGenerator();
         User user = new User();
-        while(playingBaseballGame(user, baseballNumberGenerator));
+        while(isNewGameOrGameOver(user, baseballNumberGenerator));
     }
 
-    private boolean playingBaseballGame(User user, BaseballNumberGenerator baseballNumberGenerator) {
+    private boolean isNewGameOrGameOver(User user, BaseballNumberGenerator baseballNumberGenerator) {
         List<Integer> baseballs = baseballNumberGenerator.getBaseball();
         List<Integer> userInputNumbers;
         while(true) {
@@ -81,7 +81,20 @@ public class BaseballGame {
     }
 
     private void displayGameScore(int[] gameScore) {
-        System.out.println(gameScore[STRIKE_INDEX] + "스트라이크" + gameScore[BALL_INDEX] + "볼");
+        if(isFourBall(gameScore[STRIKE_INDEX], gameScore[BALL_INDEX])) {
+            System.out.println("포볼");
+        }
+        if(!isFourBall(gameScore[STRIKE_INDEX], gameScore[BALL_INDEX])) {
+            System.out.println(gameScore[STRIKE_INDEX] + "스트라이크" + gameScore[BALL_INDEX] + "볼");
+        }
+
+    }
+
+    private boolean isFourBall(int strikeScore, int ballScore) {
+        if(strikeScore == 0 && ballScore == 0) {
+            return true;
+        }
+        return false;
     }
 
     private boolean checkStrike(int[] gameScore) {
@@ -95,8 +108,7 @@ public class BaseballGame {
     }
 
     private boolean checkStrike(List<Integer> userBats, List<Integer> baseballs, int userBatLoc) {
-        return baseballs.contains(userBats.get(userBatLoc))
-                    && baseballs.get(userBatLoc).equals(userBats.get(userBatLoc));
+        return baseballs.get(userBatLoc).equals(userBats.get(userBatLoc));
     }
 
 

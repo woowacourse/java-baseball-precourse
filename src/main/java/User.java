@@ -19,7 +19,7 @@ public class User {
                 userBaseballBat = getUserBats();
                 break;
             } catch (Exception e) {
-                System.out.println("서로 다른 1 ~ 9 까지의 숫자를 입력해주세요");
+                System.out.println("서로 다른 1 ~ 9 까지의 숫자 3개를 입력해주세요");
             }
         }
         return userBaseballBat;
