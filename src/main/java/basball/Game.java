@@ -42,23 +42,25 @@ public class Game {
     /** 사용자의 추측 결과를 나타내는 Hashmap 객체에서 ball 개수의 값 */
     private static final String BALL = "ball";
 
-    /** 사용자 입력을 받기위한 Scanner 객체 */
-    private static Scanner SCANNER = new Scanner(System.in);
-
-    /** 임의의 수를 선택하기 위한 Random 객체 */
-    private static Random RANDOM = new Random();
-
     /** 현재 게임이 진행 중 인지 알려주는 플래그. 사용자가 추측에 성공하면 false가 된다. */
-    private static Boolean playing = true;
+    private Boolean playing = true;
 
     /** 컴퓨터가 뽑는 임의의 숫자배열(자료형은 문자열) */
-    private static String target;
+    private String target;
+
+    /** 사용자 입력을 받기위한 Scanner 객체 */
+    private Scanner Scanner;
+
+    /** 임의의 수를 선택하기 위한 Random 객체 */
+    private Random Random;
 
     /**
      * Game 클래스의 생성자.
      * init 메소드 실행
      */
     public Game() {
+        Scanner = new Scanner(System.in);
+        Random = new Random();
         init();
     }
 
@@ -93,7 +95,7 @@ public class Game {
         if (except != null) {
             pool = newDigitPoolExcept(except);
         }
-        String pick = pool[RANDOM.nextInt(pool.length)];
+        String pick = pool[Random.nextInt(pool.length)];
         return pick;
     }
 
@@ -141,7 +143,7 @@ public class Game {
      */
     private Boolean restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-        String choice = SCANNER.nextLine();
+        String choice = Scanner.nextLine();
         if (choice.equals(RESTART)) {
             init();
             return true;
@@ -171,7 +173,7 @@ public class Game {
      */
     private String getUserGuess() throws RuntimeException {
         System.out.print("숫자를 입력해주세요: ");
-        String input = SCANNER.nextLine();
+        String input = Scanner.nextLine();
         validateGuess(input);
         return input;
     }
