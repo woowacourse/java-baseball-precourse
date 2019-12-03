@@ -17,13 +17,17 @@ public class Host {
     }
 
     public void generateRandomNumbers() {
-        while (numbers.size() != COUNT_SHOULD_BE_MATCHED) {
+        List<Integer> randomNumbers = new ArrayList<>();
+
+        while (randomNumbers.size() != COUNT_SHOULD_BE_MATCHED) {
             Integer number = randomNumberGenerator.nextInt(MAX_NUMBER_BOUNDARY);
 
-            if (number != 0 && !numbers.contains(number)) {
-                numbers.add(number);
+            if (number != 0 && !randomNumbers.contains(number)) {
+                randomNumbers.add(number);
             }
         }
+
+        this.numbers = randomNumbers;
     }
 
     public String makeResultStatement(List<Integer> inputNumbers) {
