@@ -28,14 +28,28 @@ class Game{
         try{
             String guess = getUserGuess();
             HashMap<String,Integer> result = evaluateGuess(guess);
-//            printResult(result);
+            printResult(result);
         }
         catch( RuntimeException e ){
             hanndleError(e);
         }
     }
 
+    private void printResult(HashMap<String,Integer> result){
+        int strikeCount = result.get("strike");
+        int ballCount = result.get("ball");
+        System.out.println(makeResultMessage(strikeCount,ballCount));
+    }
 
+    private String makeResultMessage(int strikeCount, int ballCount){
+        String strikeMessage = "";
+        String ballMessage = "";
+        if(strikeCount > 0) strikeMessage = String.format("%d 스트라이크", strikeCount);
+        if(ballCount > 0) ballMessage = String.format("%d 볼", ballCount);
+
+        if (strikeCount == 0 && ballCount == 0) return "낫싱";
+        return strikeMessage + ballMessage;
+    }
 
 
     private HashMap<String,Integer> evaluateGuess(String guess){
@@ -102,6 +116,7 @@ class Game{
         else if (e instanceof InputNaNException) System.err.println("입력이 숫자가 아닙니다.");
         else System.err.println("예상치 못한 오류입니다.");
     }
+
 
     private void init(){
         target = createAnswerString();
