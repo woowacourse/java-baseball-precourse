@@ -26,4 +26,12 @@ public class BaseballGame {
         }
         return count;
     }
+    public int countBall(ArrayList<Integer> answer, ArrayList<Integer> submission, int strike){
+        int count=0;
+        for(int i=0;i<answer.size();i++){
+            if(answer.get(i)==1&&submission.get(i)==1)
+                count++;
+        }
+        return count-strike;
+    }
 }
