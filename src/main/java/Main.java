@@ -1,5 +1,4 @@
 import baseballgame.*;
-import baseballgame.Number;
 
 /**
  * @author KSKIM
