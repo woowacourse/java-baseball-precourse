@@ -12,12 +12,12 @@ public class BaseballGame {
 //        System.out.println("정답: " + answer);
         inputNumbers = inputNumbers(sc);
 //        System.out.println("입력값: " + input);
-        boolean success = checkSuccess(ballNumbers, inputNumbers);
+        boolean success = checkSuccess();
         while (!success) {
-            int[] hint = calHint(ballNumbers, inputNumbers);
+            int[] hint = calHint();
             printResult(hint);
             inputNumbers = inputNumbers(sc);
-            success = checkSuccess(ballNumbers, inputNumbers);
+            success = checkSuccess();
         }
         printResult();
     }
@@ -65,11 +65,11 @@ public class BaseballGame {
         }
     }
 
-    public boolean checkSuccess(String ballNumbers, String inputNumbers) {
+    public boolean checkSuccess() {
         return ballNumbers.equals(inputNumbers);
     }
 
-    public int[] calHint(String ballNumbers, String inputNumbers) {
+    public int[] calHint() {
         int[] result = {0, 0};      //strike, ball 순으로 힌트를 담은 배열
 
         for (int i = 0; i < 3; i++) {
