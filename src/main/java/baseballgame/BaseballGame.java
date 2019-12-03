@@ -39,7 +39,7 @@ public class BaseballGame {
             Number userNumber = InputView.getNumber();
             ballCount = ballCountCalculator.getBallCount(userNumber);
             showBallCountMessage(ballCount);
-        } while (isStrikeOut(ballCount));
+        } while (!isStrikeOut(ballCount));
     }
 
     private boolean isStrikeOut(BallCount ballCount) {
