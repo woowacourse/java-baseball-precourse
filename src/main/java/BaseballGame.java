@@ -7,9 +7,11 @@ public class BaseballGame {
     private int[] hint;
 
     public BaseballGame() {
+        String msg;
+
         sc = new Scanner(System.in);
         System.out.println("1부터 9까지 서로 다른 수로 이루어진 3자리 숫자를 맞춰주세요.\n");
-        String msg = "<게임규칙>\n";
+        msg = "<게임규칙>\n";
         msg += "3자리 수를 정확히 맞추면 성공!\n";
         msg += "실패 시, 같은 수가 같은 자리에 있으면 스트라이크\n";
         msg += "같은 수가 다른 자리에 있으면 볼\n";
@@ -109,10 +111,10 @@ public class BaseballGame {
             msg += "낫싱";
         } else {
             if (strike != 0) {
-                msg += strike + "스트라이크 ";
+                msg += (strike + "스트라이크 ");
             }
             if (ball != 0) {
-                msg += ball + "볼";
+                msg += (ball + "볼");
             }
         }
         System.out.println(msg + "\n");
