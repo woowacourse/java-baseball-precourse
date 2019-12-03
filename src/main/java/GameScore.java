@@ -24,12 +24,25 @@ public class GameScore {
 		if(answer[2]==input[2]) score[0]++;
 	}
 	
+	/*볼 수를 세는 함수*/
+	public void checkBool() {
+		score[1]=0;                               //볼 수 초기화
+		if(input[0]==answer[1]) score[1]++;
+		if(input[0]==answer[2]) score[1]++;
+		if(input[1]==answer[0]) score[1]++;
+		if(input[1]==answer[2]) score[1]++;
+		if(input[2]==answer[0]) score[1]++;
+		if(input[2]==answer[1]) score[1]++;
+		
+	}
+	
 
 	/*스트라이크,볼,낫싱값이 들어간 score를 함수*/
 	public int[] getScore(int[] answer, int[] input) {
 		this.answer = answer;
 		this.input = input;
 		checkStrike();                           //스크라이크 확인
+		checkBool();                             //볼 확인
 		return score;
 	}
 	
