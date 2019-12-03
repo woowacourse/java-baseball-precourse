@@ -36,17 +36,15 @@ public class BaseballGame {
     }
 
     public String inputNumbers(Scanner sc) {
-        String numbers = "";
+        String numbers = sc.nextLine();
 
-        while (numbers.equals("")) {
+        while (!validate(numbers)){
             numbers = sc.nextLine();
-            numbers = validate(numbers);
-//            System.out.println("수정된 입력값: " + inputNumbers);
         }
         return numbers;
     }
 
-    public String validate(String numbers) {
+    public boolean validate(String numbers) {
 
         /* 입력받은 값이 숫자인지 확인*/
         try{
@@ -54,16 +52,16 @@ public class BaseballGame {
         }catch (Exception e) {
             System.out.println("입력 형식이 잘못되었습니다. 다시 입력해주세요.");
             System.out.println("(입력 형식) 3자리 숫자 / ex. 123");
-            return "";
+            return false;
         }
 
         /* 입력받은 숫자의 자리수 확인*/
         if (numbers.length() != 3) {
             System.out.println("입력 형식이 잘못되었습니다. 다시 입력해주세요.");
             System.out.println("(입력 형식) 3자리 숫자 / ex. 123");
-            return "";
+            return false;
         }else{
-            return numbers;
+            return true;
         }
     }
 
