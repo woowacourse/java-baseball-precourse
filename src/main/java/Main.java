@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * The type Main.
@@ -11,15 +11,18 @@ public class Main {
      */
     public static void main(String[] args) {
         while(true) {
+            Scanner s = new Scanner(System.in);
             Batter computer = new Batter();
             Pitcher user;
-            Scanner s = new Scanner(System.in);
+            int n;
 
             System.out.print("숫자를 입력해 주세요 : ");
-            int n = s.nextInt();
+
+            n = s.nextInt();
             user = new Pitcher(n);
 
             while (computer.game(user) != true) {
+                System.out.print("숫자를 입력해 주세요 : ");
                 n = s.nextInt();
                 user = new Pitcher(n);
             }

@@ -39,14 +39,18 @@ class Batter {
         int[] pitch = user.getPitching();
         Object[] bat = batting.toArray();
         int strike = 0, ball = 0, nothing = 0;
+
+        if(pitch[0]==0){
+            System.out.println("Error로 인해 다시 게임을 시작합니다.");
+            return false;
+        }
         for(int i=0;i<BATTING_COUNT;i++){
-            if(batting.contains(pitch[i])){
-                if((int)bat[i] == pitch[i]){
-                    strike++;
-                }
-                else{
-                    ball++;
-                }
+            if(batting.contains(pitch[i]) && (int)bat[i] == pitch[i]) {
+                strike++;
+                nothing++;
+            }
+            else if(batting.contains(pitch[i]) && (int)bat[i] != pitch[i]){
+                ball++;
                 nothing++;
             }
         }

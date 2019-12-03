@@ -25,9 +25,17 @@ public class Pitcher {
      */
     public Pitcher(int n) {
         pitching = new int[PITCHING_COUNT];
-        for (int i = PITCHING_COUNT - 1; i >= 0; i--) {
-            pitching[i] = n % 10;
-            n /= 10;
+        if(n <100 || n>=1000){
+            System.out.println("Error! 올바른 세자리 숫자를 입력해 주세요!");
+            for(int i=0;i<PITCHING_COUNT;i++){
+                pitching[i] = 0;
+            }
+        }
+        else {
+            for (int i = PITCHING_COUNT - 1; i >= 0; i--) {
+                pitching[i] = n % 10;
+                n /= 10;
+            }
         }
     }
 
