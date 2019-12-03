@@ -34,4 +34,20 @@ public class BaseballGame {
         }
         return count-strike;
     }
+    void printResult(int strike, int ball) {
+        String result = "";
+        if (strike == 0 && ball == 0) {
+            result += RuleUtils.NOTHING;
+        }
+        if (strike > 0) {
+            result += strike+" "+ RuleUtils.STRIKE;
+        }
+        if (ball > 0) {
+            if (result.length() > 0)
+                result += " ";
+            result += ball+ RuleUtils.BALL;
+        }
+        System.out.println(result);
+        return;
+    }
 }
