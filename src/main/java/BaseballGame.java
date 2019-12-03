@@ -8,6 +8,13 @@ public class BaseballGame {
 
     public BaseballGame() {
         sc = new Scanner(System.in);
+        System.out.println("1부터 9까지 서로 다른 수로 이루어진 3자리 숫자를 맞춰주세요.\n");
+        String msg = "<게임규칙>\n";
+        msg += "3자리 수를 정확히 맞추면 성공!\n";
+        msg += "실패 시, 같은 수가 같은 자리에 있으면 스트라이크\n";
+        msg += "같은 수가 다른 자리에 있으면 볼\n";
+        msg += "같은 수가 전혀 없으면 낫싱이라는 힌트가 제공됩니다.\n";
+        System.out.println(msg);
     }
 
     public void start() {
@@ -34,6 +41,7 @@ public class BaseballGame {
     }
 
     public String inputNumbers() {
+        System.out.println("3자리 숫자를 입력해주세요. ex) 123    ");
         String numbers = sc.nextLine();
 
         while (!validate(numbers)){
@@ -88,17 +96,17 @@ public class BaseballGame {
     }
 
     public void printResult() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     public void printResult(int[] hint) {
         int strike = hint[0];
         int ball = hint[1];
-        String msg = "";
+        String msg = "힌트: ";
 
         if ((strike == 0) && (ball == 0)) {
-            msg = "낫싱";
+            msg += "낫싱";
         } else {
             if (strike != 0) {
                 msg += strike + "스트라이크 ";
@@ -107,7 +115,7 @@ public class BaseballGame {
                 msg += ball + "볼";
             }
         }
-        System.out.println(msg);
+        System.out.println(msg + "\n");
     }
 
     public boolean askReplay() {
