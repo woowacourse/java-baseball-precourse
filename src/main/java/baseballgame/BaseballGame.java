@@ -27,14 +27,14 @@ public class BaseballGame {
     }
 
     private void generateRandomNumber() {
-        List<Integer> Integers = randomNumberGenerator.getRandomNumber(Number.TOTAL_NUMBER);
-        Number answer = Number.valueOf(Integers);
+        List<Integer> randomNumber = randomNumberGenerator.getRandomNumber(Number.TOTAL_NUMBER);
+        Number answer = Number.valueOf(randomNumber);
         ballCountCalculator = new BallCountCalculator(answer);
     }
 
     private void guessNumber() {
         while(true) {
-            Number userNumber = Scanner.getNumber();
+            Number userNumber = InputView.getNumber();
             BallCount ballCount = ballCountCalculator.getBallCount(userNumber);
             System.out.println(ballCount);
 
@@ -46,7 +46,7 @@ public class BaseballGame {
     }
 
     public boolean restart() {
-        MenuType selectedMenu = Scanner.getMenu();
+        MenuType selectedMenu = InputView.getMenu();
         if (MenuType.EXIT.equals(selectedMenu)) {
             System.out.println(MESSAGE_EXIT_GAME);
             return false;
