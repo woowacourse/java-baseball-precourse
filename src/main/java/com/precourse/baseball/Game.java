@@ -1,5 +1,5 @@
 /*
- * Game.java                       1.7.0   2019-12-03
+ * Game.java                       1.7.1   2019-12-03
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -18,7 +18,8 @@ import java.io.InputStreamReader;
  * 게임이 끝나면 게임 재시작을 하거나, 게임을 완전히 종료한다.
  *
  * @author HyungjuAn
- * @version 1.7.0                              Game 생성자 추가
+ * @version 1.7.1                startGame 메소드의 접근제어자를
+ *                               public -> protected 로 수정
  * @date 2019-12-03
  */
 public class Game {
@@ -28,7 +29,7 @@ public class Game {
         super();
     }
 
-    public static void startGame(Player computer, Player user) throws IOException {
+    protected static void startGame(Player computer, Player user) throws IOException {
         String hint;
 
         computer.setRandomNumbers();
