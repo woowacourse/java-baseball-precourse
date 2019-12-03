@@ -10,11 +10,9 @@ public class GameManager {
 
     public void run(){
         BallGenerator randomGenerator = new RandomBallGenerator();
-        Generator generator = new Generator(randomGenerator);
-
         Calculator calculator= new OriginalCalculator();
 
-        BallSystem ballSystem = new BallSystem(generator, calculator);
+        BallSystem ballSystem = new BallSystem(randomGenerator, calculator);
 
         BallGenerator consoleGenerator = new ConsoleBallGenerator();
         User user = new User(consoleGenerator);
