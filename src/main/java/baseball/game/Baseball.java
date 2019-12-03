@@ -30,12 +30,10 @@ public class Baseball {
     }
 
     private void processLose() {
-        System.out.println("lose");
         start();
     }
 
     private void processWin() {
-        System.out.println("win");
         if (!isReplay()) {
             return;
         }

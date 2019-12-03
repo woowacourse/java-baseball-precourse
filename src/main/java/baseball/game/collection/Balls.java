@@ -41,7 +41,7 @@ public class Balls {
     private int getStrike(Balls userBalls) {
         int res = 0;
         for (int i = 0; i < balls.size(); i++) {
-            res += getStrikeNum(balls.get(i),userBalls.balls.get(i));
+            res += getStrikeNum(balls.get(i), userBalls.balls.get(i));
         }
         return res;
     }
@@ -82,10 +82,10 @@ public class Balls {
     private void printResult(int strike, int ball) {
         StringBuilder result = new StringBuilder();
         if (strike != 0) {
-            result.append(strike + "스트라이크");
+            result.append(strike + " 스트라이크 ");
         }
         if (ball != 0) {
-            result.append(ball + "볼");
+            result.append(ball + " 볼 ");
         }
         if (strike == 0 && ball == 0) {
             result.append("낫싱");

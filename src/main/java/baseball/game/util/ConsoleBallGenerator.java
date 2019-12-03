@@ -23,7 +23,7 @@ public class ConsoleBallGenerator implements BallGenerator {
         int tmpVal = number;
         for (int num = GAME_SIZE - 1; num >= 0; num--) {
             int val = (int) Math.pow(10, num);
-            int data = tmpVal/val;
+            int data = tmpVal / val;
             inputData(res, data);
             tmpVal %= val;
         }
