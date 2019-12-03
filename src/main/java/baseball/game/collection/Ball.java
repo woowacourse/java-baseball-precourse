@@ -9,4 +9,10 @@ public class Ball {
         }
         this.ball = ball;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Ball other = (Ball) obj;
+        return other.ball == ball;
+    }
 }
