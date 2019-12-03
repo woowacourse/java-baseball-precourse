@@ -1,21 +1,10 @@
 # 우아한 테크코스 농구게임(프리코스)
 
-숫자야구게임 - 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 입력을 통해 맞히는 게임
-
-## 결과화면(스크린샷)
-##### 1. 소스파일 구조
-<div>
-<img width="400" alt="woowa1_architecture" src="https://user-images.githubusercontent.com/49060374/69935125-4f794480-1517-11ea-94d0-527e1a7aa589.png">
-</div>
-
-##### 2. 결과 화면
-<div>
-<img width="400" alt="woowa1_result" src="https://user-images.githubusercontent.com/49060374/69935124-4ee0ae00-1517-11ea-9aa8-54b3eee2d7c3.png">
-</div>
+숫자야구게임 - 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 사용자가 입력을 통해 맞히는 게임
 
 ## 프로그램 실행
 
-- view 패키지에 있는 Main클래스 실행하시면 됩니다!
+- git clone 이후 view 패키지에 있는 Main클래스 실행하시면 됩니다!
 
 ## 기능구현
 
@@ -41,6 +30,16 @@
 - 에러처리 .(O)
     - 문자열입력시 에러발생(처리필요) .(O)
     - 0입력시 이상 .(O)
-- 출력양식 변경(?)
+- 출력양식 변경(O)
 - 리팩토링 (O)
 - 문서 및 메서드 주석달기 (O)
+
+## 결과화면(스크린샷)
+##### 1. 소스파일 구조
+<div>
+<img width="400" alt="woowa1_architecture" src="https://user-images.githubusercontent.com/49060374/69935125-4f794480-1517-11ea-94d0-527e1a7aa589.png">
+</div>
+
+##### 2. 결과 화면
+<img width="419" height="600" alt="스크린샷 2019-12-03 오후 4 00 45" src="https://user-images.githubusercontent.com/49060374/70027756-2ecbf000-15e6-11ea-992c-80dfe0ec60d7.png">
+<img width="419" height="300 alt="스크린샷 2019-12-03 오후 4 00 53" src="https://user-images.githubusercontent.com/49060374/70027755-2ecbf000-15e6-11ea-9f61-f3cc100fc27c.png">
