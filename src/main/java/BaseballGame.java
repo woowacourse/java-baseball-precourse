@@ -45,7 +45,7 @@ public class BaseballGame {
         /* 입력받은 값이 숫자인지 확인*/
         try{
             Integer.parseInt(numbers);
-        }catch (Exception e) {
+        }catch (NumberFormatException e) {
             System.out.println("입력 형식이 잘못되었습니다. 다시 입력해주세요.");
             System.out.println("(입력 형식) 3자리 숫자 / ex. 123");
             return false;
