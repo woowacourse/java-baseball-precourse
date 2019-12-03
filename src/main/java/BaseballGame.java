@@ -10,9 +10,7 @@ public class BaseballGame {
 
     public void start(Scanner sc) {
         ballNumbers = makeNumbers();
-//        System.out.println("정답: " + answer);
         inputNumbers = inputNumbers(sc);
-//        System.out.println("입력값: " + input);
         while (!checkSuccess()) {
             hint = calHint();
             printResult(hint);
@@ -23,10 +21,9 @@ public class BaseballGame {
 
     public String makeNumbers() {
         String numbers = "";
-        int temp;
 
         while (numbers.length() < 3) {
-            temp = (int) Math.floor(Math.random() * 10);
+            int temp = (int) Math.floor(Math.random() * 10);
             if ((temp != 0) && !numbers.contains(String.valueOf(temp))) {
                 numbers += temp;
             }
