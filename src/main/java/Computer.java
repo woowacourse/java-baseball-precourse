@@ -19,18 +19,18 @@ public class Computer{
     static final int MIN_RANGE = 1;
     static final int MAX_RANGE = 9;
 
-    int[] randomNumber;
+    String randomNumber;
 
     public void generateRandomNumber(){
-        randomNumber = new int[RANDOM_NUMBER_SIZE];
+        StringBuilder number = new StringBuilder();
         Random random = new Random();
         LinkedHashSet<Integer> randomNumberSet = new LinkedHashSet<>();
-        int array_index = 0;
         while(randomNumberSet.size()<RANDOM_NUMBER_SIZE){
             randomNumberSet.add(random.nextInt(MAX_RANGE) + MIN_RANGE);
         }
-        for(Integer number : randomNumberSet){
-            randomNumber[array_index++] = number;
+        for(Integer num : randomNumberSet){
+            number.append(num);
         }
+        randomNumber = number.toString();
     }
 }
