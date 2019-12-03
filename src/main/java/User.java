@@ -14,6 +14,7 @@ public class User {
     public List<Integer> getUserBat() {
         displayGetUserBat();
         List<Integer> userBaseballBat;
+
         while(true) {
             try {
                 userBaseballBat = getUserBats();
@@ -22,6 +23,7 @@ public class User {
                 System.out.println("서로 다른 1 ~ 9 까지의 숫자 3개를 입력해주세요");
             }
         }
+
         return userBaseballBat;
     }
 
@@ -33,20 +35,24 @@ public class User {
         Scanner scanUserBat = new Scanner(System.in);
         String userBatValue = scanUserBat.next();
         int userBat = Integer.parseInt(userBatValue);
+
         if(userBatValue.length() != USER_BAT_SIZE) {
             throw new NumberFormatException();
         }
+
         return checkUserBats(userBat);
     }
 
     private List<Integer> checkUserBats(int userBat) {
         int batValue = userBat;
         List<Integer> userBats = new ArrayList<>();
+
         for(int i = FIRST_BALL; i >= LAST_BALL; i--) {
             int bat = batValue/(int) (Math.pow(DIVIDE_BAT_VALUE,i));
             checkIncorrectUserBat(userBats, bat);
             batValue = batValue % (int) (Math.pow(DIVIDE_BAT_VALUE,i));
         }
+
         return userBats;
     }
 
@@ -54,9 +60,11 @@ public class User {
         if(bat < MIN_BASEBALL_NUMBER || bat > MAX_BASEBALL_NUMBER) {
             throw new NumberFormatException();
         }
+
         if (userBats.contains(bat)) {
             throw new NumberFormatException();
         }
+
         userBats.add(bat);
     }
 }

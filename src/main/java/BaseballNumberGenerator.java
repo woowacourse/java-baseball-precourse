@@ -8,7 +8,9 @@ public class BaseballNumberGenerator {
     private final int MAX_BASEBALL_NUMBER = 9;
 
     public List<Integer> getBaseball() {
+
         List<Integer> baseballList = new ArrayList<>();
+
         return createBaseballNumber(baseballList);
     }
 

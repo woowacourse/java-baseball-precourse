@@ -36,6 +36,7 @@ public class BaseballGame {
 
     private boolean getGameState() {
         int gameState;
+
         while(true) {
             try{
                 gameState = checkGameState();
@@ -47,6 +48,7 @@ public class BaseballGame {
         if(gameState == NEW_GAME) {
             return true;
         }
+
         return false;
     }
 
@@ -54,24 +56,31 @@ public class BaseballGame {
         Scanner scanUserBat = new Scanner(System.in);
         String gamStateValue = scanUserBat.next();
         int gameState = Integer.parseInt(gamStateValue);
+
         if(gameState != NEW_GAME && gameState != GAME_OVER) {
             throw new NumberFormatException();
         }
+
         return gameState;
     }
 
     private boolean isStrike(List<Integer> userBats, List<Integer> baseballs) {
         int[] gameScore = new int[SCORE_SIZE];
+
         for(int userBatLoc = 0; userBatLoc < userBats.size(); userBatLoc++) {
+
             if(checkStrike(userBats, baseballs, userBatLoc)) {
                 gameScore[STRIKE_INDEX]++;
                 continue;
             }
+
             if(checkBall(userBats, baseballs, userBatLoc)) {
                 gameScore[BALL_INDEX]++;
             }
         }
+
         displayGameScore(gameScore);
+
         return checkStrike(gameScore);
     }
 
@@ -84,21 +93,23 @@ public class BaseballGame {
         if(isFourBall(gameScore[STRIKE_INDEX], gameScore[BALL_INDEX])) {
             System.out.println("포볼");
         }
+
         if(!isFourBall(gameScore[STRIKE_INDEX], gameScore[BALL_INDEX])) {
             System.out.println(gameScore[STRIKE_INDEX] + "스트라이크" + gameScore[BALL_INDEX] + "볼");
         }
-
     }
 
     private boolean isFourBall(int strikeScore, int ballScore) {
         if(strikeScore == 0 && ballScore == 0) {
             return true;
         }
+
         return false;
     }
 
     private boolean checkStrike(int[] gameScore) {
         if(gameScore[STRIKE_INDEX] == THREE_STRIKE) { return true; }
+
         return false;
     }
 
