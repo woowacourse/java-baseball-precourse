@@ -3,11 +3,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         BaseballGame game = new BaseballGame();
 
         do {
-            game.start(sc);
-        } while (game.askReplay(sc));
+            game.start();
+        } while (game.askReplay());
     }
 }

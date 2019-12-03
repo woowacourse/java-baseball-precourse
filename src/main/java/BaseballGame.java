@@ -1,20 +1,22 @@
 import java.util.Scanner;
 
 public class BaseballGame {
+    public Scanner sc;
     private String ballNumbers;
     private String inputNumbers;
     private int[] hint;
 
     public BaseballGame() {
+        sc = new Scanner(System.in);
     }
 
-    public void start(Scanner sc) {
+    public void start() {
         ballNumbers = makeNumbers();
-        inputNumbers = inputNumbers(sc);
+        inputNumbers = inputNumbers();
         while (!checkSuccess()) {
             hint = calHint();
             printResult(hint);
-            inputNumbers = inputNumbers(sc);
+            inputNumbers = inputNumbers();
         }
         printResult();
     }
@@ -31,7 +33,7 @@ public class BaseballGame {
         return numbers;
     }
 
-    public String inputNumbers(Scanner sc) {
+    public String inputNumbers() {
         String numbers = sc.nextLine();
 
         while (!validate(numbers)){
@@ -108,7 +110,7 @@ public class BaseballGame {
         System.out.println(msg);
     }
 
-    public boolean askReplay(Scanner sc) {
+    public boolean askReplay() {
         String replay = sc.nextLine();
 
         while (!(replay.equals("1") || replay.equals("2"))) {
