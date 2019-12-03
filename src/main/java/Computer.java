@@ -25,16 +25,16 @@ public class Computer extends Player {
     public int check_points(char[] threw){
         int i = 0;
         for(char tmp:threw){
-            if(check_strikes(tmp, i)){
-                strikes++;
-            }else if(check_balls(tmp)){
-                balls++;
-            }
-            i++;
+        if(check_strikes(tmp, i)){
+            strikes++;
+        }else if(check_balls(tmp)){
+            balls++;
         }
+        i++;
+    }
         if(strikes > 0){
-            System.out.print(strikes + "스트라이크");
-        }
+        System.out.print(strikes + "스트라이크");
+    }
         if (balls > 0) {
             System.out.print(balls + "볼");
         }else if(strikes == 0){

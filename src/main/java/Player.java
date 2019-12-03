@@ -37,7 +37,6 @@ public abstract class Player {
             System.out.println("잘못된 입력입니다3.");
             return true;
         }
-        scan.close();
         return false;
     }
 }
