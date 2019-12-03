@@ -24,25 +24,26 @@ public class BaseballGame {
         showStartMessage();
         generateRandomNumber();
         guessNumber();
+        showCorrectMessage();
     }
 
     private void generateRandomNumber() {
         List<Integer> randomNumber = randomNumberGenerator.getRandomNumber(Number.TOTAL_NUMBER);
-        Number answer = Number.valueOf(randomNumber);
+        Number answer = new Number(randomNumber);
         ballCountCalculator = new BallCountCalculator(answer);
     }
 
     private void guessNumber() {
-        while(true) {
+        BallCount ballCount;
+        do {
             Number userNumber = InputView.getNumber();
-            BallCount ballCount = ballCountCalculator.getBallCount(userNumber);
+            ballCount = ballCountCalculator.getBallCount(userNumber);
             showBallCountMessage(ballCount);
+        } while (isStrikeOut(ballCount));
+    }
 
-            if (ballCount.isStrikeOut()) {
-                showCorrectMessage();
-                break;
-            }
-        }
+    private boolean isStrikeOut(BallCount ballCount) {
+        return ballCount.isStrikeOut();
     }
 
     public boolean restart() {
