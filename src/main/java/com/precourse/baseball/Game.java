@@ -26,13 +26,6 @@ import java.io.InputStreamReader;
 public class Game {
     private static final String THREE_STRIKE = "3 스트라이크";
 
-    public static void main(String[] args) throws IOException {
-        Player computer = new Player();
-        Player user = new Player();
-
-        startGame(computer, user);
-    }
-
     public static void startGame(Player computer, Player user) throws IOException {
         String hint;
 
@@ -84,6 +77,7 @@ public class Game {
         } catch (NumberFormatException e) {
             restartInfo = Integer.MAX_VALUE;                    // 잘못된 입력으로 넘어가도록 반환값 설정
         }
+
         return restartInfo;
     }
 
