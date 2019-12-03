@@ -18,10 +18,15 @@ import com.precourse.bassballapp.Cpu;
  */
 public class Result {
 	
+	/** 사용자가 답을 맞추기 위해 시도한 횟수를 기록하는 변수 */
+	static int trialCount = 0;
+	
 	/** 연산결과배열을 입력받아 콘솔창에 적절한 결과메세지를 출력한다. */
 	static void print(int[] resultArr) {
 		int strike = resultArr[0];
 		int ball = resultArr[1];
+		trialCount += 1;
+		System.out.println(trialCount + "번째 시도");
 		
 		if (strike == 0 && ball == 0) {
 			String tmp = "결과: Nothing";
@@ -74,6 +79,7 @@ public class Result {
 			System.out.println("사용자 입력: " + userInput);
 			System.out.println("새 게임을 시작합니다.");
 			Cpu.answerArr = Cpu.makeAnswer();
+			trialCount = 0;
 		} else if (userInput == 2) {
 			System.out.println("사용자 입력: " + userInput);
 			System.out.println("게임을 종료합니다.");

@@ -40,7 +40,8 @@ public class User {
 		result[2] = (initial % 100) / 10;
 		result[3] = initial % 10;
 		
-		String tmpTxt2 = "사용자 입력: " +initial+ "을 입력하였습니다.";
+		String tmpTxt2 = "사용자 입력: " + initial 
+				+ "을(를) 입력하였습니다.";
 		System.out.println(tmpTxt2);
 		
 		return result;

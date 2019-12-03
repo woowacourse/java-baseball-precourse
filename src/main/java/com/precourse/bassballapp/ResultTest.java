@@ -17,7 +17,7 @@ import com.precourse.bassballapp.Result;
 public class ResultTest {
 
 	public static void main(String[] args) {
-		/*
+		
 		// printOut test
 		System.out.println("==printOut test==");
 		int[] test1 = {0,0};
@@ -29,16 +29,15 @@ public class ResultTest {
 		int[] test7 = {1,1};
 		int[] test8 = {1,2};
 		int[] test9 = {3,0};
-		PrintOut.printOut(test1);
-		PrintOut.printOut(test2);
-		PrintOut.printOut(test3);
-		PrintOut.printOut(test4);
-		PrintOut.printOut(test5);
-		PrintOut.printOut(test6);
-		PrintOut.printOut(test7);
-		PrintOut.printOut(test8);
-		PrintOut.printOut(test9);
-		*/
+		Result.print(test1);
+		Result.print(test2);
+		Result.print(test3);
+		Result.print(test4);
+		Result.print(test5);
+		Result.print(test6);
+		Result.print(test7);
+		Result.print(test8);
+		Result.print(test9);
 		
 		//newGameQuery test
 		System.out.println("==newGameQuery test==");

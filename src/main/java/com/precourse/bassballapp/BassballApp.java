@@ -21,12 +21,14 @@ public class BassballApp {
 	public static void main(String[] args) {
 		Cpu.answerArr = Cpu.makeAnswer();
 		while (true) {
-			/* 디버깅용 코드
+			/*
+			//디버깅용 코드
 			System.out.println("[[디버깅용 메세지]]-컴퓨터 세자리 수 : " 
 					+ Cpu.answerArr[0] + ","
 					+ Cpu.answerArr[1] + ","
 					+ Cpu.answerArr[2]);
 			*/
+			
 			User.answerArr = User.getValidAnswer2();
 			int[] tmp1 = User.answerArr;
 			int[] tmp2 = Cpu.answerArr;
