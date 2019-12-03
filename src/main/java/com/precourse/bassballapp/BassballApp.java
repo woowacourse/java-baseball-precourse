@@ -19,6 +19,9 @@ public class BassballApp {
 	
 	/** 실제 프로그램이 실행되는 구역. 4개의 메서드가 실행된다. */
 	public static void main(String[] args) {
+		String a = "<<< 숫자야구게임에 오신 것을 환영합니다 >>>";
+		System.out.println(a);
+		
 		Cpu.answerArr = Cpu.makeAnswer();
 		while (true) {
 			/*

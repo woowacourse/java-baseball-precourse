@@ -29,7 +29,7 @@ public class Result {
 		System.out.println(trialCount + "번째 시도");
 		
 		if (strike == 0 && ball == 0) {
-			String tmp = "결과: Nothing";
+			String tmp = "결과: None";
 			System.out.println(tmp);
 			
 		} else if (strike == 3) {
@@ -51,6 +51,9 @@ public class Result {
 			String tmp = "결과: " +strike+ " 스트라이크 " +ball+ " 볼";
 			System.out.println(tmp);
 		}
+		String tmpLine = "==================================" + 
+				"===============================";
+		System.out.println(tmpLine);
 	}
 	
 	/** 정답을 맞춘 이후 호출되어서 새 게임을 세팅하거나, 게임을 종료한다. */
@@ -77,12 +80,12 @@ public class Result {
 			newGameQuery();
 		} else if (userInput == 1) {
 			System.out.println("사용자 입력: " + userInput);
-			System.out.println("새 게임을 시작합니다.");
+			System.out.println("<<<새 게임을 시작합니다.>>>");
 			Cpu.answerArr = Cpu.makeAnswer();
 			trialCount = 0;
 		} else if (userInput == 2) {
 			System.out.println("사용자 입력: " + userInput);
-			System.out.println("게임을 종료합니다.");
+			System.out.println("<<<게임을 종료합니다.>>>");
 			System.exit(0);
 		}
 	}
