@@ -11,11 +11,9 @@ import java.util.stream.IntStream;
  * @since 2019-11-28
  */
 public class RandomNumberGenerator {
-    private final List<Integer> numbers;
-
-    public RandomNumberGenerator(int startInclusive, int endExclusive) {
-        numbers = IntStream.range(startInclusive, endExclusive).boxed().collect(Collectors.toList());
-    }
+    private static final List<Integer> numbers = IntStream.range(Number.MIN_DIGIT, Number.MAX_DIGIT + 1)
+            .boxed()
+            .collect(Collectors.toList());
 
     public List<Integer> getRandomNumber(int totalPick) {
         Collections.shuffle(numbers);

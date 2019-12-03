@@ -8,7 +8,7 @@ import baseballgame.Number;
  */
 public class Main {
     public static void main(String[] args) {
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(Number.MIN_DIGIT, Number.MAX_DIGIT);
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         BaseballGame baseballGame = new BaseballGame(randomNumberGenerator);
 
         do {
