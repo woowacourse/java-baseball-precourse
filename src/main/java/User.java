@@ -16,7 +16,7 @@ public class User {
         List<Integer> digits = new ArrayList<>();
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
-            digits = toArray(sc.nextInt());
+            digits = toArrayList(sc.nextInt());
             if (verifyUnique(digits, digitNumber) == true) {
                 break;
             }
@@ -39,7 +39,7 @@ public class User {
         return true;
     }
 
-    public List<Integer> toArray(int number) {
+    public List<Integer> toArrayList(int number) {
         List<Integer> digits = new ArrayList<>();
         while (number != 0) {
             digits.add(0, number % 10);

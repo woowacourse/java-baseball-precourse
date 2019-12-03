@@ -18,16 +18,16 @@ public class Main {
     }
 
     private static boolean askRetry() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력해주세요.");
         Scanner sc = new Scanner(System.in);
-        String decision = sc.nextLine();
-        if (decision.charAt(0) == '1') {
-            return true;
+        while(true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력해주세요.");
+            String decision = sc.nextLine();
+            if (decision.charAt(0) == '1') {
+                return true;
+            }
+            if (decision.charAt(0) == '2') {
+                return false;
+            }
         }
-        if (decision.charAt(0) == '2') {
-            return false;
-        }
-        boolean retry = askRetry();
-        return retry;
     }
 }

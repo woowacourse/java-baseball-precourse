@@ -32,7 +32,8 @@
 
 ## 구현할 기능 목록
 1. 게임을 시작한다. (init())
-2. 컴퓨터가 중복되지 않는 3자리의 랜덤 숫자를 생성한다. (pickRandomNumber())
-3. 사용자가 예측하는 숫자의 입력을 받은 뒤(inputNumber()), int를 자릿수별로 array로 나누고( toArray()), 유효한 입력인지 확인한다. (verifyUniquity())
-4. 스트라이크, 볼 수를 검사한다. 3스트라이크가 나오면 게임을 종료한다. (countStrikeBall())
-5. 게임을 계속할지 그만 둘지를 물어본다. (askRetry())
+2. 컴퓨터가 중복되지 않는 3자리의 랜덤 숫자를 생성한다. (pickRandomNumbers())
+3. 사용자가 예측하는 숫자의 입력을 받은 뒤(inputNumber()), int를 자릿수별로 나누어 arrayList에 집어넣고( toArrayList()), 유효한 입력인지 확인한다. (verifyUnique())
+4. 스트라이크, 볼 수를 검사하여 사용자에게 힌트를 준다.(countStrikeBall(), printHints()) 
+5. 3스트라이크가 나오면 게임을 종료한다. 
+6. 게임을 계속할지 그만 둘지를 물어본다. (askRetry())
