@@ -6,19 +6,19 @@ import java.util.stream.Stream;
 public class BaseballGame {
     private static final Integer[] TARGET_INTEGERS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     private static final int NUMBER_LENGTH = 3;
-    public static final String MESSAGE_NOT_INTEGER = "정수가 아닙니다. 다시 입력해주세요.";
-    public static final String MESSAGE_INCLUDE_ZERO = "0이 포함되어서는 안됩니다. 다시 입력해주세요.";
-    public static final String MESSAGE_NOT_THREE_DIGITS = "세 자리 수가 아닙니다. 다시 입력해주세요.";
-    public static final String MESSAGE_DUPLICATED_NUMBER = "중복된 숫자가 있습니다. 다시 입력해주세요.";
-    public static final String MESSAGE_RESTART_OR_EXIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
-    public static final String MESSAGE_INPUT_NUMBERS = "숫자를 입력해주세요 : ";
-    public static final String MESSAGE_CLEAR = NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final int STRIKES_INDEX = 0;
-    public static final int BALLS_INDEX = 1;
-    public static final String INPUT_NUMBER_DELIMITER = "";
-    public static final int LIST_START_INDEX = 0;
-    public static final String RESTART_INDEX = "1";
-    public static final String EXIT_INDEX = "2";
+    private static final String MESSAGE_NOT_INTEGER = "정수가 아닙니다. 다시 입력해주세요.";
+    private static final String MESSAGE_INCLUDE_ZERO = "0이 포함되어서는 안됩니다. 다시 입력해주세요.";
+    private static final String MESSAGE_NOT_THREE_DIGITS = "세 자리 수가 아닙니다. 다시 입력해주세요.";
+    private static final String MESSAGE_DUPLICATED_NUMBER = "중복된 숫자가 있습니다. 다시 입력해주세요.";
+    private static final String MESSAGE_RESTART_OR_EXIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
+    private static final String MESSAGE_INPUT_NUMBERS = "숫자를 입력해주세요 : ";
+    private static final String MESSAGE_CLEAR = NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final int STRIKES_INDEX = 0;
+    private static final int BALLS_INDEX = 1;
+    private static final String INPUT_NUMBER_DELIMITER = "";
+    private static final int LIST_START_INDEX = 0;
+    private static final String RESTART_INDEX = "1";
+    private static final String EXIT_INDEX = "2";
     private static Scanner scanner;
 
     public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class BaseballGame {
         new BaseballGame();
     }
 
-    public BaseballGame() {
+    private BaseballGame() {
         while (true) {
             playBaseball();
             if (!askReplay()) {
@@ -35,7 +35,7 @@ public class BaseballGame {
         }
     }
 
-    public void playBaseball() {
+    private void playBaseball() {
         List<Integer> computerNumber = generateComputerNumber();
         while (true) {
             List<Integer> userNumber = getUserNumber();
