@@ -43,6 +43,7 @@ public class Player {
 		}
 		/*문자였던 값을 정수로 변환*/
 		this.num=Integer.parseInt(tmpnum);
+		sc.close();
 	}
 	
 	
