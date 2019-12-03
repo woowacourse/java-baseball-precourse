@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.4.1   2019-12-03
+ * Player.java                     2.4.2   2019-12-03
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -18,10 +18,9 @@ import java.io.InputStreamReader;
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.4.1          생각한 수를 저장하는 배열 digitNumbers를
- *                         numbers로 간결하게 변경,
- *                         NUMBERS 상수 또한 헷갈리지 않도록
- *                         PLAYER_NUMBERS로 변경
+ * @version 2.4.2          isRightDigit 메소드에서 기능을 분리하여,
+ *                         isInvalidNumbers() 메소드를 오버로딩한
+ *                         isInvalidNumbers(char[]) 메소드로 변경
  * @date 2019-12-03
  */
 public class Player {
@@ -50,7 +49,7 @@ public class Player {
 
         System.out.println("숫자를 입력해주세요: ");
         char[] input = br.readLine().toCharArray();
-        if (!isRightDigit(input)) {
+        if ((!isRightDigit(input)) || isInvalidNumbers(input)) {
             printWrongInputMessage();
             readNumbers();
             return;
@@ -62,7 +61,7 @@ public class Player {
             digitMasks[numbers[i]] = true;
         }
 
-        if (isInvalidNumbers() || isDuplicate()) {
+        if (isDuplicate()) {
             printWrongInputMessage();
             readNumbers();
         }
@@ -75,11 +74,17 @@ public class Player {
             result = true;
         }
 
+        return result;
+    }
+
+    private boolean isInvalidNumbers(char[] input) {
+        boolean result = false;
+
         for (int i = 0; i < MAX_DIGIT; i++) {
             int digit = input[i] - CHAR_ZERO;
 
             if (!((digit > ZERO) && (digit < TEN))) {
-                result = false;
+                result = true;
                 break;
             }
         }
@@ -121,7 +126,7 @@ public class Player {
         setDigitMasks(new boolean[MAX_MASK]);                 // digitMasks 초기화
 
         for (int i = 0; i < MAX_DIGIT; i++) {
-            numbers[i] = (int) (Math.random() * TEN);    // 0 ~ 9 까지
+            numbers[i] = (int) (Math.random() * TEN);         // 0 ~ 9 까지
             digitMasks[numbers[i]] = true;
         }
 
