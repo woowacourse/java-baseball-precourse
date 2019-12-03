@@ -1,5 +1,5 @@
 /*
- * Player.java                     2.4.0   2019-12-02
+ * Player.java                     2.4.1   2019-12-03
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -18,17 +18,18 @@ import java.io.InputStreamReader;
  * 상대 플레이어가 예측에 틀릴 경우 힌트를 줍니다.
  *
  * @author HyungjuAn
- * @version 2.4.0                          isRightDigit() 메소드에서
- *                                       사용자가 문자를 입력했을 때,
- *                                            예외처리를 하도록 수정
- * @date 2019-12-02
+ * @version 2.4.1          생각한 수를 저장하는 배열 digitNumbers를
+ *                         numbers로 간결하게 변경,
+ *                         NUMBERS 상수 또한 헷갈리지 않도록
+ *                         PLAYER_NUMBERS로 변경
+ * @date 2019-12-03
  */
 public class Player {
     private final String BALL = "볼";
     private final String STRIKE = "스트라이크";
     private final String NOTHING = "낫싱";
     private final String SPACE = " ";
-    private final String NUMBERS = "The number player has: ";
+    private final String PLAYER_NUMBERS = "The number player has: ";
 
     private final char CHAR_ZERO = '0';
     private final int ZERO = 0;
@@ -37,11 +38,11 @@ public class Player {
     private final int MAX_DIGIT = 3;    // 최대 자릿수
 
     private boolean[] digitMasks;       // 수 마스킹용 array
-    private int[] digitNumbers;         // 생각한 수 array
+    private int[] numbers;              // 생각한 수 array
 
     public Player() {
         this.digitMasks = new boolean[MAX_MASK];
-        this.digitNumbers = new int[MAX_DIGIT];
+        this.numbers = new int[MAX_DIGIT];
     }
 
     protected void readNumbers() throws IOException {
@@ -57,8 +58,8 @@ public class Player {
 
         setDigitMasks(new boolean[MAX_MASK]);
         for (int i = 0; i < MAX_DIGIT; i++) {
-            digitNumbers[i] = Character.getNumericValue(input[i]);
-            digitMasks[digitNumbers[i]] = true;
+            numbers[i] = Character.getNumericValue(input[i]);
+            digitMasks[numbers[i]] = true;
         }
 
         if (isInvalidNumbers() || isDuplicate()) {
@@ -96,7 +97,7 @@ public class Player {
         int ballCount = ZERO;
 
         for (int i = 0; i < MAX_DIGIT; i++) {
-            if (digitNumbers[i] == numbers[i]) {
+            if (this.numbers[i] == numbers[i]) {
                 strikeCount++;
             } else if (digitMasks[numbers[i]]) {
                 ballCount++;
@@ -120,8 +121,8 @@ public class Player {
         setDigitMasks(new boolean[MAX_MASK]);                 // digitMasks 초기화
 
         for (int i = 0; i < MAX_DIGIT; i++) {
-            digitNumbers[i] = (int) (Math.random() * TEN);    // 0 ~ 9 까지
-            digitMasks[digitNumbers[i]] = true;
+            numbers[i] = (int) (Math.random() * TEN);    // 0 ~ 9 까지
+            digitMasks[numbers[i]] = true;
         }
 
         if (isInvalidNumbers() || isDuplicate()) {
@@ -133,7 +134,7 @@ public class Player {
         boolean result = false;
 
         for (int i = 0; i < MAX_DIGIT; i++) {
-            if (digitNumbers[i] == ZERO) {
+            if (numbers[i] == ZERO) {
                 result = true;
                 break;
             }
@@ -163,8 +164,8 @@ public class Player {
         return this.digitMasks;
     }
 
-    public int[] getDigitNumbers() {
-        return this.digitNumbers;
+    public int[] getNumbers() {
+        return this.numbers;
     }
 
     /* Setter Methods */
@@ -172,8 +173,8 @@ public class Player {
         System.arraycopy(digitMasks, 0, this.digitMasks, 0, digitMasks.length);
     }
 
-    public void setDigitNumbers(int[] digitNumbers) {
-        System.arraycopy(digitNumbers, 0, this.digitNumbers, 0, digitNumbers.length);
+    public void setNumbers(int[] numbers) {
+        System.arraycopy(numbers, 0, this.numbers, 0, numbers.length);
     }
 
     @Override
@@ -190,10 +191,10 @@ public class Player {
      */
     @Override
     public String toString() {
-        String result = NUMBERS;
+        String result = PLAYER_NUMBERS;
 
         for (int i = 0; i < MAX_DIGIT; i++) {
-            result += digitNumbers[i];
+            result += numbers[i];
         }
 
         return result;

@@ -35,7 +35,7 @@ public class Game {
         do {
             user.readNumbers();
 
-            hint = computer.giveHintAboutNumbers(user.getDigitNumbers());
+            hint = computer.giveHintAboutNumbers(user.getNumbers());
             printHint(hint);
         } while (!hint.equals(THREE_STRIKE));
         printGameFinishMessage();
