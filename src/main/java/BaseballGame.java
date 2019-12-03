@@ -3,14 +3,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class BaseballGame {
-    private static final Integer[] TARGET_INTEGERS = {1, 2, 3, 4, 5, 6, 7, 8, 9}; //__더 좋은 방법이 있을지 모르겠음
+    private static final Integer[] TARGET_INTEGERS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     private static final int numberLength = 3;
 
     public static void main(String[] args) {
         System.out.println("숫자를 입력해주세요 ");
         List<Integer> computerNumber = generateComputerNumber();
-        List<Integer> userNUmber = getUserNumber();
-        System.out.println(userNUmber);
+        List<Integer> userNumber = getUserNumber();
+        int[] ballCount = computeCount(computerNumber, userNumber);
+        printCount(ballCount);
     }
 
     private static List<Integer> generateComputerNumber() {
@@ -22,13 +23,12 @@ public class BaseballGame {
 
     private static List<Integer> getUserNumber() {
         String inputNumber = "";
-        final Scanner scanner = new Scanner(System.in); //__Scanner의 위치 고민. 전역변수로 써도 좋나?
+        final Scanner scanner = new Scanner(System.in);
         inputNumber = scanner.next();
         validateInteger(inputNumber);
         validateZero(inputNumber);
         validateLength(inputNumber);
         validateSameNumber(inputNumber);
-        //int[] userNumber = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
         List<Integer> userNumber = Stream.of(inputNumber.split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
         return userNumber;
     }
@@ -87,4 +87,48 @@ public class BaseballGame {
             return true;
         }
     }
+
+    private static int[] computeCount(List<Integer> computerNumber, List<Integer> userNumber) {
+        int strikes = computeStrikes(computerNumber, userNumber);
+        int balls = computeBalls(computerNumber, userNumber);
+        int[] ballCount = {strikes, balls};
+        return ballCount;
+    }
+
+    private static int computeStrikes(List<Integer> computerNumber, List<Integer> userNumber) {
+        int strikes = 0;
+        for (int i = 0; i < numberLength; i++) {
+            if (computerNumber.get(i) == userNumber.get(i)) {
+                strikes++;
+            }
+        }
+        return strikes;
+    }
+
+    private static int computeBalls(List<Integer> computerNumber, List<Integer> userNumber) {
+        int balls = 0;
+        for (int i = 0; i < numberLength; i++) {
+            List<Integer> userNumberForBallCount = new ArrayList(userNumber);
+            userNumberForBallCount.remove(i);
+            if (userNumberForBallCount.contains(computerNumber.get(i))) {
+                balls++;
+            }
+        }
+        return balls;
+    }
+
+    private static void printCount(int[] ballCount) {
+        StringBuilder tellCount = new StringBuilder();
+        if (ballCount[0] == 0 && ballCount[1] == 0) {
+            tellCount.append("낫싱");
+        }
+        if (ballCount[0] > 0) {
+            tellCount.append(ballCount[0] + " 스트라이크 ");
+        }
+        if (ballCount[1] > 0) {
+            tellCount.append(ballCount[1] + " 볼");
+        }
+        System.out.println(tellCount.toString());
+    }
+
 }
