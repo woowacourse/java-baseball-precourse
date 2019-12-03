@@ -3,6 +3,7 @@
  * All rights reserved.
  *
  * Game.java
+ * 게임을 진행하기 위한 클래스
  *
  * @author		Sorin Jin
  * @version		1.0
@@ -11,7 +12,6 @@
  */
 public class Game {
     static final int THREE_STRIKE = 3;
-
     static final int REPLAY = 1;
     static final int EXIT_GAME = 2;
 
@@ -26,19 +26,19 @@ public class Game {
     private void play(){
         Result result;
         computer.generateRandomNumber();
-        do{
+        do {
             result = computer.checkAnswer(player.getInput());
             computer.printScore();
-        }while(result.getNumberOfStrike() != THREE_STRIKE);
+        } while (result.getNumberOfStrike() != THREE_STRIKE);
         System.out.println(Message.GAME_IS_END);
         restartOrExit();
     }
 
     private void restartOrExit(){
         int answer = player.wantReplay();
-        if(answer == REPLAY){
+        if (answer == REPLAY) {
             play();
-        }else{
+        } else {
             System.exit(0);
         }
     }

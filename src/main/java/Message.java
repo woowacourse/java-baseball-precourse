@@ -10,7 +10,6 @@
  * @date		03 Dec 2019
  *
  */
-
 public class Message{
     static final String GET_ANSWER = "숫자를 입력해주세요:";
     static final String INPUT_ERROR_NOT_A_NUMBER = "숫자가 아닙니다. 숫자를 입력해주세요.";
@@ -24,5 +23,4 @@ public class Message{
 
     static final String GAME_IS_END= "3개의 숫자를 모두 맞히셨습니다! 게임종료";
     static final String GET_ANSWER_RESTART_OR_EXIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
 }

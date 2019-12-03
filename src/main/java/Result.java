@@ -16,11 +16,13 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Result{
+    static final int ZERO = 0;
+
     int numberOfBall;
     int numberOfStrike;
 
     public Result(){
-        numberOfBall = 0;
-        numberOfStrike = 0;
+        numberOfBall = ZERO;
+        numberOfStrike = ZERO;
     }
 }
