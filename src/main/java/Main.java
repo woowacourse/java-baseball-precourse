@@ -4,11 +4,18 @@ import java.util.Scanner;
  * The type Main.
  */
 public class Main {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         while(true) {
             Batter computer = new Batter();
             Pitcher user;
             Scanner s = new Scanner(System.in);
+
+            System.out.print("숫자를 입력해 주세요 : ");
             int n = s.nextInt();
             user = new Pitcher(n);
 

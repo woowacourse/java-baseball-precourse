@@ -1,9 +1,16 @@
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 
+/**
+ * The type Batter.
+ */
 class Batter {
     private LinkedHashSet<Integer> batting;
     private final static int BATTING_COUNT = 3;
+
+    /**
+     * Instantiates a new Batter.
+     */
     public Batter() {
         batting = new LinkedHashSet<>();
         while (batting.size() != 3) {
@@ -11,12 +18,23 @@ class Batter {
             batting.add(tmp);
         }
     }
+
+    /**
+     * Print batting.
+     */
     public void printBatting() {
         for (Integer tmp : batting) {
             System.out.print(tmp + " ");
         }
         System.out.println();
     }
+
+    /**
+     * Game boolean.
+     *
+     * @param user the user
+     * @return the boolean
+     */
     public boolean game(Pitcher user){
         int[] pitch = user.getPitching();
         Object[] bat = batting.toArray();
