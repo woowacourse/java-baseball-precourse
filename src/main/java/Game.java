@@ -2,28 +2,30 @@ public class Game {
 
     private boolean status;
     private int num_len;
-    private int[] nums;
+    private User user;
+    private Computer com;
 
     public Game(int num_len){
         this.num_len = num_len;
-        nums = new int[num_len];
         status = true;
-    }
-
-    public void setnums(){
-        //todo AI의 게임 목표 설정
+        user = new User(this.num_len);
+        com = new Computer(this.num_len);
     }
 
     public void playBaseball(){
+        boolean input = true;
+        while(input){
+            input = com.getNumber();
+        }
         while(status){
-            //todo 플레이어의 input을 받음
-            //todo 플레이어의 input을 처리
-            //todo nums와 비교하여 출력
-            //todo 결과를 확인하여 status 변경
+            input = true;
+            while (input){
+                input = user.getNumber();
+            }
+            int strikes = com.check_points(user.nums);
+            if(strikes == num_len){
+                status = false;
+            }
         }
     }
-
-
-
-
 }

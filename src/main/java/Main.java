@@ -14,7 +14,10 @@ public class Main {
             Game new_game = new Game(num_len);
             new_game.playBaseball();
             System.out.println(askReplay);
-            playing = Boolean.parseBoolean(scan.nextLine().trim());
+            int answer = Integer.parseInt(scan.nextLine().trim());
+            if(answer == 1){
+                playing = false;
+            }
         }
 
         scan.close();
