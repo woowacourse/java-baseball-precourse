@@ -10,10 +10,21 @@
 
 import domain.BaseBall;
 import domain.NumberCard;
+import domain.ScoreBoard;
+import utils.ScoreBoardUtil;
 
 import java.util.ArrayList;
 
 public class RandomNumberCardGenerator {
+
+    ScoreBoard createScoreBoard(ScoreBoardUtil scoreBoardUtil) {
+        ScoreBoard scoreBoard = new ScoreBoard(createBaseBallArrayList());
+
+        while (scoreBoardUtil.checkValid(scoreBoard) != false) {
+            scoreBoard = new ScoreBoard(createBaseBallArrayList());
+        }
+        return scoreBoard;
+    }
 
     private ArrayList<BaseBall> createBaseBallArrayList() {
         ArrayList<BaseBall> numberCards = new ArrayList<>();
