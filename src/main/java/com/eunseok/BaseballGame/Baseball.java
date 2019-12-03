@@ -68,14 +68,22 @@ public class Baseball {
      * 사용자에게 입력을 받는 메소드.
      */
     public void makeInput() {
-        System.out.flush();
-        System.out.print("숫자를 입력해주세요 : ");
         Scanner sc = new Scanner(System.in);
+        int temp = 0;
 
-        /*한자리씩 배열에 저장하기 위해 임시저장하는 temp변수*/
-        int temp;
-        temp = sc.nextInt();
-        sc.nextLine();
+        /*한자리씩 배열에 저장하기 위해 임시저장하는 temp변수
+         * 3자리수 입력안할시 재입력*/
+        while (true) {
+            System.out.flush();
+            System.out.print("숫자를 입력해주세요 : ");
+            temp = sc.nextInt();
+            sc.nextLine();
+
+            if ((temp / 100) > 0 && (temp / 100) < 10) {
+                break;
+            }
+            System.out.println("주의! 3자리 입력");
+        }
 
         /*배열에 한자리씩 저장하기 위한 반복문*/
         for (int i = (input.length - 1); i >= 0; i--) {
