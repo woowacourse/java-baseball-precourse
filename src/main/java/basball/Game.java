@@ -79,28 +79,26 @@ public class Game {
      * @return 임의의 중복되지 않는 세자릿수 숫자의 값을 갖는 문자열
      */
     private String createAnswerString() {
-        String first = pickDigitExcept();
-        String second = pickDigitExcept(first);
-        String third = pickDigitExcept(first, second);
-        return first + second + third;
+        String AnswerString = "";
+        for(int i = 0; i < LENGTH; i++){
+            AnswerString += pickDigitExcept(AnswerString.split(""));
+        }
+        return AnswerString;
     }
 
     /**
-     * 0~9 중의 숫자들에서 특저한 값을 제외하고 나머지 숫자들 중에서 임의의 숫자를 반환하는 함수
+     * 0~9의 풀에서 특정한 값을 제외하고 나머지 숫자들 중에서 임의의 숫자를 반환하는 함수
      * @param except 제외할 값
      * @return 길이 1짜리 임의의 정수 값을 갖는 문자열
      */
     private String pickDigitExcept(String... except) {
-        String[] pool = DIGITS;
-        if (except != null) {
-            pool = newDigitPoolExcept(except);
-        }
+        String[] pool = newDigitPoolExcept(except);
         String pick = pool[Random.nextInt(pool.length)];
         return pick;
     }
 
     /**
-     * 0~9 중의 숫자들 중에서 특정한 값을 제외한 배열을 반환하는 함수
+     * 0~9 중의 숫자들 중에서 특정한 값을 제외한 새로운 풀을 반환하는 함수
      * @param except 제외할 값
      * @return 0~9 중 특정한 값이 제외된 배열
      */
@@ -325,7 +323,7 @@ public class Game {
             System.err.println(String.format("입력의 길이가 %d이 아닙니다", LENGTH));
         }
         else {
-            System.err.println("예상치 못한 오류입니다.");
+            System.err.println(e);
         }
 
     }
