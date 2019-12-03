@@ -1,13 +1,12 @@
-import java.util.List;
 /**
  * SingleGame 클래스에선 실제 게임 한 판이 수행됩니다.
  * 사용자가 정답(target)을 맞출 때까지 지속됩니다.
  */
 
+import java.util.List;
 
 public class SingleGame {
-
-    public static InputOutput io;
+    private static InputOutput io;
 
     public SingleGame() {
         io = new InputOutput();
@@ -34,10 +33,7 @@ public class SingleGame {
             input.clear();
         } while (score.strikeCount != digit);
 
-        if (!io.isExit()) {
-            return false;
-        }
-
-        return true;    //게임 새로 시작
+        return io.isExit();
     }
+
 }

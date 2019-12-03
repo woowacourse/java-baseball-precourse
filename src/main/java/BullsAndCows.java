@@ -8,4 +8,5 @@ public class BullsAndCows {
             aGame = new SingleGame();
         } while (aGame.startGame(digit));
     }
+
 }

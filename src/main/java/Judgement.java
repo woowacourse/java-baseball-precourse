@@ -1,10 +1,10 @@
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Judgement 클래스는 사용자 입력(input)과 사용자가 맞춰야 하는 정답(target)을 비교하여
  * 볼 카운트, 스트라이크 카운트를 계산합니다.
  */
+
+import java.util.Arrays;
+import java.util.List;
 
 public class Judgement {
     private int digit;

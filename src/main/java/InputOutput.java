@@ -1,13 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 /**
  * InputOutput 클래스는 사용자 입력과 출력을 담당합니다.
  */
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class InputOutput {
-    Scanner sc;
+    private static Scanner sc;
 
     public InputOutput() {
         sc = new Scanner(System.in);
