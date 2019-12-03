@@ -2,48 +2,69 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+
 public class BaseballGame {
     private static final Integer[] TARGET_INTEGERS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    private static final int numberLength = 3;
+    private static final int NUMBER_LENGTH = 3;
 
     public static void main(String[] args) {
-        System.out.println("숫자를 입력해주세요 ");
+        new BaseballGame();
+    }
+
+    public BaseballGame() {
+        while (true) {
+            playBaseball();
+            if (!askReplay()) {
+                break;
+            }
+        }
+    }
+
+    public static void playBaseball() {
         List<Integer> computerNumber = generateComputerNumber();
-        List<Integer> userNumber = getUserNumber();
-        int[] ballCount = computeCount(computerNumber, userNumber);
-        printCount(ballCount);
+        while (true) {
+            List<Integer> userNumber = getUserNumber();
+            int[] ballCount = computeCount(computerNumber, userNumber);
+            printCount(ballCount);
+            if (ballCount[0] == NUMBER_LENGTH) {    // if all numbers are strikes break loop.
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
     private static List<Integer> generateComputerNumber() {
         List<Integer> integerList = Arrays.asList(TARGET_INTEGERS);
         Collections.shuffle(integerList);
-        List<Integer> slicedList = integerList.subList(0, numberLength);
+        List<Integer> slicedList = integerList.subList(0, NUMBER_LENGTH);
         return slicedList;
     }
 
     private static List<Integer> getUserNumber() {
         String inputNumber = "";
-        final Scanner scanner = new Scanner(System.in);
-        inputNumber = scanner.next();
-        validateInteger(inputNumber);
-        validateZero(inputNumber);
-        validateLength(inputNumber);
-        validateSameNumber(inputNumber);
+        while (true) {
+            System.out.println("숫자를 입력해주세요");
+            final Scanner scanner = new Scanner(System.in);
+            inputNumber = scanner.next();
+            if (validateUserNumber(inputNumber)) {
+                break;
+            }
+        }
         List<Integer> userNumber = Stream.of(inputNumber.split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
         return userNumber;
     }
 
     private static boolean validateUserNumber(String inputNumber) {
-        if (validateInteger(inputNumber) == false) {
+        if (!validateInteger(inputNumber)) {
             return false;
         }
-        if (validateZero(inputNumber) == false) {
+        if (!validateZero(inputNumber)) {
             return false;
         }
-        if (validateLength(inputNumber) == false) {
+        if (!validateLength(inputNumber)) {
             return false;
         }
-        if (validateSameNumber(inputNumber) == false) {
+        if (!validateSameNumber(inputNumber)) {
             return false;
         }
         return true;
@@ -97,7 +118,7 @@ public class BaseballGame {
 
     private static int computeStrikes(List<Integer> computerNumber, List<Integer> userNumber) {
         int strikes = 0;
-        for (int i = 0; i < numberLength; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (computerNumber.get(i) == userNumber.get(i)) {
                 strikes++;
             }
@@ -107,7 +128,7 @@ public class BaseballGame {
 
     private static int computeBalls(List<Integer> computerNumber, List<Integer> userNumber) {
         int balls = 0;
-        for (int i = 0; i < numberLength; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             List<Integer> userNumberForBallCount = new ArrayList(userNumber);
             userNumberForBallCount.remove(i);
             if (userNumberForBallCount.contains(computerNumber.get(i))) {
@@ -131,4 +152,16 @@ public class BaseballGame {
         System.out.println(tellCount.toString());
     }
 
+    private static boolean askReplay() {
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            final Scanner scanner = new Scanner(System.in);
+            String inputNumber = scanner.next();
+            if (inputNumber.equals("2")) {
+                return false;
+            } else if (inputNumber.equals("1")) {
+                return true;
+            }
+        }
+    }
 }
