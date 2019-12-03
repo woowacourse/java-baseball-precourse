@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * Game.java
  * 아직 리팩토링 중...
@@ -10,7 +12,8 @@ public class Game {
     private static int digitNumber = 3;
 
     public void init() {
-        int[] userInput, computerInput, strikeBall;
+        List<Integer> userInput, computerInput;
+        int[] strikeBall;
         Computer computer = new Computer();
         User user = new User();
         userInput = user.inputNumber(digitNumber);
@@ -41,24 +44,23 @@ public class Game {
         return false;
     }
 
-    private int[] countStrikeBall(int[] userNum, int[] computerNum) {
+    private int[] countStrikeBall(List<Integer> userNum, List<Integer> computerNum) {
         int[] strikeBall = new int[]{0, 0};
         int[] userIndex = new int[10];
         int[] computerIndex = new int[10];
-        for (int i = 0; i < userNum.length; i++) {
-            userIndex[userNum[i]] = 1;
-            computerIndex[computerNum[i]] = 1;
-            if (userNum[i] == computerNum[i]) {
+        for (int i = 0; i < userNum.size(); i++) {
+            userIndex[userNum.get(i)] = 1;
+            computerIndex[computerNum.get(i)] = 1;
+            if (userNum.get(i) == computerNum.get(i)) {
                 strikeBall[0]++;
                 continue;
             }
-            if (userIndex[computerNum[i]] == 1) {
+            if (userIndex[computerNum.get(i)] == 1) {
                 strikeBall[1]++;
             }
-            if (computerIndex[userNum[i]] == 1) {
+            if (computerIndex[userNum.get(i)] == 1) {
                 strikeBall[1]++;
             }
-
         }
         return strikeBall;
     }

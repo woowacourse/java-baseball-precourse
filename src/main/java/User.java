@@ -6,13 +6,15 @@
  * Version: v0.0.1, 2019.11.29 (c) 정회형
  */
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class User {
-    public int[] inputNumber(int digitNumber) {
+    public List<Integer> inputNumber(int digitNumber) {
         Scanner sc = new Scanner(System.in);
-        int[] digits;
+        List<Integer> digits = new ArrayList<>();
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
             digits = toArray(sc.nextInt());
@@ -24,22 +26,26 @@ public class User {
         return digits;
     }
 
-    public boolean verifyUnique(int[] digits, int digitNumber) {
-        if (digits.length != digitNumber) {
+    public boolean verifyUnique(List<Integer> digits, int digitNumber) {
+        if (digits.size() != digitNumber) {
             return false;
         }
         boolean[] index = new boolean[10];
-        for (int i = 0; i < digits.length; i++) {
-            if (index[digits[i]] == true || digits[i] == 0) {
+        for (int i = 0; i < digits.size(); i++) {
+            if (index[digits.get(i)] == true || digits.get(i) == 0) {
                 return false;
             }
-            index[digits[i]] = true;
+            index[digits.get(i)] = true;
         }
         return true;
     }
 
-    public int[] toArray(int number) {
-        int[] digits = Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
+    public List<Integer> toArray(int number) {
+        List<Integer> digits = new ArrayList<>();
+        while (number != 0) {
+            digits.add(0, number % 10);
+            number = number / 10;
+        }
         return digits;
     }
 }

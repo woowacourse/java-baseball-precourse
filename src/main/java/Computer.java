@@ -6,12 +6,14 @@
  * Version: v0.0.1, 2019.11.29 (c) 정회형
  */
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Computer {
-    public int[] pickRandomNumbers(int digitNumber) {
+    public List<Integer> pickRandomNumbers(int digitNumber) {
         boolean[] index = new boolean[10];
-        int[] newNumber = new int[digitNumber];
+        List<Integer> newNumber = new ArrayList<>();
         int temp, i = 0;
         while (i < digitNumber) {
             temp = new Random().nextInt(9) + 1;
@@ -19,7 +21,7 @@ public class Computer {
                 continue;
             }
             index[temp] = true;
-            newNumber[i] = temp;
+            newNumber.add(temp);
             i++;
         }
         return newNumber;
