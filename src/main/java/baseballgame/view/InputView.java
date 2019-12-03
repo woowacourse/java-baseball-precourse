@@ -1,4 +1,7 @@
-package baseballgame;
+package baseballgame.view;
+
+import baseballgame.MenuType;
+import baseballgame.Number;
 
 /**
  * @author KSKIM
