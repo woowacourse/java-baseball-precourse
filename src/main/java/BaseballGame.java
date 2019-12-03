@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class BaseballGame {
     private String ballNumbers;
     private String inputNumbers;
+    private int[] hint;
 
     public BaseballGame() {
     }
@@ -13,7 +14,7 @@ public class BaseballGame {
         inputNumbers = inputNumbers(sc);
 //        System.out.println("입력값: " + input);
         while (!checkSuccess()) {
-            int[] hint = calHint();
+            hint = calHint();
             printResult(hint);
             inputNumbers = inputNumbers(sc);
         }
