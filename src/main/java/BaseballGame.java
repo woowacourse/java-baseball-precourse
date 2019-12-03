@@ -108,7 +108,9 @@ public class BaseballGame {
     }
 
     private boolean checkStrike(int[] gameScore) {
-        if(gameScore[STRIKE_INDEX] == THREE_STRIKE) { return true; }
+        if(gameScore[STRIKE_INDEX] == THREE_STRIKE) {
+            return true;
+        }
 
         return false;
     }
