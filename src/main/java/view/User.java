@@ -10,6 +10,7 @@ import java.util.Set;
  * @author :   김시영
  * @version :   2.0 2019년 12월 2일
  * @apiNote :   게임진행을 위해 사용자 입력 및 입력 에러 처리를 위한 클래스입니다.
+ * @apiNote :   메소드 기능 : 게임시작 및 종료처리, 사용자 입력, 사용자 입력 오류처리
  */
 public class User {
     private static final int DEFAULT_INT_ZERO = 0;

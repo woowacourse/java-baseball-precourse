@@ -1,7 +1,6 @@
 package domain;
 
 import lombok.Data;
-import lombok.Getter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +8,8 @@ import java.util.List;
 /**
  * @author :   김시영
  * @version :   2.0 2019년 12월 02일
- * @apiNote :   사용자 입력값과 컴퓨터에서 생성한 난수를 비교하는 인터페이스를 구현한 클래스입니다. (기능 : 두 숫자 비교, 결과 출력, 비교를 위한 리스트 배열 처리)
+ * @apiNote :   사용자 입력값과 컴퓨터에서 생성한 난수를 비교하는 인터페이스를 구현한 클래스입니다.
+ * @apiNote :   기능 : 두 숫자 비교, 비교를 위한 리스트 배열 처리, 결과 출력
  */
 @Data
 public class NumberValidator implements Validator {
