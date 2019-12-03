@@ -120,4 +120,10 @@ public class BaseballGame {
         }
         return replay.equals("1");
     }
+
+    public void closeScanner() {
+        if (sc != null) {
+            sc.close();
+        }
+    }
 }

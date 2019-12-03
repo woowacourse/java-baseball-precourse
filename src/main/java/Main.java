@@ -8,5 +8,6 @@ public class Main {
         do {
             game.start();
         } while (game.askReplay());
+        game.closeScanner();
     }
 }
