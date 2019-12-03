@@ -1,5 +1,5 @@
 /*
- * Game.java                       1.6.4   2019-12-02
+ * Game.java                       1.7.0   2019-12-03
  *
  * Copyright (c) 2019 Hyungju An.
  * All rights reserved.
@@ -14,17 +14,19 @@ import java.io.InputStreamReader;
 
 /**
  * 게임 클래스입니다.
- * 숫자 야구 게임을 진행하는 메인 클래스입니다.
  * 상대방(컴퓨터)가 생각한 수를 사용자가 예측하는 방식으로 진행,
  * 게임이 끝나면 게임 재시작을 하거나, 게임을 완전히 종료한다.
  *
  * @author HyungjuAn
- * @version 1.6.4                           재시작 입력받을 때,
- *                                   문자열 예외처리하도록 수정
- * @date 2019-12-02
+ * @version 1.7.0                              Game 생성자 추가
+ * @date 2019-12-03
  */
 public class Game {
     private static final String THREE_STRIKE = "3 스트라이크";
+
+    public Game() {
+        super();
+    }
 
     public static void startGame(Player computer, Player user) throws IOException {
         String hint;
