@@ -1,5 +1,5 @@
 /*
- * @(#)Referee.java        0.7 2019/12/03
+ * @(#)Referee.java        0.8 2019/12/03
  *
  * Copyright (c) 2019 lxxjn0.
  */
@@ -11,28 +11,45 @@ import java.util.ArrayList;
  * 스트라이크와 볼의 개수를 확인하고 낫싱 여부를 판단하는 클래스.
  *
  * @author JUNYOUNG LEE (lxxjn0)
- * @version 0.7 2019/12/03
+ * @version 0.8 2019/12/03
  */
 public class Referee {
-    /** 생성된 수와 입력된 수의 길이에 해당하는 상수 */
-    private static final int NUM_LEN = 3;
-    /** 스트라이크와 볼의 개수로 낫싱을 판단할 때 사용할 상수 */
+    /**
+     * 스트라이크와 볼의 개수로 낫싱을 판단할 때 사용할 상수
+     */
     private static final int COUNT_ZERO = 0;
-    /** 컴퓨터가 생성한 3자리 수를 저장할 ArrayList */
+
+    /**
+     * 생성된 수와 입력된 수의 길이에 해당하는 상수
+     */
+    private static final int NUM_LEN = 3;
+
+    /**
+     * 컴퓨터가 생성한 3자리 수를 저장할 ArrayList
+     */
     private ArrayList<Integer> generatedNumber;
-    /** 사용자가 입력한 3자리 수를 저장할 ArrayList */
+
+    /**
+     * 사용자가 입력한 3자리 수를 저장할 ArrayList
+     */
     private ArrayList<Integer> enteredNumber;
-    /** 스트라이크의 개수를 저장할 변수 */
+
+    /**
+     * 스트라이크의 개수를 저장할 변수
+     */
     private int strikeNumber;
-    /** 볼의 개수를 저장할 변수 */
+
+    /**
+     * 볼의 개수를 저장할 변수
+     */
     private int ballNumber;
 
     /**
      * 컴퓨터가 생성한 3자리 수와 사용자가 입력한 3자리 수를 매개변수로 받아와 저장하는 Referee 생성자.
      * generatedNumber와 enteredNumber를 매개변수로 받아오면서 바로 스트라이크와 볼의 개수를 저장.
      *
-     * @param generatedNumber  컴퓨터가 생성한 3자리 수
-     * @param enteredNumber 사용자가 입력한 3자리 수
+     * @param generatedNumber 컴퓨터가 생성한 3자리 수
+     * @param enteredNumber   사용자가 입력한 3자리 수
      */
     public Referee(ArrayList<Integer> generatedNumber,
                    ArrayList<Integer> enteredNumber) {

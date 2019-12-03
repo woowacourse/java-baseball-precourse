@@ -1,5 +1,5 @@
 /*
- * @(#)BaseballGame.java        0.7 2019/12/03
+ * @(#)BaseballGame.java        0.8 2019/12/03
  *
  * Copyright (c) 2019 lxxjn0.
  */
@@ -7,22 +7,36 @@ package com.lxxjn0.baseball;
 
 /**
  * 게임의 전체적인 진행을 담당. 컴퓨터와 사용자로부터 3자리 숫자를 저장하고 이를 통해 스트라이크와 볼,
- * 그리고 낫싱 여부를 구해서 출력. 위 결과를 통해 답과 일치하는지 여부를 판단하고,
- * 사용자로부터 입력을 받아서 게임의 재진행 여부 결정하는 클래스.
+ * 그리고 낫싱 여부를 구해서 출력. 위 결과를 통해 답과 일치 여부를 판단하고, 정답일 경우 게임을 종료,
+ * 사용자로부터 재진행 여부를 입력을 받아서 결정하는 클래스.
  *
  * @author JUNYOUNG LEE (lxxjn0)
- * @version 0.7 2019/12/03
+ * @version 0.8 2019/12/03
  */
 public class BaseballGame {
-    /** 사용자가 3개의 숫자를 맞췄는지 확인하기 위한 상수 */
-    private static final int CORRECT_ANSWER = 3;
-    /** 스트라이크 또는 볼이 0개인 경우를 판단하기 위한 상수 */
+    /**
+     * 스트라이크 또는 볼이 0개인 경우를 판단하기 위한 상수
+     */
     private static final int COUNT_ZERO = 0;
-    /** 게임 시작 시 3자리 수를 생성할 Computer 클래스 객체 */
+
+    /**
+     * 사용자가 3개의 숫자를 맞췄는지 확인하기 위한 상수
+     */
+    private static final int CORRECT_ANSWER = 3;
+
+    /**
+     * 게임 시작 시 3자리 수를 생성할 Computer 클래스 객체
+     */
     private Computer computer;
-    /** 사용자로부터의 3자리 수 입력과 게임 진행 여부 입력을 위한 User 클래스 객체 */
+
+    /**
+     * 사용자로부터의 3자리 수 입력과 게임 진행 여부 입력을 위한 User 클래스 객체
+     */
     private User user;
-    /** 생성된 수와 사용자가 입력한 수를 통해 판정을 내리는 Referee 클래스 객체 */
+
+    /**
+     * 생성된 수와 사용자가 입력한 수를 통해 판정을 내리는 Referee 클래스 객체
+     */
     private Referee referee;
 
     /**
@@ -43,7 +57,8 @@ public class BaseballGame {
 
         do {
             user.receiveInput();
-            referee = new Referee(computer.getGeneratedNumber(), user.getEnteredNumber());
+            referee = new Referee(computer.getGeneratedNumber(),
+                    user.getEnteredNumber());
 
             if (referee.judgeNothing()) {
                 System.out.println("낫싱");

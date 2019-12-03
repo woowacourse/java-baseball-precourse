@@ -1,5 +1,5 @@
 /*
- * @(#)User.java        0.5 2019/12/03
+ * @(#)User.java        0.6 2019/12/03
  *
  * Copyright (c) 2019 lxxjn0.
  */
@@ -12,22 +12,42 @@ import java.util.Scanner;
  * 사용자로부터 3자리 수를 입력받는 클래스.
  *
  * @author JUNYOUNG LEE (lxxjn0)
- * @version 0.5 2019/12/03
+ * @version 0.6 2019/12/03
  */
 public class User {
-    /** 입력해야 하는 수의 길이에 해당하는 상수 */
+    /**
+     * 입력해야 하는 수의 길이에 해당하는 상수
+     */
     private static final int NUM_LEN_TO_ENTER = 3;
-    /** 각 자리에 입력될 숫자 범위의 하한 문자 상수 */
+
+    /**
+     * 각 자리에 입력될 숫자 범위의 하한 문자 상수
+     */
     private static final char MIN_NUM = '1';
-    /** 각 자리에 입력될 숫자 범위의 상한 문자 상수 */
+
+    /**
+     * 각 자리에 입력될 숫자 범위의 상한 문자 상수
+     */
     private static final char MAX_NUM = '9';
-    /** 게임을 다시 시작하는 입력을 확인하기 위한 문자열 상수 */
+
+    /**
+     * 게임을 다시 시작하는 입력을 확인하기 위한 문자열 상수
+     */
     private static final String PLAY_AGAIN = "1";
-    /** 게임을 종료하는 입력을 확인하기 위한 문자열 상수 */
+
+    /**
+     * 게임을 종료하는 입력을 확인하기 위한 문자열 상수
+     */
     private static final String STOP = "2";
-    /** 사용자가 조건에 맞게 입력한 3자리 수를 Integer형으로 바꿔 저장할 ArrayList */
+
+    /**
+     * 사용자가 조건에 맞게 입력한 3자리 수를 Integer형으로 바꿔 저장할 ArrayList
+     */
     private ArrayList<Integer> enteredNumber;
-    /** 사용자로부터 입력을 받아 저장해 둘 문자열 */
+
+    /**
+     * 사용자로부터 입력을 받아 저장해 둘 문자열
+     */
     private String userInput;
 
     /**
@@ -40,7 +60,7 @@ public class User {
 
         do {
             System.out.print("숫자를 입력해주세요 : ");
-            userInput = sc.next();
+            userInput = sc.nextLine();
         } while (!isValidInput());
         enteredNumber = toIntegerArrayList();
     }
@@ -103,13 +123,13 @@ public class User {
     /**
      * 해당 position 위치의 문자가 문자열의 다른 위치에 존재하는지(중복되는지) 확인하는 메서드.
      *
-     * @param position     중복 여부를 확인하고 싶은 자리.
+     * @param position 중복 여부를 확인하고 싶은 자리.
      * @return 해당 position이 아닌 자리에 동일한 문자가 존재 시 true 반환.
      */
     private boolean isDuplicatePosition(int position) {
         for (int i = 0; i < userInput.length(); i++) {
-            if ((userInput.charAt(position) == userInput.charAt(i)
-                    && (i != position))) {
+            if ((userInput.charAt(position) == userInput.charAt(i))
+                    && (i != position)) {
                 return true;
             }
         }
@@ -122,7 +142,7 @@ public class User {
      * @return 사용자의 입력을 Integer형 ArrayList로 변환한 tmp 반환.
      */
     private ArrayList<Integer> toIntegerArrayList() {
-        ArrayList<Integer> tmp = new ArrayList<Integer>();
+        ArrayList<Integer> tmp = new ArrayList<>();
 
         for (int i = 0; i < userInput.length(); i++) {
             tmp.add(userInput.charAt(i) - '0');
@@ -133,14 +153,14 @@ public class User {
     /**
      * 사용자로부터 1을 입력받으면 다시 시작, 2를 입력받으면 종료하는 상태를 반환하는 메서드.
      *
-     * @return 다시 시작(PLAY_AGAIN)을 입력받은 경우 true를 반환
+     * @return 다시 시작(PLAY_AGAIN)을 입력받은 경우 true 반환
      */
     public boolean receivePlayAgainInput() {
         Scanner sc = new Scanner(System.in);
 
         do {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            userInput = sc.next();
+            userInput = sc.nextLine();
         } while (!isValidPlayAgainInput());
 
         return userInput.equals(PLAY_AGAIN);
@@ -150,7 +170,7 @@ public class User {
      * 사용자의 입력이 1또는 2가 아닌 다른 유효하지 않은 입력인지를 판단하고,
      * 유효하지 않은 입력의 경우 재입력을 요구하는 출력문 출력하는 메서드.
      *
-     * @return 입력이 1(PLAY_AGAIN)또는 2(STOP)일 경우 true를 반환.
+     * @return 입력이 1(PLAY_AGAIN)또는 2(STOP)일 경우 true 반환.
      */
     private boolean isValidPlayAgainInput() {
         if (!(userInput.equals(PLAY_AGAIN) || userInput.equals(STOP))) {
