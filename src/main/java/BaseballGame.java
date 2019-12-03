@@ -12,12 +12,10 @@ public class BaseballGame {
 //        System.out.println("정답: " + answer);
         inputNumbers = inputNumbers(sc);
 //        System.out.println("입력값: " + input);
-        boolean success = checkSuccess();
-        while (!success) {
+        while (!checkSuccess()) {
             int[] hint = calHint();
             printResult(hint);
             inputNumbers = inputNumbers(sc);
-            success = checkSuccess();
         }
         printResult();
     }
