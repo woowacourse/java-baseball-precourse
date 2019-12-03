@@ -26,9 +26,11 @@ public class Baseball {
     }
 
     private void processLose() {
+        System.out.println("lose");
     }
 
     private void processWin() {
+        System.out.println("win");
     }
 
     private boolean isUserWin(Balls userBalls) {

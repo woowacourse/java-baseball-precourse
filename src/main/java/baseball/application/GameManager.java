@@ -23,7 +23,7 @@ public class GameManager {
         baseball.start();
     }
 
-    public static void main() {
+    public static void main(String[] args) {
         GameManager gm = new GameManager();
         gm.run();
     }
