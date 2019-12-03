@@ -8,20 +8,23 @@ public class BaseballNumberGenerator {
     private final int MAX_BASEBALL_NUMBER = 9;
 
     public List<Integer> getBaseball() {
-
         List<Integer> baseballList = new ArrayList<>();
 
         return createBaseballNumber(baseballList);
     }
 
     private List<Integer> createBaseballNumber(List<Integer> baseballList) {
+
         while(baseballList.size() != BASEBALL_NUMBER_SIZE) {
+
             double createBaseball = Math.random();
             int baseball = (int)(createBaseball*MAX_BASEBALL_NUMBER)+MIN_BASEBALL_NUMBER;
+
             if(!baseballList.contains(baseball)) {
                 baseballList.add(baseball);
             }
         }
+
         return baseballList;
     }
 }

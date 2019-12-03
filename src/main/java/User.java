@@ -12,8 +12,8 @@ public class User {
     private final int USER_BAT_SIZE = 3;
 
     public List<Integer> getUserBat() {
-        displayGetUserBat();
         List<Integer> userBaseballBat;
+        displayGetUserBat();
 
         while(true) {
             try {
