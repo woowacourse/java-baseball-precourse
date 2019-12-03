@@ -108,7 +108,7 @@ public class BaseballGame {
         System.out.println(msg);
     }
 
-    public String askReplay(Scanner sc) {
+    public boolean askReplay(Scanner sc) {
         String replay = sc.nextLine();
 
         while (!(replay.equals("1") || replay.equals("2"))) {
@@ -116,6 +116,6 @@ public class BaseballGame {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             replay = sc.nextLine();
         }
-        return replay;
+        return replay.equals("1");
     }
 }
