@@ -61,9 +61,10 @@ public class BaseBallGameStarter {
     }
 
     private ScoreBoard getUserInput() {
+        outputUtil.printRequireUserScoreBoard();
+
         int userInput = inputUtil.inputInteger();
 
-        outputUtil.printRequireUserScoreBoard();
         return convertUtil.convertScoreBoard(userInput);
     }
 
