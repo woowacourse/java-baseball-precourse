@@ -16,7 +16,7 @@ public class Judgement {
     private int judgeStrikeCount(List <Integer> input, List <Integer> target) {
         int strikeCount = 0;
         for (int i = 0; i < digit; i++) {
-            if (target.get(i) == input.get(i)) {
+            if (target.get(i).equals(input.get(i))) {
                 strikeCount += 1;
             }
         }
