@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.ArrayList;
+
 public class RuleUtils {
     public static final int LOWERBOUND = 1;
     public static final int UPPERBOUND = 9;
@@ -11,7 +13,7 @@ public class RuleUtils {
 
     public static boolean isValidRange(ArrayList<Integer> numbersList) {
         ArrayList<Integer> inRangeList = makeInRangeList();
-        for (Integer i : numbersList) {
+        for (int i : numbersList) {
             if(!inRangeList.contains(i))
                 return false;
         }
