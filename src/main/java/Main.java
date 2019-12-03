@@ -6,9 +6,11 @@ class Game{
     private static class InputNaNException extends RuntimeException {};
     private static final String[] DIGITS = {"0","1","2","3","4","5","6","7","8","9"};
     private static final int LENGTH = 3;
+    private static final String RESTART = "1";
     private static Scanner scanner;
     private static Random random;
     private static String target;
+    private static Boolean playing = true;
 
 
     public Game(){
@@ -19,7 +21,7 @@ class Game{
 
 
     public void start(){
-        while(true){
+        while(gameOn()){
             proceedTurn();
         }
     }
@@ -69,6 +71,9 @@ class Game{
             }
         }
 
+        if (strikes == 3) {
+            playing = false;
+        }
         return strikes;
     }
 
@@ -117,9 +122,24 @@ class Game{
         else System.err.println("예상치 못한 오류입니다.");
     }
 
+    private Boolean gameOn(){
+        if(playing) return true;
+        return restart();
+    }
+
+    private Boolean restart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        String choice = scanner.nextLine();
+        if(choice.equals(RESTART)) {
+            init();
+            return true;
+        }
+        return false;
+    }
 
     private void init(){
         target = createAnswerString();
+        playing = true;
     }
 
     private String createAnswerString(){
