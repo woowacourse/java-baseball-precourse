@@ -1,11 +1,9 @@
 /*
- * @(#)PlayBaseball.java        0.6 2019/12/03
+ * @(#)BaseballGame.java        0.7 2019/12/03
  *
  * Copyright (c) 2019 lxxjn0.
  */
 package com.lxxjn0.baseball;
-
-import java.util.ArrayList;
 
 /**
  * 게임의 전체적인 진행을 담당. 컴퓨터와 사용자로부터 3자리 숫자를 저장하고 이를 통해 스트라이크와 볼,
@@ -13,9 +11,9 @@ import java.util.ArrayList;
  * 사용자로부터 입력을 받아서 게임의 재진행 여부 결정하는 클래스.
  *
  * @author JUNYOUNG LEE (lxxjn0)
- * @version 0.6 2019/12/03
+ * @version 0.7 2019/12/03
  */
-public class PlayBaseball {
+public class BaseballGame {
     /** 사용자가 3개의 숫자를 맞췄는지 확인하기 위한 상수 */
     private static final int CORRECT_ANSWER = 3;
     /** 스트라이크 또는 볼이 0개인 경우를 판단하기 위한 상수 */
@@ -30,42 +28,42 @@ public class PlayBaseball {
     /**
      * 처음 게임을 시작하며, 게임 종료 시 사용자의 입력을 통해 게임을 다시 시작하거나 종료하는 메서드.
      */
-    public void play() {
+    public void run() {
         do {
-            run();
-        } while (continuePlay());
+            playBaseball();
+        } while (playBaseballAgain());
     }
 
     /**
      * 게임(3자리 수 생성부터 사용자 입력, 답과 일치하면 종료하는 기능까지)이 진행되는 메서드.
      */
-    private void run() {
+    private void playBaseball() {
         computer = new Computer();
         user = new User();
 
         do {
             user.receiveInput();
-            referee = new Referee(computer.getNumList(), user.getNumList());
+            referee = new Referee(computer.getGeneratedNumber(), user.getEnteredNumber());
 
             if (referee.judgeNothing()) {
                 System.out.println("낫싱");
             } else {
-                printResult();
+                printStrikeNBall();
             }
-        } while (!isAnswer());
+        } while (!isCorrectAnswer());
     }
 
     /**
      * 스트라이크와 볼을 출력해주는 메서드.
      */
-    private void printResult() {
-        if (referee.getCountStrike() == COUNT_ZERO) {
-            System.out.printf("%d 볼\n", referee.getCountBall());
-        } else if (referee.getCountBall() == COUNT_ZERO) {
-            System.out.printf("%d 스트라이크\n", referee.getCountStrike());
+    private void printStrikeNBall() {
+        if (referee.getStrikeNumber() == COUNT_ZERO) {
+            System.out.printf("%d 볼\n", referee.getBallNumber());
+        } else if (referee.getBallNumber() == COUNT_ZERO) {
+            System.out.printf("%d 스트라이크\n", referee.getStrikeNumber());
         } else {
-            System.out.printf("%d 스트라이크 %d볼\n", referee.getCountStrike(),
-                    referee.getCountBall());
+            System.out.printf("%d 스트라이크 %d볼\n", referee.getStrikeNumber(),
+                    referee.getBallNumber());
         }
     }
 
@@ -74,8 +72,8 @@ public class PlayBaseball {
      *
      * @return 사용자가 입력한 3자리 수가 모두 일치한다면 true 반환.
      */
-    private boolean isAnswer() {
-        if (referee.getCountStrike() == CORRECT_ANSWER) {
+    private boolean isCorrectAnswer() {
+        if (referee.getStrikeNumber() == CORRECT_ANSWER) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
@@ -87,7 +85,7 @@ public class PlayBaseball {
      *
      * @return 게임을 다시 시작할 경우 true 반환한다.
      */
-    private boolean continuePlay() {
-        return user.continueCheck();
+    private boolean playBaseballAgain() {
+        return user.receivePlayAgainInput();
     }
 }
