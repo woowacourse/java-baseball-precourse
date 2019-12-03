@@ -10,5 +10,4 @@ package domain;
 public interface Validator {
 
     String compareRandomNumberWithUserNumber(int randomNumber, int userInput);
-
 }

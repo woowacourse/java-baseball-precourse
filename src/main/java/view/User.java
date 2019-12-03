@@ -22,6 +22,7 @@ public class User {
     public boolean wantToEndGame() throws IOException {
         System.out.println("게임을 재시작하려면 1번 종료하려면 2번을 입력해주세요 ! ");
         int userInput = makeNumberAndCheckStringError();
+
         while (true) {
             if (userInput != START_GAME && userInput != END_GAME) {
                 System.out.println("1또는 2의 수를 입력해주세요~(1번 : 시작, 2번 : 종료)");
@@ -30,7 +31,6 @@ public class User {
                 break; /* 올바른 값을 입력한 경우 */
             }
         }
-
         if (userInput == END_GAME) {
             return true;
         }
@@ -57,6 +57,7 @@ public class User {
     private boolean checkDigitNumbersDiffrent(int userInput) {
         Set<String> setForCompareDigits = new HashSet<>();
         String[] userInputArray = String.valueOf(userInput).split(DEFAULT_STRING_BLANK);
+
         for (String s : userInputArray) {
             setForCompareDigits.add(s);
         }

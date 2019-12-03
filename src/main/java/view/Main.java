@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * @author :   김시영
  * @version :   2.0 2019년 12월 02일
- * @apiNote :   게임 진행을 위한 메인 클래스로, 인스턴스 생성 및 메서드 호출로 이루어져 있습니다.
+ * @apiNote :   야구게임 진행을 위한 메인 클래스로, 인스턴스 생성 및 메서드 호출로 이루어져 있습니다.
  */
 public class Main {
     private static final User user = new User();
