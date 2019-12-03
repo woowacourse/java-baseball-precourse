@@ -27,13 +27,49 @@ class Game{
     private void proceedTurn(){
         try{
             String guess = getUserGuess();
-            // evaluate guess
-            // pring result
+            HashMap<String,Integer> result = evaluateGuess(guess);
+//            printResult(result);
         }
         catch( RuntimeException e ){
             hanndleError(e);
         }
     }
+
+
+
+
+    private HashMap<String,Integer> evaluateGuess(String guess){
+        HashMap<String,Integer> result = new HashMap<String,Integer>();
+        result.put("strike",countStrike(guess));
+        result.put("ball",countBall(guess));
+        return result;
+    }
+
+
+    private int countStrike(String guess){
+        int strikes = 0;
+
+        for(int i = 0; i < LENGTH; i++){
+            if(guess.charAt(i) == target.charAt(i)){
+                strikes++;
+            }
+        }
+
+        return strikes;
+    }
+
+    private int countBall(String guess){
+        int balls = 0;
+
+        for(int i = 0; i < LENGTH; i++){
+            if(guess.charAt(i) != target.charAt(i) && target.contains(String.valueOf(guess.charAt(i))) ){
+                balls++;
+            }
+        }
+
+        return balls;
+    }
+
 
     private String getUserGuess() throws RuntimeException {
         System.out.print("숫자를 입력해주세요: ");
