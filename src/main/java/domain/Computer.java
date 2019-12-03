@@ -4,7 +4,8 @@ import java.util.Random;
 
 public class Computer {
 	private static final int LEN_NUMBERS = 3;
-	private static final int NUM_RANGE = 10;
+	private static final int NUM_RANGE = 9;
+	private static final int NUM_MIN = 1;
 	private static final int GAMEOVER_COUNTS = 3;
 	private static final int NUMBER_BEFORE_GENERATE = -1;
 	
@@ -53,7 +54,7 @@ public class Computer {
 
 	private int generateRandomNumber() {
 		Random randGenerator = new Random();
-		return randGenerator.nextInt(NUM_RANGE);
+		return randGenerator.nextInt(NUM_RANGE) + NUM_MIN;
 	}
 
 	public void printGameResult(int[] userNumbers) {
@@ -61,7 +62,7 @@ public class Computer {
 		int ballCounts = getBallCounts(userNumbers);
 
 		if (strikeCounts != 0) {
-			System.out.print(strikeCounts + " 스트라이크");
+			System.out.print(strikeCounts + " 스트라이크 ");
 		}
 		if (ballCounts != 0) {
 			System.out.print(ballCounts + "볼");

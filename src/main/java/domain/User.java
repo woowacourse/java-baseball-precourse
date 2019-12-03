@@ -47,7 +47,7 @@ public class User {
 	private boolean isAllOneDigitNumber() {
 		for (int i = 0; i < numbersStr.length(); i++) {
 			char charAtI = numbersStr.charAt(i);
-			if ((charAtI < '0') || (charAtI > '9')) {
+			if ((charAtI < '1') || (charAtI > '9')) {
 				return false;
 			}
 		}
