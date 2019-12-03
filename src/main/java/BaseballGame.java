@@ -17,4 +17,13 @@ public class BaseballGame {
             printResult(strike, ball);
         } while (strike != RuleUtils.DIGITS);
     }
+
+    public int countStrike(ArrayList<Integer> answer, ArrayList<Integer> submission) {
+        int count = 0;
+        for (int i = 0; i < answer.size(); i++) {
+            if (answer.get(i) == submission.get(i))
+                count++;
+        }
+        return count;
+    }
 }
