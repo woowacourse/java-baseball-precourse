@@ -5,6 +5,7 @@ import java.util.Scanner;
 /**
  * InputOutput 클래스는 사용자 입력과 출력을 담당합니다.
  */
+
 public class InputOutput {
     Scanner sc;
 
@@ -24,21 +25,21 @@ public class InputOutput {
         return input;
     }
 
-    public void printResult(int strikeCount, int ballCount, int digit) {
-        if (strikeCount == digit) {
+    public void printResult(Score score, int digit) {
+        if (score.strikeCount == digit) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             return;
-        } else if (strikeCount == 0 && ballCount == 0) {
+        } else if (score.strikeCount == 0 && score.ballCount == 0) {
             System.out.println("낫싱");
             return;
-        } else if (strikeCount == 0) {
-            System.out.println(ballCount + "볼");
+        } else if (score.strikeCount == 0) {
+            System.out.println(score.ballCount + "볼");
             return;
-        } else if (ballCount == 0) {
-            System.out.println(strikeCount + "스트라이크");
+        } else if (score.ballCount == 0) {
+            System.out.println(score.strikeCount + "스트라이크");
             return;
         }
-        System.out.println(strikeCount + "스트라이크 " + ballCount + "볼");
+        System.out.println(score.strikeCount + "스트라이크 " + score.ballCount + "볼");
     }
 
     public boolean isExit() {
