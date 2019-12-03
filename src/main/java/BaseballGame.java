@@ -8,8 +8,9 @@ public class BaseballGame {
     private int numOfDigit;
 
     public static void main(String[] args) {
+        int conditionOfDigit = 3;
         BaseballGame game = new BaseballGame();
-        game.setGame(3);
+        game.setGame(conditionOfDigit);
 
         while (true) {
             game.createRandomAnswer();
@@ -23,17 +24,15 @@ public class BaseballGame {
         }
     }
 
-    public void setGame(int n) {
-        userInput = new int[n];
-        answer = new int[n];
-        numOfDigit = n;
+    public void setGame(int conditionOfDigit) {
+        this.userInput = new int[conditionOfDigit];
+        this.answer = new int[conditionOfDigit];
+        this.numOfDigit = conditionOfDigit;
     }
 
     public void startGame() {
-
         System.out.print("숫자를 입력해주세요: ");
         this.userInput = getUserInput();
-
     }
 
     public void createRandomAnswer() {
@@ -72,15 +71,15 @@ public class BaseballGame {
         Scanner sc = new Scanner(System.in);
         input = sc.nextInt();
 
-        while (!errorCheckRange(input)) {
+        while (!checkRange(input)) {
             input = sc.nextInt();
         }
 
-        while (!errorCheckDuplicate(input)) {
+        while (!checkDuplicate(input)) {
             input = sc.nextInt();
         }
 
-        while (!errorCheckZero(input)) {
+        while (!checkZero(input)) {
             input = sc.nextInt();
         }
 
@@ -92,7 +91,7 @@ public class BaseballGame {
         return userAnswer;
     }
 
-    public boolean errorCheckRange(int input) {
+    public boolean checkRange(int input) {
         if (input < 100 || input > 1000) {
             System.out.print("입력 에러: 3자리 숫자를 입력해 주세요!");
             return false;
@@ -101,13 +100,12 @@ public class BaseballGame {
         }
     }
 
-    public boolean errorCheckDuplicate(int input) {
-        int a, b, c;
-        a = input % 10;
+    public boolean checkDuplicate(int input) {
+        int a = input % 10;
         input /= 10;
-        b = input % 10;
+        int b = input % 10;
         input /= 10;
-        c = input % 10;
+        int c = input % 10;
         if (a != b && a != c && b != c) {
             return true;
         } else {
@@ -116,7 +114,7 @@ public class BaseballGame {
         }
     }
 
-    public boolean errorCheckZero(int input) {
+    public boolean checkZero(int input) {
         int a, b, c;
         a = input % 10;
         input /= 10;
