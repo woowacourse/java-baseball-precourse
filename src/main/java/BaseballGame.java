@@ -19,7 +19,7 @@ public class BaseballGame {
             inputNumbers = inputNumbers(sc);
             success = checkSuccess(ballNumbers, inputNumbers);
         }
-        printResult(new int[]{3, 0});
+        printResult();
     }
 
     public String makeNumbers() {
@@ -89,15 +89,17 @@ public class BaseballGame {
         return result;
     }
 
+    public void printResult() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
     public void printResult(int[] hint) {
         int strike = hint[0];
         int ball = hint[1];
         String msg = "";
 
-        if ((strike == 3) && (ball == 0)) {         //3스트라이크, 0볼인 경우 정답
-            msg = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
-            msg += "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-        } else if ((strike == 0) && (ball == 0)) {
+        if ((strike == 0) && (ball == 0)) {
             msg = "낫싱";
         } else {
             if (strike != 0) {
