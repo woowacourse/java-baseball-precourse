@@ -7,7 +7,10 @@
 
 package com.precourse.bassballapp;
 
-import com.precourse.bassballapp.*;
+import com.precourse.bassballapp.StrikeBall;
+import com.precourse.bassballapp.Cpu;
+import com.precourse.bassballapp.User;
+import com.precourse.bassballapp.Result;
 
 /**
  * 실제 프로그램이 실행되는 클래스.
