@@ -1,8 +1,6 @@
 import java.util.List;
 
 class BaseballGame {
-
-
     static final int MAX_NUMBER = 9;
     static final int ANSWER_NUMBERS_COUNT = 3;
     static final int PLAYER_CONTINUE = 1;
