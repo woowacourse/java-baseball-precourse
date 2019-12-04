@@ -8,11 +8,10 @@ package com.precourse;
 /**
  * 클래스 이름 : Main.java
  *
- * @version 1.0
- *
- * 날짜 : 2019.12.2 월요일
- *
  * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * <p>
+ * 날짜 : 2019.12.2 월요일
  */
 public class Main {
     /*

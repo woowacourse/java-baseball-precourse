@@ -10,11 +10,10 @@ import java.util.*;
 /**
  * 클래스 이름 : NumberGetter.java
  *
- * @version 1.0
- *
- * 날짜 : 2019.12.2 월요일
- *
  * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * <p>
+ * 날짜 : 2019.12.2 월요일
  */
 public class NumberGetter {
     /*
@@ -26,7 +25,9 @@ public class NumberGetter {
     private static String inputNumberString;
     private static int inputNumber;
 
-    /** 플레이어로부터 숫자를 입력받는 로직을 진행하는 메서드  */
+    /**
+     * 플레이어로부터 숫자를 입력받는 로직을 진행하는 메서드
+     */
     public static int numberGetter() {
         while (true) {
             try {
@@ -44,7 +45,9 @@ public class NumberGetter {
         return userNumber;
     }
 
-    /** 플레이어로부터 입력받은 숫자가 예외조건을 통과하는지에 따라 에러를 출력하는 메서드 */
+    /**
+     * 플레이어로부터 입력받은 숫자가 예외조건을 통과하는지에 따라 에러를 출력하는 메서드
+     */
     public static boolean userNumberChecker() {
         if (!userNumberContainZeroChecker()) {
             System.out.println("0은 포함될 수 없습니다. 다시 입력하세요.");
@@ -64,7 +67,9 @@ public class NumberGetter {
         return true;
     }
 
-    /** 플레이어가 입력한 숫자에 0이 포함되었는지 판단하는 메서드  */
+    /**
+     * 플레이어가 입력한 숫자에 0이 포함되었는지 판단하는 메서드
+     */
     public static boolean userNumberContainZeroChecker() {
         if (inputNumberString.contains("0")) {
             return false;
@@ -72,12 +77,16 @@ public class NumberGetter {
         return true;
     }
 
-    /** 플레이어가 입력한 숫자가 맞춰야할 숫자의 길이와 같은지 판단하는 메서드  */
+    /**
+     * 플레이어가 입력한 숫자가 맞춰야할 숫자의 길이와 같은지 판단하는 메서드
+     */
     public static boolean userNumberLengthChecker() {
         return String.valueOf(userNumber).length() == NUMBER_LENGTH;
     }
 
-    /** 플레이어가 입력한 숫자에 중복된 숫자가 있는지 판단하는 메서드  */
+    /**
+     * 플레이어가 입력한 숫자에 중복된 숫자가 있는지 판단하는 메서드
+     */
     public static boolean userNumberRepeatChecker() {
         ArrayList<Integer> repeatCheckList = IntegerToArrayList.integerToArrayList(userNumber);
         Set<Integer> repeatCheckHash = new HashSet<>(repeatCheckList);
@@ -88,7 +97,9 @@ public class NumberGetter {
         return true;
     }
 
-    /** 사용자로부터 받은 입력을 저장하는 메서드  */
+    /**
+     * 사용자로부터 받은 입력을 저장하는 메서드
+     */
     public static int getInputNumber() {
         inputNumberString = null;
         Scanner scan = new Scanner(System.in);
@@ -97,7 +108,9 @@ public class NumberGetter {
         return inputNumber;
     }
 
-    /** String을 Int로 변환하는 메서드 */
+    /**
+     * String을 Int로 변환하는 메서드
+     */
     public static int stringToInteger() {
         return Integer.parseInt(inputNumberString);
     }

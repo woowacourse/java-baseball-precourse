@@ -11,11 +11,10 @@ import java.util.Collections;
 /**
  * 클래스 이름 : IntegerToArrayList.java
  *
- * @version 1.0
- *
- * 날짜 : 2019.12.2 월요일
- *
  * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * <p>
+ * 날짜 : 2019.12.2 월요일
  */
 public class IntegerToArrayList {
     /*
@@ -26,7 +25,9 @@ public class IntegerToArrayList {
 
     private static ArrayList<Integer> numberList = new ArrayList<>();
 
-    /** n자릿수의 정수를 ArrayList로 바꾸는 메서드  */
+    /**
+     * n자릿수의 정수를 ArrayList로 바꾸는 메서드
+     */
     public static ArrayList<Integer> integerToArrayList(int userNumber) {
         int numberLength = String.valueOf(userNumber).length();
         numberList.clear();
@@ -41,7 +42,9 @@ public class IntegerToArrayList {
         return numberList;
     }
 
-    /** ArrayList의 element들의 순서를 반전하는 메서드  */
+    /**
+     * ArrayList의 element들의 순서를 반전하는 메서드
+     */
     public static void reverseArrayList() {
         Collections.reverse(numberList);
     }

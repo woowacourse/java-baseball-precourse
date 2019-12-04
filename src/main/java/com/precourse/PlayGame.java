@@ -10,11 +10,10 @@ import java.util.ArrayList;
 /**
  * 클래스 이름 : PlayGame.java
  *
- * @version 1.0
- *
- * 날짜 : 2019.12.2 월요일
- *
  * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * <p>
+ * 날짜 : 2019.12.2 월요일
  */
 public class PlayGame {
     /*
@@ -26,7 +25,9 @@ public class PlayGame {
     private static ArrayList<Integer> userNumberList = new ArrayList<>();
     private static ArrayList<Integer> ballStrikeList = new ArrayList<>();
 
-    /** 게임 실행 로직을 담당하는 playGame메서드 */
+    /**
+     * 게임 실행 로직을 담당하는 playGame메서드
+     */
     public static void playGame() {
 
         guessingNumberList = NumberGenerator.numberGenerator();

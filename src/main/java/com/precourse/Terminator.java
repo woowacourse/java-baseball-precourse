@@ -10,11 +10,10 @@ import java.util.Scanner;
 /**
  * 클래스 이름 : Terminator.java
  *
- * @version 1.0
- *
- * 날짜 : 2019.12.2 월요일
- *
  * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * <p>
+ * 날짜 : 2019.12.2 월요일
  */
 public class Terminator {
     /*
