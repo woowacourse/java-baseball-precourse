@@ -54,7 +54,24 @@ public class BaseballNumbers {
 		}
 	}
 	
+	public int countStrike(List<BaseballNumber> randomNumbers) {
+		int countStrike = 0;
+		for (int i = 0; i < randomNumbers.size(); i++) {
+			countStrike += getStrikeCount(i, randomNumbers.get(i));
+			i++;
+		}
+		return countStrike;
+	}
+	
+	private int getStrikeCount(int i, BaseballNumber randomNumber) {
+		if (isStrike(i, randomNumber)) {
+			return 1;
+		}
+		return 0;
+	}
+	
 	public boolean isStrike(int i, BaseballNumber randomNumber) {
 		return baseballNumbers.get(i).equals(randomNumber);
 	}
+	
 }

@@ -3,6 +3,8 @@ package domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -45,5 +47,15 @@ class BaseballNumbersTest {
 		assertThat(baseballNumbers.isStrike(1, new BaseballNumber(2))).isEqualTo(true);
 		assertThat(baseballNumbers.isStrike(2, new BaseballNumber(3))).isEqualTo(true);
 	}
-
+	
+	@Test
+	@DisplayName("스트라이크여부 확인")
+	void tesCountStrikeBaseballNumbers() {
+		BaseballNumberRepository baseballNumberRepository = new BaseballNumberRepository();
+		List<BaseballNumber> randomNumbers = baseballNumberRepository.randomNumbers();
+		BaseballNumbers baseballNumbers = new BaseballNumbers("123");
+		System.out.println(randomNumbers);
+		int countStrike = baseballNumbers.countStrike(randomNumbers);
+		System.out.println(countStrike);
+	}
 }
