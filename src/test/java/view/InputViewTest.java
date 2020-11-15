@@ -8,5 +8,10 @@ class InputViewTest {
 	void testGetBaseballNumbers() {
 		InputView.getBaseballNumbers();
 	}
+	
+	@Test
+	void testGetGameStatus() {
+		InputView.getGameStatus();
+	}
 
 }
