@@ -56,9 +56,8 @@ public class BaseballNumbers {
 	
 	public int countStrike(List<BaseballNumber> randomNumbers) {
 		int countStrike = 0;
-		for (int i = 0; i < randomNumbers.size(); i++) {
+		for (int i = 0; i < TOTAL_NUMBER_LENGTH; i++) {
 			countStrike += getStrikeCount(i, randomNumbers.get(i));
-			i++;
 		}
 		return countStrike;
 	}
@@ -74,4 +73,35 @@ public class BaseballNumbers {
 		return baseballNumbers.get(i).equals(randomNumber);
 	}
 	
+	public int countBall(List<BaseballNumber> randomNumbers) {
+		int countBall= 0;
+		for (int i = 0; i < TOTAL_NUMBER_LENGTH; i++) {
+			countBall += getBallCount(i, randomNumbers);
+		}
+		return countBall;
+	}
+	
+	private int getBallCount(int i, List<BaseballNumber> randomNumbers) {
+		if (isBall(i, randomNumbers)) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	public boolean isBall(int i, List<BaseballNumber> randomNumbers) {
+		return !isStrike(i, randomNumbers.get(i)) && randomNumbers.contains(baseballNumbers.get(i));
+	}
+	
+	public boolean nothing(List<BaseballNumber> randomNumbers) {
+		for (int i = 0; i < TOTAL_NUMBER_LENGTH; i++) {
+			if (!isNothing(i, randomNumbers)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean isNothing(int i, List<BaseballNumber> randomNumbers) {
+		return !(isStrike(i,randomNumbers.get(i)) || isBall(i, randomNumbers));
+	}
 }

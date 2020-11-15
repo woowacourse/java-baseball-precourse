@@ -49,13 +49,36 @@ class BaseballNumbersTest {
 	}
 	
 	@Test
-	@DisplayName("스트라이크여부 확인")
-	void tesCountStrikeBaseballNumbers() {
+	@DisplayName("스트라이크 갯수 확인")
+	void testCountStrikeBaseballNumbers() {
 		BaseballNumberRepository baseballNumberRepository = new BaseballNumberRepository();
 		List<BaseballNumber> randomNumbers = baseballNumberRepository.randomNumbers();
 		BaseballNumbers baseballNumbers = new BaseballNumbers("123");
 		System.out.println(randomNumbers);
 		int countStrike = baseballNumbers.countStrike(randomNumbers);
 		System.out.println(countStrike);
+	}
+	
+	@Test
+	@DisplayName("볼 갯수 확인")
+	void testCoountBallBaseballNumbers() {
+		BaseballNumberRepository baseballNumberRepository = new BaseballNumberRepository();
+		List<BaseballNumber> randomNumbers = baseballNumberRepository.randomNumbers();
+		BaseballNumbers baseballNumbers = new BaseballNumbers("123");
+		System.out.println(randomNumbers);
+		int countBall = baseballNumbers.countBall(randomNumbers);
+		System.out.println(countBall + "볼");
+	}
+	
+	@Test
+	@DisplayName("낫싱 여부 확인")
+	void testIsNothingBallBaseballNumbers() {
+		BaseballNumberRepository baseballNumberRepository = new BaseballNumberRepository();
+		List<BaseballNumber> randomNumbers = baseballNumberRepository.randomNumbers();
+		BaseballNumbers baseballNumbers = new BaseballNumbers("123");
+		System.out.println(randomNumbers);
+		boolean nothing = baseballNumbers.nothing(randomNumbers);
+		if (nothing)
+			System.out.println("낫싱");
 	}
 }
