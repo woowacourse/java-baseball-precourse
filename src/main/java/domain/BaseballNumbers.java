@@ -53,4 +53,8 @@ public class BaseballNumbers {
 			return false;
 		}
 	}
+	
+	public boolean isStrike(int i, BaseballNumber randomNumber) {
+		return baseballNumbers.get(i).equals(randomNumber);
+	}
 }
