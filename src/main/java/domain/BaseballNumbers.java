@@ -104,4 +104,11 @@ public class BaseballNumbers {
 	private boolean isNothing(int i, List<BaseballNumber> randomNumbers) {
 		return !(isStrike(i,randomNumbers.get(i)) || isBall(i, randomNumbers));
 	}
+	
+	public Score score(List<BaseballNumber> randomNumbers) {
+		int strikeCount = countStrike(randomNumbers);
+		int ballCount = countBall(randomNumbers);
+		return new Score(strikeCount, ballCount);
+		
+	}
 }
