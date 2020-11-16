@@ -1,8 +1,8 @@
 package domain;
 
 public class Score {
-	private static final String STRIKE_MESSAGE = "%d 스트라이크 ";
-	private static final String BALL_MESSAGE = "%d 볼";
+	private static final String STRIKE_MESSAGE = "%d스트라이크 ";
+	private static final String BALL_MESSAGE = "%d볼";
 	private static final String NOTHING = "낫싱";
 	private static final int MAX_STRIKE_COUNT = 3;
 

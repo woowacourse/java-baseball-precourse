@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import view.InputView;
+import view.OutputView;
 
 public class BaseballGame {
 	private final BaseballNumberRepository baseballNumberRepository;
@@ -26,16 +27,16 @@ public class BaseballGame {
 		while (!isMaxStrikeCount) {
 			BaseballNumbers baseballNumbers = InputView.getBaseballNumbers();
 			Score score = baseballNumbers.score(randomNumbers);
-			System.out.println(score.message());
+			OutputView.show(score.message());
 			isMaxStrikeCount = score.isMaxStrikeCount();
 		}
-		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+		OutputView.successMessage();
 	}
 
 	private void askRestartGame() {
 		BaseballGameStatus baseballGameStatus = InputView.getGameStatus();
 		if (BaseballGameStatus.EXIT.equals(baseballGameStatus)) {
-			System.out.println("게임이 종료되었습니다. 감사합니다.");
+			OutputView.exitMessage();
 			isEnd = true;
 			return;
 		}
