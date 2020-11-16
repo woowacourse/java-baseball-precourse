@@ -70,15 +70,4 @@ class BaseballNumbersTest {
 		System.out.println(countBall + "∫º");
 	}
 	
-	@Test
-	@DisplayName("≥¥ΩÃ ø©∫Œ »Æ¿Œ")
-	void testIsNothingBallBaseballNumbers() {
-		BaseballNumberRepository baseballNumberRepository = new BaseballNumberRepository();
-		List<BaseballNumber> randomNumbers = baseballNumberRepository.randomNumbers();
-		BaseballNumbers baseballNumbers = new BaseballNumbers("123");
-		System.out.println(randomNumbers);
-		boolean nothing = baseballNumbers.nothing(randomNumbers);
-		if (nothing)
-			System.out.println("≥¥ΩÃ");
-	}
 }
