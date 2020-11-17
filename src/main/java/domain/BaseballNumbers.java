@@ -2,12 +2,15 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class BaseballNumbers {
 	private static final String VALID_NUMBER_MESSAGE = "숫자(정수)만 입력 가능합니다.";
 	private static final String OUT_OF_NUMBER_LENGTH_MESSAGE = "세자릿 수까지 입력해주세요.";
+	private static final String DUPLICATE_NUMBER_MESSAGE = "중복되지 않는 숫자를 입력해주세요.";
 	private static final int TOTAL_NUMBER_LENGTH = 3;
 
 	private final List<BaseballNumber> baseballNumbers;
@@ -30,18 +33,25 @@ public class BaseballNumbers {
 		Objects.requireNonNull(baseballNumbers);
 		validateNumber(baseballNumbers);
 		validateLength(baseballNumbers);
+		validateDulicate(baseballNumbers);
 	}
 
-	private void validateNumber(String baseballNumbers) {
-		if (!isNumber(baseballNumbers)) {
+	private void validateNumber(String numbers) {
+		if (!isNumber(numbers)) {
 			throw new IllegalArgumentException(VALID_NUMBER_MESSAGE);
 		}
-
 	}
 
 	private void validateLength(String baseballNumbers) {
 		if (baseballNumbers.length() != TOTAL_NUMBER_LENGTH) {
 			throw new IllegalArgumentException(OUT_OF_NUMBER_LENGTH_MESSAGE);
+		}
+	}
+	
+	private void validateDulicate(String numbers) {
+		Set<String> baseballNumbers = new HashSet<String>(Arrays.asList(numbers.split("")));
+		if (baseballNumbers.size() != TOTAL_NUMBER_LENGTH) {
+			throw new IllegalArgumentException(DUPLICATE_NUMBER_MESSAGE);
 		}
 	}
 
