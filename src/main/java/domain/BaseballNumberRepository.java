@@ -8,11 +8,12 @@ public class BaseballNumberRepository {
 	private static final int INITIAL_INDEX = 0;
 	private static final int TOTAL_LENGTH = 3;
 	private static final int MAX_NUMBER = 9;
-
+	private static final int MIN_NUMBER = 1;
+	
 	private final List<BaseballNumber> baseballNumbers = new ArrayList<>();
 
 	public BaseballNumberRepository() {
-		for (int i = 0; i <= MAX_NUMBER; i++) {
+		for (int i = MIN_NUMBER; i <= MAX_NUMBER; i++) {
 			baseballNumbers.add(new BaseballNumber(i));
 		}
 	}

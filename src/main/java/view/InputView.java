@@ -24,7 +24,7 @@ public class InputView {
 		try {
 			System.out.println(INPUT_ASK_RESTART_MESSAGE);
 			return BaseballGameStatus.get(SCANNER.nextLine());
-		} catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException | NullPointerException e) {
 			System.out.println(e.getMessage());
 			return getGameStatus();
 		}

@@ -7,9 +7,13 @@ import org.junit.jupiter.api.Test;
 class BaseballGameStatusTest {
 
 	@Test
-	void testBaseballGameStatus() {
+	void testInvalidBaseballGameStatus() {
 		assertThatThrownBy(() -> BaseballGameStatus.get("3"))
-		.isInstanceOf(IllegalArgumentException.class);
+		.isInstanceOf(NullPointerException.class);
 	}
-
+	
+	@Test
+	void testgetBaseballGameStatus() {
+		System.out.println(BaseballGameStatus.get("1"));
+	}
 }

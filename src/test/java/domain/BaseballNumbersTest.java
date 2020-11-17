@@ -19,15 +19,22 @@ class BaseballNumbersTest {
 	
 	@Test
 	@DisplayName("숫자 체크")
-	void testvalidNumberBaseballNumbers() {
+	void testValidNumberBaseballNumbers() {
 		assertThatThrownBy(() -> new BaseballNumbers("123ff"))
         .isInstanceOf(IllegalArgumentException.class);
 	}
 	
 	@Test
 	@DisplayName("정수 체크")
-	void testvalidIntegerBaseballNumbers() {
+	void testValidIntegerBaseballNumbers() {
 		assertThatThrownBy(() -> new BaseballNumbers("123.111"))
+        .isInstanceOf(IllegalArgumentException.class);
+	}
+	
+	@Test
+	@DisplayName("중복 체크")
+	void testValidDuplicateBaseballNumbers() {
+		assertThatThrownBy(() -> new BaseballNumbers("111"))
         .isInstanceOf(IllegalArgumentException.class);
 	}
 	
