@@ -1,8 +1,8 @@
 package view;
 
 public class OutputView {
-	private static final String OUTPUT_SUCCESS_MESSAGE = "3°³ÀÇ ¼ıÀÚ¸¦ ¸ğµÎ ¸ÂÈ÷¼Ì½À´Ï´Ù! °ÔÀÓÁ¾·á";
-	private static final String OUTPUT_EXIT_MESSAGE = "°ÔÀÓÀÌ Á¾·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.";
+	private static final String OUTPUT_SUCCESS_MESSAGE = "3ê°œì˜ ìˆ«ìë¥¼ ëª¨ë‘ ë§íˆì…¨ìŠµë‹ˆë‹¤! ê²Œì„ ì¢…ë£Œ";
+	private static final String OUTPUT_EXIT_MESSAGE = "ê²Œì„ì´ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.";
 		
 	public static void successMessage() {
 		System.out.println(OUTPUT_SUCCESS_MESSAGE);

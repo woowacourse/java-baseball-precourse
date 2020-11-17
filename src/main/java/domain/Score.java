@@ -1,9 +1,9 @@
 package domain;
 
 public class Score {
-	private static final String STRIKE_MESSAGE = "%d½ºÆ®¶óÀÌÅ© ";
-	private static final String BALL_MESSAGE = "%dº¼";
-	private static final String NOTHING = "³´½Ì";
+	private static final String STRIKE_MESSAGE = "%dìŠ¤íŠ¸ë¼ì´í¬ ";
+	private static final String BALL_MESSAGE = "%dë³¼";
+	private static final String NOTHING = "ë‚«ì‹±";
 	private static final int MAX_STRIKE_COUNT = 3;
 
 	private final int strike;

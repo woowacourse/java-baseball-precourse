@@ -3,7 +3,7 @@ package domain;
 import java.util.Objects;
 
 public class BaseballNumber {
-	private static final String OUT_OF_RANGE_MESSAGE = "1ºÎÅÍ 9±îÁöÀÇ ¼ıÀÚ¸¸ °¡´ÉÇÕ´Ï´Ù.";
+	private static final String OUT_OF_RANGE_MESSAGE = "1ë¶€í„° 9ê¹Œì§€ì˜ ìˆ«ìë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.";
 	private static final int MIN_NUMBER = 1;
 	private static final int MAX_NUMBER = 9;
 

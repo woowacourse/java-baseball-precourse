@@ -7,7 +7,7 @@ import java.util.Objects;
 public enum BaseballGameStatus {
 	RESART("1"), EXIT("2");
 
-	private static final String INVALID_INPUT_MESSAGE = "¹«È¿ÇÑ °ªÀÔ´Ï´Ù.";
+	private static final String INVALID_INPUT_MESSAGE = "ë¬´íš¨í•œ ê°’ìž…ë‹ˆë‹¤.";
 	private static final Map<String, BaseballGameStatus> BaseballGameStatus = new HashMap<String, BaseballGameStatus>();
 	static {
 		for (BaseballGameStatus baseballGameStatus : values()) {

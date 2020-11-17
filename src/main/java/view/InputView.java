@@ -6,8 +6,8 @@ import domain.BaseballGameStatus;
 import domain.BaseballNumbers;
 
 public class InputView {
-	private static final String INPUT_NUMBER_MESSAGE = "¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
-	private static final String INPUT_ASK_RESTART_MESSAGE = "°ÔÀÓÀ» »õ·Î ½ÃÀÛÇÏ·Á¸é 1, Á¾·áÇÏ·Á¸é 2¸¦ ÀÔ·ÂÇÏ¼¼¿ä";
+	private static final String INPUT_NUMBER_MESSAGE = "ìˆ«ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”";
+	private static final String INPUT_ASK_RESTART_MESSAGE = "ê²Œì„ì„ ìƒˆë¡œ ì‹œì‘í•˜ë ¤ë©´ 1, ì¢…ë£Œí•˜ë ¤ë©´ 2ë¥¼ ì…ë ¥í•˜ì„¸ìš”";
 	private static final Scanner SCANNER = new Scanner(System.in);
 
 	public static BaseballNumbers getBaseballNumbers() {

@@ -8,9 +8,9 @@ import java.util.Objects;
 import java.util.Set;
 
 public class BaseballNumbers {
-	private static final String VALID_NUMBER_MESSAGE = "¼ıÀÚ(Á¤¼ö)¸¸ ÀÔ·Â °¡´ÉÇÕ´Ï´Ù.";
-	private static final String OUT_OF_NUMBER_LENGTH_MESSAGE = "¼¼ÀÚ¸´ ¼ö±îÁö ÀÔ·ÂÇØÁÖ¼¼¿ä.";
-	private static final String DUPLICATE_NUMBER_MESSAGE = "Áßº¹µÇÁö ¾Ê´Â ¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.";
+	private static final String VALID_NUMBER_MESSAGE = "ìˆ«ì(ì •ìˆ˜)ë§Œ ì…ë ¥ ê°€ëŠ¥í•©ë‹ˆë‹¤.";
+	private static final String OUT_OF_NUMBER_LENGTH_MESSAGE = "ì„¸ìë¦¿ ìˆ˜ê¹Œì§€ ì…ë ¥í•´ì£¼ì„¸ìš”.";
+	private static final String DUPLICATE_NUMBER_MESSAGE = "ì¤‘ë³µë˜ì§€ ì•ŠëŠ” ìˆ«ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.";
 	private static final int TOTAL_NUMBER_LENGTH = 3;
 
 	private final List<BaseballNumber> baseballNumbers;
