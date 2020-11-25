@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 import utils.RandomUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,5 +34,19 @@ class BallTest {
         assertThat(numbers.stream()
                 .distinct()
                 .count() != numbers.size());
+    }
+
+    @Test
+    public void 문자열을_정수형리스트로_변환한다() throws Exception {
+        //given
+        String str = "123";
+
+        //when
+        List<Integer> list = Arrays.stream(str.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        //then
+        System.out.println(list);
     }
 }
