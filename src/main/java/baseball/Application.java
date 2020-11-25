@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 final class StrikeAndBall {
-    private final int strike;
-    private final int ball;
+    int strike;
+    int ball;
 
     public StrikeAndBall(int strike, int ball) {
         this.strike = strike;
@@ -55,7 +55,7 @@ public class Application {
 
         int[] candidate_array = intToArray(candidate);
         for (int i : candidate_array) {
-            if (store.contains(i)) return false;
+            if (store.contains(i) || i == 0) return false;
             store.add(i);
         }
         return true;
@@ -90,17 +90,17 @@ public class Application {
         return 0;
     }
 
-    public void guessResult(int strikeCount, int ballCount) {
+    public static void resultOfGuess(int strikeCount, int ballCount) {
         if (0 < strikeCount && 0 < ballCount) {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
-        if (0 < strikeCount && 0 == ballCount) {
+        else if (0 < strikeCount && 0 == ballCount) {
             System.out.println(strikeCount + "스트라이크");
         }
-        if (0 == strikeCount && 0 < ballCount) {
+        else if (0 == strikeCount && 0 < ballCount) {
             System.out.println(ballCount + "볼");
         }
-        if (0 == strikeCount && 0 == ballCount) {
+        else if (0 == strikeCount && 0 == ballCount) {
             System.out.println("낫싱");
         }
     }
@@ -122,8 +122,7 @@ public class Application {
             StrikeAndBall thisTurnResult = countStrikeAndBall(number, answer);
             int strikeCount = thisTurnResult.getStrike();
             int ballCount = thisTurnResult.getBall();
-
-
+            resultOfGuess(strikeCount, ballCount);
         } while (number != answer);
         System.out.println("숫자를 맞히셨습니다! 게임 종료");
     }
