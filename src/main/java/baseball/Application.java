@@ -46,9 +46,7 @@ public class Application {
         try {
             Validator.isNotMenuValue(scanner);
 
-            if (Validator.isEqualRestartValue(scanner)) {
-                return true;
-            }
+            return Validator.isEqualRestartValue(scanner);
         } catch (NumberFormatException e) {
             doOneMoreGame(scanner);
         }
