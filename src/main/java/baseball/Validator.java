@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Validator {
+    private static final int NUMBER_COUNT = 3;
+    private static final int INDEX_START = 0;
     private static final String START_VALUE = "1";
     private static final String END_VALUE = "2";
     private static final char ZERO = '0';
@@ -45,29 +47,36 @@ public class Validator {
     }
 
     private static boolean checkZero(int value) {
-        char[] chars = Integer.toString(value).toCharArray();
-
-        for (char c : chars) {
-            if (c == ZERO) {
-                return true;
-            }
-        }
-
-        return false;
+        return isEqualValue(Integer.toString(value).toCharArray(), INDEX_START);
     }
 
     private static boolean checkAnyMatchNumbers(int number) {
-        char[] chars = Integer.toString(number).toCharArray();
-        List<Character> values = new ArrayList<>();
+        return isContainValue(new ArrayList<>(), Integer.toString(number).toCharArray(), INDEX_START);
+    }
 
-        for (char c : chars) {
-            if (values.contains(c)) {
-                return true;
-            }
-
-            values.add(c);
+    private static boolean isEqualValue(char[] chars, int index) {
+        if (index == NUMBER_COUNT) {
+            return false;
         }
 
-        return false;
+        if (chars[index] == ZERO) {
+            return true;
+        }
+
+        return isEqualValue(chars, ++index);
+    }
+
+    private static boolean isContainValue(List<Character> values, char[] chars, int index) {
+        if (index == NUMBER_COUNT) {
+            return false;
+        }
+
+        if (values.contains(chars[index])) {
+            return true;
+        }
+
+        values.add(chars[index]);
+
+        return isContainValue(values, chars, ++index);
     }
 }
