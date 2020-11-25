@@ -1,7 +1,5 @@
 package baseball;
 
-import domain.BaseBall;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -32,7 +30,7 @@ public class BaseballResult {
             System.out.println("낫싱");
             return;
         }
-        printBallAndCount();
+        printBallAndStrike();
     }
 
     private boolean isNothing() {
@@ -41,7 +39,7 @@ public class BaseballResult {
         return ballCount == ZERO && strikeCount == ZERO;
     }
 
-    private void printBallAndCount() {
+    private void printBallAndStrike() {
         Set<BallType> ballTypes = result.keySet();
         ballTypes.stream()
                 .filter(ballType -> this.getCount(ballType) > ZERO)
