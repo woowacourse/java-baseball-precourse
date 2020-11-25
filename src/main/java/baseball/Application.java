@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Application {
+    private static final String START_VALUE = "1";
+    private static final String END_VALUE = "2";
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
 
@@ -54,7 +57,9 @@ public class Application {
     public static void play(Scanner scanner) {
         Computer computer = new Computer();
 
-        cycleGame(computer, scanner);
+        do {
+            cycleGame(computer, scanner);
+        } while (doOneMoreGame(scanner.next()));
     }
 
     public static void cycleGame(Computer computer, Scanner scanner) {
@@ -76,5 +81,21 @@ public class Application {
         }
 
         return false;
+    }
+
+    public static boolean doOneMoreGame(String scanner) {
+        try {
+            if (scanner.equals(START_VALUE)) {
+                return true;
+            }
+
+            if (scanner.equals(END_VALUE)) {
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            doOneMoreGame(scanner);
+        }
+
+        throw new IllegalArgumentException();
     }
 }
