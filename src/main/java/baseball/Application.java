@@ -17,12 +17,24 @@ public class Application {
         return randomNumbers;
     }
 
+    private static int[] parseInputNumbers(String inputString) {
+        int[] inputNumbers = new int[NUMBERS_LENGTH];
+        for (int i = 0; i < NUMBERS_LENGTH; i++) {
+            inputNumbers[i] = inputString.charAt(i) - '0';
+        }
+        return inputNumbers;
+    }
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
 
         // 3자리 랜덤 숫자 생성
         int[] answer = generateRandomNumbers();
+        // 3자리 숫자 입력 받기
+        System.out.println("숫자를 입력해주세요 : ");
+        String inputString = scanner.nextLine();
+        int[] inputNumbers = parseInputNumbers(inputString);
 
     }
 }
