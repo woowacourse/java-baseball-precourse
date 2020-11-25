@@ -5,6 +5,24 @@ import utils.RandomUtils;
 import java.util.HashSet;
 import java.util.Set;
 
+final class StrikeAndBall {
+    private final int strike;
+    private final int ball;
+
+    public StrikeAndBall(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+}
+
 public class Application {
 
     public static int guessNum(Scanner scanner) {
@@ -43,10 +61,49 @@ public class Application {
         return true;
     }
 
-//    public static boolean compareGuessAndAnswer(int num) {
-//        int[] guessArray = intToArray(num);
-//
-//    }
+    public static StrikeAndBall countStrikeAndBall(int guessNum, int answer) {
+        int[] guessArray = intToArray(guessNum);
+        int[] answerArray = intToArray(answer);
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                strike += countStrike(guessArray[i], i, answerArray[j], j);
+                ball += countBall(guessArray[i], i, answerArray[j], j);
+            }
+        }
+        return new StrikeAndBall(strike, ball);
+    }
+
+    public static int countStrike(int num1, int index1, int num2, int index2) {
+        if (index1 == index2 && num1 == num2) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public static int countBall(int num1, int index1, int num2, int index2) {
+        if (index1 != index2 && num1 == num2) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public void guessResult(int strikeCount, int ballCount) {
+        if (0 < strikeCount && 0 < ballCount) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+        if (0 < strikeCount && 0 == ballCount) {
+            System.out.println(strikeCount + "스트라이크");
+        }
+        if (0 == strikeCount && 0 < ballCount) {
+            System.out.println(ballCount + "볼");
+        }
+        if (0 == strikeCount && 0 == ballCount) {
+            System.out.println("낫싱");
+        }
+    }
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
@@ -62,6 +119,11 @@ public class Application {
         int number;
         do {
             number = guessNum(scanner);
+            StrikeAndBall thisTurnResult = countStrikeAndBall(number, answer);
+            int strikeCount = thisTurnResult.getStrike();
+            int ballCount = thisTurnResult.getBall();
+
+
         } while (number != answer);
         System.out.println("숫자를 맞히셨습니다! 게임 종료");
     }
