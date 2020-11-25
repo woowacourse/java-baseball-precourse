@@ -3,9 +3,13 @@ package baseball.domain;
 import utils.RandomUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static baseball.domain.Number.*;
+import static utils.InputValidation.*;
 
 public class Ball {
 
@@ -21,4 +25,19 @@ public class Ball {
         return balls;
     }
 
+    public List<Integer> userBallGenerator(Scanner sc) {
+        System.out.println("숫자를 입력해주세요 : ");
+        String num = sc.next();
+        validateNumberCount(num);
+        validateNumberRange(num);
+        validateNumberDuplicate(num);
+
+        return parseStringToIntegerList(num);
+    }
+
+    private List<Integer> parseStringToIntegerList(String num) {
+        return Arrays.stream(num.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
 }
