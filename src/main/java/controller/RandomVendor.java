@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class RandomVendor {
 
-    private static final int START_NUMBER = 100;
+    private static final int START_NUMBER = 111;
     private static final int END_NUMBER = 999;
 
     private static boolean[] visited;
