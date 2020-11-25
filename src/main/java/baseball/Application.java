@@ -18,53 +18,56 @@ public class Application {
     public static String inputPlayerNumber(Scanner scanner) {
         System.out.print("숫자를 입력해주세요 : ");
         String playerNumber = scanner.nextLine();
-
-        if (!isNumberFormat(playerNumber)) {
-            throw new IllegalArgumentException();
-        }
-        if (!isThreeDigitNumber(playerNumber)) {
-            throw new IllegalArgumentException();
-        }
-        if (hasZero(playerNumber)) {
-            throw new IllegalArgumentException();
-        }
-        if (isRepeated(playerNumber)) {
-            throw new IllegalArgumentException();
-        }
+        checkCorrectCondition(playerNumber);
 
         return playerNumber;
     }
 
-    public static boolean isNumberFormat(String playerNumber) {
+    public static void checkCorrectCondition(String number) {
+        if (!isNumberFormat(number)) {
+            throw new IllegalArgumentException();
+        }
+        if (!isThreeDigitNumber(number)) {
+            throw new IllegalArgumentException();
+        }
+        if (hasZero(number)) {
+            throw new IllegalArgumentException();
+        }
+        if (isRepeated(number)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static boolean isNumberFormat(String number) {
         try {
-            Integer.parseInt(playerNumber);
+            Integer.parseInt(number);
         } catch (NumberFormatException nfe) {
             return false;
         }
         return true;
     }
 
-    public static boolean isThreeDigitNumber(String playerNumber) {
-        int playerNumberInt = Integer.parseInt(playerNumber);
+    public static boolean isThreeDigitNumber(String number) {
+        int playerNumberInt = Integer.parseInt(number);
         if (100 <= playerNumberInt && playerNumberInt < 1000) {
             return true;
         }
         return false;
     }
 
-    public static boolean hasZero(String playerNumber) {
+    public static boolean hasZero(String number) {
         String zero = "0";
-        if (playerNumber.contains(zero)) {
+        if (number.contains(zero)) {
             return true;
         }
         return false;
     }
 
-    public static boolean isRepeated(String playerNumber) {
-        int lengthOfPlayerNumber = playerNumber.length();
-        String[] playerNumberDigitArr = playerNumber.split("");
+    public static boolean isRepeated(String number) {
+        int lengthOfPlayerNumber = number.length();
+        String[] playerNumberDigitArr = number.split("");
         Set<String> playerNumberDigitSet = new HashSet<>();
-        for (int i = 0; i < playerNumber.length(); i++) {
+        for (int i = 0; i < number.length(); i++) {
             playerNumberDigitSet.add(playerNumberDigitArr[i]);
         }
         if (playerNumberDigitSet.size() != lengthOfPlayerNumber) {
