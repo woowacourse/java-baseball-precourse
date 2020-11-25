@@ -47,8 +47,8 @@ public class Computer {
     private int getBallCount(List<Integer> playerNumbers) {
         int ballCount = 0;
 
-        for (int i = 0; i < playerNumbers.size(); i++) {
-            if (numbers.contains(playerNumbers.get(i))) {
+        for (Integer playerNumber : playerNumbers) {
+            if (numbers.contains(playerNumber)) {
                 ballCount++;
             }
         }
