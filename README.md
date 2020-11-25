@@ -1,109 +1,68 @@
 # 미션 - 숫자 야구 게임
 
-## 🚀 기능 요구사항
-- 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
-- 정답을 맞추기 위해 3자리수를 입력하고 힌트를 받는다.
-- 힌트는 야구용어인 볼과 스트라이크로 받는데, 같은 자리에 같은 숫자가 있는 경우를 `스트라이크`, 다른 자리에 숫자가 있는 경우를 `볼`로 정한다.
-- 같은 숫자가 하나도 없는 경우 힌트로 `낫싱`을 받는다.
-  - 예시) 상대방(컴퓨터)의 수가 425일 때, 123을 제시한 경우: 1스트라이크, 456을 제시한 경우: 1볼 1스트라이크, 789를 제시한 경우: 낫싱
-- 3자리 숫자가 정답과 같은 경우 게임이 종료된다.
-- 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
-- 아래의 프로그래밍 실행 결과 예시와 동일하게 입력과 출력이 이루어져야 한다.
+> 우아한테크코스 : 프리코스 1주차 미션 '숫자 야구 게임'을 구현한 프로젝트입니다.
+
+세부 프로그래밍 요구사항은 [java-baseball-precourse](https://github.com/woowacourse/java-baseball-precourse) 저장소의 README 파일을 준수했습니다.
 
 <br>
 
-## ✍🏻 입출력 요구사항
-### ⌨️ 입력
-- 3자리의 수
-- 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수
+## 구현 기능 목록
 
-### 🖥 출력
-- 입력한 수에 대한 결과를 볼, 스트라이크 갯수로 표시
-```
-1볼 1스트라이크
-```
-- 하나도 없는 경우 
-```
-낫싱
-```
-- 3개의 숫자를 모두 맞힐 경우
-```
-3스트라이크
-3개의 숫자를 모두 맞히셨습니다! 게임 종료
-```
+1. 프로그램이 1에서 9까지의 서로 다른 임의의 수 3개를 자동으로 선정하도록 한다.
+    * 이미 구현되어 있는 RandomUtils 클래스를 통해 숫자를 랜덤 선택한다.
+    * 순차적으로 생성되는 숫자가 이전의 번호들과 중복이 되는지 체크한다.
+        * 만약 중복이라면 해당 자리의 숫자를 다시 랜덤 선택한다.
 
-### 💻 프로그래밍 실행 결과 예시
-```
-숫자를 입력해주세요 : 123
-1볼 1스트라이크
-숫자를 입력해주세요 : 145
-1볼
-숫자를 입력해주세요 : 671
-2볼
-숫자를 입력해주세요 : 216
-1스트라이크
-숫자를 입력해주세요 : 713
-3스트라이크
-3개의 숫자를 모두 맞히셨습니다! 게임 종료
-게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
-1
-숫자를 입력해주세요 : 123
-1볼 1스트라이크
-… 
-```
+2. 사용자로부터 3자리 숫자를 입력받는다.
+    * 입력 안내 메시지를 출력한다.
+    * 사용자가 입력한 숫자가 1에서 9까지의 서로 다른 임의의 수 3개인지 확인한다.
+        * 다음 비정상적인 사용자 입력값에 대해 IllegalArgumentException을 발생시킨다.
+            * 3자리 숫자가 아닌 경우.
+            * 3자리 숫자들에 중복이 있는 경우.
+            * 3자리 숫자들에 0이 포함된 경우.
+    * 요구사항에는 별도의 명시 사항은 없으나, 예외가 발생하면 View에서 에러 메시지를 출력하고 다시 재입력을 받는다.
+
+3. 프로그램이 선정한 숫자와 사용자의 입력 숫자를 비교한다.
+    * 같은 자리에 같은 숫자가 있는 경우 스트라이크로 인식한다.
+    * 다른 자리에 같은 숫자가 있는 경우 볼로 인식한다.
+    * 스트라이크와 볼의 개수를 카운팅한다.
+
+4. 사용자의 입력 숫자에 대한 결과를 볼, 스트라이크 갯수로 반환한다.
+    * 해당 결과(힌트) 메시지를 다음과 같이 출력한다.
+        * 볼과 스트라이크가 모두 존재하는 경우 : "x볼 y스트라이크"
+        * 볼만 존재하는 경우 : "x볼"
+        * 스트라이크만 존재하는 경우 : "x스트라이크"
+        * 볼과 스트라이크가 모두 존재하지 않는 경우 : "낫싱"
+
+5. 프로그램이 게임의 진행 및 종료 조건을 판단하도록 한다.
+    * 3스트라이크를 맞추지 못한 경우, **2번** 으로 돌아가 다시 사용자로부터 입력값을 받으며 게임을 계속 진행한다.
+    * 3스트라이크를 맞춘 경우, **게임 재시작/종료**에 대한 안내 메시지를 출력한다.
+        * 사용자로부터 게임 재시작/종료에 대한 입력값을 받는다.
+            * 1을 입력 받으면, **1번** 으로 돌아가 숫자 야구 게임을 처음부터 재시작한다.
+            * 2를 입력 받으면, 프로그램이 종료된다.
+        * 이 때, 1과 2를 제외한 문자를 입력받는 경우 IllegalArgumentException을 발생시킨다.
+        * 요구사항에는 별도의 명시 사항은 없으나, 예외가 발생하면 View에서 에러 메시지를 출력하고 다시 재입력을 받는다.
 
 <br>
 
-## 🎱 프로그래밍 요구사항
-- 자바 코드 컨벤션을 지키면서 프로그래밍한다.
-  - 기본적으로 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)을 원칙으로 한다.
-  - 단, 들여쓰기는 '2 spaces'가 아닌 '4 spaces'로 한다.
-- indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
-  - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
-  - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메소드)를 분리하면 된다.
-- 3항 연산자를 쓰지 않는다.
-- 함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게 만들어라.
-- System.exit 메소드를 사용하지 않는다.
-- 비정상적 입력에 대해서는 IllegalArgumentException을 발생시킨다.
+## 패키지 및 클래스 구성
 
-### 프로그래밍 요구사항 - Application
-- Application 클래스를 활용해 구현해야 한다.
-- Application의 패키지 구조와 구현은 변경하지 않는다.
-- `final Scanner scanner = new Scanner(System.in);`는 변경하지 않는다.
-- `// TODO 구현 진행` 이 후 부터 구현한다.
+> AssertJ를 사용하여 테스트 코드를 작성했습니다.
 
-```java
-public class Application {
-    public static void main(String[] args) {
-        final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
-    }
-}
-```
+* domain 패키지
 
-### 프로그래밍 요구사항 - RandomUtils
-- RandomUtils 클래스를 활용해 랜덤 기능을 구현해야 한다.
-- RandomUtils의 패키지 구조와 구현은 변경하지 않는다.
+* view 패키지
+    * InputView
+    * OutputView
 
-```java
-private static final Random RANDOM = new Random();
-    private RandomUtils() {
-    }
-    public static int nextInt(final int startInclusive, final int endInclusive) {
-    ...
-```
+* baseball 패키지
+    * Application
+    
+* utils 패키지
+    * RandomUtils
 
+* test code
+    
 <br>
 
-## 📈 진행 요구사항
-- 미션은 [java-baseball-precourse 저장소](https://github.com/woowacourse/java-baseball-precourse) 를 fork/clone해 시작한다.
-- 기능을 구현하기 전에 java-baseball-precourse/README.md 파일에 구현할 기능 목록을 정리해 추가한다.
-- git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
-  - [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.
-- [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 절차를 따라 미션을 제출한다.
-
-<br>
-
-## 📝 License
-
-This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+---
