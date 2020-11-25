@@ -52,6 +52,7 @@ public class BaseballGame {
 
         OutputView.printScore(strikeCnt, ballCnt);
         if(checkAllCorrect(strikeCnt)){
+            OutputView.announceAllCorrect();
             setGameEnd();
         }
     }
