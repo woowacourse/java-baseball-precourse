@@ -13,6 +13,10 @@ public class Application {
         String playerNumber = inputPlayerNumber(scanner);
         String computerNumber = getComputerNumber();
 
+        int[] strikeAndBall = compareNumberOfPlayerAndComputer(playerNumber, computerNumber);
+        System.out.println(playerNumber + " : " + computerNumber);
+        System.out.println("S : " + strikeAndBall[0] + " , B : " + strikeAndBall[1]);
+
     }
 
     public static String inputPlayerNumber(Scanner scanner) {
@@ -84,4 +88,27 @@ public class Application {
         }
         return computerNumber;
     }
+
+    public static int[] compareNumberOfPlayerAndComputer(String playerNumber, String computerNumber) {
+        String[] playerDigitArr = playerNumber.split("");
+        String[] computerDigitArr = computerNumber.split("");
+
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < playerDigitArr.length; i++) {
+            for (int j = 0; j < computerDigitArr.length; j++) {
+                if (playerDigitArr[i].equals(computerDigitArr[j])) {
+                    if (i == j) {
+                        strike++;
+                        break;
+                    }
+                     ball++;
+                    break;
+                }
+            }
+        }
+        int[] strikeAndBall = {strike, ball};
+        return strikeAndBall;
+    }
+
 }
