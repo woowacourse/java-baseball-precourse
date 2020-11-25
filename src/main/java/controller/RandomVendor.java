@@ -38,6 +38,9 @@ public class RandomVendor {
             if(visited[num % 10]) {
                 return false;
             }
+            if(num % 10 == 0) {
+                return false;
+            }
 
             visited[num % 10] = true;
             num /= 10;
