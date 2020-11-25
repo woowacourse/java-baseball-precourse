@@ -16,6 +16,7 @@ public class BaseballGame {
     private final Scanner SCANNER;
     private ArrayList<Integer> targetNumberList = new ArrayList<>();
     private ArrayList<Integer> guessedNumberList = new ArrayList<>();
+    private boolean isGameEnd = false;
 
     public BaseballGame(Scanner SCANNER){
         this.SCANNER = SCANNER;
@@ -23,10 +24,11 @@ public class BaseballGame {
 
     public void play(){
         makeTargetNumber();
-
-        String guessedNum = InputView.askGuessNum(SCANNER);
-        guessedNumberList = NumberListGenerator.convertNumberList(guessedNum);
-        calculateScore();
+        while(!isGameEnd){
+            String guessedNum = InputView.askGuessNum(SCANNER);
+            guessedNumberList = NumberListGenerator.convertNumberList(guessedNum);
+            calculateScore();
+        }
     }
 
     private void makeTargetNumber(){
@@ -50,6 +52,9 @@ public class BaseballGame {
         int ballCnt = countBall();
 
         OutputView.printScore(strikeCnt, ballCnt);
+        if(checkAllCorrect(strikeCnt)){
+            setGameEnd();
+        }
     }
 
     private int countStrike(){
@@ -74,5 +79,16 @@ public class BaseballGame {
             }
         }
         return containCnt;
+    }
+
+    private boolean checkAllCorrect(int strikeCnt){
+        if(strikeCnt == NUM_DIGIT){
+            return true;
+        }
+        return false;
+    }
+
+    private void setGameEnd(){
+        isGameEnd = true;
     }
 }
