@@ -55,14 +55,16 @@
 <br>
 
 ## 🎱 프로그래밍 요구사항
-
 - 자바 코드 컨벤션을 지키면서 프로그래밍한다.
-  - https://naver.github.io/hackday-conventions-java/ 참고
+  - 기본적으로 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)을 원칙으로 한다.
+  - 단, 들여쓰기는 '2 spaces'가 아닌 '4 spaces'로 한다.
 - indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
   - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
   - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메소드)를 분리하면 된다.
 - 3항 연산자를 쓰지 않는다.
 - 함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게 만들어라.
+- System.exit 메소드를 사용하지 않는다.
+- 비정상적 입력에 대해서는 IllegalArgumentException을 발생시킨다.
 
 ### 프로그래밍 요구사항 - Application
 - Application 클래스를 활용해 구현해야 한다.
