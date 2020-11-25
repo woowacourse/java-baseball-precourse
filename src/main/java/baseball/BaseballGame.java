@@ -1,4 +1,4 @@
-package domain;
+package baseball;
 
 import view.InputView;
 
