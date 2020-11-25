@@ -7,6 +7,17 @@ public class BaseballStatusImpl implements BaseballStatus {
     private int ball;
     private int strike;
 
+    public BaseballStatusImpl() {
+        ball = 0;
+        strike = 0;
+    }
+
+    @Override
+    public void initialization() {
+        ball = 0;
+        strike = 0;
+    }
+
     @Override
     public int getBall() {
         return this.ball;
