@@ -4,21 +4,18 @@ import java.util.Scanner;
 
 public class BaseBallGame {
 
-    private final UserInput userInput;
+    private final User user;
+    private final NumberChecker numberChecker;
 
-    public BaseBallGame(Scanner scanner) {
-        this.userInput = new UserInput(scanner);
+    BaseBallGame(Scanner scanner) {
+        this.numberChecker = new NumberChecker();
+        this.user = new User(scanner, numberChecker);
     }
 
-    public void start() {
+    void start() {
         while (true) {
-            int userInput = this.userInput.getUserInput();
-            System.out.println("사용자가 입력한 숫자 : " + userInput);
-            if (userInput == 999) {
-                break;
-            }
+            user.getUserInput();
         }
-        System.out.println("사용자가 999를 입력하여 프로그램을 종료합니다.");
     }
 
 }
