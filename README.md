@@ -1,5 +1,12 @@
 # 미션 - 숫자 야구 게임
 
+## 기능 구현
+- 입력: 서로 다른 임의의 수 3개를 입력 받도록 하고 입력 규칙을 벗어난 예외를 처리한다.
+- 출력: 게임진행을 관리하는 객체에서 결과를 받아 적절한 결과로 출력해준다.
+- 게임진행관리자: 게임을 전체적인 흐름을 관리한다.
+- 공 리스트: 개수만큼 공을 담을 수 있는 일급컬렉션.
+- 공: 1~9의 수를 wrap한 객체. 범위를 벗어난 예외를 처리.
+
 ## 🚀 기능 요구사항
 - 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
 - 정답을 맞추기 위해 3자리수를 입력하고 힌트를 받는다.
@@ -87,10 +94,10 @@ public class Application {
 
 ```java
 private static final Random RANDOM = new Random();
-    private RandomUtils() {
-    }
-    public static int nextInt(final int startInclusive, final int endInclusive) {
-    ...
+private RandomUtils() {
+}
+public static int nextInt(final int startInclusive, final int endInclusive) {
+...
 ```
 
 <br>
