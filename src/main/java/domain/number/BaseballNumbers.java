@@ -16,13 +16,26 @@ public class BaseballNumbers {
 
     public static BaseballNumbers generateAutomatic() {
         List<BaseballNumber> baseballNumbers = new ArrayList<>();
-        while (baseballNumbers.size() != 3) {
-            BaseballNumber baseballNumber = BaseballNumber.of(RandomUtils.nextInt(1, 9));
-            if (!baseballNumbers.contains(baseballNumber)) {
-                baseballNumbers.add(baseballNumber);
-            }
+        while (!isGenerationComplete(baseballNumbers)) {
+            generateRandomBaseballNumber(baseballNumbers);
         }
         return new BaseballNumbers(baseballNumbers);
+    }
+
+    private static boolean isGenerationComplete(List<BaseballNumber> baseballNumbers) {
+        return baseballNumbers.size() == 3;
+    }
+
+    private static void generateRandomBaseballNumber(List<BaseballNumber> baseballNumbers) {
+        int randomNumber = RandomUtils.nextInt(1, 9);
+        BaseballNumber randomBaseballNumber = BaseballNumber.of(randomNumber);
+        if (!isDuplicated(baseballNumbers, randomBaseballNumber)) {
+            baseballNumbers.add(randomBaseballNumber);
+        }
+    }
+
+    private static boolean isDuplicated(List<BaseballNumber> baseballNumbers, BaseballNumber randomBaseballNumber) {
+        return baseballNumbers.contains(randomBaseballNumber);
     }
 
     public List<Integer> getBaseballNumbers() {
