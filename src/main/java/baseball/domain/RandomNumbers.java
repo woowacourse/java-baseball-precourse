@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RandomNumbers {
     private static final int LIST_SIZE = 3;
-    private static final int LOWER_BOUNDARY = 0;
+    private static final int LOWER_BOUNDARY = 1;
     private static final int UPPER_BOUNDARY = 9;
 
     private final List<Integer> intToCharacterArray = new ArrayList<>();
