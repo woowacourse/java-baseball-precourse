@@ -16,6 +16,8 @@ public class Application {
         Computer computer = new Computer();
         OutputView.printInputNumber();
         playerValue = inputPlayerNumber(scanner.next());
+
+        computer.getResult(playerValue);
     }
 
     public static int inputPlayerNumber(String scanner) {

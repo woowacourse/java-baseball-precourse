@@ -1,6 +1,7 @@
 package baseball;
 
 import utils.RandomUtils;
+import view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +10,12 @@ public class Computer {
     private static final int START_COUNT = 1;
     private static final int END_COUNT = 9;
     private static final int BASEBALL_GAME_NUMBER_COUNT = 3;
+    private static final int NOTHING = 0;
 
     public List<Integer> numbers;
 
     public Computer() {
-        List<Integer> numbers = new ArrayList<>();
-
+        numbers = new ArrayList<>();
         numbers = makeRandomNumbers(numbers);
     }
 
@@ -78,6 +79,16 @@ public class Computer {
     }
 
     private void showResult(int ballCount, int strikeCount) {
+        if (ballCount == NOTHING && strikeCount == NOTHING) {
+            OutputView.printResultNothing();
+        }
 
+        if (ballCount > 0) {
+            OutputView.printResultBallCount(ballCount);
+        }
+
+        if (strikeCount > 0) {
+            OutputView.printResultStrikeCount(strikeCount);
+        }
     }
 }
