@@ -14,7 +14,7 @@ public class BaseballNumbers {
         this.baseballNumbers = baseballNumbers;
     }
 
-    public static BaseballNumbers generateAutomatic() {
+    public static BaseballNumbers generateRandomBaseballNumbers() {
         List<BaseballNumber> baseballNumbers = new ArrayList<>();
         while (!isGenerationComplete(baseballNumbers)) {
             generateRandomBaseballNumber(baseballNumbers);
