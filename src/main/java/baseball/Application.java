@@ -44,11 +44,15 @@ public class Application {
 
     public static boolean doOneMoreGame(String scanner) {
         try {
-            return Validator.isEqualRestartValue(scanner);
+            Validator.isNotMenuValue(scanner);
+
+            if (Validator.isEqualRestartValue(scanner)) {
+                return true;
+            }
         } catch (NumberFormatException e) {
             doOneMoreGame(scanner);
         }
 
-        throw new IllegalArgumentException();
+        return false;
     }
 }

@@ -10,6 +10,7 @@ public class Validator {
     private static final String invalidRangeNumberMessage = "3자리의 수를 입력하세요.";
     private static final String doNotContainZeroMessage = "'0'은 사용할 수 없습니다.";
     private static final String doNotContainMatchNumberMessage = "중복된 숫자는 사용수 없습니다.";
+    private static final String invalidValueMessage = "'1' 혹은 '2'의 값을 입력하세요.";
 
     public static void isValidRangeNumber(int value) {
         if (value < 100 || value > 999) {
@@ -26,6 +27,12 @@ public class Validator {
     public static void isAnyMatchNumbers(int value) {
         if (checkAnyMatchNumbers(value)) {
             throw new IllegalArgumentException(doNotContainMatchNumberMessage);
+        }
+    }
+
+    public static void isNotMenuValue(String value) {
+        if (!(isEqualRestartValue(value) || isEqualEndValue(value))) {
+            throw new IllegalArgumentException(invalidValueMessage);
         }
     }
 
