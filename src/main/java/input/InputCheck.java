@@ -21,6 +21,11 @@ public class InputCheck {
     }
 
     public String check(String line) {
+        
+        // 오류 처리
+        if(!checkOnlyNumbers(line)) {
+            throw new IllegalArgumentException();
+        }
 
         initVisited();
 
@@ -33,7 +38,7 @@ public class InputCheck {
         }
 
         // 오류 처리
-        if(!checkOnlyNumbers(line) || !ok) {
+        if(!ok) {
             throw new IllegalArgumentException();
         }
 
