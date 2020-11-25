@@ -28,11 +28,11 @@ public class BaseballGame {
 
     private void makeTargetNumber(){
         for(int i=0; i<NUM_DIGIT; i++){
-            targetNumberList.add(getRandWithoutContain());
+            targetNumberList.add(getRandWithoutDuplicate());
         }
     }
 
-    private int getRandWithoutContain(){
+    private int getRandWithoutDuplicate(){
         int randNum;
         do{
             randNum = RandomUtils.nextInt(MIN_NUM, MAX_NUM);
