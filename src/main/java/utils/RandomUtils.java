@@ -21,6 +21,6 @@ public class RandomUtils {
             return startInclusive;
         }
 
-        return startInclusive + RANDOM.nextInt(endInclusive - startInclusive) + 1;
+        return startInclusive + RANDOM.nextInt(endInclusive - startInclusive + 1);
     }
 }
