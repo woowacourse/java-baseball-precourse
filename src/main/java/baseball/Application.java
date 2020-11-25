@@ -32,20 +32,18 @@ public class Application {
         }
 
         int input = scanner.nextInt();
-        if (input < 0) {
-            throw new IllegalArgumentException("음수는 입력할 수 없습니다");
-        }
 
-        if (input < 100 || 1000 <= input) {
-            throw new IllegalArgumentException("3자리 숫자만 입력 가능합니다");
+        if (100 <= input && input < 1000) {
+            return input;
+        } else {
+            throw new IllegalArgumentException("3자리 정수만 입력 가능합니다");
         }
-        return input;
     }
     public static int[] intToArray(int num) {
         int[] this_array = new int[3];
         for (int i = 2; i > -1; i--) {
             this_array[i] = num % 10;
-            num %= 10;
+            num /= 10;
         }
         return this_array;
     }
@@ -55,7 +53,10 @@ public class Application {
 
         int[] candidate_array = intToArray(candidate);
         for (int i : candidate_array) {
-            if (store.contains(i) || i == 0) return false;
+            System.out.println(i);
+            if (store.contains(i) || i == 0) {
+                return false;
+            }
             store.add(i);
         }
         return true;
@@ -113,7 +114,7 @@ public class Application {
         int answer;
         do {
             answer = RandomUtils.nextInt(100, 999);
-        } while (isValidateRandomNum(answer));
+        } while (!isValidateRandomNum(answer));
         System.out.println(answer);
 
         int number;
