@@ -5,19 +5,19 @@ import java.util.Map;
 
 public class BaseballNumber {
     private static final Map<Integer, BaseballNumber> CACHE = new HashMap<>();
+    private static final int RANGE_MINIMUM = 1;
+    private static final int RANGE_MAXIMUM = 9;
 
     static {
-        for (int i = 1; i <= 9; i++) {
+        for (int i = RANGE_MINIMUM; i <= RANGE_MAXIMUM; i++) {
             CACHE.put(i, new BaseballNumber(i));
         }
     }
 
     private final int baseballNumber;
 
-    public BaseballNumber(int baseballNumber) {
-        if (baseballNumber < 1 || baseballNumber > 9) {
-            throw new IllegalArgumentException();
-        }
+    private BaseballNumber(int baseballNumber) {
+        validateBaseballNumberRange(baseballNumber);
         this.baseballNumber = baseballNumber;
     }
 
@@ -25,5 +25,11 @@ public class BaseballNumber {
         return CACHE.computeIfAbsent(baseballNumber, key -> {
             throw new IllegalArgumentException();
         });
+    }
+
+    private void validateBaseballNumberRange(int baseballNumber) {
+        if (baseballNumber < RANGE_MINIMUM || baseballNumber > RANGE_MAXIMUM) {
+            throw new IllegalArgumentException();
+        }
     }
 }
