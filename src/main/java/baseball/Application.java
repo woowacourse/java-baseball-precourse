@@ -1,5 +1,7 @@
 package baseball;
 
+import utils.RandomUtils;
+
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -9,6 +11,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
         String playerNumber = inputPlayerNumber(scanner);
+        String computerNumber = getComputerNumber();
 
     }
 
@@ -68,5 +71,14 @@ public class Application {
             return true;
         }
         return false;
+    }
+
+    public static String getComputerNumber() {
+        int computerNumberInt = RandomUtils.nextInt(100, 999);
+        String computerNumber = computerNumberInt + "";
+        while (hasZero(computerNumber) || isRepeated(computerNumber)) {
+            computerNumber = getComputerNumber();
+        }
+        return computerNumber;
     }
 }
