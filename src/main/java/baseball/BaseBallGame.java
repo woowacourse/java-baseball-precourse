@@ -1,11 +1,17 @@
 package baseball;
 
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.IntStream;
 
 import static baseball.domain.Number.*;
 
 public class BaseBallGame {
+
+    private int selectGameStatus(Scanner sc) {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return sc.nextInt();
+    }
 
     private int calculateStrike(List<Integer> computer, List<Integer> user) {
         return (int) IntStream.range(0, NUMBER_COUNT)
