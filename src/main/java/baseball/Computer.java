@@ -10,12 +10,12 @@ public class Computer {
     private static final int END_COUNT = 9;
     private static final int BASEBALL_GAME_NUMBER_COUNT = 3;
 
-    public int number;
+    public List<Integer> numbers;
 
     public Computer() {
         List<Integer> numbers = new ArrayList<>();
 
-        number = makeComputerNumber(makeRandomNumbers(numbers));
+        numbers = makeRandomNumbers(numbers);
     }
 
     private List<Integer> makeRandomNumbers(List<Integer> numbers) {
@@ -40,5 +40,28 @@ public class Computer {
         }
 
         return Integer.parseInt(value);
+    }
+
+    public void getResult(int playerNumber) {
+        char[] playerNumberArray = Integer.toString(playerNumber).toCharArray();
+        List<Integer> playerNumbers = new ArrayList<>();
+
+        for (char c : playerNumberArray) {
+            playerNumbers.add(Character.getNumericValue(c));
+        }
+
+        showResult(getBallCount(playerNumbers), getStrikeCount(playerNumbers));
+    }
+
+    private int getBallCount(List<Integer> playerNumbers) {
+        return 0;
+    }
+
+    private int getStrikeCount(List<Integer> playerNumbers) {
+        return 0;
+    }
+
+    private void showResult(int ballCount, int strikeCount) {
+
     }
 }
