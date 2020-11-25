@@ -8,9 +8,6 @@ public class InputCheck {
     private static final int COMMAND_LENGTH = 1;
     private static final int PREDICT_LENGTH = 3;
 
-    private static final String RESTART = "1";
-    private static final String STOP = "2";
-
     private static boolean[] visited;
     private boolean terminal;
 
