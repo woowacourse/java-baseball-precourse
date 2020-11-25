@@ -13,4 +13,10 @@ public class BaseBallGame {
                 .count();
     }
 
+    private int calculateBall(List<Integer> computer, List<Integer> user) {
+        return (int) IntStream.range(0, NUMBER_COUNT)
+                .filter(i -> (!computer.get(i).equals(user.get(i))) &&
+                        computer.contains(user.get(i)))
+                .count();
+    }
 }
