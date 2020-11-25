@@ -6,14 +6,19 @@ import baseball.domain.RandomNumbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class GameController {
-    RandomNumbers randomNumbers = new RandomNumbers();
-    private final List<Integer> randomNumberList = randomNumbers.getRandomNumbers();
+    private static final String RESTART_NUMBER = "1";
+    private static final String EXIT_NUMBER = "2";
+
+    private List<Integer> randomNumberList = new ArrayList<>();
 
     public void run(Scanner scanner){
+        RandomNumbers randomNumbers = new RandomNumbers();
+        randomNumberList = randomNumbers.getRandomNumbers();
         startGame(scanner);
     }
 
@@ -28,14 +33,14 @@ public class GameController {
         if(computer.getCountsOfStrike()!=3){
             startGame(scanner);
         }
-//        if(computer.getCountsOfStrike()==3){
-//            OutputView.printRestart();
-//            if(InputView.getRestartNumber(scanner).equals(RESTART_NUMBER)){
-//                startGame(scanner);
-//            }
-//            else if(!InputView.getRestartNumber(scanner).equals(EXIT_NUMBER)) {
-//                throw new IllegalArgumentException("입력이 올바르지 않습니다.");
-//            }
-//        }
+        else {
+            OutputView.printRestart();
+            if(InputView.getRestartNumber(scanner).equals(RESTART_NUMBER)){
+                run(scanner);
+            }
+            else if(!InputView.getRestartNumber(scanner).equals(EXIT_NUMBER)) {
+                throw new IllegalArgumentException("입력이 올바르지 않습니다.");
+            }
+        }
     }
 }

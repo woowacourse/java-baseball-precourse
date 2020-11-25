@@ -10,13 +10,13 @@ public class Computer {
 
     public void calculateResult(List<Integer> threeNumbers, List<Integer> randomNumberList) {
         //System.out.print(randomNumberList);
-        for(int i=0;i<threeNumbers.size();i++){
+        for (int i = 0; i < threeNumbers.size(); i++) {
             Integer numberInThreeNumbers = threeNumbers.get(i);
-            if(numberInThreeNumbers.equals(randomNumberList.get(i))){
+            if (numberInThreeNumbers.equals(randomNumberList.get(i))) {
                 countsOfStrike++;
-            } else if(randomNumberList.stream().anyMatch(integer -> integer.equals(numberInThreeNumbers))){
+            } else if (randomNumberList.stream().anyMatch(integer -> integer.equals(numberInThreeNumbers))) {
                 countsOfBall++;
-            } else continue;
+            }
         }
     }
 
