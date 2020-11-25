@@ -11,7 +11,7 @@ class BaseballNumbersTest {
     @Test
     public void BaseballNumbers_자동_생성_중복_없는_랜덤_3개_숫자_반환() {
         BaseballNumbers baseballNumbers = BaseballNumbers.generateAutomatic();
-        int distinctNumberCounts = baseballNumbers.getBaseballNumbers()
+        int distinctNumberCounts = (int) baseballNumbers.getBaseballNumbers()
                 .stream()
                 .distinct()
                 .count();
