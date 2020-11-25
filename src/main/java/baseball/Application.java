@@ -13,8 +13,13 @@ public class Application {
 
     private static int[] generateRandomNumbers() {
         int[] randomNumbers = new int[NUMBERS_LENGTH];
-        for (int i = 0; i < NUMBERS_LENGTH; i++) {
-            randomNumbers[i] = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
+        int idx = 0;
+        while (idx < NUMBERS_LENGTH) {
+            int randomNumber = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
+            if (Arrays.stream(randomNumbers).noneMatch(x -> x == randomNumber)) {
+                randomNumbers[idx] = randomNumber;
+                idx ++;
+            }
         }
         return randomNumbers;
     }
