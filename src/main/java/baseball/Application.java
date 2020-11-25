@@ -12,17 +12,15 @@ public class Application {
         play(scanner);
     }
 
-    public static int inputPlayerNumber(String scanner) {
+    public static String inputPlayerNumber(String value) {
         try {
-            int value = Integer.parseInt(scanner);
-
             Validator.isValidRangeNumber(value);
             Validator.isContainZero(value);
             Validator.isAnyMatchNumbers(value);
 
             return value;
         } catch (NumberFormatException e) {
-            return inputPlayerNumber(scanner);
+            return inputPlayerNumber(value);
         }
     }
 
@@ -35,7 +33,7 @@ public class Application {
 
     public static void cycleGame(Computer computer, Scanner scanner) {
         OutputView.printInputNumber();
-        int playerNumber = inputPlayerNumber(scanner.next());
+        String playerNumber = inputPlayerNumber(scanner.next());
 
         if (!computer.getResult(playerNumber)) {
             cycleGame(computer, scanner);

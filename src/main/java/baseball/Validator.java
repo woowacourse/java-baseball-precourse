@@ -16,20 +16,20 @@ public class Validator {
     private static final String DO_NOT_CONTAIN_MATCH_NUMBER_MESSAGE = "중복된 숫자는 사용수 없습니다.";
     private static final String INVALID_VALUE_MESSAGE = "'1' 혹은 '2'의 값을 입력하세요.";
 
-    public static void isValidRangeNumber(int value) {
-        if (value < MIN_NUMBER_VALUE || value > MAX_NUMBER_VALUE) {
+    public static void isValidRangeNumber(String value) {
+        if (Integer.parseInt(value) < MIN_NUMBER_VALUE || Integer.parseInt(value) > MAX_NUMBER_VALUE) {
             throw new IllegalArgumentException(INVALID_RANGE_NUMBER_MESSAGE);
         }
     }
 
-    public static void isContainZero(int value) {
-        if (checkZero(value)) {
+    public static void isContainZero(String value) {
+        if (checkZero(Integer.parseInt(value))) {
             throw new IllegalArgumentException(DO_NOT_CONTAIN_ZERO_MESSAGE);
         }
     }
 
-    public static void isAnyMatchNumbers(int value) {
-        if (checkAnyMatchNumbers(value)) {
+    public static void isAnyMatchNumbers(String value) {
+        if (checkAnyMatchNumbers(Integer.parseInt(value))) {
             throw new IllegalArgumentException(DO_NOT_CONTAIN_MATCH_NUMBER_MESSAGE);
         }
     }

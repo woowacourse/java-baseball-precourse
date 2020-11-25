@@ -13,14 +13,14 @@ public class Computer {
     private static final int NOTHING = 0;
     private static final int INDEX_START = 0;
 
-    private List<Integer> numbers;
+    private List<String> numbers;
 
     public Computer() {
         numbers = makeRandomNumbers(new ArrayList<>());
     }
 
-    private List<Integer> makeRandomNumbers(List<Integer> numbers) {
-        int value = RandomUtils.nextInt(START_COUNT, END_COUNT);
+    private List<String> makeRandomNumbers(List<String> numbers) {
+        String value = Integer.toString(RandomUtils.nextInt(START_COUNT, END_COUNT));
 
         if (!numbers.contains(value)) {
             numbers.add(value);
@@ -33,22 +33,22 @@ public class Computer {
         return makeRandomNumbers(numbers);
     }
 
-    public boolean getResult(int playerNumber) {
-        char[] playerNumberArray = Integer.toString(playerNumber).toCharArray();
-        List<Integer> playerNumbers = new ArrayList<>();
+    public boolean getResult(String playerNumber) {
+        char[] playerNumberArray = playerNumber.toCharArray();
+        List<String> playerNumbers = new ArrayList<>();
 
         for (char c : playerNumberArray) {
-            playerNumbers.add(Character.getNumericValue(c));
+            playerNumbers.add(String.valueOf(c));
         }
 
         return showResultWithWinState(getBallCount(playerNumbers), getStrikeCount(playerNumbers));
     }
 
-    private int getBallCount(List<Integer> playerNumbers) {
+    private int getBallCount(List<String> playerNumbers) {
         return calculateBallCount(playerNumbers, NOTHING, INDEX_START) - getStrikeCount(playerNumbers);
     }
 
-    private int calculateBallCount(List<Integer> numbers, int ballCount, int index) {
+    private int calculateBallCount(List<String> numbers, int ballCount, int index) {
         if (index >= BASEBALL_GAME_NUMBER_COUNT) {
             return ballCount;
         }
@@ -60,11 +60,11 @@ public class Computer {
         return calculateBallCount(numbers, ballCount, ++index);
     }
 
-    private int getStrikeCount(List<Integer> playerNumbers) {
+    private int getStrikeCount(List<String> playerNumbers) {
         return calculateStrikeCount(playerNumbers, NOTHING, INDEX_START);
     }
 
-    private int calculateStrikeCount(List<Integer> numbers, int strikeCount, int index) {
+    private int calculateStrikeCount(List<String> numbers, int strikeCount, int index) {
         if (index >= BASEBALL_GAME_NUMBER_COUNT) {
             return strikeCount;
         }
