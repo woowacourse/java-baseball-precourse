@@ -27,9 +27,8 @@ public class Application {
     }
 
     public static void play(Scanner scanner) {
-        Computer computer = new Computer();
-
         do {
+            Computer computer = new Computer();
             cycleGame(computer, scanner);
         } while (doOneMoreGame(scanner.next()));
     }
