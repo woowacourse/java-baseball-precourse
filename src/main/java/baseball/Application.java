@@ -10,12 +10,19 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
-        String playerNumber = inputPlayerNumber(scanner);
+        int strike = 0;
+        int ball = 0;
         String computerNumber = getComputerNumber();
+        while (strike != 3) {
+            String playerNumber = inputPlayerNumber(scanner);
 
-        int[] strikeAndBall = compareNumberOfPlayerAndComputer(playerNumber, computerNumber);
-        System.out.println(playerNumber + " : " + computerNumber);
-        System.out.println("S : " + strikeAndBall[0] + " , B : " + strikeAndBall[1]);
+            int[] strikeAndBall = compareNumberOfPlayerAndComputer(playerNumber, computerNumber);
+            strike = strikeAndBall[0];
+            ball = strikeAndBall[1];
+
+            System.out.println(playerNumber + " : " + computerNumber);
+            System.out.println(getHint(strike, ball));
+        }
 
     }
 
@@ -110,5 +117,17 @@ public class Application {
         int[] strikeAndBall = {strike, ball};
         return strikeAndBall;
     }
-
+    public static String getHint(int strike, int ball) {
+        StringBuilder hint = new StringBuilder("");
+        if (strike == 0 && ball == 0) {
+            hint.append("낫싱");
+        }
+        if (ball != 0) {
+            hint.append(ball + "볼 ");
+        }
+        if (strike != 0) {
+            hint.append(strike + "스트라이크");
+        }
+        return hint.toString();
+    }
 }
