@@ -14,11 +14,11 @@ public class GameController {
     private static final String RESTART_NUMBER = "1";
     private static final String EXIT_NUMBER = "2";
 
-    private List<Integer> randomNumberList = new ArrayList<>();
+    private List<Integer> randomNumbersList = new ArrayList<>();
 
-    public void run(Scanner scanner){
+    public void run(Scanner scanner) {
         RandomNumbers randomNumbers = new RandomNumbers();
-        randomNumberList = randomNumbers.getRandomNumbers();
+        randomNumbersList = randomNumbers.getRandomNumbers();
         startGame(scanner);
     }
 
@@ -26,21 +26,24 @@ public class GameController {
         Computer computer = new Computer();
         Numbers numbers = new Numbers();
 
-        String threeNumbers = InputView.getThreeNumbers(scanner);
-        List<Integer> validNumbers = numbers.isValidNumbers(threeNumbers);
-        computer.calculateResult(validNumbers, randomNumberList);
+        String inputNumbersList = InputView.getThreeNumbers(scanner);
+        List<Integer> validNumbers = numbers.checkValidNumbers(inputNumbersList);
+        computer.calculateResult(validNumbers, randomNumbersList);
         OutputView.printResult(computer.getCountsOfBall(), computer.getCountsOfStrike());
-        if(computer.getCountsOfStrike()!=3){
+        if (computer.getCountsOfStrike() != 3) {
             startGame(scanner);
-        }
-        else {
+        } else {
             OutputView.printRestart();
-            if(InputView.getRestartNumber(scanner).equals(RESTART_NUMBER)){
-                run(scanner);
-            }
-            else if(!InputView.getRestartNumber(scanner).equals(EXIT_NUMBER)) {
-                throw new IllegalArgumentException("입력이 올바르지 않습니다.");
-            }
+            restartOrDone(scanner);
+        }
+    }
+
+    private void restartOrDone(Scanner scanner) {
+        String userInputRestart = InputView.getRestartNumber(scanner);
+        if (userInputRestart.equals(RESTART_NUMBER)) {
+            run(scanner);
+        } else if (!userInputRestart.equals(EXIT_NUMBER)) {
+            throw new IllegalArgumentException("입력이 올바르지 않습니다.");
         }
     }
 }
