@@ -41,7 +41,6 @@ public class BaseballGame {
         int randNum;
         do{
             randNum = RandomUtils.nextInt(MIN_NUM, MAX_NUM);
-            System.out.println(randNum);
         }
         while(targetNumberList.contains(randNum));
         return randNum;
