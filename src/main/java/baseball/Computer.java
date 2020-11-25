@@ -11,6 +11,7 @@ public class Computer {
     private static final int END_COUNT = 9;
     private static final int BASEBALL_GAME_NUMBER_COUNT = 3;
     private static final int NOTHING = 0;
+    private static final int INDEX_START = 0;
 
     public List<Integer> numbers;
 
@@ -45,27 +46,35 @@ public class Computer {
     }
 
     private int getBallCount(List<Integer> playerNumbers) {
-        int ballCount = NOTHING;
+        return calculateBallCount(playerNumbers, NOTHING, INDEX_START) - getStrikeCount(playerNumbers);
+    }
 
-        for (Integer playerNumber : playerNumbers) {
-            if (numbers.contains(playerNumber)) {
-                ballCount++;
-            }
+    private int calculateBallCount(List<Integer> numbers, int ballCount, int index) {
+        if (index >= BASEBALL_GAME_NUMBER_COUNT) {
+            return ballCount;
         }
 
-        return ballCount - getStrikeCount(playerNumbers);
+        if (this.numbers.contains(numbers.get(index))) {
+            ballCount++;
+        }
+
+        return calculateBallCount(numbers, ballCount, ++index);
     }
 
     private int getStrikeCount(List<Integer> playerNumbers) {
-        int strikeCount = NOTHING;
+        return calculateStrikeCount(playerNumbers, NOTHING, INDEX_START);
+    }
 
-        for (int i = 0; i < playerNumbers.size(); i++) {
-            if (playerNumbers.get(i).equals(numbers.get(i))) {
-                strikeCount++;
-            }
+    private int calculateStrikeCount(List<Integer> numbers, int strikeCount, int index) {
+        if (index >= BASEBALL_GAME_NUMBER_COUNT) {
+            return strikeCount;
         }
 
-        return strikeCount;
+        if (this.numbers.get(index).equals(numbers.get(index))) {
+            strikeCount++;
+        }
+
+        return calculateBallCount(numbers, strikeCount, ++index);
     }
 
     private boolean showResultWithWinState(int ballCount, int strikeCount) {
