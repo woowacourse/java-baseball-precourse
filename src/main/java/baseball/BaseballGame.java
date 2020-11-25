@@ -1,5 +1,6 @@
 package baseball;
 
+import utils.NumberListGenerator;
 import utils.RandomUtils;
 import view.InputView;
 
@@ -13,14 +14,16 @@ public class BaseballGame {
 
     private final Scanner SCANNER;
     private ArrayList<Integer> targetNumberList = new ArrayList<>();
+    private ArrayList<Integer> guessedNumberList = new ArrayList<>();
 
     public BaseballGame(Scanner SCANNER){
         this.SCANNER = SCANNER;
     }
 
     public void play(){
-        InputView.askGuessNum(SCANNER);
         makeTargetNumber();
+        String guessedNum = InputView.askGuessNum(SCANNER);
+        guessedNumberList = NumberListGenerator.convertNumberList(guessedNum);
     }
 
     private void makeTargetNumber(){
