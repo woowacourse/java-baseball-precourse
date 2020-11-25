@@ -5,7 +5,7 @@ public interface BaseballStatus {
     int getBall();
     void setBall(int ball);
 
-    boolean getCorrect();
+    boolean isCorrect();
 
     void setStrike(int strike);
     int getStrike();

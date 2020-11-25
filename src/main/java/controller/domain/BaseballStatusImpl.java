@@ -23,7 +23,7 @@ public class BaseballStatusImpl implements BaseballStatus {
     }
 
     @Override
-    public boolean getCorrect() {
+    public boolean isCorrect() {
         return this.strike == FULL;
     }
 
