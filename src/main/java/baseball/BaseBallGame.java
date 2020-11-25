@@ -19,4 +19,18 @@ public class BaseBallGame {
                         computer.contains(user.get(i)))
                 .count();
     }
+
+    private void printGameResult(int strikeCount, int ballCount) {
+        String message = "";
+        if(strikeCount != NUMBER_RANGE_ZERO) {
+            message += strikeCount+"스트라이크 ";
+        }
+        if(ballCount != NUMBER_RANGE_ZERO) {
+            message += ballCount+"볼 ";
+        }
+        if(message.length() == NUMBER_RANGE_ZERO) {
+            message += "낫싱";
+        }
+        System.out.println(message);
+    }
 }
