@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
-import utils.NotImplemented;
 import utils.RandomUtils;
 
 /**
@@ -53,10 +52,58 @@ public class GameManager {
      * @param userAnswer 검사할 정답을 입력합니다.
      * @return 정답을 맞췄다면 true, 틀렸다면 false를 반환합니다.
      */
-    @NotImplemented
     public boolean checkAnswer(ArrayList<Integer> userAnswer) {
-        return true;
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < NUMBER_ANSWER; i++) {
+            int index = this.findIndexOfAnswer(userAnswer.get(i));
+            if (index == -1) {
+                continue;
+            } else if (index == i) {
+                strike++;
+            } else {
+                ball++;
+            }
+        }
+        this.printScore(strike, ball);
+        return (strike == NUMBER_ANSWER);
     }
+
+    /**
+     * answer에서 number가 위치하는 인덱스를 찾습니다.
+     * 
+     * @param number 찾고자하는 숫자를 입력합니다.
+     * @return 정답에 위치한 숫자의 인덱스를 반환합니다. 없다면 -1이 반환됩니다.
+     */
+    private int findIndexOfAnswer(int number) {
+        for (int i = 0; i < NUMBER_ANSWER; i++) {
+            if (answer[i] == number) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 입력받은 strike와 ball로부터 스코어를 출력합니다.
+     * 
+     * @param strike 스트라이크 개수입니다.
+     * @param ball 볼 개수입니다.
+     */
+    private void printScore(int strike, int ball) {
+        if ((ball == 0) && (strike == 0)) {
+            System.out.print("낫싱");
+        } else {
+            if (ball > 0) {
+                System.out.printf("%d볼 ", ball);
+            }
+            if (strike > 0) {
+                System.out.printf("%d스트라이크", strike);
+            }
+        }
+        System.out.println();
+    }
+
 
     /**
      * 사용자에게 받은 숫자 입력을 확인하여 예외처리를 하고 값을 반합니다.
