@@ -1,7 +1,11 @@
+
 package utils;
 
 import java.util.Random;
 
+/**
+ * 랜덤한 숫자를 생성하는 클래스
+ */
 public class RandomUtils {
     private static final Random RANDOM = new Random();
 
