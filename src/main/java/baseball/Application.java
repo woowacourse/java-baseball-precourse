@@ -2,6 +2,9 @@ package baseball;
 
 import view.OutputView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -17,7 +20,7 @@ public class Application {
     public static int inputPlayerNumber(String scanner) {
         try {
             int value = Integer.parseInt(scanner);
-            System.out.println(value);
+
             if (value < 100 || value > 999) {
                 throw new IllegalArgumentException();
             }
@@ -33,6 +36,17 @@ public class Application {
     }
 
     public static boolean isAnyMatchNumbers(int number) {
+        char[] chars = Integer.toString(number).toCharArray();
+        List<Character> values = new ArrayList<>();
+
+        for (char c : chars) {
+            if (values.contains(c)) {
+                return true;
+            }
+
+            values.add(c);
+        }
+
         return false;
     }
 }
