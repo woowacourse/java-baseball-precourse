@@ -33,16 +33,6 @@ public class Computer {
         return makeRandomNumbers(numbers);
     }
 
-    private int makeComputerNumber(List<Integer> numbers) {
-        String value = "";
-
-        for (int n : numbers) {
-            value += Integer.toString(n);
-        }
-
-        return Integer.parseInt(value);
-    }
-
     public boolean getResult(int playerNumber) {
         char[] playerNumberArray = Integer.toString(playerNumber).toCharArray();
         List<Integer> playerNumbers = new ArrayList<>();
