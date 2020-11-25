@@ -62,13 +62,13 @@ public class ThreeDigitNumberValidator {
     }
 
     private static void validateDuplication(String threeDigitNumber) {
-        Set<Character> digits = new HashSet<>();
+        Set<Character> numbers = new HashSet<>();
         for (int idx = 0; idx < threeDigitNumber.length(); idx++) {
-            char digit = threeDigitNumber.charAt(idx);
-            if (digits.contains(digit)) {
+            char number = threeDigitNumber.charAt(idx);
+            if (numbers.contains(number)) {
                 throw new IllegalArgumentException(CAN_NOT_DUPLICATE);
             }
-            digits.add(digit);
+            numbers.add(number);
         }
     }
 }
