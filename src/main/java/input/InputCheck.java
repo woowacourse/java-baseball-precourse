@@ -5,27 +5,54 @@ import java.util.Scanner;
 
 public class InputCheck {
 
+    private static final int COMMAND_LENGTH = 1;
+    private static final int PREDICT_LENGTH = 3;
+
+    private static final String RESTART = "1";
+    private static final String STOP = "2";
+
     private static boolean[] visited;
+    private boolean terminal;
 
-    private final Scanner scanner;
-
-    public InputCheck(Scanner scanner) {
-        this.scanner = scanner;
+    public InputCheck() {
         visited = new boolean['9' + 1];
+        this.terminal = false;
     }
 
-    public String getLine() {
+    public void setTerminal(boolean terminal) {
+        this.terminal = terminal;
+    }
 
-        String line = scanner.nextLine();
+    public String check(String line) {
 
         initVisited();
 
+        boolean ok = true;
+
+        if(terminal) {
+            ok = checkCommand(line);
+        } else if(!terminal) {
+            ok = checkPredict(line);
+        }
+
         // 오류 처리
-        if(!checkOnlyNumbers(line) || checkOverlap(line)) {
+        if(!checkOnlyNumbers(line) || !ok) {
             throw new IllegalArgumentException();
         }
 
         return line;
+    }
+
+    private boolean checkCommand(String line) {
+        return checkCommandLength(line) && (line.charAt(0) == '1' || line.charAt(0) == '2');
+    }
+
+    private boolean checkCommandLength(String line) {
+        return line.length() == COMMAND_LENGTH;
+    }
+
+    private boolean checkPredict(String line) {
+        return line.length() == PREDICT_LENGTH && !checkOverlap(line);
     }
 
     private void initVisited() {
