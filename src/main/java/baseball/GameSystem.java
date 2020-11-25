@@ -12,6 +12,10 @@ public class GameSystem {
         answer = new int[MAX_DIGIT];
     }
 
+    public void playGame() {
+        setAnswer();
+    }
+
     private void setAnswer() {
         boolean[] numCheck = new boolean[10];
         int digit = 0;
@@ -24,6 +28,12 @@ public class GameSystem {
                 numCheck[tmpNum] = true;
                 digit++;
             }
+        }
+    }
+
+    public void printAnswerForTest() {
+        for (int i = 0; i < MAX_DIGIT; i++) {
+            System.out.println(answer[i]);
         }
     }
 }
