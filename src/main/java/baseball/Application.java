@@ -33,6 +33,13 @@ public class Application {
 
         int input = scanner.nextInt();
 
+        int[] inputArray = intToArray(input);
+        for (int i : inputArray) {
+            if (i == 0) {
+                throw new IllegalArgumentException("1 부터 9 사이의 숫자를 입력해주세요");
+            }
+        }
+
         if (100 <= input && input < 1000) {
             return input;
         } else {
@@ -53,7 +60,6 @@ public class Application {
 
         int[] candidate_array = intToArray(candidate);
         for (int i : candidate_array) {
-            System.out.println(i);
             if (store.contains(i) || i == 0) {
                 return false;
             }
