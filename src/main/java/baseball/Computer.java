@@ -58,7 +58,7 @@ public class Computer {
         int ballCount = 0;
 
         for (int i = 0; i < playerNumbers.size(); i++) {
-            if (numbers.contains(playerNumbers.size())) {
+            if (numbers.contains(playerNumbers.get(i))) {
                 ballCount++;
             }
         }
