@@ -45,7 +45,7 @@ public class Computer {
     }
 
     private int getBallCount(List<Integer> playerNumbers) {
-        int ballCount = 0;
+        int ballCount = NOTHING;
 
         for (Integer playerNumber : playerNumbers) {
             if (numbers.contains(playerNumber)) {
@@ -57,7 +57,7 @@ public class Computer {
     }
 
     private int getStrikeCount(List<Integer> playerNumbers) {
-        int strikeCount = 0;
+        int strikeCount = NOTHING;
 
         for (int i = 0; i < playerNumbers.size(); i++) {
             if (playerNumbers.get(i).equals(numbers.get(i))) {
@@ -73,15 +73,15 @@ public class Computer {
             OutputView.printResultNothing();
         }
 
-        if (ballCount > 0) {
+        if (ballCount > NOTHING) {
             OutputView.printResultBallCount(ballCount);
         }
 
-        if (strikeCount > 0) {
+        if (strikeCount > NOTHING) {
             OutputView.printResultStrikeCount(strikeCount);
         }
         
-        if (strikeCount >= 3) {
+        if (strikeCount >= BASEBALL_GAME_NUMBER_COUNT) {
             OutputView.printGameEnd();
             return true;
         }
