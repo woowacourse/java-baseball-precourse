@@ -8,22 +8,51 @@ import utils.RandomUtils;
 
 /**
  * 게임 한 판에 필요한 것들을 관리합니다. 이번 판의 정답, 게임에 필요한 기능을 관리합니다.
+ * 
+ * @author junroot
  */
 public class GameManager {
     public static final int NUMBER_ANSWER = 3; // 정답 개수
     private int[] answer;
 
     /**
+     * Game 상태를 나타냅니다.
+     * 
+     * ONGOING 아직 게임이 진행되는 상태입니다. RESTART 게임 한 판이 종료되고 재시작을 선택한 상태입니다. END 게임 한 판이 종료되고 게임 종료를 선택한
+     * 상태입니다.
+     * 
+     * @author junroot
+     */
+    public static enum GameStatus {
+        ONGOING(0), RESTART(1), END(2);
+
+        private final int value;
+
+        GameStatus(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
+
+    /**
      * GameManager가 생성되면 랜덤한 정답을 만듭니다.
      */
     public GameManager() {
+        this.generateAnswer();
+    }
+
+    /**
+     * 이 메소드를 호출하면 새로운 정답을 생성합니다.
+     */
+    public void generateAnswer() {
         answer = new int[NUMBER_ANSWER];
         for (int i = 0; i < NUMBER_ANSWER; i++) {
             int temp = RandomUtils.nextInt(1, 9);
             if (this.checkRedundancy(i, temp)) {
-
-                /* 만약 기존에 사용된 숫자라면 다시 값을 받아온다. */
-                i--;
+                i--; // 만약 기존에 사용된 숫자라면 다시 값을 받아온다.
             } else {
                 answer[i] = temp;
             }
@@ -104,7 +133,6 @@ public class GameManager {
         System.out.println();
     }
 
-
     /**
      * 사용자에게 받은 숫자 입력을 확인하여 예외처리를 하고 값을 반합니다.
      *
@@ -121,6 +149,20 @@ public class GameManager {
             throw iae;
         }
         return result;
+    }
+
+    /**
+     * 사용자가 게임을 새로 시작하는지 입력을 받습니다. 1또는 2를 입력받지 않으면 예외처리합니다.
+     * 
+     * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
+     * @return 입력된 값
+     */
+    public int requestReplay(Scanner scanner) {
+        int number = requestInput(scanner);
+        if ((number != 1) && (number != 2)) {
+            throw new IllegalArgumentException();
+        }
+        return number;
     }
 
     /**
