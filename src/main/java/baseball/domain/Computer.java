@@ -4,12 +4,12 @@ import java.util.List;
 
 public class Computer {
     private static final RandomNumbers randomNumbers = new RandomNumbers();
-    private final List<Integer> randomNumberList = randomNumbers.getRandomNumbers();
 
     private int countsOfStrike = 0;
     private int countsOfBall = 0;
 
-    public void calculateResult(List<Integer> threeNumbers) {
+    public void calculateResult(List<Integer> threeNumbers, List<Integer> randomNumberList) {
+        //System.out.print(randomNumberList);
         for(int i=0;i<threeNumbers.size();i++){
             Integer numberInThreeNumbers = threeNumbers.get(i);
             if(numberInThreeNumbers.equals(randomNumberList.get(i))){
