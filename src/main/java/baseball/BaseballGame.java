@@ -23,6 +23,7 @@ public class BaseballGame {
 
     public void play(){
         makeTargetNumber();
+
         String guessedNum = InputView.askGuessNum(SCANNER);
         guessedNumberList = NumberListGenerator.convertNumberList(guessedNum);
         calculateScore();
@@ -47,7 +48,7 @@ public class BaseballGame {
     private void calculateScore(){
         int strikeCnt = countStrike();
         int ballCnt = countBall();
-        
+
         OutputView.printScore(strikeCnt, ballCnt);
     }
 
