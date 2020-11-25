@@ -104,6 +104,34 @@ private static final Random RANDOM = new Random();
 
 <br>
 
+## 💥 구현할 기능 목록
+#### 1. 사용자 입력으로 Array 생성
+- 3자리 수 입력 받아서 Array에 저장
+- 예외 처리
+    - 문자를 입력 받았을 때
+    - 0을 입력 받았을 때
+    - 숫자의 개수가 3개가 아닐 때
+
+#### 2. Random 하게 정답 Array 생성
+- 1~9까지 다른 숫자인 랜덤 숫자를 생성하여 Array에 저장
+
+#### 3. 스트라이크, 볼, 낫싱, 승리 조건 구현
+- 같은 자리, 같은 수 = 스트라이크
+- 다른 자리, 같은 수 = 볼
+- 같은 수가 없음 = 낫싱
+- 전부 스트라이크 = 승리
+
+#### 4. 재시작 or 종료 기능
+- 승리 이후 호출
+- 1이면 재시작, 2면 종료
+
+#### 5.결과 출력
+- 사용자 입력 받기
+- 게임 결과
+    - 볼, 스트라이크 개수
+    - 승리 시 승리 문구 출력
+- 재시작 or 종료 안내
+
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
