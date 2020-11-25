@@ -1,6 +1,5 @@
 package baseball;
 
-import utils.RandomUtils;
 import view.OutputView;
 
 import java.util.ArrayList;
@@ -20,6 +19,10 @@ public class Application {
             int value = Integer.parseInt(scanner);
 
             if (value < 100 || value > 999) {
+                throw new IllegalArgumentException();
+            }
+
+            if (isContainZero(value)) {
                 throw new IllegalArgumentException();
             }
 
@@ -61,5 +64,17 @@ public class Application {
         if (!computer.getResult(playerNumber)) {
             cycleGame(computer, scanner);
         }
+    }
+
+    public static boolean isContainZero(int value) {
+        char[] chars = Integer.toString(value).toCharArray();
+
+        for (char c : chars) {
+            if (c == '0') {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
