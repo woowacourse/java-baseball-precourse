@@ -24,6 +24,7 @@ public class BaseballGame {
         makeTargetNumber();
         String guessedNum = InputView.askGuessNum(SCANNER);
         guessedNumberList = NumberListGenerator.convertNumberList(guessedNum);
+        calculateScore();
     }
 
     private void makeTargetNumber(){
@@ -40,5 +41,40 @@ public class BaseballGame {
         }
         while(targetNumberList.contains(randNum));
         return randNum;
+    }
+
+    private void calculateScore(){
+        int strikeCnt = countStrike();
+        int ballCnt = countBall();
+
+        printScore(strikeCnt, ballCnt);
+    }
+
+    private int countStrike(){
+        int strikeCnt =0;
+        for(int index= 0; index<NUM_DIGIT; index++){
+            if(targetNumberList.get(index) == guessedNumberList.get(index)){
+                strikeCnt++;
+            }
+        }
+        return strikeCnt;
+    }
+
+    private int countBall(){
+        return getNumberOfContain() - countStrike();
+    }
+
+    private int getNumberOfContain(){
+        int containCnt =0;
+        for(int i= 0; i<NUM_DIGIT; i++){
+            if(targetNumberList.contains(guessedNumberList.get(i))){
+                containCnt++;
+            }
+        }
+        return containCnt;
+    }
+
+    private void printScore(int strikeCnt, int ballCnt){
+
     }
 }
