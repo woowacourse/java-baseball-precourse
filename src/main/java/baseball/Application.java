@@ -1,9 +1,9 @@
 package baseball;
 
+import utils.RandomUtils;
 import view.OutputView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,6 +13,7 @@ public class Application {
         int playerValue = 0;
 
         // TODO 구현 진행
+        Computer computer = new Computer();
         OutputView.printInputNumber();
         playerValue = inputPlayerNumber(scanner.next());
     }
