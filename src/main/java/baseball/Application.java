@@ -17,6 +17,9 @@ public class Application {
         if (!isNumberFormat(playerNumber)) {
             throw new IllegalArgumentException();
         }
+        if (!isThreeDigitNumber(playerNumber)) {
+            throw new IllegalArgumentException();
+        }
 
         return playerNumber;
     }
@@ -28,5 +31,13 @@ public class Application {
             return false;
         }
         return true;
+    }
+
+    public static boolean isThreeDigitNumber(String playerNumber) {
+        int playerNumberInt = Integer.parseInt(playerNumber);
+        if (100 <= playerNumberInt && playerNumberInt < 1000) {
+            return true;
+        }
+        return false;
     }
 }
