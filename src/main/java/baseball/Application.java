@@ -20,6 +20,9 @@ public class Application {
         if (!isThreeDigitNumber(playerNumber)) {
             throw new IllegalArgumentException();
         }
+        if (hasZero(playerNumber)) {
+            throw new IllegalArgumentException();
+        }
 
         return playerNumber;
     }
@@ -36,6 +39,14 @@ public class Application {
     public static boolean isThreeDigitNumber(String playerNumber) {
         int playerNumberInt = Integer.parseInt(playerNumber);
         if (100 <= playerNumberInt && playerNumberInt < 1000) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean hasZero(String playerNumber) {
+        String zero = "0";
+        if (playerNumber.contains(zero)) {
             return true;
         }
         return false;
