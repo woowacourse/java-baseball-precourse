@@ -3,6 +3,7 @@ package baseball;
 import utils.NumberListGenerator;
 import utils.RandomUtils;
 import view.InputView;
+import view.OutputView;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -46,8 +47,8 @@ public class BaseballGame {
     private void calculateScore(){
         int strikeCnt = countStrike();
         int ballCnt = countBall();
-
-        printScore(strikeCnt, ballCnt);
+        
+        OutputView.printScore(strikeCnt, ballCnt);
     }
 
     private int countStrike(){
@@ -72,9 +73,5 @@ public class BaseballGame {
             }
         }
         return containCnt;
-    }
-
-    private void printScore(int strikeCnt, int ballCnt){
-
     }
 }
