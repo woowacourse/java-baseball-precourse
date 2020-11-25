@@ -9,10 +9,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseballNumberTest {
 
-    @DisplayName("1 - 9 범위의 값에서만 BaseballNumber 객체가 정상 생성")
+    @DisplayName("1 - 9 범위의 값에서만 BaseballNumber 객체가 생성 정상")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
-    public void BaseballNumber_객체_정상_생성(int baseballNumber) {
+    public void BaseballNumber_객체_생성_정상(int baseballNumber) {
         assertThatCode(() -> {
             new BaseballNumber(baseballNumber);
         }).doesNotThrowAnyException();
