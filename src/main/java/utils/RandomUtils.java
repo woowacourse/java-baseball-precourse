@@ -10,11 +10,11 @@ public class RandomUtils {
 
     public static int nextInt(final int startInclusive, final int endInclusive) {
         if (startInclusive > endInclusive) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("첫번째 인자는 두번째 인자보다 커야합니다");
         }
 
         if (startInclusive < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("첫번째 인자는 음수일 수 없습니다");
         }
 
         if (startInclusive == endInclusive) {
