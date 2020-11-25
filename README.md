@@ -120,19 +120,44 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 ### 2. BaseballGameUtils 클래스
 > 숫자 야구 게임에 필요한 기능을 모두 포함
 
-- 중복되지 않은 랜덤 숫자 배열 생성
-- 사용자 예측 input
-  - 사용자 예측 input 유효성 검증
-- int형 입력을 배열로 변환
-- 랜덤 숫자 배열과 사용자 입력 배열 비교
-  - BaseballGameStatus 객체를 사용하여 strike/ball 횟수 카운트
-  - strike/ball 횟수에 따른 값 출력
-  - 사용자 예측이 적중했는지에 대한 boolean 반환
-- 재시작 여부 사용자 input
-  - 재시작 여부 사용자 input 유효성 검증
+- 중복되지 않은 랜덤 숫자 배열 생성 기능
+- 사용자 예측 input 기능
+- 사용자 예측 input 유효성 검증 기능
+- int형 입력을 배열로 변환 기능
+- 랜덤 숫자 배열과 사용자 입력 배열 비교 기능
+- BaseballGameStatus 객체를 사용하여 strike/ball 횟수 카운트 기능
+- strike/ball 횟수에 따른 값 출력 기능
+- 사용자 예측이 적중했는지에 대한 boolean 반환 기능
+- 재시작 여부 사용자 input 기능
+- 재시작 여부 사용자 input 유효성 검증 기능
 
 ### 3. BaseballGameStatus 클래스
 > 숫자 야구 게임 중 랜덤 숫자 배열과 사용자 예측 배열을 비교하는 데 이용되는 객체
 
 - strike/ball 횟수 저장
-- strike/ball 횟수에 따른 출력 toString으로 반환 
+- strike/ball 횟수에 따른 출력 toString으로 반환
+
+<br>
+
+## 📈 테스트 코드
+### 1. BaseballGameUtils Test
+- 중복되지 않은 랜덤 숫자 배열 생성 기능
+  - 정해진 개수의 숫자가 생성되는지?
+  - 생성된 숫자가 중복이 없는지?
+  - 생성된 숫자가 유효한 범위 내에 있는지?
+- 사용자 예측 input 유효성 검증 기능
+  - 숫자가 아닌 입력이 포함된 경우 에러 발생하는지?
+  - 유효한 범위 밖 숫자가 있는 경우 에러 발생하는지?
+  - 숫자가 정해진 개수 이상인지?
+- 랜덤 숫자 배열과 사용자 입력 배열 비교 기능
+  - 랜덤 생성된 배열과 사용자 입력 배열이 정확히 비교 되는지
+- 재시작 여부 사용자 input 유효성 검증 기능
+  - 숫자가 아닌 입력이 포함된 경우 에러 발생하는지?
+  - 유효한 범위 밖 숫자가 있는 경우 에러 발생하는지?
+  - 숫자가 정해진 개수 이상인지?
+
+### 2. BaseballGameStatus Test
+- strike/ball 횟수에 따른 출력 toString으로 반환 기능
+  - strike/ball 횟수가 정확하게 출력 되는지?
+  - "낫싱" 조건을 정확하게 출력 하는지?
+  
