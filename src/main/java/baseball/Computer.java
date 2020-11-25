@@ -43,7 +43,7 @@ public class Computer {
         return Integer.parseInt(value);
     }
 
-    public void getResult(int playerNumber) {
+    public boolean getResult(int playerNumber) {
         char[] playerNumberArray = Integer.toString(playerNumber).toCharArray();
         List<Integer> playerNumbers = new ArrayList<>();
 
@@ -51,7 +51,7 @@ public class Computer {
             playerNumbers.add(Character.getNumericValue(c));
         }
 
-        showResult(getBallCount(playerNumbers), getStrikeCount(playerNumbers));
+        return showResultWithWinState(getBallCount(playerNumbers), getStrikeCount(playerNumbers));
     }
 
     private int getBallCount(List<Integer> playerNumbers) {
@@ -78,7 +78,7 @@ public class Computer {
         return strikeCount;
     }
 
-    private void showResult(int ballCount, int strikeCount) {
+    private boolean showResultWithWinState(int ballCount, int strikeCount) {
         if (ballCount == NOTHING && strikeCount == NOTHING) {
             OutputView.printResultNothing();
         }
@@ -90,5 +90,12 @@ public class Computer {
         if (strikeCount > 0) {
             OutputView.printResultStrikeCount(strikeCount);
         }
+        
+        if (strikeCount >= 3) {
+            OutputView.printGameEnd();
+            return true;
+        }
+
+        return false;
     }
 }

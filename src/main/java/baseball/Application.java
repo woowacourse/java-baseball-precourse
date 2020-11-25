@@ -10,14 +10,9 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-        int playerValue = 0;
 
         // TODO 구현 진행
-        Computer computer = new Computer();
-        OutputView.printInputNumber();
-        playerValue = inputPlayerNumber(scanner.next());
-
-        computer.getResult(playerValue);
+        play(scanner);
     }
 
     public static int inputPlayerNumber(String scanner) {
@@ -51,5 +46,20 @@ public class Application {
         }
 
         return false;
+    }
+
+    public static void play(Scanner scanner) {
+        Computer computer = new Computer();
+
+        cycleGame(computer, scanner);
+    }
+
+    public static void cycleGame(Computer computer, Scanner scanner) {
+        OutputView.printInputNumber();
+        int playerNumber = inputPlayerNumber(scanner.next());
+
+        if (!computer.getResult(playerNumber)) {
+            cycleGame(computer, scanner);
+        }
     }
 }
