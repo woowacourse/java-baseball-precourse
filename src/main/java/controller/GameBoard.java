@@ -2,32 +2,73 @@ package controller;
 
 import controller.domain.BaseballStatus;
 import controller.domain.BaseballStatusImpl;
+import input.InputCheck;
 
 public class GameBoard {
 
     private static final int NOT_INITIALIZED = -1; // 아직 아무것도 받은 숫자가 없음
+    private static final String RESTART = "1";
+    private static final String STOP = "2";
+
+    private RandomVendor vendor;
+    private InputCheck checker;
 
     private int goal; // 맞춰야 하는 숫자
+    private boolean terminal;
 
-    public GameBoard() {
+    public GameBoard(InputCheck checker, RandomVendor vendor) {
         this.goal = NOT_INITIALIZED;
+        this.checker = checker;
+        this.vendor = vendor;
+        this.terminal = false;
     }
 
-    public void setGoal(int goal) {
-        this.goal = goal;
+    public int getGoal() {
+        return goal;
     }
 
-    public BaseballStatus predict(int guess) {
+    public void initGameBoard() {
+        goal = vendor.roll();
+        terminal = false;
+        checker.setTerminal(terminal);
+    }
 
-        BaseballStatusImpl dto = new BaseballStatusImpl();
+    public boolean isTerminal() {
+        return terminal;
+    }
 
-        int strike = findStrike(guess);
-        int ball = findBall(guess);
+    public boolean restart(String command) {
 
-        dto.setStrike(strike);
-        dto.setBall(ball);
+        checker.check(command);
 
-        return dto;
+        boolean select = false;
+
+        if(command.equals(RESTART)) {
+            select = true;
+            initGameBoard();
+        }
+
+        return select;
+    }
+
+    public BaseballStatus predict(String guess) {
+
+        checker.check(guess);
+
+        BaseballStatus status = new BaseballStatusImpl();
+
+        int strike = findStrike(Integer.parseInt(guess));
+        int ball = findBall(Integer.parseInt(guess));
+
+        status.setStrike(strike);
+        status.setBall(ball);
+
+        if(status.isCorrect()) {
+            terminal = true;
+            checker.setTerminal(terminal);
+        }
+
+        return status;
     }
 
     private int findBall(int guess) {
