@@ -13,11 +13,10 @@ public class Computer {
     private static final int NOTHING = 0;
     private static final int INDEX_START = 0;
 
-    public List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Computer() {
-        numbers = new ArrayList<>();
-        numbers = makeRandomNumbers(numbers);
+        numbers = makeRandomNumbers(new ArrayList<>());
     }
 
     private List<Integer> makeRandomNumbers(List<Integer> numbers) {
