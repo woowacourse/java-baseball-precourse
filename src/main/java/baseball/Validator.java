@@ -7,22 +7,25 @@ public class Validator {
     private static final String START_VALUE = "1";
     private static final String END_VALUE = "2";
     private static final char ZERO = '0';
+    private static final String invalidRangeNumberMessage = "3자리의 수를 입력하세요.";
+    private static final String doNotContainZeroMessage = "'0'은 사용할 수 없습니다.";
+    private static final String doNotContainMatchNumberMessage = "중복된 숫자는 사용수 없습니다.";
 
     public static void isValidRangeNumber(int value) {
         if (value < 100 || value > 999) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(invalidRangeNumberMessage);
         }
     }
 
     public static void isContainZero(int value) {
         if (checkZero(value)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(doNotContainZeroMessage);
         }
     }
 
     public static void isAnyMatchNumbers(int value) {
         if (checkAnyMatchNumbers(value)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(doNotContainMatchNumberMessage);
         }
     }
 
