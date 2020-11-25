@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 import utils.RandomUtils;
@@ -13,13 +12,14 @@ import utils.RandomUtils;
  */
 public class GameManager {
     public static final int NUMBER_ANSWER = 3; // 정답 개수
-    private int[] answer;
+    private ArrayList<Integer> answer;
 
     /**
      * Game 상태를 나타냅니다.
      * 
-     * ONGOING 아직 게임이 진행되는 상태입니다. RESTART 게임 한 판이 종료되고 재시작을 선택한 상태입니다. END 게임 한 판이 종료되고 게임 종료를 선택한
-     * 상태입니다.
+     * ONGOING 아직 게임이 진행되는 상태입니다. 
+     * RESTART 게임 한 판이 종료되고 재시작을 선택한 상태입니다. 
+     * END 게임 한 판이 종료되고 게임 종료를 선택한 상태입니다.
      * 
      * @author junroot
      */
@@ -48,27 +48,28 @@ public class GameManager {
      * 이 메소드를 호출하면 새로운 정답을 생성합니다.
      */
     public void generateAnswer() {
-        answer = new int[NUMBER_ANSWER];
-        for (int i = 0; i < NUMBER_ANSWER; i++) {
+        answer = new ArrayList<Integer>();
+        for (int i = 0; i < NUMBER_ANSWER;) {
             int temp = RandomUtils.nextInt(1, 9);
-            if (this.checkRedundancy(i, temp)) {
-                i--; // 만약 기존에 사용된 숫자라면 다시 값을 받아온다.
-            } else {
-                answer[i] = temp;
+            if (!this.checkRedundancy(answer, i, temp)) {
+                /* 중복된 값이 아니면 answer에 추가한다. */
+                answer.add(temp);
+                i++;
             }
         }
     }
 
     /**
-     * answer에 number가 존재하는이 to까지 확인합니다.
+     * list에 number가 존재하는지 length 전 까지 확인합니다.
      * 
-     * @param to 검사할 길이를 입력합니다.
+     * @param list 검사할 list를 입력합니다.
+     * @param length 검사할 길이를 입력합니다.
      * @param number 비교할 숫자를 입력합니다.
      * @return 중복된 값이 있으면 true, 없으면 false를 반환합니다.
      */
-    private boolean checkRedundancy(int to, int number) {
-        for (int i = 0; i < to; i++) {
-            if (answer[i] == number) {
+    private boolean checkRedundancy(ArrayList<Integer> list, int length, int number) {
+        for (int i = 0; i < length; i++) {
+            if (list.get(i) == number) {
                 return true;
             }
         }
@@ -106,7 +107,7 @@ public class GameManager {
      */
     private int findIndexOfAnswer(int number) {
         for (int i = 0; i < NUMBER_ANSWER; i++) {
-            if (answer[i] == number) {
+            if (answer.get(i) == number) {
                 return i;
             }
         }
@@ -180,6 +181,10 @@ public class GameManager {
                 /* 입력은 1~9만 가능하다. */
                 throw new IllegalArgumentException();
             }
+            if (this.checkRedundancy(result, result.size(), temp)) {
+                /* 중복된 값의 입력은 불가능하다. */
+                throw new IllegalArgumentException();
+            }
             result.add(number % 10);
             number /= 10;
         }
@@ -196,6 +201,6 @@ public class GameManager {
      * @return answer를 반환합니다.
      */
     protected String getAnswer() {
-        return Arrays.toString(answer);
+        return answer.toString();
     }
 }
