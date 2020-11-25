@@ -73,7 +73,7 @@ public class Computer {
             strikeCount++;
         }
 
-        return calculateBallCount(numbers, strikeCount, ++index);
+        return calculateStrikeCount(numbers, strikeCount, ++index);
     }
 
     private boolean showResultWithWinState(int ballCount, int strikeCount) {
