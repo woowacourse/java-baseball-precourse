@@ -66,7 +66,15 @@ public class Computer {
     }
 
     private int getStrikeCount(List<Integer> playerNumbers) {
-        return 0;
+        int strikeCount = 0;
+
+        for (int i = 0; i < playerNumbers.size(); i++) {
+            if (playerNumbers.get(i).equals(numbers.get(i))) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
     }
 
     private void showResult(int ballCount, int strikeCount) {
