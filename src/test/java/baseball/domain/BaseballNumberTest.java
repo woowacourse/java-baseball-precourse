@@ -23,7 +23,7 @@ class BaseballNumberTest {
     @DisplayName("BaseballNumber 객체가 정해진 범위내의 숫자가 아니라면 예외를 발생시킨다 ")
     @ParameterizedTest()
     @ValueSource(ints = {0, 10})
-    void testInitBaseballNumberWhenBaseballNumberValueIsNotSatisfiedValidationRange(int baseballNumberValue) {
+    void testInitBaseballNumberIfBaseballNumberValueIsNotSatisfiedValidationRange(int baseballNumberValue) {
         //when //then
         assertThatThrownBy(() -> new BaseballNumber(baseballNumberValue))
                 .isExactlyInstanceOf(IllegalArgumentException.class);
