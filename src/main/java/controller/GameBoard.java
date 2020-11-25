@@ -1,5 +1,6 @@
 package controller;
 
+import controller.domain.BaseballStatus;
 import controller.domain.BaseballStatusImpl;
 
 public class GameBoard {
@@ -16,7 +17,7 @@ public class GameBoard {
         this.goal = goal;
     }
 
-    public BaseballStatusImpl predict(int guess) {
+    public BaseballStatus predict(int guess) {
 
         BaseballStatusImpl dto = new BaseballStatusImpl();
 
