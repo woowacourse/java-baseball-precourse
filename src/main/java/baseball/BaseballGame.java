@@ -25,9 +25,8 @@ public class BaseballGame {
     public void play(){
         makeTargetNumber();
         while(!isGameEnd){
-            String guessedNum = InputView.askGuessNum(SCANNER);
-            guessedNumberList = NumberListGenerator.convertNumberList(guessedNum);
-            calculateScore();
+            String userGuess = InputView.askGuessNum(SCANNER);
+            calculateScore(userGuess);
         }
     }
 
@@ -46,7 +45,9 @@ public class BaseballGame {
         return randNum;
     }
 
-    private void calculateScore(){
+    private void calculateScore(String guessNum){
+        guessedNumberList = NumberListGenerator.convertNumberList(guessNum);
+
         int strikeCnt = countStrike();
         int ballCnt = countBall();
 
