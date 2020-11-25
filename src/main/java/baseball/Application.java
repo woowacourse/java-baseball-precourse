@@ -10,6 +10,11 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
+        playGame(scanner);
+
+    }
+
+    public static void playGame(Scanner scanner) {
         int strike = 0;
         int ball = 0;
         String computerNumber = getComputerNumber();
@@ -23,7 +28,19 @@ public class Application {
             System.out.println(playerNumber + " : " + computerNumber);
             System.out.println(getHint(strike, ball));
         }
+        askRegame(scanner);
+    }
 
+    public static void askRegame(Scanner scanner) {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String regameChoice = scanner.nextLine();
+        if (regameChoice.equals("1")) {
+            playGame(scanner);
+        }
+        if (regameChoice.equals("2")) {
+            return;
+        }
     }
 
     public static String inputPlayerNumber(Scanner scanner) {
