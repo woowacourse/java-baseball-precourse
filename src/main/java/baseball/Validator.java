@@ -6,6 +6,7 @@ import java.util.List;
 public class Validator {
     private static final String START_VALUE = "1";
     private static final String END_VALUE = "2";
+    private static final char ZERO = '0';
 
     public static void isValidRangeNumber(int value) {
         if (value < 100 || value > 999) {
@@ -37,7 +38,7 @@ public class Validator {
         char[] chars = Integer.toString(value).toCharArray();
 
         for (char c : chars) {
-            if (c == '0') {
+            if (c == ZERO) {
                 return true;
             }
         }
