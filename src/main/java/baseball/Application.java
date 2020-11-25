@@ -21,9 +21,7 @@ public class Application {
         try {
             int value = Integer.parseInt(scanner);
 
-            if (value < 100 || value > 999) {
-                throw new IllegalArgumentException();
-            }
+
 
             if (isContainZero(value)) {
                 throw new IllegalArgumentException();
