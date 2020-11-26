@@ -1,11 +1,11 @@
 package baseball.baseballGame;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Player {
+    private List<Integer> playerAnswer = new ArrayList<>();
     Scanner scanner;
 
     public Player(Scanner scanner) {
@@ -22,7 +22,7 @@ public class Player {
        return Integer.parseInt(response);
     }
 
-    List<Integer> inputNumber(int numLength) {
+    void inputNumber(int numLength) {
         System.out.print("숫자를 입력해주세요 : ");
 
         String userInput = scanner.next();
@@ -39,7 +39,7 @@ public class Player {
             throw new IllegalArgumentException();
         }
 
-        return stringToArray(userInput);
+        playerAnswer = stringToArray(userInput);
     }
 
     private boolean isInvalidLength(String userInput, int numLength) {
@@ -83,5 +83,21 @@ public class Player {
         }
 
         return inputIntArray;
+    }
+
+    boolean isEquals(int index, Integer compareNumber) {
+        if (playerAnswer.get(index) == compareNumber){
+            return true;
+        }
+
+        return false;
+    }
+
+    boolean contains(int index, List<Integer> answer) {
+        if (answer.contains(playerAnswer.get(index))) {
+            return true;
+        }
+
+        return false;
     }
 }

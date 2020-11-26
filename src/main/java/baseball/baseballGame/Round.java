@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Round {
     private List<Integer> answer;
-    private List<Integer> playerAnswer;
     private int NUM_LENGTH;
     private static final int MIN_NUM = 1;
     private static final int MAX_NUM = 9;
@@ -28,16 +27,13 @@ public class Round {
                 answer.add(randomInt);
             }
         }
-
     }
 
     int start(Player player) {
-        playerAnswer = new ArrayList<>(NUM_LENGTH);
-
         while (true) {
-            playerAnswer = player.inputNumber(NUM_LENGTH);
+            player.inputNumber(NUM_LENGTH);
 
-            String response = askAnswer(playerAnswer);
+            String response = askAnswer(player);
 
             System.out.println(response);
 
@@ -50,8 +46,8 @@ public class Round {
         }
     }
 
-    String askAnswer(List<Integer> playerAnswer) {
-        String checkResult = countStrikeAndBall(playerAnswer);
+    String askAnswer(Player player) {
+        String checkResult = countStrikeAndBall(player);
 
         if (checkResult.isEmpty()) {
             return "낫싱";
@@ -60,18 +56,18 @@ public class Round {
         return checkResult;
     }
 
-    private String countStrikeAndBall(List<Integer> playerAnswer) {
+    private String countStrikeAndBall(Player player) {
         int ball = 0;
         int strike = 0;
         String checkResult = "";
 
         for (int i = 0; i < NUM_LENGTH; i++) {
-            if (playerAnswer.get(i) == answer.get(i)) { // strike
+            if (player.isEquals(i, answer.get(i))) { // strike check
                 strike += 1;
                 continue;
             }
 
-            if (answer.contains(playerAnswer.get(i))) { // ball
+            if (player.contains(i, answer)) { // ball check
                 ball += 1;
             }
         }

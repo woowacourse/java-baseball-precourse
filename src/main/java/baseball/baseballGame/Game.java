@@ -9,7 +9,6 @@ public class Game {
     private Round round;
     private int exitButton;
 
-
     public Game(Scanner scanner) {
         this.scanner = scanner;
         this.exitButton = 1;
