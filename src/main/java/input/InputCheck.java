@@ -86,6 +86,6 @@ public class InputCheck {
     }
 
     private boolean checkNumber(char c) {
-        return c >= '0' && c <= '9';
+        return c >= '1' && c <= '9';
     }
 }
