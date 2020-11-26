@@ -47,4 +47,30 @@ public class BaseballNumbers {
                 .filter(index -> this.baseballNumbers.get(index).equals(otherBaseballNumbers.get(index)))
                 .count();
     }
+
+    public int compareBall(BaseballNumbers baseballNumbers) {
+        List<BaseballNumber> otherBaseballNumbers = baseballNumbers.baseballNumbers;
+        int ballNumber = 0;
+        for (int otherBaseballIndex = 0; otherBaseballIndex < BASEBALL_NUMBERS_LENGTH; otherBaseballIndex++) {
+            if (hasBall(otherBaseballIndex, otherBaseballNumbers)) {
+                ballNumber++;
+            }
+        }
+
+        return ballNumber;
+    }
+
+    private boolean hasBall(int otherBaseballIndex, List<BaseballNumber> otherBaseballNumbers) {
+        for (int thisBaseballIndex = 0; thisBaseballIndex < BASEBALL_NUMBERS_LENGTH; thisBaseballIndex++) {
+            if (thisBaseballIndex == otherBaseballIndex) {
+                continue;
+            }
+
+            if (this.baseballNumbers.get(otherBaseballIndex).equals(otherBaseballNumbers.get(thisBaseballIndex))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

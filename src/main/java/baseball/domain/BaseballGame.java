@@ -16,4 +16,8 @@ public class BaseballGame {
     public int countStrike(BaseballNumbers baseballNumbers) {
         return this.baseballNumbers.compareStrike(baseballNumbers);
     }
+
+    public int countBall(BaseballNumbers baseballNumbers) {
+        return this.baseballNumbers.compareBall(baseballNumbers);
+    }
 }

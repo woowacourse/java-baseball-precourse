@@ -51,4 +51,26 @@ class BaseballGameTest {
         //then
         assertThat(strikeNumber).isEqualTo(expectedStrikeNumber);
     }
+
+    @DisplayName("볼 개수를 세는 기능을 테스트한다 ")
+    @ParameterizedTest
+    @CsvSource(value = {"123:0", "135:1", "234:2", "312:3"}, delimiter = ':')
+    void testCountBallFunction(String inputNumber, int expectedBallNumber) {
+        //given
+        List<BaseballNumber> answerBaseballNumbers = Arrays.asList(1, 2, 3).stream()
+                .map(BaseballNumber::new)
+                .collect(Collectors.toList());
+        BaseballGame baseballGame = BaseballGame.play(() -> answerBaseballNumbers);
+
+        BaseballNumbers baseballNumbers = new BaseballNumbers(Arrays.stream(inputNumber.split(""))
+                .map(Integer::new)
+                .map(BaseballNumber::new)
+                .collect(Collectors.toList()));
+
+        //when
+        int ballNumber = baseballGame.countBall(baseballNumbers);
+
+        //then
+        assertThat(ballNumber).isEqualTo(expectedBallNumber);
+    }
 }
