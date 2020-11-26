@@ -1,11 +1,11 @@
 package domain.player;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Player {
     private boolean isStartingGame = false;
     private String userInput;
+    String[] seperatedUserInputByLetter;
 
     public void startGame(Scanner scanner) {
         isStartingGame = true;
@@ -19,6 +19,7 @@ public class Player {
     public void enterNumberWith(Scanner scanner) {
         System.out.print("숫자를 입력해주세요 : ");
         userInput = scanner.next();
+        seperatedUserInputByLetter = userInput.split("");
         if (!isValidEnterNumber()) {
             enterNumberWith(scanner);
         }
@@ -43,6 +44,9 @@ public class Player {
         if (isNotValidNumberSize()) {
             return false;
         }
+        if (hasOvelappedNumber()) {
+            return false;
+        }
         return true;
     }
 
@@ -56,7 +60,6 @@ public class Player {
     }
 
     private boolean hasZero() {
-        String[] seperatedUserInputByLetter = userInput.split("");
         if (Arrays.asList(seperatedUserInputByLetter).contains("0")) {
             throw new IllegalArgumentException("입력하시는 숫자에는 0이 포함되면 안 됩니다");
         }
@@ -66,6 +69,18 @@ public class Player {
     private boolean isNotValidNumberSize() {
         if (userInput.length() != 3) {
             throw new IllegalArgumentException("입력하시는 숫자는 세 자리여야만 합니다");
+        }
+        return false;
+    }
+
+    private boolean hasOvelappedNumber() {
+        ArrayList<String> letterArr = new ArrayList<>();
+        for (String x : seperatedUserInputByLetter) {
+            letterArr.add(x);
+        }
+        HashSet<String> letterSet = new HashSet<>(letterArr);
+        if (letterArr.size() != letterSet.size()) {
+            throw new IllegalArgumentException("세 자리의 숫자에서 각 자리의 숫자에 중복된 숫자가 포함되면 안 됩니다");
         }
         return false;
     }
