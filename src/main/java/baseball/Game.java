@@ -10,9 +10,28 @@ public class Game {
             if (checking(tartgetValue, input)) {
                 flag = gameContinue(scanner);
             } else {
-                hint(tartgetValue);
+                hint(tartgetValue, input);
             }
         } while(flag);
+    }
+
+    private static void hint(int targetValue, int input) {
+        char[] target = String.valueOf(targetValue).toCharArray();
+        char[] guess = String.valueOf(input).toCharArray();
+        int ball = 0 ;
+        int strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (target[i] == guess[i]) {
+                strike++;
+            }
+
+            if (String.valueOf(targetValue).contains(String.valueOf(guess[i]))) {
+                ball++;
+            }
+        }
+
+        resultPrint();
     }
 
     private static boolean gameContinue(Scanner scanner) {
