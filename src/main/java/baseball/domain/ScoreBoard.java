@@ -14,6 +14,14 @@ public class ScoreBoard {
         this.strike = new Count(strike);
         this.ball = new Count(ball);
     }
+    
+    public void recordStrike() {
+        strike.increaseCount();
+    }
+
+    public void recordBall() {
+        ball.increaseCount();
+    }
 
     public boolean hasZeroStrike() {
         return strike.isZero();
