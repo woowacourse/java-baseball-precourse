@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class BaseballNumbers {
     public static final int BASEBALL_NUMBERS_LENGTH = 3;
@@ -38,5 +39,12 @@ public class BaseballNumbers {
         if (distinctBaseballNumbers.size() != BASEBALL_NUMBERS_LENGTH) {
             throw new IllegalArgumentException(INPUT_BASEBALL_NUMBER_DUPLICATION_ERROR_MESSAGE);
         }
+    }
+
+    public int compareStrike(BaseballNumbers baseballNumbers) {
+        List<BaseballNumber> otherBaseballNumbers = baseballNumbers.baseballNumbers;
+        return (int) IntStream.range(0, BASEBALL_NUMBERS_LENGTH)
+                .filter(index -> this.baseballNumbers.get(index).equals(otherBaseballNumbers.get(index)))
+                .count();
     }
 }

@@ -12,4 +12,8 @@ public class BaseballGame {
     public static BaseballGame play(BaseballNumbersGenerator baseballNumbersGenerator) {
         return new BaseballGame(true, BaseballNumbers.createAnswerBaseballNumbers(baseballNumbersGenerator));
     }
+
+    public int countStrike(BaseballNumbers baseballNumbers) {
+        return this.baseballNumbers.compareStrike(baseballNumbers);
+    }
 }
