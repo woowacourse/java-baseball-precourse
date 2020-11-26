@@ -1,16 +1,26 @@
+/*
+ * @(#)Run.java
+ *
+ */
+
 package baseball;
 
 public class Run {
     static Answer answer;
     static Player player;
+    static Hint hint = new Hint();
 
+    /**
+     * 실질적인 숫자 야구 게임의 로직을 담고 있는 메소드입니다.
+     */
     public void Run(){
         answer = new Answer();
         player = new Player();
 
-        while(true){
+        while (true) {
             player.inputThreeNumbers();
-            Hint hint = new Hint(0,0);
+
+            hint.setHint(0,0);// strike와 ball을 모두 0으로 초기화한 Hint 객체 생성
             hint.compareAnswerAndPlayerNumber(answer.getAnswers(), player.getNumbers());
             hint.printHint();
             if(hint.getStrike() == Constants.MAX_LEN){

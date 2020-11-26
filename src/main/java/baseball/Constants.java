@@ -1,3 +1,8 @@
+/*
+ * @(#)Constants.java
+ *
+ */
+
 package baseball;
 
 public class Constants {
