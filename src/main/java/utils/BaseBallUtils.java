@@ -1,6 +1,5 @@
 package utils;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,7 +15,7 @@ public class BaseBallUtils {
     private BaseBallUtils() {
     }
 
-    public static void isRigthBalls(List<Integer> inputBalls) {
+    public static void isBallsRight(List<Integer> inputBalls) {
         if (!isThree(inputBalls)) {
             throw new IllegalArgumentException(NOT_THREE_NUMBERS_MESSAGE);
         }
@@ -28,7 +27,7 @@ public class BaseBallUtils {
         }
     }
 
-    public static void isRigthCode(int code) {
+    public static void isCodeRight(int code) {
         if (!(code == 1 || code == 2)) {
             throw new IllegalArgumentException(INVALID_VALUE_MESSAGE);
         }

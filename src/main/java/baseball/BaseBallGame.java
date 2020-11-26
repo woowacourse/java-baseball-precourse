@@ -1,3 +1,14 @@
+/*
+ * Class:   AnswerBalls.java
+ *
+ * Version: 1.0.0
+ *
+ * Date:    2020-11-26
+ *
+ * Author:  Dong Gun Lee
+ *
+ */
+
 package baseball;
 
 import utils.BaseBallUtils;
@@ -25,7 +36,7 @@ public class BaseBallGame {
         setGame();
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         code = scanner.nextInt();
-        BaseBallUtils.isRigthCode(code);
+        BaseBallUtils.isCodeRight(code);
 
         if (code == CONTINUE_CODE) {
             return true;
@@ -56,7 +67,7 @@ public class BaseBallGame {
             inputBalls.add((int) Character.getNumericValue(input.charAt(i)));
         }
 
-        BaseBallUtils.isRigthBalls(inputBalls);
+        BaseBallUtils.isBallsRight(inputBalls);
     }
 
     public void getHints() {
@@ -84,9 +95,5 @@ public class BaseBallGame {
         } else {
             System.out.println(balls + "볼 " + strikes + "스트라이크");
         }
-    }
-
-    public ArrayList<Integer> getInputBalls() {
-        return inputBalls;
     }
 }

@@ -23,7 +23,6 @@ public class Application {
 
         do {
             AnswerBalls answerBalls = new AnswerBalls();
-            BaseBallUtils.isRigthBalls(answerBalls.getAnswerBalls());
             BaseBallGame baseBallGame = new BaseBallGame(scanner, answerBalls);
             playCode = baseBallGame.play();
         } while (playCode);
