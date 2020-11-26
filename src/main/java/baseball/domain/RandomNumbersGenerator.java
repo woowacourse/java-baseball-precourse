@@ -2,7 +2,7 @@ package baseball.domain;
 
 import utils.RandomUtils;
 
-public class RandomNumbersGenerator implements NumbersGenerator{
+public class RandomNumbersGenerator implements NumbersGenerator {
 
     @Override
     public String generateNumbers() {

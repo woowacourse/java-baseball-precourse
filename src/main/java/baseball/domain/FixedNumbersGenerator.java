@@ -2,7 +2,7 @@ package baseball.domain;
 
 import java.util.Scanner;
 
-public class FixedNumbersGenerator implements NumbersGenerator{
+public class FixedNumbersGenerator implements NumbersGenerator {
 
     public static final String ASK_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
 
