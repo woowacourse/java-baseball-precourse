@@ -33,12 +33,13 @@ public final class ConsoleOutput {
 
     public void println(final JudgeResult judgeResult) {
         String resultStr = "";
-        if (judgeResult.hasStrike()) {
-            resultStr += judgeResult.get(Judgement.STRIKE) + Judgement.STRIKE.getKoreanName() + " ";
-        }
 
         if (judgeResult.hasBall()) {
             resultStr += judgeResult.get(Judgement.BALL) + Judgement.BALL.getKoreanName() + " ";
+        }
+
+        if (judgeResult.hasStrike()) {
+            resultStr += judgeResult.get(Judgement.STRIKE) + Judgement.STRIKE.getKoreanName() + " ";
         }
 
         if (judgeResult.isNothing()) {
