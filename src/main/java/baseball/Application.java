@@ -30,11 +30,10 @@ public class Application {
 
             if (noError) {
                 result = compare(target, inputNumber);
-
-                System.out.printf("%d볼 %d스트라이크%n", result[0], result[1]);
+                loop = outputResult(result);
             }
-
         }
+
     }
 
     public static int[] setTarget() {
@@ -54,7 +53,7 @@ public class Application {
 
     public static int[] getInputNumber(Scanner scanner) throws IllegalArgumentException {
         int[] inputNumber = new int[TARGET_LENGTH];
-        System.out.println("숫자를 입력하세요(0을 제외한 서로 다른 3자리 숫자): ");
+        System.out.print("숫자를 입력해주세요 : ");
         String input = scanner.next();
 
         if (input.length() != TARGET_LENGTH) {
@@ -112,5 +111,29 @@ public class Application {
             }
         }
         return result;
+    }
+
+    public static boolean outputResult(int[] result) {
+        boolean endGame = false;
+
+        if(result[0] != 0){
+            System.out.print(result[0] + "볼 ");
+        }
+
+        if(result[1] != 0){
+            System.out.print(result[1] + "스트라이크");
+        }
+
+        if(result[0] == 0 && result[1] == 0){
+            System.out.print("낫싱");
+        }
+
+        System.out.println();
+
+        if (result[1] == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            endGame = true;
+        }
+        return endGame;
     }
 }
