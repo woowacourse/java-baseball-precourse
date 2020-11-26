@@ -7,20 +7,20 @@ public class RestartManager {
 
     private final boolean restartable;
 
-    private RestartManager(boolean restartable) {
-        this.restartable = restartable;
+    public RestartManager(String restartOrStopRequest) {
+        validateRestartManager(restartOrStopRequest);
+        if (restartOrStopRequest.equals(RESTART_REQUEST)) {
+            restartable = true;
+            return;
+        }
+
+        restartable = false;
     }
 
-    public static RestartManager of(String restartOrStopRequest) {
-        if (restartOrStopRequest.equals(RESTART_REQUEST)) {
-            return new RestartManager(true);
+    private void validateRestartManager(String restartOrStopRequest) {
+        if (restartOrStopRequest != RESTART_REQUEST && restartOrStopRequest != STOP_REQUEST) {
+            throw new IllegalArgumentException(RESTART_OR_STOP_REQUEST_ERROR_MESSAGE);
         }
-
-        if (restartOrStopRequest.equals(STOP_REQUEST)) {
-            return new RestartManager(false);
-        }
-
-        throw new IllegalArgumentException(RESTART_OR_STOP_REQUEST_ERROR_MESSAGE);
     }
 
     public boolean canRestart() {

@@ -17,7 +17,7 @@ class RestartManagerTest {
         String restartRequest = "1";
 
         //when
-        RestartManager restartManager = RestartManager.of(restartRequest);
+        RestartManager restartManager = new RestartManager(restartRequest);
 
         //then
         assertThat(restartManager.canRestart()).isTrue();
@@ -30,7 +30,7 @@ class RestartManagerTest {
         String stopRequest = "2";
 
         //when
-        RestartManager restartManager = RestartManager.of(stopRequest);
+        RestartManager restartManager = new RestartManager(stopRequest);
 
         //then
         assertThat(restartManager.canRestart()).isFalse();
@@ -41,7 +41,7 @@ class RestartManagerTest {
     @ValueSource(strings = {"0", "3", "$", "a"})
     void testRestartFunctionIfInputUndefinedRequest(String wrongRequest) {
         //when //then
-        assertThatThrownBy(() -> RestartManager.of(wrongRequest))
+        assertThatThrownBy(() -> new RestartManager(wrongRequest))
                 .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 }

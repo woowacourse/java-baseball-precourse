@@ -34,7 +34,7 @@ public class InputView {
         System.out.println(INPUT_RESTART_OR_STOP_REQUEST_MESSAGE);
 
         try {
-            return RestartManager.of(scanner.nextLine());
+            return new RestartManager(scanner.nextLine());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return inputRestartOrStopRequest(scanner);

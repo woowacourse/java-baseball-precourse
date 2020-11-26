@@ -142,7 +142,7 @@ class BaseballGameTest {
 
         //when
         String restartRequest = "1";
-        baseballGame.restart(RestartManager.of(restartRequest), baseballNumbersGenerator);
+        baseballGame.restart(new RestartManager(restartRequest), baseballNumbersGenerator);
 
         //then
         assertThat(baseballGame.isPlaying()).isTrue();
@@ -161,7 +161,7 @@ class BaseballGameTest {
 
         //when
         String stopRequest = "2";
-        baseballGame.restart(RestartManager.of(stopRequest), baseballNumbersGenerator);
+        baseballGame.restart(new RestartManager(stopRequest), baseballNumbersGenerator);
 
         //then
         assertThat(baseballGame.isPlaying()).isFalse();
