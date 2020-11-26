@@ -10,6 +10,15 @@ public class NumberGenerator {
 
     private ArrayList<Integer> numberRange;
     private int[] generatedNumber;
+
+    public NumberGenerator(){
+        initializeNumberRange();
+        generateNumber();
+    }
+
+    public int[] getNumber(){
+        return generatedNumber.clone();
+    }
     
     private void initializeNumberRange(){
         numberRange = new ArrayList<Integer>();
