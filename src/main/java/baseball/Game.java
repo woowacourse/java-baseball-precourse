@@ -14,6 +14,7 @@ public class Game {
             int input = valueInsert(scanner);
             if (checking(targetValue, input)) {
                 flag = gameContinue(scanner);
+                targetValue = getRandomValue();
             } else {
                 hint(targetValue, input);
             }
