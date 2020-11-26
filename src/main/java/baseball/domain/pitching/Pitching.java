@@ -18,7 +18,7 @@ public class Pitching {
         }
     }
 
-    private int value;
+    private final int value;
 
     private Pitching(final int value) {
         this.value = value;

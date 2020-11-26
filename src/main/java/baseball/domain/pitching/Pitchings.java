@@ -82,6 +82,10 @@ public class Pitchings {
         return this.pitchings.contains(target);
     }
 
+    public List<Pitching> getPitchings() {
+        return this.pitchings;
+    }
+
     @Override
     public String toString() {
         return this.pitchings.stream()
