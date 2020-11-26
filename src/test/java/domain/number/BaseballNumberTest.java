@@ -47,4 +47,22 @@ class BaseballNumberTest {
 
         assertThat(baseballNumber.isDuplicated(baseballNumbers)).isFalse();
     }
+
+    @DisplayName("BaseballNumber 객체들의 값이 같으면 true를 반환")
+    @Test
+    public void 객체들의_값이_같으면_true를_반환() {
+        BaseballNumber firstNumber = BaseballNumber.of(1);
+        BaseballNumber secondNumber = BaseballNumber.of(1);
+        boolean isEqual = firstNumber.equals(secondNumber);
+        assertThat(isEqual).isTrue();
+    }
+
+    @DisplayName("BaseballNumber 객체들의 값이 같으면 false를 반환")
+    @Test
+    public void 객체들의_값이_같으면_false를_반환() {
+        BaseballNumber firstNumber = BaseballNumber.of(1);
+        BaseballNumber secondNumber = BaseballNumber.of(3);
+        boolean isEqual = firstNumber.equals(secondNumber);
+        assertThat(isEqual).isFalse();
+    }
 }
