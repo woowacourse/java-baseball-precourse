@@ -1,7 +1,6 @@
 package baseball;
 
-import domain.BaseballNumber;
-import domain.BaseballNumberCreator;
+import domain.*;
 import utils.StringConverter;
 import validator.PositiveIntegerValidator;
 import view.InputView;
@@ -13,6 +12,18 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
+        playOneCycle(scanner);
+    }
+
+    private static void playOneCycle(Scanner scanner) {
+        BaseballNumber answer = BaseballNumberCreator.createBaseballNumber();
+        GameStatus gameStatus = new GameStatus(Status.ONGOING);
+        do {
+            BaseballNumber userBaseballNumber = makeUserBaseballNumber(scanner);
+            Score score = ScoreCalculator.calculateScore(answer, userBaseballNumber);
+            OutputView.printScore(score);
+            terminateIfThreeStrike(score, gameStatus);
+        } while (gameStatus.isOngoing());
     }
 
     private static BaseballNumber makeUserBaseballNumber(Scanner scanner) {
@@ -26,5 +37,11 @@ public class Application {
             userBaseballNumber = makeUserBaseballNumber(scanner);
         }
         return userBaseballNumber;
+    }
+
+    private static void terminateIfThreeStrike(Score score, GameStatus gameStatus) {
+        if (score.isThreeStrike()) {
+            gameStatus.terminate();
+        }
     }
 }

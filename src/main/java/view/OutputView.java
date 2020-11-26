@@ -14,7 +14,7 @@ public class OutputView {
 
     public static void printScore(Score score) {
         if (score.getStrike() == ZERO && score.getBall() == ZERO) {
-            printMessageAndNewLine(NOTHING);
+            printMessage(NOTHING);
         }
         String message = getBallMessage(score) + getStrikeMessage(score);
         printMessageAndNewLine(message);
