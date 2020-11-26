@@ -95,8 +95,22 @@ public class Game {
         System.out.print("숫자를 입력해주세요 : ");
         try {
             input = scanner.nextInt();
+            isValid(input);
             return input;
         } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void isValid(int input) {
+        Set<Character> set = new HashSet<>();
+        char[] chars = String.valueOf(input).toCharArray();
+
+        for (char c : chars) {
+            set.add(c);
+        }
+
+        if (set.size() != 3 || chars.length != 3) {
             throw new IllegalArgumentException();
         }
     }
