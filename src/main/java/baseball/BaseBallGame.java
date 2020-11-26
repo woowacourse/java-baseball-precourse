@@ -16,7 +16,7 @@ public class BaseBallGame {
         List<Integer> computer = ball.getComputerBall();
         while (true) {
             List<Integer> user = ball.getUserBall(sc);
-            if(compareBall(computer, user)) {
+            if(isGameEnd(computer, user)) {
                 System.out.println(GAME_END_MESSAGE);
                 return selectGameStatus(sc);
             }
@@ -30,7 +30,7 @@ public class BaseBallGame {
         return status;
     }
 
-    private boolean compareBall(List<Integer> computer, List<Integer> user) {
+    private boolean isGameEnd(List<Integer> computer, List<Integer> user) {
         int strikeCount = calculateStrike(computer, user);
         int ballCount = calculateBall(computer, user);
         printGameResult(strikeCount, ballCount);
