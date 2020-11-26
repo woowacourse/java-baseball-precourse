@@ -44,9 +44,7 @@ public class NumberGenerator {
             if (flag[index] == FALSE) {
                 programNumber.add(random);
                 flag[index] = TRUE;
-            }
-            // 이미 구한 숫자가 사용된 경우 새로운 임의의 수를 구한다.
-            else {
+            } else {            // 이미 구한 숫자가 사용된 경우 새로운 임의의 수를 구한다.
                 continue;
             }
         }
