@@ -11,7 +11,7 @@ public class Player {
     boolean[] checkNumberDuplicated = new boolean[Constants.MAX_RANGE];
     int[] numbers;
 
-    public void Player(){
+    public Player(){
 
     }
 

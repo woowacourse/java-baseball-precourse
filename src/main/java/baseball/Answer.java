@@ -18,7 +18,7 @@ public class Answer {
      */
     public Answer(){
         while(index < Constants.MAX_LEN){
-            int number = RandomUtils.nextInt(Constants.MIN_RANGE, Constants.MAX_RANGE-1);
+            int number = RandomUtils.nextInt(Constants.MIN_RANGE+1, Constants.MAX_RANGE-1);
             if(!checkNumberDuplicated[number]){
                 checkNumberDuplicated[number] = true;
                 answers[index++] = number;

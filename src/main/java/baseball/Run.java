@@ -10,6 +10,10 @@ public class Run {
     static Player player;
     static Hint hint = new Hint();
 
+    public Run(){
+
+    }
+
     /**
      * 실질적인 숫자 야구 게임의 로직을 담고 있는 메소드입니다.
      */
