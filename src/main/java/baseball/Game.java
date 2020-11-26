@@ -1,18 +1,40 @@
 package baseball;
 
+import utils.RandomUtils;
+
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Game {
-    public static void gameStart(int tartgetValue, Scanner scanner){
+    public static void gameStart(Scanner scanner){
+        int targetValue = getRandomValue();
         boolean flag = true;
         do{
             int input = valueInsert(scanner);
-            if (checking(tartgetValue, input)) {
+            if (checking(targetValue, input)) {
                 flag = gameContinue(scanner);
             } else {
-                hint(tartgetValue, input);
+                hint(targetValue, input);
             }
         } while(flag);
+    }
+
+    private static int getRandomValue() {
+        Set<Integer> set = new HashSet<>();
+        int result = 0;
+        int index = 1;
+
+        do {
+            set.add(RandomUtils.nextInt(1, 9));
+        } while (set.size() < 3);
+
+        for (Integer s : set) {
+            result += s * index;
+            index *= 10;
+        }
+
+        return result;
     }
 
     private static void hint(int targetValue, int input) {
