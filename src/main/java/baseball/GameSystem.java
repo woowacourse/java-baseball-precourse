@@ -22,6 +22,8 @@ public class GameSystem {
             setUserNumbers(sc);
             calcScore();
             user.printInfoForTest();
+            System.out.println();
+            printResultMessage();
             if (user.getStrike() == 3) {
                 break;
             }
@@ -73,6 +75,23 @@ public class GameSystem {
         }
         user.setBall(ball);
         user.setStrike(strike);
+    }
+
+    private void printResultMessage() {
+        String resultMessage = new String();
+        int ball = user.getBall();
+        int strike = user.getStrike();
+
+        if (ball != 0) {
+            resultMessage += ball + "볼 ";
+        }
+        if (strike != 0) {
+            resultMessage += strike + "스트라이크";
+        }
+        if (resultMessage.equals("")) {
+            resultMessage = "낫싱";
+        }
+        System.out.println(resultMessage);
     }
 
     private int stringToValidNum(String string) throws IllegalArgumentException {
