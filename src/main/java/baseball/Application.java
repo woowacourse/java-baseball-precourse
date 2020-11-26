@@ -106,18 +106,13 @@ public class Application {
 
     public static GameStatus decideNext(Scanner scanner) {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        int input;
-        try {
-            input = Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException nfe) {
+        final String play = "1";
+        final String quit = "2";
+        String input = scanner.nextLine();
+        if (!(input.equals(play) || input.equals(quit))) {
             throw new IllegalArgumentException();
         }
-
-        if (input != 1 && input != 2) {
-            throw new IllegalArgumentException();
-        }
-        if (input == 2) {
+        if (input.equals(quit)) {
             return GameStatus.quit;
         }
         return GameStatus.play;
