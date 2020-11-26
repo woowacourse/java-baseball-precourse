@@ -1,4 +1,4 @@
-package baseball.domain.judge;
+package baseball.domain.judge.judgeRule;
 
 import java.util.Arrays;
 import java.util.List;

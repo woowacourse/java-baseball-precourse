@@ -1,5 +1,6 @@
-package baseball.domain.judge;
+package baseball.domain.judge.judgeRule;
 
+import baseball.domain.judge.Judgement;
 import baseball.domain.pitching.Pitchings;
 
 public abstract class JudgeRule {
@@ -10,7 +11,7 @@ public abstract class JudgeRule {
         this.judgement = judgement;
     }
 
-    abstract boolean judge(Pitchings base, Pitchings target, int index);
+    public abstract boolean judge(Pitchings base, Pitchings target, int index);
 
     public Judgement getJudgement() {
         return this.judgement;

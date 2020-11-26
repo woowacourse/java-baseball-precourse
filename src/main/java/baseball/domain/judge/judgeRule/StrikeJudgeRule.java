@@ -1,5 +1,6 @@
-package baseball.domain.judge;
+package baseball.domain.judge.judgeRule;
 
+import baseball.domain.judge.Judgement;
 import baseball.domain.pitching.Pitchings;
 
 public class StrikeJudgeRule extends JudgeRule {
@@ -17,7 +18,7 @@ public class StrikeJudgeRule extends JudgeRule {
     }
 
     @Override
-    boolean judge(final Pitchings base, final Pitchings target, final int index) {
+    public boolean judge(final Pitchings base, final Pitchings target, final int index) {
         return base.match(target, index);
     }
 }

@@ -2,7 +2,7 @@ package baseball.domain.game;
 
 import baseball.domain.judge.Judge;
 import baseball.domain.judge.JudgeResult;
-import baseball.domain.judge.JudgeRuleFactory;
+import baseball.domain.judge.judgeRule.JudgeRuleFactory;
 import baseball.domain.pitching.Pitchings;
 
 public class Game {

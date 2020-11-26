@@ -1,5 +1,6 @@
-package baseball.domain.judge;
+package baseball.domain.judge.judgeRule;
 
+import baseball.domain.judge.Judgement;
 import baseball.domain.pitching.Pitching;
 import baseball.domain.pitching.Pitchings;
 
@@ -18,7 +19,7 @@ public class NothingJudgeRule extends JudgeRule {
     }
 
     @Override
-    boolean judge(final Pitchings base, final Pitchings target, final int index) {
+    public boolean judge(final Pitchings base, final Pitchings target, final int index) {
         Pitching targetPitching = target.getPitching(index);
         return !base.contains(targetPitching);
     }

@@ -1,6 +1,7 @@
 package baseball.domain.judge;
 
 import baseball.domain.judge.exception.JudgeMultipleJudgementException;
+import baseball.domain.judge.judgeRule.JudgeRule;
 import baseball.domain.pitching.Pitching;
 import baseball.domain.pitching.Pitchings;
 import java.util.Arrays;
