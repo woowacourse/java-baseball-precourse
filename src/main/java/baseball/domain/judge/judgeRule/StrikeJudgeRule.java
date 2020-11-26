@@ -1,9 +1,8 @@
 package baseball.domain.judge.judgeRule;
 
-import baseball.domain.judge.Judgement;
 import baseball.domain.pitching.Pitchings;
 
-public class StrikeJudgeRule extends JudgeRule {
+public class StrikeJudgeRule implements JudgeRule {
 
     private static class LazyHolder {
         public static final StrikeJudgeRule INSTANCE = new StrikeJudgeRule();
@@ -11,10 +10,6 @@ public class StrikeJudgeRule extends JudgeRule {
 
     public static StrikeJudgeRule getInstance() {
         return StrikeJudgeRule.LazyHolder.INSTANCE;
-    }
-
-    private StrikeJudgeRule() {
-        super(Judgement.STRIKE);
     }
 
     @Override
