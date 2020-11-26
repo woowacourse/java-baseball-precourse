@@ -15,6 +15,14 @@ public class ScoreBoard {
         this.ball = new Count(ball);
     }
 
+    public int getStrike() {
+        return strike.getCount();
+    }
+
+    public int getBall() {
+        return ball.getCount();
+    }
+
     public void recordStrike() {
         strike.increaseCount();
     }
