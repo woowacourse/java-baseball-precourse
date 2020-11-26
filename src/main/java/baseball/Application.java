@@ -61,6 +61,9 @@ public class Application {
     }
 
     public static void goOrStop (Scanner scanner) {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        scanner.nextLine();
+
         boolean isValidGoOrStop = false;
         while (!isValidGoOrStop) {
             try {
@@ -175,7 +178,6 @@ public class Application {
         while (strikeCount != 3) {
             strikeCount = playGame(scanner, answer);
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         // 게임 계속 플레이 혹은 종료
         goOrStop(scanner);
     }
