@@ -42,7 +42,7 @@ class GameResultTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("볼이나 스트라이크 모두 1개도 못 맞춘 경우 isNothing은 true를 반환")
+    @DisplayName("볼이나 스트라이크 모두 1개도 못 맞춘 경우 isNothing은 true")
     @Test
     public void isNothing_0점일때_true_반환() {
         gameResultMap.put("볼", 0);
@@ -51,13 +51,23 @@ class GameResultTest {
         assertThat(gameResult.isNothing()).isTrue();
     }
 
-    @DisplayName("볼이나 스트라이크를 1개라도 맞춘 경우 isNothing은 false를 반환")
+    @DisplayName("볼이나 스트라이크를 1개라도 맞춘 경우 isNothing은 false")
     @ParameterizedTest
-    @CsvSource({"0, 1", "1, 0", "1, 1"})
+    @CsvSource({"0, 1", "1, 0", "2, 1"})
     public void isNothing__맞춘_것이_있으면_false_반환(int ballCounts, int strikeCounts) {
         gameResultMap.put("볼", ballCounts);
         gameResultMap.put("스트라이크", strikeCounts);
         GameResult gameResult = new GameResult(gameResultMap);
         assertThat(gameResult.isNothing()).isFalse();
+    }
+
+    @DisplayName("볼이 0개이고, 스트라이크가 1개 이상이면 isOnlyStrike는 true")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    public void 스트라이크_점수만_존재하면_isOnlyStrike는_true_반환(int strikeCounts) {
+        gameResultMap.put("볼", 0);
+        gameResultMap.put("스트라이크", strikeCounts);
+        GameResult gameResult = new GameResult(gameResultMap);
+        assertThat(gameResult.isOnlyStrike()).isTrue();
     }
 }
