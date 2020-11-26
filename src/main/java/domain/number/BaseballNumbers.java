@@ -41,6 +41,19 @@ public class BaseballNumbers {
         return new BaseballNumbers(baseballNumbers);
     }
 
+    public int calculateStrikeCounts(BaseballNumbers targetBaseballNumbers) {
+        int strikeCounts = 0;
+        for (int i = 0; i < 3; i++) {
+            BaseballNumber baseballNumber = this.baseballNumbers.get(i);
+            BaseballNumber targetBaseballNumber = targetBaseballNumbers.baseballNumbers
+                    .get(i);
+            if (baseballNumber.equals(targetBaseballNumber)) {
+                strikeCounts++;
+            }
+        }
+        return strikeCounts;
+    }
+
     public List<Integer> getBaseballNumbers() {
         return baseballNumbers.stream()
                 .map(BaseballNumber::getBaseballNumber)
