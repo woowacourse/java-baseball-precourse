@@ -1,5 +1,7 @@
 package baseball;
 
+import utils.InputValidator;
+import utils.InvalidInputException;
 import utils.NumberListGenerator;
 import view.InputView;
 import view.OutputView;
@@ -37,7 +39,17 @@ public class BaseballGame {
     }
 
     private String readNumber(){
-        return InputView.askNum(SCANNER);
+        String input = "";
+
+        try{
+            input = InputView.askNum(SCANNER);
+            InputValidator.validGuessNumber(input, NUM_DIGIT);
+        }catch (InvalidInputException IIH){
+            OutputView.printMsg(IIH.getMessage());
+            return readNumber();
+        }
+
+        return input;
     }
 
     private void calculateScore(String guessNum){
