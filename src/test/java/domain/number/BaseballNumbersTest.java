@@ -27,7 +27,7 @@ class BaseballNumbersTest {
     }
 
     private static Stream<Arguments> getBaseballNumbersForBall() {
-        return Stream.of(Arguments.of(Arrays.asList(3, 7, 6), Arrays.asList(3, 7, 6), 1),
+        return Stream.of(Arguments.of(Arrays.asList(3, 7, 6), Arrays.asList(3, 6, 7), 2),
                 Arguments.of(Arrays.asList(1, 5, 3), Arrays.asList(3, 1, 5), 3),
                 Arguments.of(Arrays.asList(9, 8, 7), Arrays.asList(9, 8, 7), 0));
     }

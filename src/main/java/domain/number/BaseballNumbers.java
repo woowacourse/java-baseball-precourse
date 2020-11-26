@@ -55,6 +55,19 @@ public class BaseballNumbers {
         return baseballNumber.equalTo(targetBaseballNumber);
     }
 
+    public int calculateBallCounts(BaseballNumbers targetBaseballNumbers) {
+        return (int) IntStream.rangeClosed(0, 2)
+                .filter(index -> isBall(index, targetBaseballNumbers))
+                .count();
+    }
+
+    private boolean isBall(int index, BaseballNumbers targetBaseballNumbers) {
+        return IntStream.rangeClosed(0, 2)
+                .filter(i -> i != index)
+                .filter(i -> targetBaseballNumbers.baseballNumbers.get(i).equalTo(this.baseballNumbers.get(index)))
+                .count() != 0;
+    }
+
     public List<Integer> getBaseballNumbers() {
         return baseballNumbers.stream()
                 .map(BaseballNumber::getBaseballNumber)
