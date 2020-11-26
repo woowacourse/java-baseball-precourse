@@ -28,20 +28,20 @@
 > 1차적으로 기능구현이 끝나면 이 요구사항들을 잘 지켰는지 확인한다. 
 
 ### General 
-- [ ] 자바 코드 컨벤션을 지키면서 프로그래밍한다.
-- [ ] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
-- [ ] 3항 연산자를 쓰지 않는다.
-- [ ] 함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게 만들어라.
-- [ ] System.exit 메소드를 사용하지 않는다.
-- [ ] 비정상적 입력에 대해서는 IllegalArgumentException을 발생시킨다.
+- [x] 자바 코드 컨벤션을 지키면서 프로그래밍한다.
+- [x] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
+- [x] 3항 연산자를 쓰지 않는다.
+- [x] 함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게 만들어라.
+- [x] System.exit 메소드를 사용하지 않는다.
+- [x] 비정상적 입력에 대해서는 IllegalArgumentException을 발생시킨다.
 
 ### Application 
-- [ ] Application 클래스를 활용해 구현해야 한다.
-- [ ] Application의 패키지 구조와 구현은 변경하지 않는다.
-- [ ] `final Scanner scanner = new Scanner(System.in);`는 변경하지 않는다.
-- [ ] `// TODO 구현 진행` 이 후 부터 구현한다.
+- [x] Application 클래스를 활용해 구현해야 한다.
+- [x] Application의 패키지 구조와 구현은 변경하지 않는다.
+- [x] `final Scanner scanner = new Scanner(System.in);`는 변경하지 않는다.
+- [x] `// TODO 구현 진행` 이 후 부터 구현한다.
 
 ### RandomUtils
-- [ ] RandomUtils 클래스를 활용해 랜덤 기능을 구현해야 한다.
-- [ ] RandomUtils의 패키지 구조와 구현은 변경하지 않는다.
+- [x] RandomUtils 클래스를 활용해 랜덤 기능을 구현해야 한다.
+- [x] RandomUtils의 패키지 구조와 구현은 변경하지 않는다.
 
