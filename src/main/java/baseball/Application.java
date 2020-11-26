@@ -39,7 +39,22 @@ public class Application {
     }
 
     public static Hint checkAnswer(String answer, String submittedAnswer) {
-        return new Hint(0, 0);
+
+        int strike = 0;
+        int ball = 0;
+        for(int i = 0; i < 3; i++) {
+            if(answer.charAt(i) == submittedAnswer.charAt(i)) {
+                strike++;
+            }
+            if(answer.charAt(i) == submittedAnswer.charAt((i + 1) % 3)) {
+                ball++;
+            }
+            if(answer.charAt(i) == submittedAnswer.charAt((i + 2) % 3)) {
+                ball++;
+            }
+        }
+
+        return new Hint(strike, ball);
     }
 
     public static void main(String[] args) {
