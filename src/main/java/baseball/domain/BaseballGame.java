@@ -1,6 +1,8 @@
 package baseball.domain;
 
 public class BaseballGame {
+    private static final String RESTART = "1";
+    private static final String STOP = "2";
     private boolean playing;
     private BaseballNumbers baseballNumbers;
 
@@ -31,5 +33,20 @@ public class BaseballGame {
 
     public boolean isPlaying() {
         return playing;
+    }
+
+    public void restart(String restartOrStopRequest, BaseballNumbersGenerator baseballNumbersGenerator) {
+        if (restartOrStopRequest.equals(RESTART)) {
+            playing = true;
+            baseballNumbers = BaseballNumbers.createAnswerBaseballNumbers(baseballNumbersGenerator);
+            return;
+        }
+
+        if (restartOrStopRequest.equals(STOP)) {
+            stop();
+            return;
+        }
+
+        throw new IllegalArgumentException("1 또는 2만 입력해주세요!");
     }
 }
