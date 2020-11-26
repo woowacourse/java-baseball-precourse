@@ -4,6 +4,8 @@ import java.util.Scanner;
 import utils.RandomUtils;
 
 public class Application {
+    static Run run = new Run();
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         String command = null;
@@ -16,7 +18,7 @@ public class Application {
                 break;
             }
 
-            // Run
+            run.Run();
         }
     }
 }

@@ -15,7 +15,7 @@ public class Player {
         Scanner sc = new Scanner(System.in);
 
         while(true){
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             String input = sc.nextLine();
             if(!isDigit(input)
                     || !isEqualsToMaxLength(input)
