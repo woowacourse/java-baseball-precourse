@@ -57,4 +57,20 @@ public class BaseBall {
     public List<Integer> getBaseballNumber() {
         return new ArrayList<>(baseballNumber);
     }
+
+    public boolean containsNumber(int number){
+        return baseballNumber.contains(number);
+    }
+
+    public boolean hasNumber(int index, int number){
+        return baseballNumber.get(index) == number;
+    }
+
+    public int getNumber(int index){
+        return baseballNumber.get(index);
+    }
+
+    public int size(){
+        return baseballNumber.size();
+    }
 }

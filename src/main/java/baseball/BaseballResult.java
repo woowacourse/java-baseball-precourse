@@ -42,11 +42,11 @@ public class BaseballResult {
     private void printBallAndStrike() {
         Set<BallType> ballTypes = result.keySet();
         ballTypes.stream()
-                .filter(ballType -> this.getCount(ballType) > ZERO)
-                .forEach(ballType -> ballType.printNameWith(this.getCount(ballType)));
+                .filter(ballType -> countFor(ballType) > ZERO)
+                .forEach(ballType -> ballType.printNameWith(countFor(ballType)));
     }
-
-    public int getCount(BallType ballType){
+    //test에도 사용되어 public으로 선언
+    public int countFor(BallType ballType){
         return result.get(ballType);
     }
 
