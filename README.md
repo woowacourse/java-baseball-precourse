@@ -41,8 +41,11 @@
 ### 프로그램 흐름도 
 
 1. Application을 통해 Game이 시작된다.
+
 2. Game에 player가 입장한다.
+
 3. Game은 player가 실행하는 경기(round)를 시작된다.
+
     - 첫 경기는 자동으로 실행된다.
     - round 시작됨과 동시에 정답값을 랜덤 생성한다.
     - player의 입력값을 받아 정답이 맞는 지 비교하는 작업을 반복한다.
@@ -52,18 +55,53 @@
             - 이때 `볼`이 존재하면 1칸 공백을 추가하고 `스트라이크` 결과값을 넣어준다.
         - `볼`도 `스트라이크`도 없으면 `낫싱`
     - player가 정답을 맞추면 round가 종료된다.
+
 3. 종료 여부를 player에게 입력 받는다. (exitButton)
- - player가 재시작을 요청하면 round를 재시작한다.
- - exitButton이 int이기때문에 try-catch 문을 통해 예외사항을 처리해준다.
-    
+
+     - player가 재시작을 요청하면 round를 재시작한다.
+     - exitButton이 int이기때문에 try-catch 문을 통해 예외사항을 처리해준다.
+
+<br>    
 
 ### 🚨 유의 사항
 
-아래의 사항들을 반복적으로 체크하자!
+아래의 사항들을 반복적으로 체크하자! <br>
 
-- [JAVA Code Convetion](https://velog.io/@bosl95/JAVA-Code-Convention)
-- [Commit Message Convention](https://velog.io/@bosl95/Commit-Message-Convention)
-- [추가 고려할 사항들](https://hodol.dev/posts/%EC%9A%B0%EC%95%84%ED%95%9C%ED%85%8C%ED%81%AC%EC%BD%94%EC%8A%A4-%ED%94%84%EB%A6%AC%EC%BD%94%EC%8A%A4-%EC%A4%80%EB%B9%84)
+<details>
+<summary> ✍ CHECK LIST </summary>
+
+- Indent Depth는 최대 2까지만 허용
+- 함수의 길이는 10라인 이하
+- `else` 예약어 X
+- `public`/`protected`/`private`/`package` 용도에 맞게 구현
+- 이름을 통해 의도 드러내기, 축약 금지
+- 개발 도구의 code format : 단축키 `Ctrl+Alt+L(윈도우)`
+- 반복되는 내용을 최소화
+- 의미있는 커밋 메세지 작성
+- README.md를 상세히 작성
+- 기능 목록 구현 재검토 (예외 사항도 정리)
+ - 세세한 부분은 수정될 수 있으므로 구현 기능에 초점
+- 구현 순서도 Convention
+- JAVA API 적극 활용하기
+- 적절한 Collection 활용하기 : `List`, `Map`, `Set`
+- 객체에 메세지를 보내기 : 상태 데이터를 가진 객체가 데이터를 꺼내는 것이 아닌, 객체가 메시지를 전달해줄 수 있도록 작성
+- 필드(인스턴스 변수)의 수를 줄이기 위해 노력한다
+- 비즈니스 로직과 UI 로직을 분리
+- 주석은 꼭 필요한 경우만 작성
+- 상황(context)에 맞는 설계와 구현 방법을 찾기
+- 반복문 대신 재귀 함수 구현 가능
+- 원시타입 문자열을 포장
+- 일급 콜렉션 적용
+- 3개 이상의 인스턴스 변수를 가진 클래스 구현 X
+- 메소드 인자수 3개 이하로 제한
+- 메소드가 한 가지 일만을 담당
+- 클래스 작게 만들기
+
+</details>
+
+- [JAVA Code Convetion 정리](https://velog.io/@bosl95/JAVA-Code-Convention)
+- [Commit Message Convention 정리](https://velog.io/@bosl95/Commit-Message-Convention)
+- [[추가] 참고 블로그](https://hodol.dev/posts/%EC%9A%B0%EC%95%84%ED%95%9C%ED%85%8C%ED%81%AC%EC%BD%94%EC%8A%A4-%ED%94%84%EB%A6%AC%EC%BD%94%EC%8A%A4-%EC%A4%80%EB%B9%84)
 
 <br>
 
