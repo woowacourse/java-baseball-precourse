@@ -34,6 +34,13 @@ public class BaseballNumbers {
         }
     }
 
+    public static BaseballNumbers generateInputBaseballNumbers(List<Integer> inputBaseballNumbers) {
+        List<BaseballNumber> baseballNumbers = inputBaseballNumbers.stream()
+                .map(BaseballNumber::of)
+                .collect(Collectors.toList());
+        return new BaseballNumbers(baseballNumbers);
+    }
+
     public List<Integer> getBaseballNumbers() {
         return baseballNumbers.stream()
                 .map(BaseballNumber::getBaseballNumber)
