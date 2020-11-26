@@ -21,7 +21,8 @@ public class Application {
                 int inputNumber = Integer.parseInt(inputString);
                 if (ThreeDigitsUtils.isDistinctThreeDigits(inputNumber)){
                     System.out.println(inputNumber);
-                    game.getHint(inputNumber);
+                    String hint = game.getHint(inputNumber);
+                    System.out.println(hint);
                     isCorrect = game.isAnswer(inputNumber);
                 } else {
                     throw new IllegalArgumentException("Input should be Distinct Three Digits Integer");

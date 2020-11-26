@@ -29,4 +29,16 @@ public class ThreeDigitsUtils {
             }
         }
     }
+
+    public static int[] toIntArrayOfDigit(int number) {
+        int[] array = new int[3];
+        if (!isThreeDigits(number)) {
+            return array;
+        }
+        for (int i = 0; i < 3; i++) {
+            array[i] = number % 10;
+            number /= 10;
+        }
+        return array;
+    }
 }
