@@ -10,7 +10,7 @@ import baseball.domain.ScoreBoard;
 public class ScoreBoardTest {
 
     @Test
-    @DisplayName("스트라이크가 0개일 경우 true 를 반환")
+    @DisplayName("스트라이크가 0개 일경우 hasZeroStrike() true 반환 테스트")
     public void hasZeroStrikeTest() {
         ScoreBoard scoreBoard = new ScoreBoard();
         assertTrue(scoreBoard.hasZeroStrike());
