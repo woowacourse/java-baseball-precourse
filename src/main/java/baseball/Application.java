@@ -11,7 +11,9 @@ public class Application {
         int targetNumber = ThreeDigitsUtils.generateBaseballNumber();
         System.out.println(targetNumber);
 
-        while (true){
+        Game game = new Game(targetNumber);
+        boolean isCorrect = false;
+        while (!isCorrect){
             System.out.print("숫자를 입력해주세요 : ");
             String inputString = scanner.nextLine();
             try {
@@ -19,6 +21,8 @@ public class Application {
                 int inputNumber = Integer.parseInt(inputString);
                 if (ThreeDigitsUtils.isDistinctThreeDigits(inputNumber)){
                     System.out.println(inputNumber);
+                    game.getHint(inputNumber);
+                    isCorrect = game.isAnswer(inputNumber);
                 } else {
                     throw new IllegalArgumentException("Input should be Distinct Three Digits Integer");
 //                    System.out.println("Not Distinct Three Digits Number: " + inputNumber);
