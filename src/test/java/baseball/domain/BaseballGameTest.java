@@ -113,4 +113,19 @@ class BaseballGameTest {
         //then
         assertThat(corrected).isFalse();
     }
+
+    @DisplayName("숫자야구게임을 종료하는 기능을 테스트한다 ")
+    @Test
+    void testStopFunction() {
+        //given
+        BaseballGame baseballGame = BaseballGame.play(() -> Arrays.asList(1, 2, 3).stream()
+                .map(BaseballNumber::new)
+                .collect(Collectors.toList()));
+
+        //when
+        baseballGame.stop();
+
+        //then
+        assertThat(baseballGame.isPlaying()).isFalse();
+    }
 }
