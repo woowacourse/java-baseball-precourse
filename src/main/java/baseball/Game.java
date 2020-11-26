@@ -10,7 +10,7 @@ public class Game {
         boolean flag = true;
         do{
             int input = valueInsert(scanner);
-            if (checking(targetValue, input)) {
+            if (isCorrect(targetValue, input)) {
                 flag = gameContinue(scanner);
                 targetValue = getRandomValue();
             } else {
@@ -57,10 +57,10 @@ public class Game {
 
         ball -= strike;
 
-        resultPrint(ball, strike);
+        hintPrint(ball, strike);
     }
 
-    private static void resultPrint(int ball, int strike) {
+    private static void hintPrint(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         } else if (ball == 0) {
@@ -86,7 +86,7 @@ public class Game {
         }
     }
 
-    private static boolean checking(int tartgetValue, int input) {
+    private static boolean isCorrect(int tartgetValue, int input) {
         return tartgetValue == input;
     }
 

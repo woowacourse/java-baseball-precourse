@@ -111,10 +111,12 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 <br>
 
 ## 구현할 기능 목록
-* 랜덤 값 결정 함수
 * Game 클래스 생성
 * 게임 시작 함수
+* 랜덤 값 생성 함수
 * 값 입력 함수
-* 값 판별 함수
-* 값의 결과를 출력하는 함수
-* 게임 종료 분기 여부 판단 함수
+* 입력 값 유효성 확인 함수
+* 정답 여부 확인 함수
+* 힌트 계산 함수
+* 힌트 출력 함수
+* 게임 지속 여부 확인 함수
