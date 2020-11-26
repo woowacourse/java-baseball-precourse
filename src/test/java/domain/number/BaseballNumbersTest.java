@@ -69,7 +69,7 @@ class BaseballNumbersTest {
     public void 볼_개수_파악(List<Integer> firstNumbers, List<Integer> secondNumbers, int ballCounts) {
         BaseballNumbers firstBaseballNumbers = BaseballNumbers.generateInputBaseballNumbers(firstNumbers);
         BaseballNumbers secondBaseballNumbers = BaseballNumbers.generateInputBaseballNumbers(secondNumbers);
-        int testStrikeCounts = firstBaseballNumbers.calculateBallCounts(secondBaseballNumbers);
-        assertThat(testStrikeCounts).isEqualTo(ballCounts);
+        int testBallCounts = firstBaseballNumbers.calculateBallCounts(secondBaseballNumbers);
+        assertThat(testBallCounts).isEqualTo(ballCounts);
     }
 }
