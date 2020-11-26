@@ -32,4 +32,12 @@ public class BaseballNumbers {
                 .mapToObj(number -> (char) number - '0')
                 .forEach(numbers::add);
     }
+
+    public boolean isStrike(int numberIndex, int pitchedNumber) {
+        return getNumber(numberIndex) == pitchedNumber;
+    }
+
+    public boolean isBall(int pitchedNumber) {
+        return numbers.contains(pitchedNumber);
+    }
 }
