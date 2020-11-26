@@ -24,6 +24,7 @@ public class Application {
         // TODO 구현 진행
         Application app = new Application();
         int targetNumber = app.makeTargetNumber();
+        System.out.print("Target Number : ");
         System.out.println(targetNumber);
     }
 
@@ -33,14 +34,17 @@ public class Application {
      */
     public int makeTargetNumber() {
         int firstTargetNumber = RandomUtils.nextInt(1, 9);
+
         int secondTargetNumber = RandomUtils.nextInt(1, 9);
         while(firstTargetNumber == secondTargetNumber) {
             secondTargetNumber = RandomUtils.nextInt(1, 9);
         }
+
         int thirdTargetNumber = RandomUtils.nextInt(1, 9);
         while((firstTargetNumber == thirdTargetNumber) || (secondTargetNumber == thirdTargetNumber)) {
             thirdTargetNumber = RandomUtils.nextInt(1, 9);
         }
+
         return (firstTargetNumber*100) + (secondTargetNumber*10) + (thirdTargetNumber);
     }
 
