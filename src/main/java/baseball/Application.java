@@ -31,7 +31,7 @@ public class Application {
             if (noError) {
                 result = compare(target, inputNumber);
 
-                System.out.printf("%d볼 %d스트라이크", result[0], result[1]);
+                System.out.printf("%d볼 %d스트라이크%n", result[0], result[1]);
             }
 
         }
@@ -39,9 +39,16 @@ public class Application {
 
     public static int[] setTarget() {
         int[] target = new int[TARGET_LENGTH];
-        for (int i = 0; i < 3; i++) {
-            target[i] = utils.RandomUtils.nextInt(1, 9);
+        int i = 0;
+        while (i < TARGET_LENGTH) {
+            int temp = utils.RandomUtils.nextInt(1, 9);
+            int sameNumber = isThereNumber(target, temp);
+            if (sameNumber == 0) {
+                target[i] = temp;
+                i++;
+            }
         }
+
         return target;
     }
 
