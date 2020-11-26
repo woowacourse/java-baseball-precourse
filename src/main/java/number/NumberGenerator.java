@@ -22,7 +22,7 @@ public class NumberGenerator {
 
     // flag 변수를 초기화 시키는 함수
     public static int[] initFlag() {
-        for(int i = MINIMUM_INDEX; i <= MAXIMUM_INDEX; i++) {
+        for (int i = MINIMUM_INDEX; i <= MAXIMUM_INDEX; i++) {
             flag[i] = FALSE;
         }
 
@@ -35,13 +35,13 @@ public class NumberGenerator {
         flag = initFlag();
 
         // 임의의 수 3개를 정한다.
-        while(programNumber.size() != RANDOM_SIZE) {
+        while (programNumber.size() != RANDOM_SIZE) {
             // 1에서 9까지 범위 내에서 임의의 수를 구한다.
             int random = RandomUtils.nextInt(MINIMUM_NUMBER, MAXIMUM_NUMBER);
             int index = random - 1;
 
             // 아직 구한 숫자가 사용되지 않은 경우 해당 임의의 수를 사용한다.
-            if(flag[index] == FALSE) {
+            if (flag[index] == FALSE) {
                 programNumber.add(random);
                 flag[index] = TRUE;
             }
