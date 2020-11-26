@@ -108,7 +108,7 @@ private static final Random RANDOM = new Random();
 
 ## 📚구현 기능 목록
 
-프로그램이 임의의 3자리 생성하기
+프로그램이 임의의 3자리 생성 및 세팅
 
 플레이어에게 3자리 수 입력 받고 힌트 전달(출력)
  * 입력
