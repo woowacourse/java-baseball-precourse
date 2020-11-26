@@ -5,6 +5,7 @@ import java.util.Scanner;
 import utils.RandomUtils;
 
 public class Application {
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
@@ -22,5 +23,17 @@ public class Application {
         }
         // TODO 유효성 검사
         return answerNumberList;
+    }
+
+    public static ArrayList<Integer> getUserInput(Scanner scanner) {
+        ArrayList<Integer> userInputNumberList = new ArrayList<>();
+        String userInput = scanner.nextLine();
+        for (int i = 0; i < userInput.length(); i++) {
+            if (!Character.isDigit(userInput.charAt(i))) {
+                throw new IllegalArgumentException("비정상적인 입력입니다.");
+            }
+            userInputNumberList.add(Character.getNumericValue(userInput.charAt(i)));
+        }
+        return userInputNumberList;
     }
 }
