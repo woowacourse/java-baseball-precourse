@@ -130,4 +130,44 @@ class BaseballUtilsTest {
         Assertions.assertThrows(IllegalArgumentException.class,
             () -> BaseballUtils.getPlayerNumbers(scanner));
     }
+
+    @Test
+    public void Should_True_When_AnswerIsRestart() {
+        String data = "1";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        boolean isRestart = BaseballUtils.askRestart(scanner);
+        assertThat(isRestart).isTrue();
+    }
+
+    @Test
+    public void Should_False_When_AnswerIsNotRestart() {
+        String data = "2";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        boolean isRestart = BaseballUtils.askRestart(scanner);
+        assertThat(isRestart).isFalse();
+    }
+
+    @Test
+    public void Should_ThrownException_When_AnswerIsNotNumber() {
+        String data = "Yes";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> BaseballUtils.askRestart(scanner));
+    }
+
+    @Test
+    public void Should_ThrownException_When_AnswerIsNotOneOrTwo() {
+        String data = "3";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> BaseballUtils.askRestart(scanner));
+    }
 }
