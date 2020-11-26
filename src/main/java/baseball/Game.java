@@ -91,7 +91,13 @@ public class Game {
     }
 
     private static int valueInsert(Scanner scanner) {
+        int input;
         System.out.print("숫자를 입력해주세요 : ");
-        return scanner.nextInt();
+        try {
+            input = scanner.nextInt();
+            return input;
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
