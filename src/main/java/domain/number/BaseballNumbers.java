@@ -29,13 +29,9 @@ public class BaseballNumbers {
     private static void generateRandomBaseballNumber(List<BaseballNumber> baseballNumbers) {
         int randomNumber = RandomUtils.nextInt(1, 9);
         BaseballNumber randomBaseballNumber = BaseballNumber.of(randomNumber);
-        if (!isDuplicated(baseballNumbers, randomBaseballNumber)) {
+        if (!randomBaseballNumber.isDuplicated(baseballNumbers)) {
             baseballNumbers.add(randomBaseballNumber);
         }
-    }
-
-    private static boolean isDuplicated(List<BaseballNumber> baseballNumbers, BaseballNumber randomBaseballNumber) {
-        return baseballNumbers.contains(randomBaseballNumber);
     }
 
     public List<Integer> getBaseballNumbers() {
