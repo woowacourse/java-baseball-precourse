@@ -33,6 +33,16 @@
 
 <br>
 
+### 🚨 유의 사항
+
+아래의 사항들을 반복적으로 체크하자!
+
+- [JAVA Code Convetion](https://velog.io/@bosl95/JAVA-Code-Convention)
+- [Commit Message Convention](https://velog.io/@bosl95/Commit-Message-Convention)
+- [추가 고려할 사항들](https://hodol.dev/posts/%EC%9A%B0%EC%95%84%ED%95%9C%ED%85%8C%ED%81%AC%EC%BD%94%EC%8A%A4-%ED%94%84%EB%A6%AC%EC%BD%94%EC%8A%A4-%EC%A4%80%EB%B9%84)
+
+<br>
+
 ## ✍🏻 입출력 요구사항
 ### ⌨️ 입력
 - 3자리의 수
