@@ -135,6 +135,7 @@ public class Application {
                 isValidGuess = true;
             } catch (IllegalArgumentException e) {
                 System.out.println("3자리 정수만 입력 가능합니다. 다시 입력 해주세요!");
+                scanner.nextLine();
             }
         }
 
@@ -162,7 +163,7 @@ public class Application {
         }
         System.out.println("숫자를 맞히셨습니다! 게임 종료");
 
-        // 게임 끝난후 게임 더할 건지 말건지에 대해서 기능 추가하기!
+        // 게임 계속 플레이 혹은 종료
         boolean isValidInput = false;
         while (!isValidInput) {
             try {
@@ -170,6 +171,7 @@ public class Application {
                 isValidInput = true;
             } catch (IllegalArgumentException e) {
                 System.out.println("1 혹은 2만 입력 가능합니다");
+                scanner.nextLine();
             }
         }
     }
