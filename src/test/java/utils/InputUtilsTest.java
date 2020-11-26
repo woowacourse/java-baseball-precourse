@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-class InputUtils {
+class InputUtilsTest {
     public Scanner createInput(){
         return new Scanner("0135");
     }
