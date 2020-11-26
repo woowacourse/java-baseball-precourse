@@ -1,6 +1,13 @@
-package baseball.domain;
+package baseball;
 
 import java.util.Scanner;
+
+import baseball.domain.Batter;
+import baseball.domain.Count;
+import baseball.domain.FixedNumbersGenerator;
+import baseball.domain.Pitcher;
+import baseball.domain.RandomNumbersGenerator;
+import baseball.domain.ScoreBoard;
 
 public class BaseballGame {
 
