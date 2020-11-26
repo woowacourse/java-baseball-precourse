@@ -4,15 +4,15 @@ import utils.RandomUtils;
 
 import java.util.ArrayList;
 
-public class BaseballNumber {
+public class AnswerNumber {
     private static final int NUMBER_LENGTH = 3;
     private final ArrayList<Integer> answerNumber;
 
-    public BaseballNumber() {
-        answerNumber = setAnswerNumber();
+    public AnswerNumber(ArrayList<Integer> answerNumber) {
+        this.answerNumber = answerNumber;
     }
 
-    public ArrayList<Integer> setAnswerNumber(){
+    public static ArrayList<Integer> makeAnswerNumber(){
         ArrayList<Integer> randomNumberList = new ArrayList<>();
         while(randomNumberList.size() < NUMBER_LENGTH) {
             int number = RandomUtils.nextInt(1, 9);
@@ -21,5 +21,13 @@ public class BaseballNumber {
             }
         }
         return randomNumberList;
+    }
+
+    public ArrayList<Integer> getAnswerNumber(){
+        return answerNumber;
+    }
+
+    public static AnswerNumber creatAnswerNumber(){ //객체를 생성하는 메소드
+        return new AnswerNumber(makeAnswerNumber());
     }
 }
