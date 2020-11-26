@@ -15,4 +15,12 @@ public class BaseballNumber {
         BaseballNumberValidator.validateBaseballNumber(numbers);
         this.numbers = numbers;
     }
+
+    public boolean isStrike(BaseballNumber baseballNumber, int idx) {
+        return numbers.get(idx).equals(baseballNumber.numbers.get(idx));
+    }
+
+    public boolean isBall(BaseballNumber baseballNumber, int idx) {
+        return baseballNumber.numbers.contains(numbers.get(idx));
+    }
 }
