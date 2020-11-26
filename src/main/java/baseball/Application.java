@@ -1,6 +1,9 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import utils.RandomUtils;
 
 public class Application {
 
@@ -9,7 +12,22 @@ public class Application {
     }
 
     public static int generateAnswer() {
-        return -1;
+        List<Integer> answer = new ArrayList<Integer>();
+
+        for(int i = 0; i < 3; i++) {
+            int currentValue;
+            do{
+                currentValue = RandomUtils.nextInt(0, 9);
+            }while(answer.contains(currentValue));
+            answer.add(currentValue);
+        }
+
+        int intAnswer = 0;
+        for(int i = 0; i < 3; i++) {
+            intAnswer += (int)Math.pow(10, i) * answer.get(i);
+        }
+
+        return intAnswer;
     }
 
     public static void playBaseball(int answer, Scanner scanner) {
