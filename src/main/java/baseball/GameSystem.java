@@ -22,6 +22,9 @@ public class GameSystem {
             setUserNumbers(sc);
             calcScore();
             user.printInfoForTest();
+            if (user.getStrike() == 3) {
+                break;
+            }
         }
     }
 

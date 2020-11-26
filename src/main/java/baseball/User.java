@@ -36,7 +36,7 @@ public class User {
     public void setNumbers(int num) {
         for (int i = 0; i < MAX_DIGIT; i++) {
             numbers[i] = num / 100;
-            num *= 10;
+            num = (num % 100) * 10;
         }
     }
 
