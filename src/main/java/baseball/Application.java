@@ -3,8 +3,55 @@ package baseball;
 import java.util.Scanner;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public int[] splitNumber(int input) {
+        int[] resultSplit = new int[3];
+        int currentIndex = 2;
+        while (input > 0) {
+            int currentRest = input % 10;
+            input /= 10;
+            resultSplit[currentIndex] = currentRest;
+            currentIndex--;
+        }
+        return resultSplit;
+    }
+
+    public boolean hasDuplicateNumber(int input) {
+        int[] eachNumber = splitNumber(input);
+        if (eachNumber[0] == eachNumber[1] || eachNumber[0] == eachNumber[2] || eachNumber[1] == eachNumber[2]) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void inputValidation(int input) {
+        if (input < 123 || 987 < input || hasDuplicateNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void main(String[] args) throws IllegalArgumentException {
         final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
+        Application application = new Application();
+        AskQuestion askQuestion = new AskQuestion();
+        GameData gameData = new GameData();
+        gameData.selectRandomNumber();
+
+        while (askQuestion.getKeepGoing()) {
+            try {
+                // verify input
+                System.out.print("숫자를 입력해주세요 : ");
+                int userInput = scanner.nextInt();
+                application.inputValidation(userInput);
+
+                // game start
+                GameRound gameRound = new GameRound(gameData, userInput);
+                gameRound.playGameRound(scanner, askQuestion);
+            } catch (Exception e) {
+                System.out.println("유효하지 않은 입력입니다. 다시 입력해주세요.");
+                scanner.nextLine(); // buffer flush
+            }
+        }
     }
 }
