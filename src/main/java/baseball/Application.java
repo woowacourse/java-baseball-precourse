@@ -9,14 +9,20 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
 
-        int[] target = setTarget();
+        int[] target = new int[TARGET_LENGTH];
         int[] inputNumber = new int[TARGET_LENGTH];
         int[] result = new int[2];
         boolean isEnd = false;
         boolean noError = false;
-        boolean restart = false;
+        boolean restart = true;
 
         while (true) {
+            if (restart) {
+                target = setTarget();
+                isEnd = false;
+                restart = false;
+            }
+
             try {
                 inputNumber = getInputNumber(scanner);
                 noError = true;
@@ -31,20 +37,11 @@ public class Application {
             }
 
             if (isEnd) {
-                try {
-                    restart = restartGame(scanner);
-                } catch (IllegalArgumentException e) {
-                    System.out.println("오류 : 1과 2만 입력 가능!");
-//                    break;
-                }
+                restart = restartGameException(scanner);
+            }
 
-                if (restart) {
-                    target = setTarget();
-                    isEnd = false;
-                    restart = false;
-                } else {
-                    break;
-                }
+            if (isEnd && !restart) {
+                break;
             }
         }
     }
@@ -164,5 +161,13 @@ public class Application {
         return restart;
     }
 
-
+    public static boolean restartGameException(Scanner scanner) {
+        boolean restart = false;
+        try {
+            restart = restartGame(scanner);
+        } catch (IllegalArgumentException e) {
+            System.out.println("오류 : 1과 2만 입력 가능!");
+        }
+        return restart;
+    }
 }
