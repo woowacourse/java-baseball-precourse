@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.HashSet;
 import java.util.Scanner;
 import utils.RandomUtils;
 
@@ -44,8 +45,14 @@ public class Application {
 
     public static int[] createRandomNumber() {
         int[] randomNumberArray = new int[3];
+        HashSet<Integer> tempHashSet = new HashSet<>();
         for (int i = 0; i < 3; i++) {
-            randomNumberArray[i] = RandomUtils.nextInt(1, 9);
+            int uniqueNumber = RandomUtils.nextInt(1, 9);
+            while (tempHashSet.contains(uniqueNumber)) {
+                uniqueNumber = RandomUtils.nextInt(1, 9);
+            }
+            tempHashSet.add(uniqueNumber);
+            randomNumberArray[i] = uniqueNumber;
         }
         return randomNumberArray;
     }
