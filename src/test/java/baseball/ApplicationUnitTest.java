@@ -38,13 +38,25 @@ public class ApplicationUnitTest {
     }
 
     @Test
-    public void testToStringAnswer() {
+    public void testIsCorrect() throws Error {
+        assertEquals(true, Application.isCorrect(new Hint(3, 0)));
+        assertEquals(false, Application.isCorrect(new Hint(2, 0)));
+    }
+
+    @Test
+    public void testToStringAnswer() throws Error {
         assertEquals("456", Application.toStringAnswer(456));
         assertEquals("012", Application.toStringAnswer(12));
     }
 
     @Test
-    public void testIsSubmittedAnswerValid() {
+    public void testIsHeadZeroOmitted() throws Error {
+        assertEquals(true, Application.isHeadZeroOmitted("45"));
+        assertEquals(false, Application.isHeadZeroOmitted("345"));
+    }
+
+    @Test
+    public void testIsSubmittedAnswerValid() throws Error {
         assertEquals(true, Application.isSubmittedAnswerValid("456"));
         assertEquals(false, Application.isSubmittedAnswerValid("12"));
         assertEquals(false, Application.isSubmittedAnswerValid("abc"));
@@ -69,7 +81,7 @@ public class ApplicationUnitTest {
     }
 
     @Test
-    public void testCheckAnswer() {
+    public void testCheckAnswer() throws Error {
         Hint result = Application.checkAnswer("123", "123");
         assertEquals(3, result.getStrike());
         assertEquals(0, result.getBall());

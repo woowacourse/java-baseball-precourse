@@ -13,18 +13,21 @@ public class Application {
     }
 
     public static int generateAnswer() {
-        List<Integer> answer = new ArrayList<Integer>();
+        List<Integer> answer = new ArrayList<>();
+        final int answerLength = 3;
+        final int startInclusive = 0;
+        final int endInclusive = 9;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < answerLength; i++) {
             int currentValue;
             do {
-                currentValue = RandomUtils.nextInt(0, 9);
+                currentValue = RandomUtils.nextInt(startInclusive, endInclusive);
             } while (answer.contains(currentValue));
             answer.add(currentValue);
         }
 
         int intAnswer = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < answerLength; i++) {
             intAnswer += (int) Math.pow(10, i) * answer.get(i);
         }
 
@@ -32,10 +35,12 @@ public class Application {
     }
 
     public static void playBaseball(int answer, Scanner scanner) {
+        final String pleaseInputNumberMessage = "숫자를 입력해주세요 : ";
+
         Hint hint = new Hint(0, 0);
         String strAnswer = toStringAnswer(answer);
-        while (hint.getStrike() != 3) {
-            System.out.print("숫자를 입력해주세요 : ");
+        while (!isCorrect(hint)) {
+            System.out.print(pleaseInputNumberMessage);
             String submittedAnswer = scanner.nextLine();
             boolean validationResult = isSubmittedAnswerValid(submittedAnswer);
             if (!validationResult) {
@@ -46,28 +51,44 @@ public class Application {
         }
     }
 
+    public static boolean isCorrect(Hint hint) {
+        return hint.getStrike() == 3;
+    }
+
     public static String toStringAnswer(int answer) {
+        final String headZero = "0";
         String strAnswer = Integer.toString(answer);
-        if (strAnswer.length() == 2) {
-            strAnswer = "0" + strAnswer;
+        if (isHeadZeroOmitted(strAnswer)) {
+            strAnswer = headZero + strAnswer;
         }
         return strAnswer;
     }
 
+    public static boolean isHeadZeroOmitted(String strAnswer) {
+        return strAnswer.length() == 2;
+    }
+
     public static void printHint(Hint hint) {
-        StringBuffer sb = new StringBuffer();
+        final String ballText = "볼";
+        final String space = " ";
+        final String strikeText = "스트라이크";
+        final String nothingText = "낫싱";
+        final String newLine = "\n";
+        final String congratulationMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
+        StringBuilder sb = new StringBuilder();
         if (hint.getBall() > 0) {
-            sb.append(hint.getBall() + "볼 ");
+            sb.append(hint.getBall() + ballText + space);
         }
         if (hint.getStrike() > 0) {
-            sb.append(hint.getStrike() + "스트라이크");
+            sb.append(hint.getStrike() + strikeText);
         }
         if (sb.length() == 0) {
-            sb.append("낫싱");
+            sb.append(nothingText);
         }
-        sb.append("\n");
-        if (hint.getStrike() == 3) {
-            sb.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        sb.append(newLine);
+        if (isCorrect(hint)) {
+            sb.append(congratulationMessage + newLine);
         }
         System.out.print(sb.toString());
     }
@@ -79,11 +100,8 @@ public class Application {
 
         IntStream intStream = submittedAnswer.chars()
             .filter(element -> element >= 48 && element <= 57);
-        if (intStream.count() < 3) {
-            return false;
-        }
 
-        return true;
+        return intStream.count() == 3;
     }
 
     public static GameStatus decideNext(Scanner scanner) {
