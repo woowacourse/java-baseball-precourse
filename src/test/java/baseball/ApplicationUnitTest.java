@@ -53,20 +53,19 @@ public class ApplicationUnitTest {
 
     @Test
     public void testDecideNext() throws Error {
-        Scanner scanner = new Scanner(System.in);
         String input = "0";
         InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        assertThrows(IllegalArgumentException.class, () -> Application.decideNext(scanner));
+        final Scanner finalScanner = new Scanner(in);
+        assertThrows(IllegalArgumentException.class, () -> Application.decideNext(finalScanner));
 
         input = "1";
         in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        Scanner scanner = new Scanner(in);
         assertEquals(GameStatus.play, Application.decideNext(scanner));
 
         input = "2";
         in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        scanner = new Scanner(in);
         assertEquals(GameStatus.quit, Application.decideNext(scanner));
     }
 

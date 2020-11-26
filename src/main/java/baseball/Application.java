@@ -35,21 +35,28 @@ public class Application {
     }
 
     public static GameStatus decideNext(Scanner scanner) {
-        throw new IllegalArgumentException();
+        int input = scanner.nextInt();
+        if (input != 1 && input != 2) {
+            throw new IllegalArgumentException();
+        }
+        if (input == 2) {
+            return GameStatus.quit;
+        }
+        return GameStatus.play;
     }
 
     public static Hint checkAnswer(String answer, String submittedAnswer) {
 
         int strike = 0;
         int ball = 0;
-        for(int i = 0; i < 3; i++) {
-            if(answer.charAt(i) == submittedAnswer.charAt(i)) {
+        for (int i = 0; i < 3; i++) {
+            if (answer.charAt(i) == submittedAnswer.charAt(i)) {
                 strike++;
             }
-            if(answer.charAt(i) == submittedAnswer.charAt((i + 1) % 3)) {
+            if (answer.charAt(i) == submittedAnswer.charAt((i + 1) % 3)) {
                 ball++;
             }
-            if(answer.charAt(i) == submittedAnswer.charAt((i + 2) % 3)) {
+            if (answer.charAt(i) == submittedAnswer.charAt((i + 2) % 3)) {
                 ball++;
             }
         }
