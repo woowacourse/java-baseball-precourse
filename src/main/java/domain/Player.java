@@ -13,4 +13,8 @@ public abstract class Player {
 	public void setNumber(Integer number) {
 		numbers.add(number);
 	}
+	
+	public void clearNumbers() {
+		this.numbers = new ArrayList<Integer>();
+	}
 }
