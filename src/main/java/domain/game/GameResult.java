@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class GameResult {
-    private static final String STRIKE_KEY = "strike";
-    private static final String BALL_KEY = "ball";
+    private static final String STRIKE_KEY = "스트라이크";
+    private static final String BALL_KEY = "볼";
     private static final int VALID_KEY_COUNTS = 2;
 
     private final Map<String, Integer> gameResult;
