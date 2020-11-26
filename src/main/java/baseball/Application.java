@@ -12,14 +12,11 @@ public class Application {
         int[] target = setTarget();
         int[] inputNumber = new int[TARGET_LENGTH];
         int[] result = new int[2];
-        boolean loop = false;
+        boolean isEnd = false;
         boolean noError = false;
+        boolean restart = false;
 
-        System.out.print(target[0]);
-        System.out.print(target[1]);
-        System.out.println(target[2]);
-
-        while (!loop) {
+        while (true) {
             try {
                 inputNumber = getInputNumber(scanner);
                 noError = true;
@@ -30,10 +27,20 @@ public class Application {
 
             if (noError) {
                 result = compare(target, inputNumber);
-                loop = outputResult(result);
+                isEnd = outputResult(result);
+            }
+
+            if (isEnd) {
+                restart = restartGame(scanner);
+                if (restart) {
+                    target = setTarget();
+                    isEnd = false;
+                    restart = false;
+                } else {
+                    break;
+                }
             }
         }
-
     }
 
     public static int[] setTarget() {
@@ -116,15 +123,15 @@ public class Application {
     public static boolean outputResult(int[] result) {
         boolean endGame = false;
 
-        if(result[0] != 0){
+        if (result[0] != 0) {
             System.out.print(result[0] + "볼 ");
         }
 
-        if(result[1] != 0){
+        if (result[1] != 0) {
             System.out.print(result[1] + "스트라이크");
         }
 
-        if(result[0] == 0 && result[1] == 0){
+        if (result[0] == 0 && result[1] == 0) {
             System.out.print("낫싱");
         }
 
@@ -135,5 +142,19 @@ public class Application {
             endGame = true;
         }
         return endGame;
+    }
+
+    public static boolean restartGame(Scanner scanner) {
+        boolean restart = false;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String answer = scanner.next();
+        if (answer.equals("1")) {
+            restart = true;
+        } else if (answer.equals("2")) {
+            restart = false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+        return restart;
     }
 }
