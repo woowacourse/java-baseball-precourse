@@ -8,7 +8,7 @@ public class Viewer {
     private static final int MAX_LENGTH_OF_BALL = 3;
     private static final char START_NUMBER_CHARACTER = '0';
     private static final char END_NUMBER_CHARACTER = '9';
-    private static final int START_INTEGER_NUMBER = 0;
+    private static final int START_INTEGER_NUMBER = 1;
     private static final int END_INTEGER_NUMBER = 9;
     private static final int NOTHING_NUMBER = 0;
     private static final int RESTART_GAME_FLAG = 1;
@@ -52,7 +52,7 @@ public class Viewer {
 
         Set<Character> selectedBaseballNumberSet = new HashSet<>();
         for (char eachBallCharacter : inputBallData.toCharArray()) {
-            if (START_NUMBER_CHARACTER > eachBallCharacter || eachBallCharacter > END_NUMBER_CHARACTER
+            if (START_NUMBER_CHARACTER >= eachBallCharacter || eachBallCharacter > END_NUMBER_CHARACTER
                     || !selectedBaseballNumberSet.add(eachBallCharacter)) {
                 return false;
             }
