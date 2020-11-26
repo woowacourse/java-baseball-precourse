@@ -35,7 +35,7 @@ class InputValidationTest {
     }
 
     @Test
-    public void 입력값_중복여부를_검증한다() throws Exception {
+    public void 입력값_중복여부_검증한다() throws Exception {
         //given
         String str = "346";
 
