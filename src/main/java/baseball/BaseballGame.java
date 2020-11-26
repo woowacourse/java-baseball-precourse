@@ -9,6 +9,8 @@ import utils.RandomNumbers;
  * @since 2020/11/26
  */
 public class BaseballGame {
+    public static final int BASEBALL_LIST_SIZE = 3;
+
     private final BaseballNumber baseballNumber;
 
     public BaseballGame() {
@@ -16,6 +18,6 @@ public class BaseballGame {
     }
 
     private List<Integer> createBaseballNumber() {
-        return RandomNumbers.valueOf(3);
+        return RandomNumbers.valueOf(BASEBALL_LIST_SIZE);
     }
 }
