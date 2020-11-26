@@ -26,4 +26,14 @@ public class Application {
         String inputValue=scanner.next();
         return inputValue;
     }
+
+    /* 유저가 입력한 숫자가 올바른 형식인지 검사하는 함수 */
+    public static boolean isValidInput(String inputValue){
+        boolean isValid=false;
+        for(int i=0;i<inputValue.length();i++){
+            // 개별 문자에 대해 형식이 맞는지 검사
+        }
+        return  isValid;
+    }
+
 }
