@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class InputView {
     private static final String INPUT_BASEBALL_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String INPUT_RESTART_OR_STOP_REQUEST_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ";
 
     public static BaseballNumbers inputBaseballNumbers(Scanner scanner) {
         System.out.print(INPUT_BASEBALL_NUMBERS_MESSAGE);
@@ -26,5 +27,11 @@ public class InputView {
             System.out.println(e.getMessage());
             return inputBaseballNumbers(scanner);
         }
+    }
+
+    public static String inputRestartOrStopRequest(Scanner scanner) {
+        System.out.println(INPUT_RESTART_OR_STOP_REQUEST_MESSAGE);
+
+        return scanner.nextLine();
     }
 }
