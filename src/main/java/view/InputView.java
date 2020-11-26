@@ -22,18 +22,18 @@ public class InputView {
         return inputBaseballNumbers;
     }
 
-    private static boolean isWrongPattern(String input) {
+    private static boolean isWrongPattern(String inputBaseballNumbers) {
         try {
-            validatePattern(input);
+            validatePattern(inputBaseballNumbers);
         } catch (IllegalArgumentException e) {
             return true;
         }
         return false;
     }
 
-    private static void validatePattern(String input) {
-        boolean isCorrectPattern = input.chars()
-                .filter(character -> MINIMUM_BASEBALL_NUMBER <= character && character <= MAXIMUM_BASEBALL_NUMBER)
+    private static void validatePattern(String inputBaseballNumbers) {
+        boolean isCorrectPattern = inputBaseballNumbers.chars()
+                .filter(number -> MINIMUM_BASEBALL_NUMBER <= number && number <= MAXIMUM_BASEBALL_NUMBER)
                 .distinct()
                 .count() == NONE_DUPLICATED_NUMBER_COUNTS;
         if (!isCorrectPattern) {
