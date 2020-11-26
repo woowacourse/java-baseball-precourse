@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
@@ -37,5 +38,30 @@ class JudgeResultTest {
         judgeResult.increment(judgement);
 
         assertEquals(judgeResult.get(judgement), expect);
+    }
+
+    @DisplayName("스트라이크가 3개면 게임은 완료 상태가 된다.")
+    @Test
+    void isComplete() {
+        final boolean expect = true;
+
+        for (int i = 0; i < 3; i++) {
+            judgeResult.increment(Judgement.STRIKE);
+        }
+
+        assertEquals(judgeResult.isComplete(), expect);
+    }
+
+    @DisplayName("스트라이크가 3개가 아니면 게임은 완료 상태가 되지 않는다.")
+    @Test
+    void isNotComplete() {
+        final boolean expect = false;
+
+        for (int i = 0; i < 2; i++) {
+            judgeResult.increment(Judgement.STRIKE);
+        }
+        judgeResult.increment(Judgement.BALL);
+
+        assertEquals(judgeResult.isComplete(), expect);
     }
 }

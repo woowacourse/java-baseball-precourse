@@ -1,5 +1,6 @@
 package baseball.domain.judge;
 
+import baseball.domain.pitching.Pitchings;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,5 +29,9 @@ public class JudgeResult {
 
     public int get(final Judgement judgement) {
         return value.getOrDefault(judgement, DEFAULT_COUNT);
+    }
+
+    public boolean isComplete() {
+        return get(Judgement.STRIKE) == Pitchings.SIZE;
     }
 }

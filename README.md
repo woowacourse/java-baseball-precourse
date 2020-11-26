@@ -16,6 +16,7 @@
 
 ### 게임(Game)
 투구들(Pitchings), 판정기(Judge), 판정 기록기(JudgeReport)를 가지고 있다.
+- 게임 시작(초기 생성) 시 랜덤한 투구들(Pitchings)과 모든 판정 규칙(JudgeRule)을 적용한 판정기(Judge), 그리고 비어있는 판정 기록기(JudgeReport)를 가진다.
 
 ### 투구(Pitching)
 1개의 숫자를 의미한다.
@@ -36,6 +37,8 @@
 
 ### 판정 기록기(JudgeReport)
 판정기가 투구마다 내린 판정들을 기록한다.
+- 특정 판정(Judgment)에 대한 카운팅과 카운트 확인이 가능하다.
+- 판정 기록기(JudgeReport)에서 스트라이크가 3개면 게임이 완료 상태가 되었다는 것을 알 수 있다.
 
 ### 판정(Judgment) - enum
 스트라이크, 볼, 낫싱

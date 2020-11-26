@@ -17,6 +17,10 @@ public class Judge {
         this.judgeRules = judgeRules;
     }
 
+    public static Judge of(final List<JudgeRule> judgeRules) {
+        return new Judge(judgeRules);
+    }
+
     public static Judge of(final JudgeRule... judgeRules) {
         return new Judge(Arrays.asList(judgeRules));
     }
