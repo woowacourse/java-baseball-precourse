@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.Computer;
-import baseball.domain.Numbers;
+import baseball.domain.InputNumbers;
 import baseball.domain.RandomNumbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -9,6 +9,8 @@ import baseball.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static baseball.domain.RandomNumbers.LIST_SIZE;
 
 public class GameController {
     private static final String RESTART_NUMBER = "1";
@@ -24,13 +26,13 @@ public class GameController {
 
     private void startGame(Scanner scanner) {
         Computer computer = new Computer();
-        Numbers numbers = new Numbers();
+        InputNumbers numbers = new InputNumbers();
 
         String inputNumbersList = InputView.getThreeNumbers(scanner);
         List<Integer> validNumbers = numbers.checkValidNumbers(inputNumbersList);
         computer.calculateResult(validNumbers, randomNumbersList);
         OutputView.printResult(computer.getCountsOfBall(), computer.getCountsOfStrike());
-        if (computer.getCountsOfStrike() != 3) {
+        if (computer.getCountsOfStrike() != LIST_SIZE) {
             startGame(scanner);
         } else {
             OutputView.printRestart();
