@@ -10,7 +10,7 @@ public class Validator {
 
     public static final String INVALID_VALUE_MESSAGE = "잘못된 값을 입력하셨습니다!";
 
-    public static final Pattern NUMBERS_PATTERN = Pattern.compile("[1-9]{" + "3" + "}");
+    public static final Pattern NUMBERS_PATTERN = Pattern.compile("[1-9]{" + 3 + "}");
 
     public void validateNumbers(Pattern pattern, String input) {
         checkNull(input);
