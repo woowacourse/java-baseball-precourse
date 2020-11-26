@@ -1,25 +1,25 @@
-package playBaseBall;
+package baseball;
 
 import java.util.Scanner;
-import playBaseBall.RandomUtils;
+import utils.*;
 
 public class Application {
 
 	public static void main(String[] args) {
 		final Scanner scanner = new Scanner(System.in);
 		// TODO 구현 진행
-		CheckDuplicate checkDuplicate = new CheckDuplicate();
-		int randomNum = CheckDuplicate.makeRandomNumber();
-		//System.out.println(randomNum);
-		
-		
-		//System.out.println(randomNumber);
-		CheckInputNumber checkInputNumber = new CheckInputNumber();
-		System.out.printf("세자리 숫자를 입력하시오 : ");
-		String inputNum = scanner.nextLine();
-		//System.out.println(checkInputNumber.isValid(inputNum));
 
+		CheckDuplicate checkDuplicate = new CheckDuplicate();
+		String randomNum = checkDuplicate.makeRandomNumber();
+		//System.out.println(randomNum);
+
+		CheckInputNumber checkInputNumber = new CheckInputNumber();
+		String input = checkInputNumber.inputNumber();
+		// System.out.println(checkInputNumber.isValid(inputNum));
+
+		StrikeBallNothingCorrect strikeBallNothingCorrect = new StrikeBallNothingCorrect(input, randomNum);
+		boolean test = strikeBallNothingCorrect.correctingNumbers();
+		//System.out.println(test);
 	}
-	
-	
+
 }
