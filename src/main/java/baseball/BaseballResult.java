@@ -44,6 +44,7 @@ public class BaseballResult {
         ballTypes.stream()
                 .filter(ballType -> countFor(ballType) > ZERO)
                 .forEach(ballType -> ballType.printNameWith(countFor(ballType)));
+        System.out.println();
     }
 
     //test에도 사용되어 public으로 선언

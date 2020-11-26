@@ -16,15 +16,19 @@ class BaseBallTest {
     @DisplayName("베이스볼 랜덤 값의 범위를 확인한다.")
     public void testRandomBaseballNumber() throws Exception {
         //given
-        int min_value = 1;
-        int max_value = 9;
-        //when
-        BaseBall randomBaseBall = BaseBall.createRandomBaseBall();
-        //then
-        for (Integer digit : randomBaseBall.getBaseballNumber()) {
-            System.out.println(digit);
-            assertTrue(digit >= min_value, "최소값을 초과합니다.");
-            assertTrue(digit <= max_value, "최대값을 초과합니다.");
+        final int MIN_VALUE = 1;
+        final int MAX_VALUE = 9;
+        final int COUNT = 1000; //random 숫자를 몇 회 생성할 지
+
+        for (int i = 0; i < COUNT; i++) {
+            //when
+            BaseBall randomBaseBall = BaseBall.createRandomBaseBall();
+
+            //then
+            for (Integer digit : randomBaseBall.getBaseballNumber()) {
+                assertTrue(digit >= MIN_VALUE, "최소값을 초과합니다.");
+                assertTrue(digit <= MAX_VALUE, "최대값을 초과합니다.");
+            }
         }
     }
 
