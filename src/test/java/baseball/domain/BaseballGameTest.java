@@ -73,4 +73,44 @@ class BaseballGameTest {
         //then
         assertThat(ballNumber).isEqualTo(expectedBallNumber);
     }
+
+    @DisplayName("정답과 일치하는 세자리 숫자를 입력했을 때, 정답과 일치하는지 확인하는 기능을 테스트한다 ")
+    @Test
+    void testIsCorrectToFunctionIfInputCorrectBaseballNumbers() {
+        //given
+        List<BaseballNumber> answerBaseballNumbers = Arrays.asList(1, 2, 3).stream()
+                .map(BaseballNumber::new)
+                .collect(Collectors.toList());
+        BaseballGame baseballGame = BaseballGame.play(() -> answerBaseballNumbers);
+
+        BaseballNumbers baseballNumbers = new BaseballNumbers(Arrays.asList(1, 2, 3).stream()
+                .map(BaseballNumber::new)
+                .collect(Collectors.toList()));
+
+        //when
+        boolean corrected = baseballGame.isCorrectTo(baseballNumbers);
+
+        //then
+        assertThat(corrected).isTrue();
+    }
+
+    @DisplayName("틀린 세자리 숫자를 입력했을 때, 정답과 일치하는지 확인하는 기능을 테스트한다 ")
+    @Test
+    void testIsCorrectToFunctionIfInputNotCorrectBaseballNumbers() {
+        //given
+        List<BaseballNumber> answerBaseballNumbers = Arrays.asList(1, 2, 3).stream()
+                .map(BaseballNumber::new)
+                .collect(Collectors.toList());
+        BaseballGame baseballGame = BaseballGame.play(() -> answerBaseballNumbers);
+
+        BaseballNumbers baseballNumbers = new BaseballNumbers(Arrays.asList(1, 2, 4).stream()
+                .map(BaseballNumber::new)
+                .collect(Collectors.toList()));
+
+        //when
+        boolean corrected = baseballGame.isCorrectTo(baseballNumbers);
+
+        //then
+        assertThat(corrected).isFalse();
+    }
 }

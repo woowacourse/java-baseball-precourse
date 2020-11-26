@@ -20,4 +20,8 @@ public class BaseballGame {
     public int countBall(BaseballNumbers baseballNumbers) {
         return this.baseballNumbers.compareBall(baseballNumbers);
     }
+
+    public boolean isCorrectTo(BaseballNumbers baseballNumbers) {
+        return this.baseballNumbers.isEqualTo(baseballNumbers);
+    }
 }

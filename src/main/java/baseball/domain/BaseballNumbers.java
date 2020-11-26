@@ -73,4 +73,10 @@ public class BaseballNumbers {
 
         return false;
     }
+
+    public boolean isEqualTo(BaseballNumbers baseballNumbers) {
+        List<BaseballNumber> otherBaseballNumbers = baseballNumbers.baseballNumbers;
+        return IntStream.range(0, BASEBALL_NUMBERS_LENGTH)
+                .allMatch(index -> this.baseballNumbers.get(index).equals(otherBaseballNumbers.get(index)));
+    }
 }
