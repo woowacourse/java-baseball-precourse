@@ -40,7 +40,8 @@ public class BaseBall {
 
     private static void validateNumber(int baseBallNumber) throws IllegalStateException {
         final int MAX_NUMBER = 999;
-        if (baseBallNumber > MAX_NUMBER) {
+        final int MIN_NUMBER = 100;
+        if (baseBallNumber > MAX_NUMBER || baseBallNumber < MIN_NUMBER) {
             throw new IllegalStateException("세자리 숫자를 입력해주세요.");
         }
     }

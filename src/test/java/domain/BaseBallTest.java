@@ -66,4 +66,17 @@ class BaseBallTest {
         assertEquals("세자리 숫자를 입력해주세요.",exception.getMessage());
 
     }
+
+    @Test
+    @DisplayName("입력 숫자가 최소값 초과시 에러 확인")
+    public void testBaseballNumberException() throws Exception{
+        //given
+        int inputNumber = 99;
+        //when
+        //then
+        IllegalStateException exception
+                = assertThrows(IllegalStateException.class, () -> BaseBall.createBaseBall(inputNumber));
+        assertEquals("세자리 숫자를 입력해주세요.",exception.getMessage());
+
+    }
 }
