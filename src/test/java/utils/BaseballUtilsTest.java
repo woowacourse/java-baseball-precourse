@@ -10,49 +10,73 @@ import static org.assertj.core.api.Assertions.assertThat;
 class BaseballUtilsTest {
 
     static final int NUMBER_COUNT = 3;
-    static final int MIN_NUMBER = 0;
+    static final int MIN_NUMBER = 1;
     static final int MAX_NUMBER = 9;
+    static final int MULTIPLE_CHECK_COUNT = 100;
 
     @Test
     public void Should_RightNumberCount() {
-        int[] randomNumbers = BaseballUtils.generateRandomNumbers();
+        boolean multipleCheck = true;
+        for (int i = 0; i < MULTIPLE_CHECK_COUNT; i++) {
+            int[] randomNumbers = BaseballUtils.generateRandomNumbers();
+            if (randomNumbers.length != NUMBER_COUNT) {
+                multipleCheck = false;
+                break;
+            }
+        }
 
-        assertThat(randomNumbers.length).isEqualTo(NUMBER_COUNT);
+        assertThat(multipleCheck).isTrue();
     }
 
     @Test
     public void Should_ValidDomainInteger() {
-        int[] randomNumbers = BaseballUtils.generateRandomNumbers();
+        boolean multipleCheck = true;
+        for (int i = 0; i < MULTIPLE_CHECK_COUNT; i++) {
+            int[] randomNumbers = BaseballUtils.generateRandomNumbers();
 
-        boolean isValidRandomNumber = true;
+            boolean isValidRandomNumber = true;
 
-        for (int random : randomNumbers) {
-            if (MIN_NUMBER >= random || random > MAX_NUMBER) {
-                isValidRandomNumber = false;
+            for (int random : randomNumbers) {
+                if (MIN_NUMBER > random || random > MAX_NUMBER) {
+                    isValidRandomNumber = false;
+                    break;
+                }
+            }
+
+            if (!isValidRandomNumber) {
+                multipleCheck = false;
                 break;
             }
         }
 
-        assertThat(isValidRandomNumber).isTrue();
+        assertThat(multipleCheck).isTrue();
     }
 
     @Test
     public void ShouldNot_DuplicatedInteger() {
-        int[] randomNumbers = BaseballUtils.generateRandomNumbers();
-        boolean[] checkDuplicated = new boolean[MAX_NUMBER + 1];
+        boolean multipleCheck = true;
+        for (int i = 0; i < MULTIPLE_CHECK_COUNT; i++) {
+            int[] randomNumbers = BaseballUtils.generateRandomNumbers();
+            boolean[] checkDuplicated = new boolean[MAX_NUMBER + 1];
 
-        boolean hasAnyDuplicatedRandomNumber = true;
+            boolean hasAnyDuplicatedRandomNumber = true;
 
-        for (int random : randomNumbers) {
-            if (checkDuplicated[random]) {
-                hasAnyDuplicatedRandomNumber = false;
-                break;
+            for (int random : randomNumbers) {
+                if (checkDuplicated[random]) {
+                    hasAnyDuplicatedRandomNumber = false;
+                    break;
+                }
+
+                checkDuplicated[random] = true;
             }
 
-            checkDuplicated[random] = true;
+            if (!hasAnyDuplicatedRandomNumber) {
+                multipleCheck = false;
+                break;
+            }
         }
 
-        assertThat(hasAnyDuplicatedRandomNumber).isTrue();
+        assertThat(multipleCheck).isTrue();
     }
 
     @Test
