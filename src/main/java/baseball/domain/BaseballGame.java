@@ -24,4 +24,8 @@ public class BaseballGame {
     public boolean isCorrectTo(BaseballNumbers baseballNumbers) {
         return this.baseballNumbers.isEqualTo(baseballNumbers);
     }
+
+    public void stop() {
+        playing = false;
+    }
 }
