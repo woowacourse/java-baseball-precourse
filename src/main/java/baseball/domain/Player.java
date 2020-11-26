@@ -7,7 +7,7 @@ public abstract class Player {
 
     public static final Pattern RETRY_PATTERN = Pattern.compile("^1$|^2$");
 
-    public static final String PLAY_AGAIN = "1";
+    public static final String END = "2";
 
     protected final NumbersGenerator generator;
 
@@ -20,9 +20,9 @@ public abstract class Player {
         this.validator = new Validator();
     }
 
-    public boolean wantsToPlayAgain(Scanner scanner) {
+    public boolean wantsToStop(Scanner scanner) {
         String input = scanner.nextLine();
         validator.validateNumbers(RETRY_PATTERN, input);
-        return input.equals(PLAY_AGAIN);
+        return input.equals(END);
     }
 }
