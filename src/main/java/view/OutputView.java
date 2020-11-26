@@ -7,30 +7,36 @@ public class OutputView {
     private static final String ANNOUNCE_NOTHING = "낫싱";
     private static final String SEPARATOR_ROUND = "\n";
     private static final String ANNOUNCE_ALL_CORRECT = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final int NUM_DIGIT = 3;
+
+    private OutputView(){}
 
     public static void printScore(int strikeCnt, int ballCnt){
         if(ballCnt == 0 && strikeCnt == 0){
-            System.out.print(ANNOUNCE_NOTHING);
-            System.out.print(SEPARATOR_ROUND);
+            printMsg(ANNOUNCE_NOTHING);
+            printMsg(SEPARATOR_ROUND);
             return;
         }
 
         if(ballCnt != 0) {
-            System.out.print(ballCnt);
-            System.out.print(ANNOUNCE_BALL_CNT);
-            System.out.print(SEPARATOR_BALL_STRIKE);
+            printMsg(ballCnt);
+            printMsg(ANNOUNCE_BALL_CNT);
+            printMsg(SEPARATOR_BALL_STRIKE);
         }
 
         if(strikeCnt != 0){
-            System.out.print(strikeCnt);
-            System.out.print(ANNOUNCE_STRIKE_CNT);
+            printMsg(strikeCnt);
+            printMsg(ANNOUNCE_STRIKE_CNT);
         }
 
-        System.out.print(SEPARATOR_ROUND);
+        printMsg(SEPARATOR_ROUND);
     }
 
     public static void announceAllCorrect(){
-        System.out.println(ANNOUNCE_ALL_CORRECT);
+        printMsg(ANNOUNCE_ALL_CORRECT);
+        printMsg(SEPARATOR_ROUND);
+    }
+
+    public static void printMsg(Object msg){
+        System.out.print(msg);
     }
 }
