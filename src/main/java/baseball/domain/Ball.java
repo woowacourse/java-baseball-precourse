@@ -26,7 +26,7 @@ public class Ball {
     }
 
     public List<Integer> userBallGenerator(Scanner sc) {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String num = sc.next();
         validateNumberCount(num);
         validateNumberRange(num);
