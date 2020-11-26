@@ -2,9 +2,7 @@ package baseball;
 
 import utils.RandomUtils;
 
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class Game {
     public static void gameStart(Scanner scanner){
@@ -22,15 +20,18 @@ public class Game {
     }
 
     private static int getRandomValue() {
-        Set<Integer> set = new HashSet<>();
+        List<Integer> list = new ArrayList<>();
         int result = 0;
         int index = 1;
 
         do {
-            set.add(RandomUtils.nextInt(1, 9));
-        } while (set.size() < 3);
+            int random = RandomUtils.nextInt(1, 9);
+            if (!list.contains(random)) {
+                list.add(random);
+            }
+        } while (list.size() < 3);
 
-        for (Integer s : set) {
+        for (Integer s : list) {
             result += s * index;
             index *= 10;
         }
