@@ -1,24 +1,28 @@
 package baseball.baseballGame;
 
-import utils.RandomUtils;
+import com.sun.tools.jdeprscan.scan.Scan;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game {
-    private List<Integer> answer;
-    private static final int NUM_SIZE = 3;
-    private static final int MIN_NUM = 1;
-    private static final int MAX_NUM = 9;
+    private static final int NUM_LENGTH = 3;
+    private List<Integer> answer = new ArrayList<>(NUM_LENGTH);
+    private List<Integer> playerAnswer = new ArrayList<>(NUM_LENGTH);
+    private Computer computer;
+    private Scanner scanner;
 
-    public Game() {
-        makeAnswer();
+    public Game(Scanner scanner) {
+        computer = new Computer();
+        this.scanner = scanner;
+       // computer.makeAnswer(answer, NUM_LENGTH);
     }
 
-    private void makeAnswer() {
-        for (int i = 0; i < NUM_SIZE; i++) {
-            answer.add(RandomUtils.nextInt(MIN_NUM, MAX_NUM));
-        }
-    }
+    public void start() {
+        Player player = new Player(scanner);
 
-    public void run(){}
+        playerAnswer = player.inputNumber(NUM_LENGTH);
+
+    }
 }
