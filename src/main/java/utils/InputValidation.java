@@ -2,15 +2,15 @@ package utils;
 
 import java.util.Arrays;
 
-import static baseball.domain.Number.*;
+import static baseball.domain.GameInfomation.*;
 
 public class InputValidation {
 
     public InputValidation() {
     }
 
-    public static void validateNumberCount(String num) {
-        if(num.length() != NUMBER_COUNT) {
+    public static void validateNumberLength(String num) {
+        if(num.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException("입력 값의 길이가 3이 아닙니다.");
         }
     }
@@ -19,7 +19,7 @@ public class InputValidation {
         boolean isOutOfRange = Arrays.stream(num.split(""))
                 .mapToInt(Integer::parseInt)
                 .filter(n -> (n > 0 && n < 10))
-                .count() != NUMBER_COUNT;
+                .count() != NUMBER_LENGTH;
         if(isOutOfRange) {
             throw new IllegalArgumentException("입력 값의 범위를 벗어났습니다.");
         }

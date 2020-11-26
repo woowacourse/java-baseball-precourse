@@ -6,25 +6,25 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-import static baseball.domain.Number.*;
+import static baseball.domain.GameInfomation.*;
 import static utils.InputValidation.validateSelectGameStatus;
 
 public class BaseBallGame {
 
     public int play(Scanner sc) {
         Ball ball = new Ball();
-        List<Integer> computer = ball.computerBallGenerator();
+        List<Integer> computer = ball.getComputerBall();
         while (true) {
-            List<Integer> user = ball.userBallGenerator(sc);
+            List<Integer> user = ball.getUserBall(sc);
             if(compareBall(computer, user)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                System.out.println(GAME_END_MESSAGE);
                 return selectGameStatus(sc);
             }
         }
     }
 
     private int selectGameStatus(Scanner sc) {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(SELECT_GAME_STATUS_MESSAGE);
         int status = sc.nextInt();
         validateSelectGameStatus(status);
         return status;
@@ -38,13 +38,13 @@ public class BaseBallGame {
     }
 
     private int calculateStrike(List<Integer> computer, List<Integer> user) {
-        return (int) IntStream.range(0, NUMBER_COUNT)
+        return (int) IntStream.range(0, NUMBER_LENGTH)
                 .filter(i -> computer.get(i).equals(user.get(i)))
                 .count();
     }
 
     private int calculateBall(List<Integer> computer, List<Integer> user) {
-        return (int) IntStream.range(0, NUMBER_COUNT)
+        return (int) IntStream.range(0, NUMBER_LENGTH)
                 .filter(i -> (!computer.get(i).equals(user.get(i))) &&
                         computer.contains(user.get(i)))
                 .count();
@@ -53,13 +53,13 @@ public class BaseBallGame {
     private void printGameResult(int strikeCount, int ballCount) {
         String message = "";
         if(ballCount != NUMBER_RANGE_ZERO) {
-            message += ballCount+"볼 ";
+            message += (ballCount + BALL);
         }
         if(strikeCount != NUMBER_RANGE_ZERO) {
-            message += strikeCount+"스트라이크 ";
+            message += (strikeCount + STRIKE);
         }
         if(message.length() == NUMBER_RANGE_ZERO) {
-            message += "낫싱";
+            message += NOTHING;
         }
         System.out.println(message);
     }

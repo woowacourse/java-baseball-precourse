@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.Scanner;
 
-import static baseball.domain.Number.GAME_START;
+import static baseball.domain.GameInfomation.GAME_START;
 
 public class Application {
     public static void main(String[] args) {
