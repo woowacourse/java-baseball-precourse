@@ -1,5 +1,8 @@
 package utils;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.DisplayName;
@@ -26,4 +29,24 @@ class RandomUtilsTest {
         }
     }
 
+    @Test
+    @DisplayName("올바르지 않은 범위 값을 입력한 경우")
+    void invalidParameter() {
+        assertAll(
+            // startInclusive > endInclusive
+            () -> assertThrows(IllegalArgumentException.class,
+                () -> RandomUtils.nextInt(endInclusive, startInclusive)),
+
+            // startInclusive < 0
+            () -> assertThrows(
+                IllegalArgumentException.class,
+                () -> RandomUtils.nextInt(-1, endInclusive))
+        );
+    }
+
+    @Test
+    @DisplayName("같은 값을 입력한 경우")
+    void equalsParameter() {
+        assertEquals(startInclusive, RandomUtils.nextInt(startInclusive, startInclusive));
+    }
 }
