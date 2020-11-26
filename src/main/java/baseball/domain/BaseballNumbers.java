@@ -22,6 +22,10 @@ public class BaseballNumbers {
         return numbers.size() != 3;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     public int getNumber(int numberIndex) {
         return numbers.get(numberIndex);
     }
