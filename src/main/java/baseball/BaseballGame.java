@@ -35,6 +35,9 @@ public class BaseballGame {
     private void compareNumbers(String computerNumbers, String playerNumbers) {
         countStrikeBall(computerNumbers, playerNumbers);
         OutputView.printStrikeBall(strikeCount, ballCount);
+        if(strikeCount == MIN_COUNT && ballCount == MIN_COUNT) {
+            OutputView.printNothing();
+        }
     }
 
     private void countStrikeBall(String computerNumbers, String playerNumbers) {
@@ -62,6 +65,9 @@ public class BaseballGame {
         }
         return false;
     }
+
+
+
 }
 
 
