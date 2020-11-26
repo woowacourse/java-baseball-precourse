@@ -14,14 +14,14 @@ class BaseballUtilsTest {
     static final int MAX_NUMBER = 9;
 
     @Test
-    public void randomNumbersCountTest() {
+    public void Should_RightNumberCount() {
         int[] randomNumbers = BaseballUtils.generateRandomNumbers();
 
         assertThat(randomNumbers.length).isEqualTo(NUMBER_COUNT);
     }
 
     @Test
-    public void randomNumbersValidTest() {
+    public void Should_ValidDomainInteger() {
         int[] randomNumbers = BaseballUtils.generateRandomNumbers();
 
         boolean isValidRandomNumber = true;
@@ -37,22 +37,22 @@ class BaseballUtilsTest {
     }
 
     @Test
-    public void randomNumbersDuplicatedTest() {
+    public void ShouldNot_DuplicatedInteger() {
         int[] randomNumbers = BaseballUtils.generateRandomNumbers();
         boolean[] checkDuplicated = new boolean[MAX_NUMBER + 1];
 
-        boolean isDuplicatedRandomNumber = true;
+        boolean hasAnyDuplicatedRandomNumber = true;
 
         for (int random : randomNumbers) {
             if (checkDuplicated[random]) {
-                isDuplicatedRandomNumber = false;
+                hasAnyDuplicatedRandomNumber = false;
                 break;
             }
 
             checkDuplicated[random] = true;
         }
 
-        assertThat(isDuplicatedRandomNumber).isTrue();
+        assertThat(hasAnyDuplicatedRandomNumber).isTrue();
     }
 
     @Test
@@ -63,7 +63,7 @@ class BaseballUtilsTest {
 
         int[] playerNumbers = BaseballUtils.getPlayerNumbers(scanner);
 
-        int[] testNumbers = new int[]{1,2,3};
+        int[] testNumbers = new int[]{1, 2, 3};
         assertThat(playerNumbers).isEqualTo(testNumbers);
     }
 
@@ -73,7 +73,8 @@ class BaseballUtilsTest {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Scanner scanner = new Scanner(System.in);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> BaseballUtils.getPlayerNumbers(scanner));
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> BaseballUtils.getPlayerNumbers(scanner));
     }
 
     @Test
@@ -82,7 +83,8 @@ class BaseballUtilsTest {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Scanner scanner = new Scanner(System.in);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> BaseballUtils.getPlayerNumbers(scanner));
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> BaseballUtils.getPlayerNumbers(scanner));
     }
 
     @Test
@@ -91,7 +93,8 @@ class BaseballUtilsTest {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Scanner scanner = new Scanner(System.in);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> BaseballUtils.getPlayerNumbers(scanner));
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> BaseballUtils.getPlayerNumbers(scanner));
     }
 
     @Test
@@ -100,6 +103,7 @@ class BaseballUtilsTest {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Scanner scanner = new Scanner(System.in);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> BaseballUtils.getPlayerNumbers(scanner));
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> BaseballUtils.getPlayerNumbers(scanner));
     }
 }

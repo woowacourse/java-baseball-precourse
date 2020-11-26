@@ -51,14 +51,14 @@ public class BaseballUtils {
             throw new IllegalArgumentException();
         }
 
-        for (int i = NUMBER_COUNT-1; i > 0; i--) {
-            int divison = (int)Math.pow(10, i);
-            int number = playerInput / divison;
-            playerInput = playerInput % divison;
+        for (int i = NUMBER_COUNT - 1; i > 0; i--) {
+            int division = (int) Math.pow(10, i);
+            int number = playerInput / division;
+            playerInput = playerInput % division;
 
-            playerNumbers[NUMBER_COUNT - i -1] = number;
+            playerNumbers[NUMBER_COUNT - i - 1] = number;
         }
-        playerNumbers[NUMBER_COUNT-1] = playerInput;
+        playerNumbers[NUMBER_COUNT - 1] = playerInput;
 
         for (int i = 0; i < NUMBER_COUNT; i++) {
             if (playerNumbers[i] <= MIN_NUMBER || playerNumbers[i] > MAX_NUMBER) {
