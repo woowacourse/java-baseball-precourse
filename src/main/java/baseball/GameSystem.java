@@ -55,6 +55,19 @@ public class GameSystem {
         user.setNumbers(num);
     }
 
+    private void calcScore() {
+        int ball = 0;
+        int strike = 0;
+        int[] userNumbers = user.getNumbers();
+
+        for (int i = 0; i < MAX_DIGIT; i++) {
+            ball += checkOneBall(i, userNumbers[i]);
+            strike += checkOneStrike(i, userNumbers[i]);
+        }
+        user.setBall(ball);
+        user.setStrike(strike);
+    }
+
     private int stringToValidNum(String string) throws IllegalArgumentException {
         if (!isStringLengthValid(string)) {
             throw new IllegalArgumentException("입력이 3자리가 아닙니다. 숫자 재입력이 필요합니다.");
@@ -95,6 +108,26 @@ public class GameSystem {
             }
         }
         return true;
+    }
+
+    private int checkOneBall(int position, int userNum) {
+        int ball = 0;
+
+        for (int i = 0; i < MAX_DIGIT; i++) {
+            if ((i != position) && (answer[i] == userNum)) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
+    private int checkOneStrike(int position, int userNum) {
+        int strike = 0;
+
+        if (answer[position] == userNum) {
+            strike++;
+        }
+        return strike;
     }
 
     public void printAnswerForTest() {
