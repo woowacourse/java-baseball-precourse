@@ -1,9 +1,12 @@
 package baseball.domain;
 
+import utils.RandomUtils;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BaseballNumbers {
     private static final String INPUT_BASEBALL_NUMBER_DUPLICATION_ERROR_MESSAGE = "중복되지 않는 숫자를 입력해주세요.";
@@ -15,6 +18,26 @@ public class BaseballNumbers {
     public BaseballNumbers(List<BaseballNumber> baseballNumbers) {
         validateBaseballNumbers(baseballNumbers);
         this.baseballNumbers = new ArrayList<>(baseballNumbers);
+    }
+
+    public static BaseballNumbers createAnswerBaseballNumbers() {
+        List<Integer> distinctBaseballNumbers = new ArrayList<>();
+        while (distinctBaseballNumbers.size() < BASEBALL_NUMBERS_LENGTH) {
+            int newBaseballNumber = RandomUtils.nextInt(BaseballNumber.MIN_BASEBALL_NUMBER,
+                    BaseballNumber.MAX_BASEBALL_NUMBER);
+            if (distinctBaseballNumbers.contains(newBaseballNumber)) {
+                continue;
+            }
+
+            distinctBaseballNumbers.add(newBaseballNumber);
+        }
+
+        List<BaseballNumber> baseballNumbers = distinctBaseballNumbers.stream()
+                .map(Integer::new)
+                .map(BaseballNumber::new)
+                .collect(Collectors.toList());
+
+        return new BaseballNumbers(baseballNumbers);
     }
 
     private void validateBaseballNumbers(List<BaseballNumber> baseballNumbers) {

@@ -3,8 +3,8 @@ package baseball.domain;
 import java.util.Objects;
 
 public class BaseballNumber {
-    private static final int MIN_BASEBALL_NUMBER = 1;
-    private static final int MAX_BASEBALL_NUMBER = 9;
+    public static final int MIN_BASEBALL_NUMBER = 1;
+    public static final int MAX_BASEBALL_NUMBER = 9;
     private static final String INPUT_BASEBALL_NUMBER_RANGE_ERROR_MESSAGE = "1 ~ 9 까지의 숫자만 입력해주세요! ";
 
     private final int baseballNumber;
