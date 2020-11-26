@@ -15,16 +15,19 @@ public class Application {
         int[] computerPickedNumbers = new int[NUMBER_LENGTH];
         int[] playerPickedNumbers = new int[NUMBER_LENGTH];
 
-        // 프로그램이 임의의 수 3개를 정하도록 하기
-        for(int i=0; i<NUMBER_LENGTH; i++) {
+        // 프로그램이 임의(1~9)의 수 3개를 정하도록 하기
+        for(int i = 0; i < NUMBER_LENGTH; i++) {
             computerPickedNumbers[i] = RandomUtils.nextInt(MIN_NUMBER, MAX_NUMBER);
         }
 
         System.out.print("숫자를 입력해주세요 : ");
-        // 플레이어가 3자리 수 입력하기
+        String playerInputString[] = scanner.next().split("");
+        if(!isRightLength(playerInputString, NUMBER_LENGTH))
+            throw new IllegalArgumentException();
+        if(!AreNumbers(playerInputString))
+            throw new IllegalArgumentException();
         for(int i = 0; i < NUMBER_LENGTH; i++) {
-            // 비정상적 입력에 대해서는 IllegalArgumentException을 발생시킨다.
-            playerPickedNumbers[i] = scanner.nextInt();
+            playerPickedNumbers[i] = Integer.parseInt(playerInputString[i]);
         }
 
         // 비교하기 -> 정답 맞출 경우 종료
@@ -37,8 +40,28 @@ public class Application {
         }
 
         // 결과 출력
-
         // 다시 할지 묻기
         // 비정상적 입력에 대해서는 IllegalArgumentException을 발생시킨다.
+
     }
+    public static boolean isRightLength(String[] string, int length_limit) {
+        if(string.length != length_limit) {
+            System.out.println(length_limit+" 자리의 숫자를 입력해주세요!");
+            return false;
+        }
+        return true;
+    }
+    public static boolean AreNumbers(String[] string) {
+        for(int i = 0; i<string.length; i++) {
+            try {
+                Integer.parseInt(string[i]);
+            } catch (Exception e) {
+                System.out.println("숫자를 입력해주세요!");
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }
