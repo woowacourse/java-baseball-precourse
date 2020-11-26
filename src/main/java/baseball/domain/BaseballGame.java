@@ -28,4 +28,8 @@ public class BaseballGame {
     public void stop() {
         playing = false;
     }
+
+    public boolean isPlaying() {
+        return playing;
+    }
 }
