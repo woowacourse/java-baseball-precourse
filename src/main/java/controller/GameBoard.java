@@ -29,7 +29,11 @@ public class GameBoard {
 
     public void initGameBoard() {
         goal = vendor.roll();
-        terminal = false;
+        setTerminal(false);
+    }
+
+    private void setTerminal(boolean terminal) {
+        this.terminal = terminal;
         checker.setTerminal(terminal);
     }
 
@@ -64,8 +68,7 @@ public class GameBoard {
         status.setBall(ball);
 
         if(status.isCorrect()) {
-            terminal = true;
-            checker.setTerminal(terminal);
+            setTerminal(true);
         }
 
         return status;
