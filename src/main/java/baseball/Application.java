@@ -114,26 +114,43 @@ public class Application {
     }
 
     public static int[] compareNumberOfPlayerAndComputer(String playerNumber, String computerNumber) {
-        String[] playerDigitArr = playerNumber.split("");
-        String[] computerDigitArr = computerNumber.split("");
-
-        int strike = 0;
-        int ball = 0;
-        for (int i = 0; i < playerDigitArr.length; i++) {
-            for (int j = 0; j < computerDigitArr.length; j++) {
-                if (playerDigitArr[i].equals(computerDigitArr[j])) {
-                    if (i == j) {
-                        strike++;
-                        break;
-                    }
-                     ball++;
-                    break;
-                }
-            }
-        }
-        int[] strikeAndBall = {strike, ball};
-        return strikeAndBall;
+        return getStrikeAndBallCount(playerNumber, computerNumber);
     }
+
+    public static int[] getStrikeAndBallCount(String playerNumber, String computerNumber) {
+        int ball = 0;
+        int strike = 0;
+        String[] playerDigitArr = playerNumber.split("");
+        for (int i = 0; i < playerDigitArr.length; i++) {
+            int indexOfSameDigitOfComputerNumber = getIndexOfSameDigitOfComputerNumber(playerDigitArr[i], computerNumber);
+            strike += getStrikeCount(indexOfSameDigitOfComputerNumber, i);
+            ball += getBallCount(indexOfSameDigitOfComputerNumber, i);
+        }
+
+        return new int[] {strike, ball};
+    }
+
+    public static int getIndexOfSameDigitOfComputerNumber(String playerDigit, String computerNumber) {
+        if (computerNumber.contains(playerDigit)) {
+            return computerNumber.indexOf(playerDigit);
+        }
+        return -1;
+    }
+
+    public static int getStrikeCount(int indexOfSameDigitOfComputerNumber, int indexOfSameDigitOfPlayerNumber) {
+        if (indexOfSameDigitOfComputerNumber == indexOfSameDigitOfPlayerNumber) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public static int getBallCount(int indexOfSameDigitOfComputerNumber, int indexOfSameDigitOfPlayerNumber) {
+        if (indexOfSameDigitOfComputerNumber != indexOfSameDigitOfPlayerNumber && indexOfSameDigitOfComputerNumber >= 0) {
+            return 1;
+        }
+        return 0;
+    }
+
     public static String getHint(int strike, int ball) {
         StringBuilder hint = new StringBuilder("");
         if (strike == 0 && ball == 0) {
