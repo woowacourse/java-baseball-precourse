@@ -17,7 +17,6 @@ public class Game {
                 System.out.println("입력숫자: " + guess);
                 compareToAnswer(guess, answer);
             }
-
         }
         else if (!scanner.hasNextInt()){
             scanner.next();
@@ -33,7 +32,6 @@ public class Game {
 
         for (int i = 0; i < 3; i++) {
             int idx = answerString.indexOf(guessString.charAt(i));
-            System.out.println("i: " + i + " idx: " + idx);
             if (idx == i) strike++;
             else if (idx > -1) ball++;
         }
