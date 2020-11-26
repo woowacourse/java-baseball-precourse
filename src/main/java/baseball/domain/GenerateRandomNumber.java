@@ -6,10 +6,13 @@ public class GenerateRandomNumber {
 
     public String getRandomNumber() {
         String randomNumber = "";
-        InputValidation inputValidation = new InputValidation(randomNumber);
+        InputValidation inputValidation;
+
         do {
             randomNumber = Integer.toString(RandomUtils.nextInt(123, 987));
-        } while(inputValidation.checkValidNumber());
+            inputValidation = new InputValidation(randomNumber);
+        } while(!inputValidation.checkValidNumber());
+
         return randomNumber;
     }
 }
