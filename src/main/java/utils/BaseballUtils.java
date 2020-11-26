@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class BaseballUtils {
 
     static final int NUMBER_COUNT = 3;
-    static final int MIN_NUMBER = 0;
+    static final int MIN_NUMBER = 1;
     static final int MAX_NUMBER = 9;
 
     public static int[] generateRandomNumbers() {
@@ -19,8 +19,8 @@ public class BaseballUtils {
                 continue;
             }
 
-            randomNumbers[count] = random;
-            checkNumbers[count++] = true;
+            randomNumbers[count++] = random;
+            checkNumbers[random] = true;
         }
 
         return randomNumbers;
@@ -61,7 +61,7 @@ public class BaseballUtils {
         playerNumbers[NUMBER_COUNT - 1] = playerInput;
 
         for (int i = 0; i < NUMBER_COUNT; i++) {
-            if (playerNumbers[i] <= MIN_NUMBER || playerNumbers[i] > MAX_NUMBER) {
+            if (playerNumbers[i] < MIN_NUMBER || playerNumbers[i] > MAX_NUMBER) {
                 System.out.println("범위 오류 발생");
                 throw new IllegalArgumentException();
             }
