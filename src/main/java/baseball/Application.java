@@ -14,17 +14,17 @@ public class Application {
     public static int generateAnswer() {
         List<Integer> answer = new ArrayList<Integer>();
 
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             int currentValue;
-            do{
+            do {
                 currentValue = RandomUtils.nextInt(0, 9);
-            }while(answer.contains(currentValue));
+            } while (answer.contains(currentValue));
             answer.add(currentValue);
         }
 
         int intAnswer = 0;
-        for(int i = 0; i < 3; i++) {
-            intAnswer += (int)Math.pow(10, i) * answer.get(i);
+        for (int i = 0; i < 3; i++) {
+            intAnswer += (int) Math.pow(10, i) * answer.get(i);
         }
 
         return intAnswer;
