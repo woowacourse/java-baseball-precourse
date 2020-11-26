@@ -33,7 +33,7 @@ public class BaseballGameController {
         while (!isAllStrike) {
             List<Integer> playerBaseball = viewer.createBallsNumberList();
             BaseballResult baseballResult = this.baseballGameRule
-                    .compareRandomBaseballAndPlayerBaseball(playerBaseball, randomBaseballList, randomBaseballSet);
+                    .guessRandomAndPlayerBaseball(playerBaseball, randomBaseballList, randomBaseballSet);
 
             isAllStrike = baseballResult.isAllStrike();
             int ballCount = baseballResult.getBaseballTypeFrequency(BaseballType.BALL);

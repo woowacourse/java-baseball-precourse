@@ -1,6 +1,5 @@
 package baseball.game;
 
-import baseball.controller.Viewer;
 import baseball.domain.BaseballType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,7 +34,7 @@ class BaseballGameRuleTest {
         Set<Integer> randomBaseballSet = new HashSet<>(randomBaseballList);
 
         // when
-        BaseballResult baseballResult = this.baseballGameRule.compareRandomBaseballAndPlayerBaseball(playerBaseballList,
+        BaseballResult baseballResult = this.baseballGameRule.guessRandomAndPlayerBaseball(playerBaseballList,
                 randomBaseballList, randomBaseballSet);
 
         // then
@@ -60,7 +59,7 @@ class BaseballGameRuleTest {
         Set<Integer> randomBaseballSet = new HashSet<>(randomBaseballList);
 
         // when
-        BaseballResult baseballResult = this.baseballGameRule.compareRandomBaseballAndPlayerBaseball(playerBaseballList,
+        BaseballResult baseballResult = this.baseballGameRule.guessRandomAndPlayerBaseball(playerBaseballList,
                 randomBaseballList, randomBaseballSet);
 
         // then
@@ -85,7 +84,7 @@ class BaseballGameRuleTest {
         Set<Integer> randomBaseballSet = new HashSet<>(randomBaseballList);
 
         // when
-        BaseballResult baseballResult = this.baseballGameRule.compareRandomBaseballAndPlayerBaseball(playerBaseballList,
+        BaseballResult baseballResult = this.baseballGameRule.guessRandomAndPlayerBaseball(playerBaseballList,
                 randomBaseballList, randomBaseballSet);
 
         // then
@@ -111,7 +110,7 @@ class BaseballGameRuleTest {
         Set<Integer> randomBaseballSet = new HashSet<>(randomBaseballList);
 
         // when
-        BaseballResult baseballResult = this.baseballGameRule.compareRandomBaseballAndPlayerBaseball(playerBaseballList,
+        BaseballResult baseballResult = this.baseballGameRule.guessRandomAndPlayerBaseball(playerBaseballList,
                 randomBaseballList, randomBaseballSet);
 
         // then
@@ -136,7 +135,7 @@ class BaseballGameRuleTest {
         Set<Integer> randomBaseballSet = new HashSet<>(randomBaseballList);
 
         // when
-        BaseballResult baseballResult = this.baseballGameRule.compareRandomBaseballAndPlayerBaseball(playerBaseballList,
+        BaseballResult baseballResult = this.baseballGameRule.guessRandomAndPlayerBaseball(playerBaseballList,
                 randomBaseballList, randomBaseballSet);
 
         // then
@@ -161,7 +160,7 @@ class BaseballGameRuleTest {
         Set<Integer> randomBaseballSet = new HashSet<>(randomBaseballList);
 
         // when
-        BaseballResult baseballResult = this.baseballGameRule.compareRandomBaseballAndPlayerBaseball(playerBaseballList,
+        BaseballResult baseballResult = this.baseballGameRule.guessRandomAndPlayerBaseball(playerBaseballList,
                 randomBaseballList, randomBaseballSet);
 
         // then
