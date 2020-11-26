@@ -3,19 +3,16 @@ package baseball;
 import java.util.Scanner;
 
 public class BaseBallGame {
+    private final GameManager gameManager;
 
-    private final User user;
-    private final NumberChecker numberChecker;
-
-    BaseBallGame(Scanner scanner) {
-        this.numberChecker = new NumberChecker();
-        this.user = new User(scanner, numberChecker);
+    public BaseBallGame(Scanner scanner) {
+        this.gameManager = new GameManager(scanner);
     }
 
-    void start() {
-        while (true) {
-            user.getUserInput();
-        }
+    public void start() {
+        do {
+            gameManager.start();
+        } while (gameManager.isContinue());
     }
 
 }
