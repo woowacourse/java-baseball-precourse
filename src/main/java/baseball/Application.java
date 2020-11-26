@@ -12,19 +12,29 @@ public class Application {
         int[] target = setTarget();
         int[] inputNumber = new int[TARGET_LENGTH];
         int[] result = new int[2];
+        boolean loop = false;
+        boolean noError = false;
 
-        System.out.println(target[0]);
+        System.out.print(target[0]);
+        System.out.print(target[1]);
+        System.out.println(target[2]);
 
-        try {
-            inputNumber = getInputNumber(scanner);
-        } catch (IllegalArgumentException e) {
-            System.out.println("오류 : 0을 제외한 서로 다른 3자리 숫자만 입력 가능!");
+        while (!loop) {
+            try {
+                inputNumber = getInputNumber(scanner);
+                noError = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println("오류 : 0을 제외한 서로 다른 3자리 숫자만 입력 가능!");
+                noError = false;
+            }
+
+            if (noError) {
+                result = compare(target, inputNumber);
+
+                System.out.printf("%d볼 %d스트라이크", result[0], result[1]);
+            }
+
         }
-
-        result = compare(target, inputNumber);
-
-        System.out.println(result[0]);
-        System.out.println(result[1]);
     }
 
     public static int[] setTarget() {
@@ -66,16 +76,20 @@ public class Application {
         int[] compareResult = new int[2];
         int ballAndStrike = 0;
         int strike = 0;
-        int ball = ballAndStrike - strike;
+        int ball = 0;
+
         for (int i = 0; i < TARGET_LENGTH; i++) {
             int temp = isThereNumber(target, inputNumber[i]);
             ballAndStrike = ballAndStrike + temp;
         }
+
         for (int i = 0; i < TARGET_LENGTH; i++) {
             if (target[i] == inputNumber[i]) {
                 strike++;
             }
         }
+
+        ball = ballAndStrike - strike;
 
         compareResult[0] = ball;
         compareResult[1] = strike;
