@@ -1,6 +1,7 @@
 package baseball.baseballGame;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,13 +13,13 @@ public class Player {
     }
 
     int inputExitButton(){
-       int response = scanner.nextInt();
+        String response = scanner.next();
 
-       if (response != 1 && response != 2) {
+        if (response.equals("1") && response.equals("2")) {
            throw new IllegalArgumentException();
        }
 
-       return response;
+       return Integer.parseInt(response);
     }
 
     List<Integer> inputNumber(int numLength) {
@@ -26,11 +27,11 @@ public class Player {
 
         String userInput = scanner.next();
 
-        if (isInvalidLength(userInput, numLength)) {
+        if (isInvalidLength(userInput, numLength)) {    // valid length : 3
             throw new IllegalArgumentException();
         }
 
-        if (isInvalidValue(userInput, numLength)) {
+        if (isInvalidValue(userInput, numLength)) {     // valid number : 1 ~ 9
             throw new IllegalArgumentException();
         }
 
