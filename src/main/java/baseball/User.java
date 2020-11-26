@@ -39,4 +39,14 @@ public class User {
             num *= 10;
         }
     }
+
+    public void printInfoForTest() {
+        System.out.print("3자리 수 : ");
+        for (int i = 0; i < MAX_DIGIT; i++) {
+            System.out.print(numbers[i]);
+        }
+        System.out.println();
+        System.out.println("볼 : " + ball);
+        System.out.println("스트라이크 : " + strike);
+    }
 }

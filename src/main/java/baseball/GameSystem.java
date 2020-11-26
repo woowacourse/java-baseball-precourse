@@ -18,7 +18,11 @@ public class GameSystem {
 
     public void playGame(Scanner sc) {
         setAnswer();
-        setUserNumbers(sc);
+        while (true) {
+            setUserNumbers(sc);
+            calcScore();
+            user.printInfoForTest();
+        }
     }
 
     private void setAnswer() {
