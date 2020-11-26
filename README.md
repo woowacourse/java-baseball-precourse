@@ -112,7 +112,7 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 <br>
 
 ## 🚩 구현할 기능 목록 
-- 모델 설계하기
+- ~~모델 설계하기~~
 - 숫자만 입력받기
 - 3자리의 수만 입력받기
 - 3자리에 각각 다른 수 입력받기
