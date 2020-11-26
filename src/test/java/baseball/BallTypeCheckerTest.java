@@ -73,4 +73,27 @@ class BallTypeCheckerTest {
         assertEquals(ZERO, actualStrikeCount);
     }
 
+    @Test
+    public void BallTypeCheckWithMultipleInputNumber() throws Exception{
+        //given
+        BaseBall randomBaseball = BaseBall.createBaseBall(135);
+        BaseBall answerBaseball = BaseBall.createBaseBall(135);
+        BaseBall twoStrikeBaseball = BaseBall.createBaseBall(136);
+        BaseBall twoBallOneStrikeBaseball = BaseBall.createBaseBall(315);
+        BaseBall nothingBaseball = BaseBall.createBaseBall(247);
+        //when
+        BallTypeChecker ballTypeChecker = BallTypeChecker.ballTypeCheckWith(randomBaseball);
+        BaseballResult answerResult = ballTypeChecker.startChecking(answerBaseball);
+        BaseballResult twoStrikeResult = ballTypeChecker.startChecking(twoStrikeBaseball);
+        BaseballResult twoBallOneStrikeResult = ballTypeChecker.startChecking(twoBallOneStrikeBaseball);
+        BaseballResult nothingResult = ballTypeChecker.startChecking(nothingBaseball);
+        //then
+        assertTrue(answerResult.isAnswer());
+        assertEquals(2, twoStrikeResult.countFor(BallType.STRIKE));
+        assertEquals(2, twoBallOneStrikeResult.countFor(BallType.BALL));
+        assertEquals(1, twoBallOneStrikeResult.countFor(BallType.STRIKE));
+        assertEquals(0, nothingResult.countFor(BallType.BALL));
+        assertEquals(0, nothingResult.countFor(BallType.STRIKE));
+    }
+
 }
