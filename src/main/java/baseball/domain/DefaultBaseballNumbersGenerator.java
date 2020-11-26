@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DefaultBaseballNumbersGenerator implements BaseballNumbersGenerator{
+public class DefaultBaseballNumbersGenerator implements BaseballNumbersGenerator {
 
     @Override
     public List<BaseballNumber> generateBaseballNumbers() {
