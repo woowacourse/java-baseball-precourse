@@ -10,7 +10,7 @@ import baseball.domain.Count;
 public class CountTest {
 
     @Test
-    @DisplayName("카운트의 속성은 1을 반환")
+    @DisplayName("카운트의 속성이 증가되는지 테스트")
     public void increaseCountTest() {
         Count count = new Count();
         count.increaseCount();
