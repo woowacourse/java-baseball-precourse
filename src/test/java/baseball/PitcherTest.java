@@ -26,6 +26,6 @@ public class PitcherTest {
 
         pitcher.receiveBalls();
 
-        assertThat(pitcher.pitch(numberIndex)).isEqualTo(numbers.charAt(numberIndex)-'0');
+        assertThat(pitcher.pitch(numberIndex)).isEqualTo(numbers.charAt(numberIndex) - '0');
     }
 }

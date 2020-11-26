@@ -31,18 +31,18 @@ public class BatterTest {
     @Test
     @DisplayName("스트라이크 반환 테스트")
     public void returnStrikeTest() {
-        assertThat(batter.swing(1,2)).isEqualTo(Judgment.STRIKE);
+        assertThat(batter.swing(1, 2)).isEqualTo(Judgment.STRIKE);
     }
 
     @Test
     @DisplayName("볼 반환 테스트")
     public void returnBallTest() {
-        assertThat(batter.swing(0,2)).isEqualTo(Judgment.BALL);
+        assertThat(batter.swing(0, 2)).isEqualTo(Judgment.BALL);
     }
 
     @Test
     @DisplayName("볼 반환 테스트")
     public void returnNothingTest() {
-        assertThat(batter.swing(0,4)).isEqualTo(Judgment.NOTHING);
+        assertThat(batter.swing(0, 4)).isEqualTo(Judgment.NOTHING);
     }
 }

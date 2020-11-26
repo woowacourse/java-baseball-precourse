@@ -3,7 +3,6 @@ package baseball;
 import java.util.Scanner;
 
 import baseball.domain.Batter;
-import baseball.domain.Count;
 import baseball.domain.FixedNumbersGenerator;
 import baseball.domain.Judgment;
 import baseball.domain.Pitcher;
