@@ -1,9 +1,7 @@
 package baseball;
 
-import utils.RandomUtils;
-
-import java.util.Arrays;
 import java.util.Scanner;
+import utils.RandomUtils;
 
 public class Application {
 
@@ -13,18 +11,20 @@ public class Application {
         int userInput;
         int[] inputNumber;
         int[] randomNumber;
+        boolean gameResult = false;
+        while (!gameResult) {
+            System.out.println("숫자를 입력해주세요 : ");
+            userInput = scanner.nextInt();
+            checkInputNumber(userInput);
+            inputNumber = createInputNumber(userInput);
+            randomNumber = createRandomNumber();
+            gameResult = diffArray(inputNumber, randomNumber);
+            if (gameResult) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                gameResult = restartGame();
+            }
+        }
 
-        System.out.println("숫자를 입력해주세요 : ");
-        userInput = scanner.nextInt();
-        checkInputNumber(userInput);
-        inputNumber = createInputNumber(userInput);
-        randomNumber = createRandomNumber();
-
-        // 입출력 검증 테스트용
-        System.out.println(Arrays.toString(inputNumber));
-        System.out.println(Arrays.toString(randomNumber));
-
-        diffArray(inputNumber, randomNumber);
     }
 
     public static void checkInputNumber(int numbers) {
@@ -64,24 +64,30 @@ public class Application {
                 }
             }
         }
-        if (strikeCount >= 3) {
+        if (strikeCount == 3) {
             System.out.println(strikeCount + "스트라이크");
-        }
-        if (strikeCount > 0 && ballCount > 0 && strikeCount != ballCount) {
+            gameResult = true;
+        } else if (strikeCount > 0 && ballCount > 0) {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-        }
-        if (strikeCount > 0 && ballCount <= 0) {
+        } else if (strikeCount > 0 && ballCount <= 0) {
             System.out.println(strikeCount + "스트라이크");
-        }
-        if (ballCount > 0 && strikeCount <= 0) {
+        } else if (ballCount > 0 && strikeCount <= 0) {
             System.out.println(ballCount + "볼");
-        }
-        if (ballCount <= 0 && strikeCount <= 0) {
+        } else if (ballCount <= 0 && strikeCount <= 0) {
             System.out.println("낫싱");
         }
-        if (strikeCount >= 3) {
-            gameResult = true;
-        }
         return gameResult;
+    }
+
+    private static boolean restartGame() {
+        Scanner scanner = new Scanner(System.in);
+        int userRestartInput;
+        boolean restart = true;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        userRestartInput = scanner.nextInt();
+        if (userRestartInput <= 1) {
+            restart = false;
+        }
+        return restart;
     }
 }
