@@ -18,8 +18,18 @@ public class Viewer {
     }
 
     List<Integer> createBallsNumberList() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String inputBallsDataToken = this.scanner.next();
+        while (true) {
+            try {
+                System.out.print("숫자를 입력해주세요 : ");
+                String inputBallsDataToken = this.scanner.next();
+                return this.validateInputDataForMakingList(inputBallsDataToken);
+            } catch (IllegalArgumentException exception) {
+                System.out.println("[ERROR] : 입력한 숫자 정보는 잘 못된 정보입니다.");
+            }
+        }
+    }
+
+    private List<Integer> validateInputDataForMakingList(String inputBallsDataToken) {
         if (!this.isValidEachdateInputBallData(inputBallsDataToken)) {
             throw new IllegalArgumentException();
         }
