@@ -104,6 +104,21 @@ private static final Random RANDOM = new Random();
 
 <br>
 
+
+
+## 기능목록
+
+* #0 함수모형
+* #1 임의의 랜덤 숫자 생성
+* #2 사용자 입력처리
+* #3 스트라이크 찾기
+* #4 볼 찾기
+* #5 상황 출력 함수
+* #6 게임함수
+* #7 게임 재시작 관련 함수
+
+
+
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
