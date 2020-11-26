@@ -17,12 +17,12 @@ class BallsTest {
         Balls balls = new Balls(ballList);
 
         //when
-        List<BallNumber> ballNumbers = balls.getBalls();
+        List<Integer> ballNumbers = balls.getBalls();
 
         //then
-        assertEquals(ballNumbers.indexOf(ballNumbers.get(0)), balls.containAt(new BallNumber(1)));
-        assertEquals(ballNumbers.indexOf(ballNumbers.get(1)), balls.containAt(new BallNumber(2)));
-        assertEquals(ballNumbers.indexOf(ballNumbers.get(2)), balls.containAt(new BallNumber(3)));
+        assertEquals(ballNumbers.get(0),balls.getBalls().get(0));
+        assertEquals(ballNumbers.get(1),balls.getBalls().get(1));
+        assertEquals(ballNumbers.get(2),balls.getBalls().get(2));
     }
 
     @Test
