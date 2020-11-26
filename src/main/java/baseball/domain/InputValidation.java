@@ -1,3 +1,13 @@
+/*
+ * InputValidation.java
+ *
+ * version 1.0
+ *
+ * 2020/11/27
+ *
+ * Copyright (c) 2020 Junhyoung Park
+ */
+
 package baseball.domain;
 
 import java.util.Arrays;
@@ -23,7 +33,8 @@ public class InputValidation {
     }
 
     private boolean isNumber() {
-        return Character.isDigit(Integer.valueOf(checkNumber));
+        String regExp = "^[0-9]+$";
+        return checkNumber.matches(regExp);
     }
 
     private boolean isDuplication() {
@@ -39,6 +50,7 @@ public class InputValidation {
 
     private boolean isValidLength() {
         final int NUMBER_LENGTH = 3;
+
         return checkNumber.length() == NUMBER_LENGTH;
     }
 }
