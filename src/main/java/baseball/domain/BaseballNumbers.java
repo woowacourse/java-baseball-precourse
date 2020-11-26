@@ -1,16 +1,16 @@
 package baseball.domain;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseballNumbers {
 
     public static final String DUPLICATE_NUMBER_MESSAGE = "중복된 값이 입력되었습니다!";
 
-    private final Set<Integer> numbers;
+    private final List<Integer> numbers;
 
     public BaseballNumbers(String inputNumbers) {
-        this.numbers = new HashSet<>();
+        this.numbers = new ArrayList<>();
         addNumbers(inputNumbers);
 
         if (hasDuplicateNumber()) {
@@ -24,6 +24,7 @@ public class BaseballNumbers {
 
     private void addNumbers(String inputNumbers) {
         inputNumbers.chars()
+                .distinct()
                 .mapToObj(number -> (char) number - '0')
                 .forEach(numbers::add);
     }
