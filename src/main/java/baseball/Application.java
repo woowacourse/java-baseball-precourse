@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 import utils.RandomUtils;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
+
 public class Application {
 
     private static final int NUMBERS_LENGTH = 3;
@@ -24,7 +26,7 @@ public class Application {
         return randomNumbers;
     }
 
-    private static int[] parseInputNumbers(String inputString) {
+    private static int[] parseInputString(String inputString) {
         int[] inputNumbers = new int[NUMBERS_LENGTH];
         for (int i = 0; i < NUMBERS_LENGTH; i++) {
             inputNumbers[i] = inputString.charAt(i) - '0';
@@ -44,6 +46,7 @@ public class Application {
             }
             return true;
         } catch (IllegalArgumentException e) {
+            e.printStackTrace();
             System.out.println("비정상적인 입력입니다.");
             return false;
         }
@@ -74,6 +77,63 @@ public class Application {
         return false;
     }
 
+    private static boolean checkResult(int strikes) {
+        if (strikes == NUMBERS_LENGTH) {
+            return true;
+        }
+        return false;
+    }
+
+    private static void printResult(int strikes, int balls, boolean nothing) {
+        String result = "";
+        if (nothing) {
+            result = "낫싱";
+        } else {
+            if (balls > 0) {
+                result += balls +"볼 ";
+            }
+            if (strikes > 0) {
+                result += strikes + "스트라이크";
+            }
+        }
+        System.out.println(result);
+    }
+
+    public static boolean gameStart(Scanner scanner) {
+        // 랜덤 숫자 생성
+        int[] answer = generateRandomNumbers();
+
+        String inputString = "";
+        boolean isCorrect = false;
+
+        while(!isCorrect) {
+            // 1~9로 이루어진 3자리 숫자 입력
+            System.out.println("숫자를 입력해주세요 : ");
+            inputString = scanner.next();
+
+            // 비정상적인 입력 확인
+            if (!isInputAcceptable(inputString)) {
+                continue;
+            }
+
+            // 스트라이크와 볼의 개수, 낫싱 여부 확인
+            int[] inputNumbers = parseInputString(inputString);
+            int[] numberOfStrikesAndBalls = countStrikesAndBalls(answer, inputNumbers);
+            int strikes = numberOfStrikesAndBalls[0];
+            int balls = numberOfStrikesAndBalls[1];
+            boolean nothing = isNothing(strikes, balls);
+
+            // 힌트 출력
+            printResult(strikes, balls, nothing);
+
+            // 정답 여부 확인
+            isCorrect = checkResult(strikes);
+        }
+
+        return false;
+    }
+
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
@@ -82,26 +142,9 @@ public class Application {
 
         // start game
         while (gameStart) {
-
-            int[] answer = generateRandomNumbers();
-            int[] inputNumbers = null;
-            String inputString = "";
-            int strikes = -1;
-            int balls = -1;
-            boolean nothing = false;
-
-            do {
-                System.out.println("숫자를 입력해주세요 : ");
-                inputString = scanner.nextLine();
-            } while (!isInputAcceptable(inputString));
-
-            inputNumbers = parseInputNumbers(inputString);
-            int[] numberOfStrikesAndBalls = countStrikesAndBalls(answer, inputNumbers);
-            strikes = numberOfStrikesAndBalls[0];
-            balls = numberOfStrikesAndBalls[1];
-            nothing = isNothing(strikes, balls);
-
-        } // end of game
+            gameStart = gameStart(scanner);
+        }
+        // end of game
 
     }
 }
