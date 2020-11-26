@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import baseball.domain.pitching.Pitching;
 import baseball.domain.pitching.Pitchings;
 import baseball.domain.pitching.exception.PitchingOutOfRangeException;
+import baseball.domain.pitching.exception.PitchingsInputNotDigitException;
 import baseball.domain.pitching.exception.PitchingsSizeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,6 +28,13 @@ class PitchingsTest {
     @ValueSource(strings = {"", "12", "1234"})
     void createInvalidSize(final String value) {
         assertThrows(PitchingsSizeException.class, () -> Pitchings.of(value));
+    }
+
+    @DisplayName("숫자가 아닌 문자가 포함된 값으로는 투구들을 만들 수 없다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"-12", "1#2", "1 2"})
+    void createNotOnlyDigit(final String value) {
+        assertThrows(PitchingsInputNotDigitException.class, () -> Pitchings.of(value));
     }
 
     @DisplayName("중복되지 않는 3자리 숫자로 투구들을 만든다.")

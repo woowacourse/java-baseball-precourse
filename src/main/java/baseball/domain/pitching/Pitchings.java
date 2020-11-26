@@ -1,6 +1,7 @@
 package baseball.domain.pitching;
 
 import baseball.domain.pitching.exception.PitchingsDuplicateException;
+import baseball.domain.pitching.exception.PitchingsInputNotDigitException;
 import baseball.domain.pitching.exception.PitchingsSizeException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +15,7 @@ public class Pitchings {
 
     public static final int SIZE = 3;
     private static final String DELIMITER = "";
+    private static final String ONLY_DIGIT_REGULAR = "^[0-9]*";
 
     private final List<Pitching> pitchings;
 
@@ -52,9 +54,17 @@ public class Pitchings {
     }
 
     private static void validate(final String value) {
+        if (!isOnlyDigit(value)) {
+            throw new PitchingsInputNotDigitException(value);
+        }
+
         if (value.length() != SIZE) {
             throw new PitchingsSizeException(value);
         }
+    }
+
+    private static boolean isOnlyDigit(final String value) {
+        return value.matches(ONLY_DIGIT_REGULAR);
     }
 
     public static Pitchings random() {
