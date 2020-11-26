@@ -1,5 +1,8 @@
 package utils;
 
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -52,4 +55,51 @@ class BaseballUtilsTest {
         assertThat(isDuplicatedRandomNumber).isTrue();
     }
 
+    @Test
+    public void Should_ParsingNumbers_When_ForValidInput() {
+        String data = "123";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        int[] playerNumbers = BaseballUtils.getPlayerNumbers(scanner);
+
+        int[] testNumbers = new int[]{1,2,3};
+        assertThat(playerNumbers).isEqualTo(testNumbers);
+    }
+
+    @Test
+    public void Should_ThrownException_When_ForNotIntInput() {
+        String data = "Hello";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> BaseballUtils.getPlayerNumbers(scanner));
+    }
+
+    @Test
+    public void Should_ThrownException_When_ForNotThreeIntInput() {
+        String data = "1234";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> BaseballUtils.getPlayerNumbers(scanner));
+    }
+
+    @Test
+    public void Should_ThrownException_When_ForZeroIntInput() {
+        String data = "204";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> BaseballUtils.getPlayerNumbers(scanner));
+    }
+
+    @Test
+    public void Should_ThrownException_When_ForDuplicatedIntInput() {
+        String data = "224";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> BaseballUtils.getPlayerNumbers(scanner));
+    }
 }
