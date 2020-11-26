@@ -19,4 +19,8 @@ public class Count {
     public void increaseCount() {
         count++;
     }
+
+    public boolean isZero() {
+        return count == 0;
+    }
 }
