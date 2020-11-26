@@ -151,7 +151,7 @@ public class Application {
                 number = guessNum(scanner);
                 isValidGuess = true;
             } catch (IllegalArgumentException e) {
-                System.out.println("서로 다른 숫자로 이루어진 3자리 정수만 입력 가능합니다");
+                System.out.println("1 에서 9 사이의 서로 다른 숫자로 이루어진 3자리 정수만 입력 가능합니다");
                 scanner.nextLine();
             }
         }
