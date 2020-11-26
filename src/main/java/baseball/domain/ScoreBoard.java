@@ -23,12 +23,12 @@ public class ScoreBoard {
         return ball.getCount();
     }
 
-    public void recordStrike() {
-        strike.increaseCount();
-    }
-
-    public void recordBall() {
-        ball.increaseCount();
+    public void record(Judgment judgment) {
+        if (judgment.equals(Judgment.STRIKE)) {
+            strike.increaseCount();
+        } else if (judgment.equals(Judgment.BALL)) {
+            ball.increaseCount();
+        }
     }
 
     public boolean hasZeroStrike() {
