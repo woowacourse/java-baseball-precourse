@@ -27,7 +27,7 @@ public class GameSystem {
         int tmpNum;
 
         while (digit < MAX_DIGIT) {
-            tmpNum = RandomUtils.nextInt(1, 10);
+            tmpNum = RandomUtils.nextInt(1, 9);
             if (!numCheck[tmpNum]) {
                 answer[digit] = tmpNum;
                 numCheck[tmpNum] = true;
@@ -56,11 +56,11 @@ public class GameSystem {
     }
 
     private int stringToValidNum(String string) throws IllegalArgumentException {
-        if (!isStringNumber(string)) {
-            throw new IllegalArgumentException("입력이 숫자가 아닙니다. 숫자 재입력이 필요합니다.");
-        }
         if (!isStringLengthValid(string)) {
             throw new IllegalArgumentException("입력이 3자리가 아닙니다. 숫자 재입력이 필요합니다.");
+        }
+        if (!isStringDigitValid(string)) {
+            throw new IllegalArgumentException("입력이 숫자로 이루어져 있지 않습니다. 숫자 재입력이 필요합니다.");
         }
         if (!isStringNoZero(string)) {
             throw new IllegalArgumentException("입력이 0을 포함합니다. 숫자 재입력이 필요합니다.");
@@ -68,18 +68,20 @@ public class GameSystem {
         return Integer.parseInt(string);
     }
 
-    private boolean isStringNumber(String string) {
-        try {
-            Integer.parseInt(string);
-        } catch (NumberFormatException e) {
+    private boolean isStringLengthValid(String string) {
+        if (string.length() != MAX_DIGIT) {
             return false;
         }
         return true;
     }
 
-    private boolean isStringLengthValid(String string) {
-        if (string.length() != MAX_DIGIT) {
-            return false;
+    private boolean isStringDigitValid(String string) {
+        int length = string.length();
+
+        for (int i = 0; i < length; i++) {
+            if (!Character.isDigit(string.charAt(i))) {
+                return false;
+            }
         }
         return true;
     }
