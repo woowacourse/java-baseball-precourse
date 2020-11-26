@@ -1,7 +1,7 @@
 package view;
 
 public class OutputView {
-
+    private static final int MIN_COUNT = 0;
     private static final String STRIKE_MESSAGE = "%d스트라이크\n";
     private static final String BALL_MESSAGE = "%d볼\n";
     private static final String STRIKE_BALL_MESSAGE = "%d스트라이크 %d볼\n";
@@ -10,16 +10,16 @@ public class OutputView {
     private static final String RESTART_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
 
-    public static void printStrike(int strikeCount) {
-        System.out.printf(STRIKE_MESSAGE, strikeCount);
-    }
-
-    public static void printBall(int ballCount) {
-        System.out.printf(BALL_MESSAGE, ballCount);
-    }
-
     public static void printStrikeBall(int strikeCount, int ballCount) {
-        System.out.printf(STRIKE_BALL_MESSAGE, strikeCount, ballCount);
+        if(strikeCount > MIN_COUNT && ballCount == MIN_COUNT) {
+            System.out.printf(STRIKE_MESSAGE, strikeCount);
+        }
+        if(strikeCount == MIN_COUNT && ballCount > MIN_COUNT) {
+            System.out.printf(BALL_MESSAGE, ballCount);
+        }
+        if(strikeCount > MIN_COUNT && ballCount > MIN_COUNT) {
+            System.out.printf(STRIKE_BALL_MESSAGE, strikeCount, ballCount);
+        }
     }
 
     public static void printNothing() {
