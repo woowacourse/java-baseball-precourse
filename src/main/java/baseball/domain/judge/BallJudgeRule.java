@@ -5,7 +5,15 @@ import baseball.domain.pitching.Pitchings;
 
 public class BallJudgeRule extends JudgeRule {
 
-    public BallJudgeRule() {
+    private static class LazyHolder {
+        public static final BallJudgeRule INSTANCE = new BallJudgeRule();
+    }
+
+    public static BallJudgeRule getInstance() {
+        return LazyHolder.INSTANCE;
+    }
+
+    private BallJudgeRule() {
         super(Judgement.BALL);
     }
 

@@ -63,7 +63,7 @@ class JudgeTest {
     @DisplayName("특정 위치에 있는 투구의 판정은 " + Judge.JUDGEMENT_BOUNDARY + "개가 아니면 안된다.")
     @Test
     void judgeMultipleJudgement() {
-        judge = Judge.of(new StrikeJudgeRule(), new StrikeJudgeRule(), new NothingJudgeRule());
+        judge = Judge.of(StrikeJudgeRule.getInstance(), StrikeJudgeRule.getInstance(), NothingJudgeRule.getInstance());
         final Pitchings base = Pitchings.of("123");
         final Pitchings target = Pitchings.of("123");
 

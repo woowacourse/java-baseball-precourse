@@ -6,6 +6,10 @@ import java.util.List;
 public class JudgeRuleFactory {
 
     public static List<JudgeRule> getAll() {
-        return Arrays.asList(new StrikeJudgeRule(), new BallJudgeRule(), new NothingJudgeRule());
+        return Arrays.asList(
+            StrikeJudgeRule.getInstance(),
+            BallJudgeRule.getInstance(),
+            NothingJudgeRule.getInstance()
+        );
     }
 }

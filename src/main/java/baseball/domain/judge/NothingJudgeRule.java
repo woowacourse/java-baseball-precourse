@@ -5,7 +5,15 @@ import baseball.domain.pitching.Pitchings;
 
 public class NothingJudgeRule extends JudgeRule {
 
-    public NothingJudgeRule() {
+    private static class LazyHolder {
+        public static final NothingJudgeRule INSTANCE = new NothingJudgeRule();
+    }
+
+    public static NothingJudgeRule getInstance() {
+        return NothingJudgeRule.LazyHolder.INSTANCE;
+    }
+
+    private NothingJudgeRule() {
         super(Judgement.NOTHING);
     }
 
