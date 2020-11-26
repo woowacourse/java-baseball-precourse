@@ -37,10 +37,21 @@ public class Application {
         String regameChoice = scanner.nextLine();
         if (regameChoice.equals("1")) {
             playGame(scanner);
+            return;
         }
         if (regameChoice.equals("2")) {
             return;
         }
+        throw new IllegalArgumentException();
+    }
+
+    public static String getComputerNumber() {
+        int computerNumberInt = RandomUtils.nextInt(100, 999);
+        String computerNumber = computerNumberInt + "";
+        while (hasZero(computerNumber) || isRepeated(computerNumber)) {
+            computerNumber = getComputerNumber();
+        }
+        return computerNumber;
     }
 
     public static String inputPlayerNumber(Scanner scanner) {
@@ -102,15 +113,6 @@ public class Application {
             return true;
         }
         return false;
-    }
-
-    public static String getComputerNumber() {
-        int computerNumberInt = RandomUtils.nextInt(100, 999);
-        String computerNumber = computerNumberInt + "";
-        while (hasZero(computerNumber) || isRepeated(computerNumber)) {
-            computerNumber = getComputerNumber();
-        }
-        return computerNumber;
     }
 
     public static int[] compareNumberOfPlayerAndComputer(String playerNumber, String computerNumber) {
