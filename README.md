@@ -116,5 +116,5 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 * 게임 시작 함수
 * 값 입력 함수
 * 값 판별 함수
-* 값 점수 매기는 함수
+* 값의 결과를 출력하는 함수
 * 게임 종료 분기 여부 판단 함수
