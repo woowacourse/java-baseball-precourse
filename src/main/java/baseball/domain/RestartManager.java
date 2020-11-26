@@ -18,7 +18,7 @@ public class RestartManager {
     }
 
     private void validateRestartManager(String restartOrStopRequest) {
-        if (restartOrStopRequest != RESTART_REQUEST && restartOrStopRequest != STOP_REQUEST) {
+        if (!restartOrStopRequest.equals(RESTART_REQUEST) && !restartOrStopRequest.equals(STOP_REQUEST)) {
             throw new IllegalArgumentException(RESTART_OR_STOP_REQUEST_ERROR_MESSAGE);
         }
     }
