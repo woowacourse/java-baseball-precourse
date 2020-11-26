@@ -49,4 +49,18 @@ class InputValidationTest {
         assertThat(isDuplicate).isFalse();
     }
 
+    @Test
+    public void 재시작_종료_입력값_검증한다() throws Exception {
+        //given
+        int input = 4;
+
+        //when
+
+        //then
+        if((input != 1) && (input != 2)) {
+            System.out.println("입력값 범위를 벗어났습니다.");
+        } else {
+            System.out.println("success");
+        }
+    }
 }
