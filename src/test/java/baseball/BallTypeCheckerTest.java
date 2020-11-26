@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BallTypeCheckerTest {
     @Test
-    public void BallTypeCheckWith3Strikes() throws Exception{
+    public void BallTypeCheckWith3Strikes() throws Exception {
         //given
         BaseBall randomBaseball = BaseBall.createBaseBall(135);
         BaseBall inputBaseball = BaseBall.createBaseBall(135);
@@ -21,7 +21,7 @@ class BallTypeCheckerTest {
     }
 
     @Test
-    public void BallTypeCheckWith2Strikes0Ball() throws Exception{
+    public void BallTypeCheckWith2Strikes0Ball() throws Exception {
         //given
         final int BALL_COUNT = 0;
         final int STRIKE_COUNT = 2;
@@ -39,7 +39,7 @@ class BallTypeCheckerTest {
     }
 
     @Test
-    public void BallTypeCheckWith2Ball0Strike() throws Exception{
+    public void BallTypeCheckWith2Ball0Strike() throws Exception {
         //given
         final int BALL_COUNT = 2;
         final int STRIKE_COUNT = 0;
@@ -57,7 +57,7 @@ class BallTypeCheckerTest {
     }
 
     @Test
-    public void BallTypeCheckWithNothing() throws Exception{
+    public void BallTypeCheckWithNothing() throws Exception {
         //given
         final int ZERO = 0;
         BaseBall randomBaseball = BaseBall.createBaseBall(135);
@@ -74,7 +74,7 @@ class BallTypeCheckerTest {
     }
 
     @Test
-    public void BallTypeCheckWithMultipleInputNumber() throws Exception{
+    public void BallTypeCheckWithMultipleInputNumber() throws Exception {
         //given
         BaseBall randomBaseball = BaseBall.createBaseBall(135);
         BaseBall answerBaseball = BaseBall.createBaseBall(135);

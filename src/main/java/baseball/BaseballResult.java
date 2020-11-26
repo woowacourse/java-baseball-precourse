@@ -21,12 +21,12 @@ public class BaseballResult {
         this.result = result;
     }
 
-    public void accumulateBallType(BallType ballType){
-        result.put(ballType, result.get(ballType)+1);
+    public void accumulateBallType(BallType ballType) {
+        result.put(ballType, result.get(ballType) + 1);
     }
 
-    public void printResult(){
-        if(isNothing()){
+    public void printResult() {
+        if (isNothing()) {
             System.out.println("낫싱");
             return;
         }
@@ -45,12 +45,13 @@ public class BaseballResult {
                 .filter(ballType -> countFor(ballType) > ZERO)
                 .forEach(ballType -> ballType.printNameWith(countFor(ballType)));
     }
+
     //test에도 사용되어 public으로 선언
-    public int countFor(BallType ballType){
+    public int countFor(BallType ballType) {
         return result.get(ballType);
     }
 
-    public boolean isAnswer(){
+    public boolean isAnswer() {
         return result.get(BallType.STRIKE) == ANSWER_COUNT;
     }
 

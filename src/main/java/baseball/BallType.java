@@ -10,8 +10,8 @@ public enum BallType {
         this.name = name;
     }
 
-    public void printNameWith(int count){
-        System.out.print(count+name+" ");
+    public void printNameWith(int count) {
+        System.out.print(count + name + " ");
     }
 
 }
