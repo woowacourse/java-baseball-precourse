@@ -14,7 +14,7 @@ public class ScoreBoard {
         this.strike = new Count(strike);
         this.ball = new Count(ball);
     }
-    
+
     public void recordStrike() {
         strike.increaseCount();
     }
