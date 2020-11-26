@@ -24,4 +24,8 @@ public class GameResult {
             throw new IllegalArgumentException();
         }
     }
+
+    public boolean isNothing() {
+        return gameResult.get(STRIKE_KEY) == 0 && gameResult.get(BALL_KEY) == 0;
+    }
 }

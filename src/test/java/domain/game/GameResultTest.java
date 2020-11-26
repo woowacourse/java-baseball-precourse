@@ -4,11 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
 class GameResultTest {
@@ -40,12 +42,22 @@ class GameResultTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("하나도 못 맞춘 경우 isNothing은 true를 반환")
+    @DisplayName("볼이나 스트라이크 모두 1개도 못 맞춘 경우 isNothing은 true를 반환")
     @Test
     public void isNothing_0점일때_true_반환() {
         gameResultMap.put("볼", 0);
         gameResultMap.put("스트라이크", 0);
         GameResult gameResult = new GameResult(gameResultMap);
         assertThat(gameResult.isNothing()).isTrue();
+    }
+
+    @DisplayName("볼이나 스트라이크를 1개라도 맞춘 경우 isNothing은 false를 반환")
+    @ParameterizedTest
+    @CsvSource({"0, 1", "1, 0", "1, 1"})
+    public void isNothing__맞춘_것이_있으면_false_반환(int ballCounts, int strikeCounts) {
+        gameResultMap.put("볼", ballCounts);
+        gameResultMap.put("스트라이크", strikeCounts);
+        GameResult gameResult = new GameResult(gameResultMap);
+        assertThat(gameResult.isNothing()).isFalse();
     }
 }
