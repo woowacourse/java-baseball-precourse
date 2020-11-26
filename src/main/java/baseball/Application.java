@@ -57,33 +57,46 @@ public class Application {
         return randomNumberArray;
     }
 
+
     public static boolean diffArray(int[] user, int[] random) {
+        String gameMessage = "";
+        int[] countResult = new int[2];
         boolean gameResult = false;
         int strikeCount = 0;
         int ballCount = 0;
         for (int i = 0; i < user.length; i++) {
             for (int j = 0; j < random.length; j++) {
-                if (user[i] == random[j] && i == j) {
-                    strikeCount++;
-                }
-                if (user[i] == random[j]) {
-                    ballCount++;
-                }
+                countResult = counterRound(i, user[i], j, random[j]);
+                strikeCount += countResult[0];
+                ballCount += countResult[1];
             }
         }
-        if (strikeCount == 3) {
-            System.out.println(strikeCount + "스트라이크");
-            gameResult = true;
-        } else if (strikeCount > 0 && ballCount > 0) {
-            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-        } else if (strikeCount > 0 && ballCount <= 0) {
-            System.out.println(strikeCount + "스트라이크");
-        } else if (ballCount > 0 && strikeCount <= 0) {
-            System.out.println(ballCount + "볼");
-        } else if (ballCount <= 0 && strikeCount <= 0) {
-            System.out.println("낫싱");
+        if (ballCount != 0) {
+            gameMessage += ballCount + "볼 ";
         }
+        if (strikeCount != 0) {
+            gameMessage += strikeCount + "스트라이크";
+        }
+        if (ballCount <= 0 && strikeCount <= 0) {
+            gameMessage = "낫싱";
+        }
+        if (strikeCount == 3) {
+            gameResult = true;
+        }
+        System.out.println(gameMessage);
         return gameResult;
+    }
+
+    public static int[] counterRound(int userRound, int userNumber, int randomRound,
+        int randomNumber) {
+        int[] countResult = new int[2];
+        if (userNumber == randomNumber && userRound == randomRound) {
+            countResult[0] += 1;
+        }
+        if (userNumber == randomNumber) {
+            countResult[1] += 1;
+        }
+        return countResult;
     }
 
     private static boolean restartGame() {
