@@ -31,6 +31,8 @@ public class Game {
             }
         }
 
+        ball -= strike;
+
         resultPrint(ball, strike);
     }
 

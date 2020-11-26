@@ -2,7 +2,9 @@ package baseball;
 
 import utils.RandomUtils;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -13,6 +15,19 @@ public class Application {
     }
 
     private static int getRandomValue() {
-        return RandomUtils.nextInt(1, 9);
+        Set<Integer> set = new HashSet<>();
+        int result = 0;
+        int index = 1;
+
+        do {
+            set.add(RandomUtils.nextInt(1, 9));
+        } while (set.size() < 3);
+
+        for (Integer s : set) {
+            result += s * index;
+            index *= 10;
+        }
+
+        return result;
     }
 }
