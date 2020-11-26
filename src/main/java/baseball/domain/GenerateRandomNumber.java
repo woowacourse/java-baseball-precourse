@@ -1,3 +1,13 @@
+/*
+ * GenerateRandomNumber.java
+ *
+ * version 1.0
+ *
+ * 2020/11/27
+ *
+ * Copyright (c) 2020 Junhyoung Park
+ */
+
 package baseball.domain;
 
 import utils.RandomUtils;
