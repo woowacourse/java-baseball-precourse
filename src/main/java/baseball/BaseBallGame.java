@@ -7,13 +7,13 @@ import java.util.Scanner;
 import java.util.stream.IntStream;
 
 import static baseball.domain.Number.*;
+import static utils.InputValidation.validateSelectGameStatus;
 
 public class BaseBallGame {
 
     public int play(Scanner sc) {
         Ball ball = new Ball();
         List<Integer> computer = ball.computerBallGenerator();
-
         while (true) {
             List<Integer> user = ball.userBallGenerator(sc);
             if(compareBall(computer, user)) {
@@ -25,7 +25,9 @@ public class BaseBallGame {
 
     private int selectGameStatus(Scanner sc) {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return sc.nextInt();
+        int status = sc.nextInt();
+        validateSelectGameStatus(status);
+        return status;
     }
 
     private boolean compareBall(List<Integer> computer, List<Integer> user) {

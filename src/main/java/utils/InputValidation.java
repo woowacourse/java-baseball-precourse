@@ -2,7 +2,7 @@ package utils;
 
 import java.util.Arrays;
 
-import static baseball.domain.Number.NUMBER_COUNT;
+import static baseball.domain.Number.*;
 
 public class InputValidation {
 
@@ -31,6 +31,12 @@ public class InputValidation {
                 .count() != num.length();
         if(isDuplicate) {
            throw new IllegalArgumentException("입력값이 서로 다른 수가 아닙니다.");
+        }
+    }
+
+    public static void validateSelectGameStatus(int status) {
+        if((status != GAME_START) && (status != GAME_STOP)) {
+            throw new IllegalArgumentException("입력값이 잘못 되었습니다. 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
     }
 }

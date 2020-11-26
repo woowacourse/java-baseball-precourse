@@ -2,6 +2,7 @@ package baseball.domain;
 
 public final class Number {
     public static final int GAME_START = 1;
+    public static final int GAME_STOP = 2;
     public static final int GAME_END = 3;
     public static final int NUMBER_COUNT = 3;
     public static final int NUMBER_RANGE_ZERO = 0;
