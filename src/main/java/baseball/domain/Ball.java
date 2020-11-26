@@ -31,7 +31,6 @@ public class Ball {
         validateNumberCount(num);
         validateNumberRange(num);
         validateNumberDuplicate(num);
-
         return parseStringToIntegerList(num);
     }
 
