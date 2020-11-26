@@ -107,3 +107,20 @@ private static final Random RANDOM = new Random();
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+
+<br>
+
+## 🚩 구현할 기능 목록 
+- 모델 설계하기
+- 숫자만 입력받기
+- 3자리의 수만 입력받기
+- 3자리에 각각 다른 수 입력받기
+- 3자리의 랜덤 숫자 생성하기
+- 힌트인 '볼' 출력하기 
+- 힌트인 '스트라이크' 출력하기 
+- 같은 숫자가 하나도 없는 경우 '낫싱' 출력하기
+- 정답일 때 맞췄다는 메세지 출력 후 게임을 끝내기 
+- 게임을 끝낸 후 1, 2만 입력받기
+- 게임을 끝낸 후 1을 입력시 게임을 다시 시작하기
+- 게임을 끝낸 후 2을 입력시 게임을 종료하기
