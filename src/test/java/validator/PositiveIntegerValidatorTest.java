@@ -1,0 +1,42 @@
+package validator;
+
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+
+class PositiveIntegerValidatorTest {
+    @Test
+    public void 양의_정수_입력시_예외_발생하지_않음() {
+        //given
+        String positiveInteger = "123";
+
+        //when
+        boolean result = PositiveIntegerValidator.validatePositiveInteger(positiveInteger);
+
+        //then
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    public void 정수입력_아닐_시_예외_발생() {
+        //given
+        String notNumeric = "한글입력";
+
+        //when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> PositiveIntegerValidator.validatePositiveInteger(notNumeric))
+                .withMessage("입력값은 숫자이어야 합니다.");
+    }
+
+    @Test
+    public void 음수입력_시_예외_발생() {
+        //given
+        String negative = "-12";
+
+        //when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> PositiveIntegerValidator.validatePositiveInteger(negative))
+                .withMessage("입력값은 양수이어야 합니다.");
+    }
+}
