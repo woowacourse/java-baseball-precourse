@@ -31,7 +31,13 @@ public class Application {
             }
 
             if (isEnd) {
-                restart = restartGame(scanner);
+                try {
+                    restart = restartGame(scanner);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("오류 : 1과 2만 입력 가능!");
+//                    break;
+                }
+
                 if (restart) {
                     target = setTarget();
                     isEnd = false;
@@ -157,4 +163,6 @@ public class Application {
         }
         return restart;
     }
+
+
 }
