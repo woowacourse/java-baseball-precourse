@@ -23,4 +23,18 @@ public class ScoreBoardTest {
         ScoreBoard scoreBoard = new ScoreBoard(1, 0);
         assertFalse(scoreBoard.hasZeroStrike());
     }
+
+    @Test
+    @DisplayName("볼이 0개일 경우 hasZeroBall() true 반환 테스트")
+    public void hasZeroBallTest() {
+        ScoreBoard scoreBoard = new ScoreBoard();
+        assertTrue(scoreBoard.hasZeroBall());
+    }
+
+    @Test
+    @DisplayName("볼이 0개일 경우 hasZeroBall() false 반환 테스트")
+    public void hasOneBallTest() {
+        ScoreBoard scoreBoard = new ScoreBoard(0, 1);
+        assertFalse(scoreBoard.hasZeroBall());
+    }
 }

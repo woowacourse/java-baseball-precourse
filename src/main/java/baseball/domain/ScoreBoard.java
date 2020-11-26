@@ -18,4 +18,8 @@ public class ScoreBoard {
     public boolean hasZeroStrike() {
         return strike.isZero();
     }
+
+    public boolean hasZeroBall() {
+        return ball.isZero();
+    }
 }
