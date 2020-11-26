@@ -11,6 +11,16 @@ public class Player {
         this.scanner = scanner;
     }
 
+    int inputExitButton(){
+       int response = scanner.nextInt();
+
+       if (response != 1 && response != 2) {
+           throw new IllegalArgumentException();
+       }
+
+       return response;
+    }
+
     List<Integer> inputNumber(int numLength) {
         System.out.print("숫자를 입력해주세요 : ");
 
@@ -20,7 +30,7 @@ public class Player {
             throw new IllegalArgumentException();
         }
 
-        if (isInvalidValue(userInput, numLength)) {    // 1 ~ 9 : valid value
+        if (isInvalidValue(userInput, numLength)) {
             throw new IllegalArgumentException();
         }
 
@@ -32,7 +42,7 @@ public class Player {
     }
 
     private boolean isInvalidLength(String userInput, int numLength) {
-        if (userInput.length() == numLength) {  // valid input length
+        if (userInput.length() == numLength) {
             return false;
         }
 
@@ -64,13 +74,13 @@ public class Player {
     }
 
     private List<Integer> stringToArray(String userInput) {
-        String[] stringArray = userInput.split("");
-        List<Integer> intArray = new ArrayList<Integer>();
+        String[] inputStringArray = userInput.split("");
+        List<Integer> inputIntArray = new ArrayList<Integer>();
 
-        for (String number : stringArray) {
-            intArray.add(Integer.parseInt(number));
+        for (String number : inputStringArray) {
+            inputIntArray.add(Integer.parseInt(number));
         }
 
-        return intArray;
+        return inputIntArray;
     }
 }
