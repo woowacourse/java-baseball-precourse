@@ -1,8 +1,12 @@
 package domain.number;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -25,5 +29,23 @@ class BaseballNumberTest {
         assertThatThrownBy(() -> {
             BaseballNumber.of(baseballNumber);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("BaseballNumber 객체가 리스트에 중복 포함되면 true를 반환")
+    @Test
+    public void 중복_포함_경우_true를_반환() {
+        BaseballNumber baseballNumber = BaseballNumber.of(9);
+        List<BaseballNumber> baseballNumbers = Arrays.asList(baseballNumber);
+
+        assertThat(baseballNumber.isDuplicated(baseballNumbers)).isTrue();
+    }
+
+    @DisplayName("BasebballNumber 객체가 리스트에 중복 포함되지 않으면 false를 반환")
+    @Test
+    public void 중복_포함_아닌_경우_false를_반환() {
+        BaseballNumber baseballNumber = BaseballNumber.of(1);
+        List<BaseballNumber> baseballNumbers = Arrays.asList(BaseballNumber.of(9));
+
+        assertThat(baseballNumber.isDuplicated(baseballNumbers)).isFalse();
     }
 }
