@@ -1,12 +1,9 @@
 package baseball.domain.judge;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import baseball.domain.judge.exception.JudgeMultipleJudgementException;
+import baseball.domain.judge.judgeRule.JudgeRule;
 import baseball.domain.judge.judgeRule.JudgeRuleFactory;
-import baseball.domain.judge.judgeRule.NothingJudgeRule;
-import baseball.domain.judge.judgeRule.StrikeJudgeRule;
 import baseball.domain.pitching.Pitchings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -31,9 +28,9 @@ class JudgeTest {
         final Pitchings target = Pitchings.of("123");
 
         for (int i = 0; i < Pitchings.SIZE; i++) {
-            final Judgement judgement = judge.judgeOne(base, target, i);
+            final JudgeRule judgeRule = judge.getFilteredJudgeRules(base, target, i).get(0);
 
-            assertEquals(judgement, Judgement.STRIKE);
+            assertEquals(Judgement.get(judgeRule), Judgement.STRIKE);
         }
     }
 
@@ -44,9 +41,9 @@ class JudgeTest {
         final Pitchings target = Pitchings.of("312");
 
         for (int i = 0; i < Pitchings.SIZE; i++) {
-            final Judgement judgement = judge.judgeOne(base, target, i);
+            final JudgeRule judgeRule = judge.getFilteredJudgeRules(base, target, i).get(0);
 
-            assertEquals(judgement, Judgement.BALL);
+            assertEquals(Judgement.get(judgeRule), Judgement.BALL);
         }
     }
 
@@ -57,20 +54,9 @@ class JudgeTest {
         final Pitchings target = Pitchings.of("456");
 
         for (int i = 0; i < Pitchings.SIZE; i++) {
-            final Judgement judgement = judge.judgeOne(base, target, i);
+            final JudgeRule judgeRule = judge.getFilteredJudgeRules(base, target, i).get(0);
 
-            assertEquals(judgement, Judgement.NOTHING);
+            assertEquals(Judgement.get(judgeRule), Judgement.NOTHING);
         }
-    }
-
-    @DisplayName("특정 위치에 있는 투구의 판정은 " + Judge.JUDGEMENT_BOUNDARY + "개가 아니면 안된다.")
-    @Test
-    void judgeMultipleJudgement() {
-        judge = Judge.of(StrikeJudgeRule.getInstance(), StrikeJudgeRule.getInstance(), NothingJudgeRule
-            .getInstance());
-        final Pitchings base = Pitchings.of("123");
-        final Pitchings target = Pitchings.of("123");
-
-        assertThrows(JudgeMultipleJudgementException.class, () -> judge.judgeOne(base, target, 0));
     }
 }
