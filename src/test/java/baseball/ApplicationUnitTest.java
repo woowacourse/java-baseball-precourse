@@ -4,8 +4,6 @@ import baseball.Application.GameStatus;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Scanner;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,21 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ApplicationUnitTest {
 
-    private static InputStream originIn;
-
-    @BeforeAll
-    public static void setUp() {
-        originIn = System.in;
-    }
-
-    @AfterEach
-    public void tearDown() {
-        System.setIn(originIn);
-    }
-
     @Test
     public void testGenerateAnswer() throws Error {
-        for(int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1000; i++) {
             int answer = Application.generateAnswer();
             assertEquals(true, answer > 0);
             assertEquals(true, answer < 1000);
@@ -38,24 +24,37 @@ public class ApplicationUnitTest {
     @Test
     public void testPlayBaseball() throws Error {
         int answer = 345;
-        Scanner scanner = new Scanner(System.in);
+
         String input = "345";
         InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        assertDoesNotThrow(() -> Application.playBaseball(answer, scanner));
+        Scanner scanner1 = new Scanner(in);
+        assertDoesNotThrow(() -> Application.playBaseball(answer, scanner1));
 
         input = "-1";
         in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        Scanner scanner2 = new Scanner(in);
         assertThrows(IllegalArgumentException.class,
-            () -> Application.playBaseball(answer, scanner));
+            () -> Application.playBaseball(answer, scanner2));
+    }
+
+    @Test
+    public void testToStringAnswer() {
+        assertEquals("456", Application.toStringAnswer(456));
+        assertEquals("012", Application.toStringAnswer(12));
+    }
+
+    @Test
+    public void testIsSubmittedAnswerValid() {
+        assertEquals(true, Application.isSubmittedAnswerValid("456"));
+        assertEquals(false, Application.isSubmittedAnswerValid("12"));
+        assertEquals(false, Application.isSubmittedAnswerValid("abc"));
     }
 
     @Test
     public void testDecideNext() throws Error {
         String input = "0";
         InputStream in = new ByteArrayInputStream(input.getBytes());
-        final Scanner finalScanner = new Scanner(in);
+        Scanner finalScanner = new Scanner(in);
         assertThrows(IllegalArgumentException.class, () -> Application.decideNext(finalScanner));
 
         input = "1";
