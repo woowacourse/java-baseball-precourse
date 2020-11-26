@@ -1,6 +1,7 @@
 package baseball.domain.judge;
 
 import baseball.domain.judge.exception.JudgeMultipleJudgementException;
+import baseball.domain.pitching.Pitching;
 import baseball.domain.pitching.Pitchings;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +19,18 @@ public class Judge {
 
     public static Judge of(final JudgeRule... judgeRules) {
         return new Judge(Arrays.asList(judgeRules));
+    }
+
+    public JudgeResult judge(final Pitchings base, final Pitchings target) {
+        JudgeResult judgeResult = JudgeResult.empty();
+
+        List<Pitching> pitchings = target.getPitchings();
+        pitchings.forEach((targetPitching) -> {
+            Judgement judgement = judgeOne(base, target, pitchings.indexOf(targetPitching));
+            judgeResult.increment(judgement);
+        });
+
+        return judgeResult;
     }
 
     public Judgement judgeOne(final Pitchings base, final Pitchings target, final int index) {
