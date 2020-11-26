@@ -22,6 +22,9 @@ public class InputHandler {
     private String threeNumValidCheck(String input) {
         if (input.length() != 3)
             throw new IllegalArgumentException();
+        for (int i = 0; i < 3; i++) {
+            if (!Character.isDigit(input.charAt(i))) throw new IllegalArgumentException();
+        }
         return input;
     }
 
