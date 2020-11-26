@@ -10,24 +10,25 @@ public class GameSystem {
     // 정답이 될 컴퓨터의 3자리 수
     private int[] answer;
     private User user;
+    private boolean endFlag;
 
     public GameSystem() {
         answer = new int[MAX_DIGIT];
         user = new User();
+        endFlag = false;
     }
 
     public void playGame(Scanner sc) {
         setAnswer();
-        while (true) {
+        while (!endFlag) {
             setUserNumbers(sc);
             calcScore();
             user.printInfoForTest();
             System.out.println();
             printResultMessage();
-            if (user.getStrike() == 3) {
-                break;
-            }
+            checkEnd();
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private void setAnswer() {
@@ -92,6 +93,14 @@ public class GameSystem {
             resultMessage = "낫싱";
         }
         System.out.println(resultMessage);
+    }
+
+    private void checkEnd() {
+        int strike = user.getStrike();
+
+        if (strike == MAX_DIGIT) {
+            endFlag = true;
+        }
     }
 
     private int stringToValidNum(String string) throws IllegalArgumentException {
