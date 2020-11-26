@@ -29,11 +29,13 @@ public class Application {
         final Game game = Game.generate();
         while (!game.isComplete()) {
             consoleOutput.printInputPitchingsMessage();
+            String PitchingsStr = consoleInput.readPitchings();
 
             try {
-                Pitchings target = Pitchings.of(consoleInput.readPitchings());
+                Pitchings target = Pitchings.of(PitchingsStr);
                 game.start(target);
-            } catch (RuntimeException e) {
+            }
+            catch (RuntimeException e) {
                 consoleOutput.println(e.getMessage());
                 continue;
             }

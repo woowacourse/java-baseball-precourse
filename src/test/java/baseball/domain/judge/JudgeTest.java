@@ -2,7 +2,6 @@ package baseball.domain.judge;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import baseball.domain.judge.judgeRule.JudgeRule;
 import baseball.domain.judge.judgeRule.JudgeRuleFactory;
 import baseball.domain.pitching.Pitchings;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,9 +27,9 @@ class JudgeTest {
         final Pitchings target = Pitchings.of("123");
 
         for (int i = 0; i < Pitchings.SIZE; i++) {
-            final JudgeRule judgeRule = judge.getFilteredJudgeRules(base, target, i).get(0);
+            final Judgement judgement = judge.getPossibleJudgements(base, target, i).get(0);
 
-            assertEquals(Judgement.get(judgeRule), Judgement.STRIKE);
+            assertEquals(judgement, Judgement.STRIKE);
         }
     }
 
@@ -41,9 +40,9 @@ class JudgeTest {
         final Pitchings target = Pitchings.of("312");
 
         for (int i = 0; i < Pitchings.SIZE; i++) {
-            final JudgeRule judgeRule = judge.getFilteredJudgeRules(base, target, i).get(0);
+            final Judgement judgement = judge.getPossibleJudgements(base, target, i).get(0);
 
-            assertEquals(Judgement.get(judgeRule), Judgement.BALL);
+            assertEquals(judgement, Judgement.BALL);
         }
     }
 
@@ -54,9 +53,9 @@ class JudgeTest {
         final Pitchings target = Pitchings.of("456");
 
         for (int i = 0; i < Pitchings.SIZE; i++) {
-            final JudgeRule judgeRule = judge.getFilteredJudgeRules(base, target, i).get(0);
+            final Judgement judgement = judge.getPossibleJudgements(base, target, i).get(0);
 
-            assertEquals(Judgement.get(judgeRule), Judgement.NOTHING);
+            assertEquals(judgement, Judgement.NOTHING);
         }
     }
 }

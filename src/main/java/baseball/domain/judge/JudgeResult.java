@@ -35,15 +35,11 @@ public class JudgeResult {
         return get(Judgement.STRIKE) == Pitchings.SIZE;
     }
 
-    public boolean hasStrike() {
-        return get(Judgement.STRIKE) > DEFAULT_COUNT;
-    }
-
-    public boolean hasBall() {
-        return get(Judgement.BALL) > DEFAULT_COUNT;
-    }
-
     public boolean isNothing() {
         return get(Judgement.NOTHING) == Pitchings.SIZE;
+    }
+
+    public boolean has(Judgement judgement) {
+        return get(judgement) > DEFAULT_COUNT;
     }
 }

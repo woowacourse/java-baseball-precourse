@@ -72,7 +72,7 @@ class JudgeResultTest {
 
         judgeResult.increment(Judgement.STRIKE);
 
-        assertEquals(judgeResult.hasStrike(), expect);
+        assertEquals(judgeResult.has(Judgement.STRIKE), expect);
     }
 
     @DisplayName("볼 기록이 존재하는지 확인한다.")
@@ -82,7 +82,7 @@ class JudgeResultTest {
 
         judgeResult.increment(Judgement.BALL);
 
-        assertEquals(judgeResult.hasBall(), expect);
+        assertEquals(judgeResult.has(Judgement.BALL), expect);
     }
 
     @DisplayName("낫싱인지 확인한다.")

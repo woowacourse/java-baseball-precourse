@@ -23,17 +23,18 @@ public class Judge {
 
         List<Pitching> pitchings = target.getPitchings();
         for (Pitching targetPitching : pitchings) {
-            getFilteredJudgeRules(base, target, pitchings.indexOf(targetPitching)).stream()
-                .map(Judgement::get)
+            int index = pitchings.indexOf(targetPitching);
+            getPossibleJudgements(base, target, index)
                 .forEach(judgeResult::increment);
         }
 
         return judgeResult;
     }
 
-    public List<JudgeRule> getFilteredJudgeRules(final Pitchings base, final Pitchings target, final int index) {
+    public List<Judgement> getPossibleJudgements(final Pitchings base, final Pitchings target, final int index) {
         return judgeRules.stream()
             .filter(judgeRule -> judgeRule.judge(base, target, index))
+            .map(Judgement::get)
             .collect(Collectors.toList());
     }
 }

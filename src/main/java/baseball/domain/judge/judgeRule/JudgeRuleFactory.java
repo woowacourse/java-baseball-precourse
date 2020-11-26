@@ -7,8 +7,8 @@ public class JudgeRuleFactory {
 
     public static List<JudgeRule> getAll() {
         return Arrays.asList(
-            StrikeJudgeRule.getInstance(),
             BallJudgeRule.getInstance(),
+            StrikeJudgeRule.getInstance(),
             NothingJudgeRule.getInstance()
         );
     }

@@ -3,6 +3,9 @@ package baseball.console;
 import baseball.domain.game.GameStatus;
 import baseball.domain.judge.JudgeResult;
 import baseball.domain.judge.Judgement;
+import baseball.domain.judge.judgeRule.JudgeRule;
+import baseball.domain.judge.judgeRule.JudgeRuleFactory;
+import baseball.domain.judge.judgeRule.NothingJudgeRule;
 import baseball.domain.pitching.Pitchings;
 
 public final class ConsoleOutput {
@@ -32,21 +35,32 @@ public final class ConsoleOutput {
     }
 
     public void println(final JudgeResult judgeResult) {
-        String resultStr = "";
-
-        if (judgeResult.hasBall()) {
-            resultStr += judgeResult.get(Judgement.BALL) + Judgement.BALL.getKoreanName() + " ";
-        }
-
-        if (judgeResult.hasStrike()) {
-            resultStr += judgeResult.get(Judgement.STRIKE) + Judgement.STRIKE.getKoreanName() + " ";
-        }
-
         if (judgeResult.isNothing()) {
-            resultStr = Judgement.NOTHING.getKoreanName();
+            println(Judgement.NOTHING.getKoreanName());
+            return;
         }
 
-        println(resultStr);
+        println(convertJudgeResultToString(judgeResult));
+    }
+
+    private String convertJudgeResultToString(final JudgeResult judgeResult) {
+        StringBuilder resultStr = new StringBuilder();
+        for (JudgeRule judgeRule : JudgeRuleFactory.getAll()) {
+            if (judgeRule == NothingJudgeRule.getInstance()) {
+                continue;
+            }
+
+            Judgement judgement = Judgement.get(judgeRule);
+            if (!judgeResult.has(judgement)) {
+                continue;
+            }
+
+            resultStr.append(judgeResult.get(judgement))
+                .append(judgement.getKoreanName())
+                .append(" ");
+        }
+
+        return resultStr.toString();
     }
 
     public void print(final String value) {
