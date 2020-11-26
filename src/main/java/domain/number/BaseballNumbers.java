@@ -5,6 +5,7 @@ import utils.RandomUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BaseballNumbers {
 
@@ -42,16 +43,16 @@ public class BaseballNumbers {
     }
 
     public int calculateStrikeCounts(BaseballNumbers targetBaseballNumbers) {
-        int strikeCounts = 0;
-        for (int i = 0; i < 3; i++) {
-            BaseballNumber baseballNumber = this.baseballNumbers.get(i);
-            BaseballNumber targetBaseballNumber = targetBaseballNumbers.baseballNumbers
-                    .get(i);
-            if (baseballNumber.equals(targetBaseballNumber)) {
-                strikeCounts++;
-            }
-        }
-        return strikeCounts;
+        return (int) IntStream.rangeClosed(0, 2)
+                .filter(index -> isStrike(index, targetBaseballNumbers))
+                .count();
+    }
+
+    private boolean isStrike(int index, BaseballNumbers targetBaseballNumbers) {
+        BaseballNumber baseballNumber = this.baseballNumbers.get(index);
+        BaseballNumber targetBaseballNumber = targetBaseballNumbers.baseballNumbers
+                .get(index);
+        return baseballNumber.equalTo(targetBaseballNumber);
     }
 
     public List<Integer> getBaseballNumbers() {
