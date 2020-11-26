@@ -78,4 +78,18 @@ public class BaseballUtils {
 
         return playerNumbers;
     }
+
+    public static boolean askRestart(final Scanner sc) {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int playerInput = getIntInput(sc);
+
+        if (playerInput == 1) {
+            return true;
+        } else if (playerInput == 2) {
+            return false;
+        } else {
+            System.out.println("1 또는 2가 아닌 오류 발생");
+            throw new IllegalArgumentException();
+        }
+    }
 }
