@@ -11,8 +11,6 @@
 
 package baseball;
 
-import utils.BaseBallUtils;
-
 import java.util.Scanner;
 
 public class Application {

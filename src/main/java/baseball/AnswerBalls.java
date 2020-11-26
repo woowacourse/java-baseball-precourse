@@ -12,7 +12,6 @@
 package baseball;
 
 import utils.RandomUtils;
-
 import java.util.ArrayList;
 
 public class AnswerBalls {

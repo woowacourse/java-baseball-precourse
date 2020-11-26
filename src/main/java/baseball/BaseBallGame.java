@@ -1,5 +1,5 @@
 /*
- * Class:   AnswerBalls.java
+ * Class:   BaseBallGame.java
  *
  * Version: 1.0.0
  *
@@ -12,7 +12,6 @@
 package baseball;
 
 import utils.BaseBallUtils;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
