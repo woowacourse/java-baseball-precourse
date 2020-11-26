@@ -25,25 +25,37 @@ final class StrikeAndBall {
 
 public class Application {
 
-    public static int guessNum(Scanner scanner) {
+    public static int guessNum(Scanner scanner) throws IllegalArgumentException{
         System.out.print("숫자를 입력해 주세요 : ");
+        // 정수가 아닌 경우
         if (!scanner.hasNextInt()) {
-            throw new IllegalArgumentException("정수가 아닙니다");
+            throw new IllegalArgumentException();
         }
 
         int input = scanner.nextInt();
 
-        int[] inputArray = intToArray(input);
-        for (int i : inputArray) {
-            if (i == 0) {
-                throw new IllegalArgumentException("1 부터 9 사이의 숫자를 입력해주세요");
-            }
-        }
-
-        if (100 <= input && input < 1000) {
+        // valid한 3자리 정수만
+        if (100 <= input && input < 1000 && isValidNum(input)) {
             return input;
         } else {
-            throw new IllegalArgumentException("3자리 정수만 입력 가능합니다");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void goOrStop(Scanner scanner) throws IllegalArgumentException {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        if (!scanner.hasNextInt()) {
+            throw new IllegalArgumentException();
+        }
+
+        int input = scanner.nextInt();
+
+        if (input == 1) {
+            main(null);
+        } else if (input == 2) {
+            return;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -56,9 +68,10 @@ public class Application {
         return this_array;
     }
 
-    public static boolean isValidRandomNum(int candidate) {
+    public static boolean isValidNum(int candidate) {
         Set<Integer> store = new HashSet<>();
 
+        // 각 자리수 숫자가 서로 다르고 0이 아니어야 함
         int[] candidate_array = intToArray(candidate);
         for (int i : candidate_array) {
             if (store.contains(i) || i == 0) {
@@ -121,7 +134,7 @@ public class Application {
         int answer;
         do {
             answer = RandomUtils.nextInt(100, 999);
-        } while (!isValidRandomNum(answer));
+        } while (!isValidNum(answer));
         System.out.println(answer);
 
         int number;
@@ -135,7 +148,6 @@ public class Application {
         System.out.println("숫자를 맞히셨습니다! 게임 종료");
 
         // 게임 끝난후 게임 더할 건지 말건지에 대해서 기능 추가하기!
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
     }
 }
