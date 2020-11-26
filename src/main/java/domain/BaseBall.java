@@ -55,10 +55,6 @@ public class BaseBall {
         return ballNumber;
     }
 
-    public List<Integer> getBaseballNumber() {
-        return new ArrayList<>(baseballNumber);
-    }
-
     public boolean containsNumber(int number) {
         return baseballNumber.contains(number);
     }

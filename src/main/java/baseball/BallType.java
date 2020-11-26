@@ -13,5 +13,4 @@ public enum BallType {
     public void printNameWith(int count) {
         System.out.print(count + name + " ");
     }
-
 }

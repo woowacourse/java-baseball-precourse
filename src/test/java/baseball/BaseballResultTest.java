@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class BaseballResultTest {
     @Test
     @DisplayName("3스트라이크 시 정답 처리 확인")
@@ -17,7 +19,7 @@ class BaseballResultTest {
         }
         //then
         baseballResult.printResult();
-        Assertions.assertTrue(baseballResult.isAnswer());
+        assertTrue(baseballResult.isAnswer());
     }
 
     @Test
@@ -30,7 +32,7 @@ class BaseballResultTest {
         int ballCount = baseballResult.countFor(BallType.BALL);
         //then
         baseballResult.printResult();
-        Assertions.assertEquals(ZERO, ballCount);
+        assertEquals(ZERO, ballCount);
     }
 
     @Test
@@ -51,7 +53,7 @@ class BaseballResultTest {
         int ballCount = baseballResult.countFor(BallType.BALL);
         int strikeCount = baseballResult.countFor(BallType.STRIKE);
         baseballResult.printResult();
-        Assertions.assertEquals(EXPECTED_BALL_COUNT, ballCount);
-        Assertions.assertEquals(EXPECTED_STRIKE_COUNT, strikeCount);
+        assertEquals(EXPECTED_BALL_COUNT, ballCount);
+        assertEquals(EXPECTED_STRIKE_COUNT, strikeCount);
     }
 }

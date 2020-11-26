@@ -25,7 +25,8 @@ class BaseBallTest {
             BaseBall randomBaseBall = BaseBall.createRandomBaseBall();
 
             //then
-            for (Integer digit : randomBaseBall.getBaseballNumber()) {
+            for (int index = 0; index < randomBaseBall.size(); index++) {
+                int digit = randomBaseBall.getNumber(index);
                 assertTrue(digit >= MIN_VALUE, "최소값을 초과합니다.");
                 assertTrue(digit <= MAX_VALUE, "최대값을 초과합니다.");
             }
@@ -40,7 +41,8 @@ class BaseBallTest {
         //when
         BaseBall randomBaseBall = BaseBall.createRandomBaseBall();
         //then
-        for (Integer digit : randomBaseBall.getBaseballNumber()) {
+        for (int index = 0; index < randomBaseBall.size(); index++) {
+            int digit = randomBaseBall.getNumber(index);
             System.out.println(digit);
             assertFalse(ballNumbers.contains(digit), "중복된 값이 존재합니다.");
             ballNumbers.add(digit);
@@ -55,7 +57,9 @@ class BaseBallTest {
         //when
         BaseBall baseBall = BaseBall.createBaseBall(135);
         //then
-        assertEquals(ballList, baseBall.getBaseballNumber());
+        for (int index = 0; index < ballList.size(); index++) {
+            assertEquals(ballList.get(index), baseBall.getNumber(index));
+        }
     }
 
     @Test
