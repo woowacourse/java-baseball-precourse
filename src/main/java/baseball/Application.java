@@ -14,5 +14,6 @@ public class Application {
         while(gameStatus == GAME_START) {
             gameStatus = baseBallGame.play(scanner);
         }
+        scanner.close();
     }
 }
