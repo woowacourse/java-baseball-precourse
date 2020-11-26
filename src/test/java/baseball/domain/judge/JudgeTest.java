@@ -18,7 +18,7 @@ class JudgeTest {
 
     @BeforeEach
     void setUp() {
-        judge = Judge.of(new StrikeJudgeRule(), new BallJudgeRule(), new NothingJudgeRule());
+        judge = Judge.of(JudgeRuleFactory.getAll());
     }
 
     @DisplayName("특정 위치에 있는 투구의 스트라이크를 판정할 수 있다.")
