@@ -2,18 +2,18 @@ package utils;
 import java.util.*;
 
 public class InputValidator {
-    private static final String INVALID_LENGTH_MSG = "잘못된 입력 길이입니다.";
-    private static final String INVALID_RANGE_MSG = "범위 외 입력입니다.";
-    private static final String INVALID_DUPLICATE_MSG = "중복이 포함된 입력입니다.";
+    private static final String INVALID_LENGTH_MSG = "잘못된 입력 길이입니다. ";
+    private static final String INVALID_RANGE_MSG = "범위 외 입력입니다. ";
+    private static final String INVALID_DUPLICATE_MSG = "중복이 포함된 입력입니다. ";
 
     private static final int BUTTON_PLAY_AGAIN_MAX = 2;
     private static final int BUTTON_PLAY_AGAIN_MIN = 1;
 
     private InputValidator(){}
 
-    public static boolean validPlayAgainAnswer(String input) throws Exception{
+    public static boolean validPlayAgainAnswer(String input) throws InvalidInputException {
         if(!isInRange(input, BUTTON_PLAY_AGAIN_MIN, BUTTON_PLAY_AGAIN_MAX)){
-            throw new InvalidInputHandler(INVALID_RANGE_MSG);
+            throw new InvalidInputException(INVALID_RANGE_MSG);
         }
         return true;
     }
@@ -31,17 +31,17 @@ public class InputValidator {
         return true;
     }
 
-    public static boolean validGuessNumber(String inputNumber, int len) throws Exception{
+    public static boolean validGuessNumber(String inputNumber, int len) throws InvalidInputException {
         if(!isValidLength(inputNumber, len)){
-            throw new InvalidInputHandler(INVALID_LENGTH_MSG);
+            throw new InvalidInputException(INVALID_LENGTH_MSG);
         }
 
         if(!isNumericString(inputNumber)){
-            throw new InvalidInputHandler(INVALID_RANGE_MSG);
+            throw new InvalidInputException(INVALID_RANGE_MSG);
         }
 
         if(!isAllDifferent(inputNumber)){
-            throw new InvalidInputHandler(INVALID_DUPLICATE_MSG);
+            throw new InvalidInputException(INVALID_DUPLICATE_MSG);
         }
 
         return true;
