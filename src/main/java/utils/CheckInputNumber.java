@@ -1,13 +1,26 @@
-/**
- * Copyright rinsabbit. All rights reserved.
- */
-
 package utils;
+
+import java.util.Scanner;
 
 /**
  * 입력한 문자열이 조건에 맞는지 검사하는 클래스
  */
 public class CheckInputNumber {
+
+	/**
+	 * 입력한 문자열이 3자리 길이의 숫자면 문자열 반환
+	 * @return String
+	 */
+	public String inputNumber() {
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.printf("세자리 숫자를 입력하시오 : ");
+		String input = scanner.nextLine();
+		if (!isValid(input)) {
+			return inputNumber();
+		}
+		return input;
+	}
 
 	/**
 	 * 입력한 문자열이 3자리 길이의 숫자면 true 반환
