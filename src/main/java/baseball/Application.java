@@ -53,7 +53,7 @@ public class Application {
         if (input == 1) {
             main(null);
         } else if (input == 2) {
-            return;
+            System.out.println("GG");
         } else {
             throw new IllegalArgumentException();
         }
@@ -126,6 +126,25 @@ public class Application {
         }
     }
 
+    public static int playGame(Scanner scanner, int answer) {
+        boolean isValidGuess = false;
+        int number = 123;
+        while (!isValidGuess) {
+            try {
+                number = guessNum(scanner);
+                isValidGuess = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println("3자리 정수만 입력 가능합니다. 다시 입력 해주세요!");
+            }
+        }
+
+        StrikeAndBall thisTurnResult = countStrikeAndBall(number, answer);
+        int strikeCount = thisTurnResult.getStrike();
+        int ballCount = thisTurnResult.getBall();
+        resultOfGuess(strikeCount, ballCount);
+        return strikeCount;
+    }
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
@@ -137,17 +156,21 @@ public class Application {
         } while (!isValidNum(answer));
         System.out.println(answer);
 
-        int number;
-        do {
-            number = guessNum(scanner);
-            StrikeAndBall thisTurnResult = countStrikeAndBall(number, answer);
-            int strikeCount = thisTurnResult.getStrike();
-            int ballCount = thisTurnResult.getBall();
-            resultOfGuess(strikeCount, ballCount);
-        } while (number != answer);
+        int strikeCount = 0;
+        while (strikeCount != 3) {
+            strikeCount = playGame(scanner, answer);
+        }
         System.out.println("숫자를 맞히셨습니다! 게임 종료");
 
         // 게임 끝난후 게임 더할 건지 말건지에 대해서 기능 추가하기!
-
+        boolean isValidInput = false;
+        while (!isValidInput) {
+            try {
+                goOrStop(scanner);
+                isValidInput = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println("1 혹은 2만 입력 가능합니다");
+            }
+        }
     }
 }
