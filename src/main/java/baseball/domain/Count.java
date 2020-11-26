@@ -23,4 +23,8 @@ public class Count {
     public boolean isZero() {
         return count == 0;
     }
+
+    public boolean equals(int compare) {
+        return count == compare;
+    }
 }

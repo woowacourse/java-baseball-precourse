@@ -22,4 +22,8 @@ public class ScoreBoard {
     public boolean hasZeroBall() {
         return ball.isZero();
     }
+
+    public boolean isAnswer() {
+        return strike.equals(3);
+    }
 }
