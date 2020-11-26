@@ -70,4 +70,14 @@ class GameResultTest {
         GameResult gameResult = new GameResult(gameResultMap);
         assertThat(gameResult.isOnlyStrike()).isTrue();
     }
+
+    @DisplayName("볼이 1개 이상 존재하거나 스트라이크가 0개인 경우")
+    @ParameterizedTest
+    @CsvSource({"0, 0", "1, 1"})
+    public void isOnlyStrike_False반환(int ballCounts, int strikeCounts) {
+        gameResultMap.put("볼", ballCounts);
+        gameResultMap.put("스트라이크", strikeCounts);
+        GameResult gameResult = new GameResult(gameResultMap);
+        assertThat(gameResult.isOnlyStrike()).isFalse();
+    }
 }

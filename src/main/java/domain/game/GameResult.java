@@ -28,4 +28,8 @@ public class GameResult {
     public boolean isNothing() {
         return gameResult.get(STRIKE_KEY) == 0 && gameResult.get(BALL_KEY) == 0;
     }
+
+    public boolean isOnlyStrike() {
+        return gameResult.get(STRIKE_KEY) >= 1 && gameResult.get(BALL_KEY) == 0;
+    }
 }
