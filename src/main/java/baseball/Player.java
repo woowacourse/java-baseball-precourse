@@ -20,9 +20,18 @@ public class Player {
             if(true){ //true 대신 유효성 검증 부분 추가
                 throw new IllegalArgumentException("1~9 사이의 수로 이루어진 서로 다른 세 자리 수만 입력 가능합니다.");
             } else {
-                // input을 Integer Array로 변경하는 로직 추가
+                parseStringToIntegerArray(input);
                 break;
             }
         }
     }
+
+    private void parseStringToIntegerArray(String string){
+        numbers = new int[Constants.MAX_LEN];
+        for(int i = 0; i < string.length(); i++){
+            numbers[i] = Character.getNumericValue(string.charAt(i));
+        }
+    }
+
+    public int[] getNumbers() { return numbers; }
 }
