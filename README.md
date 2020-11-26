@@ -5,7 +5,7 @@
     1) 입력된 숫자의 유효성 검증 `checkInputNumber`
     2) 입력된 값을 배열에 넣기 `createInputNumber`
     3) 게임 반복하기
-2. 3개의 숫자 랜덤 선출 메소드 구현
+2. 3개의 숫자 랜덤 선출 메소드 구현 `createRandomNumber`
 3. 게임 로직 (스트라이크/볼/낫싱) 구현
 
 
