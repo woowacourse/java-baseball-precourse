@@ -40,10 +40,12 @@ class GameResultTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("하나도 못 맞춘 경우 결과값으로 '낫싱'을 반환")
+    @DisplayName("하나도 못 맞춘 경우 isNothing은 true를 반환")
     @Test
-    public void 하나도_못맞추면_낫씽_반환() {
+    public void isNothing_0점일때_true_반환() {
         gameResultMap.put("볼", 0);
         gameResultMap.put("스트라이크", 0);
+        GameResult gameResult = new GameResult(gameResultMap);
+        assertThat(gameResult.isNothing()).isTrue();
     }
 }
