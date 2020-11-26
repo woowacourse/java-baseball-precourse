@@ -107,3 +107,12 @@ private static final Random RANDOM = new Random();
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+<br>
+
+## 구현할 기능 목록
+* 랜덤 값 결정 함수
+* 게임 시작 함수
+* 값 입력 함수
+* 값 판별 함수
+* 게임 종료 분기 여부 판단 함수
