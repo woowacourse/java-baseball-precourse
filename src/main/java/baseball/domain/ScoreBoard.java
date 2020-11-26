@@ -7,8 +7,12 @@ public class ScoreBoard {
     private final Count ball;
 
     public ScoreBoard() {
-        this.strike = new Count();
-        this.ball = new Count();
+        this(0, 0);
+    }
+
+    public ScoreBoard(int strike, int ball) {
+        this.strike = new Count(strike);
+        this.ball = new Count(ball);
     }
 
     public boolean hasZeroStrike() {
