@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BaseballNumbers {
-    private static final int MAXIMUM_BASEBALL_NUMBER_COUNTS = 3;
+    private static final int NECESSARY_BASEBALL_NUMBER_COUNTS = 3;
     private static final int RANGE_MINIMUM = 1;
     private static final int RANGE_MAXIMUM = 9;
     private static final int FIRST_BALL_INDEX = 0;
@@ -30,7 +30,7 @@ public class BaseballNumbers {
     }
 
     private static boolean isGenerationComplete(List<BaseballNumber> baseballNumbers) {
-        return baseballNumbers.size() == MAXIMUM_BASEBALL_NUMBER_COUNTS;
+        return baseballNumbers.size() == NECESSARY_BASEBALL_NUMBER_COUNTS;
     }
 
     private static void generateRandomBaseballNumber(List<BaseballNumber> baseballNumbers) {
@@ -42,10 +42,20 @@ public class BaseballNumbers {
     }
 
     public static BaseballNumbers generateInputBaseballNumbers(List<Integer> inputBaseballNumbers) {
+        validateDuplication(inputBaseballNumbers);
         List<BaseballNumber> baseballNumbers = inputBaseballNumbers.stream()
                 .map(BaseballNumber::of)
                 .collect(Collectors.toList());
         return new BaseballNumbers(baseballNumbers);
+    }
+
+    private static void validateDuplication(List<Integer> inputBaseballNumbers) {
+        int distinctCounts = (int) inputBaseballNumbers.stream()
+                .distinct()
+                .count();
+        if (distinctCounts != NECESSARY_BASEBALL_NUMBER_COUNTS) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int calculateStrikeCounts(BaseballNumbers targetBaseballNumbers) {
