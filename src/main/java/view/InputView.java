@@ -1,7 +1,5 @@
 package view;
 
-import validator.ThreeDigitNumberValidator;
-
 import java.util.Scanner;
 
 public class InputView {
@@ -12,13 +10,6 @@ public class InputView {
 
     public static String getThreeDigitNumber(Scanner scanner) {
         OutputView.printMessage(PLEASE_INPUT_NUMBER);
-        String threeDigitNumber = scanner.nextLine();
-        try {
-            ThreeDigitNumberValidator.validateThreeDigitNumber(threeDigitNumber);
-        } catch (IllegalArgumentException e) {
-            OutputView.printMessageAndNewLine(e.getMessage());
-            threeDigitNumber = getThreeDigitNumber(scanner);
-        }
-        return threeDigitNumber;
+        return scanner.nextLine();
     }
 }
