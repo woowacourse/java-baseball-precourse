@@ -8,6 +8,12 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BaseballNumbers {
+    private static final int MAXIMUM_BASEBALL_NUMBER_COUNTS = 3;
+    private static final int RANGE_MINIMUM = 1;
+    private static final int RANGE_MAXIMUM = 9;
+    private static final int FIRST_BALL_INDEX = 0;
+    private static final int LAST_BALL_INDEX = 2;
+    private static final int NECESSARY_COUNT_FOR_BALL_HINT = 1;
 
     private final List<BaseballNumber> baseballNumbers;
 
@@ -24,11 +30,11 @@ public class BaseballNumbers {
     }
 
     private static boolean isGenerationComplete(List<BaseballNumber> baseballNumbers) {
-        return baseballNumbers.size() == 3;
+        return baseballNumbers.size() == MAXIMUM_BASEBALL_NUMBER_COUNTS;
     }
 
     private static void generateRandomBaseballNumber(List<BaseballNumber> baseballNumbers) {
-        int randomNumber = RandomUtils.nextInt(1, 9);
+        int randomNumber = RandomUtils.nextInt(RANGE_MINIMUM, RANGE_MAXIMUM);
         BaseballNumber randomBaseballNumber = BaseballNumber.of(randomNumber);
         if (!randomBaseballNumber.isDuplicated(baseballNumbers)) {
             baseballNumbers.add(randomBaseballNumber);
@@ -43,8 +49,8 @@ public class BaseballNumbers {
     }
 
     public int calculateStrikeCounts(BaseballNumbers targetBaseballNumbers) {
-        return (int) IntStream.rangeClosed(0, 2)
-                .filter(index -> isStrike(index, targetBaseballNumbers))
+        return (int) IntStream.rangeClosed(FIRST_BALL_INDEX, LAST_BALL_INDEX)
+                .filter(i -> isStrike(i, targetBaseballNumbers))
                 .count();
     }
 
@@ -56,16 +62,18 @@ public class BaseballNumbers {
     }
 
     public int calculateBallCounts(BaseballNumbers targetBaseballNumbers) {
-        return (int) IntStream.rangeClosed(0, 2)
-                .filter(index -> isBall(index, targetBaseballNumbers))
+        return (int) IntStream.rangeClosed(FIRST_BALL_INDEX, LAST_BALL_INDEX)
+                .filter(i -> isBall(i, targetBaseballNumbers))
                 .count();
     }
 
     private boolean isBall(int index, BaseballNumbers targetBaseballNumbers) {
-        return IntStream.rangeClosed(0, 2)
+        BaseballNumber targetBaseballNumber = targetBaseballNumbers.baseballNumbers
+                .get(index);
+        return IntStream.rangeClosed(FIRST_BALL_INDEX, LAST_BALL_INDEX)
                 .filter(i -> i != index)
-                .filter(i -> targetBaseballNumbers.baseballNumbers.get(i).equalTo(this.baseballNumbers.get(index)))
-                .count() != 0;
+                .filter(i -> this.baseballNumbers.get(i).equalTo(targetBaseballNumber))
+                .count() == NECESSARY_COUNT_FOR_BALL_HINT;
     }
 
     public List<Integer> getBaseballNumbers() {
