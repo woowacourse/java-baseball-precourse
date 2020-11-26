@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Application {
     final static int LENGTH = 3;
     final static int TESTNUM = 10;
+    //시작과 예외처리.
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행

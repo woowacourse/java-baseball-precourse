@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 //같은 package 내에서만 가능.
 class MakeNumber {
+    final static int StartNum = 1;
+    final static int EndNum = 9;
     private ArrayList<Integer> target = new ArrayList<>();
 
     //target에 element 중복을 체크하는 함수.
@@ -21,7 +23,7 @@ class MakeNumber {
     //target을 만든다.
     MakeNumber(){
         while(target.size() < Application.LENGTH){
-            int element = RandomUtils.nextInt(1, 9);
+            int element = RandomUtils.nextInt(StartNum, EndNum);
             if(IsUsed(element)){
                 target.add(element);
             }
