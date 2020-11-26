@@ -12,7 +12,7 @@ public class BaseballGame {
     }
 
     public void run(){
-        while(true){
+        while(true) {
             game();
         }
     }
@@ -28,6 +28,8 @@ public class BaseballGame {
 
         strikeCounter = strikeCompare(ballNumberList, playerBallSplitNumberList);
         ballCounter = ballCompare(ballNumberList, playerBallSplitNumberList);
+
+        resultPrint(ballCounter, strikeCounter);
     }
 
     public List<String> ballNumbers() {
@@ -70,5 +72,21 @@ public class BaseballGame {
             }
         }
         return ballCounter;
+    }
+
+    public void resultPrint(int ballCounter, int strikeCounter) {
+        if(1 <= ballCounter && 1 <= strikeCounter){
+            System.out.println(String.format("%d볼 %d스트라이크 입니다.",ballCounter,strikeCounter));
+        }else if(1 <= ballCounter && strikeCounter==0){
+            System.out.println(ballCounter+"볼 입니다.");
+        }else if(0 == ballCounter && strikeCounter==1) {
+            System.out.println(strikeCounter+"스트라이크 입니다.");
+        }else if(0 == ballCounter && strikeCounter==2) {
+            System.out.println(strikeCounter+"스트라이크 입니다.");
+        }else if(strikeCounter==3){
+            System.out.println(strikeCounter + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }else{
+            System.out.println("낫싱");
+        }
     }
 }
