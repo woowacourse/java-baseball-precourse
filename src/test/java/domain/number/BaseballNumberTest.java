@@ -53,7 +53,7 @@ class BaseballNumberTest {
     public void 객체들의_값이_같으면_true를_반환() {
         BaseballNumber firstNumber = BaseballNumber.of(1);
         BaseballNumber secondNumber = BaseballNumber.of(1);
-        boolean isEqual = firstNumber.equals(secondNumber);
+        boolean isEqual = firstNumber.equalTo(secondNumber);
         assertThat(isEqual).isTrue();
     }
 
@@ -62,7 +62,7 @@ class BaseballNumberTest {
     public void 객체들의_값이_같으면_false를_반환() {
         BaseballNumber firstNumber = BaseballNumber.of(1);
         BaseballNumber secondNumber = BaseballNumber.of(3);
-        boolean isEqual = firstNumber.equals(secondNumber);
+        boolean isEqual = firstNumber.equalTo(secondNumber);
         assertThat(isEqual).isFalse();
     }
 }
