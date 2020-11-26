@@ -12,8 +12,9 @@ public final class ConsoleOutput {
 
     private static final String INPUT_PITCHINGS_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String WINNING_MESSAGE = Pitchings.SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String NEXT_GAME_STATUS_MESSAGE = "게임을 새로 시작하려면 " + GameStatus.RUN.getValue() +
-        ", 종료하려면 " + GameStatus.EXIT.getValue() + "를 입력하세요.";
+    private static final String NEXT_GAME_STATUS_MESSAGE =
+        "게임을 새로 시작하려면 " + GameStatus.RUN.getValue() +
+            ", 종료하려면 " + GameStatus.EXIT.getValue() + "를 입력하세요.";
 
     private ConsoleOutput() {
     }

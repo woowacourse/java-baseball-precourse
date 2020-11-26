@@ -8,6 +8,7 @@ import baseball.domain.pitching.Pitchings;
 import java.util.Scanner;
 
 public class Application {
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         ConsoleInput consoleInput = ConsoleInput.of(scanner);
@@ -34,8 +35,7 @@ public class Application {
             try {
                 Pitchings target = Pitchings.of(PitchingsStr);
                 game.start(target);
-            }
-            catch (RuntimeException e) {
+            } catch (RuntimeException e) {
                 consoleOutput.println(e.getMessage());
                 continue;
             }
