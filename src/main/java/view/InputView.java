@@ -1,25 +1,25 @@
 package view;
 
 import java.util.Scanner;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class InputView {
     private static final String INPUT_BASEBALL_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String WRONG_INPUT_MESSAGE = "잘못 입력하셨습니다. 숫자를 다시 입력해주세요 : ";
+    private static final char MINIMUM_BASEBALL_NUMBER = '1';
+    private static final char MAXIMUM_BASEBALL_NUMBER = '9';
+    private static final int NONE_DUPLICATED_NUMBER_COUNTS = 3;
 
     private InputView() {
     }
 
     public static String inputBaseballNumbers(Scanner scanner) {
         System.out.print(INPUT_BASEBALL_NUMBERS_MESSAGE);
-        String input = scanner.nextLine();
-        while (isWrongPattern(input)) {
+        String inputBaseballNumbers = scanner.nextLine();
+        while (isWrongPattern(inputBaseballNumbers)) {
             System.out.print(WRONG_INPUT_MESSAGE);
-            input = scanner.nextLine();
+            inputBaseballNumbers = scanner.nextLine();
         }
-        return input;
+        return inputBaseballNumbers;
     }
 
     private static boolean isWrongPattern(String input) {
@@ -32,21 +32,12 @@ public class InputView {
     }
 
     private static void validatePattern(String input) {
-        if (input.length() != 3) {
+        boolean isCorrectPattern = input.chars()
+                .filter(character -> MINIMUM_BASEBALL_NUMBER <= character && character <= MAXIMUM_BASEBALL_NUMBER)
+                .distinct()
+                .count() == NONE_DUPLICATED_NUMBER_COUNTS;
+        if (!isCorrectPattern) {
             throw new IllegalArgumentException();
         }
-        Set<Character> characters = getCharacterStream(input)
-                .collect(Collectors.toSet());
-        if (characters.size() != 3) {
-            throw new IllegalArgumentException();
-        }
-        if (getCharacterStream(input).anyMatch(c -> c < '1' || c > '9')) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static Stream<Character> getCharacterStream(String input) {
-        return input.chars()
-                .mapToObj(character -> (char) character);
     }
 }
