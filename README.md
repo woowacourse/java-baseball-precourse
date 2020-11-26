@@ -1,5 +1,31 @@
 # 미션 - 숫자 야구 게임
 
+## 기능목록  
+### Entire System
+- 게임 시작과 함께 임의 생성된 Game Set 가져오기
+- Input 받아오기.
+- Input 입력시에 Ball/Strike/Nothing 판단
+- 3 Strike 시에 게임 끝
+- 게임이 끝날 시에 다시 플레이할지 물어보기
+### RandomSetGenerator  
+- Random한 숫자를 가진 Ball Set Array 생성 및 반환
+### InputReceiver  
+- Input을 받는 메서드
+- Input을 받고 오류없는지 판단하는 메서드  
+### RuleCheck 
+- Ball/Strike/Nothing 결과 도출 메서드
+- Ball 몇 개인지 판단하는 메서드
+- Strike가 몇 개인지 판단하는 메서드
+- Ball/Strike 결과 보고 낫띵 판단하는 메서드
+- 종합 결과 가져가는 메서드
+### OuputShower
+- 결과를 정리하여 보여주는 메서드.
+### Game
+- 시작 및 종료를 인식
+- 전체적인 게임을 진행하는 메서드.
+### Application
+- 실제 게임 시작 진행 
+
 ## 🚀 기능 요구사항
 - 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
 - 정답을 맞추기 위해 3자리수를 입력하고 힌트를 받는다.
