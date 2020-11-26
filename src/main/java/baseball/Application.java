@@ -172,12 +172,13 @@ public class Application {
         do {
             answer = RandomUtils.nextInt(100, 999);
         } while (!isValidNum(answer));
-        System.out.println(answer);
 
+        // 게임 플레이
         int strikeCount = 0;
         while (strikeCount != 3) {
             strikeCount = playGame(scanner, answer);
         }
+
         // 게임 계속 플레이 혹은 종료
         goOrStop(scanner);
     }
