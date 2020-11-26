@@ -3,25 +3,28 @@ package baseball;
 import java.util.Scanner;
 
 public class GameManager {
-    private final User user;
-    private final Computer computer;
+    private final Players players;
+    private final AnswerChecker answerChecker;
 
     public GameManager(Scanner scanner) {
-        this.user = new User(scanner);
-        this.computer = new Computer();
+        this.players = new Players(scanner);
+        this.answerChecker = new AnswerChecker(players);
     }
 
     public void start() {
-        computer.generateNumber();
-        /* TODO
+        players.generateComputerNumber();
+        User user = players.getUser();
         do {
-
-        } while (AnswerChecker.isAnswer);
-        isContinue(user.isContinue);
-        */
+            user.getUserInput();
+            Result result = answerChecker.calculateResult(players);
+            result.printResult();
+            result.clearResult();
+            user.getNumbers().clear();
+        } while (!answerChecker.isAnswer());
     }
 
     public boolean isContinue() {
+        // TODO : return user.isContinue();
         return false;
     }
 }

@@ -7,17 +7,17 @@ import java.util.List;
 import java.util.Set;
 
 public class NumberChecker {
-    private static final int BASEBALL_NUMBERS_SIZE = 3;
+    public static final int BASEBALL_NUMBERS_SIZE = 3;
     private static final int BASEBALL_EACH_NUMBER_MIN = 1;
     private static final int BASEBALL_EACH_NUMBER_MAX = 9;
 
     public static boolean isValidNumbers(List<Integer> numbers, CheckerType checkerType) {
-        if (!isCorrectRange(numbers) || !isNotDuplicated(numbers)) {
+        if (numbers.size() != 3 || !isCorrectRange(numbers) || !isNotDuplicated(numbers)) {
             if (checkerType == USER) {
                 throw new IllegalArgumentException();
             }
             if (checkerType == COMPUTER) {
-                System.out.println("컴퓨터의 번호가 유효하지 않음 : " + numbers.toString());
+                // System.out.println("컴퓨터의 번호가 유효하지 않음 : " + numbers.toString());
                 return false;
             }
         }

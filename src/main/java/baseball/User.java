@@ -32,4 +32,7 @@ public class User {
         }
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }

@@ -18,7 +18,7 @@ public class Computer {
         do {
             convertIntToList(RandomUtils.nextInt(123, 987), numbers);
         } while (!NumberChecker.isValidNumbers(numbers, COMPUTER));
-        System.out.println("컴퓨터의 번호가 유효함 : " + numbers.toString());
+        // System.out.println("컴퓨터의 번호가 유효함 : " + numbers.toString());
     }
 
     private void convertIntToList(int randomNumber, List<Integer> numbers) {
@@ -31,5 +31,9 @@ public class Computer {
 
     private String convertIntToStr(int randomNumber) {
         return String.valueOf(randomNumber);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
