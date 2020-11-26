@@ -1,10 +1,10 @@
 package constants;
 
 public final class SystemMessage {
-    public static final String INPUT_MESSAGE = "¼ıÀÚ¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä : ";
-    public static final String BALL = "º¼";
-    public static final String STRIKE = "½ºÆ®¶óÀÌÅ©";
-    public static final String NOTHING = "³´½Ì";
-    public static final String GAME_CLEAR_MESSAGE = "3°³ÀÇ ¼ıÀÚ¸¦ ¸ğµÎ ¸ÂÈ÷¼Ì½À´Ï´Ù! °ÔÀÓ Á¾·á";
-    public static final String GAME_RESTART_OR_END_MESSAGE = "°ÔÀÓÀ» »õ·Î ½ÃÀÛÇÏ·Á¸é 1, Á¾·áÇÏ·Á¸é 2¸¦ ÀÔ·ÂÇÏ¼¼¿ä.";
+    public static final String INPUT_MESSAGE = "ìˆ«ìë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš” : ";
+    public static final String BALL = "ë³¼";
+    public static final String STRIKE = "ìŠ¤íŠ¸ë¼ì´í¬";
+    public static final String NOTHING = "ë‚«ì‹±";
+    public static final String GAME_CLEAR_MESSAGE = "3ê°œì˜ ìˆ«ìë¥¼ ëª¨ë‘ ë§íˆì…¨ìŠµë‹ˆë‹¤! ê²Œì„ ì¢…ë£Œ";
+    public static final String GAME_RESTART_OR_END_MESSAGE = "ê²Œì„ì„ ìƒˆë¡œ ì‹œì‘í•˜ë ¤ë©´ 1, ì¢…ë£Œí•˜ë ¤ë©´ 2ë¥¼ ì…ë ¥í•˜ì„¸ìš”.";
 }
