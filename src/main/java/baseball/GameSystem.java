@@ -5,17 +5,21 @@ import java.util.Scanner;
 import utils.RandomUtils;
 
 public class GameSystem {
+    private static final String RESTART = "1";
+    private static final String END = "2";
     private static final int MAX_DIGIT = 3;
 
     // 정답이 될 컴퓨터의 3자리 수
     private int[] answer;
     private User user;
     private boolean endFlag;
+    private boolean restartOption;
 
     public GameSystem() {
         answer = new int[MAX_DIGIT];
         user = new User();
         endFlag = false;
+        restartOption = false;
     }
 
     public void playGame(Scanner sc) {
@@ -29,6 +33,8 @@ public class GameSystem {
             checkEnd();
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        setRestartOption(sc);
+        endFlag = !restartOption;
     }
 
     private void setAnswer() {
@@ -101,6 +107,39 @@ public class GameSystem {
         if (strike == MAX_DIGIT) {
             endFlag = true;
         }
+    }
+
+    public boolean getRestartOption() {
+        return restartOption;
+    }
+
+    private void setRestartOption(Scanner sc) {
+        boolean validInput = false;
+        boolean restart = false;
+
+        while (!validInput) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            try {
+                restart = checkRestartOption(sc);
+                validInput = true;
+            } catch (IllegalArgumentException e) {
+                String exceptionMessage = e.getMessage();
+                System.out.println(exceptionMessage);
+            }
+        }
+        restartOption = restart;
+    }
+
+    private boolean checkRestartOption(Scanner sc) throws IllegalArgumentException {
+        String input = sc.nextLine();
+
+        if (input.equals(RESTART)) {
+            return true;
+        }
+        if (input.equals(END)) {
+            return false;
+        }
+        throw new IllegalArgumentException("입력이 1 또는 2가 아닙니다. 재입력이 필요합니다.");
     }
 
     private int stringToValidNum(String string) throws IllegalArgumentException {
