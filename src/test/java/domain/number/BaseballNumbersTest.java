@@ -26,6 +26,12 @@ class BaseballNumbersTest {
                 Arguments.of(Arrays.asList(9, 1, 6), Arrays.asList(3, 7, 6), 1));
     }
 
+    private static Stream<Arguments> getBaseballNumbersForBall() {
+        return Stream.of(Arguments.of(Arrays.asList(3, 7, 6), Arrays.asList(3, 7, 6), 1),
+                Arguments.of(Arrays.asList(1, 5, 3), Arrays.asList(3, 1, 5), 3),
+                Arguments.of(Arrays.asList(9, 8, 7), Arrays.asList(9, 8, 7), 0));
+    }
+
     @DisplayName("BaseballNumbers를 자동 생성하면, 중복되지 않은 3개의 랜덤 숫자가 뽑힘")
     @Test
     public void BaseballNumbers_자동_생성_중복_없는_랜덤_3개_숫자_반환() {
@@ -55,5 +61,15 @@ class BaseballNumbersTest {
         BaseballNumbers secondBaseballNumbers = BaseballNumbers.generateInputBaseballNumbers(secondNumbers);
         int testStrikeCounts = firstBaseballNumbers.calculateStrikeCounts(secondBaseballNumbers);
         assertThat(testStrikeCounts).isEqualTo(strikeCounts);
+    }
+
+    @DisplayName("두 개의 BaseballNumbers를 비교하고, 볼 개수를 정상 계산")
+    @ParameterizedTest
+    @MethodSource("getBaseballNumbersForBall")
+    public void 볼_개수_파악(List<Integer> firstNumbers, List<Integer> secondNumbers, int ballCounts) {
+        BaseballNumbers firstBaseballNumbers = BaseballNumbers.generateInputBaseballNumbers(firstNumbers);
+        BaseballNumbers secondBaseballNumbers = BaseballNumbers.generateInputBaseballNumbers(secondNumbers);
+        int testStrikeCounts = firstBaseballNumbers.calculateBallCounts(secondBaseballNumbers);
+        assertThat(testStrikeCounts).isEqualTo(ballCounts);
     }
 }
