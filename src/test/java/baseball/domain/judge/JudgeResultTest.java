@@ -64,4 +64,36 @@ class JudgeResultTest {
 
         assertEquals(judgeResult.isComplete(), expect);
     }
+
+    @DisplayName("스트라이크 기록이 존재하는지 확인한다.")
+    @Test
+    void hasStrike() {
+        final boolean expect = true;
+
+        judgeResult.increment(Judgement.STRIKE);
+
+        assertEquals(judgeResult.hasStrike(), expect);
+    }
+
+    @DisplayName("볼 기록이 존재하는지 확인한다.")
+    @Test
+    void hasBall() {
+        final boolean expect = true;
+
+        judgeResult.increment(Judgement.BALL);
+
+        assertEquals(judgeResult.hasBall(), expect);
+    }
+
+    @DisplayName("낫싱인지 확인한다.")
+    @Test
+    void hasNothing() {
+        final boolean expect = true;
+
+        for (int i = 0; i < 3; i++) {
+            judgeResult.increment(Judgement.NOTHING);
+        }
+
+        assertEquals(judgeResult.isNothing(), expect);
+    }
 }

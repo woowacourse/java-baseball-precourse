@@ -43,7 +43,7 @@
 ### 판정(Judgment) - enum
 스트라이크, 볼, 낫싱
 
-### Flow
+### Flow (전체 흐름)
 1. 랜덤한 투구들(Pitchings), 판정기(Judge), 판정 기록기(JudgeReport)를 가지고 있는 게임(Game)을 생성한다.
 2. 입력으로 받은 3자리 숫자로 만든 투구들(Pitchings)을 게임(Game)에 알려주고 판정기(Judge)를 작동시킨 결과를 판정 기록기(JudgeReport)에 기록한다.
 3. 판정 기록기(JudgeReport)에 기록된 판정 기록을 보고 3 스트라이크인지 확인한다.
