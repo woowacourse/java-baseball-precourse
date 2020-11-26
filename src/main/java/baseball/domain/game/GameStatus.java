@@ -1,5 +1,7 @@
 package baseball.domain.game;
 
+import baseball.domain.game.exception.GameStatusNotExistException;
+
 public enum GameStatus {
 
     RUN(1),
@@ -18,7 +20,7 @@ public enum GameStatus {
             }
         }
 
-        return null;
+        throw new GameStatusNotExistException(value);
     }
 
     public int getValue() {
