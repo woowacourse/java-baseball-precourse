@@ -1,6 +1,7 @@
 package domain.number;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BaseballNumber {
@@ -31,6 +32,10 @@ public class BaseballNumber {
         if (baseballNumber < RANGE_MINIMUM || baseballNumber > RANGE_MAXIMUM) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public boolean isDuplicated(List<BaseballNumber> baseballNumbers) {
+        return baseballNumbers.contains(this);
     }
 
     public int getBaseballNumber() {
