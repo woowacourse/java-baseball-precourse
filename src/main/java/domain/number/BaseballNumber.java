@@ -38,10 +38,6 @@ public class BaseballNumber {
         return baseballNumbers.contains(this);
     }
 
-    public boolean equalTo(BaseballNumber baseballNumber) {
-        return this.baseballNumber == baseballNumber.baseballNumber;
-    }
-
     public int getBaseballNumber() {
         return this.baseballNumber;
     }

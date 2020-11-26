@@ -68,7 +68,7 @@ public class BaseballNumbers {
         BaseballNumber baseballNumber = this.baseballNumbers.get(index);
         BaseballNumber targetBaseballNumber = targetBaseballNumbers.baseballNumbers
                 .get(index);
-        return baseballNumber.equalTo(targetBaseballNumber);
+        return baseballNumber.equals(targetBaseballNumber);
     }
 
     public int calculateBallCounts(BaseballNumbers targetBaseballNumbers) {
@@ -82,7 +82,7 @@ public class BaseballNumbers {
                 .get(index);
         return IntStream.rangeClosed(FIRST_BALL_INDEX, LAST_BALL_INDEX)
                 .filter(i -> i != index)
-                .filter(i -> this.baseballNumbers.get(i).equalTo(targetBaseballNumber))
+                .filter(i -> this.baseballNumbers.get(i).equals(targetBaseballNumber))
                 .count() == NECESSARY_COUNT_FOR_BALL_HINT;
     }
 
