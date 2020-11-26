@@ -12,24 +12,31 @@ public class BaseballGame {
     }
 
     public void run(){
-        while(true) {
+        boolean isContinue = true;
+        while(isContinue){
             game();
+            System.out.println("게임을 새로 시작하려면 1, 종료 하려면 2를 입력하세요.");
+            if(scanner.nextLine().equals("2"))
+                isContinue = false;
         }
     }
 
     public void game() {
         List<String> ballNumberList = ballNumbers();
-        int ballCounter = 0;
-        int strikeCounter = 0;
-        System.out.print("숫자를 입력해주세요 : ");
-        String playerBallNumber = scanner.nextLine();
+        boolean answer = true;
+        while(answer) {
+            int ballCounter = 0;
+            int strikeCounter = 0;
+            System.out.print("숫자를 입력해주세요 : ");
+            String playerBallNumber = scanner.nextLine();
 
-        List<String> playerBallSplitNumberList = playerBallNumber(playerBallNumber);
+            List<String> playerBallSplitNumberList = playerBallNumber(playerBallNumber);
 
-        strikeCounter = strikeCompare(ballNumberList, playerBallSplitNumberList);
-        ballCounter = ballCompare(ballNumberList, playerBallSplitNumberList);
+            strikeCounter = strikeCompare(ballNumberList, playerBallSplitNumberList);
+            ballCounter = ballCompare(ballNumberList, playerBallSplitNumberList);
 
-        resultPrint(ballCounter, strikeCounter);
+            answer = resultPrint(ballCounter, strikeCounter);
+        }
     }
 
     public List<String> ballNumbers() {
@@ -74,7 +81,8 @@ public class BaseballGame {
         return ballCounter;
     }
 
-    public void resultPrint(int ballCounter, int strikeCounter) {
+    public boolean resultPrint(int ballCounter, int strikeCounter) {
+        boolean answer = true;
         if(1 <= ballCounter && 1 <= strikeCounter){
             System.out.println(String.format("%d볼 %d스트라이크 입니다.",ballCounter,strikeCounter));
         }else if(1 <= ballCounter && strikeCounter==0){
@@ -85,8 +93,10 @@ public class BaseballGame {
             System.out.println(strikeCounter+"스트라이크 입니다.");
         }else if(strikeCounter==3){
             System.out.println(strikeCounter + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            answer = false;
         }else{
             System.out.println("낫싱");
         }
+        return answer;
     }
 }
