@@ -46,6 +46,7 @@ public class Application {
             throw new IllegalArgumentException("3자리 정수만 입력 가능합니다");
         }
     }
+
     public static int[] intToArray(int num) {
         int[] this_array = new int[3];
         for (int i = 2; i > -1; i--) {
@@ -55,7 +56,7 @@ public class Application {
         return this_array;
     }
 
-    public static boolean isValidateRandomNum(int candidate) {
+    public static boolean isValidRandomNum(int candidate) {
         Set<Integer> store = new HashSet<>();
 
         int[] candidate_array = intToArray(candidate);
@@ -76,21 +77,21 @@ public class Application {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                strike += countStrike(guessArray[i], i, answerArray[j], j);
-                ball += countBall(guessArray[i], i, answerArray[j], j);
+                strike += isStrike(guessArray[i], i, answerArray[j], j);
+                ball += isBall(guessArray[i], i, answerArray[j], j);
             }
         }
         return new StrikeAndBall(strike, ball);
     }
 
-    public static int countStrike(int num1, int index1, int num2, int index2) {
+    public static int isStrike(int num1, int index1, int num2, int index2) {
         if (index1 == index2 && num1 == num2) {
             return 1;
         }
         return 0;
     }
 
-    public static int countBall(int num1, int index1, int num2, int index2) {
+    public static int isBall(int num1, int index1, int num2, int index2) {
         if (index1 != index2 && num1 == num2) {
             return 1;
         }
@@ -120,7 +121,7 @@ public class Application {
         int answer;
         do {
             answer = RandomUtils.nextInt(100, 999);
-        } while (!isValidateRandomNum(answer));
+        } while (!isValidRandomNum(answer));
         System.out.println(answer);
 
         int number;
@@ -132,5 +133,9 @@ public class Application {
             resultOfGuess(strikeCount, ballCount);
         } while (number != answer);
         System.out.println("숫자를 맞히셨습니다! 게임 종료");
+
+        // 게임 끝난후 게임 더할 건지 말건지에 대해서 기능 추가하기!
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
     }
 }
