@@ -17,7 +17,7 @@ public class BaseBallUtils {
     }
 
     public static void isRigthBalls(List<Integer> inputBalls) {
-        if (!isThree(inputBalls)){
+        if (!isThree(inputBalls)) {
             throw new IllegalArgumentException(NOT_THREE_NUMBERS_MESSAGE);
         }
         if (!isNum(inputBalls)) {
@@ -25,6 +25,12 @@ public class BaseBallUtils {
         }
         if (!isDuplicated(inputBalls)) {
             throw new IllegalArgumentException(DUPLICATED_MESSAGE);
+        }
+    }
+
+    public static void isRigthCode(int code) {
+        if (!(code == 1 || code == 2)) {
+            throw new IllegalArgumentException(INVALID_VALUE_MESSAGE);
         }
     }
 

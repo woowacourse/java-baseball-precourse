@@ -11,13 +11,21 @@
 
 package baseball;
 
+import utils.BaseBallUtils;
+
 import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
-        AnswerBalls answerBalls = new AnswerBalls();
+        Boolean playCode;
 
+        do {
+            AnswerBalls answerBalls = new AnswerBalls();
+            BaseBallUtils.isRigthBalls(answerBalls.getAnswerBalls());
+            BaseBallGame baseBallGame = new BaseBallGame(scanner, answerBalls);
+            playCode = baseBallGame.play();
+        } while (playCode);
     }
 }
