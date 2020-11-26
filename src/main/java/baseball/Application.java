@@ -9,13 +9,21 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
+        String inputValue;
 
         printNumberInput();
+        inputValue=getUserInput(scanner);
         // TODO 구현 진행
     }
 
     /* 게임 진행을 위해 숫자를 입력하라는 안내를 출력하는 함수 */
     public static void printNumberInput(){
         System.out.print("숫자를 입력해 주세요 : ");
+    }
+
+    /* 유저에게 숫자를 입력받아 반환하는 함수 */
+    public static String getUserInput(Scanner scanner){
+        String inputValue=scanner.next();
+        return inputValue;
     }
 }
