@@ -6,6 +6,10 @@ import java.util.List;
 public abstract class Player {
 	private List<Integer> numbers = new ArrayList<Integer>();
 	
+	public List<Integer> getNumbers(){
+		return this.numbers;
+	}
+	
 	public Integer getNumber(int idx) {
 		return numbers.get(idx);
 	}
