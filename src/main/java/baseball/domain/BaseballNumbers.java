@@ -22,6 +22,10 @@ public class BaseballNumbers {
         return numbers.size() != 3;
     }
 
+    public int getNumber(int numberIndex) {
+        return numbers.get(numberIndex);
+    }
+
     private void addNumbers(String inputNumbers) {
         inputNumbers.chars()
                 .distinct()
