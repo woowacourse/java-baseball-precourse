@@ -5,18 +5,16 @@ import java.util.Scanner;
 
 import utils.RandomUtils;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
-
 public class Application {
 
-    private static final int NUMBERS_LENGTH = 3;
+    private static final int BASEBALL_NUMBERS_LENGTH = 3;
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
 
     private static int[] generateRandomNumbers() {
-        int[] randomNumbers = new int[NUMBERS_LENGTH];
+        int[] randomNumbers = new int[BASEBALL_NUMBERS_LENGTH];
         int idx = 0;
-        while (idx < NUMBERS_LENGTH) {
+        while (idx < BASEBALL_NUMBERS_LENGTH) {
             int randomNumber = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
             if (Arrays.stream(randomNumbers).noneMatch(x -> x == randomNumber)) {
                 randomNumbers[idx] = randomNumber;
@@ -27,8 +25,8 @@ public class Application {
     }
 
     private static int[] parseInputString(String inputString) {
-        int[] inputNumbers = new int[NUMBERS_LENGTH];
-        for (int i = 0; i < NUMBERS_LENGTH; i++) {
+        int[] inputNumbers = new int[BASEBALL_NUMBERS_LENGTH];
+        for (int i = 0; i < BASEBALL_NUMBERS_LENGTH; i++) {
             inputNumbers[i] = inputString.charAt(i) - '0';
         }
         return inputNumbers;
@@ -38,7 +36,7 @@ public class Application {
 
         try {
             Integer.parseInt(inputString);
-            if (inputString.length() != NUMBERS_LENGTH) {
+            if (inputString.length() != BASEBALL_NUMBERS_LENGTH) {
                 throw new IllegalArgumentException();
             }
             if (inputString.contains("0")) {
@@ -47,7 +45,6 @@ public class Application {
             return true;
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-            System.out.println("비정상적인 입력입니다.");
             return false;
         }
     }
@@ -56,7 +53,7 @@ public class Application {
         int strikes = 0;
         int balls = 0;
         int[] result = new int[2];
-        for (int i = 0; i < NUMBERS_LENGTH; i++) {
+        for (int i = 0; i < BASEBALL_NUMBERS_LENGTH; i++) {
             int num = inputNumbers[i];
             if (answer[i] == inputNumbers[i]) {
                 strikes ++;
@@ -78,7 +75,7 @@ public class Application {
     }
 
     private static boolean checkResult(int strikes) {
-        if (strikes == NUMBERS_LENGTH) {
+        if (strikes == BASEBALL_NUMBERS_LENGTH) {
             return true;
         }
         return false;
@@ -97,6 +94,25 @@ public class Application {
             }
         }
         System.out.println(result);
+    }
+
+    public static boolean endGame(Scanner scanner) {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int restart = scanner.nextInt();
+        try {
+            if (restart == 1) {
+                return true;
+            } else if (restart == 2) {
+                return false;
+            } else {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
     public static boolean gameStart(Scanner scanner) {
@@ -130,7 +146,7 @@ public class Application {
             isCorrect = checkResult(strikes);
         }
 
-        return false;
+       return endGame(scanner);
     }
 
 
