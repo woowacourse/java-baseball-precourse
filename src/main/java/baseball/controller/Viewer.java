@@ -10,6 +10,9 @@ public class Viewer {
     private static final char END_NUMBER_CHARACTER = '9';
     private static final int START_INTEGER_NUMBER = 0;
     private static final int END_INTEGER_NUMBER = 9;
+    private static final int NOTHING_NUMBER = 0;
+    private static final int RESTART_GAME_FLAG = 1;
+    private static final int STOP_GAME_FLAG = 2;
 
     private final Scanner scanner;
 
@@ -57,7 +60,7 @@ public class Viewer {
         return true;
     }
 
-    public List<Integer> createRandomBallNumberList() {
+    List<Integer> createRandomBallNumberList() {
         List<Integer> randomBallNumberList = new ArrayList<>();
         Set<Integer> setForCheckingSameData = new HashSet<>();
 
@@ -70,5 +73,48 @@ public class Viewer {
             }
         }
         return randomBallNumberList;
+    }
+
+    void printBaseballGameResult(boolean isNothing, int ballCount, int strikeCount) {
+        if (isNothing) {
+            System.out.print("낫싱");
+        } else {
+            this.printBallAndStrike(ballCount, strikeCount);
+        }
+        System.out.println();
+    }
+
+    private void printBallAndStrike(int ballCount, int strikeCount) {
+        if (ballCount != NOTHING_NUMBER) {
+            System.out.printf("%d볼 ", ballCount);
+        }
+        if (strikeCount != NOTHING_NUMBER) {
+            System.out.printf("%d스트라이크", strikeCount);
+        }
+    }
+
+    void printFinishGameMessage() {
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", MAX_LENGTH_OF_BALL);
+    }
+
+    int inputRestartOrStopFlag() {
+        while (true) {
+            try {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                return createValidateNumber();
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println("[Error] : 잘 못 된 입력을 하였습니다.");
+            }
+        }
+    }
+
+    private int createValidateNumber() {
+        String inputTokenData = this.scanner.next();
+        int parseData = Integer.parseInt(inputTokenData);
+        if (parseData == RESTART_GAME_FLAG || parseData == STOP_GAME_FLAG) {
+            return parseData;
+        }
+
+        throw new IllegalArgumentException();
     }
 }
