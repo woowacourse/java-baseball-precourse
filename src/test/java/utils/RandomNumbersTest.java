@@ -19,7 +19,7 @@ class RandomNumbersTest {
     @Test
     @DisplayName("3개의 숫자가 생성")
     void randomNumbers() {
-        List<Integer> result = RandomNumbers.valueOf(size);
+        List<Integer> result = RandomNumbers.getInstance(size);
 
         assertEquals(3, result.size());
     }
@@ -28,7 +28,7 @@ class RandomNumbersTest {
     @DisplayName("중복 여부")
     void duplicate() {
         int testLength = 1000;
-        List<Integer> numbers = RandomNumbers.valueOf(size);
+        List<Integer> numbers = RandomNumbers.getInstance(size);
 
         // 중복되는 숫자가 있다면 사이즈가 감소
         for (int i = 0; i < testLength; i++) {

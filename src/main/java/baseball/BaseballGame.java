@@ -14,10 +14,10 @@ public class BaseballGame {
     private final BaseballNumber baseballNumber;
 
     public BaseballGame() {
-        this.baseballNumber = new BaseballNumber(createBaseballNumber());
+        this.baseballNumber = new BaseballNumber(nonDuplicateNumber());
     }
 
-    private List<Integer> createBaseballNumber() {
-        return RandomNumbers.valueOf(BASEBALL_LIST_SIZE);
+    private List<Integer> nonDuplicateNumber() {
+        return RandomNumbers.getInstance(BASEBALL_LIST_SIZE);
     }
 }

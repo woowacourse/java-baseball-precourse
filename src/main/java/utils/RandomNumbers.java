@@ -15,7 +15,7 @@ public class RandomNumbers {
     private RandomNumbers() {
     }
 
-    public static List<Integer> valueOf(int size) {
+    public static List<Integer> getInstance(int size) {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() != size) {
             int number = RandomUtils.nextInt(START_INDEX, LAST_INDEX);
