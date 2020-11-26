@@ -1,6 +1,6 @@
 # 미션 - 숫자 야구 게임
 ## 구현할 기능 목록
- - [ ] answer balls 생성
+ - [X] answer balls 생성
  - [ ] input balls와 answer balls 비교
     - [ ] 힌트 출력
  - [ ] 정답일 때 까지 반복 진행

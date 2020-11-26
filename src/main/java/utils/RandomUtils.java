@@ -1,3 +1,14 @@
+/*
+ * Class:   RandomUtils.java
+ *
+ * Version: 1.0.0
+ *
+ * Date:    2020-11-26
+ *
+ * Author:  Dong Gun Lee
+ *
+ */
+
 package utils;
 
 import java.util.Random;
