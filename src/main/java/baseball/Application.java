@@ -10,6 +10,8 @@ public class Application {
     private static final int BASEBALL_NUMBERS_LENGTH = 3;
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
+    private static final int RESTART_GAME = 1;
+    private static final int FINISH_GAME = 2;
 
     private static int[] generateRandomNumbers() {
         int[] randomNumbers = new int[BASEBALL_NUMBERS_LENGTH];
@@ -96,14 +98,14 @@ public class Application {
         System.out.println(result);
     }
 
-    public static boolean endGame(Scanner scanner) {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    public static boolean finishGame(Scanner scanner) {
+        System.out.println( BASEBALL_NUMBERS_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 " + RESTART_GAME + ", 종료하려면 " + FINISH_GAME + "를 입력하세요.");
         int restart = scanner.nextInt();
         try {
-            if (restart == 1) {
+            if (restart == RESTART_GAME) {
                 return true;
-            } else if (restart == 2) {
+            } else if (restart == FINISH_GAME) {
                 return false;
             } else {
                 throw new IllegalArgumentException();
@@ -146,7 +148,7 @@ public class Application {
             isCorrect = checkResult(strikes);
         }
 
-       return endGame(scanner);
+       return finishGame(scanner);
     }
 
 
