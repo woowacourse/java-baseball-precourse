@@ -14,7 +14,7 @@ public class FixedNumbersGenerator implements NumbersGenerator {
 
     @Override
     public String generateNumbers() {
-        System.out.println(ASK_NUMBERS_MESSAGE);
+        System.out.print(ASK_NUMBERS_MESSAGE);
         return scanner.nextLine();
     }
 }
