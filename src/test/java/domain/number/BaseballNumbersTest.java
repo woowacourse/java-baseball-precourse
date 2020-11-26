@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseballNumbersTest {
 
@@ -18,6 +19,14 @@ class BaseballNumbersTest {
         return Stream.of(Arguments.of(Arrays.asList(1, 2, 3)),
                 Arguments.of(Arrays.asList(3, 6, 9)),
                 Arguments.of(Arrays.asList(6, 7, 3)));
+    }
+
+    private static Stream<Arguments> getWrongInputBaseballNumbers() {
+        return Stream.of(Arguments.of(Arrays.asList(1, 2, 0)),
+                Arguments.of(Arrays.asList(3, 6, 10)),
+                Arguments.of(Arrays.asList(-1, 7, 3)),
+                Arguments.of(Arrays.asList(1, 2, 2)),
+                Arguments.of(Arrays.asList(2, 2, 2)));
     }
 
     private static Stream<Arguments> getBaseballNumbersForStrike() {
@@ -44,13 +53,22 @@ class BaseballNumbersTest {
         assertThat(distinctNumberCounts).isEqualTo(3);
     }
 
-    @DisplayName("BaseballNumbers를 입력 문자열을 통해 정상적으로 수동 생성함")
+    @DisplayName("BaseballNumbers를 입력 숫자들을 통해 정상적으로 수동 생성함")
     @ParameterizedTest
     @MethodSource("getInputBaseballNumbers")
     public void BaseballNumbers_수동_생성(List<Integer> inputBaseballNumbers) {
         BaseballNumbers baseballNumbers = BaseballNumbers.generateInputBaseballNumbers(inputBaseballNumbers);
         List<Integer> generatedBaseballNumbers = baseballNumbers.getBaseballNumbers();
         assertThat(generatedBaseballNumbers).hasSameElementsAs(inputBaseballNumbers);
+    }
+
+    @DisplayName("입력 숫자들이 1~9 범위가 아니거나 중복이 존재하면, BaseballNumbers 생성 실패")
+    @ParameterizedTest
+    @MethodSource("getWrongInputBaseballNumbers")
+    public void 숫자가_중복_혹은_범위_오류면_BaseballNumbers_생성_실패_예외_발생(List<Integer> inputBaseballNumbers) {
+        assertThatThrownBy(() -> {
+            BaseballNumbers.generateInputBaseballNumbers(inputBaseballNumbers);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("두 개의 BaseballNumbers를 비교하고, 스트라이크 개수를 정상 계산")
