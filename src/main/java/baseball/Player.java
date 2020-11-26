@@ -15,6 +15,8 @@ public class Player {
 
     }
 
+    public int[] getNumbers() { return numbers; }
+
     /**
      * 플레이어에게 세 자리 수를 입력 받는 메소드
      */
@@ -35,8 +37,6 @@ public class Player {
             }
         }
     }
-
-    public int[] getNumbers() { return numbers; }
 
     /**
      * String을 Integer Array로 변환하는 메소드
