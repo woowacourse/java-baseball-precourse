@@ -1,9 +1,6 @@
 package baseball.domain;
 
 public class BaseballGame {
-    private static final String RESTART = "1";
-    private static final String STOP = "2";
-    private static final String RESTART_OR_STOP_REQUEST_ERROR_MESSAGE = "1 또는 2만 입력해주세요!";
     private boolean playing;
     private BaseballNumbers baseballNumbers;
 
@@ -36,18 +33,13 @@ public class BaseballGame {
         return playing;
     }
 
-    public void restart(String restartOrStopRequest, BaseballNumbersGenerator baseballNumbersGenerator) {
-        if (restartOrStopRequest.equals(RESTART)) {
+    public void restart(RestartManager restartManager, BaseballNumbersGenerator baseballNumbersGenerator) {
+        if (restartManager.canRestart()) {
             playing = true;
             baseballNumbers = BaseballNumbers.createAnswerBaseballNumbers(baseballNumbersGenerator);
             return;
         }
 
-        if (restartOrStopRequest.equals(STOP)) {
-            playing = false;
-            return;
-        }
-
-        throw new IllegalArgumentException(RESTART_OR_STOP_REQUEST_ERROR_MESSAGE);
+        playing = false;
     }
 }

@@ -4,14 +4,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseballGameTest {
 
@@ -144,7 +142,7 @@ class BaseballGameTest {
 
         //when
         String restartRequest = "1";
-        baseballGame.restart(restartRequest, baseballNumbersGenerator);
+        baseballGame.restart(RestartManager.of(restartRequest), baseballNumbersGenerator);
 
         //then
         assertThat(baseballGame.isPlaying()).isTrue();
@@ -163,26 +161,9 @@ class BaseballGameTest {
 
         //when
         String stopRequest = "2";
-        baseballGame.restart(stopRequest, baseballNumbersGenerator);
+        baseballGame.restart(RestartManager.of(stopRequest), baseballNumbersGenerator);
 
         //then
         assertThat(baseballGame.isPlaying()).isFalse();
-    }
-
-    @DisplayName("정의되지 않은 요청을 입력했을 때, 숫자야구게임을 재시작하는 기능은 예외를 발생한다 ")
-    @ParameterizedTest
-    @ValueSource(strings = {"0", "3", "$", "a"})
-    void testRestartFunctionIfInputUndefinedRequest(String undefinedRequest) {
-        //given
-        BaseballNumbersGenerator baseballNumbersGenerator = () -> Arrays.asList(1, 2, 3).stream()
-                .map(BaseballNumber::new)
-                .collect(Collectors.toList());
-        BaseballGame baseballGame = BaseballGame.play(baseballNumbersGenerator);
-
-        baseballGame.stop();
-
-        //when //then
-        assertThatThrownBy(() -> baseballGame.restart(undefinedRequest, baseballNumbersGenerator))
-                .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 }
