@@ -33,7 +33,7 @@ class BaseballNumbersTest {
     @Test
     void testInitBaseballNumbersIfDuplicatedBaseballNumber() {
         //given
-        List<BaseballNumber> baseballNumbersValue = Arrays.asList(1,1,2).stream()
+        List<BaseballNumber> baseballNumbersValue = Arrays.asList(1, 1, 2).stream()
                 .map(BaseballNumber::new)
                 .collect(Collectors.toList());
 
@@ -46,7 +46,7 @@ class BaseballNumbersTest {
     @Test
     void testInitBaseballNumbersIfShorterThanBaseballNumbersLength() {
         //given
-        List<BaseballNumber> baseballNumbersValue = Arrays.asList(1,2).stream()
+        List<BaseballNumber> baseballNumbersValue = Arrays.asList(1, 2).stream()
                 .map(BaseballNumber::new)
                 .collect(Collectors.toList());
 
@@ -59,12 +59,29 @@ class BaseballNumbersTest {
     @Test
     void testInitBaseballNumbersIfLongerThanBaseballNumbersLength() {
         //given
-        List<BaseballNumber> baseballNumbersValue = Arrays.asList(1,2).stream()
+        List<BaseballNumber> baseballNumbersValue = Arrays.asList(1, 2).stream()
                 .map(BaseballNumber::new)
                 .collect(Collectors.toList());
 
         //when //then
         assertThatThrownBy(() -> new BaseballNumbers(baseballNumbersValue))
                 .isExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("정답 BaseballNumbers를 생성하는 기능을 테스트한다 ")
+    @Test
+    void testCreateAnswerBaseballNumbers() {
+        //given
+        List<BaseballNumber> baseballNumbersValue = Arrays.asList(1, 2, 3).stream()
+                .map(BaseballNumber::new)
+                .collect(Collectors.toList());
+
+        //when
+        BaseballNumbers baseballNumbers = BaseballNumbers.createAnswerBaseballNumbers(() -> baseballNumbersValue);
+
+        //then
+        assertThat(baseballNumbers).extracting("baseballNumbers")
+                .usingRecursiveComparison()
+                .isEqualTo(baseballNumbersValue);
     }
 }
