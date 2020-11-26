@@ -1,7 +1,10 @@
-package baseball;
+package baseball.checker;
 
-import static baseball.NumberChecker.*;
+import static baseball.checker.NumberChecker.*;
 
+import baseball.players.Computer;
+import baseball.players.Players;
+import baseball.players.User;
 import java.util.List;
 
 public class AnswerChecker {
@@ -17,20 +20,14 @@ public class AnswerChecker {
         return result.isAnswer();
     }
 
-    public Result calculateResult(Players players){
+    public void calculateResult() {
         User user = players.getUser();
-        System.out.println("유저의 숫자들 : " + players.getUser().getNumbers().toString());
-        System.out.println("컴퓨터의 숫자들 : " + players.getComputer().getNumbers().toString());
-        List<Integer> userNumbers = user.getNumbers();
-        for (int userIndex = 0; userIndex < BASEBALL_NUMBERS_SIZE; userIndex++){
+        System.out.println("컴퓨터의 숫자 : " + players.getComputer().getNumbers().toString());
+        List<Integer> userNumbers = user.getUserNumbers();
+        for (int userIndex = 0; userIndex < BASEBALL_NUMBERS_SIZE; userIndex++) {
             int userNumber = userNumbers.get(userIndex);
-            setResult(userIndex, userNumber);
+            calculateStrikeOrBall(userIndex, userNumber);
         }
-        return result;
-    }
-
-    private void setResult(int userIndex, int userNumber) {
-        calculateStrikeOrBall(userIndex, userNumber);
     }
 
     private void calculateStrikeOrBall(int userIndex, int userNumber) {
@@ -40,10 +37,20 @@ public class AnswerChecker {
             result.strike();
             return;
         }
-        for (int comIndex = 0; comIndex < computerNumbers.size(); comIndex++) {
+        for (int comIndex = 0; comIndex < BASEBALL_NUMBERS_SIZE; comIndex++) {
             if (computerNumbers.get(comIndex) == userNumber && comIndex != userIndex) {
                 result.ball();
             }
         }
+    }
+
+    public void printResult() {
+        result.printResult();
+    }
+
+    public void clearUserNumbersAndResult() {
+        User user = players.getUser();
+        user.clearNumbers();
+        result.clearResult();
     }
 }

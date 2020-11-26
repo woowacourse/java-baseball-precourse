@@ -1,6 +1,5 @@
-package baseball;
+package baseball.players;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Players {

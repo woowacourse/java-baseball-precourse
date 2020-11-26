@@ -1,6 +1,6 @@
-package baseball;
+package baseball.checker;
 
-import static baseball.CheckerType.*;
+import static baseball.checker.CheckerType.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -12,7 +12,9 @@ public class NumberChecker {
     private static final int BASEBALL_EACH_NUMBER_MAX = 9;
 
     public static boolean isValidNumbers(List<Integer> numbers, CheckerType checkerType) {
-        if (numbers.size() != 3 || !isCorrectRange(numbers) || !isNotDuplicated(numbers)) {
+        if (numbers.size() != BASEBALL_NUMBERS_SIZE
+                || !isCorrectRange(numbers)
+                || !isNotDuplicated(numbers)) {
             if (checkerType == USER) {
                 throw new IllegalArgumentException();
             }
@@ -26,8 +28,7 @@ public class NumberChecker {
 
     private static boolean isCorrectRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (!(BASEBALL_EACH_NUMBER_MIN <= number
-                && number <= BASEBALL_EACH_NUMBER_MAX)) {
+            if (!(BASEBALL_EACH_NUMBER_MIN <= number && number <= BASEBALL_EACH_NUMBER_MAX)) {
                 return false;
             }
         }

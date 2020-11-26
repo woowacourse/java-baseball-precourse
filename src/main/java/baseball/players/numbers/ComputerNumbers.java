@@ -1,29 +1,29 @@
-package baseball;
+package baseball.players.numbers;
 
-import static baseball.CheckerType.*;
+import static baseball.checker.CheckerType.COMPUTER;
 
+import baseball.checker.NumberChecker;
 import java.util.ArrayList;
 import java.util.List;
 import utils.RandomUtils;
 
-public class Computer {
-
+public class ComputerNumbers {
     private final List<Integer> numbers;
 
-    public Computer() {
+    public ComputerNumbers() {
         this.numbers = new ArrayList<>();
     }
 
     public void generateNumber() {
         do {
-            convertIntToList(RandomUtils.nextInt(123, 987), numbers);
+            this.clear();
+            convertIntToList(RandomUtils.nextInt(123, 987));
         } while (!NumberChecker.isValidNumbers(numbers, COMPUTER));
         // System.out.println("컴퓨터의 번호가 유효함 : " + numbers.toString());
     }
 
-    private void convertIntToList(int randomNumber, List<Integer> numbers) {
+    private void convertIntToList(int randomNumber) {
         char[] digits = convertIntToStr(randomNumber).toCharArray();
-        numbers.clear();
         for (char digit : digits) {
             numbers.add(Integer.parseInt(Character.toString(digit)));
         }
@@ -35,5 +35,9 @@ public class Computer {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public void clear() {
+        numbers.clear();
     }
 }
