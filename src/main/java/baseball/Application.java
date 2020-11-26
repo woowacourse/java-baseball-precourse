@@ -9,6 +9,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
         int targetValue = getRandomValue();
+        Game.gameStart(targetValue, scanner);
     }
 
     private static int getRandomValue() {
