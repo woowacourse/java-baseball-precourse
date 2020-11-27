@@ -55,7 +55,7 @@ public class Balls {
         return new Balls(balls);
     }
 
-    public GameResult 비교하여_결과_계산(Balls balls) {
+    public GameResult judgeResult(Balls balls) {
         // TODO Balls 끼리 비교
         int STRIKE = 0;
         int BALL = 0;

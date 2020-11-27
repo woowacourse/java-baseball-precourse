@@ -21,24 +21,27 @@ public class GameManager {
     private void gaming() {
         Balls botBalls;
         Balls myBalls;
-        char[] chars;
-        boolean threeStrikes = false;
+        GameResult gameResult;
 
         do {
-            // 랜덤 생성 balls
-            botBalls = Balls.generateRandomBalls();
+            botBalls = Balls.generateRandomBalls();         // 랜덤 생성 balls
+            myBalls = getMyBalls();
+            gameResult = myBalls.judgeResult(botBalls);     // 결과 계산
+            gameResult.printResult();
 
-            // 사용자 생성 balls
-            myBalls = Balls.stringToBalls(scanner.next());
+        } while (!gameResult.isThreeStrikes());             // 3스트라이크: 루프탈출
+    }
 
-            // 맞추기
-            GameResult gameResult = myBalls.비교하여_결과_계산(botBalls);
-
-            // 결과 계산
-            threeStrikes = false;
-
-            // 3스트라이크: 루프탈출
-        } while (!threeStrikes);
+    private Balls getMyBalls() {
+        Balls myBalls = null;
+        while (myBalls == null) {
+            try {
+                myBalls = Balls.stringToBalls(scanner.next());  // 사용자 생성 balls
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return myBalls;
     }
 
     private Boolean continueGame() {
