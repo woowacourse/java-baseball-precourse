@@ -43,4 +43,22 @@ public class Game {
         }
     }
 
+    private int getUserMenuInput() {
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            String input = scanner.nextLine();
+
+            if (!InputUtils.isDigit(input)) {
+                System.out.println("※ 숫자만 입력해주세요.");
+            }
+
+            if( !InputUtils.isDigitInMenuRange(input)) {
+                System.out.println("※ 1 혹은 2만 입력해주세요.");
+                continue;
+            }
+
+            return Integer.parseInt(input);
+        }
+    }
 }
