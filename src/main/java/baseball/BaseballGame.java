@@ -27,9 +27,7 @@ public class BaseballGame {
             PlayerNumber playerNumber = new PlayerNumber();
             String inputNumber = playerNumber.getInputNumber();
 
-            if(!CheckUtils.isDigit(inputNumber) || !CheckUtils.isLengthThree(inputNumber)){
-                throw new IllegalArgumentException();
-            }
+            CheckUtils.isAppropriate(inputNumber);
 
             playerNumber.makeArray();
 

@@ -21,4 +21,10 @@ public class CheckUtils {
         }
         return true;
     }
+
+    public static void isAppropriate(String inputNumber){
+        if(!isDigit(inputNumber) || !isLengthThree(inputNumber)){
+            throw new IllegalArgumentException();
+        }
+    }
 }
