@@ -16,7 +16,7 @@ public class RandomThreeNumberGenerator {
         this.numbers = generatedThreeNumbers();
     }
 
-    public List<Integer> get() {
+    public List<Integer> getNumbers() {
         return this.numbers;
     }
 
