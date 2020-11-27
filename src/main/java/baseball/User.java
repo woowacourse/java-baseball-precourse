@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.ArrayList;
+
 public class User extends Player{
     public User(Baseball baseball){
         super(baseball);
@@ -14,7 +16,6 @@ public class User extends Player{
             System.out.println(Constants.RESULT_NOTHING);
             return false;
         }
-
         int strikes = countStrikes(opponent);
         int balls = countBalls(opponent);
         System.out.println(balls + Constants.RESULT_BALLS + strikes + Constants.RESULT_STRIKES);
@@ -27,29 +28,35 @@ public class User extends Player{
         }
         return false;
     }
+
     public int countStrikes(Opponent opponent){
         int count = 0;
-        System.out.println(getBaseballs().size());
+        ArrayList<Integer> opponentBalls = opponent.getBaseballs();
+        ArrayList<Integer> userBalls = getBaseballs();
         for(int i = 0; i < getBaseballs().size(); i++){
-            if(getBaseballs().get(i) == opponent.getBaseballs().get(i)){
+            if(userBalls.get(i) == opponentBalls.get(i)){
                 count++;
             }
         }
         return count;
     }
+
     public int countBalls(Opponent opponent){
         int count = 0;
-        for(int i = 0; i < getBaseballs().size(); i++){
-            if(opponent.getBaseballs().contains(getBaseballs().get(i)) &&
-                    getBaseballs().get(i) != opponent.getBaseballs().get(i)){
+        ArrayList<Integer> opponentBalls = opponent.getBaseballs();
+        ArrayList<Integer> userBalls = getBaseballs();
+        for(int userBall : userBalls){
+            if(opponentBalls.contains(userBall) &&
+                opponentBalls.indexOf(userBall) != getBaseballs().indexOf(userBall)){
                 count++;
             }
         }
         return count;
     }
+
     public boolean isNothing(Opponent opponent){
-        for(int i = 0; i < getBaseballs().size(); i++){
-            if(opponent.getBaseballs().contains(getBaseballs().get(i))){
+        for(int ball : getBaseballs()){
+            if(opponent.getBaseballs().contains(ball)){
                 return false;
             }
         }
