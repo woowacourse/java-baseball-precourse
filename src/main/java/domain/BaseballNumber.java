@@ -7,9 +7,9 @@ import java.util.List;
  * @since 2020/11/26
  */
 public class BaseballNumber {
-    private final List<Integer> baseballNumber;
+    private final List<Integer> baseballNumbers;
 
-    public BaseballNumber(final List<Integer> nonDuplicateNumber) {
-        this.baseballNumber = nonDuplicateNumber;
+    public BaseballNumber(final List<Integer> baseballNumbers) {
+        this.baseballNumbers = baseballNumbers;
     }
 }
