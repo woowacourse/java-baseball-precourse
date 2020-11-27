@@ -23,4 +23,8 @@ public enum GameState {
     public boolean isAbleToPlay() {
         return this != EXIT;
     }
+
+    public boolean isRestart() {
+        return this == RESTART;
+    }
 }

@@ -23,4 +23,14 @@ public class BaseballGameMachine {
         gameResult.put(STRIKE_KEY, strikeCounts);
         return new GameResult(gameResult);
     }
+
+    public BaseballGameMachine prepareNextTry(GameState gameState) {
+        if (!gameState.isAbleToPlay()) {
+            throw new IllegalArgumentException();
+        }
+        if (gameState.isRestart()) {
+            return new BaseballGameMachine(BaseballNumbers.generateRandomBaseballNumbers());
+        }
+        return this;
+    }
 }
