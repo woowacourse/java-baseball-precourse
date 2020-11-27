@@ -1,5 +1,8 @@
 package utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InputUtils {
 
     private InputUtils() {
@@ -38,5 +41,16 @@ public class InputUtils {
         }
 
         return true;
+    }
+
+    public static List<Integer> convertStringToIntegerList(String input) {
+        List<Integer> answer = new ArrayList<>();
+
+        for (char ch : input.toCharArray()) {
+            int digit = ch - '0';
+            answer.add(digit);
+        }
+
+        return answer;
     }
 }
