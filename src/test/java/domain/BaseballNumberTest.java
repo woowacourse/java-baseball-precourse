@@ -14,6 +14,15 @@ import org.junit.jupiter.api.Test;
 class BaseballNumberTest {
 
     @Test
+    @DisplayName("일치하는 경우")
+    void equalsBaseball() {
+        BaseballNumber computer = new BaseballNumber(Arrays.asList(1, 2, 3));
+        BaseballNumber player = new BaseballNumber(Arrays.asList(1, 2, 3));
+
+        assertEquals(computer, player);
+    }
+
+    @Test
     @DisplayName("3자리의 숫자가 아닐 경우")
     void invalidSize() {
         List<Integer> test1 = Arrays.asList(1, 2, 3, 4);
