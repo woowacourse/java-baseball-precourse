@@ -10,11 +10,11 @@ public class Application {
         int selectGame;
         
         while(true) {
-        	System.out.println(guide.startGame());
+        	System.out.println(guide.game());
         	selectGame = scanner.nextInt();
         	switch(selectGame) {
         		case 1:
-        			System.out.println(guide.restartGame());
+        			System.out.println(guide.startGame());
         			break;
         		case 2:
         			System.out.println(guide.gameOver());
