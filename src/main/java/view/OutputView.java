@@ -15,7 +15,7 @@ public class OutputView {
     public static int showHint(int strike, int ball) {
 
         if(strike == 0 && ball == 0){
-            threeBall();
+            notThing();
             return 0;
         }else if(strike == 3){
             threeStrike();
@@ -39,7 +39,7 @@ public class OutputView {
 
     }
 
-    public static void threeBall(){
+    public static void notThing(){
         System.out.println("낫싱");
     }
 
