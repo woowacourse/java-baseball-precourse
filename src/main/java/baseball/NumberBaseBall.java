@@ -2,7 +2,7 @@ package baseball;
 
 import utils.RandomUtils;
 
-public class NumberBaseBallGame {
+public class NumberBaseBall {
     public String randomNumber;
 
     protected String makeHint(String playerNums, String randomNums) {
