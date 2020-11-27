@@ -15,6 +15,16 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
+        playBaseball(scanner);
+    }
+
+    private static void playBaseball(Scanner scanner) {
+        GameStatus gameStatus = new GameStatus(Status.ONGOING);
+        do {
+            playOneCycle(scanner);
+            OutputView.printCongratulationMessage();
+            decideRestartOrTerminate(scanner, gameStatus);
+        } while (gameStatus.isOngoing());
     }
 
     private static void playOneCycle(Scanner scanner) {
