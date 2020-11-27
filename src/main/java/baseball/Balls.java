@@ -48,7 +48,15 @@ public class Balls {
         return new Balls(balls);
     }
 
-    public Boolean compare() {
+    public static Balls charArrayToBalls(char[] chars) {
+        List<Ball> balls = new ArrayList<>();
+        for (char c : chars) {
+            balls.add(new Ball(c));
+        }
+        return new Balls(balls);
+    }
+
+    public Boolean compare(Balls balls) {
         // TODO Balls 끼리 비교
         return true;
     }
