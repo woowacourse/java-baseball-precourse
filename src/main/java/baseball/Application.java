@@ -20,6 +20,7 @@ public class Application {
             inputNumber = Stream.of(String.valueOf(input).split(""))
                     .mapToInt(Integer::parseInt).toArray();
             throwErrorIfWrongInput(input, inputNumber);
+
         }
     }
 
@@ -43,5 +44,20 @@ public class Application {
                 inputNumber[0] == inputNumber[2] || inputNumber[1] == inputNumber[2]) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static boolean isAllStrike(int[] answer, int[] inputNumber) {
+        int ballCount = 0;
+        int strikeCount = 0;
+        for (int i = 0; i < inputNumber.length; i++) {
+            int j = i;
+            if (inputNumber[i] == answer[i]) {
+                strikeCount++;
+            } else if (IntStream.of(answer).anyMatch(x -> x == inputNumber[j])) {
+                ballCount++;
+            }
+        }
+
+        return strikeCount == 3;
     }
 }
