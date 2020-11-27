@@ -3,6 +3,7 @@ package utils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.*;
@@ -20,8 +21,8 @@ class InputUtilsTest {
         String tmp2 = "123";
 
         //when
-        int number = inputUtils.stringInputValueToInt(tmp);
-        int number2 = inputUtils.stringInputValueToInt(tmp2);
+        int number = inputUtils.inputValueToInt(tmp);
+        int number2 = inputUtils.inputValueToInt(tmp2);
 
         //then
         assertThat(number).isEqualTo(1455);
@@ -36,11 +37,11 @@ class InputUtilsTest {
         String tmp2 = "1 3";
 
         //then
-        assertThatThrownBy(() -> inputUtils.stringInputValueToInt(tmp))
+        assertThatThrownBy(() -> inputUtils.inputValueToInt(tmp))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력 해주세요");
 
-        assertThatThrownBy(() -> inputUtils.stringInputValueToInt(tmp2))
+        assertThatThrownBy(() -> inputUtils.inputValueToInt(tmp2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력 해주세요");
     }
@@ -88,8 +89,8 @@ class InputUtilsTest {
         //when
         String text = inputUtils.checkLength(tmp);
         String text2 = inputUtils.checkLength(tmp2);
-        int number = inputUtils.stringInputValueToInt(text);
-        int number2 = inputUtils.stringInputValueToInt(text2);
+        int number = inputUtils.inputValueToInt(text);
+        int number2 = inputUtils.inputValueToInt(text2);
 
         //then
         assertThat(number).isEqualTo(123);
@@ -108,12 +109,35 @@ class InputUtilsTest {
         String text2 = inputUtils.checkLength(tmp2);
 
         //then
-        assertThatThrownBy(() -> inputUtils.stringInputValueToInt(text))
+        assertThatThrownBy(() -> inputUtils.inputValueToInt(text))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력 해주세요");
 
-        assertThatThrownBy(() -> inputUtils.stringInputValueToInt(text2))
+        assertThatThrownBy(() -> inputUtils.inputValueToInt(text2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력 해주세요");
+    }
+
+    @Test
+    @DisplayName("int값을 List<Integer>로 반환한다")
+    void intValueToList() {
+        //given
+        String tmp = "123";
+        String tmp2 = "456";
+
+        //when
+        int number = inputUtils.inputValueToInt(tmp);
+        int number2 = inputUtils.inputValueToInt(tmp2);
+        List<Integer> toListed = inputUtils.intValueToList(number);
+        List<Integer> toListed2 = inputUtils.intValueToList(number2);
+
+        //then
+        assertThat(toListed.get(0)).isEqualTo(1);
+        assertThat(toListed.get(1)).isEqualTo(2);
+        assertThat(toListed.get(2)).isEqualTo(3);
+
+        assertThat(toListed2.get(0)).isEqualTo(4);
+        assertThat(toListed2.get(1)).isEqualTo(5);
+        assertThat(toListed2.get(2)).isEqualTo(6);
     }
 }
