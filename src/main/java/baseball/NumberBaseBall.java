@@ -3,6 +3,7 @@ package baseball;
 import utils.RandomUtils;
 
 public class NumberBaseBallGame {
+    public String randomNumber;
 
     protected String makeHint(String playerNums, String randomNums) {
         StringBuilder result = new StringBuilder();
@@ -40,5 +41,9 @@ public class NumberBaseBallGame {
             randomNumbers += RandomUtils.nextInt(minNumber, maxNumber);
         }
         return randomNumbers;
+    }
+
+    public void setRandomNumber(String randomNumber) {
+        this.randomNumber = randomNumber;
     }
 }
