@@ -11,8 +11,14 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         String inputValue;
 
-        printNumberInput();
-        inputValue=getUserInput(scanner);
+        /*
+        boolean correctValue=false;
+        while(!correctValue){
+            printNumberInput();
+            inputValue=getUserInput(scanner);
+            correctValue=isValidInput(inputValue);
+        }
+        */
         // TODO 구현 진행
     }
 
@@ -42,8 +48,15 @@ public class Application {
 
     /* 해당 문자가 입력 요구사항에 일치하는지 검사하는 함수 */
     public static boolean isValidCharacter(char inputCharacter){
-        boolean isValid=false;
-        return inputCharacter>='1'&&inputCharacter<='9';
+        try{
+            if(inputCharacter<'1'||inputCharacter>'9'){
+                throw new IllegalArgumentException();
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println("1과 9 사이의 숫자를 입력해 주세요!");
+            return false;
+        }
+        return true;
     }
 
 }
