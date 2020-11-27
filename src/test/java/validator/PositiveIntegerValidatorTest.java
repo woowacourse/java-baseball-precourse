@@ -2,20 +2,20 @@ package validator;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class PositiveIntegerValidatorTest {
+    private static final String IS_NOT_NUMERIC = "입력값은 숫자이어야 합니다.";
+    private static final String IS_NOT_POSITIVE = "입력값은 양수이어야 합니다.";
+
     @Test
     public void 양의_정수_입력시_예외_발생하지_않음() {
         //given
         String positiveInteger = "123";
 
-        //when
-        boolean result = PositiveIntegerValidator.validatePositiveInteger(positiveInteger);
-
-        //then
-        assertThat(result).isTrue();
+        //when & then
+        assertDoesNotThrow(() -> PositiveIntegerValidator.validatePositiveInteger(positiveInteger));
     }
 
     @Test
@@ -26,7 +26,7 @@ class PositiveIntegerValidatorTest {
         //when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> PositiveIntegerValidator.validatePositiveInteger(notNumeric))
-                .withMessage("입력값은 숫자이어야 합니다.");
+                .withMessage(IS_NOT_NUMERIC);
     }
 
     @Test
@@ -37,6 +37,6 @@ class PositiveIntegerValidatorTest {
         //when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> PositiveIntegerValidator.validatePositiveInteger(negative))
-                .withMessage("입력값은 양수이어야 합니다.");
+                .withMessage(IS_NOT_POSITIVE);
     }
 }

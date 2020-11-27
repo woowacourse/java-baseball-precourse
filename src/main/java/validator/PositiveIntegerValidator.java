@@ -8,14 +8,13 @@ public class PositiveIntegerValidator {
     private PositiveIntegerValidator() {
     }
 
-    public static boolean validatePositiveInteger(String input) {
+    public static void validatePositiveInteger(String input) {
         try {
             validateInputIsNumeric(input);
             validateInputIsPositive(input);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
-        return true;
     }
 
     private static void validateInputIsNumeric(String input) {

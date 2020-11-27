@@ -5,21 +5,21 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class BaseballNumberValidatorTest {
+    private static final String IS_NOT_THREE_DIGIT = "입력값은 세자리이어야 합니다.";
+    private static final String CAN_NOT_CONTAIN_ZERO = "입력값은 0을 포합할 수 없습니다.";
+    private static final String CAN_NOT_DUPLICATE = "입력값은 중복된 숫자를 포함할 수 없습니다.";
 
     @Test
     public void 올바른_입력값_들어올_경우_예외_발생하지_않음() {
         //given
         List<Integer> baseballNumber = Arrays.asList(1, 2, 3);
 
-        //when
-        boolean isValidNumber = BaseballNumberValidator.validateBaseballNumber(baseballNumber);
-
-        //then
-        assertThat(isValidNumber).isTrue();
+        //when & then
+        assertDoesNotThrow(() -> BaseballNumberValidator.validateBaseballNumber(baseballNumber));
     }
 
     @Test
@@ -30,7 +30,7 @@ class BaseballNumberValidatorTest {
         //when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> BaseballNumberValidator.validateBaseballNumber(baseballNumber))
-                .withMessage("입력값은 세자리이어야 합니다.");
+                .withMessage(IS_NOT_THREE_DIGIT);
     }
 
     @Test
@@ -41,7 +41,7 @@ class BaseballNumberValidatorTest {
         //when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> BaseballNumberValidator.validateBaseballNumber(baseballNumber))
-                .withMessage("입력값은 0을 포합할 수 없습니다.");
+                .withMessage(CAN_NOT_CONTAIN_ZERO);
     }
 
     @Test
@@ -52,6 +52,6 @@ class BaseballNumberValidatorTest {
         //when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> BaseballNumberValidator.validateBaseballNumber(baseballNumber))
-                .withMessage("입력값은 중복된 숫자를 포함할 수 없습니다.");
+                .withMessage(CAN_NOT_DUPLICATE);
     }
 }

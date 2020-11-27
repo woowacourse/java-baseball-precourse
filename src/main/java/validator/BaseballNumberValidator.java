@@ -15,7 +15,7 @@ public class BaseballNumberValidator {
     private BaseballNumberValidator() {
     }
 
-    public static boolean validateBaseballNumber(List<Integer> numbers) {
+    public static void validateBaseballNumber(List<Integer> numbers) {
         try {
             validateCountOfDigit(numbers);
             validateEachDigitIsNotZero(numbers);
@@ -23,7 +23,6 @@ public class BaseballNumberValidator {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
-        return true;
     }
 
     private static void validateCountOfDigit(List<Integer> numbers) {
