@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Game {
     public Integer answer;
 
-    public void start(Scanner scanner, Integer answer) {
+    public void start(Scanner scanner, String answer) {
         String guessNumber;
-        this.answer = answer;
+//        this.answer = answer;
 
 //        System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
 //        while (scanner.hasNext()) {
