@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class PlayerNumber {
 
     private String inputNumber;
-    private int[] playerNum = new int[3];
+    private int[] playerNum = new int[Constant.MAX_NUM];
     private Scanner scanner = new Scanner(System.in);
 
     public PlayerNumber(){
@@ -27,7 +27,7 @@ public class PlayerNumber {
 
     public void makeArray(){
         String[] temp = inputNumber.split("");
-        for(int i=0;i<3;i++){
+        for(int i=0;i<Constant.MAX_NUM;i++){
             playerNum[i] = Integer.parseInt(temp[i]);
         }
 

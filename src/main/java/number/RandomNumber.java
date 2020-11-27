@@ -7,7 +7,7 @@ import utils.RandomUtils;
  */
 public class RandomNumber {
 
-    int[] ranNum = new int[3];
+    int[] ranNum = new int[Constant.MAX_NUM];
 
     public RandomNumber(){
         makeRandomNumber();
@@ -16,7 +16,7 @@ public class RandomNumber {
     public void makeRandomNumber(){
         boolean[] duplicateCheck = new boolean[10];
 
-        for(int i=0;i<3;i++){
+        for(int i=0;i<Constant.MAX_NUM;i++){
             int num = RandomUtils.nextInt(0,9);
 
             while(duplicateCheck[num]){
@@ -31,17 +31,4 @@ public class RandomNumber {
     public int[] getRandomNumber(){
         return ranNum;
     }
-/*
-    테스트를 위하여 생성
-
-    public String getTestNumber(){
-        StringBuilder sb = new StringBuilder();
-
-        for(int i=0;i<3;i++){
-            sb.append(ranNum[i] + "");
-        }
-
-        return sb.toString();
-    }
- */
 }
