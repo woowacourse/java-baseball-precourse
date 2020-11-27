@@ -53,16 +53,16 @@ public class Application {
         return this_array;
     }
 
-    public static boolean isValidNum(int candidateGuessNum) {
-        Set<Integer> previousNumSet = new HashSet<>();
+    public static boolean isValidNum(int candidateNum) {
+        Set<Integer> previousDigitSet = new HashSet<>();
 
         // 각 자리수 숫자가 서로 다르고 0이 아니어야 함
-        int[] candidateArray = intToArray(candidateGuessNum);
-        for (int candidateNum : candidateArray) {
-            if (previousNumSet.contains(candidateNum) || candidateNum == 0) {
+        int[] candidateArray = intToArray(candidateNum);
+        for (int candidateDigit : candidateArray) {
+            if (previousDigitSet.contains(candidateDigit) || candidateDigit == 0) {
                 return false;
             }
-            previousNumSet.add(candidateNum);
+            previousDigitSet.add(candidateDigit);
         }
         return true;
     }
@@ -82,11 +82,11 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        int input = scanner.nextInt();
+        int guessInput = scanner.nextInt();
 
         // valid한 3자리 정수만
-        if (100 <= input && input < 1000 && isValidNum(input)) {
-            return input;
+        if (100 <= guessInput && guessInput < 1000 && isValidNum(guessInput)) {
+            return guessInput;
         } else {
             throw new IllegalArgumentException();
         }
@@ -118,14 +118,14 @@ public class Application {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for (int playerNumLoc = 0; playerNumLoc < 3; playerNumLoc++) {
-            int playerNumToCompare = guessArray[playerNumLoc];
+        for (int playerDigitLoc = 0; playerDigitLoc < 3; playerDigitLoc++) {
+            int playerDigitToCompare = guessArray[playerDigitLoc];
 
-            for (int answerNumLoc = 0; answerNumLoc < 3; answerNumLoc++) {
-                int answerNumToCompare = answerArray[answerNumLoc];
+            for (int answerDigitLoc = 0; answerDigitLoc < 3; answerDigitLoc++) {
+                int answerDigitToCompare = answerArray[answerDigitLoc];
 
-                strikeCount += isStrike(playerNumToCompare, playerNumLoc, answerNumToCompare, answerNumLoc);
-                ballCount += isBall(playerNumToCompare, playerNumLoc, answerNumToCompare, answerNumLoc);
+                strikeCount += isStrike(playerDigitToCompare, playerDigitLoc, answerDigitToCompare, answerDigitLoc);
+                ballCount += isBall(playerDigitToCompare, playerDigitLoc, answerDigitToCompare, answerDigitLoc);
             }
         }
         return new StrikeAndBall(strikeCount, ballCount);
