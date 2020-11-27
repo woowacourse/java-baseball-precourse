@@ -15,13 +15,21 @@ public class Application {
         int input;
 
         while (true) {
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             input = scanner.nextInt();
             inputNumber = Stream.of(String.valueOf(input).split(""))
                     .mapToInt(Integer::parseInt).toArray();
             throwErrorIfWrongInput(input, inputNumber);
 
+            if (!isAllStrike(answer, inputNumber)) {
+                continue;
+            }else if (stopGame(scanner.nextInt())) {
+                break;
+            } else {
+                answer = generateAnswer();
+            }
         }
+        scanner.close();
     }
 
     public static int[] generateAnswer() {
@@ -40,8 +48,9 @@ public class Application {
     }
 
     public static void throwErrorIfWrongInput(int input, int[] inputNumber) {
-        if(input < 100 || input > 999 || inputNumber[0] == inputNumber[1] ||
-                inputNumber[0] == inputNumber[2] || inputNumber[1] == inputNumber[2]) {
+        if (input < 100 || input > 999 || inputNumber[0] == inputNumber[1] ||
+                inputNumber[0] == inputNumber[2] || inputNumber[1] == inputNumber[2]
+                || IntStream.of(inputNumber).anyMatch(x -> x == 0)) {
             throw new IllegalArgumentException();
         }
     }
@@ -77,5 +86,14 @@ public class Application {
             }
             System.out.println();
         }
+    }
+
+    private static boolean stopGame(int input) {
+        if (input == 2) {
+            return true;
+        } else if (input != 1) {
+            throw new IllegalArgumentException();
+        }
+        return false;
     }
 }
