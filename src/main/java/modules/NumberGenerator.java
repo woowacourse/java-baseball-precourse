@@ -11,13 +11,16 @@ public class NumberGenerator {
     private ArrayList<Integer> numberRange;
     private int[] generatedNumber;
 
-    public NumberGenerator(){
-        initializeNumberRange();
-        generateNumber();
-    }
-
     public int[] getNumber(){
         return generatedNumber.clone();
+    }
+
+    public void generate(){
+        initializeNumberRange();
+        generatedNumber = new int[NUMBER_SIZE];
+        for(int i = 0; i < generatedNumber.length; i++){
+            generatedNumber[i] = popFromNumberRange();
+        }
     }
     
     private void initializeNumberRange(){
@@ -25,13 +28,6 @@ public class NumberGenerator {
 
         for(int i = NUMBER_RANGE_MIN; i <= NUMBER_RANGE_MAX; i++){
             numberRange.add(i);
-        }
-    }
-
-    private void generateNumber(){
-        generatedNumber = new int[NUMBER_SIZE];
-        for(int i = 0; i < generatedNumber.length; i++){
-            generatedNumber[i] = popFromNumberRange();
         }
     }
 
