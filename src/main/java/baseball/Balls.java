@@ -14,6 +14,14 @@ public class Balls {
         this.balls = balls;
     }
 
+    private Ball get(int index) {
+        return balls.get(index);
+    }
+
+    private boolean contains(Ball ball) {
+        return this.balls.contains(ball);
+    }
+
     private void validateSize(List<Ball> balls) {
         if (balls.size() != COUNT_OF_BALLS) {
             String msg = String.format("공의 개수는 %d개 여야 합니다.", COUNT_OF_BALLS);
@@ -55,14 +63,13 @@ public class Balls {
         return new Balls(balls);
     }
 
-    public GameResult judgeResult(Balls balls) {
+    public GameResult judgeResult(Balls botBalls) {
         // TODO Balls 끼리 비교
         int STRIKE = 0;
         int BALL = 0;
-        List<Ball> botBalls = balls.balls;
 
         for (int i = 0; i < COUNT_OF_BALLS; i++) {
-            Ball myBall = this.balls.get(i);
+            Ball myBall = this.get(i);
 
             if (myBall.equals(botBalls.get(i))) {
                 STRIKE++;

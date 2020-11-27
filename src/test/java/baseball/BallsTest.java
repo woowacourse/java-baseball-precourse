@@ -22,4 +22,8 @@ class BallsTest {
         assertDoesNotThrow(() -> Balls.stringToBalls("123"));
         assertDoesNotThrow(() -> Balls.stringToBalls("159"));
     }
+    @Test
+    void judgeResult() {
+        Balls myBalls =
+    }
 }
