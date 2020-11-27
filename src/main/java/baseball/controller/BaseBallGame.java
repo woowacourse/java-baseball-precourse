@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.CompareResult;
+import baseball.model.ScoreBoard;
 import baseball.model.Computer;
 import baseball.model.User;
 import baseball.view.GameView;
@@ -16,32 +16,26 @@ public class BaseBallGame {
 
     public static void start(Scanner scanner) {
         do {
-            CompareResult.resetResult();
+            ScoreBoard.resetBaord();
             Computer.makeBalls();
 
-            runnable(scanner);
+            BaseBallGame.runnable(scanner);
 
             GameView.printGameEnd();
         } while (isContinueGame(InputUtils.checkContinueInput(scanner.nextLine())));
     }
 
     private static boolean isContinueGame(String userInput) {
-        if (userInput.equals(CONTINUE_GAME)) {
-            return true;
-        }
-
-        return false;
+        return userInput.equals(CONTINUE_GAME);
     }
 
     private static void runnable(Scanner scanner) {
-        while (!CompareResult.isThreeStrike()) {
-            CompareResult.resetResult();
+        while (!ScoreBoard.isThreeStrike()) {
+            ScoreBoard.resetBaord();
             GameView.printPleaseInput();
             User.makeBalls(InputUtils.checkUserBallsInput(scanner.nextLine()));
-
-            compareBalls();
-
-            GameView.printGameResult(CompareResult.ball, CompareResult.strike);
+            BaseBallGame.compareBalls();
+            GameView.printGameResult(ScoreBoard.ball, ScoreBoard.strike);
         }
     }
 
@@ -52,20 +46,8 @@ public class BaseBallGame {
             int computerNumber = (int) cb.next();
             int userNumber = (int) ub.next();
 
-            addBallCount(computerNumber, userNumber);
-            addStrikeCount(computerNumber, userNumber);
-        }
-    }
-
-    private static void addBallCount(int computerNumber, int userNumber) {
-        if (computerNumber != userNumber && Computer.balls.contains(userNumber)) {
-            CompareResult.ball += 1;
-        }
-    }
-
-    private static void addStrikeCount(int computerNumber, int userNumber) {
-        if (computerNumber == userNumber) {
-            CompareResult.strike += 1;
+            ScoreBoard.updateBallCount(Computer.balls, computerNumber, userNumber);
+            ScoreBoard.updateStrikeCount(computerNumber, userNumber);
         }
     }
 }
