@@ -6,6 +6,8 @@ import modules.InputOutputManager;
 import modules.NumberGenerator;
 
 public class GameManager {
+    static final int NUMBER_SIZE = 3;
+
     InputOutputManager inputOutputManager;
     NumberGenerator numberGenerator;
 
@@ -28,7 +30,7 @@ public class GameManager {
         int[] inputNumber = inputOutputManager.askUserInputNumber();
 
         compare(inputNumber, generatedNumber);
-        // TODO 결과에 대한 처리
+        handleResult();
     }
 
     private void compare(int[] inputNumber, int[] generatedNumber){
@@ -57,5 +59,17 @@ public class GameManager {
         }
 
         return false;
+    }
+
+    private void handleResult(){
+        inputOutputManager.printResult(strike, ball);
+
+        if(strike == NUMBER_SIZE){
+            // TODO: 승리 시의 처리
+            return;
+        }
+
+        // 숫자를 모두 맞추지 못했다면 다시 한 라운드 시작
+        playOneRound();
     }
 }
