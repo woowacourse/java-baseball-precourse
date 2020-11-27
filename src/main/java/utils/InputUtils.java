@@ -5,7 +5,17 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class InputUtils {
-    public static String checkUserInput(String userInput) {
+    private static final String CONTINUE_GAME = "1";
+    private static final String END_GAME = "2";
+
+    public static String checkContinueInput(String userInput) {
+        if (!userInput.equals(CONTINUE_GAME) && !userInput.equals(END_GAME)) {
+            throw new IllegalArgumentException();
+        }
+        return userInput;
+    }
+
+    public static String checkUserBallsInput(String userInput) {
         isNumber(userInput);
         isRightLength(userInput);
         isWithoutDuplicate(userInput);
