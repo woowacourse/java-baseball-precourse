@@ -22,10 +22,16 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
-        Application app = new Application();
-        int targetNumber = app.makeTargetNumber();
+        Application application = new Application();
+        /** targetNumber는 플레이어가 맞춰야할 임의의 수 3개 입니다 */
+        int targetNumber = application.makeTargetNumber();
         System.out.print("Target Number : ");
         System.out.println(targetNumber);
+        System.out.print("숫자를 입력해주세요 : ");
+        /** userInputNumber는 플레이어가 입력한 */
+        int userInputNumber = scanner.nextInt();
+        System.out.println(userInputNumber);
+        application.checkUserInputNumber(userInputNumber);
     }
 
     /**
@@ -48,4 +54,24 @@ public class Application {
         return (firstTargetNumber*100) + (secondTargetNumber*10) + (thirdTargetNumber);
     }
 
+    /**
+     * 메서드 checkUserInputNumber()는 플레이어가 입력한 3자리수가 유효한지 검증 합니다.
+     * @param userInputNumber 플레이어가 콘솔에 입력한 숫자입니다.
+     * @exception 3자리 숫자가 아니거나, 3자리수 중에 중복되는 숫자가 있는 경우 IllegalArgumentException을 발생시킵니다.
+     */
+    public void checkUserInputNumber(int userInputNumber){
+        //세자리수인지 확인
+        if(userInputNumber > 999 || userInputNumber < 100) {
+            throw new IllegalArgumentException();
+        }
+
+        //중복되는 숫자가 있는지 확인
+        int firstUserInputNumber = userInputNumber/100;
+        int secondUserInputNumber = (userInputNumber/10)%10;
+        int thirdUserInputNumber = (userInputNumber)%10;
+        if((firstUserInputNumber == secondUserInputNumber) || (firstUserInputNumber == thirdUserInputNumber)
+                || (secondUserInputNumber == thirdUserInputNumber)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
