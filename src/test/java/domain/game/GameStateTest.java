@@ -39,4 +39,17 @@ class GameStateTest {
             GameState.findGameState(signatureValue);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("Exit enum의 경우 더이상 게임 플레이 진행 불가")
+    @Test
+    public void isAbleToPlay_Exit경우_False() {
+        assertThat(GameState.EXIT.isAbleToPlay()).isFalse();
+    }
+
+    @DisplayName("KEEP_PLAYING 및 RESTART Enum들은 계속 게임 플레이 가능")
+    @Test
+    public void isAbleToPlay_그외_True() {
+        assertThat(GameState.KEEP_PLAYING.isAbleToPlay()).isTrue();
+        assertThat(GameState.RESTART.isAbleToPlay()).isTrue();
+    }
 }
