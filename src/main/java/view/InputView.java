@@ -2,7 +2,9 @@ package view;
 
 import domain.game.GameResult;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
     private static final String INPUT_BASEBALL_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
@@ -21,14 +23,17 @@ public class InputView {
     private InputView() {
     }
 
-    public static String inputBaseballNumbers(Scanner scanner) {
+    public static List<Integer> inputBaseballNumbers(Scanner scanner) {
         System.out.print(INPUT_BASEBALL_NUMBERS_MESSAGE);
         String inputBaseballNumbers = scanner.nextLine();
         while (isWrongPattern(inputBaseballNumbers)) {
             System.out.print(WRONG_INPUT_MESSAGE);
             inputBaseballNumbers = scanner.nextLine();
         }
-        return inputBaseballNumbers;
+        return inputBaseballNumbers.chars()
+                .map(numberCharacter -> numberCharacter - '0')
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     private static boolean isWrongPattern(String inputBaseballNumbers) {
