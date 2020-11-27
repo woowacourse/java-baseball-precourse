@@ -10,8 +10,8 @@ public class Game {
     }
 
     private int countStrike(int inputNumber) {
-        int[] targetArray = ThreeDigitsUtils.toIntArrayOfDigit(targetNumber);
-        int[] inputArray = ThreeDigitsUtils.toIntArrayOfDigit(inputNumber);
+        int[] targetArray = ThreeDigitsUtils.toIntArrayOfDigits(targetNumber);
+        int[] inputArray = ThreeDigitsUtils.toIntArrayOfDigits(inputNumber);
 
         int count = 0;
         for (int i = 0; i < 3; i++) {
@@ -23,8 +23,8 @@ public class Game {
     }
 
     private int countOverlap(int inputNumber) {
-        int[] targetArray = ThreeDigitsUtils.toIntArrayOfDigit(targetNumber);
-        int[] inputArray = ThreeDigitsUtils.toIntArrayOfDigit(inputNumber);
+        int[] targetArray = ThreeDigitsUtils.toIntArrayOfDigits(targetNumber);
+        int[] inputArray = ThreeDigitsUtils.toIntArrayOfDigits(inputNumber);
 
         int count = 0;
         for (int i = 0; i < 3; i++) {

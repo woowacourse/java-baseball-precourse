@@ -2,7 +2,6 @@ package baseball;
 
 import utils.ThreeDigitsUtils;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Application {
@@ -10,7 +9,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         boolean onGame = true;
         while (onGame) {
-            int targetNumber = ThreeDigitsUtils.generateBaseballNumber();
+            int targetNumber = ThreeDigitsUtils.nextBaseballNumber();
             System.out.println(targetNumber);
             Game game = new Game(targetNumber);
             boolean isCorrect = false;
@@ -20,7 +19,7 @@ public class Application {
                 try {
                     inputString = inputString.strip();
                     int inputNumber = Integer.parseInt(inputString);
-                    if (ThreeDigitsUtils.isDistinctThreeDigits(inputNumber)) {
+                    if (ThreeDigitsUtils.isBaseballNumber(inputNumber)) {
                         System.out.println(inputNumber);
                         String hint = game.getHint(inputNumber);
                         System.out.println(hint);
@@ -37,11 +36,12 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String inputString = scanner.nextLine();
+            // TODO: 2020.11.27 Input Logic Refactoring
             try {
                 inputString = inputString.strip();
                 int inputNumber = Integer.parseInt(inputString);
                 if (inputNumber == 1) {
-                    continue;
+                    onGame = true;
                 } else if (inputNumber == 2) {
                     onGame = false;
                 } else {

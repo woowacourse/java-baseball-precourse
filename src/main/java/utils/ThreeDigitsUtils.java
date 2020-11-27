@@ -4,37 +4,39 @@ public class ThreeDigitsUtils {
     private ThreeDigitsUtils() {
     }
 
-    private static boolean isThreeDigits(int number) {
-        return (100 <= number && number < 1000);
+    public static int nextBaseballNumber() {
+        int number = nextRandomInt();
+        while (!isBaseballNumber(number)) {
+            number = nextRandomInt();
+        }
+        return number;
     }
 
-    public static boolean isDistinctThreeDigits(int number) {
-        if (!isThreeDigits(number)){
-            return false;
-        }
-        int a = number / 100;
-        int b = (number % 100) / 10;
-        int c = number % 10;
-        if ( a != b && b != c && c!= a){
+    public static boolean isBaseballNumber(int number) {
+        if (isInRange(number) && hasDistinctDigits(number)) {
             return true;
         }
         return false;
     }
 
-    public static int generateBaseballNumber() {
-        while (true){
-            int number = RandomUtils.nextInt(100, 999);
-            if (isDistinctThreeDigits(number)){
-                return number;
-            }
+    private static boolean hasDistinctDigits(int number) {
+        int[] array = toIntArrayOfDigits(number);
+        if (array[0] == array[1] || array[1] == array[2] || array[2] == array[0]){
+            return false;
         }
+        return true;
     }
 
-    public static int[] toIntArrayOfDigit(int number) {
+    private static int nextRandomInt() {
+        return RandomUtils.nextInt(100, 999);
+    }
+
+    private static boolean isInRange(int number) {
+        return (100 <= number && number < 1000);
+    }
+
+    public static int[] toIntArrayOfDigits(int number) {
         int[] array = new int[3];
-        if (!isThreeDigits(number)) {
-            return array;
-        }
         for (int i = 0; i < 3; i++) {
             array[i] = number % 10;
             number /= 10;
