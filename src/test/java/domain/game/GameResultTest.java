@@ -73,11 +73,30 @@ class GameResultTest {
 
     @DisplayName("볼이 1개 이상 존재하거나 스트라이크가 0개인 경우")
     @ParameterizedTest
-    @CsvSource({"0, 0", "1, 1"})
-    public void isOnlyStrike_False반환(int ballCounts, int strikeCounts) {
+    @CsvSource({"0, 0", "1, 1", "1, 0"})
+    public void isOnlyStrike_예외값_False반환(int ballCounts, int strikeCounts) {
         gameResultMap.put("볼", ballCounts);
         gameResultMap.put("스트라이크", strikeCounts);
         GameResult gameResult = new GameResult(gameResultMap);
         assertThat(gameResult.isOnlyStrike()).isFalse();
+    }
+
+    @DisplayName("스트라이크가 0개이고, 볼이 1개 이상이면 isOnlyBall은 true")
+    @Test
+    public void isOnlyBall_스트라이크_0개_볼_1개_이상_True() {
+        gameResultMap.put("볼", 1);
+        gameResultMap.put("스트라이크", 0);
+        GameResult gameResult = new GameResult(gameResultMap);
+        assertThat(gameResult.isOnlyBall()).isTrue();
+    }
+
+    @DisplayName("스트라이크가 1개 이상 존재하거나 볼이 0개인 경우")
+    @ParameterizedTest
+    @CsvSource({"0, 0", "0, 1", "1, 1"})
+    public void isOnlyBall_예외값_False반환(int ballCounts, int strikeCounts) {
+        gameResultMap.put("볼", ballCounts);
+        gameResultMap.put("스트라이크", strikeCounts);
+        GameResult gameResult = new GameResult(gameResultMap);
+        assertThat(gameResult.isOnlyBall()).isFalse();
     }
 }
