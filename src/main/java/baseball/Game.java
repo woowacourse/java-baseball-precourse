@@ -1,21 +1,20 @@
 package baseball;
 
 import utils.RandomUtils;
-
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-//    implement gameplay function
     public static void play(Scanner scanner){
         Baseball userBall = new Baseball();
         Baseball opponentBall = new Baseball();
         allocateBallsToPlayers(userBall, opponentBall, scanner);
-        System.out.println(userBall.getBaseball());
-        System.out.println(opponentBall.getBaseball());
-
+        System.out.println(userBall.getBaseballs());
+        System.out.println(opponentBall.getBaseballs());
+        User user = new User(userBall);
+        Opponent opponent = new Opponent(opponentBall);
+        user.printResult(opponent);
     }
+
     public static void allocateBallsToPlayers(Baseball userBall, Baseball opponentBall, Scanner scanner){
         while(true){
             printPromptMessage();
@@ -25,9 +24,11 @@ public class Game {
         }
         opponentBall.parseBaseball(generateOpponentInput());
     }
+
     public static void printPromptMessage(){
         System.out.println(Constants.PROMPT_MESSAGE);
     }
+
     public static String getUserInput(Scanner scanner){
         return scanner.next();
     }

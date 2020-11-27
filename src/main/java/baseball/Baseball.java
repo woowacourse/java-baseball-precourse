@@ -1,20 +1,30 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Baseball {
-    private String baseball = new String();
+    private ArrayList<Integer> baseball = new ArrayList<>();
 
     public boolean parseBaseball(String userInput){
-        if(validateDuplicate(userInput) &&
-            validDigits(userInput) &&
-            validateLength(userInput)){
-            baseball = userInput;
+        if(validateInput(userInput)){
+            for(char ball : userInput.toCharArray()){
+                baseball.add(Character.getNumericValue(ball));
+            }
             return true;
         }
         return false;
     }
+
+    public boolean validateInput(String userInput){
+        if(validateDuplicate(userInput) &&
+                validDigits(userInput) &&
+                validateLength(userInput)){
+            return true;
+        }
+        return false;
+    }
+
     public boolean validateLength(String baseball){
         try{
             if(baseball.length() != Constants.VALID_INPUT_LENGTH){
@@ -27,6 +37,7 @@ public class Baseball {
         }
         return true;
     }
+
     public boolean validateDuplicate(String baseball){
         try{
             HashMap<Character, Integer> duplicateMap = new HashMap<>();
@@ -43,6 +54,7 @@ public class Baseball {
         }
         return true;
     }
+
     public boolean validDigits(String baseball){
         try{
             for(char ball : baseball.toCharArray()){
@@ -58,7 +70,8 @@ public class Baseball {
         }
         return true;
     }
-    public String getBaseball(){
+
+    public ArrayList<Integer> getBaseballs(){
         return baseball;
     }
 }
