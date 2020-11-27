@@ -41,6 +41,9 @@ public class InputView {
     }
 
     private static void validatePattern(String inputBaseballNumbers) {
+        if (inputBaseballNumbers.length() != NONE_DUPLICATED_NUMBER_COUNTS) {
+            throw new IllegalArgumentException();
+        }
         boolean isCorrectPattern = inputBaseballNumbers.chars()
                 .filter(number -> MINIMUM_BASEBALL_NUMBER <= number && number <= MAXIMUM_BASEBALL_NUMBER)
                 .distinct()
