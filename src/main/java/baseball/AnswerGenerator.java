@@ -9,9 +9,12 @@ public class AnswerGenerator {
     private static final int END_INT = 987;
 
     ArrayList<Integer> answer;
-
+    NumberValidator validator = new NumberValidator(answer);
     {
-        answer = generateRandomNumbers();
+        do {
+            answer = generateRandomNumbers();
+            validator.numbers = answer;
+        } while (!validator.isValid());
     }
 
     private static String generateRandomNumberString() {
