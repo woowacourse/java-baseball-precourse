@@ -49,5 +49,27 @@ public class GameManager {
             return false;
         }
         return false;
+//        return GameStatus.valueOf(s).isContinue();
+    }
+}
+
+enum GameStatus {
+    CONTINUE("1"),
+    QUIT("2");
+
+    String name;
+
+    GameStatus(String name) {
+        this.name = name;
+    }
+
+    Boolean isContinue() {
+        if (this == GameStatus.CONTINUE) {
+            return true;
+        } else if (this == GameStatus.QUIT) {
+            return false;
+        }
+
+        return false;
     }
 }
