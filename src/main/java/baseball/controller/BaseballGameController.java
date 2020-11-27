@@ -1,6 +1,8 @@
 package baseball.controller;
 
 import baseball.domain.BaseballType;
+import baseball.domain.ExecutionFlagType;
+import baseball.domain.SingletonFlagMap;
 import baseball.game.BaseballGameRule;
 import baseball.game.BaseballResult;
 
@@ -10,8 +12,6 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class BaseballGameController {
-    private static final int RESTART_FLAG = 1;
-
     private final Viewer viewer;
     private final BaseballGameRule baseballGameRule;
 
@@ -23,7 +23,7 @@ public class BaseballGameController {
     public void runBaseballGameApplication() {
         do {
             this.playBaseballOneGame();
-        } while (this.viewer.inputRestartOrStopFlag() == RESTART_FLAG);
+        } while (this.isRestart());
     }
 
     private void playBaseballOneGame() {
@@ -41,5 +41,17 @@ public class BaseballGameController {
             this.viewer.printBaseballGameResult(baseballResult.isNothing(), ballCount, strikeCount);
         }
         this.viewer.printFinishGameMessage();
+    }
+
+    private boolean isRestart() {
+        while (true) {
+            try {
+                int inputFlag = this.viewer.inputRestartOrStopFlag();
+                ExecutionFlagType resultOfExecutionFlag = SingletonFlagMap.getInstance().getFlagFromNumber(inputFlag);
+                return resultOfExecutionFlag == ExecutionFlagType.RESTART;
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println("[Error] : 1과 2외의 다른 입력을 하였습니다.");
+            }
+        }
     }
 }

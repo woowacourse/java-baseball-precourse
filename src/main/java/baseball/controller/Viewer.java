@@ -11,8 +11,6 @@ public class Viewer {
     private static final int START_INTEGER_NUMBER = 1;
     private static final int END_INTEGER_NUMBER = 9;
     private static final int NOTHING_NUMBER = 0;
-    private static final int RESTART_GAME_FLAG = 1;
-    private static final int STOP_GAME_FLAG = 2;
 
     private final Scanner scanner;
 
@@ -110,11 +108,6 @@ public class Viewer {
 
     private int createValidateNumber() {
         String inputTokenData = this.scanner.next();
-        int parseData = Integer.parseInt(inputTokenData);
-        if (parseData == RESTART_GAME_FLAG || parseData == STOP_GAME_FLAG) {
-            return parseData;
-        }
-
-        throw new IllegalArgumentException();
+        return Integer.parseInt(inputTokenData);
     }
 }
