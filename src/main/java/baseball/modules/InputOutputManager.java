@@ -1,5 +1,6 @@
 package baseball.modules;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class InputOutputManager {
@@ -48,6 +49,10 @@ public class InputOutputManager {
             intArray[i] = Character.getNumericValue(input.charAt(i));
         }
 
+        if(!checkForArrayElementsAreUnique(intArray)){
+            throw new IllegalArgumentException();
+        }
+
         return intArray;
     }
 
@@ -75,6 +80,20 @@ public class InputOutputManager {
         }
 
         return false;
+    }
+
+    private boolean checkForArrayElementsAreUnique(int[] input){
+        HashSet<Integer> shown = new HashSet<Integer>();
+
+        for(int i = 0; i < input.length; i++){
+            if(shown.contains(input[i])){
+                return false;
+            }
+
+            shown.add(input[i]);
+        }
+
+        return true;
     }
 
     public void printResult(int strike, int ball){
