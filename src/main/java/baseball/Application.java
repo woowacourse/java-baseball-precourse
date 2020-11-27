@@ -47,7 +47,13 @@ public class Application {
     }
 
     private static int findStrike(int[] randomNumber, int[] userNumber) {
-        return 0;
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            if (randomNumber[i] == userNumber[i]) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private static int findBall(int[] randomNumber, int[] userNumber) {
