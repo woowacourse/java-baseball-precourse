@@ -14,7 +14,6 @@ public class InputValidator {
     private static final String NUMBER_RANGE_ERROR = "1~9의 숫자를 입력해주세요.";
     private static final String NUMBER_DUPLICATE_ERROR = "서로 다른 숫자를 입력해주세요.";
 
-
     private static Set<Character> duplicateCheckSet;
 
     private InputValidator() {
@@ -38,7 +37,7 @@ public class InputValidator {
 
 
     private static void validateLength(String numbers) {
-        if (numbers.length() > NUMBERS_LENGTH) {
+        if (numbers.length() != NUMBERS_LENGTH) {
             throw new IllegalArgumentException(NUMBER_LENGTH_ERROR);
         }
 
