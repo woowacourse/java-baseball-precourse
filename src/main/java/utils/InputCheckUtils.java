@@ -47,7 +47,7 @@ public class InputCheckUtils {
 
 	public static boolean isRightRange(String input) {
 		for (char ch : input.toCharArray()) {
-			int i = ch - '0';
+			int i = Character.getNumericValue(ch);
 			if (i > MAX_NUMBER_RANGE || i < MIN_NUMBER_RANGE) {
 				return false;
 			}
