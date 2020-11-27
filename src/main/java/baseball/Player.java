@@ -1,10 +1,9 @@
 package baseball;
 
-
 import java.util.ArrayList;
 
 public class Player {
-    Baseball baseball;
+    private Baseball baseball;
     public Player(Baseball baseball){
         this.baseball = baseball;
     }
