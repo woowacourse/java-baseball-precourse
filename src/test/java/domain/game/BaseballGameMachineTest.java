@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class BaseballGameMachineTest {
 
     @DisplayName("게임을 플레이하면 결과를 반환함 : 3스트라이크")
