@@ -1,7 +1,3 @@
-/**
- * 공 원시값을 나타내고 범위를 체크한다.
- */
-
 package baseball;
 
 public class BallNumber {

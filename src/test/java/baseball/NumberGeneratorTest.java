@@ -9,14 +9,13 @@ class NumberGeneratorTest {
     @Test
     public void generateNumber() throws Exception{
         //given
-        NumberGenerator numberGenerator = new NumberGenerator();
         int length = 3;
 
         //when
-        List<Integer> numbers = numberGenerator.generateNumber();
+        Balls balls = NumberGenerator.generateNumber();
 
         //then
-        assertEquals(length, numbers.size());
+        assertEquals(length, balls.getBalls().size());
     }
 
 }

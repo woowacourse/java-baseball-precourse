@@ -9,38 +9,38 @@ public class Alert {
     private static final String BALL = "볼";
     private static final int ZERO = 0;
 
-    public static void enterNumber(){
+    public static void enterNumber() {
         System.out.println(NUMBER_INPUT);
     }
 
-    public static void finishGame(){
+    public static void finishGame() {
         System.out.println(ALL_CORRECT);
     }
 
-    public static void askToRestart(){
+    public static void askToRestart() {
         System.out.println(RESTART);
     }
 
-    public static void markScore(int ball, int strike){
-        if(ball == ZERO && strike == ZERO){
+    public static void markScore(int ball, int strike) {
+        if (ball == ZERO && strike == ZERO) {
             sayNothing();
         }
-        if(ball == ZERO){
+        if (ball == ZERO) {
             sayOnlyStrike(strike);
         }
-        if(strike == ZERO){
+        if (strike == ZERO) {
             sayOnlyBall(ball);
         }
-        System.out.println(ball+BALL+" "+strike+STRIKE);
+        System.out.println(ball + BALL + " " + strike + STRIKE);
     }
 
 
     private static void sayOnlyBall(int ball) {
-        System.out.println(ball+BALL);
+        System.out.println(ball + BALL);
     }
 
     private static void sayOnlyStrike(int strike) {
-        System.out.println(strike+STRIKE);
+        System.out.println(strike + STRIKE);
     }
 
     private static void sayNothing() {
