@@ -13,42 +13,60 @@
 <br>
 
 ## :pencil: 기능 구현 사항
-### 게임 시작 `GameStart`
-1. 랜덤숫자 생성 `randomNumberGenerator`
+
+---
+
+### 클래스 구현
+
+* `BaseBallGame`
+    * 야구 게임 객체
+
+* `RadomNumberGenerator`
+    * `RandomUtils` 클래스를 이용해 랜덤 숫자를 만들어내는 클래스
+
+* `Player`
+    * 게임 플레이를 하는 유저 객체를 만드는 클래스
+
+* `Constants`
+    * 상수를 관리하는 클래스
+
+---
+
+### 게임 시작 `gameStart()`
+> `Flag(isNewGameContinue)` 값에 따라 무한 루프 결정
+
+1. 랜덤숫자 생성
     * 주어진 `RandomUtils` 클래스를 이용해 `1 ~ 9` 사이의 숫자 생성
         * 이미 등장한 수가 다시 재등장하는 경우 처리
-2. 숫자 저장
+    * 숫자 저장
+2. 유저 객체 생성
 
 
-### 게임 진행 `GameProgress`
-1. 유저에게서 숫자를 입력받음 `playerInput`
-    * 3자리의 숫자인가?
-    * 각 숫자가 `1 ~ 9` 사이인가?
-    * 등장한 수가 재등장하지 않았는가?
-        * 예외 발생시 `IllegalArgumentException` 발생
+### 게임 진행 `gameProgress()`
+1. Player 가 게임을 진행함
+    * Player 에게서 숫자를 입력받음 `setPlayerNumber()`
+        * 정상적인 숫자인지 확인 `isCorrectNumber()`
+            * 3자리의 숫자인가?
+            * 각 숫자가 `1 ~ 9` 사이인가?
+            * 등장한 수가 재등장하지 않았는가?
+            * 예외 발생시 `IllegalArgumentException` 발생
     
-2. 결과 확인 `gameScoreCheck`
-    * 해당 숫자가 스트라이큰가?
-        * strike count up
-    * 스트라이크가 아니라면 볼인가?
-        * ball count up
+    * 결과 확인 `checkPlayerScore()`
+        * 해당 숫자가 스트라이큰가?
+            * strike count up
+        * 스트라이크가 아니라면 볼인가?
+            * ball count up
 
+2. 힌트를 출력함 `getHint()`
+    * N 볼 N 스트라이크
 
-### 게임 결과 `GameResult`
-> 3 스트라이크인가?
-
-* (true) 
-* 게임 종료 `gameFinish`
-* 재시작 여부 질문 1,2 `gameRestart`
-    * 입력 예외 발생시 `IllegalArgumentException` 발생
-
-* (false)
-* 힌트 출력 `gameHint`
-    1. 볼이 있는가? `ballCountPrint`
-        * 볼 결과 출력
-    2. 스트라이크가 있는가? `strikeCountPrint`
-        * 스트라이크 결과 출력
-* 다시 `게임 진행`으로
+3. 3스트라이크인가? `isAnswer()`
+    * **(true)**
+        * 재시작 여부 질문 `isGameKeepGoing`
+            * 입력에 따라 게임 시작 플래그 설정 `isNewGameContinue`
+            * 입력 예외 발생시 `IllegalArgumentException` 발생
+    * **(false)**
+        * 다시 `게임 진행`으로
 
 <br>
 
