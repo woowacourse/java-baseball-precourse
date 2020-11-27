@@ -39,7 +39,15 @@ public class Application {
     }
 
     static void startGame(String computerChoice){
+        int strike;
         String userChoice = chooseUserChoice();
+        strike = umpirePitch(computerChoice, userChoice);
+        if(strike==3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }else{
+            startGame(computerChoice);
+        }
     }
 
     static String chooseUserChoice(){
@@ -48,4 +56,34 @@ public class Application {
         String userChoice = sc.nextLine();
         return userChoice;
     }
+
+    static int umpirePitch(String computerChoice, String userChoice){
+        int strike = 0;
+        int ball = 0;
+        
+        for(int i=0; i< computerChoice.length(); i++){
+            if(computerChoice.charAt(i)==userChoice.charAt(i)){
+                strike+=1;
+            }
+        }
+
+        for(int i=0; i<userChoice.length(); i++){
+            if(calculateBall(computerChoice, userChoice.charAt(i))){
+                ball+=1;
+            }
+        }
+        ball -= strike;
+        return strike;
+    }
+
+    static boolean calculateBall(String computerChoice, int pitch){
+        boolean ball = false;
+        for(int i=0; i<computerChoice.length(); i++){
+            if(computerChoice.charAt(i)==pitch){
+                ball = true;
+            }
+        }
+        return ball;
+    }
+
 }
