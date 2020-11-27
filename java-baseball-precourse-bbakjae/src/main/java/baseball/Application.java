@@ -7,8 +7,7 @@ public class Application {
     	// TODO 구현 진행
     	final Scanner scanner = new Scanner(System.in);
     	while(true) {
-	    	int[] rand_num = random_3Num();
-	    		    	
+	    	int[] rand_num = random_3Num();	    		    	
 	    	while(true) {
 	    		System.out.print("숫자를 입력해주세요 : ");
 	    		int[] guess = guess_Num(scanner.nextInt());	    		
@@ -17,9 +16,9 @@ public class Application {
 	    		if(result[0]!=0 && result[1]!=0)
 	    			System.out.printf("%d볼 %d스트라이크\n",result[0],result[1]);
 	    		else if (result[0]==0 && result[1]!=0)
-	    			System.out.println(""+result[1]+" 볼");
+	    			System.out.println(""+result[1]+"볼");
 	    		else if (result[0]!=0 && result[1]==0)
-	    			System.out.println(""+result[0]+" 스트라이크");
+	    			System.out.println(""+result[0]+"스트라이크");
 	    		else if (result[0]==0&&result[1]==0)
 	   				System.out.println("낫싱");
 	    		if (result[0]==3) {
