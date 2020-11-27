@@ -8,7 +8,17 @@ public class BaseBallGame {
     public BaseBallGame(String answer) {
         this.answer = answer;
     }
-    
+
+
+    public boolean checkInputNumber(String inputNumber) {
+        checkHint(inputNumber);
+        if (answer.equals(inputNumber)) {
+            System.out.println(STATEMENT_INPUT_ANSWER);
+            return true;
+        }
+        return false;
+    }
+
     private void checkHint(String inputNumber) {
         int ball = 0, strike = 0;
         for (int i = 0; i < inputNumber.length(); i++) {
