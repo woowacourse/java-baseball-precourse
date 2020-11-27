@@ -46,13 +46,7 @@ public class GameManager {
 
     private Boolean continueGame() {
         String s = scanner.next();
-        if (s.equals(CONTINUE)) {
-            return true;
-        } else if (s.equals(QUIT)) {
-            return false;
-        }
-        return false;
-//        return GameStatus.valueOf(s).isContinue();
+        return GameStatus.valueOf(s).isContinue();
     }
 }
 
