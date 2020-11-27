@@ -20,13 +20,16 @@ public class InputValidation {
     }
 
     public boolean checkValidNumber() {
+        if (!isNumber()) {
+            return false;
+        }
         if (!isValidLength()) {
             return false;
         }
         if (!isDuplicated()) {
             return false;
         }
-        if (!isNumber()) {
+        if (!isZero()) {
             return false;
         }
         return true;
@@ -52,5 +55,12 @@ public class InputValidation {
         final int NUMBER_LENGTH = 3;
 
         return checkNumber.length() == NUMBER_LENGTH;
+    }
+
+    private boolean isZero() {
+        if (checkNumber.contains("0")) {
+            return false;
+        }
+        return true;
     }
 }
