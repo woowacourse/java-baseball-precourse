@@ -1,13 +1,64 @@
 package baseball;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class Baseball {
-    ArrayList<Integer> baseball = new ArrayList<Integer>();
-    public Baseball(ArrayList<Integer> baseball){
-        //todo: validation
-        this.baseball = baseball;
+    private String baseball = new String();
+
+    public boolean parseBaseball(String userInput){
+        if(validateDuplicate(userInput) &&
+            validDigits(userInput) &&
+            validateLength(userInput)){
+            baseball = userInput;
+            return true;
+        }
+        return false;
     }
-
-
+    public boolean validateLength(String baseball){
+        try{
+            if(baseball.length() != Constants.VALID_INPUT_LENGTH){
+                throw new IllegalArgumentException(Constants.ERR_MSG_VALID_LENGTH);
+            }
+        }
+        catch(IllegalArgumentException errorMessage){
+            System.out.println(errorMessage);
+            return false;
+        }
+        return true;
+    }
+    public boolean validateDuplicate(String baseball){
+        try{
+            HashMap<Character, Integer> duplicateMap = new HashMap<>();
+            for(char ball : baseball.toCharArray()){
+                if(duplicateMap.get(ball) != null){
+                    throw new IllegalArgumentException(Constants.ERR_MSG_DUPLICATE_DIGITS);
+                }
+                duplicateMap.put(ball, 1);
+            }
+        }
+        catch(IllegalArgumentException errorMessage){
+            System.out.println(errorMessage);
+            return false;
+        }
+        return true;
+    }
+    public boolean validDigits(String baseball){
+        try{
+            for(char ball : baseball.toCharArray()){
+                if(!(Constants.MIN_VALID_INPUT_DIGIT<=ball &&
+                        ball <= Constants.MAX_VALID_INPUT_DIGIT)){
+                    throw new IllegalArgumentException(Constants.ERR_MSG_VALID_DIGITS);
+                }
+            }
+        }
+        catch(IllegalArgumentException errorMessage){
+            System.out.println(errorMessage);
+            return false;
+        }
+        return true;
+    }
+    public String getBaseball(){
+        return baseball;
+    }
 }
