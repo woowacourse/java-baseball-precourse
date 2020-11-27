@@ -131,15 +131,15 @@ public class Application {
         return new StrikeAndBall(strikeCount, ballCount);
     }
 
-    public static int isStrike(int playerNumToCompare, int playerNumLoc, int answerNumToCompare, int answerNumLoc) {
-        if (playerNumLoc == answerNumLoc && playerNumToCompare == answerNumToCompare) {
+    public static int isStrike(int playerDigitToCompare, int playerDigitLoc, int answerDigitToCompare, int answerDigitLoc) {
+        if (playerDigitLoc == answerDigitLoc && playerDigitToCompare == answerDigitToCompare) {
             return 1;
         }
         return 0;
     }
 
-    public static int isBall(int playerNumToCompare, int playerNumLoc, int answerNumToCompare, int answerNumLoc) {
-        if (playerNumLoc != answerNumLoc && playerNumToCompare == answerNumToCompare) {
+    public static int isBall(int playerDigitToCompare, int playerDigitLoc, int answerDigitToCompare, int answerDigitLoc) {
+        if (playerDigitLoc != answerDigitLoc && playerDigitToCompare == answerDigitToCompare) {
             return 1;
         }
         return 0;
