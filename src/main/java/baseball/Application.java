@@ -26,17 +26,17 @@ public class Application {
 
     public static void play(Scanner scanner) {
         do {
-            Computer computer = new Computer();
-            cycleGame(computer, scanner);
+            GameManager gameManager = new GameManager();
+            cycleGame(gameManager, scanner);
         } while (doOneMoreGame(scanner.next()));
     }
 
-    public static void cycleGame(Computer computer, Scanner scanner) {
+    public static void cycleGame(GameManager gameManager, Scanner scanner) {
         OutputView.printInputNumber();
         String playerNumber = inputPlayerNumber(scanner.next());
 
-        if (!computer.getResult(playerNumber)) {
-            cycleGame(computer, scanner);
+        if (!gameManager.getResult(playerNumber)) {
+            cycleGame(gameManager, scanner);
         }
     }
 
