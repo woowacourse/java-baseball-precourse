@@ -156,6 +156,9 @@ public class GameSystem {
         if (!isStringNoZero(string)) {
             throw new IllegalArgumentException("입력이 0을 포함합니다. 숫자 재입력이 필요합니다.");
         }
+        if (!isStringDigitDiff(string)) {
+            throw new IllegalArgumentException("입력이 중복된 수를 포함합니다. 숫자 재입력이 필요합니다.");
+        }
         return Integer.parseInt(string);
     }
 
@@ -184,6 +187,21 @@ public class GameSystem {
             if (string.charAt(i) == '0') {
                 return false;
             }
+        }
+        return true;
+    }
+
+    private boolean isStringDigitDiff(String string) {
+        int length = string.length();
+        boolean[] numCheck = new boolean[MAX + 1];
+
+        for (int i = 0; i < length; i++) {
+            int num = string.charAt(i) - '0';
+
+            if (numCheck[num]) {
+                return false;
+            }
+            numCheck[num] = true;
         }
         return true;
     }
