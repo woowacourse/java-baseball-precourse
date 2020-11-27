@@ -15,15 +15,31 @@ public class Players {
         computer.generateNumber();
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public Computer getComputer() {
-        return computer;
-    }
-
     public void clearUserNumbers() {
         user.clearNumbers();
+    }
+
+    public int getUserNumberIndexOf(int userIndex) {
+        return user.getNumberIndexOf(userIndex);
+    }
+
+    public int getComputerNumberIndexOf(int computerIndex) {
+        return computer.getComputerNumberIndexOf(computerIndex);
+    }
+
+    public void userInput() {
+        user.userInput();
+    }
+
+    public boolean isUserWantToContinue() {
+        return user.isUserWantToContinue();
+    }
+
+    public void initializeComputerNumbersWith(int computerNumber) {
+        computer.initializeNumbersWith(computerNumber);
+    }
+
+    public void initializeUserNumbersWith(String input) {
+        user.initializeNumbersWith(input);
     }
 }

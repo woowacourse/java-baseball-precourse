@@ -1,9 +1,8 @@
-package checker;
+package baseball.checker;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import baseball.checker.AnswerChecker;
 import baseball.players.Players;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -25,7 +24,7 @@ public class AnswerCheckerTest {
     @BeforeEach
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
-        players.getComputer().initializeNumbersWith(COMPUTER_NUMBER);
+        players.initializeComputerNumbersWith(COMPUTER_NUMBER);
     }
 
     @AfterEach
@@ -54,7 +53,7 @@ public class AnswerCheckerTest {
     void oneStrike() {
         String[] inputs = {"189", "726", "583"};
         for (String input : inputs) {
-            players.getUser().insertNewUserNumbers(input);
+            players.initializeUserNumbersWith(input);
             answerChecker.calculateResult();
             answerChecker.printResult();
             assertEquals("1스트라이크", outputStreamCaptor.toString().trim());
@@ -68,7 +67,7 @@ public class AnswerCheckerTest {
     void oneBallOneStrike() {
         String[] inputs = {"138", "921", "253"};
         for (String input : inputs) {
-            players.getUser().insertNewUserNumbers(input);
+            players.initializeUserNumbersWith(input);
             answerChecker.calculateResult();
             answerChecker.printResult();
             assertEquals("1볼 1스트라이크", outputStreamCaptor.toString().trim());
@@ -82,7 +81,7 @@ public class AnswerCheckerTest {
     void twoBallOneStrike() {
         String[] inputs = {"132", "321", "213"};
         for (String input : inputs) {
-            players.getUser().insertNewUserNumbers(input);
+            players.initializeUserNumbersWith(input);
             answerChecker.calculateResult();
             answerChecker.printResult();
             assertEquals("2볼 1스트라이크", outputStreamCaptor.toString().trim());
@@ -96,7 +95,7 @@ public class AnswerCheckerTest {
     void twoStrike() {
         String[] inputs = {"129", "163", "423"};
         for (String input : inputs) {
-            players.getUser().insertNewUserNumbers(input);
+            players.initializeUserNumbersWith(input);
             answerChecker.calculateResult();
             answerChecker.printResult();
             assertEquals("2스트라이크", outputStreamCaptor.toString().trim());
@@ -110,7 +109,7 @@ public class AnswerCheckerTest {
     void threeStrike() {
         String[] inputs = {"123"};
         for (String input : inputs) {
-            players.getUser().insertNewUserNumbers(input);
+            players.initializeUserNumbersWith(input);
             answerChecker.calculateResult();
             answerChecker.printResult();
             assertEquals("3스트라이크", outputStreamCaptor.toString().trim());
@@ -124,7 +123,7 @@ public class AnswerCheckerTest {
     void oneBall() {
         String[] inputs = {"891", "837", "592"};
         for (String input : inputs) {
-            players.getUser().insertNewUserNumbers(input);
+            players.initializeUserNumbersWith(input);
             answerChecker.calculateResult();
             answerChecker.printResult();
             assertEquals("1볼", outputStreamCaptor.toString().trim());
@@ -138,7 +137,7 @@ public class AnswerCheckerTest {
     void twoBall() {
         String[] inputs = {"712", "361", "234"};
         for (String input : inputs) {
-            players.getUser().insertNewUserNumbers(input);
+            players.initializeUserNumbersWith(input);
             answerChecker.calculateResult();
             answerChecker.printResult();
             assertEquals("2볼", outputStreamCaptor.toString().trim());
@@ -152,7 +151,7 @@ public class AnswerCheckerTest {
     void threeBall() {
         String[] inputs = {"231", "312"};
         for (String input : inputs) {
-            players.getUser().insertNewUserNumbers(input);
+            players.initializeUserNumbersWith(input);
             answerChecker.calculateResult();
             answerChecker.printResult();
             assertEquals("3볼", outputStreamCaptor.toString().trim());
@@ -166,7 +165,7 @@ public class AnswerCheckerTest {
     void nothing() {
         String[] inputs = {"958", "756", "549"};
         for (String input : inputs) {
-            players.getUser().insertNewUserNumbers(input);
+            players.initializeUserNumbersWith(input);
             answerChecker.calculateResult();
             answerChecker.printResult();
             assertEquals("낫싱", outputStreamCaptor.toString().trim());

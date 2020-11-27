@@ -3,7 +3,6 @@ package baseball.game;
 import static baseball.checker.NumberChecker.*;
 
 import baseball.players.Players;
-import baseball.players.User;
 import baseball.checker.AnswerChecker;
 import java.util.Scanner;
 
@@ -19,15 +18,22 @@ public class GameManager {
 
     public void start() {
         players.generateComputerNumber();
-        User user = players.getUser();
         do {
-            answerChecker.clear();
-            players.clearUserNumbers();
-            user.getUserInput();
-            answerChecker.calculateResult();
-            answerChecker.printResult();
+            initializeGame();
+            playGame();
         } while (!answerChecker.isAnswer());
         printCorrectionAndEndingMessage();
+    }
+
+    private void playGame() {
+        players.userInput();
+        answerChecker.calculateResult();
+        answerChecker.printResult();
+    }
+
+    private void initializeGame() {
+        answerChecker.clear();
+        players.clearUserNumbers();
     }
 
     private void printCorrectionAndEndingMessage() {
@@ -35,6 +41,6 @@ public class GameManager {
     }
 
     public boolean isContinue() {
-        return players.getUser().isUserWantToContinue();
+        return players.isUserWantToContinue();
     }
 }

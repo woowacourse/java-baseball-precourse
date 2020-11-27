@@ -1,5 +1,6 @@
 package baseball.players.numbers;
 
+import baseball.checker.NumberChecker;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +29,11 @@ public class UserNumbers {
         return numbers.get(index);
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
     public void clear() {
         numbers.clear();
+    }
+
+    public void checkNumbers() {
+        NumberChecker.checkNumbers(numbers);
     }
 }

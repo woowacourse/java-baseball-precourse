@@ -1,6 +1,5 @@
 package baseball.players;
 
-import baseball.checker.NumberChecker;
 import baseball.players.numbers.UserNumbers;
 import java.util.Scanner;
 
@@ -15,16 +14,16 @@ public class User {
         this.userNumbers = new UserNumbers();
     }
 
-    public void getUserInput() {
+    public void userInput() {
         System.out.print(USER_INPUT_MESSAGE);
         String userInput = scanner.nextLine();
-        insertNewUserNumbers(userInput);
+        initializeNumbersWith(userInput);
     }
 
-    public void insertNewUserNumbers(String userInput) {
+    public void initializeNumbersWith(String userInput) {
         userNumbers.clear();
         userNumbers.convertToList(userInput);
-        NumberChecker.checkNumbers(userNumbers.getNumbers());
+        userNumbers.checkNumbers();
     }
 
     public boolean isUserWantToContinue() {
@@ -39,7 +38,7 @@ public class User {
         throw new IllegalArgumentException();
     }
 
-    public int numberIndexOf(int index) {
+    public int getNumberIndexOf(int index) {
         return userNumbers.numberIndexOf(index);
     }
 

@@ -3,6 +3,8 @@ package baseball.checker;
 import static baseball.checker.types.EachNumberResultType.*;
 import static baseball.checker.NumberChecker.*;
 
+import baseball.checker.dtos.ResultCheckDto;
+import baseball.checker.dtos.ResultIndexDto;
 import baseball.checker.types.EachNumberResultType;
 import baseball.players.Players;
 
@@ -26,15 +28,15 @@ public class AnswerChecker {
     }
 
     private void checkComputerNumbers(int userIndex) {
-        for (int comIndex = 0; comIndex < NUMBERS_SIZE; comIndex++) {
-            checkStrikeOrBall(userIndex, comIndex);
+        for (int computerIndex = 0; computerIndex < NUMBERS_SIZE; computerIndex++) {
+            checkStrikeOrBall(new ResultIndexDto(userIndex, computerIndex));
         }
     }
 
-    private void checkStrikeOrBall(int userIndex, int comIndex) {
-        StrikeOrBallChecker checker
-            = new StrikeOrBallChecker(players.getUser(), players.getComputer());
-        EachNumberResultType type = checker.resultOfEachNumber(userIndex, comIndex);
+    private void checkStrikeOrBall(ResultIndexDto resultIndexDto) {
+        ResultCheckDto resultCheckDto = new ResultCheckDto(players, resultIndexDto);
+        EachNumberResultType type
+            = StrikeOrBallChecker.resultOfEachNumber(resultCheckDto);
         if (type == STRIKE) {
             result.strike();
         }
