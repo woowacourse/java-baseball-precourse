@@ -5,7 +5,7 @@ import utils.RandomUtils;
 import java.util.HashSet;
 import java.util.Set;
 
-// Strike, Ball 카운트를 위한 클래스
+// Class for Strike and Ball count
 class StrikeAndBall {
     int strike;
     int ball;
@@ -25,26 +25,26 @@ class StrikeAndBall {
 }
 
 public class Application {
-    // RANDOM NUMBER
+    // CONSTANTS FOR RANDOM NUMBER
     public static final int NUMBER_START_INCLUSIVE = 100;
     public static final int NUMBER_END_INCLUSIVE = 999;
 
-    // GAME PLAY
+    // CONSTANTS FOR GAME PLAY
     public static final String GUESS_INPUT_MESSAGE = "숫자를 입력해 주세요 : ";
     public static final String GUESS_INPUT_ERROR_MESSAGE = "1 에서 9 사이의 서로 다른 숫자로 이루어진 3자리 정수만 입력 가능합니다";
 
-    // HINT
+    // CONSTANTS FOR HINT
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
     public static final String NOTHING = "낫싱";
 
-    // AFTER GAME
+    // CONSTANTS FOR AFTER GAME
     public static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String RESTART_OR_QUIT_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public static final String RESTART_OR_QUIT_INPUT_ERROR_MESSAGE = "1 혹은 2만 입력 가능합니다";
+    public static final String REPLAY_OR_QUIT_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String REPLAY_OR_QUIT_INPUT_ERROR_MESSAGE = "1 혹은 2만 입력 가능합니다";
     public static final String QUIT_MESSAGE = "GG";
 
-    public static int[] intToArray(int num) {
+    public static int[] convertIntToArray(int num) {
         int[] this_array = new int[3];
         for (int i = 2; i > -1; i--) {
             this_array[i] = num % 10;
@@ -56,8 +56,8 @@ public class Application {
     public static boolean isValidNum(int candidateNum) {
         Set<Integer> previousDigitSet = new HashSet<>();
 
-        // 각 자리수 숫자가 서로 다르고 0이 아니어야 함
-        int[] candidateArray = intToArray(candidateNum);
+        // all digits MUST BE different and not 0
+        int[] candidateArray = convertIntToArray(candidateNum);
         for (int candidateDigit : candidateArray) {
             if (previousDigitSet.contains(candidateDigit) || candidateDigit == 0) {
                 return false;
@@ -75,16 +75,16 @@ public class Application {
         return randomNum;
     }
 
-    public static int guessNum(Scanner scanner) throws IllegalArgumentException {
+    public static int tryToGuessNum(Scanner scanner) throws IllegalArgumentException {
         System.out.print(GUESS_INPUT_MESSAGE);
-        // 정수가 아닌 경우
+        // input is not an integer
         if (!scanner.hasNextInt()) {
             throw new IllegalArgumentException();
         }
 
         int guessInput = scanner.nextInt();
 
-        // valid한 3자리 정수만
+        // input has 3 digits and valid number
         if (100 <= guessInput && guessInput < 1000 && isValidNum(guessInput)) {
             return guessInput;
         } else {
@@ -97,7 +97,7 @@ public class Application {
         int number = 123; // initialize with meaningless number (123) to compile without error
         while (!isValidGuess) {
             try {
-                number = guessNum(scanner);
+                number = tryToGuessNum(scanner);
                 isValidGuess = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(GUESS_INPUT_ERROR_MESSAGE);
@@ -107,42 +107,42 @@ public class Application {
         return number;
     }
 
-    public static StrikeAndBall getStrikeAndBall(int guessNum, int answer) {
-        int[] guessArray = intToArray(guessNum);
-        int[] answerArray = intToArray(answer);
-
-        return countStrikeAndBall(guessArray, answerArray);
-    }
-
     public static StrikeAndBall countStrikeAndBall(int[] guessArray, int[] answerArray) {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for (int playerDigitLoc = 0; playerDigitLoc < 3; playerDigitLoc++) {
-            int playerDigitToCompare = guessArray[playerDigitLoc];
+        for (int guessDigitLoc = 0; guessDigitLoc < 3; guessDigitLoc++) {
+            int guessDigitToCompare = guessArray[guessDigitLoc];
 
             for (int answerDigitLoc = 0; answerDigitLoc < 3; answerDigitLoc++) {
                 int answerDigitToCompare = answerArray[answerDigitLoc];
 
-                strikeCount += isStrike(playerDigitToCompare, playerDigitLoc, answerDigitToCompare, answerDigitLoc);
-                ballCount += isBall(playerDigitToCompare, playerDigitLoc, answerDigitToCompare, answerDigitLoc);
+                strikeCount += isStrike(guessDigitToCompare, guessDigitLoc, answerDigitToCompare, answerDigitLoc);
+                ballCount += isBall(guessDigitToCompare, guessDigitLoc, answerDigitToCompare, answerDigitLoc);
             }
         }
         return new StrikeAndBall(strikeCount, ballCount);
     }
 
-    public static int isStrike(int playerDigitToCompare, int playerDigitLoc, int answerDigitToCompare, int answerDigitLoc) {
-        if (playerDigitLoc == answerDigitLoc && playerDigitToCompare == answerDigitToCompare) {
+    public static int isStrike(int guessDigitToCompare, int guessDigitLoc, int answerDigitToCompare, int answerDigitLoc) {
+        if (guessDigitLoc == answerDigitLoc && guessDigitToCompare == answerDigitToCompare) {
             return 1;
         }
         return 0;
     }
 
-    public static int isBall(int playerDigitToCompare, int playerDigitLoc, int answerDigitToCompare, int answerDigitLoc) {
-        if (playerDigitLoc != answerDigitLoc && playerDigitToCompare == answerDigitToCompare) {
+    public static int isBall(int guessDigitToCompare, int guessDigitLoc, int answerDigitToCompare, int answerDigitLoc) {
+        if (guessDigitLoc != answerDigitLoc && guessDigitToCompare == answerDigitToCompare) {
             return 1;
         }
         return 0;
+    }
+
+    public static StrikeAndBall getStrikeAndBall(int guessNum, int answer) {
+        int[] guessArray = convertIntToArray(guessNum);
+        int[] answerArray = convertIntToArray(answer);
+
+        return countStrikeAndBall(guessArray, answerArray);
     }
 
     public static int getResultOfGuess(StrikeAndBall thisTurnResult) {
@@ -170,8 +170,8 @@ public class Application {
         }
     }
 
-    public static void decideGoOrStop(Scanner scanner) throws IllegalArgumentException {
-        System.out.println(RESTART_OR_QUIT_INPUT_MESSAGE);
+    public static void decideReplayOrQuit(Scanner scanner) throws IllegalArgumentException {
+        System.out.println(REPLAY_OR_QUIT_INPUT_MESSAGE);
         if (!scanner.hasNextInt()) {
             throw new IllegalArgumentException();
         }
@@ -187,17 +187,17 @@ public class Application {
         }
     }
 
-    public static void goOrStop (Scanner scanner) {
+    public static void replayOrQuit(Scanner scanner) {
         System.out.println(WIN_MESSAGE);
         scanner.nextLine();
 
-        boolean isValidGoOrStop = false;
-        while (!isValidGoOrStop) {
+        boolean isValidReplayOrQuitInput = false;
+        while (!isValidReplayOrQuitInput) {
             try {
-                decideGoOrStop(scanner);
-                isValidGoOrStop = true;
+                decideReplayOrQuit(scanner);
+                isValidReplayOrQuitInput = true;
             } catch (IllegalArgumentException e) {
-                System.out.println(RESTART_OR_QUIT_INPUT_ERROR_MESSAGE);
+                System.out.println(REPLAY_OR_QUIT_INPUT_ERROR_MESSAGE);
                 scanner.nextLine();
             }
         }
@@ -207,13 +207,8 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
 
-        // 3자리 숫자 생성
-        int answer = getRandomNum();
-
-        // 게임 플레이
+        int answer = getRandomNum(); // GENERATE ANSWER
         playGame(scanner, answer);
-
-        // 게임 계속 플레이 혹은 종료
-        goOrStop(scanner);
+        replayOrQuit(scanner);
     }
 }
