@@ -20,6 +20,7 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int gameCoin = sc.nextInt();
+        exceptionChecker(gameCoin);
         return gameCoin == 1;
     }
 
@@ -54,6 +55,7 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
         String userChoice = sc.nextLine();
+        exceptionChecker(userChoice);
         return userChoice;
     }
 
@@ -96,6 +98,23 @@ public class Application {
             System.out.println(strike+"스트라이크");
         }else{
             System.out.println(ball+"볼 "+strike+"스트라이크");
+        }
+    }
+
+    private static void exceptionChecker(String userChoice){
+        if(userChoice.length() != 3){
+            throw new IllegalArgumentException();
+        } else if(userChoice.charAt(0)==userChoice.charAt(1) || userChoice.charAt(1)==userChoice.charAt(2) || userChoice.charAt(0)==userChoice.charAt(1)){
+            throw new IllegalArgumentException();
+        } else if(userChoice.charAt(0)=='0' ||userChoice.charAt(1)=='0' ||userChoice.charAt(2)=='0'){
+            throw new IllegalArgumentException();
+        }
+    
+    }
+
+    private static void exceptionChecker(int gameCoin){
+        if(gameCoin !=1 && gameCoin != 2){
+            throw new IllegalArgumentException();
         }
     }
 
