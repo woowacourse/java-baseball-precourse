@@ -53,16 +53,16 @@ public class Application {
         return this_array;
     }
 
-    public static boolean isValidNum(int candidate) {
-        Set<Integer> store = new HashSet<>();
+    public static boolean isValidNum(int candidateGuessNum) {
+        Set<Integer> previousNumSet = new HashSet<>();
 
         // 각 자리수 숫자가 서로 다르고 0이 아니어야 함
-        int[] candidate_array = intToArray(candidate);
-        for (int i : candidate_array) {
-            if (store.contains(i) || i == 0) {
+        int[] candidateArray = intToArray(candidateGuessNum);
+        for (int candidateNum : candidateArray) {
+            if (previousNumSet.contains(candidateNum) || candidateNum == 0) {
                 return false;
             }
-            store.add(i);
+            previousNumSet.add(candidateNum);
         }
         return true;
     }
