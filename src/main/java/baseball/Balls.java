@@ -8,7 +8,7 @@ public class Balls {
     private final List<Ball> balls;
     public static final int COUNT_OF_BALLS = 3;
 
-    private Balls(List<Ball> balls) {
+    public Balls(List<Ball> balls) {
         validateSize(balls);
         validateDuplicate(balls);
         this.balls = balls;
