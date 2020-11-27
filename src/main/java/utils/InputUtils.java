@@ -17,14 +17,14 @@ public class InputUtils {
     }
 
     public static String checkUserBallsInput(String userInput) {
-        isNumber(userInput);
-        isRightLength(userInput);
-        isWithoutDuplicate(userInput);
+        checkNumber(userInput);
+        checkRightLength(userInput);
+        checkWithoutDuplicate(userInput);
 
         return userInput;
     }
 
-    private static void isNumber(String userInput) {
+    private static void checkNumber(String userInput) {
         for (int i = 0; i < userInput.length(); i++) {
             if (!Character.isDigit(userInput.charAt(i))) {
                 throw new IllegalArgumentException();
@@ -32,13 +32,13 @@ public class InputUtils {
         }
     }
 
-    private static void isRightLength(String userInput) {
+    private static void checkRightLength(String userInput) {
         if (userInput.length() != 3) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void isWithoutDuplicate(String userInput) {
+    private static void checkWithoutDuplicate(String userInput) {
         Set<Integer> numberSet = new HashSet<Integer>();
         String[] strList = userInput.split("");
 

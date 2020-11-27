@@ -52,18 +52,18 @@ public class BaseBallGame {
             int computerNumber = (int) cb.next();
             int userNumber = (int) ub.next();
 
-            isBall(computerNumber, userNumber);
-            isStrike(computerNumber, userNumber);
+            addBallCount(computerNumber, userNumber);
+            addStrikeCount(computerNumber, userNumber);
         }
     }
 
-    private static void isBall(int computerNumber, int userNumber) {
+    private static void addBallCount(int computerNumber, int userNumber) {
         if (computerNumber != userNumber && Computer.balls.contains(userNumber)) {
             CompareResult.ball += 1;
         }
     }
 
-    private static void isStrike(int computerNumber, int userNumber) {
+    private static void addStrikeCount(int computerNumber, int userNumber) {
         if (computerNumber == userNumber) {
             CompareResult.strike += 1;
         }
