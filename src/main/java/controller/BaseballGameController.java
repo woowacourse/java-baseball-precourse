@@ -4,6 +4,7 @@ import baseball.BaseballGame;
 import domain.BaseballNumber;
 import domain.Player;
 import java.util.Scanner;
+import utils.NumberUtils;
 
 /**
  * @author yhh1056
@@ -26,6 +27,12 @@ public class BaseballGameController {
     }
 
     private String getInputNumber() {
-        return scanner.nextLine();
+        String number = scanner.nextLine();
+        validateNumber(number);
+        return number;
+    }
+
+    private boolean validateNumber(String number) {
+        return NumberUtils.isNumeric(number);
     }
 }
