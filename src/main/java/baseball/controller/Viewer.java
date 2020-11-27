@@ -11,6 +11,7 @@ public class Viewer {
     private static final int START_INTEGER_NUMBER = 1;
     private static final int END_INTEGER_NUMBER = 9;
     private static final int NOTHING_NUMBER = 0;
+    private static final String ERROR_INPUT_MESSAGE = "[ERROR] : 입력한 숫자 정보는 잘 못된 정보입니다.";
 
     private final Scanner scanner;
 
@@ -25,7 +26,7 @@ public class Viewer {
                 String inputBallsDataToken = this.scanner.next();
                 return this.validateInputDataForMakingList(inputBallsDataToken);
             } catch (IllegalArgumentException exception) {
-                System.out.println("[ERROR] : 입력한 숫자 정보는 잘 못된 정보입니다.");
+                System.out.println(ERROR_INPUT_MESSAGE);
             }
         }
     }
@@ -101,7 +102,7 @@ public class Viewer {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 return createValidateNumber();
             } catch (IllegalArgumentException illegalArgumentException) {
-                System.out.println("[Error] : 잘 못 된 입력을 하였습니다.");
+                System.out.println(ERROR_INPUT_MESSAGE);
             }
         }
     }
