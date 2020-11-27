@@ -14,6 +14,19 @@ public class BaseBallGameController {
         this.player = player;
     }
 
+    public void startGame() {
+        String answer = makeRandomNumber();
+        game = new BaseBallGame(answer);
+        while (true) {
+            String inputNumber = player.inputNumber();
+            if (!checkValidInput(inputNumber)) continue;
+            boolean isAnswer = game.checkInputNumber(inputNumber);
+            if (isAnswer) {
+                break;
+            }
+        }
+    }
+    
     private String makeRandomNumber() {
         StringBuilder randomNumber = new StringBuilder();
         while (true) {
