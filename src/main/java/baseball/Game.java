@@ -5,29 +5,50 @@ import java.util.Scanner;
 
 public class Game {
     public static void play(Scanner scanner){
+
         Baseball userBall = new Baseball();
         Baseball opponentBall = new Baseball();
-        allocateBallsToPlayers(userBall, opponentBall, scanner);
-        System.out.println(userBall.getBaseballs());
-        System.out.println(opponentBall.getBaseballs());
-        User user = new User(userBall);
+        allocateBallsToPlayer(opponentBall, generateOpponentInput(), scanner);
         Opponent opponent = new Opponent(opponentBall);
-        user.printResult(opponent);
-    }
 
-    public static void allocateBallsToPlayers(Baseball userBall, Baseball opponentBall, Scanner scanner){
-        while(true){
-            printPromptMessage();
-            if(userBall.parseBaseball(getUserInput(scanner))){
+        while(true) {
+            System.out.println(Constants.PROMPT_MESSAGE);
+            User user = new User(userBall);
+            allocateBallsToPlayer(userBall, getUserInput(scanner), scanner);
+            System.out.println(opponent.getBaseballs());
+            if(user.gameResult(opponent)){
                 break;
             }
         }
-        opponentBall.parseBaseball(generateOpponentInput());
+        askMoreGame(scanner);
     }
 
-    public static void printPromptMessage(){
-        System.out.println(Constants.PROMPT_MESSAGE);
+    public static void askMoreGame(Scanner scanner){
+        System.out.println(Constants.ASK_PLAY_MORE);
+        try{
+            int userAnswer = Integer.parseInt(getUserInput(scanner));
+            if(userAnswer == 1){
+                play(scanner);
+            }
+            if(userAnswer == 2){
+                return;
+            }
+            throw new IllegalArgumentException(Constants.ERR_MSG_VALID_INPUT_PLAYMORE);
+        }
+        catch(IllegalArgumentException errorMessage){
+            System.out.println(errorMessage);
+            askMoreGame(scanner);
+        }
     }
+
+    public static void allocateBallsToPlayer(Baseball baseball, String input, Scanner scanner){
+        if(baseball.parseBaseball(input)){
+            return;
+        }
+        System.out.println("잘못된 입력입니다. 다시 입력하세요");
+        allocateBallsToPlayer(baseball, getUserInput(scanner), scanner);
+    }
+
 
     public static String getUserInput(Scanner scanner){
         return scanner.next();

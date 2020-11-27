@@ -8,6 +8,7 @@ public class Baseball {
 
     public boolean parseBaseball(String userInput){
         if(validateInput(userInput)){
+            baseball.clear();
             for(char ball : userInput.toCharArray()){
                 baseball.add(Character.getNumericValue(ball));
             }

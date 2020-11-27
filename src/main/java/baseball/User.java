@@ -5,19 +5,20 @@ public class User extends Player{
         super(baseball);
     }
 
-    public void printResult(Opponent opponent){
+    public boolean gameResult(Opponent opponent){
         if(checkThreeStrike(opponent)){
             System.out.println(Constants.RESULT_THREE_STRIKES);
-            return;
+            return true;
         }
         if(isNothing(opponent)){
             System.out.println(Constants.RESULT_NOTHING);
-            return;
+            return false;
         }
 
         int strikes = countStrikes(opponent);
         int balls = countBalls(opponent);
         System.out.println(balls + Constants.RESULT_BALLS + strikes + Constants.RESULT_STRIKES);
+        return false;
     }
 
     public boolean checkThreeStrike(Opponent opponent){
