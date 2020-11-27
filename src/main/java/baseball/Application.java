@@ -23,7 +23,7 @@ final class Constants {
 
     // AFTER GAME
     public static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String RESTART_OR_QUIT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String RESTART_OR_QUIT_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String RESTART_OR_QUIT_INPUT_ERROR_MESSAGE = "1 혹은 2만 입력 가능합니다";
     public static final String QUIT_MESSAGE = "GG";
 }
@@ -98,7 +98,7 @@ public class Application {
 
     public static int getGuessNum(Scanner scanner) {
         boolean isValidGuess = false;
-        int number = 123;
+        int number = 123; // initialize with meaningless number (123) to compile without error
         while (!isValidGuess) {
             try {
                 number = guessNum(scanner);
@@ -114,27 +114,36 @@ public class Application {
     public static StrikeAndBall getStrikeAndBall(int guessNum, int answer) {
         int[] guessArray = intToArray(guessNum);
         int[] answerArray = intToArray(answer);
+
+        return countStrikeAndBall(guessArray, answerArray);
+    }
+
+    public static StrikeAndBall countStrikeAndBall(int[] guessArray, int[] answerArray) {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                strikeCount += isStrike(guessArray[i], i, answerArray[j], j);
-                ballCount += isBall(guessArray[i], i, answerArray[j], j);
+        for (int playerNumLoc = 0; playerNumLoc < 3; playerNumLoc++) {
+            int playerNumToCompare = guessArray[playerNumLoc];
+
+            for (int answerNumLoc = 0; answerNumLoc < 3; answerNumLoc++) {
+                int answerNumToCompare = answerArray[answerNumLoc];
+
+                strikeCount += isStrike(playerNumToCompare, playerNumLoc, answerNumToCompare, answerNumLoc);
+                ballCount += isBall(playerNumToCompare, playerNumLoc, answerNumToCompare, answerNumLoc);
             }
         }
         return new StrikeAndBall(strikeCount, ballCount);
     }
 
-    public static int isStrike(int num1, int index1, int num2, int index2) {
-        if (index1 == index2 && num1 == num2) {
+    public static int isStrike(int playerNumToCompare, int playerNumLoc, int answerNumToCompare, int answerNumLoc) {
+        if (playerNumLoc == answerNumLoc && playerNumToCompare == answerNumToCompare) {
             return 1;
         }
         return 0;
     }
 
-    public static int isBall(int num1, int index1, int num2, int index2) {
-        if (index1 != index2 && num1 == num2) {
+    public static int isBall(int playerNumToCompare, int playerNumLoc, int answerNumToCompare, int answerNumLoc) {
+        if (playerNumLoc != answerNumLoc && playerNumToCompare == answerNumToCompare) {
             return 1;
         }
         return 0;
@@ -166,7 +175,7 @@ public class Application {
     }
 
     public static void decideGoOrStop(Scanner scanner) throws IllegalArgumentException {
-        System.out.println(Constants.RESTART_OR_QUIT_MESSAGE);
+        System.out.println(Constants.RESTART_OR_QUIT_INPUT_MESSAGE);
         if (!scanner.hasNextInt()) {
             throw new IllegalArgumentException();
         }
