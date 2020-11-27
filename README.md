@@ -12,48 +12,6 @@
 
 <br>
 
-## ✍🏻 입출력 요구사항
-### ⌨️ 입력
-- 3자리의 수
-- 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수
-
-### 🖥 출력
-- 입력한 수에 대한 결과를 볼, 스트라이크 갯수로 표시
-```
-1볼 1스트라이크
-```
-- 하나도 없는 경우 
-```
-낫싱
-```
-- 3개의 숫자를 모두 맞힐 경우
-```
-3스트라이크
-3개의 숫자를 모두 맞히셨습니다! 게임 종료
-```
-
-### 💻 프로그래밍 실행 결과 예시
-```
-숫자를 입력해주세요 : 123
-1볼 1스트라이크
-숫자를 입력해주세요 : 145
-1볼
-숫자를 입력해주세요 : 671
-2볼
-숫자를 입력해주세요 : 216
-1스트라이크
-숫자를 입력해주세요 : 713
-3스트라이크
-3개의 숫자를 모두 맞히셨습니다! 게임 종료
-게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
-1
-숫자를 입력해주세요 : 123
-1볼 1스트라이크
-… 
-```
-
-<br>
-
 ## 🎱 프로그래밍 요구사항
 - 자바 코드 컨벤션을 지키면서 프로그래밍한다.
   - 기본적으로 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)을 원칙으로 한다.
@@ -70,43 +28,10 @@
 - Application 클래스를 활용해 구현해야 한다.
 - Application의 패키지 구조와 구현은 변경하지 않는다.
 - `final Scanner scanner = new Scanner(System.in);`는 변경하지 않는다.
-- `// TODO 구현 진행` 이 후 부터 구현한다.
-
-```java
-public class Application {
-    public static void main(String[] args) {
-        final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
-    }
-}
-```
 
 ### 프로그래밍 요구사항 - RandomUtils
 - RandomUtils 클래스를 활용해 랜덤 기능을 구현해야 한다.
 - RandomUtils의 패키지 구조와 구현은 변경하지 않는다.
-
-```java
-private static final Random RANDOM = new Random();
-    private RandomUtils() {
-    }
-    public static int nextInt(final int startInclusive, final int endInclusive) {
-    ...
-```
-
-<br>
-
-## 📈 진행 요구사항
-- 미션은 [java-baseball-precourse 저장소](https://github.com/woowacourse/java-baseball-precourse) 를 fork/clone해 시작한다.
-- 기능을 구현하기 전에 java-baseball-precourse/README.md 파일에 구현할 기능 목록을 정리해 추가한다.
-- git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
-  - [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.
-- [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 절차를 따라 미션을 제출한다.
-
-<br>
-
-## 📝 License
-
-This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
 
 ## 💡 기능 구현
 1. 출력
@@ -120,12 +45,14 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
         - [X] 숫자가 아닌 경우 예외 처리
         - [X] 중복되는 숫자가 있을 경우 예외 처리
         - [X] 0이 포함되면 예외 처리
+        - [X] 각각의 예외 처리 메세지
     - [X] 게임 종료 후 취할 행동 선택지를 입력 받기
         - [X] 선택지 외의 값을 입력 받았을 때 예외 처리
             - [X] 예외 처리 메세지
-        
-3. 값 비교
+
+3. 게임 매니저
+    - [X] 게임 시작 시 중복 되지 않는 번호 3자리 생성 (RandomUtils 사용)
     - [X] 입력 값과 정답의 값을 비교
-        - [X] Strike, Ball, Nothing 의 상태 반환
+        - [X] Strike, Ball, Nothing 의 상태 반환 후 결과 출력
     - [X] 정답과 일치할 경우
         - [X] 정답 알림을 출력 후 게임 재시작 의사를 묻기
