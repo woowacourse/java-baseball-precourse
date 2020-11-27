@@ -14,27 +14,21 @@ public class Balls {
         this.balls = balls;
     }
 
-    private Ball get(int index) {
-        return balls.get(index);
-    }
+    public GameResult judgeResult(Balls botBalls) {
+        // TODO Balls 끼리 비교
+        int STRIKE = 0;
+        int BALL = 0;
 
-    private boolean contains(Ball ball) {
-        return this.balls.contains(ball);
-    }
+        for (int i = 0; i < COUNT_OF_BALLS; i++) {
+            Ball myBall = this.get(i);
 
-    private void validateSize(List<Ball> balls) {
-        if (balls.size() != COUNT_OF_BALLS) {
-            String msg = String.format("공의 개수는 %d개 여야 합니다.", COUNT_OF_BALLS);
-            throw new IllegalArgumentException(msg);
+            if (myBall.equals(botBalls.get(i))) {
+                STRIKE++;
+            } else if (botBalls.contains(myBall)) {
+                BALL++;
+            }
         }
-    }
-
-    private void validateDuplicate(List<Ball> balls) {
-        Set<Ball> ballSet = new HashSet<>(balls);
-        if (ballSet.size() != COUNT_OF_BALLS) {
-            String msg = "공들의 숫자는 중복되지 않아야 합니다.";
-            throw new IllegalArgumentException(msg);
-        }
+        return new GameResult(STRIKE, BALL);
     }
 
     public static Balls generateRandomBalls() {
@@ -63,20 +57,26 @@ public class Balls {
         return new Balls(balls);
     }
 
-    public GameResult judgeResult(Balls botBalls) {
-        // TODO Balls 끼리 비교
-        int STRIKE = 0;
-        int BALL = 0;
+    private Ball get(int index) {
+        return balls.get(index);
+    }
 
-        for (int i = 0; i < COUNT_OF_BALLS; i++) {
-            Ball myBall = this.get(i);
+    private boolean contains(Ball ball) {
+        return this.balls.contains(ball);
+    }
 
-            if (myBall.equals(botBalls.get(i))) {
-                STRIKE++;
-            } else if (botBalls.contains(myBall)) {
-                BALL++;
-            }
+    private void validateSize(List<Ball> balls) {
+        if (balls.size() != COUNT_OF_BALLS) {
+            String msg = String.format("공의 개수는 %d개 여야 합니다.", COUNT_OF_BALLS);
+            throw new IllegalArgumentException(msg);
         }
-        return new GameResult(STRIKE, BALL);
+    }
+
+    private void validateDuplicate(List<Ball> balls) {
+        Set<Ball> ballSet = new HashSet<>(balls);
+        if (ballSet.size() != COUNT_OF_BALLS) {
+            String msg = "공들의 숫자는 중복되지 않아야 합니다.";
+            throw new IllegalArgumentException(msg);
+        }
     }
 }
