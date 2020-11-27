@@ -10,6 +10,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RandomUtilsTest {
+
     private static final int BIG_NUMBER = 300000;
 
     @Test

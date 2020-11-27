@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class InputUtils {
+
     private static final String CONTINUE_GAME = "1";
     private static final String END_GAME = "2";
 

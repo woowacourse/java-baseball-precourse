@@ -8,6 +8,7 @@ import utils.InputUtils;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MakeBallsTest {
+
     @Test
     public void computerMakeBallsTest() {
         Computer.makeBalls();
@@ -17,7 +18,7 @@ public class MakeBallsTest {
 
     @Test
     public void userMakeBallsTest() {
-        User.makeBalls(InputUtils.checkUserInput("123"));
+        User.makeBalls(InputUtils.checkUserBallsInput("123"));
 
         assertThat(User.balls).isNotEmpty();
     }

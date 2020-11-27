@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 
 public class BaseBallGame {
+
     private static final String CONTINUE_GAME = "1";
 
     public static void start(Scanner scanner) {
@@ -34,9 +35,9 @@ public class BaseBallGame {
 
     private static void runnable(Scanner scanner) {
         while (!CompareResult.isThreeStrike()) {
+            CompareResult.resetResult();
             GameView.printPleaseInput();
             User.makeBalls(InputUtils.checkUserBallsInput(scanner.nextLine()));
-            CompareResult.resetResult();
 
             compareBalls();
 
@@ -46,7 +47,7 @@ public class BaseBallGame {
 
     private static void compareBalls() {
         for (Iterator cb = Computer.balls.iterator(), ub = User.balls.iterator();
-             cb.hasNext() && ub.hasNext(); ) {
+            cb.hasNext() && ub.hasNext(); ) {
 
             int computerNumber = (int) cb.next();
             int userNumber = (int) ub.next();

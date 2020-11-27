@@ -1,6 +1,7 @@
 package baseball.model;
 
 public class CompareResult {
+
     public static int ball;
     public static int strike;
 
@@ -12,7 +13,7 @@ public class CompareResult {
         strike = RESET;
     }
 
-    public static boolean isThreeStrike(){
+    public static boolean isThreeStrike() {
         if (strike == THREE_STRIKE) {
             return true;
         }

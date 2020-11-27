@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+
     public static List<Integer> balls = new ArrayList<>();
 
     public static void makeBalls(String userInput) {
