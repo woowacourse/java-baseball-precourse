@@ -6,20 +6,27 @@ public class Game {
     public Integer answer;
 
     public void start(Scanner scanner, Integer answer) {
-        Integer guess;
+        String guessNumber;
         this.answer = answer;
 
-        System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
-        if (scanner.hasNextInt()) {
-            guess = scanner.nextInt();
-            if (Validate.validate(guess)) {
-                System.out.println("입력숫자: " + guess);
-                compareToAnswer(guess, answer);
-            }
-        }
-        else if (!scanner.hasNextInt()){
-            scanner.next();
-        }
+//        System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
+//        while (scanner.hasNext()) {
+//            guessNumber = scanner.nextLine();
+//            if ()
+//
+//            System.out.println("입력값" + scanner.nextLine());
+//
+//        }
+//        if (scanner.hasNextInt()) {
+//            guess = scanner.nextInt();
+//            if (Validate.validate(guess)) {
+//                System.out.println("입력숫자: " + guess);
+//                compareToAnswer(guess, answer);
+//            }
+//        }
+//        else if (!scanner.hasNextInt()){
+//            scanner.next();
+//        }
     }
 
     public void compareToAnswer(Integer guess, Integer answer) {
