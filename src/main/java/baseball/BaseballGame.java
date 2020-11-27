@@ -1,5 +1,6 @@
 package baseball;
 
+import number.PlayerNumber;
 import number.RandomNumber;
 
 public class BaseballGame {
@@ -10,5 +11,7 @@ public class BaseballGame {
 
     public static void play(){
         RandomNumber randomNumber = new RandomNumber();
+
+        PlayerNumber playerNumber = new PlayerNumber();
     }
 }
