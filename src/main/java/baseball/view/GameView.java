@@ -1,7 +1,7 @@
 package baseball.view;
 
 public class GameView {
-    private static StringBuilder printBallStrike;
+    private static StringBuilder printBallStrike = new StringBuilder();
     private static final int ZERO = 0;
 
     public static void printPleaseInput() {
