@@ -91,8 +91,19 @@ public class InputOutputManager {
     }
 
     private int parseToOneOrTwo(String input){
-        // TODO 예외 처리
+        if(!checkForParsable(input)){
+            throw new IllegalArgumentException();
+        }
+
+        if(!checkForOneOrTwo(input)){
+            throw new IllegalArgumentException();
+        }
         
         return Integer.parseInt(input);
+    }
+
+    private boolean checkForOneOrTwo(String input){
+        int inputInteger = Integer.parseInt(input);
+        return inputInteger == 1 || inputInteger == 2;
     }
 }
