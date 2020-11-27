@@ -13,17 +13,20 @@ public class Application {
         System.out.println(result);
     }
 
+    // 컴퓨터의 숫자 배열과 플레이어의 숫자 배열을 비교하여 결과를 돌려주는 기능
     public static String getResult(int[] computerNumber, int[] playerNumber) {
         int ballCount = 0;
         int strikeCount = 0;
         String result = "";
 
+        // 각 숫자가 스트라이크인지 체크
         for (int i=0; i<computerNumber.length; i++) {
             if (checkStrike(computerNumber, i, playerNumber)) {
                 strikeCount++;
             }
         }
 
+        // 각 숫자가 볼인지 체크
         for (int i=0; i<computerNumber.length; i++) {
             if (checkBall(computerNumber, i, playerNumber)) {
                 ballCount ++;
@@ -49,6 +52,7 @@ public class Application {
         return result;
     }
 
+    // 볼인지 체크하는 기능
     public static boolean checkBall(int[] computerNumber, int computerIndex, int[] playerNumber) {
         for (int i=0; i<playerNumber.length; i++) {
             if (i == computerIndex) {
@@ -63,10 +67,12 @@ public class Application {
         return false;
     }
 
+    // 스트라이크인지 체크하는 기능
     public static boolean checkStrike(int[] computerNumber, int sameIndex, int[] playerNumber) {
         return computerNumber[sameIndex] == playerNumber[sameIndex];
     }
 
+    // 플레이어의 입력을 받고 체크하는 기능
     public static int[] getPlayerNumber(Scanner scanner) {
         int[] playerNumber = new int[3];
         System.out.print("숫자를 입력해주세요 : ");
@@ -91,6 +97,7 @@ public class Application {
         return playerNumber;
     }
 
+    // n자리 입력인지 체크하는 기능
     public static void checkLength(String playerInput, int requiredLength) {
         if (playerInput.length() != requiredLength) {
             throw new IllegalArgumentException();
