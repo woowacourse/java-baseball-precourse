@@ -37,4 +37,12 @@ public class GameResult {
     public boolean isOnlyBall() {
         return gameResult.get(STRIKE_KEY) == ZERO && gameResult.get(BALL_KEY) > ZERO;
     }
+
+    public int getStrikeCounts() {
+        return gameResult.get(STRIKE_KEY);
+    }
+
+    public int getBallCounts() {
+        return gameResult.get(BALL_KEY);
+    }
 }

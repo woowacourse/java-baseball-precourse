@@ -107,16 +107,16 @@ class GameResultTest {
         gameResultMap.put("볼", ballCounts);
         gameResultMap.put("스트라이크", 0);
         GameResult gameResult = new GameResult(gameResultMap);
-        assertThat(gameResult.getBallCounts()).is(ballCounts);
+        assertThat(gameResult.getBallCounts()).isEqualTo(ballCounts);
     }
 
     @DisplayName("스트라이크 개수 반환")
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
-    public void 볼_개수를_정상_반환한다(int strikeCounts) {
+    public void 스트라이크_개수를_정상_반환한다(int strikeCounts) {
         gameResultMap.put("볼", 0);
         gameResultMap.put("스트라이크", strikeCounts);
         GameResult gameResult = new GameResult(gameResultMap);
-        assertThat(gameResult.getStrikeCounts()).is(strikeCounts);
+        assertThat(gameResult.getStrikeCounts()).isEqualTo(strikeCounts);
     }
 }
