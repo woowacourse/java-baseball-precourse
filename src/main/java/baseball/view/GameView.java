@@ -1,6 +1,6 @@
 package baseball.view;
 
-public class ResultView {
+public class GameView {
     private static StringBuilder printBallStrike;
     private static final int ZERO = 0;
 
