@@ -71,7 +71,7 @@ class BaseBallTest {
         //then
         IllegalStateException exception
                 = assertThrows(IllegalStateException.class, () -> BaseBall.createBaseBall(inputNumber));
-        assertEquals("세자리 숫자를 입력해주세요.", exception.getMessage());
+        assertEquals("3자리 숫자를 입력해주세요.", exception.getMessage());
 
     }
 
@@ -84,7 +84,7 @@ class BaseBallTest {
         //then
         IllegalStateException exception
                 = assertThrows(IllegalStateException.class, () -> BaseBall.createBaseBall(inputNumber));
-        assertEquals("세자리 숫자를 입력해주세요.", exception.getMessage());
+        assertEquals("3자리 숫자를 입력해주세요.", exception.getMessage());
 
     }
 }

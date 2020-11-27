@@ -22,7 +22,7 @@ public class BaseballGameExecutor {
     }
 
     private static void guessNumber(BallTypeChecker ballTypeChecker) {
-        BaseBall inputBaseball = makeBaseballNumber();
+        BaseBall inputBaseball = inputBaseballNumber();
         BaseballResult baseballResult = ballTypeChecker.startChecking(inputBaseball);
         baseballResult.printResult();
         if (baseballResult.isAnswer()) {
@@ -33,13 +33,13 @@ public class BaseballGameExecutor {
         }
     }
 
-    private static BaseBall makeBaseballNumber() {
+    private static BaseBall inputBaseballNumber() {
         try {
             int inputNumber = inputNumber();
             return BaseBall.createBaseBall(inputNumber);
         } catch (IllegalStateException e) {
             System.out.println(e.getMessage());
-            return makeBaseballNumber();
+            return inputBaseballNumber();
         }
     }
 

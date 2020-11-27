@@ -39,10 +39,9 @@ public class BaseBall {
     }
 
     private static void validateNumber(int baseBallNumber) throws IllegalStateException {
-        final int MAX_NUMBER = 999;
-        final int MIN_NUMBER = 100;
-        if (baseBallNumber > MAX_NUMBER || baseBallNumber < MIN_NUMBER) {
-            throw new IllegalStateException("세자리 숫자를 입력해주세요.");
+        String number = String.valueOf(baseBallNumber);
+        if (number.length() != BASEBALL_LENGTH) {
+            throw new IllegalStateException(BASEBALL_LENGTH + "자리 숫자를 입력해주세요.");
         }
     }
 
