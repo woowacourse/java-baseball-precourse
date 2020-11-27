@@ -23,6 +23,11 @@ public class GameView {
         System.out.println(printBallStrike);
     }
 
+    public static void printGameEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
     private static void appendBall(int ball) {
         if (ball > ZERO) {
             printBallStrike.append(ball);
@@ -41,10 +46,5 @@ public class GameView {
             printBallStrike.append(strike);
             printBallStrike.append("스트라이크");
         }
-    }
-
-    public static void printGameEnd() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
-                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }
