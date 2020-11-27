@@ -2,14 +2,27 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import org.graalvm.compiler.nodes.spi.VirtualizableAllocation;
 
 public class Input {
 
     private final static String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
-    public String getUserInput(Scanner scanner) {
-        System.out.println(USER_INPUT_MESSAGE);
-        return scanner.nextLine();
+    ArrayList<Integer> userInput;
+    NumberValidator validator = new NumberValidator(userInput);
+    Scanner scanner;
+
+    public Input(Scanner scanner) {
+            userInput = getUserInput(scanner);
+            validator.numbers = userInput;
+        if (!validator.isValid()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public ArrayList<Integer> getUserInput(Scanner scanner) {
+        System.out.print(USER_INPUT_MESSAGE);
+        return generateUserInputList(scanner.nextLine());
     }
 
     public ArrayList<Integer> generateUserInputList(String userInput) {

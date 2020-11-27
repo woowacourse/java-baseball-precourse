@@ -14,13 +14,16 @@ public class Application {
     }
 
     public static void startGame(ArrayList<Integer> answer, Scanner scanner) {
-        Input input = new Input();
-        System.out.println(answer);
-        ArrayList<Integer> userInput = input.generateUserInputList(input.getUserInput(scanner));
+        ArrayList<Integer> userInput = userInput(scanner);
         GameRule gameRule = new GameRule(answer, userInput);
         if (!gameRule.isWin()){
             startGame(answer, scanner);
         }
+    }
+
+    public static ArrayList<Integer> userInput(Scanner scanner) {
+        Input input = new Input(scanner);
+        return input.userInput;
     }
 
 }
