@@ -11,7 +11,7 @@ public class Application {
         Game newGame = new Game();
 
         while (playing) {
-            newGame.start(scanner, answer);
+            newGame.startGame(scanner, answer);
         }
     }
 

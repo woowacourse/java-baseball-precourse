@@ -5,39 +5,32 @@ import java.util.Scanner;
 public class Game {
     public Integer answer;
 
-    public void start(Scanner scanner, String answer) {
+    public void startGame(Scanner scanner, String answer) {
         String guessNumber;
-//        this.answer = answer;
+        System.out.println("정답: " + answer);
 
-//        System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
-//        while (scanner.hasNext()) {
-//            guessNumber = scanner.nextLine();
-//            if ()
-//
-//            System.out.println("입력값" + scanner.nextLine());
-//
-//        }
-//        if (scanner.hasNextInt()) {
-//            guess = scanner.nextInt();
-//            if (Validate.validate(guess)) {
-//                System.out.println("입력숫자: " + guess);
-//                compareToAnswer(guess, answer);
-//            }
-//        }
-//        else if (!scanner.hasNextInt()){
-//            scanner.next();
-//        }
+        System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
+        while (scanner.hasNext()) {
+            guessNumber = scanner.nextLine();
+            if (!Validate.isValidate(guessNumber)){
+                System.out.println("입력 오류");
+                continue;
+            }
+            System.out.println("입력값" + guessNumber);
+            compareToAnswer(guessNumber, answer);
+
+
+            System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
+        }
     }
 
-    public void compareToAnswer(Integer guess, Integer answer) {
+    public void compareToAnswer(String guess, String answer) {
         Integer strike = 0;
         Integer ball = 0;
-        String guessString = Integer.toString(guess);
-        String answerString = Integer.toString(answer);
 
 
         for (int i = 0; i < 3; i++) {
-            int idx = answerString.indexOf(guessString.charAt(i));
+            int idx = answer.indexOf(guess.charAt(i));
             if (idx == i) strike++;
             else if (idx > -1) ball++;
         }
