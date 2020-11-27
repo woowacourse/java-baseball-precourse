@@ -8,6 +8,9 @@ public class InputUtils {
     private static final String CONTINUE_GAME = "1";
     private static final String END_GAME = "2";
 
+    private InputUtils() {  // public 생성자 제한
+    }
+
     public static String checkContinueInput(String userInput) {
         if (!userInput.equals(CONTINUE_GAME) && !userInput.equals(END_GAME)) {
             throw new IllegalArgumentException();
