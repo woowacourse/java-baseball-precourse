@@ -26,14 +26,14 @@ public class GameSystem {
 
     public void playGame(Scanner sc) {
         setAnswer();
+
         while (!endFlag) {
             setUserNumbers(sc);
             calcScore();
-            user.printInfoForTest();
-            System.out.println();
             printResultMessage();
             checkEnd();
         }
+
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         setRestartOption(sc);
         endFlag = !restartOption;
@@ -224,11 +224,5 @@ public class GameSystem {
             strike++;
         }
         return strike;
-    }
-
-    public void printAnswerForTest() {
-        for (int i = 0; i < MAX_DIGIT; i++) {
-            System.out.println(answer[i]);
-        }
     }
 }
