@@ -1,4 +1,4 @@
-package validator;
+package baseball.validator;
 
 public class PositiveIntegerValidator {
     private static final String IS_NOT_NUMERIC = "입력값은 숫자이어야 합니다.";

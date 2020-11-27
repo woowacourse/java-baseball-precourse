@@ -1,4 +1,4 @@
-package domain;
+package baseball.domain;
 
 public class Score {
     private static final int THREE_STRIKE = 3;

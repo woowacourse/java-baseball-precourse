@@ -1,4 +1,4 @@
-package validator;
+package baseball.validator;
 
 public class RestartCommandValidator {
     private static final String RESTART = "1";

@@ -1,4 +1,4 @@
-package domain;
+package baseball.domain;
 
 import utils.RandomUtils;
 

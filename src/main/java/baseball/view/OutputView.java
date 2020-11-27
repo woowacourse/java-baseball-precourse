@@ -1,6 +1,6 @@
-package view;
+package baseball.view;
 
-import domain.Score;
+import baseball.domain.Score;
 
 public class OutputView {
     private static final String CONGRATULATION_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";

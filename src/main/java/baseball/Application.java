@@ -1,11 +1,11 @@
 package baseball;
 
-import domain.*;
+import baseball.domain.*;
+import baseball.validator.PositiveIntegerValidator;
+import baseball.validator.RestartCommandValidator;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import utils.StringConverter;
-import validator.PositiveIntegerValidator;
-import validator.RestartCommandValidator;
-import view.InputView;
-import view.OutputView;
 
 import java.util.Scanner;
 

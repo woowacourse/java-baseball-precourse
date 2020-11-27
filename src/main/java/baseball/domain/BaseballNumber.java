@@ -1,6 +1,6 @@
-package domain;
+package baseball.domain;
 
-import validator.BaseballNumberValidator;
+import baseball.validator.BaseballNumberValidator;
 
 import java.util.List;
 
