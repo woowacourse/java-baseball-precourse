@@ -1,6 +1,7 @@
 package baseball.baseballGame;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -39,7 +40,7 @@ public class Player {
             throw new IllegalArgumentException();
         }
 
-        playerAnswer = stringToArray(userInput);
+        playerAnswer = convertIntArray(userInput);
     }
 
     private boolean isInvalidLength(String userInput, int numLength) {
@@ -74,8 +75,8 @@ public class Player {
         return false;
     }
 
-    private List<Integer> stringToArray(String userInput) {
-        String[] inputStringArray = userInput.split("");
+    private List<Integer> convertIntArray(String userInput) {
+        List<String> inputStringArray = Arrays.asList(userInput.split(""));
         List<Integer> inputIntArray = new ArrayList<Integer>();
 
         for (String number : inputStringArray) {
@@ -93,8 +94,8 @@ public class Player {
         return false;
     }
 
-    boolean contains(int index, List<Integer> answer) {
-        if (answer.contains(playerAnswer.get(index))) {
+    boolean contains(int selectedIndex, List<Integer> answer) {
+        if (answer.contains(playerAnswer.get(selectedIndex))) {
             return true;
         }
 

@@ -18,7 +18,7 @@ public class Round {
         makeAnswer(answer);
     }
 
-    void makeAnswer(List<Integer> answer) {
+    private void makeAnswer(List<Integer> answer) {
         answer.clear();
 
         while (answer.size() != NUM_LENGTH) {
@@ -46,8 +46,11 @@ public class Round {
         }
     }
 
-    String askAnswer(Player player) {
-        String checkResult = countStrikeAndBall(player);
+    private String askAnswer(Player player) {
+        String checkResult = "";
+
+        checkResult = countBall(player, checkResult);
+        checkResult = countStrike(player, checkResult);
 
         if (checkResult.isEmpty()) {
             return "낫싱";
@@ -56,32 +59,37 @@ public class Round {
         return checkResult;
     }
 
-    private String countStrikeAndBall(Player player) {
-        int ball = 0;
+    private String countStrike(Player player, String checkResult) {
         int strike = 0;
-        String checkResult = "";
 
-        for (int i = 0; i < NUM_LENGTH; i++) {
-            if (player.isEquals(i, answer.get(i))) { // strike check
+        for (int i=0; i<NUM_LENGTH; i++) {
+            if (player.isEquals(i, answer.get(i))) {
                 strike += 1;
-                continue;
+            }
+        }
+
+        if (strike != 0) {
+            if (checkResult != "") {
+                checkResult += " ";
             }
 
-            if (player.contains(i, answer)) { // ball check
+            checkResult = checkResult + String.valueOf(strike) + "스트라이크";
+        }
+
+        return checkResult;
+    }
+
+    private String countBall(Player player, String checkResult) {
+        int ball = 0;
+
+        for (int i=0; i<NUM_LENGTH; i++) {
+            if (player.contains(i, answer) && !(player.isEquals(i, answer.get(i)))) {
                 ball += 1;
             }
         }
 
         if (ball != 0) {
             checkResult = String.valueOf(ball) + "볼";
-        }
-
-        if (strike != 0) {
-            if (ball != 0) {
-                checkResult += " ";
-            }
-
-            checkResult = checkResult + String.valueOf(strike) + "스트라이크";
         }
 
         return checkResult;
