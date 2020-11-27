@@ -2,16 +2,12 @@ package baseball;
 
 public class Baseball {
 
-    private static int strikeCount;
-    private static int ballCount;
     private static boolean gameResult = false;
 
     public static boolean playGame(int[] user, int[] random) {
-
         int[] countResult = new int[2];
-        strikeCount = 0;
-        ballCount = 0;
-
+        int strikeCount = 0;
+        int ballCount = 0;
         for (int i = 0; i < user.length; i++) {
             for (int j = 0; j < random.length; j++) {
                 countResult = counterRound(i, user[i], j, random[j]);
@@ -20,7 +16,6 @@ public class Baseball {
             }
         }
         printScore(strikeCount, ballCount);
-
         return gameResult;
     }
 

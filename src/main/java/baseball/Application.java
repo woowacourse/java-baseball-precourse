@@ -23,7 +23,6 @@ public class Application {
                 gameResult = restartGame();
             }
         }
-
     }
 
     private static boolean restartGame() {

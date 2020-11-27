@@ -2,12 +2,14 @@
 
 ## To-do list
 1. 프롬프트 입력 받는 메소드 구현 `main`
-    1) 입력된 숫자의 유효성 검증 `checkInputNumber`
+    1) 게임 반복하기 `restartGame`
+2. 3개의 숫자 랜덤 선출 메소드 구현 `NumberUtils`
+    1) 입력된 숫자의 유효성 검증 `validateInput`
     2) 입력된 값을 배열에 넣기 `createInputNumber`
-    3) 게임 반복하기 `restartGame`
-2. 3개의 숫자 랜덤 선출 메소드 구현 `createRandomNumber`
-3. 게임 로직 (스트라이크/볼/낫싱) 구현
-    1) 배열 선회 `diffArray`
+    3) 임의의 다른 수 만들기 `createRandomNumber`
+3. 게임 로직 (스트라이크/볼/낫싱) 구현 `Baseball`
+    1) 게임 진행 `playGame`
+    2) 게임 결과 출력 `printScore`
     2) 각 라운드 판정 `counterRound`
 
 
