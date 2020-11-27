@@ -4,13 +4,17 @@ public class Ball {
     private final Integer number;
 
     public Ball(int number) {
-        checkRange(number);
+        validateRange(number);
         this.number = number;
     }
 
-    private void checkRange(int number) {
+    public Ball(char c) {
+        this(Integer.parseInt(String.valueOf(c)));
+    }
+
+    private void validateRange(int number) {
         if (number < 1 || 9 < number) {
-            throw new IllegalArgumentException("공의 숫자는 1~9의 자연수만 가능합니다.");
+            throw new IllegalArgumentException("공의 숫자는 1~9의 자연수만 가능합니다. number:" + number);
         }
     }
 
