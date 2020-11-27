@@ -3,55 +3,66 @@ package baseball;
 import java.util.Scanner;
 
 public class BaseBallGame{
-    boolean isGameContinue = true;
+    private boolean isNewGameContinue = true;
 
     public void gameStart(Scanner scanner){
-        while(isGameContinue){
-            GameSetting gameObject = gameSetting();
-            gameRun(scanner, gameObject);
+        while(isNewGameContinue){
+            RandomNumberGenerator answerNumber = getAnswerNumber();
+            Player player = new Player();
+            gameProgress(scanner, answerNumber, player);
         }
     }
 
-    public GameSetting gameSetting(){
-        GameSetting gameSetting = new GameSetting();
-        gameSetting.makeRandomNumber();
-        return gameSetting;
+    private RandomNumberGenerator getAnswerNumber(){
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        randomNumberGenerator.makeRandomNumber();
+        return randomNumberGenerator;
     }
 
-    public void gameRun(Scanner scanner, GameSetting gameSetting){
-        GameProgress gameProgress = new GameProgress();
+    private void gameProgress(Scanner scanner, RandomNumberGenerator randomNumber, Player player){
 
         while(true){
-            gameProgress.getPlayerNumber(scanner, gameSetting);
-
-            getHint(gameProgress);
-            if(gameProgress.getStrikeCount() == Constants.NUMBER_COUNT) {
-                isGameContinue = isGameFinish(scanner);
+            player.playerGamePlay(scanner, randomNumber);
+            getHint(player);
+            if(isAnswer(player)) {
+                System.out.println(Constants.GAME_FINISH_MESSAGE);
+                isNewGameContinue = isGameKeepGoing(scanner);
                 break;
             }
         }
     }
-
-    public boolean isGameFinish(Scanner scanner){
-        System.out.println(Constants.GAME_FINISH_MESSAGE);
-        int gameRestartFlag = scanner.nextInt();
-        if(gameRestartFlag == Constants.GAME_RESTART) return true;
-        else if(gameRestartFlag == Constants.GAME_STOP) return false;
-
-        return false;
+    private boolean isAnswer(Player player){
+        return player.getStrikeCount() == Constants.ANSWER_COUNT;
     }
 
-    public void getHint(GameProgress gameProgress){
-        if(gameProgress.getStrikeCount() == 0 && gameProgress.getBallCount() == 0) {
-            System.out.print("낫싱");
+    private boolean isGameKeepGoing(Scanner scanner){
+
+        try{
+            IllegalArgumentException e = new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
+
+            int gameRestartFlag = scanner.nextInt();
+            if(gameRestartFlag == Constants.GAME_RESTART) return true;
+            else if(gameRestartFlag == Constants.GAME_STOP) return false;
+            else throw e;
+        }
+        catch(IllegalArgumentException e) {
+            System.out.println(e.getMessage() + Constants.RESTART_REQ_MESSAGE);
+            return isGameKeepGoing(scanner);
+        }
+    }
+
+    private void getHint(Player player){
+
+        int playerBallCount = player.getBallCount();
+        int playerStrikeCount = player.getStrikeCount();
+
+        if(playerBallCount == 0 && playerStrikeCount == 0) {
+            System.out.println(Constants.ALL_MISS_MESSAGE);
+            return;
         }
 
-        int ballCount = gameProgress.getBallCount();
-        int strikeCount = gameProgress.getStrikeCount();
-
-        if(ballCount != 0) System.out.print(ballCount + Constants.BALL_MESSAGE + " ");
-        if(strikeCount != 0) System.out.print(strikeCount + Constants.STRIKE_MESSAGE);
-
+        if(playerBallCount != 0) System.out.print(playerBallCount + Constants.BALL_MESSAGE + " ");
+        if(playerStrikeCount != 0) System.out.print(playerStrikeCount + Constants.STRIKE_MESSAGE);
         System.out.println();
     }
 
