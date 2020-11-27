@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Baseball {
     private ArrayList<Integer> baseball = new ArrayList<>();
@@ -38,12 +40,12 @@ public class Baseball {
     }
 
     public void validateDuplicate(String baseball){
-        HashMap<Character, Integer> duplicateMap = new HashMap<>();
+        Set<Character> duplicateCheck = new HashSet<>();
         for(char ball : baseball.toCharArray()){
-            if(duplicateMap.get(ball) != null){
+            if(duplicateCheck.contains(ball)){
                 throw new IllegalArgumentException(Constants.ERR_MSG_DUPLICATE_DIGITS);
             }
-            duplicateMap.put(ball, 1);
+            duplicateCheck.add(ball);
         }
     }
 
