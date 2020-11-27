@@ -2,36 +2,34 @@ package baseball;
 
 import java.util.Scanner;
 
-public class GameProgress {
-
+public class Player {
     private int strikeCount = 0, ballCount = 0;
     private String inputNumber = "";
 
-    public void getPlayerNumber(Scanner scanner, GameSetting gameSetting){
-        inputNumber = playerInput(scanner);
-        scoreCheck(inputNumber, gameSetting);
+    public void playerGamePlay(Scanner scanner, RandomNumberGenerator randomNumber){
+        inputNumber = setPlayerNumber(scanner);
+        checkPlayerScore(inputNumber, randomNumber);
     }
 
-    public String playerInput(Scanner scanner){
+    private String setPlayerNumber(Scanner scanner){
         try{
+            IllegalArgumentException e = new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
+
             String inputNumber = scanner.next();
-            if (isCorrectNumber(inputNumber) == false) {
-                IllegalArgumentException e = new IllegalArgumentException("잘못된 입력입니다");
-                throw e;
-            }
-            return inputNumber;
+            if (isCorrectNumber(inputNumber)) return inputNumber;
+            else throw e;
 
         }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage() + " 다시 입력해주세요");
-            return playerInput(scanner);
+            System.out.println(e.getMessage() + Constants.RESTART_REQ_MESSAGE);
+            return setPlayerNumber(scanner);
         }
     }
 
-    public boolean isCorrectNumber(String inputNumber){
+    private boolean isCorrectNumber(String inputNumber){
         boolean[] isUsedNumber = new boolean[Constants.NUMBER_LIMIT + 1];
 
         if (Integer.parseInt(inputNumber) < 0) return false;
-        if (inputNumber.length() < Constants.NUMBER_COUNT) return false;
+        if (inputNumber.length() != Constants.NUMBER_COUNT) return false;
 
         for(int i = 0 ; i < Constants.NUMBER_COUNT; ++i){
             int number = inputNumber.charAt(i) - '0';
@@ -42,14 +40,14 @@ public class GameProgress {
         return true;
     }
 
-    public void scoreCheck(String inputNumber, GameSetting gameSetting){
+    private void checkPlayerScore(String inputNumber, RandomNumberGenerator randomNumber){
         strikeCount = 0;
         ballCount = 0;
         for(int numberOrder = 0 ; numberOrder < Constants.NUMBER_COUNT; ++numberOrder){
             int number = inputNumber.charAt(numberOrder) - '0';
 
-            if (number == gameSetting.randomNumberGenerator.answerNumbers[numberOrder]) strikeCount++;
-            else if(gameSetting.randomNumberGenerator.isUsedNumber[number]) ballCount++;
+            if (number == randomNumber.answerNumbers[numberOrder]) strikeCount++;
+            else if(randomNumber.isUsedNumber[number]) ballCount++;
         }
     }
 
@@ -60,5 +58,4 @@ public class GameProgress {
     public int getBallCount(){
         return this.ballCount;
     }
-
 }
