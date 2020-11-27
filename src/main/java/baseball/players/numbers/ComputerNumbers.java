@@ -21,7 +21,6 @@ public class ComputerNumbers {
             this.clear();
             convertIntToList(RandomUtils.nextInt(GAME_MIN_NUMBER, GAME_MAX_NUMBER));
         } while (!NumberChecker.isValidNumbers(numbers, COMPUTER));
-        // System.out.println("컴퓨터의 번호가 유효함 : " + numbers.toString());
     }
 
     public void convertIntToList(int randomNumber) {

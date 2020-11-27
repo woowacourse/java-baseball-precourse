@@ -20,7 +20,6 @@ public class NumberChecker {
                 throw new IllegalArgumentException();
             }
             if (checkerType == COMPUTER) {
-                // System.out.println("컴퓨터의 번호가 유효하지 않음 : " + numbers.toString());
                 return false;
             }
         }

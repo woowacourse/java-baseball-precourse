@@ -20,7 +20,6 @@ public class AnswerChecker {
     }
 
     public void calculateResult() {
-        // System.out.println("컴퓨터의 숫자들 : " + players.getComputer().getNumbers().toString());
         for (int userIndex = 0; userIndex < BASEBALL_NUMBERS_SIZE; userIndex++) {
             checkComputerNumbers(userIndex);
         }

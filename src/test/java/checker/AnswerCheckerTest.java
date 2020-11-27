@@ -20,11 +20,12 @@ public class AnswerCheckerTest {
     private final Scanner scanner = new Scanner(System.in);
     private final Players players = new Players(scanner);
     private final AnswerChecker answerChecker = new AnswerChecker(players);
+    private final static int COMPUTER_NUMBER = 123;
 
     @BeforeEach
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
-        players.getComputer().initializeNumbersWith(123);
+        players.getComputer().initializeNumbersWith(COMPUTER_NUMBER);
     }
 
     @AfterEach
