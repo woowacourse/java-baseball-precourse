@@ -1,7 +1,7 @@
 package baseball;
 
 public class Ball {
-    private final int number;
+    private final Integer number;
 
     public Ball(int number) {
         checkRange(number);
@@ -22,6 +22,6 @@ public class Ball {
         } else {
             throw new ClassCastException("Ball 객체 끼리만 비교가 가능합니다.");
         }
-        return this.number == ball.number;
+        return this.number.equals(ball.number);
     }
 }
