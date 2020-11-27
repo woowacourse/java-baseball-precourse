@@ -9,6 +9,62 @@ public class Application {
         // TODO 구현 진행
         int[] computerNumber = generateRandomNumber();
         int[] playerNumber = getPlayerNumber(scanner);
+        String result = getResult(computerNumber, playerNumber);
+        System.out.println(result);
+    }
+
+    public static String getResult(int[] computerNumber, int[] playerNumber) {
+        int ballCount = 0;
+        int strikeCount = 0;
+        String result = "";
+
+        for (int i=0; i<computerNumber.length; i++) {
+            if (checkStrike(computerNumber, i, playerNumber)) {
+                strikeCount++;
+            }
+        }
+
+        for (int i=0; i<computerNumber.length; i++) {
+            if (checkBall(computerNumber, i, playerNumber)) {
+                ballCount ++;
+            }
+        }
+
+        if (ballCount == 0 && strikeCount != 0) {
+            result = strikeCount + "스트라이크";
+        }
+
+        if (ballCount != 0 && strikeCount == 0) {
+            result = ballCount + "볼";
+        }
+
+        if (ballCount > 0 && strikeCount > 0) {
+            result = ballCount + "볼 " + strikeCount + "스트라이크";
+        }
+
+        if (ballCount == 0 && strikeCount == 0) {
+            result = "낫싱";
+        }
+
+        return result;
+    }
+
+    public static boolean checkBall(int[] computerNumber, int computerIndex, int[] playerNumber) {
+        for (int i=0; i<playerNumber.length; i++) {
+            if (i == computerIndex) {
+                continue;
+            }
+
+            if (computerNumber[computerIndex] == playerNumber[i]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean checkStrike(int[] computerNumber, int sameIndex, int[] playerNumber) {
+        return computerNumber[sameIndex] == playerNumber[sameIndex];
     }
 
     public static int[] getPlayerNumber(Scanner scanner) {
