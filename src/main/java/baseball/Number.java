@@ -45,4 +45,24 @@ public class Number {
         return guess;
     }
 
+    public int strike(int[] guess){
+        int strikeCnt=0;
+        for(int i = 0; i < 3; i++){
+            if(guess[i]==target[i]){
+                strikeCnt++;
+            }
+        }
+        return strikeCnt;
+    }
+
+    public int ball(int[] guess){
+        int ballCnt=0;
+        for(int i = 0; i < 3; i++){
+            if(guess[i]==target[i]){
+                ballCnt++;
+            }
+        }
+        return ballCnt;
+    }
+
 }
