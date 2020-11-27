@@ -2,16 +2,46 @@ package baseball;
 
 import utils.RandomUtils;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class BaseBallNumber {
 
     private String answer;
     private Integer strike;
     private Integer ball;
     private Boolean isAnswer;
-    private boolean[] isChecked;
 
     public void resetNumber() {
         answer = String.valueOf(RandomUtils.nextInt(111, 999));
+    }
+
+    public void calculateMatching(String userInput) {
+        strike = 0;
+        ball = 0;
+        isAnswer = false;
+
+        if (answer.equals(userInput)) {
+            isAnswer = true;
+            return;
+        }
+
+        Set<Character> set = new HashSet<>();
+
+        // strike 체크
+        for (int i = 0; i < 3; i++) {
+            if (answer.charAt(i) == userInput.charAt(i)) {
+                strike++;
+            } else set.add(answer.charAt(i));
+        }
+
+        // ball 체크
+        for (int i = 0; i < 3; i++) {
+            if (set.contains(userInput.charAt(i))) {
+                ball++;
+                set.remove(userInput.charAt(i));
+            }
+        }
     }
 
     public String getHint() {
