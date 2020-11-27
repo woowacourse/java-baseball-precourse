@@ -119,4 +119,22 @@ class GameResultTest {
         GameResult gameResult = new GameResult(gameResultMap);
         assertThat(gameResult.getStrikeCounts()).isEqualTo(strikeCounts);
     }
+
+    @DisplayName("스트라이크가 3개면 isFullScore는 true")
+    @Test
+    public void isFullScore_스트라이크_3개_True() {
+        gameResultMap.put("볼", 0);
+        gameResultMap.put("스트라이크", 3);
+        GameResult gameResult = new GameResult(gameResultMap);
+        assertThat(gameResult.isFullScore()).isTrue();
+    }
+
+    @DisplayName("스트라이크가 3개아 아니면 isFullScore는 false")
+    @Test
+    public void isFullScore_스트라이크_3개가_아니면_False() {
+        gameResultMap.put("볼", 1);
+        gameResultMap.put("스트라이크", 2);
+        GameResult gameResult = new GameResult(gameResultMap);
+        assertThat(gameResult.isFullScore()).isFalse();
+    }
 }
