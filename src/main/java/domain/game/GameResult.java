@@ -7,6 +7,7 @@ public class GameResult {
     private static final String STRIKE_KEY = "스트라이크";
     private static final String BALL_KEY = "볼";
     private static final int VALID_KEY_COUNTS = 2;
+    private static final int ZERO = 0;
 
     private final Map<String, Integer> gameResult;
 
@@ -26,10 +27,14 @@ public class GameResult {
     }
 
     public boolean isNothing() {
-        return gameResult.get(STRIKE_KEY) == 0 && gameResult.get(BALL_KEY) == 0;
+        return gameResult.get(STRIKE_KEY) == ZERO && gameResult.get(BALL_KEY) == ZERO;
     }
 
     public boolean isOnlyStrike() {
-        return gameResult.get(STRIKE_KEY) >= 1 && gameResult.get(BALL_KEY) == 0;
+        return gameResult.get(STRIKE_KEY) > ZERO && gameResult.get(BALL_KEY) == ZERO;
+    }
+
+    public boolean isOnlyBall() {
+        return gameResult.get(STRIKE_KEY) == ZERO && gameResult.get(BALL_KEY) > ZERO;
     }
 }
