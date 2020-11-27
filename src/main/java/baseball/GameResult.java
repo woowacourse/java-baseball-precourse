@@ -13,17 +13,24 @@ public class GameResult {
     private final Integer ball;
 
     public GameResult(Integer strike, Integer ball) {
+        validateRange(strike);
+        validateRange(ball);
         this.strike = strike;
         this.ball = ball;
     }
 
-    public void printResult() {
+    private void validateRange(Integer i) {
+        if (i < 0 || Balls.COUNT_OF_BALLS < i) {
+            String msg = String.format("strike나 ball은 0~%d 사이의 수여야 합니다: %d", Balls.COUNT_OF_BALLS, i);
+            throw new IllegalArgumentException(msg);
+        }
+    }
 
+    public void printResult() {
         if (isNothing()) {
             System.out.println(NOTHING);
             return;
         }
-
         System.out.printf("%d%s %d%s%n", strike, STRIKE, ball, BALL);
     }
 
