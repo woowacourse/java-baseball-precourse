@@ -1,27 +1,46 @@
 package baseball.controller;
 
+import baseball.model.CompareResult;
 import baseball.model.Computer;
 import baseball.model.User;
+import baseball.view.GameView;
 import utils.InputUtils;
 
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class BaseBallGame {
-    private static int ruleStrike;
-    private static int ruleBall;
 
-    private static final int RESET = 0;
+public class BaseBallGame {
+    private static final String CONTINUE_GAME = "1";
 
     public static void start(Scanner scanner) {
-        Computer.makeBalls();
-        User.makeBalls(InputUtils.checkUserInput(scanner.nextLine()));
+        do {
+            CompareResult.resetResult();
+            Computer.makeBalls();
+
+            runnable(scanner);
+
+            GameView.printGameEnd();
+        } while (isContinueGame(InputUtils.checkContinueInput(scanner.nextLine())));
     }
 
+    private static boolean isContinueGame(String userInput) {
+        if (userInput.equals(CONTINUE_GAME)) {
+            return true;
+        }
+        return false;
+    }
 
-    private static void resetRules() {
-        ruleStrike = RESET;
-        ruleBall = RESET;
+    private static void runnable(Scanner scanner) {
+        while (!CompareResult.isThreeStrike()) {
+            GameView.printPleaseInput();
+            User.makeBalls(InputUtils.checkUserBallsInput(scanner.nextLine()));
+            CompareResult.resetResult();
+
+            compareBalls();
+
+            GameView.printGameResult(CompareResult.ball, CompareResult.strike);
+        }
     }
 
     private static void compareBalls() {
@@ -31,20 +50,20 @@ public class BaseBallGame {
             int computerNumber = (int) cb.next();
             int userNumber = (int) ub.next();
 
-            isStrike(computerNumber, userNumber);
             isBall(computerNumber, userNumber);
+            isStrike(computerNumber, userNumber);
+        }
+    }
+
+    private static void isBall(int computerNumber, int userNumber) {
+        if (computerNumber != userNumber && Computer.balls.contains(userNumber)) {
+            CompareResult.ball += 1;
         }
     }
 
     private static void isStrike(int computerNumber, int userNumber) {
         if (computerNumber == userNumber) {
-            ruleStrike += 1;
-        }
-    }
-
-    private static void isBall(int computerNumber, int userNumber) {
-        if (computerNumber != userNumber && Computer.balls.contains(userNumber)){
-            ruleBall += 1;
+            CompareResult.strike += 1;
         }
     }
 }
