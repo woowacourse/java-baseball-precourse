@@ -1,5 +1,6 @@
 package baseball;
 
+import number.Constant;
 import number.PlayerNumber;
 import number.RandomNumber;
 import utils.CheckUtils;
@@ -14,13 +15,13 @@ public class BaseballGame {
 
     public static void play(){
         RandomNumber randomNumber = new RandomNumber();
-        int gameStatus = 0;
+        int gameStatus = Constant.START;
 
-        while(gameStatus != 2){
+        while(gameStatus != Constant.END_GAME){
 
-            if(gameStatus == 1){                                    // 게임 재시작일 경우 randomNumber 재생성
+            if(gameStatus == Constant.RESTART){                                    // 게임 재시작일 경우 randomNumber 재생성
                 randomNumber = new RandomNumber();
-            }else if((gameStatus < 0)||(gameStatus > 2)){
+            }else if((gameStatus < Constant.START)||(gameStatus > Constant.END_GAME)){
                 throw new IllegalArgumentException();
             }
 

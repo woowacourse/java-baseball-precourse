@@ -1,5 +1,7 @@
 package view;
 
+import number.Constant;
+
 import java.util.Scanner;
 
 public class OutputView {
@@ -15,8 +17,8 @@ public class OutputView {
     public static int showHint(int strike, int ball) {
 
         if(strike == 0 && ball == 0){
-            notThing();
-            return 0;
+            threeBall();
+            return Constant.START;
         }else if(strike == 3){
             threeStrike();
             Scanner scanner = new Scanner(System.in);
@@ -24,7 +26,7 @@ public class OutputView {
         }else{
             makeHint(strike, ball);
 
-            return 0;
+            return Constant.START;
         }
     }
 
@@ -39,7 +41,7 @@ public class OutputView {
 
     }
 
-    public static void notThing(){
+    public static void threeBall(){
         System.out.println("낫싱");
     }
 
