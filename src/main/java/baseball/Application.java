@@ -26,23 +26,23 @@ class StrikeAndBall {
 
 public class Application {
     // CONSTANTS FOR RANDOM NUMBER
-    public static final int NUMBER_START_INCLUSIVE = 100;
-    public static final int NUMBER_END_INCLUSIVE = 999;
+    private static final int NUMBER_START_INCLUSIVE = 100;
+    private static final int NUMBER_END_INCLUSIVE = 999;
 
     // CONSTANTS FOR GAME PLAY
-    public static final String GUESS_INPUT_MESSAGE = "숫자를 입력해 주세요 : ";
-    public static final String GUESS_INPUT_ERROR_MESSAGE = "1 에서 9 사이의 서로 다른 숫자로 이루어진 3자리 정수만 입력 가능합니다";
+    private static final String GUESS_INPUT_MESSAGE = "숫자를 입력해 주세요 : ";
+    private static final String GUESS_INPUT_ERROR_MESSAGE = "1 에서 9 사이의 서로 다른 숫자로 이루어진 3자리 정수만 입력 가능합니다";
 
     // CONSTANTS FOR HINT
-    public static final String BALL_MESSAGE = "볼";
-    public static final String STRIKE_MESSAGE = "스트라이크";
-    public static final String NOTHING_MESSAGE = "낫싱";
+    private static final String BALL_MESSAGE = "볼";
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String NOTHING_MESSAGE = "낫싱";
 
     // CONSTANTS FOR AFTER GAME
-    public static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String REPLAY_OR_QUIT_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public static final String REPLAY_OR_QUIT_INPUT_ERROR_MESSAGE = "1 혹은 2만 입력 가능합니다";
-    public static final String QUIT_MESSAGE = "GG";
+    private static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String REPLAY_OR_QUIT_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String REPLAY_OR_QUIT_INPUT_ERROR_MESSAGE = "1 혹은 2만 입력 가능합니다";
+    private static final String QUIT_MESSAGE = "GG";
 
     public static int[] convertIntToArray(int num) {
         int[] thisArray = new int[3];
