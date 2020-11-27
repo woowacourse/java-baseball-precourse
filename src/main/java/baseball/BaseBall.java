@@ -27,6 +27,17 @@ public class BaseBall {
         randNum = makeRandNum(DIGIT_NUM);
     }
 
+    public void playGame() {
+        String result = "";
+
+		do {
+            System.out.print(SystemMessage.INPUT_MESSAGE);
+			userNum = scanner.next();
+		    result = umpire();
+            System.out.println(result);
+		} while (!result.equals(SystemMessage.GAME_CLEAR_MESSAGE));
+	}
+
     private String umpire() {
 		int ballNum = 0;
 		int strikeNum = 0;
@@ -40,10 +51,22 @@ public class BaseBall {
 				ballNum++;
 			}
         }
-
-        return "";
-		// return getHint(ballNum, strikeNum);
+		return getHint(ballNum, strikeNum);
     }
+
+    private String getHint(final int ballNum, final int strikeNum) {
+        if (strikeNum == DIGIT_NUM) {
+            return SystemMessage.GAME_CLEAR_MESSAGE;
+        } else if (ballNum == 0 && strikeNum == 0) {
+            return SystemMessage.NOTHING;
+        } else if (ballNum == 0) {
+            return strikeNum + SystemMessage.STRIKE;
+        } else if (strikeNum == 0) {
+            return ballNum + SystemMessage.BALL;
+        } 
+        return ballNum + SystemMessage.BALL + " " + strikeNum + SystemMessage.STRIKE;
+    }
+
 
 	private boolean isStrike(final char digit, final int pos) {
 		for (int i = 0; i < DIGIT_NUM; i++) {
@@ -79,7 +102,6 @@ public class BaseBall {
             result += temp;
             cnt++;
         }
-
         return result;
     }
 }
