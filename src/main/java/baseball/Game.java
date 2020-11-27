@@ -18,6 +18,26 @@ public class Game {
 
     }
 
+    private void playingPhase() {
+        Computer computer = new Computer();
+
+        while (true) {
+            List<Integer> userBaseballInput = getUserBaseballInput();
+
+            String gameResult = computer.guessTargetDigits(userBaseballInput);
+            System.out.println(gameResult);
+
+            if (isGameEnd(gameResult)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+    }
+
+    private boolean isGameEnd(String gameResult) {
+        return gameResult.equals("3스트라이크");
+    }
+
     private List<Integer> getUserBaseballInput() {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
