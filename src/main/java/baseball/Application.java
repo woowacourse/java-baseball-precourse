@@ -20,7 +20,7 @@ public class Application {
         checkLength(playerInput, 3);
 
         // 각 자리수가 1에서 9사이의 숫자인지 체크
-        checkIfNumberfromAtoB(playerInput, 1, 9);
+        checkIfNumberFromAToB(playerInput, 1, 9);
 
         // 숫자 배열화 기능
         for (int i=0; i<playerInput.length(); i ++) {
@@ -42,7 +42,7 @@ public class Application {
     }
 
     // 각 자리수가 A에서 B사이의 숫자인지 체크하는 기능
-    public static void checkIfNumberfromAtoB(String playerInput, int fromA, int toB) {
+    public static void checkIfNumberFromAToB(String playerInput, int fromA, int toB) {
         char fromAChar = Integer.toString(fromA).charAt(0);
         char toBChar = Integer.toString(toB).charAt(0);
 
