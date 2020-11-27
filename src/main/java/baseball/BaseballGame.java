@@ -1,12 +1,10 @@
 package baseball;
 
-import utils.RandomUtils;
-
 import java.util.*;
 
 public class BaseballGame {
     private final Scanner scanner;
-
+    
     public BaseballGame(Scanner scanner) {
         this.scanner = scanner;
     }
@@ -22,38 +20,20 @@ public class BaseballGame {
     }
 
     public void game() {
-        List<String> ballNumberList = ballNumbers();
+        BaseballNumber randomBaseballNumber = new BaseballNumber();
         boolean answer = true;
         while(answer) {
             int ballCounter = 0;
             int strikeCounter = 0;
             System.out.print("숫자를 입력해주세요 : ");
             String playerBallNumber = scanner.nextLine();
+            BaseballNumber playerBaseballNumber = new BaseballNumber(playerBallNumber);
 
-            List<String> playerBallSplitNumberList = playerBallNumber(playerBallNumber);
-
-            strikeCounter = strikeCompare(ballNumberList, playerBallSplitNumberList);
-            ballCounter = ballCompare(ballNumberList, playerBallSplitNumberList);
+            strikeCounter = strikeCompare(randomBaseballNumber.getNumbers(), playerBaseballNumber.getNumbers());
+            ballCounter = ballCompare(randomBaseballNumber.getNumbers(), playerBaseballNumber.getNumbers());
 
             answer = resultPrint(ballCounter, strikeCounter);
         }
-    }
-
-    public List<String> ballNumbers() {
-        Set<String> set = new HashSet<>();
-        while(set.size() < 3) {
-            set.add(String.valueOf(RandomUtils.nextInt(1, 9)));
-        }
-        return new ArrayList<>(set);
-    }
-
-    public List<String> playerBallNumber(String playerBallNumber) {
-        String[] playerBallSplitNumber = playerBallNumber.split("");
-        List<String> playerBallSplitNumberList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            playerBallSplitNumberList.add(playerBallSplitNumber[i]);
-        }
-        return playerBallSplitNumberList;
     }
 
     public int strikeCompare(List<String> ballNumberList, List<String> playerBallSplitNumberList) {
