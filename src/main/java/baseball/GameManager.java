@@ -45,8 +45,17 @@ public class GameManager {
     }
 
     private Boolean continueGame() {
-        String s = scanner.next();
-        return GameStatus.valueOf(s).isContinue();
+        GameStatus gameStatus = null;
+        while (gameStatus == null) {
+            String s = "";
+            try {
+                s = scanner.next();
+                gameStatus = GameStatus.valueOf(s);
+            } catch (IllegalArgumentException e) {
+                System.out.printf("1, 2만 입력 가능합니다. 다시 입력해주세요. 입력값:%s%n", s);
+            }
+        }
+        return gameStatus.isContinue();
     }
 }
 
