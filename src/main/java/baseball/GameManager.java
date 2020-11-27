@@ -5,9 +5,6 @@ import java.util.Scanner;
 public class GameManager {
     final Scanner scanner;
 
-    static final String CONTINUE = "1";
-    static final String QUIT = "2";
-
     public GameManager(Scanner scanner) {
         this.scanner = scanner;
     }
