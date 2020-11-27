@@ -25,6 +25,7 @@ public class BaseBall {
         randNum = makeRandNum(DIGIT_NUM);
     }
 
+    // 유저가 입력한 수와 난수가 같을 때까지 반복함.
     public void playGame() {
         String result = "";
 
@@ -36,6 +37,7 @@ public class BaseBall {
 		} while (!result.equals(SystemMessage.GAME_CLEAR_MESSAGE));
 	}
 
+    // 유저가 입력한 수에 따라 볼과 스트라이크를 판단하고 힌트를 제공함.
     private String umpire() {
 		int ballNum = 0;
 		int strikeNum = 0;
@@ -52,6 +54,8 @@ public class BaseBall {
 		return getHint(ballNum, strikeNum);
     }
 
+    // umpire에서 구한 볼과 스트라이크 개수에 따라
+    // 구체적인 힌트를 반환함.
     private String getHint(final int ballNum, final int strikeNum) {
         if (strikeNum == DIGIT_NUM) {
             return SystemMessage.GAME_CLEAR_MESSAGE;
@@ -64,7 +68,6 @@ public class BaseBall {
         } 
         return ballNum + SystemMessage.BALL + " " + strikeNum + SystemMessage.STRIKE;
     }
-
 
 	private boolean isStrike(final char digit, final int pos) {
 		for (int i = 0; i < DIGIT_NUM; i++) {
@@ -84,6 +87,7 @@ public class BaseBall {
 		return false;
 	}
 
+    // 1에서 9까지 서로 다른 임의의 세 자리 난수를 생성함.
     private String makeRandNum(final int digit) {
         Set<Character> randNumSet = new HashSet<>();
         int cnt = 0;
@@ -103,6 +107,7 @@ public class BaseBall {
         return result;
     }
 
+    // 게임이 끝났을 때, 유저에게 게임 재시작 여부를 물어 봄.
     public boolean isUserWantContinue() {
         System.out.println(SystemMessage.GAME_RESTART_OR_END_MESSAGE);
         String sel = scanner.next();
@@ -115,6 +120,7 @@ public class BaseBall {
         throw new IllegalArgumentException();
     }
 
+    // 유저가 입력한 세 자리 수에 대해 입력 검사를 함.
     private String next() {
         String input = scanner.next();
 
