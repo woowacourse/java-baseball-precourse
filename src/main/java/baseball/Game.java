@@ -19,7 +19,6 @@ public class Game {
             System.out.println("입력값" + guessNumber);
             compareToAnswer(guessNumber, answer);
 
-
             System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
         }
     }
