@@ -23,7 +23,7 @@ public class InputValidator {
     public static void validateNumbers(String numbers) {
         validateLength(numbers);
         validateRange(numbers);
-        duplicateCheckNumbers(numbers);
+        validateDuplicate(numbers);
     }
 
 
@@ -43,7 +43,7 @@ public class InputValidator {
         }
     }
 
-    private static void duplicateCheckNumbers(String numbers) {
+    private static void validateDuplicate(String numbers) {
         duplicateCheckSet = new HashSet<>();
         for(int i=FIRST_INDEX; i < NUMBERS_LENGTH; i++) {
             duplicateCheckSet.add(numbers.charAt(i));
