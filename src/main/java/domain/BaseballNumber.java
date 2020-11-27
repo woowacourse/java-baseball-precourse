@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author yhh1056
@@ -20,5 +21,22 @@ public class BaseballNumber {
         if (baseballNumbers.size() != BASEBALL_LIST_SIZE) {
             throw new IllegalArgumentException();
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof BaseballNumber)) {
+            return false;
+        }
+        BaseballNumber that = (BaseballNumber) o;
+        return Objects.equals(baseballNumbers, that.baseballNumbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(baseballNumbers);
     }
 }

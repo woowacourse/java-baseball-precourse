@@ -4,7 +4,6 @@ import baseball.BaseballGame;
 import domain.BaseballNumber;
 import domain.Player;
 import java.util.Scanner;
-import utils.NumberUtils;
 
 /**
  * @author yhh1056
@@ -23,6 +22,7 @@ public class BaseballGameController {
 
     public void play() {
         BaseballNumber playerBaseballNumber = player.createBaseballNumber(getInput());
+        baseballGame.exists(playerBaseballNumber);
     }
 
     private String getInput() {

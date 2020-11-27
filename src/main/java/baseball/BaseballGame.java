@@ -20,4 +20,14 @@ public class BaseballGame {
     private List<Integer> nonDuplicateNumber() {
         return RandomNumbers.getInstance(BASEBALL_LIST_SIZE);
     }
+
+    public boolean exists(BaseballNumber playerBaseballNumber) {
+        if (baseballNumber.equals(playerBaseballNumber)) {
+            /**
+             * TODO : 정답을 맞춘 경우 메시지 출력
+             */
+            return true;
+        }
+        return false;
+    }
 }
