@@ -23,7 +23,7 @@ public class RandomThreeNumberGenerator {
     private List<Integer> generatedThreeNumbers() {
         List<Integer> generated = new ArrayList<>();
         while (true) {
-            if (generated.size() >= 3) {
+            if (generated.size() >= DIGIT) {
                 break;
             }
 
