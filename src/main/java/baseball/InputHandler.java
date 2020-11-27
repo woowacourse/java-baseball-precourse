@@ -15,7 +15,7 @@ public class InputHandler {
     }
 
     public List<Integer> get() {
-        System.out.print("숫자를 입력해주세요 :" );
+        System.out.print("숫자를 입력해주세요 : ");
         String input = this.scanner.nextLine();
         validate(input);
         return parse(input);
