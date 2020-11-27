@@ -15,9 +15,11 @@ public class InputUtils {
     }
 
     public int getIntValue() {
-        String stringNumber = getNextLine();
-        int number = stringInputValueToInt(stringNumber);
-        return number;
+        return stringInputValueToInt(getNextLine());
+    }
+
+    private String getNextLine() {
+        return checkLength(scanner.nextLine());
     }
 
     public int stringInputValueToInt(String number) {
@@ -28,7 +30,10 @@ public class InputUtils {
         }
     }
 
-    private String getNextLine() {
-        return scanner.nextLine();
+    public String checkLength(String text) {
+        if (text.length() != 3) {
+            throw new IllegalArgumentException("3자리의 수를 입력 해주세요");
+        }
+        return text;
     }
 }
