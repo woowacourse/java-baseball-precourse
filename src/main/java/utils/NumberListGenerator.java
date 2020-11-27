@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NumberListGenerator {
-    private static final int MAX_NUM = 9;
-    private static final int MIN_NUM = 1;
+    private static final int MAX_NUMBER = 9;
+    private static final int MIN_NUMBER = 1;
 
     public static ArrayList<Integer> makeTargetNumList(int digits){
         ArrayList<Integer> list = new ArrayList<>();
@@ -23,14 +23,14 @@ public class NumberListGenerator {
         int rand;
 
         do{
-            rand = RandomUtils.nextInt(MIN_NUM, MAX_NUM);
+            rand = RandomUtils.nextInt(MIN_NUMBER, MAX_NUMBER);
         }
         while(list.contains(rand));
 
         return rand;
     }
 
-    public static List<Integer> stringToIntegerList(String num){
+    public static List<Integer> ConvertStringToList(String num){
         return Arrays.stream(num.split("")).map(Integer::parseInt)
                 .collect(Collectors.toList());
     }

@@ -1,21 +1,21 @@
 package utils;
-import java.util.*;
+import java.util.Arrays;
 
 public class InputValidator {
     private static final String INVALID_LENGTH_MSG = "잘못된 입력 길이입니다. ";
     private static final String INVALID_RANGE_MSG = "범위 외 입력입니다. ";
     private static final String INVALID_DUPLICATE_MSG = "중복이 포함된 입력입니다. ";
 
-    private static final int MAX_NUM = 9;
-    private static final int MIN_NUM = 1;
+    private static final int MAX_NUMBER = 9;
+    private static final int MIN_NUMBER = 1;
 
-    private static final int BUTTON_PLAY_AGAIN_MAX = 2;
-    private static final int BUTTON_PLAY_AGAIN_MIN = 1;
+    private static final int MAX_PLAY_AGAIN_BUTTON = 2;
+    private static final int MIN_PLAY_AGAIN_BUTTON = 1;
 
     private InputValidator(){}
 
     public static boolean isValidPlayAgainAns(String input) throws IllegalArgumentException {
-        if(!isInRange(input, BUTTON_PLAY_AGAIN_MIN, BUTTON_PLAY_AGAIN_MAX)){
+        if(!isInRange(input, MIN_PLAY_AGAIN_BUTTON, MAX_PLAY_AGAIN_BUTTON)){
             throw new IllegalArgumentException(INVALID_RANGE_MSG);
         }
         return true;
@@ -26,7 +26,7 @@ public class InputValidator {
             throw new IllegalArgumentException(INVALID_LENGTH_MSG);
         }
 
-        if(!isInRange(inputNumber, MIN_NUM, MAX_NUM)){
+        if(!isInRange(inputNumber, MIN_NUMBER, MAX_NUMBER)){
             throw new IllegalArgumentException(INVALID_RANGE_MSG);
         }
 
@@ -42,7 +42,9 @@ public class InputValidator {
             return false;
         }
 
-        return Arrays.stream(input.split("")).map(Integer::parseInt).allMatch(x-> x >= min && x <= max);
+        return Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .allMatch(x-> x >= min && x <= max);
     }
 
     private static boolean isValidLength(String input, int len){
@@ -59,6 +61,7 @@ public class InputValidator {
     }
 
     private static boolean isAllDifferent(String input){
-        return Arrays.stream(input.split("")).distinct().count() == input.length();
+        return Arrays.stream(input.split(""))
+                .distinct().count() == input.length();
     }
 }

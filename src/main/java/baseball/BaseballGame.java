@@ -9,16 +9,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BaseballGame {
-    private final int NUM_DIGITS;
+    private final int NUMBER_DIGITS;
     private final Scanner SCANNER;
 
     private List<Integer> targetNumberList;
     private List<Integer> guessedNumberList;
 
-    private int strikeCnt, ballCnt;
+    private int strikeCnt;
+    private int ballCnt;
 
-    public BaseballGame(int NUM_DIGITS, Scanner SCANNER){
-        this.NUM_DIGITS = NUM_DIGITS;
+    public BaseballGame(int NUMBER_DIGITS, Scanner SCANNER){
+        this.NUMBER_DIGITS = NUMBER_DIGITS;
         this.SCANNER = SCANNER;
     }
 
@@ -28,18 +29,18 @@ public class BaseballGame {
             String userGuess = readNumber();
             calculateScore(userGuess);
             printScore();
-        }while(!isGameEnd());
+        }while(!checkGameOver());
         printAllCorrect();
     }
 
     private void setTargetNumber(){
-        targetNumberList = NumberListGenerator.makeTargetNumList(NUM_DIGITS);
+        targetNumberList = NumberListGenerator.makeTargetNumList(NUMBER_DIGITS);
     }
 
     private String readNumber(){
         try{
             String input = InputView.askNum(SCANNER);
-            InputValidator.isValidGuess(input, NUM_DIGITS);
+            InputValidator.isValidGuess(input, NUMBER_DIGITS);
             return input;
         }catch (IllegalArgumentException IAE){
             OutputView.printMsg(IAE.getMessage());
@@ -48,8 +49,8 @@ public class BaseballGame {
         }
     }
 
-    private void calculateScore(String guessNum){
-        guessedNumberList = NumberListGenerator.stringToIntegerList(guessNum);
+    private void calculateScore(String guessed){
+        guessedNumberList = NumberListGenerator.ConvertStringToList(guessed);
         strikeCnt = GameRule.countStrike(targetNumberList, guessedNumberList);
         ballCnt = GameRule.countBall(targetNumberList, guessedNumberList);
     }
@@ -58,8 +59,8 @@ public class BaseballGame {
         OutputView.printScore(strikeCnt, ballCnt);
     }
 
-    private boolean isGameEnd(){
-        return GameRule.checkGameEnd(strikeCnt, NUM_DIGITS);
+    private boolean checkGameOver(){
+        return GameRule.checkGameEnd(strikeCnt, NUMBER_DIGITS);
     }
 
     private void printAllCorrect() {
