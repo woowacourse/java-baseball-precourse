@@ -45,7 +45,7 @@ public class Number {
         return guess;
     }
 
-    public int strike(int[] guess){
+    public int strike(){
         int strikeCnt=0;
         for(int i = 0; i < 3; i++){
             if(guess[i]==target[i]){
@@ -55,10 +55,10 @@ public class Number {
         return strikeCnt;
     }
 
-    public int ball(int[] guess){
+    public int ball(){
         int ballCnt=0;
         for(int i = 0; i < 3; i++){
-            if(guess[i]==target[i]){
+            if(Checker.checkBall(guess[i], target, i)){
                 ballCnt++;
             }
         }

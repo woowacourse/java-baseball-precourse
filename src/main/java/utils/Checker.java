@@ -20,4 +20,21 @@ public class Checker {
         return 49 <= oneOfNumber && oneOfNumber <= 57;
     }
 
+    public static boolean checkBall(int guess, int[] target, int index){
+       for(int i=0; i < 3; i ++){
+           if(i != index && guess == target[i]){
+               return true;
+           }
+       }
+       return false;
+    }
+
+    public static boolean checkReplay(int replayNum){
+        if(replayNum == 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
