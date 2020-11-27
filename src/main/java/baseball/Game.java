@@ -17,6 +17,7 @@ public class Game {
             allocateBallsToPlayer(userBall, getUserInput(scanner), scanner);
             System.out.println(opponent.getBaseballs());
             if(user.gameResult(opponent)){
+                System.out.println(Constants.GAME_OVER_MSG);
                 break;
             }
         }
@@ -45,7 +46,6 @@ public class Game {
         if(baseball.parseBaseball(input)){
             return;
         }
-        System.out.println("잘못된 입력입니다. 다시 입력하세요");
         allocateBallsToPlayer(baseball, getUserInput(scanner), scanner);
     }
 

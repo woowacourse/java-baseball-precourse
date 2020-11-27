@@ -23,6 +23,7 @@ public class Baseball {
                 validateLength(userInput)){
             return true;
         }
+        System.out.println(Constants.PROMPT_MESSAGE_AGAIN);
         return false;
     }
 
