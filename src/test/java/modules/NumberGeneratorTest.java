@@ -1,5 +1,6 @@
 package modules;
 
+import baseball.GameManager;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,7 +11,7 @@ public class NumberGeneratorTest {
 
     @Test
     public void checkGeneratedNumberNotDuplicated(){
-        NumberGenerator numberGenerator = new NumberGenerator();
+        NumberGenerator numberGenerator = new NumberGenerator(GameManager.NUMBER_SIZE);
         boolean isNotDuplicated = true;
 
         for(int i = 0; i < TEST_ITERATION; i++){
@@ -27,7 +28,7 @@ public class NumberGeneratorTest {
 
     @Test
     public void checkGeneratedNumberActuallyRandom(){
-        NumberGenerator numberGenerator = new NumberGenerator();
+        NumberGenerator numberGenerator = new NumberGenerator(GameManager.NUMBER_SIZE);
         HashMap<Integer, Integer> numberCounter = new HashMap<>();
 
         for(int i = 0; i < TEST_ITERATION; i++){

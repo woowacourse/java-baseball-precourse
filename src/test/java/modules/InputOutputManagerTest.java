@@ -2,6 +2,7 @@ package modules;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import baseball.GameManager;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.io.ByteArrayInputStream;
@@ -15,7 +16,7 @@ public class InputOutputManagerTest {
     @Test
     public void testNumberInput(){
         setNumberInputStream();
-        InputOutputManager inputOutputManager = new InputOutputManager(new Scanner(System.in));
+        InputOutputManager inputOutputManager = new InputOutputManager(new Scanner(System.in), GameManager.NUMBER_SIZE);
 
         int[] number = inputOutputManager.askUserInputNumber();
         System.out.println(USER_INPUT_NUMBER);

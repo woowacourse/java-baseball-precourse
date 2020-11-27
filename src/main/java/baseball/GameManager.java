@@ -6,7 +6,7 @@ import modules.InputOutputManager;
 import modules.NumberGenerator;
 
 public class GameManager {
-    static final int NUMBER_SIZE = 3;
+    public static final int NUMBER_SIZE = 3;
 
     InputOutputManager inputOutputManager;
     NumberGenerator numberGenerator;
@@ -15,8 +15,8 @@ public class GameManager {
     int ball = 0;
 
     public GameManager(Scanner scanner){
-        inputOutputManager = new InputOutputManager(scanner);
-        numberGenerator = new NumberGenerator();
+        inputOutputManager = new InputOutputManager(scanner, NUMBER_SIZE);
+        numberGenerator = new NumberGenerator(NUMBER_SIZE);
     }
 
     public void run(){

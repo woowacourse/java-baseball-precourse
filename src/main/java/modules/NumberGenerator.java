@@ -6,10 +6,15 @@ import utils.RandomUtils;
 public class NumberGenerator {
     static final int NUMBER_RANGE_MIN = 1;
     static final int NUMBER_RANGE_MAX = 9;
-    static final int NUMBER_SIZE = 3;
 
     private ArrayList<Integer> numberRange;
     private int[] generatedNumber;
+
+    private int numberSize;
+
+    public NumberGenerator(int numberSize){
+        this.numberSize = numberSize;
+    }
 
     public int[] getNumber(){
         return generatedNumber.clone();
@@ -17,7 +22,7 @@ public class NumberGenerator {
 
     public void generate(){
         initializeNumberRange();
-        generatedNumber = new int[NUMBER_SIZE];
+        generatedNumber = new int[numberSize];
         for(int i = 0; i < generatedNumber.length; i++){
             generatedNumber[i] = popFromNumberRange();
         }

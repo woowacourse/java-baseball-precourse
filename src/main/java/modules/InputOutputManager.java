@@ -3,7 +3,6 @@ package modules;
 import java.util.Scanner;
 
 public class InputOutputManager {
-    static final int NUMBER_SIZE = 3;
     static final String REQUEST_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     static final String WRONG_VALUE_MESSAGE = "잘못된 값입니다.";
     static final String NOTHING = "낫싱";
@@ -11,9 +10,11 @@ public class InputOutputManager {
     static final String BALL_FORMAT = "%d볼";
 
     Scanner scanner;
+    private int numberSize;
     
-    public InputOutputManager(Scanner scanner){
+    public InputOutputManager(Scanner scanner, int numberSize){
         this.scanner = scanner;
+        this.numberSize = numberSize;
     }
 
     public int[] askUserInputNumber(){
@@ -50,7 +51,7 @@ public class InputOutputManager {
     }
 
     private boolean checkForLengthFit(String input){
-        if(input.length() == NUMBER_SIZE){
+        if(input.length() == numberSize){
             return true;            
         }
         return false;
