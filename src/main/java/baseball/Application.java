@@ -34,9 +34,9 @@ public class Application {
     public static final String GUESS_INPUT_ERROR_MESSAGE = "1 에서 9 사이의 서로 다른 숫자로 이루어진 3자리 정수만 입력 가능합니다";
 
     // CONSTANTS FOR HINT
-    public static final String BALL = "볼";
-    public static final String STRIKE = "스트라이크";
-    public static final String NOTHING = "낫싱";
+    public static final String BALL_MESSAGE = "볼";
+    public static final String STRIKE_MESSAGE = "스트라이크";
+    public static final String NOTHING_MESSAGE = "낫싱";
 
     // CONSTANTS FOR AFTER GAME
     public static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -45,18 +45,18 @@ public class Application {
     public static final String QUIT_MESSAGE = "GG";
 
     public static int[] convertIntToArray(int num) {
-        int[] this_array = new int[3];
+        int[] thisArray = new int[3];
         for (int i = 2; i > -1; i--) {
-            this_array[i] = num % 10;
+            thisArray[i] = num % 10;
             num /= 10;
         }
-        return this_array;
+        return thisArray;
     }
 
     public static boolean isValidNum(int candidateNum) {
         Set<Integer> previousDigitSet = new HashSet<>();
 
-        // all digits MUST BE different and not 0
+        // all 3 digits MUST BE different and NOT BE 0
         int[] candidateArray = convertIntToArray(candidateNum);
         for (int candidateDigit : candidateArray) {
             if (previousDigitSet.contains(candidateDigit) || candidateDigit == 0) {
@@ -92,57 +92,57 @@ public class Application {
         }
     }
 
-    public static int getGuessNum(Scanner scanner) {
+    public static int getPlayerNum(Scanner scanner) {
         boolean isValidGuess = false;
-        int number = 123; // initialize with meaningless number (123) to compile without error
+        int playerNum = 123; // initialize with meaningless number (123) to compile without error
         while (!isValidGuess) {
             try {
-                number = tryToGuessNum(scanner);
+                playerNum = tryToGuessNum(scanner);
                 isValidGuess = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(GUESS_INPUT_ERROR_MESSAGE);
                 scanner.nextLine();
             }
         }
-        return number;
+        return playerNum;
     }
 
-    public static StrikeAndBall countStrikeAndBall(int[] guessArray, int[] answerArray) {
+    public static StrikeAndBall countStrikeAndBall(int[] playerNumArray, int[] answerNumArray) {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for (int guessDigitLoc = 0; guessDigitLoc < 3; guessDigitLoc++) {
-            int guessDigitToCompare = guessArray[guessDigitLoc];
+        for (int playerDigitLoc = 0; playerDigitLoc < 3; playerDigitLoc++) {
+            int playerDigit = playerNumArray[playerDigitLoc];
 
             for (int answerDigitLoc = 0; answerDigitLoc < 3; answerDigitLoc++) {
-                int answerDigitToCompare = answerArray[answerDigitLoc];
+                int answerDigit = answerNumArray[answerDigitLoc];
 
-                strikeCount += isStrike(guessDigitToCompare, guessDigitLoc, answerDigitToCompare, answerDigitLoc);
-                ballCount += isBall(guessDigitToCompare, guessDigitLoc, answerDigitToCompare, answerDigitLoc);
+                strikeCount += isStrike(playerDigit, playerDigitLoc, answerDigit, answerDigitLoc);
+                ballCount += isBall(playerDigit, playerDigitLoc, answerDigit, answerDigitLoc);
             }
         }
         return new StrikeAndBall(strikeCount, ballCount);
     }
 
-    public static int isStrike(int guessDigitToCompare, int guessDigitLoc, int answerDigitToCompare, int answerDigitLoc) {
-        if (guessDigitLoc == answerDigitLoc && guessDigitToCompare == answerDigitToCompare) {
+    public static int isStrike(int playerDigit, int playerDigitLoc, int answerDigit, int answerDigitLoc) {
+        if (playerDigitLoc == answerDigitLoc && playerDigit == answerDigit) {
             return 1;
         }
         return 0;
     }
 
-    public static int isBall(int guessDigitToCompare, int guessDigitLoc, int answerDigitToCompare, int answerDigitLoc) {
-        if (guessDigitLoc != answerDigitLoc && guessDigitToCompare == answerDigitToCompare) {
+    public static int isBall(int playerDigit, int playerDigitLoc, int answerDigit, int answerDigitLoc) {
+        if (playerDigitLoc != answerDigitLoc && playerDigit == answerDigit) {
             return 1;
         }
         return 0;
     }
 
-    public static StrikeAndBall getStrikeAndBall(int guessNum, int answer) {
-        int[] guessArray = convertIntToArray(guessNum);
-        int[] answerArray = convertIntToArray(answer);
+    public static StrikeAndBall getStrikeAndBall(int playerNum, int answerNum) {
+        int[] playerNumArray = convertIntToArray(playerNum);
+        int[] answerNumArray = convertIntToArray(answerNum);
 
-        return countStrikeAndBall(guessArray, answerArray);
+        return countStrikeAndBall(playerNumArray, answerNumArray);
     }
 
     public static int getResultOfGuess(StrikeAndBall thisTurnResult) {
@@ -150,22 +150,22 @@ public class Application {
         int ballCount = thisTurnResult.getBall();
 
         if (0 < strikeCount && 0 < ballCount) {
-            System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
+            System.out.println(ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE);
         } else if (0 < strikeCount && 0 == ballCount) {
-            System.out.println(strikeCount + STRIKE);
+            System.out.println(strikeCount + STRIKE_MESSAGE);
         } else if (0 == strikeCount && 0 < ballCount) {
-            System.out.println(ballCount + BALL);
+            System.out.println(ballCount + BALL_MESSAGE);
         } else if (0 == strikeCount && 0 == ballCount) {
-            System.out.println(NOTHING);
+            System.out.println(NOTHING_MESSAGE);
         }
         return strikeCount;
     }
 
-    public static void playGame(Scanner scanner, int answer) {
+    public static void playGame(Scanner scanner, int answerNum) {
         int strikeCount = 0;
         while (strikeCount != 3) {
-            int number = getGuessNum(scanner);
-            StrikeAndBall thisTurnResult = getStrikeAndBall(number, answer);
+            int playerNum = getPlayerNum(scanner);
+            StrikeAndBall thisTurnResult = getStrikeAndBall(playerNum, answerNum);
             strikeCount = getResultOfGuess(thisTurnResult);
         }
     }
@@ -176,11 +176,11 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        int input = scanner.nextInt();
+        int replayOrQuitInput = scanner.nextInt();
 
-        if (input == 1) {
+        if (replayOrQuitInput == 1) {
             main(null);
-        } else if (input == 2) {
+        } else if (replayOrQuitInput == 2) {
             System.out.println(QUIT_MESSAGE);
         } else {
             throw new IllegalArgumentException();
