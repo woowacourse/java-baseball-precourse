@@ -22,7 +22,24 @@ public class Application {
     }
 
     private static int[] getUserNumber(Scanner scanner) {
-        return new int[0];
+        System.out.print("숫자를 입력해주세요 : ");
+        int[] answer = new int[3];
+        try {
+            int number = scanner.nextInt();
+            if (number < 123 || number > 987) {
+                throw new IllegalArgumentException();
+            }
+            answer[0] = number / 100;
+            number %= 100;
+            answer[1] = number / 10;
+            answer[2] = number % 10;
+            if (answer[0] == answer[1] || answer[0] == answer[2] || answer[1] == answer[2]) {
+                throw new IllegalArgumentException();
+            }
+        } catch (Exception exception) {
+            throw new IllegalArgumentException();
+        }
+        return answer;
     }
 
     private static boolean getIsRestart(Scanner scanner) {
