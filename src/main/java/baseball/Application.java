@@ -1,5 +1,8 @@
 package baseball;
 
+import enums.GameProcess;
+import enums.RefereeCall;
+
 import java.util.Scanner;
 
 public class Application {
@@ -27,7 +30,7 @@ public class Application {
         int strike = 0;
         int ball = 0;
         String computerNumber = number.getComputerNumber();
-        while (strike != 3) {
+        while (strike != GameProcess.OUT_3STIRKE.getValue()) {
             String playerNumber = inputPlayerNumber(scanner);
 
             int[] strikeAndBall = referee.compareNumberOfPlayerAndComputer(playerNumber, computerNumber);
@@ -41,21 +44,22 @@ public class Application {
     }
 
     public void askRegame(Scanner scanner) {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String regameChoice = scanner.nextLine();
-        if (regameChoice.equals("1")) {
+        System.out.println(RefereeCall.OUT_3STRIKE.getCall());
+        System.out.println(RefereeCall.ASK_REGAME.getCall());
+        int regameChoice = scanner.nextInt();
+        if (regameChoice == GameProcess.ACCEPT_REGAME.getValue()) {
+            scanner.nextLine(); // 버퍼비우기
             playGame(scanner);
             return;
         }
-        if (regameChoice.equals("2")) {
+        if (regameChoice == GameProcess.REJECT_REGAME.getValue()) {
             return;
         }
         throw new IllegalArgumentException();
     }
 
     public String inputPlayerNumber(Scanner scanner) {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(RefereeCall.REQUEST_NUMBER.getCall());
         String playerNumber = scanner.nextLine();
         number.checkCorrectCondition(playerNumber);
         return playerNumber;

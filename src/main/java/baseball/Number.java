@@ -6,8 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Number {
+    private static final int START_INCLUSIVE = 100;
+    private static final int END_INCLUSIVE = 999;
+
     public String getComputerNumber() {
-        int computerNumberInt = RandomUtils.nextInt(100, 999);
+        int computerNumberInt = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
         String computerNumber = computerNumberInt + "";
         while (hasZero(computerNumber) || isRepeated(computerNumber)) {
             computerNumber = getComputerNumber();
@@ -26,15 +29,14 @@ public class Number {
 
     public boolean isThreeDigitNumber(String number) {
         int playerNumberInt = Integer.parseInt(number);
-        if (100 <= playerNumberInt && playerNumberInt < 1000) {
+        if (START_INCLUSIVE <= playerNumberInt && playerNumberInt <= END_INCLUSIVE) {
             return true;
         }
         return false;
     }
 
     public boolean hasZero(String number) {
-        String zero = "0";
-        if (number.contains(zero)) {
+        if (number.contains("0")) {
             return true;
         }
         return false;

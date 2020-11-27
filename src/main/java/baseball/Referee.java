@@ -1,5 +1,7 @@
 package baseball;
 
+import enums.RefereeCall;
+
 public class Referee {
 
     public int[] compareNumberOfPlayerAndComputer(String playerNumber, String computerNumber) {
@@ -42,13 +44,13 @@ public class Referee {
     public String getHint(int strike, int ball) {
         StringBuilder hint = new StringBuilder("");
         if (strike == 0 && ball == 0) {
-            hint.append("낫싱");
+            hint.append(RefereeCall.NOTHING.getCall());
         }
         if (ball != 0) {
-            hint.append(ball + "볼 ");
+            hint.append(ball + RefereeCall.BALL.getCall());
         }
         if (strike != 0) {
-            hint.append(strike + "스트라이크");
+            hint.append(strike + RefereeCall.STRIKE.getCall());
         }
         return hint.toString();
     }
