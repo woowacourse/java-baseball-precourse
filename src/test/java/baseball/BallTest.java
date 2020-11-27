@@ -9,6 +9,7 @@ class BallTest {
     @Test
     public void 정상범위보다_작은_경우() {
         assertThrows(IllegalArgumentException.class, () -> new Ball(-1));
+        assertThrows(IllegalArgumentException.class, () -> new Ball(0));
     }
 
     @Test
