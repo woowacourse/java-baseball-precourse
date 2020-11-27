@@ -8,7 +8,20 @@ public class InputCheckUtils {
 	
 	private InputCheckUtils() {
 	}
-
+	
+	public static boolean isVaild(String input) {
+		if (!isNumber(input)) {
+			return false;
+		}
+		if (!isRightRange(input)) {
+			return false;
+		}
+		if (!isAllUniqueElement(input)) {
+			return false;
+		}
+		return true;
+	}
+	
 	public static boolean isAllUniqueElement(String input) {
 		HashSet<Character> inputChracterSet = new HashSet<Character>();
 		for (char ch : input.toCharArray()) {
