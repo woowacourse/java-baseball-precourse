@@ -20,10 +20,13 @@ public class GameController {
 
     // 플레이어로부터 3자리 수를 입력받는 함수
     public static void scanPlayerNumber(Scanner scanner) {
-        System.out.print(PLAYER_NUMBER_INFO);
+        System.out.println(PLAYER_NUMBER_INFO);
         scannerNumber = scanner.nextLine();
+        validatePlayerNumber(scannerNumber);
+    }
 
-        // 정상적인 입력인 경우
+    // 플레이어의 입력이 정상적인 입력인지 검증하는 함수
+    public static void validatePlayerNumber(String scannerNumber) {
         if (InputUtils.checkValidation(scannerNumber)) {
             // String 형태를 ArrayList<Integer> 형태로 변환한다.
             ArrayList<Integer> playerNumber = convertPlayerNumber(scannerNumber);
