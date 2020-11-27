@@ -1,7 +1,10 @@
 package baseball;
 
 import utils.RandomUtils;
+import utils.InputCheckUtils;
+
 import static baseball.Config.*;
+import static utils.TextResource.STATEMENT_NOT_VALID_INPUT;
 
 public class BaseBallGameController {
     private Player player = null;
@@ -25,4 +28,23 @@ public class BaseBallGameController {
         }
     }
 
+    private boolean checkValidInput(String inputNumber) {
+        try {
+            if (!InputCheckUtils.isNumeric(inputNumber)) {
+                throw new IllegalArgumentException();
+            }
+
+            if (inputNumber.length() > NUMBER_OF_DIGITS || inputNumber.length() < NUMBER_OF_DIGITS) {
+                throw new IllegalArgumentException();
+            }
+
+            if (InputCheckUtils.hasDuplicated(inputNumber)) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println(STATEMENT_NOT_VALID_INPUT);
+            return false;
+        }
+        return true;
+    }
 }
