@@ -20,6 +20,10 @@ public class UserNumbers {
         }
     }
 
+    public int numberIndexOf(int index) {
+        return numbers.get(index);
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }

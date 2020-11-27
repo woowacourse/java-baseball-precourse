@@ -8,6 +8,8 @@ import java.util.List;
 import utils.RandomUtils;
 
 public class ComputerNumbers {
+    private static final int GAME_MIN_NUMBER = 123;
+    private static final int GAME_MAX_NUMBER = 987;
     private final List<Integer> numbers;
 
     public ComputerNumbers() {
@@ -17,12 +19,12 @@ public class ComputerNumbers {
     public void generateNumber() {
         do {
             this.clear();
-            convertIntToList(RandomUtils.nextInt(123, 987));
+            convertIntToList(RandomUtils.nextInt(GAME_MIN_NUMBER, GAME_MAX_NUMBER));
         } while (!NumberChecker.isValidNumbers(numbers, COMPUTER));
         // System.out.println("컴퓨터의 번호가 유효함 : " + numbers.toString());
     }
 
-    private void convertIntToList(int randomNumber) {
+    public void convertIntToList(int randomNumber) {
         char[] digits = convertIntToStr(randomNumber).toCharArray();
         for (char digit : digits) {
             numbers.add(Integer.parseInt(Character.toString(digit)));
@@ -39,5 +41,9 @@ public class ComputerNumbers {
 
     public void clear() {
         numbers.clear();
+    }
+
+    public int numberIndexOf(int index) {
+        return numbers.get(index);
     }
 }

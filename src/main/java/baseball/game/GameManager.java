@@ -8,6 +8,7 @@ import baseball.checker.AnswerChecker;
 import java.util.Scanner;
 
 public class GameManager {
+    private static final String CORRECT_ENDING_MESSAGE = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final Players players;
     private final AnswerChecker answerChecker;
 
@@ -20,7 +21,8 @@ public class GameManager {
         players.generateComputerNumber();
         User user = players.getUser();
         do {
-            answerChecker.clearUserNumbersAndResult();
+            answerChecker.clear();
+            players.clearUserNumbers();
             user.getUserInput();
             answerChecker.calculateResult();
             answerChecker.printResult();
@@ -29,7 +31,7 @@ public class GameManager {
     }
 
     private void printCorrectionAndEndingMessage() {
-        System.out.println(BASEBALL_NUMBERS_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(BASEBALL_NUMBERS_SIZE + CORRECT_ENDING_MESSAGE);
     }
 
     public boolean isContinue() {

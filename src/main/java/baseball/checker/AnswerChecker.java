@@ -1,11 +1,9 @@
 package baseball.checker;
 
+import static baseball.checker.EachNumberResultType.*;
 import static baseball.checker.NumberChecker.*;
 
-import baseball.players.Computer;
 import baseball.players.Players;
-import baseball.players.User;
-import java.util.List;
 
 public class AnswerChecker {
     private final Players players;
@@ -21,26 +19,27 @@ public class AnswerChecker {
     }
 
     public void calculateResult() {
-        User user = players.getUser();
-        System.out.println("컴퓨터의 숫자 : " + players.getComputer().getNumbers().toString());
-        List<Integer> userNumbers = user.getUserNumbers();
+        // System.out.println("컴퓨터의 숫자들 : " + players.getComputer().getNumbers().toString());
         for (int userIndex = 0; userIndex < BASEBALL_NUMBERS_SIZE; userIndex++) {
-            int userNumber = userNumbers.get(userIndex);
-            calculateStrikeOrBall(userIndex, userNumber);
+            checkComputerNumbers(userIndex);
         }
     }
 
-    private void calculateStrikeOrBall(int userIndex, int userNumber) {
-        Computer computer = players.getComputer();
-        List<Integer> computerNumbers = computer.getNumbers();
-        if (computerNumbers.get(userIndex) == userNumber) {
-            result.strike();
-            return;
-        }
+    private void checkComputerNumbers(int userIndex) {
         for (int comIndex = 0; comIndex < BASEBALL_NUMBERS_SIZE; comIndex++) {
-            if (computerNumbers.get(comIndex) == userNumber && comIndex != userIndex) {
-                result.ball();
-            }
+            checkStrikeOrBall(userIndex, comIndex);
+        }
+    }
+
+    private void checkStrikeOrBall(int userIndex, int comIndex) {
+        StrikeOrBallChecker checker
+            = new StrikeOrBallChecker(players.getUser(), players.getComputer());
+        EachNumberResultType type = checker.resultOfEachNumber(userIndex, comIndex);
+        if (type == STRIKE) {
+            result.strike();
+        }
+        if (type == BALL) {
+            result.ball();
         }
     }
 
@@ -48,9 +47,7 @@ public class AnswerChecker {
         result.printResult();
     }
 
-    public void clearUserNumbersAndResult() {
-        User user = players.getUser();
-        user.clearNumbers();
-        result.clearResult();
+    public void clear() {
+        result.clear();
     }
 }

@@ -12,7 +12,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class UserInputCheckTest {
+public class InputCheckTest {
     private final CheckerType userType = USER;
     private final UserNumbers userNumbers = new UserNumbers();
     // 올바른 입력
@@ -20,7 +20,7 @@ public class UserInputCheckTest {
     // 세 자리가 아닌 입력, 0이 포함된 숫자, 중복된 수가 있는 입력
     private final String[] notCorrectOnlyNumbers = {"1", "12", "1234", "120", "122"};
     // 세 자리가 아닌 입력, 1~9 이외의 문자 포함
-    private final String[] notCorrectWitNotNumbers = {"", "1 3", "3k5", "1\n", "3\t6", "\n\t\r"};
+    private final String[] notCorrectWitNotNumbers = {"", "\n", " ", "\t", "1 3", "3k5", "1\n", "3\t6", "\n\t\r"};
 
     @AfterEach
     void clearUserNumbers() {

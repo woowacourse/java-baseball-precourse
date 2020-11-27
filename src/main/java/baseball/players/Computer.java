@@ -15,6 +15,15 @@ public class Computer {
         computerNumbers.generateNumber();
     }
 
+    public int numberIndexOf(int index) {
+        return computerNumbers.numberIndexOf(index);
+    }
+
+    public void initializeNumbersWith(int numbers) {
+        computerNumbers.clear();
+        computerNumbers.convertIntToList(numbers);
+    }
+
     public List<Integer> getNumbers() {
         return computerNumbers.getNumbers();
     }

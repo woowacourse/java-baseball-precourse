@@ -1,5 +1,6 @@
 package baseball.players;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Players {
@@ -21,5 +22,9 @@ public class Players {
 
     public Computer getComputer() {
         return computer;
+    }
+
+    public void clearUserNumbers() {
+        user.clearNumbers();
     }
 }
