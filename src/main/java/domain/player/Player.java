@@ -1,15 +1,23 @@
 package domain.player;
 
+import domain.computer.Computer;
+
 import java.util.*;
 
 public class Player {
     private boolean isStartingGame = false;
     private String userInput;
     String[] seperatedUserInputByLetter;
+    private Computer computer = new Computer();
 
     public void startGame(Scanner scanner) {
         isStartingGame = true;
-        enterNumberWith(scanner);
+        while (isStartingGame) {
+            enterNumberWith(scanner);
+            if (computer.isCorrectAnswer(seperatedUserInputByLetter)) {
+                isStartingGame = false;
+            }
+        }
     }
 
     public boolean isStartingGame() {
