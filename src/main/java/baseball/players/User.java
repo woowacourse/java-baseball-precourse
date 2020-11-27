@@ -1,7 +1,5 @@
 package baseball.players;
 
-import static baseball.checker.types.CheckerType.*;
-
 import baseball.checker.NumberChecker;
 import baseball.players.numbers.UserNumbers;
 import java.util.Scanner;
@@ -26,7 +24,7 @@ public class User {
     public void insertNewUserNumbers(String userInput) {
         userNumbers.clear();
         userNumbers.convertToList(userInput);
-        NumberChecker.isValidNumbers(userNumbers.getNumbers(), USER);
+        NumberChecker.checkNumbers(userNumbers.getNumbers());
     }
 
     public boolean isUserWantToContinue() {

@@ -11,10 +11,14 @@ public class UserNumbers {
     }
 
     public void convertToList(String userInput) {
+        for (char number : userInput.toCharArray()) {
+            checkInputError(number);
+        }
+    }
+
+    private void checkInputError(char number) {
         try {
-            for (char number : userInput.toCharArray()) {
-                this.numbers.add(Integer.parseInt(String.valueOf(number)));
-            }
+            numbers.add(Integer.parseInt(String.valueOf(number)));
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }

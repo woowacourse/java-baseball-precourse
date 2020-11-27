@@ -31,7 +31,7 @@ public class GameManager {
     }
 
     private void printCorrectionAndEndingMessage() {
-        System.out.println(BASEBALL_NUMBERS_SIZE + CORRECT_ENDING_MESSAGE);
+        System.out.println(NUMBERS_SIZE + CORRECT_ENDING_MESSAGE);
     }
 
     public boolean isContinue() {

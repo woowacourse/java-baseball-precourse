@@ -1,11 +1,9 @@
 package players.user;
 
-import static baseball.checker.types.CheckerType.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import baseball.checker.types.CheckerType;
 import baseball.checker.NumberChecker;
 import baseball.players.numbers.UserNumbers;
 import org.junit.jupiter.api.AfterEach;
@@ -13,7 +11,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class InputCheckTest {
-    private final CheckerType userType = USER;
     private final UserNumbers userNumbers = new UserNumbers();
     // 올바른 입력
     private final String[] correctUserInputs = {"123", "329", "912", "813"};
@@ -45,7 +42,7 @@ public class InputCheckTest {
         for (String input : correctUserInputs) {
             userNumbers.convertToList(input);
             assertDoesNotThrow(() -> {
-                assertTrue(NumberChecker.isValidNumbers(userNumbers.getNumbers(), userType));
+                NumberChecker.checkNumbers(userNumbers.getNumbers());
             });
             userNumbers.clear();
         }
@@ -62,13 +59,13 @@ public class InputCheckTest {
         });
     }
 
-    @DisplayName("올바른 입력 조건 검사시, IllegalArgumentException 발생")
+    @DisplayName("세 자리가 아닌 입력, 0이 포함된 숫자, 중복된 수가 있는 입력 에러")
     @Test
     void notCorrectOnlyNumbersValidation() {
         for (String input : notCorrectOnlyNumbers) {
             userNumbers.convertToList(input);
             assertThrows(IllegalArgumentException.class, () -> {
-                NumberChecker.isValidNumbers(userNumbers.getNumbers(), userType);
+                NumberChecker.checkNumbers(userNumbers.getNumbers());
             });
             userNumbers.clear();
         }

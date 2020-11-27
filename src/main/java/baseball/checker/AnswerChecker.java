@@ -20,13 +20,13 @@ public class AnswerChecker {
     }
 
     public void calculateResult() {
-        for (int userIndex = 0; userIndex < BASEBALL_NUMBERS_SIZE; userIndex++) {
+        for (int userIndex = 0; userIndex < NUMBERS_SIZE; userIndex++) {
             checkComputerNumbers(userIndex);
         }
     }
 
     private void checkComputerNumbers(int userIndex) {
-        for (int comIndex = 0; comIndex < BASEBALL_NUMBERS_SIZE; comIndex++) {
+        for (int comIndex = 0; comIndex < NUMBERS_SIZE; comIndex++) {
             checkStrikeOrBall(userIndex, comIndex);
         }
     }

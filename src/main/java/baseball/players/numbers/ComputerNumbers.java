@@ -1,6 +1,5 @@
 package baseball.players.numbers;
 
-import static baseball.checker.types.CheckerType.COMPUTER;
 
 import baseball.checker.NumberChecker;
 import java.util.ArrayList;
@@ -20,7 +19,16 @@ public class ComputerNumbers {
         do {
             this.clear();
             convertIntToList(RandomUtils.nextInt(GAME_MIN_NUMBER, GAME_MAX_NUMBER));
-        } while (!NumberChecker.isValidNumbers(numbers, COMPUTER));
+        } while (!isAllowedNumbers(numbers));
+    }
+
+    private boolean isAllowedNumbers(List<Integer> numbers) {
+        try {
+            NumberChecker.checkNumbers(numbers);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
     }
 
     public void convertIntToList(int randomNumber) {
