@@ -1,11 +1,24 @@
 package baseball;
 
+import utils.RandomUtils;
 import java.util.Scanner;
 
 public class Application {
 
     private static int[] getRandomNumber() {
-        return new int[0];
+        int count = 0;
+        int temp;
+        int[] answer = new int[3];
+        boolean[] visited = new boolean[10];
+        while (count < 3) {
+            temp = RandomUtils.nextInt(1, 9);
+            if (!visited[temp]) {
+                answer[count] = temp;
+                visited[temp] = true;
+                count++;
+            }
+        }
+        return answer;
     }
 
     private static int[] getUserNumber(Scanner scanner) {
