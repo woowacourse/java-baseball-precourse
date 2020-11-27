@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class InputOutputManager {
     static final String REQUEST_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     static final String WRONG_VALUE_MESSAGE = "잘못된 값입니다.";
+    static final String WIN_PRAISE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     static final String NOTHING = "낫싱";
     static final String STRIKE_FORMAT = "%d스트라이크 ";
     static final String BALL_FORMAT = "%d볼";
@@ -72,5 +73,14 @@ public class InputOutputManager {
         }
 
         System.out.println();
+    }
+
+    public void printWinMessage(){
+        System.out.println(WIN_PRAISE_MESSAGE);
+    }
+
+    public int askRestartGame(){
+        return 0;
+        // TODO 재시작할지 물어보는 기능 작성
     }
 }

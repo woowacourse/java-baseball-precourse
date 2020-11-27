@@ -7,6 +7,7 @@ import baseball.modules.NumberGenerator;
 
 public class GameManager {
     public static final int NUMBER_SIZE = 3;
+    public static final int ANSWER_YES = 1;
 
     InputOutputManager inputOutputManager;
     NumberGenerator numberGenerator;
@@ -65,11 +66,21 @@ public class GameManager {
         inputOutputManager.printResult(strike, ball);
 
         if(strike == NUMBER_SIZE){
-            // TODO: 승리 시의 처리
+            doItWhenGameWin();
             return;
         }
 
         // 숫자를 모두 맞추지 못했다면 다시 한 라운드 시작
         playOneRound();
+    }
+
+    private void doItWhenGameWin(){
+        inputOutputManager.printWinMessage();
+        int answer = inputOutputManager.askRestartGame();
+        if(answer == ANSWER_YES){
+            run();
+        }
+        
+        // 게임 종료
     }
 }
