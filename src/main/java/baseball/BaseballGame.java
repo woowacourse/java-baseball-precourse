@@ -29,7 +29,7 @@ public class BaseballGame {
         int strike = CompareUtils.getStrike();
         int ball = CompareUtils.getBall();
 
-
+        OutputView.showHint(strike, ball);
 
     }
 }
