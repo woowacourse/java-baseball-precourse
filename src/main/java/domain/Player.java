@@ -1,5 +1,8 @@
 package domain;
 
+import static utils.NumberUtils.checkNatureNumber;
+import static utils.NumberUtils.isNumeric;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +19,13 @@ public class Player {
     }
 
     private List<Integer> createNumbers(String input) {
+        validateNumber(input);
         return Arrays.stream(input.split(DELIMITER)).map(Integer::parseInt)
             .collect(Collectors.toList());
+    }
+
+    private void validateNumber(String input) {
+        isNumeric(input);
+        checkNatureNumber(Integer.parseInt(input));
     }
 }

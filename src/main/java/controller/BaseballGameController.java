@@ -22,18 +22,10 @@ public class BaseballGameController {
     }
 
     public void play() {
-        String input = getInputNumber();
-        BaseballNumber playerBaseballNumber = player.createBaseballNumber(input);
+        BaseballNumber playerBaseballNumber = player.createBaseballNumber(getInput());
     }
 
-    private String getInputNumber() {
-        String number = scanner.nextLine();
-        validateNumber(number);
-        return number;
-    }
-
-    private void validateNumber(String number) {
-        NumberUtils.isNumeric(number);
-        NumberUtils.checkNatureNumber(Integer.parseInt(number));
+    private String getInput() {
+        return scanner.nextLine();
     }
 }
