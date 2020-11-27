@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class Game {
 
+    private final int GAME_START_CODE = 1;
+
     private final Scanner scanner;
 
     public Game(Scanner scanner) {
@@ -15,7 +17,13 @@ public class Game {
     }
 
     public void play() {
+        while (true) {
+            playingPhase();
 
+            if (!isContinue()) {
+                break;
+            }
+        }
     }
 
     private void playingPhase() {
@@ -36,6 +44,16 @@ public class Game {
 
     private boolean isGameEnd(String gameResult) {
         return gameResult.equals("3스트라이크");
+    }
+
+    private boolean isContinue() {
+        int userInput = getUserMenuInput();
+
+        if (userInput == GAME_START_CODE) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private List<Integer> getUserBaseballInput() {
