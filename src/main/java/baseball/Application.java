@@ -8,9 +8,16 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
         int[] computerNumber = generateRandomNumber();
-        int[] playerNumber = getPlayerNumber(scanner);
-        String result = getResult(computerNumber, playerNumber);
-        System.out.println(result);
+        while (true) {
+            int[] playerNumber = getPlayerNumber(scanner);
+            String result = getResult(computerNumber, playerNumber);
+            System.out.println(result);
+
+            if (result.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
     // 컴퓨터의 숫자 배열과 플레이어의 숫자 배열을 비교하여 결과를 돌려주는 기능
