@@ -21,10 +21,6 @@ public class BaseBall {
         randNum = "";
     }
 
-    public String getRandNum() {
-        return randNum;
-    }
-
     public void init() {
         randNum = makeRandNum(DIGIT_NUM);
     }
