@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class InputOutputManager {
     static final int NUMBER_SIZE = 3;
+    static final String REQUEST_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    static final String WRONG_VALUE_MESSAGE = "잘못된 값입니다.";
 
     Scanner scanner;
     
@@ -12,12 +14,12 @@ public class InputOutputManager {
     }
 
     public int[] askUserInputNumber(){
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(REQUEST_INPUT_MESSAGE);
         String inputNumber = scanner.nextLine();
         try{
             return parseToIntArray(inputNumber);
         } catch(Exception e){
-            System.out.println("잘못된 값입니다.");
+            System.out.println(WRONG_VALUE_MESSAGE);
             return askUserInputNumber();
         }
     }
