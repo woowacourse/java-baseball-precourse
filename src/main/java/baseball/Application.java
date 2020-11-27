@@ -6,7 +6,7 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
 
-        boolean restart;
+        boolean restart = false;
         GameSystem gameSystem = new GameSystem();
 
         do {

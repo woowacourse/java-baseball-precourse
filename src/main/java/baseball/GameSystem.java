@@ -8,6 +8,8 @@ public class GameSystem {
     private static final String RESTART = "1";
     private static final String END = "2";
     private static final int MAX_DIGIT = 3;
+    private static final int MIN = 1;
+    private static final int MAX = 9;
 
     // 정답이 될 컴퓨터의 3자리 수
     private int[] answer;
@@ -38,12 +40,13 @@ public class GameSystem {
     }
 
     private void setAnswer() {
-        boolean[] numCheck = new boolean[10];
+        boolean[] numCheck = new boolean[MAX + 1];
         int digit = 0;
         int tmpNum;
 
         while (digit < MAX_DIGIT) {
-            tmpNum = RandomUtils.nextInt(1, 9);
+            tmpNum = RandomUtils.nextInt(MIN, MAX);
+
             if (!numCheck[tmpNum]) {
                 answer[digit] = tmpNum;
                 numCheck[tmpNum] = true;
@@ -119,6 +122,7 @@ public class GameSystem {
 
         while (!validInput) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
             try {
                 restart = checkRestartOption(sc);
                 validInput = true;
