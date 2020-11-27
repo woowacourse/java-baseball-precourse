@@ -30,6 +30,7 @@ public class Application {
     /* 유저가 입력한 숫자가 올바른 형식인지 검사하는 함수 */
     public static boolean isValidInput(String inputValue){
         boolean isValid=true;
+
         for(int i=0;i<inputValue.length();i++){
             // 개별 문자에 대해 형식이 맞는지 검사
             boolean isNumber=isValidCharacter(inputValue.charAt(i));
