@@ -3,16 +3,18 @@ package baseball;
 import domain.*;
 import utils.StringConverter;
 import validator.PositiveIntegerValidator;
+import validator.RestartCommandValidator;
 import view.InputView;
 import view.OutputView;
 
 import java.util.Scanner;
 
 public class Application {
+    private static final String TERMINATE = "2";
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
-        playOneCycle(scanner);
     }
 
     private static void playOneCycle(Scanner scanner) {
@@ -41,6 +43,23 @@ public class Application {
 
     private static void terminateIfThreeStrike(Score score, GameStatus gameStatus) {
         if (score.isThreeStrike()) {
+            gameStatus.terminate();
+        }
+    }
+
+    private static void decideRestartOrTerminate(Scanner scanner, GameStatus gameStatus) {
+        String restartCommand = InputView.getRestartCommand(scanner);
+        try {
+            RestartCommandValidator.validateRestartCommand(restartCommand);
+        } catch (IllegalArgumentException e) {
+            OutputView.printMessageAndNewLine(e.getMessage());
+            decideRestartOrTerminate(scanner, gameStatus);
+        }
+        terminateIfRequest(restartCommand, gameStatus);
+    }
+
+    private static void terminateIfRequest(String restartCommand, GameStatus gameStatus) {
+        if (restartCommand.equals(TERMINATE)) {
             gameStatus.terminate();
         }
     }
