@@ -12,7 +12,7 @@ package baseball.domain;
 
 import utils.RandomUtils;
 
-public class GenerateRandomNumber {
+public class RandomNumberGenerator {
 
     public String getRandomNumber() {
         String randomNumber = "";
