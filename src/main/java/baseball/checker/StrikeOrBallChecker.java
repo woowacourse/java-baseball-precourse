@@ -1,9 +1,10 @@
 package baseball.checker;
 
-import static baseball.checker.EachNumberResultType.BALL;
-import static baseball.checker.EachNumberResultType.NOTHING;
-import static baseball.checker.EachNumberResultType.STRIKE;
+import static baseball.checker.types.EachNumberResultType.BALL;
+import static baseball.checker.types.EachNumberResultType.NOTHING;
+import static baseball.checker.types.EachNumberResultType.STRIKE;
 
+import baseball.checker.types.EachNumberResultType;
 import baseball.players.Computer;
 import baseball.players.User;
 
@@ -19,10 +20,10 @@ public class StrikeOrBallChecker {
     public EachNumberResultType resultOfEachNumber(int userIndex, int computerIndex) {
         int userNumber = user.numberIndexOf(userIndex);
         int computerNumber = computer.numberIndexOf(computerIndex);
-        if (userNumber == computerNumber && userIndex == computerIndex) {
+        if ((userNumber == computerNumber) && (userIndex == computerIndex)) {
             return STRIKE;
         }
-        if (userNumber == computerNumber && userIndex != computerIndex) {
+        if ((userNumber == computerNumber) && (userIndex != computerIndex)) {
             return BALL;
         }
         return NOTHING;

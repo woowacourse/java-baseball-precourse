@@ -1,11 +1,11 @@
 package players.user;
 
-import static baseball.checker.CheckerType.*;
+import static baseball.checker.types.CheckerType.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import baseball.checker.CheckerType;
+import baseball.checker.types.CheckerType;
 import baseball.checker.NumberChecker;
 import baseball.players.numbers.UserNumbers;
 import org.junit.jupiter.api.AfterEach;
@@ -20,7 +20,8 @@ public class InputCheckTest {
     // 세 자리가 아닌 입력, 0이 포함된 숫자, 중복된 수가 있는 입력
     private final String[] notCorrectOnlyNumbers = {"1", "12", "1234", "120", "122"};
     // 세 자리가 아닌 입력, 1~9 이외의 문자 포함
-    private final String[] notCorrectWitNotNumbers = {"", "\n", " ", "\t", "1 3", "3k5", "1\n", "3\t6", "\n\t\r"};
+    private final String[] notCorrectWitNotNumbers
+        = {"", "\n", " ", "\t", "1 3", "3k5", "1\n", "3\t6", "\n\t\r"};
 
     @AfterEach
     void clearUserNumbers() {

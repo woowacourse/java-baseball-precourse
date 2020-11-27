@@ -1,8 +1,9 @@
 package baseball.checker;
 
-import static baseball.checker.EachNumberResultType.*;
+import static baseball.checker.types.EachNumberResultType.*;
 import static baseball.checker.NumberChecker.*;
 
+import baseball.checker.types.EachNumberResultType;
 import baseball.players.Players;
 
 public class AnswerChecker {

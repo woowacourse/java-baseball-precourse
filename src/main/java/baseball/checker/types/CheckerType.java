@@ -1,4 +1,4 @@
-package baseball.checker;
+package baseball.checker.types;
 
 public enum CheckerType {
     USER,

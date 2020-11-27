@@ -1,6 +1,6 @@
 package baseball.players;
 
-import static baseball.checker.CheckerType.*;
+import static baseball.checker.types.CheckerType.*;
 
 import baseball.checker.NumberChecker;
 import baseball.players.numbers.UserNumbers;

@@ -1,7 +1,8 @@
 package baseball.checker;
 
-import static baseball.checker.CheckerType.*;
+import static baseball.checker.types.CheckerType.*;
 
+import baseball.checker.types.CheckerType;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,8 +14,8 @@ public class NumberChecker {
 
     public static boolean isValidNumbers(List<Integer> numbers, CheckerType checkerType) {
         if (numbers.size() != BASEBALL_NUMBERS_SIZE
-                || !isCorrectRange(numbers)
-                || !isNotDuplicated(numbers)) {
+            || !isCorrectRange(numbers)
+            || !isNotDuplicated(numbers)) {
             if (checkerType == USER) {
                 throw new IllegalArgumentException();
             }

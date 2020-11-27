@@ -1,6 +1,6 @@
 package baseball.players.numbers;
 
-import static baseball.checker.CheckerType.COMPUTER;
+import static baseball.checker.types.CheckerType.COMPUTER;
 
 import baseball.checker.NumberChecker;
 import java.util.ArrayList;

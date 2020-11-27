@@ -1,6 +1,6 @@
 package players.computer;
 
-import static baseball.checker.CheckerType.*;
+import static baseball.checker.types.CheckerType.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
