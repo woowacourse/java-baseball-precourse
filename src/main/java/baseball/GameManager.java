@@ -23,5 +23,39 @@ public class GameManager {
         playOneRound();
     }
 
-    private void playOneRound(){}
+    private void playOneRound(){
+        int[] generatedNumber = numberGenerator.getNumber();
+        int[] inputNumber = inputOutputManager.askUserInputNumber();
+
+        compare(inputNumber, generatedNumber);
+        // TODO 결과에 대한 처리
+    }
+
+    private void compare(int[] inputNumber, int[] generatedNumber){
+        // TODO 변수 인수값에 대한 예외 처리
+
+        strike = 0;
+        ball = 0;
+
+        for(int i = 0; i < inputNumber.length; i++){
+            if(inputNumber[i] == generatedNumber[i]){
+                strike++;
+                continue;
+            }
+
+            if(isContains(generatedNumber, inputNumber[i])){
+                ball++;
+            }
+        }
+    }
+
+    private boolean isContains(int[] array, int value){
+        for(int i = 0; i < array.length; i++){
+            if(array[i] == value){
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
