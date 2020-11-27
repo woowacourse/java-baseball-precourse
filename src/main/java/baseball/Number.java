@@ -3,7 +3,6 @@ package baseball;
 import utils.Checker;
 import utils.RandomUtils;
 
-
 public class Number {
 
     private int[] target;
@@ -64,5 +63,4 @@ public class Number {
         }
         return ballCnt;
     }
-
 }

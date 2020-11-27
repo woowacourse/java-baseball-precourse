@@ -1,6 +1,5 @@
 package baseball;
 
-import utils.Checker;
 
 import java.util.Scanner;
 
@@ -26,6 +25,7 @@ public class Application {
                 continue;
             }
         }
+
 
         scanner.close();
     }
