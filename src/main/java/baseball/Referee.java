@@ -4,7 +4,7 @@ import enums.RefereeCall;
 
 public class Referee {
 
-    public int[] compareNumberOfPlayerAndComputer(String playerNumber, String computerNumber) {
+    public int[] comparePlayerWithComputer(String playerNumber, String computerNumber) {
         return getStrikeAndBallCount(playerNumber, computerNumber);
     }
 
@@ -13,7 +13,8 @@ public class Referee {
         int strike = 0;
         String[] playerDigitArr = playerNumber.split("");
         for (int i = 0; i < playerDigitArr.length; i++) {
-            int indexOfSameDigitOfComputerNumber = getIndexOfSameDigitOfComputerNumber(playerDigitArr[i], computerNumber);
+            int indexOfSameDigitOfComputerNumber =
+                    getIndexOfSameDigitOfComputerNumber(playerDigitArr[i], computerNumber);
             strike += getStrikeCount(indexOfSameDigitOfComputerNumber, i);
             ball += getBallCount(indexOfSameDigitOfComputerNumber, i);
         }
@@ -27,7 +28,8 @@ public class Referee {
         return -1;
     }
 
-    public int getStrikeCount(int indexOfSameDigitOfComputerNumber, int indexOfSameDigitOfPlayerNumber) {
+    public int getStrikeCount(int indexOfSameDigitOfComputerNumber,
+                              int indexOfSameDigitOfPlayerNumber) {
         if (indexOfSameDigitOfComputerNumber == indexOfSameDigitOfPlayerNumber) {
             return 1;
         }
