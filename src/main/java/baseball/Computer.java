@@ -13,7 +13,7 @@ public class Computer {
     public void startGame() {
         this.balls = NumberGenerator.generateNumber();
         Alert.enterNumber();
-
+        player.enterNumber();
     }
 
 }

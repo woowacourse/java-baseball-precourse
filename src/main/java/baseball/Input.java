@@ -12,6 +12,7 @@ public class Input {
     private static final int NUMBER_INPUT_LENGTH = 3;
     private static final int ZERO = 0;
     private static final int DIVIDING_NUMBER = 10;
+
     private Scanner scanner;
 
     public Input(Scanner scanner) {
@@ -19,7 +20,13 @@ public class Input {
     }
 
     public Balls enterNumberInput() {
-        int input = scanner.nextInt();
+        int input = ZERO;
+
+        try {
+            input = scanner.nextInt();
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ABNORMAL_INPUT);
+        }
 
         validateLength(input, NUMBER_INPUT_LENGTH);
 
@@ -53,6 +60,4 @@ public class Input {
     private int getNumberInputLength(int input) {
         return (int) (Math.log10(input) + 1);
     }
-
-
 }

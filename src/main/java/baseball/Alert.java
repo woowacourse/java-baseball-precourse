@@ -10,7 +10,7 @@ public class Alert {
     private static final int ZERO = 0;
 
     public static void enterNumber() {
-        System.out.println(NUMBER_INPUT);
+        System.out.print(NUMBER_INPUT);
     }
 
     public static void finishGame() {
@@ -31,6 +31,7 @@ public class Alert {
         if (strike == ZERO) {
             sayOnlyBall(ball);
         }
+
         System.out.println(ball + BALL + " " + strike + STRIKE);
     }
 

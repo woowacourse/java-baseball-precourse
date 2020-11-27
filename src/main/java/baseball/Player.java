@@ -10,4 +10,7 @@ public class Player {
         this.keyboard = new Input(scanner);
     }
 
+    public void enterNumber(){
+        this.balls = keyboard.enterNumberInput();
+    }
 }
