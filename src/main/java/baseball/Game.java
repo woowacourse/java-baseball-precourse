@@ -28,13 +28,20 @@ public class Game {
 
         int count = 0;
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++ ){
-                if (targetArray[i] == inputArray[j]) {
-                    count += 1;
-                }
+            if (containInt(targetArray[i], inputArray)) {
+                count += 1;
             }
         }
         return count;
+    }
+
+    private boolean containInt(int number, int[] Array) {
+        for ( int a : Array) {
+            if ( a == number) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private String stringifyHint(int strikeCount, int ballCount) {

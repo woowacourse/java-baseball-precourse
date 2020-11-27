@@ -12,7 +12,8 @@ public class GameManagement {
         boolean isCorrect = false;
         while (!isCorrect) {
             int guess = askNumber(scanner);
-            isCorrect = isCorrect(guess);
+            printHint(guess);
+            isCorrect = game.isAnswer(guess);
         }
     }
 
@@ -31,10 +32,9 @@ public class GameManagement {
         throw new IllegalArgumentException("Input should be Distinct Three Digits Integer");
     }
 
-    private static boolean isCorrect(int guess) {
+    private static void printHint(int guess) {
         String hint = game.getHint(guess);
         System.out.println(hint);
-        return game.isAnswer(guess);
     }
 
     public static boolean askReGame(Scanner scanner) {

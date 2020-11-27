@@ -8,7 +8,6 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
 
         boolean onGame = true;
-
         while (onGame) {
             GameManagement.playGame(scanner);
             onGame = GameManagement.askReGame(scanner);
