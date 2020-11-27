@@ -7,15 +7,16 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
-        int userInput;
+        String userInput;
         int[] inputNumber;
+        int validatedNumber;
         int[] randomNumber;
         boolean gameResult = false;
         while (!gameResult) {
             System.out.println("숫자를 입력해주세요 : ");
-            userInput = scanner.nextInt();
-            NumberUtils.validateInput(userInput);
-            inputNumber = NumberUtils.createInputNumber(userInput);
+            userInput = scanner.next();
+            validatedNumber = NumberUtils.validateInput(userInput);
+            inputNumber = NumberUtils.createInputNumber(validatedNumber);
             randomNumber = NumberUtils.createRandomNumber();
             gameResult = Baseball.playGame(inputNumber, randomNumber);
             if (gameResult) {

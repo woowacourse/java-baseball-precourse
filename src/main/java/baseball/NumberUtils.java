@@ -5,10 +5,18 @@ import utils.RandomUtils;
 
 public class NumberUtils {
 
-    public static void validateInput(int numbers) {
+    public static int validateInput(String inputString) {
+        int numbers;
+        for (int i = 0; i < inputString.length(); i++) {
+            if (!Character.isDigit(inputString.charAt(i))) {
+                throw new IllegalArgumentException("3자리 수가 아닙니다.");
+            }
+        }
+        numbers = Integer.parseInt(inputString);
         if (numbers < 100 || numbers > 1000) {
             throw new IllegalArgumentException("3자리 수가 아닙니다.");
         }
+        return numbers;
     }
 
     public static int[] createInputNumber(int numbers) {
