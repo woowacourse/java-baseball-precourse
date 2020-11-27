@@ -17,4 +17,10 @@ public class NumberUtils {
         }
         return true;
     }
+
+    public static void checkNatureNumber(int number) {
+        if (number <= 0) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

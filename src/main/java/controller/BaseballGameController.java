@@ -32,7 +32,8 @@ public class BaseballGameController {
         return number;
     }
 
-    private boolean validateNumber(String number) {
-        return NumberUtils.isNumeric(number);
+    private void validateNumber(String number) {
+        NumberUtils.isNumeric(number);
+        NumberUtils.checkNatureNumber(Integer.parseInt(number));
     }
 }
