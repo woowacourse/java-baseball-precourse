@@ -62,19 +62,26 @@ public class Application {
 
         while (!success) {
             System.out.print("숫자를 입력해주세요 : ");
-            int[] guess = gameInput();
+            success = hintAndSuccessDecide(gameInput(), choice);
+        }
+    }
 
-            int strike = 0;
-            int ball = 0;
+    private static boolean hintAndSuccessDecide(int[] guess, int[] choice) {
+        int strike = 0;
+        int ball = 0;
 
-            //hint
-
-            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
-
-            if (strike == 3) {
-                success = true;
+        for (int i=0; i<3; i++) {
+            if (guess[i] == choice[i]) {
+                strike++;
+                continue;
+            }
+            if (guess[i] == choice[(i+1)%3] | guess[i] == choice[(i-1+3)%3]) {
+                ball++;
             }
         }
+        System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+
+        return strike == 3;
     }
 
     private static boolean gameRestartInput() {
