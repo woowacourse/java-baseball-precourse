@@ -1,4 +1,4 @@
-package modules;
+package baseball.modules;
 
 import java.util.ArrayList;
 import utils.RandomUtils;

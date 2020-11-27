@@ -2,8 +2,8 @@ package baseball;
 
 import java.util.Scanner;
 
-import modules.InputOutputManager;
-import modules.NumberGenerator;
+import baseball.modules.InputOutputManager;
+import baseball.modules.NumberGenerator;
 
 public class GameManager {
     public static final int NUMBER_SIZE = 3;
