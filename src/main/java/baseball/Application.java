@@ -11,7 +11,7 @@ public class Application {
         boolean gameCoin = true;
         while(gameCoin){
             String computerChoice = chooseComputerChoice();
-            System.out.println(computerChoice);
+            startGame(computerChoice);
             gameCoin = checkGameCoin();
         }
     }
@@ -36,5 +36,16 @@ public class Application {
         
         computerChoice = Arrays.toString(answer).replaceAll("[^0-9]","");
         return computerChoice;
+    }
+
+    static void startGame(String computerChoice){
+        String userChoice = chooseUserChoice();
+    }
+
+    static String chooseUserChoice(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("숫자를 입력해주세요 : ");
+        String userChoice = sc.nextLine();
+        return userChoice;
     }
 }
