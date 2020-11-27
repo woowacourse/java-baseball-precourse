@@ -10,7 +10,7 @@
 
 package baseball;
 
-import baseball.domain.GenerateRandomNumber;
+import baseball.domain.RandomNumberGenerator;
 import baseball.domain.Hint;
 import baseball.domain.InputValidation;
 import baseball.view.InputView;
@@ -56,7 +56,7 @@ public class BaseballGame {
     }
 
     public void play(Scanner scanner) {
-        GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
+        RandomNumberGenerator generateRandomNumber = new RandomNumberGenerator();
         String programNumber = generateRandomNumber.getRandomNumber();
         System.out.println(programNumber);          // 랜덤 값 테스트
         do {

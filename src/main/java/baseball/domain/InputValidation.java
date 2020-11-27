@@ -23,7 +23,7 @@ public class InputValidation {
         if (!isValidLength()) {
             return false;
         }
-        if (!isDuplication()) {
+        if (!isDuplicated()) {
             return false;
         }
         if (!isNumber()) {
@@ -37,7 +37,7 @@ public class InputValidation {
         return checkNumber.matches(regExp);
     }
 
-    private boolean isDuplication() {
+    private boolean isDuplicated() {
         String[] checkStrings = checkNumber.split("");
         Arrays.sort(checkStrings);
         for (int i = 0; i < checkStrings.length - 1; i++) {
