@@ -18,11 +18,11 @@ public class NumberGenerator {
             numbers.add(RandomUtils.nextInt(START_NUMBER, END_NUMBER));
         }
 
-        List<BallNumber> collect = numbers.stream()
+        List<BallNumber> balls = numbers.stream()
             .map(BallNumber::new)
             .collect(Collectors.toList());
 
-        return new Balls(collect);
+        return new Balls(balls);
     }
 
 }
