@@ -24,7 +24,7 @@ public class GameManager {
             botBalls = Balls.generateRandomBalls();             // 랜덤 생성 balls
             myBalls = getMyBalls();                             // 사용자 balls
             gameResult = myBalls.judgeResult(botBalls);         // 결과 계산
-            gameResult.printResult();                           // 결과 출력
+            System.out.println(gameResult.getResult());         // 결과 출력
         } while (!gameResult.isThreeStrikes());                 // 3스트라이크: 루프탈출
     }
 

@@ -26,12 +26,11 @@ public class GameResult {
         }
     }
 
-    public void printResult() {
+    public String getResult() {
         if (isNothing()) {
-            System.out.println(NOTHING);
-            return;
+            return NOTHING;
         }
-        System.out.printf("%d%s %d%s%n", strike, STRIKE, ball, BALL);
+        return String.format("%d%s %d%s%n", strike, STRIKE, ball, BALL);
     }
 
     private boolean isNothing() {

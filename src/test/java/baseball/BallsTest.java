@@ -38,6 +38,6 @@ class BallsTest {
     void judgeResult() {
         Balls myBalls = generateBalls(1, 2, 3);
         Balls botBalls = generateBalls(1, 3, 2);
-        myBalls.judgeResult(botBalls).printResult();
+        myBalls.judgeResult(botBalls).getResult();
     }
 }
