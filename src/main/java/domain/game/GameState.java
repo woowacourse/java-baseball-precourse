@@ -19,4 +19,8 @@ public enum GameState {
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }
+
+    public boolean isAbleToPlay() {
+        return this != EXIT;
+    }
 }
