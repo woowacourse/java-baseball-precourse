@@ -39,8 +39,11 @@ public class GameController {
     }
 
     private Number requestPlayerNumber(Scanner scanner) {
-        // TODO: 플레이어의 입력을 받아와 Number로 변환
-        return null;
+        String playerInput = player.requestInput(scanner);
+        if (!Number.checkValidation(playerInput)) {
+            throw new IllegalArgumentException();
+        }
+        return new Number(playerInput);
     }
 
     private boolean checkAnswer() {

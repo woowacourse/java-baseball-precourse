@@ -15,11 +15,20 @@ public class Number {
     private static final int NUMBER_LENGTH = 3;
     private static final int MAX_DIGIT = 9;
     private static final int MIN_DIGIT = 1;
+    private static final char ZERO_CHAR = '0';
 
     private List<Integer> numbers;
 
     private Number(List<Integer> numbers) {
         this.numbers = numbers;
+    }
+
+    public Number(String playerInput) {
+        numbers = new ArrayList<>();
+
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            numbers.add(playerInput.charAt(i) - ZERO_CHAR);
+        }
     }
 
     public static Number generate() {
