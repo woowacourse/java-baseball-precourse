@@ -1,4 +1,4 @@
-package number;
+package baseball.generator;
 
 import utils.RandomUtils;
 
