@@ -38,7 +38,7 @@
 
 <br>
 
-### 프로그램 흐름도 
+### 🌊 프로그램 흐름도 
 
 1. Application을 통해 Game이 시작된다.
 
@@ -49,11 +49,13 @@
     - 첫 경기는 자동으로 실행된다.
     - round 시작됨과 동시에 정답값을 랜덤 생성한다.
     - player의 입력값을 받아 정답이 맞는 지 비교하는 작업을 반복한다.
+    
         - `볼`과 `스트라이크` 개수를 센다.
         - `볼`이 있다면 비교 결과값에 넣어준다.
         - `스트라이크`가 있다면 결과값에 넣어준다.
             - 이때 `볼`이 존재하면 1칸 공백을 추가하고 `스트라이크` 결과값을 넣어준다.
         - `볼`도 `스트라이크`도 없으면 `낫싱`
+        
     - player가 정답을 맞추면 round가 종료된다.
 
 3. 종료 여부를 player에게 입력 받는다. (exitButton)
@@ -68,7 +70,9 @@
 아래의 사항들을 반복적으로 체크하자! <br>
 
 <details>
-<summary> ✍ CHECK LIST </summary>
+<summary> ✍ CHECK LIST ✍ </summary>
+
+<br>
 
 - Indent Depth는 최대 2까지만 허용
 - 함수의 길이는 10라인 이하
@@ -99,8 +103,9 @@
 
 </details>
 
-- [JAVA Code Convetion 정리](https://velog.io/@bosl95/JAVA-Code-Convention)
-- [Commit Message Convention 정리](https://velog.io/@bosl95/Commit-Message-Convention)
+- [1. JAVA Code Convetion 이해하기 🧐](https://velog.io/@bosl95/JAVA-Code-Convention)
+- [2. Commit Message Convention 이해하기 👾](https://velog.io/@bosl95/Commit-Message-Convention)
+- [3. SOLID 이해하기 🥳](https://velog.io/@bosl95/SOLID-%EA%B0%9D%EC%B2%B4-%EC%A7%80%ED%96%A5-%EC%84%A4%EA%B3%84)
 - [[추가] 참고 블로그](https://hodol.dev/posts/%EC%9A%B0%EC%95%84%ED%95%9C%ED%85%8C%ED%81%AC%EC%BD%94%EC%8A%A4-%ED%94%84%EB%A6%AC%EC%BD%94%EC%8A%A4-%EC%A4%80%EB%B9%84)
 
 <br>
