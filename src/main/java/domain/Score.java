@@ -2,6 +2,7 @@ package domain;
 
 public class Score {
     private static int THREE_STRIKE = 3;
+    private static int ZERO = 0;
     private int ball;
     private int strike;
 
@@ -12,6 +13,10 @@ public class Score {
 
     public boolean isThreeStrike() {
         return strike == THREE_STRIKE;
+    }
+
+    public boolean isNothing() {
+        return ball == ZERO && strike == ZERO;
     }
 
     public int getBall() {

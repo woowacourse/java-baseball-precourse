@@ -54,7 +54,6 @@ class ScoreCalculatorTest {
         Score score = ScoreCalculator.calculateScore(answerBaseballNumber, userBaseballNumber);
 
         //then
-        assertThat(score.getStrike()).isEqualTo(0);
-        assertThat(score.getBall()).isEqualTo(0);
+        assertThat(score.isNothing()).isTrue();
     }
 }

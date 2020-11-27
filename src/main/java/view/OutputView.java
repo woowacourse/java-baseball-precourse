@@ -8,13 +8,12 @@ public class OutputView {
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
     private static final String SPACE = " ";
-    private static final int ZERO = 0;
 
     private OutputView() {
     }
 
     public static void printScore(Score score) {
-        if (score.getStrike() == ZERO && score.getBall() == ZERO) {
+        if (score.isNothing()) {
             printMessage(NOTHING);
         }
         String message = getBallMessage(score) + getStrikeMessage(score);
