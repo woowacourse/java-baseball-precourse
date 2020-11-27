@@ -13,6 +13,9 @@ public class InputUtils {
     private static final int PLAYER_SIZE = 3;
     private static final int MINIMUM_ASCII = 49;
     private static final int MAXIMUM_ASCII = 57;
+    private static final String ABNORMAL_LENGTH = "3자리보다 짧은 길이의 숫자 또는 긴 길이의 숫자는 입력될 수 없습니다.";
+    private static final String ABNORMAL_BOUNDARY = "문자 또는 0은 입력될 수 없습니다.";
+    private static final String ABNORMAL_NUMBER = "동일한 숫자는 입력될 수 없습니다.";
 
     private static boolean validationFlag = true;
     private static boolean lengthFlag = true;
@@ -25,17 +28,17 @@ public class InputUtils {
     public static boolean checkValidation(String playerNumber) {
         // 3자리보다 짧은 길이의 숫자 또는 긴 길이의 숫자가 입력되는 경우 (ex. 12, 3216)
         if (!checkLength(playerNumber)) {
-            throw new IllegalArgumentException("3자리보다 짧은 길이의 숫자 또는 긴 길이의 숫자는 입력될 수 없습니다.");
+            throw new IllegalArgumentException(ABNORMAL_LENGTH);
         }
 
         // 문자 또는 0이 입력되는 경우 (ex. 2a6, 206)
         if (!checkBoundary(playerNumber)) {
-            throw new IllegalArgumentException("문자 또는 0은 입력될 수 없습니다.");
+            throw new IllegalArgumentException(ABNORMAL_BOUNDARY);
         }
 
         // 동일한 숫자가 입력되는 경우 (ex. 115)
         if (!checkNumber(playerNumber)) {
-            throw new IllegalArgumentException("동일한 숫자는 입력될 수 없습니다.");
+            throw new IllegalArgumentException(ABNORMAL_NUMBER);
         }
 
         return validationFlag;
