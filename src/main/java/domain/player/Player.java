@@ -8,14 +8,26 @@ public class Player {
     private boolean isStartingGame = false;
     private String userInput;
     String[] seperatedUserInputByLetter;
-    private Computer computer = new Computer();
+    Computer computer = new Computer();
 
     public void startGame(Scanner scanner) {
+        int status;
         isStartingGame = true;
         while (isStartingGame) {
             enterNumberWith(scanner);
             if (computer.isCorrectAnswer(seperatedUserInputByLetter)) {
-                isStartingGame = false;
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                status = scanner.nextInt();
+                if (status != 1 && status != 2) {
+                    throw new IllegalArgumentException("숫자 1 또는 2만 입력하셔야 합니다");
+                }
+                if (status == 1) {
+                    isStartingGame = true;
+                    computer.resetAnswer();
+                }
+                if (status == 2) {
+                    isStartingGame = false;
+                }
             }
         }
     }
