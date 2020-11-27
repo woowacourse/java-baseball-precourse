@@ -26,10 +26,7 @@ public class Digits {
     }
 
     private ArrayList<Digit> makeDigits(final int hundDigit, final int tensDigit, final int unitsDigit){
-        ArrayList<Digit> number = new ArrayList<Digit>();
-        number.add(new Digit(hundDigit));
-        number.add(new Digit(tensDigit));
-        number.add(new Digit(unitsDigit));
+        ArrayList<Digit> number = new ArrayList<Digit>(Arrays.asList(new Digit(hundDigit), new Digit(tensDigit), new Digit(unitsDigit)));
         return number;
     }
 
