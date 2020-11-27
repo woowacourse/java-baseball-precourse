@@ -1,5 +1,6 @@
 package utils;
 
+import baseball.BaseballStep;
 import java.util.Scanner;
 
 public class BaseballUtils {
@@ -79,7 +80,17 @@ public class BaseballUtils {
         return playerNumbers;
     }
 
+    public static boolean compareNumbers(int[] randomNumbers, int[] playerNumbers) {
+        BaseballStep baseballStep = new BaseballStep(randomNumbers, playerNumbers);
+        baseballStep.compare();
+        System.out.println(baseballStep.toString());
+
+
+        return baseballStep.isGameEnded();
+    }
+
     public static boolean askRestart(final Scanner sc) {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int playerInput = getIntInput(sc);
 
