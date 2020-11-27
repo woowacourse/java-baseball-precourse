@@ -57,10 +57,10 @@ enum GameStatus {
     CONTINUE("1"),
     QUIT("2");
 
-    String name;
+    String input;
 
-    GameStatus(String name) {
-        this.name = name;
+    GameStatus(String input) {
+        this.input = input;
     }
 
     Boolean isContinue() {
