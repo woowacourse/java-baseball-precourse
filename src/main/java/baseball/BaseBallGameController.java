@@ -22,11 +22,19 @@ public class BaseBallGameController {
             if (!checkValidInput(inputNumber)) continue;
             boolean isAnswer = game.checkInputNumber(inputNumber);
             if (isAnswer) {
+                checkRestart(player.askRestart());
                 break;
             }
         }
     }
-    
+
+    private void checkRestart(boolean restart) {
+        if (restart) {
+            startGame();
+        }
+    }
+
+
     private String makeRandomNumber() {
         StringBuilder randomNumber = new StringBuilder();
         while (true) {
