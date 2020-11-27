@@ -20,7 +20,6 @@ public class Computer {
         for (String x : userInput) {
             convertedUserInputToInteger.add(Integer.parseInt(x));
         }
-        System.out.println(answer);
         for (int i = 0; i < answer.size(); i++) {
             if (answer.get(i) == convertedUserInputToInteger.get(i)) {
                 strikeCount++;
@@ -48,12 +47,19 @@ public class Computer {
         return false;
     }
 
-    private void makeRandomAnswer() {
-        for (int i = 0; i < 3; i++) {
+    public void makeRandomAnswer() {
+        while (answer.size() != 3) {
             int randomNumber = RandomUtils.nextInt(
                     START_VALUE_IN_RANDOM_NUMBER_RANGE,
                     END_VALUE_IN_RANDOM_NUMBER_RANGE);
-            answer.add(randomNumber);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
+            }
         }
+    }
+
+    public void resetAnswer() {
+        answer = new ArrayList<>();
+        makeRandomAnswer();
     }
 }
