@@ -5,6 +5,17 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
+        Number number = new Number();
+        String input = scanner.next();
+
+        number.setTarget();
+        try{
+            number.setGuess(input);
+        } catch(IllegalArgumentException e){
+            System.out.println("Wrong Number");
+        }
+
+        
+        scanner.close();
     }
 }
