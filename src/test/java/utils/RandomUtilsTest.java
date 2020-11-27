@@ -13,18 +13,18 @@ class RandomUtilsTest {
     private static final int BIG_NUMBER = 300000;
 
     @Test
-    public void getRandomIntegerTest(){
-        for(int i = 0; i < BIG_NUMBER; i++) {
+    public void getRandomIntegerTest() {
+        for (int i = 0; i < BIG_NUMBER; i++) {
             // nextInt의 매개변수로 1, 9를 넣어 주어야 1~9사이의 랜덤한 값이 출력된다.
-            assertThat(RandomUtils.nextInt(1, 9)).isBetween(1,9);
+            assertThat(RandomUtils.nextInt(1, 9)).isBetween(1, 9);
         }
     }
 
     @Test
-    public void isRandomIntegerWithoutDuplicateTest(){
+    public void isRandomIntegerWithoutDuplicateTest() {
         List<Integer> testIntegerList = new ArrayList<Integer>();
 
-        for(int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             testIntegerList.add(RandomUtils.nextInt(1, 9));
         }
 
@@ -34,12 +34,12 @@ class RandomUtilsTest {
     }
 
     @Test
-    public void getRandomIntegerWihoutDuplicateTest(){
+    public void getRandomIntegerWihoutDuplicateTest() {
         List<Integer> testIntegerList = new ArrayList<Integer>();
 
-        while(testIntegerList.size() < 3){
+        while (testIntegerList.size() < 3) {
             int i = RandomUtils.nextInt(1, 9);
-            if(!testIntegerList.contains(i)){
+            if (!testIntegerList.contains(i)) {
                 testIntegerList.add(i);
             }
         }

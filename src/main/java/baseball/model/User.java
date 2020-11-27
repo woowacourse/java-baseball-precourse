@@ -1,7 +1,5 @@
 package baseball.model;
 
-import utils.RandomUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +10,7 @@ public class User {
         balls.clear();
 
         String[] stringArray = userInput.split("");
-        for(int i = 0; i < stringArray.length; i++){
+        for (int i = 0; i < stringArray.length; i++) {
             balls.add(Integer.parseInt(stringArray[i]));
         }
     }

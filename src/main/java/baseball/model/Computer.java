@@ -14,9 +14,9 @@ public class Computer {
     public static void makeBalls() {
         balls.clear();
 
-        while(balls.size() < MAX_LENGTH){
+        while (balls.size() < MAX_LENGTH) {
             int number = RandomUtils.nextInt(MIN_NUMBER, MAX_NUMBER);
-            if(!balls.contains(number)){
+            if (!balls.contains(number)) {
                 balls.add(number);
             }
         }

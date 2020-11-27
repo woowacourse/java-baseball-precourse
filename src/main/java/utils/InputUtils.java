@@ -5,9 +5,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class InputUtils {
-    public static String checkUserInput(Scanner scanner) {
-        String userInput = scanner.nextLine();
-
+    public static String checkUserInput(String userInput) {
         isNumber(userInput);
         isRightLength(userInput);
         isWithoutDuplicate(userInput);
@@ -16,8 +14,8 @@ public class InputUtils {
     }
 
     private static void isNumber(String userInput) {
-        for(int i = 0; i < userInput.length(); i++){
-            if(!Character.isDigit(userInput.charAt(i))){
+        for (int i = 0; i < userInput.length(); i++) {
+            if (!Character.isDigit(userInput.charAt(i))) {
                 throw new IllegalArgumentException();
             }
         }
