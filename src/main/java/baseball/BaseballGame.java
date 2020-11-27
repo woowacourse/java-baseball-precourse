@@ -1,7 +1,6 @@
 package baseball;
 
 import utils.InputValidator;
-import utils.InvalidInputException;
 import utils.NumberListGenerator;
 import view.InputView;
 import view.OutputView;
@@ -42,8 +41,9 @@ public class BaseballGame {
             String input = InputView.askNum(SCANNER);
             InputValidator.isValidGuess(input, NUM_DIGITS);
             return input;
-        }catch (InvalidInputException IIH){
-            OutputView.printMsg(IIH.getMessage());
+        }catch (IllegalArgumentException IAE){
+            OutputView.printMsg(IAE.getMessage());
+            IAE.printStackTrace();
             return readNumber();
         }
     }

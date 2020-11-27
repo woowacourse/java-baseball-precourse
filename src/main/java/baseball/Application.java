@@ -1,7 +1,6 @@
 package baseball;
 
 import utils.InputValidator;
-import utils.InvalidInputException;
 import view.InputView;
 import view.OutputView;
 
@@ -32,8 +31,9 @@ public class Application {
             String answer = InputView.askPlayAgain(SCANNER);
             InputValidator.isValidPlayAgainAns(answer);
             return answer;
-        }catch (InvalidInputException IIE){
-            OutputView.printMsg(IIE.getMessage());
+        }catch (IllegalArgumentException IAE){
+            OutputView.printMsg(IAE.getMessage());
+            IAE.printStackTrace();
             return askPlayAgain(SCANNER);
         }
     }

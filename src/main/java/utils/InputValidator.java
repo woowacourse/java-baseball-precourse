@@ -14,24 +14,24 @@ public class InputValidator {
 
     private InputValidator(){}
 
-    public static boolean isValidPlayAgainAns(String input) throws InvalidInputException {
+    public static boolean isValidPlayAgainAns(String input) throws IllegalArgumentException {
         if(!isInRange(input, BUTTON_PLAY_AGAIN_MIN, BUTTON_PLAY_AGAIN_MAX)){
-            throw new InvalidInputException(INVALID_RANGE_MSG);
+            throw new IllegalArgumentException(INVALID_RANGE_MSG);
         }
         return true;
     }
 
-    public static boolean isValidGuess(String inputNumber, int len) throws InvalidInputException {
+    public static boolean isValidGuess(String inputNumber, int len) throws IllegalArgumentException {
         if(!isValidLength(inputNumber, len)){
-            throw new InvalidInputException(INVALID_LENGTH_MSG);
+            throw new IllegalArgumentException(INVALID_LENGTH_MSG);
         }
 
         if(!isInRange(inputNumber, MIN_NUM, MAX_NUM)){
-            throw new InvalidInputException(INVALID_RANGE_MSG);
+            throw new IllegalArgumentException(INVALID_RANGE_MSG);
         }
 
         if(!isAllDifferent(inputNumber)){
-            throw new InvalidInputException(INVALID_DUPLICATE_MSG);
+            throw new IllegalArgumentException(INVALID_DUPLICATE_MSG);
         }
 
         return true;
