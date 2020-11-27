@@ -5,20 +5,20 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class UserInput {
+public class UserInputNumber {
 
-    private static String userNumber;
-    private static String inputNumberString;
+    private static String userNumberString;
+    private static String userinputNumberString;
     private static final int NUMBER_LENGTH = 3;
 
     public static int userInputNumber() {
-        int inputNumber;
+        int userNumber;
         while (true) {
             try {
                 System.out.print("숫자를 입력해주세요 : ");
-                userNumber = getInputNumber();
-                if (userInputCheck()) {
-                    inputNumber = Integer.parseInt(inputNumberString);
+                userNumberString = getUserInputNumber();
+                if (userInputNumberCheck()) {
+                    userNumber = Integer.parseInt(userinputNumberString);
                     break;
                 }
 
@@ -27,17 +27,17 @@ public class UserInput {
                 continue;
             }
         }
-        return inputNumber;
+        return userNumber;
     }
 
-    public static String getInputNumber() {
+    public static String getUserInputNumber() {
         Scanner scan = new Scanner(System.in);
-        inputNumberString = scan.nextLine();
+        userinputNumberString = scan.nextLine();
 
-        return inputNumberString;
+        return userinputNumberString;
     }
 
-    public static boolean userInputCheck() {
+    public static boolean userInputNumberCheck() {
         if (!userInputContainZero()) {
             System.out.println("1부터 9사이의 숫자를 입력해주세요.");
             return false;
@@ -57,14 +57,14 @@ public class UserInput {
     }
 
     public static boolean userInputContainZero() {
-        if (inputNumberString.contains("0")) {
+        if (userinputNumberString.contains("0")) {
             return false;
         }
         return true;
     }
 
     public static boolean userInputLength() {
-        if (userNumber.length() == NUMBER_LENGTH) {
+        if (userNumberString.length() == NUMBER_LENGTH) {
             return true;
         }
         return false;
@@ -73,7 +73,7 @@ public class UserInput {
     public static boolean userInputRepeat() {
         ArrayList<Character> repeatCheckList = new ArrayList<>();
 
-        for (char c : inputNumberString.toCharArray()) {
+        for (char c : userinputNumberString.toCharArray()) {
             repeatCheckList.add(c);
         }
 
