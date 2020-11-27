@@ -9,6 +9,8 @@ import utils.RandomUtils;
 public class BaseBall {
     private static final int RADIX = 10;
     private static final int DIGIT_NUM = 3;
+    private static final String RESTART = "1";
+    private static final String END = "2";
     private final Scanner scanner;
     private String userNum;
     private String randNum;
@@ -32,7 +34,7 @@ public class BaseBall {
 
 		do {
             System.out.print(SystemMessage.INPUT_MESSAGE);
-			userNum = scanner.next();
+			userNum = next();
 		    result = umpire();
             System.out.println(result);
 		} while (!result.equals(SystemMessage.GAME_CLEAR_MESSAGE));
@@ -103,5 +105,42 @@ public class BaseBall {
             cnt++;
         }
         return result;
+    }
+
+    public boolean isUserWantContinue() {
+        System.out.println(SystemMessage.GAME_RESTART_OR_END_MESSAGE);
+        String sel = scanner.next();
+	
+        if (sel.equals(RESTART)) {
+            return true;
+        } else if (sel.equals(END)) {
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
+
+    private String next() {
+        String input = scanner.next();
+
+        if (input.length() != DIGIT_NUM) {
+            throw new IllegalArgumentException(); 
+        }
+
+        char compare = input.charAt(0);
+
+        if (compare == '0') {
+            throw new IllegalArgumentException();
+        }
+
+        for (int i = 1; i < input.length(); i++) {
+            if (compare == input.charAt(i)) {
+                throw new IllegalArgumentException();
+            }
+
+            if (input.charAt(i) == '0') {
+                throw new IllegalArgumentException();
+            }
+        }
+        return input;
     }
 }
