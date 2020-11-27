@@ -1,7 +1,6 @@
 package utils;
 
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
 
 public class InputUtils {
@@ -12,6 +11,7 @@ public class InputUtils {
         if (!userInput.equals(CONTINUE_GAME) && !userInput.equals(END_GAME)) {
             throw new IllegalArgumentException();
         }
+
         return userInput;
     }
 
@@ -46,6 +46,7 @@ public class InputUtils {
             if (number == 0 || numberSet.contains(number)) {
                 throw new IllegalArgumentException();
             }
+
             numberSet.add(number);
         }
     }

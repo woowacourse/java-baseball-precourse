@@ -16,6 +16,7 @@ public class CompareResult {
         if (strike == THREE_STRIKE) {
             return true;
         }
+
         return false;
     }
 }

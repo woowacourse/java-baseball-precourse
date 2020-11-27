@@ -28,6 +28,7 @@ public class BaseBallGame {
         if (userInput.equals(CONTINUE_GAME)) {
             return true;
         }
+
         return false;
     }
 

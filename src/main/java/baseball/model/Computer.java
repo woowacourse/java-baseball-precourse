@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Computer {
     public static List<Integer> balls = new ArrayList<>();
+
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final int MAX_LENGTH = 3;
