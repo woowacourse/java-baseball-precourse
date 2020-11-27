@@ -1,8 +1,10 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.HashSet;
 
 public class InputHandler {
     private static final String PLAYER_INPUT_EXCEPTION_MESSAGE = "1부터 9까지 중 서로 다른 3자리의 숫자를 입력해주세요 :)";
@@ -22,7 +24,15 @@ public class InputHandler {
     }
 
     private void validate(String input) {
-        if (input.length() != 3) {
+        if (input.length() != INPUT_SIZE) {
+            throwInputException();
+        }
+
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < INPUT_SIZE; i++) {
+            set.add(input.substring(i, i+1));
+        }
+        if (set.size() < INPUT_SIZE) {
             throwInputException();
         }
 
