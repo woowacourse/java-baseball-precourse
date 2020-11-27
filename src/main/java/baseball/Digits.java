@@ -26,8 +26,7 @@ public class Digits {
     }
 
     private ArrayList<Digit> makeDigits(final int hundDigit, final int tensDigit, final int unitsDigit){
-        ArrayList<Digit> number = new ArrayList<Digit>(Arrays.asList(new Digit(hundDigit), new Digit(tensDigit), new Digit(unitsDigit)));
-        return number;
+       return new ArrayList<Digit>(Arrays.asList(new Digit(hundDigit), new Digit(tensDigit), new Digit(unitsDigit)));
     }
 
     public Digits(final int input){
