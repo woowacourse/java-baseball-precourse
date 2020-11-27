@@ -1,14 +1,15 @@
-package baseball;
+package baseball.domain;
 
-import domain.Computer;
-import view.InputView;
-import view.OutputView;
+import baseball.view.InputView;
+import baseball.view.OutputView;
+
+import java.util.Scanner;
 
 public class BaseballGame {
     private static final int FIRST_INDEX = 0;
     private static final int NUMBERS_LENGTH = 3;
-    private static final int MIN_COUNT = 0;
-    private static final int MAX_COUNT = 3;
+    private static final int ZERO = 0;
+    private static final int THREE = 3;
 
     private Computer computer;
     private String computerNumbers;
@@ -21,30 +22,38 @@ public class BaseballGame {
         computer = new Computer();
     }
 
-    public void play() {
-        computerNumbers = computer.createComputerNumbers();
+    public void play(Scanner scanner) {
+        computerNumbers = computer.createRandomComputerNumbers();
         do {
-            playerNumbers = InputView.inputPlayerNumbers();
+            playerNumbers = InputView.inputPlayerNumbers(scanner);
             strikeCount = 0;
             ballCount = 0;
             compareNumbers(computerNumbers, playerNumbers);
-        } while (strikeCount != MAX_COUNT);
+        } while (strikeCount != THREE);
         OutputView.printCorrectAnswer();
     }
 
     private void compareNumbers(String computerNumbers, String playerNumbers) {
-        countStrikeBall(computerNumbers, playerNumbers);
-        OutputView.printStrikeBall(strikeCount, ballCount);
-        if(strikeCount == MIN_COUNT && ballCount == MIN_COUNT) {
+        countStrike(computerNumbers, playerNumbers);
+        countBall(computerNumbers, playerNumbers);
+        if (strikeCount > ZERO || ballCount > ZERO) {
+            OutputView.printStrikeBall(strikeCount, ballCount);
+        }
+        if (strikeCount == ZERO && ballCount == ZERO) {
             OutputView.printNothing();
         }
     }
 
-    private void countStrikeBall(String computerNumbers, String playerNumbers) {
-        for(int i=FIRST_INDEX; i<NUMBERS_LENGTH; i++) {
+    private void countStrike(String computerNumbers, String playerNumbers) {
+        for (int i=FIRST_INDEX; i<NUMBERS_LENGTH; i++) {
             if(isStrike(computerNumbers, playerNumbers, i)) {
                 strikeCount++;
             }
+        }
+    }
+
+    private void countBall(String computerNumbers, String playerNumbers) {
+        for (int i=FIRST_INDEX; i<NUMBERS_LENGTH; i++) {
             if(isBall(computerNumbers, playerNumbers, i)) {
                 ballCount++;
             }
@@ -52,21 +61,19 @@ public class BaseballGame {
     }
 
     private boolean isStrike(String computerNumbers, String playerNumbers, int index) {
-        if(computerNumbers.charAt(index) == playerNumbers.charAt(index)) {
+        if (computerNumbers.charAt(index) == playerNumbers.charAt(index)) {
             return true;
         }
         return false;
     }
 
     private boolean isBall(String computerNumbers, String playerNumbers, int index) {
-        if(computerNumbers.contains(String.valueOf(playerNumbers.charAt(index)))
+        if (computerNumbers.contains(String.valueOf(playerNumbers.charAt(index)))
                 && computerNumbers.charAt(index) != playerNumbers.charAt(index) ) {
             return true;
         }
         return false;
     }
-
-
 
 }
 
