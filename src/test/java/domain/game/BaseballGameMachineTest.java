@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 class BaseballGameMachineTest {
 
@@ -50,5 +51,36 @@ class BaseballGameMachineTest {
         GameResult gameResult = baseballGameMachine.play(userBaseballNumbers);
         assertThat(gameResult.getBallCounts()).isEqualTo(2);
         assertThat(gameResult.getStrikeCounts()).isEqualTo(1);
+    }
+
+    @DisplayName("GameState가 KEEP_GOING이면 다음 시도 때, 동일한 Machine 객체를 반환")
+    @Test
+    public void prepareNextTry_KEEP_GOING_동일_객체_반환() {
+        BaseballGameMachine baseballGameMachine =
+                new BaseballGameMachine(BaseballNumbers.generateRandomBaseballNumbers());
+        BaseballGameMachine nextBaseballGameMachine = baseballGameMachine.prepareNextTry(GameState.KEEP_PLAYING);
+
+        assertThat(baseballGameMachine.equals(nextBaseballGameMachine)).isTrue();
+    }
+
+    @DisplayName("GameState가 RESTART면 다음 시도 때, 새로운 랜덤 숫자로 구성된 객체를 새로 생성 반환")
+    @Test
+    public void prepareNextTry_RESTART_새로운_객체_반환() {
+        BaseballGameMachine baseballGameMachine =
+                new BaseballGameMachine(BaseballNumbers.generateRandomBaseballNumbers());
+        BaseballGameMachine nextBaseballGameMachine = baseballGameMachine.prepareNextTry(GameState.RESTART);
+
+        assertThat(baseballGameMachine.equals(nextBaseballGameMachine)).isFalse();
+    }
+
+
+    @DisplayName("GameState가 EXIT면 다음 시도 때 예외 발생")
+    @Test
+    public void prepareNextTry_EXIT_예외_발생() {
+        BaseballGameMachine baseballGameMachine =
+                new BaseballGameMachine(BaseballNumbers.generateRandomBaseballNumbers());
+        assertThatCode(() -> {
+            baseballGameMachine.prepareNextTry(GameState.EXIT);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }
