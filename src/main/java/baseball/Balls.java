@@ -53,8 +53,21 @@ public class Balls {
         return new Balls(balls);
     }
 
-    public Boolean compare(Balls balls) {
+    public GameResult 비교하여_결과_계산(Balls balls) {
         // TODO Balls 끼리 비교
-        return true;
+        int STRIKE = 0;
+        int BALL = 0;
+        List<Ball> botBalls = balls.balls;
+
+        for (int i = 0; i < COUNT_OF_BALLS; i++) {
+            Ball myBall = this.balls.get(i);
+
+            if (myBall.equals(botBalls.get(i))) {
+                STRIKE++;
+            } else if (botBalls.contains(myBall)) {
+                BALL++;
+            }
+        }
+        return new GameResult(STRIKE, BALL);
     }
 }
