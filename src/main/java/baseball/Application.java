@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import utils.RandomUtils;
 
 public class Application {
 
@@ -11,9 +12,18 @@ public class Application {
 
         boolean gameOver = false;
         while (!gameOver) {
-            System.out.print("숫자를 입력해주세요 : ");
-            int[] guess = gameInput();
+            int[] choice = new int[3];
+            // for all different
+            while (choice[0] == choice[1] || choice[1] == choice[2] || choice[0] == choice[2]) {
+                choice[0] = RandomUtils.nextInt(1, 10);
+                choice[1] = RandomUtils.nextInt(1, 10);
+                choice[2] = RandomUtils.nextInt(1, 10);
+            }
 
+            gameStart(choice);
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+                + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            gameOver = gameRestartInput();
         }
     }
 
@@ -45,5 +55,49 @@ public class Application {
         }
         System.out.printf("%d, %d, %d\n", guess[0], guess[1], guess[2]);
         return guess;
+    }
+
+    private static void gameStart(int[] choice) {
+        boolean success = false;
+
+        while (!success) {
+            System.out.print("숫자를 입력해주세요 : ");
+            int[] guess = gameInput();
+
+            int strike = 0;
+            int ball = 0;
+
+            //hint
+
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+
+            if (strike == 3) {
+                success = true;
+            }
+        }
+    }
+
+    private static boolean gameRestartInput() {
+        final Scanner scanner = new Scanner(System.in);
+        int input;
+        try {
+            input = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.err.println("잘못된 입력값입니다.");
+            throw new IllegalArgumentException();
+        } catch (Exception e) {
+            System.err.println("잘못된 입력값입니다.");
+            throw new IllegalArgumentException();
+        }
+
+        switch (input) {
+            case 1:
+                return false;
+            case 2:
+                return true;
+            default:
+                System.err.println("잘못된 입력값입니다.");
+                throw new IllegalArgumentException();
+        }
     }
 }
