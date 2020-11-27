@@ -31,7 +31,15 @@ public class InputOutputManager {
     }
 
     private int[] parseToIntArray(String input){
-        if(!checkForParsable(input) || !checkForLengthFit(input)){
+        if(!checkForParsable(input)){
+            throw new IllegalArgumentException();
+        }
+
+        if(!checkForLengthFit(input)){
+            throw new IllegalArgumentException();
+        }
+
+        if(checkForContainsZero(input)){
             throw new IllegalArgumentException();
         }
 
@@ -56,6 +64,16 @@ public class InputOutputManager {
         if(input.length() == numberSize){
             return true;            
         }
+        return false;
+    }
+
+    private boolean checkForContainsZero(String input){
+        for(int i = 0; i < input.length(); i++){
+            if(Character.getNumericValue(input.charAt(i)) == 0){
+                return true;
+            }
+        }
+
         return false;
     }
 
