@@ -29,11 +29,11 @@ public class GameManager {
             botBalls = Balls.generateRandomBalls();
 
             // 사용자 생성 balls
-            chars = scanner.next().toCharArray();
-            myBalls = Balls.charArrayToBalls(chars);
-            
+            myBalls = Balls.stringToBalls(scanner.next());
+
             // 맞추기
-            myBalls.compare(botBalls);
+            GameResult gameResult = myBalls.비교하여_결과_계산(botBalls);
+
             // 결과 계산
             threeStrikes = false;
 

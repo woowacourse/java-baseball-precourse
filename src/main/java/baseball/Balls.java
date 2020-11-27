@@ -45,8 +45,10 @@ public class Balls {
         return new Balls(balls);
     }
 
-    public static Balls charArrayToBalls(char[] chars) {
+    public static Balls stringToBalls(String s) {
+        char[] chars = s.toCharArray();
         List<Ball> balls = new ArrayList<>();
+
         for (char c : chars) {
             balls.add(new Ball(c));
         }
