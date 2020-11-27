@@ -6,90 +6,63 @@ import utils.NumberListGenerator;
 import view.InputView;
 import view.OutputView;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BaseballGame {
-    private final int NUM_DIGIT;
+    private final int NUM_DIGITS;
     private final Scanner SCANNER;
 
-    private ArrayList<Integer> targetNumberList;
-    private ArrayList<Integer> guessedNumberList;
+    private List<Integer> targetNumberList;
+    private List<Integer> guessedNumberList;
 
-    private boolean isGameEnd;
     private int strikeCnt, ballCnt;
 
-    public BaseballGame(int NUM_DIGIT, Scanner SCANNER){
-        this.NUM_DIGIT = NUM_DIGIT;
+    public BaseballGame(int NUM_DIGITS, Scanner SCANNER){
+        this.NUM_DIGITS = NUM_DIGITS;
         this.SCANNER = SCANNER;
     }
 
     public void play(){
         setTargetNumber();
-        while(!isGameEnd){
+        do{
             String userGuess = readNumber();
             calculateScore(userGuess);
             printScore();
-            checkGameEnd();
-        }
+        }while(!isGameEnd());
+        printAllCorrect();
     }
 
     private void setTargetNumber(){
-        targetNumberList = NumberListGenerator.makeTargetNumList(NUM_DIGIT);
+        targetNumberList = NumberListGenerator.makeTargetNumList(NUM_DIGITS);
     }
 
     private String readNumber(){
-        String input = "";
-
         try{
-            input = InputView.askNum(SCANNER);
-            InputValidator.validGuessNumber(input, NUM_DIGIT);
+            String input = InputView.askNum(SCANNER);
+            InputValidator.isValidGuess(input, NUM_DIGITS);
+            return input;
         }catch (InvalidInputException IIH){
             OutputView.printMsg(IIH.getMessage());
             return readNumber();
         }
-
-        return input;
     }
 
     private void calculateScore(String guessNum){
-        guessedNumberList = NumberListGenerator.stringToList(guessNum);
-        strikeCnt = countStrike();
-        ballCnt = countBall();
-    }
-
-    private int countStrike(){
-        int strikeCnt =0;
-        for(int i= 0; i<NUM_DIGIT; i++){
-            if(targetNumberList.get(i) == guessedNumberList.get(i)){
-                strikeCnt++;
-            }
-        }
-        return strikeCnt;
-    }
-
-    private int countBall(){
-        int containCnt =0;
-        for(int i= 0; i<NUM_DIGIT; i++){
-            if(targetNumberList.contains(guessedNumberList.get(i))){
-                containCnt++;
-            }
-        }
-        return containCnt - countStrike();
+        guessedNumberList = NumberListGenerator.stringToIntegerList(guessNum);
+        strikeCnt = GameRule.countStrike(targetNumberList, guessedNumberList);
+        ballCnt = GameRule.countBall(targetNumberList, guessedNumberList);
     }
 
     private void printScore(){
         OutputView.printScore(strikeCnt, ballCnt);
     }
 
-    private void checkGameEnd(){
-        if(strikeCnt == NUM_DIGIT){
-            OutputView.announceAllCorrect();
-            setGameEnd();
-        }
+    private boolean isGameEnd(){
+        return GameRule.checkGameEnd(strikeCnt, NUM_DIGITS);
     }
 
-    private void setGameEnd(){
-        isGameEnd = true;
+    private void printAllCorrect() {
+        OutputView.announceAllCorrect();
     }
 }

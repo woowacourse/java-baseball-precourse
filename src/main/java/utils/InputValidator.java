@@ -6,37 +6,27 @@ public class InputValidator {
     private static final String INVALID_RANGE_MSG = "범위 외 입력입니다. ";
     private static final String INVALID_DUPLICATE_MSG = "중복이 포함된 입력입니다. ";
 
+    private static final int MAX_NUM = 9;
+    private static final int MIN_NUM = 1;
+
     private static final int BUTTON_PLAY_AGAIN_MAX = 2;
     private static final int BUTTON_PLAY_AGAIN_MIN = 1;
 
     private InputValidator(){}
 
-    public static boolean validPlayAgainAnswer(String input) throws InvalidInputException {
+    public static boolean isValidPlayAgainAns(String input) throws InvalidInputException {
         if(!isInRange(input, BUTTON_PLAY_AGAIN_MIN, BUTTON_PLAY_AGAIN_MAX)){
             throw new InvalidInputException(INVALID_RANGE_MSG);
         }
         return true;
     }
 
-    private static boolean isInRange(String input, int min, int max){
-        if(!isNumericString(input)){
-            return false;
-        }
-
-        for(char num : input.toCharArray()){
-            if(Character.getNumericValue(num)<min || Character.getNumericValue(num)>max){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static boolean validGuessNumber(String inputNumber, int len) throws InvalidInputException {
+    public static boolean isValidGuess(String inputNumber, int len) throws InvalidInputException {
         if(!isValidLength(inputNumber, len)){
             throw new InvalidInputException(INVALID_LENGTH_MSG);
         }
 
-        if(!isNumericString(inputNumber)){
+        if(!isInRange(inputNumber, MIN_NUM, MAX_NUM)){
             throw new InvalidInputException(INVALID_RANGE_MSG);
         }
 
@@ -47,11 +37,16 @@ public class InputValidator {
         return true;
     }
 
-    private static boolean isValidLength(String input, int len){
-        if(input.length() == len){
-            return true;
+    private static boolean isInRange(String input, int min, int max){
+        if(!isNumericString(input)){
+            return false;
         }
-        return false;
+
+        return Arrays.stream(input.split("")).map(Integer::parseInt).allMatch(x-> x >= min && x <= max);
+    }
+
+    private static boolean isValidLength(String input, int len){
+        return input.length() == len;
     }
 
     private static boolean isNumericString(String input){
@@ -64,14 +59,6 @@ public class InputValidator {
     }
 
     private static boolean isAllDifferent(String input){
-        char[] chars = input.toCharArray();
-        Arrays.sort(chars);
-
-        for(int i =0; i<chars.length-1; i++){
-            if(chars[i] == chars[i+1]){
-                return false;
-            }
-        }
-        return true;
+        return Arrays.stream(input.split("")).distinct().count() == input.length();
     }
 }

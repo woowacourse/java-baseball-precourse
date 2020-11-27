@@ -22,22 +22,19 @@ public class Application {
     }
 
     private static boolean checkPlayAgain(Scanner SCANNER){
-        String answer;
+        String answer = askPlayAgain(SCANNER);
 
+        return answer.equals(PLAY_AGAIN_BUTTON);
+    }
+
+    private static String askPlayAgain(Scanner SCANNER){
         try{
-            answer = InputView.askPlayAgain(SCANNER);
-            InputValidator.validPlayAgainAnswer(answer);
+            String answer = InputView.askPlayAgain(SCANNER);
+            InputValidator.isValidPlayAgainAns(answer);
+            return answer;
         }catch (InvalidInputException IIE){
             OutputView.printMsg(IIE.getMessage());
-            return checkPlayAgain(SCANNER);
+            return askPlayAgain(SCANNER);
         }
-
-        if(answer.equals(PLAY_END_BUTTON)){
-            return false;
-        } else if(answer.equals(PLAY_AGAIN_BUTTON)){
-            return true;
-        }
-
-        return false;
     }
 }
