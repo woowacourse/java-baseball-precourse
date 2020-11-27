@@ -4,8 +4,7 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         boolean playing = true;
-        RandomAnswer newRandomAnswer = new RandomAnswer();
-        Integer answer = newRandomAnswer.randomAnswer();
+        Integer answer = RandomAnswer.randomAnswer();
         System.out.println("answer" + answer);
 
         final Scanner scanner = new Scanner(System.in);

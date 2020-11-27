@@ -12,8 +12,7 @@ public class Game {
         System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
         if (scanner.hasNextInt()) {
             guess = scanner.nextInt();
-            Validate myValidate = new Validate();
-            if (myValidate.validate(guess)) {
+            if (Validate.validate(guess)) {
                 System.out.println("입력숫자: " + guess);
                 compareToAnswer(guess, answer);
             }

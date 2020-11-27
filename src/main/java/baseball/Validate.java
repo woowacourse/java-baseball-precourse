@@ -1,7 +1,7 @@
 package baseball;
 
 public class Validate {
-    public boolean validate(int number) {
+    public static boolean validate(int number) {
         int first = number / 100;
         int second = (number % 100) / 10;
         int third = number % 10;
