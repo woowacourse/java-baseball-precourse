@@ -29,6 +29,10 @@ public class Digits {
        return new ArrayList<Digit>(Arrays.asList(new Digit(hundDigit), new Digit(tensDigit), new Digit(unitsDigit)));
     }
 
+    public int indexOfDigit(int index){
+        return digits.get(index).getDigit();
+    }
+
 
     public Digits(final int input){
         validateLength(input);
