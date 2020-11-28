@@ -15,9 +15,13 @@ public class Application {
 
         //depth가 2 이하로 만들어야하는 것.
         while(!check) {
-            System.out.println("값을 입력해주세요.");
-            GameCycle g = new GameCycle();
-            g.GameStart(scanner.nextInt());
+            try {
+                GameCycle g = new GameCycle();
+                g.GameStart();
+            }catch (IllegalArgumentException i){
+                System.out.println(i.getMessage());
+            }
+
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             if(scanner.nextInt() == 2) {
                 check = true;
