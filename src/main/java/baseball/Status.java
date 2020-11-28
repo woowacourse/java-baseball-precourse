@@ -1,6 +1,7 @@
 package baseball;
 
 public class Status {
+
     private boolean gameOver;
     private int strike;
     private int ball;

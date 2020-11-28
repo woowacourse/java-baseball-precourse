@@ -10,6 +10,7 @@ import utils.RandomUtils;
 import views.OutputView;
 
 public class Game {
+
     private static final int WINNING_STRIKE_CONDITION = 3;
     private Scanner userInput;
     private Baseballs answerBalls;
@@ -46,7 +47,7 @@ public class Game {
 
     private Set<Integer> createNumberSet(int ballsContainerSize) {
         Set<Integer> generatedNumbers = new HashSet<>();
-        while(generatedNumbers.size() != ballsContainerSize) {
+        while (generatedNumbers.size() != ballsContainerSize) {
             generatedNumbers.add(RandomUtils.nextInt(1, 9));
         }
         return generatedNumbers;
