@@ -2,7 +2,6 @@ package baseball;
 
 import java.util.Scanner;
 
-import baseball.domain.BaseballNumbers;
 import baseball.domain.Batter;
 import baseball.domain.Judgment;
 import baseball.domain.Pitcher;
@@ -41,11 +40,14 @@ public class BaseballGame {
 
     private void playGame() {
         while (!scoreBoard.isAnswer()) {
-            scoreBoard = new ScoreBoard();
+            setRound();
             startRound();
-            String result = roundResult.getResult(scoreBoard);
-            System.out.println(result);
+            printRoundResult();
         }
+    }
+
+    private void setRound() {
+        scoreBoard = new ScoreBoard();
     }
 
     private void startRound() {
@@ -54,5 +56,10 @@ public class BaseballGame {
             Judgment judgment = batter.swing(numberIndex, pitchedNumber);
             scoreBoard.record(judgment);
         }
+    }
+
+    private void printRoundResult() {
+        String result = roundResult.getResult(scoreBoard);
+        System.out.println(result);
     }
 }
