@@ -2,8 +2,9 @@ package domain.number;
 
 import utils.RandomUtils;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -22,23 +23,19 @@ public class BaseballNumbers {
     }
 
     public static BaseballNumbers generateRandomBaseballNumbers() {
-        List<BaseballNumber> baseballNumbers = new ArrayList<>();
-        while (!isGenerationComplete(baseballNumbers)) {
-            generateRandomBaseballNumber(baseballNumbers);
+        Set<Integer> randomNumbers = new HashSet<>();
+        while (!isGenerationComplete(randomNumbers)) {
+            int randomNumber = RandomUtils.nextInt(RANGE_MINIMUM, RANGE_MAXIMUM);
+            randomNumbers.add(randomNumber);
         }
+        List<BaseballNumber> baseballNumbers = randomNumbers.stream()
+                .map(BaseballNumber::of)
+                .collect(Collectors.toList());
         return new BaseballNumbers(baseballNumbers);
     }
 
-    private static boolean isGenerationComplete(List<BaseballNumber> baseballNumbers) {
+    private static boolean isGenerationComplete(Set<Integer> baseballNumbers) {
         return baseballNumbers.size() == NECESSARY_BASEBALL_NUMBER_COUNTS;
-    }
-
-    private static void generateRandomBaseballNumber(List<BaseballNumber> baseballNumbers) {
-        int randomNumber = RandomUtils.nextInt(RANGE_MINIMUM, RANGE_MAXIMUM);
-        BaseballNumber randomBaseballNumber = BaseballNumber.of(randomNumber);
-        if (!randomBaseballNumber.isDuplicated(baseballNumbers)) {
-            baseballNumbers.add(randomBaseballNumber);
-        }
     }
 
     public static BaseballNumbers generateInputBaseballNumbers(List<Integer> inputBaseballNumbers) {
