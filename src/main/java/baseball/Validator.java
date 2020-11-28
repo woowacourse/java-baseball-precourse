@@ -3,16 +3,15 @@ package baseball;
 public class Validator {
 
     protected boolean isValidInputNumbers(String playerInput) {
-        isValidInputSize(playerInput);
-        isNumberIntegers(playerInput);
-        isDifferentNumbers(playerInput);
-        return true;
+        if (isValidInputSize(playerInput) && isNumberIntegers(playerInput) && isDifferentNumbers(playerInput))
+            return true;
+        return false;
     }
 
     protected boolean isValidMenu(String menuId) {
         int menu = Integer.parseInt(menuId);
         if (menu > 2 || menu < 0)
-            throw new IllegalArgumentException("선택하신 메뉴는 유효하지 않습니다.");
+            throw new IllegalArgumentException("입력한 값은 유효한 값이 아닙니다.");
         return true;
     }
 
@@ -28,7 +27,7 @@ public class Validator {
         char[] inputArr = playerInput.toCharArray();
         for (char input : inputArr) {
             if (input < '1' || input > '9')
-                throw new IllegalArgumentException("입력한 값이 1 ~ 9사이의 문자가 아닙니다.");
+                throw new IllegalArgumentException("입력한 값 중에 1 ~ 9사이의 문자가 아닌것이 있습니다.");
         }
         return true;
     }
