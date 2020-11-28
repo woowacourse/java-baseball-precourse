@@ -33,5 +33,13 @@ public class Compute {
             return number;
         }
     }
-
+    public int getStrikeNumber(ArrayList<Integer> inputNumber ,ArrayList<Integer> randomNumber){
+        int strikeNumber=0;
+        for(int i=0;i<lengthNumber;i++){
+            if(inputNumber.get(i)==randomNumber.get(i)){
+                strikeNumber++;
+            }
+        }
+        return strikeNumber;
+    }
 }
