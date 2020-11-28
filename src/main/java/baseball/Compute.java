@@ -19,6 +19,19 @@ public class Compute {
         }
         return randomNumber;
     }
-    
+    public int checkDuplicateNumber(ArrayList<Integer> randomNumber,int number){
+        boolean check=false;
+        for(int i=0;i<randomNumber.size();i++){
+            if(randomNumber.get(i)==number){
+                check=true;
+            }
+        }
+        if(check){
+            return checkDuplicateNumber(randomNumber,number);
+        }
+        else{
+            return number;
+        }
+    }
 
 }
