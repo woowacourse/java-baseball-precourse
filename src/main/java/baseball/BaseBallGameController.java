@@ -15,18 +15,30 @@ public class BaseBallGameController {
     }
 
     public void startGame() throws IllegalArgumentException {
+        createGame();
+        doGame();
+    }
+
+
+    private void createGame() {
         BaseBallGameNumber answer = new BaseBallGameNumber(makeRandomNumber());
         currentGame = new BaseBallGame(answer);
+    }
+
+    private void doGame() {
         while (true) {
+            BaseBallGameNumber inputNumber = null;
             try {
-                BaseBallGameNumber inputNumber = new BaseBallGameNumber(currentPlayer.inputNumber());
-                boolean isAnswer = currentGame.checkInputNumber(inputNumber.getNumber());
-                if (isAnswer) {
-                    checkRestart(currentPlayer.askRestart());
-                    break;
-                }
+                inputNumber = new BaseBallGameNumber(currentPlayer.inputNumber());
             } catch (IllegalArgumentException illegalArgumentException) {
                 System.out.println(STATEMENT_NOT_VALID_INPUT);
+                continue;
+            }
+            boolean isAnswer = currentGame.checkInputNumber(inputNumber.getNumber());
+
+            if (isAnswer) {
+                checkRestart(currentPlayer.askRestart());
+                break;
             }
         }
     }
