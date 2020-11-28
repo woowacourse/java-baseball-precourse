@@ -17,6 +17,41 @@
   - 한 라운드가 종료되면 게임을 새로 시작할 것인지 묻고 실행해주는 기능을 구현한다.
   - 만약 1또는 2가 아닌 다른 값을 입력하면 예외처리를 한다.
 
+<br>
+
+## 🛠설계
+게임에 필요한 정답과 기능들을 `GameManager` Class에 구현하고, `Application`은 `GameManager`을 이용하여 게임 상황을 파악하고 거기에 맞는 입출력을 처리한다.
+### Application(Class)
+- 루프를 계속 돌며, 사용자에게 정답을 요청한다.
+  - 정답이 틀린 경우: 스트라이크와 볼을 출력하고 계속 루프를 돈다.
+  - 정답이 맞는 경우: 사용자에게 개임을 새로 시작할 것인지 물어보고 입력을 요청한다.
+    - 재시작(1): `GameManager`의 정답을 새로 생성하고 계속 루프를 돈다.
+    - 종료(2): 루프에서 빠져나와, 프로그램을 종료시킨다.
+### GameManager(Class)
+- 변수
+  - `NUMBER_ANSWER`: 게임에서 사용할 숫자의 개수. 요구사항에 맞춰 3으로 초기화한다.
+  - `answer`: 게임의 정답. `Integer`의 `ArrayList`로 관리한다.
+- 인스턴스 Enumeration
+  - `GameStatus`: 현재 게임의 상태를 `enum`으로 관리한다. 새로 시작 요청시, 각 입력에 해당하는 숫자를 값으로 가진다.
+    - `ONGOING`: 게임이 진행중인 상태.
+    - `RESTART`: 사용자가 새로 시작을 요청한 상태.
+    - `END`: 사용자가 종료를 요청한 상태.
+- 생성자
+  - `GameManager`: 랜덤한 정답을 생성한다. (`generateAnswer` 호출)
+- 메소드
+  - `generateAnswer`: `NUMBER_ANSWER`개수만큼의 1~9의 랜덤한 숫자를 `answer`에 저장한다. 숫자를 하나씩 생성할 때마다 중복되는 값이 있는지 매번 확인한다.(`findIndexOfList` 호출)
+  - `checkAnswer`: 유저가 제시한 답이 정답인지 확인한다.(`findIndexOfList` 호출) 확인 후, 스트라이크와 볼의 개수를 출력한다.(`printScore` 호출) 정답이면 `true`, 오답이면 `false`를 반환한다.
+  - `findIndexOfList`: 입력받은 `list`에서 입력받은 숫자가 존재하는지 확인하고 있다면 해당하는 `index`를 반환합니다. 없다면 `-1`을 반환한다.
+  - `printScore`: 입력받은 `strike`와 `ball`을 통해, 스트라이크와 볼의 개수를 출력한다.
+  - `requestInput`: 사용자에게 숫자를 입력받고, 숫자를 입력하지 않았을 경우 `IllegalArgumentException`을 발생시킨다.
+  - `requestReplay`: 사용자에게 게임을 새로 시작하는지 입력을 받고(`requestInput` 호출), 1또는 2를 입력하지 않았다면 `IllegalArgumentException`을 발생시킨다.
+  - `requestAnswer`: 사용자에게 숫자를 입력받고(`requestInput` 호출), 정답으로 나올 수 없는 입력일 경우 `IllegalArgumentException`을 발생시킨다.
+  - `getAnswer`: `answer`를 `String` 자료형으로 반환한다. 디버깅용 메소드다.
+### NotImplemnted(Annotation)
+- 구현하지 못한 메소드를 표기하기 위해 사용한다.
+
+<br>
+
 ## 🚀 기능 요구사항
 - 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
 - 정답을 맞추기 위해 3자리수를 입력하고 힌트를 받는다.

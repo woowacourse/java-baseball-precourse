@@ -51,29 +51,12 @@ public class GameManager {
         answer = new ArrayList<Integer>();
         for (int i = 0; i < NUMBER_ANSWER;) {
             int temp = RandomUtils.nextInt(1, 9);
-            if (!this.checkRedundancy(answer, i, temp)) {
+            if (this.findIndexOfList(answer, i, temp) == -1) {
                 /* 중복된 값이 아니면 answer에 추가한다. */
                 answer.add(temp);
                 i++;
             }
         }
-    }
-
-    /**
-     * list에 number가 존재하는지 length 전 까지 확인합니다.
-     * 
-     * @param list 검사할 list를 입력합니다.
-     * @param length 검사할 길이를 입력합니다.
-     * @param number 비교할 숫자를 입력합니다.
-     * @return 중복된 값이 있으면 true, 없으면 false를 반환합니다.
-     */
-    private boolean checkRedundancy(ArrayList<Integer> list, int length, int number) {
-        for (int i = 0; i < length; i++) {
-            if (list.get(i) == number) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
@@ -86,7 +69,7 @@ public class GameManager {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < NUMBER_ANSWER; i++) {
-            int index = this.findIndexOfAnswer(userAnswer.get(i));
+            int index = this.findIndexOfList(answer, NUMBER_ANSWER, userAnswer.get(i));
             if (index == -1) {
                 continue;
             } else if (index == i) {
@@ -100,14 +83,16 @@ public class GameManager {
     }
 
     /**
-     * answer에서 number가 위치하는 인덱스를 찾습니다.
+     * list에서 number가 위치하는 인덱스를 찾습니다.
      * 
+     * @param list 비교하고자하는 list를 입력합니다.
+     * @param length 비교할 길이를 입력합니다.
      * @param number 찾고자하는 숫자를 입력합니다.
      * @return 정답에 위치한 숫자의 인덱스를 반환합니다. 없다면 -1이 반환됩니다.
      */
-    private int findIndexOfAnswer(int number) {
-        for (int i = 0; i < NUMBER_ANSWER; i++) {
-            if (answer.get(i) == number) {
+    private int findIndexOfList(ArrayList<Integer> list, int length , int number) {
+        for (int i = 0; i < length; i++) {
+            if (list.get(i) == number) {
                 return i;
             }
         }
@@ -167,7 +152,7 @@ public class GameManager {
     }
 
     /**
-     * 사용자에게 정답을 요청하고 ArrayList로 만들어 반환합니다.
+     * 사용자에게 정답을 입력받고 ArrayList로 만들어 반환합니다.
      * 
      * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
      * @return 입력으로 받은 숫자의 ArrayList를 반환합니다.
@@ -181,7 +166,7 @@ public class GameManager {
                 /* 입력은 1~9만 가능하다. */
                 throw new IllegalArgumentException();
             }
-            if (this.checkRedundancy(result, result.size(), temp)) {
+            if (this.findIndexOfList(result, result.size(), temp) != -1) {
                 /* 중복된 값의 입력은 불가능하다. */
                 throw new IllegalArgumentException();
             }
