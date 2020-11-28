@@ -47,9 +47,18 @@ public class Game {
     }
 
     private void proceedRound() {
-        OutputView.askPlayerNumbers();
-        guessingBalls = new Baseballs(userInput.nextLine());
+        generateGuessingBalls();
         System.out.println(guessingBalls.getBalls());
+    }
+
+    private void generateGuessingBalls() {
+        try {
+            OutputView.askPlayerNumbers();
+            guessingBalls = new Baseballs(userInput.nextLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            generateGuessingBalls();
+        }
     }
 
 
