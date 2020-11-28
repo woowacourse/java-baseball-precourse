@@ -201,4 +201,21 @@ class InputUtilsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1또는 2를 입력해주세요");
     }
+
+    @Test
+    @DisplayName("게임이 끝났을 시, 입력받는 숫자가 1이면 true를 반환한다")
+    void chooseContinue() {
+        //given
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Scanner testScanner = new Scanner(in);
+        Game game = Game.of(testScanner);
+
+        //when
+        boolean chooseContinue = game.continueOrNot();
+
+        //then
+        assertThat(chooseContinue).isEqualTo(true);
+    }
 }
