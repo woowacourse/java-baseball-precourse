@@ -218,4 +218,21 @@ class InputUtilsTest {
         //then
         assertThat(chooseContinue).isEqualTo(true);
     }
+
+    @Test
+    @DisplayName("게임이 끝났을 시, 입력받는 숫자가 2이면 false를 반환한다")
+    void chooseNot() {
+        //given
+        String input = "2";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Scanner testScanner = new Scanner(in);
+        Game game = Game.of(testScanner);
+
+        //when
+        boolean chooseContinue = game.continueOrNot();
+
+        //then
+        assertThat(chooseContinue).isEqualTo(false);
+    }
 }

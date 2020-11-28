@@ -26,18 +26,26 @@ public class Game {
             initializeGame();
             int ballCount = numbers.checkBall();
             int strikeCount = numbers.checkStrike();
+            boolean isContinue = true;
 
             printResult(ballCount, strikeCount);
 
             if (isFinish(strikeCount)) {
+                randomList = null;
+                isContinue = continueOrNot();
+            }
+            if (!isContinue) {
                 break;
             }
         }
-        continueOrNot();
     }
 
-    public void continueOrNot() {
+    public boolean continueOrNot() {
         int continueOrNot = inputUtils.getContinueOrNot();
+        if (continueOrNot == 1) {
+            return true;
+        }
+        return false;
     }
 
     public static void printResult(int ball, int strike) {
@@ -63,6 +71,7 @@ public class Game {
             randomList = Number.createRandomList(3);
         }
         List<Integer> inputList = inputUtils.getIntegerList();
+        System.out.println("randomList = " + randomList);
         gameNumber.add(Number.of(randomList));
         gameNumber.add(Number.of(inputList));
         this.numbers = Numbers.of(gameNumber);

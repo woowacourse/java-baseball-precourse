@@ -123,4 +123,4 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - [ O ] 정답일 때 맞췄다는 메세지 출력 후 게임을 끝내기 
 - [ O ] 게임을 끝낸 후 1, 2만 입력받기
 - [ O ] 게임을 끝낸 후 1을 입력시 게임을 다시 시작하기
-- 게임을 끝낸 후 2을 입력시 게임을 종료하기
+- [ O } 게임을 끝낸 후 2을 입력시 게임을 종료하기
