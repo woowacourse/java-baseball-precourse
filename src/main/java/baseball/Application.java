@@ -10,9 +10,12 @@ public class Application {
         // TODO 구현 진행
         boolean gameStatus = true;
 
-        // 플레이어가 3자리 수를 입력한다.
         while (gameStatus) {
-            GameController.scanPlayerNumber(scanner);
+            GameController.startGame(scanner);
+
+            if (GameController.finishGame(scanner)) {
+                break;
+            }
         }
     }
 }
