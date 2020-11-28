@@ -1,13 +1,19 @@
 # 미션 - 숫자 야구 게임
 
 ## 구현할 기능 목록
-1. RandomUtils를 이용하여 3자리 targetNumber 생성하기.
+1. 3자리 baseballNumber 생성하기.
+    - [x] RandomUtils로 숫자 생성
+    - [ ] 0이 포함된 경우 다시 숫자 생성
+    - [x] 겹치는 숫자가 있는 경우 다시 숫자 생성
 2. 3자리수를 입력받고, 잘못된 경우, IllegalArgumentException 발생시키기.
-3. targetNumber를 변수로 갖는 Game Class를 정의.
+    - [x] Integer 값을 입력하지 않았을 경우, 예외처리
+    - [x] prefix나 suffix에 공백같은 경우는 strip() 처리
+    - [ ] Integer 값이 baseballNumber가 아닌 경우, 예외처리
+3. 1번에서 생성한 숫자를 변수로 갖는 Game Class를 정의.
 4. 스트라이크, 볼 계산하는 로직 구현.
 5. game 반복 진행 구현 및 재시작,종료 질문 로직 구현.
-
 6. 리팩토링.
+    - [x] main에서 GameManagement 로직 분리
 7. 테스트 코드 작성해보기
 <br>
 
