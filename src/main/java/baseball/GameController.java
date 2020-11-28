@@ -25,12 +25,13 @@ public class GameController {
 
     public void startRound() {
         Number playerNumber;
+        Hint hint;
 
         computer.pickNumber();
         do {
             playerNumber = requestPlayerNumber(scanner);
-
-        } while (checkAnswer());
+            hint = Comparator.extractHint(computer.getNumber(), playerNumber);
+        } while (checkAnswer(hint));
     }
 
     private boolean checkRestart() {
@@ -46,8 +47,7 @@ public class GameController {
         return new Number(playerInput);
     }
 
-    private boolean checkAnswer() {
-        // TODO: 컴퓨터와 플레이어의 숫자를 비교하여 정답 여부 결정
-        return false;
+    private boolean checkAnswer(Hint hint) {
+        return hint.checkStrikeAll();
     }
 }
