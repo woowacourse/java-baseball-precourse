@@ -47,7 +47,7 @@ public class Computer {
         return false;
     }
 
-    public void makeRandomAnswer() {
+    private void makeRandomAnswer() {
         while (answer.size() != 3) {
             int randomNumber = RandomUtils.nextInt(
                     START_VALUE_IN_RANDOM_NUMBER_RANGE,
