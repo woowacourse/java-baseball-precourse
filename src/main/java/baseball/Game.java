@@ -58,6 +58,7 @@ public class Game {
         System.out.println(guessingBalls.getBalls());
 
         gameStatus.check(answerBalls, guessingBalls);
+        OutputView.printStatus(gameStatus.getBallCount(), gameStatus.getStrikeCount());
     }
 
     private void generateGuessingBalls() {
