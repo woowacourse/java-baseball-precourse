@@ -2,8 +2,10 @@ package baseball.domain;
 
 public class Batter extends Player {
 
+    private final NumbersGenerator generator;
+
     public Batter(NumbersGenerator generator) {
-        super(generator);
+        this.generator = generator;
         this.numbers = new BaseballNumbers(generator.generateNumbers());
     }
 
