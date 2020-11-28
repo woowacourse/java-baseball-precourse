@@ -1,9 +1,9 @@
 /*
  * InputValidation.java
  *
- * version 1.0
+ * version 1.1
  *
- * 2020/11/27
+ * 2020/11/28
  *
  * Copyright (c) 2020 Junhyoung Park
  */
@@ -29,9 +29,7 @@ public class InputValidation {
         if (!isDuplicated()) {
             return false;
         }
-        if (!isZero()) {
-            return false;
-        }
+
         return true;
     }
 
@@ -57,10 +55,4 @@ public class InputValidation {
         return checkNumber.length() == NUMBER_LENGTH;
     }
 
-    private boolean isZero() {
-        if (checkNumber.contains("0")) {
-            return false;
-        }
-        return true;
-    }
 }
