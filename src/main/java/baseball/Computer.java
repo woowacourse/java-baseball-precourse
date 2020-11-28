@@ -10,17 +10,26 @@ public class Computer {
     private static final int END = 9;
 
     public Computer() {
-        StringBuilder sb = new StringBuilder();
         int randomNum;
 
-        while (sb.length() < SIZE) {
-            randomNum = RandomUtils.nextInt(START, END);
-
-            if (!number.contains(String.valueOf(randomNum))) {
-                sb.append(randomNum);
-            }
+        while (number.length() < SIZE) {
+            randomNum = makeRandomNumber();
+            addNumber(randomNum);
         }
-        number = sb.toString();
+    }
+
+    private int makeRandomNumber() {
+        return RandomUtils.nextInt(START, END);
+    }
+
+    private boolean isDuplicateNumber(int randomNum) {
+        return number.contains(String.valueOf(randomNum));
+    }
+
+    public void addNumber(int randomNum) {
+        if (!isDuplicateNumber(randomNum)) {
+            number += String.valueOf(randomNum);
+        }
     }
 
     public String getNumber() {
