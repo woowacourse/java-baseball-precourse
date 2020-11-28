@@ -1,5 +1,7 @@
 package view;
 
+import utils.InputValidator;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -9,15 +11,33 @@ public class InputView {
 
     private InputView(){ }
 
-    public static String askGuess(Scanner scanner){
+    public static String askGuess(Scanner scanner, int digits){
         OutputView.printMsg(ASK_NUMBER_MESSAGE);
         OutputView.printMsg(SEPARATOR_LINE);
-        return scanner.nextLine();
+
+        try{
+            String answer = scanner.nextLine();
+            InputValidator.isValidGuess(answer, digits);
+            return answer;
+        }catch (IllegalArgumentException IAE){
+            OutputView.printMsg(IAE.getMessage());
+            IAE.printStackTrace();
+            return askGuess(scanner, digits);
+        }
     }
 
     public static String askPlayAgain(Scanner scanner){
         OutputView.printMsg(ASK_PLAY_AGAIN_MESSAGE);
         OutputView.printMsg(SEPARATOR_LINE);
-        return scanner.nextLine();
+
+        try{
+            String answer = scanner.nextLine();
+            InputValidator.isValidPlayAgainAnswer(answer);
+            return answer;
+        }catch (IllegalArgumentException IAE){
+            OutputView.printMsg(IAE.getMessage());
+            IAE.printStackTrace();
+            return askPlayAgain(scanner);
+        }
     }
 }

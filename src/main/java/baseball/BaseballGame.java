@@ -1,6 +1,5 @@
 package baseball;
 
-import utils.InputValidator;
 import utils.NumberListGenerator;
 import view.InputView;
 import view.OutputView;
@@ -10,7 +9,7 @@ import java.util.Scanner;
 
 public class BaseballGame {
     private final int NUMBER_OF_DIGITS;
-    private final Scanner SCANNER;
+    private final Scanner scanner;
 
     private List<Integer> targetNumberList;
     private List<Integer> guessedNumberList;
@@ -20,7 +19,7 @@ public class BaseballGame {
 
     public BaseballGame(int NUMBER_OF_DIGITS, Scanner scanner){
         this.NUMBER_OF_DIGITS = NUMBER_OF_DIGITS;
-        this.SCANNER = scanner;
+        this.scanner = scanner;
     }
 
     public void play(){
@@ -38,15 +37,7 @@ public class BaseballGame {
     }
 
     private String readNumber(){
-        try{
-            String input = InputView.askGuess(SCANNER);
-            InputValidator.isValidGuess(input, NUMBER_OF_DIGITS);
-            return input;
-        }catch (IllegalArgumentException IAE){
-            OutputView.printMsg(IAE.getMessage());
-            IAE.printStackTrace();
-            return readNumber();
-        }
+        return InputView.askGuess(scanner, NUMBER_OF_DIGITS);
     }
 
     private void calculateScore(String guessed){

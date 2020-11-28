@@ -26,15 +26,7 @@ public class Application {
         return answer.equals(PLAY_AGAIN_BUTTON);
     }
 
-    private static String askPlayAgain(Scanner SCANNER){
-        try{
-            String answer = InputView.askPlayAgain(SCANNER);
-            InputValidator.isValidPlayAgainAnswer(answer);
-            return answer;
-        }catch (IllegalArgumentException IAE){
-            OutputView.printMsg(IAE.getMessage());
-            IAE.printStackTrace();
-            return askPlayAgain(SCANNER);
-        }
+    private static String askPlayAgain(Scanner scanner){
+        return InputView.askPlayAgain(scanner);
     }
 }
