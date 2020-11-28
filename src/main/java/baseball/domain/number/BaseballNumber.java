@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 public class BaseballNumber {
+    public static final int RANGE_MINIMUM = 1;
+    public static final int RANGE_MAXIMUM = 9;
     private static final Map<Integer, BaseballNumber> CACHE = new HashMap<>();
-    private static final int RANGE_MINIMUM = 1;
-    private static final int RANGE_MAXIMUM = 9;
 
     private final int baseballNumber;
 

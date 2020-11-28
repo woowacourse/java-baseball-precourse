@@ -1,11 +1,11 @@
 package baseball;
 
-import domain.game.BaseballGameMachine;
-import domain.game.GameResult;
-import domain.game.GameState;
-import domain.number.BaseballNumbers;
-import view.InputView;
-import view.OutputView;
+import baseball.domain.game.BaseballGameMachine;
+import baseball.domain.game.GameResult;
+import baseball.domain.game.GameState;
+import baseball.domain.number.BaseballNumbers;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.List;
 import java.util.Scanner;

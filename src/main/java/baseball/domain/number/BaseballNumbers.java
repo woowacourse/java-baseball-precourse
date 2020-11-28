@@ -10,11 +10,9 @@ import java.util.stream.IntStream;
 
 public class BaseballNumbers {
     private static final int NECESSARY_BASEBALL_NUMBER_COUNTS = 3;
-    private static final int RANGE_MINIMUM = 1;
-    private static final int RANGE_MAXIMUM = 9;
+    private static final int NECESSARY_COUNT_FOR_BALL_HINT = 1;
     private static final int FIRST_BALL_INDEX = 0;
     private static final int LAST_BALL_INDEX = 2;
-    private static final int NECESSARY_COUNT_FOR_BALL_HINT = 1;
 
     private final List<BaseballNumber> baseballNumbers;
 
@@ -25,7 +23,7 @@ public class BaseballNumbers {
     public static BaseballNumbers generateRandomBaseballNumbers() {
         Set<Integer> randomNumbers = new HashSet<>();
         while (!isGenerationComplete(randomNumbers)) {
-            int randomNumber = RandomUtils.nextInt(RANGE_MINIMUM, RANGE_MAXIMUM);
+            int randomNumber = RandomUtils.nextInt(BaseballNumber.RANGE_MINIMUM, BaseballNumber.RANGE_MAXIMUM);
             randomNumbers.add(randomNumber);
         }
         List<BaseballNumber> baseballNumbers = randomNumbers.stream()
