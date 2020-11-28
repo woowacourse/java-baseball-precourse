@@ -13,6 +13,14 @@ public class NumberGenerator {
     private int numberSize;
 
     public NumberGenerator(int numberSize){
+        if(numberSize <= 0){
+            throw new IllegalArgumentException();
+        }
+
+        if(numberSize > NUMBER_RANGE_MAX - NUMBER_RANGE_MIN + 1){
+            throw new IllegalArgumentException();
+        }
+
         this.numberSize = numberSize;
     }
 

@@ -15,6 +15,14 @@ public class InputOutputManager {
     private int numberSize;
     
     public InputOutputManager(Scanner scanner, int numberSize){
+        if(ExceptionChecker.isNull(scanner)){
+            throw new IllegalArgumentException();
+        }
+
+        if(numberSize <= 0){
+            throw new IllegalArgumentException();
+        }
+
         this.scanner = scanner;
         this.numberSize = numberSize;
     }
@@ -56,6 +64,10 @@ public class InputOutputManager {
     }
 
     public void printResult(int strike, int ball){
+        if(strike < 0 || ball < 0){
+            throw new IllegalArgumentException();
+        }
+
         if(strike == 0 && ball == 0){
             System.out.println(NOTHING);
             return;

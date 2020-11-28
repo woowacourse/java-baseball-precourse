@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.Scanner;
 
+import baseball.modules.ExceptionChecker;
 import baseball.modules.InputOutputManager;
 import baseball.modules.NumberGenerator;
 
@@ -16,6 +17,10 @@ public class GameManager {
     int ball = 0;
 
     public GameManager(Scanner scanner){
+        if(ExceptionChecker.isNull(scanner)){
+            throw new IllegalArgumentException();
+        }
+
         inputOutputManager = new InputOutputManager(scanner, NUMBER_SIZE);
         numberGenerator = new NumberGenerator(NUMBER_SIZE);
     }
@@ -35,7 +40,13 @@ public class GameManager {
     }
 
     private void compare(int[] inputNumber, int[] generatedNumber){
-        // TODO 변수 인수값에 대한 예외 처리
+        if(ExceptionChecker.isNull(inputNumber) || ExceptionChecker.isNull(generatedNumber)){
+            throw new IllegalArgumentException();
+        }
+
+        if(inputNumber.length != generatedNumber.length){
+            throw new IllegalArgumentException();
+        }
 
         strike = 0;
         ball = 0;
@@ -53,6 +64,10 @@ public class GameManager {
     }
 
     private boolean isContains(int[] array, int value){
+        if(ExceptionChecker.isNull(array)){
+            throw new IllegalArgumentException();
+        }
+
         for(int i = 0; i < array.length; i++){
             if(array[i] == value){
                 return true;

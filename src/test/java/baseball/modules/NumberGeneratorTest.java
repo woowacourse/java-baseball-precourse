@@ -44,8 +44,6 @@ public class NumberGeneratorTest {
     }
     
     private boolean isUniqueNumber(int[] number){
-        // TODO 인수값에 대한 예외처리
-
         HashMap<Integer, Integer> known = new HashMap<>();
 
         for(int i = 0; i < number.length; i++){
@@ -59,7 +57,9 @@ public class NumberGeneratorTest {
     }
 
     private void count(HashMap<Integer, Integer> counter, int[] number){
-        // TODO 인수값에 대한 예외처리
+        if(ExceptionChecker.isNull(counter) || ExceptionChecker.isNull(number)){
+            throw new IllegalArgumentException();
+        }
 
         for(int i = 0; i < number.length; i++){
             int currentNumber = number[i];
