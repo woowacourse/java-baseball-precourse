@@ -1,8 +1,8 @@
-package baseball.domain;
+package baseball;
 
-import baseball.BaseballGame;
+import baseball.domain.ScoreBoard;
 
-public class RoundResult {
+public class OutputView {
 
     public static final String BALL = "볼 ";
 
@@ -13,7 +13,11 @@ public class RoundResult {
     public static final String GAME_END =
             "\n" + BaseballGame.BALLS_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    public String getResult(ScoreBoard scoreBoard) {
+    public void printResult(ScoreBoard scoreBoard) {
+        System.out.println(getResult(scoreBoard));
+    }
+
+    private String getResult(ScoreBoard scoreBoard) {
         StringBuilder stringBuilder = new StringBuilder();
 
         if (scoreBoard.hasZeroBall() && scoreBoard.hasZeroStrike()) {

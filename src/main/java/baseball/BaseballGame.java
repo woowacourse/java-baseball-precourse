@@ -6,7 +6,6 @@ import baseball.domain.Batter;
 import baseball.domain.Judgment;
 import baseball.domain.Pitcher;
 import baseball.domain.RandomNumbersGenerator;
-import baseball.domain.RoundResult;
 import baseball.domain.ScoreBoard;
 
 public class BaseballGame {
@@ -23,20 +22,20 @@ public class BaseballGame {
 
     private ScoreBoard scoreBoard;
 
-    private final RoundResult roundResult;
+    private final OutputView outputView;
 
     public BaseballGame(final Scanner scanner) {
         this.inputView = new InputView(scanner);
         this.batter = new Batter(new RandomNumbersGenerator());
         scoreBoard = new ScoreBoard();
-        this.roundResult = new RoundResult();
+        this.outputView = new OutputView();
     }
 
     public void run() {
         boolean isGameEnd = false;
         while (!isGameEnd) {
             playGame();
-            isGameEnd = pitcher.wantsToStop(inputView.askRetry());
+            isGameEnd = inputView.askRetry();
         }
     }
 
@@ -44,7 +43,7 @@ public class BaseballGame {
         while (!scoreBoard.isAnswer()) {
             setRound();
             startRound();
-            printRoundResult();
+            outputView.printResult(scoreBoard);
         }
     }
 
@@ -61,10 +60,5 @@ public class BaseballGame {
             Judgment judgment = batter.swing(numberIndex, pitchedNumber);
             scoreBoard.record(judgment);
         }
-    }
-
-    private void printRoundResult() {
-        String result = roundResult.getResult(scoreBoard);
-        System.out.println(result);
     }
 }
