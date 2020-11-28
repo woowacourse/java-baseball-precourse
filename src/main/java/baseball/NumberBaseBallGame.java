@@ -10,6 +10,11 @@ import utils.RandomUtils;
 
 public class NumberBaseBallGame {
 
+    private static final int MIN = 1;
+    private static final int MAX = 9;
+    private static final int NUMBER_LEN = 3;
+    private static final int CONTINUE = 1;
+    private static final int END = 2;
     private static List<Integer> answerNumber = new LinkedList<>();
     private static List<Integer> questionNumber = new LinkedList<>();
     private static int strike, ball;
@@ -22,6 +27,10 @@ public class NumberBaseBallGame {
     public static void initGameData() {
         answerNumber.clear();
         questionNumber.clear();
+        initStrikeAndBall();
+    }
+
+    private static void initStrikeAndBall() {
         strike = 0;
         ball = 0;
     }
@@ -30,8 +39,8 @@ public class NumberBaseBallGame {
         Set<Integer> set = new HashSet<>();
 
         answerNumber.clear();
-        while (answerNumber.size() < 3) {
-            int num = RandomUtils.nextInt(1, 9);
+        while (answerNumber.size() < NUMBER_LEN) {
+            int num = RandomUtils.nextInt(MIN, MAX);
             if (!set.contains(num)) {
                 set.add(num);
                 answerNumber.add(num);
@@ -55,7 +64,7 @@ public class NumberBaseBallGame {
             int input = scanner.nextInt();
             checkIsLessZero(input);
             checkDigitLength(input);
-            checkRangeEachOfDigit(input, 1, 9);
+            checkRangeEachOfDigit(input, MIN, MAX);
             checkIsDuplicateDigit(input);
             return input;
         } catch (Exception e) {
@@ -70,7 +79,7 @@ public class NumberBaseBallGame {
     }
 
     private static void checkDigitLength(int num) {
-        if ((int) (Math.log10(num) + 1) != 3) {
+        if ((int) (Math.log10(num) + 1) != NUMBER_LEN) {
             throw new IllegalArgumentException();
         }
     }
@@ -98,7 +107,7 @@ public class NumberBaseBallGame {
     }
 
     private static void validateQuestionNumber() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_LEN; i++) {
             if (answerNumber.get(i) == questionNumber.get(i)) {
                 strike++;
             } else if (answerNumber.contains(questionNumber.get(i))) {
@@ -108,7 +117,7 @@ public class NumberBaseBallGame {
     }
 
     private static boolean isThreeStrike() {
-        if (strike == 3) {
+        if (strike == NUMBER_LEN) {
             return true;
         }
         return false;
@@ -127,6 +136,52 @@ public class NumberBaseBallGame {
             System.out.print("낫싱");
         }
         System.out.println();
+    }
+
+    private static void printCorrectAnswerMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private static void printContinueGameMessage() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    private static int getGameContinueFlag() {
+        try {
+            printContinueGameMessage();
+            int input = scanner.nextInt();
+            checkIsContinueFlag(input);
+            return input;
+        } catch (Exception e) {
+            return getGameContinueFlag();
+        }
+    }
+
+    private static void checkIsContinueFlag(int num) {
+        if (num != CONTINUE && num != END) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void run() {
+        int flag = CONTINUE;
+        initGameData();
+        setAnswerNumber();
+
+        while (flag == CONTINUE) {
+            setQuestionNumber();
+            initStrikeAndBall();
+            validateQuestionNumber();
+            printBallAndStrike();
+            if (isThreeStrike()) {
+                printCorrectAnswerMessage();
+                flag = getGameContinueFlag();
+            }
+            if (isThreeStrike() && flag == CONTINUE) {
+                initGameData();
+                setAnswerNumber();
+            }
+        }
     }
 
 }
