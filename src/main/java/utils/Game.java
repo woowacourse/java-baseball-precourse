@@ -33,6 +33,11 @@ public class Game {
                 break;
             }
         }
+        continueOrNot();
+    }
+
+    public void continueOrNot() {
+        int continueOrNot = inputUtils.getContinueOrNot();
     }
 
     public static void printResult(int ball, int strike) {

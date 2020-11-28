@@ -16,18 +16,19 @@ public class InputUtils {
         return new InputUtils(scanner);
     }
 
-    public int getIntValue() {
-        return inputValueToInt(getNextLine());
-    }
-
     public List<Integer> getIntegerList() {
+        System.out.print("숫자를 입력해주세요 : ");
         int number = inputValueToInt(getNextLine());
         return intValueToList(number);
     }
 
     private String getNextLine() {
-        System.out.print("숫자를 입력해주세요 : ");
         return checkLength(scanner.nextLine());
+    }
+
+    public int getContinueOrNot() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return checkContinueOrNot(inputValueToInt(scanner.nextLine()));
     }
 
     public int inputValueToInt(String number) {
@@ -52,5 +53,12 @@ public class InputUtils {
             throw new IllegalArgumentException("3자리의 수를 입력 해주세요");
         }
         return text;
+    }
+
+    public int checkContinueOrNot(int number) {
+        if (number < 1 || number > 2) {
+            throw new IllegalArgumentException("1또는 2를 입력해주세요");
+        }
+        return number;
     }
 }

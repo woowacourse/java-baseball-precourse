@@ -3,6 +3,8 @@ package utils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
@@ -139,5 +141,64 @@ class InputUtilsTest {
         assertThat(toListed2.get(0)).isEqualTo(4);
         assertThat(toListed2.get(1)).isEqualTo(5);
         assertThat(toListed2.get(2)).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("게임이 끝났을 시, 1또는 2만 입력 받는다")
+    void continueOrNot() {
+        //given
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Scanner testScanner = new Scanner(in);
+        InputUtils scannerInputUtils = InputUtils.of(testScanner);
+
+        input = "2";
+        InputStream in2 = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in2);
+        Scanner testScanner2 = new Scanner(in2);
+        InputUtils scannerInputUtils2 = InputUtils.of(testScanner2);
+
+        //when
+        int continueOrNot = scannerInputUtils.getContinueOrNot();
+        int continueOrNot2 = scannerInputUtils2.getContinueOrNot();
+
+
+        //then
+        assertThat(continueOrNot).isEqualTo(1);
+        assertThat(continueOrNot2).isEqualTo(2);
+
+    }
+
+    @Test
+    @DisplayName("게임이 끝났을 시, 문자를 입력할 때, 에러가 발생한다")
+    void continueOrNotStringError() {
+        //given
+        String input = "a";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Scanner testScanner = new Scanner(in);
+        InputUtils scannerInputUtils = InputUtils.of(testScanner);
+
+        //then
+        assertThatThrownBy(() -> scannerInputUtils.getContinueOrNot())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자만 입력 해주세요");
+    }
+
+    @Test
+    @DisplayName("게임이 끝났을 시, 입력받는 숫자가 1또는 2가 아닐 때, 에러가 발생한다")
+    void continueOrNotRangeError() {
+        //given
+        String input = "0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Scanner testScanner = new Scanner(in);
+        InputUtils scannerInputUtils = InputUtils.of(testScanner);
+
+        //then
+        assertThatThrownBy(() -> scannerInputUtils.getContinueOrNot())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1또는 2를 입력해주세요");
     }
 }
