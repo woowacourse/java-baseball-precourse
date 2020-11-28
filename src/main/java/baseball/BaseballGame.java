@@ -24,6 +24,26 @@ public class BaseballGame {
         gameStart();
     }
 
+    public boolean restartOrExit() {
+        System.out.println("게임을 다시 하시겠습니까? 어플리케이션을 종료할까요?");
+        System.out.println("1 : 게임 재시작, 2 :  종료");
+        String response = scanner.nextLine();
+        checkValidResponse(response);
+        if (response.contains("1")) {
+            return false;
+        }
+        if (response.contains("2")) {
+            return true;
+        }
+        return false;
+    }
+
+    private void checkValidResponse(String response) {
+        if(!response.contains("1") && !response.contains("2")){
+            throw new IllegalArgumentException("1이나 2를 입력해 주세요.");
+        }
+    }
+
     private void gameStart() {
         while (isPlaying) {
             System.out.println("답 : " + Arrays.toString(computerNumbers));
