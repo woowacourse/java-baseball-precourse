@@ -33,15 +33,15 @@ public class BaseballGame {
     public void run() {
         boolean isGameEnd = false;
         while (!isGameEnd) {
-            startGame();
+            playGame();
             isGameEnd = pitcher.wantsToStop(new Scanner(System.in));
         }
     }
 
-    private void startGame() {
+    private void playGame() {
         while (!scoreBoard.isAnswer()) {
-            BaseballNumbers pitchedNumbers = pitcher.pitches();
-            scoreBoard.record(batter.swing(pitchedNumbers));
+            scoreBoard = new ScoreBoard();
+            scoreBoard.record(batter.swing(pitcher.pitches()));
             String result = roundResult.getResult(scoreBoard);
             System.out.println(result);
         }
