@@ -8,28 +8,52 @@ public class Computer {
     private final static int START_VALUE_IN_RANDOM_NUMBER_RANGE = 1;
     private final static int END_VALUE_IN_RANDOM_NUMBER_RANGE = 9;
     ArrayList<Integer> answer = new ArrayList<>();
+    private int strikeCount;
+    private int ballCount;
 
     public Computer() {
         makeRandomAnswer();
     }
 
     public boolean isCorrectAnswer(String[] userInput) {
-        int strikeCount = 0;
-        int ballCount = 0;
+        strikeCount = 0;
+        ballCount = 0;
+        countStrikeAndBall(userInput);
+        printBallOrStrikeCount(strikeCount, ballCount);
+        if (strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
+    public void resetAnswer() {
+        answer = new ArrayList<>();
+        makeRandomAnswer();
+    }
+
+    private void countStrikeAndBall(String[] userInput) {
         ArrayList<Integer> convertedUserInputToInteger = new ArrayList<>();
         for (String x : userInput) {
             convertedUserInputToInteger.add(Integer.parseInt(x));
         }
         for (int i = 0; i < answer.size(); i++) {
-            if (answer.get(i) == convertedUserInputToInteger.get(i)) {
-                strikeCount++;
-                continue;
-            }
-            if (answer.contains(convertedUserInputToInteger.get(i))) {
-                ballCount++;
-                continue;
-            }
+            checkStrikeOrBallAndCount(answer.get(i), convertedUserInputToInteger.get(i));
         }
+    }
+
+    private void checkStrikeOrBallAndCount(int oneNumberOfanswer, int oneNumberOfinput) {
+        if (oneNumberOfanswer == oneNumberOfinput) {
+            strikeCount++;
+            return;
+        }
+        if (answer.contains(oneNumberOfinput)) {
+            ballCount++;
+            return;
+        }
+    }
+
+    private void printBallOrStrikeCount(int strikeCount, int ballCount) {
         if (ballCount > 0) {
             System.out.print(ballCount + "볼 ");
         }
@@ -40,11 +64,6 @@ public class Computer {
             System.out.print("낫싱");
         }
         System.out.println();
-        if (strikeCount == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
-        }
-        return false;
     }
 
     private void makeRandomAnswer() {
@@ -56,10 +75,5 @@ public class Computer {
                 answer.add(randomNumber);
             }
         }
-    }
-
-    public void resetAnswer() {
-        answer = new ArrayList<>();
-        makeRandomAnswer();
     }
 }
