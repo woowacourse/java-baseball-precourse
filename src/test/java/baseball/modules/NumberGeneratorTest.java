@@ -1,9 +1,9 @@
 package baseball.modules;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import baseball.GameManager;
 import java.util.HashMap;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class NumberGeneratorTest {
@@ -12,18 +12,18 @@ public class NumberGeneratorTest {
     @Test
     public void checkGeneratedNumberNotDuplicated(){
         NumberGenerator numberGenerator = new NumberGenerator(GameManager.NUMBER_SIZE);
-        boolean isNotDuplicated = true;
+        boolean isDuplicated = false;
 
         for(int i = 0; i < TEST_ITERATION; i++){
             numberGenerator.generate();
             int[] generatedNumber = numberGenerator.getNumber();
-            if(!isUniqueNumber(generatedNumber)){
-                isNotDuplicated = false;
+            if(!ExceptionChecker.isArrayElementsAreUnique(generatedNumber)){
+                isDuplicated = true;
                 break;
             }
         }
 
-        assertEquals(true, isNotDuplicated);
+        assertFalse(isDuplicated);
     }
 
     @Test
@@ -41,19 +41,6 @@ public class NumberGeneratorTest {
         for(int key : numberCounter.keySet()){
             System.out.printf("%d : %d%n", key, numberCounter.get(key));
         }
-    }
-    
-    private boolean isUniqueNumber(int[] number){
-        HashMap<Integer, Integer> known = new HashMap<>();
-
-        for(int i = 0; i < number.length; i++){
-            int currentNumber = number[i];
-            if(known.containsKey(currentNumber)){
-                return false;
-            }
-            known.put(currentNumber, currentNumber);
-        }
-        return true;
     }
 
     private void count(HashMap<Integer, Integer> counter, int[] number){
