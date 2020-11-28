@@ -1,7 +1,6 @@
 package domain;
 
 import ui.Input;
-import ui.Output;
 
 import java.util.*;
 
@@ -58,20 +57,20 @@ public class Player {
             Integer.parseInt(userInput);
             return false;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Output.SHOULD_INPUT_ONLY_NUMBER);
+            throw new IllegalArgumentException("숫자만을 입력해야 합니다.");
         }
     }
 
     private boolean hasZero() {
         if (Arrays.asList(seperatedUserInputByLetter).contains(ZERO_STRING)) {
-            throw new IllegalArgumentException(Output.SHOULD_NOT_INCLUDE_ZERO);
+            throw new IllegalArgumentException("입력하시는 숫자에는 0이 포함되면 안 됩니다.");
         }
         return false;
     }
 
     private boolean isNotValidNumberSize() {
         if (userInput.length() != VALID_NUMBER_SIZE) {
-            throw new IllegalArgumentException(Output.SHOULD_INPUT_THREE_DIGIT);
+            throw new IllegalArgumentException("3자리의 수만 입력해야 합니다.");
         }
         return false;
     }
@@ -83,7 +82,7 @@ public class Player {
         }
         HashSet<String> letterSet = new HashSet<>(letterArr);
         if (letterArr.size() != letterSet.size()) {
-            throw new IllegalArgumentException(Output.SHOULD_NOT_CONTAIN_OVERLAPPED);
+            throw new IllegalArgumentException("세 자리의 숫자에서 각 자리의 숫자에 중복된 숫자가 포함되면 안 됩니다");
         }
         return false;
     }
@@ -97,6 +96,6 @@ public class Player {
         if (status == EXIT_GAME) {
             return false;
         }
-        throw new IllegalArgumentException(Output.SHOULD_INPUT_ONLY_ONE_OR_TWO);
+        throw new IllegalArgumentException("숫자 1 또는 2만 입력하셔야 합니다");
     }
 }

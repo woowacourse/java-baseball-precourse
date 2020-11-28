@@ -24,7 +24,7 @@ public class Computer {
         countStrikeAndBall(userInput);
         Output.printBallOrStrikeCount(strikeCount, ballCount);
         if (strikeCount == STRIKE_FULL_COUNT) {
-            System.out.println(Output.CORRECT_ANSWER_AND_EXIT_GAME);
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
         return false;
