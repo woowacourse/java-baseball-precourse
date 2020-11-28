@@ -27,6 +27,20 @@ public class Application {
         }
     }
 
+    public static boolean checkAnswer(String input){
+        int[] inputNumbers = Arrays.stream(input.split("")).mapToInt(Integer::parseInt).toArray();
+        int strikeConut = 0;
+        int ballConut = 0;
+        for(int i = 0; i < 3; i++){
+            if(inputNumbers[i] == targetNumbers[i]) strikeConut++;
+            else if(numberChecker[inputNumbers[i]] == 1) ballConut++;
+        }
+        if(strikeConut == 3) return true;
+        System.out.println("strikeConut : " + strikeConut);
+        System.out.println("ballConut : " + ballConut);
+        return false;
+    }
+
     public static boolean isValidInput(String input){
         if(input.length() != 3) return false;
         for(int i = 0; i < 3; i++){
