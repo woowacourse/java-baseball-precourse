@@ -42,4 +42,22 @@ public class Compute {
         }
         return strikeNumber;
     }
+    public int getBallNumber(ArrayList<Integer> inputNumber , ArrayList<Integer> randomNumber){
+        int ballNumber=0;
+        for(int i=0;i<lengthNumber;i++){
+            if(checkBall(inputNumber.get(i),randomNumber)){
+                ballNumber++;
+            }
+        }
+        return ballNumber;
+    }
+    public boolean checkBall(int oneBallNumber,ArrayList<Integer> randomNumber){
+        boolean check=false;
+        for(int i=0;i<randomNumber.size();i++){
+            if(oneBallNumber==randomNumber.get(i)){
+                check=true;
+            }
+        }
+        return check;
+    }
 }
