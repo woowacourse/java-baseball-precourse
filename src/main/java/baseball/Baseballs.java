@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -75,6 +76,9 @@ public class Baseballs {
     }
 
     private boolean hasDuplicate(String input) {
-        return false;
+        Set<Integer> temporaryBalls = Stream.of(input.split(INPUT_DELIMITER))
+                .map(Integer::parseInt)
+                .collect(Collectors.toSet());
+        return temporaryBalls.size() != BALLS_CONTAINER_SIZE;
     }
 }
