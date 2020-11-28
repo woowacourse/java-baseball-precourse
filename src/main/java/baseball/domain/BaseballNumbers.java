@@ -5,6 +5,8 @@ import java.util.List;
 
 public class BaseballNumbers {
 
+    public static final int ASCII_ZERO = 48;
+
     private final List<Integer> numbers;
 
     public BaseballNumbers(String inputNumbers) {
@@ -23,7 +25,7 @@ public class BaseballNumbers {
     private void addNumbers(String inputNumbers) {
         inputNumbers.chars()
                 .distinct()
-                .mapToObj(number -> (char) number - '0')
+                .mapToObj(number -> number - ASCII_ZERO)
                 .forEach(numbers::add);
     }
 
