@@ -43,14 +43,14 @@ public final class Validator {
     }
 
     private void checkRegularExpression(final Pattern pattern, final String input) {
-        Matcher matcher = pattern.matcher(input);
+        final Matcher matcher = pattern.matcher(input);
         if (!matcher.matches()) {
             throw new IllegalArgumentException(INVALID_VALUE_MESSAGE);
         }
     }
 
     private void checkDuplicateNumber(final String input) {
-        int deduplicatedNumbersLength = (int) input.chars().distinct().count();
+        final int deduplicatedNumbersLength = (int) input.chars().distinct().count();
         if (deduplicatedNumbersLength != BaseballGame.BALLS_LENGTH) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_MESSAGE);
         }

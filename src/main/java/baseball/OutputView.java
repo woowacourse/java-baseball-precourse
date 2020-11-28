@@ -13,7 +13,7 @@ public class OutputView {
     }
 
     public String getResult(final ScoreBoard scoreBoard) {
-        StringBuilder stringBuilder = new StringBuilder();
+        final StringBuilder stringBuilder = new StringBuilder();
 
         if (scoreBoard.hasZeroBall() && scoreBoard.hasZeroStrike()) {
             return Judgment.NOTHING.getMessage();

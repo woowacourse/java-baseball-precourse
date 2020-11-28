@@ -7,7 +7,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
 
-        BaseballGame baseballGame = new BaseballGame(scanner);
+        final BaseballGame baseballGame = new BaseballGame(scanner);
         baseballGame.run();
     }
 }

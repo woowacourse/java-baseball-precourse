@@ -30,7 +30,7 @@ public final class RandomNumbersGenerator implements NumbersGenerator {
     }
 
     private boolean hasDuplicateNumber(final String input) {
-        int deduplicatedNumbersLength = (int) input.chars().distinct().count();
+        final int deduplicatedNumbersLength = (int) input.chars().distinct().count();
         return deduplicatedNumbersLength != BaseballGame.BALLS_LENGTH;
     }
 }

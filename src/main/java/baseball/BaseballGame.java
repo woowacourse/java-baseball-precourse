@@ -54,8 +54,8 @@ public class BaseballGame {
 
     private void startRound() {
         for (int numberIndex = 0; numberIndex < BALLS_LENGTH; numberIndex++) {
-            int pitchedNumber = pitcher.pitch(numberIndex);
-            Judgment judgment = batter.swing(numberIndex, pitchedNumber);
+            final int pitchedNumber = pitcher.pitch(numberIndex);
+            final Judgment judgment = batter.swing(numberIndex, pitchedNumber);
             scoreBoard.record(judgment);
         }
     }
