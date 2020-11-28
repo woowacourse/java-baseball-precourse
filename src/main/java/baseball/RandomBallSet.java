@@ -13,7 +13,7 @@ public class RandomBallSet {
 
     public static int[] ballSet() {
         int[] ballSet = new int[NUMBEROFBALL];
-        boolean [] checkingOverlap = checkOverlapArray(ENDINDEX);
+        boolean[] checkingOverlap = checkOverlapArray(ENDINDEX);
         int triedNumber = 0;
 
         while (triedNumber < NUMBEROFBALL) {
@@ -29,9 +29,9 @@ public class RandomBallSet {
     }
 
     private static boolean[] checkOverlapArray(int occasionNumber) {
-        boolean [] checkingOverlapArray = new boolean[occasionNumber];
+        boolean[] checkingOverlapArray = new boolean[occasionNumber];
 
-        for (int i =0; i < occasionNumber; i++) {
+        for (int i = 0; i < occasionNumber; i++) {
             checkingOverlapArray[i] = false;
         }
 

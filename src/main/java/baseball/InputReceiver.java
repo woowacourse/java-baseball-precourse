@@ -17,12 +17,12 @@ public class InputReceiver {
     }
 
     private static void lengthChecker(String userInitialAnswer) {
-        if (userInitialAnswer.length()>3){
+        if (userInitialAnswer.length() > 3) {
             System.out.println("3자리가 초과하였습니다.");
             throw inputError;
         }
 
-        if (userInitialAnswer.length()<3){
+        if (userInitialAnswer.length() < 3) {
             System.out.println("3자리 미만입니다.");
             throw inputError;
         }
@@ -32,10 +32,10 @@ public class InputReceiver {
         int userIntegerAnswer = integerTranslator(userIntialAnswer);
         int[] integerArray = new int[NUMBEROFBALL];
 
-        for(int position = 0; position<NUMBEROFBALL; position++) {
-            int singleNumber = userIntegerAnswer%10;
+        for (int position = 0; position < NUMBEROFBALL; position++) {
+            int singleNumber = userIntegerAnswer % 10;
             zeroChecker(singleNumber);
-            integerArray[NUMBEROFBALL-position-1] = singleNumber;
+            integerArray[NUMBEROFBALL - position - 1] = singleNumber;
             userIntegerAnswer /= 10;
         }
 
@@ -57,20 +57,20 @@ public class InputReceiver {
     }
 
     private static void zeroChecker(int singleNumber) {
-        if (singleNumber == 0 ){
+        if (singleNumber == 0) {
             System.out.println("0이외의 1~9자리로 구성된 숫자를 입력해주세요");
             throw inputError;
         }
     }
 
     private static void overlappedChecker(int[] integerArray) {
-        for(int turn = 0; turn<NUMBEROFBALL; turn++) {
+        for (int turn = 0; turn < NUMBEROFBALL; turn++) {
             comparedOne(integerArray, turn);
         }
     }
 
     private static void comparedOne(int[] integerArray, int turn) {
-        for (int j = turn+1; j<NUMBEROFBALL; j++) {
+        for (int j = turn + 1; j < NUMBEROFBALL; j++) {
             if (integerArray[turn] == integerArray[j]) {
                 System.out.println("중복된 자리 수들을 입력하셨습니다");
                 throw inputError;

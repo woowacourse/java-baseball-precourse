@@ -15,7 +15,7 @@ public class OutputShower {
             return;
         }
 
-        showSitutation(strikeNumber,ballNumber);
+        showSitutation(strikeNumber, ballNumber);
         return;
     }
 

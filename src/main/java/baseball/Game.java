@@ -11,7 +11,7 @@ public class Game {
             int[] gameSet = initateGameSet();
             oneGamePlay(gameSet);
             oneMoreGame = askMoreGame();
-        } while(!oneMoreGame);
+        } while (!oneMoreGame);
     }
 
     private int[] initateGameSet() {
@@ -28,7 +28,7 @@ public class Game {
             int ballPoints = gradeResult[BALLPOSITION];
             OutputShower.outputPrint(strikePoints, ballPoints);
             endGame = passAnswerHurdle(strikePoints);
-        } while(!endGame);
+        } while (!endGame);
     }
 
     private boolean askMoreGame() {
