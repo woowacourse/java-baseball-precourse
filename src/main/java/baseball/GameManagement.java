@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public class GameManagement {
     private static Game game;
+    private static boolean isCorrect = false;
 
     public static void playGame(Scanner scanner) {
         initGame();
-        boolean isCorrect = false;
         while (!isCorrect) {
             int guess = askNumber(scanner);
             printHint(guess);
@@ -26,10 +26,10 @@ public class GameManagement {
     private static int askNumber(Scanner scanner) {
         System.out.print("숫자를 입력해주세요 : ");
         int inputInt = toInt(scanner.nextLine());
-        if (ThreeDigitsUtils.isBaseballNumber(inputInt)) {
-            return inputInt;
+        if (!ThreeDigitsUtils.isBaseballNumber(inputInt)) {
+            throw new IllegalArgumentException("Input should be Distinct Three Digits Integer");
         }
-        throw new IllegalArgumentException("Input should be Distinct Three Digits Integer");
+        return inputInt;
     }
 
     private static void printHint(int guess) {
@@ -60,7 +60,7 @@ public class GameManagement {
             int InputInt = Integer.parseInt(string);
             return InputInt;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Input should be Integer");
+            throw new IllegalArgumentException("Input should be only Integer");
         }
     }
 }
