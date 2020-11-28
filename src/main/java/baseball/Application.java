@@ -8,17 +8,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
         while (true) {
-            int[] computerNumber = generateRandomNumber();
-            while (true) {
-                int[] playerNumber = getPlayerNumber(scanner);
-                String result = getResult(computerNumber, playerNumber);
-                System.out.println(result);
-
-                if (result.equals("3스트라이크")) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    break;
-                }
-            }
+            startGame(scanner);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String playerInput = scanner.nextLine();
 
@@ -26,6 +16,20 @@ public class Application {
             checkIfNumberFromAToB(playerInput, 1, 2);
 
             if (playerInput.equals("2")) {
+                break;
+            }
+        }
+    }
+
+    public static void startGame(Scanner scanner) {
+        int[] computerNumber = generateRandomNumber();
+        while (true) {
+            int[] playerNumber = getPlayerNumber(scanner);
+            String result = getResult(computerNumber, playerNumber);
+            System.out.println(result);
+
+            if (result.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
