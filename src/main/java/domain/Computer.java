@@ -1,4 +1,4 @@
-package domain.computer;
+package domain;
 
 import ui.Output;
 import utils.RandomUtils;

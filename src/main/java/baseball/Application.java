@@ -1,6 +1,6 @@
 package baseball;
 
-import domain.player.Player;
+import domain.Player;
 
 import java.util.Scanner;
 

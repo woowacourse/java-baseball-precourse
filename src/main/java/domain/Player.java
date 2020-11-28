@@ -1,6 +1,5 @@
-package domain.player;
+package domain;
 
-import domain.computer.Computer;
 import ui.Input;
 import ui.Output;
 
