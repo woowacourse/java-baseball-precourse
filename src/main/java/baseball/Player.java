@@ -20,14 +20,23 @@ public class Player {
 
     public void checkReplayDecision() {
         OutputView.askReplay();
-        int choice = playerInput.nextInt();
-        validate(choice);
-        replayDecision = choice;
+        String input = playerInput.nextLine();
+        replayDecision = validate(input);
     }
 
-    private void validate(int choice) {
+    private int validate(String input) {
+        try {
+            return getChoice(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("올바른 선택지가 아닙니다.");
+        }
+    }
+
+    private int getChoice(String input) {
+        int choice = Integer.parseInt(input);
         if(choice != WANT_REPLAY && choice != WANT_FINISH) {
             throw new IllegalArgumentException("올바른 선택지가 아닙니다.");
         }
+        return choice;
     }
 }
