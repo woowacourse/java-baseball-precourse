@@ -12,12 +12,11 @@ import baseball.domain.Judgment;
 
 public class BatterTest {
 
-    private final String answerNumbers = "123";
-
     private Batter batter;
 
     @BeforeEach
     public void initBatter() {
+        final String answerNumbers = "123";
         batter = new Batter(new FixedNumbersGenerator(answerNumbers));
     }
 
