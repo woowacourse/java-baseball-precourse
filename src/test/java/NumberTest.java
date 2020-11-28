@@ -1,63 +1,35 @@
-import baseball.Application;
+import baseball.Referee;
+import baseball.Number;
 import org.junit.jupiter.api.Test;
 
 public class NumberTest {
 
     @Test
-    public void testNumberOfPlayerAndComputer() {
+    public void testComputerNumberValidity() {
+        Number number = new Number();
         String playerNumber = "369";
-        Application.checkCorrectCondition(playerNumber);
+        number.checkCorrectCondition(playerNumber);
 
         for (int i = 0; i < 100; i++) {
-            String computerNumber = Application.getComputerNumber();
+            String computerNumber = number.getComputerNumber();
             System.out.println(playerNumber + " : " + computerNumber);
         }
+
     }
 
     @Test
-    public void testCompareStrikeAndBall() {
-        String playerNumber = Application.getComputerNumber();
-        String computerNumber = Application.getComputerNumber();
+    public void testStrikeAndBallCount() {
+        Number number = new Number();
+        Referee referee = new Referee();
 
-        int[] strikeAndBall = getStrikeAndBallCount(playerNumber, computerNumber);
+        String playerNumber = number.getComputerNumber();
+        String computerNumber = number.getComputerNumber();
+
+        int[] strikeAndBall = referee.getStrikeAndBallCount(playerNumber, computerNumber);
         int strike = strikeAndBall[0];
         int ball = strikeAndBall[1];
 
         System.out.println(playerNumber + " : " + computerNumber);
         System.out.println("S : " + strike + ", B : " + ball);
     }
-
-    public int[] getStrikeAndBallCount(String playerNumber, String computerNumber) {
-        int ball = 0;
-        int strike = 0;
-        String[] playerDigitArr = playerNumber.split("");
-        for (int i = 0; i < playerDigitArr.length; i++) {
-            int indexOfSameDigitOfComputerNumber = getIndexOfSameDigitOfComputerNumber(playerDigitArr[i], computerNumber);
-            strike += getStrikeCount(indexOfSameDigitOfComputerNumber, i);
-            ball += getBallCount(indexOfSameDigitOfComputerNumber, i);
-        }
-        int[] arr = {strike, ball};
-        return arr;
-    }
-    public int getIndexOfSameDigitOfComputerNumber(String playerDigit, String computerNumber) {
-        if (computerNumber.contains(playerDigit)) {
-            return computerNumber.indexOf(playerDigit);
-        }
-        return -1;
-    }
-
-    public int getStrikeCount(int indexOfSameDigitOfComputerNumber, int indexOfSameDigitOfPlayerNumber) {
-        if (indexOfSameDigitOfComputerNumber == indexOfSameDigitOfPlayerNumber) {
-            return 1;
-        }
-        return 0;
-    }
-
-    public int getBallCount(int indexOfSameDigitOfComputerNumber, int indexOfSameDigitOfPlayerNumber) {
-        if (indexOfSameDigitOfComputerNumber != indexOfSameDigitOfPlayerNumber && indexOfSameDigitOfComputerNumber >= 0) {
-            return 1;
-        }
-        return 0;
-    }
-
 }
