@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class HintGenerator {
     private static final int INITIAL_VALUE = 0;
+    private static final int ANSWER_VALUE = 3;
     private static final int MINIMUM_INDEX = 0;
     private static final int MAXIMUM_INDEX = 2;
     private static final String ANSWER = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -69,13 +70,13 @@ public class HintGenerator {
 
     // `정답`, `볼`, `스트라이크`, `낫싱`을 확인하는 함수
     public static String checkResult() {
-        if (strike == 3) {
+        if (strike == ANSWER_VALUE) {
             return strike+ANSWER;
-        } else if (ball != 0 && strike == 0) {
+        } else if (ball != INITIAL_VALUE && strike == INITIAL_VALUE) {
             return ball+BALL;
-        } else if (ball == 0 && strike != 0) {
+        } else if (ball == INITIAL_VALUE && strike != INITIAL_VALUE) {
             return strike+STRIKE;
-        } else if (ball == 0 && strike == 0) {
+        } else if (ball == INITIAL_VALUE && strike == INITIAL_VALUE) {
             return NOTHING;
         } else {
             return ball+BALL+" "+strike+STRIKE;
