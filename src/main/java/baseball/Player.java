@@ -14,10 +14,12 @@ public class Player {
     public ArrayList<Integer> getInputToArrayList(){
         System.out.print(INPUTNUMBER);
         String convertInput=Integer.toString(playerInput());
+        scanner.nextLine();
         ArrayList<Integer> inputNumber= new ArrayList<Integer>();
         for(int i=0;i<3;i++){
             inputNumber.add(convertInput.charAt(i)-'0');
         }
+        //System.out.println(convertInput);
         return inputNumber;
     }
 }
