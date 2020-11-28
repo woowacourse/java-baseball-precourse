@@ -67,12 +67,12 @@ public class Application {
      * @exception 3자리 숫자가 아니거나, 3자리수 중에 중복되는 숫자가 있는 경우 IllegalArgumentException을 발생시킵니다.
      */
     public void checkUserInputNumber(int userInputNumber){
-        //세자리수인지 확인하기
+        /* 세자리수인지 확인한다 */
         if(userInputNumber > 999 || userInputNumber < 100) {
             throw new IllegalArgumentException();
         }
 
-        //중복되는 숫자가 있는지 확인하기
+        /* 중복되는 숫자가 있는지 확인한다 */
         int firstUserInputNumber = userInputNumber/100;
         int secondUserInputNumber = (userInputNumber/10)%10;
         int thirdUserInputNumber = userInputNumber%10;
@@ -84,7 +84,8 @@ public class Application {
 
     /**
      * 메서드 checkStrikeAndBall()은 타깃넘버와 플레이어가 입력한 숫자를 비교하여 결과를 볼, 스트라이크 갯수로 표시합니다.
-     * @param targetNumber 플레이어가 맞춰야 할 타깃넘버입니다. / userInputNumber 플레이어가 콘솔에 입력한 숫자입니다.
+     * @param targetNumber 플레이어가 맞춰야 할 타깃넘버입니다.
+     * @param userInputNumber 플레이어가 콘솔에 입력한 숫자입니다.
      * @return 결과에 따라 볼, 스트라이크 갯수나 낫싱을 리턴합니다.
      */
     public String checkStrikeAndBall(int targetNumber, int userInputNumber) {
@@ -95,7 +96,8 @@ public class Application {
 
         int strike = 0;
         int ball = 0;
-        //targetArray[0] 이랑 겹치는것?
+
+        /* targetArray[0] 이랑 겹치는것을 판별한다 */
         for(int i=0; i<3; i++) {
             if((targetArray[0] == userArray[i]) && (i == 0)) {
                 strike++;
@@ -119,9 +121,19 @@ public class Application {
                 ball++;
             }
         }
-        
+
+        return resultStrikeAndBall(strike, ball);
+    }
+
+    /**
+     * 메서드 resultStrikeAndBall()은 checkStrikeAndBall()에서 strike, ball 갯수를 넘겨받아 결과를 String 형식으로 반환합니다.
+     * @param strike checkStrikeAndBall() 에서 넘겨받은 strike 갯수
+     * @param ball   checkStrikeAndBall() 에서 넘겨받은 ball   갯수
+     * @return 볼, 스트라이크 갯수나 낫싱을 리턴합니다.
+     */
+    public String resultStrikeAndBall(int strike, int ball) {
         String result = "";
-        if((ball == 0) && (strike == 0)) {
+        if ((ball == 0) && (strike == 0)) {
             result += "낫싱";
         } else if ((ball != 0) && (strike == 0)) {
             result += Integer.toString(ball);
@@ -135,7 +147,6 @@ public class Application {
             result += Integer.toString(strike);
             result += "스트라이크";
         }
-
         return result;
     }
 
@@ -146,9 +157,9 @@ public class Application {
      */
     public int[] makeArray(int number) {
         int [] temp = new int[3];
-        temp[0] = number/100;
-        temp[1] = (number/10)%10;
-        temp[2] = number%10;
+        temp[0] = number/100;               /* 첫째자리 */
+        temp[1] = (number/10)%10;           /* 둘째자리 */
+        temp[2] = number%10;                /* 셋째자리 */
         return temp;
     }
 }
