@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import baseball.domain.Validator;
 
-
 public class ValidatorTest {
 
     private Validator validator;
@@ -23,7 +22,6 @@ public class ValidatorTest {
     @Test
     @DisplayName("입력 값이 null일 경우 IllegalArgumentException 발생")
     public void inputNullValidationTest() {
-        Validator validator = new Validator();
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> validator.validateNumbers(Validator.NUMBERS_PATTERN, null))
                 .withMessage(Validator.INPUT_NULL_MESSAGE);
