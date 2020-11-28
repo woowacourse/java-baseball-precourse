@@ -1,4 +1,4 @@
-package baseball;
+package utils;
 
 public class ExceptionMessages {
     public static final String NOT_NUMBER = "숫자를 입력해주세요";

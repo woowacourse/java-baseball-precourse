@@ -1,11 +1,13 @@
-package baseball;
+package utils;
+
+import baseball.GameManager;
+import baseball.GameStatusCode;
 
 public class Validator {
-    private static final int INPUT_VALUE_SIZE = 3;
     private static final int PROGRESS_VALUE_SIZE = 1;
 
-    public void validateInputValue(String inputValue) {
-        if (inputValue.length() != INPUT_VALUE_SIZE) {
+    public static void validateInputValue(String inputValue) {
+        if (inputValue.length() != GameManager.BASEBALL_NUMBER) {
             throw new IllegalArgumentException(ExceptionMessages.WRONG_INPUT_VALUE_SIZE);
         }
 
@@ -27,7 +29,7 @@ public class Validator {
         }
     }
 
-    public void validateProgressValue(String inputValue) {
+    public static void validateProgressValue(String inputValue) {
         if (inputValue.length() != PROGRESS_VALUE_SIZE) {
             throw new IllegalArgumentException(ExceptionMessages.NOT_PROGRESS_CODE);
         }
