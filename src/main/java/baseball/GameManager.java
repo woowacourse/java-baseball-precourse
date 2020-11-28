@@ -37,6 +37,8 @@ public class GameManager {
     }
 
     public boolean receiveEndCode() {
-        return false;
+        if (!baseBallNumber.isCorrectAnswer()) return false;
+        String code = inputHandler.inputWrapper(Request.RESTART);
+        return !code.equals("1");
     }
 }
