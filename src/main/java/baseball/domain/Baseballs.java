@@ -20,7 +20,6 @@ public class Baseballs {
 
     private void addNumbers(String inputNumbers) {
         inputNumbers.chars()
-                .distinct()
                 .mapToObj(number -> number - ASCII_ZERO)
                 .forEach(numbers::add);
     }
