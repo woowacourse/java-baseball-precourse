@@ -26,11 +26,16 @@ public class Validate {
 
         for (int i = 0; i < 3; i++) {
             int idx = answer.indexOf(guess.charAt(i));
-            if (idx == i) strike++;
-            else if (idx > -1) ball++;
+            if (idx == i) {
+                strike++;
+            }
+            else if (idx > -1) {
+                ball++;
+            }
         }
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다.");
+
         } else if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
         } else if (strike == 0) {
