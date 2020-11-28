@@ -29,7 +29,6 @@ public class BaseBallGame {
 
             if (answer.getNumber().contains(inputNumber.substring(i, i + 1))) {
                 ball++;
-                continue;
             }
         }
         printHint(ball, strike);
