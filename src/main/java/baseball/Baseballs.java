@@ -40,7 +40,7 @@ public class Baseballs {
     }
 
     private boolean hasWrongSize(String input) {
-        return false;
+        return input.length() != BALLS_CONTAINER_SIZE;
     }
 
     private void validateNumerical(String rawBallsInput) {
