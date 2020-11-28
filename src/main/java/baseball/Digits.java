@@ -8,7 +8,7 @@ public class Digits {
     private static final int NUMBER_LENGTH = 3;
     private final ArrayList<Digit> digits;
 
-    private boolean includeDuplication(final int hundsDigit,final int tensDigit,final int unitsDigit){
+    private boolean isIncludeDuplication(final int hundsDigit,final int tensDigit,final int unitsDigit){
         HashSet<Integer> set = new HashSet<Integer>(Arrays.asList(hundsDigit, tensDigit, unitsDigit));
         return !(set.size() == NUMBER_LENGTH);
     }
@@ -20,7 +20,7 @@ public class Digits {
     }
 
     private void validateDuplication(final int hundsDigit,final int tensDigit,final int unitsDigit){
-        if (includeDuplication(hundsDigit, tensDigit, unitsDigit)){
+        if (isIncludeDuplication(hundsDigit, tensDigit, unitsDigit)){
             throw new IllegalArgumentException("입력하는 수의 각 자리 수는 다른 수여야 합니다.");
         }
     }
@@ -28,6 +28,7 @@ public class Digits {
     private ArrayList<Digit> makeDigits(final int hundDigit, final int tensDigit, final int unitsDigit){
        return new ArrayList<Digit>(Arrays.asList(new Digit(hundDigit), new Digit(tensDigit), new Digit(unitsDigit)));
     }
+
 
     public Digits(final int input){
         validateLength(input);
