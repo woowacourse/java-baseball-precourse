@@ -12,7 +12,7 @@ import java.util.Set;
  * 각 자리수가 1~9로 이루어진 3자리 숫자를 생성하고, 저장하는 기능을 가진 클래스
  */
 public class Number {
-    private static final int NUMBER_LENGTH = 3;
+    public static final int NUMBER_LENGTH = 3;
     private static final int MAX_DIGIT = 9;
     private static final int MIN_DIGIT = 1;
     private static final char ZERO_CHAR = '0';
@@ -29,6 +29,10 @@ public class Number {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             numbers.add(playerInput.charAt(i) - ZERO_CHAR);
         }
+    }
+
+    public int getNthDigit(int idx) {
+        return numbers.get(idx);
     }
 
     public static Number generate() {
