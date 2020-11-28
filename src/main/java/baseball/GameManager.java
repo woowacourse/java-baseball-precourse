@@ -3,7 +3,9 @@ package baseball;
 import java.util.Scanner;
 
 public class GameManager {
-    final Scanner scanner;
+    private final Scanner scanner;
+    private static final String CONTINUE = "1";
+    private static final String QUIT = "2";
 
     public GameManager(Scanner scanner) {
         this.scanner = scanner;
@@ -47,38 +49,20 @@ public class GameManager {
     }
 
     private Boolean continueGame() {
-        GameStatus gameStatus = null;
-        while (gameStatus == null) {
+        while (true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String s = "";
-            try {
-                s = scanner.next().trim();
-                gameStatus = GameStatus.valueOf(s);
-            } catch (IllegalArgumentException e) {
-                System.out.println("1, 2만 입력 가능합니다. 다시 입력해주세요. 입력값:" + s);
+            String input = scanner.next().trim();
+
+            if (!input.equals(CONTINUE) && !input.equals(QUIT)) {
+                System.out.println("1, 2만 입력 가능합니다. 다시 입력해주세요. 입력값:" + input);
+                continue;
+            }
+
+            if (input.equals(CONTINUE)) {
+                return true;
+            } else if (input.equals(QUIT)) {
+                return false;
             }
         }
-        return gameStatus.isContinue();
-    }
-}
-
-enum GameStatus {
-    CONTINUE("1"),
-    QUIT("2");
-
-    String input;
-
-    GameStatus(String input) {
-        this.input = input;
-    }
-
-    Boolean isContinue() {
-        if (this == GameStatus.CONTINUE) {
-            return true;
-        } else if (this == GameStatus.QUIT) {
-            return false;
-        }
-
-        return false;
     }
 }
