@@ -1,6 +1,8 @@
 package domain.player;
 
 import domain.computer.Computer;
+import ui.Input;
+import ui.Output;
 
 import java.util.*;
 
@@ -24,8 +26,7 @@ public class Player {
     }
 
     private void enterNumberWith(Scanner scanner) {
-        System.out.print("숫자를 입력해주세요 : ");
-        userInput = scanner.next();
+        userInput = Input.receiveNumberInput(scanner);
         seperatedUserInputByLetter = userInput.split("");
         if (!isValidEnterNumber()) {
             enterNumberWith(scanner);
@@ -53,20 +54,20 @@ public class Player {
             Integer.parseInt(userInput);
             return false;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만을 입력해야 합니다");
+            throw new IllegalArgumentException(Output.SHOULD_INPUT_ONLY_NUMBER);
         }
     }
 
     private boolean hasZero() {
         if (Arrays.asList(seperatedUserInputByLetter).contains("0")) {
-            throw new IllegalArgumentException("입력하시는 숫자에는 0이 포함되면 안 됩니다");
+            throw new IllegalArgumentException(Output.SHOULD_NOT_INCLUDE_ZERO);
         }
         return false;
     }
 
     private boolean isNotValidNumberSize() {
         if (userInput.length() != 3) {
-            throw new IllegalArgumentException("입력하시는 숫자는 세 자리여야만 합니다");
+            throw new IllegalArgumentException(Output.SHOULD_INPUT_THREE_DIGIT);
         }
         return false;
     }
@@ -78,14 +79,13 @@ public class Player {
         }
         HashSet<String> letterSet = new HashSet<>(letterArr);
         if (letterArr.size() != letterSet.size()) {
-            throw new IllegalArgumentException("세 자리의 숫자에서 각 자리의 숫자에 중복된 숫자가 포함되면 안 됩니다");
+            throw new IllegalArgumentException(Output.SHOULD_NOT_CONTAIN_OVERLAPPED);
         }
         return false;
     }
 
     private boolean checkIfRestartGame(Scanner scanner) {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int status = scanner.nextInt();
+        int status = Input.receiveRestartGameInput(scanner);
         if (status == 1) {
             computer.resetAnswer();
             return true;
@@ -93,6 +93,6 @@ public class Player {
         if (status == 2) {
             return false;
         }
-        throw new IllegalArgumentException("숫자 1 또는 2만 입력하셔야 합니다");
+        throw new IllegalArgumentException(Output.SHOULD_INPUT_ONLY_ONE_OR_TWO);
     }
 }
