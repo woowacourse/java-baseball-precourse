@@ -7,10 +7,10 @@ import ui.Output;
 import java.util.*;
 
 public class Player {
-    boolean isStartingGame = true;
+    private boolean isStartingGame = true;
     private String userInput;
-    String[] seperatedUserInputByLetter;
-    Computer computer = new Computer();
+    private String[] seperatedUserInputByLetter;
+    private Computer computer = new Computer();
 
     public void startGame(Scanner scanner) {
         while (isStartingGame) {

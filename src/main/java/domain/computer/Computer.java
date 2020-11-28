@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Computer {
     private final static int START_VALUE_IN_RANDOM_NUMBER_RANGE = 1;
     private final static int END_VALUE_IN_RANDOM_NUMBER_RANGE = 9;
-    ArrayList<Integer> answer = new ArrayList<>();
+    private ArrayList<Integer> answer = new ArrayList<>();
     private int strikeCount;
     private int ballCount;
 
