@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Application {
@@ -9,6 +8,7 @@ public class Application {
 
         System.out.println(NumberGenerator.getRandomNumberNotRepeat());
         System.out.println(UserInputNumber.userInputNumber());
+        System.out.println(Hint.hint());
 
     }
 }
