@@ -32,7 +32,7 @@ public class Viewer {
     }
 
     private List<Integer> validateInputDataForMakingList(String inputBallsDataToken) {
-        if (!this.isValidEachdateInputBallData(inputBallsDataToken)) {
+        if (!this.isValidEachInputBallData(inputBallsDataToken)) {
             throw new IllegalArgumentException();
         }
 
@@ -44,7 +44,7 @@ public class Viewer {
         return inputNumberList;
     }
 
-    private boolean isValidEachdateInputBallData(String inputBallData) {
+    private boolean isValidEachInputBallData(String inputBallData) {
         if (inputBallData.length() > MAX_LENGTH_OF_BALL) {
             return false;
         }
