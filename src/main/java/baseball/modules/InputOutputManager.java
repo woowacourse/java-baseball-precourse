@@ -38,7 +38,7 @@ public class InputOutputManager {
         }
     }
 
-    public void printResult(int strike, int ball){
+    public void printRoundResult(int strike, int ball){
         if(strike < 0 || ball < 0){
             throw new IllegalArgumentException();
         }

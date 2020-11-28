@@ -2,7 +2,6 @@ package baseball.modules;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import baseball.GameManager;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.io.ByteArrayInputStream;

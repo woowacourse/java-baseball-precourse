@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.Scanner;
+import baseball.modules.GameManager;
 
 public class Application {
     public static void main(String[] args) {

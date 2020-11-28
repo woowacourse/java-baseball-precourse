@@ -1,20 +1,16 @@
-package baseball;
+package baseball.modules;
 
 import java.util.Scanner;
-
-import baseball.modules.ExceptionChecker;
-import baseball.modules.InputOutputManager;
-import baseball.modules.NumberGenerator;
 
 public class GameManager {
     public static final int NUMBER_SIZE = 3;
     public static final int ANSWER_YES = 1;
 
-    InputOutputManager inputOutputManager;
-    NumberGenerator numberGenerator;
+    private InputOutputManager inputOutputManager;
+    private NumberGenerator numberGenerator;
 
-    int strike = 0;
-    int ball = 0;
+    private int strike = 0;
+    private int ball = 0;
 
     public GameManager(Scanner scanner){
         if(ExceptionChecker.isNull(scanner)){
@@ -35,11 +31,13 @@ public class GameManager {
         int[] generatedNumber = numberGenerator.getNumber();
         int[] inputNumber = inputOutputManager.askUserInputNumber();
 
-        compare(inputNumber, generatedNumber);
-        handleResult();
+        compareForRoundResult(inputNumber, generatedNumber);
+        inputOutputManager.printRoundResult(strike, ball);
+
+        handleRoundEnd();
     }
 
-    private void compare(int[] inputNumber, int[] generatedNumber){
+    private void compareForRoundResult(int[] inputNumber, int[] generatedNumber){
         if(ExceptionChecker.isNull(inputNumber) || ExceptionChecker.isNull(generatedNumber)){
             throw new IllegalArgumentException();
         }
@@ -77,16 +75,18 @@ public class GameManager {
         return false;
     }
 
-    private void handleResult(){
-        inputOutputManager.printResult(strike, ball);
-
-        if(strike == NUMBER_SIZE){
+    private void handleRoundEnd(){
+        if(isWin()){
             doItWhenGameWin();
             return;
         }
 
         // 숫자를 모두 맞추지 못했다면 다시 한 라운드 시작
         playOneRound();
+    }
+
+    private boolean isWin(){
+        return strike == NUMBER_SIZE;
     }
 
     private void doItWhenGameWin(){
@@ -96,6 +96,6 @@ public class GameManager {
             run();
         }
         
-        // 게임 종료
+        // 재시작하지 않으면 게임 종료
     }
 }
