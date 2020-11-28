@@ -9,16 +9,26 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
-        ArrayList<Integer> target;
-        ArrayList<Integer> input;
+        ArrayList<Integer> target = new ArrayList<Integer>();
+        ArrayList<Integer> input = new ArrayList<Integer>();
+        boolean restart = true;
+        boolean isEnd = false;
 
         while (true) {
-            target = SetTarget.setTargetList();
-            System.out.println(target);
+            if (restart) {
+                target = SetTarget.setTargetList();
+                restart = false;
+                System.out.println(target);
+            }
+
             input = GetInput.inputNumberList(scanner);
             System.out.println(input);
-        }
+            isEnd = CompareNumber.compareNumber(target, input);
 
+            if (isEnd) {
+
+            }
+        }
 
 
 //
@@ -73,32 +83,32 @@ public class Application {
 //        return target;
 //    }
 
-    public static int[] getInputNumber(Scanner scanner) throws IllegalArgumentException {
-        int[] inputNumber = new int[TARGET_LENGTH];
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = scanner.next();
-
-        if (input.length() != TARGET_LENGTH) {
-            throw new IllegalArgumentException();
-        }
-
-        for (int i = 0; i < TARGET_LENGTH; i++) {
-            String temp = input.substring(i, i + 1);
-            inputNumber[i] = Integer.parseInt(temp);
-            if (inputNumber[i] == 0) {
-                throw new IllegalArgumentException();
-            }
-        }
-
-        for (int i = 0; i < TARGET_LENGTH; i++) {
-            int temp = isThereNumber(inputNumber, inputNumber[i]);
-            if (temp > 1) {
-                throw new IllegalArgumentException();
-            }
-        }
-
-        return inputNumber;
-    }
+//    public static int[] getInputNumber(Scanner scanner) throws IllegalArgumentException {
+//        int[] inputNumber = new int[TARGET_LENGTH];
+//        System.out.print("숫자를 입력해주세요 : ");
+//        String input = scanner.next();
+//
+//        if (input.length() != TARGET_LENGTH) {
+//            throw new IllegalArgumentException();
+//        }
+//
+//        for (int i = 0; i < TARGET_LENGTH; i++) {
+//            String temp = input.substring(i, i + 1);
+//            inputNumber[i] = Integer.parseInt(temp);
+//            if (inputNumber[i] == 0) {
+//                throw new IllegalArgumentException();
+//            }
+//        }
+//
+//        for (int i = 0; i < TARGET_LENGTH; i++) {
+//            int temp = isThereNumber(inputNumber, inputNumber[i]);
+//            if (temp > 1) {
+//                throw new IllegalArgumentException();
+//            }
+//        }
+//
+//        return inputNumber;
+//    }
 
     public static int[] compare(int[] target, int[] inputNumber) {
         int[] compareResult = new int[2];
