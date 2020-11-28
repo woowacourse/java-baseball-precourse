@@ -39,12 +39,6 @@ public class GameController {
         System.out.println(Message.GAME_CLEAR);
     }
 
-    private boolean checkRestart() {
-        // TODO: 플레이어의 입력에 따른 재시작 여부 결정
-        System.out.println(Message.REQUEST_RESTART_INPUT);
-        return false;
-    }
-
     private Number requestPlayerNumber(Scanner scanner) {
         String playerInput = player.requestInput(scanner);
         if (!Number.checkValidation(playerInput)) {
@@ -55,5 +49,16 @@ public class GameController {
 
     private boolean checkAnswer(Hint hint) {
         return hint.checkStrikeAll();
+    }
+
+    private boolean checkRestart() {
+        System.out.println(Message.REQUEST_RESTART_INPUT);
+        CommandType playerCommandType = requestCommandNumber(scanner);
+        return playerCommandType.equals(CommandType.RESTART);
+    }
+
+    private CommandType requestCommandNumber(Scanner scanner) {
+        String playerInput = player.requestInput(scanner);
+        return CommandType.convert(playerInput);
     }
 }
