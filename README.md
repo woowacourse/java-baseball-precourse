@@ -7,7 +7,7 @@
 - Input 입력시에 Ball/Strike/Nothing 판단
 - 3 Strike 시에 게임 끝
 - 게임이 끝날 시에 다시 플레이할지 물어보기
-### RandomSetGenerator  
+### RandomBallSet  
 - Random한 숫자를 가진 Ball Set Array 생성 및 반환
 ### InputReceiver  
 - Input을 받는 메서드
