@@ -70,6 +70,9 @@ public class InputValidator {
 
         try {
             Integer.parseInt(number);
+            if (number.length() > Constants.VALUE_ONE) {
+                return false;
+            }
         } catch (IllegalArgumentException expected) {
             OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_ONE_DIGIT_NUMBER;
             return false;
