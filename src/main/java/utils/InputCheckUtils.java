@@ -2,7 +2,7 @@ package utils;
 
 public class InputCheckUtils {
     public static boolean isNumeric(String str) {
-        return str.matches("^[0-9]*$");
+        return str.matches("^[1-9]*$");
     }
 
     public static boolean hasDuplicated(String str) {
