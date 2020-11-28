@@ -19,7 +19,7 @@ public class Game {
                 continue;
             }
             System.out.println("입력값" + guessNumber);
-            Validate.compareToAnswer(guessNumber, answer);
+            Validate.isAnswer(guessNumber, answer);
 
             System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
         }
