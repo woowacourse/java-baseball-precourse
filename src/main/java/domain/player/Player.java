@@ -7,10 +7,13 @@ import ui.Output;
 import java.util.*;
 
 public class Player {
+    private static final int RESTART_GAME = 1;
+    private static final int EXIT_GAME = 2;
     private boolean isStartingGame = true;
     private String userInput;
     private String[] seperatedUserInputByLetter;
     private Computer computer = new Computer();
+
 
     public void startGame(Scanner scanner) {
         while (isStartingGame) {
@@ -86,11 +89,11 @@ public class Player {
 
     private boolean checkIfRestartGame(Scanner scanner) {
         int status = Input.receiveRestartGameInput(scanner);
-        if (status == 1) {
+        if (status == RESTART_GAME) {
             computer.resetAnswer();
             return true;
         }
-        if (status == 2) {
+        if (status == EXIT_GAME) {
             return false;
         }
         throw new IllegalArgumentException(Output.SHOULD_INPUT_ONLY_ONE_OR_TWO);
