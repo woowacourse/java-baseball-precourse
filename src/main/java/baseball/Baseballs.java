@@ -36,7 +36,7 @@ public class Baseballs {
 
     private void validateSize(String rawBallsInput) {
         if (hasWrongSize(rawBallsInput)) {
-            throw new IllegalArgumentException("입력된 정보가 너무 많습니다.");
+            throw new IllegalArgumentException("입력된 정보의 양이 적절하지 않습니다.");
         }
 
     }
