@@ -11,6 +11,7 @@ public class Game {
 
     private InputUtils inputUtils;
     private static Numbers numbers;
+    private static List<Integer> randomList;
 
     private Game(Scanner scanner) {
         this.inputUtils = InputUtils.of(scanner);
@@ -21,8 +22,17 @@ public class Game {
     }
 
     public void start() {
-        initializeGame();
-        printResult(numbers.checkBall(), numbers.checkStrike());
+        while (true) {
+            initializeGame();
+            int ballCount = numbers.checkBall();
+            int strikeCount = numbers.checkStrike();
+
+            printResult(ballCount, strikeCount);
+
+            if (isFinish(strikeCount)) {
+                break;
+            }
+        }
     }
 
     public static void printResult(int ball, int strike) {
@@ -38,12 +48,26 @@ public class Game {
         System.out.print("\n");
     }
 
+    private void printFinish() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     private void initializeGame() {
         List<Number> gameNumber = new ArrayList<>();
-        List<Integer> randomList = Number.createRandomList(3);
+        if(randomList == null) {
+            randomList = Number.createRandomList(3);
+        }
         List<Integer> inputList = inputUtils.getIntegerList();
         gameNumber.add(Number.of(randomList));
         gameNumber.add(Number.of(inputList));
         this.numbers = Numbers.of(gameNumber);
+    }
+
+    public boolean isFinish(int strikeCount) {
+        if (strikeCount == 3) {
+            printFinish();
+            return true;
+        }
+        return false;
     }
 }
