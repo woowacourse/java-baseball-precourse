@@ -1,5 +1,23 @@
 # 미션 - 숫자 야구 게임
 
+## 🏗 구현할 기능
+- [ ] 게임 시작
+- [ ] 랜덤 숫자 세 개 생성
+- [ ] 플레이어 입력 요구 스크립트 출력
+- [ ] 플레이어 문자열 입력
+    - [ ] 문자열 길이 3 판별
+    - [ ] 모두 숫자로 이루어져 있는지 판별
+    - [ ] 0이 없는지 판별
+    - [ ] 서로 다른 숫자로 이루어져 있는지 판별
+- [ ] 플레이 입력과 랜덤 숫자 세 개 비교
+    - [ ] 볼 출력
+    - [ ] 스트라이크 출력
+    - [ ] 일치하는 숫자 없을 경우 낫싱 출력
+- [ ] 3 스트라이크일 경우 플레이어 새로운 게임 플레이 여부 확인
+    - [ ] 1 입력한 경우 새로운 게임 플레이
+    - [ ] 2 입력한 경우 게임 종료
+    
+
 ## 🚀 기능 요구사항
 - 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
 - 정답을 맞추기 위해 3자리수를 입력하고 힌트를 받는다.
@@ -72,26 +90,9 @@
 - `final Scanner scanner = new Scanner(System.in);`는 변경하지 않는다.
 - `// TODO 구현 진행` 이 후 부터 구현한다.
 
-```java
-public class Application {
-    public static void main(String[] args) {
-        final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
-    }
-}
-```
-
 ### 프로그래밍 요구사항 - RandomUtils
 - RandomUtils 클래스를 활용해 랜덤 기능을 구현해야 한다.
 - RandomUtils의 패키지 구조와 구현은 변경하지 않는다.
-
-```java
-private static final Random RANDOM = new Random();
-    private RandomUtils() {
-    }
-    public static int nextInt(final int startInclusive, final int endInclusive) {
-    ...
-```
 
 <br>
 
