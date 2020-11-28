@@ -24,7 +24,7 @@ public class Ball {
         if (obj instanceof Ball) {
             ball = (Ball) obj;
         } else {
-            throw new ClassCastException("Ball 객체 끼리만 비교가 가능합니다.");
+            throw new ClassCastException(this.getClass().getName() + " 객체 끼리만 비교가 가능합니다.");
         }
         return this.number.equals(ball.number);
     }
