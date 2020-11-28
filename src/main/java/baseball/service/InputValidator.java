@@ -2,7 +2,7 @@ package baseball.service;
 
 import baseball.constant.Constants;
 import baseball.view.OutputView;
-import com.sun.tools.classfile.ConstantPool;
+
 import utils.StringToListIntegerutils;
 
 import java.util.List;
@@ -12,18 +12,18 @@ public class InputValidator {
     private InputValidator() {}
 
     public static boolean validateUserNumber(String userNumber) {
-        return isNaturalNumber(userNumber)
+        return isNaturalNumberForUserNumber(userNumber)
                 && isThreeDigitNumber(userNumber)
                 && isNonZero(userNumber)
                 && isAllDifferentNumber(userNumber);
     }
 
     public static boolean validateRetryNumber(String retryNumber) {
-        return isNaturalNumber(retryNumber)
+        return isNaturalNumberForRetryNumber(retryNumber)
                 && isNumberOneOrTwo(retryNumber);
     }
 
-    private static boolean isNaturalNumber(String number) {
+    private static boolean isNaturalNumberForUserNumber(String number) {
 
         try {
             Integer.parseInt(number);
@@ -66,10 +66,22 @@ public class InputValidator {
         return true;
     }
 
+    private static boolean isNaturalNumberForRetryNumber(String number) {
+
+        try {
+            Integer.parseInt(number);
+        } catch (IllegalArgumentException expected) {
+            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_ONE_DIGIT_NUMBER;
+            return false;
+        }
+
+        return true;
+    }
+
     private static boolean isNumberOneOrTwo(String number) {
 
         if (!(number.contains(Constants.RESTART) || number.contains(Constants.EXIT))) {
-            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_RETRY_NUMBER;
+            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_ONE_DIGIT_NUMBER;
             return false;
         }
 
