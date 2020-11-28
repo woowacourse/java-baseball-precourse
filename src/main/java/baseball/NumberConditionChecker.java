@@ -19,20 +19,20 @@ public class NumberConditionChecker {
     public static boolean checkZeroInList(int[] numbers) {
         for (int index = 0; index < 3; index++) {
             if (numbers[index] == 0) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
-    public static boolean checkNoOverlapNumber(int[] numbers) {
+    public static boolean checkOverlapNumber(int[] numbers) {
         HashSet<Integer> digitSet = new HashSet<Integer>();
         for (int index = 0; index < 3; index++) {
             digitSet.add(numbers[index]);
         }
         if (digitSet.size() == numbers.length) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 }
