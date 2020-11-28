@@ -8,7 +8,6 @@ public class Game {
     public void startGame(Scanner scanner) {
         String answer = RandomAnswer.randomAnswer();
         String guessNumber;
-        System.out.println("answer" + answer);
 
         System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
         while (scanner.hasNext()) {
@@ -19,8 +18,15 @@ public class Game {
                 continue;
             }
             System.out.println("입력값" + guessNumber);
-            Validate.isAnswer(guessNumber, answer);
-
+            if (Validate.isAnswer(guessNumber, answer)) {
+                if (Replay.doReplay(scanner)) {
+                    System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
+                    answer = RandomAnswer.randomAnswer();
+                    continue;
+                }
+                System.out.println("게임종료");
+                break;
+            };
             System.out.print("서로 다른 3자리 숫자를 입력해주세요 : ");
         }
     }
