@@ -14,7 +14,7 @@ public class NumberCompare {
         this.userNumberList = userNumberList;
     }
 
-    public static ArrayList<Integer> NumberCompare() {
+    public static ArrayList<Integer> numberCompare() {
         ballStrikeCountList.add(getFinalBallCount());
         ballStrikeCountList.add(compareStrikeCount());
 

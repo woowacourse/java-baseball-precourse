@@ -8,8 +8,9 @@ public class Hint {
     private static ArrayList<Integer> hintList = new ArrayList<>();
 
     public static boolean hint() {
-        ArrayList<Integer> ballStrikeList = NumberCompare.NumberCompare();
+        ArrayList<Integer> ballStrikeList = NumberCompare.numberCompare();
         hintList = ballStrikeList;
+//        System.out.println(hintList);
 
         return getHint();
     }
