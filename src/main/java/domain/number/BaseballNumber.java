@@ -9,26 +9,18 @@ public class BaseballNumber {
     private static final int RANGE_MINIMUM = 1;
     private static final int RANGE_MAXIMUM = 9;
 
-    static {
-        for (int i = RANGE_MINIMUM; i <= RANGE_MAXIMUM; i++) {
-            CACHE.put(i, new BaseballNumber(i));
-        }
-    }
-
     private final int baseballNumber;
 
     private BaseballNumber(int baseballNumber) {
-        validateBaseballNumberRange(baseballNumber);
         this.baseballNumber = baseballNumber;
     }
 
     public static BaseballNumber of(int baseballNumber) {
-        return CACHE.computeIfAbsent(baseballNumber, key -> {
-            throw new IllegalArgumentException();
-        });
+        validateBaseballNumberRange(baseballNumber);
+        return CACHE.computeIfAbsent(baseballNumber, BaseballNumber::new);
     }
 
-    private void validateBaseballNumberRange(int baseballNumber) {
+    private static void validateBaseballNumberRange(int baseballNumber) {
         if (baseballNumber < RANGE_MINIMUM || baseballNumber > RANGE_MAXIMUM) {
             throw new IllegalArgumentException();
         }
