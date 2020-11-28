@@ -13,10 +13,17 @@ public class GameResult {
     private final Integer ball;
 
     public GameResult(Integer strike, Integer ball) {
+        validateMaximum(strike, ball);
         validateRange(strike);
         validateRange(ball);
         this.strike = strike;
         this.ball = ball;
+    }
+
+    private void validateMaximum(Integer strike, Integer ball) {
+        if (strike + ball > Balls.COUNT_OF_BALLS) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateRange(Integer i) {
@@ -38,6 +45,18 @@ public class GameResult {
         }
 
         return String.format("%d%s %d%s", strike, STRIKE, ball, BALL);  // N스트라이크 N볼
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        GameResult gameResult;
+        if (obj instanceof GameResult) {
+            gameResult = (GameResult) obj;
+        } else {
+            throw new ClassCastException(this.getClass().getName() + " 객체 끼리만 비교가 가능합니다.");
+        }
+
+        return this.strike.equals(gameResult.strike) && this.ball.equals(gameResult.ball);
     }
 
     private boolean thereIsNoStrike() {
