@@ -20,12 +20,7 @@ public class BatterTest {
 
     @BeforeEach
     public void initBatter() {
-        batter = new Batter(new FixedNumbersGenerator(new Scanner(System.in)) {
-            @Override
-            public String generateNumbers() {
-                return answerNumbers;
-            }
-        });
+        batter = new Batter(new FixedNumbersGenerator(answerNumbers));
     }
 
     @Test

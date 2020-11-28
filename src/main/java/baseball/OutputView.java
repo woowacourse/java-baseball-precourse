@@ -17,7 +17,7 @@ public class OutputView {
         System.out.println(getResult(scoreBoard));
     }
 
-    private String getResult(ScoreBoard scoreBoard) {
+    public String getResult(ScoreBoard scoreBoard) {
         StringBuilder stringBuilder = new StringBuilder();
 
         if (scoreBoard.hasZeroBall() && scoreBoard.hasZeroStrike()) {
