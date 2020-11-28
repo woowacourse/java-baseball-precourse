@@ -7,7 +7,7 @@ import view.OutputView;
 import java.util.Scanner;
 
 public class Application {
-    private static final int NUM_DIGIT = 3;
+    private static final int NUMBER_OF_DIGITS = 3;
     private static final String PLAY_AGAIN_BUTTON = "1";
     private static final String PLAY_END_BUTTON = "2";
 
@@ -15,7 +15,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
 
         do{
-            BaseballGame baseballGame = new BaseballGame(NUM_DIGIT, scanner);
+            BaseballGame baseballGame = new BaseballGame(NUMBER_OF_DIGITS, scanner);
             baseballGame.play();
         }while(checkPlayAgain(scanner));
     }
@@ -29,7 +29,7 @@ public class Application {
     private static String askPlayAgain(Scanner SCANNER){
         try{
             String answer = InputView.askPlayAgain(SCANNER);
-            InputValidator.isValidPlayAgainAns(answer);
+            InputValidator.isValidPlayAgainAnswer(answer);
             return answer;
         }catch (IllegalArgumentException IAE){
             OutputView.printMsg(IAE.getMessage());

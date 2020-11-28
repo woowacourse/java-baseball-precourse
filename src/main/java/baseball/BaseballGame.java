@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BaseballGame {
-    private final int NUMBER_DIGITS;
+    private final int NUMBER_OF_DIGITS;
     private final Scanner SCANNER;
 
     private List<Integer> targetNumberList;
@@ -18,9 +18,9 @@ public class BaseballGame {
     private int strikeCnt;
     private int ballCnt;
 
-    public BaseballGame(int NUMBER_DIGITS, Scanner SCANNER){
-        this.NUMBER_DIGITS = NUMBER_DIGITS;
-        this.SCANNER = SCANNER;
+    public BaseballGame(int NUMBER_OF_DIGITS, Scanner scanner){
+        this.NUMBER_OF_DIGITS = NUMBER_OF_DIGITS;
+        this.SCANNER = scanner;
     }
 
     public void play(){
@@ -34,13 +34,13 @@ public class BaseballGame {
     }
 
     private void setTargetNumber(){
-        targetNumberList = NumberListGenerator.makeTargetNumList(NUMBER_DIGITS);
+        targetNumberList = NumberListGenerator.makeTargetNumber(NUMBER_OF_DIGITS);
     }
 
     private String readNumber(){
         try{
-            String input = InputView.askNum(SCANNER);
-            InputValidator.isValidGuess(input, NUMBER_DIGITS);
+            String input = InputView.askGuess(SCANNER);
+            InputValidator.isValidGuess(input, NUMBER_OF_DIGITS);
             return input;
         }catch (IllegalArgumentException IAE){
             OutputView.printMsg(IAE.getMessage());
@@ -60,7 +60,7 @@ public class BaseballGame {
     }
 
     private boolean checkGameOver(){
-        return GameRule.checkGameEnd(strikeCnt, NUMBER_DIGITS);
+        return GameRule.checkGameEnd(strikeCnt, NUMBER_OF_DIGITS);
     }
 
     private void printAllCorrect() {

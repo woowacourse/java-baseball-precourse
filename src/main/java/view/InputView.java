@@ -9,15 +9,15 @@ public class InputView {
 
     private InputView(){ }
 
-    public static String askNum(Scanner SCANNER){
+    public static String askGuess(Scanner scanner){
         OutputView.printMsg(ASK_NUMBER_MESSAGE);
         OutputView.printMsg(SEPARATOR_LINE);
-        return SCANNER.nextLine();
+        return scanner.nextLine();
     }
 
-    public static String askPlayAgain(Scanner SCANNER){
+    public static String askPlayAgain(Scanner scanner){
         OutputView.printMsg(ASK_PLAY_AGAIN_MESSAGE);
         OutputView.printMsg(SEPARATOR_LINE);
-        return SCANNER.nextLine();
+        return scanner.nextLine();
     }
 }

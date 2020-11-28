@@ -6,24 +6,24 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NumberListGenerator {
-    private static final int MAX_NUMBER = 9;
-    private static final int MIN_NUMBER = 1;
+    private static final int NUMBER_MAX = 9;
+    private static final int NUMBER_MIN = 1;
 
-    public static ArrayList<Integer> makeTargetNumList(int digits){
-        ArrayList<Integer> list = new ArrayList<>();
+    public static ArrayList<Integer> makeTargetNumber(int digits){
+        ArrayList<Integer> targetNumber = new ArrayList<>();
 
-        while(list.size()<digits){
-            list.add(getRandWithoutDuplicate(list));
+        while(targetNumber.size()<digits){
+            targetNumber.add(getRandWithoutDuplicate(targetNumber));
         }
         
-        return list;
+        return targetNumber;
     }
 
     private static int getRandWithoutDuplicate(List<Integer> list){
         int rand;
 
         do{
-            rand = RandomUtils.nextInt(MIN_NUMBER, MAX_NUMBER);
+            rand = RandomUtils.nextInt(NUMBER_MIN, NUMBER_MAX);
         }
         while(list.contains(rand));
 
