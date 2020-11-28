@@ -10,9 +10,13 @@ public class Validator {
 
     public static final String INPUT_NULL_MESSAGE = "null 값을 입력하셨습니다!";
 
+    public static final String INPUT_EMPTY_MESSAGE = "빈 값을 입력하셨습니다!";
+
     public static final String INVALID_VALUE_MESSAGE = "잘못된 값을 입력하셨습니다!";
 
     public static final String DUPLICATE_NUMBER_MESSAGE = "중복된 값이 입력되었습니다!";
+
+    public static final String EMPTY = "";
 
     public static final Pattern NUMBERS_PATTERN =
             Pattern.compile("[1-9]{" + BaseballGame.BALLS_LENGTH + "}");
@@ -21,6 +25,7 @@ public class Validator {
 
     public void validateNumbers(Pattern pattern, String input) {
         checkNull(input);
+        checkBlank(input);
         checkRegularExpression(pattern, input);
         checkDuplicateNumber(input);
     }
@@ -28,6 +33,12 @@ public class Validator {
     private void checkNull(String input) {
         if (Objects.isNull(input)) {
             throw new IllegalArgumentException(INPUT_NULL_MESSAGE);
+        }
+    }
+
+    private void checkBlank(String input) {
+        if (input.trim().equals(EMPTY)) {
+            throw new IllegalArgumentException(INPUT_EMPTY_MESSAGE)
         }
     }
 
