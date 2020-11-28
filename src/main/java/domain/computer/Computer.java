@@ -42,12 +42,12 @@ public class Computer {
         }
     }
 
-    private void checkStrikeOrBallAndCount(int oneNumberOfanswer, int oneNumberOfinput) {
-        if (oneNumberOfanswer == oneNumberOfinput) {
+    private void checkStrikeOrBallAndCount(int oneNumberOfAnswer, int oneNumberOfInput) {
+        if (oneNumberOfAnswer == oneNumberOfInput) {
             strikeCount++;
             return;
         }
-        if (answer.contains(oneNumberOfinput)) {
+        if (answer.contains(oneNumberOfInput)) {
             ballCount++;
             return;
         }
