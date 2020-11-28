@@ -1,5 +1,6 @@
 package domain.computer;
 
+import ui.Output;
 import utils.RandomUtils;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class Computer {
         countStrikeAndBall(userInput);
         printBallOrStrikeCount(strikeCount, ballCount);
         if (strikeCount == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(Output.CORRECT_ANSWER_AND_EXIT_GAME);
             return true;
         }
         return false;
