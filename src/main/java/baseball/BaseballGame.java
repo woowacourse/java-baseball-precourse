@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 import baseball.domain.Batter;
 import baseball.domain.Judgment;
-import baseball.domain.generator.NumbersGenerator;
 import baseball.domain.Pitcher;
-import baseball.domain.generator.RandomNumbersGenerator;
 import baseball.domain.ScoreBoard;
+import baseball.domain.generator.NumbersGenerator;
+import baseball.domain.generator.RandomNumbersGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
