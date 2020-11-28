@@ -25,6 +25,7 @@ public class Game {
         while (gameStatus.getStrike() != WINNING_STRIKE_CONDITION) {
             proceedRound();
         }
+        OutputView.congratulateWin();
     }
 
     private void initialize() {
