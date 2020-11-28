@@ -25,9 +25,9 @@ class BallsTest {
         assertDoesNotThrow(() -> Balls.stringToBalls("159"));
     }
 
-    Balls generateBalls(int... ints) {
+    Balls generateBalls(int... intArr) {
         List<Ball> balls = new ArrayList<>();
-        for (int i : ints) {
+        for (int i : intArr) {
             balls.add(new Ball(i));
         }
         return new Balls(balls);
@@ -53,5 +53,10 @@ class BallsTest {
         botBalls = generateBalls(3, 1, 2);
         result = myBalls.judgeResult(botBalls).getResult();
         assertEquals(result, "3볼");
+
+        myBalls = generateBalls(1, 2, 3);
+        botBalls = generateBalls(4, 5, 6);
+        result = myBalls.judgeResult(botBalls).getResult();
+        assertEquals(result, "낫싱");
     }
 }
