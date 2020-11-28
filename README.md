@@ -112,6 +112,7 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - 랜덤 숫자 생성
 - 중복 숫자 방지
 - 게임시작
+  - 메세지 구현
 - 사용자 숫자 입력
 - 스트라이크 계산
 - 볼 계산

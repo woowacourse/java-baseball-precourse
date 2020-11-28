@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Compute {
     private static final int lengthNumber=3;
-    public List getRandomNumber() {
+    public ArrayList<Integer> getRandomNumber() {
         ArrayList<Integer> randomNumber= new ArrayList<Integer>();
         for(int i=0;i<lengthNumber;i++) {
             if(randomNumber.size()==0){
