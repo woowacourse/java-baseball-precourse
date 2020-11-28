@@ -77,4 +77,18 @@ public class InputReceiver {
             }
         }
     }
+
+    public static boolean askEndGames() {
+        String criteria = receiver.nextLine();
+        if (criteria.equals("1")) {
+            return false;
+        }
+
+        if (criteria.equals("2")) {
+            return true;
+        }
+
+        System.out.println("유효하지 못한 입력입니다.");
+        throw inputError;
+    }
 }
