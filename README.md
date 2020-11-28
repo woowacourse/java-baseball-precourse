@@ -45,18 +45,37 @@
 
 <br>
 
-## 패키지 및 클래스 구성
+## 프로젝트를 진행하면서 생긴 궁금점
+
+1. View의 입력 예외 처리와 역할에 대한 의문점
+    * Domain의 영역을 과도하게 침범하는 것이 아닌가?
+    * View에서 입력 예외를 try-catch로 완벽하게 처리했다면
+        * 입력 예외로 발생할 수 있는 Domain 객체 생성 예외는 처리하지 않아도 되는가?
+2. 가변 객체 vs 불변 객체의 Trade-Off?
+3. equals를 꼭 오버라이드해야 할까?
+4. 입력 예외를 다룰 때 : try-catch recursion vs while?
+5. 구현 기능 목록을 어느정도로 상세하게 작성해야 할까?
+6. 커밋 메시지는 영어 혹은 한글, 단위는 어느 정도로?
+7. 테스트 메서드의 이름은 영어 혹은 한글?
+
+## 최종 패키지 및 클래스 구성
 
 > AssertJ를 사용하여 테스트 코드를 작성했습니다.
 
-* domain 패키지
+* baseball 패키지
+    * domain 패키지
+        * game 패키지
+            * BaseballGameMachine
+            * GameResult
+            * GameState
+        * number 패키지
+            * BaseballNumber
+            * BaseballNumbers
+    * Application
 
 * view 패키지
     * InputView
     * OutputView
-
-* baseball 패키지
-    * Application
     
 * utils 패키지
     * RandomUtils

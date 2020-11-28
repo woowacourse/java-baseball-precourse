@@ -24,5 +24,6 @@ public class Application {
             OutputView.outputGameResult(gameResult);
             gameState = GameState.findGameState(inputView.inputGameState(gameResult));
         }
+        scanner.close();
     }
 }
