@@ -1,7 +1,6 @@
 package number;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Numbers {
@@ -14,10 +13,6 @@ public class Numbers {
 
     public static Numbers of(List<Number> numbers) {
         return new Numbers(numbers);
-    }
-
-    public List<Number> getNumbers() {
-        return Collections.unmodifiableList(numbers);
     }
 
     public int checkBall() {

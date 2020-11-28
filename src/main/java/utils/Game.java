@@ -71,7 +71,6 @@ public class Game {
             randomList = Number.createRandomList(3);
         }
         List<Integer> inputList = inputUtils.getIntegerList();
-        System.out.println("randomList = " + randomList);
         gameNumber.add(Number.of(randomList));
         gameNumber.add(Number.of(inputList));
         this.numbers = Numbers.of(gameNumber);

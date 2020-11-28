@@ -1,5 +1,0 @@
-package utils;
-
-class GameTest {
-
-}
