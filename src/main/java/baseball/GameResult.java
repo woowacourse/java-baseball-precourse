@@ -28,13 +28,28 @@ public class GameResult {
 
     public String getResult() {
         if (isNothing()) {
-            return NOTHING;
+            return NOTHING;                                             // 낫싱
         }
-        return String.format("%d%s %d%s%n", strike, STRIKE, ball, BALL);
+
+        if (thereIsNoBall()) {
+            return String.format("%d%s", strike, STRIKE);               // N스트라이크
+        } else if (thereIsNoStrike()) {
+            return String.format("%d%s", ball, BALL);                   // N볼
+        }
+
+        return String.format("%d%s %d%s", strike, STRIKE, ball, BALL);  // N스트라이크 N볼
+    }
+
+    private boolean thereIsNoStrike() {
+        return strike == 0;
     }
 
     private boolean isNothing() {
         return strike == 0 && ball == 0;
+    }
+
+    private boolean thereIsNoBall() {
+        return ball == 0;
     }
 
     public boolean isThreeStrikes() {
