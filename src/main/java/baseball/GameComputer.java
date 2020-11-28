@@ -3,6 +3,7 @@ package baseball;
 import java.util.Scanner;
 import java.util.Arrays;
 import utils.RandomUtils;
+import baseball.GamePlayer;
 
 public class GameComputer {
     final Scanner scanner = new Scanner(System.in);
@@ -24,6 +25,18 @@ public class GameComputer {
         return computerChoice;
     }
 
+    static void startGame(String computerChoice) {
+        int strike;
+        String userChoice = GamePlayer.chooseUserChoice();
+        strike = umpirePitch(computerChoice, userChoice);
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        } else {
+            startGame(computerChoice);
+        }
+    }
+
     static int umpirePitch(String computerChoice, String userChoice) {
         int strike = 0;
         int ball = 0;
@@ -41,7 +54,7 @@ public class GameComputer {
         }
 
         ball -= strike;
-        callUmpire(strike,ball)
+        callUmpire(strike,ball);
         return strike;
     }
 
