@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BallsTest {
 
@@ -36,8 +35,23 @@ class BallsTest {
 
     @Test
     void judgeResult() {
-        Balls myBalls = generateBalls(1, 2, 3);
-        Balls botBalls = generateBalls(1, 3, 2);
-        myBalls.judgeResult(botBalls).getResult();
+        Balls myBalls;
+        Balls botBalls;
+        String result;
+
+        myBalls = generateBalls(1, 2, 3);
+        botBalls = generateBalls(1, 3, 2);
+        result = myBalls.judgeResult(botBalls).getResult();
+        assertEquals(result, "1스트라이크 2볼");
+
+        myBalls = generateBalls(1, 2, 3);
+        botBalls = generateBalls(1, 2, 3);
+        result = myBalls.judgeResult(botBalls).getResult();
+        assertEquals(result, "3스트라이크");
+
+        myBalls = generateBalls(1, 2, 3);
+        botBalls = generateBalls(3, 1, 2);
+        result = myBalls.judgeResult(botBalls).getResult();
+        assertEquals(result, "3볼");
     }
 }
