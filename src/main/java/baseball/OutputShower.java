@@ -1,14 +1,16 @@
 package baseball;
 
 public class OutputShower {
+    static final int ENDGAME = 3;
+    static final int NOTHING = 0;
 
     public void outputPrint(int strikeNumber, int ballNumber) {
-        if (strikeNumber == 3) {
+        if (strikeNumber == ENDGAME) {
             showGameOver();
             return;
         }
 
-        if ((strikeNumber == 0) && (ballNumber) == 0) {
+        if ((strikeNumber == NOTHING) && (ballNumber) == NOTHING) {
             showNothing();
             return;
         }
