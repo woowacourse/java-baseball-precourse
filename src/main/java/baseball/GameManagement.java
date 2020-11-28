@@ -5,6 +5,9 @@ import utils.ThreeDigitsUtils;
 import java.util.Scanner;
 
 public class GameManagement {
+    private final String QUESTION_FOR_BASEBALL_NUMBER = "숫자를 입력해주세요 : ";
+    private final String QUESTION_FOR_RE_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final String CONGRATUALTION_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private Game game;
     private boolean onGame;
 
@@ -26,7 +29,7 @@ public class GameManagement {
     }
 
     private int askNumber(Scanner scanner) {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(QUESTION_FOR_BASEBALL_NUMBER);
         int inputInt = toInt(scanner.nextLine());
         if (!ThreeDigitsUtils.isBaseballNumber(inputInt)) {
             throw new IllegalArgumentException("Input should be Distinct Three Digits Integer");
@@ -40,8 +43,8 @@ public class GameManagement {
     }
 
     public void askReGame(Scanner scanner) {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(CONGRATUALTION_MESSAGE);
+        System.out.println(QUESTION_FOR_RE_GAME);
         this.onGame = answerReGame(scanner.nextLine());
     }
 
