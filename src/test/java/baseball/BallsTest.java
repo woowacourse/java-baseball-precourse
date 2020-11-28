@@ -8,6 +8,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BallsTest {
+    public static Balls generateBalls(int... intArr) {
+        List<Ball> balls = new ArrayList<>();
+        for (int i : intArr) {
+            balls.add(new Ball(i));
+        }
+        return new Balls(balls);
+    }
 
     @Test
     void validateSize() {
@@ -25,38 +32,35 @@ class BallsTest {
         assertDoesNotThrow(() -> Balls.stringToBalls("159"));
     }
 
-    Balls generateBalls(int... intArr) {
-        List<Ball> balls = new ArrayList<>();
-        for (int i : intArr) {
-            balls.add(new Ball(i));
-        }
-        return new Balls(balls);
-    }
-
+    /** judgeResult()로 Balls 객체끼리 비교해서 알맞은 GameResult를 반환하는지 테스트 */
     @Test
     void judgeResult() {
         Balls myBalls;
         Balls botBalls;
-        String result;
+        GameResult gameResult;
 
-        myBalls = generateBalls(1, 2, 3);
-        botBalls = generateBalls(1, 3, 2);
-        result = myBalls.judgeResult(botBalls).getResult();
-        assertEquals(result, "1스트라이크 2볼");
-
+        // 3스 0볼
         myBalls = generateBalls(1, 2, 3);
         botBalls = generateBalls(1, 2, 3);
-        result = myBalls.judgeResult(botBalls).getResult();
-        assertEquals(result, "3스트라이크");
+        gameResult = myBalls.judgeResult(botBalls);
+        assertEquals(new GameResult(3, 0), gameResult);
 
+        // 0스 3볼
         myBalls = generateBalls(1, 2, 3);
         botBalls = generateBalls(3, 1, 2);
-        result = myBalls.judgeResult(botBalls).getResult();
-        assertEquals(result, "3볼");
+        gameResult = myBalls.judgeResult(botBalls);
+        assertEquals(new GameResult(0, 3), gameResult);
 
+        // 1스 1볼
+        myBalls = generateBalls(1, 2, 3);
+        botBalls = generateBalls(1, 3, 2);
+        gameResult = myBalls.judgeResult(botBalls);
+        assertEquals(new GameResult(1, 2), gameResult);
+
+        // 0스 0볼
         myBalls = generateBalls(1, 2, 3);
         botBalls = generateBalls(4, 5, 6);
-        result = myBalls.judgeResult(botBalls).getResult();
-        assertEquals(result, "낫싱");
+        gameResult = myBalls.judgeResult(botBalls);
+        assertEquals(new GameResult(0, 0), gameResult);
     }
 }
