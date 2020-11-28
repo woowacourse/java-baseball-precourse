@@ -7,22 +7,22 @@ import static baseball.Config.*;
 import static utils.TextResource.STATEMENT_NOT_VALID_INPUT;
 
 public class BaseBallGameController {
-    private Player player = null;
-    private BaseBallGame game = null;
+    private Player currentPlayer;
+    private BaseBallGame currentGame = null;
 
     public BaseBallGameController(Player player) {
-        this.player = player;
+        this.currentPlayer = player;
     }
 
     public void startGame() {
         String answer = makeRandomNumber();
-        game = new BaseBallGame(answer);
+        currentGame = new BaseBallGame(answer);
         while (true) {
-            String inputNumber = player.inputNumber();
+            String inputNumber = currentPlayer.inputNumber();
             if (!checkValidInput(inputNumber)) continue;
-            boolean isAnswer = game.checkInputNumber(inputNumber);
+            boolean isAnswer = currentGame.checkInputNumber(inputNumber);
             if (isAnswer) {
-                checkRestart(player.askRestart());
+                checkRestart(currentPlayer.askRestart());
                 break;
             }
         }
@@ -33,7 +33,6 @@ public class BaseBallGameController {
             startGame();
         }
     }
-
 
     private String makeRandomNumber() {
         StringBuilder randomNumber = new StringBuilder();
