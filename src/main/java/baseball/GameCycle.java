@@ -55,12 +55,6 @@ public class GameCycle{
         MakeNumber UserM = new MakeNumber(answer);
         this.UserValue = UserM.GetTarget();
 
-        /*
-        이제는 while문을 통하여, 사용자의 입력을 계속해서 받아야 함.
-        그러면서, 볼, 스트라이크, 낫싱 아니면 합격을 판단하는 함수가 필요함.
-
-
-         */
         //test
         for(Integer a : CompValue){
             System.out.print(a);
@@ -72,6 +66,6 @@ public class GameCycle{
             MakeNumber User = new MakeNumber(scanner.nextInt());
             this.UserValue = User.GetTarget();
         }
-
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
