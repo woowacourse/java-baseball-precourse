@@ -19,16 +19,16 @@ public class BaseBallGameNumber {
         return number;
     }
 
-    private boolean checkValidInput(String inputNumber) {
-        if (!InputCheckUtils.isNumeric(inputNumber)) {
+    private boolean checkValidInput(String number) {
+        if (!InputCheckUtils.isNumeric(number)) {
             return false;
         }
 
-        if (inputNumber.length() > NUMBER_OF_DIGITS || inputNumber.length() < NUMBER_OF_DIGITS) {
+        if (number.length() > NUMBER_OF_DIGITS || number.length() < NUMBER_OF_DIGITS) {
             return false;
         }
 
-        if (InputCheckUtils.hasDuplicated(inputNumber)) {
+        if (InputCheckUtils.hasDuplicated(number)) {
             return false;
         }
 
