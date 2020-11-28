@@ -11,6 +11,7 @@ public class Application {
         while (playing) {
             newGame.startGame(scanner);
         }
+        scanner.close();
     }
 
 }
