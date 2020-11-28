@@ -26,7 +26,7 @@ public class InputView {
 
     public boolean askRetry() {
         String retryNumber = ask(ASK_RETRY_NUMBER, Validator.RETRY_PATTERN);
-        return retryNumber.equals(BaseballGame.END);
+        return retryNumber.equals(BaseballGame.GAME_END);
     }
 
     private String ask(String message, Pattern pattern) {

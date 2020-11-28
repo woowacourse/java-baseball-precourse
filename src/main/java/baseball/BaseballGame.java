@@ -11,15 +11,15 @@ import baseball.domain.ScoreBoard;
 
 public class BaseballGame {
 
-    public static final String END = "2";
+    public static final String GAME_END = "2";
 
     public static final int BALLS_LENGTH = 3;
 
     private final InputView inputView;
 
-    private final Pitcher pitcher;
-
     private final Batter batter;
+
+    private Pitcher pitcher;
 
     private ScoreBoard scoreBoard;
 
@@ -27,7 +27,6 @@ public class BaseballGame {
 
     public BaseballGame(final Scanner scanner) {
         this.inputView = new InputView(scanner);
-        this.pitcher = new Pitcher();
         this.batter = new Batter(new RandomNumbersGenerator());
         scoreBoard = new ScoreBoard();
         this.roundResult = new RoundResult();
@@ -53,7 +52,7 @@ public class BaseballGame {
         scoreBoard = new ScoreBoard();
 
         String balls = inputView.askBallNumbers();
-        pitcher.setNumbers(balls);
+        pitcher = new Pitcher(balls);
     }
 
     private void startRound() {
