@@ -4,23 +4,23 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GamePlayer {
-
     private static final char FIRST_BOUNDARY_VALUE = '1';
     private static final char LAST_BOUNDARY_VALUE = '9';
     private static final int INPUT_NUMBER_COUNT = 3;
+    private static final String REINPUT = "다시 입력해주세요";
 
     public static String getInputNumbers(String inputNumbers)
                                             throws IllegalArgumentException{
         if(inputNumbers.length() != INPUT_NUMBER_COUNT){
-            throw new IllegalArgumentException("다시 입력해주세요");
+            throw new IllegalArgumentException(REINPUT);
         }
 
         if(isNotAllNumbers(inputNumbers)){
-            throw new IllegalArgumentException("다시 입력해주세요");
+            throw new IllegalArgumentException(REINPUT);
         }
 
         if(haveDuplicateNumbers(inputNumbers)){
-            throw new IllegalArgumentException("다시 입력해주세요");
+            throw new IllegalArgumentException(REINPUT);
         }
 
         return inputNumbers;
