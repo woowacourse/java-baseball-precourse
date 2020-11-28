@@ -10,9 +10,11 @@ import utils.RandomUtils;
 import views.OutputView;
 
 public class Game {
+    private static final int WINNING_STRIKE_CONDITION = 3;
     private Scanner userInput;
     private Baseballs answerBalls;
     private Baseballs guessingBalls;
+    private Status gameStatus;
 
     public Game(Scanner userInput) {
         this.userInput = userInput;
@@ -20,10 +22,13 @@ public class Game {
 
     public void play() {
         initialize();
-        proceedRound();
+        while (gameStatus.getStrike() != WINNING_STRIKE_CONDITION) {
+            proceedRound();
+        }
     }
 
     private void initialize() {
+        gameStatus = new Status();
         generateAnswerBalls();
         System.out.println(answerBalls.getBalls());
     }
@@ -49,6 +54,8 @@ public class Game {
     private void proceedRound() {
         generateGuessingBalls();
         System.out.println(guessingBalls.getBalls());
+
+        gameStatus.check(answerBalls, guessingBalls);
     }
 
     private void generateGuessingBalls() {
