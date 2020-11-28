@@ -7,5 +7,6 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         Game thisGame = new Game();
         thisGame.play();
+        scanner.close();
     }
 }
