@@ -28,7 +28,16 @@ public class ValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", " ", "1", "12"})
+    @ValueSource(strings = {"", " "})
+    @DisplayName("빈 값을 입력하였을 경우 IllegalArgumentException 발생")
+    public void inputEmptyStringTest(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> validator.validateNumbers(Validator.NUMBERS_PATTERN, input))
+                .withMessage(Validator.INPUT_EMPTY_MESSAGE);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "12"})
     @DisplayName("입력 값이 정규표현식과 맞지 않을 경우 IllegalArgumentException 발생")
     public void inputInvalidValueTest(String input) {
         assertThatIllegalArgumentException()
