@@ -33,9 +33,9 @@ public class Application {
             while (!strikeAndBallResult.equals("3스트라이크")) {
                 /* strikeAndBallResult가 3스트라이크가 될 때 까지 실행한다 */
                 System.out.print("숫자를 입력해주세요 : ");
-                int userInputNumber = scanner.nextInt();
-                /* userInputNumber가 유효한 인풋인지 확인한다 */
-                application.checkUserInputNumber(userInputNumber);
+                String userInput = scanner.nextLine();
+                /* userInput이 유효한 인풋인지 확인한 후, 유효하다면 userInputNumber에 3자리 정수를 반환한다 */
+                int userInputNumber = application.checkUserInput(userInput);
                 /* targetNumber, userInputNumber를 비교하여 스트라이크/볼 결과를 도출한다 */
                 strikeAndBallResult = application.checkStrikeAndBall(targetNumber, userInputNumber);
                 System.out.println(strikeAndBallResult);
@@ -43,6 +43,7 @@ public class Application {
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            /* gamingStatus로 플레이어의 게임 재시작 여부를 판별한다 */
             int gamingStatus = scanner.nextInt();
             gaming = application.restartOrTerminate(gamingStatus);
         }
@@ -71,17 +72,33 @@ public class Application {
     }
 
     /**
-     * 메서드 checkUserInputNumber()는 플레이어가 입력한 3자리수가 유효한지 검증 합니다.
-     * @param userInputNumber 플레이어가 콘솔에 입력한 숫자입니다.
-     * @exception 3자리 숫자가 아니거나, 3자리수 중에 중복되는 숫자가 있는 경우 IllegalArgumentException 발생시킵니다.
+     * 메서드 checkUserInput()는 플레이어가 입력한 인풋이 1에서 9까지 중복되지 않는 3자리 수인지 검증합니다.
+     * @param userInput 플레이어가 콘솔에 입력한 인풋입니다.
+     * @return userInput이 유효한 3자리 숫자라고 판단해 이를 정수로 변환해 반환한다.
+     * @exception userInput 길이가 3이 아니거나, 정수로 변환 될 수 없는 경우, 3자리 수가 아닌 경우,
+     * 3자리수 중에 중복된 숫자가 있거나 0이 포함되어 있는 경우 IllegalArgumentException 발생시킵니다.
      */
-    public void checkUserInputNumber(int userInputNumber){
+    public int checkUserInput(String userInput) {
         /* 세자리수인지 확인한다 */
+        if (userInput.length() != 3 ) {
+            throw new IllegalArgumentException();
+        }
+
+        int userInputNumber = 0;
+
+        /* 정수로 변환 될 수 있는지 확인한다 */
+        try {
+            userInputNumber = Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        /* 3자리 수인지 확인한다 */
         if(userInputNumber > 999 || userInputNumber < 100) {
             throw new IllegalArgumentException();
         }
 
-        /* 중복되는 숫자가 있는지 확인한다 */
+        /* 중복되는 숫자가 있는지, 중간에 0이 섞여 있는지 확인한다 */
         int firstUserInputNumber = userInputNumber/100;
         int secondUserInputNumber = (userInputNumber/10)%10;
         int thirdUserInputNumber = userInputNumber%10;
@@ -89,6 +106,12 @@ public class Application {
                 || (secondUserInputNumber == thirdUserInputNumber)) {
             throw new IllegalArgumentException();
         }
+        if(secondUserInputNumber == 0 || thirdUserInputNumber == 0) {
+            /* firstUserInputNumber가 0인 경우는 위에서 감지되어 확인할 필요 없다 */
+            throw new IllegalArgumentException();
+        }
+
+        return userInputNumber;
     }
 
     /**
