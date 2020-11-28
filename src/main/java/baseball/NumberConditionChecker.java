@@ -14,7 +14,7 @@ public class NumberConditionChecker {
         return digits;
     }
 
-    public static boolean checkListInZero(int[] numbers) {
+    public static boolean checkZeroInList(int[] numbers) {
         for (int index = 0; index < 3; index++) {
             if (numbers[index] == 0) {
                 return false;
