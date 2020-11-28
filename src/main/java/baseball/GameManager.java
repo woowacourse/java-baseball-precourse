@@ -53,7 +53,7 @@ public class GameManager {
                 s = scanner.next();
                 gameStatus = GameStatus.valueOf(s);
             } catch (IllegalArgumentException e) {
-                System.out.printf("1, 2만 입력 가능합니다. 다시 입력해주세요. 입력값:%s%n", s);
+                System.out.println("1, 2만 입력 가능합니다. 다시 입력해주세요. 입력값:" + s);
             }
         }
         return gameStatus.isContinue();
