@@ -8,10 +8,11 @@ import java.util.Scanner;
 import utils.RandomUtils;
 
 public class Baseball {	
-	static GameManager manager = new GameManager();
-	static Player player = new Player();
 	
 	public static void start() {
+		GameManager manager = new GameManager();
+		Player player = new Player();
+		
 		String randomNumber;
 		String playerNumber;
 		
@@ -20,6 +21,7 @@ public class Baseball {
 		do {
 			player.input();
 			playerNumber = player.getNumber();
+			manager.inspect(playerNumber);
 		} while(!Validator.isSame(randomNumber, playerNumber));
 		
 		manager.query();
