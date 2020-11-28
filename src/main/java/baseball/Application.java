@@ -18,11 +18,9 @@ public class Application {
             if (restart) {
                 target = SetTarget.setTargetList();
                 restart = false;
-                System.out.println(target);
             }
 
             input = GetInput.inputNumberList(scanner);
-            System.out.println(input);
             isEnd = CompareNumber.compareNumber(target, input);
 
             if (isEnd) {
