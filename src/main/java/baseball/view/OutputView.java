@@ -1,6 +1,7 @@
 package baseball.view;
 
 public class OutputView {
+    public static String ERROR_MESSAGE = "";
 
     private OutputView() {}
 

@@ -28,7 +28,7 @@ public class InputValidator {
         try {
             Integer.parseInt(number);
         } catch (IllegalArgumentException expected) {
-            Constants.ERROR_MESSAGE = Constants.PLEASE_INPUT_THREE_DIGIT_NUMBER;
+            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_THREE_DIGIT_NUMBER;
             return false;
         }
 
@@ -38,7 +38,7 @@ public class InputValidator {
     private static boolean isThreeDigitNumber(String number) {
 
         if (number.length() != Constants.ANSWER_LENGTH) {
-            Constants.ERROR_MESSAGE = Constants.PLEASE_INPUT_THREE_DIGIT_NUMBER;
+            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_THREE_DIGIT_NUMBER;
             return false;
         }
 
@@ -48,7 +48,7 @@ public class InputValidator {
     private static boolean isNonZero(String number) {
 
         if (number.contains(Constants.CONTAIN_ZERO)) {
-            Constants.ERROR_MESSAGE = Constants.PLEASE_INPUT_NON_ZERO_NUMBER;
+            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_NON_ZERO_NUMBER;
             return false;
         }
 
@@ -59,7 +59,7 @@ public class InputValidator {
         List<Integer> numberList = StringToListIntegerutils.convertToList(number);
 
         if (numberList.stream().distinct().count() != Constants.ANSWER_LENGTH) {
-            Constants.ERROR_MESSAGE = Constants.PELASE_INPUT_ALL_DIFFERENT_NUMBER;
+            OutputView.ERROR_MESSAGE = Constants.PELASE_INPUT_ALL_DIFFERENT_NUMBER;
             return false;
         }
 
@@ -69,7 +69,7 @@ public class InputValidator {
     private static boolean isNumberOneOrTwo(String number) {
 
         if (!(number.contains(Constants.RESTART) || number.contains(Constants.EXIT))) {
-            Constants.ERROR_MESSAGE = Constants.PLEASE_INPUT_RETRY_NUMBER;
+            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_RETRY_NUMBER;
             return false;
         }
 
