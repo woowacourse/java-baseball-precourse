@@ -3,6 +3,8 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.BaseballGame;
+
 public class BaseballNumbers {
 
     public static final String DUPLICATE_NUMBER_MESSAGE = "중복된 값이 입력되었습니다!";
@@ -19,7 +21,7 @@ public class BaseballNumbers {
     }
 
     public boolean hasDuplicateNumber() {
-        return numbers.size() != 3;
+        return numbers.size() != BaseballGame.BALLS_LENGTH;
     }
 
     public List<Integer> getNumbers() {

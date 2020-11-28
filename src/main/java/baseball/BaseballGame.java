@@ -12,6 +12,8 @@ import baseball.domain.ScoreBoard;
 
 public class BaseballGame {
 
+    public static final int BALLS_LENGTH = 3;
+
     private final Pitcher pitcher;
 
     private final Batter batter;
@@ -30,7 +32,7 @@ public class BaseballGame {
             ScoreBoard scoreBoard = new ScoreBoard();
             while (!scoreBoard.isAnswer()) {
                 pitcher.receiveBalls();
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < BALLS_LENGTH; i++) {
                     int pitchedNumber = pitcher.pitch(i);
                     Judgment judgment = batter.swing(i, pitchedNumber);
                     scoreBoard.record(judgment);

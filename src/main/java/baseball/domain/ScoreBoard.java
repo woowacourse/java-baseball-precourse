@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.BaseballGame;
+
 public class ScoreBoard {
 
     private final Count strike;
@@ -40,6 +42,6 @@ public class ScoreBoard {
     }
 
     public boolean isAnswer() {
-        return strike.equals(3);
+        return strike.equals(BaseballGame.BALLS_LENGTH);
     }
 }

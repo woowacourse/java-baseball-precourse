@@ -4,13 +4,15 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import baseball.BaseballGame;
+
 public class Validator {
 
     public static final String INPUT_NULL_MESSAGE = "null 값을 입력하셨습니다!";
 
     public static final String INVALID_VALUE_MESSAGE = "잘못된 값을 입력하셨습니다!";
 
-    public static final Pattern NUMBERS_PATTERN = Pattern.compile("[1-9]{" + 3 + "}");
+    public static final Pattern NUMBERS_PATTERN = Pattern.compile("[1-9]{" + BaseballGame.BALLS_LENGTH + "}");
 
     public void validateNumbers(Pattern pattern, String input) {
         checkNull(input);
