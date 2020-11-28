@@ -67,13 +67,14 @@ public class Computer {
     }
 
     private void makeRandomAnswer() {
-        while (answer.size() != 3) {
-            int randomNumber = RandomUtils.nextInt(
-                    START_VALUE_IN_RANDOM_NUMBER_RANGE,
-                    END_VALUE_IN_RANDOM_NUMBER_RANGE);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
+        int randomNumber = RandomUtils.nextInt(
+                START_VALUE_IN_RANDOM_NUMBER_RANGE,
+                END_VALUE_IN_RANDOM_NUMBER_RANGE);
+        if (!answer.contains(randomNumber)) {
+            answer.add(randomNumber);
+        }
+        if (answer.size() != 3) {
+            makeRandomAnswer();
         }
     }
 }
