@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseballNumbersTest {
 
-    private static Stream<Arguments> getInputBaseballNumbers() {
+    private static Stream<Arguments> getCorrectInputBaseballNumbers() {
         return Stream.of(Arguments.of(Arrays.asList(1, 2, 3)),
                 Arguments.of(Arrays.asList(3, 6, 9)),
                 Arguments.of(Arrays.asList(6, 7, 3)));
@@ -45,21 +45,18 @@ class BaseballNumbersTest {
     @Test
     public void BaseballNumbers_자동_생성_중복_없는_랜덤_3개_숫자_반환() {
         BaseballNumbers baseballNumbers = BaseballNumbers.generateRandomBaseballNumbers();
-        int distinctNumberCounts = (int) baseballNumbers.getBaseballNumbers()
-                .stream()
-                .distinct()
-                .count();
-
-        assertThat(distinctNumberCounts).isEqualTo(3);
+        int strikeCounts = baseballNumbers.calculateStrikeCounts(baseballNumbers);
+        assertThat(strikeCounts).isEqualTo(3);
     }
 
-    @DisplayName("BaseballNumbers를 입력 숫자들을 통해 정상적으로 수동 생성함")
+    @DisplayName("BaseballNumbers를 입력 숫자들을 통해 정상적으로 수동 생성")
     @ParameterizedTest
-    @MethodSource("getInputBaseballNumbers")
+    @MethodSource("getCorrectInputBaseballNumbers")
     public void BaseballNumbers_수동_생성(List<Integer> inputBaseballNumbers) {
         BaseballNumbers baseballNumbers = BaseballNumbers.generateInputBaseballNumbers(inputBaseballNumbers);
-        List<Integer> generatedBaseballNumbers = baseballNumbers.getBaseballNumbers();
-        assertThat(generatedBaseballNumbers).hasSameElementsAs(inputBaseballNumbers);
+        BaseballNumbers sameBaseballNumbers = BaseballNumbers.generateInputBaseballNumbers(inputBaseballNumbers);
+        int strikeCounts = baseballNumbers.calculateStrikeCounts(sameBaseballNumbers);
+        assertThat(strikeCounts).isEqualTo(3);
     }
 
     @DisplayName("입력 숫자들이 1~9 범위가 아니거나 중복이 존재하면, BaseballNumbers 생성 실패")

@@ -77,10 +77,4 @@ public class BaseballNumbers {
                 .get(index);
         return !baseballNumber.equals(targetBaseballNumber) && this.baseballNumbers.contains(targetBaseballNumber);
     }
-
-    public List<Integer> getBaseballNumbers() {
-        return baseballNumbers.stream()
-                .map(BaseballNumber::getBaseballNumber)
-                .collect(Collectors.toList());
-    }
 }

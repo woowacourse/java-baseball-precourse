@@ -24,8 +24,4 @@ public class BaseballNumber {
             throw new IllegalArgumentException();
         }
     }
-
-    public int getBaseballNumber() {
-        return this.baseballNumber;
-    }
 }
