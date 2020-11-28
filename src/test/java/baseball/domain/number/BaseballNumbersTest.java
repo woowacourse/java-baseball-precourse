@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseballNumbersTest {
-
     private static Stream<Arguments> getCorrectInputBaseballNumbers() {
         return Stream.of(Arguments.of(Arrays.asList(1, 2, 3)),
                 Arguments.of(Arrays.asList(3, 6, 9)),
@@ -62,7 +61,7 @@ class BaseballNumbersTest {
     @DisplayName("입력 숫자들이 1~9 범위가 아니거나 중복이 존재하면, BaseballNumbers 생성 실패")
     @ParameterizedTest
     @MethodSource("getWrongInputBaseballNumbers")
-    public void 숫자가_중복_혹은_범위_오류면_BaseballNumbers_생성_실패_예외_발생(List<Integer> inputBaseballNumbers) {
+    public void BaseballNumbers_숫자가_중복_혹은_범위_오류면_예외_발생(List<Integer> inputBaseballNumbers) {
         assertThatThrownBy(() -> {
             BaseballNumbers.generateInputBaseballNumbers(inputBaseballNumbers);
         }).isInstanceOf(IllegalArgumentException.class);

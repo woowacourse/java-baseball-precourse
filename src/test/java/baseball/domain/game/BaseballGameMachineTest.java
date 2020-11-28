@@ -59,7 +59,6 @@ class BaseballGameMachineTest {
         BaseballGameMachine baseballGameMachine =
                 new BaseballGameMachine(BaseballNumbers.generateRandomBaseballNumbers());
         BaseballGameMachine nextBaseballGameMachine = baseballGameMachine.prepareNextTry(GameState.KEEP_PLAYING);
-
         assertThat(baseballGameMachine.equals(nextBaseballGameMachine)).isTrue();
     }
 
@@ -69,7 +68,6 @@ class BaseballGameMachineTest {
         BaseballGameMachine baseballGameMachine =
                 new BaseballGameMachine(BaseballNumbers.generateRandomBaseballNumbers());
         BaseballGameMachine nextBaseballGameMachine = baseballGameMachine.prepareNextTry(GameState.RESTART);
-
         assertThat(baseballGameMachine.equals(nextBaseballGameMachine)).isFalse();
     }
 
