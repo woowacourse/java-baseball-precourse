@@ -10,7 +10,6 @@ import java.util.stream.IntStream;
 
 public class BaseballNumbers {
     private static final int NECESSARY_BASEBALL_NUMBER_COUNTS = 3;
-    private static final int NECESSARY_COUNT_FOR_BALL_HINT = 1;
     private static final int FIRST_BALL_INDEX = 0;
     private static final int LAST_BALL_INDEX = 2;
 
@@ -73,12 +72,10 @@ public class BaseballNumbers {
     }
 
     private boolean isBall(int index, BaseballNumbers targetBaseballNumbers) {
+        BaseballNumber baseballNumber = this.baseballNumbers.get(index);
         BaseballNumber targetBaseballNumber = targetBaseballNumbers.baseballNumbers
                 .get(index);
-        return IntStream.rangeClosed(FIRST_BALL_INDEX, LAST_BALL_INDEX)
-                .filter(i -> i != index)
-                .filter(i -> this.baseballNumbers.get(i).equals(targetBaseballNumber))
-                .count() == NECESSARY_COUNT_FOR_BALL_HINT;
+        return !baseballNumber.equals(targetBaseballNumber) && this.baseballNumbers.contains(targetBaseballNumber);
     }
 
     public List<Integer> getBaseballNumbers() {
