@@ -31,36 +31,11 @@ public class InputOutputManager {
         System.out.print(REQUEST_INPUT_MESSAGE);
         String inputNumber = scanner.nextLine();
         try{
-            return parseToIntArray(inputNumber);
+            return ParseHandler.stringToIntArray(inputNumber, numberSize);
         } catch(Exception e){
             System.out.println(WRONG_VALUE_MESSAGE);
             return askUserInputNumber();
         }
-    }
-
-    private int[] parseToIntArray(String input){
-        if(!ExceptionChecker.isParsableToInteger(input)){
-            throw new IllegalArgumentException();
-        }
-
-        if(!ExceptionChecker.isLengthFit(input, numberSize)){
-            throw new IllegalArgumentException();
-        }
-
-        if(ExceptionChecker.isContainsZero(input)){
-            throw new IllegalArgumentException();
-        }
-
-        int[] intArray = new int[input.length()];
-        for(int i = 0; i < input.length(); i++){
-            intArray[i] = Character.getNumericValue(input.charAt(i));
-        }
-
-        if(!ExceptionChecker.isArrayElementsAreUnique(intArray)){
-            throw new IllegalArgumentException();
-        }
-
-        return intArray;
     }
 
     public void printResult(int strike, int ball){
@@ -92,21 +67,9 @@ public class InputOutputManager {
         System.out.println(ASK_RESTART_MESSAGE);
         String answer = scanner.nextLine();
         try{
-            return parseToOneOrTwo(answer);
+            return ParseHandler.stringToOneOrTwo(answer);
         } catch(Exception e){
             return askRestartGame();
         }
-    }
-
-    private int parseToOneOrTwo(String input){
-        if(!ExceptionChecker.isParsableToInteger(input)){
-            throw new IllegalArgumentException();
-        }
-
-        if(!ExceptionChecker.isOneOrTwo(input)){
-            throw new IllegalArgumentException();
-        }
-        
-        return Integer.parseInt(input);
     }
 }
