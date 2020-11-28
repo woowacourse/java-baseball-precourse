@@ -7,10 +7,10 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
 
-        boolean onGame = true;
-        while (onGame) {
-            GameManagement.playGame(scanner);
-            onGame = GameManagement.askReGame(scanner);
+        GameManagement gm = new GameManagement();
+        while (!gm.isGameFinished()) {
+            gm.playGame(scanner);
+            gm.askReGame(scanner);
         }
     }
 }

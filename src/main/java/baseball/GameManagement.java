@@ -5,25 +5,27 @@ import utils.ThreeDigitsUtils;
 import java.util.Scanner;
 
 public class GameManagement {
-    private static Game game;
-    private static boolean isCorrect = false;
+    private Game game;
+    private boolean onGame;
 
-    public static void playGame(Scanner scanner) {
-        initGame();
-        while (!isCorrect) {
-            int guess = askNumber(scanner);
+    public GameManagement() {
+        this.game = new Game(ThreeDigitsUtils.nextBaseballNumber());
+        this.onGame = true;
+        System.out.println(game.getTargetNumber());
+    }
+
+    public void playGame(Scanner scanner) {
+        int guess = askNumber(scanner);
+        do {
             printHint(guess);
-            isCorrect = game.isAnswer(guess);
-        }
+        } while (!game.isCorrect(guess));
     }
 
-    private static void initGame() {
-        int targetNumber = ThreeDigitsUtils.nextBaseballNumber();
-        game = new Game(targetNumber);
-        System.out.println(targetNumber);
+    public boolean isGameFinished(){
+        return !this.onGame;
     }
 
-    private static int askNumber(Scanner scanner) {
+    private int askNumber(Scanner scanner) {
         System.out.print("숫자를 입력해주세요 : ");
         int inputInt = toInt(scanner.nextLine());
         if (!ThreeDigitsUtils.isBaseballNumber(inputInt)) {
@@ -32,18 +34,18 @@ public class GameManagement {
         return inputInt;
     }
 
-    private static void printHint(int guess) {
+    private void printHint(int guess) {
         String hint = game.getHint(guess);
         System.out.println(hint);
     }
 
-    public static boolean askReGame(Scanner scanner) {
+    public void askReGame(Scanner scanner) {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return answerReGame(scanner.nextLine());
+        this.onGame = answerReGame(scanner.nextLine());
     }
 
-    private static boolean answerReGame(String inputString) {
+    private boolean answerReGame(String inputString) {
         int inputInt = toInt(inputString);
         if (inputInt == 1) {
             return true;
@@ -54,7 +56,7 @@ public class GameManagement {
         throw new IllegalArgumentException("Input should be 1 or 2");
     }
 
-    private static int toInt(String inputString) {
+    private int toInt(String inputString) {
         String string = inputString.strip();
         try {
             int InputInt = Integer.parseInt(string);

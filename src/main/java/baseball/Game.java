@@ -64,7 +64,11 @@ public class Game {
         return stringifyHint(strikeCount, ballCount);
     }
 
-    public boolean isAnswer(int inputNumber) {
-        return targetNumber == inputNumber;
+    public int getTargetNumber() {
+        return targetNumber;
+    }
+
+    public boolean isCorrect(int guess) {
+        return guess == targetNumber;
     }
 }
