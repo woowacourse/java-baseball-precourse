@@ -9,7 +9,7 @@ public class Application {
         Game newGame = new Game();
 
         while (playing) {
-            newGame.startGame(scanner);
+            playing = newGame.startGame(scanner);
         }
         scanner.close();
     }
