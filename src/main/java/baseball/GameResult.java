@@ -71,7 +71,11 @@ public class GameResult {
         return ball == 0;
     }
 
-    public boolean isThreeStrikes() {
-        return strike == Balls.COUNT_OF_BALLS;
+    public boolean isAllStrikes() {
+        if (strike == Balls.COUNT_OF_BALLS) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
     }
 }

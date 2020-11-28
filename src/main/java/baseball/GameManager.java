@@ -23,7 +23,7 @@ public class GameManager {
         GameResult gameResult;
 
         botBalls = Balls.generateRandomBalls();                 // 랜덤 생성 balls
-        while (true) {
+        do {
             System.out.println(botBalls);// TODO 테스트
 
             System.out.print("숫자를 입력해주세요 : ");
@@ -31,11 +31,7 @@ public class GameManager {
             gameResult = myBalls.judgeResult(botBalls);         // 결과 계산
             System.out.println(gameResult.getResult());         // 결과 출력
 
-            if (gameResult.isThreeStrikes()) {                  // 3스트라이크: 루프탈출
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
-        }
+        } while (!gameResult.isAllStrikes());                   // 3스트라이크: 루프탈출
     }
 
     private Balls getMyBalls() {
