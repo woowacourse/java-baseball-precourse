@@ -33,7 +33,7 @@ public class BatterTest {
     }
 
     @Test
-    @DisplayName("볼 반환 테스트")
+    @DisplayName("낫싱 반환 테스트")
     public void returnNothingTest() {
         assertThat(batter.swing(0, 4)).isEqualTo(Judgment.NOTHING);
     }
