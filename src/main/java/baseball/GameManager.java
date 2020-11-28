@@ -20,8 +20,9 @@ public class GameManager {
         Balls myBalls;
         GameResult gameResult;
 
+        botBalls = Balls.generateRandomBalls();                 // 랜덤 생성 balls
         while (true) {
-            botBalls = Balls.generateRandomBalls();             // 랜덤 생성 balls
+            System.out.print("숫자를 입력해주세요 : ");
             myBalls = getMyBalls();                             // 사용자 balls
             gameResult = myBalls.judgeResult(botBalls);         // 결과 계산
             System.out.println(gameResult.getResult());         // 결과 출력
