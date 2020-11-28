@@ -25,7 +25,7 @@
 - Strike가 몇 개인지 판단하는 메서드
 - Ball/Strike 결과 보고 낫띵 판단하는 메서드
 - 종합 결과 가져가는 메서드
-### Model
+### domain
 #### Participant 
 - 유저와 게임 셋의 조상
 #### Computer
