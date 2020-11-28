@@ -14,10 +14,6 @@ public class BaseballNumbers {
         addNumbers(inputNumbers);
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
     public int getNumber(int numberIndex) {
         return numbers.get(numberIndex);
     }
