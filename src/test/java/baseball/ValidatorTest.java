@@ -44,4 +44,13 @@ public class ValidatorTest {
                 .isThrownBy(() -> validator.validateNumbers(Validator.NUMBERS_PATTERN, input))
                 .withMessage(Validator.INVALID_VALUE_MESSAGE);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"122", "233"})
+    @DisplayName("입력 값이 중복 숫자를 포함할 경우 IllegalArgumentException 발생")
+    public void inputDuplicateNumberTest(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> validator.validateNumbers(Validator.NUMBERS_PATTERN, input))
+                .withMessage(Validator.DUPLICATE_NUMBER_MESSAGE);
+    }
 }
