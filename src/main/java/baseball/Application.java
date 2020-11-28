@@ -94,7 +94,7 @@ public class Application {
         try {
             parseInputStrToNums();
         } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
-            throw new IllegalArgumentException("비정상적 입력", e);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -157,7 +157,7 @@ public class Application {
             int repeatInput = getRepeatInput();
             parseIsRepeat(repeatInput);
         } catch (InputMismatchException | NumberFormatException e) {
-            throw new IllegalArgumentException("비정상적 입력");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -173,6 +173,6 @@ public class Application {
         else if (repeatInput == END_GAME)
             isRepeat = false;
         else
-            throw new IllegalArgumentException("비정상적 입력");
+            throw new IllegalArgumentException();
     }
 }
