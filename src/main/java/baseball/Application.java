@@ -9,7 +9,16 @@ public class Application {
         Player player= new Player(scanner);
 
         do {
-            player.checkReplayDecision();
+            checkReplayDecisionOf(player);
         } while(player.getReplayDecision() == Player.WANT_REPLAY);
+    }
+
+    private static void checkReplayDecisionOf(Player player) {
+        try {
+            player.checkReplayDecision();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            checkReplayDecisionOf(player);
+        }
     }
 }
