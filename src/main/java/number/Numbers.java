@@ -1,4 +1,4 @@
-package Number;
+package number;
 
 import java.util.ArrayList;
 import java.util.Collections;

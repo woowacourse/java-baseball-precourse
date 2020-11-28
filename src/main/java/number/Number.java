@@ -1,4 +1,4 @@
-package Number;
+package number;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,21 +8,13 @@ public class Number {
 
     private List<Integer> numbers;
 
-    private Number() {
-    }
-
     private Number(List<Integer> numbers) {
         this.numbers = validateDigitNumber(numbers);
-    }
-
-    public static Number of() {
-        return new Number();
     }
 
     public static Number of(List<Integer> numbers) {
         return new Number(numbers);
     }
-
 
     public List<Integer> validateDigitNumber(List<Integer> numbers) {
         List<Integer> validatedList = new ArrayList<>();

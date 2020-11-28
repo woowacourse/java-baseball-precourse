@@ -1,4 +1,4 @@
-package Number;
+package number;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,7 +42,7 @@ class NumberTest {
         assertThatThrownBy(() -> Number.of(integers2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("각 자릿 수는 모두 달라야 합니다");
-        
+
         assertThatThrownBy(() -> Number.of(integers3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("각 자릿 수는 모두 달라야 합니다");
