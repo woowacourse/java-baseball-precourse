@@ -117,4 +117,5 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - [x] 3자리 input을 받고 일치 결과를 출력
 - [x] 숫자를 맞춘 후 게임 반복/종료 선택
 - [x] 비정상적 input 처리
+- [x] 리팩토링: 클래스 생성 및 메소드 분리
 
