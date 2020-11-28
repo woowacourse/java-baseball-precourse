@@ -23,7 +23,7 @@ public class Game {
         boolean endGame = false;
         do {
             int[] userTryingAnswer = InputReceiver.userAnswer();
-            int[] gradeResult = RuleChecker.gradePoints(gameSet,userTryingAnswer);
+            int[] gradeResult = RuleChecker.gradePoints(userTryingAnswer, gameSet);
             int strikePoints = gradeResult[STRIKEPOSITION];
             int ballPoints = gradeResult[BALLPOSITION];
             OutputShower.outputPrint(strikePoints, ballPoints);

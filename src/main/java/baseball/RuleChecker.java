@@ -15,9 +15,8 @@ public class RuleChecker {
            strikeNumberThisTurn += gradeStrike(userInput, gameBallSet, position);
            ballNumberThisTurn += gradeBall(userInput,gameBallSet,position);
         }
-        strikeNumberThisTurn = gradePoints[STRIKEPOSITION];
-        ballNumberThisTurn = gradePoints[BALLPOSITION];
-
+        gradePoints[STRIKEPOSITION] = strikeNumberThisTurn;
+        gradePoints[BALLPOSITION] = ballNumberThisTurn;
         return gradePoints;
     }
 
