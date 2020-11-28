@@ -1,6 +1,5 @@
 package baseball.modules;
 
-import java.util.HashSet;
 import java.util.Scanner;
 
 public class InputOutputManager {
@@ -32,15 +31,15 @@ public class InputOutputManager {
     }
 
     private int[] parseToIntArray(String input){
-        if(!checkForParsable(input)){
+        if(!ExceptionChecker.isParsableToInteger(input)){
             throw new IllegalArgumentException();
         }
 
-        if(!checkForLengthFit(input)){
+        if(!ExceptionChecker.isLengthFit(input, numberSize)){
             throw new IllegalArgumentException();
         }
 
-        if(checkForContainsZero(input)){
+        if(ExceptionChecker.isContainsZero(input)){
             throw new IllegalArgumentException();
         }
 
@@ -49,51 +48,11 @@ public class InputOutputManager {
             intArray[i] = Character.getNumericValue(input.charAt(i));
         }
 
-        if(!checkForArrayElementsAreUnique(intArray)){
+        if(!ExceptionChecker.isArrayElementsAreUnique(intArray)){
             throw new IllegalArgumentException();
         }
 
         return intArray;
-    }
-
-    private boolean checkForParsable(String input){
-        try{
-            Integer.parseInt(input);
-            return true;
-        } catch(Exception e){
-            return false;
-        }
-    }
-
-    private boolean checkForLengthFit(String input){
-        if(input.length() == numberSize){
-            return true;            
-        }
-        return false;
-    }
-
-    private boolean checkForContainsZero(String input){
-        for(int i = 0; i < input.length(); i++){
-            if(Character.getNumericValue(input.charAt(i)) == 0){
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private boolean checkForArrayElementsAreUnique(int[] input){
-        HashSet<Integer> shown = new HashSet<Integer>();
-
-        for(int i = 0; i < input.length; i++){
-            if(shown.contains(input[i])){
-                return false;
-            }
-
-            shown.add(input[i]);
-        }
-
-        return true;
     }
 
     public void printResult(int strike, int ball){
@@ -128,19 +87,14 @@ public class InputOutputManager {
     }
 
     private int parseToOneOrTwo(String input){
-        if(!checkForParsable(input)){
+        if(!ExceptionChecker.isParsableToInteger(input)){
             throw new IllegalArgumentException();
         }
 
-        if(!checkForOneOrTwo(input)){
+        if(!ExceptionChecker.isOneOrTwo(input)){
             throw new IllegalArgumentException();
         }
         
         return Integer.parseInt(input);
-    }
-
-    private boolean checkForOneOrTwo(String input){
-        int inputInteger = Integer.parseInt(input);
-        return inputInteger == 1 || inputInteger == 2;
     }
 }
