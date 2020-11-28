@@ -51,7 +51,8 @@ public class Baseballs {
     }
 
     private boolean hasNonNumerical(String input) {
-        return false;
+        return Stream.of(input.split(INPUT_DELIMITER))
+                .anyMatch(x -> !Character.isDigit(Integer.parseInt(x)));
     }
 
     private void validateNoZero(String rawBallsInput) {
