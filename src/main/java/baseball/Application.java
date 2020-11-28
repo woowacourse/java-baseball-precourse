@@ -30,7 +30,6 @@ public class Application {
             String roundResult = numberBaseBall.makeHint(playerInput, numberBaseBall.randomNumber);
             System.out.println(roundResult);
             if (roundResult.charAt(0) - '0' == GAME_OVER) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 menu = player.playerInputMenu(scanner);
             }
             if (menu == SHUTDOWN)
