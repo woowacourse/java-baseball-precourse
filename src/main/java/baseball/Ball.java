@@ -9,6 +9,7 @@ public class Ball {
     }
 
     public Ball(char c) {
+        // TODO 문자열이나 공백 등 int 아니면?
         this(Integer.parseInt(String.valueOf(c)));
     }
 

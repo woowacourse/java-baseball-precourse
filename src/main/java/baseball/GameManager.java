@@ -24,6 +24,8 @@ public class GameManager {
 
         botBalls = Balls.generateRandomBalls();                 // 랜덤 생성 balls
         while (true) {
+            System.out.println(botBalls);// TODO 테스트
+
             System.out.print("숫자를 입력해주세요 : ");
             myBalls = getMyBalls();                             // 사용자 balls
             gameResult = myBalls.judgeResult(botBalls);         // 결과 계산
@@ -41,8 +43,8 @@ public class GameManager {
         while (myBalls == null) {
             try {
                 myBalls = Balls.stringToBalls(scanner.next());  // 사용자 생성 balls
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage()); // TODO 예외 어떻게 잡을까
             }
         }
         return myBalls;

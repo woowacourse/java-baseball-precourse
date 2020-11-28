@@ -17,6 +17,12 @@ class BallsTest {
     }
 
     @Test
+    void stringToBalls() {
+        // TODO 문자열 -> Balls 변환 잘되는지 어캐 검증하지...
+        Balls balls = Balls.stringToBalls("123");
+    }
+
+    @Test
     void validateSize() {
         assertThrows(IllegalArgumentException.class, () -> Balls.stringToBalls("1234"));
         assertThrows(IllegalArgumentException.class, () -> Balls.stringToBalls("12"));
