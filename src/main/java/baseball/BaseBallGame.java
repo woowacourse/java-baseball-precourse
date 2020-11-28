@@ -11,7 +11,7 @@ public class BaseBallGame {
 
 
     public boolean checkInputNumber(String inputNumber) {
-        checkHint(inputNumber);
+        makeHint(inputNumber);
         if (answer.getNumber().equals(inputNumber)) {
             System.out.println(STATEMENT_INPUT_ANSWER);
             return true;
@@ -19,7 +19,7 @@ public class BaseBallGame {
         return false;
     }
 
-    private void checkHint(String inputNumber) {
+    private void makeHint(String inputNumber) {
         int ball = 0, strike = 0;
         for (int i = 0; i < inputNumber.length(); i++) {
             if (answer.getNumber().charAt(i) == inputNumber.charAt(i)) {
