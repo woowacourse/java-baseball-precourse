@@ -59,7 +59,7 @@ public class InputValidator {
         List<Integer> numberList = StringToListIntegerutils.convertToList(number);
 
         if (numberList.stream().distinct().count() != Constants.ANSWER_LENGTH) {
-            OutputView.ERROR_MESSAGE = Constants.PELASE_INPUT_ALL_DIFFERENT_NUMBER;
+            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_ALL_DIFFERENT_NUMBER;
             return false;
         }
 
