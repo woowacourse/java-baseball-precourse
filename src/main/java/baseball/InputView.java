@@ -11,6 +11,8 @@ public class InputView {
 
     public static final String ASK_RETRY_NUMBER = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    public static final String INPUT_VALUE_FORMAT = "\n입력한 값은 %s 입니다.";
+
     private final Validator validator;
 
     private final Scanner scanner;
@@ -31,8 +33,25 @@ public class InputView {
 
     private String ask(String message, Pattern pattern) {
         System.out.println(message);
+
         String input = scanner.nextLine();
-        validator.validateNumbers(pattern, input);
+        
+        boolean isLegalArgument = false;
+        while (!isLegalArgument) {
+            isLegalArgument = isValid(input, pattern);
+        }
+
         return input;
+    }
+
+    private boolean isValid(String input, Pattern pattern) {
+        try {
+            validator.validateNumbers(pattern, input);
+        } catch (IllegalArgumentException e) {
+            System.out.printf(e.getMessage() + INPUT_VALUE_FORMAT, input);
+            return true;
+        }
+
+        return false;
     }
 }
