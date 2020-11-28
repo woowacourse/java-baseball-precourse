@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.validator;
 
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 import baseball.BaseballGame;
 
-public final class Validator {
+public class Validator {
 
     public static final String INPUT_NULL_MESSAGE = "null 값을 입력하셨습니다!";
 

@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import baseball.domain.Validator;
+import baseball.domain.validator.Validator;
 
 public class ValidatorTest {
 
