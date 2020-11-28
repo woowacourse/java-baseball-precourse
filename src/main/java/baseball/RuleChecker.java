@@ -6,7 +6,7 @@ public class RuleChecker {
     static final int BALLPOSITION = 1;
 
 
-    public int[] gradePoints(int[] userInput, int[] gameBallSet) {
+    public static int[] gradePoints(int[] userInput, int[] gameBallSet) {
         int[] gradePoints = new int[2];
         int strikeNumberThisTurn = 0;
         int ballNumberThisTurn = 0;
@@ -21,7 +21,7 @@ public class RuleChecker {
         return gradePoints;
     }
 
-    private int gradeStrike(int[] userInput, int[] gameBallSet, int turn) {
+    private static int gradeStrike(int[] userInput, int[] gameBallSet, int turn) {
         int thisStrike =0;
 
         if (userInput[turn] == gameBallSet[turn]) {
@@ -31,7 +31,7 @@ public class RuleChecker {
         return thisStrike;
     }
 
-    private int gradeBall(int[] userInput, int[] gameBallSet, int turn) {
+    private static int gradeBall(int[] userInput, int[] gameBallSet, int turn) {
         int thisBall = 0;
 
         for(int lotatingTurn =0 ; lotatingTurn<NUMBEROFBALL ; lotatingTurn++) {

@@ -7,7 +7,7 @@ public class RandomBallSet {
     static final int ENDINDEX = 9;
     static final int NUMBEROFBALL = 3;
 
-    private RandomBallSet() {
+    public RandomBallSet() {
 
     }
 
