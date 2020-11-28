@@ -32,9 +32,33 @@ public class Numbers {
         return ballCount;
     }
 
+    public int checkStrike() {
+        List<Integer> number = numbers.get(0).getNumber();
+        List<Integer> targetNumber = numbers.get(1).getNumber();
+        int strikeCount = 0;
+        for (int index = 0; index < number.size(); index++) {
+            if (isStrike(index, number, targetNumber)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
     private boolean isBall(int index, List<Integer> number, List<Integer> targetNumber) {
         for (int targetIndex = 0; targetIndex < targetNumber.size(); targetIndex++) {
             if (targetIndex == index) {
+                continue;
+            }
+            if (number.get(index) == targetNumber.get(targetIndex)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isStrike(int index, List<Integer> number, List<Integer> targetNumber) {
+        for (int targetIndex = 0; targetIndex < targetNumber.size(); targetIndex++) {
+            if (targetIndex != index) {
                 continue;
             }
             if (number.get(index) == targetNumber.get(targetIndex)) {

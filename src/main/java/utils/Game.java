@@ -22,13 +22,17 @@ public class Game {
 
     public void start() {
         initializeGame();
-        printResult (numbers.checkBall());
+        printResult(numbers.checkBall(), numbers.checkStrike());
     }
 
-    private void printResult(int checkBall) {
-        if (checkBall > 0) {
-            System.out.print(checkBall + "볼 ");
+    private void printResult(int ball, int strike) {
+        if (ball > 0) {
+            System.out.print(ball + "볼 ");
         }
+        if (strike > 0) {
+            System.out.print(strike + "스트라이크");
+        }
+        System.out.println();
     }
 
     private void initializeGame() {
