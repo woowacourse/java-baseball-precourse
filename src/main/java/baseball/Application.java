@@ -1,13 +1,17 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-        
+        List<Integer> userNumber;
+        Computer computer = new Computer();
+
         do {
-            getInput(scanner);
+            userNumber = changeUserInputStringToList(getInput(scanner));
         } while (true);
     }
 
@@ -22,9 +26,20 @@ public class Application {
             InputValidator.validateDuplication(input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            getInput(scanner);
+            input = getInput(scanner);
         }
 
         return input;
+    }
+
+    public static List<Integer> changeUserInputStringToList(String userInput) {
+        String[] tokensOfUserInput = userInput.split("");
+        List<Integer> subdividedUserInput = new ArrayList<>();
+
+        for (String token : tokensOfUserInput) {
+            subdividedUserInput.add(Integer.parseInt(token));
+        }
+
+        return subdividedUserInput;
     }
 }
