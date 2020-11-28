@@ -7,12 +7,13 @@ import java.util.Map;
 public class Computer {
     private static final String STRIKE = "strike";
     private static final String BALL = "ball";
+
     private static final int ZERO = 0;
 
     private List<Integer> computerNumber;
 
-    Computer() {
-        this.computerNumber = RandomNumberMaker.makeRandomNumber();
+    Computer(RandomNumberMaker randomNumberMaker) {
+        this.computerNumber = randomNumberMaker.makeRandomNumber();
     }
 
     public boolean isStrike(List<Integer> userNumber, int nowIndex) {

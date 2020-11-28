@@ -10,9 +10,9 @@ public class RandomNumberMaker {
     private static final int NUMBER_RANGE_START = 1;
     private static final int NUMBER_RANGE_END = 9;
 
-    private static List<Integer> randomNumber = new ArrayList<>();
+    private List<Integer> randomNumber = new ArrayList<>();
 
-    public static List<Integer> makeRandomNumber() {
+    public List<Integer> makeRandomNumber() {
         int oneDigitRandomNumber = RandomUtils.nextInt(NUMBER_RANGE_START, NUMBER_RANGE_END);
         if (!randomNumber.contains(oneDigitRandomNumber)) {
             randomNumber.add(oneDigitRandomNumber);
