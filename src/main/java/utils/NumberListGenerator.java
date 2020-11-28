@@ -31,7 +31,8 @@ public class NumberListGenerator {
     }
 
     public static List<Integer> ConvertStringToList(String num){
-        return Arrays.stream(num.split("")).map(Integer::parseInt)
+        return Arrays.stream(num.split(""))
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 }

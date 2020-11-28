@@ -62,6 +62,7 @@ public class InputValidator {
 
     private static boolean isAllDifferent(String input){
         return Arrays.stream(input.split(""))
-                .distinct().count() == input.length();
+                .distinct()
+                .count() == input.length();
     }
 }
