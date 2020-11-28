@@ -13,10 +13,10 @@ class SingletonFlagMapTest {
         SingletonFlagMap singletonFlagMap = SingletonFlagMap.getInstance();
 
         // when
-        final int NON_EXISTING_FLAG = -1;
+        final int nonExistingFlag = -1;
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> singletonFlagMap.getFlagFromNumber(NON_EXISTING_FLAG));
+        assertThrows(IllegalArgumentException.class, () -> singletonFlagMap.getFlagFromNumber(nonExistingFlag));
     }
 
     @Test
@@ -25,10 +25,10 @@ class SingletonFlagMapTest {
         SingletonFlagMap singletonFlagMap = SingletonFlagMap.getInstance();
 
         // when
-        final int RESTART_FLAG = 1;
+        final int restartFlag = 1;
 
         // then
-        assertEquals(singletonFlagMap.getFlagFromNumber(RESTART_FLAG), ExecutionFlagType.RESTART);
+        assertEquals(singletonFlagMap.getFlagFromNumber(restartFlag), ExecutionFlagType.RESTART);
     }
 
     @Test
