@@ -63,7 +63,9 @@ public class Baseballs {
     }
 
     private boolean hasZero(String input) {
-        return false;
+        return Stream.of(input.split(INPUT_DELIMITER))
+                .map(Integer::parseInt)
+                .anyMatch(x -> x == 0);
     }
 
     private void validateNoDuplicate(String rawBallsInput) {
