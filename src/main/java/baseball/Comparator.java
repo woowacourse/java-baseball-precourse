@@ -3,25 +3,29 @@ package baseball;
 import java.util.*;
 
 public class Comparator {
+    private static final String NOTHING = "낫싱";
+    private static final String STRIKE = "스트라이크";
+    private static final String BALL = "볼";
+    private static final int NO_COUNT = 0;
 
     public static String getComparativeResult(String randomNumbersOfCompetitor,
                                                     String randomNumbersOfGamePlayer){
         int ballCount = getBallCount(randomNumbersOfCompetitor, randomNumbersOfGamePlayer);
         int strikeCount = getStrikeCount(randomNumbersOfCompetitor, randomNumbersOfGamePlayer);
 
-        if(ballCount == 0 && strikeCount == 0){
-            return "낫싱";
+        if(ballCount == NO_COUNT && strikeCount == NO_COUNT){
+            return NOTHING;
         }
 
-        if(ballCount == 0){
-            return strikeCount + "스트라이크";
+        if(ballCount == NO_COUNT){
+            return strikeCount + STRIKE;
         }
 
-        if(strikeCount == 0){
-            return ballCount + "볼";
+        if(strikeCount == NO_COUNT){
+            return ballCount + BALL;
         }
 
-        return ballCount + "볼 " + strikeCount + "스트라이크";
+        return ballCount + BALL + " " + strikeCount + STRIKE;
     }
 
     private static int getBallCount(String randomNumbersOfCompetitor,
