@@ -1,0 +1,32 @@
+package baseball;
+
+public class OutputShower {
+
+    public void outputPrint(int strikeNumber, int ballNumber) {
+        if (strikeNumber == 3) {
+            showGameOver();
+            return;
+        }
+
+        if ((strikeNumber == 0) && (ballNumber) == 0) {
+            showNothing();
+            return;
+        }
+
+        showSitutation(strikeNumber,ballNumber);
+        return;
+    }
+
+    private static void showGameOver() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+    }
+
+    private static void showNothing() {
+        System.out.println("낫띵");
+    }
+
+    private static void showSitutation(int strikeNumber, int ballNumber) {
+        System.out.printf("%d볼 %d스트라이크\n", ballNumber, strikeNumber);
+    }
+}
