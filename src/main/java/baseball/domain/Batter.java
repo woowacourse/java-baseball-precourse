@@ -3,7 +3,7 @@ package baseball.domain;
 public class Batter extends Player {
 
     public Batter(NumbersGenerator generator) {
-        this.numbers = new BaseballNumbers(generator.generateNumbers());
+        this.numbers = new Baseballs(generator.generateNumbers());
     }
 
     public Judgment swing(int index, int pitchedNumber) {

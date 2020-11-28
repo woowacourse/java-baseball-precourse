@@ -3,13 +3,13 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseballNumbers {
+public class Baseballs {
 
     public static final int ASCII_ZERO = 48;
 
     private final List<Integer> numbers;
 
-    public BaseballNumbers(String inputNumbers) {
+    public Baseballs(String inputNumbers) {
         this.numbers = new ArrayList<>();
         addNumbers(inputNumbers);
     }

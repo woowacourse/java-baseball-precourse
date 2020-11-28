@@ -3,7 +3,7 @@ package baseball.domain;
 public class Pitcher extends Player {
 
     public Pitcher(String balls) {
-        this.numbers = new BaseballNumbers(balls);
+        this.numbers = new Baseballs(balls);
     }
 
     public int pitch(int numberIndex) {
