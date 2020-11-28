@@ -116,5 +116,5 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - [x] `RandomUtils`를 활용한 임의의 수 3개 선정
 - [x] 3자리 input을 받고 일치 결과를 출력
 - [x] 숫자를 맞춘 후 게임 반복/종료 선택
-- [ ] 비정상적 input 처리
+- [x] 비정상적 input 처리
 

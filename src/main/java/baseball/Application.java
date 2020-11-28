@@ -3,6 +3,7 @@ package baseball;
 import utils.RandomUtils;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,32 +31,25 @@ public class Application {
         globalScanner = scanner;
 
         while (isRepeat) {
-            initGame();
+            startGame();
             getIsRepeat();
         }
     }
 
-    private static void initGame() {
+    private static void startGame() {
         generateNewAnswers();
-        System.out.println(answers);
         playGame();
-    }
-
-    private static void playGame() {
-        do {
-            initParams();
-            getNumsInput();
-            checkInputNums();
-            printHint();
-        } while (strike < 3);
-        printGameFinished();
     }
 
 
     private static void generateNewAnswers() {
-        answers.clear();
+        initAnswers();
         while (answers.size() < 3)
             generateOneAnswer();
+    }
+
+    private static void initAnswers() {
+        answers.clear();
     }
 
     private static void generateOneAnswer() {
@@ -69,12 +63,23 @@ public class Application {
     }
 
 
+    private static void playGame() {
+        do {
+            initParams();
+            getNumsInput();
+            checkInputs();
+            printHint();
+        } while (strike < 3);
+        printGameFinished();
+    }
+
+
     private static void initParams() {
-        initHintCount();
+        initHintCounts();
         initInputs();
     }
 
-    private static void initHintCount() {
+    private static void initHintCounts() {
         ball = 0;
         strike = 0;
     }
@@ -86,7 +91,11 @@ public class Application {
 
     private static void getNumsInput() {
         getInputStr();
-        parseInputStrToNums();
+        try {
+            parseInputStrToNums();
+        } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
+            throw new IllegalArgumentException("비정상적 입력", e);
+        }
     }
 
     private static void getInputStr() {
@@ -96,12 +105,12 @@ public class Application {
 
     private static void parseInputStrToNums() {
         for (int i = 0; i < 3; i++) {
-            inputs.add(Integer.parseInt(inputStr.substring(i, i + 1))); // TODO 비정상적 입력 처리 (파싱 오류)
+            inputs.add(Integer.parseInt(inputStr.substring(i, i + 1)));
         }
     }
 
 
-    private static void checkInputNums() {
+    private static void checkInputs() {
         for (int input : inputs)
             checkOneInput(input);
     }
@@ -144,12 +153,16 @@ public class Application {
 
 
     private static void getIsRepeat() {
-        int repeatInput = getRepeatInput();
-        parseIsRepeat(repeatInput);
+        try {
+            int repeatInput = getRepeatInput();
+            parseIsRepeat(repeatInput);
+        } catch (InputMismatchException | NumberFormatException e) {
+            throw new IllegalArgumentException("비정상적 입력");
+        }
     }
 
     private static int getRepeatInput() {
-        int repeatInput = globalScanner.nextInt(); // TODO 비정상적 입력 처리 (숫자가 아닌 input)
+        int repeatInput = globalScanner.nextInt();
         globalScanner.nextLine();
         return repeatInput;
     }
@@ -159,6 +172,7 @@ public class Application {
             isRepeat = true;
         else if (repeatInput == END_GAME)
             isRepeat = false;
-        // TODO 비정상적 입력 처리 (1,2 이외 숫자)
+        else
+            throw new IllegalArgumentException("비정상적 입력");
     }
 }
