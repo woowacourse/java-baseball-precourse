@@ -37,6 +37,7 @@ public class Status {
     public long checkBalls(Baseballs answerBalls, Baseballs guessingBalls) {
         return guessingBalls.getBalls().stream()
                 .filter(x -> answerBalls.getBalls().contains(x))
+                .filter(x -> guessingBalls.getBalls().indexOf(x) != answerBalls.getBalls().indexOf(x))
                 .count();
     }
 }
