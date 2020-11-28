@@ -22,7 +22,7 @@ public class BaseballsTest {
     @Test
     @DisplayName("입력받은 3자리 숫자 list 생성 테스트")
     public void addNumbersTest() {
-        assertThat(baseballs.getNumbers()).containsExactly(1,2,3);
+        assertThat(baseballs.getNumbers()).containsExactly(1, 2, 3);
     }
 
     @Test

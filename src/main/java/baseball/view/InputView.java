@@ -1,8 +1,9 @@
-package baseball;
+package baseball.view;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import baseball.BaseballGame;
 import baseball.domain.Validator;
 
 public class InputView {

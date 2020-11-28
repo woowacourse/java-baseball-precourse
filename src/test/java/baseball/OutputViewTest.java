@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.Judgment;
 import baseball.domain.ScoreBoard;
+import baseball.view.OutputView;
 
 public class OutputViewTest {
 

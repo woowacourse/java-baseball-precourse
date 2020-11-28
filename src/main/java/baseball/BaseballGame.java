@@ -8,10 +8,12 @@ import baseball.domain.NumbersGenerator;
 import baseball.domain.Pitcher;
 import baseball.domain.RandomNumbersGenerator;
 import baseball.domain.ScoreBoard;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class BaseballGame {
 
-    protected static final String GAME_END = "2";
+    public static final String GAME_END = "2";
 
     public static final int BALLS_LENGTH = 3;
 
