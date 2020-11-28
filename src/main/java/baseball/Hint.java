@@ -7,11 +7,10 @@ public class Hint {
     private static final int NUMBER_LENGTH = 3;
     private static ArrayList<Integer> hintList = new ArrayList<>();
 
-    public static boolean hint() {
-        ArrayList<Integer> ballStrikeList = NumberCompare.numberCompare();
+    public Hint(ArrayList<Integer> ballStrikeList) {
         hintList = ballStrikeList;
-//        System.out.println(hintList);
-
+    }
+    public static boolean hint() {
         return getHint();
     }
 
