@@ -28,14 +28,20 @@ public class GameController {
         Hint hint;
 
         computer.pickNumber();
+
         do {
+            System.out.print(Message.REQUEST_NUMBER_INPUT);
             playerNumber = requestPlayerNumber(scanner);
             hint = Comparator.extractHint(computer.getNumber(), playerNumber);
-        } while (checkAnswer(hint));
+            System.out.println(hint.toMessage());
+        } while (!checkAnswer(hint));
+
+        System.out.println(Message.GAME_CLEAR);
     }
 
     private boolean checkRestart() {
         // TODO: 플레이어의 입력에 따른 재시작 여부 결정
+        System.out.println(Message.REQUEST_RESTART_INPUT);
         return false;
     }
 
