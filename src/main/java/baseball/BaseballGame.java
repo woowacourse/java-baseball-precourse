@@ -1,5 +1,6 @@
 package baseball;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import java.util.Arrays;
 import java.util.Scanner;
 import utils.RandomUtils;
@@ -9,20 +10,32 @@ public class BaseballGame {
     private Scanner scanner;
     private final int THREE_DIGIT = 3;
     private int[] computerNumbers;
+    private int[] userNumbers = new int[THREE_DIGIT];
 
 
     public BaseballGame(Scanner scanner) {
         this.scanner = scanner;
         this.computerNumbers = RandomUtils.getComputerNumbers();
-        getUserNumbers();
+        gameStart();
     }
 
-    public void getUserNumbers() {
-        int[] userNumbers = new int[THREE_DIGIT];
+    private void gameStart() {
+        while (true) {
+            getUserNumbers();
+            showHints();
+        }
+    }
+
+    private void getUserNumbers() {
         System.out.print("숫자를 입력해 주세요 : ");
         String numbers = scanner.nextLine().trim();
         checkValidNumbers(numbers);
-        System.out.println(numbers);
+        for (int i = 0; i < THREE_DIGIT; i++) {
+            userNumbers[i] = numbers.charAt(i) - '0';
+        }
+    }
+
+    private void showHints() {
     }
 
     private void checkValidNumbers(String numbers) {
