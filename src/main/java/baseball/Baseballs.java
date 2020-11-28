@@ -1,9 +1,12 @@
 package baseball;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Baseballs {
     public static final int BALLS_CONTAINER_SIZE = 3;
+    public static final String INPUT_DELIMITER = "";
 
     private final List<Integer> balls;
 
@@ -11,30 +14,64 @@ public class Baseballs {
         this.balls = balls;
     }
 
+    public Baseballs(String rawBallsInput) {
+        validate(rawBallsInput);
+        balls = Stream.of(rawBallsInput.split(INPUT_DELIMITER))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
     public List<Integer> getBalls() {
         return balls;
     }
 
-    private void validate(List<Integer> balls) {
-        validateSize(balls);
-        validateNumerical(balls);
-        validateNoZero(balls);
-        validateNoDuplicate(balls);
+    private void validate(String rawBallsInput) {
+        validateSize(rawBallsInput);
+        validateNumerical(rawBallsInput);
+        validateNoZero(rawBallsInput);
+        validateNoDuplicate(rawBallsInput);
     }
 
-    private void validateSize(List<Integer> balls) {
-
-    }
-
-    private void validateNumerical(List<Integer> balls) {
-
-    }
-
-    private void validateNoZero(List<Integer> balls) {
+    private void validateSize(String rawBallsInput) {
+        if(hasWrongSize(rawBallsInput)) {
+            throw new IllegalArgumentException("입력된 정보가 너무 많습니다.");
+        }
 
     }
 
-    private void validateNoDuplicate(List<Integer> balls) {
+    private boolean hasWrongSize(String input) {
+        return false;
+    }
 
+    private void validateNumerical(String rawBallsInput) {
+        if(hasNonNumerical(rawBallsInput)) {
+            throw new IllegalArgumentException("숫자가 아닌 정보가 입력되었습니다.");
+        }
+
+    }
+
+    private boolean hasNonNumerical(String input) {
+        return false;
+    }
+
+    private void validateNoZero(String rawBallsInput) {
+        if(hasZero(rawBallsInput)) {
+            throw new IllegalArgumentException("0은 예측 번호로 넣을 수 없습니다.");
+        }
+
+    }
+
+    private boolean hasZero(String input) {
+        return false;
+    }
+
+    private void validateNoDuplicate(String rawBallsInput) {
+        if(hasDuplicate(rawBallsInput)) {
+            throw new IllegalArgumentException("중복되는 숫자는 넣을 수 없습니다.");
+        }
+    }
+
+    private boolean hasDuplicate(String input) {
+        return false;
     }
 }

@@ -48,6 +48,8 @@ public class Game {
 
     private void proceedRound() {
         OutputView.askPlayerNumbers();
+        guessingBalls = new Baseballs(userInput.nextLine());
+        System.out.println(guessingBalls.getBalls());
     }
 
 
