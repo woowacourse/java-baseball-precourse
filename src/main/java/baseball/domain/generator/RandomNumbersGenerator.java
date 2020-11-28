@@ -1,6 +1,7 @@
-package baseball.domain;
+package baseball.domain.generator;
 
 import baseball.BaseballGame;
+import baseball.domain.generator.NumbersGenerator;
 import utils.RandomUtils;
 
 public final class RandomNumbersGenerator implements NumbersGenerator {

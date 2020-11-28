@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.Batter;
-import baseball.domain.FixedNumbersGenerator;
+import baseball.domain.generator.FixedNumbersGenerator;
 import baseball.domain.Judgment;
 
 public class BatterTest {

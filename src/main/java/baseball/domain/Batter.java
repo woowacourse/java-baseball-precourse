@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.domain.generator.NumbersGenerator;
+
 public final class Batter extends Player {
 
     public Batter(final NumbersGenerator generator) {
