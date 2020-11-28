@@ -115,5 +115,8 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - 사용자 숫자 입력
 - 스트라이크 계산
 - 볼 계산
+- 낫싱 계산
 - 게임 종료 여부
-
+  - 게임 새로시작하는 1
+  - 게임 종료하는 2
+ 

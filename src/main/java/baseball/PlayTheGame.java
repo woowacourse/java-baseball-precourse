@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PlayTheGame {
@@ -11,12 +12,23 @@ public class PlayTheGame {
 
     public void startingGame(){
 
-        System.out.println(INPUTNUMBER);
+        System.out.print(INPUTNUMBER);
+
         Scanner scanner = new Scanner(System.in);
-        int inputNumber=scanner.nextInt();
+        int input=scanner.nextInt();
+        ArrayList<Integer> inputNumber= new ArrayList<Integer>();
+
+        while(input/10!=0){
+            inputNumber.add(input%10);
+            input/=10;
+        }
+
+    }
+    public void countingGame(ArrayList<Integer> inputNumber,ArrayList<Integer> randomNumber){
 
 
     }
+
 
 
 
