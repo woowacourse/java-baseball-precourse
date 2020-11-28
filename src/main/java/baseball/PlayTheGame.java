@@ -10,12 +10,13 @@ public class PlayTheGame {
     private static final String ENDGAMEMESSAGE= "3개의 숫자를 모두 맞히셨습니다! 게임종료";
     private static final String QUESTIONGAME= "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요:";
     Compute compute = new Compute();
+    Scanner scanner = new Scanner(System.in);
     public void startingGame(){
 
 
         System.out.print(INPUTNUMBER);
 
-        Scanner scanner = new Scanner(System.in);
+
         int input=scanner.nextInt();
         String convertInput=Integer.toString(input);
         ArrayList<Integer> inputNumber= new ArrayList<Integer>();
@@ -43,7 +44,24 @@ public class PlayTheGame {
             message+="낫싱";
         }
         System.out.println(message);
+        judgeGame(ballCount,strikeCount);
+    }
+    public void judgeGame(int ballCount,int strikeCount){
+        if(strikeCount==3){
+            System.out.println(ENDGAMEMESSAGE);
+            System.out.println(QUESTIONGAME);
 
+
+        }
+        else{
+            int input=scanner.nextInt();
+            String convertInput=Integer.toString(input);
+            ArrayList<Integer> inputNumber= new ArrayList<Integer>();
+            for(int i=0;i<3;i++){
+                inputNumber.add(convertInput.charAt(i)-'0');
+            }
+            countingGame(inputNumber,compute.getRandomNumber());
+        }
     }
 
 
