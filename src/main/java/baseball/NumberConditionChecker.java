@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.HashSet;
+
 public class NumberConditionChecker {
     private NumberConditionChecker() {
     }
@@ -21,5 +23,16 @@ public class NumberConditionChecker {
             }
         }
         return true;
+    }
+
+    public static boolean checkNoOverlapNumber(int[] numbers) {
+        HashSet<Integer> digitSet = new HashSet<Integer>();
+        for (int index = 0; index < 3; index++) {
+            digitSet.add(numbers[index]);
+        }
+        if (digitSet.size() == numbers.length) {
+            return true;
+        }
+        return false;
     }
 }
