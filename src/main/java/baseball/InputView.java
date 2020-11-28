@@ -32,10 +32,10 @@ public class InputView {
     }
 
     private String ask(String message, Pattern pattern) {
-        System.out.println(message);
+        System.out.print(message);
 
         String input = scanner.nextLine();
-        
+
         boolean isLegalArgument = false;
         while (!isLegalArgument) {
             isLegalArgument = isValid(input, pattern);
