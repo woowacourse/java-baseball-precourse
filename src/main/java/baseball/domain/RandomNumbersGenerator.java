@@ -11,7 +11,7 @@ public class RandomNumbersGenerator implements NumbersGenerator {
 
     @Override
     public String generateNumbers() {
-        String numbers  = getRandomValues();
+        String numbers = getRandomValues();
         while (hasDuplicateNumber(numbers)) {
             numbers = getRandomValues();
         }

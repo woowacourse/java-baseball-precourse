@@ -1,5 +1,17 @@
 package baseball.domain;
 
 public enum Judgment {
-    STRIKE, BALL, NOTHING
+    STRIKE("스트라이크"),
+    BALL("볼 "),
+    NOTHING("낫싱");
+
+    private final String message;
+
+    Judgment(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }
