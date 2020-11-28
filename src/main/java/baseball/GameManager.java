@@ -49,9 +49,10 @@ public class GameManager {
     private Boolean continueGame() {
         GameStatus gameStatus = null;
         while (gameStatus == null) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String s = "";
             try {
-                s = scanner.next();
+                s = scanner.next().trim();
                 gameStatus = GameStatus.valueOf(s);
             } catch (IllegalArgumentException e) {
                 System.out.println("1, 2만 입력 가능합니다. 다시 입력해주세요. 입력값:" + s);
