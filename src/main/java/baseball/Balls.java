@@ -57,6 +57,11 @@ public class Balls {
         return new Balls(balls);
     }
 
+    @Override
+    public String toString() {
+        return Arrays.toString(this.balls.toArray());
+    }
+
     private Ball get(int index) {
         return balls.get(index);
     }
