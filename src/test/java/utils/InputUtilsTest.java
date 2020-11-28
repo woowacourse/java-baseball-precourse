@@ -167,7 +167,6 @@ class InputUtilsTest {
         //then
         assertThat(continueOrNot).isEqualTo(1);
         assertThat(continueOrNot2).isEqualTo(2);
-
     }
 
     @Test
