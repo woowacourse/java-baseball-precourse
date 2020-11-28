@@ -8,7 +8,7 @@ public class Application {
 
         System.out.println(NumberGenerator.getRandomNumberNotRepeat());
         System.out.println(UserInputNumber.userInputNumber());
-        System.out.println(NumberCompare.numberCompare());
+        System.out.println(Menu.menu());
 
     }
 }
