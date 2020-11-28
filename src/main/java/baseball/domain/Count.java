@@ -1,6 +1,6 @@
 package baseball.domain;
 
-public class Count {
+public final class Count {
 
     private int count;
 
@@ -8,7 +8,7 @@ public class Count {
         this(0);
     }
 
-    public Count(int count) {
+    public Count(final int count) {
         this.count = count;
     }
 
@@ -24,7 +24,7 @@ public class Count {
         return count == 0;
     }
 
-    public boolean equals(int compare) {
+    public boolean equals(final int compare) {
         return count == compare;
     }
 }

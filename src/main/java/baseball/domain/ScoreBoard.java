@@ -12,7 +12,7 @@ public class ScoreBoard {
         this(0, 0);
     }
 
-    public ScoreBoard(int strike, int ball) {
+    public ScoreBoard(final int strike, final int ball) {
         this.strike = new Count(strike);
         this.ball = new Count(ball);
     }
@@ -25,7 +25,7 @@ public class ScoreBoard {
         return ball.getCount();
     }
 
-    public void record(Judgment judgment) {
+    public void record(final Judgment judgment) {
         if (judgment.equals(Judgment.STRIKE)) {
             strike.increaseCount();
         } else if (judgment.equals(Judgment.BALL)) {

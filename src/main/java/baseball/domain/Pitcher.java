@@ -1,12 +1,12 @@
 package baseball.domain;
 
-public class Pitcher extends Player {
+public final class Pitcher extends Player {
 
-    public Pitcher(String balls) {
+    public Pitcher(final String balls) {
         this.numbers = new Baseballs(balls);
     }
 
-    public int pitch(int numberIndex) {
+    public int pitch(final int numberIndex) {
         return this.numbers.getNumber(numberIndex);
     }
 }

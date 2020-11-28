@@ -3,32 +3,32 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Baseballs {
+public final class Baseballs {
 
     public static final int ASCII_ZERO = 48;
 
     private final List<Integer> numbers;
 
-    public Baseballs(String inputNumbers) {
+    public Baseballs(final String inputNumbers) {
         this.numbers = new ArrayList<>();
         addNumbers(inputNumbers);
     }
 
-    public int getNumber(int numberIndex) {
+    public int getNumber(final int numberIndex) {
         return numbers.get(numberIndex);
     }
 
-    private void addNumbers(String inputNumbers) {
+    private void addNumbers(final String inputNumbers) {
         inputNumbers.chars()
                 .mapToObj(number -> number - ASCII_ZERO)
                 .forEach(numbers::add);
     }
 
-    public boolean isStrike(int numberIndex, int pitchedNumber) {
+    public boolean isStrike(final int numberIndex, final int pitchedNumber) {
         return getNumber(numberIndex) == pitchedNumber;
     }
 
-    public boolean isBall(int pitchedNumber) {
+    public boolean isBall(final int pitchedNumber) {
         return numbers.contains(pitchedNumber);
     }
 }

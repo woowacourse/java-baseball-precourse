@@ -1,12 +1,12 @@
 package baseball.domain;
 
-public class Batter extends Player {
+public final class Batter extends Player {
 
-    public Batter(NumbersGenerator generator) {
+    public Batter(final NumbersGenerator generator) {
         this.numbers = new Baseballs(generator.generateNumbers());
     }
 
-    public Judgment swing(int index, int pitchedNumber) {
+    public Judgment swing(final int index, final int pitchedNumber) {
         if (numbers.isStrike(index, pitchedNumber)) {
             return Judgment.STRIKE;
         }

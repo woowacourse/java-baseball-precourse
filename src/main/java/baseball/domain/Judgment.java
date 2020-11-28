@@ -7,7 +7,7 @@ public enum Judgment {
 
     private final String message;
 
-    Judgment(String message) {
+    Judgment(final String message) {
         this.message = message;
     }
 

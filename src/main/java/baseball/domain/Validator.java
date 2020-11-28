@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 import baseball.BaseballGame;
 
-public class Validator {
+public final class Validator {
 
     public static final String INPUT_NULL_MESSAGE = "null 값을 입력하셨습니다!";
 
@@ -23,33 +23,33 @@ public class Validator {
 
     public static final Pattern RETRY_PATTERN = Pattern.compile("^1$|^2$");
 
-    public void validateNumbers(Pattern pattern, String input) {
+    public void validateNumbers(final Pattern pattern, final String input) {
         checkNull(input);
         checkBlank(input);
         checkRegularExpression(pattern, input);
         checkDuplicateNumber(input);
     }
 
-    private void checkNull(String input) {
+    private void checkNull(final String input) {
         if (Objects.isNull(input)) {
             throw new IllegalArgumentException(INPUT_NULL_MESSAGE);
         }
     }
 
-    private void checkBlank(String input) {
+    private void checkBlank(final String input) {
         if (input.trim().equals(EMPTY)) {
             throw new IllegalArgumentException(INPUT_EMPTY_MESSAGE);
         }
     }
 
-    private void checkRegularExpression(Pattern pattern, String input) {
+    private void checkRegularExpression(final Pattern pattern, final String input) {
         Matcher matcher = pattern.matcher(input);
         if (!matcher.matches()) {
             throw new IllegalArgumentException(INVALID_VALUE_MESSAGE);
         }
     }
 
-    private void checkDuplicateNumber(String input) {
+    private void checkDuplicateNumber(final String input) {
         int deduplicatedNumbersLength = (int) input.chars().distinct().count();
         if (deduplicatedNumbersLength != BaseballGame.BALLS_LENGTH) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_MESSAGE);

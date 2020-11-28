@@ -8,11 +8,11 @@ public class OutputView {
     public static final String GAME_END =
             "\n" + BaseballGame.BALLS_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    public void printResult(ScoreBoard scoreBoard) {
+    public void printResult(final ScoreBoard scoreBoard) {
         System.out.println(getResult(scoreBoard));
     }
 
-    public String getResult(ScoreBoard scoreBoard) {
+    public String getResult(final ScoreBoard scoreBoard) {
         StringBuilder stringBuilder = new StringBuilder();
 
         if (scoreBoard.hasZeroBall() && scoreBoard.hasZeroStrike()) {

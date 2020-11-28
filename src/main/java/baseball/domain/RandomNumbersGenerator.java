@@ -3,7 +3,7 @@ package baseball.domain;
 import baseball.BaseballGame;
 import utils.RandomUtils;
 
-public class RandomNumbersGenerator implements NumbersGenerator {
+public final class RandomNumbersGenerator implements NumbersGenerator {
 
     public static final int LOWER_BOUND = 1;
 
@@ -20,7 +20,7 @@ public class RandomNumbersGenerator implements NumbersGenerator {
     }
 
     private String getRandomValues() {
-        StringBuilder stringBuilder = new StringBuilder();
+        final StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < BaseballGame.BALLS_LENGTH; i++) {
             stringBuilder.append(RandomUtils.nextInt(LOWER_BOUND, UPPER_BOUND));
@@ -29,7 +29,7 @@ public class RandomNumbersGenerator implements NumbersGenerator {
         return stringBuilder.toString();
     }
 
-    private boolean hasDuplicateNumber(String input) {
+    private boolean hasDuplicateNumber(final String input) {
         int deduplicatedNumbersLength = (int) input.chars().distinct().count();
         return deduplicatedNumbersLength != BaseballGame.BALLS_LENGTH;
     }

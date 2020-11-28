@@ -17,7 +17,7 @@ public class InputView {
 
     private final Scanner scanner;
 
-    public InputView(Scanner scanner) {
+    public InputView(final Scanner scanner) {
         this.validator = new Validator();
         this.scanner = scanner;
     }
@@ -31,7 +31,7 @@ public class InputView {
         return retryNumber.equals(BaseballGame.GAME_END);
     }
 
-    private String ask(String message, Pattern pattern) {
+    private String ask(final String message, final Pattern pattern) {
         System.out.print(message);
 
         String input = scanner.nextLine();
@@ -44,7 +44,7 @@ public class InputView {
         return input;
     }
 
-    private boolean isValid(String input, Pattern pattern) {
+    private boolean isValid(final String input, final Pattern pattern) {
         try {
             validator.validateNumbers(pattern, input);
         } catch (IllegalArgumentException e) {
