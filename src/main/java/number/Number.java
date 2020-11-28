@@ -1,15 +1,17 @@
 package number;
 
+import utils.RandomUtils;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Number {
 
-    private List<Integer> numbers;
+    private List<Integer> number;
 
-    private Number(List<Integer> numbers) {
-        this.numbers = validateDigitNumber(numbers);
+    private Number(List<Integer> number) {
+        this.number = validateDigitNumber(number);
     }
 
     public static Number of(List<Integer> numbers) {
@@ -30,7 +32,21 @@ public class Number {
         return validatedList;
     }
 
-    public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
+    public List<Integer> getNumber() {
+        return Collections.unmodifiableList(number);
+    }
+
+    public static List<Integer> createRandomList(int numberSize) {
+        List<Integer> randomList = new ArrayList<>();
+        int randomNumber;
+        for (int i = 0; i < numberSize; i++) {
+            randomNumber = RandomUtils.nextInt(1, 9);
+            if (!randomList.contains(randomNumber)) {
+                randomList.add(randomNumber);
+                continue;
+            }
+            i--;
+        }
+        return randomList;
     }
 }

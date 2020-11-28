@@ -1,8 +1,10 @@
 package number;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,8 +24,8 @@ class NumberTest {
         Number number2 = Number.of(integers2);
 
         //then
-        assertThat(number.getNumbers()).isEqualTo(integers);
-        assertThat(number2.getNumbers()).isEqualTo(integers2);
+        assertThat(number.getNumber()).isEqualTo(integers);
+        assertThat(number2.getNumber()).isEqualTo(integers2);
     }
 
     @Test
@@ -46,5 +48,23 @@ class NumberTest {
         assertThatThrownBy(() -> Number.of(integers3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("각 자릿 수는 모두 달라야 합니다");
+    }
+
+    @Test
+    @DisplayName("랜덤 숫자 리스트를 생성해야 한다")
+    void randomNumberList() {
+        //give
+        List<Integer> tmpList = new ArrayList<>();
+
+        //when
+        List<Integer> randomList = Number.createRandomList(3);
+        for (Integer integer : randomList) {
+            if (!tmpList.contains(integer)) {
+                tmpList.add(integer);
+            }
+        }
+
+        //then
+        Assertions.assertThat(randomList.size()).isEqualTo(tmpList.size());
     }
 }

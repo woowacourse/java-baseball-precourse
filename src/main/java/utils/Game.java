@@ -1,6 +1,7 @@
 package utils;
 
 import number.Number;
+import number.Numbers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.Scanner;
 public class Game {
 
     private InputUtils inputUtils;
-    private Number number;
+    private static Numbers numbers;
 
     private Game(Scanner scanner) {
         this.inputUtils = InputUtils.of(scanner);
@@ -20,24 +21,22 @@ public class Game {
     }
 
     public void start() {
-        List<Integer> integerList = inputUtils.getIntegerList();
-        number = Number.of(integerList);
-        List<Integer> randomList = createRandomList(3);
-        System.out.println("number = " + number.getNumbers());
-        System.out.println("randomList = " + randomList);
+        initializeGame();
+        printResult (numbers.checkBall());
     }
 
-    public static List<Integer> createRandomList(int numberSize) {
-        List<Integer> randomList = new ArrayList<>();
-        int randomNumber;
-        for (int i = 0; i < numberSize; i++) {
-            randomNumber = RandomUtils.nextInt(1, 9);
-            if (!randomList.contains(randomNumber)) {
-                randomList.add(randomNumber);
-                continue;
-            }
-            i--;
+    private void printResult(int checkBall) {
+        if (checkBall > 0) {
+            System.out.print(checkBall + "볼 ");
         }
-        return randomList;
+    }
+
+    private void initializeGame() {
+        List<Number> gameNumber = new ArrayList<>();
+        List<Integer> randomList = Number.createRandomList(3);
+        List<Integer> inputList = inputUtils.getIntegerList();
+        gameNumber.add(Number.of(randomList));
+        gameNumber.add(Number.of(inputList));
+        this.numbers = Numbers.of(gameNumber);
     }
 }
