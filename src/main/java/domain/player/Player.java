@@ -42,16 +42,7 @@ public class Player {
     }
 
     private boolean tryToValidateEnterNumber() throws IllegalArgumentException {
-        if (isNotInteger()) {
-            return false;
-        }
-        if (hasZero()) {
-            return false;
-        }
-        if (isNotValidNumberSize()) {
-            return false;
-        }
-        if (hasOvelappedNumber()) {
+        if (isNotInteger() || hasZero() || isNotValidNumberSize() || hasOvelappedNumber()) {
             return false;
         }
         return true;
