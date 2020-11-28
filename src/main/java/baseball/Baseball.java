@@ -24,9 +24,15 @@ public class Baseball {
 			manager.inspect(playerNumber);
 		} while(!Validator.isSame(randomNumber, playerNumber));
 		
+		restart(manager);
+	}
+	
+	private static void restart(GameManager manager) {
 		manager.query();
 		if (manager.getQueryAnswer() == 1) {
 			start();
+		} else {
+			System.out.println("게임을 종료합니다.");
 		}
 	}
 }
