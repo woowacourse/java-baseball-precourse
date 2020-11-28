@@ -26,7 +26,23 @@ public class PlayTheGame {
         countingGame(inputNumber,compute.getRandomNumber());
     }
     public void countingGame(ArrayList<Integer> inputNumber,ArrayList<Integer> randomNumber){
+        String message="";
 
+        int ballCount=compute.getBallNumber(inputNumber,randomNumber);
+        if(ballCount>0){
+            message+=Integer.toString(ballCount);
+            message+=BALL;
+        }
+
+        int strikeCount=compute.getStrikeNumber(inputNumber,randomNumber);
+        if(strikeCount>0){
+            message+=Integer.toString(strikeCount);
+            message+=STRIKE;
+        }
+        if(strikeCount<1 && ballCount<1){
+            message+="낫싱";
+        }
+        System.out.println(message);
 
     }
 
