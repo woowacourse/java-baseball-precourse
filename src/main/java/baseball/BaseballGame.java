@@ -9,12 +9,13 @@ public class BaseballGame {
 
     private Scanner scanner;
     private final int THREE_DIGIT = 3;
-    private int[] computerNumbers;
-    private int[] userNumbers = new int[THREE_DIGIT];
-    private boolean isPlaying = true;
     private final String STRIKE = "스트라이크";
     private final String BALL = "볼";
     private final String NOTHING = "낫싱";
+
+    private int[] computerNumbers;
+    private int[] userNumbers = new int[THREE_DIGIT];
+    private boolean isPlaying = true;
 
 
     public BaseballGame(Scanner scanner) {
@@ -25,7 +26,7 @@ public class BaseballGame {
 
     private void gameStart() {
         while (isPlaying) {
-            System.out.println("답 : " + Arrays.toString(computerNumbers) );
+            System.out.println("답 : " + Arrays.toString(computerNumbers));
             getUserNumbers();
             showHints();
         }
@@ -59,6 +60,10 @@ public class BaseballGame {
         if (strike == 0 && ball == 0) {
             System.out.println(NOTHING);
         }
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isPlaying = false;
+        }
     }
 
     private int[] checkState(int strike, int ball) {
@@ -76,7 +81,7 @@ public class BaseballGame {
     private int checkBallState(int i, int ball) {
         for (int j = 0; j < THREE_DIGIT; j++) {
             if (computerNumbers[j] == userNumbers[i]) {
-                return ball +1;
+                return ball + 1;
             }
         }
         return ball;
