@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import baseball.domain.Batter;
 import baseball.domain.Judgment;
+import baseball.domain.NumbersGenerator;
 import baseball.domain.Pitcher;
 import baseball.domain.RandomNumbersGenerator;
 import baseball.domain.ScoreBoard;
@@ -14,19 +15,23 @@ public class BaseballGame {
 
     public static final int BALLS_LENGTH = 3;
 
-    private final InputView inputView;
+    protected final InputView inputView;
 
-    private final Batter batter;
+    protected final Batter batter;
 
-    private Pitcher pitcher;
+    protected Pitcher pitcher;
 
-    private ScoreBoard scoreBoard;
+    protected ScoreBoard scoreBoard;
 
-    private final OutputView outputView;
+    protected final OutputView outputView;
 
     public BaseballGame(final Scanner scanner) {
+        this(scanner, new RandomNumbersGenerator());
+    }
+
+    public BaseballGame(final Scanner scanner, final NumbersGenerator generator) {
         this.inputView = new InputView(scanner);
-        this.batter = new Batter(new RandomNumbersGenerator());
+        this.batter = new Batter(generator);
         this.scoreBoard = new ScoreBoard();
         this.outputView = new OutputView();
     }
@@ -41,18 +46,18 @@ public class BaseballGame {
 
     private void playGame() {
         while (!scoreBoard.isAnswer()) {
-            setRound();
+            setRound(inputView.askBallNumbers());
             startRound();
             outputView.printResult(scoreBoard);
         }
     }
 
-    private void setRound() {
+    protected void setRound(String ballNumbers) {
         scoreBoard = new ScoreBoard();
-        pitcher = new Pitcher(inputView.askBallNumbers());
+        pitcher = new Pitcher(ballNumbers);
     }
 
-    private void startRound() {
+    protected void startRound() {
         for (int numberIndex = 0; numberIndex < BALLS_LENGTH; numberIndex++) {
             final int pitchedNumber = pitcher.pitch(numberIndex);
             final Judgment judgment = batter.swing(numberIndex, pitchedNumber);
