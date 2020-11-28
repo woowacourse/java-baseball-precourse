@@ -11,8 +11,12 @@ public class Application {
     private static final int START_BOUND = 1;
     private static final int END_BOUND = 9;
 
+    private static final int REPEAT_GAME = 1;
+    private static final int END_GAME = 2;
+
     private static Scanner globalScanner;
 
+    private static boolean isRepeat = true;
     private static String inputStr;
     private static List<Integer> answers = new ArrayList<>();
     private static List<Integer> inputs = new ArrayList<>();
@@ -24,22 +28,32 @@ public class Application {
 
         final Scanner scanner = new Scanner(System.in);
         globalScanner = scanner;
+
+        while (isRepeat) {
+            initGame();
+            getIsRepeat();
+        }
+    }
+
+    private static void initGame() {
+        generateNewAnswers();
+        System.out.println(answers);
         playGame();
     }
 
     private static void playGame() {
-        generateAnswers();
-        while (strike < 3) {
+        do {
             initParams();
-            getInputNums();
+            getNumsInput();
             checkInputNums();
             printHint();
-        }
+        } while (strike < 3);
         printGameFinished();
-        System.out.println(answers);
     }
 
-    private static void generateAnswers() {
+
+    private static void generateNewAnswers() {
+        answers.clear();
         while (answers.size() < 3)
             generateOneAnswer();
     }
@@ -70,9 +84,9 @@ public class Application {
     }
 
 
-    private static void getInputNums() {
+    private static void getNumsInput() {
         getInputStr();
-        parseInputStr();
+        parseInputStrToNums();
     }
 
     private static void getInputStr() {
@@ -80,11 +94,10 @@ public class Application {
         inputStr = globalScanner.nextLine();
     }
 
-    private static void parseInputStr() {
+    private static void parseInputStrToNums() {
         for (int i = 0; i < 3; i++) {
-            inputs.add(Integer.parseInt(inputStr.substring(i, i + 1)));
+            inputs.add(Integer.parseInt(inputStr.substring(i, i + 1))); // TODO 비정상적 입력 처리 (파싱 오류)
         }
-
     }
 
 
@@ -127,5 +140,25 @@ public class Application {
     private static void printGameFinished() {
         System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+
+    private static void getIsRepeat() {
+        int repeatInput = getRepeatInput();
+        parseIsRepeat(repeatInput);
+    }
+
+    private static int getRepeatInput() {
+        int repeatInput = globalScanner.nextInt(); // TODO 비정상적 입력 처리 (숫자가 아닌 input)
+        globalScanner.nextLine();
+        return repeatInput;
+    }
+
+    private static void parseIsRepeat(int repeatInput) {
+        if (repeatInput == REPEAT_GAME)
+            isRepeat = true;
+        else if (repeatInput == END_GAME)
+            isRepeat = false;
+        // TODO 비정상적 입력 처리 (1,2 이외 숫자)
     }
 }
