@@ -12,10 +12,18 @@ public class NumberBaseBallGame {
 
     private static List<Integer> answerNumber = new LinkedList<>();
     private static List<Integer> questionNumber = new LinkedList<>();
+    private static int strike, ball;
     private static Scanner scanner;
 
     public NumberBaseBallGame(Scanner scanner) {
         this.scanner = scanner;
+    }
+
+    public static void initGameData() {
+        answerNumber.clear();
+        questionNumber.clear();
+        strike = 0;
+        ball = 0;
     }
 
     public static void setAnswerNumber() {
@@ -31,7 +39,9 @@ public class NumberBaseBallGame {
         }
     }
 
-    public static void setQuestionNumber(int num) {
+    public static void setQuestionNumber() {
+        int num = getQuestionNumber();
+
         while (num > 0) {
             questionNumber.add(num % 10);
             num /= 10;
@@ -85,6 +95,38 @@ public class NumberBaseBallGame {
             set.add(num % 10);
             num /= 10;
         }
+    }
+
+    private static void validateQuestionNumber() {
+        for (int i = 0; i < 3; i++) {
+            if (answerNumber.get(i) == questionNumber.get(i)) {
+                strike++;
+            } else if (answerNumber.contains(questionNumber.get(i))) {
+                ball++;
+            }
+        }
+    }
+
+    private static boolean isThreeStrike() {
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
+
+    private static void printBallAndStrike() {
+        if (ball > 0) {
+            System.out.print(ball + "볼 ");
+        }
+
+        if (strike > 0) {
+            System.out.print(strike + "스트라이크");
+        }
+
+        if (strike == 0 && ball == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println();
     }
 
 }
