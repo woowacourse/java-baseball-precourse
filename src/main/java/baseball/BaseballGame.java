@@ -15,6 +15,8 @@ public class BaseballGame {
 
     public static final int BALLS_LENGTH = 3;
 
+    private final InputView inputView;
+
     private final Pitcher pitcher;
 
     private final Batter batter;
@@ -24,6 +26,7 @@ public class BaseballGame {
     private final RoundResult roundResult;
 
     public BaseballGame(final Scanner scanner) {
+        this.inputView = new InputView(scanner);
         this.pitcher = new Pitcher();
         this.batter = new Batter(new RandomNumbersGenerator());
         scoreBoard = new ScoreBoard();
@@ -34,7 +37,7 @@ public class BaseballGame {
         boolean isGameEnd = false;
         while (!isGameEnd) {
             playGame();
-            isGameEnd = pitcher.wantsToStop(new Scanner(System.in));
+            isGameEnd = pitcher.wantsToStop(inputView.askRetry());
         }
     }
 
@@ -48,6 +51,9 @@ public class BaseballGame {
 
     private void setRound() {
         scoreBoard = new ScoreBoard();
+
+        String balls = inputView.askBallNumbers();
+        pitcher.setNumbers(balls);
     }
 
     private void startRound() {
