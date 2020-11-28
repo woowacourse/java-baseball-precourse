@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Application {
@@ -8,58 +9,61 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
+        ArrayList<Integer> target = SetTarget.setTargetList();
 
-        int[] target = new int[TARGET_LENGTH];
-        int[] inputNumber = new int[TARGET_LENGTH];
-        int[] result = new int[2];
-        boolean isEnd = false;
-        boolean noError = false;
-        boolean restart = true;
 
-        while (true) {
-            if (restart) {
-                target = setTarget();
-                isEnd = false;
-                restart = false;
-            }
 
-            try {
-                inputNumber = getInputNumber(scanner);
-                noError = true;
-            } catch (IllegalArgumentException e) {
-                System.out.println("오류 : 0을 제외한 서로 다른 3자리 숫자만 입력 가능!");
-                noError = false;
-            }
-
-            if (noError) {
-                result = compare(target, inputNumber);
-                isEnd = outputResult(result);
-            }
-
-            if (isEnd) {
-                restart = restartGameException(scanner);
-            }
-
-            if (isEnd && !restart) {
-                break;
-            }
-        }
+//
+//        int[] target = new int[TARGET_LENGTH];
+//        int[] inputNumber = new int[TARGET_LENGTH];
+//        int[] result = new int[2];
+//        boolean isEnd = false;
+//        boolean noError = false;
+//        boolean restart = true;
+//
+//        while (true) {
+//            if (restart) {
+//                target = setTarget();
+//                isEnd = false;
+//                restart = false;
+//            }
+//
+//            try {
+//                inputNumber = getInputNumber(scanner);
+//                noError = true;
+//            } catch (IllegalArgumentException e) {
+//                System.out.println("오류 : 0을 제외한 서로 다른 3자리 숫자만 입력 가능!");
+//                noError = false;
+//            }
+//
+//            if (noError) {
+//                result = compare(target, inputNumber);
+//                isEnd = outputResult(result);
+//            }
+//
+//            if (isEnd) {
+//                restart = restartGameException(scanner);
+//            }
+//
+//            if (isEnd && !restart) {
+//                break;
+//            }
+//        }
     }
 
-    public static int[] setTarget() {
-        int[] target = new int[TARGET_LENGTH];
-        int i = 0;
-        while (i < TARGET_LENGTH) {
-            int temp = utils.RandomUtils.nextInt(1, 9);
-            int sameNumber = isThereNumber(target, temp);
-            if (sameNumber == 0) {
-                target[i] = temp;
-                i++;
-            }
-        }
-
-        return target;
-    }
+//    public static int[] setTarget() {
+//        int[] target = new int[TARGET_LENGTH];
+//        int i = 0;
+//        while (i < TARGET_LENGTH) {
+//            int temp = utils.RandomUtils.nextInt(1, 9);
+//            if (isThereNumber(target, temp) == 0) {
+//                target[i] = temp;
+//                i++;
+//            }
+//        }
+//
+//        return target;
+//    }
 
     public static int[] getInputNumber(Scanner scanner) throws IllegalArgumentException {
         int[] inputNumber = new int[TARGET_LENGTH];
