@@ -1,24 +1,33 @@
 package baseball;
 
 import java.util.Scanner;
+import java.util.HashMap;
 
 public class Player {
 	Scanner scanner = new Scanner(System.in);
 	StringGameGuide guide = new StringGameGuide();
+	HashMap<Integer,Integer> playerNumbersMap = new HashMap<Integer,Integer>();
+	final int MAX_PLAYER_KEY_NUMBERS = 3; 
 	
-	private int inputThreeNumbers() {
+	private int[] inputThreeNumbers() {
 		int inputNumbers = scanner.nextInt();
-		return inputNumbers;
+		int[] arrayNumbers = new int[MAX_PLAYER_KEY_NUMBERS];
+		for(int num =0; num <MAX_PLAYER_KEY_NUMBERS; num++) {
+			while(num >0){
+				arrayNumbers[num] += inputNumbers%10;
+				inputNumbers /= 10;
+			}
+		}
+		return arrayNumbers;
 	}
 	
-	public int[] duplicateThreeNumbers() {
+	public HashMap<Integer,Integer> duplicateThreeNumbers() {
 		System.out.println(guide.InputNumbers());
-		int[] numbersAmount = new int[3];
-		
-		for (int num =0; num <= numbersAmount.length; num++) {
-			numbersAmount[num] = inputThreeNumbers();
+		final int[] array = inputThreeNumbers();
+		for (int num =0; num <= MAX_PLAYER_KEY_NUMBERS; num++) {
+			playerNumbersMap.put(num,array[num]);
 		}
-		return numbersAmount;
+		return playerNumbersMap;
 	}
 	
 	

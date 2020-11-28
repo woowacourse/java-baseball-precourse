@@ -3,7 +3,7 @@ package baseball;
 public class StringGameGuide {
 	
 	public String game() {
-		final String intro = "게임을 새로 시작 : 1번     게임 종료 : 2번";
+		final String intro = "게임을 새로 시작 : 1번\n"+"게임 종료 : 2번";
 		return intro;
 	}
 	
