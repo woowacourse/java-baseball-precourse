@@ -1,12 +1,15 @@
 package baseball;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import baseball.domain.Validator;
 
 public class InputView {
 
     public static final String ASK_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
+
+    public static final String ASK_RETRY_NUMBER = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private final Validator validator;
 
@@ -17,10 +20,19 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public String askNumbers() {
-        System.out.print(ASK_NUMBERS_MESSAGE);
-        String numbers = scanner.nextLine();
-        validator.validateNumbers(Validator.NUMBERS_PATTERN, numbers);
-        return numbers;
+    public String askBallNumbers() {
+        return ask(ASK_NUMBERS_MESSAGE, Validator.NUMBERS_PATTERN);
+    }
+
+    public boolean askRetry() {
+        String retryNumber = ask(ASK_RETRY_NUMBER, Validator.RETRY_PATTERN);
+        return retryNumber.equals(BaseballGame.END);
+    }
+
+    private String ask(String message, Pattern pattern) {
+        System.out.println(message);
+        String input = scanner.nextLine();
+        validator.validateNumbers(pattern, input);
+        return input;
     }
 }

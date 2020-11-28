@@ -14,6 +14,8 @@ public class Validator {
 
     public static final Pattern NUMBERS_PATTERN = Pattern.compile("[1-9]{" + BaseballGame.BALLS_LENGTH + "}");
 
+    public static final Pattern RETRY_PATTERN = Pattern.compile("^1$|^2$");
+
     public void validateNumbers(Pattern pattern, String input) {
         checkNull(input);
         checkRegularExpression(pattern, input);

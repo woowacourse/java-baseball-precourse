@@ -12,6 +12,8 @@ import baseball.domain.ScoreBoard;
 
 public class BaseballGame {
 
+    public static final String END = "2";
+
     public static final int BALLS_LENGTH = 3;
 
     private final Pitcher pitcher;
