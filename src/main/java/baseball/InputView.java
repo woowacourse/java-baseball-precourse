@@ -15,8 +15,8 @@ public class InputView {
 
     private final Scanner scanner;
 
-    public InputView(Validator validator, Scanner scanner) {
-        this.validator = validator;
+    public InputView(Scanner scanner) {
+        this.validator = new Validator();
         this.scanner = scanner;
     }
 
