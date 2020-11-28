@@ -1,6 +1,6 @@
-package view;
+package baseball.view;
 
-import domain.game.GameResult;
+import baseball.domain.game.GameResult;
 
 import java.util.List;
 import java.util.Scanner;

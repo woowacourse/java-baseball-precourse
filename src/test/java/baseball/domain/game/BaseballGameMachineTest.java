@@ -1,6 +1,6 @@
-package domain.game;
+package baseball.domain.game;
 
-import domain.number.BaseballNumbers;
+import baseball.domain.number.BaseballNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

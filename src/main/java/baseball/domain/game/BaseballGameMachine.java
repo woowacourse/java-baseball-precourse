@@ -1,6 +1,6 @@
-package domain.game;
+package baseball.domain.game;
 
-import domain.number.BaseballNumbers;
+import baseball.domain.number.BaseballNumbers;
 
 import java.util.HashMap;
 import java.util.Map;

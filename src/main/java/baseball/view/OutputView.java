@@ -1,6 +1,6 @@
-package view;
+package baseball.view;
 
-import domain.game.GameResult;
+import baseball.domain.game.GameResult;
 
 public class OutputView {
     private static final String NOTHING_MESSAGE = "낫싱";

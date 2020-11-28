@@ -1,4 +1,4 @@
-package domain.number;
+package baseball.domain.number;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

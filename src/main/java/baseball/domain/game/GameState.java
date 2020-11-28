@@ -1,4 +1,4 @@
-package domain.game;
+package baseball.domain.game;
 
 import java.util.Arrays;
 

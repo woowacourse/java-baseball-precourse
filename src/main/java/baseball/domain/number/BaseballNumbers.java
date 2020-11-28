@@ -1,4 +1,4 @@
-package domain.number;
+package baseball.domain.number;
 
 import utils.RandomUtils;
 
@@ -34,8 +34,8 @@ public class BaseballNumbers {
         return new BaseballNumbers(baseballNumbers);
     }
 
-    private static boolean isGenerationComplete(Set<Integer> baseballNumbers) {
-        return baseballNumbers.size() == NECESSARY_BASEBALL_NUMBER_COUNTS;
+    private static boolean isGenerationComplete(Set<Integer> randomNumbers) {
+        return randomNumbers.size() == NECESSARY_BASEBALL_NUMBER_COUNTS;
     }
 
     public static BaseballNumbers generateInputBaseballNumbers(List<Integer> inputBaseballNumbers) {
