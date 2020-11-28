@@ -8,8 +8,14 @@ public class Application {
 
     // 세 개의 숫자로 이루어진 Set을 생성하는 메소드
     static LinkedHashSet<Integer> generateAnswer() {
-        LinkedHashSet<Integer> numSet = new LinkedHashSet<Integer>();
-        // TODO 구현 진행
+        LinkedHashSet<Integer> numSet = new LinkedHashSet<>();
+        while (numSet.size() < 3) {
+            int numCandidate = RandomUtils.nextInt(1, 9);
+            if (numSet.contains(numCandidate)) {
+                continue;
+            }
+            numSet.add(numCandidate);
+        }
         return numSet;
     }
 
