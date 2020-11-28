@@ -10,20 +10,16 @@ public class RandomNumberMaker {
     private static final int NUMBER_RANGE_START = 1;
     private static final int NUMBER_RANGE_END = 9;
 
-    private static List<Integer> randomNumbers = new ArrayList<>();
+    private static List<Integer> randomNumber = new ArrayList<>();
 
-    public static List<Integer> makeRandomNumbers() {
+    public static List<Integer> makeRandomNumber() {
         int oneDigitRandomNumber = RandomUtils.nextInt(NUMBER_RANGE_START, NUMBER_RANGE_END);
-
-        if (!randomNumbers.contains(oneDigitRandomNumber)) {
-            randomNumbers.add(oneDigitRandomNumber);
+        if (!randomNumber.contains(oneDigitRandomNumber)) {
+            randomNumber.add(oneDigitRandomNumber);
         }
-
-        if (randomNumbers.size() == DIGIT) {
-            return randomNumbers;
+        if (randomNumber.size() == DIGIT) {
+            return randomNumber;
         }
-
-        return makeRandomNumbers();
+        return makeRandomNumber();
     }
-
 }

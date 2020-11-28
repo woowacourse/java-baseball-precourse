@@ -9,28 +9,39 @@ public class Computer {
     private static final String BALL = "ball";
     private static final int ZERO = 0;
 
-    private List<Integer> randomNumbers;
+    private List<Integer> computerNumber;
 
     Computer() {
-        this.randomNumbers = RandomNumberMaker.makeRandomNumbers();
+        this.computerNumber = RandomNumberMaker.makeRandomNumber();
+    }
+
+    public boolean isStrike(List<Integer> userNumber, int nowIndex) {
+        if (computerNumber.get(nowIndex) == userNumber.get(nowIndex)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isBall(List<Integer> userNumber, int nowIndex) {
+        if (computerNumber.contains(userNumber.get(nowIndex))) {
+            return true;
+        }
+        return false;
     }
 
     public Map<String, Integer> compareWithUserNumber(List<Integer> userNumber) {
         Map<String, Integer> strikeAndBall = new HashMap<>();
         int strikeCount = ZERO;
         int ballCount = ZERO;
-
         for (int i = 0; i < userNumber.size(); i++) {
-            if (randomNumbers.get(i) == userNumber.get(i)) {
+            if (isStrike(userNumber, i)) {
                 strikeCount++;
                 continue;
             }
-
-            if (randomNumbers.contains(userNumber.get(i))) {
+            if (isBall(userNumber, i)) {
                 ballCount++;
             }
         }
-
         strikeAndBall.put(STRIKE, strikeCount);
         strikeAndBall.put(BALL, ballCount);
         return strikeAndBall;
