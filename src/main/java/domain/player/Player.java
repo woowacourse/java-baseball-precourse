@@ -5,38 +5,25 @@ import domain.computer.Computer;
 import java.util.*;
 
 public class Player {
-    private boolean isStartingGame = false;
+    boolean isStartingGame = true;
     private String userInput;
     String[] seperatedUserInputByLetter;
     Computer computer = new Computer();
 
     public void startGame(Scanner scanner) {
-        int status;
-        isStartingGame = true;
         while (isStartingGame) {
-            enterNumberWith(scanner);
-            if (computer.isCorrectAnswer(seperatedUserInputByLetter)) {
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                status = scanner.nextInt();
-                if (status != 1 && status != 2) {
-                    throw new IllegalArgumentException("숫자 1 또는 2만 입력하셔야 합니다");
-                }
-                if (status == 1) {
-                    isStartingGame = true;
-                    computer.resetAnswer();
-                }
-                if (status == 2) {
-                    isStartingGame = false;
-                }
-            }
+            playOneGame(scanner);
         }
     }
 
-    public boolean isStartingGame() {
-        return isStartingGame;
+    private void playOneGame(Scanner scanner) {
+        enterNumberWith(scanner);
+        if (computer.isCorrectAnswer(seperatedUserInputByLetter)) {
+            isStartingGame = checkIfRestartGame(scanner);
+        }
     }
 
-    public void enterNumberWith(Scanner scanner) {
+    private void enterNumberWith(Scanner scanner) {
         System.out.print("숫자를 입력해주세요 : ");
         userInput = scanner.next();
         seperatedUserInputByLetter = userInput.split("");
@@ -103,5 +90,18 @@ public class Player {
             throw new IllegalArgumentException("세 자리의 숫자에서 각 자리의 숫자에 중복된 숫자가 포함되면 안 됩니다");
         }
         return false;
+    }
+
+    private boolean checkIfRestartGame(Scanner scanner) {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int status = scanner.nextInt();
+        if (status == 1) {
+            computer.resetAnswer();
+            return true;
+        }
+        if (status == 2) {
+            return false;
+        }
+        throw new IllegalArgumentException("숫자 1 또는 2만 입력하셔야 합니다");
     }
 }
