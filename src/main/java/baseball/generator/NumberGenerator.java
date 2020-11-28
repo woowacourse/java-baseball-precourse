@@ -51,4 +51,9 @@ public class NumberGenerator {
 
         return programNumber;
     }
+
+    // 프로그램에서 정한 임의의 수를 초기화하는 함수
+    public static void initProgramNumber() {
+        programNumber.clear();
+    }
 }

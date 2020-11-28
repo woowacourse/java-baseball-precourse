@@ -14,23 +14,30 @@ public class HintGenerator {
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
 
+    public static ArrayList<Integer> programNumber = new ArrayList<>();
     private static int ball;
     private static int strike;
+    private static String result;
+
+    public static void getProgramNumber() {
+        // 프로그램이 정한 임의의 3자리 수
+        programNumber = NumberGenerator.generateProgramNumber();
+    }
 
     // 플레이어가 입력한 수에 대한 힌트를 제공하는 함수
     public static String giveHint(ArrayList<Integer> playerNumber) {
-        // 프로그램이 정한 임의의 3자리 수
-        ArrayList<Integer> programNumber = NumberGenerator.generateProgramNumber();
+        getProgramNumber();
 
         // `볼`, `스트라이크`를 초기화한다.
         initBallStrike();
+
         // 같은 숫자가 있는지 확인한다. (`볼` 개수 확인)
         checkSameNumber(programNumber, playerNumber);
         // 같은 자리에 있는지 확인한다. (`스트라이크` 개수 확인)
         checkSamePosition(programNumber, playerNumber);
 
         // `정답`, `볼`, `스트라이크`, `낫싱`을 확인한다.
-        String result = checkResult();
+        result = checkResult();
 
         return result;
     }
