@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.Scanner;
 
+import baseball.domain.BaseballNumbers;
 import baseball.domain.Batter;
 import baseball.domain.FixedNumbersGenerator;
 import baseball.domain.Judgment;
@@ -23,7 +24,7 @@ public class BaseballGame {
     private final RoundResult roundResult;
 
     public BaseballGame(final Scanner scanner) {
-        this.pitcher = new Pitcher(new FixedNumbersGenerator(scanner));
+        this.pitcher = new Pitcher();
         this.batter = new Batter(new RandomNumbersGenerator());
         this.roundResult = new RoundResult();
     }
@@ -33,13 +34,8 @@ public class BaseballGame {
         while (!isEnd) {
             ScoreBoard scoreBoard = new ScoreBoard();
             while (!scoreBoard.isAnswer()) {
-                pitcher.receiveBalls();
-                for (int i = 0; i < BALLS_LENGTH; i++) {
-                    int pitchedNumber = pitcher.pitch(i);
-                    Judgment judgment = batter.swing(i, pitchedNumber);
-                    scoreBoard.record(judgment);
-                }
-
+                BaseballNumbers pitchedNumbers = pitcher.pitches();
+                batter.swing(pitchedNumbers);
                 String result = roundResult.getResult(scoreBoard);
                 System.out.println(result);
             }
