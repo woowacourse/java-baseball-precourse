@@ -6,7 +6,7 @@ public class Pitcher extends Player {
         super(generator);
     }
 
-    public BaseballNumbers pitches() {
-        return new BaseballNumbers(generator.generateNumbers());
+    public int pitch(int numberIndex) {
+        return this.numbers.getNumber(numberIndex);
     }
 }
