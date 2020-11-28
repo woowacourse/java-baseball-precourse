@@ -3,6 +3,7 @@ package baseball.domain;
 public class Score {
     private static final int THREE_STRIKE = 3;
     private static final int ZERO = 0;
+
     private final int ball;
     private final int strike;
 
