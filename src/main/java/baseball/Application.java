@@ -7,7 +7,6 @@ import baseball.domain.number.BaseballNumbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -19,12 +18,11 @@ public class Application {
         GameState gameState = GameState.KEEP_PLAYING;
         while (gameState.isAbleToPlay()) {
             baseballGameMachine = baseballGameMachine.prepareNextTry(gameState);
-            List<Integer> inputBaseballNumbers = inputView.inputBaseballNumbers();
-            BaseballNumbers userBaseballNumbers = BaseballNumbers.generateInputBaseballNumbers(inputBaseballNumbers);
+            BaseballNumbers userBaseballNumbers =
+                    BaseballNumbers.generateInputBaseballNumbers(inputView.inputBaseballNumbers());
             GameResult gameResult = baseballGameMachine.play(userBaseballNumbers);
             OutputView.outputGameResult(gameResult);
-            int signatureValue = inputView.inputGameState(gameResult);
-            gameState = GameState.findGameState(signatureValue);
+            gameState = GameState.findGameState(inputView.inputGameState(gameResult));
         }
     }
 }
