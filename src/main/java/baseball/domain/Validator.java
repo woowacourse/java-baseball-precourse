@@ -38,7 +38,7 @@ public class Validator {
 
     private void checkBlank(String input) {
         if (input.trim().equals(EMPTY)) {
-            throw new IllegalArgumentException(INPUT_EMPTY_MESSAGE)
+            throw new IllegalArgumentException(INPUT_EMPTY_MESSAGE);
         }
     }
 
