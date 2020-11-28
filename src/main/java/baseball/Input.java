@@ -7,7 +7,8 @@ import org.graalvm.compiler.nodes.spi.VirtualizableAllocation;
 public class Input {
 
     private final static String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-
+    private final static String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final static String RESTART = "1";
     ArrayList<Integer> userInput;
     NumberValidator validator = new NumberValidator(userInput);
     Scanner scanner;
@@ -34,5 +35,14 @@ public class Input {
             userInputList.add(Character.getNumericValue(userInput.charAt(i)));
         }
         return userInputList;
+    }
+
+    public static String getRestartOrGameEnd(Scanner scanner) {
+        System.out.println(RESTART_MESSAGE);
+        return scanner.nextLine();
+    }
+
+    public static boolean isRestart(String message) {
+        return message.equals(RESTART);
     }
 }
