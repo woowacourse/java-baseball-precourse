@@ -21,5 +21,10 @@ public class Baseball {
 			player.input();
 			playerNumber = player.getNumber();
 		} while(!Validator.isSame(randomNumber, playerNumber));
+		
+		manager.query();
+		if (manager.getQueryAnswer() == 1) {
+			start();
+		}
 	}
 }
