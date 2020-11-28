@@ -3,25 +3,40 @@ package baseball;
 public class Status {
 
     private boolean gameOver;
-    private int strike;
-    private int ball;
+    private long strikeCount;
+    private long ballCount;
 
 
     public Status() {
         gameOver = false;
-        strike = 0;
-        ball = 0;
+        strikeCount = 0;
+        ballCount = 0;
     }
 
-    public int getStrike() {
-        return strike;
+    public long getStrikeCount() {
+        return strikeCount;
     }
 
-    public int getBall() {
-        return ball;
+    public long getBallCount() {
+        return ballCount;
     }
 
     public void check(Baseballs answerBalls, Baseballs guessingBalls) {
+        ballCount = checkBalls(answerBalls, guessingBalls);
+        strikeCount = checkStrikes(answerBalls, guessingBalls);
 
+    }
+
+    public long checkStrikes(Baseballs answerBalls, Baseballs guessingBalls) {
+        return guessingBalls.getBalls().stream()
+                .filter(x -> answerBalls.getBalls().contains(x))
+                .filter(x -> guessingBalls.getBalls().indexOf(x) == answerBalls.getBalls().indexOf(x))
+                .count();
+    }
+
+    public long checkBalls(Baseballs answerBalls, Baseballs guessingBalls) {
+        return guessingBalls.getBalls().stream()
+                .filter(x -> answerBalls.getBalls().contains(x))
+                .count();
     }
 }

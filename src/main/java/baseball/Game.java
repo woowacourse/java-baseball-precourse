@@ -11,7 +11,7 @@ import views.OutputView;
 
 public class Game {
 
-    private static final int WINNING_STRIKE_CONDITION = 3;
+    private static final long WINNING_STRIKE_CONDITION = 3;
     private Scanner userInput;
     private Baseballs answerBalls;
     private Baseballs guessingBalls;
@@ -23,7 +23,7 @@ public class Game {
 
     public void play() {
         initialize();
-        while (gameStatus.getStrike() != WINNING_STRIKE_CONDITION) {
+        while (gameStatus.getStrikeCount() != WINNING_STRIKE_CONDITION) {
             proceedRound();
         }
         OutputView.congratulateWin();
