@@ -1,5 +1,6 @@
 package baseball;
 
+import enums.GameProcess;
 import enums.RefereeCall;
 
 public class Referee {
@@ -9,8 +10,8 @@ public class Referee {
     }
 
     public int[] getStrikeAndBallCount(String playerNumber, String computerNumber) {
-        int ball = 0;
-        int strike = 0;
+        int ball = GameProcess.NO_COUNT.getValue();
+        int strike = GameProcess.NO_COUNT.getValue();
         String[] playerDigitArr = playerNumber.split("");
         for (int i = 0; i < playerDigitArr.length; i++) {
             int indexOfSameDigitOfComputerNumber =
@@ -33,25 +34,25 @@ public class Referee {
         if (indexOfSameDigitOfComputerNumber == indexOfSameDigitOfPlayerNumber) {
             return 1;
         }
-        return 0;
+        return GameProcess.NO_COUNT.getValue();
     }
 
     public int getBallCount(int indexOfSameDigitOfComputerNumber, int indexOfSameDigitOfPlayerNumber) {
         if (indexOfSameDigitOfComputerNumber != indexOfSameDigitOfPlayerNumber && indexOfSameDigitOfComputerNumber >= 0) {
             return 1;
         }
-        return 0;
+        return GameProcess.NO_COUNT.getValue();
     }
 
     public String getHint(int strike, int ball) {
         StringBuilder hint = new StringBuilder("");
-        if (strike == 0 && ball == 0) {
+        if (strike == GameProcess.NO_COUNT.getValue() && ball == GameProcess.NO_COUNT.getValue()) {
             hint.append(RefereeCall.NOTHING.getCall());
         }
-        if (ball != 0) {
+        if (ball != GameProcess.NO_COUNT.getValue()) {
             hint.append(ball + RefereeCall.BALL.getCall());
         }
-        if (strike != 0) {
+        if (strike != GameProcess.NO_COUNT.getValue()) {
             hint.append(strike + RefereeCall.STRIKE.getCall());
         }
         return hint.toString();

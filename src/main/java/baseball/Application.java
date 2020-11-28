@@ -27,8 +27,8 @@ public class Application {
     }
 
     public void playGame(Scanner scanner) {
-        int strike = 0;
-        int ball = 0;
+        int strike = GameProcess.NO_COUNT.getValue();
+        int ball = GameProcess.NO_COUNT.getValue();
         String computerNumber = number.getComputerNumber();
         while (strike != GameProcess.OUT_3STIRKE.getValue()) {
             String playerNumber = inputPlayerNumber(scanner);
