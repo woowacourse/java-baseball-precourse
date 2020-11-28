@@ -57,7 +57,17 @@ public class Application {
     }
 
     private static int findBall(int[] randomNumber, int[] userNumber) {
-        return 0;
+        int count = 0;
+        if (randomNumber[0] == userNumber[1] || randomNumber[0] == userNumber[2]) {
+            count++;
+        }
+        if (randomNumber[1] == userNumber[0] || randomNumber[1] == userNumber[2]) {
+            count++;
+        }
+        if (randomNumber[2] == userNumber[0] || randomNumber[2] == userNumber[1]) {
+            count++;
+        }
+        return count;
     }
 
     private static void printStr(int strike, int ball) {
