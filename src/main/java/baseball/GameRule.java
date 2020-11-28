@@ -34,18 +34,22 @@ public class GameRule {
     }
 
     private boolean isStrike(int index) {
+
         return answer.get(index).equals(userInput.get(index));
     }
 
     private boolean isBall(int index) {
+
         return answer.contains(userInput.get(index));
     }
 
     private boolean isNothing() {
+
         return strike == 0 && ball == 0;
     }
 
     public boolean isWin() {
+
         return strike == NUM_LEN;
     }
 
@@ -65,12 +69,13 @@ public class GameRule {
 
 
     public void getResult() {
-        if (isWin()) {
-            System.out.println(WIN_MESSAGE);
-        } else if (isNothing()) {
+        if (isNothing()) {
             System.out.println(NOTHING_MESSAGE);
         } else {
             printStatCount();
+        }
+        if (isWin()) {
+            System.out.println(WIN_MESSAGE);
         }
     }
 
