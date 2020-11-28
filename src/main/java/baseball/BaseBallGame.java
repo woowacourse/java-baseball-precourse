@@ -34,8 +34,8 @@ public class BaseBallGame {
 
         setGame();
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        code = scanner.nextInt();
-        BaseBallUtils.isCodeRight(code);
+
+        code = BaseBallUtils.isCodeRight(scanner);
 
         if (code == CONTINUE_CODE) {
             return true;
@@ -44,7 +44,7 @@ public class BaseBallGame {
         return false;
     }
 
-    public void setGame() {
+    private void setGame() {
         do {
             strikes = START_NUM;
             balls = START_NUM;
@@ -56,7 +56,7 @@ public class BaseBallGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public void nextBalls() {
+    private void nextBalls() {
         System.out.print("숫자를 입력해주세요 : ");
 
         String input = scanner.next();
@@ -69,7 +69,7 @@ public class BaseBallGame {
         BaseBallUtils.isBallsRight(inputBalls);
     }
 
-    public void getHints() {
+    private void getHints() {
 
         for (int i = 0; i < inputBalls.size(); i++) {
             if (inputBalls.get(i).equals(answerBalls.getAnswerBalls().get(i))) {

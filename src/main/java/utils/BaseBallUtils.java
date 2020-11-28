@@ -13,6 +13,7 @@ package utils;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 public class BaseBallUtils {
@@ -22,6 +23,8 @@ public class BaseBallUtils {
     private static final String NOT_ONE_TO_ZERO_MESSAGE = "1에서 9사이의 숫자가 아닙니다.";
     private static final String DUPLICATED_MESSAGE = "숫자가 중복되었습니다.";
     private static final String INVALID_VALUE_MESSAGE = "입력된 수가 1 혹은 2가 아닙니다.";
+    private static final String INVALID_CODE_EXCEPTION = "숫자만 입력해주세요.";
+
 
     private BaseBallUtils() {
     }
@@ -38,10 +41,19 @@ public class BaseBallUtils {
         }
     }
 
-    public static void isCodeRight(int code) {
+    public static int isCodeRight(Scanner scanner) {
+        int code;
+        try {
+            code = scanner.nextInt();
+        } catch (Exception e) {
+            throw new IllegalArgumentException(INVALID_CODE_EXCEPTION);
+        }
+
         if (!(code == 1 || code == 2)) {
             throw new IllegalArgumentException(INVALID_VALUE_MESSAGE);
         }
+
+        return code;
     }
 
     private static Boolean isNum(List<Integer> inputBalls) {
