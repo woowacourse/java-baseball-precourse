@@ -9,7 +9,15 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
-        ArrayList<Integer> target = SetTarget.setTargetList();
+        ArrayList<Integer> target;
+        ArrayList<Integer> input;
+
+        while (true) {
+            target = SetTarget.setTargetList();
+            System.out.println(target);
+            input = GetInput.inputNumberList(scanner);
+            System.out.println(input);
+        }
 
 
 
