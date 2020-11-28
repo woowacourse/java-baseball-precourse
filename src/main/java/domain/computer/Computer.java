@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class Computer {
     private final static int START_VALUE_IN_RANDOM_NUMBER_RANGE = 1;
     private final static int END_VALUE_IN_RANDOM_NUMBER_RANGE = 9;
+    private final static int VALID_NUMBER_SIZE = 3;
+    private final static int STRIKE_FULL_COUNT = 3;
     private ArrayList<Integer> answer = new ArrayList<>();
     private int strikeCount;
     private int ballCount;
@@ -20,8 +22,8 @@ public class Computer {
         strikeCount = 0;
         ballCount = 0;
         countStrikeAndBall(userInput);
-        printBallOrStrikeCount(strikeCount, ballCount);
-        if (strikeCount == 3) {
+        Output.printBallOrStrikeCount(strikeCount, ballCount);
+        if (strikeCount == STRIKE_FULL_COUNT) {
             System.out.println(Output.CORRECT_ANSWER_AND_EXIT_GAME);
             return true;
         }
@@ -54,19 +56,6 @@ public class Computer {
         }
     }
 
-    private void printBallOrStrikeCount(int strikeCount, int ballCount) {
-        if (ballCount > 0) {
-            System.out.print(ballCount + "볼 ");
-        }
-        if (strikeCount > 0) {
-            System.out.print(strikeCount + "스트라이크");
-        }
-        if (strikeCount == 0 && ballCount == 0) {
-            System.out.print("낫싱");
-        }
-        System.out.println();
-    }
-
     private void makeRandomAnswer() {
         int randomNumber = RandomUtils.nextInt(
                 START_VALUE_IN_RANDOM_NUMBER_RANGE,
@@ -74,7 +63,7 @@ public class Computer {
         if (!answer.contains(randomNumber)) {
             answer.add(randomNumber);
         }
-        if (answer.size() != 3) {
+        if (answer.size() != VALID_NUMBER_SIZE) {
             makeRandomAnswer();
         }
     }

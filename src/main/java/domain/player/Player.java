@@ -9,6 +9,8 @@ import java.util.*;
 public class Player {
     private static final int RESTART_GAME = 1;
     private static final int EXIT_GAME = 2;
+    private static final int VALID_NUMBER_SIZE = 3;
+    private static final String ZERO_STRING = "0";
     private boolean isStartingGame = true;
     private String userInput;
     private String[] seperatedUserInputByLetter;
@@ -62,14 +64,14 @@ public class Player {
     }
 
     private boolean hasZero() {
-        if (Arrays.asList(seperatedUserInputByLetter).contains("0")) {
+        if (Arrays.asList(seperatedUserInputByLetter).contains(ZERO_STRING)) {
             throw new IllegalArgumentException(Output.SHOULD_NOT_INCLUDE_ZERO);
         }
         return false;
     }
 
     private boolean isNotValidNumberSize() {
-        if (userInput.length() != 3) {
+        if (userInput.length() != VALID_NUMBER_SIZE) {
             throw new IllegalArgumentException(Output.SHOULD_INPUT_THREE_DIGIT);
         }
         return false;
