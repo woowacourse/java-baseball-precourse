@@ -23,21 +23,30 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
         Application application = new Application();
-        /** targetNumber는 플레이어가 맞춰야할 임의의 수 3개 입니다 */
-        int targetNumber = application.makeTargetNumber();
-        System.out.print("Target Number : ");
-        System.out.println(targetNumber);
-        String strikeAndBallResult = "";
-        while (!strikeAndBallResult.equals("3스트라이크")) {
-            /* 결과가 3스트라이크 나올 때 까지 실행된다 */
-            System.out.print("숫자를 입력해주세요 : ");
-            /** userInputNumber는 플레이어가 입력한 숫자입니다 */
-            int userInputNumber = scanner.nextInt();
-            System.out.println(userInputNumber);
-            application.checkUserInputNumber(userInputNumber);
-            strikeAndBallResult = application.checkStrikeAndBall(targetNumber, userInputNumber);
-            System.out.println(strikeAndBallResult);
+        boolean gaming = true;
+
+        while(gaming) {
+            /* gaming 변수가 false가 될 때 까지 실행한다 */
+            int targetNumber = application.makeTargetNumber();
+            String strikeAndBallResult = "";
+
+            while (!strikeAndBallResult.equals("3스트라이크")) {
+                /* strikeAndBallResult가 3스트라이크가 될 때 까지 실행한다 */
+                System.out.print("숫자를 입력해주세요 : ");
+                int userInputNumber = scanner.nextInt();
+                /* userInputNumber가 유효한 인풋인지 확인한다 */
+                application.checkUserInputNumber(userInputNumber);
+                /* targetNumber, userInputNumber를 비교하여 스트라이크/볼 결과를 도출한다 */
+                strikeAndBallResult = application.checkStrikeAndBall(targetNumber, userInputNumber);
+                System.out.println(strikeAndBallResult);
+            }
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int gamingStatus = scanner.nextInt();
+            gaming = application.restartOrTerminate(gamingStatus);
         }
+
         scanner.close();
     }
 
@@ -64,7 +73,7 @@ public class Application {
     /**
      * 메서드 checkUserInputNumber()는 플레이어가 입력한 3자리수가 유효한지 검증 합니다.
      * @param userInputNumber 플레이어가 콘솔에 입력한 숫자입니다.
-     * @exception 3자리 숫자가 아니거나, 3자리수 중에 중복되는 숫자가 있는 경우 IllegalArgumentException을 발생시킵니다.
+     * @exception 3자리 숫자가 아니거나, 3자리수 중에 중복되는 숫자가 있는 경우 IllegalArgumentException 발생시킵니다.
      */
     public void checkUserInputNumber(int userInputNumber){
         /* 세자리수인지 확인한다 */
@@ -122,13 +131,14 @@ public class Application {
             }
         }
 
-        return resultStrikeAndBall(strike, ball);
+        String result = resultStrikeAndBall(strike, ball);
+        return result;
     }
 
     /**
      * 메서드 resultStrikeAndBall()은 checkStrikeAndBall()에서 strike, ball 갯수를 넘겨받아 결과를 String 형식으로 반환합니다.
      * @param strike checkStrikeAndBall() 에서 넘겨받은 strike 갯수
-     * @param ball   checkStrikeAndBall() 에서 넘겨받은 ball   갯수
+     * @param ball checkStrikeAndBall() 에서 넘겨받은 ball 갯수
      * @return 볼, 스트라이크 갯수나 낫싱을 리턴합니다.
      */
     public String resultStrikeAndBall(int strike, int ball) {
@@ -162,4 +172,21 @@ public class Application {
         temp[2] = number%10;                /* 셋째자리 */
         return temp;
     }
+
+    /**
+     * 메서드 restartOrTerminate()는 한 게임이 종료된 뒤, 게임을 재시작 할지 완전히 종료할 지를 판별합ㄴ다
+     * @param gamingStatus 한 게임이 종료한 뒤, 플레이어가 게임 재시작 여부를 입력합니다.
+     * @return gamingStatus가 1이면 true, 2이면 false를 반환합니다.
+     * @exception gamingStatus가 1 또는 2가 아니라면 IllegalArgumentException 발생시킵니다.
+     */
+    public boolean restartOrTerminate(int gamingStatus) {
+        if (gamingStatus == 1) {
+            return true;
+        } else if (gamingStatus == 2) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
