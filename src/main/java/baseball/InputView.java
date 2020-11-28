@@ -49,9 +49,9 @@ public class InputView {
             validator.validateNumbers(pattern, input);
         } catch (IllegalArgumentException e) {
             System.out.printf(e.getMessage() + INPUT_VALUE_FORMAT, input);
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 }
