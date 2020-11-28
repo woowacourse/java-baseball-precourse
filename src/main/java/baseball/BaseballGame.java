@@ -27,7 +27,7 @@ public class BaseballGame {
     public BaseballGame(final Scanner scanner) {
         this.inputView = new InputView(scanner);
         this.batter = new Batter(new RandomNumbersGenerator());
-        scoreBoard = new ScoreBoard();
+        this.scoreBoard = new ScoreBoard();
         this.outputView = new OutputView();
     }
 
@@ -49,9 +49,7 @@ public class BaseballGame {
 
     private void setRound() {
         scoreBoard = new ScoreBoard();
-
-        String balls = inputView.askBallNumbers();
-        pitcher = new Pitcher(balls);
+        pitcher = new Pitcher(inputView.askBallNumbers());
     }
 
     private void startRound() {
