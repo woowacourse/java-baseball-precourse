@@ -10,7 +10,8 @@ public class RoundResult {
 
     public static final String NOTHING = "낫싱";
 
-    public static final String GAME_END = "\n" + BaseballGame.BALLS_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static final String GAME_END =
+            "\n" + BaseballGame.BALLS_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public String getResult(ScoreBoard scoreBoard) {
         StringBuilder stringBuilder = new StringBuilder();
