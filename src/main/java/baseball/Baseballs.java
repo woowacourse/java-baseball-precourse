@@ -9,6 +9,10 @@ public class Baseballs {
 
     public static final int BALLS_CONTAINER_SIZE = 3;
     public static final String INPUT_DELIMITER = "";
+    private static final String SIZE_ERROR_MESSAGE = "올바른 양의 숫자가 입력되지 않았습니다.";
+    private static final String NON_NUMERIC_ERROR_MESSAGE = "숫자가 아닌 정보가 입력되었습니다.";
+    private static final String ZERO_FOUND_ERROR_MESSAGE = "0은 포함할 수 없습니다.";
+    private static final String DUPLICATE_FOUND_ERROR_MESSAGE = "중복되는 수는 포함 수 없습니다.";
 
     private final List<Integer> balls;
 
@@ -36,9 +40,8 @@ public class Baseballs {
 
     private void validateSize(String rawBallsInput) {
         if (hasWrongSize(rawBallsInput)) {
-            throw new IllegalArgumentException("입력된 정보의 양이 적절하지 않습니다.");
+            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
         }
-
     }
 
     private boolean hasWrongSize(String input) {
@@ -47,9 +50,8 @@ public class Baseballs {
 
     private void validateNumerical(String rawBallsInput) {
         if (hasNonNumerical(rawBallsInput)) {
-            throw new IllegalArgumentException("숫자가 아닌 정보가 입력되었습니다.");
+            throw new IllegalArgumentException(NON_NUMERIC_ERROR_MESSAGE);
         }
-
     }
 
     private boolean hasNonNumerical(String input) {
@@ -59,9 +61,8 @@ public class Baseballs {
 
     private void validateNoZero(String rawBallsInput) {
         if (hasZero(rawBallsInput)) {
-            throw new IllegalArgumentException("0은 예측 번호로 넣을 수 없습니다.");
+            throw new IllegalArgumentException(ZERO_FOUND_ERROR_MESSAGE);
         }
-
     }
 
     private boolean hasZero(String input) {
@@ -72,7 +73,7 @@ public class Baseballs {
 
     private void validateNoDuplicate(String rawBallsInput) {
         if (hasDuplicate(rawBallsInput)) {
-            throw new IllegalArgumentException("중복되는 숫자는 넣을 수 없습니다.");
+            throw new IllegalArgumentException(DUPLICATE_FOUND_ERROR_MESSAGE);
         }
     }
 

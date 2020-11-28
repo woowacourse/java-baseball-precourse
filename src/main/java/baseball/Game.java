@@ -12,7 +12,7 @@ import views.OutputView;
 public class Game {
 
     private static final long WINNING_STRIKE_CONDITION = 3;
-    private Scanner userInput;
+    private final Scanner userInput;
     private Baseballs answerBalls;
     private Baseballs guessingBalls;
     private Status gameStatus;
@@ -32,7 +32,7 @@ public class Game {
     private void initialize() {
         gameStatus = new Status();
         generateAnswerBalls();
-        System.out.println(answerBalls.getBalls());
+        //System.out.println(answerBalls.getBalls());
     }
 
     private void generateAnswerBalls() {
@@ -55,7 +55,7 @@ public class Game {
 
     private void proceedRound() {
         generateGuessingBalls();
-        System.out.println(guessingBalls.getBalls());
+        //System.out.println(guessingBalls.getBalls());
 
         gameStatus.check(answerBalls, guessingBalls);
         OutputView.printStatus(gameStatus.getBallCount(), gameStatus.getStrikeCount());
@@ -70,6 +70,4 @@ public class Game {
             generateGuessingBalls();
         }
     }
-
-
 }

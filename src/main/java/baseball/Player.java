@@ -8,7 +8,7 @@ public class Player {
     public static final int WANT_REPLAY = 1;
     public static final int WANT_FINISH = 2;
     private int replayDecision;
-    private Scanner playerInput;
+    private final Scanner playerInput;
 
     public Player(Scanner playerInput) {
         replayDecision = WANT_FINISH;

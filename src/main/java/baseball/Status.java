@@ -24,7 +24,6 @@ public class Status {
     public void check(Baseballs answerBalls, Baseballs guessingBalls) {
         ballCount = checkBalls(answerBalls, guessingBalls);
         strikeCount = checkStrikes(answerBalls, guessingBalls);
-
     }
 
     public long checkStrikes(Baseballs answerBalls, Baseballs guessingBalls) {
