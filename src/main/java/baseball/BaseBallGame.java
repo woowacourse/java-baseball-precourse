@@ -3,16 +3,17 @@ package baseball;
 import static utils.TextResource.*;
 
 public class BaseBallGame {
-    private String answer = null;
+    private BaseBallGameNumber answer = null;
 
-    public BaseBallGame(String answer) {
+    public BaseBallGame(BaseBallGameNumber answer) {
         this.answer = answer;
     }
 
 
     public boolean checkInputNumber(String inputNumber) {
+        System.out.println(inputNumber);
         checkHint(inputNumber);
-        if (answer.equals(inputNumber)) {
+        if (answer.getNumber().equals(inputNumber)) {
             System.out.println(STATEMENT_INPUT_ANSWER);
             return true;
         }
@@ -22,12 +23,12 @@ public class BaseBallGame {
     private void checkHint(String inputNumber) {
         int ball = 0, strike = 0;
         for (int i = 0; i < inputNumber.length(); i++) {
-            if (answer.charAt(i) == inputNumber.charAt(i)) {
+            if (answer.getNumber().charAt(i) == inputNumber.charAt(i)) {
                 strike++;
                 continue;
             }
 
-            if (answer.contains(inputNumber.substring(i, i + 1))) {
+            if (answer.getNumber().contains(inputNumber.substring(i, i + 1))) {
                 ball++;
                 continue;
             }

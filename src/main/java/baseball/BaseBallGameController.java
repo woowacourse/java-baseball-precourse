@@ -14,16 +14,19 @@ public class BaseBallGameController {
         this.currentPlayer = player;
     }
 
-    public void startGame() {
-        String answer = makeRandomNumber();
+    public void startGame() throws IllegalArgumentException {
+        BaseBallGameNumber answer = new BaseBallGameNumber(makeRandomNumber());
         currentGame = new BaseBallGame(answer);
         while (true) {
-            String inputNumber = currentPlayer.inputNumber();
-            if (!checkValidInput(inputNumber)) continue;
-            boolean isAnswer = currentGame.checkInputNumber(inputNumber);
-            if (isAnswer) {
-                checkRestart(currentPlayer.askRestart());
-                break;
+            try {
+                BaseBallGameNumber inputNumber = new BaseBallGameNumber(currentPlayer.inputNumber());
+                boolean isAnswer = currentGame.checkInputNumber(inputNumber.getNumber());
+                if (isAnswer) {
+                    checkRestart(currentPlayer.askRestart());
+                    break;
+                }
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println(STATEMENT_NOT_VALID_INPUT);
             }
         }
     }
@@ -46,25 +49,5 @@ public class BaseBallGameController {
                 return randomNumber.toString();
             }
         }
-    }
-
-    private boolean checkValidInput(String inputNumber) {
-        try {
-            if (!InputCheckUtils.isNumeric(inputNumber)) {
-                throw new IllegalArgumentException();
-            }
-
-            if (inputNumber.length() > NUMBER_OF_DIGITS || inputNumber.length() < NUMBER_OF_DIGITS) {
-                throw new IllegalArgumentException();
-            }
-
-            if (InputCheckUtils.hasDuplicated(inputNumber)) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException illegalArgumentException) {
-            System.out.println(STATEMENT_NOT_VALID_INPUT);
-            return false;
-        }
-        return true;
     }
 }
