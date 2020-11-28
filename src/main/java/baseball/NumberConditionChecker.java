@@ -4,7 +4,7 @@ public class NumberConditionChecker {
     private NumberConditionChecker() {
     }
 
-    public static int[] splitNumberToDigits(int number){
+    public static int[] splitNumberToDigits(int number) {
         int[] digits = new int[3];
         for (int index = 2; index >= 0; index--) {
             int digit = number % 10;
@@ -12,5 +12,14 @@ public class NumberConditionChecker {
             digits[index] = digit;
         }
         return digits;
+    }
+
+    public static boolean checkListInZero(int[] numbers) {
+        for (int index = 0; index < 3; index++) {
+            if (numbers[index] == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
