@@ -44,7 +44,7 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             /* gamingStatus로 플레이어의 게임 재시작 여부를 판별한다 */
-            int gamingStatus = scanner.nextInt();
+            String gamingStatus = scanner.nextLine();
             gaming = application.restartOrTerminate(gamingStatus);
         }
 
@@ -202,10 +202,10 @@ public class Application {
      * @return gamingStatus가 1이면 true, 2이면 false를 반환합니다.
      * @exception gamingStatus가 1 또는 2가 아니라면 IllegalArgumentException 발생시킵니다.
      */
-    public boolean restartOrTerminate(int gamingStatus) {
-        if (gamingStatus == 1) {
+    public boolean restartOrTerminate(String gamingStatus) {
+        if (gamingStatus.equals("1")) {
             return true;
-        } else if (gamingStatus == 2) {
+        } else if (gamingStatus.equals("2")) {
             return false;
         } else {
             throw new IllegalArgumentException();
