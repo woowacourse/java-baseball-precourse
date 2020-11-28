@@ -1,14 +1,25 @@
 package baseball;
 
-public class Baseball {
-	public static void start() {
-		do {
-			
-		} while(!isSame());
-	}
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
+
+import utils.RandomUtils;
+
+public class Baseball {	
+	static GameManager manager = new GameManager();
+	static Player player = new Player();
 	
-	private static boolean isSame() {
+	public static void start() {
+		String randomNumber;
+		String playerNumber;
 		
-		return false;
+		randomNumber = manager.getNumber();
+		
+		do {
+			player.input();
+			playerNumber = player.getNumber();
+		} while(!Validator.isSame(randomNumber, playerNumber));
 	}
 }
