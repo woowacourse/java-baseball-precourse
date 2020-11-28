@@ -1,5 +1,9 @@
 package utils;
 
+import baseball.type.BoundaryType;
+import baseball.type.SizeType;
+import baseball.type.TextType;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,15 +12,6 @@ import java.util.Set;
  * 플레이어의 입력이 비정상적이면 예외를 발생시킨다.
  */
 public class InputUtils {
-    private static final int MINIMUM_INDEX = 0;
-    private static final int MAXIMUM_INDEX = 2;
-    private static final int PLAYER_SIZE = 3;
-    private static final int MINIMUM_ASCII = 49;
-    private static final int MAXIMUM_ASCII = 57;
-    private static final String ABNORMAL_LENGTH = "3자리보다 짧은 길이의 숫자 또는 긴 길이의 숫자는 입력될 수 없습니다.";
-    private static final String ABNORMAL_BOUNDARY = "문자 또는 0은 입력될 수 없습니다.";
-    private static final String ABNORMAL_NUMBER = "동일한 숫자는 입력될 수 없습니다.";
-
     private static boolean validationFlag = true;
     private static boolean lengthFlag = true;
     private static boolean boundaryFlag = true;
@@ -28,17 +23,17 @@ public class InputUtils {
     public static boolean checkValidation(String playerNumber) {
         // 3자리보다 짧은 길이의 숫자 또는 긴 길이의 숫자가 입력되는 경우 (ex. 12, 3216)
         if (!checkLength(playerNumber)) {
-            throw new IllegalArgumentException(ABNORMAL_LENGTH);
+            throw new IllegalArgumentException(TextType.INVALID_LENGTH.getText());
         }
 
         // 문자 또는 0이 입력되는 경우 (ex. 2a6, 206)
         if (!checkBoundary(playerNumber)) {
-            throw new IllegalArgumentException(ABNORMAL_BOUNDARY);
+            throw new IllegalArgumentException(TextType.INVALID_BOUNDARY.getText());
         }
 
         // 동일한 숫자가 입력되는 경우 (ex. 115)
         if (!checkNumber(playerNumber)) {
-            throw new IllegalArgumentException(ABNORMAL_NUMBER);
+            throw new IllegalArgumentException(TextType.INVALID_NUMBER.getText());
         }
 
         return validationFlag;
@@ -46,7 +41,7 @@ public class InputUtils {
 
     // 3자리보다 짧은 길이의 숫자 또는 긴 길이의 숫자가 입력되었는지 확인하는 함수
     public static boolean checkLength(String playerNumber) {
-        if (playerNumber.length() < PLAYER_SIZE || playerNumber.length() > PLAYER_SIZE) {
+        if (playerNumber.length() < SizeType.NUMBER_SIZE.getSize() || playerNumber.length() > SizeType.NUMBER_SIZE.getSize()) {
             lengthFlag = false;
         }
 
@@ -57,8 +52,8 @@ public class InputUtils {
     public static boolean checkBoundary(String playerNumber) {
         char[] playerArray = playerNumber.toCharArray();
 
-        for (int i = MINIMUM_INDEX; i <= MAXIMUM_INDEX; i++) {
-            if (playerArray[i] < MINIMUM_ASCII || playerArray[i] > MAXIMUM_ASCII) {
+        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary(); i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
+            if (playerArray[i] < BoundaryType.MINIMUM_ASCII.getBoundary() || playerArray[i] > BoundaryType.MAXIMUM_ASCII.getBoundary()) {
                 boundaryFlag = false;
             }
         }
@@ -71,11 +66,11 @@ public class InputUtils {
         Set<Character> playerSet = new HashSet<>();
         char[] playerArray = playerNumber.toCharArray();
 
-        for (int i = MINIMUM_INDEX; i <= MAXIMUM_INDEX; i++) {
+        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary(); i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
             playerSet.add(playerArray[i]);
         }
 
-        if (playerSet.size() < PLAYER_SIZE) {
+        if (playerSet.size() < SizeType.NUMBER_SIZE.getSize()) {
             numberFlag = false;
         }
 

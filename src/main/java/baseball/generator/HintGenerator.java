@@ -1,20 +1,16 @@
 package baseball.generator;
 
+import baseball.type.BoundaryType;
+import baseball.type.HintType;
+import baseball.type.TextType;
+import baseball.type.ValueType;
+
 import java.util.ArrayList;
 
 /**
  * 플레이어가 입력한 수에 대한 힌트를 제공하는 클래스
  */
 public class HintGenerator {
-    private static final int INITIAL_VALUE = 0;
-    private static final int ANSWER_VALUE = 3;
-    private static final int MINIMUM_INDEX = 0;
-    private static final int MAXIMUM_INDEX = 2;
-    private static final String ANSWER = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String NOTHING = "낫싱";
-    private static final String BALL = "볼";
-    private static final String STRIKE = "스트라이크";
-
     public static ArrayList<Integer> programNumber = new ArrayList<>();
     private static int ball;
     private static int strike;
@@ -45,13 +41,13 @@ public class HintGenerator {
 
     // `볼`, `스트라이크`를 초기화하는 함수
     public static void initBallStrike() {
-        ball = INITIAL_VALUE;
-        strike = INITIAL_VALUE;
+        ball = ValueType.INITIAL_VALUE.getValue();
+        strike = ValueType.INITIAL_VALUE.getValue();
     }
 
     // 같은 숫자가 있는지 확인하는 함수 (`볼` 개수 확인)
     public static void checkSameNumber(ArrayList<Integer> programNumber, ArrayList<Integer> playerNumber) {
-        for (int i = MINIMUM_INDEX; i <= MAXIMUM_INDEX; i++) {
+        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary(); i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
             if (programNumber.contains(playerNumber.get(i))) {
                 ball++;
             }
@@ -60,7 +56,7 @@ public class HintGenerator {
 
     // 같은 자리에 있는지 확인하는 함수 (`스트라이크` 개수 확인)
     public static void checkSamePosition(ArrayList<Integer> programNumber, ArrayList<Integer> playerNumber) {
-        for (int i = MINIMUM_INDEX; i <= MAXIMUM_INDEX; i++) {
+        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary(); i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
             if (programNumber.get(i) == playerNumber.get(i)) {
                 strike++;
                 ball--;
@@ -70,16 +66,16 @@ public class HintGenerator {
 
     // `정답`, `볼`, `스트라이크`, `낫싱`을 확인하는 함수
     public static String checkResult() {
-        if (strike == ANSWER_VALUE) {
-            return strike+ANSWER;
-        } else if (ball != INITIAL_VALUE && strike == INITIAL_VALUE) {
-            return ball+BALL;
-        } else if (ball == INITIAL_VALUE && strike != INITIAL_VALUE) {
-            return strike+STRIKE;
-        } else if (ball == INITIAL_VALUE && strike == INITIAL_VALUE) {
-            return NOTHING;
+        if (strike == ValueType.ANSWER_VALUE.getValue()) {
+            return strike + TextType.FINISH.getText();
+        } else if (ball != ValueType.INITIAL_VALUE.getValue() && strike == ValueType.INITIAL_VALUE.getValue()) {
+            return ball + HintType.BALL.getHint();
+        } else if (ball == ValueType.INITIAL_VALUE.getValue() && strike != ValueType.INITIAL_VALUE.getValue()) {
+            return strike + HintType.STRIKE.getHint();
+        } else if (ball == ValueType.INITIAL_VALUE.getValue() && strike == ValueType.INITIAL_VALUE.getValue()) {
+            return HintType.NOTHING.getHint();
         } else {
-            return ball+BALL+" "+strike+STRIKE;
+            return ball + HintType.BALL.getHint() + " " + strike + HintType.STRIKE.getHint();
         }
     }
 }
