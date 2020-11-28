@@ -5,7 +5,7 @@ import java.util.List;
 
 public final class Baseballs {
 
-    public static final int ASCII_ZERO = 48;
+    private static final int ASCII_ZERO = 48;
 
     private final List<Integer> numbers;
 

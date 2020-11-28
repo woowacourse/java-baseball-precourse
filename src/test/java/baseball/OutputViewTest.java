@@ -3,7 +3,6 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static baseball.OutputView.GAME_END;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.Judgment;
@@ -41,6 +40,6 @@ public class OutputViewTest {
         ScoreBoard scoreBoard = new ScoreBoard(3, 0);
         OutputView outputView = new OutputView();
         assertThat(outputView.getResult(scoreBoard))
-                .isEqualTo(3 + Judgment.STRIKE.getMessage() + GAME_END);
+                .isEqualTo(3 + Judgment.STRIKE.getMessage() + OutputView.GAME_END);
     }
 }

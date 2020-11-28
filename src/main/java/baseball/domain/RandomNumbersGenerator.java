@@ -5,9 +5,9 @@ import utils.RandomUtils;
 
 public final class RandomNumbersGenerator implements NumbersGenerator {
 
-    public static final int LOWER_BOUND = 1;
+    private static final int LOWER_BOUND = 1;
 
-    public static final int UPPER_BOUND = 9;
+    private static final int UPPER_BOUND = 9;
 
     @Override
     public String generateNumbers() {

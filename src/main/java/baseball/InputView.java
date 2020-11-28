@@ -7,11 +7,11 @@ import baseball.domain.Validator;
 
 public class InputView {
 
-    public static final String ASK_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String ASK_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
 
-    public static final String ASK_RETRY_NUMBER = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String ASK_RETRY_NUMBER = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public static final String INPUT_VALUE_FORMAT = "\n입력한 값은 %s 입니다.\n";
+    private static final String INPUT_VALUE_FORMAT = "\n입력한 값은 %s 입니다.\n";
 
     private final Validator validator;
 

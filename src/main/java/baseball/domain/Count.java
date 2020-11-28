@@ -2,10 +2,12 @@ package baseball.domain;
 
 public final class Count {
 
+    private static final int ZERO = 0;
+
     private int count;
 
     public Count() {
-        this(0);
+        this(ZERO);
     }
 
     public Count(final int count) {
@@ -21,7 +23,7 @@ public final class Count {
     }
 
     public boolean isZero() {
-        return count == 0;
+        return count == ZERO;
     }
 
     public boolean equals(final int compare) {

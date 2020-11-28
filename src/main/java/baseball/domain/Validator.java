@@ -19,7 +19,7 @@ public final class Validator {
     public static final String EMPTY = "";
 
     public static final Pattern NUMBERS_PATTERN =
-            Pattern.compile("[1-9]{" + BaseballGame.BALLS_LENGTH + "}");
+            Pattern.compile(String.format("[1-9]{%d}", BaseballGame.BALLS_LENGTH));
 
     public static final Pattern RETRY_PATTERN = Pattern.compile("^1$|^2$");
 

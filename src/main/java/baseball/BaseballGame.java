@@ -10,7 +10,7 @@ import baseball.domain.ScoreBoard;
 
 public class BaseballGame {
 
-    public static final String GAME_END = "2";
+    protected static final String GAME_END = "2";
 
     public static final int BALLS_LENGTH = 3;
 

@@ -3,9 +3,9 @@ package baseball;
 import baseball.domain.Judgment;
 import baseball.domain.ScoreBoard;
 
-public class OutputView {
+public final class OutputView {
 
-    public static final String GAME_END =
+    protected static final String GAME_END =
             "\n" + BaseballGame.BALLS_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public void printResult(final ScoreBoard scoreBoard) {
