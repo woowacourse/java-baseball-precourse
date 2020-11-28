@@ -1,14 +1,36 @@
 package number;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import utils.Game;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 class NumbersTest {
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private final PrintStream originalErr = System.err;
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
 
     @Test
     @DisplayName("볼을 체크한다")
@@ -58,5 +80,61 @@ class NumbersTest {
         //then
         Assertions.assertThat(numbers.checkStrike()).isEqualTo(1);
         Assertions.assertThat(numbers2.checkStrike()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("볼인 경우 '%볼'를 출력한다 ")
+    void ballPrintTest(){
+        //given
+        int ball = 2;
+        int strike = 0;
+
+        //when
+        Game.printResult(ball, strike);
+
+        //then
+        Assertions.assertThat(ball + "볼 " + "\n").isEqualTo(outContent.toString());
+    }
+
+    @Test
+    @DisplayName("스트라이크인 경우 '%스트라이크'를 출력한다 ")
+    void strikePrintTest(){
+        //given
+        int ball = 0;
+        int strike = 2;
+
+        //when
+        Game.printResult(ball, strike);
+
+        //then
+        Assertions.assertThat(strike + "스트라이크" + "\n").isEqualTo(outContent.toString());
+    }
+
+    @Test
+    @DisplayName("볼과 스트라이크 인 경우 ' %볼 %스트라이크'를 출력한다 ")
+    void ballStrikePrintTest(){
+        //given
+        int ball = 1;
+        int strike = 2;
+
+        //when
+        Game.printResult(ball, strike);
+
+        //then
+        Assertions.assertThat(ball +"볼 " + strike +"스트라이크" + "\n").isEqualTo(outContent.toString());
+    }
+
+    @Test
+    @DisplayName("입력수에 대해 하나도 맞는게 없는경우 '낫싱'을 출력한다 ")
+    void nothingPrintTest(){
+        //given
+        int ball = 0;
+        int strike = 0;
+
+        //when
+        Game.printResult(ball, strike);
+
+        //then
+        Assertions.assertThat("낫싱" + "\n").isEqualTo(outContent.toString());
     }
 }

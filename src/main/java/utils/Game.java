@@ -25,14 +25,17 @@ public class Game {
         printResult(numbers.checkBall(), numbers.checkStrike());
     }
 
-    private void printResult(int ball, int strike) {
+    public static void printResult(int ball, int strike) {
         if (ball > 0) {
             System.out.print(ball + "볼 ");
         }
         if (strike > 0) {
             System.out.print(strike + "스트라이크");
         }
-        System.out.println();
+        if (ball == 0 && strike == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.print("\n");
     }
 
     private void initializeGame() {
