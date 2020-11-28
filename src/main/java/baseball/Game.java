@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.Scanner;
+import views.OutputView;
 
 public class Game {
     private Scanner userInput;
@@ -19,5 +20,6 @@ public class Game {
     }
 
     private void proceedRound() {
+        OutputView.askPlayerNumbers();
     }
 }
