@@ -2,12 +2,7 @@ package baseball.domain.game;
 
 import baseball.domain.number.BaseballNumbers;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class BaseballGameMachine {
-    private static final String STRIKE_KEY = "스트라이크";
-    private static final String BALL_KEY = "볼";
 
     private final BaseballNumbers baseballNumbers;
 
@@ -16,12 +11,9 @@ public class BaseballGameMachine {
     }
 
     public GameResult play(BaseballNumbers targetBaseballNumbers) {
-        Map<String, Integer> gameResult = new HashMap<>();
         int ballCounts = this.baseballNumbers.calculateBallCounts(targetBaseballNumbers);
         int strikeCounts = this.baseballNumbers.calculateStrikeCounts(targetBaseballNumbers);
-        gameResult.put(BALL_KEY, ballCounts);
-        gameResult.put(STRIKE_KEY, strikeCounts);
-        return new GameResult(gameResult);
+        return new GameResult(ballCounts, strikeCounts);
     }
 
     public BaseballGameMachine prepareNextTry(GameState gameState) {
