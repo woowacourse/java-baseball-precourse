@@ -37,8 +37,10 @@ public class Referee {
         return GameProcess.NO_COUNT.getValue();
     }
 
-    public int getBallCount(int indexOfSameDigitOfComputerNumber, int indexOfSameDigitOfPlayerNumber) {
-        if (indexOfSameDigitOfComputerNumber != indexOfSameDigitOfPlayerNumber && indexOfSameDigitOfComputerNumber >= 0) {
+    public int getBallCount(int indexOfSameDigitOfComputerNumber,
+                            int indexOfSameDigitOfPlayerNumber) {
+        if (indexOfSameDigitOfComputerNumber != indexOfSameDigitOfPlayerNumber
+                && indexOfSameDigitOfComputerNumber >= GameProcess.NO_COUNT.getValue()) {
             return 1;
         }
         return GameProcess.NO_COUNT.getValue();

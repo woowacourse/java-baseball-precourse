@@ -33,7 +33,7 @@ public class Application {
         while (strike != GameProcess.OUT_3STIRKE.getValue()) {
             String playerNumber = inputPlayerNumber(scanner);
 
-            int[] strikeAndBall = referee.compareNumberOfPlayerAndComputer(playerNumber, computerNumber);
+            int[] strikeAndBall = referee.comparePlayerWithComputer(playerNumber, computerNumber);
             strike = strikeAndBall[0];
             ball = strikeAndBall[1];
 
