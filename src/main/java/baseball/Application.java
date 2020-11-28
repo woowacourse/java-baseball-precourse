@@ -4,28 +4,37 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Application {
+    private static boolean CheckValue(int value) throws IllegalArgumentException{
+        if(value == 1 || value == 2)
+            return true;
+        throw new IllegalArgumentException("값을 확인하고 입력해주세요!");
+    }
+    private static boolean Restart(int opinion) throws IllegalArgumentException{
+        try{
+            return CheckValue(opinion);
+        }catch (IllegalArgumentException i){
+            System.out.println(i.getMessage());
+        }
+        return false;
+    }
     final static int LENGTH = 3;
     //게임을 이어갈껀지만 결정하는 main
     public static void main(String[] args) {
-        //입력을 여기서 받길 원하는 거 같음.
         final Scanner scanner = new Scanner(System.in);
-        boolean check = false;
         // TODO 구현 진행
-        ArrayList<Integer> temp = new ArrayList<>();
+         int check = 1;
 
         //depth가 2 이하로 만들어야하는 것.
-        while(!check) {
+        while(check == 1) {
             try {
                 GameCycle g = new GameCycle();
                 g.GameStart();
             }catch (IllegalArgumentException i){
                 System.out.println(i.getMessage());
             }
-
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            if(scanner.nextInt() == 2) {
-                check = true;
-            }
+            do {
+                System.out.println("선택해 1과 2");
+            } while (!Restart(check = scanner.nextInt()));
         }
     }
 }

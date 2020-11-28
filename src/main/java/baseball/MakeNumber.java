@@ -36,7 +36,8 @@ public class MakeNumber {
     private void CheckLength(int answer) throws IllegalArgumentException{
         //3자리 수를 입력하지 않았을 때, 오류 throw
         if(answer < UserInputLimit){
-            throw new IllegalArgumentException("3자리 수를 입력해주세요!");
+            //ex) 012입력할 때, 3자리수를 입력했는지 확인하라고 함.
+            throw new IllegalArgumentException("첫째자리에 0을 썼는지, 또는 3자리 수를 입력했는지 확인해주세요");
         }
     }
 
@@ -64,8 +65,8 @@ public class MakeNumber {
 
             answer = answer / 10;
         }
-    }
 
+    }
 
 
     //private한 target return 하는 함수.
