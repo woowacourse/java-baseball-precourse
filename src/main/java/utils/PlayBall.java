@@ -13,14 +13,7 @@ public class PlayBall {
 
     public void play(Scanner scanner) {
         while(true) {
-            while(true) {
-                try {
-                    userInput.setInput(scanner);
-                    break;
-                } catch (Throwable throwable) {
-                    System.out.println(throwable.getMessage());
-                }
-            }
+            getInput(scanner);
             if(checkNum() == 1) {
                 break;
             }
@@ -68,5 +61,14 @@ public class PlayBall {
         }
     }
 
-
+    private void getInput(Scanner scanner) {
+        while(true) {
+            try {
+                userInput.setInput(scanner);
+                break;
+            } catch (Throwable throwable) {
+                System.out.println(throwable.getMessage());
+            }
+        }
+    }
 }
