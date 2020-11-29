@@ -15,6 +15,7 @@ public class NumberCompare {
     }
 
     public static ArrayList<Integer> numberCompare() {
+        ballStrikeCountList.clear();
         ballStrikeCountList.add(getFinalBallCount());
         ballStrikeCountList.add(compareStrikeCount());
 
@@ -34,10 +35,11 @@ public class NumberCompare {
     public static int compareStrikeCount() {
         int count = 0;
         for (int i = 0; i < NUMBER_LENGTH; i++) {
-            if (userNumberList.get(i) == randomNumberList.get(i)) {
+            if (userNumberList.get(i).equals(randomNumberList.get(i))) {
                 count++;
             }
         }
+        System.out.println(count);
         return count;
     }
 

@@ -1,9 +1,6 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class UserInputNumber {
 
@@ -11,14 +8,14 @@ public class UserInputNumber {
     private static String userinputNumberString;
     private static final int NUMBER_LENGTH = 3;
 
-    public static int userInputNumber() {
-        int userNumber;
+    public static ArrayList<Integer> userInputNumber() {
+        ArrayList<Integer> userNumberList;
         while (true) {
             try {
                 System.out.print("숫자를 입력해주세요 : ");
                 userNumberString = getUserInputNumber();
                 if (userInputNumberCheck()) {
-                    userNumber = Integer.parseInt(userinputNumberString);
+                    userNumberList = integerToList(userNumberString);
                     break;
                 }
 
@@ -27,7 +24,7 @@ public class UserInputNumber {
                 continue;
             }
         }
-        return userNumber;
+        return userNumberList;
     }
 
     public static String getUserInputNumber() {
@@ -83,5 +80,16 @@ public class UserInputNumber {
             return false;
         }
         return true;
+    }
+
+    public static ArrayList<Integer> integerToList(String userNumberString) {
+        ArrayList<Integer> userinputNumberList = new ArrayList<>();  // 새로 해줘야 char number를 입력할 때 null가능할수도있다고 뜨지 않는다.
+        char[] changeList = userNumberString.toCharArray();
+
+        for (char number : changeList) {
+            int numberInt = Integer.parseInt(String.valueOf(number));
+            userinputNumberList.add(numberInt);
+        }
+        return userinputNumberList;
     }
 }
