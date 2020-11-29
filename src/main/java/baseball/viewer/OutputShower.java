@@ -1,10 +1,15 @@
 package baseball.viewer;
 
+import baseball.domain.User;
+
 public class OutputShower {
     static final int ENDGAME = 3;
     static final int NOTHING = 0;
 
-    public static void outputPrint(int strikeNumber, int ballNumber) {
+    public static void outputPrint(User user) {
+        int ballNumber = user.getBallNumber();
+        int strikeNumber = user.getStrikeNumber();
+
         if (strikeNumber == ENDGAME) {
             showGameOver();
             return;
@@ -16,7 +21,6 @@ public class OutputShower {
         }
 
         showSitutation(strikeNumber, ballNumber);
-        return;
     }
 
     private static void showGameOver() {

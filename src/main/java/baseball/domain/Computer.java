@@ -1,10 +1,11 @@
 package baseball.domain;
 
 public class Computer extends Participant {
-    Computer() {
+    public Computer() {
         super();
     }
 
+    @Override
     public int[] getBallBunch() {
         return ballBunch;
     }

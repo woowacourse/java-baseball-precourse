@@ -1,44 +1,49 @@
 package baseball.controller;
 
+import baseball.domain.Computer;
+import baseball.domain.User;
+
 public class RuleChecker {
     static final int NUMBEROFBALL = 3;
-    static final int STRIKEPOSITION = 0;
-    static final int BALLPOSITION = 1;
 
-
-    public static int[] gradePoints(int[] userInput, int[] gameBallSet) {
-        int[] gradePoints = new int[2];
+    public static void gradePoints(User user, Computer computer) {
         int strikeNumberThisTurn = 0;
         int ballNumberThisTurn = 0;
+        int[] userBallBunch = user.getBallBunch();
+        int[] computerBallBunch = computer.getBallBunch();
 
         for (int position = 0; position < NUMBEROFBALL; position++) {
-            strikeNumberThisTurn += gradeStrike(userInput, gameBallSet, position);
-            ballNumberThisTurn += gradeBall(userInput, gameBallSet, position);
+            strikeNumberThisTurn += gradeStrike(userBallBunch, computerBallBunch, position);
+            ballNumberThisTurn += gradeBall(userBallBunch, computerBallBunch, position);
         }
-        gradePoints[STRIKEPOSITION] = strikeNumberThisTurn;
-        gradePoints[BALLPOSITION] = ballNumberThisTurn;
-        return gradePoints;
+
+        gradePoints(user, ballNumberThisTurn, strikeNumberThisTurn);
     }
 
-    private static int gradeStrike(int[] userInput, int[] gameBallSet, int turn) {
+    private static int gradeStrike(int[] userBallBunch, int[] computerBallBunch, int turn) {
         int thisStrike = 0;
 
-        if (userInput[turn] == gameBallSet[turn]) {
+        if (userBallBunch[turn] == computerBallBunch[turn]) {
             thisStrike += 1;
         }
 
         return thisStrike;
     }
 
-    private static int gradeBall(int[] userInput, int[] gameBallSet, int turn) {
+    private static int gradeBall(int[] userballBunch, int[] computerballBunch, int turn) {
         int thisBall = 0;
 
-        for (int lotatingTurn = 0; lotatingTurn < NUMBEROFBALL; lotatingTurn++) {
-            if ((lotatingTurn != turn) && (userInput[turn] == gameBallSet[lotatingTurn])) {
+        for (int rotate = 0; rotate < NUMBEROFBALL; rotate++) {
+            if ((rotate != turn) && (userballBunch[turn] == computerballBunch[rotate])) {
                 thisBall += 1;
             }
         }
 
         return thisBall;
+    }
+
+    private static void gradePoints(User user, int targetBallPoint, int targetStrikePoint) {
+        user.setBallNumber(targetBallPoint);
+        user.setStrikeNumber(targetStrikePoint);
     }
 }
