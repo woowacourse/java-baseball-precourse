@@ -13,6 +13,15 @@ class Game{
 
     }
 
+  int chooseAnswer(){
+      int start = 100;
+      int end = 999;
+
+      int answer = utils.RandomUtils.nextInt(start, end);
+
+      this.answer = answer;
+      return answer;
+  }
 };
 
 public class Application {
@@ -29,7 +38,7 @@ public class Application {
             guess = scanner.nextInt();
 
             Game g = new Game();
-
+            answer = g.chooseAnswer();
 
 
         }
