@@ -20,5 +20,12 @@ public class RandomNumber {
         return new ArrayList<>(threeNum);
     }
 
+    //정렬된 세 숫자를 받아 무작위로 섞어 리스트로 반환
+    public List<Integer> randNumList() {
+        List<Integer> list = makeThreeRandNum();
+        Collections.shuffle(list);
+        return list;
+    }
+
 
 }

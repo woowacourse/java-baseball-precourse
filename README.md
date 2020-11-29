@@ -107,11 +107,11 @@ private static final Random RANDOM = new Random();
 ## 구현할 기능 목록
 1. 세자리 랜덤 숫자를 뽑음 (makeThreeRandNum)
     - set으로 뽑아 중복을 제거하고 세 숫자를 뽑아 리스트로 반환
+    - 정렬된 형태로 반환됨
 
-2. 유효성 검증된 랜덤 숫자 생성 (randNumList)
-    - 세자리 랜덤 숫자를 뽑고, 유효성을 검증하여
-    - 최종 세자리 랜덤 숫자를 각 자리를 분리하여 리스트로 반환
-
+2. 무작위로 섞은 랜덤 숫자 생성 (randNumList)
+    - 정렬된 리스트를 무작위로 섞어 반환
+    
 3. 나의 입력값이 세자리 숫자인지 아닌지의 여부를 알려줌 (notInputThreeDigit)
     - 세자리 숫자일때 false, 아닐 때 true를 반환
     
