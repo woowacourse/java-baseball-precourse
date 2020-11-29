@@ -2,6 +2,11 @@ package baseball.modules;
 
 import java.util.Scanner;
 
+/**
+ * Manage inputs and outputs used in the game.
+ * 
+ * @author Kim Hanseul
+ */
 public class InputOutputManager {
     private static final String REQUEST_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String WRONG_VALUE_MESSAGE = "잘못된 값입니다.";
@@ -27,6 +32,7 @@ public class InputOutputManager {
         this.numberSize = numberSize;
     }
 
+    /** Ask user for a number to use in the game and return it. */
     public int[] askUserInputNumber(){
         System.out.print(REQUEST_INPUT_MESSAGE);
         String inputNumber = scanner.nextLine();
@@ -38,6 +44,7 @@ public class InputOutputManager {
         }
     }
 
+    /** Print the result of a round, count of strike and ball. */
     public void printRoundResult(final int strike, final int ball){
         if(strike < 0 || ball < 0){
             throw new IllegalArgumentException();
@@ -63,6 +70,7 @@ public class InputOutputManager {
         System.out.printf(WIN_PRAISE_FORMAT, numberSize);
     }
 
+    /** Ask user if want to restart, and return 1 or 2. */
     public int askRestartGame(){
         System.out.println(ASK_RESTART_MESSAGE);
         String answer = scanner.nextLine();

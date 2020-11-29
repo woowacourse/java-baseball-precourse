@@ -3,6 +3,11 @@ package baseball.modules;
 import java.util.ArrayList;
 import utils.RandomUtils;
 
+/**
+ * Generate number for use in game.
+ * 
+ * @author Kim Hanseul
+ */
 public class NumberGenerator {
     private static final int NUMBER_RANGE_MIN = 1;
     private static final int NUMBER_RANGE_MAX = 9;
@@ -24,10 +29,12 @@ public class NumberGenerator {
         this.numberSize = numberSize;
     }
 
+    /** Return a generated number. */
     public int[] getNumber(){
         return generatedNumber.clone();
     }
 
+    /** Generate a (numberSize)-digit random number with no duplication numbers in each digit. */
     public void generate(){
         initializeNumberRange();
         generatedNumber = new int[numberSize];

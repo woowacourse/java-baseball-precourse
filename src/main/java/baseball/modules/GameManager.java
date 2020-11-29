@@ -2,6 +2,11 @@ package baseball.modules;
 
 import java.util.Scanner;
 
+/**
+ * Manages the overall flow of the game.
+ * 
+ * @author Kim Hanseul
+ */
 public class GameManager {
     public static final int NUMBER_SIZE = 3;
     public static final int ANSWER_YES = 1;
@@ -21,6 +26,7 @@ public class GameManager {
         numberGenerator = new NumberGenerator(NUMBER_SIZE);
     }
 
+    /** Run the game. */
     public void run(){
         numberGenerator.generate();
 

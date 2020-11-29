@@ -2,6 +2,11 @@ package baseball.modules;
 
 import java.util.HashSet;
 
+/**
+ * Check whether the input value is an exception.
+ * 
+ * @author Kim Hanseul
+ */
 public class ExceptionChecker {
     public static boolean isParsableToInteger(final String input){
         try{
@@ -12,6 +17,13 @@ public class ExceptionChecker {
         }
     }
 
+    /**
+     * Check if length of the input value is the same as the given length.
+     * 
+     * @param input input string
+     * 
+     * @param targetLength The value for compare with length of the input string
+     */
     public static boolean isLengthFit(final String input, final int targetLength){
         if(isNull(input)){
             throw new IllegalArgumentException();
@@ -20,6 +32,7 @@ public class ExceptionChecker {
         return input.length() == targetLength;
     }
 
+    /** Check if input value contains the character 0. */
     public static boolean isContainsZero(final String input){
         if(isNull(input)){
             throw new IllegalArgumentException();
@@ -34,6 +47,7 @@ public class ExceptionChecker {
         return false;
     }
 
+    /** Check that each value in the array is not duplicated with other values ​​in the array. */
     public static boolean isArrayElementsAreUnique(final int[] input){
         if(isNull(input)){
             throw new IllegalArgumentException();
@@ -52,6 +66,7 @@ public class ExceptionChecker {
         return true;
     }    
 
+    /** Check if input value is 1 or 2 */
     public static boolean isOneOrTwo(final String input){
         if(isNull(input)){
             throw new IllegalArgumentException();
