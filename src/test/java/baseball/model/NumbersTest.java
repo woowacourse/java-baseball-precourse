@@ -47,4 +47,10 @@ public class NumbersTest {
             Numbers.valueOf("a23");
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    public void toStringTest(){
+        System.out.println(Numbers.valueOf("123"));
+        assertThat(Numbers.valueOf("123").toString()).isEqualTo("123");
+    }
 }

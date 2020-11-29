@@ -1,6 +1,7 @@
 package baseball.model;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Numbers {
     private static final int NUMBERS_LENGTH = 3;
@@ -35,5 +36,12 @@ public class Numbers {
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
         return true;
+    }
+
+    @Override
+    public String toString(){
+        return this.numbers.stream()
+                .map(Number::toString)
+                .collect(Collectors.joining());
     }
 }

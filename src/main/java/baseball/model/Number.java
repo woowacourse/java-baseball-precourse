@@ -39,4 +39,9 @@ public class Number {
     public int hashCode(){
         return this.number;
     }
+
+    @Override
+    public String toString(){
+        return Integer.toString(this.number);
+    }
 }
