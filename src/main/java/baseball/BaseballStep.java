@@ -2,8 +2,8 @@ package baseball;
 
 public class BaseballStep {
 
-    static final int NUMBER_COUNT = 3;
-    static final int MAX_NUMBER = 9;
+    static final int NUMBER_COUNT = Constant.NUMBER_COUNT.getValue();
+    static final int MAX_NUMBER = Constant.MAX_NUMBER.getValue();
 
     private int[] randomNumbers;
     private int[] playerNumbers;

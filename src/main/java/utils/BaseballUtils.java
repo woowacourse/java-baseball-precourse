@@ -1,13 +1,14 @@
 package utils;
 
 import baseball.BaseballStep;
+import baseball.Constant;
 import java.util.Scanner;
 
 public class BaseballUtils {
 
-    static final int NUMBER_COUNT = 3;
-    static final int MIN_NUMBER = 1;
-    static final int MAX_NUMBER = 9;
+    static final int NUMBER_COUNT = Constant.NUMBER_COUNT.getValue();
+    static final int MIN_NUMBER = Constant.MIN_NUMBER.getValue();
+    static final int MAX_NUMBER = Constant.MAX_NUMBER.getValue();
 
     public static int[] generateRandomNumbers() {
         int[] randomNumbers = new int[NUMBER_COUNT];
@@ -84,7 +85,6 @@ public class BaseballUtils {
         BaseballStep baseballStep = new BaseballStep(randomNumbers, playerNumbers);
         baseballStep.compare();
         System.out.println(baseballStep.toString());
-
 
         return baseballStep.isGameEnded();
     }

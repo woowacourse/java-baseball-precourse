@@ -1,5 +1,6 @@
 package utils;
 
+import baseball.Constant;
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 import org.junit.jupiter.api.Assertions;
@@ -9,9 +10,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BaseballUtilsTest {
 
-    static final int NUMBER_COUNT = 3;
-    static final int MIN_NUMBER = 1;
-    static final int MAX_NUMBER = 9;
+    static final int NUMBER_COUNT = Constant.NUMBER_COUNT.getValue();
+    static final int MIN_NUMBER = Constant.MIN_NUMBER.getValue();
+    static final int MAX_NUMBER = Constant.MAX_NUMBER.getValue();
     static final int MULTIPLE_CHECK_COUNT = 100;
 
     @Test
