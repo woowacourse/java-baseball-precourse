@@ -2,6 +2,7 @@ package baseball;
 
 import enums.GameProcess;
 import enums.RefereeCall;
+import enums.Regame;
 
 import java.util.Scanner;
 
@@ -32,12 +33,10 @@ public class Application {
         String computerNumber = number.getComputerNumber();
         while (strike != GameProcess.OUT_3STIRKE.getValue()) {
             String playerNumber = inputPlayerNumber(scanner);
-
             int[] strikeAndBall = referee.comparePlayerWithComputer(playerNumber, computerNumber);
             strike = strikeAndBall[0];
             ball = strikeAndBall[1];
 
-            System.out.println(playerNumber + " : " + computerNumber);
             System.out.println(referee.getHint(strike, ball));
         }
         askRegame(scanner);
@@ -46,13 +45,12 @@ public class Application {
     public void askRegame(Scanner scanner) {
         System.out.println(RefereeCall.OUT_3STRIKE.getCall());
         System.out.println(RefereeCall.ASK_REGAME.getCall());
-        int regameChoice = scanner.nextInt();
-        if (regameChoice == GameProcess.ACCEPT_REGAME.getValue()) {
-            scanner.nextLine(); // 버퍼비우기
+        String regameChoice = scanner.nextLine();
+        if (regameChoice.equals(Regame.ACCEPT.getValue())) {
             playGame(scanner);
             return;
         }
-        if (regameChoice == GameProcess.REJECT_REGAME.getValue()) {
+        if (regameChoice.equals(Regame.REJECT.getValue())) {
             return;
         }
         throw new IllegalArgumentException();

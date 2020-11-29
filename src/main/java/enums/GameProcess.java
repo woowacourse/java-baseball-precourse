@@ -2,9 +2,7 @@ package enums;
 
 public enum GameProcess {
     NO_COUNT(0),
-    OUT_3STIRKE(3),
-    ACCEPT_REGAME(1),
-    REJECT_REGAME(2);
+    OUT_3STIRKE(3);
 
     int value = -1;
 
