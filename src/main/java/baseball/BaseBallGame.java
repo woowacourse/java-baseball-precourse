@@ -34,11 +34,12 @@ public class BaseBallGame {
 
         setGame();
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
         code = BaseBallUtils.isCodeRight(scanner);
+
         if (code == CONTINUE_CODE) {
             return true;
         }
+
         return false;
     }
 
@@ -56,7 +57,6 @@ public class BaseBallGame {
 
     private void nextBalls() {
         System.out.print("숫자를 입력해주세요 : ");
-
         String input = scanner.next();
         int ballLength = input.length();
 
@@ -68,7 +68,6 @@ public class BaseBallGame {
     }
 
     private void getHints() {
-
         for (int i = 0; i < inputBalls.size(); i++) {
             if (inputBalls.get(i).equals(answerBalls.getAnswerBalls().get(i))) {
                 strikes++;

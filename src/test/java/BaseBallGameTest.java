@@ -36,7 +36,6 @@ public class BaseBallGameTest {
         Scanner scanner;
         BaseBallGame baseBallGame;
         ArrayList<Integer> ballsNum = answerBalls.getAnswerBalls();
-
         String ballStr = "";
 
         for (int num : ballsNum) {

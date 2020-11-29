@@ -25,7 +25,6 @@ public class BaseBallUtils {
     private static final String INVALID_VALUE_MESSAGE = "입력된 수가 1 혹은 2가 아닙니다.";
     private static final String INVALID_CODE_EXCEPTION = "한 자리의 숫자만 입력해주세요.";
 
-
     private BaseBallUtils() {
     }
 
@@ -43,6 +42,7 @@ public class BaseBallUtils {
 
     public static int isCodeRight(Scanner scanner) {
         int code;
+
         try {
             code = scanner.nextInt();
         } catch (Exception e) {
@@ -62,6 +62,7 @@ public class BaseBallUtils {
                 return false;
             }
         }
+
         return true;
     }
 
@@ -69,14 +70,17 @@ public class BaseBallUtils {
         if (inputBalls.size() != 3) {
             return false;
         }
+
         return true;
     }
 
     private static Boolean isDuplicated(List<Integer> inputBalls) {
         Set<Integer> setBalls = new HashSet(inputBalls);
+
         if (setBalls.size() < 3) {
             return false;
         }
+
         return true;
     }
 }

@@ -9,16 +9,11 @@
  *
  */
 
-import baseball.AnswerBalls;
-import baseball.Application;
-import baseball.BaseBallGame;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.assertj.core.api.Assertions;
-import org.mockito.Mockito;
 import utils.BaseBallUtils;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -40,7 +35,6 @@ public class BaseBallUtilsTest {
         zeroInput = new Scanner("012");
         overThreeInput = new Scanner("1234");
         duplicatedInput = new Scanner("112");
-        AnswerBalls answerBalls = new AnswerBalls();
     }
 
     @AfterAll
@@ -76,14 +70,12 @@ public class BaseBallUtilsTest {
     @Test
     public void zeroInputTest() {
         ArrayList<Integer> inputBalls = new ArrayList<Integer>();
-
         String input = zeroInput.next();
         int ballLength = input.length();
 
         for (int i = 0; i < ballLength; i++) {
             inputBalls.add((int) Character.getNumericValue(input.charAt(i)));
         }
-
 
         Assertions.assertThatIllegalArgumentException()
                 .isThrownBy(() -> {BaseBallUtils.isBallsRight(inputBalls);})
@@ -93,14 +85,12 @@ public class BaseBallUtilsTest {
     @Test
     public void overThreeInputTest() {
         ArrayList<Integer> inputBalls = new ArrayList<Integer>();
-
         String input = overThreeInput.next();
         int ballLength = input.length();
 
         for (int i = 0; i < ballLength; i++) {
             inputBalls.add((int) Character.getNumericValue(input.charAt(i)));
         }
-
 
         Assertions.assertThatIllegalArgumentException()
                 .isThrownBy(() -> {BaseBallUtils.isBallsRight(inputBalls);})
@@ -110,14 +100,12 @@ public class BaseBallUtilsTest {
     @Test
     public void duplicatedInputTest() {
         ArrayList<Integer> inputBalls = new ArrayList<Integer>();
-
         String input = duplicatedInput.next();
         int ballLength = input.length();
 
         for (int i = 0; i < ballLength; i++) {
             inputBalls.add((int) Character.getNumericValue(input.charAt(i)));
         }
-
 
         Assertions.assertThatIllegalArgumentException()
                 .isThrownBy(() -> {BaseBallUtils.isBallsRight(inputBalls);})
