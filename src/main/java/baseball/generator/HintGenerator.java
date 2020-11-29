@@ -6,7 +6,7 @@ import baseball.type.ValueType;
 
 import java.util.ArrayList;
 
-/** 플레이어가 입력한 수에 대한 힌트를 제공하는 클래스 */
+/** 플레이어가 입력한 수에 대한 힌트를 생성하는 클래스 */
 public class HintGenerator {
     private static ArrayList<Integer> programNumber = new ArrayList<>();
     private static int ball;
@@ -20,12 +20,12 @@ public class HintGenerator {
     }
 
     /**
-     * 플레이어가 입력한 수에 대한 힌트를 제공하는 함수
+     * 플레이어가 입력한 수에 대한 힌트를 생성하는 함수
      *
      * @param playerNumber
      * @return result
      */
-    public static String giveHint(ArrayList<Integer> playerNumber) {
+    public static String generateHint(ArrayList<Integer> playerNumber) {
         getProgramNumber();
 
         // `볼`, `스트라이크`를 초기화한다.

@@ -65,9 +65,18 @@ public class GameController {
             ArrayList<Integer> playerNumber = convertPlayerNumber(scannerNumber);
 
             // 플레이어에게 힌트를 제공한다.
-            HintGenerator hintGenerator = new HintGenerator();
-            result = hintGenerator.giveHint(playerNumber);
+            giveHint(playerNumber);
         }
+    }
+
+    /**
+     * 플레이어에게 힌트를 제공하는 함수
+     *
+     * @param playerNumber
+     */
+    public static void giveHint(ArrayList<Integer> playerNumber) {
+        HintGenerator hintGenerator = new HintGenerator();
+        result = hintGenerator.generateHint(playerNumber);
     }
 
     /**
