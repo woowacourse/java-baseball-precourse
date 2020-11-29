@@ -5,15 +5,14 @@ public class Computer {
 	final int END_INCLUSIVE = 9;
 	boolean[] checkOverlapArray = new boolean[10];
 	char[] randomNumbersArray = new char[Hint.BASE_BALL_GAME_RANGE];
-	
-	
+
 	public boolean[] overLapNUmbersArray() {
 		for (int i = 0; i < checkOverlapArray.length; i++) {
 			checkOverlapArray[i] = false;
 		}
 		return checkOverlapArray;
 	}
-	
+
 	public char[] inputRandomNumbersArray() {
 		int count = 0;
 		boolean[] already = overLapNUmbersArray();
@@ -27,6 +26,5 @@ public class Computer {
 		}
 		return randomNumbersArray;
 	}
-	
-	
+
 }

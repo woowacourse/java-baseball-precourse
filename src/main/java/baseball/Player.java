@@ -7,10 +7,10 @@ public class Player {
 
 	public String inputNumbers() {
 		System.out.println("1~9까지의 정수를 입력하세요.");
-		String userInputNumbers = scanner.next();	
+		String userInputNumbers = scanner.next();
 		return userInputNumbers;
 	}
-	
+
 	public char[] userNumbersArray(String string) {
 		char[] userInputNumbersArray = string.toCharArray();
 		return userInputNumbersArray;
