@@ -42,9 +42,6 @@ public class Game {
     }
 
     private boolean stop() {
-        if (this.result.terminated()) {
-            return true;
-        }
-        return false;
+        return this.result.terminated();
     }
 }
