@@ -45,6 +45,15 @@ public class Service {
         if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
         }
-
     }
+
+    /* 승리 확인 메소드 */
+    public boolean isWin(int ballCount, int strikeCount) {
+        if(strikeCount==3 && ballCount==0) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
 }
