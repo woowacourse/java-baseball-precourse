@@ -15,4 +15,9 @@ public class RandomNumber {
         return threeNum;
     }
 
+    //세 정수가 서로 중복되는지 체크하는 메서드
+    private boolean checkDuplication(int n1, int n2, int n3) {
+        return (n1 != n2) && (n2 != n3) && (n3 != n1);
+    }
+
 }

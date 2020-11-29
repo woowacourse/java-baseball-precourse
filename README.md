@@ -108,7 +108,7 @@ private static final Random RANDOM = new Random();
 1. 세자리 랜덤 숫자를 뽑음 (makeThreeRandNum)
     - 중복 여부는 체크하지 않음
 
-2. 랜덤 숫자 중복을 검사
+2. 랜덤 숫자 중복을 검사 (checkDuplication)
     - 중복이면 false, 중복이 아니면 true 반환
 
 3. 유효성 검증된 랜덤 숫자 생성
