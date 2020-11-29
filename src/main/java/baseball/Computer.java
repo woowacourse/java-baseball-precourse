@@ -13,27 +13,30 @@ public class Computer {
 
     public Computer(Scanner scanner) {
         this.player = new Player(scanner);
-        this.randomBalls = NumberGenerator.generateNumber();
     }
 
     public void startGame() {
         Map<String, Integer> score = null;
+        generateBalls();
 
         while (isNotAllStrike(score) || wantToRestart()) {
             Alert.enterNumber();
             this.playerBalls = player.enterNumber();
             score = NumberComparator.compareTwoBalls(
-                randomBalls.getBalls(), playerBalls.getBalls());
+                randomBalls.getBalls(),
+                playerBalls.getBalls());
             Alert.markScore(score.get(BALL), score.get(STRIKE));
         }
     }
 
     private boolean wantToRestart() {
         Alert.askToRestart();
-        if(player.enterOrder()){
-            this.randomBalls = NumberGenerator.generateNumber();
+
+        if (player.enterOrder()) {
+            generateBalls();
             return true;
         }
+
         return false;
     }
 
@@ -41,8 +44,12 @@ public class Computer {
         if (score == null || score.get(STRIKE) != 3) {
             return true;
         }
-        Alert.finishGame();
+
         return false;
+    }
+
+    private void generateBalls(){
+        this.randomBalls = NumberGenerator.generateNumber();
     }
 
 }

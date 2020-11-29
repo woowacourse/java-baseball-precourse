@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Input {
+
     private static final String ABNORMAL_INPUT = "비정상적인 입력입니다.";
     private static final int NUMBER_INPUT_LENGTH = 3;
     private static final int ZERO = 0;
@@ -21,18 +22,14 @@ public class Input {
 
     public Balls enterNumberInput() {
         int input = inputOnlyNumber();
-
         validateLength(input, NUMBER_INPUT_LENGTH);
-
         return makeBallsFrom(input);
     }
 
     public boolean enterOrderInput() {
         int input = inputOnlyNumber();
-
         validateNotOneOrTwo(input);
-
-        if(input == 1){
+        if (input == 1) {
             return true;
         }
         return false;
@@ -59,15 +56,15 @@ public class Input {
     }
 
     private int inputOnlyNumber() {
-        int input = ZERO;
+        int rawInput = ZERO;
 
         try {
-            input = scanner.nextInt();
+            rawInput = scanner.nextInt();
         } catch (Exception e) {
             throw new IllegalArgumentException(ABNORMAL_INPUT);
         }
 
-        return input;
+        return rawInput;
     }
 
     private void validateLength(int input, int length) {
@@ -77,7 +74,7 @@ public class Input {
     }
 
     private void validateNotOneOrTwo(int input) {
-        if (input != 1 && input != 2){
+        if (input != 1 && input != 2) {
             throw new IllegalArgumentException(ABNORMAL_INPUT);
         }
     }
@@ -85,7 +82,6 @@ public class Input {
     private int getNumberInputLength(int input) {
         return (int) (Math.log10(input) + 1);
     }
-
 
 
 }

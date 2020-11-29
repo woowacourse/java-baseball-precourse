@@ -14,15 +14,18 @@ public class NumberGenerator {
 
     public static Balls generateNumber() {
         Set<Integer> numbers = new HashSet<>();
+
         while (numbers.size() != GENERATE_COUNT) {
             numbers.add(RandomUtils.nextInt(START_NUMBER, END_NUMBER));
         }
 
-        List<BallNumber> balls = numbers.stream()
+        return new Balls(makeBallsFrom(numbers));
+    }
+
+    private static List<BallNumber> makeBallsFrom(Set<Integer> numbers){
+        return numbers.stream()
             .map(BallNumber::new)
             .collect(Collectors.toList());
-
-        return new Balls(balls);
     }
 
 }

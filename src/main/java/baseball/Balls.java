@@ -15,6 +15,12 @@ public class Balls {
         this.balls = balls;
     }
 
+    public List<Integer> getBalls() {
+        return balls.stream()
+            .map(ballNumber -> ballNumber.getNumber())
+            .collect(Collectors.toList());
+    }
+
     private void validateDuplicate(List<BallNumber> balls) {
         if (isDuplicated(balls)) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER);
@@ -28,11 +34,7 @@ public class Balls {
             .count() != balls.size();
     }
 
-    public List<Integer> getBalls() {
-        return balls.stream()
-            .map(ballNumber -> ballNumber.getNumber())
-            .collect(Collectors.toList());
-    }
+
 
 
 }

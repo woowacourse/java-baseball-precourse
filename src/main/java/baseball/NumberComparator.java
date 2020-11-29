@@ -26,27 +26,19 @@ public class NumberComparator {
         return score;
     }
 
-    private static void checkSameNumberWithDifferentIndex(Map<String, Integer> score,
-        List<Integer> randomBalls, List<Integer> playerBalls) {
-        for (int i = 0; i < playerBalls.size(); i++) {
-            int plus = plusOneIfContainsAtDifferentIndex(i, playerBalls.get(i), randomBalls);
-            score.put(BALL, score.get(BALL) + plus);
-        }
-    }
-
-    private static Integer plusOneIfContainsAtDifferentIndex(Integer index,
-        Integer playerBall, List<Integer> randomBalls) {
-        if (randomBalls.contains(playerBall) && randomBalls.get(index) != playerBall) {
-            return ONE;
-        }
-        return ZERO;
-    }
-
     private static void checkSameNumberWithSameIndex(Map<String, Integer> score,
         List<Integer> randomBalls, List<Integer> playerBalls) {
         for (int i = 0; i < playerBalls.size(); i++) {
             int plus = plusOneIfContainsAtSameIndex(playerBalls.get(i), randomBalls.get(i));
             score.put(STRIKE, score.get(STRIKE) + plus);
+        }
+    }
+
+    private static void checkSameNumberWithDifferentIndex(Map<String, Integer> score,
+            List<Integer> randomBalls, List<Integer> playerBalls) {
+        for (int i = 0; i < playerBalls.size(); i++) {
+            int plus = plusOneIfContainsAtDifferentIndex(i, playerBalls.get(i), randomBalls);
+            score.put(BALL, score.get(BALL) + plus);
         }
     }
 
@@ -56,4 +48,15 @@ public class NumberComparator {
         }
         return ZERO;
     }
+
+    private static Integer plusOneIfContainsAtDifferentIndex(Integer index,
+            Integer playerBall, List<Integer> randomBalls) {
+        if (randomBalls.contains(playerBall) && randomBalls.get(index) != playerBall) {
+            return ONE;
+        }
+        return ZERO;
+    }
+
+
+
 }
