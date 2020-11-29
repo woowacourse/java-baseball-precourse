@@ -2,6 +2,7 @@ package controller;
 
 import baseball.BaseballGame;
 import domain.BaseballNumber;
+import domain.Hint;
 import domain.Player;
 import java.util.Scanner;
 
@@ -23,7 +24,8 @@ public class BaseballGameController {
     public void play() {
         BaseballNumber playerBaseballNumber = player.createBaseballNumber(getInput());
         baseballGame.exists(playerBaseballNumber);
-        baseballGame.countStrikeAndBall(playerBaseballNumber);
+        Hint hint = baseballGame.countStrikeAndBall(playerBaseballNumber);
+        System.out.println(hint);
     }
 
     private String getInput() {
