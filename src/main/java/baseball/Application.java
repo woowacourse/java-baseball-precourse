@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.HashSet;
 import java.util.Scanner;
 import utils.RandomUtils;
 
@@ -18,10 +19,25 @@ public class Application {
         application.inputPlayerNums(scanner);
     }
 
+    private void validateNums() {
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < playerNums.length; i++) {
+            if (set.contains(playerNums[i])) {
+                throw new IllegalArgumentException("number duplicate");
+            }
+
+            if (playerNums[i] < 1 || playerNums[i] > 9) {
+                throw new IllegalArgumentException("number range is 1 ~ 9");
+            }
+            set.add(playerNums[i]);
+        }
+    }
+
     private void inputPlayerNums(Scanner scanner) {
         for (int i = 0; i < playerNums.length; i++) {
             playerNums[i] = scanner.nextInt();
         }
+        validateNums();
     }
 
     private void initComputerNums() {
