@@ -42,6 +42,16 @@ public class Application {
         return comNum;
     }
 
+    /* 입력된 input값을 userNumber로 변환하는 메서드 */
+    public static Number setUserNumber(String inputValue){
+        Number usrNum = new Number(INPUT_NUM);
+        for(int i=0;i<INPUT_NUM;i++){
+            int number=Character.getNumericValue(inputValue.charAt(i));
+            usrNum.setArrayNumberAt(i,number);
+        }
+        return usrNum;
+    }
+
     /* 게임 진행을 위해 숫자를 입력하라는 안내를 출력하는 메소드 */
     public static void printNumberInput() {
         System.out.print("숫자를 입력해 주세요 : ");
