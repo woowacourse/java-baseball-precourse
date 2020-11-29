@@ -1,13 +1,13 @@
 package utils;
 
-import baseball.GameManager;
+import baseball.BaseballManager;
 import baseball.GameStatusCode;
 
 public class Validator {
     private static final int PROGRESS_VALUE_SIZE = 1;
 
     public void validateInputValue(String inputValue) {
-        if (inputValue.length() != GameManager.BASEBALL_NUMBER) {
+        if (inputValue.length() != BaseballManager.BASEBALL_NUMBER) {
             throw new IllegalArgumentException(ExceptionMessages.WRONG_INPUT_VALUE_SIZE);
         }
 
@@ -48,6 +48,6 @@ public class Validator {
     }
 
     public boolean isGameSet(int strikeNumber) {
-        return strikeNumber == GameManager.BASEBALL_NUMBER;
+        return strikeNumber == BaseballManager.BASEBALL_NUMBER;
     }
 }

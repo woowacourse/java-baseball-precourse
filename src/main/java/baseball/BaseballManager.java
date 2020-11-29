@@ -2,7 +2,7 @@ package baseball;
 
 import utils.RandomUtils;
 
-public class GameManager {
+public class BaseballManager {
     public static final int BASEBALL_NUMBER = 3;
     public static final int BASEBALL_NUMBER_RANGE_START = 1;
     public static final int BASEBALL_NUMBER_RANGE_END = 9;
@@ -10,7 +10,7 @@ public class GameManager {
     private final int[] baseballs;
     private boolean isGameInProgress;
 
-    public GameManager() {
+    public BaseballManager() {
         baseballs = new int[BASEBALL_NUMBER];
 
         createBaseballs();
