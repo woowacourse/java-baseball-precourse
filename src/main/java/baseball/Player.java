@@ -16,10 +16,13 @@ public class Player {
             IllegalArgumentException e = new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
 
             String inputNumber = scanner.next();
-            if (isCorrectNumber(inputNumber)) return inputNumber;
-            else throw e;
+            if (isCorrectNumber(inputNumber)) {
+                return inputNumber;
+            } else {
+                throw e;
+            }
 
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e){
             System.out.println(e.getMessage() + Constants.RESTART_REQ_MESSAGE);
             return setPlayerNumber(scanner);
         }
@@ -33,8 +36,11 @@ public class Player {
 
         for(int i = 0 ; i < Constants.NUMBER_COUNT; ++i){
             int number = inputNumber.charAt(i) - '0';
-            if (number == 0) return false;
-            if (isUsedNumber[number]) return false;
+            if (number == 0) {
+                return false;
+            } else if (isUsedNumber[number]) {
+                return false;
+            }
             isUsedNumber[number] = true;
         }
         return true;
@@ -46,8 +52,11 @@ public class Player {
         for(int numberOrder = 0 ; numberOrder < Constants.NUMBER_COUNT; ++numberOrder){
             int number = inputNumber.charAt(numberOrder) - '0';
 
-            if (number == randomNumber.answerNumbers[numberOrder]) strikeCount++;
-            else if(randomNumber.isUsedNumber[number]) ballCount++;
+            if (number == randomNumber.answerNumbers[numberOrder]){
+                strikeCount++;
+            } else if(randomNumber.isUsedNumber[number]) {
+                ballCount++;
+            }
         }
     }
 

@@ -41,11 +41,14 @@ public class BaseBallGame{
             IllegalArgumentException e = new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
 
             int gameRestartFlag = scanner.nextInt();
-            if(gameRestartFlag == Constants.GAME_RESTART) return true;
-            else if(gameRestartFlag == Constants.GAME_STOP) return false;
-            else throw e;
-        }
-        catch(IllegalArgumentException e) {
+            if(gameRestartFlag == Constants.GAME_RESTART) {
+                return true;
+            } else if(gameRestartFlag == Constants.GAME_STOP) {
+                return false;
+            } else {
+                throw e;
+            }
+        } catch(IllegalArgumentException e) {
             System.out.println(e.getMessage() + Constants.RESTART_REQ_MESSAGE);
             return isGameKeepGoing(scanner);
         }
@@ -61,8 +64,12 @@ public class BaseBallGame{
             return;
         }
 
-        if(playerBallCount != 0) System.out.print(playerBallCount + Constants.BALL_MESSAGE + " ");
-        if(playerStrikeCount != 0) System.out.print(playerStrikeCount + Constants.STRIKE_MESSAGE);
+        if(playerBallCount != 0) {
+            System.out.print(playerBallCount + Constants.BALL_MESSAGE + " ");
+        }
+        if(playerStrikeCount != 0) {
+            System.out.print(playerStrikeCount + Constants.STRIKE_MESSAGE);
+        }
         System.out.println();
     }
 
