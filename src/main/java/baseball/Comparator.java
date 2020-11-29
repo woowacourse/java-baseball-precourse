@@ -32,10 +32,10 @@ public class Comparator {
             return ZERO;
         }
 
-        return countIfSameDigit(computerNumber, playerNumber, computerNumberDigit, playerNumberDigit);
+        return countIfSameNumber(computerNumber, playerNumber, computerNumberDigit, playerNumberDigit);
     }
 
-    private static int countIfSameDigit(Number computerNumber, Number playerNumber, int computerNumberDigit, int playerNumberDigit) {
+    private static int countIfSameNumber(Number computerNumber, Number playerNumber, int computerNumberDigit, int playerNumberDigit) {
         if(computerNumber.getNthDigit(computerNumberDigit) == playerNumber.getNthDigit(playerNumberDigit)) {
             return ONE;
         }
