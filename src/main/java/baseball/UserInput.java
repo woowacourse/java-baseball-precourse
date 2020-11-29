@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class UserInput {
     private static Scanner input = new Scanner(System.in);
@@ -11,9 +12,7 @@ public class UserInput {
         System.out.print("숫자를 입력해주세요 : ");
         userNumString = input.nextLine();
         if (userNumValidation(userNumString)) {
-            for(int i=0; i<userNumString.length(); i++) {
-                userNum[i] = userNumString.charAt(i) - '0';
-            }
+            userNum = Stream.of(userNumString.split("")).mapToInt(Integer::parseInt).toArray();
             return userNum;
         } else {
             throw new IllegalArgumentException();
