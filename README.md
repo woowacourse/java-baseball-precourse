@@ -111,7 +111,7 @@ private static final Random RANDOM = new Random();
 2. 랜덤 숫자 중복을 검사 (checkDuplication)
     - 중복이면 false, 중복이 아니면 true 반환
 
-3. 유효성 검증된 랜덤 숫자 생성
+3. 유효성 검증된 랜덤 숫자 생성 (randNumList)
     - 세자리 랜덤 숫자를 뽑고, 유효성을 검증하여
     - 최종 세자리 랜덤 숫자를 각 자리를 분리하여 리스트로 반환
 
