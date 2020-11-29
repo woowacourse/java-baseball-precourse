@@ -23,6 +23,8 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             System.out.println(application.playerNums[i]);
         }
+
+        application.printResult();
     }
 
     private void validateInput(int input) {
@@ -88,5 +90,26 @@ public class Application {
             }
         }
         return numOfStrikes;
+    }
+
+    private void printResult() {
+        StringBuilder sb = new StringBuilder();
+        int numOfBalls = getNumOfBalls();
+        int numOfStrikes = getNumOfStrikes();
+        if (numOfBalls > 0) {
+            sb.append(numOfBalls);
+            sb.append("볼 ");
+        }
+
+        if (numOfStrikes > 0) {
+            sb.append(numOfStrikes);
+            sb.append("스트라이크");
+        }
+
+        if (numOfBalls == 0 && numOfStrikes == 0) {
+            sb.append("낫싱");
+        }
+
+        System.out.println(sb.toString());
     }
 }
