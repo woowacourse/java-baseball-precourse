@@ -14,23 +14,8 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
         int restartGame = 1;
-        while(restartGame == 1){
-            GameController.playGame();
+        while(restartGame == RESTART_CODE){
+            restartGame = GameController.playGame(scanner);
         }
-        String result = "";
-        //임의의 수를 생성한다
-        String randomNumber = RandomNumber.generateNumbers(NUMBER_LENGTH);
-        //유저에게 숫자를 입력받는다
-        String inputNumber = InputNumber.getInput(scanner);
-
-
-        //입력값의 범위를 벗어나서 경고 메세지를 받은 경우
-        if (inputNumber.length() != NUMBER_LENGTH){
-            System.out.println(inputNumber);
-        }else{  //심판에게 판단을 받는다
-            result = Referee.judgeNumber(randomNumber, inputNumber);
-        }
-        System.out.println(randomNumber);
-        System.out.println(inputNumber);
     }
 }
