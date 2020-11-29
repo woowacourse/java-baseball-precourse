@@ -22,7 +22,7 @@ public class Application {
                 System.out.println(i.getMessage());
             }
             do {
-                System.out.println("선택해 1과 2");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             } while (!Start.Restart(check = scanner.nextInt()));
         }
     }

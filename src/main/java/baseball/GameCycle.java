@@ -10,7 +10,7 @@ public class GameCycle{
     final Scanner scanner = new Scanner(System.in);
 
     GameCycle(){
-        MakeNumber CompM = new MakeNumber();
+        MakingNumber CompM = new MakingNumber();
         this.CompValue = CompM.GetTarget();
     }
 
@@ -70,7 +70,7 @@ public class GameCycle{
 
     private void Input()throws IllegalArgumentException{
         System.out.println("숫자를 입력해주세요.");
-        MakeNumber User = new MakeNumber(scanner.nextInt());
+        MakingNumber User = new MakingNumber(scanner.nextInt());
         this.UserValue = User.GetTarget();
     }
 

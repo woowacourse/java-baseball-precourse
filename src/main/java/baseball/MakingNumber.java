@@ -4,7 +4,7 @@ import utils.RandomUtils;
 
 import java.util.ArrayList;
 
-public class MakeNumber {
+public class MakingNumber {
     //숫자야구의 시작과 끝 범위.
     final static int StartNum = 1;
     final static int EndNum = 9;
@@ -42,7 +42,7 @@ public class MakeNumber {
     }
 
     //target을 만든다(임의의 수 버전)
-    MakeNumber(){
+    MakingNumber(){
         while(target.size() < Application.LENGTH){
             int element = RandomUtils.nextInt(StartNum, EndNum);
             if(AmUsed(element)){
@@ -51,7 +51,7 @@ public class MakeNumber {
         }
     }
     //target을 만든다(사용자 버전)
-    MakeNumber(int answer) throws IllegalArgumentException{
+    MakingNumber(int answer) throws IllegalArgumentException{
         CheckLength(answer);
         //arraylist로 변환.
         while(answer > 0){
