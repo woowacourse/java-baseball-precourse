@@ -8,6 +8,7 @@ public class RandomNumber {
     //랜덤 숫자를 3개 뽑을 것이기 때문에 상수로 3 설정
     static final int RAND_NUM_LENGTH = 3;
 
+    //RandomUtils.nextInt()의 매개변수를 상수로 설정
     static final int START_BOUND = 1;
     static final int END_BOUND = 9;
 
