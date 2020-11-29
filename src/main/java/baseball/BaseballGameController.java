@@ -31,12 +31,15 @@ public class BaseballGameController {
     public void updateUserNumber(Scanner scanner) {
         String number = InputMachine.inputUserNumber(scanner);
 
-        if (InputValidator.validateUserNumber(number)) {
-            user.setUserNumber(StringToListIntegerutils.convertToList(number));
-            return;
-        }
+        try {
 
-        OutputView.showError(OutputView.ERROR_MESSAGE);
+            if (InputValidator.validateUserNumber(number)) {
+                user.setUserNumber(StringToListIntegerutils.convertToList(number));
+            }
+
+        } catch (IllegalArgumentException e) {
+            OutputView.showError(e.getMessage());
+        }
     }
 
     public List<Integer> fetchUserNumber() {
@@ -44,7 +47,7 @@ public class BaseballGameController {
     }
 
     public void resetUserNumber() {
-        user.setUserNumber(new ArrayList<Integer>());
+        user.setUserNumber(new ArrayList<>());
     }
 
     public void comparingProcess() {
@@ -67,12 +70,16 @@ public class BaseballGameController {
     public void updateRetryNumber(Scanner scanner) {
         String number = InputMachine.inputRetryNumber(scanner);
 
-        if (InputValidator.validateRetryNumber(number)) {
-            user.setRetryNumber(Integer.parseInt(number));
-            return;
+        try {
+
+            if (InputValidator.validateRetryNumber(number)) {
+                user.setRetryNumber(Integer.parseInt(number));
+            }
+
+        } catch (IllegalArgumentException e) {
+            user.setRetryNumber(Constants.INVALID_RETRY_NUMBER);
+            OutputView.showError(e.getMessage());
         }
-        user.setRetryNumber(Constants.INVALID_RETRY_NUMBER);
-        OutputView.showError(OutputView.ERROR_MESSAGE);
     }
 
     public int fetchRetryNumber() {

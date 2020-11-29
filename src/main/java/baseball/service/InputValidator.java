@@ -9,7 +9,8 @@ import java.util.List;
 
 public class InputValidator {
 
-    private InputValidator() {}
+    private InputValidator() {
+    }
 
     public static boolean validateUserNumber(String userNumber) {
         return isNaturalNumberForUserNumber(userNumber)
@@ -27,9 +28,8 @@ public class InputValidator {
 
         try {
             Integer.parseInt(number);
-        } catch (IllegalArgumentException expected) {
-            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_THREE_DIGIT_NUMBER;
-            return false;
+        } catch (NumberFormatException expected) {
+            throw new IllegalArgumentException(Constants.PLEASE_INPUT_THREE_DIGIT_NUMBER);
         }
 
         return true;
@@ -38,8 +38,7 @@ public class InputValidator {
     private static boolean isThreeDigitNumber(String number) {
 
         if (number.length() != Constants.ANSWER_LENGTH) {
-            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_THREE_DIGIT_NUMBER;
-            return false;
+            throw new IllegalArgumentException(Constants.PLEASE_INPUT_THREE_DIGIT_NUMBER);
         }
 
         return true;
@@ -48,8 +47,7 @@ public class InputValidator {
     private static boolean isNonZero(String number) {
 
         if (number.contains(Constants.CONTAIN_ZERO)) {
-            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_NON_ZERO_NUMBER;
-            return false;
+            throw new IllegalArgumentException(Constants.PLEASE_INPUT_NON_ZERO_NUMBER);
         }
 
         return true;
@@ -59,8 +57,7 @@ public class InputValidator {
         List<Integer> numberList = StringToListIntegerutils.convertToList(number);
 
         if (numberList.stream().distinct().count() != Constants.ANSWER_LENGTH) {
-            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_ALL_DIFFERENT_NUMBER;
-            return false;
+            throw new IllegalArgumentException(Constants.PLEASE_INPUT_ALL_DIFFERENT_NUMBER);
         }
 
         return true;
@@ -70,12 +67,13 @@ public class InputValidator {
 
         try {
             Integer.parseInt(number);
+
             if (number.length() > Constants.VALUE_ONE) {
-                return false;
+                throw new IllegalArgumentException(Constants.PLEASE_INPUT_ONE_DIGIT_NUMBER);
             }
-        } catch (IllegalArgumentException expected) {
-            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_ONE_DIGIT_NUMBER;
-            return false;
+
+        } catch (NumberFormatException expected) {
+            throw new IllegalArgumentException(Constants.PLEASE_INPUT_ONE_DIGIT_NUMBER);
         }
 
         return true;
@@ -84,8 +82,7 @@ public class InputValidator {
     private static boolean isNumberOneOrTwo(String number) {
 
         if (!(number.contains(Constants.RESTART) || number.contains(Constants.EXIT))) {
-            OutputView.ERROR_MESSAGE = Constants.PLEASE_INPUT_ONE_DIGIT_NUMBER;
-            return false;
+            throw new IllegalArgumentException(Constants.PLEASE_INPUT_ONE_DIGIT_NUMBER);
         }
 
         return true;
