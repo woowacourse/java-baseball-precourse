@@ -19,7 +19,7 @@ public class BaseballGame {
 
     protected final InputView inputView;
 
-    protected final Batter batter;
+    protected Batter batter;
 
     protected Pitcher pitcher;
 
@@ -41,9 +41,15 @@ public class BaseballGame {
     public void run() {
         boolean isGameEnd = false;
         while (!isGameEnd) {
+            setGame();
             playGame();
             isGameEnd = inputView.askRetry();
         }
+    }
+
+    public void setGame() {
+        batter = batter.setNewAnswer();
+        scoreBoard = new ScoreBoard();
     }
 
     private void playGame() {
