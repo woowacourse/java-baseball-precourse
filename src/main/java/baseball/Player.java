@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class Player {
 
+    private static Scanner scanner = new Scanner(System.in);
+
     public String getNumber(){
         String result = "";
-        Scanner scanner = new Scanner(System.in);
 
         while(true){
             System.out.println("숫자를 입력해주세요 : ");
@@ -24,6 +25,17 @@ public class Player {
         }
 
         return result;
+    }
+
+    public int getRestartOrEnd(){
+        String input = scanner.nextLine();
+
+        if(input.equals("1") || input.equals("2")){
+            return Integer.parseInt(input);
+        }
+        else{
+            throw new IllegalArgumentException("input error");
+        }
     }
 
     private static boolean checkNumber(String inputNumber){
