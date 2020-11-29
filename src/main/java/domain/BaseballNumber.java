@@ -23,6 +23,10 @@ public class BaseballNumber {
         }
     }
 
+    public int size() {
+        return baseballNumbers.size();
+    }
+
     public int getNumber(int index) {
         return baseballNumbers.get(index);
     }

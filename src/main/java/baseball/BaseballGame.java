@@ -2,24 +2,16 @@ package baseball;
 
 import domain.BaseballNumber;
 import domain.Hint;
-import java.util.List;
-import utils.RandomNumbers;
 
 /**
  * @author yhh1056
  * @since 2020/11/26
  */
 public class BaseballGame {
-    public static final int BASEBALL_LIST_SIZE = 3;
-
     private final BaseballNumber baseballNumber;
 
-    public BaseballGame() {
-        this.baseballNumber = new BaseballNumber(nonDuplicateNumber());
-    }
-
-    private List<Integer> nonDuplicateNumber() {
-        return RandomNumbers.getInstance(BASEBALL_LIST_SIZE);
+    public BaseballGame(BaseballNumber baseballNumber) {
+        this.baseballNumber = baseballNumber;
     }
 
     public boolean exists(BaseballNumber playerBaseballNumber) {
@@ -28,7 +20,7 @@ public class BaseballGame {
 
     public Hint countStrikeAndBall(BaseballNumber playerBaseballNumber) {
         Hint hint = new Hint();
-        for (int i = 0; i < BASEBALL_LIST_SIZE; i++) {
+        for (int i = 0; i < baseballNumber.size(); i++) {
             int number = playerBaseballNumber.getNumber(i);
             checkStrike(hint, number);
             checkBall(hint, number);
