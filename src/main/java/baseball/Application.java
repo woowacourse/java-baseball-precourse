@@ -12,26 +12,25 @@ public class Application {
 
         GameManager manager = new GameManager();
         Printer printer = new Printer();
+        Validator validator = new Validator();
 
         while (manager.isGameInProgress()) {
             printer.printInputGuide();
 
             String inputValue = scanner.nextLine();
 
-            Validator.validateInputValue(inputValue);
+            validator.validateInputValue(inputValue);
 
             int[] resultBallsAndStrikes = manager.getBallsAndStrikes(Converter.convertString(inputValue));
 
             printer.printResult(resultBallsAndStrikes);
 
-            int strikes = resultBallsAndStrikes[1];
-
-            if (strikes == GameManager.BASEBALL_NUMBER) {
+            if (validator.isGameSet(resultBallsAndStrikes)) {
                 printer.printGameProgess();
 
                 String progressInput = scanner.nextLine();
 
-                Validator.validateProgressValue(progressInput);
+                validator.validateProgressValue(progressInput);
 
                 int progressStatusCode = Integer.parseInt(progressInput);
 

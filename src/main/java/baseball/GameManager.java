@@ -2,8 +2,6 @@ package baseball;
 
 import utils.RandomUtils;
 
-import java.util.Arrays;
-
 public class GameManager {
     public static final int BASEBALL_NUMBER = 3;
     public static final int BASEBALL_NUMBER_RANGE_START = 1;

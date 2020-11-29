@@ -6,7 +6,7 @@ import baseball.GameStatusCode;
 public class Validator {
     private static final int PROGRESS_VALUE_SIZE = 1;
 
-    public static void validateInputValue(String inputValue) {
+    public void validateInputValue(String inputValue) {
         if (inputValue.length() != GameManager.BASEBALL_NUMBER) {
             throw new IllegalArgumentException(ExceptionMessages.WRONG_INPUT_VALUE_SIZE);
         }
@@ -29,7 +29,7 @@ public class Validator {
         }
     }
 
-    public static void validateProgressValue(String inputValue) {
+    public void validateProgressValue(String inputValue) {
         if (inputValue.length() != PROGRESS_VALUE_SIZE) {
             throw new IllegalArgumentException(ExceptionMessages.NOT_PROGRESS_CODE);
         }
@@ -45,5 +45,11 @@ public class Validator {
         if (inputCode != GameStatusCode.RESTART && inputCode != GameStatusCode.EXIT) {
             throw new IllegalArgumentException(ExceptionMessages.NOT_PROGRESS_CODE);
         }
+    }
+
+    public boolean isGameSet(int[] ballsAndStrikes){
+        int strikes = ballsAndStrikes[1];
+
+        return strikes == GameManager.BASEBALL_NUMBER;
     }
 }
