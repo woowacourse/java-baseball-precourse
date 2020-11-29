@@ -2,6 +2,6 @@ package baseball.domain;
 
 public abstract class Player {
 
-    protected Baseballs numbers;
+    protected Baseballs baseballs;
 
 }
