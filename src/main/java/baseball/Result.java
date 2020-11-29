@@ -40,8 +40,10 @@ public class Result {
 
     private int countBall() {
         int count = 0;
-        for (int i = 0; i < this.randomNumbers.getNumbers().size(); i++) {
-            for (int j = 0; j < this.player.getNumbers().size(); j++) {
+        int randomNumberSize = this.randomNumbers.getNumberSize();
+        int playerNumberSize = this.player.getNumberSize();
+        for (int i = 0; i < randomNumberSize; i++) {
+            for (int j = 0; j < playerNumberSize; j++) {
                 count += isBall(i, j);
             }
         }
@@ -49,7 +51,7 @@ public class Result {
     }
 
     private int isBall(int randomNumberIndex, int playerNumberIndex) {
-        if (randomNumberIndex != playerNumberIndex && this.randomNumbers.getNumbers().get(randomNumberIndex) == this.player.getNumbers().get(playerNumberIndex)) {
+        if (randomNumberIndex != playerNumberIndex && this.randomNumbers.getNumber(randomNumberIndex) == this.player.getNumber(playerNumberIndex)) {
             return 1;
         }
         return 0;
@@ -57,8 +59,10 @@ public class Result {
 
     private int countStrike() {
         int count = 0;
-        for (int i = 0; i < this.randomNumbers.getNumbers().size(); i++) {
-            for (int j = i; j < this.player.getNumbers().size(); j++) {
+        int randomNumberSize = this.randomNumbers.getNumberSize();
+        int playerNumberSize = this.player.getNumberSize();
+        for (int i = 0; i < randomNumberSize; i++) {
+            for (int j = i; j < playerNumberSize; j++) {
                 count += isStrike(i, j);
             }
         }
@@ -66,7 +70,7 @@ public class Result {
     }
 
     private int isStrike(int randomNumberIndex, int playerNumberIndex) {
-        if (randomNumberIndex == playerNumberIndex && this.randomNumbers.getNumbers().get(randomNumberIndex) == this.player.getNumbers().get(playerNumberIndex)) {
+        if (randomNumberIndex == playerNumberIndex && this.randomNumbers.getNumber(randomNumberIndex) == this.player.getNumber(playerNumberIndex)) {
             return 1;
         }
         return 0;

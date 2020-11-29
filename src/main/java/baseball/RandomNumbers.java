@@ -19,8 +19,16 @@ public class RandomNumbers {
         this.numbers = generateThreeNumbers();
     }
 
+    public int getNumber(int index) {
+        return this.numbers.get(index);
+    }
+
     public List<Integer> getNumbers() {
         return this.numbers;
+    }
+
+    public int getNumberSize() {
+        return this.numbers.size();
     }
 
     private List<Integer> generateThreeNumbers() {

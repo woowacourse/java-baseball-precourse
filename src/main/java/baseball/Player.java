@@ -15,6 +15,14 @@ public class Player {
         this.numbers = new InputHandler(this.scanner).getNumbers();
     }
 
+    public int getNumber(int index) {
+        return this.numbers.get(index);
+    }
+
+    public int getNumberSize() {
+        return this.numbers.size();
+    }
+
     public List<Integer> getNumbers() {
         return this.numbers;
     }
