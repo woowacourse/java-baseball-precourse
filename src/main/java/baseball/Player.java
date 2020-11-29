@@ -5,13 +5,14 @@ import java.util.Scanner;
 
 public class Player {
     private List<Integer> numbers;
+    private Scanner scanner;
 
     public Player(Scanner scanner) {
-        this.numbers = new InputHandler(scanner).get();
+        this.scanner = scanner;
     }
 
-    public void setNumbers(List<Integer> numbers) {
-        this.numbers = numbers;
+    public void setNumbers() {
+        this.numbers = new InputHandler(this.scanner).getNumbers();
     }
 
     public List<Integer> getNumbers() {
