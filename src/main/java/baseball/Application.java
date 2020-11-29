@@ -5,10 +5,10 @@ import java.util.Scanner;
 import utils.RandomUtils;
 
 public class Application {
-    private static final int MIN_NUMBER_RANGE = 1;
-    private static final int MAX_NUMBER_RANGE = 9;
-    private static final int INPUT_RESTART = 1;
-    private static final int INPUT_STOP = 2;
+    private final int MIN_NUMBER_RANGE = 1;
+    private final int MAX_NUMBER_RANGE = 9;
+    private final int INPUT_RESTART = 1;
+    private final int INPUT_STOP = 2;
 
     private static boolean isPlaying = true;
 
@@ -20,7 +20,7 @@ public class Application {
         // TODO 구현 진행
         Application application = new Application();
         while (isPlaying) {
-            application.gameStart(scanner);
+            application.startGame(scanner);
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -40,7 +40,7 @@ public class Application {
         }
     }
 
-    private void gameStart(Scanner scanner) {
+    private void startGame(Scanner scanner) {
         initComputerNums();
         while (true) {
             inputPlayerNums(scanner);
