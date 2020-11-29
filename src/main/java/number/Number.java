@@ -20,14 +20,14 @@ public class Number {
     }
 
     private void validateDigitNumber() {
-        List<Integer> validatedList = new ArrayList<>();
+        List<Integer> validates = new ArrayList<>();
         this.numbers.stream()
                 .forEach(number -> {
-                    if (!validatedList.contains(number)) {
-                        validatedList.add(number);
+                    if (!validates.contains(number)) {
+                        validates.add(number);
                     }
                 });
-        if (validatedList.size() != numbers.size()) {
+        if (validates.size() != numbers.size()) {
             throw new IllegalArgumentException("각 자릿 수는 모두 달라야 합니다");
         }
     }
@@ -37,16 +37,16 @@ public class Number {
     }
 
     public static List<Integer> createRandoms(int numberSize) {
-        List<Integer> randomList = new ArrayList<>();
+        List<Integer> randoms = new ArrayList<>();
         int randomNumber;
         for (int i = 0; i < numberSize; i++) {
             randomNumber = RandomUtils.nextInt(1, 9);
-            if (!randomList.contains(randomNumber)) {
-                randomList.add(randomNumber);
+            if (!randoms.contains(randomNumber)) {
+                randoms.add(randomNumber);
                 continue;
             }
             i--;
         }
-        return randomList;
+        return randoms;
     }
 }
