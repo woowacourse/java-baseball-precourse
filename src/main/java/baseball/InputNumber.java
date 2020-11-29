@@ -6,6 +6,7 @@ public class InputNumber {
     public static final String WARNING_MESSAGE = "1에서 9까지 서로 다른 임의의 수 3개를 입력해 주세요";
 
     public static String getInput(Scanner scanner){
+        System.out.print("숫자를 입력해주세요 :");
         String inputNumber = scanner.next();
         if(validateInput(inputNumber)){
             return inputNumber;

@@ -10,12 +10,12 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
-
+        String result = "";
         //임의의 수를 생성한다
         String randomNumber = RandomNumber.generateNumbers(NUMBER_LENGTH);
         //유저에게 숫자를 입력받는다
         String inputNumber = InputNumber.getInput(scanner);
-        String result = "";
+
 
         //입력값의 범위를 벗어나서 경고 메세지를 받은 경우
         if (inputNumber.length() != NUMBER_LENGTH){
@@ -23,6 +23,7 @@ public class Application {
         }else{  //심판에게 판단을 받는다
             result = Referee.judgeNumber(randomNumber, inputNumber);
         }
+
         System.out.println(randomNumber);
         System.out.println(inputNumber);
     }
