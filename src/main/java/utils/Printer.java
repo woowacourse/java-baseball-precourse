@@ -4,6 +4,7 @@ public class Printer {
     public void printInputGuide() {
         System.out.print("숫자를 입력해주세요 : ");
     }
+
     public void printResult(int ballNumber, int strikeNumber) {
         if (ballNumber == 0 && strikeNumber == 0) {
             System.out.println("낫싱");

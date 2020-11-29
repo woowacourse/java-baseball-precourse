@@ -59,7 +59,7 @@ public class GameManager {
         }
     }
 
-    public int getBallNumber(int[] values){
+    public int getBallNumber(int[] values) {
         int ballNumber = 0;
         int baseballsIndex = 0;
 
@@ -78,7 +78,7 @@ public class GameManager {
         return ballNumber;
     }
 
-    public int getStrikeNumber(int[] values){
+    public int getStrikeNumber(int[] values) {
         int strikeNumber = 0;
         int baseballsIndex = 0;
 

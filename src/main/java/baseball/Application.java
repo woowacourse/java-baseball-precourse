@@ -15,6 +15,7 @@ public class Application {
         Validator validator = new Validator();
 
         while (manager.isGameInProgress()) {
+            //입력 받고
             printer.printInputGuide();
 
             String inputValue = scanner.nextLine();

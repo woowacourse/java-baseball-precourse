@@ -47,7 +47,7 @@ public class Validator {
         }
     }
 
-    public boolean isGameSet(int strikeNumber){
+    public boolean isGameSet(int strikeNumber) {
         return strikeNumber == GameManager.BASEBALL_NUMBER;
     }
 }
