@@ -1,14 +1,14 @@
 package baseball;
 
 public class Start {
-    private static boolean CheckValue(int value) throws IllegalArgumentException{
-        if(value == 1 || value == 2)
+    private static boolean CheckSelect(int select) throws IllegalArgumentException{
+        if(select == 1 || select == 2)
             return true;
         throw new IllegalArgumentException("값을 확인하고 입력해주세요!");
     }
-    public static boolean Restart(int opinion) throws IllegalArgumentException{
+    public static boolean restart(int select) throws IllegalArgumentException{
         try{
-            return CheckValue(opinion);
+            return CheckSelect(select);
         }catch (IllegalArgumentException i){
             System.out.println(i.getMessage());
         }

@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Application {
@@ -17,13 +16,13 @@ public class Application {
         while(check == GO) {
             try {
                 GameCycle g = new GameCycle();
-                g.GameStart();
+                g.gameStart();
             }catch (IllegalArgumentException i){
                 System.out.println(i.getMessage());
             }
             do {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            } while (!Start.Restart(check = scanner.nextInt()));
+            } while (!Start.restart(check = scanner.nextInt()));
         }
     }
 }

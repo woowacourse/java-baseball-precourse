@@ -20,20 +20,20 @@ public class MakingNumber {
     }
 
     //Computer가 사용할 땐, 예외를 넘길 필요가 없으니까.
-    private boolean AmUsed(int element){
+    private boolean comUsed(int element){
         if(!target.contains(element)){
             return true;
         }
         return false;
     }
 
-    private void CheckRange(int element)throws IllegalArgumentException{
+    private void checkRange(int element)throws IllegalArgumentException{
         if(EndNum<element || element < StartNum) {
             throw new IllegalArgumentException("1~9 사이의 숫자만 입력이 가능합니다!");
         }
     }
 
-    private void CheckLength(int answer) throws IllegalArgumentException{
+    private void checkLength(int answer) throws IllegalArgumentException{
         //3자리 수를 입력하지 않았을 때, 오류 throw
         if(answer < UserInputLimit){
             //ex) 012입력할 때, 3자리수를 입력했는지 확인하라고 함.
@@ -45,21 +45,21 @@ public class MakingNumber {
     MakingNumber(){
         while(target.size() < Application.LENGTH){
             int element = RandomUtils.nextInt(StartNum, EndNum);
-            if(AmUsed(element)){
+            if(comUsed(element)){
                 this.target.add(element);
             }
         }
     }
     //target을 만든다(사용자 버전)
     MakingNumber(int answer) throws IllegalArgumentException{
-        CheckLength(answer);
+        checkLength(answer);
         //arraylist로 변환.
         while(answer > 0){
             int element = answer % 10;
             //전에 쓴 적이 있으면, throw
             IsUsed(element);
             //범위가 벗어나면, false.
-            CheckRange(element);
+            checkRange(element);
             //값을 넣을 때마다 0에 있던 숫자는 한칸 뒤로 감.
             this.target.add(0,element);
 
@@ -70,7 +70,7 @@ public class MakingNumber {
 
 
     //private한 target return 하는 함수.
-    protected ArrayList<Integer> GetTarget(){
+    protected ArrayList<Integer> getTarget(){
         return this.target;
     }
 }
