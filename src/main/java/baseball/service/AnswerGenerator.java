@@ -8,13 +8,14 @@ import java.util.List;
 
 public class AnswerGenerator {
 
-    private AnswerGenerator() {}
+    private AnswerGenerator() {
+    }
 
     public static List<Integer> generateAnswer() {
-        List<Integer> answer = new ArrayList<Integer>();
+        List<Integer> answer = new ArrayList<>();
 
         while (answer.size() != Constants.ANSWER_LENGTH) {
-            int number = RandomUtils.nextInt(Constants.VALUE_ONE,Constants.VALUE_NINE);
+            int number = RandomUtils.nextInt(Constants.VALUE_ONE, Constants.VALUE_NINE);
             addNumber(answer, number);
         }
 

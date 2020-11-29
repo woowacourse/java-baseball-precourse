@@ -1,8 +1,6 @@
 package baseball.service;
 
 import baseball.constant.Constants;
-import baseball.view.OutputView;
-
 import utils.StringToListIntegerutils;
 
 import java.util.List;

@@ -7,12 +7,15 @@ public class Record {
     private int strike;
 
     public Record() {
-        this(0,0);
+        this(0, 0);
     }
 
     public Record(int ball, int strike) {
 
-        if (ball < Constants.VALUE_ZERO || ball > Constants.ANSWER_LENGTH || strike < Constants.VALUE_ZERO || strike > Constants.ANSWER_LENGTH) {
+        if (ball < Constants.VALUE_ZERO
+                || ball > Constants.ANSWER_LENGTH
+                || strike < Constants.VALUE_ZERO
+                || strike > Constants.ANSWER_LENGTH) {
             throw new IllegalArgumentException();
         }
 

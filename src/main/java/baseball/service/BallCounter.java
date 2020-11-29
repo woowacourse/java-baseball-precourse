@@ -1,7 +1,6 @@
 package baseball.service;
 
 import baseball.constant.Constants;
-import baseball.model.Record;
 
 import java.util.List;
 
@@ -9,12 +8,13 @@ public class BallCounter {
     private static int ballCount;
     private static int strikeCount;
 
-    private BallCounter() {}
+    private BallCounter() {
+    }
 
     public static void count(List<Integer> answer, List<Integer> userNumber) {
         reset();
 
-        for(int index = Constants.VALUE_ZERO; index < Constants.ANSWER_LENGTH; index++) {
+        for (int index = Constants.VALUE_ZERO; index < Constants.ANSWER_LENGTH; index++) {
             if (userNumber.get(index).equals(answer.get(index))) {
                 strikeCount++;
                 continue;

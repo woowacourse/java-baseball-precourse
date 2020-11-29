@@ -1,9 +1,9 @@
 package baseball.view;
 
 public class OutputView {
-    public static String ERROR_MESSAGE = "";
 
-    private OutputView() {}
+    private OutputView() {
+    }
 
     public static void showError(String error) {
         System.out.println(error);

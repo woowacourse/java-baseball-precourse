@@ -1,23 +1,22 @@
 package utils;
 
-import baseball.constant.Constants;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class StringToListIntegerutils {
 
-    private StringToListIntegerutils() {}
+    private StringToListIntegerutils() {
+    }
 
     public static List<Integer> convertToList(String number) {
-        List<String> stringList = new ArrayList<String>(Arrays.asList(number.split("")));
-        List<Integer> integerlist = new ArrayList<Integer>();
+        List<String> stringNumber = new ArrayList<>(Arrays.asList(number.split("")));
+        List<Integer> integerNumber = new ArrayList<>();
 
-        for (String digit : stringList) {
-            integerlist.add(Integer.parseInt(digit));
+        for (String digit : stringNumber) {
+            integerNumber.add(Integer.parseInt(digit));
         }
 
-        return integerlist;
+        return integerNumber;
     }
 }

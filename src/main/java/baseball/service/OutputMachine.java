@@ -2,14 +2,12 @@ package baseball.service;
 
 import baseball.constant.Constants;
 import baseball.model.Record;
-import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.Scanner;
 
 public class OutputMachine {
 
-    private OutputMachine() {}
+    private OutputMachine() {
+    }
 
     public static void print(Record record) {
 

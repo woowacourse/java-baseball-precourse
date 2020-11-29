@@ -1,7 +1,6 @@
 package baseball.model;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class User {
     private List<Integer> userNumber;
@@ -15,6 +14,7 @@ public class User {
     public List<Integer> getUserNumber() {
         return userNumber;
     }
+
     public void setUserNumber(List<Integer> userNumber) {
         this.userNumber = userNumber;
     }

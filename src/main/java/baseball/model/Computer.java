@@ -22,8 +22,4 @@ public class Computer {
     public Record getRecord() {
         return record;
     }
-
-    public void setRecord(Record record) {
-        this.record = record;
-    }
 }

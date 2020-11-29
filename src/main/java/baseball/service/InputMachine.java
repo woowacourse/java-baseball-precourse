@@ -5,7 +5,8 @@ import baseball.view.InputView;
 import java.util.Scanner;
 
 public class InputMachine {
-    private InputMachine() {}
+    private InputMachine() {
+    }
 
     public static String inputUserNumber(Scanner scanner) {
         InputView.setUserNumber();

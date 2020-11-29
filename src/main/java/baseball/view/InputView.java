@@ -4,7 +4,8 @@ import baseball.constant.Constants;
 
 public class InputView {
 
-    private InputView() {}
+    private InputView() {
+    }
 
     public static void setUserNumber() {
         System.out.print(Constants.PLEASE_INPUT_NUMBER);

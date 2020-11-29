@@ -12,8 +12,8 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         Record record = new Record();
-        Computer computer = new Computer(new ArrayList<Integer>(), record);
-        User user = new User(new ArrayList<Integer>(), Constants.PLAY);
+        Computer computer = new Computer(new ArrayList<>(), record);
+        User user = new User(new ArrayList<>(), Constants.PLAY);
         BaseballGameController baseballGameController = new BaseballGameController(computer, user);
         startGame(baseballGameController, scanner);
     }
