@@ -10,10 +10,6 @@ import java.util.Scanner;
 
 /** 게임을 컨트롤하는 클래스 */
 public class GameController {
-    private static final String RESTART = "1";
-    private static final String FINISH = "2";
-    private static final String INITIAL_RESULT = "";
-
     private static String result = new String();
     private static String scannerNumber = new String();
     private static String playerStatus;
@@ -102,17 +98,17 @@ public class GameController {
      */
     public static boolean finishGame(Scanner scanner) {
         if (result.equals(ValueType.ANSWER_VALUE.getValue() + HintType.STRIKE.getHint())) {
-            System.out.println(ValueType.ANSWER_VALUE.getValue() + TextType.FINISH.getText());
+            System.out.println(ValueType.ANSWER_VALUE.getValue() + TextType.ANSWER.getText());
             System.out.println(TextType.RESTART_OR_FINISH.getText());
             playerStatus = scanner.nextLine();
 
-            if (playerStatus.equals(RESTART)) {
+            if (playerStatus.equals(StatusType.RESTART.getStatus())) {
                 NumberGenerator numberGenerator = new NumberGenerator();
                 numberGenerator.initProgramNumber();
-                result = INITIAL_RESULT;
+                result = StatusType.INITIAL_RESULT.getStatus();
 
                 return false;
-            } else if (playerStatus.equals(FINISH)) {
+            } else if (playerStatus.equals(StatusType.FINISH.getStatus())) {
                 return true;
             } else {
                 throw new IllegalArgumentException(TextType.INVALID_INPUT.getText());
