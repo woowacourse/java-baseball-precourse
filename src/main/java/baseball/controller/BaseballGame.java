@@ -6,6 +6,7 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGame {
+    private static final int MAX_STRIKE = Numbers.NUMBERS_LENGTH;
     private final Numbers answer;
 
     private BaseballGame(Numbers answer) {
@@ -17,9 +18,15 @@ public class BaseballGame {
     }
 
     public void play() {
-        Numbers userNumbers = getNumbersFromUser();
-        BallCount ballCount = answer.calculateBallCountWith(userNumbers);
-        OutputView.showBallCount(ballCount);
+        BallCount ballCount;
+
+        do{
+            Numbers userNumbers = getNumbersFromUser();
+            ballCount = answer.calculateBallCountWith(userNumbers);
+            OutputView.showBallCount(ballCount);
+        }while(ballCount.getStrike() != MAX_STRIKE);
+
+        OutputView.showWinningMessage();
     }
 
     private Numbers getNumbersFromUser() {

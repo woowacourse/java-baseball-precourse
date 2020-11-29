@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 import utils.RandomUtils;
 
 public class Numbers {
-    private static final int NUMBERS_LENGTH = 3;
+    public static final int NUMBERS_LENGTH = 3;
     private static final int ZERO = 0;
 
     private final ArrayList<Number> numbers;
