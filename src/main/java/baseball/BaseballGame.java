@@ -20,9 +20,21 @@ public class BaseballGame {
                 continue;
             }
 
+            String userNum = user.getNumber();
+            String comNum = computer.getNumber();
             int strike = 0;
             int ball = 0;
-            break;
+
+            for (int i = 0; i < 3; i++) {
+
+                if (comNum.charAt(i) == userNum.charAt(i)) {
+                    strike++;
+                } else if (comNum.contains(String.valueOf(userNum.charAt(i)))) {
+                    ball++;
+                }
+            }
+
+            break; // 테스트를 위한 break;
         }
     }
 }
