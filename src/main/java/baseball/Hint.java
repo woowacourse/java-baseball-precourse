@@ -7,10 +7,10 @@ public class Hint {
     private static final int NUMBER_LENGTH = 3;
     private static ArrayList<Integer> hintList = new ArrayList<>();
 
-    public static ArrayList<Integer> hint(ArrayList<Integer> ballStrikeList) {
+    public static boolean hint(ArrayList<Integer> ballStrikeList) {
         hintList = ballStrikeList;
 
-        return hintList;
+        return getHint(hintList);
     }
 
     public static boolean getHint(ArrayList<Integer> hintList) {

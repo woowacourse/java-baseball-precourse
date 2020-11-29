@@ -8,7 +8,7 @@ public class Game {
     public static ArrayList<Integer> userInputNumberList = new ArrayList<>();
     public static ArrayList<Integer> ballStrikeList = new ArrayList<>();
 
-    public static boolean game() {
+    public static void game() {
         randomNumberList = NumberGenerator.getRandomNumberNotRepeat();
 
         while (true) {
@@ -18,9 +18,8 @@ public class Game {
             ballStrikeList = NumberCompare.numberCompare(randomNumberList, userInputNumberList);
 
             if (Hint.getHint(ballStrikeList)) {
-                return true;
+                break;
             }
-            return false;
         }
     }
 
