@@ -12,7 +12,7 @@ public class BaseballRunner {
         do {
             int[] playerNumbers = BaseballUtils.getPlayerNumbers(sc);
             isGameEnded = BaseballUtils.compareNumbers(randomNumbers, playerNumbers);
-        } while(!isGameEnded);
+        } while (!isGameEnded);
 
         return BaseballUtils.askRestart(sc);
     }
