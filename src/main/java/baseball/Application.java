@@ -51,6 +51,21 @@ public class Application {
         if(input.charAt(1) == input.charAt(2)) return false;
         return true;
     }
+
+    public static void play(){
+        initNumberChecker();
+        getRandomNumbers();
+        while(true){
+            System.out.println("숫자를입력해주세요 : ");
+            String input = scanner.nextLine().trim();
+            if(!isValidInput(input)) {
+                System.out.println("입력을 확인해 주세요.");
+                continue;
+            }
+            if(checkAnswer(input)) return;
+        }
+    }
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
