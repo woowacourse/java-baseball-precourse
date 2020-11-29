@@ -12,24 +12,24 @@ public class GameManager {
 	
 	public final static int MAX_NUM_LENGTH = 3;
 
-	private String randomNumber;
+	public String randomNumber;
 
 	private int answer;
 	private int strike, ball;
 
-	public GameManager() {
-		String random;
-		do {
-			random = Integer.toString(RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE));			
-		} while (!Validator.isUseable(random));
-
-		this.randomNumber = random;
+	GameManager() {
+		this.randomNumber = getNumber();
 		this.strike = 0;
 		this.ball = 0;
 	}
 	
-	public String getNumber() {
-		return randomNumber;
+	private String getNumber() {
+		String random;
+		do {
+			random = Integer.toString(RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE));			
+		} while (!Validator.isUseable(random));
+		
+		return random;
 	}
 
 	public void query() {

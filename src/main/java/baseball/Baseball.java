@@ -13,16 +13,13 @@ public class Baseball {
 		GameManager manager = new GameManager();
 		Player player = new Player();
 		
-		String randomNumber;
 		String playerNumber;
-		
-		randomNumber = manager.getNumber();
 		
 		do {
 			player.input();
 			playerNumber = player.getNumber();
 			manager.inspect(playerNumber);
-		} while(!Validator.isSame(randomNumber, playerNumber));
+		} while(!Validator.isSame(manager.randomNumber, playerNumber));
 		
 		restart(manager);
 	}
