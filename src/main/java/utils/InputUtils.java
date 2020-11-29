@@ -30,10 +30,7 @@ public class InputUtils {
 
 
     private static boolean isLengthThree(String input) {
-        if (input.length() == 3) {
-            return true;
-        }
-        return false;
+        return input.length() == 3;
     }
 
     private static boolean unique(String input) {
@@ -41,10 +38,7 @@ public class InputUtils {
         for (int i = 0; i < DIGIT; i++) {
             set.add(input.substring(i, i+1));
         }
-        if (set.size() == DIGIT) {
-            return true;
-        }
-        return false;
+        return set.size() == DIGIT;
     }
 
     private static boolean parsableToInt(String input) {
