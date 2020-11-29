@@ -2,13 +2,11 @@ package baseball;
 
 public class Status {
 
-    private boolean gameOver;
     private long strikeCount;
     private long ballCount;
 
 
     public Status() {
-        gameOver = false;
         strikeCount = 0;
         ballCount = 0;
     }

@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 public class Baseballs {
 
     public static final int BALLS_CONTAINER_SIZE = 3;
+    private static final int ZERO = 0;
     public static final String INPUT_DELIMITER = "";
     private static final String SIZE_ERROR_MESSAGE = "올바른 양의 숫자가 입력되지 않았습니다.";
     private static final String NON_NUMERIC_ERROR_MESSAGE = "숫자가 아닌 정보가 입력되었습니다.";
@@ -68,7 +69,7 @@ public class Baseballs {
     private boolean hasZero(String input) {
         return Stream.of(input.split(INPUT_DELIMITER))
                 .map(Integer::parseInt)
-                .anyMatch(x -> x == 0);
+                .anyMatch(x -> x == ZERO);
     }
 
     private void validateNoDuplicate(String rawBallsInput) {

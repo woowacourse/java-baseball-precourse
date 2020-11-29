@@ -12,6 +12,8 @@ import views.OutputView;
 public class Game {
 
     private static final long WINNING_STRIKE_CONDITION = 3;
+    private static final int MAXIMUM_BALL_VALUE = 9;
+    private static final int MINIMUM_BALL_VALUE = 1;
     private final Scanner userInput;
     private Baseballs answerBalls;
     private Baseballs guessingBalls;
@@ -48,7 +50,7 @@ public class Game {
     private Set<Integer> createNumberSet(int ballsContainerSize) {
         Set<Integer> generatedNumbers = new HashSet<>();
         while (generatedNumbers.size() != ballsContainerSize) {
-            generatedNumbers.add(RandomUtils.nextInt(1, 9));
+            generatedNumbers.add(RandomUtils.nextInt(MINIMUM_BALL_VALUE, MAXIMUM_BALL_VALUE));
         }
         return generatedNumbers;
     }
