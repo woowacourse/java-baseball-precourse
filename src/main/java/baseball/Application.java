@@ -34,6 +34,20 @@ public class Application {
         }
 
         System.out.println(Arrays.toString(userNum));
+
+        // 스트라이크 체크하기
+        int strikeCnt = checkStrike(userNum, systemNum);
+        System.out.println(strikeCnt + "스트라이크");
+    }
+
+    private static int checkStrike(int[] userNum, int[] systemNum) {
+        int strikeCnt = 0;
+        for (int i = 0; i < 3; i++) {
+            if(userNum[i] == systemNum[i]) {
+                strikeCnt++;
+            }
+        }
+        return strikeCnt;
     }
 
     private static boolean isDupl(int checkNum) {
