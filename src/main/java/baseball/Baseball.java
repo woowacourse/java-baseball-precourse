@@ -19,7 +19,7 @@ public class Baseball {
 			player.input();
 			playerNumber = player.getNumber();
 			manager.inspect(playerNumber);
-		} while(!Validator.isSame(manager.randomNumber, playerNumber));
+		} while(!manager.randomNumber.equals(playerNumber));
 		
 		restart(manager);
 	}
