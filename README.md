@@ -37,7 +37,6 @@
     
 - #### utils
     - InputValidator : 사용자 입력이 유효한지 검증한다.
-    - InvalidInputException : 입력이 유효하지 않은 경우에 발생될 Exception이다.
     - NumberListGenerator : 컴퓨터의 서로 다른 세 숫자 List 생성하고, 사용자 입력 문자열을 List<Integer>로 변환한다.
     - RnadomUtils : 범위 내 임의의 숫자를 리턴한다.
     
