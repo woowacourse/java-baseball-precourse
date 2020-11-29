@@ -5,7 +5,7 @@ import java.util.*;
 public class UserInputNumber {
 
     private static String userNumberString;
-    private static String userinputNumberString;
+    private static String userInputNumberString;
     private static final int NUMBER_LENGTH = 3;
 
     public static ArrayList<Integer> userInputNumber() {
@@ -29,9 +29,9 @@ public class UserInputNumber {
 
     public static String getUserInputNumber() {
         Scanner scan = new Scanner(System.in);
-        userinputNumberString = scan.nextLine();
+        userInputNumberString = scan.nextLine();
 
-        return userinputNumberString;
+        return userInputNumberString;
     }
 
     public static boolean userInputNumberCheck() {
