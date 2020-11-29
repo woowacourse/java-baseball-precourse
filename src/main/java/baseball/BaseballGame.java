@@ -15,10 +15,6 @@ public class BaseballGame {
         setBalls();
     }
 
-    public String getBalls() {
-        return balls;
-    }
-
     private void setBalls() {
         while (balls.length() < BALLS_LENGTH) {
             int ballCandidate = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
