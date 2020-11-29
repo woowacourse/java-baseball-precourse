@@ -3,22 +3,20 @@ package baseball;
 public class Result {
     private static final String TERMINATE_GAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    private RandomThreeNumberGenerator randomThreeNumberGenerator;
+    private RandomNumbers randomNumbers;
     private Player player;
     private boolean isTerminated;
 
-    public Result(RandomThreeNumberGenerator randomThreeNumberGenerator, Player player) {
-        this.randomThreeNumberGenerator = randomThreeNumberGenerator;
+    public Result(RandomNumbers randomNumbers, Player player) {
+        this.randomNumbers = randomNumbers;
         this.player = player;
         this.isTerminated = false;
     }
 
-    public String getResult() {
+    private String result() {
         int strikeCount = countStrike();
         int ballCount = countBall();
-        if (strikeCount >= 3) {
-            this.isTerminated = true;
-        }
+        setIsTerminated(strikeCount);
 
         if (strikeCount == 0 && ballCount == 0) {
             return "낫싱";
@@ -34,13 +32,15 @@ public class Result {
         return ballCount + "볼 " + strikeCount + "스트라이크";
     }
 
-    public boolean isTerminated() {
-        return this.isTerminated;
+    private void setIsTerminated(int strikeCount) {
+        if (strikeCount >= 3) {
+            this.isTerminated = true;
+        }
     }
 
     private int countBall() {
         int count = 0;
-        for (int i = 0; i < this.randomThreeNumberGenerator.getNumbers().size(); i++) {
+        for (int i = 0; i < this.randomNumbers.getNumbers().size(); i++) {
             for (int j = 0; j < this.player.getNumbers().size(); j++) {
                 count += isBall(i, j);
             }
@@ -49,7 +49,7 @@ public class Result {
     }
 
     private int isBall(int randomNumberIndex, int playerNumberIndex) {
-        if (randomNumberIndex != playerNumberIndex && this.randomThreeNumberGenerator.getNumbers().get(randomNumberIndex) == this.player.getNumbers().get(playerNumberIndex)) {
+        if (randomNumberIndex != playerNumberIndex && this.randomNumbers.getNumbers().get(randomNumberIndex) == this.player.getNumbers().get(playerNumberIndex)) {
             return 1;
         }
         return 0;
@@ -57,7 +57,7 @@ public class Result {
 
     private int countStrike() {
         int count = 0;
-        for (int i = 0; i < this.randomThreeNumberGenerator.getNumbers().size(); i++) {
+        for (int i = 0; i < this.randomNumbers.getNumbers().size(); i++) {
             for (int j = i; j < this.player.getNumbers().size(); j++) {
                 count += isStrike(i, j);
             }
@@ -66,9 +66,18 @@ public class Result {
     }
 
     private int isStrike(int randomNumberIndex, int playerNumberIndex) {
-        if (randomNumberIndex == playerNumberIndex && this.randomThreeNumberGenerator.getNumbers().get(randomNumberIndex) == this.player.getNumbers().get(playerNumberIndex)) {
+        if (randomNumberIndex == playerNumberIndex && this.randomNumbers.getNumbers().get(randomNumberIndex) == this.player.getNumbers().get(playerNumberIndex)) {
             return 1;
         }
         return 0;
+    }
+
+    public boolean terminated() {
+        return this.isTerminated;
+    }
+
+    @Override
+    public String toString() {
+        return result();
     }
 }
