@@ -38,18 +38,18 @@ public class MyNumber {
     //위 조건을 만족하면 세 숫자를 리스트로 반환하고
     //조건을 만족하지 못하면 IllegalArgumentException을 발생시킨다.
     public List<Integer> myNumList(int inputNum) {
-        List<Integer> myNumList;
+        List<Integer> numList;
         if (notInputThreeDigit(inputNum)) {
             throw new IllegalArgumentException();
         }
-        myNumList = makeThreeMyNum(inputNum);
-        if (inputZero(myNumList.get(0), myNumList.get(1), myNumList.get(2))) {
+        numList = makeThreeMyNum(inputNum);
+        if (inputZero(numList.get(0), numList.get(1), numList.get(2))) {
             throw new IllegalArgumentException();
         }
-        if (checkDuplication(myNumList.get(0), myNumList.get(1), myNumList.get(2))) {
+        if (checkDuplication(numList.get(0), numList.get(1), numList.get(2))) {
             throw new IllegalArgumentException();
         }
-        return myNumList;
+        return numList;
     }
 
 }
