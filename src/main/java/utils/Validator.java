@@ -46,8 +46,4 @@ public class Validator {
             throw new IllegalArgumentException(ExceptionMessages.NOT_PROGRESS_CODE);
         }
     }
-
-    public boolean isGameSet(int strikeNumber) {
-        return strikeNumber == BaseballManager.BASEBALL_NUMBER;
-    }
 }
