@@ -23,7 +23,7 @@ public class BaseBallUtils {
     private static final String NOT_ONE_TO_ZERO_MESSAGE = "1에서 9사이의 숫자가 아닙니다.";
     private static final String DUPLICATED_MESSAGE = "숫자가 중복되었습니다.";
     private static final String INVALID_VALUE_MESSAGE = "입력된 수가 1 혹은 2가 아닙니다.";
-    private static final String INVALID_CODE_EXCEPTION = "숫자만 입력해주세요.";
+    private static final String INVALID_CODE_EXCEPTION = "한 자리의 숫자만 입력해주세요.";
 
 
     private BaseBallUtils() {

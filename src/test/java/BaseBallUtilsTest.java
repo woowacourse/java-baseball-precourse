@@ -70,7 +70,7 @@ public class BaseBallUtilsTest {
     public void wrongCode() {
         Assertions.assertThatIllegalArgumentException()
                 .isThrownBy(() -> {BaseBallUtils.isCodeRight(wrongInput);})
-                .withMessage("숫자만 입력해주세요.");
+                .withMessage("한 자리의 숫자만 입력해주세요.");
     }
 
     @Test
