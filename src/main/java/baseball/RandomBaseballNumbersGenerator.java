@@ -8,12 +8,22 @@ public class RandomBaseballNumbersGenerator {
     private final static int BASEBALL_NUMBER_MINIMUM = 1;
     private final static int BASEBALL_NUMBER_MAXIMUM = 9;
 
-    public static List<Integer> generate() {
-        Set<Integer> generatedBaseballNumbers = generateNewBaseballs();
-        return setToList(generatedBaseballNumbers);
+    public static BaseballNumbers generate() {
+        return generateNewBaseballNumbers();
     }
 
-    private static Set<Integer> generateNewBaseballs() {
+    private static BaseballNumbers generateNewBaseballNumbers() {
+        Set<Integer> baseballNumbers = getBaseballNumbers();
+        BaseballNumbers newBaseballNumbers = BaseballNumbers.getEmptyBaseballNumbers();
+
+        baseballNumbers.forEach(
+                newBaseballNumbers::add
+        );
+
+        return newBaseballNumbers;
+    }
+
+    private static Set<Integer> getBaseballNumbers() {
         Set<Integer> baseballNumbers = new HashSet<>();
 
         while(baseballNumbers.size() < BASEBALL_NUMBER_LENGTH) {
@@ -24,9 +34,5 @@ public class RandomBaseballNumbersGenerator {
         }
 
         return baseballNumbers;
-    }
-
-    private static List<Integer> setToList(Set<Integer> generatedBaseballNumber) {
-        return new ArrayList<>(generatedBaseballNumber);
     }
 }
