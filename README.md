@@ -1,41 +1,113 @@
 # 우아한테크코스 1주차 미션 - 숫자 야구 게임
 
 ## 🚀 TODO
-- [ ] 랜덤으로 세 개의 숫자를 뽑아 Set으로 반환하는 메소드
-    - `LinkedHashSet<Integer>` 를 이용하여 순서를 유지한 Set 생성
-    - 중복되지 않는 숫자 세 개를 생성한 Set에 넣음 
-        1. `RandomUtils.nextInt(1, 9)` 호출을 통해 1~9 사이의 랜덤한 숫자 추출
-        2. 해당 숫자가 이미 Set에 있을 경우, Set에 없는 숫자를 얻을 때까지 1을 반복
-        3. 해당 숫자가 Set에 없을 경우, Set에 해당 숫자를 삽입
-        4. Set의 크기가 3이 될 때까지 a~c를 반복
-    - Set을 반환
-- [ ] 사용자의 입력(`String`)의 형태가 제대로 되었는지 확인하는 메소드
-    - 문자열이 다음과 같은 조건들에 해당하는지 확인
-        1. 문자열의 길이가 3인지 확인
-        2. 문자열의 모든 문자가 `'1'`부터 `'9'` 사이 범위의 문자인지 확인
-        3. 문자열의 문자로부터 중복된 숫자가 있는지 확인 
-    - 위의 조건 중 하나라도 해당될 경우, `false` 반환
-    - 위의 조건에 겹치지 않을 경우, `true` 반환
-- [ ] 정답 Set과 사용자의 입력 배열을 비교하여 스트라이크/볼 갯수를 반환해주는 메소드
-    - 정답 Set을 배열로 변환
-    - 두 배열의 값을 index가 같은 값끼리 비교하여, 일치하는 숫자(스트라이크)의 갯수를 구함
-    - 스트라이크가 되지 않은 숫자가 있을 경우, 해당 숫자가 정답 Set에 있는지 `.contains()`를 통해 확인(볼)하여 그 갯수를 구함
-    - 스트라이크와 볼의 갯수를 반환
-- [ ] 게임 진행 메소드
-    - 랜덤으로 세 개의 숫자를 뽑아 Set으로 반환하는 메소드를 통해 정답 Set 저장
-    - 사용자에게 숫자 입력을 안내하는 메시지 출력
-    - `scanner.nextLine()`을 통해 문자열을 입력을 받음
-    - 입력받은 문자열을 상기한 사용자의 입력을 확인하는 메소드를 통해 입력의 적합성을 검증
-    - 입력이 제대로 되지 않았을 경우, `IllegalArgumentException` 발생
-    - 입력에 문제가 없을 경우, 해당 문자열을 숫자의 배열로 전환하여 저장
-    - 스트라이크/볼 갯수를 메소드를 통해 구하고 이를 출력
-    - 스트라이크가 3개가 될 때까지 위의 절차를 반복
-    - 스트라이크가 3개일 경우 반복 종료
-- [ ] `main` 메소드
-    - 게임 진행 메소드 호출
-    - 게임 진행 메소드가 종료된 경우, 게임 종료를 안내하고 게임을 다시 시작할지 질문 
-    - 다시 시작하지 않길 원할 때까지 위의 절차를 반복
+- [ ] `BaseballNumbers` 클래스
+    - [X] 클래스 변수
+    - [X] 생성자
+    - [X] 배열의 크기가 지정된 제한을 넘는지 확인하는 메소드
+    - [X] 배열 내에 중복된 요소가 없는지 확인하는 메소드
+    - [ ] 두 개의 `BaseballNumbers` 객체로 스트라이크/볼을 판별해주는 메소드
+- [ ] `BaseballGame` 클래스
+    - [ ] 클래스 변수
+    - [ ] 생성자
+    - [ ] 무작위 숫자로 정답을 생성해주는 메소드
+    - [ ] 사용자의 추측을 내부 객체에 저장하는 메소드
+    - [ ] 정답과 사용자의 추측을 이용해 게임 결과를 도출해내는 메소드
+    - [ ] 스트라이크 갯수를 알려주는 메소드
+    - [ ] 볼 갯수를 알려주는 메소드
+    - [ ] 게임 종료 여부를 판별해주는 메소드
+- [ ] `Application` 클래스
+    - [ ] `main` 메소드
+
+## 🤔 구현 세부 사항
+
+게임의 시작/재시작과 입출력을 맡을 `Application` 클래스, 게임 내에서 사용할 변수들을 담당할 `BaseballGame` 클래스, 야구 게임의 숫자들을 저장하고 비교할 `BaseballNumbers` 클래스로 나누었다.
+
+### `BaseballNumbers` 클래스
+
+#### 클래스 내 변수
+
+- `MAX_PITCH`
+    - 최대 투구 횟수를 저장하는 `public static int` 상수
+    - 미션에 명세되어 있는 대로 이 값은 3이다
+- `numberList`
+    - 정답 또는 사용자의 추측을 저장할 `List<Integer>` 자료형
+
+#### 클래스 내 메소드
+
+- `BaseballNumbers(List<Integer> numberList)`
+    - 입력받은 `numberList`을 검증한 후 `this.numberList`에 저장
+    - 내부 구현:
+        - `validateSize(numberList)`와 `validateDuplicate(numberList)`를 실행
+        - `this.numberList`에 `numberList`를 저장
+- `private void validateSize(List<Integer> numberList)`
+    - `numberList`의 크기가 `MAX_PITCH`와 일치하는지 검사
+    - 내부 구현:
+        - `numberList.size()`의 값이 `MAX_PITCH`와 일치하는지 확인
+        - 만일 일치하지 않을 경우 `IllegalArgumentException()` 발생
+- `private void validateDuplicate(List<Integer> numberList)`
+    - `numberList` 내에 중복된 원소가 없는지 검사
+    - 내부 구현:
+        - `numberList`를 이용하여 `HashSet<Integer> numberListSet` 생성
+        - `numberList.size()`의 값이 `numberListSet.size()`와 일치하는지 확인
+        - 만일 일치하지 않을 경우 `IllegalArgumentException()` 발생
+- 작성중
+
+### `BaseballGame` 클래스
+
+#### 클래스 내 변수
+
+- `MIN_NUMBER`
+    - 숫자 야구 게임에 사용할 가장 작은 숫자를 저장하는 `public static int` 상수
+    - 미션에 명세되어 있는 대로 이 값은 1이다
+- `MAX_NUMBER`
+    - 숫자 야구 게임에 사용할 가장 큰 숫자를 저장하는 `public static int` 상수
+    - 미션에 명세되어 있는 대로 이 값은 9이다
+- 작성중
+
+#### 클래스 내 메소드
+
+- `BaseballGame()`
+    - 작성중
+- `private List<Integer> generateAnswer(final int listSize)`
+    - 길이가 `listSize`인 서로 다른 수를 가진 `List<Integer>`를 생성
+    - 내부 구현:
+        - `LinkedHashSet<Integer> answerSet` 생성
+        - `RandomUtils.nextInt(1, 9)` 호출을 통해 `MIN_NUMBER`~`MAX_NUMBER` 사이의 랜덤한 숫자 추출하여 `answerCandidate`로 설정
+        - `answerSet.contains(answerCandidate)`를 통해 해당 숫자가 `answerSet에 있는지 확인
+        - 해당 숫자가 이미 `answerSet`에 있을 경우, `answerSet`에 없는 숫자를 얻을 때까지 앞의 과정 반복
+        - `answerSet`에 해당 숫자를 삽입
+        - `answerSet`의 크기가 `listSize`가 될 때까지 숫자를 넣는 과정 반복
+        - `answerSet`을 이용해 생성한 `ArrayList<Integer>` 반환
+- 작성중
+
+### `Application` 클래스
+
+#### 클래스 내 변수
+
+- 작성중
+
+#### 클래스 내 메소드
+
+- `List<Integer> parseUserGuessString(string userGuessString)`
+    - 사용자가 입력한 문자열인 `userGuessString`을 `List<Integer>`로 변환
+    - 내부 구현:
+        - 작성중
+- `main()`
+    - 프로그램의 동작을 제어하고 입출력을 담당
+    - 내부 구현:
+        - 매 반복마다 새로운 `BaseballGame` 객체 생성
+        - 사용자에게 숫자 입력을 요청하는 문구 출력
+        - `scanner.nextLine()`을 통해 문자열을 입력을 받음
+        - 문자열을 파싱하여 `List<Integer>`로 변환
+        - 변환된 `List<Integer>`를 `BaseballGame` 객체에 전달
+        - 스트라이크와 볼을 이용해 알맞는 문구 출력
+        - 게임이 종료되었는지 확인
+        - 게임이 종료되지 않은 경우, 문자열 입력 단계부터 절차를 반복
+        - 게임이 종료된 경우, 게임 종료를 안내하고 게임을 다시 시작할지 질문 
+        - 다시 시작하지 않길 원할 때까지 위의 절차를 반복
         - 다시 시작하지 않길 원하는 경우 반복 종료
+- 작성중
 
 ## 📝 License
 
