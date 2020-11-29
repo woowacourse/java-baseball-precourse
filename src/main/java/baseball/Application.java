@@ -6,9 +6,10 @@ import java.util.Scanner;
 
 public class Application {
     static boolean[] checkDistinct;
+    static final int PLAY = 0;
     static final int ING = 1;
     static final int END = 2;
-    static int ongoingInput;
+    static int ongoingStatus;
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
@@ -17,12 +18,13 @@ public class Application {
         checkDistinct = new boolean[10];
         int[] systemNum = getDistinctNumber();
 
-        while(true) {
+        ongoingStatus = PLAY;
+        while(ongoingStatus < END) {
             // 플레이어가 입력
             System.out.print("숫자를 입력해주세요 : ");
             char[] charUserNum = scanner.next().toCharArray();
 
-            // 정상적인 입력인지 체크 (같은 숫자 중복 입력, 3자리가 넘는 수 입력, 숫자가 아닌것 입력)
+            // 정상적인 입력인지 체크 (같은 숫자 중복 입력, 3자리가 아 수 입력, 숫자가 아닌것 입력)
             try {
                 validateNumberInput(charUserNum);
             } catch (IllegalArgumentException e) {
@@ -38,15 +40,16 @@ public class Application {
 
             // 정답 체크하기
             if(checkAnswer(strikeCnt)) {
-                ongoingInput = scanner.nextInt();
+                ongoingStatus = scanner.nextInt();
             }
 
             // 게임을 완전히 종료할 지 체크
-            if(ongoingInput == END) {
+            if(ongoingStatus == END) {
                 break;
-            } else if(ongoingInput == ING) {
+            } else if(ongoingStatus == ING) {
                 checkDistinct = new boolean[10];
                 systemNum = getDistinctNumber();
+                ongoingStatus = PLAY;
                 continue;
             }
 
@@ -59,7 +62,7 @@ public class Application {
     }
 
     private static void validateNumberInput(char[] charUserNum) {
-        if(charUserNum.length > 3) {
+        if(charUserNum.length != 3) {
             throw new IllegalArgumentException("잘못 입력하셨습니다. 3자리수를 입력해야합니다. 다시 입력해주세요.");
         }
 
