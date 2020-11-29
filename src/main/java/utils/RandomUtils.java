@@ -20,7 +20,6 @@ public class RandomUtils {
         if (startInclusive == endInclusive) {
             return startInclusive;
         }
-
         return startInclusive + RANDOM.nextInt(endInclusive - startInclusive + 1);
     }
 }
