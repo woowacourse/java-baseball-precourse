@@ -7,14 +7,13 @@ public class Hint {
     private static final int NUMBER_LENGTH = 3;
     private static ArrayList<Integer> hintList = new ArrayList<>();
 
-    public Hint(ArrayList<Integer> ballStrikeList) {
+    public static ArrayList<Integer> hint(ArrayList<Integer> ballStrikeList) {
         hintList = ballStrikeList;
-    }
-    public static boolean hint() {
-        return getHint();
+
+        return hintList;
     }
 
-    public static boolean getHint() {
+    public static boolean getHint(ArrayList<Integer> hintList) {
         if (hintList.get(1) == NUMBER_LENGTH){
             System.out.print(NUMBER_LENGTH + "스트라이크" + "\n"
                     + NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -36,9 +35,8 @@ public class Hint {
         if (hintList.get(0) == 0 & hintList.get(1) == 0){
             System.out.print("낫싱");
         }
-
+        System.out.print("\n");
         return false;
-
     }
 
 }

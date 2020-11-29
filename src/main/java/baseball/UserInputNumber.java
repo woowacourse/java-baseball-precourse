@@ -54,7 +54,7 @@ public class UserInputNumber {
     }
 
     public static boolean userInputContainZero() {
-        if (userinputNumberString.contains("0")) {
+        if (userInputNumberString.contains("0")) {
             return false;
         }
         return true;
@@ -70,7 +70,7 @@ public class UserInputNumber {
     public static boolean userInputRepeat() {
         ArrayList<Character> repeatCheckList = new ArrayList<>();
 
-        for (char c : userinputNumberString.toCharArray()) {
+        for (char c : userInputNumberString.toCharArray()) {
             repeatCheckList.add(c);
         }
 

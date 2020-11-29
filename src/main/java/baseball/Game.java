@@ -15,9 +15,9 @@ public class Game {
             userInputNumberList = UserInputNumber.userInputNumber();
 
             NumberCompare numberCompare = new NumberCompare(randomNumberList, userInputNumberList);
-            ballStrikeList = NumberCompare.numberCompare();
+            ballStrikeList = NumberCompare.numberCompare(randomNumberList, userInputNumberList);
 
-            if (Hint.hint()) {
+            if (Hint.getHint(ballStrikeList)) {
                 return true;
             }
             return false;

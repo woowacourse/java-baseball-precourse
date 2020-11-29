@@ -5,47 +5,49 @@ import java.util.ArrayList;
 public class NumberCompare {
 
     private static final int NUMBER_LENGTH = 3;
-    private static ArrayList<Integer> randomNumberList = new ArrayList<>();
-    private static ArrayList<Integer> userNumberList = new ArrayList<>();
-    private static ArrayList<Integer> ballStrikeCountList = new ArrayList<>();
+    private static ArrayList<Integer> randomNumberList;
+    private static ArrayList<Integer> userNumberList;
+    private static final ArrayList<Integer> ballStrikeCountList = new ArrayList<>();
 
     public NumberCompare(ArrayList<Integer> randomNumberList, ArrayList<Integer> userNumberList) {
         this.randomNumberList = randomNumberList;
         this.userNumberList = userNumberList;
     }
 
-    public static ArrayList<Integer> numberCompare() {
+    public static ArrayList<Integer> numberCompare(ArrayList<Integer> randomNumberList, ArrayList<Integer> userNumberList) {
         ballStrikeCountList.clear();
-        ballStrikeCountList.add(getFinalBallCount());
-        ballStrikeCountList.add(compareStrikeCount());
+        ballStrikeCountList.add(getFinalBallCount(randomNumberList, userNumberList));
+        ballStrikeCountList.add(compareStrikeCount(randomNumberList, userNumberList));
 
         return ballStrikeCountList;
     }
 
-    public static int compareBallCount() {
-        int count = 0;
+    public static int compareBallCount(ArrayList<Integer> randomNumberList, ArrayList<Integer> userNumberList) {
+        int cnt = 0;
+        System.out.println(randomNumberList);
+        System.out.println(userNumberList);
+
         for (int singleUserNumber : userNumberList) {
             if (randomNumberList.contains(singleUserNumber)) {
-                count++;
+                cnt++;
             }
         }
-        return count;
+        return cnt;
     }
 
-    public static int compareStrikeCount() {
+    public static int compareStrikeCount(ArrayList<Integer> randomNumberList, ArrayList<Integer> userNumberList) {
         int count = 0;
         for (int i = 0; i < NUMBER_LENGTH; i++) {
-            if (userNumberList.get(i).equals(randomNumberList.get(i))) {
+            if (randomNumberList.get(i) == userNumberList.get(i)) {
                 count++;
             }
         }
-        System.out.println(count);
         return count;
     }
 
-    public static int getFinalBallCount() {
-        int count = 0;
-        count = compareBallCount() - compareStrikeCount();
+    public static int getFinalBallCount(ArrayList<Integer> randomNumberList, ArrayList<Integer> userNumberList) {
+        int count;
+        count = compareBallCount(randomNumberList, userNumberList) - compareStrikeCount(randomNumberList, userNumberList);
         return count;
     }
 }
