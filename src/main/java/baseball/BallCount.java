@@ -26,11 +26,10 @@ public class BallCount {
             }
         }
 
-        String result = resultStrikeAndBall();
-        return result;
+        return resultStrikeAndBall();
     }
 
-    public static void updateStrikeOrBall(int targetDigit, int userDigit, int targetIndex, int userIndex) {
+    private static void updateStrikeOrBall(int targetDigit, int userDigit, int targetIndex, int userIndex) {
         if((targetDigit == userDigit) && (targetIndex == userIndex)) {
             strike++;
         } else if ((targetDigit == userDigit) && (targetIndex != userIndex)) {
@@ -38,7 +37,7 @@ public class BallCount {
         }
     }
 
-    public static String resultStrikeAndBall() {
+    private static String resultStrikeAndBall() {
         String result = "";
         if ((ball == 0) && (strike == 0)) {
             result += "낫싱";

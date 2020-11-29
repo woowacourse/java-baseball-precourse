@@ -58,7 +58,6 @@ public class UserInputNumberGenerator {
         /* 3자리 수 중에서 중복이 있는지 확인한다 */
         int [] userDigits;
         userDigits = NumberSeparator.makeArray(userInputNumber);
-
         if((userDigits[0] == userDigits[1]) || (userDigits[0] == userDigits[2])
                 || (userDigits[1] == userDigits[2])) {
             throw new IllegalArgumentException();

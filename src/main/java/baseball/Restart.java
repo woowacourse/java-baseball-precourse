@@ -19,9 +19,9 @@ public class Restart {
             return true;
         } else if (gamingStatus.equals(TERMINATE)) {
             return false;
-        } else {
-            throw new IllegalArgumentException();
         }
+
+        throw new IllegalArgumentException();
     }
 
     private static String restartUserInput(Scanner scanner) {
