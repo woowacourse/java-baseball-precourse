@@ -9,9 +9,10 @@ import java.util.Scanner;
 
 public class Game {
 
-    private InputUtils inputUtils;
     private static Numbers numbers;
     private static List<Integer> randomList;
+
+    private InputUtils inputUtils;
 
     private Game(Scanner scanner) {
         this.inputUtils = InputUtils.of(scanner);
@@ -32,7 +33,7 @@ public class Game {
 
             if (isFinish(strikeCount)) {
                 randomList = null;
-                isContinue = continueOrNot();
+                isContinue = isContinueOrNot();
             }
             if (!isContinue) {
                 break;
@@ -40,7 +41,7 @@ public class Game {
         }
     }
 
-    public boolean continueOrNot() {
+    public boolean isContinueOrNot() {
         int continueOrNot = inputUtils.getContinueOrNot();
         if (continueOrNot == 1) {
             return true;
@@ -68,7 +69,7 @@ public class Game {
     private void initializeGame() {
         List<Number> gameNumber = new ArrayList<>();
         if(randomList == null) {
-            randomList = Number.createRandomList(3);
+            randomList = Number.createRandoms(3);
         }
         List<Integer> inputList = inputUtils.getIntegerList();
         gameNumber.add(Number.of(randomList));

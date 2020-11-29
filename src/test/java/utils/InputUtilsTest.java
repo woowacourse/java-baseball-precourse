@@ -212,7 +212,7 @@ class InputUtilsTest {
         Game game = Game.of(testScanner);
 
         //when
-        boolean chooseContinue = game.continueOrNot();
+        boolean chooseContinue = game.isContinueOrNot();
 
         //then
         assertThat(chooseContinue).isEqualTo(true);
@@ -229,7 +229,7 @@ class InputUtilsTest {
         Game game = Game.of(testScanner);
 
         //when
-        boolean chooseContinue = game.continueOrNot();
+        boolean chooseContinue = game.isContinueOrNot();
 
         //then
         assertThat(chooseContinue).isEqualTo(false);
