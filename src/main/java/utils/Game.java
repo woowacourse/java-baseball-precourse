@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Game {
 
     private static Numbers numbers;
-    private static List<Integer> randomList;
+    private static List<Integer> randoms;
 
     private InputUtils inputUtils;
 
@@ -32,7 +32,7 @@ public class Game {
             printResult(ballCount, strikeCount);
 
             if (isFinish(strikeCount)) {
-                randomList = null;
+                randoms = null;
                 isContinue = isContinueOrNot();
             }
             if (!isContinue) {
@@ -68,11 +68,11 @@ public class Game {
 
     private void initializeGame() {
         List<Number> gameNumber = new ArrayList<>();
-        if(randomList == null) {
-            randomList = Number.createRandoms(3);
+        if(randoms == null) {
+            randoms = Number.createRandoms(3);
         }
         List<Integer> inputList = inputUtils.getIntegerList();
-        gameNumber.add(Number.of(randomList));
+        gameNumber.add(Number.of(randoms));
         gameNumber.add(Number.of(inputList));
         this.numbers = Numbers.of(gameNumber);
     }
