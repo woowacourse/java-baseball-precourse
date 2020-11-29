@@ -161,3 +161,12 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
   - strike/ball 횟수가 정확하게 출력 되는지?
   - "낫싱" 조건을 정확하게 출력 하는지?
   
+<br>
+
+## 리팩토링 요소
+- 여러 클래스에 중복해서 정의하여 사용하고 있는 static final 변수를 하나로 통일하고 싶다.
+- 숫자게임 결과를 출력하기 위해 사용하는 BaseballStep 클래의 toString 함수를 String 객체에 값을 더하지 않고 StringBuilder 클래스를 사용하여 구현
+  - String 객체에 값을 더할 때마다 새로운 객체를 생성하므로 메모리 관리 관점에서 비효율적이다.
+  - 값을 더할 때마다 메모리에 append 하는 방식이므로 새로운 객체를 생성하지 않는다.
+
+  
