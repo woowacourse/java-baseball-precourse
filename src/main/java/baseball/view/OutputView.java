@@ -7,6 +7,7 @@ public class OutputView {
     private static final String TERMINATION_MESSAGE = "프로그램을 종료합니다.";
     private static final String BALL_MESSAGE_FORMAT = "%d볼 ";
     private static final String STRIKE_MESSAGE_FORMAT = "%d스트라이크 ";
+    private static final String NOTHING = "낫싱";
 
     public static void showErrorMessage(String errorMessage) {
         System.out.println(errorMessage);
@@ -24,7 +25,7 @@ public class OutputView {
             stringBuffer.append(String.format(STRIKE_MESSAGE_FORMAT, strike));
         }
         if (ball == 0 && strike == 0){
-            System.out.println("낫싱");
+            System.out.println(NOTHING);
             return;
         }
         System.out.println(stringBuffer);
