@@ -46,7 +46,9 @@ public class Application {
 
         // 볼 체크하기
         int ballCnt = checkBall(userNum, systemNum);
-        if(ballCnt == 0){
+        if(ballCnt == 0 && strikeCnt == 0) {
+            System.out.println("낫싱");
+        } else if(ballCnt == 0){
             System.out.println(strikeCnt + "스트라이크");
         } else if(strikeCnt == 0) {
             System.out.println(ballCnt + "볼");
