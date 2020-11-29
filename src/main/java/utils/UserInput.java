@@ -6,6 +6,10 @@ import java.util.Scanner;
 public class UserInput {
     private ArrayList<Integer> userInput;
 
+    public ArrayList<Integer> getUserInput() {
+        return userInput;
+    }
+
     // 값을 입력받아 이를 처리한 뒤 ArrayList에 저장하는 함수
     public void setInput(Scanner scanner) throws Throwable {
         String inputString = new String();
@@ -27,9 +31,5 @@ public class UserInput {
             }
         }
         return;
-    }
-
-    public ArrayList<Integer> getUserInput() {
-        return userInput;
     }
 }
