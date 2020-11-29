@@ -8,19 +8,20 @@ import java.util.List;
 
 public class Number {
 
-    private List<Integer> number;
+    private List<Integer> numbers;
 
-    private Number(List<Integer> number) {
-        this.number = validateDigitNumber(number);
+    private Number(List<Integer> numbers) {
+        this.numbers = numbers;
+        validateDigitNumber();
     }
 
     public static Number of(List<Integer> numbers) {
         return new Number(numbers);
     }
 
-    public List<Integer> validateDigitNumber(List<Integer> numbers) {
+    private void validateDigitNumber() {
         List<Integer> validatedList = new ArrayList<>();
-        numbers.stream()
+        this.numbers.stream()
                 .forEach(number -> {
                     if (!validatedList.contains(number)) {
                         validatedList.add(number);
@@ -29,11 +30,10 @@ public class Number {
         if (validatedList.size() != numbers.size()) {
             throw new IllegalArgumentException("각 자릿 수는 모두 달라야 합니다");
         }
-        return validatedList;
     }
 
     public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(number);
+        return Collections.unmodifiableList(numbers);
     }
 
     public static List<Integer> createRandoms(int numberSize) {
