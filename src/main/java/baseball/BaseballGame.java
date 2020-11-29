@@ -1,5 +1,7 @@
-package baseball.domain;
+package baseball;
 
+import baseball.domain.Computer;
+import baseball.domain.NumbersComparator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
