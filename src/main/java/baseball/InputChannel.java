@@ -3,16 +3,14 @@ package baseball;
 import java.util.Scanner;
 
 public class InputChannel {
-    private static final String QUESTION_FOR_BASEBALL_NUMBER = "숫자를 입력해주세요 : ";
-    private static final String CONGRATULATION_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String QUESTION_FOR_RE_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     private static final int RE_GAME_CODE = 1;
 
     private InputChannel() {
     }
 
     public static int askBaseballNumber(Scanner scanner) {
-        System.out.print(QUESTION_FOR_BASEBALL_NUMBER);
+        OutputChannel.printBaseBallNumberQuestion();
         try {
             int inputInt = convertStringToInt(scanner.nextLine().strip());
             Validator.ValidateBaseBallNumber(inputInt);
@@ -24,8 +22,8 @@ public class InputChannel {
     }
 
     public static boolean askReGame(Scanner scanner) {
-        System.out.println(CONGRATULATION_MESSAGE);
-        System.out.println(QUESTION_FOR_RE_GAME);
+        OutputChannel.printCongratulations();
+        OutputChannel.printCongratulations();
         try {
             int inputInt = convertStringToInt(scanner.nextLine().strip());
             Validator.ValidateReGameCode(inputInt);
