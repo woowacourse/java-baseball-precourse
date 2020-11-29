@@ -126,7 +126,7 @@ private static final Random RANDOM = new Random();
     - 입력값의 앞에서 세자리까지 숫자 리스트로 반환
     - 유효성 검증이 되지 않았음
 
-7. 유효성 검증된 나의 숫자 생성
+7. 유효성 검증된 나의 숫자 생성 (myNumList)
     - 세자리인지 검증하여 아닐 시 IllegalArgumentException 발생
     - 세자리 검증 후 입력값 숫자 생성
     - 중복검사하여 중복일시 IllegalArgumentException 발생
