@@ -1,6 +1,8 @@
 package baseball;
 
 public class Result {
+    private static final String COMPLETE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
     private RandomNumbers randomNumbers;
     private Player player;
     private boolean isTerminated;
@@ -71,6 +73,9 @@ public class Result {
     }
 
     public boolean terminated() {
+        if (this.isTerminated) {
+            System.out.println(COMPLETE_MESSAGE);
+        }
         return this.isTerminated;
     }
 
