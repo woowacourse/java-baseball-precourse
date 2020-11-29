@@ -70,22 +70,17 @@ public class GameCycle{
 
     private void input()throws IllegalArgumentException{
         System.out.println("숫자를 입력해주세요.");
-        MakingNumber User = new MakingNumber(scanner.nextInt());
+        MakingNumber User = new MakingNumber(scanner.next());
         this.userValue = User.getTarget();
     }
 
     //게임을 시작하는 함수.
     public void gameStart(){
         boolean check = true;
-        //test
-        for(Integer a : comValue){
-            System.out.print(a);
-        }
-        System.out.println();
-
         do {
             try {
                 input();
+                check = true;
             }catch (IllegalArgumentException i){
                 System.out.println(i.getMessage());
                 check = false;
