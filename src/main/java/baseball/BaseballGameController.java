@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.Scanner;
 
+import static utils.Constant.*;
+
 public class BaseballGameController {
 
     private Scanner scanner;
@@ -21,7 +23,7 @@ public class BaseballGameController {
     }
 
     private void playGame() {
-
+        player.inputBalls();
     }
 
     private boolean checkReplay() {
