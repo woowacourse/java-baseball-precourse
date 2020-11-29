@@ -10,7 +10,10 @@ public class RandomNumberGenerator {
         int numberCount = 0;
         while(numberCount != Constants.NUMBER_COUNT) {
             int candidateNumber = RandomUtils.nextInt(1, Constants.NUMBER_LIMIT);
-            if (isUsedNumber[candidateNumber]) continue;
+
+            if (isUsedNumber[candidateNumber]) {
+                continue;
+            }
             isUsedNumber[candidateNumber] = true;
             answerNumbers[numberCount] = candidateNumber;
             numberCount++;

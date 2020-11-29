@@ -72,5 +72,4 @@ public class BaseBallGame{
         }
         System.out.println();
     }
-
 }
