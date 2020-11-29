@@ -23,7 +23,13 @@ public class Application {
             char[] charUserNum = scanner.next().toCharArray();
 
             // 정상적인 입력인지 체크
-            validateInput(charUserNum);
+            try {
+                validateInput(charUserNum);
+            } catch (IllegalArgumentException e) {
+                String message = e.getMessage();
+                System.out.println(message);
+                continue;
+            }
 
             // 플레이어 input 문자에서 숫자로 변경
             int[] userNum = charToInt(charUserNum);
@@ -66,7 +72,7 @@ public class Application {
 
     }
 
-    private static void validateInput(char[] charUserNum) throws IllegalArgumentException {
+    private static void validateInput(char[] charUserNum){
         if(charUserNum.length > 3) {
             throw new IllegalArgumentException("3자리수를 입력해야합니다.");
         }
