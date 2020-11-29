@@ -4,12 +4,16 @@ import java.util.Scanner;
 
 public class UserInput {
     private static Scanner input = new Scanner(System.in);
-    private static String userNum;
+    private static int[] userNum;
+    private static String userNumString;
 
-    public String getUserNum () {
+    public int[] getUserNum () {
         System.out.print("숫자를 입력해주세요 : ");
-        userNum = input.nextLine();
-        if (userNumValidation(userNum)) {
+        userNumString = input.nextLine();
+        if (userNumValidation(userNumString)) {
+            for(int i=0; i<userNumString.length(); i++) {
+                userNum[i] = userNumString.charAt(i) - '0';
+            }
             return userNum;
         } else {
             throw new IllegalArgumentException();
