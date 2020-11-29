@@ -57,7 +57,7 @@ class NumberTest {
         List<Integer> tmpList = new ArrayList<>();
 
         //when
-        List<Integer> randomList = Number.createRandomList(3);
+        List<Integer> randomList = Number.createRandoms(3);
         for (Integer integer : randomList) {
             if (!tmpList.contains(integer)) {
                 tmpList.add(integer);

@@ -36,7 +36,7 @@ public class Number {
         return Collections.unmodifiableList(number);
     }
 
-    public static List<Integer> createRandomList(int numberSize) {
+    public static List<Integer> createRandoms(int numberSize) {
         List<Integer> randomList = new ArrayList<>();
         int randomNumber;
         for (int i = 0; i < numberSize; i++) {
