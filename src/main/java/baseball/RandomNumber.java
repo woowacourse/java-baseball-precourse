@@ -13,7 +13,7 @@ public class RandomNumber {
     static final int END_BOUND = 9;
 
     //set을 이용하여 중복을 검사하면서 세 숫자를 리스트로 반환
-    public List<Integer> makeThreeRandNum() {
+    private List<Integer> makeThreeRandNum() {
         Set<Integer> threeNum = new HashSet<>();
         while (threeNum.size() < RAND_NUM_LENGTH) {
             threeNum.add(RandomUtils.nextInt(START_BOUND, END_BOUND));
