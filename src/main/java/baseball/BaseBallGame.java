@@ -31,7 +31,10 @@ public class BaseBallGame {
 
     public String getInput() {
         System.out.print(INPUT_MESSAGE);
-        String input = scanner.nextLine();
+        return validateInputHasNoException(scanner.nextLine());
+    }
+    
+    public String validateInputHasNoException(String input) {
         try {
             InputValidator.validateInputIsNumber(input);
             InputValidator.validateInputLengthEqualsDigit(input);
