@@ -60,13 +60,22 @@ public class GameController {
     }
 
     private boolean checkRestart() {
-        System.out.println(Message.REQUEST_RESTART_INPUT);
+        System.out.println(Message.REQUEST_COMMAND_TYPE_INPUT);
         CommandType playerCommandType = requestCommandNumber(scanner);
         return playerCommandType.equals(CommandType.RESTART);
     }
 
     private CommandType requestCommandNumber(Scanner scanner) {
         String playerInput = player.requestInput(scanner);
-        return CommandType.convert(playerInput);
+        CommandType playerCommandType;
+
+        try {
+            playerCommandType = CommandType.convert(playerInput);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return requestCommandNumber(scanner);
+        }
+
+        return playerCommandType;
     }
 }

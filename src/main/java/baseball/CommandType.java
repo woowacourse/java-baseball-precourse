@@ -15,7 +15,7 @@ public enum CommandType {
 
     public static CommandType convert(String playerInput) {
         if (!checkValidation(playerInput)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Message.REQUEST_COMMAND_TYPE_ERROR);
         }
 
         for (CommandType commandType : CommandType.values()) {
