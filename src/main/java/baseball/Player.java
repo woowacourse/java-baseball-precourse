@@ -9,7 +9,11 @@ public class Player {
         this.keyboard = new Input(scanner);
     }
 
-    public Balls enterNumber(){
+    public Balls enterNumber() {
         return keyboard.enterNumberInput();
+    }
+
+    public boolean enterOrder(){
+        return keyboard.enterOrderInput();
     }
 }

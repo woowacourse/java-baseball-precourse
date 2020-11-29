@@ -20,17 +20,22 @@ public class Input {
     }
 
     public Balls enterNumberInput() {
-        int input = ZERO;
-
-        try {
-            input = scanner.nextInt();
-        } catch (Exception e) {
-            throw new IllegalArgumentException(ABNORMAL_INPUT);
-        }
+        int input = inputOnlyNumber();
 
         validateLength(input, NUMBER_INPUT_LENGTH);
 
         return makeBallsFrom(input);
+    }
+
+    public boolean enterOrderInput() {
+        int input = inputOnlyNumber();
+
+        validateNotOneOrTwo(input);
+
+        if(input == 1){
+            return true;
+        }
+        return false;
     }
 
     private Balls makeBallsFrom(int input) {
@@ -43,12 +48,26 @@ public class Input {
 
     private List<Integer> divideOneIntoThree(int input) {
         List<Integer> numbers = new ArrayList<>();
+
         while (input != ZERO) {
             numbers.add(input % DIVIDING_NUMBER);
             input /= DIVIDING_NUMBER;
         }
         Collections.reverse(numbers);
+
         return numbers;
+    }
+
+    private int inputOnlyNumber() {
+        int input = ZERO;
+
+        try {
+            input = scanner.nextInt();
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ABNORMAL_INPUT);
+        }
+
+        return input;
     }
 
     private void validateLength(int input, int length) {
@@ -57,7 +76,16 @@ public class Input {
         }
     }
 
+    private void validateNotOneOrTwo(int input) {
+        if (input != 1 && input != 2){
+            throw new IllegalArgumentException(ABNORMAL_INPUT);
+        }
+    }
+
     private int getNumberInputLength(int input) {
         return (int) (Math.log10(input) + 1);
     }
+
+
+
 }
