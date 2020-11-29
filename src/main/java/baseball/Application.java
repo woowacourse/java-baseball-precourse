@@ -8,6 +8,7 @@ import utils.RandomUtils;
  *       author: 483759/윤이진
  * */
 public class Application {
+    private static final int INPUT_NUM = 3;
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
@@ -20,11 +21,24 @@ public class Application {
     public static void startGame(Scanner scanner){
         String inputValue;
         boolean correctValue=false;
+        Number comNum = setComputerNumber();
         while(!correctValue){
             printNumberInput();
             inputValue=getUserInput(scanner);
             correctValue=isValidInput(inputValue);
         }
+    }
+
+    public static Number setComputerNumber(){
+        Number comNum = new Number(INPUT_NUM);
+        for(int i=0;i<INPUT_NUM;i++){
+            int randomNum=RandomUtils.nextInt(0,9);
+            while(comNum.isUsedNumber(randomNum)){
+                randomNum=RandomUtils.nextInt(0,9);
+            }
+            comNum.setArrayNumberAt(i,RandomUtils.nextInt(0,9));
+        }
+        return comNum;
     }
 
     /* 게임 진행을 위해 숫자를 입력하라는 안내를 출력하는 메소드 */
@@ -43,7 +57,7 @@ public class Application {
         boolean isValid = true;
 
         try {
-            if(inputValue.length()!=3){
+            if(inputValue.length()!=INPUT_NUM){
                 throw new IllegalArgumentException();
             }
             for (int i = 0; i < inputValue.length(); i++) {
