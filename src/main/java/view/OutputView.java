@@ -11,24 +11,34 @@ public class OutputView {
     private OutputView(){}
 
     public static void printScore(int strikeCnt, int ballCnt){
-        if(ballCnt == 0 && strikeCnt == 0){
-            printMsg(ANNOUNCE_NOTHING);
-            printMsg(SEPARATOR_ROUND);
-            return;
-        }
-
         if(ballCnt != 0) {
-            printMsg(ballCnt);
-            printMsg(ANNOUNCE_BALL_CNT);
-            printMsg(SEPARATOR_BALL_STRIKE);
+           printBallPoint(ballCnt);
         }
 
         if(strikeCnt != 0){
-            printMsg(strikeCnt);
-            printMsg(ANNOUNCE_STRIKE_CNT);
+            printStrikePoint(strikeCnt);
+        }
+
+        if(ballCnt == 0 && strikeCnt == 0){
+            printScoreIsNothing();
         }
 
         printMsg(SEPARATOR_ROUND);
+    }
+
+    private static void printBallPoint(int ballCnt){
+        printMsg(ballCnt);
+        printMsg(ANNOUNCE_BALL_CNT);
+        printMsg(SEPARATOR_BALL_STRIKE);
+    }
+
+    private static void printStrikePoint(int strikeCnt){
+        printMsg(strikeCnt);
+        printMsg(ANNOUNCE_STRIKE_CNT);
+    }
+
+    private static void printScoreIsNothing(){
+        printMsg(ANNOUNCE_NOTHING);
     }
 
     public static void announceAllCorrect(){
