@@ -7,11 +7,10 @@ import java.util.Scanner;
 
 public class BaseballGame {
     private static final String RESTART = "1";
-    private Computer computer;
-    private String computerNumbers;
-    private String playerNumbers;
-    private Scanner scanner;
-    private NumbersComparator numbersComparator;
+
+    private final Computer computer;
+    private final Scanner scanner;
+    private final NumbersComparator numbersComparator;
 
     public BaseballGame(Scanner scanner) {
         computer = new Computer();
@@ -20,16 +19,16 @@ public class BaseballGame {
     }
 
     public void play() {
-        computerNumbers = computer.createRandomComputerNumbers();
+        String computerNumbers = computer.createRandomComputerNumbers();
         do {
-            playerNumbers = InputView.inputPlayerNumbers(scanner);
+            String playerNumbers = InputView.inputPlayerNumbers(scanner);
             numbersComparator.compareNumbers(computerNumbers, playerNumbers);
         } while (!numbersComparator.isStrikeThree());
         OutputView.printCorrectAnswer();
     }
 
     public boolean isRestart() {
-        if(InputView.inputRestartOrEnd(scanner).equals(RESTART)) {
+        if (InputView.inputRestartOrEnd(scanner).equals(RESTART)) {
             return true;
         }
         return false;
