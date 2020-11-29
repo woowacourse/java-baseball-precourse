@@ -2,7 +2,6 @@ package baseball;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import utils.ValidatorUtils;
 
 public class BaseballGame {
 
@@ -10,6 +9,8 @@ public class BaseballGame {
 
     private final Scanner scanner;
     private final int[] computerNumbers;
+    private final AskingUser askingUser;
+
     private final String STRIKE = "스트라이크";
     private final String BALL = "볼";
     private final String NOTHING = "낫싱";
@@ -21,22 +22,12 @@ public class BaseballGame {
     public BaseballGame(Scanner scanner) {
         this.scanner = scanner;
         this.computerNumbers = new Computer().getComputerNumbers();
+        this.askingUser = new AskingUser(scanner);
         gameStart();
     }
 
     public boolean restartOrExit() {
-        String response;
-        while (true) {
-            System.out.println("게임을 다시 하시겠습니까? 어플리케이션을 종료할까요?");
-            System.out.println("1 : 게임 재시작, 2 :  종료");
-            response = scanner.nextLine().trim();
-            try {
-                ValidatorUtils.checkResponse(response);
-                break;
-            } catch (IllegalArgumentException i) {
-                System.out.println(i.getMessage());
-            }
-        }
+        String response = askingUser.askRestartOrExit();
         if (response.equals("1")) {
             return false;
         }
@@ -49,6 +40,7 @@ public class BaseballGame {
 
     private void gameStart() {
         while (isPlaying) {
+            // TODO : 테스트용 println 제거
             System.out.println("답 : " + Arrays.toString(computerNumbers));
             getUserNumbers();
             showHints();
@@ -56,21 +48,12 @@ public class BaseballGame {
     }
 
     private void getUserNumbers() {
-        String numbers;
-        while (true) {
-            System.out.print("숫자를 입력해 주세요 : ");
-            numbers = scanner.nextLine().trim();
-            try {
-                ValidatorUtils.checkNumbers(numbers);
-                break;
-            } catch (IllegalArgumentException i) {
-                System.out.println(i.getMessage());
-            }
-        }
+        String numbers = askingUser.askUserNumbers();
         for (int i = 0; i < THREE_DIGIT; i++) {
             userNumbers[i] = numbers.charAt(i) - '0';
         }
     }
+
 
     private void showHints() {
         int strike = 0;
