@@ -11,16 +11,15 @@ public class Application {
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
         Player player = new Player();
         NumberBaseBall numberBaseBall = new NumberBaseBall();
 
-        while (gameStatus == GAME_START) {
-            numberBaseBall.setRandomNumber(numberBaseBall.makeRandomNumber(MIN_NUMBER, MAX_NUMBER));
-//            System.out.println("randomNumbers: " + numberBaseBall.getRandomNumbers());//랜덤숫자 확인
+        while (true) {
+            numberBaseBall.createRandomNumber(MIN_NUMBER, MAX_NUMBER);
             gameStatus = playGame(player, numberBaseBall, scanner);
-            if (gameStatus == SHUTDOWN)
+            if (gameStatus == SHUTDOWN) {
                 break;
+            }
         }
     }
 
