@@ -14,7 +14,7 @@ public class PlayTheGame {
     ArrayList<Integer> tmpSaveRandomNumber;
     public void startingGame(){
         saveRandomNumber(compute.getRandomNumber());
-        countingGame(player.getInputToArrayList(),returnRandomNumber());
+        countingGame(player.getInputToArrayList(), returnRandomNumber());
 
     }
     public void  saveRandomNumber(ArrayList<Integer> RandomNumber){
@@ -23,24 +23,24 @@ public class PlayTheGame {
     public ArrayList<Integer> returnRandomNumber(){
         return this.tmpSaveRandomNumber;
     }
-    public void countingGame(ArrayList<Integer> inputNumber,ArrayList<Integer> randomNumber){
-        for(int i=0;i<3;i++){
-            System.out.print(randomNumber.get(i));
-        }
+    public void countingGame(ArrayList<Integer> inputNumber,ArrayList<Integer> randomNumber) throws IllegalArgumentException {
+
 
         String message="";
 
+
         int ballCount=compute.getBallNumber(inputNumber,randomNumber);
+
+        int strikeCount=compute.getStrikeNumber(inputNumber,randomNumber);
         if(ballCount>0){
             message+=Integer.toString(ballCount);
             message+=BALL;
         }
-
-        int strikeCount=compute.getStrikeNumber(inputNumber,randomNumber);
         if(strikeCount>0){
             message+=Integer.toString(strikeCount);
             message+=STRIKE;
         }
+
         if(strikeCount<1 && ballCount<1){
             message+="낫싱";
         }
@@ -51,7 +51,7 @@ public class PlayTheGame {
         if(strikeCount==3){
             System.out.println(ENDGAMEMESSAGE);
             System.out.println(QUESTIONGAME);
-            continuingGame(player.playerInput());
+            continuingGame(Integer.parseInt(player.playerInput()));
         }
         else{
             countingGame(player.getInputToArrayList(),returnRandomNumber());
