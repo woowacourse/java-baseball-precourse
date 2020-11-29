@@ -1,7 +1,9 @@
 package domain;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @author yhh1056
@@ -14,11 +16,19 @@ public class BaseballNumber {
 
     public BaseballNumber(final List<Integer> baseballNumbers) {
         validateSize(baseballNumbers);
+        validateDuplicate(baseballNumbers);
         this.baseballNumbers = baseballNumbers;
     }
 
     private void validateSize(List<Integer> baseballNumbers) {
         if (baseballNumbers.size() != BASEBALL_LIST_SIZE) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplicate(List<Integer> baseballNumbers) {
+        Set<Integer> nonDuplicateNumber = new HashSet<>(baseballNumbers);
+        if (nonDuplicateNumber.size() != BASEBALL_LIST_SIZE) {
             throw new IllegalArgumentException();
         }
     }
