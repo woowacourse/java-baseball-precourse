@@ -22,6 +22,10 @@ public class InputViewer {
     }
 
     public static void overlappedReceive() {
+        System.out.println("중복된 자리 수들을 입력하셨습니다.");
+    }
+
+    public static void noValidRestart() {
         System.out.println("유효하지 못한 입력입니다.");
     }
 }

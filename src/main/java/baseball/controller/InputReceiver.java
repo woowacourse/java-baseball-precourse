@@ -1,6 +1,7 @@
-package baseball;
+package baseball.controller;
 
 import java.util.Scanner;
+import baseball.viewer.InputViewer;
 
 public class InputReceiver {
     static final int NUMBEROFBALL = 3;
@@ -9,7 +10,7 @@ public class InputReceiver {
 
     public static int[] userAnswer() {
         int[] userAnswer;
-        System.out.print("숫자를 입력해주세요 : ");
+        InputViewer.receiveNumber();
         String userInitialAnswer = receiver.nextLine();
         lengthChecker(userInitialAnswer);
         userAnswer = intergerArrayTranslator(userInitialAnswer);
@@ -18,12 +19,12 @@ public class InputReceiver {
 
     private static void lengthChecker(String userInitialAnswer) {
         if (userInitialAnswer.length() > 3) {
-            System.out.println("3자리가 초과하였습니다.");
+            InputViewer.excessDigits();
             throw inputError;
         }
 
         if (userInitialAnswer.length() < 3) {
-            System.out.println("3자리 미만입니다.");
+            InputViewer.lackDigits();
             throw inputError;
         }
     }
@@ -49,7 +50,7 @@ public class InputReceiver {
         try {
             integerAnswer = Integer.parseInt(userInitialAnswer);
         } catch (Exception notIntegerType) {
-            System.out.println("입력값은 정수여야만 합니다.");
+            InputViewer.violentIntegerRule();
             throw inputError;
         }
 
@@ -58,7 +59,7 @@ public class InputReceiver {
 
     private static void zeroChecker(int singleNumber) {
         if (singleNumber == 0) {
-            System.out.println("0이외의 1~9자리로 구성된 숫자를 입력해주세요");
+            InputViewer.zeroCheck();
             throw inputError;
         }
     }
@@ -72,7 +73,7 @@ public class InputReceiver {
     private static void comparedOne(int[] integerArray, int turn) {
         for (int j = turn + 1; j < NUMBEROFBALL; j++) {
             if (integerArray[turn] == integerArray[j]) {
-                System.out.println("중복된 자리 수들을 입력하셨습니다");
+                InputViewer.overlappedReceive();
                 throw inputError;
             }
         }
@@ -88,7 +89,7 @@ public class InputReceiver {
             return true;
         }
 
-        System.out.println("유효하지 못한 입력입니다.");
+        InputViewer.noValidRestart();
         throw inputError;
     }
 }

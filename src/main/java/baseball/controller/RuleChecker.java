@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 public class RuleChecker {
     static final int NUMBEROFBALL = 3;
