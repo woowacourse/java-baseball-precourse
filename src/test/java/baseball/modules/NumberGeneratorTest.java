@@ -9,14 +9,14 @@ public class NumberGeneratorTest {
     static final int TEST_ITERATION = 10000;
 
     @Test
-    public void checkGeneratedNumberNotDuplicated(){
+    public void checkGeneratedNumberNotDuplicated() {
         NumberGenerator numberGenerator = new NumberGenerator(GameManager.NUMBER_SIZE);
         boolean isDuplicated = false;
 
-        for(int i = 0; i < TEST_ITERATION; i++){
+        for (int i = 0; i < TEST_ITERATION; i++) {
             numberGenerator.generate();
             int[] generatedNumber = numberGenerator.getNumber();
-            if(!ExceptionChecker.isArrayElementsAreUnique(generatedNumber)){
+            if (!ExceptionChecker.isArrayElementsAreUnique(generatedNumber)) {
                 isDuplicated = true;
                 break;
             }
@@ -26,30 +26,30 @@ public class NumberGeneratorTest {
     }
 
     @Test
-    public void checkGeneratedNumberActuallyRandom(){
+    public void checkGeneratedNumberActuallyRandom() {
         NumberGenerator numberGenerator = new NumberGenerator(GameManager.NUMBER_SIZE);
         HashMap<Integer, Integer> numberCounter = new HashMap<>();
 
-        for(int i = 0; i < TEST_ITERATION; i++){
+        for (int i = 0; i < TEST_ITERATION; i++) {
             numberGenerator.generate();
             int[] generatedNumber = numberGenerator.getNumber();
             count(numberCounter, generatedNumber);
         }
 
         // 모든 숫자가 골고루 나왔는지 눈으로 확인한다
-        for(int key : numberCounter.keySet()){
+        for (int key : numberCounter.keySet()) {
             System.out.printf("%d : %d%n", key, numberCounter.get(key));
         }
     }
 
-    private void count(HashMap<Integer, Integer> counter, int[] number){
-        if(ExceptionChecker.isNull(counter) || ExceptionChecker.isNull(number)){
+    private void count(HashMap<Integer, Integer> counter, int[] number) {
+        if (ExceptionChecker.isNull(counter) || ExceptionChecker.isNull(number)) {
             throw new IllegalArgumentException();
         }
 
-        for(int i = 0; i < number.length; i++){
+        for (int i = 0; i < number.length; i++) {
             int currentNumber = number[i];
-            if(!counter.containsKey(currentNumber)){
+            if (!counter.containsKey(currentNumber)) {
                 counter.put(currentNumber, 0);
             }
             counter.put(currentNumber, counter.get(currentNumber) + 1);

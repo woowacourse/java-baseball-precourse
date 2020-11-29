@@ -17,12 +17,12 @@ public class NumberGenerator {
 
     private int numberSize;
 
-    public NumberGenerator(final int numberSize){
-        if(numberSize <= 0){
+    public NumberGenerator(final int numberSize) {
+        if (numberSize <= 0) {
             throw new IllegalArgumentException();
         }
 
-        if(numberSize > NUMBER_RANGE_MAX - NUMBER_RANGE_MIN + 1){
+        if (numberSize > NUMBER_RANGE_MAX - NUMBER_RANGE_MIN + 1) {
             throw new IllegalArgumentException();
         }
 
@@ -30,35 +30,35 @@ public class NumberGenerator {
     }
 
     /** Return a generated number. */
-    public int[] getNumber(){
+    public int[] getNumber() {
         return generatedNumber.clone();
     }
 
     /** Generate a (numberSize)-digit random number with no duplication numbers in each digit. */
-    public void generate(){
+    public void generate() {
         initializeNumberRange();
         generatedNumber = new int[numberSize];
-        for(int i = 0; i < generatedNumber.length; i++){
+        for (int i = 0; i < generatedNumber.length; i++) {
             generatedNumber[i] = popFromNumberRange();
         }
     }
     
-    private void initializeNumberRange(){
+    private void initializeNumberRange() {
         numberRange = new ArrayList<Integer>();
 
-        for(int i = NUMBER_RANGE_MIN; i <= NUMBER_RANGE_MAX; i++){
+        for (int i = NUMBER_RANGE_MIN; i <= NUMBER_RANGE_MAX; i++) {
             numberRange.add(i);
         }
     }
 
-    private int popFromNumberRange(){
+    private int popFromNumberRange() {
         int index = getRandomIndexOfNumberRange();
         int popValue = numberRange.get(index);
         numberRange.remove(index);
         return popValue;
     }
 
-    private int getRandomIndexOfNumberRange(){
+    private int getRandomIndexOfNumberRange() {
         return RandomUtils.nextInt(0, numberRange.size() - 1);
     }
 }

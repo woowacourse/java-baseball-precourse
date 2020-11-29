@@ -19,12 +19,12 @@ public class InputOutputManager {
     private Scanner scanner;
     private int numberSize;
     
-    public InputOutputManager(final Scanner scanner, final int numberSize){
-        if(ExceptionChecker.isNull(scanner)){
+    public InputOutputManager(final Scanner scanner, final int numberSize) {
+        if (ExceptionChecker.isNull(scanner)) {
             throw new IllegalArgumentException();
         }
 
-        if(numberSize <= 0){
+        if (numberSize <= 0) {
             throw new IllegalArgumentException();
         }
 
@@ -33,50 +33,50 @@ public class InputOutputManager {
     }
 
     /** Ask user for a number to use in the game and return it. */
-    public int[] askUserInputNumber(){
+    public int[] askUserInputNumber() {
         System.out.print(REQUEST_INPUT_MESSAGE);
         String inputNumber = scanner.nextLine();
-        try{
+        try {
             return ParseHandler.stringToIntArray(inputNumber, numberSize);
-        } catch(Exception e){
+        } catch(Exception e) {
             System.out.println(WRONG_VALUE_MESSAGE);
             return askUserInputNumber();
         }
     }
 
     /** Print the result of a round, count of strike and ball. */
-    public void printRoundResult(final int strike, final int ball){
-        if(strike < 0 || ball < 0){
+    public void printRoundResult(final int strike, final int ball) {
+        if (strike < 0 || ball < 0) {
             throw new IllegalArgumentException();
         }
 
-        if(strike == 0 && ball == 0){
+        if (strike == 0 && ball == 0) {
             System.out.println(NOTHING);
             return;
         }
 
-        if(ball != 0){
+        if (ball != 0) {
             System.out.printf(BALL_FORMAT, ball);
         }
 
-        if(strike != 0){
+        if (strike != 0) {
             System.out.printf(STRIKE_FORMAT, strike);
         }
 
         System.out.println();
     }
 
-    public void printWinMessage(){
+    public void printWinMessage() {
         System.out.printf(WIN_PRAISE_FORMAT, numberSize);
     }
 
     /** Ask user if want to restart, and return 1 or 2. */
-    public int askRestartGame(){
+    public int askRestartGame() {
         System.out.println(ASK_RESTART_MESSAGE);
         String answer = scanner.nextLine();
-        try{
+        try {
             return ParseHandler.stringToOneOrTwo(answer);
-        } catch(Exception e){
+        } catch(Exception e) {
             return askRestartGame();
         }
     }

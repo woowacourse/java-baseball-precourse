@@ -17,8 +17,8 @@ public class GameManager {
     private int strike = 0;
     private int ball = 0;
 
-    public GameManager(final Scanner scanner){
-        if(ExceptionChecker.isNull(scanner)){
+    public GameManager(final Scanner scanner) {
+        if (ExceptionChecker.isNull(scanner)) {
             throw new IllegalArgumentException();
         }
 
@@ -27,13 +27,13 @@ public class GameManager {
     }
 
     /** Run the game. */
-    public void run(){
+    public void run() {
         numberGenerator.generate();
 
         playOneRound();
     }
 
-    private void playOneRound(){
+    private void playOneRound() {
         int[] generatedNumber = numberGenerator.getNumber();
         int[] inputNumber = inputOutputManager.askUserInputNumber();
 
@@ -43,37 +43,37 @@ public class GameManager {
         handleRoundEnd();
     }
 
-    private void compareForRoundResult(final int[] inputNumber, final int[] generatedNumber){
-        if(ExceptionChecker.isNull(inputNumber) || ExceptionChecker.isNull(generatedNumber)){
+    private void compareForRoundResult(final int[] inputNumber, final int[] generatedNumber) {
+        if (ExceptionChecker.isNull(inputNumber) || ExceptionChecker.isNull(generatedNumber)) {
             throw new IllegalArgumentException();
         }
 
-        if(inputNumber.length != generatedNumber.length){
+        if (inputNumber.length != generatedNumber.length) {
             throw new IllegalArgumentException();
         }
 
         strike = 0;
         ball = 0;
 
-        for(int i = 0; i < inputNumber.length; i++){
-            if(inputNumber[i] == generatedNumber[i]){
+        for (int i = 0; i < inputNumber.length; i++) {
+            if (inputNumber[i] == generatedNumber[i]) {
                 strike++;
                 continue;
             }
 
-            if(isContains(generatedNumber, inputNumber[i])){
+            if (isContains(generatedNumber, inputNumber[i])) {
                 ball++;
             }
         }
     }
 
-    private boolean isContains(final int[] array, final int value){
-        if(ExceptionChecker.isNull(array)){
+    private boolean isContains(final int[] array, final int value) {
+        if (ExceptionChecker.isNull(array)) {
             throw new IllegalArgumentException();
         }
 
-        for(int i = 0; i < array.length; i++){
-            if(array[i] == value){
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
                 return true;
             }
         }
@@ -81,8 +81,8 @@ public class GameManager {
         return false;
     }
 
-    private void handleRoundEnd(){
-        if(isWin()){
+    private void handleRoundEnd() {
+        if (isWin()) {
             doItWhenGameWin();
             return;
         }
@@ -91,14 +91,14 @@ public class GameManager {
         playOneRound();
     }
 
-    private boolean isWin(){
+    private boolean isWin() {
         return strike == NUMBER_SIZE;
     }
 
-    private void doItWhenGameWin(){
+    private void doItWhenGameWin() {
         inputOutputManager.printWinMessage();
         int answer = inputOutputManager.askRestartGame();
-        if(answer == ANSWER_YES){
+        if (answer == ANSWER_YES) {
             run();
         }
         
