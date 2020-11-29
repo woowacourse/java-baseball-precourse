@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Numbers;
+import baseball.view.InputView;
 
 public class BaseballGame {
     private final Numbers answer;
@@ -15,7 +16,16 @@ public class BaseballGame {
     }
 
     public void play(){
-        // 실행 로직
+        getNumbersFromUser();
+    }
+
+    public void getNumbersFromUser(){
+        try{
+            this.userNumbers = Numbers.valueOf(InputView.getNumbers());
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            getNumbersFromUser();
+        }
     }
 
 }
