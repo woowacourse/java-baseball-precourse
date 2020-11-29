@@ -8,8 +8,8 @@ import java.util.Scanner;
  * @author Kim Hanseul
  */
 public class GameManager {
-    public static final int NUMBER_SIZE = 3;
-    public static final int ANSWER_YES = 1;
+    private static final int NUMBER_SIZE = 3;
+    private static final int ANSWER_YES = 1;
 
     private InputOutputManager inputOutputManager;
     private NumberGenerator numberGenerator;
