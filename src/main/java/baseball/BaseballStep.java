@@ -62,26 +62,25 @@ public class BaseballStep {
 
     @Override
     public String toString() {
-        String gameResult = "";
+        StringBuilder gameResult = new StringBuilder();
+
+        if (ballCount == 0 && strikeCount == 0) {
+            gameResult.append("낫싱");
+            return gameResult.toString();
+        }
 
         if (ballCount > 0) {
-            gameResult += ballCount;
-            gameResult += "볼";
+            gameResult.append(ballCount).append("볼");
 
-            if(strikeCount > 0) {
-                gameResult += " ";
+            if (strikeCount > 0) {
+                gameResult.append(" ");
             }
         }
 
         if (strikeCount > 0) {
-            gameResult += strikeCount;
-            gameResult += "스트라이크";
+            gameResult.append(strikeCount).append("스트라이크");
         }
 
-        if (ballCount == 0 && strikeCount == 0) {
-            gameResult = "낫싱";
-        }
-
-        return gameResult;
+        return gameResult.toString();
     }
 }
