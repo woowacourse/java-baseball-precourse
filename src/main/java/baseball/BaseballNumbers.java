@@ -30,6 +30,10 @@ public class BaseballNumbers {
         return new BaseballNumbers(intValueBaseballNumber);
     }
 
+    public void add(int baseballNumber) {
+        baseballNumbers.add(baseballNumber);
+    }
+
     public List<Integer> getBaseballNumbers() {
         return baseballNumbers;
     }
