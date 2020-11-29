@@ -12,6 +12,7 @@ public class Number {
 
     private Number(List<Integer> numbers) {
         this.numbers = numbers;
+        validateNaturalNumber();
         validateDigitNumber();
     }
 
@@ -29,6 +30,12 @@ public class Number {
                 });
         if (validates.size() != numbers.size()) {
             throw new IllegalArgumentException("각 자릿 수는 모두 달라야 합니다");
+        }
+    }
+
+    private void validateNaturalNumber() {
+        if (this.numbers.contains(0)) {
+            throw new IllegalArgumentException("자연수만 입력해 주세요");
         }
     }
 

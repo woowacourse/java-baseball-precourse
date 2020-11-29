@@ -29,6 +29,28 @@ class NumberTest {
     }
 
     @Test
+    @DisplayName("입력 값에 0이 있을시, 에러가 발생한다")
+    void validateNaturalNumberError() {
+        //given
+        List<Integer> integers = Arrays.asList(new Integer[]{0, 2, 3});
+        List<Integer> integers2 = Arrays.asList(new Integer[]{4, 0, 4});
+        List<Integer> integers3 = Arrays.asList(new Integer[]{0, 0, 0});
+
+        //then
+        assertThatThrownBy(() -> Number.of(integers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자연수만 입력해 주세요");
+
+        assertThatThrownBy(() -> Number.of(integers2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자연수만 입력해 주세요");
+
+        assertThatThrownBy(() -> Number.of(integers3))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자연수만 입력해 주세요");
+    }
+
+    @Test
     @DisplayName("입력 값의 각 자리수가 같을 떄, 에러가 발생한다")
     void validateDigitFail() {
         //given
