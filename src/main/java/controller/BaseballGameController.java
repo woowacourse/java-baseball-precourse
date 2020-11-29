@@ -18,6 +18,7 @@ import utils.RandomNumbers;
 public class BaseballGameController {
     private static final int RANDOM_NUMBERS_SIZE = 3;
     private static final String RESTART = "1";
+    private static final String ENDGAME = "2";
 
     private final Scanner scanner;
     private Player player;
@@ -62,6 +63,8 @@ public class BaseballGameController {
         switch (getInput()) {
             case RESTART :
                 this.baseballGame = new BaseballGame(new BaseballNumber(nonDuplicateNumber()));
+                break;
+            case ENDGAME :
                 break;
             default:
                 throw new IllegalArgumentException();
