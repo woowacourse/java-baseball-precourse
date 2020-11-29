@@ -34,9 +34,16 @@ public class BaseballGameController {
     public void play() {
         inputBaseballNumber();
         BaseballNumber playerBaseballNumber = player.createBaseballNumber(getInput());
-        baseballGame.exists(playerBaseballNumber);
+        if (baseballGame.exists(playerBaseballNumber)) {
+            return;
+        }
         Hint hint = baseballGame.countStrikeAndBall(playerBaseballNumber);
         System.out.println(hint);
+        restart();
+    }
+
+    private void restart() {
+        play();
     }
 
     private void inputBaseballNumber() {
