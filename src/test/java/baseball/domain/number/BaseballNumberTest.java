@@ -14,7 +14,7 @@ class BaseballNumberTest {
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     public void BaseballNumber_객체_생성_정상(int baseballNumber) {
         assertThatCode(() -> {
-            BaseballNumber.of(baseballNumber);
+            BaseballNumber.valueOf(baseballNumber);
         }).doesNotThrowAnyException();
     }
 
@@ -23,7 +23,7 @@ class BaseballNumberTest {
     @ValueSource(ints = {-1, 0, 10})
     public void BaseballNumber_객체_생성_예외_발생(int baseballNumber) {
         assertThatThrownBy(() -> {
-            BaseballNumber.of(baseballNumber);
+            BaseballNumber.valueOf(baseballNumber);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

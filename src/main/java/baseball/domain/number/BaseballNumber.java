@@ -14,7 +14,7 @@ public class BaseballNumber {
         this.baseballNumber = baseballNumber;
     }
 
-    public static BaseballNumber of(int baseballNumber) {
+    public static BaseballNumber valueOf(int baseballNumber) {
         validateBaseballNumberRange(baseballNumber);
         return CACHE.computeIfAbsent(baseballNumber, BaseballNumber::new);
     }

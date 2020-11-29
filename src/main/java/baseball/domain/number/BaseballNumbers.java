@@ -26,7 +26,7 @@ public class BaseballNumbers {
             randomNumbers.add(randomNumber);
         }
         List<BaseballNumber> baseballNumbers = randomNumbers.stream()
-                .map(BaseballNumber::of)
+                .map(BaseballNumber::valueOf)
                 .collect(Collectors.toList());
         return new BaseballNumbers(baseballNumbers);
     }
@@ -38,7 +38,7 @@ public class BaseballNumbers {
     public static BaseballNumbers generateInputBaseballNumbers(List<Integer> inputBaseballNumbers) {
         validateDuplication(inputBaseballNumbers);
         List<BaseballNumber> baseballNumbers = inputBaseballNumbers.stream()
-                .map(BaseballNumber::of)
+                .map(BaseballNumber::valueOf)
                 .collect(Collectors.toList());
         return new BaseballNumbers(baseballNumbers);
     }
