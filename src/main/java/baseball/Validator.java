@@ -1,19 +1,21 @@
 package baseball;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Validator {	
 	public static boolean isUseable(String random) {
+		Set<String> set;
+		List<String> randomList = Arrays.asList(random.split(""));
+		
+		set = new HashSet<String>(randomList);
+		
 		if (random.contains("0")) {
 			return false;
 		}
 		
-		for (int i = 0; i < GameManager.MAX_NUM_LENGTH; i++) {
-			for (int j = i+1; j < GameManager.MAX_NUM_LENGTH; j++) {
-				if (random.substring(i, i+1).equals(random.substring(j, j+1))) {
-					return false;
-				}
-			}
-		}
-		
-		return true;
+		return set.size() == GameManager.MAX_NUM_LENGTH;
 	}
 }
