@@ -4,12 +4,12 @@ import java.util.Scanner;
 import java.util.Arrays;
 import utils.RandomUtils;
 
-public class GameComputer {
+public class GameComputer implements BallChoice {
     final Scanner scanner = new Scanner(System.in);
 
-    static String chooseComputerChoice(){
+    public String chooseChoice() {    //BallChoice implements 하고 여기에 static 쓰면 왜 오류나는 것인지
         String computerChoice;
-        int[] answer = new int[3];
+        int[] answer = new int[BALL_SIZE];
 
         answer[0] = RandomUtils.nextInt(1,9);
         do {
@@ -24,7 +24,7 @@ public class GameComputer {
 
     static boolean startGame(String computerChoice) {
         GamePlayer player = new GamePlayer();
-        player.userChoice = player.chooseUserChoice();
+        player.userChoice = player.chooseChoice();
         int strike = umpirePitch(computerChoice, player.userChoice);
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");

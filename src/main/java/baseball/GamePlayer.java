@@ -2,10 +2,10 @@ package baseball;
 
 import java.util.Scanner;
 
-public class GamePlayer {
+public class GamePlayer implements BallChoice {
     String userChoice;
 
-    String chooseUserChoice() {
+    public String chooseChoice() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
         String userChoice = scanner.nextLine();

@@ -8,9 +8,10 @@ public class Application {
         // TODO 구현 진행
         boolean gameCoin = true;
         while (gameCoin) {
-            String computerChoice = GameComputer.chooseComputerChoice();
+            GameComputer gameCom = new GameComputer();
+            String computerChoice = gameCom.chooseChoice();
             boolean gameOver = false;
-            while (!gameOver){
+            while (!gameOver) {
                 gameOver = GameComputer.startGame(computerChoice);
             }
             gameCoin = checkGameCoin();
