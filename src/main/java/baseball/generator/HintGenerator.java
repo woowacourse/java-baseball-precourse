@@ -2,7 +2,6 @@ package baseball.generator;
 
 import baseball.type.BoundaryType;
 import baseball.type.HintType;
-import baseball.type.TextType;
 import baseball.type.ValueType;
 
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class HintGenerator {
         checkSamePosition(programNumber, playerNumber);
 
         // `정답`, `볼`, `스트라이크`, `낫싱`을 확인한다.
-        result = checkResult();
+        checkResult();
 
         return result;
     }
@@ -86,16 +85,16 @@ public class HintGenerator {
      * @return result
      */
     public static String checkResult() {
-        if (strike == ValueType.ANSWER_VALUE.getValue()) {
-            return strike + TextType.FINISH.getText();
-        } else if (ball != ValueType.INITIAL_VALUE.getValue() && strike == ValueType.INITIAL_VALUE.getValue()) {
-            return ball + HintType.BALL.getHint();
+        if (ball != ValueType.INITIAL_VALUE.getValue() && strike == ValueType.INITIAL_VALUE.getValue()) {
+            result = ball + HintType.BALL.getHint();
         } else if (ball == ValueType.INITIAL_VALUE.getValue() && strike != ValueType.INITIAL_VALUE.getValue()) {
-            return strike + HintType.STRIKE.getHint();
+            result = strike + HintType.STRIKE.getHint();
         } else if (ball == ValueType.INITIAL_VALUE.getValue() && strike == ValueType.INITIAL_VALUE.getValue()) {
-            return HintType.NOTHING.getHint();
+            result = HintType.NOTHING.getHint();
         } else {
-            return ball + HintType.BALL.getHint() + " " + strike + HintType.STRIKE.getHint();
+            result = ball + HintType.BALL.getHint() + " " + strike + HintType.STRIKE.getHint();
         }
+
+        return result;
     }
 }

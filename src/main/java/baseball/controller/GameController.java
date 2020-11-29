@@ -1,8 +1,6 @@
 package baseball.controller;
 
-import baseball.type.BoundaryType;
-import baseball.type.SizeType;
-import baseball.type.TextType;
+import baseball.type.*;
 import baseball.generator.HintGenerator;
 import baseball.generator.NumberGenerator;
 import utils.InputUtils;
@@ -96,7 +94,8 @@ public class GameController {
      * @return true or false
      */
     public static boolean finishGame(Scanner scanner) {
-        if (result.equals(SizeType.NUMBER_SIZE.getSize() + TextType.FINISH.getText())) {
+        if (result.equals(ValueType.ANSWER_VALUE.getValue() + HintType.STRIKE.getHint())) {
+            System.out.println(ValueType.ANSWER_VALUE.getValue() + TextType.FINISH.getText());
             System.out.println(TextType.RESTART_OR_FINISH.getText());
             playerStatus = scanner.nextLine();
 

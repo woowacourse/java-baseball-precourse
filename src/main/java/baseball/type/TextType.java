@@ -19,4 +19,3 @@ public enum TextType {
         return text;
     }
 }
-
