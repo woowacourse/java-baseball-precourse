@@ -43,6 +43,20 @@ public class GameManager {
     public GameManager() {
         this.generateAnswer();
     }
+    
+    /**
+     * 입력받은 answer를 정답으로 가지는 게임을 생성합니다.
+     * 
+     * @param first 정답의 첫번째 숫자입니다.
+     * @param second 정답의 두번째 숫자입니다.
+     * @param third 정답의 세번째 숫자입니다.
+     */
+    public GameManager(Integer first, Integer second, Integer third) {
+        this.answer = new ArrayList<Integer>();
+        answer.add(first);
+        answer.add(second);
+        answer.add(third);
+    }
 
     /**
      * 이 메소드를 호출하면 새로운 정답을 생성합니다.
@@ -125,7 +139,7 @@ public class GameManager {
      * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
      * @return 입력으로 받은 숫자를 반환합니다.
      */
-    public int requestInput(Scanner scanner) {
+    private int requestInput(Scanner scanner) {
         int result = 0;
         try {
             result = scanner.nextInt();
@@ -185,7 +199,7 @@ public class GameManager {
      * 
      * @return answer를 반환합니다.
      */
-    protected String getAnswer() {
-        return answer.toString();
+    protected ArrayList<Integer> getAnswer() {
+        return answer;
     }
 }
