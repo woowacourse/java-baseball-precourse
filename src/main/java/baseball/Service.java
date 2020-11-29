@@ -1,39 +1,50 @@
 package baseball;
 
-import utils.RandomUtils;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Service {
 
-    public ArrayList<Integer> generate() {
-        ArrayList<Integer> opponentNumberList = new ArrayList<>();
-        while(opponentNumberList.size()<3) {
-            int randomNumber = RandomUtils.nextInt(1, 9);
-            if(!opponentNumberList.contains(randomNumber)) {
-                opponentNumberList.add(randomNumber);
+    public int ballCount;
+    public int strikeCount;
+
+    /* 볼, 스트라이크 카운트 메소드 */
+    public void counter(String opponentNumber, String playerNum) {
+        int totalCount = 0;
+        for(int i=0; i<3; i++) {
+            String opponentDigit = opponentNumber.split("")[i];
+            String playerDigit = playerNum.split("")[i];
+
+            if(opponentNumber.contains(playerDigit) ) {
+                totalCount++;
+            }
+            if(opponentDigit.equals(playerDigit)) {
+                strikeCount++;
             }
         }
-        return opponentNumberList;
+
+        ballCount = totalCount - strikeCount;
     }
 
-    public boolean filter(String playerNum) {
-        if(playerNum.length()!=3 || playerNum.contains("0")) {
-            throw new IllegalArgumentException();
+    /* 힌트 출력 메소드 */
+    public void printHint(int ballCount, int strikeCount) {
+        if (ballCount != 0 && strikeCount == 0) {
+            System.out.println(ballCount + "볼");
+            return;
         }
 
-        Set set = new HashSet();
-        for(String data : playerNum.split("")) {
-            set.add(data);
-        }
-        if(set.size()!=3) {
-            throw new IllegalArgumentException();
+        if (ballCount == 0 && strikeCount != 0) {
+            System.out.println(strikeCount + "스트라이크");
+            return;
         }
 
-        return true;
+        if (ballCount != 0 && strikeCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            return;
+        }
+
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        }
+
     }
-
-
 }
