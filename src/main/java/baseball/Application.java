@@ -11,10 +11,14 @@ public class Application {
             GameComputer gameCom = new GameComputer();
             String computerChoice = gameCom.chooseChoice();
             boolean gameOver = false;
-            while (!gameOver) {
-                gameOver = GameComputer.startGame(computerChoice);
-            }
+            isGameOver(gameOver, computerChoice);
             gameCoin = checkGameCoin();
+        }
+    }
+
+    static void isGameOver(boolean gameOver, String computerChoice) {
+        while (!gameOver) {
+            gameOver = GameComputer.startGame(computerChoice);
         }
     }
     

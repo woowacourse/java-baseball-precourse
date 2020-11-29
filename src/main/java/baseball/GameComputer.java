@@ -9,7 +9,7 @@ public class GameComputer implements BallChoice {
 
     public String chooseChoice() {    //BallChoice implements 하고 여기에 static 쓰면 왜 오류나는 것인지
         String computerChoice;
-        int[] answer = new int[BALL_SIZE];
+        int[] answer = new int[CHOICE_SIZE];
 
         answer[0] = RandomUtils.nextInt(1,9);
         do {
@@ -26,7 +26,7 @@ public class GameComputer implements BallChoice {
         GamePlayer player = new GamePlayer();
         player.userChoice = player.chooseChoice();
         int strike = umpirePitch(computerChoice, player.userChoice);
-        if (strike == 3) {
+        if (strike == CHOICE_SIZE) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         } else {
