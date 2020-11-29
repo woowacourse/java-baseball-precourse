@@ -11,11 +11,11 @@ public class Application {
         boolean EndGame =false;
         while(!EndGame){
             boolean EndRound =false;
-            //사용자 입력 받기
+            //랜덤으로 정답 생성
             final int[] answer = makeRandom();
             while(!EndRound) {
+                //사용자 입력 받기
                 final int[] userInput = userInput(scanner);
-                //랜덤으로 정답 생성
                 final int strike = Computer.getStrikeNum(userInput, answer);
                 final int ball = Computer.getBallNum(userInput, answer);
                 printResult(ball,strike);
@@ -57,8 +57,8 @@ public class Application {
         }
         System.out.println();
         if(strike == dataLen){
-            final String INPUT_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-            System.out.println(INPUT_MESSAGE);
+            final String RESULT_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            System.out.println(RESULT_MESSAGE);
         }
     }
 
