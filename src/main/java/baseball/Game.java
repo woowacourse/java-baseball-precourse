@@ -57,4 +57,9 @@ public class Game {
         }
     }
 
+    //3스트라이크 여부를 알려주는 메서드
+    public boolean threeStrike(int strike) {
+        return strike == 3;
+    }
+
 }

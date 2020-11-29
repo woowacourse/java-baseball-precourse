@@ -144,7 +144,7 @@ private static final Random RANDOM = new Random();
     - 볼, 스트라이크 횟수 출력
     - 3스트라이크일시 메시지 출력
     
-11. 3스트라이크인지 아닌지 알려줌
+11. 3스트라이크인지 아닌지 알려줌 (threeStrike)
     - 3스트라이크일시 true, 아닐시 false 반환
     
 12. 메인함수 구현
