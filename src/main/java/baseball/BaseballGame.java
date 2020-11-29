@@ -1,14 +1,12 @@
 package baseball;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import java.util.Arrays;
 import java.util.Scanner;
-import utils.RandomUtils;
 
 public class BaseballGame {
 
     private Scanner scanner;
-    private final int THREE_DIGIT = 3;
+    public static final int THREE_DIGIT = 3;
     private final String STRIKE = "스트라이크";
     private final String BALL = "볼";
     private final String NOTHING = "낫싱";
@@ -20,7 +18,8 @@ public class BaseballGame {
 
     public BaseballGame(Scanner scanner) {
         this.scanner = scanner;
-        this.computerNumbers = RandomUtils.getComputerNumbers();
+        Computer computer = new Computer();
+        this.computerNumbers = computer.getComputerNumbers();
         gameStart();
     }
 
