@@ -23,6 +23,7 @@ public class BaseballGameController {
     public void play() {
         BaseballNumber playerBaseballNumber = player.createBaseballNumber(getInput());
         baseballGame.exists(playerBaseballNumber);
+        baseballGame.countStrikeAndBall(playerBaseballNumber);
     }
 
     private String getInput() {

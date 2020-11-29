@@ -1,6 +1,7 @@
 package baseball;
 
 import domain.BaseballNumber;
+import domain.Hint;
 import java.util.List;
 import utils.RandomNumbers;
 
@@ -22,12 +23,32 @@ public class BaseballGame {
     }
 
     public boolean exists(BaseballNumber playerBaseballNumber) {
-        if (baseballNumber.equals(playerBaseballNumber)) {
-            /**
-             * TODO : 정답을 맞춘 경우 메시지 출력
-             */
-            return true;
+        return baseballNumber.equals(playerBaseballNumber);
+    }
+
+    public Hint countStrikeAndBall(BaseballNumber playerBaseballNumber) {
+        Hint hint = new Hint();
+        for (int i = 0; i < BASEBALL_LIST_SIZE; i++) {
+            int number = playerBaseballNumber.getNumber(i);
+            checkStrike(hint, number);
+            checkBall(hint, number);
         }
-        return false;
+        return hint;
+    }
+
+    private void checkStrike(Hint hint, int number) {
+        if (isEqualsToIndexOf(number)) {
+            hint.countStrike();
+        }
+    }
+
+    private void checkBall(Hint hint, int number) {
+        if (!isEqualsToIndexOf(number) && baseballNumber.contains(number)) {
+            hint.countBall();
+        }
+    }
+
+    private boolean isEqualsToIndexOf(int number) {
+        return baseballNumber.indexOf(number) == number;
     }
 }

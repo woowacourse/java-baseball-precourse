@@ -23,6 +23,18 @@ public class BaseballNumber {
         }
     }
 
+    public int getNumber(int index) {
+        return baseballNumbers.get(index);
+    }
+
+    public boolean contains(int number) {
+        return baseballNumbers.contains(number);
+    }
+
+    public int indexOf(int number) {
+        return baseballNumbers.indexOf(number);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
