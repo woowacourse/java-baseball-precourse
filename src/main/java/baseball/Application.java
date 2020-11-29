@@ -11,7 +11,7 @@ public class Application {
         while (onGame) {
             Game game = new Game();
             game.play(scanner);
-            onGame = game.askReGame(scanner);
+            onGame = InputChannel.askReGame(scanner);
         }
     }
 }
