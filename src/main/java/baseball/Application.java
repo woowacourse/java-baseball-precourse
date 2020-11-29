@@ -16,8 +16,8 @@ public class Application {
         NumberBaseBall numberBaseBall = new NumberBaseBall();
 
         while (gameStatus == GAME_START) {
-            numberBaseBall.setRandomNumbers(numberBaseBall.makeRandomNumbers(MIN_NUMBER, MAX_NUMBER));// 랜덤숫자 세팅
-            System.out.println("randomNumbers: " + numberBaseBall.getRandomNumbers());
+            numberBaseBall.setRandomNumber(numberBaseBall.makeRandomNumber(MIN_NUMBER, MAX_NUMBER));
+//            System.out.println("randomNumbers: " + numberBaseBall.getRandomNumbers());//랜덤숫자 확인
             gameStatus = playGame(player, numberBaseBall, scanner);
             if (gameStatus == SHUTDOWN)
                 break;
@@ -25,13 +25,12 @@ public class Application {
     }
 
     private static int playGame(Player player, NumberBaseBall numberBaseBall, Scanner scanner) {
-        String playerInput = player.playerInputNumbers(scanner); // 사용자 입력
-        String roundResult = numberBaseBall.makeHint(playerInput, numberBaseBall.getRandomNumbers()); // 게임 결과
+        String playerInput = player.playerInputNumber(scanner);
+        String roundResult = numberBaseBall.makeHint(playerInput, numberBaseBall.getRandomNumbers());
         System.out.println(roundResult);
         if (roundResult.contains("3스트라이크")) {
             return player.playerInputMenu(scanner);
         }
         return playGame(player, numberBaseBall, scanner);
     }
-
 }

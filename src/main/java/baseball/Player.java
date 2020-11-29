@@ -1,19 +1,21 @@
 package baseball;
 
+import utils.Validator;
+
 import java.util.Scanner;
 
 public class Player {
     private Validator validator = new Validator();
 
-    protected String playerInputNumbers(Scanner scanner) {
+    protected String playerInputNumber(Scanner scanner) {
         try {
             System.out.println("숫자를 입력해 주세요 : ");
             String playerInput = scanner.next();
-            validator.isValidInputNumbers(playerInput);
+            validator.isValidInputNumber(playerInput);
             return playerInput;
         } catch (IllegalArgumentException ie) {
             System.out.println(ie.getMessage());
-            return playerInputNumbers(scanner);
+            return playerInputNumber(scanner);
         }
     }
 
