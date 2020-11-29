@@ -27,5 +27,6 @@ public class UserTest {
     public void IllegalArgumentException_예외가발생한다() {
         String number = "222";
         assertThatIllegalArgumentException().isThrownBy(() -> user.makeNumber(number));
+        assertThat(user.getNumber()).isEmpty();
     }
 }
