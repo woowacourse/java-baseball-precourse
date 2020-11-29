@@ -77,7 +77,7 @@ public class Game {
         this.numbers = Numbers.of(gameNumber);
     }
 
-    public boolean isFinish(int strikeCount) {
+    private boolean isFinish(int strikeCount) {
         if (strikeCount == 3) {
             printFinish();
             return true;
