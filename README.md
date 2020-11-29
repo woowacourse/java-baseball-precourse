@@ -147,7 +147,7 @@ private static final Random RANDOM = new Random();
 11. 3스트라이크인지 아닌지 알려줌 (threeStrike)
     - 3스트라이크일시 true, 아닐시 false 반환
     
-12. 메인함수 구현
+12. 메인함수 구현 (완료)
     
 ## 📝 License
 
