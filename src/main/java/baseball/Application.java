@@ -23,7 +23,6 @@ public class Application {
         }else{  //심판에게 판단을 받는다
             result = Referee.judgeNumber(randomNumber, inputNumber);
         }
-
         System.out.println(randomNumber);
         System.out.println(inputNumber);
     }

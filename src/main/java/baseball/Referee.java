@@ -4,11 +4,8 @@ public class Referee {
     static final String STRIKE = "스트라이크";
     static final String BALL = "볼";
     static final String NOTHING = "낫싱";
-    private static int strikeCount = 0;
-    private static int ballCount = 0;
 
     public static String judgeNumber(String randomNumber, String inputNumber){
-        String result = "";
         int strikeCount = 0;
         int ballCount = 0;
 
@@ -21,5 +18,22 @@ public class Referee {
             }
         }
         return judgeToString(strikeCount, ballCount);
+    }
+
+    public static String judgeToString(int strikeCount, int ballCount){
+        if (strikeCount == Application.NUMBER_LENGTH){
+            return Integer.toString(strikeCount)+STRIKE;
+        }
+
+        if (ballCount >0 && strikeCount >0){
+            return Integer.toString(ballCount)+BALL+" "+Integer.toString(strikeCount)+STRIKE;
+        }else if (ballCount > 0){
+            return Integer.toString(ballCount)+BALL;
+        }else if (strikeCount > 0){
+            return Integer.toString(strikeCount)+STRIKE;
+        }else if (strikeCount==0 && ballCount ==0){
+            return NOTHING;
+        }
+        return "";
     }
 }
