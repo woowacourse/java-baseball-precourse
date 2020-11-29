@@ -46,8 +46,10 @@
 1. Player 가 게임을 진행함
     * Player 에게서 숫자를 입력받음 `setPlayerNumber()`
         * 정상적인 숫자인지 확인 `isCorrectNumber()`
-            * 3자리의 숫자인가?
-            * 각 숫자가 `1 ~ 9` 사이인가?
+            * 3자리인가?
+            * 숫자인가?
+            * 양수인가?
+            * 구성하는 각 숫자가 `1 ~ 9` 사이인가?
             * 등장한 수가 재등장하지 않았는가?
             * 예외 발생시 `IllegalArgumentException` 발생
     
