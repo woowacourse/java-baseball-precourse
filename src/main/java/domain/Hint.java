@@ -2,6 +2,7 @@ package domain;
 
 import static domain.Message.BALL;
 import static domain.Message.BLANK;
+import static domain.Message.NOTHING;
 import static domain.Message.STRIKE;
 
 /**
@@ -25,10 +26,7 @@ public class Hint {
     @Override
     public String toString() {
         if (strikeCount == NO_COUNT && ballCount == NO_COUNT) {
-            /**
-             * TODO : 낫싱 결과 출력
-             */
-            return "";
+            return nothing();
         }
         if (strikeCount == NO_COUNT) {
             return ballCount();
@@ -37,6 +35,11 @@ public class Hint {
             return strikeCount();
         }
         return ballAndStrikeCount();
+    }
+
+    private String nothing() {
+        return new StringBuilder().append(NOTHING)
+            .toString();
     }
 
     private String ballCount() {
