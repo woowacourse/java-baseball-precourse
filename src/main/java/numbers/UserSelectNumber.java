@@ -16,16 +16,14 @@ public class UserSelectNumber {
 
     public void setUserSelectNumber(Scanner scanner) {
         String userInput = receiveUserString(scanner);
-        StringHandler stringHandler = StringHandler.createStringHandler();
-        this.userSelectNumber = stringHandler.stringToArrayList(userInput);
+        this.userSelectNumber = StringHandler.stringToArrayList(userInput);
     }
 
     public String receiveUserString(Scanner scanner) {
         String userInput = null;
         try {
             userInput = scanner.nextLine();
-            UserInputValidator userInputValidator = UserInputValidator.createUserInputValidator();
-            userInputValidator.isValidNumber(userInput);
+            UserInputValidator.isValidNumber(userInput);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }

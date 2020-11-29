@@ -4,11 +4,7 @@ import java.util.ArrayList;
 
 public class StringHandler {
 
-    public static StringHandler createStringHandler() {
-        return new StringHandler();
-    }
-
-    public boolean checkDuplication(String userInput) {
+    public static boolean checkDuplication(String userInput) {
         int length = userInput.length();
         boolean[] check = new boolean[length];
         for (int i = 0 ; i < length ; i++) {
@@ -21,7 +17,7 @@ public class StringHandler {
         return false;
     }
 
-    public ArrayList<Integer> stringToArrayList(String userInput) {
+    public static ArrayList<Integer> stringToArrayList(String userInput) {
         ArrayList<Integer> userNumberList = new ArrayList<>();
         for (int i = 0 ; i < userInput.length() ; i++) {
             userNumberList.add(userInput.charAt(i) - '0');

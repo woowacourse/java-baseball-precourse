@@ -2,11 +2,7 @@ package utils;
 
 public class UserInputValidator {
 
-    public static UserInputValidator createUserInputValidator() {
-        return new UserInputValidator();
-    }
-
-    public void isValidNumber(String userInput) throws IllegalArgumentException{
+    public static void isValidNumber(String userInput) throws IllegalArgumentException{
         if (!isNumberFormat(userInput)) {
             throw new IllegalArgumentException("숫자 형식으로 입력해야 합니다.");
         }
@@ -21,7 +17,7 @@ public class UserInputValidator {
         }
     }
 
-    private boolean isNumberFormat(String userInput) {
+    private static boolean isNumberFormat(String userInput) {
         try {
             Integer.parseInt(userInput);
         } catch (Exception e) {
@@ -30,16 +26,15 @@ public class UserInputValidator {
         return true;
     }
 
-    private boolean isThreeNumber(String userInput) {
+    private static boolean isThreeNumber(String userInput) {
         return userInput.length() == 3;
     }
 
-    private boolean isDuplicatedNumber(String userInput) {
-        StringHandler stringHandler = StringHandler.createStringHandler();
-        return stringHandler.checkDuplication(userInput);
+    private static boolean isDuplicatedNumber(String userInput) {
+        return StringHandler.checkDuplication(userInput);
     }
 
-    private boolean isZeroExist(String userInput) {
+    private static boolean isZeroExist(String userInput) {
         return userInput.contains("0");
     }
 }
