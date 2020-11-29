@@ -12,4 +12,11 @@ public class GuessConditionChecker {
             return false;
         }
     }
+
+    public static boolean checkThreeDigitNumber(int number) {
+        if (number > 99 && number < 1000) {
+            return true;
+        }
+        return false;
+    }
 }
