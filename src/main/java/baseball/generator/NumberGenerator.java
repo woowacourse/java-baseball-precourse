@@ -39,23 +39,31 @@ public class NumberGenerator {
             // 1에서 9까지 범위 내에서 임의의 수를 구한다.
             int random = RandomUtils.nextInt(
                     BoundaryType.MINIMUM_NUMBER.getBoundary(), BoundaryType.MAXIMUM_NUMBER.getBoundary());
-            int index = random - 1;
 
-            // 아직 구한 숫자가 사용되지 않은 경우 해당 임의의 수를 사용한다.
-            // 이미 구한 숫자가 사용된 경우 새로운 임의의 수를 구한다.
-            if (flag[index] == ValueType.FALSE.getValue()) {
-                programNumber.add(random);
-                flag[index] = ValueType.TRUE.getValue();
-            } else {
-                continue;
-            }
+            checkProgramNumber(random);
         }
 
         return programNumber;
     }
 
+    /**
+     * 임의의 수의 사용 여부를 확인하는 함수
+     * 임의의 수가 사용되지 않은 경우 해당 임의의 수를 사용한다.
+     * 임의의 수가 사용된 경우 새로운 임의의 수를 구한다.
+     *
+     * @param random
+     */
+    public static void checkProgramNumber(int random) {
+        int index = random - 1;
+
+        if (flag[index] == ValueType.FALSE.getValue()) {
+            programNumber.add(random);
+            flag[index] = ValueType.TRUE.getValue();
+        }
+    }
+
     /** 프로그램에서 정한 임의의 수를 초기화시키는 함수 */
-    public void initProgramNumber() {
+    public static void initProgramNumber() {
         programNumber.clear();
     }
 }

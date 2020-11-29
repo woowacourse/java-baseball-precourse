@@ -13,6 +13,7 @@ public class GameController {
     private static String result = new String();
     private static String scannerNumber = new String();
     private static String playerStatus;
+    private static boolean finishStatus = false;
 
     /**
      * 게임을 컨트롤하는 함수
@@ -101,20 +102,27 @@ public class GameController {
             System.out.println(ValueType.ANSWER_VALUE.getValue() + TextType.ANSWER.getText());
             System.out.println(TextType.RESTART_OR_FINISH.getText());
             playerStatus = scanner.nextLine();
-
-            if (playerStatus.equals(StatusType.RESTART.getStatus())) {
-                NumberGenerator numberGenerator = new NumberGenerator();
-                numberGenerator.initProgramNumber();
-                result = StatusType.INITIAL_RESULT.getStatus();
-
-                return false;
-            } else if (playerStatus.equals(StatusType.FINISH.getStatus())) {
-                return true;
-            } else {
-                throw new IllegalArgumentException(TextType.INVALID_INPUT.getText());
-            }
+            checkStatus(playerStatus);
         }
 
-        return false;
+        return finishStatus;
+    }
+
+    /**
+     * 게임을 재시작하는지 완전히 종료하는지 상태를 확인하는 함수
+     *
+     * @param playerStatus
+     */
+    public static void checkStatus(String playerStatus) {
+        if (playerStatus.equals(StatusType.RESTART.getStatus())) {
+            NumberGenerator numberGenerator = new NumberGenerator();
+            numberGenerator.initProgramNumber();
+            result = StatusType.INITIAL_RESULT.getStatus();
+            finishStatus = false;
+        } else if (playerStatus.equals(StatusType.FINISH.getStatus())) {
+            finishStatus = true;
+        } else {
+            throw new IllegalArgumentException(TextType.INVALID_INPUT.getText());
+        }
     }
 }
