@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.BallCount;
 import baseball.model.Numbers;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class BaseballGame {
     private final Numbers answer;
@@ -18,13 +19,14 @@ public class BaseballGame {
     public void play() {
         Numbers userNumbers = getNumbersFromUser();
         BallCount ballCount = answer.calculateBallCountWith(userNumbers);
+        OutputView.showBallCount(ballCount);
     }
 
     private Numbers getNumbersFromUser() {
         try {
             return Numbers.valueOf(InputView.getNumbers());
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.showErrorMessage(e.getMessage());
             return getNumbersFromUser();
         }
     }

@@ -1,10 +1,9 @@
 package baseball.model;
 
-import utils.RandomUtils;
-
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import utils.RandomUtils;
 
 public class Numbers {
     private static final int NUMBERS_LENGTH = 3;
