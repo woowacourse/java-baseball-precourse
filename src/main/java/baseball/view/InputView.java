@@ -15,16 +15,16 @@ public class InputView {
 
     private static final String INPUT_VALUE_FORMAT = "\n입력한 값은 %s 입니다.\n";
 
+    private final Scanner scanner;
+
     private final NumbersValidator numbersValidator;
 
     private final RetryValidator retryValidator;
 
-    private final Scanner scanner;
-
     public InputView(final Scanner scanner) {
+        this.scanner = scanner;
         numbersValidator = new NumbersValidator();
         retryValidator = new RetryValidator();
-        this.scanner = scanner;
     }
 
     public String askBallNumbers() {
