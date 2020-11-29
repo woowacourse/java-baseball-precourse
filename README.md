@@ -105,7 +105,7 @@ private static final Random RANDOM = new Random();
 <br>
 
 ## 구현할 기능 목록
-1. 세자리 랜덤 숫자를 뽑음 
+1. 세자리 랜덤 숫자를 뽑음 (makeThreeRandNum)
     - 중복 여부는 체크하지 않음
 
 2. 랜덤 숫자 중복을 검사
