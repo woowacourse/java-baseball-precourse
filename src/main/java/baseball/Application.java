@@ -36,7 +36,7 @@ class Computer {
 
     public int answer;
 
-    Computer() {
+    public Computer() {
         this.answer = Computer.getRandomNum();
     }
 
