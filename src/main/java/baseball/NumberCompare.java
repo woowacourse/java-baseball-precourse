@@ -37,4 +37,11 @@ public class NumberCompare {
         strike = 0;
         ball = 0;
     }
+
+    public boolean gameClear() {
+        if (strike==3) {
+            return true;
+        }
+        return false;
+    }
 }
