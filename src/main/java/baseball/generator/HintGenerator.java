@@ -48,7 +48,8 @@ public class HintGenerator {
      * @param programNumber
      * @param playerNumber
      */
-    public static void checkSameNumber(ArrayList<Integer> programNumber, ArrayList<Integer> playerNumber) {
+    public static void checkSameNumber(ArrayList<Integer> programNumber,
+                                       ArrayList<Integer> playerNumber) {
         for (int i = BoundaryType.MINIMUM_INDEX.getBoundary();
              i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
             if (programNumber.contains(playerNumber.get(i))) {
@@ -64,7 +65,8 @@ public class HintGenerator {
      * @param programNumber
      * @param playerNumber
      */
-    public static void checkSamePosition(ArrayList<Integer> programNumber, ArrayList<Integer> playerNumber) {
+    public static void checkSamePosition(ArrayList<Integer> programNumber,
+                                         ArrayList<Integer> playerNumber) {
         for (int i = BoundaryType.MINIMUM_INDEX.getBoundary();
              i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
             if (programNumber.get(i) == playerNumber.get(i)) {
