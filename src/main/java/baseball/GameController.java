@@ -23,7 +23,7 @@ public class GameController {
         } while (checkRestart());
     }
 
-    public void startRound() {
+    private void startRound() {
         Number playerNumber;
         Hint hint;
 

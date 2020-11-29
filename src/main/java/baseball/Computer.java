@@ -1,7 +1,7 @@
 package baseball;
 
 public class Computer {
-    Number number;
+    private Number number;
 
     public void pickNumber() {
         number = Number.generate();
