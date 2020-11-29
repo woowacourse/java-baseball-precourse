@@ -15,20 +15,19 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
         Application application = new Application();
-        application.initComputerNums();
-        for (int i = 0; i < 3; i++) {
-            System.out.println(application.computerNums[i]);
-        }
-        application.inputPlayerNums(scanner);
-        for (int i = 0; i < 3; i++) {
-            System.out.println(application.playerNums[i]);
-        }
+        application.gameStart(scanner);
+    }
 
-        application.printResult();
-
-        if (application.isCorrectAnswer()) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    private void gameStart(Scanner scanner) {
+        initComputerNums();
+        while (true) {
+            inputPlayerNums(scanner);
+            printResult();
+            if (isCorrectAnswer()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                break;
+            }
         }
     }
 
