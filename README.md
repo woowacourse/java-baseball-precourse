@@ -106,52 +106,49 @@ private static final Random RANDOM = new Random();
 
 ## 구현할 기능 목록
 1. 세자리 랜덤 숫자를 뽑음 (makeThreeRandNum)
-    - 중복 여부는 체크하지 않음
+    - set으로 뽑아 중복을 제거하고 세 숫자를 뽑아 리스트로 반환
 
-2. 랜덤 숫자 중복을 검사 (checkDuplication)
-    - 중복이면 false, 중복이 아니면 true 반환
-
-3. 유효성 검증된 랜덤 숫자 생성 (randNumList)
+2. 유효성 검증된 랜덤 숫자 생성 (randNumList)
     - 세자리 랜덤 숫자를 뽑고, 유효성을 검증하여
     - 최종 세자리 랜덤 숫자를 각 자리를 분리하여 리스트로 반환
 
-4. 나의 입력값이 세자리 숫자인지 아닌지의 여부를 알려줌 (notInputThreeDigit)
+3. 나의 입력값이 세자리 숫자인지 아닌지의 여부를 알려줌 (notInputThreeDigit)
     - 세자리 숫자일때 false, 아닐 때 true를 반환
     
-5. 나의 입력값 숫자 중복 검사 (checkDuplication)
+4. 나의 입력값 숫자 중복 검사 (checkDuplication)
     - 각 자리수의 숫자가 중복되는지 검사
       중복이면 true, 중복이 아니면 false 반환
       
-6. 나의 입력값 0이 들어있는지 검사 (inputZero)
+5. 나의 입력값 0이 들어있는지 검사 (inputZero)
     - 세 숫자 중 0이 들어있는지 검사
       들어있으면 true, 아니면 false 반환
 
-7. 나의 입력값 숫자 생성 (makeThreeMyNum)
+6. 나의 입력값 숫자 생성 (makeThreeMyNum)
     - 입력값의 앞에서 세자리까지 숫자 리스트로 반환
     - 유효성 검증이 되지 않았음
 
-8. 유효성 검증된 나의 숫자 생성 (myNumList)
+7. 유효성 검증된 나의 숫자 생성 (myNumList)
     - 세자리인지 검증하여 아닐 시 IllegalArgumentException 발생
     - 세자리 검증 후 입력값 숫자 생성
     - 중복검사하여 중복일시 IllegalArgumentException 발생
     - 유효성 검증된 세자리 숫자를 각 자리로 분리하여 리스트로 반환
    
-9. 스트라이크 횟수 반환 (strike)
+8. 스트라이크 횟수 반환 (strike)
     - 랜덤 숫자 리스트, 나의 숫자 리스트 비교
     - 인덱스와 값이 같을시 스트라이크
 
-10. 볼 횟수 반환 (ball)
+9. 볼 횟수 반환 (ball)
     - 랜덤 숫자 리스트, 나의 숫자 리스트 비교
     - 인덱스와 값이 다를시 볼
     
-11. 볼, 스트라이크, 게임 결과 출력 (result)
+10. 볼, 스트라이크, 게임 결과 출력 (result)
     - 볼, 스트라이크 횟수 출력
     - 3스트라이크일시 메시지 출력
     
-12. 3스트라이크인지 아닌지 알려줌 (threeStrike)
+11. 3스트라이크인지 아닌지 알려줌 (threeStrike)
     - 3스트라이크일시 true, 아닐시 false 반환
     
-13. 메인함수 구현 (완료)
+12. 메인함수 구현 (완료)
     
 ## 📝 License
 
