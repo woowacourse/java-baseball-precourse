@@ -10,14 +10,14 @@ public class UserSelectNumber {
 
     private ArrayList<Integer> userSelectNumber;
 
-    public UserSelectNumber(Scanner scanner) {
+    public static UserSelectNumber createUserSelectNumber(){
+        return new UserSelectNumber();
+    }
+
+    public void setUserSelectNumber(Scanner scanner) {
         String userInput = receiveUserString(scanner);
         StringHandler stringHandler = StringHandler.createStringHandler();
         this.userSelectNumber = stringHandler.stringToArrayList(userInput);
-    }
-
-    public static UserSelectNumber createUserSelectNumber(Scanner scanner){
-        return new UserSelectNumber(scanner);
     }
 
     public String receiveUserString(Scanner scanner) {

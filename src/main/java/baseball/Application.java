@@ -2,7 +2,6 @@ package baseball;
 
 import GameConsole.BaseballGame;
 import numbers.AnswerNumber;
-import numbers.UserSelectNumber;
 
 import java.util.ArrayList;
 import java.util.Scanner;

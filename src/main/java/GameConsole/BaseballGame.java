@@ -12,12 +12,11 @@ public class BaseballGame {
     }
 
     public int playGame(ArrayList<Integer> answerNumber, Scanner scanner) {
-        UserSelectNumber userSelect = UserSelectNumber.createUserSelectNumber(scanner);
+        UserSelectNumber userSelectString = UserSelectNumber.createUserSelectNumber();
         ArrayList<Integer> userSelectNumber;
-        //do {
-
-            userSelectNumber = userSelect.getUserSelectNumber();
-        //} while (isCorrectAnswer(answerNumber, userSelectNumber));
+        while(true){
+            userSelectString.setUserSelectNumber(scanner);
+        }
         return selectContinue(scanner);
     }
 
