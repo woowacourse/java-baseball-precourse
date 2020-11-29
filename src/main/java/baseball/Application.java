@@ -10,13 +10,15 @@ public class Application {
         GameManager gameManager = new GameManager();
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            ArrayList<Integer> userAnswer = gameManager.requestAnswer(scanner);
-            if (!gameManager.checkAnswer(userAnswer)) {
+            ArrayList<Integer> userAnswer = GameManager.requestAnswer(scanner);
+            int[] gameResult = gameManager.checkAnswer(userAnswer);
+            GameManager.printScore(gameResult[0], gameResult[1]);
+            if (gameResult[0] != GameManager.NUMBER_ANSWER) {
                 continue;
             }
             System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", GameManager.NUMBER_ANSWER);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int gameStatus = gameManager.requestReplay(scanner);
+            int gameStatus = GameManager.requestReplay(scanner);
             if (gameStatus == GameStatus.END.getValue()) {
                 break;
             } else if (gameStatus == GameStatus.RESTART.getValue()) {

@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 class GameManagerTest {
     @RepeatedTest(10)
     void testGenerateAnswer() {
-        HashSet<Integer> hashSet = new HashSet<Integer>();
         GameManager gameManager = new GameManager();
+        HashSet<Integer> hashSet = new HashSet<Integer>();
         ArrayList<Integer> answer = gameManager.getAnswer();
         for (Integer i : answer) {
             assertNotEquals(0, i);
@@ -22,29 +22,30 @@ class GameManagerTest {
 
     @Test
     void testCheckAnswer() {
-        ArrayList<Integer> answer = new ArrayList<Integer>();
-        answer.add(4);
-        answer.add(8);
-        answer.add(2); // {4, 8, 2}
         GameManager gameManager = new GameManager(4, 8, 2);
-        assertTrue(gameManager.checkAnswer(answer));
-        answer.set(0, 1); // {1, 8, 2}
-        assertFalse(gameManager.checkAnswer(answer));
+        String[] inputStrings = {"482", "182", "428"};
+        int[][] results = {{3, 0}, {2, 0}, {1, 2}};
+        ArrayList<ArrayList<Integer>> inputs = new ArrayList<ArrayList<Integer>>();
+        for (String string : inputStrings) {
+            inputs.add(stringToList(string));
+        }
+        for (int i = 0; i < inputs.size(); i++) {
+            assertArrayEquals(results[i], gameManager.checkAnswer(inputs.get(i)));
+        }
     }
 
     @Test
     void testRequestReplay() {
-        GameManager gameManager = new GameManager();
         String[] correctInputArray = {"1", "2"};
         String[] faultInputArray = {"3", "0", "abc"};
         for (String input : correctInputArray) {
             Scanner scanner = new Scanner(input);
-            assertEquals(Integer.parseInt(input), gameManager.requestReplay(scanner));
+            assertEquals(Integer.parseInt(input), GameManager.requestReplay(scanner));
         }
         for (String input : faultInputArray) {
             Scanner scanner = new Scanner(input);
             try {
-                gameManager.requestReplay(scanner);
+                GameManager.requestReplay(scanner);
                 fail("IllegalArgumentException가 발생해야됩니다.");
             } catch (IllegalArgumentException iae) {
             }
@@ -53,7 +54,6 @@ class GameManagerTest {
 
     @Test
     void testRequestAnswer() {
-        GameManager gameManager = new GameManager();
         String[] correctInputArray = {"152", "482"};
         String[] faultInputArray = {"32", "1234", "045", "405", "454", "abc"};
         ArrayList<ArrayList<Integer>> correctResult = new ArrayList<ArrayList<Integer>>();
@@ -62,12 +62,12 @@ class GameManagerTest {
         }
         for (int i = 0; i < correctInputArray.length; i++) {
             Scanner scanner = new Scanner(correctInputArray[i]);
-            assertEquals(correctResult.get(i), gameManager.requestAnswer(scanner));
+            assertEquals(correctResult.get(i), GameManager.requestAnswer(scanner));
         }
         for (String input : faultInputArray) {
             Scanner scanner = new Scanner(input);
             try {
-                gameManager.requestAnswer(scanner);
+                GameManager.requestAnswer(scanner);
                 fail("IllegalArgumentException가 발생해야됩니다.");
             } catch (IllegalArgumentException iae) {
             }

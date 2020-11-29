@@ -41,7 +41,7 @@
   - `GameManager(Integer first, Integer second, Integer third)`: 입력받은 첫번째, 두번째, 세번째를 각각 정답으로 가지는 `GameManager`를 생성합니다.
 - 메소드
   - `generateAnswer`: `NUMBER_ANSWER`개수만큼의 1~9의 랜덤한 숫자를 `answer`에 저장한다. 숫자를 하나씩 생성할 때마다 중복되는 값이 있는지 매번 확인한다.(`findIndexOfList` 호출)
-  - `checkAnswer`: 유저가 제시한 답이 정답인지 확인한다.(`findIndexOfList` 호출) 확인 후, 스트라이크와 볼의 개수를 출력한다.(`printScore` 호출) 정답이면 `true`, 오답이면 `false`를 반환한다.
+  - `checkAnswer`: 유저가 제시한 답이 정답인지 확인한다.(`findIndexOfList` 호출) 스트라이크와 볼의 개수를 `int` array로 반환한다.
   - `findIndexOfList`: 입력받은 `list`에서 입력받은 숫자가 존재하는지 확인하고 있다면 해당하는 `index`를 반환합니다. 없다면 `-1`을 반환한다.
   - `printScore`: 입력받은 `strike`와 `ball`을 통해, 스트라이크와 볼의 개수를 출력한다.
   - `requestInput`: 사용자에게 숫자를 입력받고, 숫자를 입력하지 않았을 경우 `IllegalArgumentException`을 발생시킨다.

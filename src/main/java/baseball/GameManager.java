@@ -43,7 +43,7 @@ public class GameManager {
     public GameManager() {
         this.generateAnswer();
     }
-    
+
     /**
      * 입력받은 answer를 정답으로 가지는 게임을 생성합니다.
      * 
@@ -65,7 +65,7 @@ public class GameManager {
         answer = new ArrayList<Integer>();
         for (int i = 0; i < NUMBER_ANSWER;) {
             int temp = RandomUtils.nextInt(1, 9);
-            if (this.findIndexOfList(answer, i, temp) == -1) {
+            if (findIndexOfList(answer, i, temp) == -1) {
                 /* 중복된 값이 아니면 answer에 추가한다. */
                 answer.add(temp);
                 i++;
@@ -74,26 +74,23 @@ public class GameManager {
     }
 
     /**
-     * userAnswer를 answer와 비교 후, 스트라이크와 볼의 개수를 출력합니다.
+     * userAnswer를 answer와 비교 후, 스트라이크와 볼의 개수를 반환합니다.
      * 
      * @param userAnswer 검사할 정답을 입력합니다.
-     * @return 정답을 맞췄다면 true, 틀렸다면 false를 반환합니다.
+     * @return 배열의 첫번쨰 값은 스트라이크, 두번째 값은 볼의 개수입니다.
      */
-    public boolean checkAnswer(ArrayList<Integer> userAnswer) {
+    public int[] checkAnswer(ArrayList<Integer> userAnswer) {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < NUMBER_ANSWER; i++) {
-            int index = this.findIndexOfList(answer, NUMBER_ANSWER, userAnswer.get(i));
-            if (index == -1) {
-                continue;
-            } else if (index == i) {
+            int index = findIndexOfList(answer, NUMBER_ANSWER, userAnswer.get(i));
+            if (index == i) {
                 strike++;
-            } else {
+            } else if (index != -1) {
                 ball++;
             }
         }
-        this.printScore(strike, ball);
-        return (strike == NUMBER_ANSWER);
+        return new int[] {strike, ball};
     }
 
     /**
@@ -104,7 +101,7 @@ public class GameManager {
      * @param number 찾고자하는 숫자를 입력합니다.
      * @return 정답에 위치한 숫자의 인덱스를 반환합니다. 없다면 -1이 반환됩니다.
      */
-    private int findIndexOfList(ArrayList<Integer> list, int length , int number) {
+    static private int findIndexOfList(ArrayList<Integer> list, int length, int number) {
         for (int i = 0; i < length; i++) {
             if (list.get(i) == number) {
                 return i;
@@ -119,16 +116,15 @@ public class GameManager {
      * @param strike 스트라이크 개수입니다.
      * @param ball 볼 개수입니다.
      */
-    private void printScore(int strike, int ball) {
+    static public void printScore(int strike, int ball) {
         if ((ball == 0) && (strike == 0)) {
             System.out.print("낫싱");
-        } else {
-            if (ball > 0) {
-                System.out.printf("%d볼 ", ball);
-            }
-            if (strike > 0) {
-                System.out.printf("%d스트라이크", strike);
-            }
+        }
+        if (ball > 0) {
+            System.out.printf("%d볼 ", ball);
+        }
+        if (strike > 0) {
+            System.out.printf("%d스트라이크", strike);
         }
         System.out.println();
     }
@@ -139,7 +135,7 @@ public class GameManager {
      * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
      * @return 입력으로 받은 숫자를 반환합니다.
      */
-    private int requestInput(Scanner scanner) {
+    static private int requestInput(Scanner scanner) {
         int result = 0;
         try {
             result = scanner.nextInt();
@@ -157,7 +153,7 @@ public class GameManager {
      * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
      * @return 입력된 값
      */
-    public int requestReplay(Scanner scanner) {
+    static public int requestReplay(Scanner scanner) {
         int number = requestInput(scanner);
         if ((number != 1) && (number != 2)) {
             throw new IllegalArgumentException();
@@ -171,7 +167,7 @@ public class GameManager {
      * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
      * @return 입력으로 받은 숫자의 ArrayList를 반환합니다.
      */
-    public ArrayList<Integer> requestAnswer(Scanner scanner) {
+    static public ArrayList<Integer> requestAnswer(Scanner scanner) {
         int number = requestInput(scanner);
         ArrayList<Integer> result = new ArrayList<Integer>();
         while (number > 0) {
@@ -180,7 +176,7 @@ public class GameManager {
                 /* 입력은 1~9만 가능하다. */
                 throw new IllegalArgumentException();
             }
-            if (this.findIndexOfList(result, result.size(), temp) != -1) {
+            if (findIndexOfList(result, result.size(), temp) != -1) {
                 /* 중복된 값의 입력은 불가능하다. */
                 throw new IllegalArgumentException();
             }
