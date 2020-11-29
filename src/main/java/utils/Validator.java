@@ -10,7 +10,7 @@ public class Validator {
 
     protected boolean isValidMenu(String menuId) {
         int menu = Integer.parseInt(menuId);
-        if (menu > 2 || menu < 0)
+        if (menu < 1 || menu  > 2)
             throw new IllegalArgumentException(ExceptionMessage.NOT_VALID_MENU);
         return true;
     }
