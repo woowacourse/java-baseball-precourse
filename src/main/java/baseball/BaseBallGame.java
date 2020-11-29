@@ -22,29 +22,29 @@ public class BaseBallGame {
         Map<String, Integer> strikeAndBall;
         OutputView outputView;
         do {
-            userNumber = changeUserInputStringToList(getInput());
+            userNumber = changeUserInputStringToList(receiveUserInput());
             strikeAndBall = computer.compareWithUserNumber(userNumber);
             outputView = new OutputView(strikeAndBall);
             outputView.printHint();
         } while (!outputView.isGameOver());
     }
 
-    public String getInput() {
+    public String receiveUserInput() {
         System.out.print(INPUT_MESSAGE);
         return validateInputHasNoException(scanner.nextLine());
     }
     
-    public String validateInputHasNoException(String input) {
+    public String validateInputHasNoException(String userInput) {
         try {
-            InputValidator.validateInputIsNumber(input);
-            InputValidator.validateInputLengthEqualsDigit(input);
-            InputValidator.validateZero(input);
-            InputValidator.validateDuplication(input);
+            InputValidator.validateInputIsNumber(userInput);
+            InputValidator.validateInputLengthEqualsDigit(userInput);
+            InputValidator.validateZero(userInput);
+            InputValidator.validateDuplication(userInput);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            input = getInput();
+            userInput = receiveUserInput();
         }
-        return input;
+        return userInput;
     }
 
     public List<Integer> changeUserInputStringToList(String userInput) {
@@ -56,19 +56,19 @@ public class BaseBallGame {
         return subdividedUserInput;
     }
 
-    public String getRestartOrQuitInput() {
+    public String receiveRestartOrQuit() {
         String restartOrQuit = scanner.nextLine();
         try {
             InputValidator.validateRestartOrQuit(restartOrQuit);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            restartOrQuit = getRestartOrQuitInput();
+            restartOrQuit = receiveRestartOrQuit();
         }
         return restartOrQuit;
     }
 
     public boolean isRestart() {
-        if (getRestartOrQuitInput().equals(RESTART)) {
+        if (receiveRestartOrQuit().equals(RESTART)) {
             return true;
         }
         return false;
