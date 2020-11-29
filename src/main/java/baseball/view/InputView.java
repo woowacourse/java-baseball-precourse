@@ -63,7 +63,7 @@ public class InputView {
     }
 
     public int inputGameState(GameResult gameResult) {
-        if (!gameResult.isFullScore()) {
+        if (!gameResult.isEndOfGame()) {
             return KEEP_PLAYING_NUMBER;
         }
         System.out.println(GAME_END_MESSAGE);

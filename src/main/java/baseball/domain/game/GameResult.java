@@ -25,7 +25,7 @@ public class GameResult {
         }
     }
 
-    public boolean isFullScore() {
+    public boolean isEndOfGame() {
         return this.strikeCounts == MAXIMUM_SCORE_COUNT;
     }
 

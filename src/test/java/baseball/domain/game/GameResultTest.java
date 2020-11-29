@@ -82,17 +82,17 @@ class GameResultTest {
         assertThat(gameResult.getStrikeCounts()).isEqualTo(strikeCounts);
     }
 
-    @DisplayName("스트라이크가 3개면 isFullScore는 true")
+    @DisplayName("스트라이크가 3개면 isEndOfGame는 true")
     @Test
-    public void isFullScore_스트라이크_3개_True() {
+    public void isEndOfGame_스트라이크_3개_True() {
         GameResult gameResult = new GameResult(0, 3);
-        assertThat(gameResult.isFullScore()).isTrue();
+        assertThat(gameResult.isEndOfGame()).isTrue();
     }
 
-    @DisplayName("스트라이크가 3개아 아니면 isFullScore는 false")
+    @DisplayName("스트라이크가 3개아 아니면 isEndOfGame는 false")
     @Test
-    public void isFullScore_스트라이크_3개가_아니면_False() {
+    public void isEndOfGame_스트라이크_3개가_아니면_False() {
         GameResult gameResult = new GameResult(1, 2);
-        assertThat(gameResult.isFullScore()).isFalse();
+        assertThat(gameResult.isEndOfGame()).isFalse();
     }
 }

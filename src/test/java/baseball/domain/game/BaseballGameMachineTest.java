@@ -24,7 +24,7 @@ class BaseballGameMachineTest {
     public void play_3스트라이크_결과_반환() {
         BaseballGameMachine baseballGameMachine = new BaseballGameMachine(userBaseballNumbers);
         GameResult gameResult = baseballGameMachine.play(userBaseballNumbers);
-        assertThat(gameResult.isFullScore()).isTrue();
+        assertThat(gameResult.isEndOfGame()).isTrue();
         assertThat(gameResult.isOnlyStrike()).isTrue();
     }
 
