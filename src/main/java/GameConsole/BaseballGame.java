@@ -7,18 +7,24 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BaseballGame {
-
     public static BaseballGame createBaseballGame() {
         return new BaseballGame();
     }
 
     public boolean playGame(ArrayList<Integer> answerNumber, Scanner scanner) {
-        UserSelectNumber userSelectString = UserSelectNumber.createUserSelectNumber();
+        UserSelectNumber userSelectNumber = UserSelectNumber.createUserSelectNumber();
         while(true){
             Output.printSelect();
-            userSelectString.setUserSelectNumber(scanner);
             GameResult gameResult = GameResult.createGameResult();
-            boolean resultStatus = gameResult.showResult(answerNumber, userSelectString.getUserSelectNumber());
+            ArrayList<Integer> userNumber;
+            try {
+                userSelectNumber.setUserSelectNumber(scanner);
+                userNumber = userSelectNumber.getUserSelectNumber();
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+                continue;
+            }
+            boolean resultStatus = gameResult.showResult(answerNumber, userNumber);
             if (resultStatus) {
                 Output.printEndGame();
                 break;

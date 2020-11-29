@@ -3,7 +3,6 @@ package utils;
 import java.util.ArrayList;
 
 public class StringHandler {
-
     public static boolean checkDuplication(String userInput) {
         int length = userInput.length();
         boolean[] check = new boolean[length];

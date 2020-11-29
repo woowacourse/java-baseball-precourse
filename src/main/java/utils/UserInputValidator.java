@@ -1,8 +1,7 @@
 package utils;
 
 public class UserInputValidator {
-
-    public static void isValidNumber(String userInput) throws IllegalArgumentException{
+    public static boolean isValidNumber(String userInput) throws IllegalArgumentException{
         if (!isNumberFormat(userInput)) {
             throw new IllegalArgumentException("숫자 형식으로 입력해야 합니다.");
         }
@@ -15,6 +14,7 @@ public class UserInputValidator {
         if (isZeroExist(userInput)) {
             throw new IllegalArgumentException("1~9의 숫자를 입력해야 합니다.");
         }
+        return true;
     }
 
     private static boolean isNumberFormat(String userInput) {

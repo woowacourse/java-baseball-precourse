@@ -5,7 +5,6 @@ import utils.RandomUtils;
 import java.util.ArrayList;
 
 public class AnswerNumber {
-
     private static final int NUMBER_LENGTH = 3;
     private final ArrayList<Integer> answerNumber;
 

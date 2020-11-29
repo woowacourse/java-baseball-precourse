@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserSelectNumber {
-
     private ArrayList<Integer> userSelectNumber;
 
     public static UserSelectNumber createUserSelectNumber(){
@@ -20,14 +19,11 @@ public class UserSelectNumber {
     }
 
     public String receiveUserString(Scanner scanner) {
-        String userInput = null;
-        try {
-            userInput = scanner.nextLine();
-            UserInputValidator.isValidNumber(userInput);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
+        String userInput;
+        userInput = scanner.nextLine();
+        UserInputValidator.isValidNumber(userInput);
         return userInput;
+
     }
 
     public ArrayList<Integer> getUserSelectNumber() {

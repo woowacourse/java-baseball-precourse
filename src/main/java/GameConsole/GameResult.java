@@ -5,7 +5,6 @@ import views.Output;
 import java.util.ArrayList;
 
 public class GameResult {
-
     private int strikeNumber = 0;
     private int ballNumber = 0;
 
