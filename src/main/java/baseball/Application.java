@@ -21,9 +21,30 @@ public class Application {
                 printResult(ball,strike);
                 if(strike == dataLen) EndRound = true;
             }
-
+            //RETRY 결정
+            if(isEndGame(scanner)) EndGame = true;
         }
     }
+    public static boolean isEndGame(Scanner scanner){
+        final String RETRY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+        System.out.println(RETRY_MESSAGE);
+        try{
+            String userNumberString = scanner.nextLine();
+            if(userNumberString.equals("1")){
+                return false;
+            }
+            else if(userNumberString.equals("2")){
+                return true;
+            }
+            else{
+                throw new IllegalArgumentException("잘못된 입력입니다");
+            }
+        }catch(IllegalArgumentException e){
+            System.out.println("잘못된 입력입니다");
+        }
+        return true;
+    }
+    
     public static void printResult(int ball, int strike){
         if(ball ==0 && strike ==0){
             System.out.print("낫싱");
