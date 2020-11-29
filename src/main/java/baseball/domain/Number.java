@@ -42,11 +42,4 @@ public class Number {
         
         return false;
     }
-
-    @Override
-    public String toString() {
-        return "Number{" +
-                "number=" + Arrays.toString(number) +
-                '}';
-    }
 }
