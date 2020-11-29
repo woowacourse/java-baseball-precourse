@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class MakingNumber {
     //숫자야구의 시작과 끝 범위.
-    final static int StartNum = 1;
-    final static int EndNum = 9;
+    final static int START_NUM = 1;
+    final static int END_NUM = 9;
     //사용자가 세자리 수를 입력하는지 확인하는 변수.
-    final static int UserInputLimit = 100;
+    final static int USER_INPUT_LIMIT = 100;
     private ArrayList<Integer> target = new ArrayList<>(Application.LENGTH);
 
     //target에 element 중복을 체크하는 함수.
@@ -28,14 +28,14 @@ public class MakingNumber {
     }
 
     private void checkRange(int element)throws IllegalArgumentException{
-        if(EndNum<element || element < StartNum) {
+        if(END_NUM <element || element < START_NUM) {
             throw new IllegalArgumentException("1~9 사이의 숫자만 입력이 가능합니다!");
         }
     }
 
     private void checkLength(int answer) throws IllegalArgumentException{
         //3자리 수를 입력하지 않았을 때, 오류 throw
-        if(answer < UserInputLimit){
+        if(answer < USER_INPUT_LIMIT){
             //ex) 012입력할 때, 3자리수를 입력했는지 확인하라고 함.
             throw new IllegalArgumentException("첫째자리에 0을 썼는지, 또는 3자리 수를 입력했는지 확인해주세요");
         }
@@ -44,7 +44,7 @@ public class MakingNumber {
     //target을 만든다(임의의 수 버전)
     MakingNumber(){
         while(target.size() < Application.LENGTH){
-            int element = RandomUtils.nextInt(StartNum, EndNum);
+            int element = RandomUtils.nextInt(START_NUM, END_NUM);
             if(comUsed(element)){
                 this.target.add(element);
             }

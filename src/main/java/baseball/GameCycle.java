@@ -5,24 +5,24 @@ import java.util.Scanner;
 
 //게임이 돌아가는 것을 관리하는 class
 public class GameCycle{
-    static private ArrayList<Integer> UserValue = new ArrayList<>(Application.LENGTH);
-    static private ArrayList<Integer> CompValue = new ArrayList<>(Application.LENGTH);
+    static private ArrayList<Integer> userValue = new ArrayList<>(Application.LENGTH);
+    static private ArrayList<Integer> comValue = new ArrayList<>(Application.LENGTH);
     final Scanner scanner = new Scanner(System.in);
 
     GameCycle(){
         MakingNumber CompM = new MakingNumber();
-        this.CompValue = CompM.getTarget();
+        this.comValue = CompM.getTarget();
     }
 
     private int checkBall(Integer element){
-        if(!CompValue.contains(element)) return 0;
-        if(CompValue.indexOf(element) != UserValue.indexOf(element)) return 1;
+        if(!comValue.contains(element)) return 0;
+        if(comValue.indexOf(element) != userValue.indexOf(element)) return 1;
         return 0;
     }
 
     private int checkStrike(Integer element){
-        if(!CompValue.contains(element)) return 0;
-        if(CompValue.indexOf(element) == UserValue.indexOf(element)) return 1;
+        if(!comValue.contains(element)) return 0;
+        if(comValue.indexOf(element) == userValue.indexOf(element)) return 1;
         return 0;
     }
 
@@ -60,7 +60,7 @@ public class GameCycle{
         if(check == false)
             return false;
 
-        for(Integer element : UserValue){
+        for(Integer element : userValue){
             ball+= checkBall(element);
             strike+= checkStrike(element);
         }
@@ -71,14 +71,14 @@ public class GameCycle{
     private void input()throws IllegalArgumentException{
         System.out.println("숫자를 입력해주세요.");
         MakingNumber User = new MakingNumber(scanner.nextInt());
-        this.UserValue = User.getTarget();
+        this.userValue = User.getTarget();
     }
 
     //게임을 시작하는 함수.
     public void gameStart(){
         boolean check = true;
         //test
-        for(Integer a : CompValue){
+        for(Integer a : comValue){
             System.out.print(a);
         }
         System.out.println();
