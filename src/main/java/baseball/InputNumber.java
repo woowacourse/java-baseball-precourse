@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class InputNumber {
     public static final String WARNING_MESSAGE = "1에서 9까지 서로 다른 임의의 수 3개를 입력해 주세요";
+
     public static String getInput(Scanner scanner){
         String inputNumber = scanner.next();
         if(validateInput(inputNumber)){
@@ -23,5 +24,20 @@ public class InputNumber {
             throw new IllegalArgumentException();
         }
         return true;
+    }
+
+    //중복된 숫자가 있는지 확인하는 함수
+    public static boolean duplicateExist(String inputNumber){
+        int[] numberArray = new int[10];
+        for(int i=0; i<inputNumber.length(); i++){
+            //i번째 char형 숫자를 int형으로 변환
+            int ithInt = Character.getNumericValue(inputNumber.charAt(i));
+            numberArray[ithInt]+=1;
+            //이미 다른 숫자가 기록된 적 있다면 중복이므로 true를 반환한다
+            if (numberArray[ithInt]>1){
+                return true;
+            }
+        }
+        return false;
     }
 }
