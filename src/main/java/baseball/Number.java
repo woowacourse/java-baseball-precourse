@@ -53,25 +53,23 @@ public class Number {
         return new Number(numbers);
     }
 
-    public static boolean checkValidation(String playerInput) {
+    public static void checkValidation(String playerInput) {
         Set<Integer> duplicated = new HashSet<>();                      // 중복 체크용 Set
 
-        if (playerInput.length() != NUMBER_LENGTH) {                    // 3자리가 아니면 invalid
-            return false;
+        if (playerInput.length() != NUMBER_LENGTH) {
+            throw new IllegalArgumentException(Message.REQUEST_NUMBER_LENGTH_ERROR);
         }
 
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             int num = playerInput.charAt(i) - ZERO_CHAR;
 
-            if (num < MIN_DIGIT || MAX_DIGIT < num) {                   // 1~9 숫자가 아니면 invalid
-                return false;
+            if (num < MIN_DIGIT || MAX_DIGIT < num) {
+                throw new IllegalArgumentException(Message.REQUEST_NUMBER_DIGIT_ERROR);
             }
-            if (duplicated.contains(num)) {                             // 중복된 숫자가 있으면 invalid
-                return false;
+            if (duplicated.contains(num)) {
+                throw new IllegalArgumentException(Message.REQUEST_NUMBER_DUPLICATION_ERROR);
             }
             duplicated.add(num);
         }
-
-        return true;
     }
 }

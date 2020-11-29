@@ -41,9 +41,17 @@ public class GameController {
 
     private Number requestPlayerNumber(Scanner scanner) {
         String playerInput = player.requestInput(scanner);
-        if (!Number.checkValidation(playerInput)) {
-            throw new IllegalArgumentException();
+
+        try {
+            Number.checkValidation(playerInput);
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+            /*
+             * 재귀로 처리해도 되는지 의문이 든다. 성장하고 다시 보자.
+             */
+            return requestPlayerNumber(scanner);
         }
+
         return new Number(playerInput);
     }
 
