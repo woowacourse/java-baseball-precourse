@@ -44,7 +44,7 @@ public class Application {
         }
         return true;
     }
-    
+
     public static void printResult(int ball, int strike){
         if(ball ==0 && strike ==0){
             System.out.print("낫싱");
@@ -73,7 +73,6 @@ public class Application {
         int idx=0;
         while(it.hasNext()){
             userInput[idx++] = it.next();
-            System.out.println(userInput[idx-1]);
         }
         return userInput;
     }
