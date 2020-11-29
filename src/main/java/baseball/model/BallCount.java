@@ -26,4 +26,19 @@ public class BallCount {
         return String.format("Strike: %d, Ball: %d", this.strike, this.ball);
     }
 
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj){
+            return true;
+        }
+        if (obj == null){
+            return false;
+        }
+        if (this.getClass() != obj.getClass()){
+            return false;
+        }
+        BallCount paramObj = (BallCount) obj;
+        return (this.strike == paramObj.strike && this.ball == paramObj.ball);
+    }
+
 }

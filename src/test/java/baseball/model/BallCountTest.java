@@ -13,4 +13,14 @@ public class BallCountTest {
         assertThat(BallCount.createBallCount(1,1).toString())
                 .isEqualTo(String.format("Strike: %d, Ball: %d", strike, ball));
     }
+
+    @Test
+    public void calculateBallCountWithTest(){
+        Numbers a = Numbers.valueOf("123");
+        Numbers b = Numbers.valueOf("124");
+        BallCount expected = BallCount.createBallCount(2, 0);
+        BallCount result = a.calculateBallCountWith(b);
+        System.out.println(result);
+        assertThat(expected).isEqualTo(result);
+    }
 }

@@ -1,11 +1,14 @@
 package baseball.model;
 
+import utils.RandomUtils;
+
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-import utils.RandomUtils;
+import java.util.stream.IntStream;
 
 public class Numbers {
     private static final int NUMBERS_LENGTH = 3;
+    private static final int ZERO = 0;
 
     private final ArrayList<Number> numbers;
 
@@ -50,8 +53,36 @@ public class Numbers {
         return new Numbers(randomNumbers);
     }
 
+    public BallCount calculateBallCountWith(Numbers comparedNumbers) {
+        int strike = calculateStrike(comparedNumbers);
+        int ball = calculateBall(comparedNumbers);
+
+        return BallCount.createBallCount(strike, ball);
+    }
+
+    private int calculateStrike(Numbers comparedNumbers) {
+        return (int) IntStream.range(ZERO, NUMBERS_LENGTH)
+                .filter(i -> comparedNumbers.get(i).equals(this.get(i)))
+                .count();
+    }
+
+    private int calculateBall(Numbers comparedNumbers) {
+        return (int) IntStream.range(ZERO, NUMBERS_LENGTH)
+                .filter(i -> this.contains(comparedNumbers.get(i)))
+                .filter(i -> !this.get(i).equals(comparedNumbers.get(i)))
+                .count();
+    }
+
+    private Number get(int i) {
+        return numbers.get(i);
+    }
+
+    private boolean contains(Number number) {
+        return numbers.contains(number);
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         return this.numbers.stream()
                 .map(Number::toString)
                 .collect(Collectors.joining());
