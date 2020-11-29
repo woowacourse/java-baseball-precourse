@@ -1,5 +1,7 @@
 package baseball;
 
+import static domain.Message.BINGO;
+
 import domain.BaseballNumber;
 import domain.Hint;
 import java.util.Arrays;
@@ -18,8 +20,20 @@ public class BaseballGame {
         this.baseballNumber = baseballNumber;
     }
 
-    public boolean exists(BaseballNumber playerBaseballNumber) {
+    public boolean matchBaseball(BaseballNumber playerBaseballNumber) {
+        if (isEquals(playerBaseballNumber)) {
+            showBingoMessage();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isEquals(BaseballNumber playerBaseballNumber) {
         return baseballNumber.equals(playerBaseballNumber);
+    }
+
+    private void showBingoMessage() {
+        System.out.println(BINGO.toString());
     }
 
     public Hint countStrikeAndBall(BaseballNumber playerBaseballNumber) {

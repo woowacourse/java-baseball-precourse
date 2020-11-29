@@ -1,6 +1,5 @@
 package controller;
 
-import static domain.Message.BINGO;
 import static domain.Message.INPUT_NUMBER;
 
 import baseball.BaseballGame;
@@ -37,13 +36,11 @@ public class BaseballGameController {
     public void play() {
         inputBaseballNumber();
         BaseballNumber playerBaseballNumber = player.createBaseballNumber(getInput());
-        if (baseballGame.exists(playerBaseballNumber)) {
-            showBingoMessage();
+        if (baseballGame.matchBaseball(playerBaseballNumber)) {
             choiceRestartGameOrFinish();
             return;
         }
-        Hint hint = baseballGame.countStrikeAndBall(playerBaseballNumber);
-        System.out.println(hint);
+        showHint(playerBaseballNumber);
         restart();
     }
 
@@ -53,10 +50,6 @@ public class BaseballGameController {
 
     private String getInput() {
         return scanner.nextLine();
-    }
-
-    private void showBingoMessage() {
-        System.out.println(BINGO.toString());
     }
 
     private void choiceRestartGameOrFinish() {
@@ -70,6 +63,11 @@ public class BaseballGameController {
             default:
                 throw new IllegalArgumentException();
         }
+    }
+
+    private void showHint(BaseballNumber playerBaseballNumber) {
+        Hint hint = baseballGame.countStrikeAndBall(playerBaseballNumber);
+        System.out.println(hint);
     }
 
     private void restart() {
