@@ -104,7 +104,7 @@ class BaseballUtilsTest {
 
     @Test
     public void Should_ThrownException_When_ForNotThreeIntInput() {
-        String data = "1234";
+        String data = "12345";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Scanner scanner = new Scanner(System.in);
 

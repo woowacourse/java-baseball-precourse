@@ -48,7 +48,7 @@ public class BaseballUtils {
         int[] playerNumbers = new int[NUMBER_COUNT];
         boolean[] checkDuplicated = new boolean[MAX_NUMBER + 1];
 
-        if (playerInput / 100 == 0 || playerInput / 1000 == 1) {
+        if (playerInput / 100 == 0 || playerInput / 1000 >= 1) {
             System.out.println("숫자 갯수 오류 발생");
             throw new IllegalArgumentException();
         }
