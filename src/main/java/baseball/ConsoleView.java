@@ -77,7 +77,7 @@ public class ConsoleView {
         throw new IllegalArgumentException(WRONG_INPUT_MSG);
     }
 
-    private void println(String message) {
+    public void println(String message) {
         System.out.println(message);
     }
 }

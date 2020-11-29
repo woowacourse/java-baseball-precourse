@@ -50,17 +50,19 @@ public class GameRule {
         return answerWords.equals(userWords);
     }
 
-    public void printResult() {
+    public String printResult() {
+        StringBuilder resultText = new StringBuilder();
         if (ball > 0) {
-            System.out.printf("%d볼 ", ball);
+            resultText.append(String.format("%d볼 ", ball));
         }
         if (strike > 0) {
-            System.out.printf("%d스트라이크", strike);
+            resultText.append(String.format("%d스트라이크", strike));
         }
         if (strike == 0 && ball == 0) {
-            System.out.print("낫싱");
+            resultText.append(String.format("낫싱"));
         }
-        System.out.println();
+
+        return resultText.toString();
     }
 
     public void changeUserInput(String userInput) {
