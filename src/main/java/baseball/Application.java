@@ -7,6 +7,10 @@ import utils.RandomUtils;
 public class Application {
     private static final int MIN_NUMBER_RANGE = 1;
     private static final int MAX_NUMBER_RANGE = 9;
+    private static final int INPUT_RESTART = 1;
+    private static final int INPUT_STOP = 2;
+
+    private static boolean isPlaying = true;
 
     private int[] computerNums = new int[3];
     private int[] playerNums = new int[3];
@@ -15,7 +19,21 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
         Application application = new Application();
-        application.gameStart(scanner);
+        while (isPlaying) {
+            application.gameStart(scanner);
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            int input = scanner.nextInt();
+            if (input == INPUT_RESTART) {
+                isPlaying = true;
+            } else if (input == INPUT_STOP) {
+                isPlaying = false;
+            } else {
+                throw new IllegalArgumentException("input only 1 or 2");
+            }
+        }
     }
 
     private void gameStart(Scanner scanner) {
@@ -24,8 +42,6 @@ public class Application {
             inputPlayerNums(scanner);
             printResult();
             if (isCorrectAnswer()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 break;
             }
         }
