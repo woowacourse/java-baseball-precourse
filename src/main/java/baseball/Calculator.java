@@ -1,20 +1,27 @@
 package baseball;
 
+import utils.ListUtils;
+
 import java.util.List;
 
 public class Calculator {
-    private List<Integer> targetNumber;
-    private List<Integer> inputNumber;
+    private List<Integer> targetDigitsList;
+    private List<Integer> InputDigitsList;
 
-    private int countBall() {
+    public Calculator(int targetNumber, int inputNumber) {
+        this.targetDigitsList = ListUtils.intToDigitsList(targetNumber);
+        this.InputDigitsList = ListUtils.intToDigitsList(inputNumber);
+    }
+
+    public int countBall() {
         return countOverlap() - countStrike();
     }
 
-    private int countStrike() {
+    public int countStrike() {
         int index = 0;
         int count = 0;
-        for (int num : targetNumber) {
-            if (inputNumber.get(index) ==  num){
+        for (int num : targetDigitsList) {
+            if (InputDigitsList.get(index) ==  num){
                 count += 1;
             }
             index += 1;
@@ -24,8 +31,8 @@ public class Calculator {
 
     private int countOverlap() {
         int count = 0;
-        for (int num : targetNumber) {
-            if (inputNumber.contains(num)){
+        for (int num : targetDigitsList) {
+            if (InputDigitsList.contains(num)){
                 count += 1;
             }
         }
