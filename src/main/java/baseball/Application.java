@@ -7,14 +7,51 @@ public class Application {
 	public static void main(String[] args) {
 		final Scanner scanner = new Scanner(System.in);
 		// TODO 구현 진행
-		String[] randomNumbers = new String[3];
-
-		for (int i = 0; i < 3; i++) {
-			int random = RandomUtils.nextInt(1, 9);
-			randomNumbers[i] = String.valueOf(random);
+		int[] randomNumbersArray = new int[3];
+		int[] userInputNumbersArray = new int[3];
+		boolean[] already = new boolean[10];
+		final int START_INCLUSIVE = 1;
+		final int END_INCLUSIVE = 9;
+		int strike, ball;
+		
+		for (int i =0; i < already.length; i ++) {
+			already[i] = false;
 		}
-		for (int i = 0; i < 3; i++) {
-		System.out.println(randomNumbers[i]);
+		int count = 0;
+		
+		while (count < 3) {
+			int randomNumbers = utils.RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
+			if (!already[randomNumbers]) {
+				randomNumbersArray[count] = randomNumbers;
+				already[randomNumbers] = true;
+				count++;
+			}
 		}
+		
+		boolean finish = false;
+		
+		while (!finish) {
+			strike = 0;
+			ball = 0;
+			
+			System.out.println("1~9 사이의 세 정수를 입력하세요.");
+			for (int k = 0; k < 3; ++k) {
+				userInputNumbersArray[k] = scanner.nextInt();
+				for (int j =0; j < 3; ++j) {
+					if (userInputNumbersArray[k] == randomNumbersArray[j]) {
+						if (k == j) {strike++;}
+						else {ball++;}
+					}
+				}
+			}
+			
+			System.out.println(strike + " 스트라이크" + ball + "볼");
+			if (strike == 3) {
+				System.out.println("축하합니다!");
+				finish =true;
+			}
+		}
+		scanner.close();
+		
 	}
 }
