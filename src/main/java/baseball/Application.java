@@ -2,10 +2,9 @@ package baseball;
 
 import java.util.Scanner;
 import utils.RandomUtils;
-import java.util.HashSet;
-import java.util.Set;
+import utils.NumberHandleUtils;
 
-// Class for Strike and Ball count
+// to store Strike and Ball count
 class StrikeAndBall {
     int strike;
     int ball;
@@ -44,7 +43,7 @@ class Computer {
         int randomNum;
         do {
             randomNum = RandomUtils.nextInt(NUMBER_START_INCLUSIVE, NUMBER_END_INCLUSIVE);
-        } while (!Application.isValidNum(randomNum));
+        } while (!NumberHandleUtils.isValidNum(randomNum));
         return randomNum;
     }
 
@@ -80,8 +79,8 @@ class Computer {
     }
 
     public StrikeAndBall getStrikeAndBall(int playerNum, int answerNum) {
-        int[] playerNumArray = Application.convertIntToArray(playerNum);
-        int[] answerNumArray = Application.convertIntToArray(answerNum);
+        int[] playerNumArray = NumberHandleUtils.convertIntToArray(playerNum);
+        int[] answerNumArray = NumberHandleUtils.convertIntToArray(answerNum);
 
         return countStrikeAndBall(playerNumArray, answerNumArray);
     }
@@ -124,7 +123,7 @@ class Player {
         int guessInput = scanner.nextInt();
 
         // input has 3 digits and valid number
-        if (100 <= guessInput && guessInput < 1000 && Application.isValidNum(guessInput)) {
+        if (100 <= guessInput && guessInput < 1000 && NumberHandleUtils.isValidNum(guessInput)) {
             return guessInput;
         } else {
             throw new IllegalArgumentException();
@@ -190,29 +189,6 @@ class Player {
 }
 
 public class Application {
-    public static int[] convertIntToArray(int num) {
-        int[] thisArray = new int[3];
-        for (int i = 2; i > -1; i--) {
-            thisArray[i] = num % 10;
-            num /= 10;
-        }
-        return thisArray;
-    }
-
-    public static boolean isValidNum(int candidateNum) {
-        Set<Integer> previousDigitSet = new HashSet<>();
-
-        // all 3 digits MUST BE different and NOT BE 0
-        int[] candidateArray = convertIntToArray(candidateNum);
-        for (int candidateDigit : candidateArray) {
-            if (previousDigitSet.contains(candidateDigit) || candidateDigit == 0) {
-                return false;
-            }
-            previousDigitSet.add(candidateDigit);
-        }
-        return true;
-    }
-
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
