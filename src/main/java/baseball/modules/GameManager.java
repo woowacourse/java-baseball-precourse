@@ -12,7 +12,7 @@ public class GameManager {
     private int strike = 0;
     private int ball = 0;
 
-    public GameManager(Scanner scanner){
+    public GameManager(final Scanner scanner){
         if(ExceptionChecker.isNull(scanner)){
             throw new IllegalArgumentException();
         }
@@ -37,7 +37,7 @@ public class GameManager {
         handleRoundEnd();
     }
 
-    private void compareForRoundResult(int[] inputNumber, int[] generatedNumber){
+    private void compareForRoundResult(final int[] inputNumber, final int[] generatedNumber){
         if(ExceptionChecker.isNull(inputNumber) || ExceptionChecker.isNull(generatedNumber)){
             throw new IllegalArgumentException();
         }
@@ -61,7 +61,7 @@ public class GameManager {
         }
     }
 
-    private boolean isContains(int[] array, int value){
+    private boolean isContains(final int[] array, final int value){
         if(ExceptionChecker.isNull(array)){
             throw new IllegalArgumentException();
         }

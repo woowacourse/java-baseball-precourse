@@ -3,7 +3,7 @@ package baseball.modules;
 import java.util.HashSet;
 
 public class ExceptionChecker {
-    public static boolean isParsableToInteger(String input){
+    public static boolean isParsableToInteger(final String input){
         try{
             Integer.parseInt(input);
             return true;
@@ -12,7 +12,7 @@ public class ExceptionChecker {
         }
     }
 
-    public static boolean isLengthFit(String input, int targetLength){
+    public static boolean isLengthFit(final String input, final int targetLength){
         if(isNull(input)){
             throw new IllegalArgumentException();
         }
@@ -20,7 +20,7 @@ public class ExceptionChecker {
         return input.length() == targetLength;
     }
 
-    public static boolean isContainsZero(String input){
+    public static boolean isContainsZero(final String input){
         if(isNull(input)){
             throw new IllegalArgumentException();
         }
@@ -34,7 +34,7 @@ public class ExceptionChecker {
         return false;
     }
 
-    public static boolean isArrayElementsAreUnique(int[] input){
+    public static boolean isArrayElementsAreUnique(final int[] input){
         if(isNull(input)){
             throw new IllegalArgumentException();
         }
@@ -52,7 +52,7 @@ public class ExceptionChecker {
         return true;
     }    
 
-    public static boolean isOneOrTwo(String input){
+    public static boolean isOneOrTwo(final String input){
         if(isNull(input)){
             throw new IllegalArgumentException();
         }

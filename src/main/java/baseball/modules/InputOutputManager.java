@@ -14,7 +14,7 @@ public class InputOutputManager {
     Scanner scanner;
     private int numberSize;
     
-    public InputOutputManager(Scanner scanner, int numberSize){
+    public InputOutputManager(final Scanner scanner, final int numberSize){
         if(ExceptionChecker.isNull(scanner)){
             throw new IllegalArgumentException();
         }
@@ -38,7 +38,7 @@ public class InputOutputManager {
         }
     }
 
-    public void printRoundResult(int strike, int ball){
+    public void printRoundResult(final int strike, final int ball){
         if(strike < 0 || ball < 0){
             throw new IllegalArgumentException();
         }

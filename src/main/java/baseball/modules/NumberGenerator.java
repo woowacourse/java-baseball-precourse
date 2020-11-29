@@ -12,7 +12,7 @@ public class NumberGenerator {
 
     private int numberSize;
 
-    public NumberGenerator(int numberSize){
+    public NumberGenerator(final int numberSize){
         if(numberSize <= 0){
             throw new IllegalArgumentException();
         }
