@@ -3,13 +3,14 @@ package baseball;
 import java.util.Scanner;
 
 public class UserInputNumberGenerator {
+    private static final String ASK_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final int INPUT_MAX_RANGE = 987;
     private static final int INPUT_MIN_RANGE = 123;
     private static final int PROPER_INPUT_LENGTH = 3;
     private static final int ZERO = 0;
 
     public static int getUserInput(Scanner scanner) {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(ASK_INPUT_MESSAGE);
         String userInput = scanner.nextLine();
         int userInputNumber = checkUserInput(userInput);
         return userInputNumber;

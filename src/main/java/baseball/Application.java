@@ -3,7 +3,7 @@
  *
  * Version 1.0
  *
- * Final commit on 2020/11/26
+ * Final commit on 2020/11/29
  *
  * woowacourse/java-baseball-precourse
  * Applicant Jo Yeong Sang (PapimonLikelion)
