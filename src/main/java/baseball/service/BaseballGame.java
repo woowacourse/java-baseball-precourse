@@ -1,5 +1,8 @@
 package baseball.service;
 
+import baseball.service.ui.Input;
+import baseball.service.ui.Output;
+
 import java.util.Scanner;
 
 public class BaseballGame {

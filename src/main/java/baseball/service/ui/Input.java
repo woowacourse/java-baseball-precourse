@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball.service.ui;
 
 import baseball.domain.Game;
 import utils.InputConverter;
