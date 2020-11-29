@@ -22,7 +22,6 @@ public class User {
         checkInputSize(input);
         checkNumber(input);
         checkDuplicate(input);
-
         number = input;
     }
 

@@ -49,7 +49,7 @@ public class Computer {
      *
      * @param randomNum makeRandomNumber()를 이용해 만든 임의의 수
      */
-    public void addNumber(int randomNum) {
+    private void addNumber(int randomNum) {
         if (!isDuplicateNumber(randomNum)) {
             number += String.valueOf(randomNum);
         }
