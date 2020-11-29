@@ -17,6 +17,7 @@ import utils.RandomNumbers;
  */
 public class BaseballGameController {
     private static final int RANDOM_NUMBERS_SIZE = 3;
+    private static final String RESTART = "1";
 
     private final Scanner scanner;
     private Player player;
@@ -37,6 +38,7 @@ public class BaseballGameController {
         BaseballNumber playerBaseballNumber = player.createBaseballNumber(getInput());
         if (baseballGame.exists(playerBaseballNumber)) {
             showBingoMessage();
+            choiceRestartGameOrFinish();
             return;
         }
         Hint hint = baseballGame.countStrikeAndBall(playerBaseballNumber);
@@ -54,6 +56,16 @@ public class BaseballGameController {
 
     private void showBingoMessage() {
         System.out.println(BINGO.toString());
+    }
+
+    private void choiceRestartGameOrFinish() {
+        switch (getInput()) {
+            case RESTART :
+                this.baseballGame = new BaseballGame(new BaseballNumber(nonDuplicateNumber()));
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 
     private void restart() {
