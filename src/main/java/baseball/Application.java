@@ -8,13 +8,36 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
-        boolean flag =true;
-        while(flag){
+        boolean EndGame =false;
+        while(!EndGame){
+            boolean EndRound =false;
             //사용자 입력 받기
-            final int[] userInput= userInput(scanner);
-            //랜덤으로 정답 생성
             final int[] answer = makeRandom();
+            while(!EndRound) {
+                final int[] userInput = userInput(scanner);
+                //랜덤으로 정답 생성
+                final int strike = Computer.getStrikeNum(userInput, answer);
+                final int ball = Computer.getBallNum(userInput, answer);
+                printResult(ball,strike);
+                if(strike == dataLen) EndRound = true;
+            }
 
+        }
+    }
+    public static void printResult(int ball, int strike){
+        if(ball ==0 && strike ==0){
+            System.out.print("낫싱");
+        }
+        if(ball!=0){
+            System.out.print(ball + "볼 ");
+        }
+        if(strike !=0){
+            System.out.print(strike + "스트라이크 ");
+        }
+        System.out.println();
+        if(strike == dataLen){
+            final String INPUT_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            System.out.println(INPUT_MESSAGE);
         }
     }
 
@@ -29,6 +52,7 @@ public class Application {
         int idx=0;
         while(it.hasNext()){
             userInput[idx++] = it.next();
+            System.out.println(userInput[idx-1]);
         }
         return userInput;
     }
