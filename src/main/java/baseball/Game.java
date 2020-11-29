@@ -26,8 +26,8 @@ public class Game {
     public void start() {
         while (true) {
             initializeGame();
-            int ballCount = numbers.checkBall();
-            int strikeCount = numbers.checkStrike();
+            int ballCount = numbers.countBall();
+            int strikeCount = numbers.countStrike();
             boolean isContinue = true;
 
             printResult(ballCount, strikeCount);

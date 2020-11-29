@@ -53,8 +53,8 @@ class NumbersTest {
         Numbers numbers2 = Numbers.of(gameNumber2);
 
         //then
-        Assertions.assertThat(numbers.checkBall()).isEqualTo(1);
-        Assertions.assertThat(numbers2.checkBall()).isEqualTo(3);
+        Assertions.assertThat(numbers.countBall()).isEqualTo(1);
+        Assertions.assertThat(numbers2.countBall()).isEqualTo(3);
     }
 
     @Test
@@ -78,8 +78,8 @@ class NumbersTest {
         Numbers numbers2 = Numbers.of(gameNumber2);
 
         //then
-        Assertions.assertThat(numbers.checkStrike()).isEqualTo(1);
-        Assertions.assertThat(numbers2.checkStrike()).isEqualTo(3);
+        Assertions.assertThat(numbers.countStrike()).isEqualTo(1);
+        Assertions.assertThat(numbers2.countStrike()).isEqualTo(3);
     }
 
     @Test

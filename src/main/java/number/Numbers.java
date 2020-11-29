@@ -15,7 +15,7 @@ public class Numbers {
         return new Numbers(numbers);
     }
 
-    public int checkBall() {
+    public int countBall() {
         List<Integer> number = numbers.get(0).getNumbers();
         List<Integer> targetNumber = numbers.get(1).getNumbers();
         int ballCount = 0;
@@ -27,7 +27,7 @@ public class Numbers {
         return ballCount;
     }
 
-    public int checkStrike() {
+    public int countStrike() {
         List<Integer> number = numbers.get(0).getNumbers();
         List<Integer> targetNumber = numbers.get(1).getNumbers();
         int strikeCount = 0;
