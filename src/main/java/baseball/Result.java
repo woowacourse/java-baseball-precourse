@@ -1,8 +1,6 @@
 package baseball;
 
 public class Result {
-    private static final String TERMINATE_GAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-
     private RandomNumbers randomNumbers;
     private Player player;
     private boolean isTerminated;
