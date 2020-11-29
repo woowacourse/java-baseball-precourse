@@ -2,24 +2,20 @@ package baseball;
 
 import utils.RandomUtils;
 
-import java.util.ArrayList;
-
 public class Opponent {
-    int firstNum;
-    int secondNum;
-    int thirdNum;
+    public String opponentNumber;
 
-    public void generator() {
-        ArrayList<Integer> opponentNumberList = new ArrayList<>();
-        while(opponentNumberList.size()<3) {
+    /* opponent 난수 생성 메소드 */
+    public String generateNumber() {
+        String opponentNumber = "";
+        while(opponentNumber.length()<3) {
             int randomNumber = RandomUtils.nextInt(1, 9);
-            if(!opponentNumberList.contains(randomNumber)) {
-                opponentNumberList.add(randomNumber);
+            if(!opponentNumber.contains(String.valueOf(randomNumber))) {
+                opponentNumber += randomNumber;
             }
         }
-        this.firstNum = opponentNumberList.get(0);
-        this.secondNum = opponentNumberList.get(1);
-        this.thirdNum = opponentNumberList.get(2);
+        this.opponentNumber = opponentNumber;
+        return opponentNumber;
     }
 
 
