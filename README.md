@@ -122,7 +122,7 @@ private static final Random RANDOM = new Random();
     - 각 자리수의 숫자가 중복되는지 검사
       중복이면 true, 중복이 아니면 false 반환
 
-6. 나의 입력값 숫자 생성
+6. 나의 입력값 숫자 생성 (makeThreeMyNum)
     - 입력값의 앞에서 세자리까지 숫자 리스트로 반환
     - 유효성 검증이 되지 않았음
 
