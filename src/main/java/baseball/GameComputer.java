@@ -3,7 +3,6 @@ package baseball;
 import java.util.Scanner;
 import java.util.Arrays;
 import utils.RandomUtils;
-import baseball.GamePlayer;
 
 public class GameComputer {
     final Scanner scanner = new Scanner(System.in);

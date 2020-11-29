@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.Scanner;
-import baseball.ExceptionChecker;
 
 public class GamePlayer {
     String userChoice;

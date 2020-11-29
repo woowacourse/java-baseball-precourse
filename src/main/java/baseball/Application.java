@@ -1,8 +1,6 @@
 package baseball;
 
 import java.util.Scanner;
-import baseball.GameComputer;
-import baseball.ExceptionChecker;
 
 public class Application {
     public static void main(String[] args) {
