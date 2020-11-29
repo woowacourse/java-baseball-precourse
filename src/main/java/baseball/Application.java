@@ -8,6 +8,7 @@ import utils.RandomUtils;
  *       author: 483759/윤이진
  * */
 public class Application {
+
     private static final int INPUT_NUM = 3;
 
     public static void main(String[] args) {
@@ -18,38 +19,38 @@ public class Application {
     }
 
     /* 전반적인 게임 진행을 담당하는 메소드 */
-    public static void startGame(Scanner scanner){
-        String inputValue=null;
-        boolean correctValue=false;
+    public static void startGame(Scanner scanner) {
+        String inputValue = null;
+        boolean correctValue = false;
         Number comNum = setComputerNumber();
         Number usrNum;
-        while(!correctValue){
+        while (!correctValue) {
             printNumberInput();
-            inputValue=getUserInput(scanner);
-            correctValue=isValidInput(inputValue);
+            inputValue = getUserInput(scanner);
+            correctValue = isValidInput(inputValue);
         }
-        usrNum=setUserNumber(inputValue);
+        usrNum = setUserNumber(inputValue);
     }
 
     /* 컴퓨터의 숫자값을 랜덤하게 생성하여 Number객체를 반환하는 메서드 */
-    public static Number setComputerNumber(){
+    public static Number setComputerNumber() {
         Number comNum = new Number(INPUT_NUM);
-        for(int i=0;i<INPUT_NUM;i++){
-            int randomNum=RandomUtils.nextInt(0,9);
-            while(comNum.isUsedNumber(randomNum)){
-                randomNum=RandomUtils.nextInt(0,9);
+        for (int i = 0; i < INPUT_NUM; i++) {
+            int randomNum = RandomUtils.nextInt(0, 9);
+            while (comNum.isUsedNumber(randomNum)) {
+                randomNum = RandomUtils.nextInt(0, 9);
             }
-            comNum.setNumberAt(i,randomNum);
+            comNum.setNumberAt(i, randomNum);
         }
         return comNum;
     }
 
     /* 입력된 input값을 userNumber로 변환하는 메서드 */
-    public static Number setUserNumber(String inputValue){
+    public static Number setUserNumber(String inputValue) {
         Number usrNum = new Number(INPUT_NUM);
-        for(int i=0;i<INPUT_NUM;i++){
-            int number=Character.getNumericValue(inputValue.charAt(i));
-            usrNum.setNumberAt(i,number);
+        for (int i = 0; i < INPUT_NUM; i++) {
+            int number = Character.getNumericValue(inputValue.charAt(i));
+            usrNum.setNumberAt(i, number);
         }
         return usrNum;
     }
@@ -70,7 +71,7 @@ public class Application {
         boolean isValid = true;
 
         try {
-            if(inputValue.length()!=INPUT_NUM){
+            if (inputValue.length() != INPUT_NUM) {
                 throw new IllegalArgumentException();
             }
             for (int i = 0; i < inputValue.length(); i++) {
@@ -78,10 +79,10 @@ public class Application {
                 isValid &= isValidCharacter(inputValue.charAt(i));
                 isValid &= isRedundantInput(inputValue, i);
             }
-            if(isValid==false){
+            if (isValid == false) {
                 throw new IllegalArgumentException();
             }
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("3자리 숫자를 중복없이 입력해 주세요!");
             return false;
         }
@@ -102,13 +103,40 @@ public class Application {
     }
 
     /* index에 위치한 Chracter가 이전에 등장한 적이 있는지 검사하는 메서드 */
-    public static boolean isRedundantInput(String inputValue, int index){
-        if(inputValue.length()<=index)return true;
-        for(int i=0;i<index;i++){
-            if(inputValue.charAt(i)==inputValue.charAt(index))
+    public static boolean isRedundantInput(String inputValue, int index) {
+        if (inputValue.length() <= index) {
+            return true;
+        }
+        for (int i = 0; i < index; i++) {
+            if (inputValue.charAt(i) == inputValue.charAt(index)) {
                 return false;
+            }
         }
         return true;
+    }
+
+    /* computer와 user가 입력한 세 자리 숫자의 점수를 계산하는 메서드 */
+    public static String countScore(Number comNum, Number usrNum) {
+        int strike = 0, ball = 0;
+        for (int i = 0; i < INPUT_NUM; i++) {
+            int number = usrNum.getNumberAt(i);
+
+            int index = comNum.findNumber(number);
+            if (index == i) {
+                strike++;
+            } else if (index >= 0) {
+                ball++;
+            }
+        }
+
+        if(strike==0&&ball==0)
+            return "낫싱";
+        else if(strike==0)
+            return ball+"볼";
+        else if(ball==0)
+            return strike+"스트라이크";
+        else
+            return ball+"볼 "+strike+"스트라이크";
     }
 
 }
