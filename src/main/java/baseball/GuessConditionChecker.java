@@ -4,9 +4,9 @@ public class GuessConditionChecker {
     private GuessConditionChecker() {
     }
 
-    public static boolean checkInputIsNumber(String input) {
+    public static boolean checkInputIsInteger(String input) {
         try{
-            Double.parseDouble(input);
+            Integer.parseInt(input);
             return true;
         } catch (NumberFormatException e) {
             return false;
