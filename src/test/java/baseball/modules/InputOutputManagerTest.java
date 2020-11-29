@@ -9,8 +9,8 @@ import java.io.InputStream;
 import org.junit.jupiter.api.Test;
 
 public class InputOutputManagerTest {
-    static final String USER_INPUT_NUMBER = "456";
-    static final int[] NUMBER_ANSWER = { 4, 5, 6 };
+    private static final String USER_INPUT_NUMBER = "456";
+    private static final int[] NUMBER_ANSWER = { 4, 5, 6 };
 
     @Test
     public void testNumberInput(){

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import utils.RandomUtils;
 
 public class NumberGenerator {
-    static final int NUMBER_RANGE_MIN = 1;
-    static final int NUMBER_RANGE_MAX = 9;
+    private static final int NUMBER_RANGE_MIN = 1;
+    private static final int NUMBER_RANGE_MAX = 9;
 
     private ArrayList<Integer> numberRange;
     private int[] generatedNumber;
