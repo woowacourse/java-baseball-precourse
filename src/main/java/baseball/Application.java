@@ -4,23 +4,39 @@ import java.util.Scanner;
 import javax.security.sasl.SaslServer;
 import utils.RandomUtils;
 
-class Game{
+class GameEngine{
     private int guess;
     private int answer;
 
 
-    Game(){
+    GameEngine(){
 
     }
 
-  int chooseAnswer(){
-      int start = 100;
-      int end = 999;
+    int chooseAnswer(){
+        int start = 100;
+        int end = 999;
 
-      int answer = utils.RandomUtils.nextInt(start, end);
+        int answer = utils.RandomUtils.nextInt(start, end);
 
-      this.answer = answer;
-      return answer;
+        this.answer = answer;
+        return answer;
+    }
+
+  int getBallNum(String guessStr){
+      String answerStr = Integer.toString(this.answer);
+      int ballNum = 0;
+
+      for(int i = 0; i < 3; i++){
+          for(int j = 0; j < 3; j++){
+              if(guessStr.indexOf(i) == answerStr.indexOf(j) && i != j){
+                  ballNum += 1;
+              }
+          }
+      }
+
+      return ballNum;
+
   }
 };
 
@@ -37,9 +53,12 @@ public class Application {
             final Scanner scanner = new Scanner(System.in);
             guess = scanner.nextInt();
 
-            Game g = new Game();
-            answer = g.chooseAnswer();
+            GameEngine gameEngine = new GameEngine();
+            answer = gameEngine.chooseAnswer();
+            while(answer!=guess) {
 
+
+            }
 
         }
 
