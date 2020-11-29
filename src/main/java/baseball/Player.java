@@ -15,6 +15,7 @@ public class Player {
         try{
             IllegalArgumentException e = new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
 
+            System.out.print(Constants.INPUT_REQ_MESSAGE);
             String inputNumber = scanner.next();
             if (isCorrectNumber(inputNumber)) {
                 return inputNumber;
@@ -31,8 +32,15 @@ public class Player {
     private boolean isCorrectNumber(String inputNumber){
         boolean[] isUsedNumber = new boolean[Constants.NUMBER_LIMIT + 1];
 
-        if (Integer.parseInt(inputNumber) < 0) return false;
-        if (inputNumber.length() != Constants.NUMBER_COUNT) return false;
+        if (inputNumber.length() != Constants.NUMBER_COUNT) {
+            return false;
+        }
+        if (!isNumber(inputNumber)){
+            return false;
+        }
+        if (Integer.parseInt(inputNumber) < 0) {
+            return false;
+        }
 
         for(int i = 0 ; i < Constants.NUMBER_COUNT; ++i){
             int number = inputNumber.charAt(i) - '0';
@@ -42,6 +50,15 @@ public class Player {
                 return false;
             }
             isUsedNumber[number] = true;
+        }
+        return true;
+    }
+
+    private boolean isNumber(String inputNumber){
+        for(int i = 0 ; i < Constants.NUMBER_COUNT; ++i){
+            if (!Character.isDigit(inputNumber.charAt(i))){
+                return false;
+            }
         }
         return true;
     }
