@@ -56,4 +56,16 @@ public class Service {
         return false;
     }
 
+    /* 게임 초기화 여부를 결정하는 메소드 */
+    public static boolean finishBaseball(String playerInput) {
+        if(playerInput.equals("1")) {
+            return true;
+        }
+
+        if(playerInput.equals("2")) {
+            return false;
+        }
+        return true;
+    }
+
 }
