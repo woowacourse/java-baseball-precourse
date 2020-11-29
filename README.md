@@ -38,6 +38,29 @@
 
 <br>
 
+### 🎃 프로그램 구조
+
+- 📁 baseball
+    - 📁 domain
+        - 📃 Game : Game에 관한 정보 (게임시작=1, 게임종료=2)
+        - 📃 Number : 숫자에 관한 정보 (숫자 길이, 숫자 범위)
+        - 📃 NumberGenerator : 랜덤 숫자 생성 제너레이터
+    - 📁 service
+        - 📃 BaseballGame : 숫자 야구 게임 실행
+        - 📃 Hint : 게임 힌트 제공 
+        - 📃 Output : 출력 기능 담당
+        - 📃 Input : 입력 기능 담당
+    - 📃 Application : 프로그램 실행
+- 📁 utils
+    - 📃 RandomUtils : 랜덤 숫자를 제공하는 기능 담당
+    - 📃 InputConverter : 문자를 숫자 리스트로 변경해주는 기능 담당
+    - 📁 validator
+        - 📃 NumberValidator : 숫자인지 검사
+        - 📃 DuplicateValidator : 숫자가 중복되는지 검사
+        - 📃 RestartValidator : 재시작 값이 유효한 숫자인지 검사
+ 
+<br>       
+
 ### 🚨 유의 사항
 
 아래의 사항들은 반복적으로 체크해야할 리스트입니다. <br>
