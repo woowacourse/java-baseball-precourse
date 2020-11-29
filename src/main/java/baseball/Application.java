@@ -37,6 +37,17 @@ public class Application {
                 game.result(strike, ball);
             }
 
+            //게임을 다시 시작하는지를 입력받는다
+            int reGame = scanner.nextInt();
+
+            //1을 입력하면 메인 함수로 돌아가고, 2를 입력하면 게임을 종료하고, 기타 다른 것을 입력하면 IllegalArgumentException을 발생
+            if (reGame == 1) {
+                main(args);
+            } else if (reGame == 2) {
+                System.out.println("게임을 종료합니다.");
+            } else {
+                throw new IllegalArgumentException();
+            }
 
         //잘못 입력한 경우 "잘못 입력하셨습니다."라는 메시지를 띄운 후 프로그램이 종료된다.
         } catch (IllegalArgumentException e) {
