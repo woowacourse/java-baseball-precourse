@@ -18,9 +18,21 @@ public class GameController {
     private static final String FINISH = "2";
     private static final String INITIAL_RESULT = "";
 
+    private static boolean gameStatus = true;
     private static String result = new String();
     private static String scannerNumber = new String();
     private static String playerStatus;
+
+    // 게임을 컨트롤하는 함수
+    public static void controlGame(Scanner scanner) {
+        while (gameStatus) {
+            startGame(scanner);
+
+            if (finishGame(scanner)) {
+                break;
+            }
+        }
+    }
 
     // 게임을 시작하는 함수
     public static void startGame(Scanner scanner) {
