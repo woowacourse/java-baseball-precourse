@@ -11,12 +11,14 @@ import java.util.Set;
  */
 public class BaseballNumber {
     public static final int BASEBALL_LIST_SIZE = 3;
+    private static final int ZERO = 0;
 
     private final List<Integer> baseballNumbers;
 
     public BaseballNumber(final List<Integer> baseballNumbers) {
         validateSize(baseballNumbers);
         validateDuplicate(baseballNumbers);
+        includeZeroNumber(baseballNumbers);
         this.baseballNumbers = baseballNumbers;
     }
 
@@ -29,6 +31,12 @@ public class BaseballNumber {
     private void validateDuplicate(List<Integer> baseballNumbers) {
         Set<Integer> nonDuplicateNumber = new HashSet<>(baseballNumbers);
         if (nonDuplicateNumber.size() != BASEBALL_LIST_SIZE) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void includeZeroNumber(List<Integer> baseballNumbers) {
+        if (baseballNumbers.contains(ZERO)) {
             throw new IllegalArgumentException();
         }
     }
