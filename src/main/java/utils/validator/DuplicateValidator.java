@@ -1,15 +1,18 @@
 package utils.validator;
 
 public class DuplicateValidator implements Validator {
-
     @Override
     public boolean execute(String userInput) {
-        String[] inputArray = userInput.split("");
+        int[] countNumber = new int[10];
 
-        if (inputArray[0].equals(inputArray[1]) || inputArray[0].equals(inputArray[2]) || inputArray[1].equals(inputArray[2])) {
-            return true;
+        for (String input : userInput.split("")){
+            int intInput = Integer.parseInt(input);
+
+            if (++countNumber[intInput] > 1) {
+                return false;
+            }
         }
 
-        return false;
+        return true;
     }
 }
