@@ -7,8 +7,8 @@ public class Hint {
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
 
-    private int ball;
-    private int strike;
+    private final int ball;
+    private final int strike;
 
     public Hint(int ball, int strike) {
         this.ball = ball;

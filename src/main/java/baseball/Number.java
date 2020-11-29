@@ -17,7 +17,7 @@ public class Number {
     private static final int MIN_DIGIT = 1;
     private static final char ZERO_CHAR = '0';
 
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
 
     private Number(List<Integer> numbers) {
         this.numbers = numbers;

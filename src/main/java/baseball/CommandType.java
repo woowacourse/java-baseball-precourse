@@ -3,7 +3,7 @@ package baseball;
 public enum CommandType {
     RESTART("1"), EXIT("2");
 
-    private String value;
+    private final String value;
 
     CommandType(String value) {
         this.value = value;
