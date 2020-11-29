@@ -17,19 +17,24 @@ public class Application {
     }
 
     private void run() {
-        String randomNumber = NumberGenerator.randomNumberGenerate(DIGIT);
-
-        String userInput = this.view.requestNumber();
-        GameRule gameRule = GameRule.compare(randomNumber, userInput);
-        gameRule.printResult();
-
-        while (!gameRule.isCollect()) {
-            userInput = this.view.requestNumber();
-            gameRule.changeUserInput(userInput);
+        while(true){
+            String randomNumber = NumberGenerator.randomNumberGenerate(DIGIT);
+            String userInput = this.view.requestNumber();
+            GameRule gameRule = GameRule.compare(randomNumber, userInput);
             gameRule.printResult();
-        }
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            while (!gameRule.isCollect()) {
+                userInput = this.view.requestNumber();
+                gameRule.changeUserInput(userInput);
+                gameRule.printResult();
+            }
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+            if (!this.view.askWantContinue()) {
+                break;
+            }
+        }
     }
 
 }
