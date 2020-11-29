@@ -46,7 +46,7 @@ public class Number {
         int lengthOfNumber = number.length();
         String[] numberDigitArr = number.split("");
         Set<String> numberDigitSet = new HashSet<>();
-        for (int i = 0; i < number.length(); i++) {
+        for (int i = 0; i < lengthOfNumber; i++) {
             numberDigitSet.add(numberDigitArr[i]);
         }
         if (numberDigitSet.size() != lengthOfNumber) {
