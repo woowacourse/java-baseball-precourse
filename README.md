@@ -34,10 +34,12 @@
         - 📃 Number : 숫자에 관한 정보 (숫자 길이, 숫자 범위)
         - 📃 NumberGenerator : 랜덤 숫자 생성 제너레이터
     - 📁 service
+        - 📁 ui
+            - 📃 Output : 출력 기능 담당
+            - 📃 Input : 입력 기능 담당
         - 📃 BaseballGame : 숫자 야구 게임 실행
         - 📃 Hint : 게임 힌트 제공 
-        - 📃 Output : 출력 기능 담당
-        - 📃 Input : 입력 기능 담당
+
     - 📃 Application : 프로그램 실행
 - 📁 utils
     - 📃 RandomUtils : 랜덤 숫자를 제공하는 기능 담당
