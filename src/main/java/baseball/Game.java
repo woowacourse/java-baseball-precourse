@@ -30,7 +30,14 @@ public class Game {
         Computer computer = new Computer();
 
         while (true) {
-            List<Integer> userBaseballInput = getUserBaseballInput();
+
+            List<Integer> userBaseballInput;
+
+            try {
+                userBaseballInput = getUserBaseballInput();
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
 
             String gameResult = computer.guessTargetDigits(userBaseballInput);
             System.out.println(gameResult);
@@ -47,56 +54,46 @@ public class Game {
     }
 
     private boolean isContinue() {
-        int userInput = getUserMenuInput();
+        while (true) {
+            int userInput;
 
-        if (userInput == GAME_START_CODE) {
-            return true;
-        } else {
-            return false;
+            try {
+                userInput = getUserMenuInput();
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
+
+            if (userInput == GAME_START_CODE) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
     private List<Integer> getUserBaseballInput() {
-        while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
 
-            String input = scanner.nextLine();
+        String input = scanner.nextLine();
 
-            if (!InputUtils.isDigit(input)) {
-                System.out.println("※ 숫자만 입력해주세요.");
-                continue;
-            }
-
-            if (!InputUtils.isInputLengthEqualsToBaseballLength(input)) {
-                System.out.println("※ 3자리의 숫자를 입력해주세요.");
-                continue;
-            }
-
-            if (!InputUtils.isDigitInBaseballRange(input)) {
-                System.out.println("※ 1부터 9사이의 숫자만 입력해주세요.");
-                continue;
-            }
-
-            return InputUtils.convertStringToIntegerList(input);
+        if (!InputUtils.isDigit(input)
+                ||!InputUtils.isInputLengthEqualsToBaseballLength(input)
+                ||!InputUtils.isDigitInBaseballRange(input)) {
+            throw new IllegalArgumentException();
         }
+
+        return InputUtils.convertStringToIntegerList(input);
     }
 
     private int getUserMenuInput() {
-        while (true) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            String input = scanner.nextLine();
+        String input = scanner.nextLine();
 
-            if (!InputUtils.isDigit(input)) {
-                System.out.println("※ 숫자만 입력해주세요.");
-            }
-
-            if( !InputUtils.isDigitInMenuRange(input)) {
-                System.out.println("※ 1 혹은 2만 입력해주세요.");
-                continue;
-            }
-
-            return Integer.parseInt(input);
+        if (!InputUtils.isDigit(input) ||!InputUtils.isDigitInMenuRange(input)) {
+            throw new IllegalArgumentException();
         }
+
+        return Integer.parseInt(input);
     }
 }
