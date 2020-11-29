@@ -3,11 +3,9 @@ package utils;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Convertor {
 
-    public Convertor() {
-    }
+    public Convertor() {}
 
     public static List<Integer> stringToIntList(String target) {
         List<Integer> result = new ArrayList<>();
