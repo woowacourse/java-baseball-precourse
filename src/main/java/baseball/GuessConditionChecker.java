@@ -19,4 +19,15 @@ public class GuessConditionChecker {
         }
         return false;
     }
+
+    public static boolean checkGuessCondition(String guess) {
+        if (!checkInputIsInteger(guess)) {
+            return false;
+        }
+        int guessNumber = Integer.parseInt(guess);
+        if (!checkThreeDigitNumber(guessNumber)) {
+            return false;
+        }
+        return NumberConditionChecker.checkNumberCondition(guessNumber);
+    }
 }
