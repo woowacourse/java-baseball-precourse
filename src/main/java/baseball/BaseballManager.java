@@ -27,43 +27,52 @@ public class BaseballManager {
         while (baseballIndex < BASEBALL_NUMBER) {
             int randomValue = RandomUtils.nextInt(BASEBALL_NUMBER_RANGE_START, BASEBALL_NUMBER_RANGE_END);
 
-            boolean isDifferentValue = true;
-
-            int previouIndex = 0;
-
-            while (previouIndex < baseballIndex) {
-                if (randomBaseballs[previouIndex] == randomValue) {
-                    isDifferentValue = false;
-                    break;
-                }
-                previouIndex += 1;
+            if (isContainedValue(randomValue)) {
+                continue;
             }
 
-            if (isDifferentValue) {
-                randomBaseballs[baseballIndex] = randomValue;
+            randomBaseballs[baseballIndex] = randomValue;
 
-                baseballIndex += 1;
+            baseballIndex += 1;
+        }
+    }
+
+    private boolean isContainedValue(int randomValue) {
+        for (int baseballIndex = 0; baseballIndex < BASEBALL_NUMBER; baseballIndex++) {
+            if (randomBaseballs[baseballIndex] == randomValue) {
+                return true;
             }
         }
+
+        return false;
     }
 
     public int getBallNumber() {
         int ballNumber = 0;
-        int baseballsIndex = 0;
 
-        for (baseballsIndex = 0; baseballsIndex < BASEBALL_NUMBER; baseballsIndex += 1) {
-            for (int userBaseballIndex = 0; userBaseballIndex < BASEBALL_NUMBER; userBaseballIndex += 1) {
-                if (baseballsIndex == userBaseballIndex) {
-                    continue;
-                }
+        for (int userBaseballIndex = 0; userBaseballIndex < BASEBALL_NUMBER; userBaseballIndex += 1) {
+            int userBaseball = userBaseballs[userBaseballIndex];
 
-                if (randomBaseballs[baseballsIndex] == userBaseballs[userBaseballIndex]) {
-                    ballNumber += 1;
-                }
+            if (isBall(userBaseballIndex, userBaseball)) {
+                ballNumber += 1;
             }
         }
 
         return ballNumber;
+    }
+
+    private boolean isBall(int jumpedIndex, int userBaseball) {
+        for (int baseBallIndex = 0; baseBallIndex < BASEBALL_NUMBER; baseBallIndex += 1) {
+            if (baseBallIndex == jumpedIndex) {
+                continue;
+            }
+
+            if (randomBaseballs[baseBallIndex] == userBaseball) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public int getStrikeNumber() {
