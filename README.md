@@ -132,7 +132,7 @@ private static final Random RANDOM = new Random();
     - 중복검사하여 중복일시 IllegalArgumentException 발생
     - 유효성 검증된 세자리 숫자를 각 자리로 분리하여 리스트로 반환
    
-8. 스트라이크 횟수 반환
+8. 스트라이크 횟수 반환 (strike)
     - 랜덤 숫자 리스트, 나의 숫자 리스트 비교
     - 인덱스와 값이 같을시 스트라이크
 
