@@ -38,6 +38,9 @@ public class Application {
 
     private void gameStart(Scanner scanner) {
         initComputerNums();
+        for (int i = 0; i < 3; i++) {
+            System.out.print(computerNums[i]);
+        }
         while (true) {
             inputPlayerNums(scanner);
             printResult();
@@ -78,8 +81,15 @@ public class Application {
     }
 
     private void initComputerNums() {
+        HashSet<Integer> set = new HashSet<>();
         for (int i = 0; i < computerNums.length; i++) {
-            computerNums[i] = RandomUtils.nextInt(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
+            int randomNum = RandomUtils.nextInt(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
+            // 중복된 숫자가 없을때까지 랜덤 숫자를 생성
+            while (set.contains(randomNum)) {
+                randomNum = RandomUtils.nextInt(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
+            }
+            set.add(randomNum);
+            computerNums[i] = randomNum;
         }
     }
 
