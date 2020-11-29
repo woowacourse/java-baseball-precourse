@@ -17,7 +17,8 @@ public class Application {
         ArrayList<Integer> answer;
         do {
             answer = answerNumber.getAnswerNumber();
-            gameResult = baseballGame.playGame(answer);
+            System.out.print("숫자를 입력해주세요 : ");
+            gameResult = baseballGame.playGame(answer, scanner);
         } while(baseballGame.continueGame(gameResult));
 
         scanner.close();

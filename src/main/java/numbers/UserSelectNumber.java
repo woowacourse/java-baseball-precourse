@@ -8,20 +8,19 @@ import java.util.Scanner;
 
 public class UserSelectNumber {
 
-    private ArrayList<Integer> userSelectNumber = new ArrayList<>();
+    private ArrayList<Integer> userSelectNumber;
 
-    public static UserSelectNumber createUserSelectNumber(){
-        return new UserSelectNumber();
-    }
-
-    public void setUserSelectNumber() {
-        String userInput = receiveUserString();
+    public UserSelectNumber(Scanner scanner) {
+        String userInput = receiveUserString(scanner);
         StringHandler stringHandler = StringHandler.createStringHandler();
         this.userSelectNumber = stringHandler.stringToArrayList(userInput);
     }
 
-    public String receiveUserString() {
-        Scanner scanner = new Scanner(System.in);
+    public static UserSelectNumber createUserSelectNumber(Scanner scanner){
+        return new UserSelectNumber(scanner);
+    }
+
+    public String receiveUserString(Scanner scanner) {
         String userInput = null;
         try {
             userInput = scanner.nextLine();
@@ -31,5 +30,9 @@ public class UserSelectNumber {
             e.printStackTrace();
         }
         return userInput;
+    }
+
+    public ArrayList<Integer> getUserSelectNumber() {
+        return userSelectNumber;
     }
 }

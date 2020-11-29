@@ -21,7 +21,7 @@ public class UserInputValidator {
         }
     }
 
-    public boolean isNumberFormat(String userInput) {
+    private boolean isNumberFormat(String userInput) {
         try {
             Integer.parseInt(userInput);
         } catch (Exception e) {
@@ -30,16 +30,16 @@ public class UserInputValidator {
         return true;
     }
 
-    public boolean isThreeNumber(String userInput) {
+    private boolean isThreeNumber(String userInput) {
         return userInput.length() == 3;
     }
 
-    public boolean isDuplicatedNumber(String userInput) {
+    private boolean isDuplicatedNumber(String userInput) {
         StringHandler stringHandler = StringHandler.createStringHandler();
         return stringHandler.checkDuplication(userInput);
     }
 
-    public boolean isZeroExist(String userInput) {
+    private boolean isZeroExist(String userInput) {
         return userInput.contains("0");
     }
 }
