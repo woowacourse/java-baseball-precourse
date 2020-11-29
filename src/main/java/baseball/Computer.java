@@ -4,10 +4,10 @@ import utils.RandomUtils;
 
 public class Computer {
 
-    static private String result = "";
+    static private String result;
 
     public void makeRandomNumber(){
-        //String result = "";
+        result = "";
         int digit = 0;
         while(digit < Constants.NUMBER_LEN){
             int number = RandomUtils.nextInt(Constants.MIN_NUMBER, Constants.MAX_NUMBER);
