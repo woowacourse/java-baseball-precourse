@@ -2,36 +2,35 @@
 
 ## 구현 기능 목록
 ### BaseballGame
-- start() - 게임 시작
+- run() - 게임 시작
 
 ### InputView
-- readNumbers() - 3자리 숫자를 입력받는다
-- readRetryNumber() - 재시작 확인 숫자를 입력받는다
+- askBallNumbers() - 3자리 숫자를 입력받는다
+- askRetry() - 재시작 확인 숫자를 입력받는다
 
 ### RandomNumbersGenerator
-- generateNumbers() - 랜덤한 3자리 숫자 생성
+- generateNumbers() - 정해진 길이의 랜덤한 숫자 생성
 
 ### FixedNumbersGenerator
-- generateNumbers() - 사용자가 입력한 3자리 숫자 생성
+- generateNumbers() - 파라미터로 받은 정해진 길이의 숫자 생성
 
 ### Validator
-- validateNull() - null 값 예외처리
-- checkRegularExpression() - 입력한 숫자가 정규표현식과 맞는지 체크
+- checkNull() - null 값 예외처리
 - checkBlank() - 빈 문자열을 입력하였는지 체크
+- checkRegularExpression() - 입력한 숫자가 정규표현식과 맞는지 체크
+- checkDuplicateNumber() - 중복 숫자가 있는지 체크
 
-### BaseballNumbers
-- hasDuplicateNumber() - 중복 숫자가 있는지 체크
+### Baseballs
+- addNumbers() - 입력한 숫자들을 List 에 추가
 
 ### Pitcher
-- pitch(index) - 입력한 숫자들 중 인덱스에 해당하는 숫자를 던진다
-- wantsToPlayAgain(input) - 재시작 확인
+- pitch() - 입력한 숫자들 중 인덱스에 해당하는 숫자를 반환
 
 ### Batter
-- swing(pitchedNumber) - 해당 넘버에 대한 힌트를 받는다
+- swing() - 해당 숫자에 대한 힌트를 받는다
 
 ### ScoreBoard
-- increaseStrike() - 스트라이크 카운트 증가
-- increaseBall() - 볼 카운트 증가
+- record() - 스트라이크 또는 볼 카운트 증가
 - hasZeroStrike() - 스트라이크가 0개인지 체크
 - hasZeroBall() - 볼이 0개인지 체크
 - isAnswer() - 정답 숫자인지 체크
@@ -39,12 +38,11 @@
 ### Count
 - increaseCount() - 카운트 증가
 
-### RoundResult(enum)
-- ANSWER - 3스트라이크 메세지 반환
-- STRIKE_AND_BALL - 스트라이크, 볼 카운트 반환
-- NOTHING - 낫싱 메세지 반환
+### Judgment(enum)
+- STRIKE, BALL, NOTHING 메세지 반환
 
 ### OutputView
+- getResult() - 해당 라운드 결과 메세지 추가
 - printRoundResult() - 라운드의 결과 출력
 
 ## 🚀 기능 요구사항
