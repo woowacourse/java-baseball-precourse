@@ -39,12 +39,12 @@
 
 ### 프로그래밍 요구사항
 
-* [ ] [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html) 지키기 (단 indent는 4 space)
-* [ ] indent depth를 2 이하로 구현하기
-* [ ] 3항 연산자를 사용하지 않기
-* [ ] 함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게 만들기
-* [ ] System.exit()를 사용하지 않기
-* [ ] 비정상적 입력에 대해서는 IllegalArgumentException을 발생시키기
+* [x] [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html) 지키기 (단 indent는 4 space)
+* [x] indent depth를 2 이하로 구현하기
+* [x] 3항 연산자를 사용하지 않기
+* [x] 함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게 만들기
+* [x] System.exit()를 사용하지 않기
+* [x] 비정상적 입력에 대해서는 IllegalArgumentException을 발생시키기
 
 <br>
 
