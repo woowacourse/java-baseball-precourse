@@ -1,5 +1,6 @@
 package controller;
 
+import static domain.Message.BINGO;
 import static domain.Message.INPUT_NUMBER;
 
 import baseball.BaseballGame;
@@ -35,15 +36,12 @@ public class BaseballGameController {
         inputBaseballNumber();
         BaseballNumber playerBaseballNumber = player.createBaseballNumber(getInput());
         if (baseballGame.exists(playerBaseballNumber)) {
+            showBingoMessage();
             return;
         }
         Hint hint = baseballGame.countStrikeAndBall(playerBaseballNumber);
         System.out.println(hint);
         restart();
-    }
-
-    private void restart() {
-        play();
     }
 
     private void inputBaseballNumber() {
@@ -52,5 +50,13 @@ public class BaseballGameController {
 
     private String getInput() {
         return scanner.nextLine();
+    }
+
+    private void showBingoMessage() {
+        System.out.println(BINGO.toString());
+    }
+
+    private void restart() {
+        play();
     }
 }
