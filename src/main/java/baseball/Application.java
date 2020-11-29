@@ -71,7 +71,20 @@ public class Application {
     }
 
     private static void printStr(int strike, int ball) {
-
+        String str = "";
+        if (strike == 0 && ball == 0) {
+            str = "낫싱";
+        } else if (strike == 3) {
+            str = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        } else {
+            if (ball != 0) {
+                str += ball + "볼 ";
+            }
+            if (strike != 0) {
+                str += strike + "스트라이크";
+            }
+        }
+        System.out.println(str);
     }
 
     private static void playGame(Scanner scanner, int[] randomNumber) {
