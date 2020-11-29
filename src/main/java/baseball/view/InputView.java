@@ -1,9 +1,10 @@
 package baseball.view;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 import baseball.BaseballGame;
+import baseball.domain.validator.NumbersValidator;
+import baseball.domain.validator.RetryValidator;
 import baseball.domain.validator.Validator;
 
 public class InputView {
@@ -14,30 +15,33 @@ public class InputView {
 
     private static final String INPUT_VALUE_FORMAT = "\n입력한 값은 %s 입니다.\n";
 
-    private final Validator validator;
+    private final NumbersValidator numbersValidator;
+
+    private final RetryValidator retryValidator;
 
     private final Scanner scanner;
 
     public InputView(final Scanner scanner) {
-        this.validator = new Validator();
+        numbersValidator = new NumbersValidator();
+        retryValidator = new RetryValidator();
         this.scanner = scanner;
     }
 
     public String askBallNumbers() {
-        return ask(ASK_NUMBERS_MESSAGE, Validator.NUMBERS_PATTERN);
+        return ask(ASK_NUMBERS_MESSAGE, numbersValidator);
     }
 
     public boolean askRetry() {
-        final String retryNumber = ask(ASK_RETRY_NUMBER, Validator.RETRY_PATTERN);
+        final String retryNumber = ask(ASK_RETRY_NUMBER, retryValidator);
         return retryNumber.equals(BaseballGame.GAME_END);
     }
 
-    private String ask(final String message, final Pattern pattern) {
+    private String ask(final String message, final Validator validator) {
         System.out.print(message);
 
         String input = scanner.nextLine();
 
-        while (!isValid(input, pattern)) {
+        while (!isValid(input, validator)) {
             System.out.print(message);
             input = scanner.nextLine();
         }
@@ -45,9 +49,9 @@ public class InputView {
         return input;
     }
 
-    private boolean isValid(final String input, final Pattern pattern) {
+    private boolean isValid(final String input, final Validator validator) {
         try {
-            validator.validateNumbers(pattern, input);
+            validator.validate(input);
         } catch (IllegalArgumentException e) {
             System.out.printf(e.getMessage() + INPUT_VALUE_FORMAT, input);
             return false;
