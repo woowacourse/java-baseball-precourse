@@ -14,12 +14,12 @@ public class Number {
             isUsed[i]=false;
     }
 
-    public void setArrayNumberAt(int index, int number){
+    public void setNumberAt(int index, int number){
         this.numArray[index]=number;
         isUsed[number]=true;
     }
 
-    public int getArrayNumberAt(int index){return this.numArray[index];}
+    public int getNumberAt(int index){return this.numArray[index];}
 
     public boolean isUsedNumber(int number){
         return isUsed[number];

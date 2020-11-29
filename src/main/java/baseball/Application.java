@@ -19,7 +19,7 @@ public class Application {
 
     /* 전반적인 게임 진행을 담당하는 메소드 */
     public static void startGame(Scanner scanner){
-        String inputValue;
+        String inputValue=null;
         boolean correctValue=false;
         Number comNum = setComputerNumber();
         Number usrNum;
@@ -28,6 +28,7 @@ public class Application {
             inputValue=getUserInput(scanner);
             correctValue=isValidInput(inputValue);
         }
+        usrNum=setUserNumber(inputValue);
     }
 
     /* 컴퓨터의 숫자값을 랜덤하게 생성하여 Number객체를 반환하는 메서드 */
@@ -38,7 +39,7 @@ public class Application {
             while(comNum.isUsedNumber(randomNum)){
                 randomNum=RandomUtils.nextInt(0,9);
             }
-            comNum.setArrayNumberAt(i,randomNum);
+            comNum.setNumberAt(i,randomNum);
         }
         return comNum;
     }
@@ -48,7 +49,7 @@ public class Application {
         Number usrNum = new Number(INPUT_NUM);
         for(int i=0;i<INPUT_NUM;i++){
             int number=Character.getNumericValue(inputValue.charAt(i));
-            usrNum.setArrayNumberAt(i,number);
+            usrNum.setNumberAt(i,number);
         }
         return usrNum;
     }
