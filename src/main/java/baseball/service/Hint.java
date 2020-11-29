@@ -73,7 +73,6 @@ public class Hint {
 
     public void createAnswer() {
         correctNumber = numberGenerator.execute();
-        System.out.println(correctNumber.toString());
         correct = false;
     }
 }
