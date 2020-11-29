@@ -37,12 +37,34 @@ public class Application {
 
         // 스트라이크 체크하기
         int strikeCnt = checkStrike(userNum, systemNum);
-        System.out.println(strikeCnt + "스트라이크");
 
         // 정답 체크하기
         if(strikeCnt == 3) {
+            System.out.println(strikeCnt + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
+
+        // 볼 체크하기
+        int ballCnt = checkBall(userNum, systemNum);
+        if(ballCnt == 0){
+            System.out.println(strikeCnt + "스트라이크");
+        } else if(strikeCnt == 0) {
+            System.out.println(ballCnt + "볼");
+        } else {
+            System.out.println(ballCnt + "볼" + " " + strikeCnt + "스트라이크");
+        }
+
+    }
+
+    private static int checkBall(int[] userNum, int[] systemNum) {
+        int ballCnt = 0;
+        for (int i = 0; i < 3; i++) {
+            int tmp = userNum[i];
+            if(tmp != systemNum[i] && duplCheck[tmp]) {
+                ballCnt++;
+            }
+        }
+        return ballCnt;
     }
 
     private static int checkStrike(int[] userNum, int[] systemNum) {
