@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import static baseball.config.BaseballConfiguration.BALL_LENGTH;
+import static baseball.config.BaseballConfiguration.*;
 import static baseball.domain.Status.*;
 
 import utils.RandomUtils;
@@ -21,10 +21,9 @@ public class BaseballGame {
     private void createBaseballNumbers() {
         Set<Integer> set = new LinkedHashSet<>();
         while (set.size() < BALL_LENGTH) {
-            set.add(RandomUtils.nextInt(1, 9));
+            set.add(RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE));
         }
         baseballNumbers = new ArrayList<>(set);
-        System.out.println(baseballNumbers);
     }
 
     public void compareBaseBallNumbers(List<Integer> playerBaseballNumbers) {
