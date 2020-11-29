@@ -22,10 +22,11 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             char[] charUserNum = scanner.next().toCharArray();
 
-            int[] userNum = new int[3];
-            for (int i = 0; i < 3; i++) {
-                userNum[i] = charUserNum[i] - '0';
-            }
+            // 정상적인 입력인지 체크
+            validateInput(charUserNum);
+
+            // 플레이어 input 문자에서 숫자로 변경
+            int[] userNum = charToInt(charUserNum);
 
             // 스트라이크 체크하기
             int strikeCnt = checkStrike(userNum, systemNum);
@@ -50,6 +51,8 @@ public class Application {
 
             // 볼 체크하기
             int ballCnt = checkBall(userNum, systemNum);
+
+            // 결과 출력하기
             if (ballCnt == 0 && strikeCnt == 0) {
                 System.out.println("낫싱");
             } else if (ballCnt == 0) {
@@ -61,6 +64,28 @@ public class Application {
             }
         }
 
+    }
+
+    private static void validateInput(char[] charUserNum) throws IllegalArgumentException {
+        if(charUserNum.length > 3) {
+            throw new IllegalArgumentException("3자리수를 입력해야합니다.");
+        }
+
+        for (int i = 0; i < 3; i++) {
+            int tmp = charUserNum[i] - '0';
+            if(tmp > 9 || tmp < 1) {
+                throw new IllegalArgumentException("숫자가 아닙니다.");
+            }
+        }
+    }
+
+    private static int[] charToInt(char[] charUserNum) {
+        int[] userNum = new int[3];
+        for (int i = 0; i < 3; i++) {
+            int tmp = charUserNum[i] - '0';
+            userNum[i] = tmp;
+        }
+        return userNum;
     }
 
     private static int[] getDistinctNumber() {
