@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Number {
     private static final int MIN = 1;
     private static final int MAX = 9;
-    private static String INVALID_RANGE = "1~9 사이의 숫자가 아닙니다.";
+    private static final String INVALID_RANGE = "1~9 사이의 숫자가 아닙니다.";
 
     private final int number;
 
