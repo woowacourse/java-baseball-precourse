@@ -4,7 +4,7 @@ import utils.Convertor;
 
 import java.util.*;
 
-import static baseball.config.BaseballConfiguration.BALL_LENGTH;
+import static baseball.config.BaseballConfiguration.*;
 
 public class Player {
     private List<Integer> baseballNumbers;
@@ -38,7 +38,7 @@ public class Player {
 
     private void validatedBaseballRange() {
         for (Integer baseballNumber : baseballNumbers) {
-            if (baseballNumber < 1 || baseballNumber > 9) {
+            if (baseballNumber < START_INCLUSIVE || baseballNumber > END_INCLUSIVE) {
                 throw new IllegalArgumentException("입력 숫자는 1~9 사이의 숫자만 허용됩니다.");
             }
         }
