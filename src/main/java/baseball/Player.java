@@ -10,6 +10,4 @@ public class Player {
     public Player(Scanner scanner) {
         this.scanner = scanner;
     }
-
-
 }
