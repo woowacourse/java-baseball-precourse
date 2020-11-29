@@ -26,7 +26,6 @@ public class Game {
 
     private void init() {
         this.randomNumbers.setNumbers();
-        System.out.println(this.randomNumbers.getNumbers());
         turn();
     }
 
