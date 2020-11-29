@@ -5,7 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import baseball.Game;
+import baseball.BaseBallGame;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -90,7 +90,7 @@ class NumbersTest {
         int strike = 0;
 
         //when
-        Game.printResult(ball, strike);
+        BaseBallGame.printResult(ball, strike);
 
         //then
         Assertions.assertThat(ball + "볼 " + "\n").isEqualTo(outContent.toString());
@@ -104,7 +104,7 @@ class NumbersTest {
         int strike = 2;
 
         //when
-        Game.printResult(ball, strike);
+        BaseBallGame.printResult(ball, strike);
 
         //then
         Assertions.assertThat(strike + "스트라이크" + "\n").isEqualTo(outContent.toString());
@@ -118,7 +118,7 @@ class NumbersTest {
         int strike = 2;
 
         //when
-        Game.printResult(ball, strike);
+        BaseBallGame.printResult(ball, strike);
 
         //then
         Assertions.assertThat(ball +"볼 " + strike +"스트라이크" + "\n").isEqualTo(outContent.toString());
@@ -132,7 +132,7 @@ class NumbersTest {
         int strike = 0;
 
         //when
-        Game.printResult(ball, strike);
+        BaseBallGame.printResult(ball, strike);
 
         //then
         Assertions.assertThat("낫싱" + "\n").isEqualTo(outContent.toString());

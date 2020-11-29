@@ -8,19 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Game {
+public class BaseBallGame {
 
     private static Numbers numbers;
     private static List<Integer> randoms;
 
     private InputUtils inputUtils;
 
-    private Game(Scanner scanner) {
+    private BaseBallGame(Scanner scanner) {
         this.inputUtils = InputUtils.of(scanner);
     }
 
-    public static Game of(Scanner scanner) {
-        return new Game(scanner);
+    public static BaseBallGame of(Scanner scanner) {
+        return new BaseBallGame(scanner);
     }
 
     public void start() {

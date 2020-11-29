@@ -1,6 +1,6 @@
 package utils;
 
-import baseball.Game;
+import baseball.BaseBallGame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -207,10 +207,10 @@ class InputUtilsTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         Scanner testScanner = new Scanner(in);
-        Game game = Game.of(testScanner);
+        BaseBallGame baseBallGame = BaseBallGame.of(testScanner);
 
         //when
-        boolean chooseContinue = game.isContinueOrNot();
+        boolean chooseContinue = baseBallGame.isContinueOrNot();
 
         //then
         assertThat(chooseContinue).isEqualTo(true);
@@ -224,10 +224,10 @@ class InputUtilsTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         Scanner testScanner = new Scanner(in);
-        Game game = Game.of(testScanner);
+        BaseBallGame baseBallGame = BaseBallGame.of(testScanner);
 
         //when
-        boolean chooseContinue = game.isContinueOrNot();
+        boolean chooseContinue = baseBallGame.isContinueOrNot();
 
         //then
         assertThat(chooseContinue).isEqualTo(false);
