@@ -8,7 +8,8 @@ public enum Message {
     STRIKE("스트라이크"),
     BALL("볼"),
     NOTHING("낫싱"),
-    BLANK(" ");
+    BLANK(" "),
+    INPUT_NUMBER("숫자를 입력해주세요 : ");
 
     private String type;
 

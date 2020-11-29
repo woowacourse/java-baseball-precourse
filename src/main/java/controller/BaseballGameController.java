@@ -1,5 +1,7 @@
 package controller;
 
+import static domain.Message.INPUT_NUMBER;
+
 import baseball.BaseballGame;
 import domain.BaseballNumber;
 import domain.Hint;
@@ -30,10 +32,15 @@ public class BaseballGameController {
     }
 
     public void play() {
+        inputBaseballNumber();
         BaseballNumber playerBaseballNumber = player.createBaseballNumber(getInput());
         baseballGame.exists(playerBaseballNumber);
         Hint hint = baseballGame.countStrikeAndBall(playerBaseballNumber);
         System.out.println(hint);
+    }
+
+    private void inputBaseballNumber() {
+        System.out.print(INPUT_NUMBER.toString());
     }
 
     private String getInput() {
