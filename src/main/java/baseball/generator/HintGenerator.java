@@ -27,16 +27,9 @@ public class HintGenerator {
      */
     public static String generateHint(ArrayList<Integer> playerNumber) {
         getProgramNumber();
-
-        // `볼`, `스트라이크`를 초기화한다.
         initBallStrike();
-
-        // 같은 숫자가 있는지 확인한다. (`볼` 개수 확인)
         checkSameNumber(programNumber, playerNumber);
-        // 같은 자리에 있는지 확인한다. (`스트라이크` 개수 확인)
         checkSamePosition(programNumber, playerNumber);
-
-        // `정답`, `볼`, `스트라이크`, `낫싱`을 확인한다.
         checkResult();
 
         return result;
@@ -56,7 +49,8 @@ public class HintGenerator {
      * @param playerNumber
      */
     public static void checkSameNumber(ArrayList<Integer> programNumber, ArrayList<Integer> playerNumber) {
-        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary(); i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
+        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary();
+             i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
             if (programNumber.contains(playerNumber.get(i))) {
                 ball++;
             }
@@ -71,7 +65,8 @@ public class HintGenerator {
      * @param playerNumber
      */
     public static void checkSamePosition(ArrayList<Integer> programNumber, ArrayList<Integer> playerNumber) {
-        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary(); i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
+        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary();
+             i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
             if (programNumber.get(i) == playerNumber.get(i)) {
                 strike++;
                 ball--;
@@ -85,11 +80,14 @@ public class HintGenerator {
      * @return result
      */
     public static String checkResult() {
-        if (ball != ValueType.INITIAL_VALUE.getValue() && strike == ValueType.INITIAL_VALUE.getValue()) {
+        if (ball != ValueType.INITIAL_VALUE.getValue() &&
+                strike == ValueType.INITIAL_VALUE.getValue()) {
             result = ball + HintType.BALL.getHint();
-        } else if (ball == ValueType.INITIAL_VALUE.getValue() && strike != ValueType.INITIAL_VALUE.getValue()) {
+        } else if (ball == ValueType.INITIAL_VALUE.getValue() &&
+                strike != ValueType.INITIAL_VALUE.getValue()) {
             result = strike + HintType.STRIKE.getHint();
-        } else if (ball == ValueType.INITIAL_VALUE.getValue() && strike == ValueType.INITIAL_VALUE.getValue()) {
+        } else if (ball == ValueType.INITIAL_VALUE.getValue() &&
+                strike == ValueType.INITIAL_VALUE.getValue()) {
             result = HintType.NOTHING.getHint();
         } else {
             result = ball + HintType.BALL.getHint() + " " + strike + HintType.STRIKE.getHint();

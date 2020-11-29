@@ -61,10 +61,7 @@ public class GameController {
      */
     public static void validatePlayerNumber(String scannerNumber) {
         if (InputUtils.checkValidation(scannerNumber)) {
-            // String 형태를 ArrayList<Integer> 형태로 변환한다.
             ArrayList<Integer> playerNumber = convertPlayerNumber(scannerNumber);
-
-            // 플레이어에게 힌트를 제공한다.
             giveHint(playerNumber);
         }
     }
@@ -88,7 +85,8 @@ public class GameController {
     public static ArrayList<Integer> convertPlayerNumber(String scannerNumber) {
         ArrayList<Integer> playerNumber = new ArrayList<>(SizeType.NUMBER_SIZE.getSize());
 
-        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary(); i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
+        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary();
+             i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
             String scannerSubNumber = scannerNumber.substring(i, i+1);
             playerNumber.add(Integer.parseInt(scannerSubNumber));
         }

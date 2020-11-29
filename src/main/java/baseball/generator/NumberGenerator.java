@@ -18,7 +18,8 @@ public class NumberGenerator {
      * @return flag
      */
     public static int[] initFlag() {
-        for (int i = BoundaryType.MINIMUM_FLAG.getBoundary(); i <= BoundaryType.MAXIMUM_FLAG.getBoundary(); i++) {
+        for (int i = BoundaryType.MINIMUM_FLAG.getBoundary();
+             i <= BoundaryType.MAXIMUM_FLAG.getBoundary(); i++) {
             flag[i] = ValueType.FALSE.getValue();
         }
 
@@ -31,20 +32,21 @@ public class NumberGenerator {
      * @return programNumber
      */
     public static ArrayList<Integer> generateProgramNumber() {
-        // flag 초기화
         flag = initFlag();
 
         // 임의의 수 3개를 정한다.
         while (programNumber.size() != SizeType.NUMBER_SIZE.getSize()) {
             // 1에서 9까지 범위 내에서 임의의 수를 구한다.
-            int random = RandomUtils.nextInt(BoundaryType.MINIMUM_NUMBER.getBoundary(), BoundaryType.MAXIMUM_NUMBER.getBoundary());
+            int random = RandomUtils.nextInt(
+                    BoundaryType.MINIMUM_NUMBER.getBoundary(), BoundaryType.MAXIMUM_NUMBER.getBoundary());
             int index = random - 1;
 
             // 아직 구한 숫자가 사용되지 않은 경우 해당 임의의 수를 사용한다.
+            // 이미 구한 숫자가 사용된 경우 새로운 임의의 수를 구한다.
             if (flag[index] == ValueType.FALSE.getValue()) {
                 programNumber.add(random);
                 flag[index] = ValueType.TRUE.getValue();
-            } else {            // 이미 구한 숫자가 사용된 경우 새로운 임의의 수를 구한다.
+            } else {
                 continue;
             }
         }

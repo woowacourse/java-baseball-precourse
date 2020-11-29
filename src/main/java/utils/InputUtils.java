@@ -49,7 +49,8 @@ public class InputUtils {
      * @return true or false
      */
     public static boolean checkLength(String playerNumber) {
-        if (playerNumber.length() < SizeType.NUMBER_SIZE.getSize() || playerNumber.length() > SizeType.NUMBER_SIZE.getSize()) {
+        if (playerNumber.length() < SizeType.NUMBER_SIZE.getSize() ||
+                playerNumber.length() > SizeType.NUMBER_SIZE.getSize()) {
             lengthFlag = false;
         }
 
@@ -65,8 +66,10 @@ public class InputUtils {
     public static boolean checkBoundary(String playerNumber) {
         char[] playerArray = playerNumber.toCharArray();
 
-        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary(); i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
-            if (playerArray[i] < BoundaryType.MINIMUM_ASCII.getBoundary() || playerArray[i] > BoundaryType.MAXIMUM_ASCII.getBoundary()) {
+        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary();
+             i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
+            if (playerArray[i] < BoundaryType.MINIMUM_ASCII.getBoundary() ||
+                    playerArray[i] > BoundaryType.MAXIMUM_ASCII.getBoundary()) {
                 boundaryFlag = false;
             }
         }
@@ -84,7 +87,8 @@ public class InputUtils {
         Set<Character> playerSet = new HashSet<>();
         char[] playerArray = playerNumber.toCharArray();
 
-        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary(); i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
+        for (int i = BoundaryType.MINIMUM_INDEX.getBoundary();
+             i <= BoundaryType.MAXIMUM_INDEX.getBoundary(); i++) {
             playerSet.add(playerArray[i]);
         }
 
