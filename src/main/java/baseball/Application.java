@@ -33,15 +33,15 @@ public class Application {
         try {
             input = scanner.nextInt();
         } catch (InputMismatchException e) {
-            System.err.println("잘못된 입력값입니다.");
+            System.err.println("잘못된 입력값입니다. 1부터 9까지 서로 다른 3가지 숫자를 입력해주세요. ");
             throw new IllegalArgumentException();
         } catch (Exception e) {
-            System.err.println("잘못된 입력값입니다.");
+            System.err.println("잘못된 입력값입니다. 1부터 9까지 서로 다른 3가지 숫자를 입력해주세요. ");
             throw new IllegalArgumentException();
         }
 
         if (input < 100 | input > 999) {
-            System.err.println("잘못된 입력값입니다.");
+            System.err.println("잘못된 입력값입니다. 1부터 9까지 서로 다른 3가지 숫자를 입력해주세요. ");
             throw new IllegalArgumentException();
         }
 
@@ -49,10 +49,9 @@ public class Application {
         guess[1] = (input / 10) % 10;
         guess[2] = input % 10;
         if (guess[1] == 0 || guess[2] == 0) {
-            System.err.println("잘못된 입력값입니다.");
+            System.err.println("잘못된 입력값입니다. 1부터 9까지 서로 다른 3가지 숫자를 입력해주세요. ");
             throw new IllegalArgumentException();
         }
-        System.out.printf("%d, %d, %d\n", guess[0], guess[1], guess[2]);
         return guess;
     }
 
@@ -78,7 +77,19 @@ public class Application {
                 ball++;
             }
         }
-        System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+        if (ball > 0) {
+            if (strike > 0) {
+                System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+            } else {
+                System.out.printf("%d볼\n", ball);
+            }
+        } else {
+            if (strike > 0) {
+                System.out.printf("%d스트라이크\n", strike);
+            } else {
+                System.out.println("낫싱");
+            }
+        }
 
         return strike == 3;
     }
@@ -89,10 +100,10 @@ public class Application {
         try {
             input = scanner.nextInt();
         } catch (InputMismatchException e) {
-            System.err.println("잘못된 입력값입니다.");
+            System.err.println("잘못된 입력값입니다. 1이나 2를 입력해 주세요. ");
             throw new IllegalArgumentException();
         } catch (Exception e) {
-            System.err.println("잘못된 입력값입니다.");
+            System.err.println("잘못된 입력값입니다. 1이나 2를 입력해 주세요. ");
             throw new IllegalArgumentException();
         }
 
@@ -102,7 +113,7 @@ public class Application {
             case 2:
                 return true;
             default:
-                System.err.println("잘못된 입력값입니다.");
+                System.err.println("잘못된 입력값입니다. 1이나 2를 입력해 주세요. ");
                 throw new IllegalArgumentException();
         }
     }
