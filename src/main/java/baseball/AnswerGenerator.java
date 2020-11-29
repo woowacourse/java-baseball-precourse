@@ -12,13 +12,11 @@ public class AnswerGenerator {
 
     public static int generateAnswer(){
         int answerCandidate;
-        boolean answerError;
+        boolean suitability;
         do{
             answerCandidate = RandomUtils.nextInt(MIN_NUMBER, MAX_NUMBER);
-            int[] answerCandidateDigits = NumberConditionChecker.splitNumberToDigits(answerCandidate);
-            answerError = NumberConditionChecker.checkZeroInList(answerCandidateDigits)
-                    || NumberConditionChecker.checkOverlapNumber(answerCandidateDigits);
-        } while(answerError);
+            suitability = NumberConditionChecker.checkNumberCondition(answerCandidate);
+        } while(!suitability);
         return answerCandidate;
     }
 }

@@ -35,4 +35,10 @@ public class NumberConditionChecker {
         }
         return true;
     }
+
+    public static boolean checkNumberCondition(int number) {
+        int[] numbers = splitNumberToDigits(number);
+        boolean suitability = ! (checkZeroInList(numbers) || checkOverlapNumber(numbers));
+        return suitability;
+    }
 }
