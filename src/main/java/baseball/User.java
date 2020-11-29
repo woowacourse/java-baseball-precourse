@@ -8,7 +8,7 @@ package baseball;
 public class User {
     private String number = "";
 
-    private static final int START_CAHR_VAL = 49;
+    private static final int START_CHAR_VAL = 49;
     private static final int END_CHAR_VAL = 57;
     private static final int SIZE = 3;
 
@@ -55,7 +55,7 @@ public class User {
      * @param aChar 사용자의 입력값에서 가져온 하나의 문자
      */
     private void isRightNumber(char aChar) {
-        if (aChar < START_CAHR_VAL || aChar > END_CHAR_VAL) {
+        if (aChar < START_CHAR_VAL || aChar > END_CHAR_VAL) {
             throw new IllegalArgumentException();
         }
     }
