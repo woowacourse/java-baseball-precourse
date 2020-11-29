@@ -13,6 +13,11 @@ public class MyNumber {
         return (inputNum < 100) || (inputNum > 999);
     }
 
+    //세 자리 숫자 중 0이 들어가있는지 검사하는 메서드
+    private boolean inputZero(int n1, int n2, int n3) {
+        return (n1 == 0) || (n2 == 0) || (n3 == 0);
+    }
+
     //세 숫자가 중복되는지를 검사하는 메서드
     private boolean checkDuplication(int n1, int n2, int n3) {
         return (n1 == n2) || (n2 == n3) || (n3 == n1);
@@ -29,7 +34,7 @@ public class MyNumber {
         return myThreeNum;
     }
 
-    //세자리인지 검사후 리스트로 저장하고, 중복 검사를 한다
+    //세자리인지 검사후 리스트로 저장하고, 0이 들어있는지 여부와 중복 검사를 한다
     //위 조건을 만족하면 세 숫자를 리스트로 반환하고
     //조건을 만족하지 못하면 IllegalArgumentException을 발생시킨다.
     public List<Integer> myNumList(int inputNum) {
@@ -38,6 +43,9 @@ public class MyNumber {
             throw new IllegalArgumentException();
         }
         myNumList = makeThreeMyNum(inputNum);
+        if (inputZero(myNumList.get(0), myNumList.get(1), myNumList.get(2))) {
+            throw new IllegalArgumentException();
+        }
         if (checkDuplication(myNumList.get(0), myNumList.get(1), myNumList.get(2))) {
             throw new IllegalArgumentException();
         }
