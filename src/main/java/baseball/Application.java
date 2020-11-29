@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import utils.RandomUtils;
 
@@ -13,8 +14,15 @@ public class Application {
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
+        int menu = 0;
 
-        startGame(scanner);
+        while (menu != 2) {
+            menu=0;
+            startGame(scanner);
+            while (menu!=1&&menu!=2) {
+                menu = selectMenu(scanner);
+            }
+        }
         // TODO 구현 진행
     }
 
@@ -33,14 +41,27 @@ public class Application {
                 correctValue = isValidInput(inputValue);
             }
             usrNum = setUserNumber(inputValue);
-            matchValue=countScore(comNum,usrNum);
+            matchValue = countScore(comNum, usrNum);
             System.out.println(matchValue);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        scanner.nextLine();
     }
 
-    public static int selectMenu(){
+    public static int selectMenu(Scanner scanner) {
+        int menuNum = 0;
+        System.out.printf("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
 
+        try {
+            menuNum=Integer.parseInt(scanner.nextLine());
+            if (menuNum != 1 && menuNum != 2) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("1또는 2를 입력하세요");
+        }
+
+        return menuNum;
     }
 
     /* 컴퓨터의 숫자값을 랜덤하게 생성하여 Number객체를 반환하는 메서드 */
