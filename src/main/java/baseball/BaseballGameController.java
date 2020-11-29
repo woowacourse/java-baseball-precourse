@@ -15,6 +15,17 @@ public class BaseballGameController {
     }
 
     public void startGame(){
-        
+        do {
+            playGame();
+        }while (checkReplay());
     }
+
+    private void playGame() {
+
+    }
+
+    private boolean checkReplay() {
+        return false;
+    }
+
 }
