@@ -4,7 +4,7 @@
 - 입력 예외 상황 시 항상 IllegalArgumentException 던지기!
 
 ### Application
-- 게임 시스템 그 자체 (main) + 그외 어떤 클래스에서든지 쓰이는 부가적인 메소드 (convertIntToArray, isValidNum)
+- 게임 시스템 그 자체 (main)
 
 ### Player
 1. 플레이어 입력 받기 기능 (숫자 추리)
@@ -31,6 +31,9 @@
 
 ### StrikeAndBall
 - 스트라이크와 볼 카운트 값을 담는 클래스
+
+### NumberHandleUtils
+- 어떤 클래스에서든지 쓰이는 부가적인 메소드 (convertIntToArray, isValidNum)
 
 ## 🚀 기능 요구사항
 - 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
