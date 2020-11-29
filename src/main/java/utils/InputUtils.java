@@ -22,8 +22,10 @@ public class InputUtils {
         return intToList(number);
     }
 
-    private String getNextLine() {
-        return checkLength(scanner.nextLine());
+    public String getNextLine() {
+        String inputValue = scanner.nextLine();
+        validateLength(inputValue);
+        return inputValue;
     }
 
     public int getContinueOrNot() {
@@ -48,11 +50,10 @@ public class InputUtils {
         return lists;
     }
 
-    public String checkLength(String text) {
+    public void validateLength(String text) {
         if (text.length() != 3) {
             throw new IllegalArgumentException("3자리의 수를 입력 해주세요");
         }
-        return text;
     }
 
     public int checkContinueOrNot(int number) {

@@ -50,19 +50,20 @@ class InputUtilsTest {
     }
 
     @Test
-    @DisplayName("3자리 입력받기")
+    @DisplayName("3자리를 입력받을 때 통과한다")
     void onlyInputThree() {
         //given
-        String tmp = "123";
-        String tmp2 = "432";
+        String input = "abc";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Scanner testScanner = new Scanner(in);
+        InputUtils scannerInputUtils = InputUtils.of(testScanner);
 
         //when
-        String text = inputUtils.checkLength(tmp);
-        String text2 = inputUtils.checkLength(tmp2);
+        String text = scannerInputUtils.getNextLine();
 
         //then
-        assertThat(text.length()).isEqualTo(3);
-        assertThat(text2.length()).isEqualTo(3);
+        assertThat(text).isEqualTo("abc");
     }
 
     @Test
@@ -73,31 +74,31 @@ class InputUtilsTest {
         String tmp2 = "43";
 
         //then
-        assertThatThrownBy(() -> inputUtils.checkLength(tmp))
+        assertThatThrownBy(() -> inputUtils.validateLength(tmp))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3자리의 수를 입력 해주세요");
 
-        assertThatThrownBy(() -> inputUtils.checkLength(tmp2))
+        assertThatThrownBy(() -> inputUtils.validateLength(tmp2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3자리의 수를 입력 해주세요");
     }
 
     @Test
-    @DisplayName("3자리이고 모두 숫자일 때")
+    @DisplayName("3자리이고 모두 숫자일 때 통과한다")
     void inputThreeIntValue() {
         //given
-        String tmp = "123";
-        String tmp2 = "432";
+        String input = "123";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Scanner testScanner = new Scanner(in);
+        InputUtils scannerInputUtils = InputUtils.of(testScanner);
 
         //when
-        String text = inputUtils.checkLength(tmp);
-        String text2 = inputUtils.checkLength(tmp2);
-        int number = inputUtils.stringToInt(text);
-        int number2 = inputUtils.stringToInt(text2);
+        String text = scannerInputUtils.getNextLine();
+        int toInt = scannerInputUtils.stringToInt(text);
 
         //then
-        assertThat(number).isEqualTo(123);
-        assertThat(number2).isEqualTo(432);
+        assertThat(toInt).isEqualTo(123);
     }
 
     @Test
@@ -107,16 +108,12 @@ class InputUtilsTest {
         String tmp = "1a3";
         String tmp2 = "aaa";
 
-        //when
-        String text = inputUtils.checkLength(tmp);
-        String text2 = inputUtils.checkLength(tmp2);
-
         //then
-        assertThatThrownBy(() -> inputUtils.stringToInt(text))
+        assertThatThrownBy(() -> inputUtils.stringToInt(tmp))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력 해주세요");
 
-        assertThatThrownBy(() -> inputUtils.stringToInt(text2))
+        assertThatThrownBy(() -> inputUtils.stringToInt(tmp2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력 해주세요");
     }
