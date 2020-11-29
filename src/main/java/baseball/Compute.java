@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Compute {
     private static final int LENGTHNUMBER =3;
+    private static final String BALL= "볼 ";
+    private static final String STRIKE= "스트라이크 ";
     public ArrayList<Integer> getRandomNumber() {
         ArrayList<Integer> randomNumber= new ArrayList<Integer>();
         for(int i = 0; i< LENGTHNUMBER; i++) {
@@ -58,5 +60,27 @@ public class Compute {
             }
         }
         return check;
+    }
+    public String ballMessage(int ballCount,int strikeCount,String message)
+    {
+        if(ballCount>0 && strikeCount<3){
+            message+=Integer.toString(ballCount);
+            message+=BALL;
+        }
+        return message;
+    }
+    public String strikeMessage(int ballCount,int strikeCount,String message){
+        if(strikeCount>0){
+            message+=Integer.toString(strikeCount);
+            message+=STRIKE;
+
+        }
+        return message;
+    }
+    public String nothingMessage(int ballCount,int strikeCount,String message){
+        if(strikeCount<1 && ballCount<1){
+            message+="낫싱";
+        }
+        return message;
     }
 }
