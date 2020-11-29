@@ -9,14 +9,16 @@ public class RandomGenerator {
 
     public static int[] generateRandomNumbers(int randomLength) {
         int[] randomNumbers = new int[randomLength];
-        int idx = 0;
-        while (idx < randomLength) {
+        int digit = 0;
+
+        while (digit < randomLength) {
             int randomNumber = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
             if (Arrays.stream(randomNumbers).noneMatch(x -> x == randomNumber)) {
-                randomNumbers[idx] = randomNumber;
-                idx ++;
+                randomNumbers[digit] = randomNumber;
+                digit ++;
             }
         }
+
         return randomNumbers;
     }
 }

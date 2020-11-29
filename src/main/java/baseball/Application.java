@@ -10,6 +10,5 @@ public class Application {
 
         Game game = new Game(scanner);
         game.start();
-
     }
 }
