@@ -58,7 +58,6 @@ public class BaseballGame {
     public void play(Scanner scanner) {
         RandomNumberGenerator generateRandomNumber = new RandomNumberGenerator();
         String programNumber = generateRandomNumber.getRandomNumber();
-        System.out.println(programNumber);          // 랜덤 값 테스트
         do {
             hint = new Hint(setPlayNumber(scanner), programNumber);
             hint.startGame();
