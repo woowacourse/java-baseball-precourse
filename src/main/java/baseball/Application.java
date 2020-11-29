@@ -1,7 +1,7 @@
 package baseball;
+import utils.RandomUtils;
 
-
-import java.util.Scanner;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -11,8 +11,25 @@ public class Application {
         while(flag){
             //사용자 입력 받기
             final int[] userInput= userInput(scanner);
+            //랜덤으로 정답 생성
+            final int[] answer = makeRandom();
         }
     }
+    public static int[] makeRandom(){
+        int[] userInput = new int[3];
+        Set<Integer> randNum = new LinkedHashSet<Integer>();
+        while(true){
+            if(randNum.size() ==3) break;
+            randNum.add(RandomUtils.nextInt(1,9));
+        }
+        Iterator<Integer> it = randNum.iterator();
+        int idx=0;
+        while(it.hasNext()){
+            userInput[idx++] = it.next();
+        }
+        return userInput;
+    }
+
     public static int[] userInput(Scanner scanner){
         final String INPUT_MESSAGE = "숫자를 입력해주세요: ";
         System.out.print(INPUT_MESSAGE);
