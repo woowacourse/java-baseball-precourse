@@ -30,17 +30,16 @@ public class Application {
 		}
 
 		boolean finish = false;
+		
+		Player player = new Player();
 
 		while (!finish) {
 			strike = 0;
 			ball = 0;
-			System.out.println("1~9까지의 정수를 입력하세요.");
-			String UserInputNumbers = scanner.next();
-			char[] userInputNumbersArray = UserInputNumbers.toCharArray();
-
+			player.inputNumbers();
 			for (int i = 0; i < 3; ++i) {
 				for (int j = 0; j < 3; ++j) {
-					if (userInputNumbersArray[i] == randomNumbersArray[j]) {
+					if (0 == randomNumbersArray[j]) {
 						if (i == j) {
 							strike++;
 						} else
