@@ -1,15 +1,10 @@
 package utils.validator;
 
-public class NumberValidator {
+public class NumberValidator implements Validator {
 
-    public static boolean isDigit(String string){
-        for (int i=0; i<string.length(); i++){
-            char ch = string.charAt(i);
+    @Override
+    public boolean execute(String input) {
 
-            if (!Character.isDigit(ch)){
-                throw new IllegalArgumentException();
-            }
-        }
-        return true;
+        return false;
     }
 }
