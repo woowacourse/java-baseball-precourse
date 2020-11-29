@@ -30,7 +30,9 @@ public class InputUtils {
 
     public int getContinueOrNot() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return checkContinueOrNot(stringToInt(scanner.nextLine()));
+        int inputValue = stringToInt(scanner.nextLine());
+        validateContinueOrNot(inputValue);
+        return inputValue;
     }
 
     public int stringToInt(String number) {
@@ -56,10 +58,9 @@ public class InputUtils {
         }
     }
 
-    public int checkContinueOrNot(int number) {
+    private void validateContinueOrNot(int number) {
         if (number < 1 || number > 2) {
             throw new IllegalArgumentException("1또는 2를 입력해주세요");
         }
-        return number;
     }
 }
