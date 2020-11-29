@@ -22,6 +22,7 @@ public class Application {
         String inputValue;
         boolean correctValue=false;
         Number comNum = setComputerNumber();
+        Number usrNum;
         while(!correctValue){
             printNumberInput();
             inputValue=getUserInput(scanner);
@@ -63,9 +64,13 @@ public class Application {
             for (int i = 0; i < inputValue.length(); i++) {
                 // 개별 문자에 대해 형식이 맞는지 검사
                 isValid &= isValidCharacter(inputValue.charAt(i));
+                isValid &= isRedundantInput(inputValue, i);
+            }
+            if(isValid==false){
+                throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e){
-            System.out.println("3자리 숫자를 입력해 주세요!");
+            System.out.println("3자리 숫자를 중복없이 입력해 주세요!");
             return false;
         }
         return isValid;
@@ -80,6 +85,16 @@ public class Application {
         } catch (IllegalArgumentException e) {
             System.out.println("1과 9 사이의 숫자를 입력해 주세요!");
             return false;
+        }
+        return true;
+    }
+
+    /* index에 위치한 Chracter가 이전에 등장한 적이 있는지 검사하는 메서드 */
+    public static boolean isRedundantInput(String inputValue, int index){
+        if(inputValue.length()<=index)return true;
+        for(int i=0;i<index;i++){
+            if(inputValue.charAt(i)==inputValue.charAt(index))
+                return false;
         }
         return true;
     }
