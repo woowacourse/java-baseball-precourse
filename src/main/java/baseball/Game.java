@@ -72,9 +72,9 @@ public class Game {
         if(randoms == null) {
             randoms = Number.createRandoms(3);
         }
-        List<Integer> inputList = inputUtils.getIntegerList();
+        List<Integer> inputNumbers = inputUtils.getIntegerList();
         gameNumber.add(Number.of(randoms));
-        gameNumber.add(Number.of(inputList));
+        gameNumber.add(Number.of(inputNumbers));
         this.numbers = Numbers.of(gameNumber);
     }
 
