@@ -12,15 +12,18 @@ public class Hint {
 
 	public void hintUserNumbersAndRandomNumbers() {
 		boolean finish = false;
+		RandomNumbersArray = computer.inputRandomNumbersArray();
 		while (!finish) {
 			inputNumbers = player.inputNumbers();
 			userInputNumbersArray = player.userNumbersArray(inputNumbers);
-			RandomNumbersArray = computer.inputRandomNumbersArray();
 			int strike = countStrike(RandomNumbersArray,userInputNumbersArray);
 			int ball = countBall(RandomNumbersArray,userInputNumbersArray);
 			if (strike == 3) {
-				System.out.println("축하합니다!");
+				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 				finish = true;
+			}
+			if(strike == 0 && ball ==0) {
+				System.out.println("낫싱");
 			}
 			System.out.println(strike + " 스트라이크" + ball + "볼");
 		}
@@ -43,12 +46,13 @@ public class Hint {
 		
 		for (int i = 0; i < BASE_BALL_GAME_RANGE; ++i) {
 			for(int j = 0; j < BASE_BALL_GAME_RANGE; ++j) {
-				if (computer[i] == user[i]) {
+				if (i == j) {
 					continue;
 				}
-				ball++;
+				if(computer[i] == user[j]) {
+					ball++;
+				}
 			}
-			
 		}
 		return ball;
 	}

@@ -15,7 +15,4 @@ public class Player {
 		char[] userInputNumbersArray = string.toCharArray();
 		return userInputNumbersArray;
 	}
-	
-	
-		
 }
