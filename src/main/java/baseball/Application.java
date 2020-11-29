@@ -7,8 +7,8 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
 
         System.out.println(NumberGenerator.getRandomNumberNotRepeat());
-        System.out.println(UserInputNumber.userInputNumber());
-        System.out.println(Menu.menu());
+//        System.out.println(UserInputNumber.userInputNumber());
+        System.out.println(Game.game());
 
     }
 }
