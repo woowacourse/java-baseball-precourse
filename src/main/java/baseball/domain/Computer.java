@@ -1,27 +1,44 @@
+/*
+ * Computer.java            0.9       2020-11-25
+ *
+ * Copyright (c) 2020 Yeonwoo Cho
+ * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
+ * All rights reserved
+ */
+
 package baseball.domain;
 
 import java.util.List;
 
+/**
+ * 연산하는 역할을 맡은 클래스
+ *
+ * @author 조연우
+ * @version 1.0 2020년 11월 25일
+ */
 public class Computer {
     private int countsOfStrike = 0;
     private int countsOfBall = 0;
 
-    public void calculateResult(List<Integer> inputNumbersList, List<Integer> randomNumberList) {
-        for (int i = 0; i < inputNumbersList.size(); i++) {
-            Integer numberInInputNumbers = inputNumbersList.get(i);
-            if (numberInInputNumbers.equals(randomNumberList.get(i))) {
-                countsOfStrike++;
-            } else if (randomNumberList.stream().anyMatch(integer -> integer.equals(numberInInputNumbers))) {
-                countsOfBall++;
+    public Computer() {
+    }
+
+    public void calculateResult(List<Integer> inputNumbers, List<Integer> randomNumber) {
+        for (int i = 0; i < inputNumbers.size(); i++) {
+            Integer numberInInputNumbers = inputNumbers.get(i);
+            if (numberInInputNumbers.equals(randomNumber.get(i))) {
+                this.countsOfStrike++;
+            } else if (randomNumber.stream().anyMatch(j -> j.equals(numberInInputNumbers))) {
+                this.countsOfBall++;
             }
         }
     }
 
     public int getCountsOfBall() {
-        return countsOfBall;
+        return this.countsOfBall;
     }
 
     public int getCountsOfStrike() {
-        return countsOfStrike;
+        return this.countsOfStrike;
     }
 }

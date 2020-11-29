@@ -1,22 +1,45 @@
+/*
+ * OutputView.java            0.9       2020-11-25
+ *
+ * Copyright (c) 2020 Yeonwoo Cho
+ * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
+ * All rights reserved
+ */
+
 package baseball.view;
 
-import static baseball.domain.RandomNumbers.LIST_SIZE;
+import static baseball.controller.GameController.EXIT_NUMBER;
+import static baseball.controller.GameController.RESTART_NUMBER;
+import static baseball.domain.RandomNumbers.NUMBER_LIST_SIZE;
 
+/**
+ * 출력을 담당하는 클래스
+ *
+ * @author 조연우
+ * @version 1.0 2020년 11월 25일
+ */
 public class OutputView {
     public static final int NOTHING = 0;
+    public static final String PRINT_BALL = "볼 ";
+    public static final String PRINT_STRIKE = "스트라이크 ";
+    public static final String PRINT_NOTHING = "낫싱";
 
     public static void printResult(int balls, int strikes) {
-        if (balls == NOTHING && strikes == NOTHING) System.out.println("낫싱");
-        else if (strikes == LIST_SIZE) {
-            System.out.println(strikes + "스트라이크");
+        if (balls == NOTHING && strikes == NOTHING) {
+            System.out.println(PRINT_NOTHING);
+        } else if (strikes == NUMBER_LIST_SIZE) {
+            System.out.println(strikes + PRINT_STRIKE);
             System.out.println(strikes + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } else if (balls == NOTHING) {
+            System.out.println(strikes + PRINT_STRIKE);
+        } else if (strikes == NOTHING) {
+            System.out.println(balls + PRINT_BALL);
+        } else {
+            System.out.println(balls + PRINT_BALL + strikes + PRINT_STRIKE);
         }
-        else if (balls == NOTHING) System.out.println(strikes + "스트라이크");
-        else if (strikes == NOTHING) System.out.println(balls + "볼");
-        else System.out.println(balls + "볼 " + strikes + "스트라이크");
     }
 
     public static void printRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 " + RESTART_NUMBER + ", 종료하려면 " + EXIT_NUMBER + "를 입력하세요.");
     }
 }

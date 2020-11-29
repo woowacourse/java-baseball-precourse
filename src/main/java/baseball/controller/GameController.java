@@ -1,7 +1,15 @@
+/*
+ * GameController.java            0.9       2020-11-25
+ *
+ * Copyright (c) 2020 Yeonwoo Cho
+ * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
+ * All rights reserved
+ */
+
 package baseball.controller;
 
 import baseball.domain.Computer;
-import baseball.domain.InputNumbers;
+import baseball.domain.NumbersValidator;
 import baseball.domain.RandomNumbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -10,41 +18,63 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static baseball.domain.RandomNumbers.LIST_SIZE;
+import static baseball.domain.RandomNumbers.NUMBER_LIST_SIZE;
 
+/**
+ * 전체 게임을 진행하는 클래스
+ *
+ * @author 조연우
+ * @version 1.0 2020년 11월 25일
+ */
 public class GameController {
-    private static final String RESTART_NUMBER = "1";
-    private static final String EXIT_NUMBER = "2";
+    public static final String RESTART_NUMBER = "1";
+    public static final String EXIT_NUMBER = "2";
 
-    private List<Integer> randomNumbersList = new ArrayList<>();
+    private List<Integer> randomNumbers = new ArrayList<>();
 
     public void run(Scanner scanner) {
-        RandomNumbers randomNumbers = new RandomNumbers();
-        randomNumbersList = randomNumbers.getRandomNumbers();
-        startGame(scanner);
+        this.randomNumbers = generateRandomNumbers();
+        playUnitGame(scanner);
     }
 
-    private void startGame(Scanner scanner) {
-        Computer computer = new Computer();
-        InputNumbers numbers = new InputNumbers();
+    private void playUnitGame(Scanner scanner) {
+        final Computer computer = new Computer();
+        final List<Integer> validInputNumbers = generateValidInputNumbers(InputView.receiveInputNumbers(scanner));
 
-        String inputNumbersList = InputView.getThreeNumbers(scanner);
-        List<Integer> validNumbers = numbers.checkValidNumbers(inputNumbersList);
-        computer.calculateResult(validNumbers, randomNumbersList);
+        computer.calculateResult(validInputNumbers, this.randomNumbers);
         OutputView.printResult(computer.getCountsOfBall(), computer.getCountsOfStrike());
-        if (computer.getCountsOfStrike() != LIST_SIZE) {
-            startGame(scanner);
+        checkCorrectAnswer(computer.getCountsOfStrike(), scanner);
+    }
+
+    private List<Integer> generateValidInputNumbers(String uncheckedInputNumbers) {
+        final NumbersValidator numbersValidator = new NumbersValidator();
+        return numbersValidator.makeValidNumbers(uncheckedInputNumbers);
+    }
+
+    private List<Integer> generateRandomNumbers() {
+        final RandomNumbers randomNumbers = new RandomNumbers();
+        return randomNumbers.makeRandomNumbers();
+    }
+
+    private void checkCorrectAnswer(int countsOfStrike, Scanner scanner) {
+        if (countsOfStrike != NUMBER_LIST_SIZE) {
+            playUnitGame(scanner);
         } else {
             OutputView.printRestart();
-            restartOrDone(scanner);
+            checkRestartFlag(scanner);
         }
     }
 
-    private void restartOrDone(Scanner scanner) {
-        String userInputRestart = InputView.getRestartNumber(scanner);
+    private void checkRestartFlag(Scanner scanner) {
+        final String userInputRestart = InputView.receiveRestartNumber(scanner);
         if (userInputRestart.equals(RESTART_NUMBER)) {
             run(scanner);
-        } else if (!userInputRestart.equals(EXIT_NUMBER)) {
+        }
+        checkInvalidInputInRestart(userInputRestart);
+    }
+
+    private void checkInvalidInputInRestart(String userInput) {
+        if (!userInput.equals(EXIT_NUMBER)) {
             throw new IllegalArgumentException("입력이 올바르지 않습니다.");
         }
     }
