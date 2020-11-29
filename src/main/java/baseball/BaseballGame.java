@@ -25,12 +25,19 @@ public class BaseballGame {
         while (answer) {
             System.out.print("숫자를 입력해주세요 : ");
             String playerBallNumber = scanner.nextLine();
+            validateInput(playerBallNumber);
             BaseballNumber playerBaseballNumber = new BaseballNumber(playerBallNumber);
 
             List<Integer> result = BaseballNumberCompare.counter(randomBaseballNumber.getNumbers(),playerBaseballNumber.getNumbers());
             BaseballResultPrint.resultPrint(result);
 
             answer = result.get(1) != 3;
+        }
+    }
+
+    public void validateInput(String playerBallNumber){
+        if ( playerBallNumber.length() != 3){
+            System.out.println("3자리 숫자를 입력해 주세요.");
         }
     }
 }
