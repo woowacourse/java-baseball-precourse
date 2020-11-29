@@ -7,7 +7,7 @@ import java.util.*;
 import static baseball.config.BaseballConfiguration.BALL_LENGTH;
 
 public class Player {
-    private Set<Integer> baseballNumbers;
+    private List<Integer> baseballNumbers;
 
     public Player() {
     }
@@ -16,7 +16,7 @@ public class Player {
         while (true) {
             try {
                 System.out.print("숫자를 입력해주세요 : ");
-                baseballNumbers = Convertor.stringToIntSet(scanner.nextLine());
+                baseballNumbers = Convertor.stringToIntList(scanner.nextLine());
                 validateBaseballNumbers();
                 break;
             } catch (IllegalArgumentException e) {
@@ -44,7 +44,7 @@ public class Player {
         }
     }
 
-    public Set<Integer> getBaseballNumbers() {
+    public List<Integer> getBaseballNumbers() {
         return baseballNumbers;
     }
 }
