@@ -111,3 +111,4 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 ## 구현할 기능 목록
 1. 사용자에게 입력 받기
 2. 랜덤 값 생성
+3. 사용자에게 입력받은 값과 랜덤 값 비교
