@@ -16,10 +16,15 @@ public class Application {
         // TODO 구현 진행
         Application application = new Application();
         application.initComputerNums();
+        for (int i = 0; i < 3; i++) {
+            System.out.println(application.computerNums[i]);
+        }
         application.inputPlayerNums(scanner);
         for (int i = 0; i < 3; i++) {
             System.out.println(application.playerNums[i]);
         }
+
+        System.out.println(application.getNumOfBalls());
     }
 
     private void validateInput(int input) {
@@ -56,5 +61,24 @@ public class Application {
         for (int i = 0; i < computerNums.length; i++) {
             computerNums[i] = RandomUtils.nextInt(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
         }
+    }
+
+    private int getNumOfBalls() {
+        int numOfBalls = 0;
+        for (int i = 0; i < playerNums.length; i++) {
+            if (hasNumberInComputerNums(playerNums[i], i)) {
+                numOfBalls++;
+            }
+        }
+        return numOfBalls;
+    }
+
+    private boolean hasNumberInComputerNums(int num, int index) {
+        for (int i = 0; i < computerNums.length; i++) {
+            if (i != index && num == computerNums[i]) {
+                return true;
+            }
+        }
+        return false;
     }
 }
