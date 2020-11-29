@@ -10,6 +10,13 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 
 class GameStateTest {
 
+    @DisplayName("initiate하면 GameState는 KEEP_PLAYING Enum을 반환")
+    @Test
+    public void initiate_KEEP_PLAYING_반환() {
+        GameState gameState = GameState.initiate();
+        assertThat(gameState).isEqualTo(GameState.KEEP_PLAYING);
+    }
+
     @DisplayName("SignatureValue가 0이면 KEEP_PLAYING Enum 반환")
     @Test
     public void findGameState_0인경우_KEEP_PLAYING() {

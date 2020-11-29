@@ -20,6 +20,10 @@ public enum GameState {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
+    public static GameState initiate() {
+        return GameState.KEEP_PLAYING;
+    }
+
     public boolean isAbleToPlay() {
         return this != EXIT;
     }

@@ -52,7 +52,8 @@
     * View에서 입력 예외를 try-catch로 완벽하게 처리했다면
         * 입력 예외로 발생할 수 있는 Domain 객체 생성 예외는 처리하지 않아도 되는가?
 2. 가변 객체 vs 불변 객체의 Trade-Off?
-    * 상태를 변경하는 로직을 사용하면 Application 코드가 조금 더 깔끔해질 수 있지만?
+    * 상태를 변경하는 로직을 사용하면 Application 코드가 조금 더 깔끔해질 수 있다.
+        * BaseballGameMachine이 '변경될 수 있는' GameResult를 속성으로 가지고 있는 경우.
 3. equals를 꼭 오버라이드해야 할까?
 4. 입력 예외를 다룰 때 : try-catch recursion vs while?
 5. 구현 기능 목록을 어느정도로 상세하게 작성해야 할까?

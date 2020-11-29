@@ -15,7 +15,7 @@ public class Application {
         InputView inputView = new InputView(scanner);
         BaseballGameMachine baseballGameMachine =
                 new BaseballGameMachine(BaseballNumbers.generateRandomBaseballNumbers());
-        GameState gameState = GameState.KEEP_PLAYING;
+        GameState gameState = GameState.initiate();
         while (gameState.isAbleToPlay()) {
             baseballGameMachine = baseballGameMachine.prepareNextTry(gameState);
             BaseballNumbers userBaseballNumbers =
