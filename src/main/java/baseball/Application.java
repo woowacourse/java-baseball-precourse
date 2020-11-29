@@ -17,6 +17,9 @@ public class Application {
         Application application = new Application();
         application.initComputerNums();
         application.inputPlayerNums(scanner);
+        for (int i = 0; i < 3; i++) {
+            System.out.println(application.playerNums[i]);
+        }
     }
 
     private void validateNums() {
@@ -34,8 +37,10 @@ public class Application {
     }
 
     private void inputPlayerNums(Scanner scanner) {
+        int input = scanner.nextInt();
+        String[] split = String.valueOf(input).split("");
         for (int i = 0; i < playerNums.length; i++) {
-            playerNums[i] = scanner.nextInt();
+            playerNums[i] = Integer.valueOf(split[i]);
         }
         validateNums();
     }
