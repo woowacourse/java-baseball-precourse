@@ -23,13 +23,16 @@ public class Alert {
 
     public static void markScore(int ball, int strike) {
         if (ball == ZERO && strike == ZERO) {
-            sayNothing();
+           sayNothing();
+           return;
         }
         if (ball == ZERO) {
             sayOnlyStrike(strike);
+            return;
         }
         if (strike == ZERO) {
             sayOnlyBall(ball);
+            return;
         }
 
         System.out.println(ball + BALL + " " + strike + STRIKE);
