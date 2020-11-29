@@ -25,22 +25,23 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            int input = scanner.nextInt();
-            if (input == INPUT_RESTART) {
-                isPlaying = true;
-            } else if (input == INPUT_STOP) {
-                isPlaying = false;
-            } else {
-                throw new IllegalArgumentException("input only 1 or 2");
-            }
+            application.inputForRestart(scanner);
+        }
+    }
+
+    private void inputForRestart(Scanner scanner) {
+        int input = scanner.nextInt();
+        if (input == INPUT_RESTART) {
+            isPlaying = true;
+        } else if (input == INPUT_STOP) {
+            isPlaying = false;
+        } else {
+            throw new IllegalArgumentException("input only 1 or 2");
         }
     }
 
     private void gameStart(Scanner scanner) {
         initComputerNums();
-        for (int i = 0; i < 3; i++) {
-            System.out.print(computerNums[i]);
-        }
         while (true) {
             inputPlayerNums(scanner);
             printResult();
