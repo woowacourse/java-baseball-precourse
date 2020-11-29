@@ -6,11 +6,9 @@ import utils.RandomUtils;
 
 public class GameComputer {
     final Scanner scanner = new Scanner(System.in);
-    static String computerChoice;
-    int strike;
-    int ball;
 
     static String chooseComputerChoice(){
+        String computerChoice;
         int[] answer = new int[3];
 
         answer[0] = RandomUtils.nextInt(1,9);
@@ -25,9 +23,9 @@ public class GameComputer {
     }
 
     static void startGame(String computerChoice) {
-        int strike;
-        String userChoice = GamePlayer.chooseUserChoice();
-        strike = umpirePitch(computerChoice, userChoice);
+        GamePlayer player = new GamePlayer();
+        player.userChoice = player.chooseUserChoice();
+        int strike = umpirePitch(computerChoice, player.userChoice);
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return;
