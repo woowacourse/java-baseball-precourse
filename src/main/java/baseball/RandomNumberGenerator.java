@@ -18,11 +18,5 @@ public class RandomNumberGenerator {
             answerNumbers[numberCount] = candidateNumber;
             numberCount++;
         }
-
-        System.out.print("생성된 번호 : ");
-        for(int numbers : answerNumbers){
-            System.out.print(numbers);
-        }
-        System.out.println();
     }
 }
