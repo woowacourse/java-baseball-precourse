@@ -6,15 +6,13 @@ import java.util.Scanner;
 public class BaseballGame {
 
     public static final int THREE_DIGIT = 3;
+    private static final String STRIKE = "스트라이크";
+    private static final String BALL = "볼";
+    private static final String NOTHING = "낫싱";
 
     private final Scanner scanner;
     private final int[] computerNumbers;
     private final AskingUser askingUser;
-
-    private final String STRIKE = "스트라이크";
-    private final String BALL = "볼";
-    private final String NOTHING = "낫싱";
-
     private int[] userNumbers = new int[THREE_DIGIT];
     private boolean isPlaying = true;
 
@@ -56,11 +54,9 @@ public class BaseballGame {
 
 
     private void showHints() {
-        int strike = 0;
-        int ball = 0;
-        int[] resultState = checkState(strike, ball);
-        strike = resultState[0];
-        ball = resultState[1];
+        int[] strikeAndBall = checkNumberState();
+        int strike = strikeAndBall[0];
+        int ball = strikeAndBall[1];
 
         if (strike != 0 && ball != 0) {
             System.out.println(ball + BALL + " " + strike + STRIKE);
@@ -80,7 +76,9 @@ public class BaseballGame {
         }
     }
 
-    private int[] checkState(int strike, int ball) {
+    private int[] checkNumberState() {
+        int strike = 0;
+        int ball = 0;
         for (int i = 0; i < THREE_DIGIT; i++) {
             if (computerNumbers[i] == userNumbers[i]) {
                 strike += 1;
@@ -88,8 +86,8 @@ public class BaseballGame {
             }
             ball = checkBallState(i, ball);
         }
-        int[] resultState = {strike, ball};
-        return resultState;
+        int[] strikeAndBall = {strike, ball};
+        return strikeAndBall;
     }
 
     private int checkBallState(int i, int ball) {
@@ -100,6 +98,5 @@ public class BaseballGame {
         }
         return ball;
     }
-
 
 }

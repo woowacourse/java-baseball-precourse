@@ -4,9 +4,10 @@ import utils.RandomUtils;
 
 public class Computer {
 
+    private static final int RANGE_START = 1;
+    private static final int RANGE_END = 9;
     private final int COUNT = BaseballGame.THREE_DIGIT;
-    private final int RANGE_START = 1;
-    private final int RANGE_END = 9;
+
 
     private int[] computerNumbers = new int[COUNT];
 
