@@ -10,7 +10,7 @@ public class BaseballGame {
     private List<Integer> baseballNumbers;
     private int ball;
     private int strike;
-    private boolean gameStatus;
+    private boolean gameStatus = true;
 
     public BaseballGame() {
         createBaseballNumbers();
@@ -57,6 +57,7 @@ public class BaseballGame {
     private void checkGameStatus() {
         if (strike == 3) {
             gameStatus = false;
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
@@ -70,5 +71,9 @@ public class BaseballGame {
         } else {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
+    }
+
+    public boolean isGameOver(){
+        return gameStatus;
     }
 }
