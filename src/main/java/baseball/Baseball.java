@@ -30,7 +30,7 @@ public class Baseball {
     /* 게임 종료 후 재시작할 지 묻는 메소드 */
     public static void asktoRestart() {
         Scanner input = new Scanner(System.in);
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세.");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String useranswer = input.nextLine();
 
         switch (useranswer) {
