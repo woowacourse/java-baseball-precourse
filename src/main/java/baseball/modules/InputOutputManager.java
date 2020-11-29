@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class InputOutputManager {
     static final String REQUEST_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     static final String WRONG_VALUE_MESSAGE = "잘못된 값입니다.";
-    static final String WIN_PRAISE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static final String WIN_PRAISE_FORMAT = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n";
     static final String ASK_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     static final String NOTHING = "낫싱";
     static final String STRIKE_FORMAT = "%d스트라이크";
@@ -60,7 +60,7 @@ public class InputOutputManager {
     }
 
     public void printWinMessage(){
-        System.out.println(WIN_PRAISE_MESSAGE);
+        System.out.printf(WIN_PRAISE_FORMAT, numberSize);
     }
 
     public int askRestartGame(){
