@@ -7,7 +7,7 @@ public class NumberValidator {
             char ch = string.charAt(i);
 
             if (!Character.isDigit(ch)){
-                return false;
+                throw new IllegalArgumentException();
             }
         }
         return true;
