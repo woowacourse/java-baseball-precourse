@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.viewer.OutputShower;
+
 public class Game {
     static final int STRIKEPOSITION = 0;
     static final int BALLPOSITION = 1;

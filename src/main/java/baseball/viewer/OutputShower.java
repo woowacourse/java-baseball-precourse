@@ -1,4 +1,4 @@
-package baseball;
+package baseball.viewer;
 
 public class OutputShower {
     static final int ENDGAME = 3;
