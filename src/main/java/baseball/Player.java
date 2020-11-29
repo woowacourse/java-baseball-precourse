@@ -1,6 +1,5 @@
 package baseball;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,22 +7,22 @@ public class Player {
     Exception exception = new Exception();
     private static final String INPUTNUMBER = "숫자를 입력해주세요 : ";
     Scanner scanner = new Scanner(System.in);
-    private int input;
-    private String stringInput="";
+    private int INPUT;
+    private String STRINGINPUT="";
     public String playerInput()
     {
         System.out.print(INPUTNUMBER);
-        this.stringInput=scanner.nextLine();
-        return this.stringInput;
+        this.STRINGINPUT =scanner.nextLine();
+        return this.STRINGINPUT;
     }
     public void correctInput(){
         playerInput();
 
-        if(!checkingInput(this.stringInput)){
+        if(!checkingInput(this.STRINGINPUT)){
             correctInput();
         }
         else{
-            this.input=Integer.parseInt(this.stringInput);
+            this.INPUT =Integer.parseInt(this.STRINGINPUT);
         }
     }
     public boolean checkingInput(String stringInput){
@@ -46,7 +45,7 @@ public class Player {
 
 
         correctInput();
-        String convertInput=Integer.toString(this.input);
+        String convertInput=Integer.toString(this.INPUT);
         ArrayList<Integer> inputNumber= new ArrayList<Integer>();
         for(int i=0;i<3;i++){
             inputNumber.add(convertInput.charAt(i)-'0');

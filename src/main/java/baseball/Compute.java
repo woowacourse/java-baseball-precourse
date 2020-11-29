@@ -3,13 +3,12 @@ package baseball;
 import utils.RandomUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Compute {
-    private static final int lengthNumber=3;
+    private static final int LENGTHNUMBER =3;
     public ArrayList<Integer> getRandomNumber() {
         ArrayList<Integer> randomNumber= new ArrayList<Integer>();
-        for(int i=0;i<lengthNumber;i++) {
+        for(int i = 0; i< LENGTHNUMBER; i++) {
             if(randomNumber.size()==0){
                 randomNumber.add(RandomUtils.nextInt(1,9));
             }
@@ -35,7 +34,7 @@ public class Compute {
     }
     public int getStrikeNumber(ArrayList<Integer> inputNumber ,ArrayList<Integer> randomNumber){
         int strikeNumber=0;
-        for(int i=0;i<lengthNumber;i++){
+        for(int i = 0; i< LENGTHNUMBER; i++){
             if(inputNumber.get(i)==randomNumber.get(i)){
                 strikeNumber++;
             }
@@ -44,7 +43,7 @@ public class Compute {
     }
     public int getBallNumber(ArrayList<Integer> inputNumber , ArrayList<Integer> randomNumber){
         int ballNumber=0;
-        for(int i=0;i<lengthNumber;i++){
+        for(int i = 0; i< LENGTHNUMBER; i++){
             if(checkBall(inputNumber.get(i),randomNumber)){
                 ballNumber++;
             }
