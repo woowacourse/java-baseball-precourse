@@ -22,27 +22,34 @@ public class Application {
         }
     }
 
-    private void validateNums() {
+    private void validateInput(int input) {
+        String inputString = String.valueOf(input);
+        if (inputString.length() != 3) {
+            throw new IllegalArgumentException("input only 3 digits");
+        }
+
         HashSet<Integer> set = new HashSet<>();
-        for (int i = 0; i < playerNums.length; i++) {
-            if (set.contains(playerNums[i])) {
+        for (int i = 0; i < inputString.length(); i++) {
+            int num = Integer.valueOf(inputString.substring(i, i + 1));
+            if (set.contains(num)) {
                 throw new IllegalArgumentException("number duplicate");
             }
 
-            if (playerNums[i] < 1 || playerNums[i] > 9) {
+            if (num < 1 || num > 9) {
                 throw new IllegalArgumentException("number range is 1 ~ 9");
             }
-            set.add(playerNums[i]);
+            set.add(num);
         }
     }
 
     private void inputPlayerNums(Scanner scanner) {
         int input = scanner.nextInt();
+        validateInput(input);
+
         String[] split = String.valueOf(input).split("");
         for (int i = 0; i < playerNums.length; i++) {
             playerNums[i] = Integer.valueOf(split[i]);
         }
-        validateNums();
     }
 
     private void initComputerNums() {
