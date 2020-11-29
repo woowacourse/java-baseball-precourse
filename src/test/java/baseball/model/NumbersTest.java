@@ -53,4 +53,9 @@ public class NumbersTest {
         System.out.println(Numbers.valueOf("123"));
         assertThat(Numbers.valueOf("123").toString()).isEqualTo("123");
     }
+
+    @Test
+    public void createRandomNumbersTest(){
+        System.out.println(Numbers.createRandomNumbers());
+    }
 }

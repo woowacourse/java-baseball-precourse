@@ -2,6 +2,7 @@ package baseball.model;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import utils.RandomUtils;
 
 public class Numbers {
     private static final int NUMBERS_LENGTH = 3;
@@ -36,6 +37,17 @@ public class Numbers {
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
         return true;
+    }
+
+    public static Numbers createRandomNumbers(){
+        ArrayList<Number> randomNumbers = new ArrayList<>();
+        while (randomNumbers.size() < NUMBERS_LENGTH){
+            Number randomNumber = Number.valueOf(RandomUtils.nextInt(Number.MIN, Number.MAX));
+            if (!randomNumbers.contains(randomNumber)){
+                randomNumbers.add(randomNumber);
+            }
+        }
+        return new Numbers(randomNumbers);
     }
 
     @Override
