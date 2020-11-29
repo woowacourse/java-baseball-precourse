@@ -24,8 +24,8 @@ class InputUtilsTest {
         String tmp2 = "123";
 
         //when
-        int number = inputUtils.inputValueToInt(tmp);
-        int number2 = inputUtils.inputValueToInt(tmp2);
+        int number = inputUtils.stringToInt(tmp);
+        int number2 = inputUtils.stringToInt(tmp2);
 
         //then
         assertThat(number).isEqualTo(1455);
@@ -40,11 +40,11 @@ class InputUtilsTest {
         String tmp2 = "1 3";
 
         //then
-        assertThatThrownBy(() -> inputUtils.inputValueToInt(tmp))
+        assertThatThrownBy(() -> inputUtils.stringToInt(tmp))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력 해주세요");
 
-        assertThatThrownBy(() -> inputUtils.inputValueToInt(tmp2))
+        assertThatThrownBy(() -> inputUtils.stringToInt(tmp2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력 해주세요");
     }
@@ -92,8 +92,8 @@ class InputUtilsTest {
         //when
         String text = inputUtils.checkLength(tmp);
         String text2 = inputUtils.checkLength(tmp2);
-        int number = inputUtils.inputValueToInt(text);
-        int number2 = inputUtils.inputValueToInt(text2);
+        int number = inputUtils.stringToInt(text);
+        int number2 = inputUtils.stringToInt(text2);
 
         //then
         assertThat(number).isEqualTo(123);
@@ -112,11 +112,11 @@ class InputUtilsTest {
         String text2 = inputUtils.checkLength(tmp2);
 
         //then
-        assertThatThrownBy(() -> inputUtils.inputValueToInt(text))
+        assertThatThrownBy(() -> inputUtils.stringToInt(text))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력 해주세요");
 
-        assertThatThrownBy(() -> inputUtils.inputValueToInt(text2))
+        assertThatThrownBy(() -> inputUtils.stringToInt(text2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력 해주세요");
     }
@@ -129,10 +129,10 @@ class InputUtilsTest {
         String tmp2 = "456";
 
         //when
-        int number = inputUtils.inputValueToInt(tmp);
-        int number2 = inputUtils.inputValueToInt(tmp2);
-        List<Integer> toListed = inputUtils.intValueToList(number);
-        List<Integer> toListed2 = inputUtils.intValueToList(number2);
+        int number = inputUtils.stringToInt(tmp);
+        int number2 = inputUtils.stringToInt(tmp2);
+        List<Integer> toListed = inputUtils.intToList(number);
+        List<Integer> toListed2 = inputUtils.intToList(number2);
 
         //then
         assertThat(toListed.get(0)).isEqualTo(1);

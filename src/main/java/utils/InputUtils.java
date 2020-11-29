@@ -16,10 +16,10 @@ public class InputUtils {
         return new InputUtils(scanner);
     }
 
-    public List<Integer> getIntegerList() {
+    public List<Integer> getIntegers() {
         System.out.print("숫자를 입력해주세요 : ");
-        int number = inputValueToInt(getNextLine());
-        return intValueToList(number);
+        int number = stringToInt(getNextLine());
+        return intToList(number);
     }
 
     private String getNextLine() {
@@ -28,10 +28,10 @@ public class InputUtils {
 
     public int getContinueOrNot() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return checkContinueOrNot(inputValueToInt(scanner.nextLine()));
+        return checkContinueOrNot(stringToInt(scanner.nextLine()));
     }
 
-    public int inputValueToInt(String number) {
+    public int stringToInt(String number) {
         try {
             return Integer.parseInt(number);
         } catch (IllegalArgumentException e) {
@@ -39,7 +39,7 @@ public class InputUtils {
         }
     }
 
-    public List<Integer> intValueToList(int number) {
+    public List<Integer> intToList(int number) {
         List<Integer> lists = new ArrayList<>();
         for (int i = 100; i > 0; i /= 10) {
             lists.add(number / i);
