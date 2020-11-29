@@ -4,6 +4,7 @@ import baseball.model.BallCount;
 
 public class OutputView {
     private static final String WINNING_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String TERMINATION_MESSAGE = "프로그램을 종료합니다.";
     private static final String BALL_MESSAGE_FORMAT = "%d볼 ";
     private static final String STRIKE_MESSAGE_FORMAT = "%d스트라이크 ";
 
@@ -29,7 +30,11 @@ public class OutputView {
         System.out.println(stringBuffer);
     }
 
-    public static void showWinningMessage(){
+    public static void showWinningMessage() {
         System.out.println(WINNING_MESSAGE);
+    }
+
+    public static void showTerminationMessage() {
+        System.out.println(TERMINATION_MESSAGE);
     }
 }

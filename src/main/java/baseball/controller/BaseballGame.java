@@ -19,7 +19,6 @@ public class BaseballGame {
 
     public void play() {
         BallCount ballCount;
-
         do{
             Numbers userNumbers = getNumbersFromUser();
             ballCount = answer.calculateBallCountWith(userNumbers);
