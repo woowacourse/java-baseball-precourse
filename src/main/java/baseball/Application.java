@@ -11,19 +11,29 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
 
+        // 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정한다
         duplCheck = new boolean[10];
         int[] systemNum = new int[3];
-        int systemNumCnt = 0;
-        while(systemNumCnt < 3) {
+        int numCnt = 0;
+        while(numCnt < 3) {
             int tmp = RandomUtils.nextInt(1, 9);
             if(!isDupl(tmp)) {
-                systemNum[systemNumCnt] = tmp;
-                systemNumCnt++;
+                systemNum[numCnt] = tmp;
+                numCnt++;
             }
         }
-
         System.out.println(Arrays.toString(systemNum));
 
+        // 플레이어가 3자리 수를 입력한다.
+        System.out.print("숫자를 입력해주세요 : ");
+        char[] charUserNum = scanner.next().toCharArray();
+
+        int[] userNum = new int[3];
+        for (int i = 0; i < 3; i++) {
+            userNum[i] = charUserNum[i] - '0';
+        }
+
+        System.out.println(Arrays.toString(userNum));
     }
 
     private static boolean isDupl(int checkNum) {
