@@ -27,8 +27,8 @@ public class BaseballGame {
     public void compareBaseBallNumbers(List<Integer> playerBaseballNumbers) {
         initScore();
         countScore(playerBaseballNumbers);
-        checkGameStatus();
         printScore();
+        checkGameStatus();
     }
 
     private void initScore() {
