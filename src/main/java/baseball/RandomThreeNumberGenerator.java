@@ -13,25 +13,35 @@ public class RandomThreeNumberGenerator {
     private List<Integer> numbers;
 
     public RandomThreeNumberGenerator() {
-        this.numbers = generatedThreeNumbers();
+        this.numbers = generateThreeNumbers();
     }
 
     public List<Integer> getNumbers() {
         return this.numbers;
     }
 
-    private List<Integer> generatedThreeNumbers() {
+    private List<Integer> generateThreeNumbers() {
         List<Integer> generated = new ArrayList<>();
         while (true) {
-            if (generated.size() >= DIGIT) {
+            if (overflow(generated)) {
                 break;
             }
-
-            int generatedRandomly = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
-            if (!generated.contains(generatedRandomly)) {
-                generated.add(generatedRandomly);
-            }
+            addNotDuplicated(generated);
         }
         return generated;
+    }
+
+    private boolean overflow(List<Integer> list) {
+        if (list.size() >= DIGIT) {
+            return true;
+        }
+        return false;
+    }
+
+    private void addNotDuplicated(List<Integer> list) {
+        int generated = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
+        if (!list.contains(generated)) {
+            list.add(generated);
+        }
     }
 }
