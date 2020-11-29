@@ -31,9 +31,7 @@ public class Referee {
             return Integer.toString(ballCount)+BALL;
         }else if (strikeCount > 0){
             return Integer.toString(strikeCount)+STRIKE;
-        }else if (strikeCount==0 && ballCount ==0){
-            return NOTHING;
         }
-        return "";
+        return NOTHING;
     }
 }
