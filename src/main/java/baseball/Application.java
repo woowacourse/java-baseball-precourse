@@ -1,5 +1,7 @@
 package baseball;
 
+import utils.Converter;
+import utils.Printer;
 import utils.Validator;
 
 import java.util.Scanner;
@@ -7,7 +9,7 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
+
         GameManager manager = new GameManager();
 
         while (manager.isGameInProgress()) {
@@ -17,7 +19,9 @@ public class Application {
 
             Validator.validateInputValue(inputValue);
 
-            System.out.println(inputValue);
+            int[] resultBallsAndStrikes = manager.getBallsAndStrikes(Converter.convertString(inputValue));
+
+            System.out.println(Printer.getResultString(resultBallsAndStrikes));
         }
     }
 }

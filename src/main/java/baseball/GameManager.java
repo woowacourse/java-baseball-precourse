@@ -2,6 +2,8 @@ package baseball;
 
 import utils.RandomUtils;
 
+import java.util.Arrays;
+
 public class GameManager {
     public static final int BASEBALL_NUMBER = 3;
     public static final int BASEBALL_NUMBER_RANGE_START = 1;
@@ -15,7 +17,26 @@ public class GameManager {
 
         createBaseballs();
 
+        System.out.println(Arrays.toString(baseballs));
         isGameInProgress = true;
+    }
+
+    public boolean isGameInProgress() {
+        return isGameInProgress;
+    }
+
+    public void setGameStatus(int statusCode) {
+        switch (statusCode) {
+            case GameStatusCode.RESUME:
+                break;
+            case GameStatusCode.RESTART:
+                break;
+            case GameStatusCode.EXIT:
+                isGameInProgress = false;
+                break;
+            default:
+                throw new IllegalArgumentException("재시작하고 싶으시면 1, 종료하고 싶으시면 2를 입력해주세요");
+        }
     }
 
     public void createBaseballs() {
@@ -36,7 +57,7 @@ public class GameManager {
                 previouIndex += 1;
             }
 
-            if(isDifferentValue){
+            if (isDifferentValue) {
                 baseballs[baseballIndex] = randomValue;
 
                 baseballIndex += 1;
@@ -44,21 +65,35 @@ public class GameManager {
         }
     }
 
-    public boolean isGameInProgress() {
-        return isGameInProgress;
+    public int[] getBallsAndStrikes(int[] values) {
+        int strikeNumber = 0;
+        int ballNumber = 0;
+
+        int baseballsIndex = 0;
+
+        while (baseballsIndex < BASEBALL_NUMBER) {
+            if (baseballs[baseballsIndex] == values[baseballsIndex]) {
+                strikeNumber += 1;
+            }
+
+            baseballsIndex += 1;
+        }
+
+        for (baseballsIndex = 0; baseballsIndex < BASEBALL_NUMBER; baseballsIndex += 1) {
+            for (int valueIndex = 0; valueIndex < BASEBALL_NUMBER; valueIndex += 1) {
+                if (baseballsIndex == valueIndex) {
+                    continue;
+                }
+
+                if (baseballs[baseballsIndex] == values[valueIndex]) {
+                    ballNumber += 1;
+                }
+            }
+        }
+
+        System.out.println(ballNumber + " " +strikeNumber);
+        return new int[]{ballNumber, strikeNumber};
     }
 
-    public void setGameStatus(int statusCode) {
-        switch (statusCode) {
-            case GameStatusCode.RESUME:
-                break;
-            case GameStatusCode.RESTART:
-                break;
-            case GameStatusCode.EXIT:
-                isGameInProgress = false;
-                break;
-            default:
-                throw new IllegalArgumentException("재시작하고 싶으시면 1, 종료하고 싶으시면 2를 입력해주세요");
-        }
-    }
+
 }
