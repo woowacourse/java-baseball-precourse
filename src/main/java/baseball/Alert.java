@@ -28,7 +28,6 @@ public class Alert {
         }
         if (ball == ZERO) {
             sayOnlyStrike(strike);
-            finishGame();
             return;
         }
         if (strike == ZERO) {

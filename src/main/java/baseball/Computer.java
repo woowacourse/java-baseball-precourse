@@ -45,6 +45,7 @@ public class Computer {
             return true;
         }
 
+        Alert.finishGame();
         return false;
     }
 
