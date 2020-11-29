@@ -12,8 +12,6 @@ public class BaseballGame {
     private final Scanner scanner;
 
     private List<Integer> targetNumberList;
-    private List<Integer> guessedNumberList;
-
     private int strikeCnt;
     private int ballCnt;
 
@@ -41,7 +39,7 @@ public class BaseballGame {
     }
 
     private void calculateScore(String guessed){
-        guessedNumberList = NumberListGenerator.ConvertStringToList(guessed);
+        List guessedNumberList = NumberListGenerator.ConvertStringToList(guessed);
         strikeCnt = GameRule.countStrike(targetNumberList, guessedNumberList);
         ballCnt = GameRule.countBall(targetNumberList, guessedNumberList);
     }
