@@ -15,22 +15,22 @@ public class Hint {
     }
 
     public static boolean getHint() {
-        if (hintList.get(0) == NUMBER_LENGTH){
+        if (hintList.get(1) == NUMBER_LENGTH){
             System.out.print(NUMBER_LENGTH + "스트라이크" + "\n"
                     + NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
 
         if (hintList.get(0) != 0 & hintList.get(1) != 0){
-            System.out.print(hintList.get(1) + "볼 " + hintList.get(0) + "스트라이크");
+            System.out.print(hintList.get(0) + "볼 " + hintList.get(1) + "스트라이크");
         }
 
         if (hintList.get(0) != 0 & hintList.get(1) == 0){
-            System.out.print(hintList.get(0) + " 스트라이크");
+            System.out.print(hintList.get(0) + "볼");
         }
 
         if (hintList.get(0) == 0 & hintList.get(1) != 0){
-            System.out.print(hintList.get(1) + "볼");
+            System.out.print(hintList.get(1) + "스트라이크");
         }
 
         if (hintList.get(0) == 0 & hintList.get(1) == 0){
