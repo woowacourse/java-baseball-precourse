@@ -16,8 +16,8 @@ public class Numbers {
     }
 
     public int checkBall() {
-        List<Integer> number = numbers.get(0).getNumber();
-        List<Integer> targetNumber = numbers.get(1).getNumber();
+        List<Integer> number = numbers.get(0).getNumbers();
+        List<Integer> targetNumber = numbers.get(1).getNumbers();
         int ballCount = 0;
         for (int index = 0; index < number.size(); index++) {
             if (isBall(index, number, targetNumber)) {
@@ -28,8 +28,8 @@ public class Numbers {
     }
 
     public int checkStrike() {
-        List<Integer> number = numbers.get(0).getNumber();
-        List<Integer> targetNumber = numbers.get(1).getNumber();
+        List<Integer> number = numbers.get(0).getNumbers();
+        List<Integer> targetNumber = numbers.get(1).getNumbers();
         int strikeCount = 0;
         for (int index = 0; index < number.size(); index++) {
             if (isStrike(index, number, targetNumber)) {

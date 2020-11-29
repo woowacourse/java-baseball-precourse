@@ -32,7 +32,7 @@ public class Number {
         return validatedList;
     }
 
-    public List<Integer> getNumber() {
+    public List<Integer> getNumbers() {
         return Collections.unmodifiableList(number);
     }
 

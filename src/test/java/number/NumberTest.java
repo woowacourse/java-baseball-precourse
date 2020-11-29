@@ -24,8 +24,8 @@ class NumberTest {
         Number number2 = Number.of(integers2);
 
         //then
-        assertThat(number.getNumber()).isEqualTo(integers);
-        assertThat(number2.getNumber()).isEqualTo(integers2);
+        assertThat(number.getNumbers()).isEqualTo(integers);
+        assertThat(number2.getNumbers()).isEqualTo(integers2);
     }
 
     @Test
