@@ -23,8 +23,6 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             System.out.println(application.playerNums[i]);
         }
-
-        System.out.println(application.getNumOfBalls());
     }
 
     private void validateInput(int input) {
@@ -80,5 +78,15 @@ public class Application {
             }
         }
         return false;
+    }
+
+    private int getNumOfStrikes() {
+        int numOfStrikes = 0;
+        for (int i = 0; i < playerNums.length; i++) {
+            if (playerNums[i] == computerNums[i]) {
+                numOfStrikes++;
+            }
+        }
+        return numOfStrikes;
     }
 }
