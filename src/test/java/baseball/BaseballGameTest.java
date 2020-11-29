@@ -25,8 +25,8 @@ public class BaseballGameTest {
     @Test
     @DisplayName("사용자가 입력한 숫자가 정답일 경우의 테스트")
     public void answerTest() {
-        baseballGame.setRound("123");
-        baseballGame.startRound();
+
+        setAndStartRound("123");
 
         assertThat(baseballGame.outputView.getResult(baseballGame.scoreBoard))
                 .isEqualTo(BaseballGame.BALLS_LENGTH + Judgment.STRIKE.getMessage() +
@@ -36,8 +36,8 @@ public class BaseballGameTest {
     @Test
     @DisplayName("사용자가 입력한 숫자가 낫싱일 경우의 테스트")
     public void nothingTest() {
-        baseballGame.setRound("456");
-        baseballGame.startRound();
+
+        setAndStartRound("456");
 
         assertThat(baseballGame.outputView.getResult(baseballGame.scoreBoard))
                 .isEqualTo(Judgment.NOTHING.getMessage());
@@ -46,8 +46,8 @@ public class BaseballGameTest {
     @Test
     @DisplayName("사용자가 입력한 숫자가 볼만 존재하는 경우의 테스트")
     public void hasOnlyBallsTest() {
-        baseballGame.setRound("531");
-        baseballGame.startRound();
+
+        setAndStartRound("531");
 
         assertThat(baseballGame.outputView.getResult(baseballGame.scoreBoard))
                 .isEqualTo(2 + Judgment.BALL.getMessage());
@@ -56,8 +56,8 @@ public class BaseballGameTest {
     @Test
     @DisplayName("사용자가 입력한 숫자가 스트라이크만 존재하는 경우의 테스트")
     public void hasOnlyStrikeTest() {
-        baseballGame.setRound("124");
-        baseballGame.startRound();
+
+        setAndStartRound("124");
 
         assertThat(baseballGame.outputView.getResult(baseballGame.scoreBoard))
                 .isEqualTo(2 + Judgment.STRIKE.getMessage());
@@ -66,10 +66,16 @@ public class BaseballGameTest {
     @Test
     @DisplayName("사용자가 입력한 숫자가 스트라이크와 볼이 섞여있는 경우의 테스트")
     public void hasStrikeAndBallTest() {
-        baseballGame.setRound("321");
-        baseballGame.startRound();
+
+        setAndStartRound("321");
 
         assertThat(baseballGame.outputView.getResult(baseballGame.scoreBoard))
                 .isEqualTo(2 + Judgment.BALL.getMessage() + 1 + Judgment.STRIKE.getMessage());
+    }
+
+    private void setAndStartRound(String ballNumbers) {
+        baseballGame.setGame();
+        baseballGame.setRound(ballNumbers);
+        baseballGame.startRound();
     }
 }

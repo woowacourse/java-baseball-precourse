@@ -16,8 +16,8 @@ public class BatterTest {
 
     @BeforeEach
     public void initBatter() {
-        final String answerNumbers = "123";
-        batter = new Batter(new FixedNumbersGenerator(answerNumbers));
+        batter = new Batter(new FixedNumbersGenerator("123"));
+        batter = batter.setNewAnswer();
     }
 
     @Test
