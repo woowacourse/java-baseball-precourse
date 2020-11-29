@@ -7,7 +7,7 @@ public class RandomUtils {
 
     private RandomUtils() {
     }
-
+    // 랜덤한 숫자를 생성하는 메소드
     public static int nextInt(final int startInclusive, final int endInclusive) {
         if (startInclusive > endInclusive) {
             throw new IllegalArgumentException();

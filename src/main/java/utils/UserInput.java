@@ -20,7 +20,8 @@ public class UserInput {
         char [] input = inputString.toCharArray();
         if(inputString.length() != 3) {
             throw new IllegalArgumentException("숫자 입력 오류입니다. 다시 입력해주세요.");
-        } else if(input[0] == input[1] || input[0] == input[2] || input[1] == input[2]) {
+        } else if(input[0] == input[1] || input[0] == input[2]
+                || input[1] == input[2]) {
             throw new IllegalArgumentException("숫자 입력 오류입니다. 다시 입력해주세요.");
         }
 
