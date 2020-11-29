@@ -7,12 +7,8 @@ import baseball.type.TextType;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * 플레이어의 입력이 정상적인지 비정상적인지 확인하는 클래스
- * 플레이어의 입력이 비정상적이면 예외를 발생시킨다.
- */
+/** 플레이어의 입력이 정상적인지 비정상적인지 확인하는 클래스 */
 public class InputUtils {
-    private static boolean validationFlag = true;
     private static boolean lengthFlag = true;
     private static boolean boundaryFlag = true;
     private static boolean numberFlag = true;
@@ -20,6 +16,13 @@ public class InputUtils {
     private InputUtils() {
     }
 
+    /**
+     * 플레이어의 입력이 정상적인지 비정상적인지 확인하는 함수
+     * 플레이어의 입력이 비정상적이면 예외를 발생시킨다.
+     *
+     * @param playerNumber
+     * @return IllegalArgumentException or true
+     */
     public static boolean checkValidation(String playerNumber) {
         // 3자리보다 짧은 길이의 숫자 또는 긴 길이의 숫자가 입력되는 경우 (ex. 12, 3216)
         if (!checkLength(playerNumber)) {
@@ -36,10 +39,15 @@ public class InputUtils {
             throw new IllegalArgumentException(TextType.INVALID_NUMBER.getText());
         }
 
-        return validationFlag;
+        return true;
     }
 
-    // 3자리보다 짧은 길이의 숫자 또는 긴 길이의 숫자가 입력되었는지 확인하는 함수
+    /**
+     * 3자리보다 짧은 길이의 숫자 또는 긴 길이의 숫자가 입력되었는지 확인하는 함수
+     *
+     * @param playerNumber
+     * @return true or false
+     */
     public static boolean checkLength(String playerNumber) {
         if (playerNumber.length() < SizeType.NUMBER_SIZE.getSize() || playerNumber.length() > SizeType.NUMBER_SIZE.getSize()) {
             lengthFlag = false;
@@ -48,7 +56,12 @@ public class InputUtils {
         return lengthFlag;
     }
 
-    // 문자가 입력되었는지 확인하는 함수
+    /**
+     * 문자가 입력되었는지 확인하는 함수
+     *
+     * @param playerNumber
+     * @return true or false
+     */
     public static boolean checkBoundary(String playerNumber) {
         char[] playerArray = playerNumber.toCharArray();
 
@@ -61,7 +74,12 @@ public class InputUtils {
         return boundaryFlag;
     }
 
-    // 동일한 숫자가 입력되었는지 확인하는 함수
+    /**
+     * 동일한 숫자가 입력되었는지 확인하는 함수
+     *
+     * @param playerNumber
+     * @return true or false
+     */
     public static boolean checkNumber(String playerNumber) {
         Set<Character> playerSet = new HashSet<>();
         char[] playerArray = playerNumber.toCharArray();
