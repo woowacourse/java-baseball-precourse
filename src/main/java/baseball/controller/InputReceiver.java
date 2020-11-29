@@ -5,7 +5,6 @@ import baseball.viewer.InputViewer;
 
 public class InputReceiver {
     static final int NUMBEROFBALL = 3;
-    static final IllegalArgumentException inputError = new IllegalArgumentException();
     static final Scanner receiver = new Scanner(System.in);
 
     public static int[] userAnswer() {
@@ -20,12 +19,10 @@ public class InputReceiver {
     private static void lengthChecker(String userInitialAnswer) {
         if (userInitialAnswer.length() > 3) {
             InputViewer.excessDigits();
-            throw inputError;
         }
 
         if (userInitialAnswer.length() < 3) {
             InputViewer.lackDigits();
-            throw inputError;
         }
     }
 
@@ -45,13 +42,12 @@ public class InputReceiver {
     }
 
     private static int integerTranslator(String userInitialAnswer) {
-        int integerAnswer;
+        int integerAnswer =0;
 
         try {
             integerAnswer = Integer.parseInt(userInitialAnswer);
         } catch (Exception notIntegerType) {
             InputViewer.violentIntegerRule();
-            throw inputError;
         }
 
         return integerAnswer;
@@ -60,7 +56,6 @@ public class InputReceiver {
     private static void zeroChecker(int singleNumber) {
         if (singleNumber == 0) {
             InputViewer.zeroCheck();
-            throw inputError;
         }
     }
 
@@ -74,7 +69,6 @@ public class InputReceiver {
         for (int j = turn + 1; j < NUMBEROFBALL; j++) {
             if (integerArray[turn] == integerArray[j]) {
                 InputViewer.overlappedReceive();
-                throw inputError;
             }
         }
     }
@@ -90,6 +84,6 @@ public class InputReceiver {
         }
 
         InputViewer.noValidRestart();
-        throw inputError;
+        return false;
     }
 }
