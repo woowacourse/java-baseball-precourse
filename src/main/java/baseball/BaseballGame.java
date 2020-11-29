@@ -38,8 +38,6 @@ public class BaseballGame {
 
     private void gameStart() {
         while (isPlaying) {
-            // TODO : 테스트용 println 제거
-            System.out.println("답 : " + Arrays.toString(computerNumbers));
             getUserNumbers();
             showHints();
         }
