@@ -14,6 +14,7 @@ public class InputNumber {
         }
     }
 
+    //입력값의 유효성 검사
     public static boolean validateInput(String inputNumber){
         //3자리가 아니면 예외를 발생시킨다
         if(inputNumber.length() != Application.NUMBER_LENGTH){

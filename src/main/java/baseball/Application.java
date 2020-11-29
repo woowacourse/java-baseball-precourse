@@ -15,7 +15,14 @@ public class Application {
         String randomNumber = RandomNumber.generateNumbers(NUMBER_LENGTH);
         //유저에게 숫자를 입력받는다
         String inputNumber = InputNumber.getInput(scanner);
+        String result = "";
 
+        //입력값의 범위를 벗어나서 경고 메세지를 받은 경우
+        if (inputNumber.length() != NUMBER_LENGTH){
+            System.out.println(inputNumber);
+        }else{  //심판에게 판단을 받는다
+            result = Referee.judgeNumber(randomNumber, inputNumber);
+        }
         System.out.println(randomNumber);
         System.out.println(inputNumber);
     }
