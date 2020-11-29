@@ -2,12 +2,16 @@ package baseball;
 
 import domain.BaseballNumber;
 import domain.Hint;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author yhh1056
  * @since 2020/11/26
  */
 public class BaseballGame {
+    private static final List<Integer> INDEXES = Arrays.asList(0, 1, 2);
+
     private final BaseballNumber baseballNumber;
 
     public BaseballGame(BaseballNumber baseballNumber) {
@@ -20,27 +24,18 @@ public class BaseballGame {
 
     public Hint countStrikeAndBall(BaseballNumber playerBaseballNumber) {
         Hint hint = new Hint();
-        for (int i = 0; i < baseballNumber.size(); i++) {
-            int number = playerBaseballNumber.getNumber(i);
-            checkStrike(hint, number);
-            checkBall(hint, number);
-        }
+        findStrikeAndBall(hint, playerBaseballNumber);
         return hint;
     }
 
-    private void checkStrike(Hint hint, int number) {
-        if (isEqualsToIndexOf(number)) {
-            hint.countStrike();
+    private void findStrikeAndBall(Hint hint, BaseballNumber playerBaseballNumber) {
+        for (int index : INDEXES) {
+            int number = baseballNumber.getNumber(index);
+            int playerNumber = playerBaseballNumber.getNumber(index);
+            if (baseballNumber.contains(playerNumber)) {
+                hint.findStrike(number, playerNumber);
+                hint.findBall(number, playerNumber);
+            }
         }
-    }
-
-    private void checkBall(Hint hint, int number) {
-        if (!isEqualsToIndexOf(number) && baseballNumber.contains(number)) {
-            hint.countBall();
-        }
-    }
-
-    private boolean isEqualsToIndexOf(int number) {
-        return baseballNumber.indexOf(number) == number;
     }
 }

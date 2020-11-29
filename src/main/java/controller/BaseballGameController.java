@@ -63,6 +63,7 @@ public class BaseballGameController {
         switch (getInput()) {
             case RESTART :
                 this.baseballGame = new BaseballGame(new BaseballNumber(nonDuplicateNumber()));
+                play();
                 break;
             case ENDGAME :
                 break;

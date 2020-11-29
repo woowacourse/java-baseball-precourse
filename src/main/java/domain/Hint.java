@@ -15,12 +15,16 @@ public class Hint {
     private int strikeCount = 0;
     private int ballCount = 0;
 
-    public void countStrike() {
-        strikeCount++;
+    public void findStrike(int number, int playerNumber) {
+        if (number == playerNumber) {
+            ++strikeCount;
+        }
     }
 
-    public void countBall() {
-        ballCount++;
+    public void findBall(int number, int playerNumber) {
+        if (number != playerNumber) {
+            ++ballCount;
+        }
     }
 
     @Override
