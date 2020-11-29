@@ -5,14 +5,17 @@ import utils.RandomUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomThreeNumberGenerator {
+public class RandomNumbers {
     private static final int DIGIT = 3;
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
 
     private List<Integer> numbers;
 
-    public RandomThreeNumberGenerator() {
+    public RandomNumbers() {
+    }
+
+    public void setNumbers() {
         this.numbers = generateThreeNumbers();
     }
 
