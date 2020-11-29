@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static baseball.config.BaseballConfiguration.BALL_LENGTH;
+import static baseball.domain.Status.*;
 
 import utils.RandomUtils;
 
@@ -10,10 +11,11 @@ public class BaseballGame {
     private List<Integer> baseballNumbers;
     private int ball;
     private int strike;
-    private boolean gameStatus = true;
+    private Status status;
 
     public BaseballGame() {
         createBaseballNumbers();
+        status = EXECUTION;
     }
 
     private void createBaseballNumbers() {
@@ -22,6 +24,7 @@ public class BaseballGame {
             set.add(RandomUtils.nextInt(1, 9));
         }
         baseballNumbers = new ArrayList<>(set);
+        System.out.println(baseballNumbers);
     }
 
     public void compareBaseBallNumbers(List<Integer> playerBaseballNumbers) {
@@ -56,7 +59,7 @@ public class BaseballGame {
 
     private void checkGameStatus() {
         if (strike == 3) {
-            gameStatus = false;
+            status = TERMINATION;
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
@@ -73,7 +76,10 @@ public class BaseballGame {
         }
     }
 
-    public boolean isGameOver(){
-        return gameStatus;
+    public boolean isExecution() {
+        if (status == EXECUTION) {
+            return true;
+        }
+        return false;
     }
 }

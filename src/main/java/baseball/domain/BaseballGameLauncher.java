@@ -18,7 +18,7 @@ public class BaseballGameLauncher {
         BaseballGame baseballGame = new BaseballGame();
         Player player = new Player();
 
-        while (baseballGame.isGameOver()) {
+        while (baseballGame.isExecution()) {
             player.inputBaseballNumbers(scanner);
             baseballGame.compareBaseBallNumbers(player.getBaseballNumbers());
         }
