@@ -8,14 +8,18 @@ public class Compute {
     private static final int LENGTHNUMBER =3;
     private static final String BALL= "볼 ";
     private static final String STRIKE= "스트라이크 ";
+    private static final String NOTHING="낫싱";
+    private static final int MINRANGENUMBER=1;
+    private static final int MAXRANGENUMBER=9;
+    
     public ArrayList<Integer> getRandomNumber() {
         ArrayList<Integer> randomNumber= new ArrayList<Integer>();
         for(int i = 0; i< LENGTHNUMBER; i++) {
             if(randomNumber.size()==0){
-                randomNumber.add(RandomUtils.nextInt(1,9));
+                randomNumber.add(RandomUtils.nextInt(MINRANGENUMBER,MAXRANGENUMBER));
             }
             else{
-                randomNumber.add(checkDuplicateNumber(randomNumber,RandomUtils.nextInt(1,9)));
+                randomNumber.add(checkDuplicateNumber(randomNumber,RandomUtils.nextInt(MINRANGENUMBER,MAXRANGENUMBER)));
             }
         }
         return randomNumber;
@@ -79,7 +83,7 @@ public class Compute {
     }
     public String nothingMessage(int ballCount,int strikeCount,String message){
         if(strikeCount<1 && ballCount<1){
-            message+="낫싱";
+            message+=NOTHING;
         }
         return message;
     }

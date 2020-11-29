@@ -5,19 +5,19 @@ import java.util.Scanner;
 
 public class Player {
     Exception exception = new Exception();
-    private static final String INPUTNUMBER = "숫자를 입력해주세요 : ";
     Scanner scanner = new Scanner(System.in);
+    private static final String INPUTNUMBER = "숫자를 입력해주세요 : ";
     private int INPUT;
     private String STRINGINPUT="";
-    public String playerInput()
-    {
+    private static final int LENGTHNUMBER=3;
+
+    public String playerInput() {
         System.out.print(INPUTNUMBER);
         this.STRINGINPUT =scanner.nextLine();
         return this.STRINGINPUT;
     }
     public void correctInput(){
         playerInput();
-
         if(!checkingInput(this.STRINGINPUT)){
             correctInput();
         }
@@ -26,7 +26,6 @@ public class Player {
         }
     }
     public boolean checkingInput(String stringInput){
-
         try{
             return validateInput(stringInput);
         }catch (IllegalArgumentException e){
@@ -42,15 +41,12 @@ public class Player {
     }
 
     public ArrayList<Integer> getInputToArrayList() throws IllegalArgumentException{
-
-
         correctInput();
         String convertInput=Integer.toString(this.INPUT);
         ArrayList<Integer> inputNumber= new ArrayList<Integer>();
-        for(int i=0;i<3;i++){
+        for(int i=0;i<LENGTHNUMBER;i++){
             inputNumber.add(convertInput.charAt(i)-'0');
         }
-        //System.out.println(convertInput);
         return inputNumber;
     }
 }

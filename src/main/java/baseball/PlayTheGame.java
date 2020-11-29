@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PlayTheGame {
-
-
     private static final String ENDGAMEMESSAGE= "3개의 숫자를 모두 맞히셨습니다! 게임종료";
     private static final String QUESTIONGAME= "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final int LENGTHNUMBER=3;
     Compute compute = new Compute();
     Player player = new Player();
     ArrayList<Integer> tmpSaveRandomNumber;
+
     public void startingGame(){
         saveRandomNumber(compute.getRandomNumber());
         countingGame(player.getInputToArrayList(), returnRandomNumber());
-
     }
     public void  saveRandomNumber(ArrayList<Integer> RandomNumber){
         this.tmpSaveRandomNumber=RandomNumber;
@@ -24,7 +23,7 @@ public class PlayTheGame {
     }
     public void countingGame(ArrayList<Integer> inputNumber,ArrayList<Integer> randomNumber) throws IllegalArgumentException {
 
-        for(int i=0;i<3;i++){
+        for(int i=0;i<LENGTHNUMBER;i++){
             System.out.println(randomNumber.get(i));
         }
         String message="";
@@ -50,7 +49,6 @@ public class PlayTheGame {
         if(choiceNumber==1){
             startingGame();
         }
-
     }
 
 
