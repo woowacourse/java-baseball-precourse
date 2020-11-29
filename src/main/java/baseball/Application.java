@@ -30,6 +30,7 @@ public class Application {
         }
     }
 
+    /* 컴퓨터의 숫자값을 랜덤하게 생성하여 Number객체를 반환하는 메서드 */
     public static Number setComputerNumber(){
         Number comNum = new Number(INPUT_NUM);
         for(int i=0;i<INPUT_NUM;i++){
@@ -37,7 +38,7 @@ public class Application {
             while(comNum.isUsedNumber(randomNum)){
                 randomNum=RandomUtils.nextInt(0,9);
             }
-            comNum.setArrayNumberAt(i,RandomUtils.nextInt(0,9));
+            comNum.setArrayNumberAt(i,randomNum);
         }
         return comNum;
     }
