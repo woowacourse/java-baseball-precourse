@@ -11,9 +11,10 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
 
         GameManager manager = new GameManager();
+        Printer printer = new Printer();
 
         while (manager.isGameInProgress()) {
-            System.out.print("숫자를 입력해주세요 : ");
+            printer.printInputGuide();
 
             String inputValue = scanner.nextLine();
 
@@ -21,13 +22,12 @@ public class Application {
 
             int[] resultBallsAndStrikes = manager.getBallsAndStrikes(Converter.convertString(inputValue));
 
+            printer.printResult(resultBallsAndStrikes);
+
             int strikes = resultBallsAndStrikes[1];
 
-            System.out.println(Printer.getResultString(resultBallsAndStrikes));
-
             if (strikes == GameManager.BASEBALL_NUMBER) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                printer.printGameProgess();
 
                 String progressInput = scanner.nextLine();
 

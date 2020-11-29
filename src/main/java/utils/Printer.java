@@ -1,12 +1,17 @@
 package utils;
 
 public class Printer {
-    public static String getResultString(int[] ballsAndStrikes) {
+    public void printInputGuide() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    public void printResult(int[] ballsAndStrikes) {
         int balls = ballsAndStrikes[0];
         int strikes = ballsAndStrikes[1];
 
         if (balls == 0 && strikes == 0) {
-            return "낫싱";
+            System.out.println("낫싱");
+            return;
         }
 
         StringBuilder outputBuilder = new StringBuilder();
@@ -23,6 +28,11 @@ public class Printer {
             outputBuilder.append(strikes).append("스트라이크");
         }
 
-        return outputBuilder.toString();
+        System.out.println(outputBuilder.toString());
+    }
+
+    public void printGameProgess() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }

@@ -17,7 +17,6 @@ public class GameManager {
 
         createBaseballs();
 
-        System.out.println(Arrays.toString(baseballs));
         isGameInProgress = true;
     }
 
