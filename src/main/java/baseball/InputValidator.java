@@ -60,5 +60,4 @@ public class InputValidator {
             throw new IllegalArgumentException(RESTART_OR_QUIT_EXCEPTION_MESSAGE);
         }
     }
-
 }

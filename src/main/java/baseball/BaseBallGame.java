@@ -33,7 +33,7 @@ public class BaseBallGame {
         System.out.print(INPUT_MESSAGE);
         return validateInputHasNoException(scanner.nextLine());
     }
-    
+
     public String validateInputHasNoException(String userInput) {
         try {
             InputValidator.validateInputIsNumber(userInput);
