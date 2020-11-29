@@ -5,14 +5,14 @@ import java.util.Scanner;
 
 public class Player {
     private List<Integer> numbers;
-    private Scanner scanner;
+    private InputHandler inputHandler;
 
     public Player(Scanner scanner) {
-        this.scanner = scanner;
+        this.inputHandler = new InputHandler(scanner);
     }
 
     public void setNumbers() {
-        this.numbers = new InputHandler(this.scanner).getNumbers();
+        this.numbers = inputHandler.getNumbers();
     }
 
     public int getNumber(int index) {
