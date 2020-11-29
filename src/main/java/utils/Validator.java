@@ -42,7 +42,7 @@ public class Validator {
             throw new IllegalArgumentException(ExceptionMessages.NOT_PROGRESS_CODE);
         }
 
-        if (inputCode != GameStatusCode.RESTART || inputCode != GameStatusCode.EXIT) {
+        if (inputCode != GameStatusCode.RESTART && inputCode != GameStatusCode.EXIT) {
             throw new IllegalArgumentException(ExceptionMessages.NOT_PROGRESS_CODE);
         }
     }

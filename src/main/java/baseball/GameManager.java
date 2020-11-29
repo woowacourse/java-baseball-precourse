@@ -27,15 +27,12 @@ public class GameManager {
 
     public void setGameStatus(int statusCode) {
         switch (statusCode) {
-            case GameStatusCode.RESUME:
-                break;
             case GameStatusCode.RESTART:
+                createBaseballs();
                 break;
             case GameStatusCode.EXIT:
                 isGameInProgress = false;
                 break;
-            default:
-                throw new IllegalArgumentException("재시작하고 싶으시면 1, 종료하고 싶으시면 2를 입력해주세요");
         }
     }
 
@@ -91,9 +88,6 @@ public class GameManager {
             }
         }
 
-        System.out.println(ballNumber + " " +strikeNumber);
         return new int[]{ballNumber, strikeNumber};
     }
-
-
 }
