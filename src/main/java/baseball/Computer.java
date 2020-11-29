@@ -10,8 +10,7 @@ public class Computer {
 
     private int[] computerNumbers = new int[COUNT];
 
-    public Computer(){
-
+    public Computer() {
     }
 
     public int[] getComputerNumbers() {
@@ -19,16 +18,17 @@ public class Computer {
         return computerNumbers;
     }
 
-    private void makeRandomNumbers(){
+    private void makeRandomNumbers() {
         for (int i = 0; i < COUNT; i++) {
             computerNumbers[i] = RandomUtils.nextInt(RANGE_START, RANGE_END);
             i = checkSame(i);
         }
     }
-    private int checkSame(int i){
+
+    private int checkSame(int i) {
         for (int j = 0; j < i; j++) {
             if (computerNumbers[i] == computerNumbers[j]) {
-                return i-1;
+                return i - 1;
             }
         }
         return i;

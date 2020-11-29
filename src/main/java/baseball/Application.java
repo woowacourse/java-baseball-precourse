@@ -1,8 +1,6 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.Scanner;
-import utils.RandomUtils;
 
 public class Application {
 

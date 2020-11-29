@@ -2,46 +2,50 @@ package baseball;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import utils.ValidatorUtils;
 
 public class BaseballGame {
 
-    private Scanner scanner;
     public static final int THREE_DIGIT = 3;
+
+    private final Scanner scanner;
+    private final int[] computerNumbers;
     private final String STRIKE = "스트라이크";
     private final String BALL = "볼";
     private final String NOTHING = "낫싱";
 
-    private int[] computerNumbers;
     private int[] userNumbers = new int[THREE_DIGIT];
     private boolean isPlaying = true;
 
 
     public BaseballGame(Scanner scanner) {
         this.scanner = scanner;
-        Computer computer = new Computer();
-        this.computerNumbers = computer.getComputerNumbers();
+        this.computerNumbers = new Computer().getComputerNumbers();
         gameStart();
     }
 
     public boolean restartOrExit() {
-        System.out.println("게임을 다시 하시겠습니까? 어플리케이션을 종료할까요?");
-        System.out.println("1 : 게임 재시작, 2 :  종료");
-        String response = scanner.nextLine();
-        checkValidResponse(response);
-        if (response.contains("1")) {
+        String response;
+        while (true) {
+            System.out.println("게임을 다시 하시겠습니까? 어플리케이션을 종료할까요?");
+            System.out.println("1 : 게임 재시작, 2 :  종료");
+            response = scanner.nextLine().trim();
+            try {
+                ValidatorUtils.checkResponse(response);
+                break;
+            } catch (IllegalArgumentException i) {
+                System.out.println(i.getMessage());
+            }
+        }
+        if (response.equals("1")) {
             return false;
         }
-        if (response.contains("2")) {
+        if (response.equals("2")) {
             return true;
         }
         return false;
     }
 
-    private void checkValidResponse(String response) {
-        if(!response.contains("1") && !response.contains("2")){
-            throw new IllegalArgumentException("1이나 2를 입력해 주세요.");
-        }
-    }
 
     private void gameStart() {
         while (isPlaying) {
@@ -52,9 +56,17 @@ public class BaseballGame {
     }
 
     private void getUserNumbers() {
-        System.out.print("숫자를 입력해 주세요 : ");
-        String numbers = scanner.nextLine().trim();
-        checkValidNumbers(numbers);
+        String numbers;
+        while (true) {
+            System.out.print("숫자를 입력해 주세요 : ");
+            numbers = scanner.nextLine().trim();
+            try {
+                ValidatorUtils.checkNumbers(numbers);
+                break;
+            } catch (IllegalArgumentException i) {
+                System.out.println(i.getMessage());
+            }
+        }
         for (int i = 0; i < THREE_DIGIT; i++) {
             userNumbers[i] = numbers.charAt(i) - '0';
         }
@@ -106,15 +118,5 @@ public class BaseballGame {
         return ball;
     }
 
-    private void checkValidNumbers(String numbers) {
-        if (numbers.length() != THREE_DIGIT) {
-            throw new IllegalArgumentException("3자리를 넘어갔습니다. 3자리 숫자를 입력해 주세요.");
-        }
-        for (int i = 0; i < THREE_DIGIT; i++) {
-            if (!Character.isDigit(numbers.charAt(i))) {
-                throw new IllegalArgumentException("숫자만 입력해 주세요.");
-            }
 
-        }
-    }
 }
