@@ -27,10 +27,10 @@ public class BaseballGame {
             String playerBallNumber = scanner.nextLine();
             BaseballNumber playerBaseballNumber = new BaseballNumber(playerBallNumber);
 
-            List<Integer> result = BaseballNumberCompare.counter(randomBaseballNumber.getNumbers(), playerBaseballNumber.getNumbers());
-            BaseballResultPrint.resultPrint(result);
+            BaseballCounterResult baseballCounterResult = BaseballNumberCompare.compare(randomBaseballNumber.getNumbers(),playerBaseballNumber.getNumbers());
+            BaseballResultPrint.resultPrint(baseballCounterResult);
 
-            answer = result.get(1) != 3;
+            answer = baseballCounterResult.getStrike() != 3;
         }
     }
 }
