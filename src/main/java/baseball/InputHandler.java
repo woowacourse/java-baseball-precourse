@@ -14,13 +14,13 @@ public class InputHandler {
     }
 
     public List<Integer> getNumbers() {
-        String input = getInput("숫자를 입력해주세요 : ", false);
+        String input = getInput("숫자를 입력해주세요 : ");
         InputUtils.validateUserInputForNumbers(input);
         return parse(input);
     }
 
     public boolean restart() {
-        String input = getInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ", true);
+        String input = getInputWithLn("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
         InputUtils.validateUserInputForRestart(input);
         if (input.equals("1")) {
             return true;
@@ -28,10 +28,12 @@ public class InputHandler {
         return false;
     }
 
-    private String getInput(String inputInstruction, boolean withLn) {
-        if (withLn) {
-            System.out.println(inputInstruction);
-        }
+    private String getInputWithLn(String inputInstruction) {
+        System.out.println(inputInstruction);
+        return this.scanner.nextLine();
+    }
+
+    private String getInput(String inputInstruction) {
         System.out.print(inputInstruction);
         return this.scanner.nextLine();
     }
