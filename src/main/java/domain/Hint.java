@@ -24,6 +24,12 @@ public class Hint {
 
     @Override
     public String toString() {
+        if (strikeCount == NO_COUNT && ballCount == NO_COUNT) {
+            /**
+             * TODO : 낫싱 결과 출력
+             */
+            return "";
+        }
         if (strikeCount == NO_COUNT) {
             return ballCount();
         }
