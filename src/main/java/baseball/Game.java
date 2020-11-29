@@ -9,8 +9,10 @@ public class Game {
     }
     
     public void generateNewAnswer() {
-        StringBuilder digitPool = generateDigitPool();
+        StringBuilder digitPool = new StringBuilder();
         int randomIndex;
+        
+        initializeDigitPool(digitPool, Constants.MIN_DIGIT, Constants.MAX_DIGIT);
         
         for (int i = 0; i < Constants.ANSWER_LENGTH; i++) {
             randomIndex = RandomUtils.nextInt(0, Constants.DIGIT_POOL_SIZE - 1 - i);
@@ -19,13 +21,10 @@ public class Game {
         }
     }
     
-    private StringBuilder generateDigitPool() {
-        StringBuilder digitPool = new StringBuilder();
-        
-        for (int i = Constants.MIN_DIGIT; i <= Constants.MAX_DIGIT; i++) {
+    private void initializeDigitPool(StringBuilder digitPool,
+            int lowerBound, int upperBound) {
+        for (int i = lowerBound; i <= upperBound; i++) {
             digitPool.append(i);
         }
-        
-        return digitPool;
     }
 }
