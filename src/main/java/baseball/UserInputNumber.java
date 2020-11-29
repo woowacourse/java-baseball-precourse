@@ -4,6 +4,9 @@ import java.util.*;
 
 public class UserInputNumber {
 
+    /*
+    * 사용자가 입력한 숫자를 이용해 숫자를 만드는 클래스
+    * */
     private static String userNumberString;
     private static String userInputNumberString;
     private static final int NUMBER_LENGTH = 3;
@@ -15,7 +18,7 @@ public class UserInputNumber {
                 System.out.print("숫자를 입력해주세요 : ");
                 userNumberString = getUserInputNumber();
                 if (userInputNumberCheck()) {
-                    userNumberList = integerToList(userNumberString);
+                    userNumberList = IntegerToList.integerToList(userNumberString);
                     break;
                 }
 
@@ -27,6 +30,9 @@ public class UserInputNumber {
         return userNumberList;
     }
 
+    /*
+    * 사용자가 입력하는 값을 그대로 가지고오는 메서드
+    * */
     public static String getUserInputNumber() {
         Scanner scan = new Scanner(System.in);
         userInputNumberString = scan.nextLine();
@@ -34,6 +40,9 @@ public class UserInputNumber {
         return userInputNumberString;
     }
 
+    /*
+    * 사용자가 제대로 입력했는지 확인하는 메서드
+    * */
     public static boolean userInputNumberCheck() {
         if (!userInputContainZero()) {
             System.out.println("1부터 9사이의 숫자를 입력해주세요.");
@@ -53,6 +62,9 @@ public class UserInputNumber {
 
     }
 
+    /*
+    * 사용자가 입력한 것에 0이 포함되었는지 확인하는 메서드
+    * */
     public static boolean userInputContainZero() {
         if (userInputNumberString.contains("0")) {
             return false;
@@ -60,6 +72,9 @@ public class UserInputNumber {
         return true;
     }
 
+    /*
+     * 사용자가 입력한 것이 3자리인지 확인하는 메서드
+     * */
     public static boolean userInputLength() {
         if (userNumberString.length() == NUMBER_LENGTH) {
             return true;
@@ -67,6 +82,9 @@ public class UserInputNumber {
         return false;
     }
 
+    /*
+     * 사용자가 입력한 것이 중복되지 않는지 확인하는 메서드
+     * */
     public static boolean userInputRepeat() {
         ArrayList<Character> repeatCheckList = new ArrayList<>();
 
@@ -82,14 +100,4 @@ public class UserInputNumber {
         return true;
     }
 
-    public static ArrayList<Integer> integerToList(String userNumberString) {
-        ArrayList<Integer> userinputNumberList = new ArrayList<>();  // 새로 해줘야 char number를 입력할 때 null가능할수도있다고 뜨지 않는다.
-        char[] changeList = userNumberString.toCharArray();
-
-        for (char number : changeList) {
-            int numberInt = Integer.parseInt(String.valueOf(number));
-            userinputNumberList.add(numberInt);
-        }
-        return userinputNumberList;
-    }
 }
