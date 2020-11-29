@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class InputView {
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String RESTART_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final String INCORRECT_MENU_NUM_ERROR = "1번 또는 2번을 입력해주세요.";
+    private static final String INCORRECT_MENU_NUM_ERROR = "1 또는 2를 입력해주세요.";
     private static final String RESTART = "1";
     private static final String END = "2";
 
@@ -19,6 +19,7 @@ public class InputView {
             System.out.print(INPUT_NUMBER_MESSAGE);
             return InputValidator.validateNumbers(scanner.nextLine());
         }catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return inputPlayerNumbers(scanner);
         }
     }
@@ -32,6 +33,7 @@ public class InputView {
             }
             throw new IllegalArgumentException(INCORRECT_MENU_NUM_ERROR);
         } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return inputRestartOrEnd(scanner);
         }
     }
