@@ -58,6 +58,8 @@
 6. 커밋 메시지는 영어 혹은 한글, 단위는 어느 정도로?
 7. 테스트 메서드의 이름은 영어 혹은 한글?
 
+<br>
+
 ## 최종 패키지 및 클래스 구성
 
 > AssertJ를 사용하여 테스트 코드를 작성했습니다.
@@ -71,12 +73,11 @@
         * number 패키지
             * BaseballNumber
             * BaseballNumbers
+    * view 패키지
+        * InputView
+        * OutputView
     * Application
 
-* view 패키지
-    * InputView
-    * OutputView
-    
 * utils 패키지
     * RandomUtils
 
