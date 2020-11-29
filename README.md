@@ -118,7 +118,7 @@ private static final Random RANDOM = new Random();
 4. 나의 입력값이 세자리 숫자인지 아닌지의 여부를 알려줌 (notInputThreeDigit)
     - 세자리 숫자일때 false, 아닐 때 true를 반환
     
-5. 나의 입력값 숫자 중복 검사
+5. 나의 입력값 숫자 중복 검사 (checkDuplication)
     - 각 자리수의 숫자가 중복되는지 검사
       중복이면 true, 중복이 아니면 false 반환
 
