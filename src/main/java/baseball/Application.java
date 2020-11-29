@@ -21,15 +21,26 @@ public class Application {
     /* 전반적인 게임 진행을 담당하는 메소드 */
     public static void startGame(Scanner scanner) {
         String inputValue = null;
-        boolean correctValue = false;
+        String matchValue = "";
         Number comNum = setComputerNumber();
         Number usrNum;
-        while (!correctValue) {
-            printNumberInput();
-            inputValue = getUserInput(scanner);
-            correctValue = isValidInput(inputValue);
+
+        while (!matchValue.equals("3스트라이크")) {
+            boolean correctValue = false;
+            while (!correctValue) {
+                printNumberInput();
+                inputValue = getUserInput(scanner);
+                correctValue = isValidInput(inputValue);
+            }
+            usrNum = setUserNumber(inputValue);
+            matchValue=countScore(comNum,usrNum);
+            System.out.println(matchValue);
         }
-        usrNum = setUserNumber(inputValue);
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public static int selectMenu(){
+
     }
 
     /* 컴퓨터의 숫자값을 랜덤하게 생성하여 Number객체를 반환하는 메서드 */
@@ -129,14 +140,15 @@ public class Application {
             }
         }
 
-        if(strike==0&&ball==0)
+        if (strike == 0 && ball == 0) {
             return "낫싱";
-        else if(strike==0)
-            return ball+"볼";
-        else if(ball==0)
-            return strike+"스트라이크";
-        else
-            return ball+"볼 "+strike+"스트라이크";
+        } else if (strike == 0) {
+            return ball + "볼";
+        } else if (ball == 0) {
+            return strike + "스트라이크";
+        } else {
+            return ball + "볼 " + strike + "스트라이크";
+        }
     }
 
 }
