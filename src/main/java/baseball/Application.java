@@ -9,7 +9,10 @@ public class Application {
         boolean gameCoin = true;
         while (gameCoin) {
             String computerChoice = GameComputer.chooseComputerChoice();
-            GameComputer.startGame(computerChoice);
+            boolean gameOver = false;
+            while (!gameOver){
+                gameOver = GameComputer.startGame(computerChoice);
+            }
             gameCoin = checkGameCoin();
         }
     }

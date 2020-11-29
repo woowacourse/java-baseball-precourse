@@ -22,15 +22,15 @@ public class GameComputer {
         return computerChoice;
     }
 
-    static void startGame(String computerChoice) {
+    static boolean startGame(String computerChoice) {
         GamePlayer player = new GamePlayer();
         player.userChoice = player.chooseUserChoice();
         int strike = umpirePitch(computerChoice, player.userChoice);
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return;
+            return true;
         } else {
-            startGame(computerChoice);
+            return false;
         }
     }
 
