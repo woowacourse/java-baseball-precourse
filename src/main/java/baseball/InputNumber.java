@@ -12,4 +12,16 @@ public class InputNumber {
             return WARNING_MESSAGE;
         }
     }
+
+    public static boolean validateInput(String inputNumber){
+        //3자리가 아니면 예외를 발생시킨다
+        if(inputNumber.length() != Application.NUMBER_LENGTH){
+            throw new IllegalArgumentException();
+        }
+        //중복된 숫자가 있어도 예외를 발생시킨다
+        if(duplicateExist(inputNumber)){
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
 }
