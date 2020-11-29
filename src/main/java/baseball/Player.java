@@ -10,7 +10,7 @@ public class Player {
         String result = "";
 
         while(true){
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             String inputNumber = scanner.nextLine();
 
             // 중복 X, 1~9 이외 숫자 X
