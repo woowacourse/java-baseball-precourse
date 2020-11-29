@@ -12,48 +12,6 @@
 
 <br>
 
-## ✍🏻 입출력 요구사항
-### ⌨️ 입력
-- 3자리의 수
-- 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수
-
-### 🖥 출력
-- 입력한 수에 대한 결과를 볼, 스트라이크 갯수로 표시
-```
-1볼 1스트라이크
-```
-- 하나도 없는 경우 
-```
-낫싱
-```
-- 3개의 숫자를 모두 맞힐 경우
-```
-3스트라이크
-3개의 숫자를 모두 맞히셨습니다! 게임 종료
-```
-
-### 💻 프로그래밍 실행 결과 예시
-```
-숫자를 입력해주세요 : 123
-1볼 1스트라이크
-숫자를 입력해주세요 : 145
-1볼
-숫자를 입력해주세요 : 671
-2볼
-숫자를 입력해주세요 : 216
-1스트라이크
-숫자를 입력해주세요 : 713
-3스트라이크
-3개의 숫자를 모두 맞히셨습니다! 게임 종료
-게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
-1
-숫자를 입력해주세요 : 123
-1볼 1스트라이크
-… 
-```
-
-<br>
-
 ## 🎱 프로그래밍 요구사항
 - 자바 코드 컨벤션을 지키면서 프로그래밍한다.
   - 기본적으로 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)을 원칙으로 한다.
@@ -66,34 +24,6 @@
 - System.exit 메소드를 사용하지 않는다.
 - 비정상적 입력에 대해서는 IllegalArgumentException을 발생시킨다.
 
-### 프로그래밍 요구사항 - Application
-- Application 클래스를 활용해 구현해야 한다.
-- Application의 패키지 구조와 구현은 변경하지 않는다.
-- `final Scanner scanner = new Scanner(System.in);`는 변경하지 않는다.
-- `// TODO 구현 진행` 이 후 부터 구현한다.
-
-```java
-public class Application {
-    public static void main(String[] args) {
-        final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
-    }
-}
-```
-
-### 프로그래밍 요구사항 - RandomUtils
-- RandomUtils 클래스를 활용해 랜덤 기능을 구현해야 한다.
-- RandomUtils의 패키지 구조와 구현은 변경하지 않는다.
-
-```java
-private static final Random RANDOM = new Random();
-    private RandomUtils() {
-    }
-    public static int nextInt(final int startInclusive, final int endInclusive) {
-    ...
-```
-
-<br>
 
 ## 📈 진행 요구사항
 - 미션은 [java-baseball-precourse 저장소](https://github.com/woowacourse/java-baseball-precourse) 를 fork/clone해 시작한다.
@@ -103,6 +33,21 @@ private static final Random RANDOM = new Random();
 - [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 절차를 따라 미션을 제출한다.
 
 <br>
+
+## 구현할 기능
+ - RandomUtils를 활용하여 랜덤한 3개의 숫자를 생성한 뒤 Answer 배열에 저장하는 기능
+ - 사용자로부터 값을 입력받아 값이 올바른지 판별하는 기능 (아닐 경우 IllegalArgumentException)
+ - 사용자로부터 입력받은 값을 받아 "스트라이크", "볼", "낫싱"을 출력하는 기능
+ - 사용자가 정답을 맞췄을 경우 다시 play할 것인지 종료할 것인지 판별하는 기능 (Without System.exit)
+ 
+
+## 개발 계획
+ - 구현할 클래스 설계
+ - 각 클래스 별로 기능 개발
+ - 리팩토링
+ - 오류 수정 및 최종 점검
+
+
 
 ## 📝 License
 
