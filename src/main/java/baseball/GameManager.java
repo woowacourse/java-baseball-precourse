@@ -59,19 +59,9 @@ public class GameManager {
         }
     }
 
-    public int[] getBallsAndStrikes(int[] values) {
-        int strikeNumber = 0;
+    public int getBallNumber(int[] values){
         int ballNumber = 0;
-
         int baseballsIndex = 0;
-
-        while (baseballsIndex < BASEBALL_NUMBER) {
-            if (baseballs[baseballsIndex] == values[baseballsIndex]) {
-                strikeNumber += 1;
-            }
-
-            baseballsIndex += 1;
-        }
 
         for (baseballsIndex = 0; baseballsIndex < BASEBALL_NUMBER; baseballsIndex += 1) {
             for (int valueIndex = 0; valueIndex < BASEBALL_NUMBER; valueIndex += 1) {
@@ -85,6 +75,21 @@ public class GameManager {
             }
         }
 
-        return new int[]{ballNumber, strikeNumber};
+        return ballNumber;
+    }
+
+    public int getStrikeNumber(int[] values){
+        int strikeNumber = 0;
+        int baseballsIndex = 0;
+
+        while (baseballsIndex < BASEBALL_NUMBER) {
+            if (baseballs[baseballsIndex] == values[baseballsIndex]) {
+                strikeNumber += 1;
+            }
+
+            baseballsIndex += 1;
+        }
+
+        return strikeNumber;
     }
 }

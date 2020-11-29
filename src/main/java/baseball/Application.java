@@ -21,11 +21,14 @@ public class Application {
 
             validator.validateInputValue(inputValue);
 
-            int[] resultBallsAndStrikes = manager.getBallsAndStrikes(Converter.convertString(inputValue));
+            int[] convertedValues = Converter.convertString(inputValue);
 
-            printer.printResult(resultBallsAndStrikes);
+            int ballNumber = manager.getBallNumber(convertedValues);
+            int strikeNumber = manager.getStrikeNumber(convertedValues);
 
-            if (validator.isGameSet(resultBallsAndStrikes)) {
+            printer.printResult(ballNumber, strikeNumber);
+
+            if (validator.isGameSet(strikeNumber)) {
                 printer.printGameProgess();
 
                 String progressInput = scanner.nextLine();

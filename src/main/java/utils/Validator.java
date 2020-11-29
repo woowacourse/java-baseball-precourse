@@ -47,9 +47,7 @@ public class Validator {
         }
     }
 
-    public boolean isGameSet(int[] ballsAndStrikes){
-        int strikes = ballsAndStrikes[1];
-
-        return strikes == GameManager.BASEBALL_NUMBER;
+    public boolean isGameSet(int strikeNumber){
+        return strikeNumber == GameManager.BASEBALL_NUMBER;
     }
 }
