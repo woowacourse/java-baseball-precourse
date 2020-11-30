@@ -9,7 +9,7 @@ public class Application {
         GameManager gameManager = new GameManager();
         do {
             gameManager.gameStart(scanner);
-        } while(gameManager.askPlayerAnswerOfRestartGame());
+        } while(gameManager.gameContinue(scanner));
     }
 
 }
