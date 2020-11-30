@@ -26,7 +26,7 @@
 
 <br>
 
-### 🎃 프로그램 구조
+### 🎃 프로그램 구성 요소
 
 - 📁 baseball
     - 📁 domain
@@ -42,12 +42,12 @@
 
     - 📃 Application : 프로그램 실행
 - 📁 utils
-    - 📃 RandomUtils : 랜덤 숫자를 제공하는 기능 담당
-    - 📃 InputConverter : 문자를 숫자 리스트로 변경해주는 기능 담당
     - 📁 validator
         - 📃 NumberValidator : 숫자 검사 (문자가 숫자인지, 길이가 3인지 확인)
         - 📃 DuplicateValidator : 숫자가 중복되는지 검사
         - 📃 RestartValidator : 재시작 값이 유효한 숫자인지 검사
+    - 📃 RandomUtils : 랜덤 숫자를 제공하는 기능 담당
+    - 📃 InputConverter : 문자를 숫자 리스트로 변경해주는 기능 담당
  
 <br>       
 
@@ -90,11 +90,6 @@
 - [[추가] 참고 블로그](https://hodol.dev/posts/%EC%9A%B0%EC%95%84%ED%95%9C%ED%85%8C%ED%81%AC%EC%BD%94%EC%8A%A4-%ED%94%84%EB%A6%AC%EC%BD%94%EC%8A%A4-%EC%A4%80%EB%B9%84)
 
 </details>
-
-- [1. JAVA Code Convetion 이해하기 🧐](https://velog.io/@bosl95/JAVA-Code-Convention)
-- [2. Commit Message Convention 이해하기 👾](https://velog.io/@bosl95/Commit-Message-Convention)
-- [3. SOLID 이해하기 🥳](https://velog.io/@bosl95/SOLID-%EA%B0%9D%EC%B2%B4-%EC%A7%80%ED%96%A5-%EC%84%A4%EA%B3%84)
-- [4. 객체지향 디자인 패턴 이해하기](https://velog.io/@bosl95/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4)
 
 <br>
 <br>
