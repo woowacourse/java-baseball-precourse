@@ -1,5 +1,5 @@
 /*
- * GameController.java            0.9       2020-11-25
+ * GameController.java            1.0       2020-11-25
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -9,15 +9,14 @@
 package baseball.controller;
 
 import baseball.domain.Computer;
-import baseball.domain.NumbersValidator;
-import baseball.domain.RandomNumbers;
+import baseball.domain.InputNumbersValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
+import static baseball.domain.Computer.INDEX_OF_BALLS;
+import static baseball.domain.Computer.INDEX_OF_STRIKES;
 import static baseball.domain.RandomNumbers.NUMBER_LIST_SIZE;
 
 /**
@@ -30,52 +29,45 @@ public class GameController {
     public static final String RESTART_NUMBER = "1";
     public static final String EXIT_NUMBER = "2";
 
-    private List<Integer> randomNumbers = new ArrayList<>();
+    private final InputView inputView;
+    private final OutputView outputView;
 
-    public void run(Scanner scanner) {
-        this.randomNumbers = generateRandomNumbers();
-        playUnitGame(scanner);
+    public GameController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
-    private void playUnitGame(Scanner scanner) {
-        final Computer computer = new Computer();
-        final List<Integer> validInputNumbers = generateValidInputNumbers(InputView.receiveInputNumbers(scanner));
-
-        computer.calculateResult(validInputNumbers, this.randomNumbers);
-        OutputView.printResult(computer.getCountsOfBall(), computer.getCountsOfStrike());
-        checkCorrectAnswer(computer.getCountsOfStrike(), scanner);
+    public void run() {
+        do {
+            playUnitGame(new Computer());
+            this.outputView.printRestart();
+        } while (isRestartFlag(this.inputView.receiveRestartFlag()));
     }
 
-    private List<Integer> generateValidInputNumbers(String uncheckedInputNumbers) {
-        final NumbersValidator numbersValidator = new NumbersValidator();
-        return numbersValidator.makeValidNumbers(uncheckedInputNumbers);
-    }
-
-    private List<Integer> generateRandomNumbers() {
-        final RandomNumbers randomNumbers = new RandomNumbers();
-        return randomNumbers.makeRandomNumbers();
-    }
-
-    private void checkCorrectAnswer(int countsOfStrike, Scanner scanner) {
-        if (countsOfStrike != NUMBER_LIST_SIZE) {
-            playUnitGame(scanner);
-        } else {
-            OutputView.printRestart();
-            checkRestartFlag(scanner);
+    private void playUnitGame(Computer computer) {
+        while (true) {
+            final List<Integer> inputNumbers = generateInputNumbers(this.inputView.receiveInputNumbers());
+            final List<Integer> ballsAndStrikes = computer.calculateResult(inputNumbers);
+            this.outputView.printResult(ballsAndStrikes.get(INDEX_OF_BALLS), ballsAndStrikes.get(INDEX_OF_STRIKES));
+            if (isCorrectAnswer(ballsAndStrikes.get(INDEX_OF_STRIKES))) {
+                break;
+            }
         }
     }
 
-    private void checkRestartFlag(Scanner scanner) {
-        final String userInputRestart = InputView.receiveRestartNumber(scanner);
-        if (userInputRestart.equals(RESTART_NUMBER)) {
-            run(scanner);
-        }
-        checkInvalidInputInRestart(userInputRestart);
+    private List<Integer> generateInputNumbers(String uncheckedInputNumbers) {
+        final InputNumbersValidator inputNumbersValidator = new InputNumbersValidator();
+        return inputNumbersValidator.makeInputNumbers(uncheckedInputNumbers);
     }
 
-    private void checkInvalidInputInRestart(String userInput) {
-        if (!userInput.equals(EXIT_NUMBER)) {
+    private boolean isCorrectAnswer(int countsOfStrike) {
+        return NUMBER_LIST_SIZE == countsOfStrike;
+    }
+
+    private boolean isRestartFlag(String userInput) {
+        if (!RESTART_NUMBER.equals(userInput) && !EXIT_NUMBER.equals(userInput)) {
             throw new IllegalArgumentException("입력이 올바르지 않습니다.");
         }
+        return RESTART_NUMBER.equals(userInput);
     }
 }

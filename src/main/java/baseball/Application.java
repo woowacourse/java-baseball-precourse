@@ -9,6 +9,8 @@
 package baseball;
 
 import baseball.controller.GameController;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.Scanner;
 
@@ -22,8 +24,10 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
-        final GameController gameController = new GameController();
+        final InputView inputView = new InputView(scanner);
+        final OutputView outputView = new OutputView();
+        final GameController gameController = new GameController(inputView, outputView);
 
-        gameController.run(scanner);
+        gameController.run();
     }
 }

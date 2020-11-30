@@ -1,5 +1,5 @@
 /*
- * InputView.java            0.9       2020-11-25
+ * InputView.java            1.0       2020-11-25
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -18,12 +18,18 @@ import java.util.Scanner;
  */
 public class InputView {
 
-    public static String receiveInputNumbers(Scanner scanner) {
-        System.out.print("숫자를 입력해주세요 : ");
-        return scanner.nextLine();
+    private final Scanner scanner;
+
+    public InputView(Scanner scanner) {
+        this.scanner = scanner;
     }
 
-    public static String receiveRestartNumber(Scanner scanner) {
-        return scanner.nextLine();
+    public String receiveInputNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return this.scanner.nextLine();
+    }
+
+    public String receiveRestartFlag() {
+        return this.scanner.nextLine();
     }
 }

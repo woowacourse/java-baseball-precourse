@@ -1,16 +1,15 @@
-package baseball.domain;
-
 /*
- * RandomNumbers.java            0.9       2020-11-25
+ * RandomNumbers.java            1.0       2020-11-25
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
  * All rights reserved
  */
 
+package baseball.domain;
+
 import utils.RandomUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,26 +23,24 @@ public class RandomNumbers {
     private static final int LOWER_BOUNDARY = 1;
     private static final int UPPER_BOUNDARY = 9;
 
-    private final List<Integer> randomNumbers = new ArrayList<>();
-
-    public List<Integer> makeRandomNumbers() {
-        while (isSizeIncorrect(this.randomNumbers.size())) {
-            addDeduplicatedNumber(makeRandomNumber());
+    public List<Integer> makeRandomNumbers(List<Integer> randomNumbers) {
+        while (isSizeIncorrect(randomNumbers.size())) {
+            addDistinctNumber(makeRandomNumber(), randomNumbers);
         }
-        return this.randomNumbers;
-    }
-
-    private int makeRandomNumber() {
-        return RandomUtils.nextInt(LOWER_BOUNDARY, UPPER_BOUNDARY);
+        return randomNumbers;
     }
 
     private boolean isSizeIncorrect(int listSize) {
         return listSize != NUMBER_LIST_SIZE;
     }
 
-    private void addDeduplicatedNumber(Integer checkingNumber) {
-        if (this.randomNumbers.stream().noneMatch(integer -> integer.equals(checkingNumber))) {
-            this.randomNumbers.add(checkingNumber);
+    private void addDistinctNumber(Integer checkingNumber, List<Integer> randomNumbers) {
+        if (randomNumbers.stream().noneMatch(integer -> integer.equals(checkingNumber))) {
+            randomNumbers.add(checkingNumber);
         }
+    }
+
+    private int makeRandomNumber() {
+        return RandomUtils.nextInt(LOWER_BOUNDARY, UPPER_BOUNDARY);
     }
 }

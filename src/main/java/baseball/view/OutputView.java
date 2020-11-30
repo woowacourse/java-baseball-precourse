@@ -1,5 +1,5 @@
 /*
- * OutputView.java            0.9       2020-11-25
+ * OutputView.java            1.0       2020-11-25
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -19,12 +19,12 @@ import static baseball.domain.RandomNumbers.NUMBER_LIST_SIZE;
  * @version 1.0 2020년 11월 25일
  */
 public class OutputView {
-    public static final int NOTHING = 0;
-    public static final String PRINT_BALL = "볼 ";
-    public static final String PRINT_STRIKE = "스트라이크 ";
-    public static final String PRINT_NOTHING = "낫싱";
+    private static final int NOTHING = 0;
+    private static final String PRINT_BALL = "볼 ";
+    private static final String PRINT_STRIKE = "스트라이크 ";
+    private static final String PRINT_NOTHING = "낫싱";
 
-    public static void printResult(int balls, int strikes) {
+    public void printResult(int balls, int strikes) {
         if (balls == NOTHING && strikes == NOTHING) {
             System.out.println(PRINT_NOTHING);
         } else if (strikes == NUMBER_LIST_SIZE) {
@@ -39,7 +39,7 @@ public class OutputView {
         }
     }
 
-    public static void printRestart() {
+    public void printRestart() {
         System.out.println("게임을 새로 시작하려면 " + RESTART_NUMBER + ", 종료하려면 " + EXIT_NUMBER + "를 입력하세요.");
     }
 }

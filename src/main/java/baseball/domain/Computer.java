@@ -1,5 +1,5 @@
 /*
- * Computer.java            0.9       2020-11-25
+ * Computer.java            1.0       2020-11-25
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -8,37 +8,38 @@
 
 package baseball.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
- * 연산하는 역할을 맡은 클래스
+ * 랜덤 숫자들을 만들고, 결과를 연산하는 클래스
  *
  * @author 조연우
  * @version 1.0 2020년 11월 25일
  */
 public class Computer {
-    private int countsOfStrike = 0;
-    private int countsOfBall = 0;
+    public static final int INDEX_OF_BALLS = 0;
+    public static final int INDEX_OF_STRIKES = 1;
+
+    private final List<Integer> madeRandomNumbers;
 
     public Computer() {
+        final RandomNumbers randomNumbers = new RandomNumbers();
+        this.madeRandomNumbers = randomNumbers.makeRandomNumbers(new ArrayList<>());
     }
 
-    public void calculateResult(List<Integer> inputNumbers, List<Integer> randomNumber) {
+    public List<Integer> calculateResult(List<Integer> inputNumbers) {
+        int countsOfStrike = 0;
+        int countsOfBall = 0;
         for (int i = 0; i < inputNumbers.size(); i++) {
             Integer numberInInputNumbers = inputNumbers.get(i);
-            if (numberInInputNumbers.equals(randomNumber.get(i))) {
-                this.countsOfStrike++;
-            } else if (randomNumber.stream().anyMatch(j -> j.equals(numberInInputNumbers))) {
-                this.countsOfBall++;
+            if (numberInInputNumbers.equals(this.madeRandomNumbers.get(i))) {
+                countsOfStrike++;
+            } else if (this.madeRandomNumbers.stream().anyMatch(j -> j.equals(numberInInputNumbers))) {
+                countsOfBall++;
             }
         }
-    }
-
-    public int getCountsOfBall() {
-        return this.countsOfBall;
-    }
-
-    public int getCountsOfStrike() {
-        return this.countsOfStrike;
+        return Arrays.asList(countsOfBall, countsOfStrike);
     }
 }
