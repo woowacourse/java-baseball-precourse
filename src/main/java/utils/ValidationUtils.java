@@ -40,6 +40,10 @@ public class ValidationUtils {
         return false;
     }
 
+    public static boolean isEitherOneOf(String input, String option1, String option2) {
+        return input.equals(option1) || input.equals(option2);
+    }
+
     public static String validateInputInProgress(String input, ParameterSet parameterSet) {
         if (!ValidationUtils.hasEqualNumberOfDigits(input, parameterSet.numberOfDigits())) {
             throw new IllegalArgumentException();
@@ -50,6 +54,14 @@ public class ValidationUtils {
         }
 
         if (ValidationUtils.hasDuplicateDigits(input)) {
+            throw new IllegalArgumentException();
+        }
+
+        return input;
+    }
+
+    public static String validateInputAfterEnd(String input, String option1, String option2) {
+        if (!ValidationUtils.isEitherOneOf(input, option1, option2)) {
             throw new IllegalArgumentException();
         }
 
