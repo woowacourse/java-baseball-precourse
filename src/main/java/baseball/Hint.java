@@ -5,31 +5,29 @@ public class Hint {
 	Computer computer = new Computer();
 	Player player = new Player();
 
-	String inputNumbers;
-	char[] userInputNumbersArray;
-	char[] RandomNumbersArray = new char[Constant.BASE_BALL_GAME_RANGE];
-
 	public void hintUserNumbersAndRandomNumbers() {
-		boolean finish = false;
-		RandomNumbersArray = computer.inputRandomNumbersArray();
-		while (!finish) {
-			inputNumbers = player.inputNumbers();
+		boolean finishGame = false;
+		char[] RandomNumbersArray = computer.inputRandomNumbersArray();
+		char[] userInputNumbersArray;
+
+		while (!finishGame) {
+			String inputNumbers = player.inputNumbers();
 			userInputNumbersArray = player.userNumbersArray(inputNumbers);
 			int strike = countStrike(RandomNumbersArray, userInputNumbersArray);
 			int ball = countBall(RandomNumbersArray, userInputNumbersArray);
-			if (strike == 3) {
+
+			if (strike == Constant.BASE_BALL_GAME_RANGE) {
 				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-				finish = true;
+				finishGame = true;
 			}
-			if (strike == 0 && ball == 0) {
-				System.out.println("낫싱");
-			}
-			System.out.println(strike + " 스트라이크" + ball + "볼");
+			
+			printBallOrStrike(strike, ball);
 		}
 	}
 
 	private int countStrike(char[] computer, char[] user) {
-		int strike = 0;
+		int strike = Constant.MIN_LENGTH;
+
 		for (int i = 0; i < Constant.BASE_BALL_GAME_RANGE; ++i) {
 			if (computer[i] == user[i]) {
 				strike++;
@@ -40,7 +38,8 @@ public class Hint {
 	}
 
 	private int countBall(char[] computer, char[] user) {
-		int ball = 0;
+		int ball = Constant.MIN_LENGTH;
+
 		for (int i = 0; i < Constant.BASE_BALL_GAME_RANGE; ++i) {
 			for (int j = 0; j < Constant.BASE_BALL_GAME_RANGE; ++j) {
 				if (i == j) {
@@ -52,5 +51,21 @@ public class Hint {
 			}
 		}
 		return ball;
+	}
+
+	private void printBallOrStrike(int strike, int ball) {
+
+		if (ball == Constant.MIN_LENGTH && strike == Constant.MIN_LENGTH) {
+			System.out.println("낫싱");
+		}
+		if (ball == Constant.MIN_LENGTH) {
+			System.out.println(strike + " 스트라이크");
+		}
+		if (strike == Constant.MIN_LENGTH) {
+			System.out.println(ball + " 볼");
+		}
+		if (strike > Constant.MIN_LENGTH && ball > Constant.MIN_LENGTH) {
+			System.out.println(strike + " 스트라이크" + ball + "볼");
+		}
 	}
 }
