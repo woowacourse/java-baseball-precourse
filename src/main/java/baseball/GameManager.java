@@ -12,10 +12,11 @@ public class GameManager {
         this.scanner = scanner;
     }
 
-    public void startGame() {
+    public void play() {
         do {
             game();
         } while (continueGame());
+        scanner.close();
     }
 
     private void game() {
@@ -27,9 +28,8 @@ public class GameManager {
             System.out.println(botBalls);// TODO 테스트
 
             System.out.print("숫자를 입력해주세요 : ");
-            gameResult = getMyBalls().judgeResult(botBalls);    // 사용자 수 입력 & 결과 계산
+            gameResult = getUserBalls().judgeResult(botBalls);  // 사용자 수 입력 & 결과 계산
             printResult(gameResult);                            // 결과 출력
-
         } while (!gameResult.isAllStrikes());                   // 3스트라이크: 루프탈출
     }
 
@@ -37,18 +37,18 @@ public class GameManager {
         System.out.println(gameResult.getResult());
     }
 
-    private Balls getMyBalls() {
-        Balls myBalls = null;
-        while (myBalls == null) {
+    private Balls getUserBalls() {
+        Balls userBalls = null;
+        while (userBalls == null) {
             try {
-                myBalls = Balls.stringToBalls(getInputString());    // 사용자 생성 balls
+                userBalls = Balls.stringToBalls(getInputString());  // 사용자 생성 balls
             } catch (NumberFormatException e) {
                 System.out.println("3개의 1~9 사이의 수만 입력할 수 있습니다.");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
-        return myBalls;
+        return userBalls;
     }
 
     private Boolean continueGame() {
