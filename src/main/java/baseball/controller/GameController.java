@@ -30,6 +30,9 @@ public class GameController {
 
         initPlayerInput();
 
+        isRestart();
+
+
     }
 
     private void initComputer() {
@@ -93,6 +96,24 @@ public class GameController {
             }
         }
         return count;
+    }
+
+    private void isRestart() {
+        //TODO 임시:InputConroller,ConsoleView에 기능 추가
+        System.out.println("다시?");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        GameStatus gameStatus ;
+        if(input.equals("1")){
+            gameStatus = GameStatus.RESTART;
+        }else {
+            gameStatus = GameStatus.END;
+        }
+        //TODO 여기까지 구현
+
+        if (gameStatus == GameStatus.RESTART) {
+            run();
+        }
     }
 
 }
