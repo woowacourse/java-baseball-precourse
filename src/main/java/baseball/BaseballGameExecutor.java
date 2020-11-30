@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class BaseballGameExecutor {
     private static Scanner scanner;
-    private static final int RESTART = 1;
-    private static final int END = 2;
+    private static final int RESTART_NUM = 1;
+    private static final int END_NUM = 2;
 
     public static void startGame(Scanner inputScanner) {
         scanner = inputScanner;
@@ -24,9 +24,9 @@ public class BaseballGameExecutor {
     private static void guessNumber(BallTypeChecker ballTypeChecker) {
         BaseBall inputBaseball = inputBaseballNumber();
         BaseballResult baseballResult = ballTypeChecker.startChecking(inputBaseball);
-        baseballResult.printResult();
+        Printer.result(baseballResult);
         if (baseballResult.isAnswer()) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            Printer.isCorrect();
             askToRestart();
         } else {
             guessNumber(ballTypeChecker);
@@ -38,40 +38,37 @@ public class BaseballGameExecutor {
             int inputNumber = inputNumber();
             return BaseBall.createBaseBall(inputNumber);
         } catch (IllegalStateException e) {
-            System.out.println(e.getMessage());
+            Printer.printMessage(e.getMessage());
             return inputBaseballNumber();
         }
     }
 
     private static int inputNumber() {
         try {
-            System.out.print("숫자를 입력해주세요 : ");
+            Printer.inputNumber();
             int inputNumber = scanner.nextInt();
             return inputNumber;
         } catch (InputMismatchException e) {
-            needIntegerType();
+            scanner.nextLine(); //개행문자 버그를 잡기 위해
+            Printer.onlyNumber();
             return inputNumber();
         }
     }
 
     private static void askToRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Printer.askRestart();
         try {
             int reStart = scanner.nextInt();
-            if (reStart == RESTART) {
+            if (reStart == RESTART_NUM) {
                 startGame(scanner);
-            } else if (reStart != END) {
+            } else if (reStart != END_NUM) {
                 askToRestart();
             }
         } catch (InputMismatchException e) {
-            needIntegerType();
+            scanner.nextLine(); //개행문자 버그를 잡기 위해
+            Printer.onlyNumber();
             askToRestart();
         }
-    }
-
-    private static void needIntegerType() {
-        scanner.nextLine(); //개행문자 버그를 잡기 위해
-        System.out.println("숫자 형식을 입력해주세요.");
     }
 
 }

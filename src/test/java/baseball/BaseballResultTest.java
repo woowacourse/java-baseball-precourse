@@ -18,7 +18,6 @@ class BaseballResultTest {
             baseballResult.accumulateBallType(BallType.STRIKE);
         }
         //then
-        baseballResult.printResult();
         assertTrue(baseballResult.isAnswer());
     }
 
@@ -26,13 +25,11 @@ class BaseballResultTest {
     @DisplayName("낫싱볼 확인")
     public void checkNothing() throws Exception {
         //given
-        final int ZERO = 0;
-        BaseballResult baseballResult = new BaseballResult();
+        final String NOTHING = "낫싱";
         //when
-        int ballCount = baseballResult.countFor(BallType.BALL);
+        BaseballResult baseballResult = new BaseballResult();
         //then
-        baseballResult.printResult();
-        assertEquals(ZERO, ballCount);
+        assertEquals(baseballResult.getResult(), NOTHING);
     }
 
     @Test
@@ -41,6 +38,7 @@ class BaseballResultTest {
         //given
         final int EXPECTED_BALL_COUNT = 2;
         final int EXPECTED_STRIKE_COUNT = 1;
+        final String EXPECTED_RESULT = "2볼 1스트라이크";
         BaseballResult baseballResult = new BaseballResult();
         //when
         for (int i = 0; i < EXPECTED_BALL_COUNT; i++) {
@@ -52,8 +50,8 @@ class BaseballResultTest {
         //then
         int ballCount = baseballResult.countFor(BallType.BALL);
         int strikeCount = baseballResult.countFor(BallType.STRIKE);
-        baseballResult.printResult();
         assertEquals(EXPECTED_BALL_COUNT, ballCount);
         assertEquals(EXPECTED_STRIKE_COUNT, strikeCount);
+        assertEquals(EXPECTED_RESULT, baseballResult.getResult());
     }
 }

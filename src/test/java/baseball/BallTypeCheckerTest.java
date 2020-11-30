@@ -16,7 +16,6 @@ class BallTypeCheckerTest {
         BallTypeChecker ballTypeChecker = BallTypeChecker.ballTypeCheckWith(randomBaseball);
         BaseballResult baseballResult = ballTypeChecker.startChecking(inputBaseball);
         //then
-        baseballResult.printResult();
         assertTrue(baseballResult.isAnswer());
     }
 
@@ -33,7 +32,6 @@ class BallTypeCheckerTest {
         //then
         int actualBallCount = baseballResult.countFor(BallType.BALL);
         int actualStrikeCount = baseballResult.countFor(BallType.STRIKE);
-        baseballResult.printResult();
         assertEquals(BALL_COUNT, actualBallCount);
         assertEquals(STRIKE_COUNT, actualStrikeCount);
     }
@@ -51,7 +49,6 @@ class BallTypeCheckerTest {
         //then
         int actualBallCount = baseballResult.countFor(BallType.BALL);
         int actualStrikeCount = baseballResult.countFor(BallType.STRIKE);
-        baseballResult.printResult();
         assertEquals(BALL_COUNT, actualBallCount);
         assertEquals(STRIKE_COUNT, actualStrikeCount);
     }
@@ -68,7 +65,6 @@ class BallTypeCheckerTest {
         //then
         int actualBallCount = baseballResult.countFor(BallType.BALL);
         int actualStrikeCount = baseballResult.countFor(BallType.STRIKE);
-        baseballResult.printResult();
         assertEquals(ZERO, actualBallCount);
         assertEquals(ZERO, actualStrikeCount);
     }
