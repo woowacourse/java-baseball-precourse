@@ -70,4 +70,13 @@ public class Computer {
     private void addNumber(int randomNumber) {
         this.number += String.valueOf(randomNumber);
     }
+
+    /**
+     * number 변수를 가져오는 메서드
+     *
+     * @return number 변수를 반환
+     */
+    public String getNumber() {
+        return this.number;
+    }
 }
