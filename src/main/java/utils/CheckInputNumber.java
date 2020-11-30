@@ -1,20 +1,23 @@
 package utils;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
- * ÀÔ·ÂÇÑ ¹®ÀÚ¿­ÀÌ Á¶°Ç¿¡ ¸Â´ÂÁö °Ë»çÇÏ´Â Å¬·¡½º
+ * ì…ë ¥í•œ ë¬¸ìì—´ì´ ì¡°ê±´ì— ë§ëŠ”ì§€ ê²€ì‚¬í•˜ëŠ” í´ë˜ìŠ¤
  */
 public class CheckInputNumber {
 
-	/**
-	 * ÀÔ·ÂÇÑ ¹®ÀÚ¿­ÀÌ 3ÀÚ¸® ±æÀÌÀÇ ¼ıÀÚ¸é ¹®ÀÚ¿­ ¹İÈ¯
-	 * @return String
-	 */
-	public String inputNumber() {
-		Scanner scanner = new Scanner(System.in);
+	private static final String PLAYER_INPUT_MESSAGE = "ìˆ«ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.";
+	Scanner scanner;
 
-		System.out.printf("¼¼ÀÚ¸® ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ½Ã¿À : ");
+	public CheckInputNumber(Scanner scanner){
+		this.scanner = scanner;
+	}
+
+	public String inputNumber() {
+		System.out.print(PLAYER_INPUT_MESSAGE);
 		String input = scanner.nextLine();
 		if (!isValid(input)) {
 			return inputNumber();
@@ -22,18 +25,16 @@ public class CheckInputNumber {
 		return input;
 	}
 
-	/**
-	 * ÀÔ·ÂÇÑ ¹®ÀÚ¿­ÀÌ 3ÀÚ¸® ±æÀÌÀÇ ¼ıÀÚ¸é true ¹İÈ¯
-	 * @param inputNum
-	 * @return boolean
-	 */
-	public boolean isValid(String inputNum) {
+	private boolean isValid(String input) {
 
-		if (inputNum.length() != 3) {
+		if (input.length() != 3) {
 			return false;
 		}
-		for (int i = 0; i < inputNum.length(); i++) {
-			char num = inputNum.charAt(i);
+		if(!isUnique(input)){
+			return false;
+		}
+		for (int i = 0; i < input.length(); i++) {
+			char num = input.charAt(i);
 			if (!isValidInteger(num)) {
 				return false;
 			}
@@ -41,17 +42,19 @@ public class CheckInputNumber {
 		return true;
 	}
 
-	/**
-	 * ÀÔ·ÂÇÑ ¹®ÀÚ°¡ 1-9 »çÀÌÀÇ ¼ıÀÚ¸é true ¹İÈ¯. ¾Æ½ºÅ°ÄÚµå·Î °Ë»ç.
-	 * @param inputChar
-	 * @return boolean
-	 */
-	private boolean isValidInteger(char inputChar) {
-
-		if (inputChar < 49 || inputChar > 57) {
-			return false;
+	private boolean isUnique(String input){
+		Set<String> set = new HashSet<>();
+		for(int i=0; i<input.length(); i++) {
+			set.add(input.substring(i,i+1));
 		}
-		return true;
+		if(set.size()==3){
+			return true;
+		}
+		return false;
+	}
+
+	private boolean isValidInteger(char inputChar) {
+		return !(inputChar < 49 || inputChar > 57);
 	}
 
 }
