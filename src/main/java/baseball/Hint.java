@@ -6,6 +6,8 @@ public class Hint {
 	int ball = 0;
 	String hint;
 	boolean flag = false; // 게임 종료 여부
+	
+	
 
 	// 출력할 힌트를 만드는 함수
 	public void makeHint(int[] answerNum, int[] playerNum) {
