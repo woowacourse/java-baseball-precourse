@@ -15,8 +15,12 @@ public class HintPrinter {
         if (ball+strike == 0) {
             printNothing();
         }
-        printBall(ball);
-        printStrike(strike);
+        if (ball != 0) {
+            printBall(ball);
+        }
+        if (strike != 0) {
+            printStrike(strike);
+        }
     }
 
     public static void printNothing() {
