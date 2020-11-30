@@ -70,6 +70,16 @@ public class User {
     }
 
     private boolean isRightRange(String number) {
+        int eachNum;
+
+        for (int i = 0; i < number.length(); i++) {
+            eachNum = Character.getNumericValue(number.charAt(i));
+
+            if (eachNum < 1 || eachNum > 9) {
+                return false;
+            }
+        }
+
         return true;
     }
 }
