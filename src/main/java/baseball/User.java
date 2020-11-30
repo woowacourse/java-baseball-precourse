@@ -71,7 +71,7 @@ public class User {
         for (int i = 0; i < number.length(); i++) {
             eachNum = Character.getNumericValue(number.charAt(i));
 
-            if (eachNum < 1 || eachNum > 9) {
+            if (eachNum < Constant.MIN_VALUE || eachNum > Constant.MAX_VALUE) {
                 return false;
             }
         }
