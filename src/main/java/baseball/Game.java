@@ -7,6 +7,7 @@ public class Game {
     public static final String MSG_TYPE_DIGITS = "숫자를 입력해주세요 : ";
     public static final String MSG_GAME_EXIT = "게임종료";
     public static final String MSG_INPUT_ERROR = "입력 오류";
+    public static final int MODE_VALIDATE = 1;
 
     public boolean startGame(Scanner scanner) {
         String answer = RandomAnswer.randomAnswer();
@@ -15,7 +16,7 @@ public class Game {
         System.out.print(MSG_TYPE_DIGITS);
         while (scanner.hasNext()) {
             guessNumber = scanner.nextLine();
-            if (!Validate.isValidate(guessNumber)){
+            if (!Validate.isValidate(guessNumber, MODE_VALIDATE)){
                 System.out.print(MSG_TYPE_DIGITS);
                 continue;
             }

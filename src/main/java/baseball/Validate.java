@@ -7,14 +7,17 @@ public class Validate {
     public static final String ERR_MSG_NOT_3_DIGITS = "입력 오류: 세자리 숫자가 아님";
     public static final String ERR_MSG_DUPLICATE_NUMBER = "입력 오류: 중복된 숫자 존재";
     public static final String MSG_SUCCESS = "3개의 숫자를 모두 맞히셨습니다.";
+    public static final int MODE_VALIDATE = 1;
 
-    public static boolean isValidate(String number) {
+    public static boolean isValidate(String number, Integer mode) {
         try {
             if (isInteger(number) && !hasZero(number) &&!exceedNumberSize(number) && !hasDuplicateNumber(number)) {
                 return true;
             }
         } catch (IllegalArgumentException e){
-            System.out.println(e);
+            if (mode == MODE_VALIDATE) {
+                System.out.println(e);
+            }
             return false;
         }
         return true;
