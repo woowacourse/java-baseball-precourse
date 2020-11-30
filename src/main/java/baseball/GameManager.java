@@ -44,6 +44,8 @@ public class GameManager {
                 myBalls = Balls.stringToBalls(getInputString());    // 사용자 생성 balls
             } catch (NumberFormatException e) {
                 System.out.println("3개의 1~9 사이의 수만 입력할 수 있습니다.");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
         return myBalls;
