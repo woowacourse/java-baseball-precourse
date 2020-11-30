@@ -12,7 +12,7 @@ public class Player {
     private static final int LENGTHNUMBER=3;
 
     public String playerInput() {
-
+        System.out.print(INPUTNUMBER);
         this.STRINGINPUT =scanner.nextLine();
         return this.STRINGINPUT;
     }
@@ -40,8 +40,8 @@ public class Player {
         return true;
     }
 
-    public ArrayList<Integer> getInputToArrayList() throws IllegalArgumentException{
-        System.out.print(INPUTNUMBER);
+    public ArrayList<Integer> getInputToArrayList(){
+
         correctInput();
         String convertInput=Integer.toString(this.INPUT);
         ArrayList<Integer> inputNumber= new ArrayList<Integer>();
@@ -49,5 +49,23 @@ public class Player {
             inputNumber.add(convertInput.charAt(i)-'0');
         }
         return inputNumber;
+    }
+    public int getChoiceNumber(){
+        String choiceNumber=playerInput();
+        if(!checkChoiceNumber(choiceNumber)){
+            return getChoiceNumber();
+        }
+        else{
+            return Integer.parseInt(choiceNumber);
+        }
+
+    }
+    public boolean checkChoiceNumber(String choiceNumber){
+        try{
+            return exception.inExceptNumber(choiceNumber)||exception.navigateChoiceNumber(choiceNumber);
+        }catch(IllegalArgumentException e){
+            System.out.println(e);
+            return false;
+        }
     }
 }

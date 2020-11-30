@@ -84,4 +84,18 @@ public class Exception {
         }
         return hashMap;
     }
+    public boolean navigateChoiceNumber(String choiceNumber){
+        boolean branchPoint=false;
+        int intChoiceNumber=Integer.parseInt(choiceNumber);
+        if(intChoiceNumber!=1 && intChoiceNumber!=2){
+            branchPoint=true;
+            throw new IllegalArgumentException("1또는 2를 입력해주세요");
+        }
+        if(branchPoint){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }

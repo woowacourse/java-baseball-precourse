@@ -40,7 +40,7 @@ public class PlayTheGame {
         if(strikeCount==3){
             System.out.println(ENDGAMEMESSAGE);
             System.out.println(QUESTIONGAME);
-            int choiceNumber=Integer.parseInt(player.playerInput());
+            int choiceNumber=player.getChoiceNumber();
             System.out.println(choiceNumber);
             continuingGame(choiceNumber);
         }
@@ -49,10 +49,12 @@ public class PlayTheGame {
         }
     }
     public void continuingGame(int choiceNumber){
+
         if(choiceNumber==1){
             startingGame();
         }
     }
+
 
 
 
