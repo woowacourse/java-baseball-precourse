@@ -15,8 +15,8 @@ public class Game {
             System.out.println(Constants.PROMPT_MESSAGE);
             User user = new User(userBall);
             allocateBallsToPlayer(userBall, getUserInput(scanner), scanner);
-            System.out.println(opponent.getBaseballs());
-            if(user.gameResult(opponent)){
+            GameManager gameManager = new GameManager(user, opponent);
+            if(gameManager.gameResult()){
                 System.out.println(Constants.GAME_OVER_MSG);
                 break;
             }
@@ -24,7 +24,7 @@ public class Game {
         askMoreGame(scanner);
     }
 
-    public static void askMoreGame(Scanner scanner){
+    private static void askMoreGame(Scanner scanner){
         System.out.println(Constants.ASK_PLAY_MORE);
         try{
             int userAnswer = Integer.parseInt(getUserInput(scanner));
@@ -42,7 +42,7 @@ public class Game {
         }
     }
 
-    public static void allocateBallsToPlayer(Baseball baseball, String input, Scanner scanner){
+    private static void allocateBallsToPlayer(Baseball baseball, String input, Scanner scanner){
         if(baseball.parseBaseball(input)){
             return;
         }
@@ -50,11 +50,11 @@ public class Game {
     }
 
 
-    public static String getUserInput(Scanner scanner){
+    private static String getUserInput(Scanner scanner){
         return scanner.next();
     }
 
-    public static String generateOpponentInput(){
+    private static String generateOpponentInput(){
         String baseball = "";
         while(baseball.length() != Constants.VALID_INPUT_LENGTH){
             String ball = Integer.toString(RandomUtils.nextInt(1,9));
