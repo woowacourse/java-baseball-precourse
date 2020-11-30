@@ -65,4 +65,10 @@ public class Game {
         System.out.println(countBall+"볼 "+countStrike+"스트라이크");
     }
 
+    public static boolean checkResult(int strike){
+        if(strike == MAX_LENGTH){
+            return true;
+        }
+        return false;
+    }
 }

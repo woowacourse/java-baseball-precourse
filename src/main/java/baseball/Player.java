@@ -27,9 +27,12 @@ public class Player {
             // 입력값 중복 확인 (추가)
 
             // 볼,스트라이크 체크
-            printHint(countStrike(gameNumber,inputNumber),countBall(gameNumber,inputNumber));
-            //
-            if(gameNumber.compareTo(inputNumber)==0){
+            int strike = countStrike(gameNumber,inputNumber);
+            int ball = countBall(gameNumber,inputNumber);
+            printHint(strike,ball);
+
+            // 3스트라이크 게임 종료
+            if(checkResult(strike)){
                 break;
             }
         }
