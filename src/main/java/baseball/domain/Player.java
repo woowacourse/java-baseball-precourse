@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.validator.NumberFormatValidator;
+import baseball.validator.PlayerNumberFormatValidator;
 
 import java.util.Scanner;
 
@@ -14,8 +14,12 @@ public class Player {
 
     public void getInputValue(){
         number = scanner.nextLine();
-        if(!NumberFormatValidator.validate(number)){
+        if(!PlayerNumberFormatValidator.validate(number)){
             throw new IllegalArgumentException();
         }
+    }
+
+    public String getNumber(){
+        return this.number;
     }
 }
