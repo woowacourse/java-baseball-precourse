@@ -43,7 +43,7 @@ public class Application {
 		int ball = HintService.getBall();
 		int strike = HintService.getStrike();
 
-		printResult(ball, strike);
+		printHint(ball, strike);
 
 		if (strike != MAX_BALL_CNT) {
 			userPlay(scanner);
@@ -65,7 +65,7 @@ public class Application {
 		}
 	}
 
-	public static void printResult(int ball, int strike) {
+	public static void printHint(int ball, int strike) {
 		StringBuilder hint = new StringBuilder();
 
 		if (ball != ZERO) {
