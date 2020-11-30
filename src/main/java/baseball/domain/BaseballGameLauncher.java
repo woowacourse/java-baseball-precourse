@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.view.GameView;
+
 import java.util.Scanner;
 
 import static baseball.view.IllegalArgumentExceptionView.PLEASE_INPUT_ONE_OR_TOW;
@@ -27,7 +29,7 @@ public class BaseballGameLauncher {
     }
 
     private static void confirmGameRestart(Scanner scanner) {
-        System.out.println("게임을 새로 시작하시려면 1, 종료하시려면 2를 입력하세요.");
+        GameView.printExecuteOrTerminate();
         String confirm = scanner.nextLine();
         if (confirm.equals("1")) {
             play(scanner);
