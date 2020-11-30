@@ -26,9 +26,9 @@ public class BaseBallGameController {
             } else if (score[0] == 0 && score[1] == 0) {
                 System.out.println("낫싱");
             } else if (score[0] == 0) {
-                System.out.println(score[1] + "스트라이크");
+                System.out.println(score[1] + "볼");
             } else if (score[1] == 0) {
-                System.out.println(score[0] + "볼");
+                System.out.println(score[0] + "스트라이크");
             } else {
                 System.out.println(score[1] + " 볼 " + score[0] + "스트라이크");
             }
