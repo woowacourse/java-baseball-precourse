@@ -16,7 +16,6 @@ public class Game {
         while (scanner.hasNext()) {
             guessNumber = scanner.nextLine();
             if (!Validate.isValidate(guessNumber)){
-                System.out.println(MSG_INPUT_ERROR);
                 System.out.print(MSG_SHOULD_TYPE_3_DIFFERENT_DIGITS);
                 continue;
             }

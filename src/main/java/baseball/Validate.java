@@ -2,20 +2,44 @@ package baseball;
 
 public class Validate {
     public static boolean isValidate(String number) {
-        if (number.length() != 3) {
-            System.out.println("입력 오류: 3자리 숫자가 아닙니다.");
+        try {
+            if (isInteger(number) && !hasZero(number) &&!exceedNumberSize(number) && !hasDuplicateNumber(number)) {
+                return true;
+            }
+        } catch (IllegalArgumentException e){
+            System.out.println(e);
             return false;
         }
-        for (int i = 0; i < 3; i++) {
-            if (number.charAt(i) < '1' || number.charAt(i) > '9') {
-                return false;
+        return true;
+    }
+    private static boolean isInteger(String guess) {
+        try {
+            Integer.parseInt(guess);
+            return true;
+        } catch (NumberFormatException exception){
+            throw new IllegalArgumentException("입력 오류: 숫자가 아닙니다.");
+        }
+    }
+    private static boolean hasZero(String guess) {
+        for (int i = 0; i < guess.length(); i++) {
+            if (guess.charAt(i) < '1' || guess.charAt(i) > '9') {
+                throw new IllegalArgumentException("입력 오류: 숫자에 0포함");
             }
         }
-        char first = number.charAt(0);
-        char second = number.charAt(1);
-        char third = number.charAt(2);
+        return false;
+    }
+    private static boolean exceedNumberSize(String guess) {
+        if (guess.length() != 3) {
+            throw new IllegalArgumentException("입력 오류: 세자리 숫자가 아님");
+        }
+        return false;
+    }
+    private static boolean hasDuplicateNumber(String guess) {
+        char first = guess.charAt(0);
+        char second = guess.charAt(1);
+        char third = guess.charAt(2);
         if (first == second || first == third || second == third) {
-            return false;
+            throw new IllegalArgumentException("입력 오류: 중복된 숫자 존재");
         }
         return true;
     }
