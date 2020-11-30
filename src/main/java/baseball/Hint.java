@@ -1,8 +1,6 @@
 package baseball;
 
 public class Hint {
-    private static final int NUMBER_LEN = 3;
-
     int strike;
     int ball;
 
@@ -14,7 +12,7 @@ public class Hint {
     public void countHint(int[] computerAnswer, int[] userAnswer) {
         initCount();
 
-        for (int i = 0; i < NUMBER_LEN; i++) {
+        for (int i = 0; i < Constant.NUMBER_LEN; i++) {
             countStrike(computerAnswer[i], userAnswer[i]);
             countBall(computerAnswer, userAnswer[i], i);
         }
@@ -32,7 +30,7 @@ public class Hint {
     }
 
     private void countBall(int[] computerAnswer, int userNum, int userNumIdx) {
-        for (int i = 0; i < NUMBER_LEN; i++) {
+        for (int i = 0; i < Constant.NUMBER_LEN; i++) {
             if (i != userNumIdx && computerAnswer[i] == userNum) {
                 this.ball++;
             }

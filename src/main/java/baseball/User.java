@@ -3,14 +3,10 @@ package baseball;
 import java.util.Scanner;
 
 public class User {
-    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final int NUMBER_LEN = 3;
-    private static final int MAX_VALUE = 9;
-
-    int[] userNumber = new int[NUMBER_LEN];
+    int[] userNumber = new int[Constant.NUMBER_LEN];
 
     public void enterNumber(Scanner scanner) {
-        System.out.println(INPUT_MESSAGE);
+        System.out.println(Constant.INPUT_MESSAGE);
         String number = scanner.next();
 
         if (isValidInput(number)) {
@@ -49,12 +45,12 @@ public class User {
     }
 
     private boolean isRightLength(String number) {
-        return number.length() == NUMBER_LEN;
+        return number.length() == Constant.NUMBER_LEN;
     }
 
     private boolean isNotDuplicate(String number) {
         int eachNum;
-        boolean[] alreadyUse = new boolean[MAX_VALUE + 1];
+        boolean[] alreadyUse = new boolean[Constant.MAX_VALUE + 1];
 
         for (int i = 0; i < number.length(); i++) {
             eachNum = Character.getNumericValue(number.charAt(i));
