@@ -22,7 +22,7 @@ public class HintPrinter {
     }
 
     public static void printNothing() {
-        System.out.println(NOTHING_MESSAGE);
+        System.out.print(NOTHING_MESSAGE);
     }
 
     public static void printBall(int ball) {
