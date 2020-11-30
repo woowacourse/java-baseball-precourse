@@ -1,5 +1,13 @@
 package baseball;
-
+/*
+ * Comparator
+ *
+ * version 1.0
+ *
+ * 2020.11.30
+ *
+ * Copyright (c) by Davinci.J
+ */
 import java.util.*;
 
 public class Comparator {
