@@ -10,15 +10,16 @@ public class Game {
     }
 
     public static void playGame(Scanner scanner) {
-        playRound(scanner);
+        boolean correct;
+        do {
+            correct = playRound(scanner);
+        } while(!correct);
+        GameResetter.printFinishMessage();
     }
 
-    public static void playRound(Scanner scanner) {
-        boolean ongoing = true;
-        do {
-            int guess = UserInputScanner.getGuess(scanner);
-            boolean correct = roundResult(answer, guess);
-        } while (ongoing);
+    public static boolean playRound(Scanner scanner) {
+        int guess = UserInputScanner.getGuess(scanner);
+        return roundResult(answer, guess);
     }
 
     public static boolean roundResult(int answer, int guess) {
