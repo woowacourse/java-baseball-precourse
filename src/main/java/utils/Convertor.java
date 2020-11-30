@@ -7,7 +7,8 @@ import java.util.Set;
 
 public class Convertor {
 
-    public Convertor() {}
+    public Convertor() {
+    }
 
     public static List<Integer> stringToIntList(String target) {
         Set<Integer> result = new HashSet<>();
