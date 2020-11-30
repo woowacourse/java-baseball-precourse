@@ -11,10 +11,12 @@ public class BaseballGame {
     private Computer computer;
     private User user = new User();
 
+    private final int SIZE = 3;
+
     /**
      * 숫자 야구 게임을 시작하는 메서드
      */
-    public void startGame() {
+    public void playGame() {
         computer = new Computer();
         Scanner scanner = new Scanner(System.in);
 
@@ -59,7 +61,7 @@ public class BaseballGame {
         int strike = 0;
         int ball = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < SIZE; i++) {
 
             if (isStrike(i)) {
                 strike++;
