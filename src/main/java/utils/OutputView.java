@@ -8,7 +8,7 @@ public class OutputView {
         if(strike == BALLS_LENGTH){
             System.out.println(strike+HINT_STRIKE);
         }else if (strike ==0 && ball ==0) {
-            System.out.println(ball+HINT_NOTHING);
+            System.out.println(HINT_NOTHING);
         }else if (strike == 0){
             System.out.println(ball+HINT_BALL);
         }else if (ball == 0){
@@ -16,5 +16,13 @@ public class OutputView {
         }else{
             System.out.println(ball+HINT_BALL+" "+strike+HINT_STRIKE);
         }
+    }
+
+    public static void printGameEnd(){
+        System.out.println(BALLS_LENGTH+GAME_END);
+    }
+
+    public static void printRestart(){
+        System.out.println(SELECT_GAME_RESTART_OR_END);
     }
 }

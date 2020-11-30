@@ -19,6 +19,14 @@ public class BaseballGame {
         ball = 0;
     }
 
+    public boolean isGameEnd(){
+        if(strike == BALLS_LENGTH){
+            OutputView.printGameEnd();
+            return true;
+        }
+        return false;
+    }
+
     public void inputPlayerBalls(){
         player.inputBalls();
     }

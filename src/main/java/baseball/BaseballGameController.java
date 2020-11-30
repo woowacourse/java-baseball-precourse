@@ -1,5 +1,7 @@
 package baseball;
 
+import utils.OutputView;
+
 import java.util.Scanner;
 
 public class BaseballGameController {
@@ -19,12 +21,14 @@ public class BaseballGameController {
 
     private void playGame() {
         baseballGame = new BaseballGame(scanner);
-        baseballGame.inputPlayerBalls();
-        baseballGame.getHint();
+        while (!baseballGame.isGameEnd()) {
+            baseballGame.inputPlayerBalls();
+            baseballGame.getHint();
+        }
     }
 
     private boolean checkReplay() {
-        return false;
+        
     }
 
 }
