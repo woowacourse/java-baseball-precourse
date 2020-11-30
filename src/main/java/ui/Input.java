@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Input {
     public static String receiveNumberInput(Scanner scanner) {
         Output.printRequestNumberInput();
-        return scanner.next();
+        return scanner.nextLine();
     }
 
     public static int receiveRestartGameInput(Scanner scanner) {

@@ -4,24 +4,25 @@ import ui.Output;
 import utils.RandomUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Computer {
     private final static int START_VALUE_IN_RANDOM_NUMBER_RANGE = 1;
     private final static int END_VALUE_IN_RANDOM_NUMBER_RANGE = 9;
     private final static int VALID_NUMBER_SIZE = 3;
     private final static int STRIKE_FULL_COUNT = 3;
-    private ArrayList<Integer> answer = new ArrayList<>();
-    private int strikeCount;
-    private int ballCount;
+    private Balls balls;
+    private List<Integer> randomBalls = new ArrayList<>();
 
     public Computer() {
-        makeRandomAnswer();
+        this.balls = new Balls(makeRandomBalls());
     }
 
-    public boolean isCorrectAnswer(String[] userInput) {
-        strikeCount = 0;
-        ballCount = 0;
-        countStrikeAndBall(userInput);
+    public boolean isCorrectAnswer(List<Integer> inputBalls) {
+        System.out.println("inputBalls : " + inputBalls);
+        int ballCount = balls.countBall(inputBalls);
+        int strikeCount = balls.countStrike(inputBalls);
+
         Output.printBallOrStrikeCount(strikeCount, ballCount);
         if (strikeCount == STRIKE_FULL_COUNT) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -30,41 +31,16 @@ public class Computer {
         return false;
     }
 
-    public void resetAnswer() {
-        answer = new ArrayList<>();
-        makeRandomAnswer();
-    }
-
-    private void countStrikeAndBall(String[] userInput) {
-        ArrayList<Integer> convertedUserInputToInteger = new ArrayList<>();
-        for (String x : userInput) {
-            convertedUserInputToInteger.add(Integer.parseInt(x));
-        }
-        for (int i = 0; i < answer.size(); i++) {
-            checkStrikeOrBallAndCount(answer.get(i), convertedUserInputToInteger.get(i));
-        }
-    }
-
-    private void checkStrikeOrBallAndCount(int oneNumberOfAnswer, int oneNumberOfInput) {
-        if (oneNumberOfAnswer == oneNumberOfInput) {
-            strikeCount++;
-            return;
-        }
-        if (answer.contains(oneNumberOfInput)) {
-            ballCount++;
-            return;
-        }
-    }
-
-    private void makeRandomAnswer() {
+    private List<Integer> makeRandomBalls() {
         int randomNumber = RandomUtils.nextInt(
                 START_VALUE_IN_RANDOM_NUMBER_RANGE,
                 END_VALUE_IN_RANDOM_NUMBER_RANGE);
-        if (!answer.contains(randomNumber)) {
-            answer.add(randomNumber);
+        if (!randomBalls.contains(randomNumber)) {
+            randomBalls.add(randomNumber);
         }
-        if (answer.size() != VALID_NUMBER_SIZE) {
-            makeRandomAnswer();
+        if (randomBalls.size() != VALID_NUMBER_SIZE) {
+            makeRandomBalls();
         }
+        return randomBalls;
     }
 }
