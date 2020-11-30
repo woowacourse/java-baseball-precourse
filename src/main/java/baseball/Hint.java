@@ -34,14 +34,14 @@ public class Hint implements IHint {
     private int getNumOfBalls(int[] playerNumbers, int[] computerNumbers) {
         int numOfBalls = 0;
         for (int i = 0; i < playerNumbers.length; i++) {
-            if (hasNumberInComputerNums(computerNumbers, playerNumbers[i], i)) {
+            if (hasNumberInComputerNumbers(computerNumbers, playerNumbers[i], i)) {
                 numOfBalls++;
             }
         }
         return numOfBalls;
     }
 
-    private boolean hasNumberInComputerNums(int[] computerNumbers, int num, int index) {
+    private boolean hasNumberInComputerNumbers(int[] computerNumbers, int num, int index) {
         for (int i = 0; i < computerNumbers.length; i++) {
             if (i != index && num == computerNumbers[i]) {
                 return true;
