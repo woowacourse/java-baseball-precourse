@@ -1,5 +1,13 @@
 package baseball;
-
+/*
+ * GamePlayer
+ *
+ * version 1.0
+ *
+ * 2020.11.30
+ *
+ * Copyright (c) by Davinci.J
+ */
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
