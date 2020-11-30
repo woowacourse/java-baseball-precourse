@@ -33,7 +33,7 @@ public class BaseballGameController {
 
     public void play() {
         while (true) {
-            BaseballNumber playerBaseballNumber = createBaseball();
+            BaseballNumber playerBaseballNumber = createPlayerBaseball();
             if (isBingo(playerBaseballNumber)) {
                 showBingoMessage();
                 choiceRestartOrFinish();
@@ -43,7 +43,7 @@ public class BaseballGameController {
         }
     }
 
-    private BaseballNumber createBaseball() {
+    private BaseballNumber createPlayerBaseball() {
         showInputMessage();
         return player.createBaseballNumber(getInput());
     }
