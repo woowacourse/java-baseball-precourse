@@ -11,8 +11,7 @@ public class CheckResult {
     private final static String ONLY_BALL = "%d볼\n";
     private final static String ONLY_STRIKE = "%d스트라이크\n";
     private final static String BALL_AND_STRIKE = "%d볼 %d스트라이크\n";
-    private final static String CORRECT_ANSWER = "3개의 숫자를 모두 맞추셨습니다! 게임 종료.\n" +
-            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final static String CORRECT_ANSWER = "3개의 숫자를 모두 맞추셨습니다! 게임 종료.";
 
     private final String random;
     private final String input;

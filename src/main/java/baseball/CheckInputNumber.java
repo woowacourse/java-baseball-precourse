@@ -7,20 +7,14 @@ import java.util.*;
  */
 public class CheckInputNumber {
 
-    private static final String PLAYER_INPUT_MESSAGE = "3자리의 서로 다른 숫자를 입력해주세요.";
+    private static final String PLAYER_INPUT_EXCEPTION_MESSAGE = "3자리의 서로 다른 숫자를 입력해주세요.";
     private static final String PLAYER_RESTART_INPUT_EXCEPTION_MESSAGE = "1(다시 시작) 또는 2(종료)를 입력해주세요.";
     private static final String[] oneOrTwo = {"1", "2"};
-    private final Scanner scanner;
 
-    public CheckInputNumber(Scanner scanner) {
-        this.scanner = scanner;
-    }
 
-    public String inputNumber() {
-        System.out.print(PLAYER_INPUT_MESSAGE);
-        String input = scanner.nextLine();
+    public String inputNumber(String input) {
         if (!isValid(input)) {
-            throwInputException(PLAYER_INPUT_MESSAGE);
+            throwInputException(PLAYER_INPUT_EXCEPTION_MESSAGE);
         }
         return input;
     }

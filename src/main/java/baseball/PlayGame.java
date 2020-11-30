@@ -7,15 +7,13 @@ import java.util.Scanner;
  */
 public class PlayGame {
 
-    private final CheckInputNumber checkInputNumber;
     private final CheckRandomNumber checkRandomNumber;
-    private final Scanner scanner;
+    private final InputHandler inputHandler;
     private boolean goStop;
 
     public PlayGame(Scanner scanner) {
-        this.scanner = scanner;
-        this.checkInputNumber = new CheckInputNumber(scanner);
-        this.checkRandomNumber = new CheckRandomNumber(scanner);
+        this.inputHandler = new InputHandler(scanner);
+        this.checkRandomNumber = new CheckRandomNumber();
     }
 
     public void start() {
@@ -28,19 +26,12 @@ public class PlayGame {
     private void play() {
         boolean win = false;
         String random = checkRandomNumber.makeRandomNumber();
-        System.out.println(random);
 
         while (!win) {
-            String input = checkInputNumber.inputNumber();
+            String input = inputHandler.inputValue();
             CheckResult checkResult = new CheckResult(input, random);
             win = checkResult.correctNumbers();
         }
-        continueGame(scanner.nextLine());
-    }
-
-    private void continueGame(String input) {
-        if (!(checkInputNumber.oneOrTwo(input))) {
-            goStop = false;
-        }
+        goStop = inputHandler.restartValue();
     }
 }
