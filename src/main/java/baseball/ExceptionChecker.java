@@ -1,14 +1,18 @@
 package baseball;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public class ExceptionChecker {
-    
+    private static final String ONLY_NUM = "^[1-9]+$";
+
     static boolean checkChoiceException(String userChoice) {
         try {
             if (userChoice.length() != 3) {
                 throw new IllegalArgumentException();
             } else if (userChoice.charAt(0) == userChoice.charAt(1) || userChoice.charAt(1) == userChoice.charAt(2) || userChoice.charAt(0) == userChoice.charAt(2)) {
                 throw new IllegalArgumentException();
-            } else if(userChoice.charAt(0) == '0' || userChoice.charAt(1) == '0' || userChoice.charAt(2) == '0') {
+            } else if (!numberCheck(userChoice)) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
@@ -17,6 +21,13 @@ public class ExceptionChecker {
         }
         
         return false;        
+    }
+
+    static boolean numberCheck(String str) {
+        Pattern p = Pattern.compile(ONLY_NUM);
+        Matcher m = p.matcher(str);
+
+        return m.find();
     }
 
     static boolean checkCoinException(String gameCoin) {
