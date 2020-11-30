@@ -1,5 +1,13 @@
 package baseball;
-
+/*
+ * Application
+ *
+ * version 1.0
+ *
+ * 2020.11.30
+ *
+ * Copyright (c) by Davinci.J
+ */
 import java.util.Scanner;
 
 public class Application {
@@ -32,10 +40,9 @@ public class Application {
 
     private static int playGame(Competitor competitor, GamePlayer gamePlayer) {
         try {
-            String generatedNumbersOfPlayer = gamePlayer.generateNumbersOfPlayerEntered();
             String comparativeResult = Comparator.compareNumbersOfCompetitorAndPlayer(
                                             competitor.getGeneratedRandomNumbers(),
-                                            generatedNumbersOfPlayer);
+                                            gamePlayer.generateNumbersOfPlayerEntered());
 
             System.out.println(comparativeResult);
             if (!comparativeResult.equals(GAME_EXIT_CONDITIONS)) {
