@@ -8,7 +8,7 @@ import java.util.Set;
 public class Competitor {
     private static final int FIRST_BOUNDARY_VALUE = 1;
     private static final int LAST_BOUNDARY_VALUE = 9;
-    private static final int RANDOM_NUMBER_COUNT = 3;
+    private static final int COUNT_LIMIT = 3;
 
     private final String generatedRandomNumbers;
 
@@ -22,13 +22,13 @@ public class Competitor {
 
     private String generateRandomNumbers(){
         Set<Integer> randomNumbers = new LinkedHashSet<>();
-        while(randomNumbers.size() != RANDOM_NUMBER_COUNT){
+        while(randomNumbers.size() < COUNT_LIMIT){
             randomNumbers.add(RandomUtils.nextInt(FIRST_BOUNDARY_VALUE, LAST_BOUNDARY_VALUE));
         }
-        return getRandomNumbersConvertedToString(randomNumbers);
+        return convertRandomNumbersIntoString(randomNumbers);
     }
 
-    private static String getRandomNumbersConvertedToString(Set<Integer> randomNumbers){
+    private static String convertRandomNumbersIntoString(Set<Integer> randomNumbers){
         StringBuilder sb = new StringBuilder();
         for(Integer randomNumber : randomNumbers){
             sb.append(randomNumber);
