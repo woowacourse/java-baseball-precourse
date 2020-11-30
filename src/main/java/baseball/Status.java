@@ -25,16 +25,16 @@ public class Status {
 
     private long checkStrikes(Baseballs answerBalls, Baseballs guessingBalls) {
         return guessingBalls.getBalls().stream()
-                .filter(x -> answerBalls.getBalls().contains(x))
-                .filter(x -> isInSameIndex(x, answerBalls, guessingBalls))
-                .count();
+            .filter(x -> answerBalls.getBalls().contains(x))
+            .filter(x -> isInSameIndex(x, answerBalls, guessingBalls))
+            .count();
     }
 
     private long checkBalls(Baseballs answerBalls, Baseballs guessingBalls) {
         return guessingBalls.getBalls().stream()
-                .filter(x -> answerBalls.getBalls().contains(x))
-                .filter(x -> isInDifferentIndex(x, answerBalls, guessingBalls))
-                .count();
+            .filter(x -> answerBalls.getBalls().contains(x))
+            .filter(x -> isInDifferentIndex(x, answerBalls, guessingBalls))
+            .count();
     }
 
     private boolean isInSameIndex(int x, Baseballs answerBalls, Baseballs guessingBalls) {

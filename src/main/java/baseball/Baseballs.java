@@ -24,8 +24,8 @@ public class Baseballs {
     public Baseballs(String rawBallsInput) {
         validate(rawBallsInput);
         balls = Stream.of(rawBallsInput.split(INPUT_DELIMITER))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
     }
 
     public List<Integer> getBalls() {
@@ -57,7 +57,7 @@ public class Baseballs {
 
     private boolean hasNonNumerical(String input) {
         return Stream.of(input.split(INPUT_DELIMITER))
-                .anyMatch(x -> !Character.isDigit(x.charAt(0)));
+            .anyMatch(x -> !Character.isDigit(x.charAt(0)));
     }
 
     private void validateNoZero(String rawBallsInput) {
@@ -68,8 +68,8 @@ public class Baseballs {
 
     private boolean hasZero(String input) {
         return Stream.of(input.split(INPUT_DELIMITER))
-                .map(Integer::parseInt)
-                .anyMatch(x -> x == ZERO);
+            .map(Integer::parseInt)
+            .anyMatch(x -> x == ZERO);
     }
 
     private void validateNoDuplicate(String rawBallsInput) {
@@ -80,8 +80,8 @@ public class Baseballs {
 
     private boolean hasDuplicate(String input) {
         Set<Integer> temporaryBalls = Stream.of(input.split(INPUT_DELIMITER))
-                .map(Integer::parseInt)
-                .collect(Collectors.toSet());
+            .map(Integer::parseInt)
+            .collect(Collectors.toSet());
         return temporaryBalls.size() != BALLS_CONTAINER_SIZE;
     }
 }
