@@ -100,7 +100,7 @@ public class GameController {
 
     private void isRestart() {
         //TODO 임시:InputConroller,ConsoleView에 기능 추가
-        System.out.println("다시?");
+        consoleView.printRestart();
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         GameStatus gameStatus ;

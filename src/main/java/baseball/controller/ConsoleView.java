@@ -12,6 +12,7 @@ public class ConsoleView {
 
     private static final int SUCCESS_REQUIRE_COUNT = 3;
     private static final int NONE_USEFUL_NUMBER = 0;
+    private static String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String GAME_CLEAR_MESSAGE =
             String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료",SUCCESS_REQUIRE_COUNT);
 
@@ -71,6 +72,10 @@ public class ConsoleView {
         if(count > Validator.REQUIRE_NUMBER_COUNT || count < NONE_USEFUL_NUMBER){
             throw new IllegalArgumentException();
         }
+    }
+
+    public void printRestart() {
+        System.out.println(GAME_RESTART_MESSAGE);
     }
 
 }
