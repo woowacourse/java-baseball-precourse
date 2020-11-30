@@ -40,7 +40,7 @@ public class GameManager {
             try {
                 myBalls = Balls.stringToBalls(scanner.next());  // 사용자 생성 balls
             } catch (NumberFormatException e) {
-                System.out.println("3개의 1~9 사이의 수만 입력할 수 있습니다."); // TODO 예외 어떻게 잡을까
+                System.out.println("3개의 1~9 사이의 수만 입력할 수 있습니다.");
             }
         }
         return myBalls;
