@@ -1,5 +1,6 @@
-package utils;
+package baseball;
 
+import utils.RandomUtils;
 import java.util.HashSet;
 import java.util.Set;
 

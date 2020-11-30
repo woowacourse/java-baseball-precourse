@@ -1,4 +1,4 @@
-package utils;
+package baseball;
 
 /**
  * 입력된 값을 난수와 비교하여 결과를 내놓는 클래스

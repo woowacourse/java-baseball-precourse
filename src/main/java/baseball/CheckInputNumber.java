@@ -1,5 +1,6 @@
-package utils;
+package baseball;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -9,8 +10,9 @@ import java.util.Set;
  */
 public class CheckInputNumber {
 
-	private static final String PLAYER_INPUT_MESSAGE = "숫자를 입력해주세요.";
-	Scanner scanner;
+	private static final String PLAYER_INPUT_MESSAGE = "3자리의 서로 다른 숫자를 입력해주세요.";
+	private final String[] oneOrTwo = {"1","2"};
+	private final Scanner scanner;
 
 	public CheckInputNumber(Scanner scanner){
 		this.scanner = scanner;
@@ -42,19 +44,26 @@ public class CheckInputNumber {
 		return true;
 	}
 
+	public boolean isValidateRestart(String input){
+		if(oneOrTwo(input)){
+			return true;
+		}
+		return false;
+	}
+
 	private boolean isUnique(String input){
 		Set<String> set = new HashSet<>();
 		for(int i=0; i<input.length(); i++) {
 			set.add(input.substring(i,i+1));
 		}
-		if(set.size()==3){
-			return true;
-		}
-		return false;
+		return (set.size()==3);
 	}
 
 	private boolean isValidInteger(char inputChar) {
 		return !(inputChar < 49 || inputChar > 57);
 	}
 
+	private boolean oneOrTwo(String input){
+		return (Arrays.stream(oneOrTwo).anyMatch(input::equals));
+	}
 }
