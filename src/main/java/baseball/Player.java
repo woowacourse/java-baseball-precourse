@@ -13,7 +13,7 @@ public class Player {
 
 	public char[] userNumbersArray(String string) {
 		char[] userInputNumbersArray = string.toCharArray();
-		Validator.checkOverInputNumbers(userInputNumbersArray);
+		Validator.checkRangeNumbers(userInputNumbersArray);
 		Validator.checkOverlapInputNumbers(userInputNumbersArray);
 		return userInputNumbersArray;
 	}
