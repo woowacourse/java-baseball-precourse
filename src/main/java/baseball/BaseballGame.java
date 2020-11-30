@@ -16,24 +16,16 @@ public class BaseballGame {
     }
 
     public void play(){
-        final Numbers targetNumbers = getNewTargetNumbers();
+        final Numbers target = NumbersFactory.createRandomNumbers();
 
         do{
-            Numbers userNumbers = readNumber();
-            Score score = calculateScore(targetNumbers, userNumbers);
-            printScore(score);
+            Numbers guess = InputView.getNumbers(scanner);
+            Score score = calculateScore(target, guess);
+            OutputView.printScore(score);
             checkGameOver(score);
         }while(!isGameEnd);
 
         OutputView.printGameOver();
-    }
-
-    private Numbers getNewTargetNumbers(){
-         return NumbersFactory.createRandomNumbers();
-    }
-
-    private Numbers readNumber(){
-        return InputView.getNumbers(scanner);
     }
 
     private Score calculateScore(Numbers target, Numbers guess){
@@ -41,10 +33,6 @@ public class BaseballGame {
         int ballCnt = GameRule.countBall(target, guess);
 
         return new Score(strikeCnt, ballCnt);
-    }
-
-    private void printScore(Score score){
-        OutputView.printScore(score);
     }
 
     private void checkGameOver(Score score){
