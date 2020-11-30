@@ -8,8 +8,9 @@ public class GameEmulator {
     static void startEmulator() {
         while (gameCoin) {
             GameComputer gameCom = new GameComputer();
-            String computerChoice = gameCom.chooseChoice();
+            String computerChoice = gameCom.computerChoice.choice;
             boolean gameOver = false;
+            System.out.print(computerChoice);
             isGameOver(gameOver, computerChoice);
             gameCoin = checkGameCoin();
         }

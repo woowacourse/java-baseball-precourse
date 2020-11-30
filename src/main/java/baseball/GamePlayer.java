@@ -2,14 +2,14 @@ package baseball;
 
 import java.util.Scanner;
 
-public class GamePlayer implements BallChoice {
-    String userChoice;
+public class GamePlayer {
+    BallChoice userChoice = new BallChoice();
 
-    public String chooseChoice() {
+    public void chooseChoice() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
-        String userChoice = scanner.nextLine();
-        ExceptionChecker.checkException(userChoice);
-        return userChoice;
+        String choice = scanner.nextLine();
+        ExceptionChecker.checkException(choice);
+        userChoice.choice = choice;
     }
 }
