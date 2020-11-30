@@ -62,6 +62,17 @@ public class Balls {
         return Arrays.toString(this.balls.toArray());
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Balls balls;
+        if (obj instanceof Balls) {
+            balls = (Balls) obj;
+        } else {
+            throw new ClassCastException(this.getClass().getName() + " 객체 끼리만 비교가 가능합니다.");
+        }
+        return this.balls.equals(balls.balls);
+    }
+
     private Ball get(int index) {
         return balls.get(index);
     }
