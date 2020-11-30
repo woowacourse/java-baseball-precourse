@@ -2,6 +2,8 @@ package baseball.domain;
 
 import java.util.Scanner;
 
+import static baseball.view.IllegalArgumentExceptionView.PLEASE_INPUT_ONE_OR_TOW;
+
 public class BaseballGameLauncher {
 
     public static void play(Scanner scanner) {
@@ -30,7 +32,7 @@ public class BaseballGameLauncher {
         if (confirm.equals("1")) {
             play(scanner);
         } else if (!confirm.equals("2")) {
-            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+            throw new IllegalArgumentException(PLEASE_INPUT_ONE_OR_TOW);
         }
     }
 }
