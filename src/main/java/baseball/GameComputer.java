@@ -33,14 +33,14 @@ public class GameComputer {
 
     static void isGameOver(boolean gameOver, BallChoice computerChoice) {
         while (!gameOver) {
-            gameOver = GameComputer.startGame(computerChoice.choice);
+            gameOver = GameComputer.startGame(computerChoice);
         }
     }
 
-    static boolean startGame(String computerChoice) {
+    static boolean startGame(BallChoice computerChoice) {
         GamePlayer player = new GamePlayer();
         player.chooseChoice();
-        int strike = GameUmpire.umpirePitch(computerChoice, player.userChoice.choice);
+        int strike = GameUmpire.umpirePitch(computerChoice, player.userChoice);
         if (strike == BallChoice.CHOICE_SIZE) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;

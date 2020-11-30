@@ -1,18 +1,18 @@
 package baseball;
 
 public class GameUmpire {
-    
-    static int umpirePitch(String computerChoice, String userChoice) {
+
+    static int umpirePitch(BallChoice computerChoice, BallChoice userChoice) {
         int strike = 0;
         int ball = 0;
-        for (int i = 0; i < computerChoice.length(); i++) {
-            if (computerChoice.charAt(i) == userChoice.charAt(i)) {
+        for (int i = 0; i < computerChoice.choice.length(); i++) {
+            if (computerChoice.choice.charAt(i) == userChoice.choice.charAt(i)) {
                 strike += 1;
             }
         }
 
-        for (int i = 0; i < userChoice.length(); i++) {
-            if (calculateBall(computerChoice, userChoice.charAt(i))) {
+        for (int i = 0; i < userChoice.choice.length(); i++) {
+            if (calculateBall(computerChoice, userChoice.choice.charAt(i))) {
                 ball += 1;
             }
         }
@@ -22,11 +22,11 @@ public class GameUmpire {
         return strike;
     }
 
-    static boolean calculateBall(String computerChoice, int pitch) {
+    static boolean calculateBall(BallChoice computerChoice, int pitch) {
         boolean ball = false;
 
-        for (int i = 0; i<computerChoice.length(); i++) {
-            if (computerChoice.charAt(i) == pitch) {
+        for (int i = 0; i<computerChoice.choice.length(); i++) {
+            if (computerChoice.choice.charAt(i) == pitch) {
                 ball = true;
             }
         }
