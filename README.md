@@ -19,26 +19,24 @@
 6. 심판 객체
 
 ## 각 객체의 속성(변수)과 기능(메서드) 판단하기
-1. 
-속성: 게임 코인
-기능: 게임 시작시키기, 게임 코인 여부 판단하기
-2.
-속성: 해당 게임의 정답 값
-기능: 정답 값 선택하기
-3.
-속성: 추측 값
-기능: 추측 값 선택하기
-4. 
-속성: 필요x
-기능: 코인 입력 값 유효성 판단하기, 추측 값 유효성 판단하기
-
-5.
-속성: 1~9 세자리로 구성된 숫자
-기능: 필요 x
-
-6.
+1.  GameEmulator
+속성: 게임 코인(gameCoin)
+기능: 게임 시작시키기(startEmulator), 게임 코인 여부 판단하기(checkGameCoin)
+2. GameComputer
+속성: 해당 게임의 정답 값(computerChoice)
+기능: 정답 값 선택하기(chooseChoice), 게임 종료 여부 판단하기(isGameOver), 유저에게 게임 시작시키기(startGame)
+3. GamePlayer
+속성: 추측 값(userChoice)
+기능: 추측 값 선택하기(chooseChoice)
+4. ExceptionChecker
+속성: 
+기능: 코인 입력 값 유효성 판단하기(checkCoinException), 추측 값 유효성 판단하기(checkChoiceException), 숫자입력 여부 판단하기(numberCheck)
+5. BallChoice
+속성: 값(choice)
+기능: 
+6. GameUmpire
 속성: 정답과 추측의 비교 판정 값
-기능: 정답과 추측 비교 판정하기
+기능: 정답과 추측 비교 판정하기(umpirePitch), 볼 계산하기(calculateBall), 힌트주기(callUmpire)
 
 ## 구현할 기능
 1. 게임 코인이 들어오는지 판단할 기능
@@ -49,3 +47,16 @@
 6. 유저가 값을 올바르게 입력했는지 확인하는 기능
 7. 정답 값과 추측 값을 비교하는 기능(strike&ball 계산)
 8. 비교 판정한 값을 통해 게임을 더 진행시킬 지 중단시킬 지 결정하는 기능
+
+## 구현한 기능
+1. 게임 코인이 들어오는지 판단할 기능(checkGameCoin)
+2. 게임 코인이 들어있으면 게임을 시작하는 기능(startEmulator)
+3. 게임 코인이 올바르게 들어오는지 확인하는 기능(checkCoinException)
+4. 정답가 값을 선택하는 기능(GameComputer.chooseChoice)
+4-2. 컴퓨터가 값을 선택하면 유저에게 입력시키는 기능(startGame)
+5. 유저가 값을 선택하는 기능(GamePlayer.chooseChoice)
+6, 유저가 값을 올바르게 입력했는지 확인하는 기능(checkChoiceException)
+7. 정답 값과 추측 값을 비교하는 기능(UmpirePitch)
+7-2. 볼을 계산하는 기능(calculateBall)
+7-3 힌트를 주는 기능(callUmpire)
+8. 비교 판정한 값을 통해 게임을 더 진행시킬 지 중단시킬 지 결정하는 기능(isGameOver)

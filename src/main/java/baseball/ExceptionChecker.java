@@ -19,7 +19,6 @@ public class ExceptionChecker {
             System.out.println("1~9의 각기 다른 3가지의 숫자를 입력해야 합니다");
             return true;
         }
-        
         return false;        
     }
 
@@ -39,8 +38,6 @@ public class ExceptionChecker {
             System.out.println("유효하지 않은 입력입니다.");
             return true;
         }
-
         return false;
     }
-
 }

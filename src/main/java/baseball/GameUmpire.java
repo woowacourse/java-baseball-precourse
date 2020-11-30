@@ -5,6 +5,7 @@ public class GameUmpire {
     static int umpirePitch(BallChoice computerChoice, BallChoice userChoice) {
         int strike = 0;
         int ball = 0;
+
         for (int i = 0; i < computerChoice.choice.length(); i++) {
             if (computerChoice.choice.charAt(i) == userChoice.choice.charAt(i)) {
                 strike += 1;
@@ -23,7 +24,6 @@ public class GameUmpire {
     }
 
     static boolean calculateBall(BallChoice computerChoice, int pitch) {
-
         if (computerChoice.choice.indexOf(pitch) == -1) {
             return false;
         } else {

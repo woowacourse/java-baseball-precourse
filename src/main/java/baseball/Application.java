@@ -8,5 +8,4 @@ public class Application {
         // TODO 구현 진행
         GameEmulator.startEmulator();
     }
-
 }
