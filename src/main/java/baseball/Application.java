@@ -23,21 +23,21 @@ class GameEngine{
         return answer;
     }
 
-  int getBallNum(String guessStr){
-      String answerStr = Integer.toString(this.answer);
-      int ballNum = 0;
+    int getBallNum(String guessStr){
+        String answerStr = Integer.toString(this.answer);
+        int ballNum = 0;
 
-      for(int i = 0; i < 3; i++){
-          for(int j = 0; j < 3; j++){
-              if(guessStr.indexOf(i) == answerStr.indexOf(j) && i != j){
-                  ballNum += 1;
-              }
-          }
-      }
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(guessStr.indexOf(i) == answerStr.indexOf(j) && i != j){
+                    ballNum += 1;
+                }
+            }
+        }
 
-      return ballNum;
+        return ballNum;
 
-  }
+    }
 
     int getStrikeNum(String guessStr){
         String answerStr = Integer.toString(this.answer);
@@ -50,6 +50,28 @@ class GameEngine{
         }
 
         return strikeNum;
+    }
+
+    String givingHint(int guess){
+        String guessStr = Integer.toString(guess);
+        String answerStr = Integer.toString(this.answer);
+        String hint = "";
+
+        int ballNum = this.getBallNum(guessStr);
+        int strikeNum = this.getStrikeNum(guessStr);
+
+        if(ballNum != 0){
+            hint += Integer.toString(ballNum) + "볼 ";
+        }
+
+        if(strikeNum != 0){
+            hint += Integer.toString(strikeNum) + "스트라이크";
+        }
+
+        if(ballNum == 0 && strikeNum == 0){
+            hint = "낫싱";
+        }
+        return hint;
     }
 
 };
