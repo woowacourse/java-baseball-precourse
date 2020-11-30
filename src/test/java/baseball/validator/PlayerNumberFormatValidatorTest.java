@@ -11,7 +11,7 @@ class NumberFormatValidatorTest {
         String givenNum = "124";
         //when
         //then
-        assertEquals(NumberFormatValidator.validate(givenNum), true);
+        assertEquals(PlayerNumberFormatValidator.validate(givenNum), true);
     }
 
     @Test
@@ -20,7 +20,7 @@ class NumberFormatValidatorTest {
         String givenNum = "12464";
         //when
         //then
-        assertEquals(NumberFormatValidator.validate(givenNum), false);
+        assertEquals(PlayerNumberFormatValidator.validate(givenNum), false);
     }
 
     @Test
@@ -29,6 +29,6 @@ class NumberFormatValidatorTest {
         String givenNum = "sdagbjklew";
         //when
         //then
-        assertEquals(NumberFormatValidator.validate(givenNum), false);
+        assertEquals(PlayerNumberFormatValidator.validate(givenNum), false);
     }
 }

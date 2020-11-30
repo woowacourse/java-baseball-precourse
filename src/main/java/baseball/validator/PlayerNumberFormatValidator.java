@@ -3,7 +3,7 @@ package baseball.validator;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class NumberFormatValidator {
+public class PlayerNumberFormatValidator {
     private static final int NUMBER_OF_NUMBERS = 3;
 
     public static boolean validate(String number){
