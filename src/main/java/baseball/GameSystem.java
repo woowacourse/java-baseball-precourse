@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.Scanner;
-
 import utils.RandomUtils;
 
 public class GameSystem {
@@ -37,6 +36,10 @@ public class GameSystem {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         setRestartOption(sc);
         endFlag = !restartOption;
+    }
+
+    public boolean getRestartOption() {
+        return restartOption;
     }
 
     private void setAnswer() {
@@ -110,10 +113,6 @@ public class GameSystem {
         if (strike == MAX_DIGIT) {
             endFlag = true;
         }
-    }
-
-    public boolean getRestartOption() {
-        return restartOption;
     }
 
     private void setRestartOption(Scanner sc) {
