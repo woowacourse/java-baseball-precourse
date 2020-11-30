@@ -25,6 +25,10 @@ public class Hint {
     }
 
     private void countBall(int[] computerAnswer, int userNum, int userNumIdx) {
-
+        for (int i = 0; i < NUMBER_LEN; i++) {
+            if (i != userNumIdx && computerAnswer[i] == userNum) {
+                this.ball++;
+            }
+        }
     }
 }
