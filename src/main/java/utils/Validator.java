@@ -7,14 +7,14 @@ public class Validator {
     public static final int REQUIRE_NUMBER_COUNT = 3;
     public static final int INPUT_MAX_NUMBER = 9;
     public static final int INPUT_MIN_NUMBER = 1;
-
-    private static final String INVALID_TYPE_MESSAGE = "숫자만 입력하세요.";
-    private static final String DUPLICATE_MESSAGE = "중복된 숫자가 있습니다.";
-    private static final String INVALID_NUMBER_MESSAGE = String.format("%d~%d의 범위에서 %d개를 선택하세요.ex)123,922"
-            , INPUT_MIN_NUMBER, INPUT_MAX_NUMBER, REQUIRE_NUMBER_COUNT);
     public static final int COMMAND_RESTART = 1;
     public static final int COMMAND_END = 2;
     private static final int COMMAND_LENGTH = 1;
+
+    private static final String INVALID_TYPE_MESSAGE = "숫자만 입력하세요.";
+    private static final String DUPLICATE_MESSAGE = "중복된 숫자가 있습니다.";
+    private static final String INVALID_NUMBER_MESSAGE = String.format("%d~%d의 범위에서 %d개를 선택하세요.ex)123,921"
+            , INPUT_MIN_NUMBER, INPUT_MAX_NUMBER, REQUIRE_NUMBER_COUNT);
 
 
     public static void validateInput(String input) {
@@ -23,13 +23,17 @@ public class Validator {
             throw new IllegalArgumentException(INVALID_TYPE_MESSAGE);
         }
 
-        if (!isValidLength(input) || input.contains("0")) {
+        if (!isValidLength(input) || isIncludeZero(input)) {
             throw new IllegalArgumentException(INVALID_NUMBER_MESSAGE);
         }
 
         if (hasDuplicate(input)) {
             throw new IllegalArgumentException(DUPLICATE_MESSAGE);
         }
+    }
+
+    private static boolean isIncludeZero(String input) {
+        return input.contains("0");
     }
 
     private static boolean isIntType(String input) {
