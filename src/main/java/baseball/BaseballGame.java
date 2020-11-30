@@ -58,6 +58,11 @@ public class BaseballGame {
     }
 
     public String generateAnswer() {
+        answer = "";
+        for (int i = 0; i < 3; i++) {
+            int randomNum = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
+            answer += Integer.toString(randomNum);
+        }
         return answer;
     }
 
