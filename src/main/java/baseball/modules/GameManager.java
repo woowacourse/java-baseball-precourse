@@ -61,24 +61,10 @@ public class GameManager {
                 continue;
             }
 
-            if (isContains(generatedNumber, inputNumber[i])) {
+            if (IntegerArrayUtils.isContains(generatedNumber, inputNumber[i])) {
                 ball++;
             }
         }
-    }
-
-    private boolean isContains(final int[] array, final int value) {
-        if (ExceptionChecker.isNull(array)) {
-            throw new IllegalArgumentException();
-        }
-
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == value) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     private void handleRoundEnd() {
