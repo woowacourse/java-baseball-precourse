@@ -2,18 +2,20 @@ package baseball;
 
 import java.util.HashSet;
 import java.util.Scanner;
-import utils.RandomUtils;
 
 public class Application {
-    private final int MIN_NUMBER_RANGE = 1;
-    private final int MAX_NUMBER_RANGE = 9;
     private final int INPUT_RESTART = 1;
     private final int INPUT_STOP = 2;
 
     private static boolean isPlaying = true;
 
+    private Computer computer;
     private int[] computerNums = new int[3];
     private int[] playerNums = new int[3];
+
+    public Application() {
+        computer = new Computer();
+    }
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
@@ -41,7 +43,8 @@ public class Application {
     }
 
     private void startGame(Scanner scanner) {
-        initComputerNums();
+        computer.makeRandomNumber();
+        // initComputerNums();
         while (true) {
             inputPlayerNums(scanner);
             printResult();
@@ -81,18 +84,18 @@ public class Application {
         }
     }
 
-    private void initComputerNums() {
-        HashSet<Integer> set = new HashSet<>();
-        for (int i = 0; i < computerNums.length; i++) {
-            int randomNum = RandomUtils.nextInt(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
-            // 중복된 숫자가 없을때까지 랜덤 숫자를 생성
-            while (set.contains(randomNum)) {
-                randomNum = RandomUtils.nextInt(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
-            }
-            set.add(randomNum);
-            computerNums[i] = randomNum;
-        }
-    }
+    // private void initComputerNums() {
+    // HashSet<Integer> set = new HashSet<>();
+    // for (int i = 0; i < computerNums.length; i++) {
+    // int randomNum = RandomUtils.nextInt(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
+    // // 중복된 숫자가 없을때까지 랜덤 숫자를 생성
+    // while (set.contains(randomNum)) {
+    // randomNum = RandomUtils.nextInt(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
+    // }
+    // set.add(randomNum);
+    // computerNums[i] = randomNum;
+    // }
+    // }
 
     private int getNumOfBalls() {
         int numOfBalls = 0;
