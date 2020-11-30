@@ -8,8 +8,10 @@ public class GamePlayer {
     public void chooseChoice() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
-        String choice = scanner.nextLine();
-        ExceptionChecker.checkException(choice);
-        userChoice.choice = choice;
+        userChoice.choice = scanner.nextLine();
+        while(ExceptionChecker.checkException(userChoice.choice)){
+            System.out.print("숫자를 입력해주세요 : ");
+            userChoice.choice = scanner.nextLine();
+        };
     }
 }

@@ -16,7 +16,12 @@ public class GameEmulator {
         Scanner sc = new Scanner(System.in);
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int gameCoin = sc.nextInt();
-        ExceptionChecker.checkException(gameCoin);
+
+        while(ExceptionChecker.checkException(gameCoin)) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            gameCoin = sc.nextInt();
+        }
+        
         return gameCoin == 1;
     }
 }
