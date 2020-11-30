@@ -24,6 +24,9 @@ public class Player {
                 continue;
             }
 
+            // 입력값 중복 확인
+
+
             System.out.println("aaa");
             break;
         }
