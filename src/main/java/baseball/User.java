@@ -34,9 +34,9 @@ public class User {
     }
 
     public void setNumbers(int num) {
+        char[] numString = Integer.toString(num).toCharArray();
         for (int i = 0; i < MAX_DIGIT; i++) {
-            numbers[i] = num / 100;
-            num = (num % 100) * 10;
+            numbers[i] = numString[i] - '0';
         }
     }
 }
