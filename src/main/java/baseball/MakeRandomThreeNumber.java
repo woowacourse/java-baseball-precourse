@@ -3,7 +3,7 @@ package baseball;
 import java.util.Arrays;
 import utils.RandomUtils;
 
-public class MakeThreeRandomNumber {
+public class MakeRandomThreeNumber {
     private static int findNotEqualNumber(int[] arr){
         int i=0;
         int newNumber = RandomUtils.nextInt(1,9);
@@ -25,7 +25,6 @@ public class MakeThreeRandomNumber {
         for(int i=0;i<3;i++){
             randomThreeNumber[i] = findNotEqualNumber(randomThreeNumber);
         }
-        Arrays.sort(randomThreeNumber);
         return randomThreeNumber;
     }
 }
