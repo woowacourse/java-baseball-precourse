@@ -16,7 +16,7 @@ public class NumberGenerator {
             if (randomNumber.contains(number)) {
                 continue;
             }
-            randomNumber.create(index, number);
+            randomNumber.insert(index, number);
             index++;
         }
         return randomNumber;

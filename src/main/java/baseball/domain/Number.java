@@ -14,7 +14,7 @@ public class Number {
         return IntStream.of(this.number).anyMatch(i->i==number);
     }
 
-    public void create(int index, int value) {
+    public void insert(int index, int value) {
         this.number[index] = value;
     }
 
