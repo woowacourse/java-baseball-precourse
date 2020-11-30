@@ -8,10 +8,7 @@ public class HintPrinter {
     private HintPrinter() {
     }
 
-    public static void printHint(int answer, int guess) {
-        int[] hint = HintGenerator.getHint(answer, guess);
-        int ball = hint[0];
-        int strike = hint[1];
+    public static void printHint(int ball, int strike) {
         if (ball+strike == 0) {
             printNothing();
         }
@@ -21,6 +18,7 @@ public class HintPrinter {
         if (strike != 0) {
             printStrike(strike);
         }
+        System.out.println();
     }
 
     public static void printNothing() {
