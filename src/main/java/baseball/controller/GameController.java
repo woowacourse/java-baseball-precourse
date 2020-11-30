@@ -32,7 +32,6 @@ public class GameController {
 
         isRestart();
 
-
     }
 
     private void initComputer() {
@@ -89,9 +88,9 @@ public class GameController {
     private static int getStrikeCount(List<Integer> numbers) {
 
         int count = 0;
-        for (int i = 0; i < REQUIRE_NUMBER_COUNT; i++) {
-            int targetNumber = numbers.get(i);
-            if (computer.hasNumberOfIndex(targetNumber, i)) {
+        for (int index = 0; index < REQUIRE_NUMBER_COUNT; index++) {
+            int targetNumber = numbers.get(index);
+            if (computer.hasNumberOfIndex(targetNumber, index)) {
                 count++;
             }
         }
@@ -99,17 +98,8 @@ public class GameController {
     }
 
     private void isRestart() {
-        //TODO 임시:InputConroller,ConsoleView에 기능 추가
-        consoleView.printRestart();
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        GameStatus gameStatus ;
-        if(input.equals("1")){
-            gameStatus = GameStatus.RESTART;
-        }else {
-            gameStatus = GameStatus.END;
-        }
-        //TODO 여기까지 구현
+
+        GameStatus gameStatus = inputController.inputRestart();
 
         if (gameStatus == GameStatus.RESTART) {
             run();
