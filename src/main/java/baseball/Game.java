@@ -26,8 +26,25 @@ public class Game {
     }
 
     // 스트라이크
-
+    public static int countStrike(String gameNumber, String inputNumber){
+        int strike = 0;
+        for (int i = 0; i < MAX_LENGTH; i++){
+            if(gameNumber.charAt(i) == inputNumber.charAt(i)){
+                strike++;
+            }
+        }
+        return strike;
+    }
     // 볼
+    public static int countBall(String gameNumber, String inputNumber){
+        int ball = 0;
+        for (int i =0; i <MAX_LENGTH; i++){
+            if (gameNumber.charAt(i) != inputNumber.charAt(i) && gameNumber.contains(String.valueOf(inputNumber.charAt(i))) ){
+                ball++;
+            }
+        }
+        return ball;
+    }
 
 
 }
