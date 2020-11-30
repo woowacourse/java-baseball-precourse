@@ -21,19 +21,11 @@ public class BaseballGame {
     }
 
     public boolean matchBaseball(BaseballNumber playerBaseballNumber) {
-        if (isEquals(playerBaseballNumber)) {
-            showBingoMessage();
-            return true;
-        }
-        return false;
+        return isEquals(playerBaseballNumber);
     }
 
     private boolean isEquals(BaseballNumber playerBaseballNumber) {
         return baseballNumber.equals(playerBaseballNumber);
-    }
-
-    private void showBingoMessage() {
-        System.out.println(BINGO.toString());
     }
 
     public Hint countStrikeAndBall(BaseballNumber playerBaseballNumber) {

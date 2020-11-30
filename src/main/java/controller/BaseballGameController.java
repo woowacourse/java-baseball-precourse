@@ -1,5 +1,6 @@
 package controller;
 
+import static domain.Message.BINGO;
 import static domain.Message.INPUT_NUMBER;
 
 import baseball.BaseballGame;
@@ -35,6 +36,7 @@ public class BaseballGameController {
         while (true) {
             BaseballNumber playerBaseballNumber = createBaseball();
             if (isBingo(playerBaseballNumber)) {
+                showBingoMessage();
                 choiceRestartOrFinish();
                 return;
             }
@@ -48,7 +50,7 @@ public class BaseballGameController {
     }
 
     private void showInputMessage() {
-        System.out.print(INPUT_NUMBER.toString());
+        System.out.print(INPUT_NUMBER);
     }
 
     private String getInput() {
@@ -57,6 +59,10 @@ public class BaseballGameController {
 
     private boolean isBingo(BaseballNumber playerBaseballNumber) {
         return baseballGame.matchBaseball(playerBaseballNumber);
+    }
+
+    private void showBingoMessage() {
+        System.out.println(BINGO);
     }
 
     private void choiceRestartOrFinish() {
