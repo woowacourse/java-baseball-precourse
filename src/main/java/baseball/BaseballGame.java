@@ -28,9 +28,11 @@ public class BaseballGame {
                 throw new IllegalArgumentException();
             }
 
-            baseballGameResult = BaseballGameResult.getBaseballGameResult(computerBaseballNumbers, userBaseballNumbers);
+            baseballGameResult = BaseballGameResult
+                    .getBaseballGameResult(computerBaseballNumbers, userBaseballNumbers);
             System.out.println(baseballGameResult.toString());
         } while(baseballGameResult.isFinished());
+
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
         String restartOrExitInput = baseballGameInput.restartOrExitInput();
         if(!RestartOrExitValidator.isValid(restartOrExitInput)) throw new IllegalArgumentException();

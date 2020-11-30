@@ -15,15 +15,18 @@ public class BaseballGameResult {
 
     private Map<Integer, Integer> compareResult = new HashMap<>();
 
-    private BaseballGameResult(BaseballNumbers computerBaseballNumbers, BaseballNumbers userBaseballNumbers) {
+    private BaseballGameResult(BaseballNumbers computerBaseballNumbers,
+                               BaseballNumbers userBaseballNumbers) {
         this.computerBaseballNumbers = computerBaseballNumbers;
         this.userBaseballNumbers = userBaseballNumbers;
         this.compareResult.put(BALL, 0);
         this.compareResult.put(STRIKE, 0);
     }
 
-    public static BaseballGameResult getBaseballGameResult(BaseballNumbers computerBaseballNumbers, BaseballNumbers userBaseballNumbers) {
-        BaseballGameResult baseballGameResult = new BaseballGameResult(computerBaseballNumbers, userBaseballNumbers);
+    public static BaseballGameResult getBaseballGameResult
+            (BaseballNumbers computerBaseballNumbers, BaseballNumbers userBaseballNumbers) {
+        BaseballGameResult baseballGameResult =
+                new BaseballGameResult(computerBaseballNumbers, userBaseballNumbers);
         baseballGameResult.calculateResult();
 
         return baseballGameResult;
