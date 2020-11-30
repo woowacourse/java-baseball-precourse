@@ -1,11 +1,8 @@
 package baseball;
 
-import static baseball.Constants.GAME_MAX_BASEBALL_NUMBER;
-import static baseball.Constants.GAME_MAX_BASEBALL_PITCH;
-import static baseball.Constants.GAME_MIN_BASEBALL_NUMBER;
-
-import java.util.HashSet;
-import java.util.Set;
+import static baseball.UtilityFunctions.validateDuplicateItemsInArray;
+import static baseball.UtilityFunctions.validateItemRangeInArray;
+import static baseball.UtilityFunctions.validateSizeOfArray;
 
 // 야구 게임에서 각 자리의 숫자를 도맡는 클래스
 public class BaseballNumbers {
@@ -14,45 +11,9 @@ public class BaseballNumbers {
     private final int[] numberArray;
 
     public BaseballNumbers(int[] numberArray) {
-        validateSize(numberArray);
-        validateDuplicate(numberArray);
-        validateNumberRange(numberArray);
+        validateSizeOfArray(numberArray);
+        validateDuplicateItemsInArray(numberArray);
+        validateItemRangeInArray(numberArray);
         this.numberArray = numberArray;
-    }
-
-    // 입력받은 배열의 크기가 MAX_PITCH 값과 같은지 확인하는 메소드
-    private void validateSize(int[] numberArray) {
-        if (numberArray.length != GAME_MAX_BASEBALL_PITCH) {
-            throw new IllegalArgumentException(
-                ErrorMessages.ARRAY_INVALID_LENGTH.getMessage()
-            );
-        }
-    }
-
-    // 입력받은 배열 내에 중복된 값이 있는지 확인하는 메소드
-    private void validateDuplicate(int[] numberArray) {
-        final Set<Integer> baseballNumberSet = new HashSet<>();
-
-        for (int number : numberArray) {
-            baseballNumberSet.add(number);
-        }
-
-        // 중복된 수가 입력받은 배열에 있을 경우, 배열과 셋의 길이가 다른 것을 이용
-        if (baseballNumberSet.size() != numberArray.length) {
-            throw new IllegalArgumentException(
-                ErrorMessages.ARRAY_ITEM_DUPLICATED.getMessage()
-            );
-        }
-    }
-
-    // 입력받은 배열 내에 허용된 범위를 넘어가는 값이 있는지 확인하는 메소드
-    private void validateNumberRange(int[] numberArray) {
-        for (int number : numberArray) {
-            if (number > GAME_MAX_BASEBALL_NUMBER || number < GAME_MIN_BASEBALL_NUMBER) {
-                throw new IllegalArgumentException(
-                    ErrorMessages.ARRAY_ITEM_OUT_OF_RANGE.getMessage()
-                );
-            }
-        }
     }
 }
