@@ -54,15 +54,15 @@ public class Application {
         int ballCount = 0;
         int strikeCount = 0;
 
-        for (int i=0; i<computerNumber.length; i++) {
-            if (checkStrike(computerNumber, i, playerNumber)) {
-                strikeCount++;
+        for (int computerIndex=0; computerIndex<computerNumber.length; computerIndex++) {
+            if (ball(computerIndex, computerNumber, playerNumber)) {
+                ballCount ++;
             }
         }
 
-        for (int i=0; i<computerNumber.length; i++) {
-            if (checkBall(computerNumber, i, playerNumber)) {
-                ballCount ++;
+        for (int computerIndex=0; computerIndex<computerNumber.length; computerIndex++) {
+            if (strike(computerIndex, computerNumber, playerNumber)) {
+                strikeCount++;
             }
         }
 
@@ -72,11 +72,11 @@ public class Application {
     public static String makeResultString(int ballCount, int strikeCount) {
         String result = "";
 
-        if (ballCount == 0 && strikeCount != 0) {
+        if (ballCount == 0 && strikeCount > 0) {
             result = strikeCount + "스트라이크";
         }
 
-        if (ballCount != 0 && strikeCount == 0) {
+        if (ballCount > 0 && strikeCount == 0) {
             result = ballCount + "볼";
         }
 
@@ -91,13 +91,13 @@ public class Application {
         return result;
     }
 
-    public static boolean checkBall(int[] computerNumber, int computerIndex, int[] playerNumber) {
-        for (int i=0; i<playerNumber.length; i++) {
-            if (i == computerIndex) {
+    public static boolean ball(int computerIndex, int[] computerNumber, int[] playerNumber) {
+        for (int playerIndex=0; playerIndex<playerNumber.length; playerIndex++) {
+            if (playerIndex == computerIndex) {
                 continue;
             }
 
-            if (computerNumber[computerIndex] == playerNumber[i]) {
+            if (computerNumber[computerIndex] == playerNumber[playerIndex]) {
                 return true;
             }
         }
@@ -105,8 +105,8 @@ public class Application {
         return false;
     }
 
-    public static boolean checkStrike(int[] computerNumber, int sameIndex, int[] playerNumber) {
-        return computerNumber[sameIndex] == playerNumber[sameIndex];
+    public static boolean strike(int index, int[] computerNumber, int[] playerNumber) {
+        return computerNumber[index] == playerNumber[index];
     }
 
     public static int[] getPlayerNumber(Scanner scanner) {
