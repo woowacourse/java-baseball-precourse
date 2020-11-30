@@ -22,56 +22,50 @@ class BallTypeCheckerTest {
     @Test
     public void BallTypeCheckWith2Strikes0Ball() throws Exception {
         //given
-        final int BALL_COUNT = 0;
-        final int STRIKE_COUNT = 2;
+        final String RESULT = "2스트라이크";
         BaseBall randomBaseball = BaseBall.createBaseBall(135);
         BaseBall inputBaseball = BaseBall.createBaseBall(136);
         //when
         BallTypeChecker ballTypeChecker = BallTypeChecker.ballTypeCheckWith(randomBaseball);
         BaseballResult baseballResult = ballTypeChecker.startChecking(inputBaseball);
         //then
-        int actualBallCount = baseballResult.countFor(BallType.BALL);
-        int actualStrikeCount = baseballResult.countFor(BallType.STRIKE);
-        assertEquals(BALL_COUNT, actualBallCount);
-        assertEquals(STRIKE_COUNT, actualStrikeCount);
+        assertEquals(RESULT, baseballResult.getResult());
     }
 
     @Test
     public void BallTypeCheckWith2Ball0Strike() throws Exception {
         //given
-        final int BALL_COUNT = 2;
-        final int STRIKE_COUNT = 0;
+        final String RESULT = "2볼";
         BaseBall randomBaseball = BaseBall.createBaseBall(315);
         BaseBall inputBaseball = BaseBall.createBaseBall(136);
         //when
         BallTypeChecker ballTypeChecker = BallTypeChecker.ballTypeCheckWith(randomBaseball);
         BaseballResult baseballResult = ballTypeChecker.startChecking(inputBaseball);
         //then
-        int actualBallCount = baseballResult.countFor(BallType.BALL);
-        int actualStrikeCount = baseballResult.countFor(BallType.STRIKE);
-        assertEquals(BALL_COUNT, actualBallCount);
-        assertEquals(STRIKE_COUNT, actualStrikeCount);
+        assertEquals(RESULT, baseballResult.getResult());
     }
 
     @Test
     public void BallTypeCheckWithNothing() throws Exception {
         //given
-        final int ZERO = 0;
+        final String RESULT = "낫싱";
         BaseBall randomBaseball = BaseBall.createBaseBall(135);
         BaseBall inputBaseball = BaseBall.createBaseBall(247);
         //when
         BallTypeChecker ballTypeChecker = BallTypeChecker.ballTypeCheckWith(randomBaseball);
         BaseballResult baseballResult = ballTypeChecker.startChecking(inputBaseball);
         //then
-        int actualBallCount = baseballResult.countFor(BallType.BALL);
-        int actualStrikeCount = baseballResult.countFor(BallType.STRIKE);
-        assertEquals(ZERO, actualBallCount);
-        assertEquals(ZERO, actualStrikeCount);
+        assertEquals(RESULT, baseballResult.getResult());
     }
 
     @Test
     public void BallTypeCheckWithMultipleInputNumber() throws Exception {
         //given
+        final String RESULT1 = "3스트라이크";
+        final String RESULT2 = "2스트라이크";
+        final String RESULT3 = "2볼 1스트라이크";
+        final String RESULT4 = "낫싱";
+
         BaseBall randomBaseball = BaseBall.createBaseBall(135);
         BaseBall answerBaseball = BaseBall.createBaseBall(135);
         BaseBall twoStrikeBaseball = BaseBall.createBaseBall(136);
@@ -85,11 +79,10 @@ class BallTypeCheckerTest {
         BaseballResult nothingResult = ballTypeChecker.startChecking(nothingBaseball);
         //then
         assertTrue(answerResult.isAnswer());
-        assertEquals(2, twoStrikeResult.countFor(BallType.STRIKE));
-        assertEquals(2, twoBallOneStrikeResult.countFor(BallType.BALL));
-        assertEquals(1, twoBallOneStrikeResult.countFor(BallType.STRIKE));
-        assertEquals(0, nothingResult.countFor(BallType.BALL));
-        assertEquals(0, nothingResult.countFor(BallType.STRIKE));
+        assertEquals(RESULT1, answerResult.getResult());
+        assertEquals(RESULT2, twoStrikeResult.getResult());
+        assertEquals(RESULT3, twoBallOneStrikeResult.getResult());
+        assertEquals(RESULT4, nothingResult.getResult());
     }
 
 }

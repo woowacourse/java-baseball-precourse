@@ -48,10 +48,6 @@ class BaseballResultTest {
             baseballResult.accumulateBallType(BallType.STRIKE);
         }
         //then
-        int ballCount = baseballResult.countFor(BallType.BALL);
-        int strikeCount = baseballResult.countFor(BallType.STRIKE);
-        assertEquals(EXPECTED_BALL_COUNT, ballCount);
-        assertEquals(EXPECTED_STRIKE_COUNT, strikeCount);
         assertEquals(EXPECTED_RESULT, baseballResult.getResult());
     }
 }

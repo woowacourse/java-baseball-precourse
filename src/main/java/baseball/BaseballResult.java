@@ -40,12 +40,11 @@ public class BaseballResult {
         Set<BallType> ballTypes = result.keySet();
         return ballTypes.stream()
                 .map(ballType -> ballType.getNameWith(countFor(ballType)))
-                .sorted(Comparator.reverseOrder())  //볼이 먼저 나와야 됨
+                .sorted(Comparator.reverseOrder())  //볼이 먼저 나오게 끔 sorting
                 .collect(Collectors.joining(" "));
     }
 
-    //test에도 사용되어 public으로 선언
-    public int countFor(BallType ballType) {
+    private int countFor(BallType ballType) {
         if (!result.containsKey(ballType)) {
             return ZERO;
         }
