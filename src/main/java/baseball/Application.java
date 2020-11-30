@@ -43,7 +43,19 @@ public class Application {
     }
 
     private static boolean getIsRestart(Scanner scanner) {
-        return true;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        try {
+            int number = scanner.nextInt();
+            if (number == 1) {
+                return true;
+            } else if (number == 2) {
+                return false;
+            } else {
+                throw new IllegalArgumentException();
+            }
+        } catch (Exception exception) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static int findStrike(int[] randomNumber, int[] userNumber) {
@@ -102,5 +114,10 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
+        boolean isGame = true;
+        while (isGame) {
+            playGame(scanner, getRandomNumber());
+            isGame = getIsRestart(scanner);
+        }
     }
 }
