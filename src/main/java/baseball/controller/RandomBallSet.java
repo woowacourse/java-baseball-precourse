@@ -14,21 +14,21 @@ public class RandomBallSet {
      */
     public static int[] ballSet() {
         int[] ballSet = new int[NUMBER_OF_BALL];
-        boolean[] checkingOverlap = checkOverlapArray();
+        boolean[] checkingOverlapArray = checkOverlapGetArray();
         int triedNumber = 0;
         while (triedNumber < NUMBER_OF_BALL) {
             int candidateNumber = RandomUtils.nextInt(START_INDEX, END_INDEX);
             int positionCandidateNumber = candidateNumber - 1;
-            if (!checkingOverlap[positionCandidateNumber]) {
+            if (!checkingOverlapArray[positionCandidateNumber]) {
                 ballSet[triedNumber] = candidateNumber;
-                checkingOverlap[positionCandidateNumber] = true;
+                checkingOverlapArray[positionCandidateNumber] = true;
                 triedNumber++;
             }
         }
         return ballSet;
     }
 
-    private static boolean[] checkOverlapArray() {
+    private static boolean[] checkOverlapGetArray() {
         boolean[] checkingOverlapArray = new boolean[END_INDEX];
         for (int i = 0; i < END_INDEX; i++) {
             checkingOverlapArray[i] = false;
