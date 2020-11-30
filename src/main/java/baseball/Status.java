@@ -5,7 +5,6 @@ public class Status {
     private long strikeCount;
     private long ballCount;
 
-
     public Status() {
         strikeCount = 0;
         ballCount = 0;
