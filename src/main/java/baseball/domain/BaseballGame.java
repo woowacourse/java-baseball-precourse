@@ -63,9 +63,6 @@ public class BaseballGame {
     }
 
     public boolean isExecution() {
-        if (status == EXECUTION) {
-            return true;
-        }
-        return false;
+        return status == EXECUTION;
     }
 }
