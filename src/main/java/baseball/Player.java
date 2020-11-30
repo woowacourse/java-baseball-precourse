@@ -23,22 +23,26 @@ public class Player {
     public void checkReplayDecision() {
         OutputView.askReplay();
         String input = playerInput.nextLine();
-        replayDecision = validate(input);
+        replayDecision = checkDecision(input);
     }
 
-    private int validate(String input) {
+    private int checkDecision(String input) {
         try {
-            return getChoice(input);
+            return checkValidInteger(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(CHOICE_ERROR_MESSAGE);
         }
     }
 
-    private int getChoice(String input) {
+    private int checkValidInteger(String input) {
         int choice = Integer.parseInt(input);
-        if (choice != WANT_REPLAY && choice != WANT_FINISH) {
+        if (isNotValidOption(choice)) {
             throw new IllegalArgumentException(CHOICE_ERROR_MESSAGE);
         }
         return choice;
+    }
+
+    private boolean isNotValidOption(int choice) {
+        return choice != WANT_REPLAY && choice != WANT_FINISH;
     }
 }
