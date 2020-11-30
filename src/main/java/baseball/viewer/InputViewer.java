@@ -3,7 +3,7 @@ package baseball.viewer;
 public class InputViewer {
     /* 숫자를 입력 받을 때, 사용자에게 보여주는 메세지를 표현하는 메서드 */
     public static void receiveNumber() {
-        System.out.print("숫자를 입력해주세요 :");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     /* 정수 조합 입력시에 3자리 숫자를 초과 오류를 사용자에게 보여주는 메서드 */

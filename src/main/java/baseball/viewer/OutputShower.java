@@ -1,43 +1,31 @@
 package baseball.viewer;
 
-import baseball.domain.User;
-
 public class OutputShower {
-    static final int END_GAME = 3;
-    static final int NOTHING = 0;
-
-    /**
-     * 사용자의 게임 상태를 받아 상태를 판단하여 사용자에게 보여주는 메서드
-     * @param user 사용자의 게임 상태를 가지고 있는 인스턴스
-     */
-    public static void outputPrint(User user) {
-        int ballNumber = user.getBallNumber();
-        int strikeNumber = user.getStrikeNumber();
-        if (strikeNumber == END_GAME) {
-            showGameOver();
-            return;
-        }
-        if ((strikeNumber == NOTHING) && (ballNumber) == NOTHING) {
-            showNothing();
-            return;
-        }
-        showSitutation(strikeNumber, ballNumber);
+    /* 상대방에게 재시작 의사를 묻는 메서드 */
+    public static void askRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    private static void showGameOver() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+    /* 숫자를 모두 맞았을 시에 메세지를 보여주는 메서드 */
+    public static void showGameOver() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private static void showNothing() {
-        System.out.println("낫띵");
+    /* 숫자를 하나도 맞추지 못하였을 때의 메세지를 보여주는 메서드 */
+    public static void showNothing() {
+        System.out.println("낫싱");
     }
 
-    private static void showSitutation(int strikeNumber, int ballNumber) {
+    /* 현재 스트라이크와 볼 상황을 보여주는 메서드 */
+    public static void showBothBallStrike(int ballNumber, int strikeNumber) {
         System.out.printf("%d볼 %d스트라이크\n", ballNumber, strikeNumber);
     }
 
-    /* 상대방에게 재시작 의사를 묻는 메서드 */
-    public static void askRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+    public static void showBall(int ballNumber) {
+        System.out.printf("%d볼\n", ballNumber);
+    }
+
+    public static void showStrike(int strikeNumber) {
+        System.out.printf("%d스트라이크\n", strikeNumber);
     }
 }

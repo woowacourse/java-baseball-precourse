@@ -7,7 +7,7 @@ import baseball.viewer.OutputShower;
 public class GameProcess {
     /* 게임 진행을 명령하는 메서드*/
     public void play() {
-        boolean oneMoreGame = false;
+        boolean oneMoreGame;
         Computer computer = new Computer();
         User user = new User();
         do {
@@ -22,11 +22,11 @@ public class GameProcess {
     }
 
     private void oneGamePlay(User user, Computer computer) {
-        boolean endGame = false;
+        boolean endGame ;
         do {
             user.setBallBunch(InputReceiver.userAnswer());
             RuleChecker.gradePoints(user, computer);
-            OutputShower.outputPrint(user);
+            OutputShowSelector.outputPrint(user);
             endGame = passAnswerHurdle(user);
         } while (!endGame);
     }
