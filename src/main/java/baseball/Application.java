@@ -36,7 +36,12 @@ public class Application {
 	}
 
 	private static void userPlay(Scanner scanner) {
-		new UserBaseballService(scanner);
+		try {
+			new UserBaseballService(scanner);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			new UserBaseballService(scanner);
+		}
 	}
 
 	private static void checkResult(Scanner scanner) {
