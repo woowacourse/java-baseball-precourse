@@ -67,7 +67,15 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
+        while(true){
+            play();
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            String input = "";
+            do {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                input = scanner.nextLine().trim();
+            } while(input.charAt(0) != '1' && input.charAt(0) != '2');
+            if(input.charAt(0) == '2') break;
+        }
     }
 }
