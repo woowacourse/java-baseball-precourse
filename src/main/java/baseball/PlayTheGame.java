@@ -22,10 +22,11 @@ public class PlayTheGame {
         return this.tmpSaveRandomNumber;
     }
     public void countingGame(ArrayList<Integer> inputNumber,ArrayList<Integer> randomNumber) throws IllegalArgumentException {
-
-        for(int i=0;i<LENGTHNUMBER;i++){
+        for(int i=0;i<LENGTHNUMBER;i++)
+        {
             System.out.println(randomNumber.get(i));
         }
+
         String message="";
         int ballCount=compute.getBallNumber(inputNumber,randomNumber);
         int strikeCount=compute.getStrikeNumber(inputNumber,randomNumber);
@@ -39,7 +40,9 @@ public class PlayTheGame {
         if(strikeCount==3){
             System.out.println(ENDGAMEMESSAGE);
             System.out.println(QUESTIONGAME);
-            continuingGame(Integer.parseInt(player.playerInput()));
+            int choiceNumber=Integer.parseInt(player.playerInput());
+            System.out.println(choiceNumber);
+            continuingGame(choiceNumber);
         }
         else{
             countingGame(player.getInputToArrayList(),returnRandomNumber());

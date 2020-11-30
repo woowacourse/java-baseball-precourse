@@ -11,7 +11,7 @@ public class Compute {
     private static final String NOTHING="낫싱";
     private static final int MINRANGENUMBER=1;
     private static final int MAXRANGENUMBER=9;
-    
+
     public ArrayList<Integer> getRandomNumber() {
         ArrayList<Integer> randomNumber= new ArrayList<Integer>();
         for(int i = 0; i< LENGTHNUMBER; i++) {
@@ -32,7 +32,7 @@ public class Compute {
             }
         }
         if(check){
-            return checkDuplicateNumber(randomNumber,number);
+            return checkDuplicateNumber(randomNumber,RandomUtils.nextInt(MINRANGENUMBER,MAXRANGENUMBER));
         }
         else{
             return number;
