@@ -1,8 +1,6 @@
 package baseball;
 
-import utils.InputValidator;
 import view.InputView;
-import view.OutputView;
 
 import java.util.Scanner;
 
@@ -27,6 +25,6 @@ public class Application {
     }
 
     private static String askPlayAgain(Scanner scanner){
-        return InputView.askPlayAgain(scanner);
+        return InputView.getPlayAgainButton(scanner);
     }
 }

@@ -13,7 +13,7 @@ public class InputView {
 
     private InputView(){ }
 
-    public static Numbers askGuess(Scanner scanner, int digits){
+    public static Numbers getGuessNumbers(Scanner scanner, int digits){
         OutputView.printMsg(ASK_NUMBER_MESSAGE);
         OutputView.printMsg(SEPARATOR_LINE);
 
@@ -23,11 +23,11 @@ public class InputView {
             return NumbersFactory.parseStringToNumbers(answer);
         }catch (IllegalArgumentException IAE){
             IAE.printStackTrace();
-            return askGuess(scanner, digits);
+            return getGuessNumbers(scanner, digits);
         }
     }
 
-    public static String askPlayAgain(Scanner scanner){
+    public static String getPlayAgainButton(Scanner scanner){
         OutputView.printMsg(ASK_PLAY_AGAIN_MESSAGE);
         OutputView.printMsg(SEPARATOR_LINE);
 
@@ -37,7 +37,7 @@ public class InputView {
             return answer;
         }catch (IllegalArgumentException IAE){
             IAE.printStackTrace();
-            return askPlayAgain(scanner);
+            return getPlayAgainButton(scanner);
         }
     }
 }

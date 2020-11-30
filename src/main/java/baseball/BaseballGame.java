@@ -33,7 +33,7 @@ public class BaseballGame {
     }
 
     private Numbers readNumber(){
-        return InputView.askGuess(scanner, NUMBER_OF_DIGITS);
+        return InputView.getGuessNumbers(scanner, NUMBER_OF_DIGITS);
     }
 
     private void calculateScore(Numbers target, Numbers guess){
