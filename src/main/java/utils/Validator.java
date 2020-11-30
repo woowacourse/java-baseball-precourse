@@ -9,9 +9,12 @@ public class Validator {
     public static final int INPUT_MIN_NUMBER = 1;
 
     private static final String INVALID_TYPE_MESSAGE = "숫자만 입력하세요.";
+    private static final String DUPLICATE_MESSAGE = "중복된 숫자가 있습니다.";
     private static final String INVALID_NUMBER_MESSAGE = String.format("%d~%d의 범위에서 %d개를 선택하세요.ex)123,922"
             , INPUT_MIN_NUMBER, INPUT_MAX_NUMBER, REQUIRE_NUMBER_COUNT);
-    private static final String DUPLICATE_MESSAGE = "중복된 숫자가 있습니다.";
+    private static final String COMMAND_RESTART = "1";
+    private static final String COMMAND_END = "2";
+
 
 
     public static void validateInput(String input) {
@@ -54,5 +57,11 @@ public class Validator {
     }
 
 
+    public static void validateReStart(String input) {
 
+        if(!input.equals(COMMAND_RESTART) && !input.equals(COMMAND_END)){
+            throw new IllegalArgumentException();
+        }
+
+    }
 }
