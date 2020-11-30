@@ -7,11 +7,14 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         boolean playing = true;
         Game game = new Game();
-        Player player = new Player(scanner);
+        Player player = new Player(scanner, game);
         
         while (playing) {
             game.generateNewAnswer();
-            player.guessAnswer();
+            while(!player.isGuessSuccess()) {
+                player.guessAnswer();
+            }
+            player.printSuccess();
             playing = false;
         }
     }
