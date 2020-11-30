@@ -47,12 +47,12 @@ public class Player {
     }
 
     public void playGame(Scanner scanner, Computer computer) {
-        int strikeCount = 0;
-        while (strikeCount != 3) {
+        StrikeAndBall thisTurnResult;
+        do {
             int playerNum = getPlayerNum(scanner);
-            StrikeAndBall thisTurnResult = computer.getStrikeAndBall(playerNum, computer.answer);
-            strikeCount = computer.getResultOfGuess(thisTurnResult);
-        }
+            thisTurnResult = computer.getStrikeAndBall(playerNum, computer.answer);
+            computer.giveHint(thisTurnResult);
+        } while (!computer.isThreeStrikes(thisTurnResult));
     }
 
     private void decideReplayOrQuit(Scanner scanner) throws IllegalArgumentException {

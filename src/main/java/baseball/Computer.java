@@ -65,7 +65,14 @@ public class Computer {
         return countStrikeAndBall(playerNumArray, answerNumArray);
     }
 
-    public int getResultOfGuess(StrikeAndBall thisTurnResult) {
+    public boolean isThreeStrikes(StrikeAndBall thisTurnResult) {
+        if (thisTurnResult.getStrike() == 3) {
+            return true;
+        }
+        return false;
+    }
+
+    public void giveHint(StrikeAndBall thisTurnResult) {
         int strikeCount = thisTurnResult.getStrike();
         int ballCount = thisTurnResult.getBall();
 
@@ -78,6 +85,5 @@ public class Computer {
         } else if (0 == strikeCount && 0 == ballCount) {
             System.out.println(NOTHING_MESSAGE);
         }
-        return strikeCount;
     }
 }
