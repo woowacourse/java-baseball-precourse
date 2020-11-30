@@ -10,27 +10,21 @@ public class BaseballGame {
     private static final int ALL_STRIKE_CNT = 3;
     private static final char RESTART_CODE = '1';
     private static final char FINISH_CODE = '2';
+    private String guess;
+    private Player player;
+    private Printer printer;
+    private Referee referee;
+    private String answer;
+    private int ballCnt;
+    private int strikeCnt;
+    private char progress;
     private boolean allStrike;
     private boolean progressGame;
-    public int ballCnt;
-    public int strikeCnt;
-    public char progress;
-    public String answer;
-    public String guess;
-    public Player player;
-    public Printer printer;
-    public Referee referee;
 
     public BaseballGame(Scanner scanner) {
         player = new Player(scanner);
         referee = new Referee();
         printer = new Printer();
-    }
-
-    public void run() {
-        do {
-            start();
-        } while (progressGame);
     }
 
     public void initGame () {
@@ -42,6 +36,12 @@ public class BaseballGame {
         strikeCnt = 0;
         allStrike = false;
         progressGame = true;
+    }
+
+    public void run() {
+        do {
+            start();
+        } while (progressGame);
     }
 
     public void start() {
@@ -64,6 +64,16 @@ public class BaseballGame {
         }
     }
 
+    public void askGuess() {
+        printer.printStartMessage();
+        guess = player.inputGuess();
+    }
+
+    public void askProgress() {
+        printer.printProgressMessage();
+        progress = player.inputProgress();
+    }
+
     public void isAllStrike(int strikeCnt) {
         if (strikeCnt == ALL_STRIKE_CNT) {
             allStrike = true;
@@ -81,15 +91,4 @@ public class BaseballGame {
             progressGame = false;
         }
     }
-
-    public void askGuess() {
-        printer.printStartMessage();
-        guess = player.inputGuess();
-    }
-
-    public void askProgress() {
-        printer.printProgressMessage();
-        progress = player.inputProgress();
-    }
-
 }
