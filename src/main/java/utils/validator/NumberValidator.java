@@ -14,7 +14,7 @@ public class NumberValidator implements Validator {
 
         for (int i=0; i<input.length(); i++) {
             character = input.charAt(i);
-            if (character < 48 || character > 57) {
+            if (character < 49 || character > 57) {
                 throw new IllegalArgumentException();
             }
         }
