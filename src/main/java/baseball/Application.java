@@ -7,9 +7,16 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         int[] answerList = generateNumber();
-        int[] guess = getGuess(scanner);
-        calResult(answerList, guess);
+        playGame(scanner, answerList);
         scanner.close();
+    }
+
+    private static void playGame(Scanner kbd, int[] answer) {
+        boolean gameover = true;
+        while (gameover) {
+            int[] guess = getGuess(kbd);
+            gameover = calResult(answer, guess);
+        }
     }
 
     private static int[] generateNumber() {
@@ -83,13 +90,29 @@ public class Application {
             throw new IllegalArgumentException();
     }
 
-    private static void calResult(int[] answer, int[] guess) {
+    private static boolean calResult(int[] answer, int[] guess) {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < answer.length; i++) {
             if (guess[i] == answer[i]) strike++;
             if (guess[i] == answer[(i + 1) % 3] || guess[i] == answer[(i + 2) % 3])
                 ball++;
+        }
+        return displayResultMessage(strike, ball);
+    }
+
+    private static boolean displayResultMessage(int strike, int ball) {
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+        else if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return true;
+        }
+        else {
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+            return true;
         }
     }
 }
