@@ -11,6 +11,9 @@ public class ValidationUtilsTest {
     private static final int MIN_DIGIT = 1;
     private static final int MAX_DIGIT = 9;
 
+    private static final String RESTART = "1";
+    private static final String END = "2";
+
     @Test
     public void validateInput() {
         String userInput = "123";
@@ -57,5 +60,26 @@ public class ValidationUtilsTest {
                 () -> ValidationUtils.validateInputInProgress(
                         userInput,
                         parameterSet));
+    }
+
+    @Test
+    public void validateInputAfterEnd() {
+        String userInput = "1";
+
+        String validInput =
+                ValidationUtils.validateInputAfterEnd(userInput, RESTART, END);
+
+        assertThat(userInput).isEqualTo(validInput);
+    }
+
+    @Test
+    public void validateInputAfterEnd_except() {
+        String userInput = "3";
+
+        assertThrows(IllegalArgumentException.class,
+                () -> ValidationUtils.validateInputAfterEnd(
+                        userInput,
+                        RESTART,
+                        END));
     }
 }
