@@ -3,7 +3,7 @@ package baseball.controller;
 import utils.RandomUtils;
 
 public class RandomBallSet {
-    static final int START_INDEX = 0;
+    static final int START_INDEX = 1;
     static final int END_INDEX = 9;
     static final int NUMBER_OF_BALL = 3;
 
@@ -14,25 +14,39 @@ public class RandomBallSet {
      */
     public static int[] ballSet() {
         int[] ballSet = new int[NUMBER_OF_BALL];
-        boolean[] checkingOverlapArray = checkOverlapGetArray();
-        int triedNumber = 0;
-        while (triedNumber < NUMBER_OF_BALL) {
-            int candidateNumber = RandomUtils.nextInt(START_INDEX, END_INDEX);
-            int positionCandidateNumber = candidateNumber - 1;
-            if (!checkingOverlapArray[positionCandidateNumber]) {
-                ballSet[triedNumber] = candidateNumber;
-                checkingOverlapArray[positionCandidateNumber] = true;
-                triedNumber++;
-            }
+        boolean[] checkOverlapArray = checkOverlapGetArray();
+        int insertedBallNumber = 0;
+        while (insertedBallNumber < NUMBER_OF_BALL) {
+            insertBall(insertedBallNumber, ballSet, checkOverlapArray);
+            insertedBallNumber = checkInsertedBallNumber(checkOverlapArray);
         }
         return ballSet;
     }
 
     private static boolean[] checkOverlapGetArray() {
-        boolean[] checkingOverlapArray = new boolean[END_INDEX];
+        boolean[] checkingOverlapGetArray = new boolean[END_INDEX];
         for (int i = 0; i < END_INDEX; i++) {
-            checkingOverlapArray[i] = false;
+            checkingOverlapGetArray[i] = false;
         }
-        return checkingOverlapArray;
+        return checkingOverlapGetArray;
+    }
+
+    private static void insertBall(int ballNumber, int[] ballSet, boolean[] overlapArray) {
+        int candidateNumber = RandomUtils.nextInt(START_INDEX, END_INDEX);
+        int positionCandidateNumber = candidateNumber - 1;
+        if (!overlapArray[positionCandidateNumber]) {
+            ballSet[ballNumber] = candidateNumber;
+            overlapArray[positionCandidateNumber] = true;
+        }
+    }
+
+    private static int checkInsertedBallNumber(boolean[] checkOverlapArray) {
+        int insertedNumber = 0;
+        for (int i=0; i<END_INDEX; i++) {
+            if (checkOverlapArray[i]) {
+                insertedNumber++;
+            }
+        }
+        return insertedNumber;
     }
 }
