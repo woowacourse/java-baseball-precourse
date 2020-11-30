@@ -54,13 +54,6 @@ public class BaseballGame {
         return baseballNumbers.contains(playerBaseballNumbers.get(index));
     }
 
-    private void checkGameStatus() {
-        if (score.isFullStrike()) {
-            status = TERMINATION;
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
-    }
-
     private void printScore() {
         if (score.isZeroBall() && score.isZeroStrike()) {
             System.out.println("낫싱");
@@ -70,6 +63,13 @@ public class BaseballGame {
             System.out.println(score.getStrike() + "스트라이크");
         } else {
             System.out.println(score.getBall() + "볼 " + score.getStrike() + "스트라이크");
+        }
+    }
+
+    private void checkGameStatus() {
+        if (score.isFullStrike()) {
+            status = TERMINATION;
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
