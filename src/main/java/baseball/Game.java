@@ -8,6 +8,7 @@ public class Game {
 	Hint hint = new Hint();
 	Answer answer = new Answer();
 
+	// 실제 게임을 실행하는 함수
 	public void startGame() {
 		answer.makeAnswer();
     	System.out.println("-> target "+ Arrays.toString(answer.answerNum));
