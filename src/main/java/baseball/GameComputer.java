@@ -12,6 +12,8 @@ public class GameComputer {
     public GameComputer() {
         computerChoice = new BallChoice();
         computerChoice.choice = chooseChoice();
+        
+        isGameOver(false, computerChoice);
     }
 
     public static String chooseChoice() {
@@ -27,6 +29,12 @@ public class GameComputer {
         } while (answer[0] == answer[2] || answer[1] == answer[2]);
         computerChoice = Arrays.toString(answer).replaceAll("[^0-9]","");
         return computerChoice;
+    }
+
+    static void isGameOver(boolean gameOver, BallChoice computerChoice) {
+        while (!gameOver) {
+            gameOver = GameComputer.startGame(computerChoice.choice);
+        }
     }
 
     static boolean startGame(String computerChoice) {
