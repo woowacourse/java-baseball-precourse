@@ -1,14 +1,10 @@
 package baseball;
 
-import java.util.HashSet;
 import java.util.Scanner;
 
-import domain.Computer;
 import service.ComputerBaseballService;
 import service.HintService;
 import service.UserBaseballService;
-import utils.InputCheckUtils;
-import utils.RandomUtils;
 
 public class Application {
 	private static final Integer REPLAY_YES = 1;
@@ -23,7 +19,7 @@ public class Application {
 		final Scanner scanner = new Scanner(System.in);
 		gamePlay(scanner);
 	}
-	
+
 	private static void gamePlay(Scanner scanner) {
 		computerPlay();
 		userPlay(scanner);
@@ -57,13 +53,13 @@ public class Application {
 			System.out.println(FINISH_MESSAGE);
 		}
 	}
-	
+
 	private static void checkReplay(Scanner scanner) {
 		System.out.println(REPLAY_MESSAGE);
-		
+
 		int replayFlag = Integer.parseInt(scanner.nextLine());
-		
-		if(replayFlag == REPLAY_YES) {
+
+		if (replayFlag == REPLAY_YES) {
 			gamePlay(scanner);
 		} else if (replayFlag == REPLAY_NO) {
 			// Do nothing; no more play
