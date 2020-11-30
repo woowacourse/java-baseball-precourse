@@ -23,8 +23,8 @@ class GameManagerTest {
     @Test
     void testCheckAnswer() {
         GameManager gameManager = new GameManager(4, 8, 2);
-        String[] inputStrings = {"482", "182", "428"};
-        int[][] results = {{3, 0}, {2, 0}, {1, 2}};
+        String[] inputStrings = {"482", "182", "428", "591"};
+        int[][] results = {{3, 0}, {2, 0}, {1, 2}, {0, 0}};
         ArrayList<ArrayList<Integer>> inputs = new ArrayList<ArrayList<Integer>>();
         for (String string : inputStrings) {
             inputs.add(stringToList(string));

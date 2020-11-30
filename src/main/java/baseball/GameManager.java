@@ -66,7 +66,7 @@ public class GameManager {
         for (int i = 0; i < NUMBER_ANSWER;) {
             int temp = RandomUtils.nextInt(1, 9);
             if (findIndexOfList(answer, i, temp) == -1) {
-                /* 중복된 값이 아니면 answer에 추가한다. */
+                // 중복된 값이 아니면 answer에 추가합니다.
                 answer.add(temp);
                 i++;
             }
@@ -85,6 +85,7 @@ public class GameManager {
         for (int i = 0; i < NUMBER_ANSWER; i++) {
             int index = findIndexOfList(answer, NUMBER_ANSWER, userAnswer.get(i));
             if (index == i) {
+                // 정답에서 숫자의 위치와 같다면 strike 입니다.
                 strike++;
             } else if (index != -1) {
                 ball++;
@@ -101,7 +102,7 @@ public class GameManager {
      * @param number 찾고자하는 숫자를 입력합니다.
      * @return 정답에 위치한 숫자의 인덱스를 반환합니다. 없다면 -1이 반환됩니다.
      */
-    static private int findIndexOfList(ArrayList<Integer> list, int length, int number) {
+    private static int findIndexOfList(ArrayList<Integer> list, int length, int number) {
         for (int i = 0; i < length; i++) {
             if (list.get(i) == number) {
                 return i;
@@ -116,7 +117,7 @@ public class GameManager {
      * @param strike 스트라이크 개수입니다.
      * @param ball 볼 개수입니다.
      */
-    static public void printScore(int strike, int ball) {
+    public static void printScore(int strike, int ball) {
         if ((ball == 0) && (strike == 0)) {
             System.out.print("낫싱");
         }
@@ -135,7 +136,7 @@ public class GameManager {
      * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
      * @return 입력으로 받은 숫자를 반환합니다.
      */
-    static private int requestInput(Scanner scanner) {
+    private static int requestInput(Scanner scanner) {
         int result = 0;
         try {
             result = scanner.nextInt();
@@ -151,11 +152,11 @@ public class GameManager {
      * 사용자가 게임을 새로 시작하는지 입력을 받습니다. 1또는 2를 입력받지 않으면 예외처리합니다.
      * 
      * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
-     * @return 입력된 값
+     * @return 입력된 값을 반환합니다.
      */
-    static public int requestReplay(Scanner scanner) {
+    public static int requestReplay(Scanner scanner) {
         int number = requestInput(scanner);
-        if ((number != 1) && (number != 2)) {
+        if ((number != GameStatus.RESTART.getValue()) && (number != GameStatus.END.getValue())) {
             throw new IllegalArgumentException();
         }
         return number;
@@ -167,17 +168,17 @@ public class GameManager {
      * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
      * @return 입력으로 받은 숫자의 ArrayList를 반환합니다.
      */
-    static public ArrayList<Integer> requestAnswer(Scanner scanner) {
+    public static ArrayList<Integer> requestAnswer(Scanner scanner) {
         int number = requestInput(scanner);
         ArrayList<Integer> result = new ArrayList<Integer>();
         while (number > 0) {
             int temp = number % 10;
             if (temp == 0) {
-                /* 입력은 1~9만 가능하다. */
+                // 입력은 1~9만 가능합니다.
                 throw new IllegalArgumentException();
             }
             if (findIndexOfList(result, result.size(), temp) != -1) {
-                /* 중복된 값의 입력은 불가능하다. */
+                // 중복된 값의 입력은 불가능합니다.
                 throw new IllegalArgumentException();
             }
             result.add(number % 10);

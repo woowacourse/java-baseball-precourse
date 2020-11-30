@@ -14,6 +14,7 @@ public class Application {
             int[] gameResult = gameManager.checkAnswer(userAnswer);
             GameManager.printScore(gameResult[0], gameResult[1]);
             if (gameResult[0] != GameManager.NUMBER_ANSWER) {
+                // 정답이 아니면 루프를 계속 돕니다.
                 continue;
             }
             System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", GameManager.NUMBER_ANSWER);
