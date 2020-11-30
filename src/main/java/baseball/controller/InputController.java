@@ -43,4 +43,22 @@ public class InputController {
                 .collect(Collectors.toList());
     }
 
+    public GameStatus inputRestart() {
+        ConsoleView.printRestart();
+        String input = scanner.nextLine();
+
+        try {
+            Validator.validateReStart(input);
+        } catch (IllegalArgumentException e) {
+            return inputRestart();
+        }
+
+        int restart = Integer.parseInt(input);
+
+        if (restart == Validator.COMMAND_RESTART) {
+            return GameStatus.RESTART;
+        }
+        return GameStatus.END;
+
+    }
 }
