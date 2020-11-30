@@ -17,13 +17,12 @@ public class BaseballGame {
     }
 
     private void setBalls() {
-        while (balls.length() < BALLS_LENGTH) {
+        try {
             int ballCandidate = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
-            if (isNumberDuplicate(String.valueOf(ballCandidate))) {
-                continue;
-            } else {
-                balls += String.valueOf(ballCandidate);
-            }
+            balls = Validator.getValidateBall(String.valueOf(ballCandidate));
+            return;
+        } catch (IllegalArgumentException e) {
+
         }
     }
 }
