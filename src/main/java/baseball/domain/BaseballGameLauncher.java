@@ -29,9 +29,7 @@ public class BaseballGameLauncher {
         String confirm = scanner.nextLine();
         if (confirm.equals("1")) {
             play(scanner);
-        } else if (confirm.equals("2")) {
-            return;
-        } else {
+        } else if (!confirm.equals("2")) {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
         }
     }
