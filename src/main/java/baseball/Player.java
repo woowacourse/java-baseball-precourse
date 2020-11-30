@@ -1,11 +1,10 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 
 public class Player {
-    final Scanner scanner;
+    private final Scanner scanner;
     private Game game;
     private char[] lastGuess = new char[Constants.ANSWER_LENGTH];
     private boolean playing;
@@ -14,7 +13,6 @@ public class Player {
     public Player(final Scanner scanner, Game game) {
         this.scanner = scanner;
         this.game = game;
-        Arrays.fill(lastGuess, ' ');
         this.playing = true;
         this.guessSuccess = false;
     }
@@ -44,7 +42,7 @@ public class Player {
     }
     
     public void printSuccess() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(Constants.ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     
     public void askContinue() {
@@ -71,7 +69,7 @@ public class Player {
             throw exception;
         }
         
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.ANSWER_LENGTH; i++) {
             this.lastGuess[i] = playerGuessInput.charAt(i);
         }
     }
