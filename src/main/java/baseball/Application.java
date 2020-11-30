@@ -14,6 +14,9 @@ public class Application {
 	private static final String NOTHING = "낫싱";
 	private static final String FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 	private static final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+	private static final String BALL_WORD = "볼";
+	private static final String STRIKE_WORD = "스트라이크";
+	private static final Character WHITESPACE = 32;
 
 	public static void main(String[] args) {
 		final Scanner scanner = new Scanner(System.in);
@@ -70,12 +73,14 @@ public class Application {
 		StringBuilder hint = new StringBuilder();
 
 		if (ball != ZERO) {
-			hint.append(ball + "볼");
-			hint.append(" ");
+			hint.append(ball);
+			hint.append(BALL_WORD);
+			hint.append(WHITESPACE);
 		}
 
 		if (strike != ZERO) {
-			hint.append(strike + "스트라이크");
+			hint.append(strike);
+			hint.append(STRIKE_WORD);
 		}
 
 		if (strike + ball != ZERO) {
