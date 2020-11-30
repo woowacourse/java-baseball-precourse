@@ -8,6 +8,7 @@ public class InputViewer {
     private static final String zeroMessage= "0이외의 각자리가 1~9로 구성된 숫자를 입력해주세요.";
     private static final String overlapMessage = "중복된 자리 수들을 입력하셨습니다.";
     private static final String noValidRestartMessage = "유효하지 못한 재시작 입력입니다.";
+
     /* 숫자를 입력 받을 때, 사용자에게 보여주는 메세지를 표현하는 메서드 */
     public static void receiveNumber() {
         System.out.print(receiveMessage);

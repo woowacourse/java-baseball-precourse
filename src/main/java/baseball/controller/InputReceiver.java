@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 public class InputReceiver {
     private static final int NUMBER_OF_BALL = 3;
+    private static final int ONE_DIGIT = 10;
+    private static final String RESTART = "1";
+    private static final String END = "2";
     private static final Scanner receiver = new Scanner(System.in);
 
     /**
@@ -14,11 +17,12 @@ public class InputReceiver {
      * @return 전환된 정수들의 배열
      */
     public static int[] userAnswer() {
-        int[] userAnswer;
         InputViewer.receiveNumber();
         String userInitialAnswer = receiver.nextLine();
         lengthChecker(userInitialAnswer);
-        userAnswer = intergerArrayTranslator(userInitialAnswer);
+        int userIntegerAnswer = integerTranslator(userInitialAnswer);
+        int[] userAnswer = intergerArrayTranslator(userIntegerAnswer);
+        overlappedChecker(userAnswer);
         return userAnswer;
     }
 
@@ -31,16 +35,14 @@ public class InputReceiver {
         }
     }
 
-    private static int[] intergerArrayTranslator(String userIntialAnswer) {
-        int userIntegerAnswer = integerTranslator(userIntialAnswer);
+    private static int[] intergerArrayTranslator(int userIntegerAnswer) {
         int[] integerArray = new int[NUMBER_OF_BALL];
         for (int position = 0; position < NUMBER_OF_BALL; position++) {
-            int singleNumber = userIntegerAnswer % 10;
+            int singleNumber = userIntegerAnswer % ONE_DIGIT;
             zeroChecker(singleNumber);
             integerArray[NUMBER_OF_BALL - position - 1] = singleNumber;
-            userIntegerAnswer /= 10;
+            userIntegerAnswer /= ONE_DIGIT;
         }
-        overlappedChecker(integerArray);
         return integerArray;
     }
 
@@ -81,10 +83,10 @@ public class InputReceiver {
      */
     public static boolean askEndGames() {
         String criteria = receiver.nextLine();
-        if (criteria.equals("1")) {
+        if (criteria.equals(RESTART)) {
             return false;
         }
-        if (criteria.equals("2")) {
+        if (criteria.equals(END)) {
             return true;
         }
         InputViewer.noValidRestart();
