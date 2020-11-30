@@ -61,7 +61,7 @@ public class Application {
 		if(replayFlag == REPLAY_YES) {
 			gamePlay(scanner);
 		} else if (replayFlag == REPLAY_NO) {
-			// Do nothing
+			// Do nothing; no more play
 		}
 	}
 
