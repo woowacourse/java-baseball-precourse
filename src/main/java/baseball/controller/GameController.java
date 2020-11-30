@@ -9,6 +9,7 @@ public class GameController {
 
     private static Computer computer;
     private static InputController inputController;
+    private static ConsoleView consoleView = new ConsoleView();
 
     private static int GAME_SUCCESS_COUNT = 3;
 
@@ -31,20 +32,17 @@ public class GameController {
 
     }
 
-
     private void initComputer() {
         this.computer = Computer.create();
     }
 
     private static void initPlayerInput() {
 
-        System.out.println("숫자를 입력하세요");
         List<Integer> numbers = inputController.input();
 
         GameStatus status = checkNumbers(numbers);
 
         if (status == GameStatus.RETRY) {
-            System.out.println("틀렸습니다");
             initPlayerInput();
         }
 
@@ -52,11 +50,11 @@ public class GameController {
 
     private static GameStatus checkNumbers(List<Integer> numbers) {
 
-        int ballCount = checkBall(numbers);
+        checkBall(numbers);
         int strikeCount = checkStrike(numbers);
-        System.out.println("볼" + ballCount);
-        System.out.println("스트라이크" + strikeCount);
-        if (strikeCount != GAME_SUCCESS_COUNT) {
+
+        consoleView.printResult();
+        if (strikeCount < GAME_SUCCESS_COUNT) {
             return GameStatus.RETRY;
         }
 
@@ -64,7 +62,9 @@ public class GameController {
     }
 
     private static int checkBall(List<Integer> numbers) {
-        return getSameNumberCount(numbers) - getStrikeCount(numbers);
+        int ballCount = getSameNumberCount(numbers) - getStrikeCount(numbers);
+        consoleView.setBallCount(ballCount);
+        return ballCount;
     }
 
     private static int getSameNumberCount(List<Integer> numbers) {
@@ -79,6 +79,7 @@ public class GameController {
 
     private static int checkStrike(List<Integer> input) {
         int strikeCount = getStrikeCount(input);
+        consoleView.setStrikeCount(strikeCount);
         return strikeCount;
     }
 
