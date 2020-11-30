@@ -21,7 +21,7 @@ public final class Constants {
         GAME_MAX_BASEBALL_PITCH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     // 게임의 재시작 여부를 사용자에게 물을 때 콘솔에 출력할 문자열
     public static final String MESSAGE_GAME_REPLAY =
-        "게임을 새로 시작하려면 " + STRING_USER_NOT_EXIT + ", 종료하려면 " + STRING_USER_NOT_EXIT + "를 입력하세요.";
+        "게임을 새로 시작하려면 " + STRING_USER_NOT_EXIT + ", 종료하려면 " + STRING_USER_EXIT + "를 입력하세요.";
     // 스트라이크와 볼이 모두 존재하지 않을 경우 콘솔에 출력할 문자열
     public static final String MESSAGE_RESULT_NOTHING = "낫싱";
     // 볼의 갯수 뒤에 붙여 콘솔에 출력할 문자열
