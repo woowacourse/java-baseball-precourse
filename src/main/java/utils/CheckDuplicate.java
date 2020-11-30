@@ -1,41 +1,36 @@
 package utils;
 
 import java.util.HashSet;
+import java.util.Set;
 
 /**
- * »ı¼ºµÈ ³­¼ö¿¡ Áßº¹µÈ ¼ıÀÚ°¡ ÀÖ´ÂÁö °Ë»çÇÏ´Â Å¬·¡½º
+ * ìƒì„±ëœ ë‚œìˆ˜ì— ì¤‘ë³µëœ ìˆ«ìê°€ ìˆëŠ”ì§€ ê²€ì‚¬í•˜ëŠ” í´ë˜ìŠ¤
  */
 public class CheckDuplicate {
-	
-	final int TRUE_SIZE = 3;
-	
-	/**
-	 * Áßº¹µÈ ¼ıÀÚ°¡ ¾øÀ¸¸é »ı¼ºµÈ ³­¼ö¸¦ ¹İÈ¯ÇÑ´Ù
-	 * @return int
-	 */
+
+	final static int TRUE_SIZE = 3;
+	final static int START_NUMBER = 100;
+	final static int END_NUMBER = 999;
+
 	public String makeRandomNumber() {
-		int randomNumber = RandomUtils.nextInt(100, 999);
+		int randomNumber = RandomUtils.nextInt(START_NUMBER, END_NUMBER);
 		if(isDuplicate(randomNumber)) {
 			return makeRandomNumber();
 		}
 		return String.valueOf(randomNumber);
 	}
 
-	/**
-	 * Áßº¹µÈ ¼ıÀÚ°¡ ¾øÀ¸¸é true¸¦ ¹İÈ¯ÇÑ´Ù
-	 * @param randomNum
-	 * @return boolean
-	 */
 	private boolean isDuplicate(int randomNum) {
-		HashSet<Integer> set = new HashSet<Integer>();
-		
-		for(int i=0; i<3; i++) {
+		Set<Integer> set = new HashSet<>();
+
+		for(int i=0; i<TRUE_SIZE; i++) {
 			set.add(randomNum % 10);
 			randomNum /= 10;
 		}
-		if(set.size()==TRUE_SIZE) {
-			return false;
-		}
-		return true;
+		return !(isLengthThree(set));
+	}
+
+	private boolean isLengthThree(Set<Integer> set){
+		return (set.size()==TRUE_SIZE);
 	}
 }
