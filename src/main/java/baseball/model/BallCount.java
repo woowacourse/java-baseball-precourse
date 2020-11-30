@@ -1,5 +1,11 @@
 package baseball.model;
 
+/**
+ * BallCount.java
+ * 스트라이크, 볼을 담을 Data Transfer Object
+ *
+ * @author Kimun Kim / kkm97351@gmail.com
+ */
 public class BallCount {
     private final int strike;
     private final int ball;
@@ -22,19 +28,19 @@ public class BallCount {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("Strike: %d, Ball: %d", this.strike, this.ball);
     }
 
     @Override
-    public boolean equals(Object obj){
-        if (this == obj){
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (obj == null){
+        if (obj == null) {
             return false;
         }
-        if (this.getClass() != obj.getClass()){
+        if (this.getClass() != obj.getClass()) {
             return false;
         }
         BallCount paramObj = (BallCount) obj;

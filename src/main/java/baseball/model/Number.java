@@ -1,6 +1,11 @@
 package baseball.model;
 
-import java.util.ArrayList;
+/**
+ * Number.java
+ * 한자리의 숫자를 담을 Wrapper 클래스
+ *
+ * @author Kimun Kim / kkm97351@gmail.com
+ */
 
 public class Number {
     public static final int MIN = 1;
@@ -9,26 +14,27 @@ public class Number {
 
     private final int number;
 
-    private Number(int number){
+    private Number(int number) {
         this.number = number;
     }
 
-    public static Number valueOf(int number){
-        if (number < MIN || MAX < number){
+    /* int값을 인자로 받아 Number 객체를 생성하는 메소드 */
+    public static Number valueOf(int number) {
+        if (number < MIN || MAX < number) {
             throw new IllegalArgumentException(INVALID_RANGE);
         }
         return new Number(number);
     }
 
     @Override
-    public boolean equals(Object obj){
-        if (this == obj){
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (obj == null){
+        if (obj == null) {
             return false;
         }
-        if (this.getClass() != obj.getClass()){
+        if (this.getClass() != obj.getClass()) {
             return false;
         }
         Number paramObj = (Number) obj;
@@ -36,12 +42,12 @@ public class Number {
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return this.number;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return Integer.toString(this.number);
     }
 }
