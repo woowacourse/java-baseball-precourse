@@ -31,6 +31,13 @@ public class BaseballGame {
     }
 
     public void initGame () {
+        answer = generateAnswer();
+        guess = "";
+        progress = '\u0000';
+        ballCnt = 0;
+        strikeCnt = 0;
+        allStrike = false;
+        progressGame = true;
     }
 
     public void start() {
