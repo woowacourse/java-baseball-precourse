@@ -13,4 +13,17 @@ public class GameResetter {
         System.out.println(FINISH_MESSAGE);
         System.out.println(RESTART_MESSAGE);
     }
+
+    public static String scanRestartFactor(Scanner scanner) {
+        printFinishMessage();
+        return UserInputScanner.scanUserInput(scanner);
+    }
+
+    public static boolean getRestartFactor(Scanner scanner) {
+        String restartFactor = scanRestartFactor(scanner);
+        if (restartFactor.equals("1")) {
+            return true;
+        }
+        return false;
+    }
 }

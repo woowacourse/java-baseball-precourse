@@ -9,12 +9,12 @@ public class Game {
         this.answer = AnswerGenerator.generateAnswer();
     }
 
-    public static void playGame(Scanner scanner) {
+    public static boolean playGame(Scanner scanner) {
         boolean correct;
         do {
             correct = playRound(scanner);
         } while(!correct);
-        GameResetter.printFinishMessage();
+        return GameResetter.getRestartFactor(scanner);
     }
 
     public static boolean playRound(Scanner scanner) {
