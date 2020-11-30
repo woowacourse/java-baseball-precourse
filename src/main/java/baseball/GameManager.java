@@ -41,7 +41,7 @@ public class GameManager {
         Balls myBalls = null;
         while (myBalls == null) {
             try {
-                myBalls = Balls.stringToBalls(scanner.next());  // 사용자 생성 balls
+                myBalls = Balls.stringToBalls(getInputString());    // 사용자 생성 balls
             } catch (NumberFormatException e) {
                 System.out.println("3개의 1~9 사이의 수만 입력할 수 있습니다.");
             }
@@ -50,9 +50,10 @@ public class GameManager {
     }
 
     private Boolean continueGame() {
+        String input;
         while (true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String input = scanner.next().trim();
+            input = getInputString();
 
             if (!input.equals(CONTINUE) && !input.equals(QUIT)) {
                 System.out.println("1, 2만 입력 가능합니다. 다시 입력해주세요. 입력값:" + input);
@@ -61,5 +62,9 @@ public class GameManager {
 
             return input.equals(CONTINUE);
         }
+    }
+
+    private String getInputString() {
+        return scanner.nextLine();
     }
 }
