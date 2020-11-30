@@ -9,13 +9,13 @@ public class RandomNumberGenerator {
     private static final int MIN = 1;
     private static final int MAX = 9;
 
-    private RandomNumberGenerator(){
+    private RandomNumberGenerator() {
     }
 
-    public static Digits makeRandomNumber(){
+    public static Digits makeRandomNumber() {
         HashSet<Integer> number = new HashSet<Integer>();
 
-        while (number.size() < NUMBER_LENGTH){
+        while (number.size() < NUMBER_LENGTH) {
             number.add(RandomUtils.nextInt(MIN, MAX));
         }
         ArrayList<Integer> temp2 = new ArrayList<Integer>(number);

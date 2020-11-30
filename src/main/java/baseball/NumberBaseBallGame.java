@@ -7,18 +7,18 @@ public class NumberBaseBallGame {
     private static final int playAgain = 1;
     private static final int stopPlay = 2;
 
-    public NumberBaseBallGame(Scanner scanner){
+    public NumberBaseBallGame(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    private void restart(int doesPlayerWantPlayAgain){
+    private void restart(int doesPlayerWantPlayAgain) {
         validatePlayerWantPlayAgain(doesPlayerWantPlayAgain);
         if (doesPlayerWantPlayAgain == playAgain){
             start();
         }
     }
 
-    private void askRestart(){
+    private void askRestart() {
         int doesPlayerWantPlayAgain;
 
         do {
@@ -38,7 +38,7 @@ public class NumberBaseBallGame {
         }
     }
 
-    public void start(){
+    public void start() {
         boolean isContinueGame = true;
         Digits answer = RandomNumberGenerator.makeRandomNumber();
 

@@ -5,7 +5,7 @@ public class Discriminator {
     private int strike = 0;
     private int ball = 0;
 
-    public boolean judge(Digits answer, Digits userInput){
+    public boolean judge(Digits answer, Digits userInput) {
         for (int i = 0; i < NUMBER_LENGTH; i++){
             for (int j = 0; j < NUMBER_LENGTH; j++) {
                 compare(i, answer.indexOfDigit(i), j, userInput.indexOfDigit(j));
@@ -15,7 +15,7 @@ public class Discriminator {
         return strike != NUMBER_LENGTH;
     }
 
-    private void compare(int answerIndex, int answerDigit, int inputIndex, int inputDigit){
+    private void compare(int answerIndex, int answerDigit, int inputIndex, int inputDigit) {
         if (answerDigit == inputDigit){
             if (answerIndex == inputIndex){
                 strike++;
@@ -25,7 +25,7 @@ public class Discriminator {
         }
     }
 
-    private void printResult(){
+    private void printResult() {
         if(ball !=0 && strike != 0){
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }else if (strike != 0){
