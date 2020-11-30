@@ -12,7 +12,7 @@ public class GameComputer {
     public GameComputer() {
         computerChoice = new BallChoice();
         computerChoice.choice = chooseChoice();
-        System.out.print(computerChoice.choice);
+        
         isGameOver(false, computerChoice);
     }
 
