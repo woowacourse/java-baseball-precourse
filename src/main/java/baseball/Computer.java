@@ -14,6 +14,10 @@ public class Computer {
         balls = "";
     }
 
+    public String getBalls() {
+        return balls;
+    }
+
     public void setBalls() {
         try {
             int ballCandidate = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);

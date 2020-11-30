@@ -2,12 +2,8 @@ package baseball;
 
 import utils.Validator;
 
-import java.security.cert.Extension;
 import java.util.*;
-
-import utils.Validator;
 import static utils.Constant.*;
-import static utils.Validator.*;
 
 public class Player {
 
@@ -17,6 +13,10 @@ public class Player {
     public Player(Scanner scanner) {
         this.scanner = scanner;
         balls = "";
+    }
+
+    public String getBalls() {
+        return balls;
     }
 
     public void inputBalls(){

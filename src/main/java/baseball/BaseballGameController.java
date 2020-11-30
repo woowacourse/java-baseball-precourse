@@ -9,7 +9,6 @@ public class BaseballGameController {
 
     public BaseballGameController(Scanner scanner) {
         this.scanner = scanner;
-        baseballGame = new BaseballGame(scanner);
     }
 
     public void startGame(){
@@ -19,8 +18,9 @@ public class BaseballGameController {
     }
 
     private void playGame() {
-        baseballGame.initialBalls();
-        baseballGame.compareBalls();
+        baseballGame = new BaseballGame(scanner);
+        baseballGame.inputPlayerBalls();
+        baseballGame.getHint();
     }
 
     private boolean checkReplay() {
