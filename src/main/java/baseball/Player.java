@@ -14,6 +14,16 @@ public class Player {
         while (true){
             String inputNumber = scanner.nextLine();
 
+            // 숫자 확인
+            boolean isNumeric = inputNumber.chars().allMatch(Character::isDigit);
+
+            // 길이 확인
+            boolean compareLength = inputNumber.length() == gameNumber.length();
+            if (!isNumeric || !compareLength) {
+                System.out.printf("%b %b \n",isNumeric,compareLength);
+                continue;
+            }
+
             System.out.println("aaa");
             break;
         }
