@@ -1,43 +1,37 @@
 package baseball;
 
 import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NumberConditionChecker {
     private NumberConditionChecker() {
     }
 
-    public static int[] splitNumberToDigits(int number) {
-        int[] digits = new int[3];
-        for (int index = 2; index >= 0; index--) {
+    public static List<Integer> splitNumberToDigits(int number) {
+        List<Integer> digits = new ArrayList<Integer>(3);
+        for (int index = 0; index < 3; index++) {
             int digit = number % 10;
             number /= 10;
-            digits[index] = digit;
+            digits.add(digit);
         }
         return digits;
     }
 
-    public static boolean checkZeroInList(int[] numbers) {
-        for (int index = 0; index < 3; index++) {
-            if (numbers[index] == 0) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean checkZeroInList(List<Integer> numbers) {
+        return numbers.contains(0);
     }
 
-    public static boolean checkOverlapNumber(int[] numbers) {
-        HashSet<Integer> digitSet = new HashSet<Integer>();
-        for (int index = 0; index < 3; index++) {
-            digitSet.add(numbers[index]);
-        }
-        if (digitSet.size() == numbers.length) {
+    public static boolean checkOverlapNumber(List<Integer> numbers) {
+        HashSet<Integer> digitSet = new HashSet<Integer>(numbers);
+        if (digitSet.size() == numbers.size()) {
             return false;
         }
         return true;
     }
 
     public static boolean checkNumberCondition(int number) {
-        int[] numbers = splitNumberToDigits(number);
+        List<Integer> numbers = splitNumberToDigits(number);
         boolean suitability = ! (checkZeroInList(numbers) || checkOverlapNumber(numbers));
         return suitability;
     }

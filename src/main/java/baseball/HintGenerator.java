@@ -1,13 +1,16 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HintGenerator {
     private HintGenerator() {
     }
 
-    public static int countStrike(int[] answer, int[] guess) {
+    public static int countStrike(List<Integer> answer, List<Integer> guess) {
         int strikeCount = 0;
         for (int index = 0; index < 3; index++) {
-            if (answer[index] == guess[index]) {
+            if (answer.get(index) == guess.get(index)) {
                 strikeCount += 1;
             }
         }
