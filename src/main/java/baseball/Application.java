@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Application {
     private ConsoleView view;
 
-    Application(ConsoleView ConsoleView) {
-        this.view = ConsoleView;
+    Application(ConsoleView consoleView) {
+        this.view = consoleView;
     }
 
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class Application {
     }
 
     private void run() {
-        Baseball baseball = new Baseball(view);
+        Baseball baseball = new Baseball(this.view);
         do {
             baseball.start();
         } while (this.view.askWantContinue());
