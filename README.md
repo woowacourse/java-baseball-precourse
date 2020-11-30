@@ -1,6 +1,6 @@
 # 미션 - 숫자 야구 게임
 
-## 기능목록  
+## 기능 구현 목록  
 ## Entire System
 - 게임 시작과 함께 임의 생성된 Game Set 가져오기
 - Input 받아오기.
@@ -8,10 +8,14 @@
 - 3 Strike 시에 게임 끝
 - 게임이 끝날 시에 다시 플레이할지 물어보기
 
+### Application
+- 모든 프로그램 시작을 맡고 있는 객체
+### Game
+- 모든 게임 부분 시작을 맡고 있는 객체
+- 전체적인 게임을 실행할 수 있는 Process Start를 메소드로 가짐
 ### Controller
-#### Application
 - 실제 게임 시작 진행 
-#### Game
+#### GameProcess
 - 시작 및 종료를 인식
 - 전체적인 게임을 진행하는 메서드.
 #### RandomBallSet  
