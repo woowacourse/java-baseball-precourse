@@ -14,7 +14,7 @@ public class Player {
 	public char[] userNumbersArray(String string) {
 		char[] userInputNumbersArray = string.toCharArray();
 		Validator.checkOverInputNumbers(userInputNumbersArray);
-		Validator.checkOverInputNumbers(userInputNumbersArray);
+		Validator.checkOverlapInputNumbers(userInputNumbersArray);
 		return userInputNumbersArray;
 	}
 }
