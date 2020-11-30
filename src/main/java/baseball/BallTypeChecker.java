@@ -14,12 +14,11 @@ public class BallTypeChecker {
     }
 
     public BaseballResult startChecking(BaseBall inputBaseball) {
-        BaseballResult baseballResult = new BaseballResult();
-        compare(inputBaseball, baseballResult);
-        return baseballResult;
+        return compare(inputBaseball);
     }
 
-    private void compare(BaseBall inputBaseball, BaseballResult baseballResult) {
+    private BaseballResult compare(BaseBall inputBaseball) {
+        BaseballResult baseballResult = new BaseballResult();
         for (int index = 0; index < inputBaseball.size(); index++) {
             if (isStrike(index, inputBaseball)) {
                 baseballResult.accumulateBallType(BallType.STRIKE);
@@ -30,6 +29,7 @@ public class BallTypeChecker {
                 continue;
             }
         }
+        return baseballResult;
     }
 
     private boolean isStrike(int index, BaseBall inputBaseball) {
