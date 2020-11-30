@@ -1,20 +1,23 @@
 package baseball;
 
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 입력한 값이 조건에 맞는지 검사하는 클래스
  */
 public class CheckInputNumber {
 
-    private static final String PLAYER_INPUT_EXCEPTION_MESSAGE = "3자리의 서로 다른 숫자를 입력해주세요.";
-    private static final String PLAYER_RESTART_INPUT_EXCEPTION_MESSAGE = "1(다시 시작) 또는 2(종료)를 입력해주세요.";
+    private static final String INPUT_EXCEPTION_MESSAGE = "3자리의 서로 다른 숫자를 입력해주세요.";
+    private static final String RESTART_INPUT_EXCEPTION_MESSAGE = "1(다시 시작) 또는 2(종료)를 입력해주세요.";
     private static final String[] oneOrTwo = {"1", "2"};
 
 
     public String inputNumber(String input) {
         if (!isValid(input)) {
-            throwInputException(PLAYER_INPUT_EXCEPTION_MESSAGE);
+            throwInputException(INPUT_EXCEPTION_MESSAGE);
         }
         return input;
     }
@@ -34,11 +37,15 @@ public class CheckInputNumber {
     }
 
     public boolean oneOrTwo(String input) {
-        if(Arrays.stream(oneOrTwo).anyMatch(input::equals)){
+        if(Arrays.asList(oneOrTwo).contains(input)){
             return isOne(input);
         }
-        throwInputException(PLAYER_RESTART_INPUT_EXCEPTION_MESSAGE);
+        throwInputException(RESTART_INPUT_EXCEPTION_MESSAGE);
         return false;
+    }
+
+    private boolean isOne(String input){
+        return (input.equals("1"));
     }
 
     private boolean isUnique(String input) {
@@ -55,10 +62,6 @@ public class CheckInputNumber {
 
     private boolean isValidInteger(char inputChar) {
         return !(inputChar < 49 || inputChar > 57);
-    }
-
-    private boolean isOne(String input){
-        return (input.equals("1"));
     }
 
     private void throwInputException(String exceptionMessage) {
