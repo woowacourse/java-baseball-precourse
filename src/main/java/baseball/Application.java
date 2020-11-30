@@ -34,6 +34,5 @@ public class Application {
                 isRestart = Service.finishBaseball(playerInput);
             }
         }
-
     } // end of Main
 } // end of Application
