@@ -3,7 +3,7 @@ package utils;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
  * @since 2020/11/26
  */
 class RandomUtilsTest {
-    int startInclusive = 0;
+    int startInclusive = 1;
     int endInclusive = 9;
 
     @Test
@@ -23,9 +23,7 @@ class RandomUtilsTest {
 
         for (int i = 0; i < testLength; i++) {
             int randomNumber = RandomUtils.nextInt(startInclusive, endInclusive);
-            if (randomNumber <= startInclusive || randomNumber > endInclusive) {
-                fail();
-            }
+            assertTrue((1 <= randomNumber) && (randomNumber <= 9));
         }
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
  * @since 2020/11/26
  */
 public class RandomNumbers {
-    public static final int START_INDEX = 0;
+    public static final int START_INDEX = 1;
     public static final int LAST_INDEX = 9;
 
     private RandomNumbers() {
