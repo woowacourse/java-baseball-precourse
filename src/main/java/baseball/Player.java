@@ -11,13 +11,17 @@ public class Player {
     private String STRINGINPUT="";
     private static final int LENGTHNUMBER=3;
 
-    public String playerInput() {
+    public String playerInputNumber() {
         System.out.print(INPUTNUMBER);
         this.STRINGINPUT =scanner.nextLine();
         return this.STRINGINPUT;
     }
+    public String playerChoiceNumber() {
+        this.STRINGINPUT =scanner.nextLine();
+        return this.STRINGINPUT;
+    }
     public void correctInput(){
-        playerInput();
+        playerInputNumber();
         if(!checkingInput(this.STRINGINPUT)){
             correctInput();
         }
@@ -51,7 +55,7 @@ public class Player {
         return inputNumber;
     }
     public int getChoiceNumber(){
-        String choiceNumber=playerInput();
+        String choiceNumber=playerChoiceNumber();
         if(!checkChoiceNumber(choiceNumber)){
             return getChoiceNumber();
         }

@@ -41,7 +41,6 @@ public class PlayTheGame {
             System.out.println(ENDGAMEMESSAGE);
             System.out.println(QUESTIONGAME);
             int choiceNumber=player.getChoiceNumber();
-            System.out.println(choiceNumber);
             continuingGame(choiceNumber);
         }
         else{
