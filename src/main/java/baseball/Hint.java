@@ -12,10 +12,17 @@ public class Hint {
     }
 
     public void countHint(int[] computerAnswer, int[] userAnswer) {
+        initCount();
+
         for (int i = 0; i < NUMBER_LEN; i++) {
             countStrike(computerAnswer[i], userAnswer[i]);
             countBall(computerAnswer, userAnswer[i], i);
         }
+    }
+
+    private void initCount() {
+        this.strike = 0;
+        this.ball = 0;
     }
 
     private void countStrike(int computerNum, int userNum) {
