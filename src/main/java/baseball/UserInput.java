@@ -32,6 +32,6 @@ public class UserInput {
         System.out.println("에러 발생! 다음과 같은 데이터는 사용할 수 없습니다.");
         System.out.println("1. 중복된 숫자");
         System.out.println("2. 정해진 범위를 넘어서는 숫자");
-        System.out.println("2. 숫자가 아닌 문자 혹은 숫자 0");
+        System.out.println("3. 숫자가 아닌 문자 혹은 숫자 0");
     }
 }
