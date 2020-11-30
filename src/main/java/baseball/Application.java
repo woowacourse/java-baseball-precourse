@@ -1,7 +1,4 @@
 package baseball;
-
-
-
 import java.util.Scanner;
 import utils.RandomUtils;
 
@@ -25,10 +22,6 @@ public class Application {
             System.out.println(computerNumber[1]);
             System.out.println(computerNumber[2]);
             */
-            System.out.println("computerNumber");
-            System.out.println(computerNumber[0]);
-            System.out.println(computerNumber[1]);
-            System.out.println(computerNumber[2]);
             baseBallGameController(computerNumber, scanner, validCountOfNumber);
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
