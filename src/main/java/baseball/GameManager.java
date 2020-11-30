@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 import utils.RandomUtils;
 
@@ -12,27 +11,28 @@ import utils.RandomUtils;
  */
 public class GameManager {
     public static final int NUMBER_ANSWER = 3; // 정답 개수
+    private static final int MIN_ANSWER_NUMBER = 1; // 정답으로 가질 수 있는 최소 숫자
+    private static final int MAX_ANSWER_NUMBER = 9; // 정답으로 가질 수 있는 최대 숫자
     private ArrayList<Integer> answer;
 
     /**
      * Game 상태를 나타냅니다.
      * 
-     * ONGOING 아직 게임이 진행되는 상태입니다. 
-     * RESTART 게임 한 판이 종료되고 재시작을 선택한 상태입니다. 
-     * END 게임 한 판이 종료되고 게임 종료를 선택한 상태입니다.
+     * ONGOING 아직 게임이 진행되는 상태입니다. RESTART 게임 한 판이 종료되고 재시작을 선택한 상태입니다. END 게임 한 판이 종료되고 게임 종료를 선택한
+     * 상태입니다.
      * 
      * @author junroot
      */
     public static enum GameStatus {
-        ONGOING(0), RESTART(1), END(2);
+        ONGOING("0"), RESTART("1"), END("2");
 
-        private final int value;
+        private final String value;
 
-        GameStatus(int value) {
+        GameStatus(String value) {
             this.value = value;
         }
 
-        public int getValue() {
+        public String getValue() {
             return value;
         }
     }
@@ -64,7 +64,7 @@ public class GameManager {
     public void generateAnswer() {
         answer = new ArrayList<Integer>();
         for (int i = 0; i < NUMBER_ANSWER;) {
-            int temp = RandomUtils.nextInt(1, 9);
+            int temp = RandomUtils.nextInt(MIN_ANSWER_NUMBER, MAX_ANSWER_NUMBER);
             if (findIndexOfList(answer, i, temp) == -1) {
                 // 중복된 값이 아니면 answer에 추가합니다.
                 answer.add(temp);
@@ -131,35 +131,18 @@ public class GameManager {
     }
 
     /**
-     * 사용자에게 받은 숫자 입력을 확인하여 예외처리를 하고 값을 반합니다.
-     *
-     * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
-     * @return 입력으로 받은 숫자를 반환합니다.
-     */
-    private static int requestInput(Scanner scanner) {
-        int result = 0;
-        try {
-            result = scanner.nextInt();
-        } catch (Exception e) {
-            IllegalArgumentException iae = new IllegalArgumentException();
-            iae.initCause(e);
-            throw iae;
-        }
-        return result;
-    }
-
-    /**
      * 사용자가 게임을 새로 시작하는지 입력을 받습니다. 1또는 2를 입력받지 않으면 예외처리합니다.
      * 
      * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
      * @return 입력된 값을 반환합니다.
      */
-    public static int requestReplay(Scanner scanner) {
-        int number = requestInput(scanner);
-        if ((number != GameStatus.RESTART.getValue()) && (number != GameStatus.END.getValue())) {
+    public static String requestReplay(Scanner scanner) {
+        String input = scanner.nextLine();
+        if (!input.equals(GameStatus.RESTART.getValue())
+                && !input.equals(GameStatus.END.getValue())) {
             throw new IllegalArgumentException();
         }
-        return number;
+        return input;
     }
 
     /**
@@ -168,26 +151,45 @@ public class GameManager {
      * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
      * @return 입력으로 받은 숫자의 ArrayList를 반환합니다.
      */
-    public static ArrayList<Integer> requestAnswer(Scanner scanner) {
-        int number = requestInput(scanner);
-        ArrayList<Integer> result = new ArrayList<Integer>();
-        while (number > 0) {
-            int temp = number % 10;
-            if (temp == 0) {
-                // 입력은 1~9만 가능합니다.
-                throw new IllegalArgumentException();
-            }
-            if (findIndexOfList(result, result.size(), temp) != -1) {
-                // 중복된 값의 입력은 불가능합니다.
-                throw new IllegalArgumentException();
-            }
-            result.add(number % 10);
-            number /= 10;
-        }
-        if (result.size() != NUMBER_ANSWER) {
+    public static ArrayList<Integer> requestUserAnswer(Scanner scanner) {
+        String input = scanner.nextLine();
+        if (input.length() != NUMBER_ANSWER) {
+            // input의 길이가 NUMBER_ANSWER와 다르면 예외처리합니다.
             throw new IllegalArgumentException();
         }
-        Collections.reverse(result);
+        return convertStringToUserAnswer(input);
+    }
+
+    /**
+     * 입력으로 받은 String을 ArrayList<Integer> 형태로 반환합니다. 이 때, 0이 포함된 입력이면 예외처리합니다.
+     * 
+     * @param string String 형태로 입력을 받습니다.
+     * @return ArrayList<Integer>로 변환하여 반환합니다.
+     */
+    private static ArrayList<Integer> convertStringToUserAnswer(String string) {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        for (int i = 0; i < string.length(); i++) {
+            Integer number = convertCharToInteger(string.charAt(i));
+            if (findIndexOfList(result, i, number) != -1) {
+                // 중복된 입력이 있을 수 없습니다.
+                throw new IllegalArgumentException();
+            }
+            result.add(number);
+        }
+        return result;
+    }
+
+    /**
+     * 입력 받은 문자를 Integer로 변홥합니다. 이 때 정답으로 나올 수 없는 문자면 예외처리됩니다.
+     * 
+     * @param ch 변환시킬 문자를 입력합니다.
+     * @return Integer로 변환하여 반환합니다.
+     */
+    private static Integer convertCharToInteger(char ch) {
+        int result = Character.getNumericValue(ch);
+        if (result < MIN_ANSWER_NUMBER || result > MAX_ANSWER_NUMBER) {
+            throw new IllegalArgumentException();
+        }
         return result;
     }
 

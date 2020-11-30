@@ -37,16 +37,17 @@ class GameManagerTest {
     @Test
     void testRequestReplay() {
         String[] correctInputArray = {"1", "2"};
-        String[] faultInputArray = {"3", "0", "abc"};
+        String[] faultInputArray = {"\n", "3", "0", "a", "abc"};
         for (String input : correctInputArray) {
             Scanner scanner = new Scanner(input);
-            assertEquals(Integer.parseInt(input), GameManager.requestReplay(scanner));
+            assertEquals(input, GameManager.requestReplay(scanner));
         }
         for (String input : faultInputArray) {
             Scanner scanner = new Scanner(input);
             try {
                 GameManager.requestReplay(scanner);
-                fail("IllegalArgumentException가 발생해야됩니다.");
+                String message = String.format("%s는 IllegalArgumentException가 발생해야됩니다.", input);
+                fail(message);
             } catch (IllegalArgumentException iae) {
             }
         }
@@ -55,20 +56,21 @@ class GameManagerTest {
     @Test
     void testRequestAnswer() {
         String[] correctInputArray = {"152", "482"};
-        String[] faultInputArray = {"32", "1234", "045", "405", "454", "abc"};
+        String[] faultInputArray = {"\n", "32", "1234", "045", "405", "454", "abc", "0123"};
         ArrayList<ArrayList<Integer>> correctResult = new ArrayList<ArrayList<Integer>>();
         for (int i = 0; i < correctInputArray.length; i++) {
             correctResult.add(stringToList(correctInputArray[i]));
         }
         for (int i = 0; i < correctInputArray.length; i++) {
             Scanner scanner = new Scanner(correctInputArray[i]);
-            assertEquals(correctResult.get(i), GameManager.requestAnswer(scanner));
+            assertEquals(correctResult.get(i), GameManager.requestUserAnswer(scanner));
         }
         for (String input : faultInputArray) {
             Scanner scanner = new Scanner(input);
             try {
-                GameManager.requestAnswer(scanner);
-                fail("IllegalArgumentException가 발생해야됩니다.");
+                GameManager.requestUserAnswer(scanner);
+                String message = String.format("%s는 IllegalArgumentException가 발생해야됩니다.", input);
+                fail(message);
             } catch (IllegalArgumentException iae) {
             }
         }
