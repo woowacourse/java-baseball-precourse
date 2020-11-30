@@ -12,7 +12,7 @@ public class OutputView {
             System.out.println(scoreBoard.getStrike() + GAME_END_MSG);
         }else if(scoreBoard.getBall() != 0 && scoreBoard.getStrike() != 0){
             System.out.println(scoreBoard.getBall() + Result.BALL.getKorean() + " "
-                    + scoreBoard.getBall() + Result.STRIKE.getKorean());
+                    + scoreBoard.getStrike() + Result.STRIKE.getKorean());
         } else if(scoreBoard.getBall() != 0){
             System.out.println(scoreBoard.getBall() + Result.BALL.getKorean());
         } else if(scoreBoard.getStrike() != 0){
