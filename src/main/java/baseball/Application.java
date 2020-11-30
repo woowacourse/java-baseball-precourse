@@ -7,7 +7,7 @@ import utils.RandomUtils;
 class GameEngine{
     private int guess;
     private int answer;
-
+    private int NEW_START = 1;
 
     GameEngine(){
 
@@ -74,6 +74,14 @@ class GameEngine{
         return hint;
     }
 
+    boolean isNewStart(int userChoice){
+        if(userChoice == this.NEW_START){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 };
 
 public class Application {
@@ -91,7 +99,9 @@ public class Application {
 
             GameEngine gameEngine = new GameEngine();
             answer = gameEngine.chooseAnswer();
+
             while(answer != guess) {
+                 gameEngine.givingHint(guess);
 
 
             }
