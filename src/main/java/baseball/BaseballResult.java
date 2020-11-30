@@ -13,12 +13,7 @@ public class BaseballResult {
     private Map<BallType, Integer> result;
 
     public BaseballResult() {
-        initResult();
-    }
-
-    private void initResult() {
-        Map<BallType, Integer> result = new HashMap<>();
-        this.result = result;
+        this.result = new HashMap<>();
     }
 
     public void accumulateBallType(BallType ballType) {

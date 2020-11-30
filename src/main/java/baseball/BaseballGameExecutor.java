@@ -6,18 +6,20 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BaseballGameExecutor {
-    private static Scanner scanner;
     private static final int RESTART_NUM = 1;
     private static final int END_NUM = 2;
+    private static Scanner scanner;
+    private static BaseballRepository baseballRepository;
 
-    public static void startGame(Scanner inputScanner) {
+    public static void startGame(Scanner inputScanner, BaseballRepository inputBaseballRepository) {
         scanner = inputScanner;
+        baseballRepository = inputBaseballRepository;
         BallTypeChecker ballTypeChecker = readyForGame();
         guessNumber(ballTypeChecker);
     }
 
     private static BallTypeChecker readyForGame() {
-        BaseBall randomBaseBall = BaseBall.createRandomBaseBall();
+        BaseBall randomBaseBall = baseballRepository.createRandomBaseBall();
         return BallTypeChecker.ballTypeCheckWith(randomBaseBall);
     }
 
@@ -36,7 +38,7 @@ public class BaseballGameExecutor {
     private static BaseBall inputBaseballNumber() {
         try {
             int inputNumber = inputNumber();
-            return BaseBall.createBaseBall(inputNumber);
+            return baseballRepository.createInputBaseBall(inputNumber);
         } catch (IllegalStateException e) {
             Printer.printMessage(e.getMessage());
             return inputBaseballNumber();
@@ -60,7 +62,7 @@ public class BaseballGameExecutor {
         try {
             int reStart = scanner.nextInt();
             if (reStart == RESTART_NUM) {
-                startGame(scanner);
+                startGame(scanner, baseballRepository);
             } else if (reStart != END_NUM) {
                 askToRestart();
             }

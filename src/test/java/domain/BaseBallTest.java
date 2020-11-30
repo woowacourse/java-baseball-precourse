@@ -12,42 +12,6 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BaseBallTest {
-    @Test
-    @DisplayName("베이스볼 랜덤 값의 범위를 확인한다.")
-    public void testRandomBaseballNumber() throws Exception {
-        //given
-        final int MIN_VALUE = 1;
-        final int MAX_VALUE = 9;
-        final int COUNT = 1000; //random 숫자를 몇 회 생성할 지
-
-        for (int i = 0; i < COUNT; i++) {
-            //when
-            BaseBall randomBaseBall = BaseBall.createRandomBaseBall();
-
-            //then
-            for (int index = 0; index < randomBaseBall.size(); index++) {
-                int digit = randomBaseBall.getNumber(index);
-                assertTrue(digit >= MIN_VALUE, "최소값을 초과합니다.");
-                assertTrue(digit <= MAX_VALUE, "최대값을 초과합니다.");
-            }
-        }
-    }
-
-    @Test
-    @DisplayName("베이스볼 랜덤 값의 중복환인 값을 확인한다.")
-    public void testDuplicateRandomBaseballNumber() throws Exception {
-        //given
-        Set<Integer> ballNumbers = new HashSet<>();
-        //when
-        BaseBall randomBaseBall = BaseBall.createRandomBaseBall();
-        //then
-        for (int index = 0; index < randomBaseBall.size(); index++) {
-            int digit = randomBaseBall.getNumber(index);
-            System.out.println(digit);
-            assertFalse(ballNumbers.contains(digit), "중복된 값이 존재합니다.");
-            ballNumbers.add(digit);
-        }
-    }
 
     @Test
     @DisplayName("볼 리스트가 제대로 생성이 되었는지 확인한다.")
@@ -55,7 +19,7 @@ class BaseBallTest {
         //given
         List<Integer> ballList = Arrays.asList(1, 3, 5);
         //when
-        BaseBall baseBall = BaseBall.createBaseBall(135);
+        BaseBall baseBall = new BaseBall(ballList);
         //then
         for (int index = 0; index < ballList.size(); index++) {
             assertEquals(ballList.get(index), baseBall.getNumber(index));
@@ -66,12 +30,12 @@ class BaseBallTest {
     @DisplayName("입력 숫자가 최댓값 초과시 에러 확인")
     public void testBaseballOverNumberException() throws Exception {
         //given
-        int inputNumber = 1000;
+        List<Integer> inputNumber = Arrays.asList(1,2,3,4);
         //when
         //then
         IllegalStateException exception
-                = assertThrows(IllegalStateException.class, () -> BaseBall.createBaseBall(inputNumber));
-        assertEquals("3자리 숫자를 입력해주세요.", exception.getMessage());
+                = assertThrows(IllegalStateException.class, () -> new BaseBall(inputNumber));
+        assertEquals("0을 제외한 3자리 숫자를 입력해주세요.", exception.getMessage());
 
     }
 
@@ -79,12 +43,12 @@ class BaseBallTest {
     @DisplayName("입력 숫자가 최소값 초과시 에러 확인")
     public void testBaseballNumberException() throws Exception {
         //given
-        int inputNumber = 99;
+        List<Integer> inputNumber = Arrays.asList(9,9);
         //when
         //then
         IllegalStateException exception
-                = assertThrows(IllegalStateException.class, () -> BaseBall.createBaseBall(inputNumber));
-        assertEquals("3자리 숫자를 입력해주세요.", exception.getMessage());
+                = assertThrows(IllegalStateException.class, () -> new BaseBall(inputNumber));
+        assertEquals("0을 제외한 3자리 숫자를 입력해주세요.", exception.getMessage());
 
     }
 }

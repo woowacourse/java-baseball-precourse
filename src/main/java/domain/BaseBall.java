@@ -6,52 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBall {
-    private static final int MIN_DIGIT = 1;
-    private static final int MAX_DIGIT = 9;
-    private static final int BASEBALL_LENGTH = 3;
-
+    public static final int MIN_DIGIT = 1;
+    public static final int MAX_DIGIT = 9;
+    public static final int BASEBALL_LENGTH = 3;
+    private static final int ZERO = 0;
     private List<Integer> baseballNumber;
 
-    private BaseBall(List<Integer> baseballNumber) {
+    public BaseBall(List<Integer> baseballNumber) {
+        validateNumber(baseballNumber);
         this.baseballNumber = baseballNumber;
     }
 
-    public static BaseBall createRandomBaseBall() {
-        List<Integer> randomDigit = getRandomDigit();
-        return new BaseBall(randomDigit);
-    }
-
-    public static BaseBall createBaseBall(int baseBallNumber) throws IllegalStateException {
-        validateNumber(baseBallNumber);
-        List<Integer> ballNumber = mapToList(baseBallNumber);
-        return new BaseBall(ballNumber);
-    }
-
-    private static List<Integer> getRandomDigit() {
-        List<Integer> randomNumber = new ArrayList<>();
-        while (randomNumber.size() < BASEBALL_LENGTH) {
-            int randomDigit = RandomUtils.nextInt(MIN_DIGIT, MAX_DIGIT);
-            if (!randomNumber.contains(randomDigit)) {
-                randomNumber.add(randomDigit);
-            }
-        }
-        return randomNumber;
-    }
-
-    private static void validateNumber(int baseBallNumber) throws IllegalStateException {
-        String number = String.valueOf(baseBallNumber);
-        if (number.length() != BASEBALL_LENGTH) {
-            throw new IllegalStateException(BASEBALL_LENGTH + "자리 숫자를 입력해주세요.");
+    private void validateNumber(List<Integer> baseballNumber) throws IllegalStateException {
+        if (!isCorrectForm(baseballNumber)) {
+            throw new IllegalStateException("0을 제외한 "+BASEBALL_LENGTH + "자리 숫자를 입력해주세요.");
         }
     }
 
-    private static List<Integer> mapToList(int baseBallNumber) {
-        List<Integer> ballNumber = new ArrayList<>();
-        for (int digit = 100; digit > 0; digit /= 10) {
-            ballNumber.add(baseBallNumber / digit);
-            baseBallNumber %= digit;
-        }
-        return ballNumber;
+    private boolean isCorrectForm(List<Integer> baseballNumber) {
+        return (baseballNumber.size() == BASEBALL_LENGTH) && !baseballNumber.contains(ZERO);
     }
 
     public boolean containsNumber(int number) {
