@@ -19,7 +19,8 @@ public class Computer {
     public static Computer create() {
 
         List<Integer> numbers = createNumbers();
-
+        Collections.shuffle(numbers);
+        
         return new Computer(numbers);
     }
 
