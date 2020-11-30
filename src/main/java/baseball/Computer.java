@@ -40,7 +40,7 @@ public class Computer {
      * @return 중복이면 true , 아니면 false
      */
     private boolean isDuplicateNumber(int randomNum) {
-        return number.contains(String.valueOf(randomNum));
+        return this.number.contains(String.valueOf(randomNum));
     }
 
     /**
@@ -51,7 +51,7 @@ public class Computer {
      */
     private void addNumber(int randomNum) {
         if (!isDuplicateNumber(randomNum)) {
-            number += String.valueOf(randomNum);
+            this.number += String.valueOf(randomNum);
         }
     }
 
@@ -61,6 +61,6 @@ public class Computer {
      * @return number 변수를 반환
      */
     public String getNumber() {
-        return number;
+        return this.number;
     }
 }

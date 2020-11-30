@@ -8,11 +8,10 @@ public class Application {
         // TODO 구현 진행
 
         while (true) {
-            BaseballGame.startGame();
+            new BaseballGame().startGame();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-
-            int inputNum = inputNum(scanner);
+            int inputNum = inputUserNumber(scanner);
 
             if (inputNum == 2) {
                 System.out.println("프로그램을 종료합니다.");
@@ -28,17 +27,16 @@ public class Application {
      * @param scanner 입력 받기위한 Scanner 타입의 매개변수
      * @return 1또는 2의 값을 반환합니다.
      */
-    private static int inputNum(Scanner scanner) {
-        int inputNum = 0;
-        while (!isOneOrTwo(inputNum)) {
-            inputNum = scanner.nextInt();
+    private static int inputUserNumber(Scanner scanner) {
+        while (true) {
+            int inputNum = scanner.nextInt();
             try {
                 checkInputNum(inputNum);
             } catch (IllegalArgumentException e) {
                 System.out.println("[잘못된 입력]게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             }
+            return inputNum;
         }
-        return inputNum;
     }
 
     /**
@@ -48,7 +46,7 @@ public class Application {
      * @throws IllegalArgumentException 1또는 2 이외의 값을 입력받으면 해당 예외를 던집니다.
      */
     private static void checkInputNum(int inputNum) throws IllegalArgumentException{
-        if (!isOneOrTwo(inputNum)) {
+        if (!isValidInput(inputNum)) {
             throw new IllegalArgumentException();
         }
     }
@@ -61,5 +59,9 @@ public class Application {
      */
     private static boolean isOneOrTwo(int inputNum) {
         return inputNum == 1 || inputNum == 2;
+    }
+
+    private static boolean isValidInput(int inputNum) {
+        return isOneOrTwo(inputNum);
     }
 }

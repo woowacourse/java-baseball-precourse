@@ -8,13 +8,13 @@ import java.util.Scanner;
  * @version 1.0 2020-11-29
  */
 public class BaseballGame {
-    public static Computer computer;
-    public static User user = new User();
+    private Computer computer;
+    private User user = new User();
 
     /**
      * 숫자 야구 게임을 시작하는 메서드
      */
-    public static void startGame() {
+    public void startGame() {
         computer = new Computer();
         Scanner scanner = new Scanner(System.in);
 
@@ -22,7 +22,7 @@ public class BaseballGame {
             try {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = scanner.nextLine();
-                user.makeNumber(input);
+                this.user.makeNumber(input);
             } catch (IllegalArgumentException e) {
                 System.out.println("[잘못된 입력] 1에서 9사이의 서로 다른 숫자 3자리를 입력해주세요.");
                 continue;
@@ -40,8 +40,8 @@ public class BaseballGame {
      *
      * @return 정답이면 true, 오답이면 false를 반환
      */
-    private static boolean isCorrectAnswer() {
-        if (computer.getNumber().equals(user.getNumber())) {
+    private boolean isCorrectAnswer() {
+        if (this.computer.getNumber().equals(user.getNumber())) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
@@ -55,7 +55,7 @@ public class BaseballGame {
      * strike : 같은 자리에 같은 숫자가 있는 경우
      * ball : 다른 자리에 같은 숫자가 있는 경우
      */
-    private static void checkNumber() {
+    private void checkNumber() {
         int strike = 0;
         int ball = 0;
 
@@ -78,8 +78,8 @@ public class BaseballGame {
      * @param index 검사해야하는 위치값
      * @return 같은 자리에 같은 숫자가 있으면 true, 아니면 false
      */
-    private static boolean isStrike(int index) {
-        return computer.getNumber().charAt(index) == user.getNumber().charAt(index);
+    private boolean isStrike(int index) {
+        return this.computer.getNumber().charAt(index) == user.getNumber().charAt(index);
     }
 
     /**
@@ -88,8 +88,8 @@ public class BaseballGame {
      * @param index 사용자의 숫자에 검사해야하는 위치값
      * @return 사용자의 숫자 하나가 같은 자리는 아니지만 컴퓨터의 숫자안에 존재한다면 true, 아니면 false
      */
-    private static boolean isBall(int index) {
-        return computer.getNumber().contains(String.valueOf(user.getNumber().charAt(index)));
+    private boolean isBall(int index) {
+        return this.computer.getNumber().contains(String.valueOf(user.getNumber().charAt(index)));
     }
 
     /**
@@ -98,7 +98,7 @@ public class BaseballGame {
      * @param strike 같은 자리에 같은 숫자가 있는 경우를 나타낸 int 타입의 값
      * @param ball 다른 자리에 같은 숫자가 있는 경우를 나타낸 int 타입의 값
      */
-    private static void printHint(int strike, int ball) {
+    private void printHint(int strike, int ball) {
         StringBuilder sb = new StringBuilder();
 
         if (ball > 0) {

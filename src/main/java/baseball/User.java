@@ -8,8 +8,8 @@ package baseball;
 public class User {
     private String number = "";
 
-    private static final int START_CHAR_VAL = 49;
-    private static final int END_CHAR_VAL = 57;
+    private static final int START_CHAR_VAL = '1';
+    private static final int END_CHAR_VAL = '9';
     private static final int SIZE = 3;
 
     /**
