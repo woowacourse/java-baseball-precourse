@@ -27,7 +27,7 @@ public class Player {
             // 입력값 중복 확인 (추가)
 
             // 볼,스트라이크 체크
-            System.out.printf("s : %d b : %d \n",countStrike(gameNumber,inputNumber),countBall(gameNumber,inputNumber));
+            printHint(countStrike(gameNumber,inputNumber),countBall(gameNumber,inputNumber));
             //
             if(gameNumber.compareTo(inputNumber)==0){
                 break;

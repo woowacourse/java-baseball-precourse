@@ -46,5 +46,23 @@ public class Game {
         return ball;
     }
 
+    public static void printHint(int countStrike, int countBall){
+        if(countBall == 0 && countStrike == 0){
+            System.out.println("낫싱");
+            return;
+        }
+
+        if(countBall == 0){
+            System.out.println(countStrike+"스트라이크");
+            return;
+        }
+
+        if(countStrike == 0){
+            System.out.println(countBall+"볼");
+            return;
+        }
+
+        System.out.println(countBall+"볼 "+countStrike+"스트라이크");
+    }
 
 }
