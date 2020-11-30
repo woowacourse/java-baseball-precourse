@@ -14,21 +14,33 @@
 
 ## 🛠구현하기 위한 기능 목록
 
-### 🎲숫자야구 게임을 진행(Games)
+### 🎲숫자야구 게임을 진행(Applications)
 - 숫자야구 게임을 시작하는 메소드 startGame()
+- 숫자야구 게임이 종료된 뒤 재시작할지, 종료할 지 결정하는 메소드 selectMenu()
 - 숫자 입력을 안내하는 메소드 printNumberInput()
 - 정답-사용자 입력을 비교한 결과를 출력하는 메소드 printNumberMatch()
 
-### 📐컴퓨터가 3자리 숫자를 선정(RandomUtils)
-- 각 자리 숫자를 생성하는 메소드 nextInt()
+### 🔢컴퓨터, 유저의 숫자를 다루는 클래스(Number)
+- 숫자를 저장하는 배열과 각 숫자가 사용되었는지 체크하는 배열을 초기화하는 생성자 Number()
+- 지정한 인덱스에 지정한 숫자를 저장하는 메소드 setNumberAt()
+- 특정 인덱스에 저장된 값을 반환하는 메소드 getNumberAt()
+- 특정 숫자가 사용되었는지 체크하는 메소드 isUsedNumber()
+- 특정 숫자가 몇 번째에 위치하는지를 반환하는 메소드 findNumber()
+
+### 📐컴퓨터가 3자리 숫자를 선정
+- 각 자리 숫자를 생성하는 메소드 nextInt() (RandomUtils)
+- 컴퓨터가 RandomUtils 클래스를 활용해서 랜덤 난수를 생성하고 Number객체에 저장하여 반환하는 클래스 setComputerNumber()
 
 ### 📟사용자가 3자리 숫자를 입력
+- 사용자로부터 숫자(숫자 형식의 문자열)를 입력받아 반환하는 메소드 getUserInput()
 - 입력 형식의 유효성을 검증하는 메소드 isValidInput()
-- 사용자의 입력값을 숫자로 분리하여 저장하는 메소드 seperateInputValues()
+- 해당 문자가 1~9 사이의 숫자인지 검사하는 메소드 isValidCharacter()
+- 입력한 숫자가 중복된 값이 있는지 검사하는 메소드 isRedundantInput()
 
 ### 🧠사용자의 숫자와 정답을 비교
-- 사용자의 입력에서 일치하는 ball 개수를 세는 메소드 countBall()
-- 사용자의 입력에서 일치하는 strike 개수를 세는 메소드 countStrike()
+- 컴퓨터와 사용자의 세 자리 숫자를 비교해서 볼, 스트라이크 개수를 구하는 메소드 countBallsAndStrikes()
+- 볼과 스트라이크 개수로 사용자에게 보여질 게임 결과 문자열을 생성하는 메소드 printGameResult()
+
 <br>
 ## ✍🏻 입출력 요구사항
 ### ⌨️ 입력
