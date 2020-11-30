@@ -28,7 +28,15 @@ public class BaseballGameController {
     }
 
     private boolean checkReplay() {
-        
+        OutputView.printRestart();
+        int selectGameRestart = scanner.nextInt();
+        if(selectGameRestart == 1){
+            return true;
+        }else if(selectGameRestart == 2){
+            return false;
+        }else{
+            return checkReplay();
+        }
     }
 
 }
