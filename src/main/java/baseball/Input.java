@@ -9,13 +9,14 @@ public class Input {
     private final static String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private final static String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private final static String RESTART = "1";
+    private final static String GAME_END = "2";
     ArrayList<Integer> userInput;
     NumberValidator validator = new NumberValidator(userInput);
     Scanner scanner;
 
     public Input(Scanner scanner) {
-            userInput = getUserInput(scanner);
-            validator.numbers = userInput;
+        userInput = getUserInput(scanner);
+        validator.numbers = userInput;
         if (!validator.isValid()) {
             throw new IllegalArgumentException();
         }
@@ -43,6 +44,11 @@ public class Input {
     }
 
     public static boolean isRestart(String message) {
-        return message.equals(RESTART);
+        if (message.equals(RESTART)) {
+            return true;
+        } else if (message.equals(GAME_END)) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 }
