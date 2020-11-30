@@ -49,7 +49,7 @@ public class User {
     }
 
     private boolean isRightLength(String number) {
-        return true;
+        return number.length() == NUMBER_LEN;
     }
 
     private boolean isNotDuplicate(String number) {
