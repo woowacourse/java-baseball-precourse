@@ -7,7 +7,11 @@ public class Hint {
 	String hint;
 	boolean flag = false; // 게임 종료 여부
 	
-	
+	// 한 번의 힌트를 계산한 후 strike와 ball의 값을 초기화하는 함수
+	public void clearStrikeAndBall() {
+		this.strike = 0;
+		this.ball = 0;
+	}
 
 	// 출력할 힌트를 만드는 함수
 	public void makeHint(int[] answerNum, int[] playerNum) {
