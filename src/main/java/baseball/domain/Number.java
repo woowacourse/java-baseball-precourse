@@ -4,8 +4,6 @@ import java.util.stream.IntStream;
 
 public class Number {
     public static int NUM_LENGTH = 3;
-    static int MIN = 1;
-    static int MAX = 9;
     private int[] number;
 
     public Number(int[] number){
