@@ -1,5 +1,13 @@
 package baseball;
-
+/*
+ * Competitor
+ *
+ * version 1.0
+ *
+ * 2020.11.30
+ *
+ * Copyright (c) by Davinci.J
+ */
 import utils.RandomUtils;
 
 import java.util.LinkedHashSet;
