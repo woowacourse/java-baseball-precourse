@@ -1,27 +1,25 @@
 package baseball;
 
-import static baseball.BaseballGame.MIN_NUMBER;
-import static baseball.BaseballNumbers.MAX_PITCH;
+import static baseball.Constants.GAME_MAX_BASEBALL_PITCH;
+import static baseball.Constants.GAME_MIN_BASEBALL_NUMBER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 class BaseballNumbersTest {
 
     @Test
     void BaseballNumbers_CorrectForm_NoExceptionThrown() {
-        List<Integer> correctFormOfList = new ArrayList<>();
-        int currentNumber = MIN_NUMBER;
-        while (correctFormOfList.size() != MAX_PITCH) {
-            correctFormOfList.add(currentNumber);
-            currentNumber++;
+        final int[] correctFormOfArray = new int[GAME_MAX_BASEBALL_PITCH];
+        int currentNumber = GAME_MIN_BASEBALL_NUMBER;
+        for (int index = 0; index < correctFormOfArray.length; index++) {
+            correctFormOfArray[index] = currentNumber++;
         }
 
         try {
-           new BaseballNumbers(correctFormOfList);
+            new BaseballNumbers(correctFormOfArray);
         } catch (Exception e) {
             fail("This test should not throw any exception");
         }
@@ -29,33 +27,46 @@ class BaseballNumbersTest {
 
     @Test
     void BaseballNumbers_WrongSize_ExceptionThrown() {
-        List<Integer> wrongFormOfList = new ArrayList<>();
-        int currentNumber = MIN_NUMBER;
-        while (wrongFormOfList.size() != MAX_PITCH + 1) {
-            wrongFormOfList.add(currentNumber);
-            currentNumber++;
+        final int[] wrongFormOfArray = new int[GAME_MAX_BASEBALL_PITCH + 1];
+        int currentNumber = GAME_MIN_BASEBALL_NUMBER;
+        for (int index = 0; index < wrongFormOfArray.length; index++) {
+            wrongFormOfArray[index] = currentNumber++;
         }
 
         try {
-            new BaseballNumbers(wrongFormOfList);
+            new BaseballNumbers(wrongFormOfArray);
             fail("This test should throw IllegalArgumentException");
         } catch (IllegalArgumentException e) {
-            assertEquals("숫자는 " + MAX_PITCH + "개만 입력해야 합니다", e.getMessage());
+            assertEquals(ErrorMessages.ARRAY_INVALID_LENGTH.getMessage(), e.getMessage());
         }
     }
 
     @Test
     void BaseballNumbers_DuplicatedItems_ExceptionThrown() {
-        List<Integer> wrongFormOfList = new ArrayList<>();
-        while (wrongFormOfList.size() != MAX_PITCH) {
-            wrongFormOfList.add(MIN_NUMBER);
+        final int[] wrongFormOfArray = new int[GAME_MAX_BASEBALL_PITCH];
+        Arrays.fill(wrongFormOfArray, GAME_MIN_BASEBALL_NUMBER);
+
+        try {
+            new BaseballNumbers(wrongFormOfArray);
+            fail("This test should throw IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+            assertEquals(ErrorMessages.ARRAY_ITEM_DUPLICATED.getMessage(), e.getMessage());
+        }
+    }
+
+    @Test
+    void BaseballNumbers_ItemOutOfRange_ExceptionThrown() {
+        final int[] wrongFormOfArray = new int[GAME_MAX_BASEBALL_PITCH];
+        int currentNumber = GAME_MIN_BASEBALL_NUMBER - 1;
+        for (int index = 0; index < wrongFormOfArray.length; index++) {
+            wrongFormOfArray[index] = currentNumber++;
         }
 
         try {
-            new BaseballNumbers(wrongFormOfList);
+            new BaseballNumbers(wrongFormOfArray);
             fail("This test should throw IllegalArgumentException");
         } catch (IllegalArgumentException e) {
-            assertEquals("배열 내에 중복된 숫자가 있으면 안 됩니다", e.getMessage());
+            assertEquals(ErrorMessages.ARRAY_ITEM_OUT_OF_RANGE.getMessage(), e.getMessage());
         }
     }
 }
