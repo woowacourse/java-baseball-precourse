@@ -34,7 +34,8 @@ public class BaseballGame {
     }
 
     public void initGame () {
-        answer = generateAnswer();
+        answer = "";
+        generateAnswer();
         guess = "";
         progress = '\u0000';
         ballCnt = 0;
@@ -45,7 +46,6 @@ public class BaseballGame {
 
     public void start() {
         initGame();
-        System.out.println(answer);
         while (!allStrike) {
             askGuess();
             referee.compareNumber(answer, guess);
@@ -57,13 +57,11 @@ public class BaseballGame {
         finish();
     }
 
-    public String generateAnswer() {
-        answer = "";
+    public void generateAnswer() {
         for (int i = 0; i < 3; i++) {
             int randomNum = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
             answer += Integer.toString(randomNum);
         }
-        return answer;
     }
 
     public void isAllStrike(int strikeCnt) {
