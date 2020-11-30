@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NumbersFactory {
-    private static final int NUMBER_MAX = 9;
-    private static final int NUMBER_MIN = 1;
 
     public static Numbers createNumbers(String num, int digits) throws IllegalArgumentException{
         InputValidator.checkValidNumbers(num, digits);
@@ -34,7 +32,7 @@ public class NumbersFactory {
     private static int getRandWithoutDuplicate(List<Integer> list) {
         int rand;
         do {
-            rand = RandomUtils.nextInt(NUMBER_MIN, NUMBER_MAX);
+            rand = RandomUtils.nextInt(Numbers.MIN, Numbers.MAX);
         }
         while (list.contains(rand));
 

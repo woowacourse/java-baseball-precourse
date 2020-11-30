@@ -1,13 +1,12 @@
 package utils;
+import baseball.Numbers;
+
 import java.util.Arrays;
 
 public class InputValidator {
     private static final String INVALID_LENGTH_MSG = "잘못된 입력 길이입니다. ";
     private static final String INVALID_RANGE_MSG = "범위 외 입력입니다. ";
     private static final String INVALID_DUPLICATE_MSG = "중복이 포함된 입력입니다. ";
-
-    private static final int NUMBER_MAX = 9;
-    private static final int NUMBER_MIN = 1;
 
     private static final int MAX_PLAY_AGAIN_BUTTON = 2;
     private static final int MIN_PLAY_AGAIN_BUTTON = 1;
@@ -30,7 +29,7 @@ public class InputValidator {
             throw new IllegalArgumentException(INVALID_LENGTH_MSG);
         }
 
-        if(!isInRange(input, NUMBER_MIN, NUMBER_MAX)){
+        if(!isInRange(input, Numbers.MIN, Numbers.MAX)){
             throw new IllegalArgumentException(INVALID_RANGE_MSG);
         }
 
