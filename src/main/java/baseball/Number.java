@@ -25,10 +25,6 @@ public class Number {
         }
     }
 
-    public int[] getTarget(){
-        return target;
-    }
-
     public void setGuess(String input) throws IllegalArgumentException{
         for(int c=0; c < 3; c++){
             if(Checker.checkInput(input.charAt(c))){
@@ -38,10 +34,6 @@ public class Number {
                 throw new IllegalArgumentException("Wrong Numbers");
             }
         }
-    }
-
-    public int[] getGuess(){
-        return guess;
     }
 
     public int strike(){

@@ -21,16 +21,20 @@ public class Checker {
     }
 
     public static boolean checkBall(int guess, int[] target, int index){
-       for(int i=0; i < 3; i ++){
-           if(i != index && guess == target[i]){
-               return true;
-           }
-       }
-       return false;
+        for(int i=0; i < 3; i ++){
+            if(i != index && guess == target[i]){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static boolean checkReplay(int replayNum){
-        if(replayNum == 1){
+        if(replayNum != 1 && replayNum != 2){
+            System.out.println("잘못된 입력입니다");
+            return false;
+        }
+        else if(replayNum == 1){
             return true;
         }
         else{
