@@ -36,7 +36,7 @@ public class PlayGame {
     }
 
     private void continueGame(String input) {
-        if (checkInputNumber.isValidRestart(input)) {
+        if (!(checkInputNumber.oneOrTwo(input))) {
             goStop = false;
         }
     }

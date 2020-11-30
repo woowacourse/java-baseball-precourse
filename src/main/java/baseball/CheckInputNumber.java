@@ -39,9 +39,9 @@ public class CheckInputNumber {
         return true;
     }
 
-    public boolean isValidRestart(String input) {
-        if (oneOrTwo(input)) {
-            return true;
+    public boolean oneOrTwo(String input) {
+        if(Arrays.stream(oneOrTwo).anyMatch(input::equals)){
+            return isOne(input);
         }
         throwInputException(PLAYER_RESTART_INPUT_EXCEPTION_MESSAGE);
         return false;
@@ -63,8 +63,8 @@ public class CheckInputNumber {
         return !(inputChar < 49 || inputChar > 57);
     }
 
-    private boolean oneOrTwo(String input) {
-        return (Arrays.stream(oneOrTwo).anyMatch(input::equals));
+    private boolean isOne(String input){
+        return (input.equals("1"));
     }
 
     private void throwInputException(String exceptionMessage) {

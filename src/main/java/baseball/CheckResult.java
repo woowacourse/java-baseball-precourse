@@ -7,11 +7,11 @@ public class CheckResult {
 
     private static final int TRUE_SIZE = 3;
 
-    private final String NOTHING = "낫싱";
-    private final String ONLY_BALL = "%d볼\n";
-    private final String ONLY_STRIKE = "%d스트라이크\n";
-    private final String BALL_AND_STRIKE = "%d볼 %d스트라이크\n";
-    private final String CORRECT_ANSWER = "3개의 숫자를 모두 맞추셨습니다! 게임 종료.\n" +
+    private final static String NOTHING = "낫싱";
+    private final static String ONLY_BALL = "%d볼\n";
+    private final static String ONLY_STRIKE = "%d스트라이크\n";
+    private final static String BALL_AND_STRIKE = "%d볼 %d스트라이크\n";
+    private final static String CORRECT_ANSWER = "3개의 숫자를 모두 맞추셨습니다! 게임 종료.\n" +
             "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private final String random;
