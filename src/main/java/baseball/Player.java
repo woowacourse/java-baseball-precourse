@@ -25,8 +25,6 @@ public class Player implements IPlayer {
         }
     }
 
-
-
     @Override
     public BaseballGameNumber getBaseballGameNumber() {
         // TODO Auto-generated method stub
@@ -40,6 +38,4 @@ public class Player implements IPlayer {
         ValidateUtils.validateInputForRestart(input);
         return input;
     }
-
-
 }

@@ -1,16 +1,14 @@
 package utils;
 
 import java.util.HashSet;
-import baseball.Application;
+import baseball.Game;
 
 public class ValidateUtils {
+
     public static boolean validateInput(int input) {
         String inputString = String.valueOf(input);
-        if (inputString.length() != 3) {
-            throw new IllegalArgumentException("input only 3 digits");
-        }
-
         HashSet<Integer> set = new HashSet<>();
+
         for (int i = 0; i < inputString.length(); i++) {
             int num = Integer.valueOf(inputString.substring(i, i + 1));
             if (set.contains(num)) {
@@ -22,11 +20,16 @@ public class ValidateUtils {
             }
             set.add(num);
         }
+
+        if (inputString.length() != 3) {
+            throw new IllegalArgumentException("input only 3 digits");
+        }
+
         return true;
     }
 
     public static boolean validateInputForRestart(int input) {
-        if (input != Application.INPUT_RESTART && input != Application.INPUT_STOP) {
+        if (input != Game.INPUT_RESTART && input != Game.INPUT_STOP) {
             throw new IllegalArgumentException("input only 1 or 2");
         }
         return true;

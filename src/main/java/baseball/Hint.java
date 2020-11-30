@@ -6,7 +6,7 @@ public class Hint implements IHint {
 
     private final int MAX_OF_STRIKES = 3;
 
-    public static final StringBuilder sb = new StringBuilder();
+    private final StringBuilder sb = new StringBuilder();
 
     @Override
     public String getHint(BaseballGameNumber playerNumbers, BaseballGameNumber computerNumbers) {

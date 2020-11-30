@@ -35,7 +35,4 @@ public class Computer implements IComputer {
         // TODO Auto-generated method stub
         return this.baseballGameNumber;
     }
-
-
-
 }
