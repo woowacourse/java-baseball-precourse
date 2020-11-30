@@ -10,7 +10,6 @@ public class BaseballGame {
     private final int NUMBER_OF_DIGITS;
     private final Scanner scanner;
 
-    private Numbers target;
     private int strikeCnt;
     private int ballCnt;
 
@@ -20,24 +19,24 @@ public class BaseballGame {
     }
 
     public void play(){
-        setTargetNumber();
+        final Numbers target = getNewTargetNumber();
         do{
             Numbers userGuess = readNumber();
-            calculateScore(userGuess);
+            calculateScore(target, userGuess);
             printScore();
         }while(!checkGameOver());
         printAllCorrect();
     }
 
-    private void setTargetNumber(){
-         target = NumbersFactory.getRandomNumbers(NUMBER_OF_DIGITS);
+    private Numbers getNewTargetNumber(){
+         return NumbersFactory.getRandomNumbers(NUMBER_OF_DIGITS);
     }
 
     private Numbers readNumber(){
         return InputView.askGuess(scanner, NUMBER_OF_DIGITS);
     }
 
-    private void calculateScore(Numbers guess){
+    private void calculateScore(Numbers target, Numbers guess){
         strikeCnt = GameRule.countStrike(target, guess);
         ballCnt = GameRule.countBall(target, guess);
     }
