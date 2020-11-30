@@ -13,9 +13,7 @@ public class Application {
         while(replayNum != 2){
             number.setTarget();
             Round.playOneRound(number, scanner);
-
-            replayNum = scanner.nextInt();
-            Checker.checkReplay(replayNum);
+            replayNum = Checker.checkReplay(scanner);
         }
         scanner.close();
     }

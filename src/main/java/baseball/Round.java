@@ -14,8 +14,6 @@ public class Round {
                 System.out.println("잘못된 입력입니다. 1~9의 숫자로 이루어진 세자리 수를 입력해주세요");
                 continue;
             }
-
-
             Result.printResult(number.strike(), number.ball());
             if(number.strike()==3){
                 break;

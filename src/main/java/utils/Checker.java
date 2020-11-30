@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.Scanner;
+
 public class Checker {
     private static boolean[] chk = new boolean[9];
 
@@ -29,16 +31,19 @@ public class Checker {
         return false;
     }
 
-    public static boolean checkReplay(int replayNum){
-        if(replayNum != 1 && replayNum != 2){
-            System.out.println("잘못된 입력입니다");
-            return false;
+    public static int checkReplay(Scanner scanner){
+        int replayNum=0;
+        while(true){
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            replayNum = scanner.nextInt();
+            if(replayNum != 1 && replayNum != 2){
+                System.out.println("잘못된 입력입니다");
+                continue;
+            }
+            else{
+                break;
+            }
         }
-        else if(replayNum == 1){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return replayNum;
     }
 }
