@@ -56,7 +56,7 @@ public class Application {
 	private static void checkReplay(Scanner scanner) {
 		System.out.println(REPLAY_MESSAGE);
 		
-		int replayFlag = scanner.nextInt();
+		int replayFlag = Integer.parseInt(scanner.nextLine());
 		
 		if(replayFlag == REPLAY_YES) {
 			gamePlay(scanner);
