@@ -2,8 +2,8 @@ package baseball;
 
 public class Score {
 
-    private int strikeCnt;
-    private int ballCnt;
+    private final int strikeCnt;
+    private final int ballCnt;
 
     public Score(int strikeCnt, int ballCnt){
         this.strikeCnt = strikeCnt;
