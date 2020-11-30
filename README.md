@@ -25,6 +25,8 @@
 - Strike가 몇 개인지 판단하는 메서드
 - Ball/Strike 결과 보고 낫띵 판단하는 메서드
 - 종합 결과 가져가는 메서드
+#### OutputShowSelector
+- 결과를 받고, 사용자에게 어떤 형식으로 보여줄지 결정하는 객체
 ### domain
 #### Participant 
 - 유저와 게임 셋의 조상
