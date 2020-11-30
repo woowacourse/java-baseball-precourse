@@ -13,6 +13,8 @@ public class GameView {
     private static final String STRIKE_AND_BALL_COUNT = "%d볼 %d스트라이크\n";
     private static final String GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
 
+    private static final String GAME_EXECUTE_OR_TERMINATE = "게임을 새로 시작하시려면 1, 종료하시려면 2를 입력하세요.\n";
+
     private GameView() {
     }
 
@@ -35,5 +37,9 @@ public class GameView {
 
     public static void printGameOver() {
         System.out.print(GAME_OVER);
+    }
+
+    public static void printExecuteOrTerminate() {
+        System.out.print(GAME_EXECUTE_OR_TERMINATE);
     }
 }
