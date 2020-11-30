@@ -1,5 +1,7 @@
 package domain;
 
+import static domain.Rule.BASEBALL_SIZE;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -10,7 +12,6 @@ import java.util.Set;
  * @since 2020/11/26
  */
 public class BaseballNumber {
-    public static final int BASEBALL_LIST_SIZE = 3;
     private static final int ZERO = 0;
 
     private final List<Integer> baseballNumbers;
@@ -23,14 +24,14 @@ public class BaseballNumber {
     }
 
     private void validateSize(List<Integer> baseballNumbers) {
-        if (baseballNumbers.size() != BASEBALL_LIST_SIZE) {
+        if (baseballNumbers.size() != BASEBALL_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateDuplicate(List<Integer> baseballNumbers) {
         Set<Integer> nonDuplicateNumber = new HashSet<>(baseballNumbers);
-        if (nonDuplicateNumber.size() != BASEBALL_LIST_SIZE) {
+        if (nonDuplicateNumber.size() != BASEBALL_SIZE) {
             throw new IllegalArgumentException();
         }
     }
@@ -41,20 +42,12 @@ public class BaseballNumber {
         }
     }
 
-    public int size() {
-        return baseballNumbers.size();
-    }
-
     public int getNumber(int index) {
         return baseballNumbers.get(index);
     }
 
     public boolean contains(int number) {
         return baseballNumbers.contains(number);
-    }
-
-    public int indexOf(int number) {
-        return baseballNumbers.indexOf(number);
     }
 
     @Override
