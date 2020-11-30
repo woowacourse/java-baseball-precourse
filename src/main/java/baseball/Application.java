@@ -30,21 +30,21 @@ public class Application {
         }
     }
 
-    private static int playGame(Competitor competitor, GamePlayer gamePlayer){
+    private static int playGame(Competitor competitor, GamePlayer gamePlayer) {
         try {
             String generatedNumbersOfPlayer = gamePlayer.generateNumbersOfPlayerEntered();
-            String comparativeResult = Comparator.getComparativeResult(
+            String comparativeResult = Comparator.compareNumbersOfCompetitorAndPlayer(
                                             competitor.getGeneratedRandomNumbers(),
                                             generatedNumbersOfPlayer);
 
             System.out.println(comparativeResult);
-            if(!comparativeResult.equals(GAME_EXIT_CONDITIONS)){
+            if (!comparativeResult.equals(GAME_EXIT_CONDITIONS)) {
                 return GAME_CONTINUE;
             }
 
             System.out.println(GAME_END_STATEMENT);
             int selectedMode = gamePlayer.selectRestartOrEnd();
-            if(selectedMode == GAME_RESTART){
+            if (selectedMode == GAME_RESTART) {
                 return GAME_RESTART;
             }
 
