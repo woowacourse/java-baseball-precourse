@@ -9,8 +9,8 @@ public class PlayGame {
     private final Scanner scanner;
     private boolean goStop;
 
-    public PlayGame(Scanner scanner){
-        this.scanner= scanner;
+    public PlayGame(Scanner scanner) {
+        this.scanner = scanner;
         this.checkInputNumber = new CheckInputNumber(scanner);
         this.checkRandomNumber = new CheckRandomNumber(scanner);
     }
@@ -27,7 +27,7 @@ public class PlayGame {
         String random = checkRandomNumber.makeRandomNumber();
         System.out.println(random);
 
-        while(!win) {
+        while (!win) {
             String input = checkInputNumber.inputNumber();
             CheckResult checkResult = new CheckResult(input, random);
             win = checkResult.correctNumbers();
@@ -36,7 +36,7 @@ public class PlayGame {
     }
 
     private void continueGame(String input) {
-        if(checkInputNumber.isValidRestart(input)){
+        if (checkInputNumber.isValidRestart(input)) {
             goStop = false;
         }
     }
