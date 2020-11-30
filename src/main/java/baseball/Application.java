@@ -7,6 +7,7 @@ public class Application {
     private static final int MAX_NUMBER = 9;
     private static final int GAME_START = 1;
     private static final int SHUTDOWN = 2;
+    
     private static int gameStatus = GAME_START;
 
     public static void main(String[] args) {

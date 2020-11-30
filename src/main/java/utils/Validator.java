@@ -6,13 +6,13 @@ public class Validator {
     private static final int MAX_NUMBER = 9;
 
     public void isValidInputNumber(String playerInput) {
-         isValidInputSize(playerInput);
-         isNumberInteger(playerInput);
-         isDifferentNumbers(playerInput);
+        isValidInputSize(playerInput);
+        isNumberInteger(playerInput);
+        isDifferentNumbers(playerInput);
     }
 
     public void isValidMenu(String playerInput) {
-        if (!playerInput.matches("[1-2]")){
+        if (!playerInput.matches("[1-2]")) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_VALID_MENU);
         }
     }
