@@ -1,7 +1,6 @@
 package baseball;
 
 public class GameRule {
-
     private GameRule(){}
 
     public static int countStrike(Numbers target, Numbers guess){

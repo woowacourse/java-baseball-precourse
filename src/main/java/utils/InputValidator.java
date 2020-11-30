@@ -2,8 +2,6 @@ package utils;
 import baseball.Numbers;
 import baseball.PlayButton;
 
-import java.util.Arrays;
-
 public class InputValidator {
     private static final String INVALID_LENGTH_MSG = "잘못된 입력 길이입니다. ";
     private static final String INVALID_RANGE_MSG = "범위 외 입력입니다. ";
