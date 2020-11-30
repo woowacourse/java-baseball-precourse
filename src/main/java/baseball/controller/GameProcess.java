@@ -42,7 +42,6 @@ public class GameProcess {
         if (points == 3) {
             passResult = true;
         }
-
         return passResult;
     }
 }

@@ -26,7 +26,6 @@ public class InputReceiver {
         if (userInitialAnswer.length() > 3) {
             InputViewer.excessDigits();
         }
-
         if (userInitialAnswer.length() < 3) {
             InputViewer.lackDigits();
         }
@@ -35,21 +34,18 @@ public class InputReceiver {
     private static int[] intergerArrayTranslator(String userIntialAnswer) {
         int userIntegerAnswer = integerTranslator(userIntialAnswer);
         int[] integerArray = new int[NUMBER_OF_BALL];
-
         for (int position = 0; position < NUMBER_OF_BALL; position++) {
             int singleNumber = userIntegerAnswer % 10;
             zeroChecker(singleNumber);
             integerArray[NUMBER_OF_BALL - position - 1] = singleNumber;
             userIntegerAnswer /= 10;
         }
-
         overlappedChecker(integerArray);
         return integerArray;
     }
 
     private static int integerTranslator(String userInitialAnswer) {
         int integerAnswer = 0;
-
         try {
             integerAnswer = Integer.parseInt(userInitialAnswer);
         } catch (Exception notIntegerType) {
@@ -89,11 +85,9 @@ public class InputReceiver {
         if (criteria.equals("1")) {
             return false;
         }
-
         if (criteria.equals("2")) {
             return true;
         }
-
         InputViewer.noValidRestart();
         return false;
     }
