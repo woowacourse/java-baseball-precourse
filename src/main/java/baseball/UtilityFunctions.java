@@ -3,6 +3,9 @@ package baseball;
 import static baseball.Constants.GAME_MAX_BASEBALL_NUMBER;
 import static baseball.Constants.GAME_MAX_BASEBALL_PITCH;
 import static baseball.Constants.GAME_MIN_BASEBALL_NUMBER;
+import static baseball.Constants.MESSAGE_RESULT_BALL;
+import static baseball.Constants.MESSAGE_RESULT_NOTHING;
+import static baseball.Constants.MESSAGE_RESULT_STRIKE;
 import static baseball.Constants.STRING_USER_EXIT;
 import static baseball.Constants.STRING_USER_NOT_EXIT;
 
@@ -37,6 +40,28 @@ public class UtilityFunctions {
         }
 
         return answerArray;
+    }
+
+    // baseballResult의 값에 알맞는 게임 결과를 문자열로 생성하는 메소드
+    public static String generateResultString(BaseballResult baseballResult) {
+        if (baseballResult.getStrike() == 0 && baseballResult.getBall() == 0) {
+            return MESSAGE_RESULT_NOTHING;
+        }
+
+        String resultString = "";
+
+        if (baseballResult.getBall() > 0) {
+            resultString += baseballResult.getBall() + MESSAGE_RESULT_BALL;
+        }
+
+        if (baseballResult.getStrike() > 0) {
+            if (resultString.length() > 0) {
+                resultString += ' ';
+            }
+            resultString += baseballResult.getStrike() + MESSAGE_RESULT_STRIKE;
+        }
+
+        return resultString;
     }
 
     // 입력받은 배열의 크기가 GAME_MAX_BASEBALL_PITCH 값과 같은지 확인하는 메소드
