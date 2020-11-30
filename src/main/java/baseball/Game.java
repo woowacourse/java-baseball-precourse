@@ -1,10 +1,12 @@
 package baseball;
 
 public class Game {
-	private final static int PROGRESS = 0;
-	private final static int START = 1;
-	private final static int TERMINATE = 2;
-
+	private static final int PROGRESS = 0;
+	private static final int START = 1;
+	private static final int TERMINATE = 2;
+	
+	private static final int ANSWER_COUNT = 3;
+	
 	private int status;
 	private GameNumber gameNumber;
 	private PlayerNumber playerNumber;
@@ -19,7 +21,7 @@ public class Game {
 	}
 
 	public void setGameNumber() {
-		gameNumber = new GameNumber();
+		this.gameNumber = new GameNumber();
 	}
 
 	public void setPlayerNumber(String playerNumber) {
@@ -27,7 +29,7 @@ public class Game {
 	}
 
 	public boolean isAnswer() {
-		if (hint.getStrike() == 3) {
+		if (hint.getStrike() == ANSWER_COUNT) {
 			return true;
 		} else {
 			return false;
