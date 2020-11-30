@@ -24,22 +24,22 @@ public class InputView {
     public static String getNumbers() {
         System.out.print(GET_NUMBERS_MESSAGE);
         String userInput = deleteWhiteSpaces(scanner.nextLine());
-        if (userInput.equals("")) {
-            System.out.println(RETYPE_AGAIN);
-            getNumbers();
+        if (!userInput.equals("")) {
+            return userInput;
         }
-        return userInput;
+        System.out.println(RETYPE_AGAIN);
+        return getNumbers();
     }
 
     /* 재시작을 묻고 값을 받아 리턴하는 메소드 */
     public static String getRestartChoice() {
         System.out.println(ASK_RESTART_MESSAGE);
         String userInput = deleteWhiteSpaces(scanner.nextLine());
-        if (userInput.equals("")) {
-            System.out.println(RETYPE_AGAIN);
-            getRestartChoice();
+        if (!userInput.equals("")) {
+            return userInput;
         }
-        return userInput;
+        System.out.println(RETYPE_AGAIN);
+        return getRestartChoice();
     }
 
     /* 입력값에 존재하는 모든 공백을 제거 */
