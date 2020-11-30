@@ -11,18 +11,25 @@ public class NumberBaseBallGame {
         this.scanner = scanner;
     }
 
-    private void askRestart(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int doesPlayerWantPlayAgain = scanner.nextInt();
-        try {
-            validatePlayerWantPlayAgain(doesPlayerWantPlayAgain);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-
+    private void restart(int doesPlayerWantPlayAgain){
+        validatePlayerWantPlayAgain(doesPlayerWantPlayAgain);
         if (doesPlayerWantPlayAgain == playAgain){
             start();
         }
+    }
+
+    private void askRestart(){
+        int doesPlayerWantPlayAgain;
+
+        do {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            doesPlayerWantPlayAgain = scanner.nextInt();
+            try {
+                restart(doesPlayerWantPlayAgain);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (doesPlayerWantPlayAgain != playAgain && doesPlayerWantPlayAgain != stopPlay);
     }
 
     private void validatePlayerWantPlayAgain(int doesPlayerWantPlayAgain) throws IllegalArgumentException {
