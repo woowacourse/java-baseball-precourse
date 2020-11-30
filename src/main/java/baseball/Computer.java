@@ -30,4 +30,12 @@ public class Computer implements IComputer {
         baseballGameNumber.setNumbers(numbers);
     }
 
+    @Override
+    public BaseballGameNumber getBaseballGameNumber() {
+        // TODO Auto-generated method stub
+        return this.baseballGameNumber;
+    }
+
+
+
 }

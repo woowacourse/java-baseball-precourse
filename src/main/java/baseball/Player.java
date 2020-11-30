@@ -5,7 +5,7 @@ import interfaces.IPlayer;
 import utils.ValidateUtils;
 
 public class Player implements IPlayer {
-    BaseballGameNumber baseballGameNumber;
+    private BaseballGameNumber baseballGameNumber;
 
     public Player() {
         baseballGameNumber = new BaseballGameNumber();
@@ -23,6 +23,12 @@ public class Player implements IPlayer {
             }
             baseballGameNumber.setNumbers(numbers);
         }
+    }
+
+    @Override
+    public BaseballGameNumber getBaseballGameNumber() {
+        // TODO Auto-generated method stub
+        return this.baseballGameNumber;
     }
 
 

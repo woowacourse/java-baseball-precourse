@@ -1,8 +1,9 @@
 package baseball;
 
 import java.util.Scanner;
+import interfaces.IApplication;
 
-public class Application {
+public class Application implements IApplication {
     private final int INPUT_RESTART = 1;
     private final int INPUT_STOP = 2;
 
@@ -10,10 +11,12 @@ public class Application {
 
     private Computer computer;
     private Player player;
+    private Hint hint;
 
     public Application() {
         computer = new Computer();
         player = new Player();
+        hint = new Hint();
     }
 
     public static void main(String[] args) {
@@ -43,77 +46,22 @@ public class Application {
 
     private void startGame(Scanner scanner) {
         computer.makeRandomNumber();
-        // initComputerNums();
+        computer.getBaseballGameNumber().printAllNumbers();
         while (true) {
             player.inputThreeNumber(scanner);
-            // printResult();
-            // if (isCorrectAnswer()) {
-            // break;
-            // }
-        }
-    }
-
-    // private void inputPlayerNums(Scanner scanner) {
-    // int input = scanner.nextInt();
-    // validateInput(input);
-    //
-    // String[] split = String.valueOf(input).split("");
-    // for (int i = 0; i < playerNums.length; i++) {
-    // playerNums[i] = Integer.valueOf(split[i]);
-    // }
-    // }
-
-    private int getNumOfBalls() {
-        int numOfBalls = 0;
-        for (int i = 0; i < playerNums.length; i++) {
-            if (hasNumberInComputerNums(playerNums[i], i)) {
-                numOfBalls++;
+            printHint();
+            if (hint.isCorrectAnswer(player.getBaseballGameNumber(),
+                    computer.getBaseballGameNumber())) {
+                break;
             }
         }
-        return numOfBalls;
     }
 
-    private boolean hasNumberInComputerNums(int num, int index) {
-        for (int i = 0; i < computerNums.length; i++) {
-            if (i != index && num == computerNums[i]) {
-                return true;
-            }
-        }
-        return false;
+    @Override
+    public void printHint() {
+        String hintMessage =
+                hint.getHint(player.getBaseballGameNumber(), computer.getBaseballGameNumber());
+        System.out.println(hintMessage);
     }
 
-    private int getNumOfStrikes() {
-        int numOfStrikes = 0;
-        for (int i = 0; i < playerNums.length; i++) {
-            if (playerNums[i] == computerNums[i]) {
-                numOfStrikes++;
-            }
-        }
-        return numOfStrikes;
-    }
-
-    private void printResult() {
-        StringBuilder sb = new StringBuilder();
-        int numOfBalls = getNumOfBalls();
-        int numOfStrikes = getNumOfStrikes();
-        if (numOfBalls > 0) {
-            sb.append(numOfBalls);
-            sb.append("볼 ");
-        }
-
-        if (numOfStrikes > 0) {
-            sb.append(numOfStrikes);
-            sb.append("스트라이크");
-        }
-
-        if (numOfBalls == 0 && numOfStrikes == 0) {
-            sb.append("낫싱");
-        }
-
-        System.out.println(sb.toString());
-    }
-
-    private boolean isCorrectAnswer() {
-        return getNumOfStrikes() == 3;
-    }
 }

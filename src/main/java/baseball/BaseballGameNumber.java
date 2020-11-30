@@ -19,6 +19,11 @@ public class BaseballGameNumber implements IBaseballGameNumber {
         this.numbers = numbers;
     }
 
+    @Override
+    public int[] getNumbers() {
+        return this.numbers;
+    }
+
     public void printAllNumbers() {
         for (int number : numbers) {
             System.out.print(number + " ");
