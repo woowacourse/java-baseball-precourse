@@ -33,7 +33,6 @@ public class Digits {
         return digits.get(index).getDigit();
     }
 
-
     public Digits(final int input){
         validateLength(input);
 
