@@ -1,11 +1,7 @@
 package baseball;
 
 import utils.*;
-
-import java.util.Set;
-
 import static utils.Constant.*;
-import static utils.Validator.*;
 
 public class BaseballGame {
 
@@ -22,7 +18,8 @@ public class BaseballGame {
             balls = Validator.getValidateBall(String.valueOf(ballCandidate));
             return;
         } catch (IllegalArgumentException e) {
-
+            setBalls();
         }
     }
+
 }
