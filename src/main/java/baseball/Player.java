@@ -38,7 +38,7 @@ public class Player {
         }
     }
     public boolean validateInput(String stringInput) throws IllegalArgumentException{
-        if( exception.inZero(stringInput)||exception.correctLen(stringInput)||exception.inExceptNumber(stringInput)|| exception.inDuplicateNumber(stringInput)|| exception.inNegative(stringInput)){
+        if(exception.inExceptNumber(stringInput)|| exception.correctLen(stringInput)|| exception.inNegative(stringInput)|| exception.inZero(stringInput)||exception.inDuplicateNumber(stringInput)){
             return false;
         }
         return true;
