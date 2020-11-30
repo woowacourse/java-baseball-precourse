@@ -50,7 +50,7 @@ public class BaseballGameResult {
     }
 
     public boolean isFinished() {
-        return compareResult.get(STRIKE) == FINISH_THRESHOLD;
+        return compareResult.get(STRIKE) != FINISH_THRESHOLD;
     }
 
     @Override
