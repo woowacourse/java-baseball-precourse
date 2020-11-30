@@ -6,6 +6,9 @@ public class Score {
     private int ball;
     private int strike;
 
+    public Score() {
+    }
+
     public void increaseBallCount() {
         ball++;
     }
