@@ -1,19 +1,18 @@
 package baseball;
 
-import static domain.Message.BINGO;
+import static domain.Rule.BASEBALL_SIZE;
 
 import domain.BaseballNumber;
 import domain.Hint;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author yhh1056
  * @since 2020/11/26
  */
 public class BaseballGame {
-    private static final List<Integer> INDEXES = Arrays.asList(0, 1, 2);
-
     private final BaseballNumber baseballNumber;
 
     public BaseballGame(BaseballNumber baseballNumber) {
@@ -35,7 +34,7 @@ public class BaseballGame {
     }
 
     private void findStrikeAndBall(Hint hint, BaseballNumber playerBaseballNumber) {
-        for (int index : INDEXES) {
+        for (int index : getIndexes()) {
             int number = baseballNumber.getNumber(index);
             int playerNumber = playerBaseballNumber.getNumber(index);
             if (baseballNumber.contains(playerNumber)) {
@@ -43,5 +42,9 @@ public class BaseballGame {
                 hint.findBall(number, playerNumber);
             }
         }
+    }
+
+    private List<Integer> getIndexes() {
+        return IntStream.range(0, BASEBALL_SIZE).boxed().collect(Collectors.toList());
     }
 }

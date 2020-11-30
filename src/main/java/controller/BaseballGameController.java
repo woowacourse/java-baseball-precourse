@@ -2,6 +2,7 @@ package controller;
 
 import static domain.Message.BINGO;
 import static domain.Message.INPUT_NUMBER;
+import static domain.Rule.BASEBALL_SIZE;
 
 import baseball.BaseballGame;
 import domain.BaseballNumber;
@@ -16,8 +17,6 @@ import utils.RandomNumbers;
  * @since 2020/11/26
  */
 public class BaseballGameController {
-    private static final int RANDOM_NUMBERS_SIZE = 3;
-
     private final Scanner scanner;
     private Player player;
     private BaseballGame baseballGame;
@@ -29,7 +28,7 @@ public class BaseballGameController {
     }
 
     private List<Integer> nonDuplicateNumber() {
-        return RandomNumbers.getInstance(RANDOM_NUMBERS_SIZE);
+        return RandomNumbers.getInstance(BASEBALL_SIZE);
     }
 
     public void play() {
