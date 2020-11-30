@@ -1,12 +1,18 @@
 package baseball.controller;
 
 import baseball.viewer.InputViewer;
+
 import java.util.Scanner;
 
 public class InputReceiver {
     static final int NUMBER_OF_BALL = 3;
     static final Scanner receiver = new Scanner(System.in);
 
+    /**
+     * 사용자에게서 받는 숫자들을 정수형으로 변경한 후 각자리 숫자를 배열로 전환하는 메서드
+     *
+     * @return 전환된 정수들의 배열
+     */
     public static int[] userAnswer() {
         int[] userAnswer;
         InputViewer.receiveNumber();
@@ -42,7 +48,7 @@ public class InputReceiver {
     }
 
     private static int integerTranslator(String userInitialAnswer) {
-        int integerAnswer =0;
+        int integerAnswer = 0;
 
         try {
             integerAnswer = Integer.parseInt(userInitialAnswer);
@@ -73,6 +79,11 @@ public class InputReceiver {
         }
     }
 
+    /**
+     * 게임을 계속 종료할 것인지를 묻는 메서드
+     *
+     * @return false : 게임 새로 시작, true : 전체 게임 종료
+     */
     public static boolean askEndGames() {
         String criteria = receiver.nextLine();
         if (criteria.equals("1")) {

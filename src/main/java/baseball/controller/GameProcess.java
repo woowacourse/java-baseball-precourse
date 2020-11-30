@@ -5,6 +5,7 @@ import baseball.domain.User;
 import baseball.viewer.OutputShower;
 
 public class GameProcess {
+    /* 게임 진행을 명령하는 메서드*/
     public void play() {
         boolean oneMoreGame = false;
         Computer computer = new Computer();
@@ -44,6 +45,4 @@ public class GameProcess {
 
         return passResult;
     }
-
-
 }

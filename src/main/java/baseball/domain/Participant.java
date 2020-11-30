@@ -3,8 +3,8 @@ package baseball.domain;
 public class Participant {
     protected int[] ballBunch;
 
-    Participant() {
-
+    public Participant() {
+        super();
     }
 
     public void setBallBunch(int[] ballSetting) {
