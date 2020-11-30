@@ -29,5 +29,4 @@ public class TargetNumberGenerator {
         return ((firstTargetNumber * HUNDREDS_PLACE) + (secondTargetNumber* TENS_PLACE)
                 + (thirdTargetNumber * ONES_PLACE));
     }
-
 }

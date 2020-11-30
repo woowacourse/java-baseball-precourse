@@ -14,7 +14,6 @@ public class SingleGame {
             System.out.println(strikeAndBallResult);
         }
     }
-
 }
 
 

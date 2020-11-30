@@ -73,5 +73,4 @@ public class UserInputNumberGenerator {
             throw new IllegalArgumentException();
         }
     }
-
 }

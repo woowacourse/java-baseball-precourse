@@ -3,7 +3,6 @@ package baseball;
 import java.util.Scanner;
 
 public class Restart {
-
     private static final String RESTART = "1";
     private static final String TERMINATE = "2";
     private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -33,5 +32,4 @@ public class Restart {
         String gamingStatus = scanner.nextLine();
         return gamingStatus;
     }
-
 }
