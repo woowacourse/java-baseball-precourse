@@ -37,6 +37,7 @@ public class Application {
 
     public static void startGame(Scanner scanner) {
         int[] computerNumber = generateRandomNumber();
+
         while (true) {
             int[] playerNumber = getPlayerNumber(scanner);
             String result = getResult(computerNumber, playerNumber);
@@ -109,15 +110,15 @@ public class Application {
     }
 
     public static int[] getPlayerNumber(Scanner scanner) {
-        int[] playerNumber = new int[3];
         System.out.print("숫자를 입력해주세요 : ");
         String playerInput = getPlayerInput(scanner, 3, 1, 9);
+        int[] playerNumber = new int[3];
 
         for (int i=0; i<playerInput.length(); i ++) {
             playerNumber[i] = Integer.parseInt(playerInput.substring(i, i + 1));
         }
 
-        if (!checkAllDifferent(playerNumber)) {
+        if (!allDifferentNumbers(playerNumber)) {
             throw new IllegalArgumentException();
         }
 
@@ -153,7 +154,7 @@ public class Application {
                 computerNumber[i] = RandomUtils.nextInt(1, 9);
             }
 
-            if (checkAllDifferent(computerNumber)) {
+            if (allDifferentNumbers(computerNumber)) {
                 break;
             }
         }
@@ -161,7 +162,7 @@ public class Application {
         return computerNumber;
     }
 
-    public static boolean checkAllDifferent(int[] number) {
+    public static boolean allDifferentNumbers(int[] number) {
         if (number[0] == number[1]) {
             return false;
         }
