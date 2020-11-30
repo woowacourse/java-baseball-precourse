@@ -19,7 +19,8 @@ class BallsTest {
     @Test
     void stringToBalls() {
         // TODO 문자열 -> Balls 변환 잘되는지 어캐 검증하지...
-        Balls balls = Balls.stringToBalls("123");
+        assertThrows(IllegalArgumentException.class, () -> Balls.stringToBalls(""));
+        assertEquals(Balls.stringToBalls("123"), generateBalls(1, 2, 3));
     }
 
     @Test
