@@ -11,13 +11,13 @@ public class GameManager {
         this.scanner = scanner;
     }
 
-    public void game() {
+    public void startGame() {
         do {
-            gaming();
+            game();
         } while (continueGame());
     }
 
-    private void gaming() {
+    private void game() {
         Balls botBalls;
         Balls myBalls;
         GameResult gameResult;
