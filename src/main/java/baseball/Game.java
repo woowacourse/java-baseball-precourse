@@ -34,7 +34,6 @@ public class Game {
     private void initialize() {
         gameStatus = new Status();
         generateAnswerBalls();
-        //System.out.println(answerBalls.getBalls());
     }
 
     private void generateAnswerBalls() {
@@ -57,8 +56,6 @@ public class Game {
 
     private void proceedRound() {
         generateGuessingBalls();
-        //System.out.println(guessingBalls.getBalls());
-
         gameStatus.check(answerBalls, guessingBalls);
         OutputView.printStatus(gameStatus.getBallCount(), gameStatus.getStrikeCount());
     }
