@@ -21,12 +21,13 @@ public class Player {
     }
 
     private int readInput() {
-        boolean isValid = false;
+        boolean isValid;
         int number;
         while(true) {
             System.out.print(inputWords);
             number = checkIfNumber();
-            if(number != -1) {
+            isValid = checkDigit(number);
+            if(isValid) {
                 break;
             } else {
                 System.out.println(wrongInput);
@@ -37,17 +38,20 @@ public class Player {
     }
 
     private int checkIfNumber() {
-        int num = 0;
+        int num;
         try {
             num = scanner.nextInt();
         } catch (InputMismatchException e) {
-            scanner.nextLine();
-            return -1;
-        } catch (Exception e) {
             scanner.nextLine();
             return -1;
         }
 
         return num;
     }
+
+    private boolean checkDigit(int checkIfNumber) {
+        int numberLen = (int)(Math.log10(checkIfNumber) + 1);
+        return numberLen == 3;
+    }
+
 }
