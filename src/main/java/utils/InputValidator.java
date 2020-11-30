@@ -15,26 +15,33 @@ public class InputValidator {
     private InputValidator(){}
 
     public static boolean isValidPlayAgainAnswer(String input) throws IllegalArgumentException {
-        if(!isInRange(input, MIN_PLAY_AGAIN_BUTTON, MAX_PLAY_AGAIN_BUTTON)){
-            throw new IllegalArgumentException(INVALID_RANGE_MSG);
-        }
+        checkInRange(input, MIN_PLAY_AGAIN_BUTTON, MAX_PLAY_AGAIN_BUTTON);
         return true;
     }
 
-    public static boolean isValidGuess(String inputNumber, int len) throws IllegalArgumentException {
-        if(!isValidLength(inputNumber, len)){
+    public static boolean isValidGuess(String userGuess, int len) throws IllegalArgumentException {
+        checkLength(userGuess, len);
+        checkInRange(userGuess, NUMBER_MIN, NUMBER_MAX);
+        checkAllDifferent(userGuess);
+        return true;
+    }
+
+    private static void checkLength(String input, int len){
+        if(!isValidLength(input, len)){
             throw new IllegalArgumentException(INVALID_LENGTH_MSG);
         }
+    }
 
-        if(!isInRange(inputNumber, NUMBER_MIN, NUMBER_MAX)){
+    private static void checkInRange(String input, int min, int max){
+        if(!isInRange(input, min, max)){
             throw new IllegalArgumentException(INVALID_RANGE_MSG);
         }
+    }
 
-        if(!isAllDifferent(inputNumber)){
+    private static void checkAllDifferent(String input){
+        if(!isAllDifferent(input)){
             throw new IllegalArgumentException(INVALID_DUPLICATE_MSG);
         }
-
-        return true;
     }
 
     private static boolean isInRange(String input, int min, int max){
