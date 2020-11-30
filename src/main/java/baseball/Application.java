@@ -1,6 +1,5 @@
 package baseball;
 
-import utils.RandomUtils;
 import java.util.Scanner;
 
 public class Application {
@@ -12,4 +11,5 @@ public class Application {
             gameManager.gameStart(scanner);
         } while(gameManager.askPlayerAnswerOfRestartGame());
     }
+
 }

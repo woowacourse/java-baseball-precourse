@@ -16,14 +16,21 @@ public class GameManager {
     }
 
     public void gameStart(Scanner scanner) {
-        String computerPlayerRecords = playerComputer.getRecords();
+        int[] computerPlayerRecords = playerComputer.getRecords();
+        printArray(computerPlayerRecords);
         do {
-            String humanPlayerRecords = playerHuman.getRecords(scanner);
-            // 심판이 비교 후 결과(힌트) 출력
+            int[] humanPlayerRecords = playerHuman.getRecords(scanner);
             judge.compareRecords(humanPlayerRecords, computerPlayerRecords);
-        } while(!judge.askPlayerCorrectAll());
+        } while(!judge.isPlayerCorrectAll());
     }
 
     public boolean askPlayerAnswerOfRestartGame() {
+        return false;
+    }
+
+    public static void printArray(int[] array){
+        for(int i:array)
+            System.out.printf("%d ", i);
+        System.out.println();
     }
 }
