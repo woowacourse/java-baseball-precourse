@@ -1,5 +1,7 @@
 package utils;
 
+import baseball.model.ParameterSet;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,12 +40,12 @@ public class ValidationUtils {
         return false;
     }
 
-    public static String validateInputInProgress(String input, int NumberOfDigits, int minDigit, int maxDigit) {
-        if (!ValidationUtils.hasEqualNumberOfDigits(input, NumberOfDigits)) {
+    public static String validateInputInProgress(String input, ParameterSet parameterSet) {
+        if (!ValidationUtils.hasEqualNumberOfDigits(input, parameterSet.numberOfDigits())) {
             throw new IllegalArgumentException();
         }
 
-        if (!ValidationUtils.isDigits(input, minDigit, maxDigit)) {
+        if (!ValidationUtils.isDigits(input, parameterSet.minDigit(), parameterSet.maxDigit())) {
             throw new IllegalArgumentException();
         }
 

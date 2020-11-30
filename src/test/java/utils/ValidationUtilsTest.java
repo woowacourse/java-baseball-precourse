@@ -1,5 +1,6 @@
 package utils;
 
+import baseball.model.ParameterSet;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,13 +14,11 @@ public class ValidationUtilsTest {
     @Test
     public void validateInput() {
         String userInput = "123";
+        ParameterSet parameterSet =
+                new ParameterSet(NUMBER_OF_DIGITS, MIN_DIGIT, MAX_DIGIT);
 
         String validInput =
-                ValidationUtils.validateInputInProgress(
-                        userInput,
-                        NUMBER_OF_DIGITS,
-                        MIN_DIGIT,
-                        MAX_DIGIT);
+                ValidationUtils.validateInputInProgress(userInput, parameterSet);
 
         assertThat(userInput).isEqualTo(validInput);
     }
@@ -27,36 +26,36 @@ public class ValidationUtilsTest {
     @Test
     public void validateInput_hasDifferentNumberOfDigits() {
         String userInput = "1234";
+        ParameterSet parameterSet =
+                new ParameterSet(NUMBER_OF_DIGITS, MIN_DIGIT, MAX_DIGIT);
 
         assertThrows(IllegalArgumentException.class,
                 () -> ValidationUtils.validateInputInProgress(
                         userInput,
-                        NUMBER_OF_DIGITS,
-                        MIN_DIGIT,
-                        MAX_DIGIT));
+                        parameterSet));
     }
 
     @Test
     public void validateInput_isNotDigits() {
         String userInput = "a12";
+        ParameterSet parameterSet =
+                new ParameterSet(NUMBER_OF_DIGITS, MIN_DIGIT, MAX_DIGIT);
 
         assertThrows(IllegalArgumentException.class,
                 () -> ValidationUtils.validateInputInProgress(
                         userInput,
-                        NUMBER_OF_DIGITS,
-                        MIN_DIGIT,
-                        MAX_DIGIT));
+                        parameterSet));
     }
 
     @Test
     public void validateInput_hasDuplicateDigits() {
         String userInput = "111";
+        ParameterSet parameterSet =
+                new ParameterSet(NUMBER_OF_DIGITS, MIN_DIGIT, MAX_DIGIT);
 
         assertThrows(IllegalArgumentException.class,
                 () -> ValidationUtils.validateInputInProgress(
                         userInput,
-                        NUMBER_OF_DIGITS,
-                        MIN_DIGIT,
-                        MAX_DIGIT));
+                        parameterSet));
     }
 }
