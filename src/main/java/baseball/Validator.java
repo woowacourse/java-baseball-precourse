@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Validator {
 
 	public static void checkRangeNumbers(char[] input) {
-		if (!(input.length == 3)) {
+		if (!(input.length == Constant.BASE_BALL_GAME_RANGE)) {
 			throw new IllegalArgumentException("잘못된 입력 입니다.");
 		}
 	}

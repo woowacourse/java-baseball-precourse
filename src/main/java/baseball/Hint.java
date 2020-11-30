@@ -1,14 +1,13 @@
 package baseball;
 
 public class Hint {
-	final static int BASE_BALL_GAME_RANGE = 3;
 
 	Computer computer = new Computer();
 	Player player = new Player();
 
 	String inputNumbers;
 	char[] userInputNumbersArray;
-	char[] RandomNumbersArray = new char[BASE_BALL_GAME_RANGE];
+	char[] RandomNumbersArray = new char[Constant.BASE_BALL_GAME_RANGE];
 
 	public void hintUserNumbersAndRandomNumbers() {
 		boolean finish = false;
@@ -31,21 +30,19 @@ public class Hint {
 
 	private int countStrike(char[] computer, char[] user) {
 		int strike = 0;
-
-		for (int i = 0; i < BASE_BALL_GAME_RANGE; ++i) {
+		for (int i = 0; i < Constant.BASE_BALL_GAME_RANGE; ++i) {
 			if (computer[i] == user[i]) {
 				strike++;
 				continue;
 			}
 		}
-		return strike;
+		return strike++;
 	}
 
 	private int countBall(char[] computer, char[] user) {
 		int ball = 0;
-
-		for (int i = 0; i < BASE_BALL_GAME_RANGE; ++i) {
-			for (int j = 0; j < BASE_BALL_GAME_RANGE; ++j) {
+		for (int i = 0; i < Constant.BASE_BALL_GAME_RANGE; ++i) {
+			for (int j = 0; j < Constant.BASE_BALL_GAME_RANGE; ++j) {
 				if (i == j) {
 					continue;
 				}

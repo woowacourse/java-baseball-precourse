@@ -6,5 +6,4 @@ public class Game {
 		Hint hint = new Hint();
 		hint.hintUserNumbersAndRandomNumbers();
 	}
-
 }
