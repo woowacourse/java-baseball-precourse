@@ -11,6 +11,7 @@ public class GameManager {
         this.user = user;
         this.opponent = opponent;
     }
+
     public boolean gameResult(){
         if(checkThreeStrike()){
             System.out.println(Constants.RESULT_THREE_STRIKES);

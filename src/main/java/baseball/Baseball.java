@@ -1,9 +1,6 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Baseball {
     private ArrayList<Integer> baseball = new ArrayList<>();
@@ -18,6 +15,7 @@ public class Baseball {
         }
         return false;
     }
+
     public ArrayList<Integer> getBaseballs(){
         return baseball;
     }
