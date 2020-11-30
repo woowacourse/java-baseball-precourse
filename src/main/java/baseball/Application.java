@@ -6,6 +6,7 @@ public class Application {
     public static void main(String[] args) {
     	final Scanner scanner = new Scanner(System.in);
         int flag;
+        Game game = new Game();
         
         while(true) {
         	System.out.println("숫자야구 게임을 시작하려면 1, 종료하려면 2를 입력하세요!");
@@ -16,7 +17,7 @@ public class Application {
         		scanner.close();
         		break;
         	}else{
-
+        		game.startGame();
         	}
         }
     }

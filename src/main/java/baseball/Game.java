@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Arrays;
+
 public class Game {
 
 	Player player = new Player();
@@ -7,6 +9,12 @@ public class Game {
 	Answer answer = new Answer();
 
 	public void startGame() {
-
+		answer.makeAnswer();
+    	System.out.println("-> target "+ Arrays.toString(answer.answerNum));
+    	while(!hint.flag) {
+    		player.getPlayerNum();
+    		hint.makeHint(answer.answerNum, player.playerNum);
+    	}
+    	hint.flag = false;
 	}
 }
