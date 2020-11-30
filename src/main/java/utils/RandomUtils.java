@@ -1,5 +1,13 @@
 package utils;
-
+/*
+ * RandomUtils
+ *
+ * version 1.0
+ *
+ * 2020.11.30
+ *
+ * Copyright (c) by Davinci.J
+ */
 import java.util.Random;
 
 public class RandomUtils {
