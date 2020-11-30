@@ -46,7 +46,6 @@ public class Application {
     public static String getResult(int[] computerNumber, int[] playerNumber) {
         int ballCount = 0;
         int strikeCount = 0;
-        String result = "";
 
         // 각 숫자가 스트라이크인지 체크
         for (int i=0; i<computerNumber.length; i++) {
@@ -61,6 +60,12 @@ public class Application {
                 ballCount ++;
             }
         }
+
+        return makeResultString(ballCount, strikeCount);
+    }
+
+    public static String makeResultString(int ballCount, int strikeCount) {
+        String result = "";
 
         if (ballCount == 0 && strikeCount != 0) {
             result = strikeCount + "스트라이크";
