@@ -2,13 +2,13 @@ package baseball;
 
 import java.util.Scanner;
 
-public class GameManager {
+public class BaseBallGame {
 
     private final Scanner scanner;
     private static final String CONTINUE = "1";
     private static final String QUIT = "2";
 
-    public GameManager(Scanner scanner) {
+    public BaseBallGame(Scanner scanner) {
         this.scanner = scanner;
     }
 

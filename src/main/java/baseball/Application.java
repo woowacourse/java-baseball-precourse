@@ -6,6 +6,6 @@ public class Application {
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-        new GameManager(scanner).play();
+        new BaseBallGame(scanner).play();
     }
 }
