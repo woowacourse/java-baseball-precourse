@@ -9,8 +9,7 @@ import java.util.*;
 
 public class BaseballGame {
     private List<Integer> baseballNumbers;
-    private int ball;
-    private int strike;
+    private Score score;
     private Status status;
 
     public BaseballGame() {
@@ -34,16 +33,15 @@ public class BaseballGame {
     }
 
     private void initScore() {
-        ball = 0;
-        strike = 0;
+        score = new Score();
     }
 
     private void countScore(List<Integer> playerBaseballNumbers) {
         for (int i = 0; i < baseballNumbers.size(); i++) {
             if (isStrike(playerBaseballNumbers, i)) {
-                strike++;
+                score.increaseStrikeCount();
             } else if (isBall(playerBaseballNumbers, i)) {
-                ball++;
+                score.increaseBallCount();
             }
         }
     }
@@ -57,21 +55,21 @@ public class BaseballGame {
     }
 
     private void checkGameStatus() {
-        if (strike == 3) {
+        if (score.isFullStrike()) {
             status = TERMINATION;
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
     private void printScore() {
-        if (strike == 0 && ball == 0) {
+        if (score.isZeroBall() && score.isZeroStrike()) {
             System.out.println("낫싱");
-        } else if (strike == 0) {
-            System.out.println(ball + "볼");
-        } else if (ball == 0) {
-            System.out.println(strike + "스트라이크");
+        } else if (score.isZeroStrike()) {
+            System.out.println(score.getBall() + "볼");
+        } else if (score.isZeroBall()) {
+            System.out.println(score.getStrike() + "스트라이크");
         } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            System.out.println(score.getBall() + "볼 " + score.getStrike() + "스트라이크");
         }
     }
 
