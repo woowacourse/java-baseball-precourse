@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.view.GameView;
 import utils.Convertor;
 
 import java.util.*;
@@ -16,9 +17,8 @@ public class Player {
 
     public void inputBaseballNumbers(Scanner scanner) {
         while (true) {
+            baseballNumbers = Convertor.stringToIntList(GameView.inputNumbers(scanner));
             try {
-                System.out.print("숫자를 입력해주세요 : ");
-                baseballNumbers = Convertor.stringToIntList(scanner.nextLine());
                 validateBaseballNumbers();
                 break;
             } catch (IllegalArgumentException e) {
