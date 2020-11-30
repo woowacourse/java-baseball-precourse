@@ -1,20 +1,22 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 public class Player {
 
-    public static int getUserInput() {
+    public static int getPlayerInput() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 
-    public static int[] numberToArray(int num) {
+    public static List<Integer> numberToArray(int num) {
         String temp = Integer.toString(num);
 
-        int[] userNumber = new int[3];
+        List<Integer> userNumber = new ArrayList<>();
         for (int i=0; i<3; i++) {
-            userNumber[i] = temp.charAt(i) - '0';
+            userNumber.add(temp.charAt(i) - '0');
         }
 
         return userNumber;
