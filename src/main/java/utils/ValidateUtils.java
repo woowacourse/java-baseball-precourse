@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.HashSet;
+import baseball.Application;
 
 public class ValidateUtils {
     public static boolean validateInput(int input) {
@@ -20,6 +21,13 @@ public class ValidateUtils {
                 throw new IllegalArgumentException("number range is 1 ~ 9");
             }
             set.add(num);
+        }
+        return true;
+    }
+
+    public static boolean validateInputForRestart(int input) {
+        if (input != Application.INPUT_RESTART && input != Application.INPUT_STOP) {
+            throw new IllegalArgumentException("input only 1 or 2");
         }
         return true;
     }
