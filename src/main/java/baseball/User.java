@@ -53,6 +53,19 @@ public class User {
     }
 
     private boolean isNotDuplicate(String number) {
+        int eachNum;
+        boolean[] alreadyUse = new boolean[MAX_VALUE + 1];
+
+        for (int i = 0; i < number.length(); i++) {
+            eachNum = Character.getNumericValue(number.charAt(i));
+
+            if (!alreadyUse[eachNum]) {
+                alreadyUse[eachNum] = true;
+            } else {
+                return false;
+            }
+        }
+
         return true;
     }
 
