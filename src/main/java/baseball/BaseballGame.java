@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class BaseballGame {
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
+    private static final int ANSWER_LENGTH = 3;
     private static final int ALL_STRIKE_CNT = 3;
     private static final char RESTART_CODE = '1';
     private static final char FINISH_CODE = '2';
@@ -57,9 +58,12 @@ public class BaseballGame {
     }
 
     public void generateAnswer() {
-        for (int i = 0; i < 3; i++) {
+        while (answer.length() < ANSWER_LENGTH) {
             int randomNum = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
-            answer += Integer.toString(randomNum);
+            String randomStr = Integer.toString(randomNum);
+            if (!answer.contains(randomStr)) {
+                answer += randomStr;
+            }
         }
     }
 
