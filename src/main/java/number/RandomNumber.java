@@ -17,10 +17,10 @@ public class RandomNumber {
         boolean[] duplicateCheck = new boolean[10];
 
         for(int i=0;i<Constant.MAX_NUM;i++){
-            int num = RandomUtils.nextInt(0,9);
+            int num = RandomUtils.nextInt(1,9);
 
             while(duplicateCheck[num]){
-                num = RandomUtils.nextInt(0,9);
+                num = RandomUtils.nextInt(1,9);
             }
 
             ranNum[i] = num;
