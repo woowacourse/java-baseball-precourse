@@ -15,7 +15,7 @@ public class InputValidator {
 
     private InputValidator(){}
 
-    public static boolean isValidPlayAgainAnswer(String input) throws IllegalArgumentException {
+    public static void checkValidPlayAgainBtn(String input) throws IllegalArgumentException {
         if(!isValidLength(input, LEN_PLAY_AGAIN_BUTTON)){
             throw new IllegalArgumentException(INVALID_LENGTH_MSG);
         }
@@ -23,11 +23,9 @@ public class InputValidator {
         if(!isInRange(input, MIN_PLAY_AGAIN_BUTTON, MAX_PLAY_AGAIN_BUTTON)){
             throw new IllegalArgumentException(INVALID_RANGE_MSG);
         }
-
-        return true;
     }
 
-    public static boolean isValidNumbers(String input, int len) throws IllegalArgumentException {
+    public static void checkValidNumbers(String input, int len) throws IllegalArgumentException {
         if(!isValidLength(input, len)){
             throw new IllegalArgumentException(INVALID_LENGTH_MSG);
         }
@@ -39,8 +37,6 @@ public class InputValidator {
         if(!isAllDifferent(input)){
             throw new IllegalArgumentException(INVALID_DUPLICATE_MSG);
         }
-
-        return true;
     }
 
     private static boolean isInRange(String input, int min, int max){
