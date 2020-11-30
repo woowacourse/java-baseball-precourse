@@ -11,7 +11,7 @@ public class RandomNumber {
         String returnNumber = "";
         while (returnNumber.length() < numberLength) {
             //숫자를 생성해서 String으로 형변환 한다
-            String tempNumber = Integer.toString(RandomUtils.nextInt(MIN_NUMBER,MAX_NUMBER));
+            String tempNumber = Integer.toString(RandomUtils.nextInt(MIN_NUMBER, MAX_NUMBER));
             if (!returnNumber.contains(tempNumber)) {
                 returnNumber += tempNumber;
             }

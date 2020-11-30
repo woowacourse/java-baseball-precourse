@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class GameController {
     public static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String REGAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String END_CONDITION = "3스트라이크";
 
     public static int playGame(Scanner scanner) {
@@ -26,8 +25,7 @@ public class GameController {
             String result = Referee.judgeNumber(randomNumber, inputNumber);
             if (result.equals(END_CONDITION)) {
                 System.out.println(END_MESSAGE);
-                System.out.println(REGAME_MESSAGE);
-                restartGame = scanner.nextInt();
+                restartGame = RestartNumber.askRestart(scanner);
                 break;
             } else {
                 System.out.println(result);
