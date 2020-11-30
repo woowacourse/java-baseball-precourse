@@ -58,11 +58,7 @@ public class GameManager {
                 continue;
             }
 
-            if (input.equals(CONTINUE)) {
-                return true;
-            } else if (input.equals(QUIT)) {
-                return false;
-            }
+            return input.equals(CONTINUE);
         }
     }
 }
