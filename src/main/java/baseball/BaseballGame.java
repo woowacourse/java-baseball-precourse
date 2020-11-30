@@ -30,7 +30,7 @@ public class BaseballGame {
     }
 
     private Numbers getNewTargetNumber(){
-         return NumbersFactory.getRandomNumbers(NUMBER_OF_DIGITS);
+         return NumbersFactory.createRandomNumbers(NUMBER_OF_DIGITS);
     }
 
     private Numbers readNumber(){

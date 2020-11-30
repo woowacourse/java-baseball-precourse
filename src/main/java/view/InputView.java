@@ -20,7 +20,7 @@ public class InputView {
         try{
             String answer = scanner.nextLine();
             InputValidator.isValidGuess(answer, digits);
-            return NumbersFactory.parseStringToNumbers(answer);
+            return NumbersFactory.createNumbers(answer);
         }catch (IllegalArgumentException IAE){
             IAE.printStackTrace();
             return getGuessNumbers(scanner, digits);
