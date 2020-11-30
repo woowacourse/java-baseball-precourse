@@ -2,6 +2,7 @@ package utils;
 
 import jdk.jfr.Description;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -77,6 +78,26 @@ class ValidatorTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Validator.validateInput(input);
         });
+    }
+
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "3", "1000", "01", "r", "dfa", "测试"})
+    @Description("validateReStart 예외발생 테스트")
+    public void validateReStartTest(String input) {
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Validator.validateReStart(input);
+        });
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2"})
+    @Description("validateReStart 발생x")
+    public void validateReStartTest_success(String input) {
+
+        Validator.validateReStart(input);
+
     }
 
 }
