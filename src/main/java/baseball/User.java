@@ -20,7 +20,12 @@ public class User {
     }
 
     private void setUserNumber(String number) {
+        int eachNum;
 
+        for (int i = 0; i < number.length(); i++) {
+            eachNum = Character.getNumericValue(number.charAt(i));
+            userNumber[i] = eachNum;
+        }
     }
 
     private boolean isValidInput(String number) {
