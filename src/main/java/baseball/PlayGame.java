@@ -2,6 +2,9 @@ package baseball;
 
 import java.util.Scanner;
 
+/**
+ * 게임이 진행되는 클래스
+ */
 public class PlayGame {
 
     private final CheckInputNumber checkInputNumber;

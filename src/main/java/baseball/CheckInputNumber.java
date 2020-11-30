@@ -3,7 +3,7 @@ package baseball;
 import java.util.*;
 
 /**
- * 입력한 문자열이 조건에 맞는지 검사하는 클래스
+ * 입력한 값이 조건에 맞는지 검사하는 클래스
  */
 public class CheckInputNumber {
 
