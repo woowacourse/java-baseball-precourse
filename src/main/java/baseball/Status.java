@@ -24,17 +24,25 @@ public class Status {
         strikeCount = checkStrikes(answerBalls, guessingBalls);
     }
 
-    public long checkStrikes(Baseballs answerBalls, Baseballs guessingBalls) {
+    private long checkStrikes(Baseballs answerBalls, Baseballs guessingBalls) {
         return guessingBalls.getBalls().stream()
                 .filter(x -> answerBalls.getBalls().contains(x))
-                .filter(x -> guessingBalls.getBalls().indexOf(x) == answerBalls.getBalls().indexOf(x))
+                .filter(x -> isInSameIndex(x, answerBalls, guessingBalls))
                 .count();
     }
 
-    public long checkBalls(Baseballs answerBalls, Baseballs guessingBalls) {
+    private long checkBalls(Baseballs answerBalls, Baseballs guessingBalls) {
         return guessingBalls.getBalls().stream()
                 .filter(x -> answerBalls.getBalls().contains(x))
-                .filter(x -> guessingBalls.getBalls().indexOf(x) != answerBalls.getBalls().indexOf(x))
+                .filter(x -> isInDifferentIndex(x, answerBalls, guessingBalls))
                 .count();
+    }
+
+    private boolean isInSameIndex(int x, Baseballs answerBalls, Baseballs guessingBalls) {
+        return guessingBalls.getBalls().indexOf(x) == answerBalls.getBalls().indexOf(x);
+    }
+
+    private boolean isInDifferentIndex(int x, Baseballs answerBalls, Baseballs guessingBalls) {
+        return guessingBalls.getBalls().indexOf(x) != answerBalls.getBalls().indexOf(x);
     }
 }
