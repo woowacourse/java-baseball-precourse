@@ -36,6 +36,12 @@ public class Game {
         generateAnswerBalls();
     }
 
+    private void proceedRound() {
+        generateGuessingBalls();
+        gameStatus.check(answerBalls, guessingBalls);
+        OutputView.printStatus(gameStatus.getBallCount(), gameStatus.getStrikeCount());
+    }
+
     private void generateAnswerBalls() {
         answerBalls = new Baseballs(createNonDuplicateNumbers(Baseballs.BALLS_CONTAINER_SIZE));
     }
@@ -52,12 +58,6 @@ public class Game {
             generatedNumbers.add(RandomUtils.nextInt(MINIMUM_BALL_VALUE, MAXIMUM_BALL_VALUE));
         }
         return generatedNumbers;
-    }
-
-    private void proceedRound() {
-        generateGuessingBalls();
-        gameStatus.check(answerBalls, guessingBalls);
-        OutputView.printStatus(gameStatus.getBallCount(), gameStatus.getStrikeCount());
     }
 
     private void generateGuessingBalls() {
