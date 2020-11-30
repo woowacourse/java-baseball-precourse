@@ -14,14 +14,18 @@ public class NumberBaseBallGame {
     private void askRestart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int doesPlayerWantPlayAgain = scanner.nextInt();
-        validatePlayerWantPlayAgain(doesPlayerWantPlayAgain);
+        try {
+            validatePlayerWantPlayAgain(doesPlayerWantPlayAgain);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
         if (doesPlayerWantPlayAgain == playAgain){
             start();
         }
     }
 
-    private void validatePlayerWantPlayAgain(int doesPlayerWantPlayAgain) {
+    private void validatePlayerWantPlayAgain(int doesPlayerWantPlayAgain) throws IllegalArgumentException {
         if (doesPlayerWantPlayAgain != 1 && doesPlayerWantPlayAgain != 2){
             throw new IllegalArgumentException("1 또는 2를 입력하세요.");
         }
@@ -33,11 +37,13 @@ public class NumberBaseBallGame {
 
         do {
             System.out.print("숫자를 입력해주세요 : ");
-
-            Digits userInput = new Digits(scanner.nextInt()); // 에러 날 수 있는 곳.
-            Discriminator discriminator = new Discriminator();
-            isContinueGame = discriminator.judge(answer, userInput);
-
+            try {
+                Digits userInput = new Digits(scanner.nextInt()); // 에러 날 수 있는 곳.
+                Discriminator discriminator = new Discriminator();
+                isContinueGame = discriminator.judge(answer, userInput);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         } while (isContinueGame);
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");

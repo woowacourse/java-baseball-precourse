@@ -13,13 +13,13 @@ public class Digits {
         return !(set.size() == NUMBER_LENGTH);
     }
 
-    private void validateLength(final int input){
+    private void validateLength(final int input) throws IllegalArgumentException{
         if (Integer.toString(input).length() != NUMBER_LENGTH){
-            throw new IllegalArgumentException("입력하는 수가" + NUMBER_LENGTH + "자리여야 합니다.");
+            throw new IllegalArgumentException("입력하는 수가 " + NUMBER_LENGTH + "자리여야 합니다.");
         }
     }
 
-    private void validateDuplication(final int hundsDigit,final int tensDigit,final int unitsDigit){
+    private void validateDuplication(final int hundsDigit,final int tensDigit,final int unitsDigit) throws IllegalArgumentException{
         if (isIncludeDuplication(hundsDigit, tensDigit, unitsDigit)){
             throw new IllegalArgumentException("입력하는 수의 각 자리 수는 다른 수여야 합니다.");
         }
