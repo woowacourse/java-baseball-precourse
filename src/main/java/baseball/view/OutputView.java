@@ -8,6 +8,9 @@ public class OutputView {
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String CORRECT_ANSWER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
+    private OutputView() {
+    }
+
     public static void printScoreResult(int strikeCount, int ballCount) {
         if(strikeCount == ZERO && ballCount == ZERO) {
             System.out.println(NOTHING_MESSAGE);
