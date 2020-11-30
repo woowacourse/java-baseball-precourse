@@ -1,22 +1,20 @@
 package baseball;
 
-import java.util.List;
-
 public class GameRule {
 
     private GameRule(){}
 
-    public static int countStrike(List target, List guessed){
-        return (int)guessed.stream()
-                .filter(x -> x == target.get(guessed.indexOf(x)))
+    public static int countStrike(Numbers target, Numbers guess){
+        return (int)guess.stream()
+                .filter(num -> num == target.get(guess.indexOf(num)))
                 .count();
     }
 
-    public static int countBall(List target, List guessed){
-        return countContainBoth(target, guessed) - countStrike(target, guessed);
+    public static int countBall(Numbers target, Numbers guess){
+        return countContainBoth(target, guess) - countStrike(target, guess);
     }
 
-    private static int countContainBoth(List target, List guessed){
+    private static int countContainBoth(Numbers target, Numbers guessed){
         return (int)guessed.stream()
                 .filter(x-> target.contains(x))
                 .count();

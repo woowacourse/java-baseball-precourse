@@ -1,6 +1,8 @@
 package view;
 
+import baseball.Numbers;
 import utils.InputValidator;
+import utils.NumbersFactory;
 
 import java.util.Scanner;
 
@@ -11,16 +13,15 @@ public class InputView {
 
     private InputView(){ }
 
-    public static String askGuess(Scanner scanner, int digits){
+    public static Numbers askGuess(Scanner scanner, int digits){
         OutputView.printMsg(ASK_NUMBER_MESSAGE);
         OutputView.printMsg(SEPARATOR_LINE);
 
         try{
             String answer = scanner.nextLine();
             InputValidator.isValidGuess(answer, digits);
-            return answer;
+            return NumbersFactory.parseStringToNumbers(answer);
         }catch (IllegalArgumentException IAE){
-            OutputView.printMsg(IAE.getMessage());
             IAE.printStackTrace();
             return askGuess(scanner, digits);
         }
@@ -35,7 +36,6 @@ public class InputView {
             InputValidator.isValidPlayAgainAnswer(answer);
             return answer;
         }catch (IllegalArgumentException IAE){
-            OutputView.printMsg(IAE.getMessage());
             IAE.printStackTrace();
             return askPlayAgain(scanner);
         }

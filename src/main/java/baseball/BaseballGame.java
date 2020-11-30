@@ -1,17 +1,16 @@
 package baseball;
 
-import utils.NumberListGenerator;
+import utils.NumbersFactory;
 import view.InputView;
 import view.OutputView;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class BaseballGame {
     private final int NUMBER_OF_DIGITS;
     private final Scanner scanner;
 
-    private List<Integer> targetNumberList;
+    private Numbers target;
     private int strikeCnt;
     private int ballCnt;
 
@@ -23,7 +22,7 @@ public class BaseballGame {
     public void play(){
         setTargetNumber();
         do{
-            String userGuess = readNumber();
+            Numbers userGuess = readNumber();
             calculateScore(userGuess);
             printScore();
         }while(!checkGameOver());
@@ -31,17 +30,16 @@ public class BaseballGame {
     }
 
     private void setTargetNumber(){
-        targetNumberList = NumberListGenerator.makeTargetNumber(NUMBER_OF_DIGITS);
+         target = NumbersFactory.getRandomNumbers(NUMBER_OF_DIGITS);
     }
 
-    private String readNumber(){
+    private Numbers readNumber(){
         return InputView.askGuess(scanner, NUMBER_OF_DIGITS);
     }
 
-    private void calculateScore(String guessed){
-        List guessedNumberList = NumberListGenerator.ConvertStringToList(guessed);
-        strikeCnt = GameRule.countStrike(targetNumberList, guessedNumberList);
-        ballCnt = GameRule.countBall(targetNumberList, guessedNumberList);
+    private void calculateScore(Numbers guess){
+        strikeCnt = GameRule.countStrike(target, guess);
+        ballCnt = GameRule.countBall(target, guess);
     }
 
     private void printScore(){
