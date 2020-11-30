@@ -19,7 +19,9 @@ public class Hint {
     }
 
     private void countStrike(int computerNum, int userNum) {
-
+        if (computerNum == userNum) {
+            this.strike++;
+        }
     }
 
     private void countBall(int[] computerAnswer, int userNum, int userNumIdx) {
