@@ -9,6 +9,7 @@ public class UserBaseballService {
 	private static final Integer MAX_BALL_CNT = 3;
 	private static final Integer ZERO = 0;
 	private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+	private static final String INPUT_ERROR_MESSAGE = "잘못된 입력입니다.";
 	private static Integer CURRENT_BALL_CNT = 0;
 
 	public UserBaseballService(Scanner scanner) {
@@ -21,7 +22,7 @@ public class UserBaseballService {
 		String input = scanner.nextLine();
 
 		if (!InputCheckUtils.isVaild(input)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
 		}
 
 		for (CURRENT_BALL_CNT = ZERO; CURRENT_BALL_CNT < MAX_BALL_CNT; CURRENT_BALL_CNT++) {
