@@ -10,9 +10,7 @@ import static baseball.Constants.STRING_USER_EXIT;
 import static baseball.Constants.STRING_USER_NOT_EXIT;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import utils.RandomUtils;
 
 public class UtilityFunctions {
@@ -44,64 +42,28 @@ public class UtilityFunctions {
 
     // baseballResult의 값에 알맞는 게임 결과를 문자열로 생성하는 메소드
     public static String generateResultString(BaseballResult baseballResult) {
-        if (baseballResult.getStrike() == 0 && baseballResult.getBall() == 0) {
+        if (baseballResult.getStrikes() == 0 && baseballResult.getBalls() == 0) {
             return MESSAGE_RESULT_NOTHING;
         }
 
         String resultString = "";
 
-        if (baseballResult.getBall() > 0) {
-            resultString += baseballResult.getBall() + MESSAGE_RESULT_BALL;
+        if (baseballResult.getBalls() > 0) {
+            resultString += baseballResult.getBalls() + MESSAGE_RESULT_BALL;
         }
 
-        if (baseballResult.getStrike() > 0) {
+        if (baseballResult.getStrikes() > 0) {
             if (resultString.length() > 0) {
                 resultString += ' ';
             }
-            resultString += baseballResult.getStrike() + MESSAGE_RESULT_STRIKE;
+            resultString += baseballResult.getStrikes() + MESSAGE_RESULT_STRIKE;
         }
 
         return resultString;
     }
 
-    // 입력받은 배열의 크기가 GAME_MAX_BASEBALL_PITCH 값과 같은지 확인하는 메소드
-    public static void validateSizeOfArray(int[] numberArray) {
-        if (numberArray.length != GAME_MAX_BASEBALL_PITCH) {
-            throw new IllegalArgumentException(
-                ErrorMessages.ARRAY_INVALID_LENGTH.getMessage()
-            );
-        }
-    }
-
-    // 입력받은 배열 내에 중복된 값이 있는지 확인하는 메소드
-    public static void validateDuplicateItemsInArray(int[] numberArray) {
-        final Set<Integer> baseballNumberSet = new HashSet<>();
-
-        for (int number : numberArray) {
-            baseballNumberSet.add(number);
-        }
-
-        // 중복된 수가 입력받은 배열에 있을 경우, 배열과 셋의 길이가 다른 것을 이용
-        if (baseballNumberSet.size() != numberArray.length) {
-            throw new IllegalArgumentException(
-                ErrorMessages.ARRAY_ITEM_DUPLICATED.getMessage()
-            );
-        }
-    }
-
-    // 입력받은 배열 내에 허용된 범위를 넘어가는 값이 있는지 확인하는 메소드
-    public static void validateItemRangeInArray(int[] numberArray) {
-        for (int number : numberArray) {
-            if (number > GAME_MAX_BASEBALL_NUMBER || number < GAME_MIN_BASEBALL_NUMBER) {
-                throw new IllegalArgumentException(
-                    ErrorMessages.ARRAY_ITEM_OUT_OF_RANGE.getMessage()
-                );
-            }
-        }
-    }
-
     // 사용자의 정답 추측 입력이 올바른 형식인지 확인하는 메소드
-    public static void validateGuessString(String userGuessString) {
+    private static void validateGuessString(String userGuessString) {
         try {
             Integer.parseInt(userGuessString);
         } catch (NumberFormatException e) {
@@ -122,7 +84,7 @@ public class UtilityFunctions {
     }
 
     // 사용자가 입력한 재시작 답변이 올바른 형식인지 확인하는 메소드
-    public static void validateGameExitString(String gameExitString) {
+    private static void validateGameExitString(String gameExitString) {
         if (!gameExitString.equals(STRING_USER_EXIT) &&
             !gameExitString.equals(STRING_USER_NOT_EXIT)) {
             throw new IllegalArgumentException(

@@ -1,20 +1,26 @@
 package baseball;
 
+import static baseball.Constants.GAME_MAX_BASEBALL_PITCH;
+
 public class BaseballResult {
 
-    private final int countOfStrike;
-    private final int countOfBall;
+    private final int strikes;
+    private final int balls;
 
-    public BaseballResult(int countOfStrike, int countOfBall) {
-        this.countOfStrike = countOfStrike;
-        this.countOfBall = countOfBall;
+    public BaseballResult(BaseballNumbers answerNumbers, BaseballNumbers userGuessNumbers) {
+        this.strikes = answerNumbers.calculateStrikes(userGuessNumbers);
+        this.balls = answerNumbers.calculateBalls(userGuessNumbers);
     }
 
-    public int getStrike() {
-        return countOfStrike;
+    public int getStrikes() {
+        return this.strikes;
     }
 
-    public int getBall() {
-        return countOfBall;
+    public int getBalls() {
+        return this.balls;
+    }
+
+    public boolean isGameFinished() {
+        return this.strikes == GAME_MAX_BASEBALL_PITCH;
     }
 }

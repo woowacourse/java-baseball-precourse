@@ -14,18 +14,20 @@ public class Application {
     // 숫자 야구 게임을 진행하는 메소드
     private static void playBaseballGame(Scanner scanner) {
         BaseballGame baseballGame = new BaseballGame();
+        boolean gameFinished = false;
 
-        while (!baseballGame.isFinished()) {
+        while (!gameFinished) {
             System.out.print(MESSAGE_GAME_INPUT);
-            String userGuessString = scanner.nextLine();
+            final String userGuessString = scanner.nextLine();
 
-            int[] userGuessArray = parseGuessString(userGuessString);
+            final int[] userGuessArray = parseGuessString(userGuessString);
 
-            baseballGame.playBall(userGuessArray);
+            final BaseballResult baseballResult = baseballGame.playBall(userGuessArray);
 
-            final BaseballResult baseballResult = baseballGame.getBaseballResult();
             final String resultString = generateResultString(baseballResult);
             System.out.println(resultString);
+
+            gameFinished = baseballResult.isGameFinished();
         }
     }
 
