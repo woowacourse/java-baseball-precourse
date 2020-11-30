@@ -19,10 +19,10 @@ public class InputValidator {
         return true;
     }
 
-    public static boolean isValidGuess(String userGuess, int len) throws IllegalArgumentException {
-        checkLength(userGuess, len);
-        checkInRange(userGuess, NUMBER_MIN, NUMBER_MAX);
-        checkAllDifferent(userGuess);
+    public static boolean isValidNumbers(String input, int len) throws IllegalArgumentException {
+        checkLength(input, len);
+        checkInRange(input, NUMBER_MIN, NUMBER_MAX);
+        checkAllDifferent(input);
         return true;
     }
 

@@ -18,23 +18,24 @@ public class BaseballGame {
     }
 
     public void play(){
-        final Numbers target = getNewTargetNumber();
+        final Numbers targetNumbers = getNewTargetNumbers();
+
         do{
-            Numbers userGuess = readNumber();
-            Score score = calculateScore(target, userGuess);
+            Numbers userNumbers = readNumber();
+            Score score = calculateScore(targetNumbers, userNumbers);
             printScore(score);
             checkGameOver(score);
         }while(!isGameEnd);
 
-        printAllCorrect();
+        OutputView.printGameOver();
     }
 
-    private Numbers getNewTargetNumber(){
+    private Numbers getNewTargetNumbers(){
          return NumbersFactory.createRandomNumbers(NUMBER_OF_DIGITS);
     }
 
     private Numbers readNumber(){
-        return InputView.getGuessNumbers(scanner, NUMBER_OF_DIGITS);
+        return InputView.getNumbers(scanner, NUMBER_OF_DIGITS);
     }
 
     private Score calculateScore(Numbers target, Numbers guess){
@@ -50,9 +51,5 @@ public class BaseballGame {
 
     private void checkGameOver(Score score){
         isGameEnd = GameRule.checkGameEnd(score, NUMBER_OF_DIGITS);
-    }
-
-    private void printAllCorrect() {
-        OutputView.announceAllCorrect();
     }
 }

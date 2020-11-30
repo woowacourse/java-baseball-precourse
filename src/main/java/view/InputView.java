@@ -13,17 +13,17 @@ public class InputView {
 
     private InputView(){ }
 
-    public static Numbers getGuessNumbers(Scanner scanner, int digits){
+    public static Numbers getNumbers(Scanner scanner, int digits){
         OutputView.printMsg(ASK_NUMBER_MESSAGE);
         OutputView.printMsg(SEPARATOR_LINE);
 
         try{
             String answer = scanner.nextLine();
-            InputValidator.isValidGuess(answer, digits);
+            InputValidator.isValidNumbers(answer, digits);
             return NumbersFactory.createNumbers(answer);
         }catch (IllegalArgumentException IAE){
             IAE.printStackTrace();
-            return getGuessNumbers(scanner, digits);
+            return getNumbers(scanner, digits);
         }
     }
 

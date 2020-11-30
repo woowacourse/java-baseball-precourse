@@ -45,7 +45,7 @@ public class OutputView {
         printMsg(ANNOUNCE_NOTHING);
     }
 
-    public static void announceAllCorrect(){
+    public static void printGameOver(){
         printMsg(ANNOUNCE_ALL_CORRECT);
         printMsg(SEPARATOR_ROUND);
     }
