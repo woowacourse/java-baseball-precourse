@@ -1,6 +1,6 @@
 package baseball;
 
-import GameConsole.BaseballGame;
+import gameconsole.BaseballGame;
 import numbers.AnswerNumber;
 
 import java.util.Scanner;

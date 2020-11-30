@@ -1,4 +1,4 @@
-package GameConsole;
+package gameconsole;
 
 import numbers.UserSelectNumber;
 import views.Output;

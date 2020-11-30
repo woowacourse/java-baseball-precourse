@@ -1,4 +1,4 @@
-package GameConsole;
+package gameconsole;
 
 import views.Output;
 
