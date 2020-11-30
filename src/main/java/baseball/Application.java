@@ -9,16 +9,23 @@ public class Application {
         // TODO 구현 진행
         while (true) {
             startGame(scanner);
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String playerInput = scanner.nextLine();
 
-            checkLength(playerInput, 1);
-            checkIfNumberFromAToB(playerInput, 1, 2);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String playerInput = getPlayerInput(scanner, 1, 1, 2);
 
             if (playerInput.equals("2")) {
                 break;
             }
         }
+    }
+
+    // 플레이어의 입력을 받는 기능
+    public static String getPlayerInput(Scanner scanner, int requiredLength, int startInclusive, int endInclusive) {
+        String playerInput = scanner.nextLine();
+        checkLength(playerInput, requiredLength);
+        checkNumberRange(playerInput, startInclusive, endInclusive);
+
+        return playerInput;
     }
 
     public static void startGame(Scanner scanner) {
@@ -94,17 +101,11 @@ public class Application {
         return computerNumber[sameIndex] == playerNumber[sameIndex];
     }
 
-    // 플레이어의 입력을 받고 체크하는 기능
+    // 플레이어의 입력을 숫자 배열로 만드는 기능
     public static int[] getPlayerNumber(Scanner scanner) {
         int[] playerNumber = new int[3];
         System.out.print("숫자를 입력해주세요 : ");
-        String playerInput = scanner.nextLine();
-
-        // 3자리 입력인지 체크
-        checkLength(playerInput, 3);
-
-        // 각 자리수가 1에서 9사이의 숫자인지 체크
-        checkIfNumberFromAToB(playerInput, 1, 9);
+        String playerInput = getPlayerInput(scanner, 3, 1, 9);
 
         // 숫자 배열화 기능
         for (int i=0; i<playerInput.length(); i ++) {
@@ -127,14 +128,14 @@ public class Application {
     }
 
     // 각 자리수가 A에서 B사이의 숫자인지 체크하는 기능
-    public static void checkIfNumberFromAToB(String playerInput, int fromA, int toB) {
-        char fromAChar = Integer.toString(fromA).charAt(0);
-        char toBChar = Integer.toString(toB).charAt(0);
+    public static void checkNumberRange(String playerInput, int startInclusive, int endInclusive) {
+        char startChar = Integer.toString(startInclusive).charAt(0);
+        char endChar = Integer.toString(endInclusive).charAt(0);
 
         for (int i=0; i<playerInput.length(); i++) {
             char temp = playerInput.charAt(i);
 
-            if (fromAChar <= temp && temp <= toBChar) {
+            if (startChar <= temp && temp <= endChar) {
                 continue;
             }
 
