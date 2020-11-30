@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class InputHandler {
     private static final String NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요. : ";
     private static final String RESTART_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String INPUT_EXCEPTION_MESSAGE = "잘못된 입력입니다. 3자리의 서로 다른 수를 입력해야 합니다.";
+    private static final String RESTART_INPUT_EXCEPTION_MESSAGE = "잘못된 입력입니다. 1(새로시작) 또는 2(종료)를 입력해야 합니다.";
     private static final CheckInputNumber checkInputNumber = new CheckInputNumber();
     private final Scanner scanner;
 
@@ -17,12 +19,22 @@ public class InputHandler {
 
     public String inputValue() {
         System.out.print(NUMBER_INPUT_MESSAGE);
-        return checkInputNumber.inputNumber(scanner.nextLine());
+        try {
+            return checkInputNumber.inputNumber(scanner.nextLine());
+        } catch (IllegalArgumentException exception) {
+            System.out.println(INPUT_EXCEPTION_MESSAGE);
+            return inputValue();
+        }
     }
 
     public boolean restartValue() {
         System.out.println(RESTART_INPUT_MESSAGE);
-        return checkInputNumber.oneOrTwo(scanner.nextLine());
+        try{
+            return checkInputNumber.oneOrTwo(scanner.nextLine());
+        } catch (IllegalArgumentException exception){
+            System.out.println(RESTART_INPUT_EXCEPTION_MESSAGE);
+            return restartValue();
+        }
     }
 
 
