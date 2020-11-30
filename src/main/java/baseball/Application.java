@@ -1,21 +1,47 @@
 package baseball;
 
+import static baseball.Constants.MESSAGE_GAME_FINISHED;
+import static baseball.Constants.MESSAGE_GAME_INPUT;
+import static baseball.Constants.MESSAGE_GAME_REPLAY;
+import static baseball.UtilityFunctions.generateResultString;
+import static baseball.UtilityFunctions.parseGameExitString;
+import static baseball.UtilityFunctions.parseGuessString;
+
 import java.util.Scanner;
 
 public class Application {
 
-    // guessResult의 값에 알맞는 스트라이크/볼 갯수를 출력해주는 메소드
-    static void printGuessResult(int guessResult) {
-        // TODO 구현 진행
-    }
-
     // 숫자 야구 게임을 진행하는 메소드
-    static void playBaseballGame(Scanner scanner) {
-        // TODO 구현 진행
+    private static void playBaseballGame(Scanner scanner) {
+        BaseballGame baseballGame = new BaseballGame();
+
+        while (!baseballGame.isFinished()) {
+            System.out.print(MESSAGE_GAME_INPUT);
+            String userGuessString = scanner.nextLine();
+
+            int[] userGuessArray = parseGuessString(userGuessString);
+
+            baseballGame.playBall(userGuessArray);
+
+            final BaseballResult baseballResult = baseballGame.getBaseballResult();
+            final String resultString = generateResultString(baseballResult);
+            System.out.println(resultString);
+        }
     }
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
+
+        boolean gameExitFlag = false;
+
+        while (!gameExitFlag) {
+            playBaseballGame(scanner);
+
+            System.out.println(MESSAGE_GAME_FINISHED);
+            System.out.println(MESSAGE_GAME_REPLAY);
+            String userGameExitString = scanner.nextLine();
+
+            gameExitFlag = parseGameExitString(userGameExitString);
+        }
     }
 }
