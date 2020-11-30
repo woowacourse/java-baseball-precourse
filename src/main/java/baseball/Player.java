@@ -15,10 +15,14 @@ public class Player {
     }
 
     public String inputGuess() {
+        guess = scanner.nextLine();
+        VerificationUtils.verifyGuess(guess);
         return guess;
     }
 
     public char inputProgress() {
+        progress = scanner.nextLine();
+        VerificationUtils.verifyProgress(progress);
         return progress.charAt(0);
     }
 }
