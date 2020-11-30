@@ -20,11 +20,11 @@
 
     
 ## PR 전 체크사항
-- [ ] README.md에 구현할 기능 목록을 정리해서 추가했는가
-- [ ] 들여쓰기는 2 spaces가 아닌, 4 spaces로 구현했는가
-- [ ] indent는 2까지만 사용했는가
-- [ ] 3항 연산자를 쓰지 않았는가
-- [ ] System.exit 메소드를 사용하지 않았는가
-- [ ] 비정상적 입력에 대해서는 IllegalArgumentException을 발생시켰는가
-- [ ] Application의 패키지 구조와 구현은 변경하지 않았는가
-- [ ] PR을 보내고 이메일을 보냈는가
+- [x] README.md에 구현할 기능 목록을 정리해서 추가했는가
+- [x] 들여쓰기는 2 spaces가 아닌, 4 spaces로 구현했는가
+- [x] indent는 2까지만 사용했는가
+- [x] 3항 연산자를 쓰지 않았는가
+- [x] System.exit 메소드를 사용하지 않았는가
+- [x] 비정상적 입력에 대해서는 IllegalArgumentException을 발생시켰는가
+- [x] Application의 패키지 구조와 구현은 변경하지 않았는가
+- [x] PR을 보내고 이메일을 보냈는가
