@@ -1,10 +1,14 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import utils.RandomUtils;
 
-import java.util.*;
-
 public class Balls {
+
     private final List<Ball> balls;
     public static final int COUNT_OF_BALLS = 3;
 

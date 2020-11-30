@@ -28,7 +28,8 @@ public class GameResult {
 
     private void validateRange(Integer i) {
         if (i < 0 || Balls.COUNT_OF_BALLS < i) {
-            String msg = String.format("strike나 ball은 0~%d 사이의 수여야 합니다: %d", Balls.COUNT_OF_BALLS, i);
+            String msg = String
+                    .format("strike나 ball은 0~%d 사이의 수여야 합니다: %d", Balls.COUNT_OF_BALLS, i);
             throw new IllegalArgumentException(msg);
         }
     }

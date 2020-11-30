@@ -1,6 +1,7 @@
 package baseball;
 
 public class Ball {
+
     private final Integer number;
 
     public Ball(int number) {
