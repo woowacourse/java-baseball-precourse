@@ -14,12 +14,12 @@ public class BaseBallGame {
 
     public void play() {
         do {
-            game();
+            singleGame();
         } while (continueGame());
         scanner.close();
     }
 
-    private void game() {
+    private void singleGame() {
         Balls botBalls;
         GameResult gameResult;
 
