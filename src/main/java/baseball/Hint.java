@@ -39,13 +39,13 @@ public class Hint {
 
     public void printHint() {
         if (this.ball > 0) {
-            System.out.print(this.ball + "볼 ");
+            System.out.print(this.ball + Constant.BALL);
         }
         if (this.strike > 0) {
-            System.out.print(this.strike + "스트라이크 ");
+            System.out.print(this.strike + Constant.STRIKE);
         }
         if (this.ball == 0 && this.strike == 0) {
-            System.out.print("낫싱");
+            System.out.print(Constant.NOTHING);
         }
         System.out.println();
     }
