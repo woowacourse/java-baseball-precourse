@@ -14,8 +14,7 @@ public class BaseballGame {
         while (isContinue) {
             game();
             System.out.println("게임을 새로 시작하려면 1, 종료 하려면 2를 입력하세요.");
-            if (scanner.nextLine().equals("2"))
-                isContinue = false;
+            isContinue = BaseballValidateInput.isContinueNumberValidate(scanner.nextLine());
         }
     }
 
@@ -24,10 +23,10 @@ public class BaseballGame {
         boolean answer = true;
         while (answer) {
             System.out.print("숫자를 입력해주세요 : ");
-            String playerBallNumber = scanner.nextLine();
-            BaseballNumber playerBaseballNumber = new BaseballNumber(playerBallNumber);
-
-            BaseballCounterResult baseballCounterResult = BaseballNumberCompare.compare(randomBaseballNumber.getNumbers(),playerBaseballNumber.getNumbers());
+            String playerInput = scanner.nextLine();
+            BaseballValidateInput.playerNumberValidate(playerInput);
+            BaseballNumber playerBaseballNumber = new BaseballNumber(playerInput);
+            BaseballCounterResult baseballCounterResult = BaseballNumberCompare.compare(randomBaseballNumber.getNumbers(), playerBaseballNumber.getNumbers());
             BaseballResultPrint.resultPrint(baseballCounterResult);
 
             answer = baseballCounterResult.getStrike() != 3;

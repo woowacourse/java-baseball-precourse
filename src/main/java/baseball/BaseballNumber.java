@@ -8,9 +8,9 @@ public class BaseballNumber {
 
     private List<String> numbers;
 
-    public BaseballNumber(String playerBallNumber) {
-        validateInput(playerBallNumber);
-        String[] playerBallSplitNumber = playerBallNumber.split("");
+    public BaseballNumber(String playerInput) {
+        BaseballValidateInput.playerNumberValidate(playerInput);
+        String[] playerBallSplitNumber = playerInput.split("");
         List<String> playerBallSplitNumberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             playerBallSplitNumberList.add(playerBallSplitNumber[i]);
@@ -28,11 +28,5 @@ public class BaseballNumber {
 
     public List<String> getNumbers() {
         return this.numbers;
-    }
-
-    private void validateInput(String playerBallNumber) {
-        if (playerBallNumber.length() != 3) {
-            throw new IllegalArgumentException("3자리 숫자를 입력해 주세요.");
-        }
     }
 }
