@@ -1,4 +1,7 @@
-# 미션 - 숫자 야구 게임
+# 미션 - 숫자 야구 게임 / 최재영
+<details>
+<summary>미션 설명 상세 보기</summary>
+<div markdown="1">
 
 ## 🚀 기능 요구사항
 - 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
@@ -107,3 +110,16 @@ private static final Random RANDOM = new Random();
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+</div>
+</details>
+
+## 구현 기능 목록
+
+- 입력 받기 (InputService)
+    * 예상값 입력받음(guess)
+    * 예상값의 유효성 검사(checkInputValidity)
+    * 재시작/종료 여부 입력(resume)
+- 게임 기능 (GameService)
+    * 목표값 생성(generateTarget)
+    * 목표값의 유효성 검사(checkTargetValidity)
+    * 목표값과 예상값 비교(compareInputWithTarget)
