@@ -5,6 +5,8 @@ import utils.Convertor;
 import java.util.*;
 
 import static baseball.config.BaseballConfiguration.*;
+import static baseball.view.IllegalArgumentExceptionView.INPUT_NOT_DUPLICATED_THREE_DIGIT_NUMBERS;
+import static baseball.view.IllegalArgumentExceptionView.INPUT_OUT_OF_RANGE_NUMBER;
 
 public class Player {
     private List<Integer> baseballNumbers;
@@ -32,14 +34,14 @@ public class Player {
 
     private void validatedBaseballLength() {
         if (baseballNumbers.size() != BALL_LENGTH) {
-            throw new IllegalArgumentException("중복 되지 않는 3자리 수를 입력해주세요.");
+            throw new IllegalArgumentException(INPUT_NOT_DUPLICATED_THREE_DIGIT_NUMBERS);
         }
     }
 
     private void validatedBaseballRange() {
         for (Integer baseballNumber : baseballNumbers) {
             if (baseballNumber < START_INCLUSIVE || baseballNumber > END_INCLUSIVE) {
-                throw new IllegalArgumentException("입력 숫자는 1~9 사이의 숫자만 허용됩니다.");
+                throw new IllegalArgumentException(INPUT_OUT_OF_RANGE_NUMBER);
             }
         }
     }
