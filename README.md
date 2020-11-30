@@ -11,6 +11,10 @@
 - Score
     - 게임 결과를 저장한다.
     - 게임의 상태를 리턴해준다.
+- View
+    - 화면 출력을 담당한다
+    - Game 관련 메세지를 담당할 GameView
+    - IllegalArgumentException 관련 메세지를 담당할 IllegalArgumentExceptionView 
  
 ## 🚀 기능 요구사항
 - 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
