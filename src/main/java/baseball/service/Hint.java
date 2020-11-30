@@ -14,7 +14,6 @@ public class Hint {
 
     public String ask(int[] userInput) {
         String hintAnswer = "";
-
         hintAnswer = countBall(userInput);
 
         /* ball이 존재하면 공백(" ") 추가 */
