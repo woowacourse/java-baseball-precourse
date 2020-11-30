@@ -88,7 +88,15 @@ public class Application {
     }
 
     private static void playGame(Scanner scanner, int[] randomNumber) {
-
+        int strike = 0;
+        int ball;
+        int[] userNumber;
+        while (strike != 3) {
+            userNumber = getUserNumber(scanner);
+            strike = findStrike(randomNumber, userNumber);
+            ball = findBall(randomNumber, userNumber);
+            printStr(strike, ball);
+        }
     }
 
     public static void main(String[] args) {
