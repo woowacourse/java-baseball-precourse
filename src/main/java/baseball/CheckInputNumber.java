@@ -10,7 +10,8 @@ import java.util.Set;
  */
 public class CheckInputNumber {
 
-	private static final String PLAYER_INPUT_MESSAGE = "3자리의 서로 다른 숫자를 입력해주세요.";
+	private static final String PLAYER_INPUT_EXCEPTION_MESSAGE = "3자리의 서로 다른 숫자를 입력해주세요.";
+	private static final String PLAYER_RESTART_INPUT_EXCEPTION_MESSAGE = "1(다시 시작) 또는 2(종료)를 입력해주세요.";
 	private final String[] oneOrTwo = {"1","2"};
 	private final Scanner scanner;
 
@@ -19,10 +20,10 @@ public class CheckInputNumber {
 	}
 
 	public String inputNumber() {
-		System.out.print(PLAYER_INPUT_MESSAGE);
+		System.out.print(PLAYER_INPUT_EXCEPTION_MESSAGE);
 		String input = scanner.nextLine();
 		if (!isValid(input)) {
-			return inputNumber();
+			throwInputException(PLAYER_INPUT_EXCEPTION_MESSAGE);
 		}
 		return input;
 	}
@@ -44,10 +45,11 @@ public class CheckInputNumber {
 		return true;
 	}
 
-	public boolean isValidateRestart(String input){
+	public boolean isValidRestart(String input){
 		if(oneOrTwo(input)){
 			return true;
 		}
+		throwInputException(PLAYER_RESTART_INPUT_EXCEPTION_MESSAGE);
 		return false;
 	}
 
@@ -65,5 +67,9 @@ public class CheckInputNumber {
 
 	private boolean oneOrTwo(String input){
 		return (Arrays.stream(oneOrTwo).anyMatch(input::equals));
+	}
+
+	private void throwInputException (String exceptionMessage){
+		throw new IllegalArgumentException(exceptionMessage);
 	}
 }
