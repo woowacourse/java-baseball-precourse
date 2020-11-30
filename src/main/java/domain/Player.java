@@ -1,8 +1,5 @@
 package domain;
 
-import static utils.NumberUtils.checkNatureNumber;
-import static utils.NumberUtils.isNumeric;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,9 +23,23 @@ public class Player {
             .collect(Collectors.toList());
     }
 
-    private void validateNumber(String input) {
-        isNumeric(input);
-        checkNatureNumber(Integer.parseInt(input));
+    private void validateNumber(String number) {
+        checkNumeric(number);
+        checkNatureNumber(Integer.parseInt(number));
+    }
+
+    private void checkNumeric(String number) {
+        try {
+            Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkNatureNumber(int number) {
+        if (number <= 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public boolean choiceRestartGameOrFinish(String input) {
