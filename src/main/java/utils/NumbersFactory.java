@@ -11,7 +11,9 @@ public class NumbersFactory {
     private static final int NUMBER_MAX = 9;
     private static final int NUMBER_MIN = 1;
 
-    public static Numbers createNumbers(String num){
+    public static Numbers createNumbers(String num, int digits) throws IllegalArgumentException{
+        InputValidator.checkValidNumbers(num, digits);
+
         List numberList = Arrays.stream(num.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
