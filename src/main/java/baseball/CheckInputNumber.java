@@ -12,7 +12,6 @@ public class CheckInputNumber {
 
     private static final String[] oneOrTwo = {"1", "2"};
 
-
     public String inputNumber(String input) {
         if (!isValid(input)) {
             throwInputException();
@@ -35,14 +34,14 @@ public class CheckInputNumber {
     }
 
     public boolean oneOrTwo(String input) {
-        if(Arrays.asList(oneOrTwo).contains(input)){
+        if (Arrays.asList(oneOrTwo).contains(input)) {
             return isOne(input);
         }
         throwInputException();
         return false;
     }
 
-    private boolean isOne(String input){
+    private boolean isOne(String input) {
         return (input.equals("1"));
     }
 

@@ -29,9 +29,9 @@ public class InputHandler {
 
     public boolean restartValue() {
         System.out.println(RESTART_INPUT_MESSAGE);
-        try{
+        try {
             return checkInputNumber.oneOrTwo(scanner.nextLine());
-        } catch (IllegalArgumentException exception){
+        } catch (IllegalArgumentException exception) {
             System.out.println(RESTART_INPUT_EXCEPTION_MESSAGE);
             return restartValue();
         }
