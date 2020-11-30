@@ -29,9 +29,13 @@ public class GameManager {
             System.out.print("숫자를 입력해주세요 : ");
             myBalls = getMyBalls();                             // 사용자 balls
             gameResult = myBalls.judgeResult(botBalls);         // 결과 계산
-            System.out.println(gameResult.getResult());         // 결과 출력
+            printResult(gameResult);                            // 결과 출력
 
         } while (!gameResult.isAllStrikes());                   // 3스트라이크: 루프탈출
+    }
+
+    private void printResult(GameResult gameResult) {
+        System.out.println(gameResult.getResult());
     }
 
     private Balls getMyBalls() {
