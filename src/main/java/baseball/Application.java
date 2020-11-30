@@ -55,7 +55,7 @@ public class Application {
 
             GameEngine gameEngine = new GameEngine();
             answer = gameEngine.chooseAnswer();
-            while(answer!=guess) {
+            while(answer != guess) {
 
 
             }
