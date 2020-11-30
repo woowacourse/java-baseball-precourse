@@ -12,55 +12,28 @@ public class InputValidator {
     private InputValidator(){}
 
     public static void checkValidPlayAgainBtn(String input) throws IllegalArgumentException {
-        if(!isValidLength(input, PlayButton.LEN)){
+        if(!StringHandler.isValidLength(input, PlayButton.LEN)){
             throw new IllegalArgumentException(INVALID_LENGTH_MSG);
         }
 
-        if(!isInRange(input, PlayButton.MIN, PlayButton.MAX)){
+        if(!StringHandler.isInRange(input, PlayButton.MIN, PlayButton.MAX)){
             throw new IllegalArgumentException(INVALID_RANGE_MSG);
         }
     }
 
     public static void checkValidNumbers(String input, int len) throws IllegalArgumentException {
-        if(!isValidLength(input, len)){
+        if(!StringHandler.isValidLength(input, len)){
             throw new IllegalArgumentException(INVALID_LENGTH_MSG);
         }
 
-        if(!isInRange(input, Numbers.MIN, Numbers.MAX)){
+        if(!StringHandler.isInRange(input, Numbers.MIN, Numbers.MAX)){
             throw new IllegalArgumentException(INVALID_RANGE_MSG);
         }
 
-        if(!isAllDifferent(input)){
+        if(!StringHandler.isAllDifferent(input)){
             throw new IllegalArgumentException(INVALID_DUPLICATE_MSG);
         }
     }
 
-    private static boolean isInRange(String input, int min, int max){
-        if(!isNumericString(input)){
-            return false;
-        }
 
-        return Arrays.stream(input.split(""))
-                .map(Integer::parseInt)
-                .allMatch(x-> x >= min && x <= max);
-    }
-
-    private static boolean isValidLength(String input, int len){
-        return input.length() == len;
-    }
-
-    private static boolean isNumericString(String input){
-        try{
-            Integer.parseInt(input);
-        }catch (IllegalArgumentException IAE){
-            return false;
-        }
-        return true;
-    }
-
-    private static boolean isAllDifferent(String input){
-        return Arrays.stream(input.split(""))
-                .distinct()
-                .count() == input.length();
-    }
 }
