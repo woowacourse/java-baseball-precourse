@@ -7,6 +7,7 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         int[] answerList = generateNumber();
+        displayInputMessage();
         scanner.close();
     }
 
@@ -20,5 +21,9 @@ public class Application {
             answer[2] = RandomUtils.nextInt(1,9);
         }
         return answer;
+    }
+
+    private static void displayInputMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
     }
 }
