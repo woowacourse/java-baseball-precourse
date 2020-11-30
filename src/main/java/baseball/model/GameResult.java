@@ -1,5 +1,8 @@
 package baseball.model;
 
+/**
+ * 게임 결과를 기록하는 DTO
+ */
 public class GameResult {
 
     private int strike = 0;
