@@ -21,6 +21,45 @@
     * 입력이 1자리수가 아닐 경우
     * 1 또는 2가 아닌 경우
 
+## 🏗 프로그램 구조
+### 🗂 baseball
+**Application**
+* 게임 진행
+
+**BaseballGame**
+* initGame : 게임 초기
+* run : 게임 진행
+* start : 게임 시작
+* generateAnswer : 1에서 9까지 서로 다른 임의의 수 3개 정하기
+* askGuess : 임의의 3자리 수 물어보기
+* askProgress : 재시작, 종료 여부 물어보기
+* isAllStrike : 정답인지 확인
+* finish : 정답일 경우
+
+**Player**
+* inputGuess : 3자리수 입력
+* inputProgress : 재시작, 종료 여부 입력
+
+**Printer**
+* printStartMessage : "숫자를 입력해주세요 : " 출력
+* printHint : 힌트 출력
+* printFinishMessage : "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+* printProgressMessage : "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
+
+**Referee**
+* initCnt : 힌트 초기화
+* isBall : 다른 자리에 숫자가 있는 경우
+* isStrike : 같은 자리에 같은 숫자가 있는 경우
+* compareNumber : 사용자의 3자리수와 정답 비교
+
+### 🗂 utils
+**RandomUtils**
+* nextInt : 임의의 수 생성
+
+**VerificationUtils**
+* verifyGuess : 입력한 guess 검증
+* verifyProgress : 입력한 progress 검증
+
 ## 🚀 기능 요구사항
 - 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
 - 정답을 맞추기 위해 3자리수를 입력하고 힌트를 받는다.
