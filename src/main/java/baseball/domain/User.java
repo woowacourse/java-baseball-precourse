@@ -25,9 +25,4 @@ public class User extends Participant {
     public int getStrikeNumber() {
         return strikeNumber;
     }
-
-    @Override
-    public int[] getBallBunch() {
-        return ballBunch;
-    }
 }

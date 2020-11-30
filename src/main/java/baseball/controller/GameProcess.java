@@ -32,8 +32,7 @@ public class GameProcess {
 
     private boolean askMoreGame() {
         OutputShower.askRestart();
-        boolean askOneMore = InputReceiver.askEndGames();
-        return askOneMore;
+        return InputReceiver.askEndGames();
     }
 
     private boolean passAnswerHurdle(User user) {

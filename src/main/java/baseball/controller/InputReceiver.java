@@ -1,7 +1,7 @@
 package baseball.controller;
 
-import java.util.Scanner;
 import baseball.viewer.InputViewer;
+import java.util.Scanner;
 
 public class InputReceiver {
     static final int NUMBEROFBALL = 3;
