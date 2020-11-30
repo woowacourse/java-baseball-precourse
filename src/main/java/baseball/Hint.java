@@ -31,4 +31,17 @@ public class Hint {
             }
         }
     }
+
+    public void printHint() {
+        if (this.ball > 0) {
+            System.out.print(this.ball + "볼 ");
+        }
+        if (this.strike > 0) {
+            System.out.print(this.strike + "스트라이크 ");
+        }
+        if (this.ball == 0 && this.strike == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println();
+    }
 }
