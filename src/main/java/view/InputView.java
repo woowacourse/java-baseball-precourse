@@ -12,15 +12,15 @@ public class InputView {
 
     private InputView(){ }
 
-    public static Numbers getNumbers(Scanner scanner, int digits){
+    public static Numbers getNumbers(Scanner scanner){
         OutputView.printMsg(ASK_NUMBER_MESSAGE);
 
         try{
             String answer = getInput(scanner);
-            return NumbersFactory.createNumbers(answer, digits);
+            return NumbersFactory.createNumbers(answer);
         }catch (IllegalArgumentException IAE){
             IAE.printStackTrace();
-            return getNumbers(scanner, digits);
+            return getNumbers(scanner);
         }
     }
 

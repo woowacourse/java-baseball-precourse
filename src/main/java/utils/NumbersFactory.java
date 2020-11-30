@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 
 public class NumbersFactory {
 
-    public static Numbers createNumbers(String num, int digits) throws IllegalArgumentException{
-        InputValidator.checkValidNumbers(num, digits);
+    public static Numbers createNumbers(String num) throws IllegalArgumentException{
+        InputValidator.checkValidNumbers(num, Numbers.DIGITS);
 
         List numberList = Arrays.stream(num.split(""))
                 .map(Integer::parseInt)
@@ -19,10 +19,10 @@ public class NumbersFactory {
         return new Numbers(numberList);
     }
 
-    public static Numbers createRandomNumbers(int digits){
+    public static Numbers createRandomNumbers(){
         List<Integer> numberList = new ArrayList<>();
 
-        while(numberList.size()<digits){
+        while(numberList.size()< Numbers.DIGITS){
             numberList.add(getRandWithoutDuplicate(numberList));
         }
 
