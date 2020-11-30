@@ -8,6 +8,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         int[] answerList = generateNumber();
         int[] guess = getGuess(scanner);
+        calResult(answerList, guess);
         scanner.close();
     }
 
@@ -80,5 +81,15 @@ public class Application {
         /* 입력받은 세 자리 수에 중복된 값이 없는지 확인 */
         if (guess[0] == guess[1] || guess[0] == guess[2] || guess[1] == guess[2])
             throw new IllegalArgumentException();
+    }
+
+    private static void calResult(int[] answer, int[] guess) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < answer.length; i++) {
+            if (guess[i] == answer[i]) strike++;
+            if (guess[i] == answer[(i + 1) % 3] || guess[i] == answer[(i + 2) % 3])
+                ball++;
+        }
     }
 }
