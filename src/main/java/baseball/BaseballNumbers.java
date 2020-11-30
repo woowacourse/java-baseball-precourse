@@ -23,8 +23,9 @@ public class BaseballNumbers {
     // 입력받은 배열의 크기가 MAX_PITCH 값과 같은지 확인하는 메소드
     private void validateSize(int[] numberArray) {
         if (numberArray.length != GAME_MAX_BASEBALL_PITCH) {
-            String exceptionMessage = "숫자는 " + GAME_MAX_BASEBALL_PITCH + "개만 입력해야 합니다";
-            throw new IllegalArgumentException(exceptionMessage);
+            throw new IllegalArgumentException(
+                ErrorMessages.ARRAY_INVALID_LENGTH.getMessage()
+            );
         }
     }
 
@@ -38,7 +39,9 @@ public class BaseballNumbers {
 
         // 중복된 수가 입력받은 배열에 있을 경우, 배열과 셋의 길이가 다른 것을 이용
         if (baseballNumberSet.size() != numberArray.length) {
-            throw new IllegalArgumentException("배열 내에 중복된 숫자가 있으면 안 됩니다");
+            throw new IllegalArgumentException(
+                ErrorMessages.ARRAY_ITEM_DUPLICATED.getMessage()
+            );
         }
     }
 
@@ -46,7 +49,9 @@ public class BaseballNumbers {
     private void validateNumberRange(int[] numberArray) {
         for (int number : numberArray) {
             if (number > GAME_MAX_BASEBALL_NUMBER || number < GAME_MIN_BASEBALL_NUMBER) {
-                throw new IllegalArgumentException("배열 내에 범위를 벗어난 숫자가 존재합니다");
+                throw new IllegalArgumentException(
+                    ErrorMessages.ARRAY_ITEM_OUT_OF_RANGE.getMessage()
+                );
             }
         }
     }
