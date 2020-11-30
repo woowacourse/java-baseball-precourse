@@ -9,18 +9,6 @@ public class Game {
     static final int MAX_NUMBER = 9;
     static final int MAX_LENGTH = 3;
 
-    public static void playGame(Scanner scanner){
-        String gameNumber = makeGameNumber();
-        System.out.println(gameNumber);
-        while (true){
-            String a = scanner.nextLine();
-            if (a.equals(gameNumber)){
-                break;
-            }
-            System.out.println("aaa");
-        }
-    }
-
     // 1~9사이의 3자리 랜덤 숫자 생성
     public static String makeGameNumber(){
         String gameNumber = "";
@@ -36,6 +24,10 @@ public class Game {
         }
         return gameNumber;
     }
+
+    // 스트라이크
+
+    // 볼
 
 
 }
