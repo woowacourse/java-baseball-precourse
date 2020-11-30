@@ -20,6 +20,12 @@ public class StringHandler {
         return input.length() == len;
     }
 
+    public static boolean isAllDifferent(String input){
+        return Arrays.stream(input.split(""))
+                .distinct()
+                .count() == input.length();
+    }
+
     private static boolean isNumericString(String input){
         try{
             Integer.parseInt(input);
@@ -29,9 +35,5 @@ public class StringHandler {
         return true;
     }
 
-    public static boolean isAllDifferent(String input){
-        return Arrays.stream(input.split(""))
-                .distinct()
-                .count() == input.length();
-    }
+
 }
