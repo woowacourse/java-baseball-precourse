@@ -9,6 +9,18 @@ public class Referee {
         strikeCnt = 0;
     }
 
+    private void isBall(int i, String answer, char crtGuess) {
+        if (answer.indexOf(crtGuess) != -1 && answer.charAt(i) != crtGuess) {
+            ballCnt++;
+        }
+    }
+
+    private void isStrike(char crtAnswer, char crtGuess) {
+        if (crtAnswer == crtGuess) {
+            strikeCnt++;
+        }
+    }
+
     public void compareNumber(String answer, String guess) {
         initCnt();
         for (int i = 0; i < 3; i++) {
@@ -16,18 +28,6 @@ public class Referee {
             char crtGuess = guess.charAt(i);
             isBall(i, answer, crtGuess);
             isStrike(crtAnswer, crtGuess);
-        }
-    }
-
-    public void isBall(int i, String answer, char crtGuess) {
-        if (answer.indexOf(crtGuess) != -1 && answer.charAt(i) != crtGuess) {
-            ballCnt++;
-        }
-    }
-
-    public void isStrike(char crtAnswer, char crtGuess) {
-        if (crtAnswer == crtGuess) {
-            strikeCnt++;
         }
     }
 
