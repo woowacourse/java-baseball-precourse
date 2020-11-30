@@ -5,8 +5,8 @@ import java.util.*;
 public class UserInputNumber {
 
     /*
-    * 사용자가 입력한 숫자를 이용해 숫자를 만드는 클래스
-    * */
+     * 사용자가 입력한 숫자를 이용해 숫자를 만드는 클래스
+     * */
     private static String userNumberString;
     private static String userInputNumberString;
     private static final int NUMBER_LENGTH = 3;
@@ -18,7 +18,7 @@ public class UserInputNumber {
                 System.out.print("숫자를 입력해주세요 : ");
                 userNumberString = getUserInputNumber();
                 if (userInputNumberCheck()) {
-                    userNumberList = IntegerToList.integerToList(userNumberString);
+                    userNumberList = StringToArrayList.stringToArrayList(userNumberString);
                     break;
                 }
 
@@ -31,8 +31,8 @@ public class UserInputNumber {
     }
 
     /*
-    * 사용자가 입력하는 값을 그대로 가지고오는 메서드
-    * */
+     * 사용자가 입력하는 값을 그대로 가지고오는 메서드
+     * */
     public static String getUserInputNumber() {
         Scanner scan = new Scanner(System.in);
         userInputNumberString = scan.nextLine();
@@ -41,8 +41,8 @@ public class UserInputNumber {
     }
 
     /*
-    * 사용자가 제대로 입력했는지 확인하는 메서드
-    * */
+     * 사용자가 제대로 입력했는지 확인하는 메서드
+     * */
     public static boolean userInputNumberCheck() {
         if (!userInputContainZero()) {
             System.out.println("1부터 9사이의 숫자를 입력해주세요.");
@@ -63,8 +63,8 @@ public class UserInputNumber {
     }
 
     /*
-    * 사용자가 입력한 것에 0이 포함되었는지 확인하는 메서드
-    * */
+     * 사용자가 입력한 것에 0이 포함되었는지 확인하는 메서드
+     * */
     public static boolean userInputContainZero() {
         if (userInputNumberString.contains("0")) {
             return false;

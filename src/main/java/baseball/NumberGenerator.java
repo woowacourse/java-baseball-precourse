@@ -19,6 +19,7 @@ public class NumberGenerator {
     * numbers 길이가 3이고 중복되지 않는 숫자들의 ArrayList를 리턴하는 메서드
     * */
     public static ArrayList<Integer> getRandomNumberNotRepeat() {
+        randomNumbersList.clear();
         while (randomNumbersList.size() < NUMBER_LENGTH) {
             int random = RandomUtils.nextInt(MIN_NUMBER, MAX_NUMBER);
 

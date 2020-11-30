@@ -2,9 +2,9 @@ package baseball;
 
 import java.util.ArrayList;
 
-public class IntegerToList {
+public class StringToArrayList {
 
-    public static ArrayList<Integer> integerToList(String userNumberString) {
+    public static ArrayList<Integer> stringToArrayList(String userNumberString) {
         ArrayList<Integer> userinputNumberList = new ArrayList<>();  // 새로 해줘야 char number를 입력할 때 null가능할수도있다고 뜨지 않는다.
         char[] changeList = userNumberString.toCharArray();
 
