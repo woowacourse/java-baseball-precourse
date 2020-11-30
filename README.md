@@ -1,5 +1,48 @@
 # 미션 - 숫자 야구 게임
 
+## 구현할 기능 및 모듈
+
+### GameLogic
+#### BaseballGame
+- 게임의 시작 및 종료 제어
+- 게임에서 사용되는 도메인 객체 초기화
+
+### Domains
+#### ScoreBoard
+- 한 라운드의 결과값을 저장
+
+#### Referee
+- Player, Target 의 입력값을 비교하여 적절한 ScoreBoard 생성
+
+#### Player
+- 숫자값을 입력받음
+
+#### Target
+- 랜덤 값을 가지고 있음
+
+#### Results
+결과를 저장하는 enum class
+- strike / ball / nothing
+
+### Util class
+### RandomNumberGenerator
+1. 3자리의 랜덤한 수 생성
+2. 생성한 수 중 중복되는 수가 없게
+
+### InputNumberValidator
+1. 입력한 숫자가 3자리 수인지
+2. 같은 수가 포함되었는지
+3. 해당 조건이 충족되지 않으면 IllegalArgumentException 호출
+
+### View 
+#### InputView
+- 숫자 입력을 받는 문구 정의
+- 게임 종료 시, 새로운 0/1을 받는 뷰 정의
+#### OutputView
+- 볼 / 스트라이크 / 낫싱을 출력하는 뷰 정의
+
+
+
 ## 🚀 기능 요구사항
 - 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
 - 정답을 맞추기 위해 3자리수를 입력하고 힌트를 받는다.
