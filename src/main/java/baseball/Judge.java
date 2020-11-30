@@ -16,36 +16,39 @@ public class Judge {
     public void compareRecords(int[] humanPlayerRecords, int[] computerPlayerRecords) {
         strike = countStrike(humanPlayerRecords, computerPlayerRecords);
         ball = countBall(humanPlayerRecords, computerPlayerRecords);
-        if(!isPlayerCorrectAll()) {
+        if (!isPlayerCorrectAll()) {
             printHint();
             return;
         }
         System.out.println(STRIKE_TO_WIN+CORRECT_ALL);
-        return;
     }
 
     private void printHint() {
-        if(ball != 0)
-            System.out.printf("%d"+BALL+" ", ball);
-        if(strike != 0)
-            System.out.printf("%d"+STRIKE, strike);
-        if(ball == 0 && strike == 0)
+        if (ball != 0) {
+            System.out.printf("%d" + BALL + " ", ball);
+        }
+        if (strike != 0) {
+            System.out.printf("%d" + STRIKE, strike);
+        }
+        if (ball == 0 && strike == 0) {
             System.out.printf(NOTHING);
+        }
         System.out.println();
     }
 
     private int countBall(int[] humanPlayerRecords, int[] computerPlayerRecords) {
         int countSameDigit = 0;
-        for(int i = 0; i < RECORD_LENGTH; i++) {
-            if (isSameDigitInRecords(humanPlayerRecords, computerPlayerRecords[i]))
+        for (int i = 0; i < RECORD_LENGTH; i++) {
+            if (isSameDigitInRecords(humanPlayerRecords, computerPlayerRecords[i])) {
                 countSameDigit++;
+            }
         }
         return countSameDigit - strike;
     }
 
     private int countStrike(int[] humanPlayerRecords, int[] computerPlayerRecords) {
         int strikeCounter = 0;
-        for(int i = 0; i < RECORD_LENGTH; i++) {
+        for (int i = 0; i < RECORD_LENGTH; i++) {
             if (humanPlayerRecords[i] == computerPlayerRecords[i]) {
                 strikeCounter++;
             }
@@ -54,18 +57,15 @@ public class Judge {
     }
 
     private boolean isSameDigitInRecords(int[] records, int newDigit) {
-        for(int i = 0; i < records.length; i++) {
-            if(newDigit == records[i])
+        for (int i = 0; i < records.length; i++) {
+            if (newDigit == records[i]) {
                 return true;
+            }
         }
         return false;
     }
 
-
     public boolean isPlayerCorrectAll() {
-        if(strike == STRIKE_TO_WIN) {
-            return true;
-        }
-        return false;
+        return strike == STRIKE_TO_WIN;
     }
 }

@@ -2,15 +2,15 @@ package baseball;
 
 import utils.RandomUtils;
 
-public class PlayerComputer {
+public class PlayerComputer extends Player {
+    private static int[] records = Player.makeRecordContainer();
 
-    private static int[] records = new int[Judge.RECORD_LENGTH];
 
     public int[] getRecords() {
         initializeRecords();
-        for(int i = 0; i < Judge.RECORD_LENGTH; i++) {
+        for (int i = 0; i < Judge.RECORD_LENGTH; i++) {
             int newDigit = RandomUtils.nextInt(Judge.MIN_NUMBER, Judge.MAX_NUMBER);
-            if(isSameDigitInRecords(records, newDigit)) {
+            if (isSameDigitInRecords(records, newDigit)) {
                 i -= 1;
                 continue;
             }
@@ -20,16 +20,17 @@ public class PlayerComputer {
     }
 
     private void initializeRecords() {
-        for(int i = 0; i < records.length; i++)
-            records[i] = -1;
+        for (int i = 0; i < records.length; i++) {
+            records[i] = INITIALIZER;
+        }
     }
 
     private boolean isSameDigitInRecords(int[] records, int newDigit) {
-        for(int i = 0; i < records.length; i++) {
-            if(newDigit == records[i])
+        for (int i = 0; i < records.length; i++) {
+            if (newDigit == records[i]) {
                 return true;
+            }
         }
         return false;
     }
-
 }
