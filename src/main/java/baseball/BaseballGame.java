@@ -48,8 +48,8 @@ public class BaseballGame {
         OutputView.printScore(score);
     }
 
-    private boolean checkGameOver(Score score){
-        return GameRule.checkGameEnd(score, NUMBER_OF_DIGITS);
+    private void checkGameOver(Score score){
+        isGameEnd = GameRule.checkGameEnd(score, NUMBER_OF_DIGITS);
     }
 
     private void printAllCorrect() {
