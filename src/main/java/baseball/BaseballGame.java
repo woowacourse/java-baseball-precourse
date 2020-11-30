@@ -17,6 +17,21 @@ public class BaseballGame {
         this.scanner = scanner;
     }
 
+    public void run(){
+        boolean isFinished = false;
+        while(!isFinished){
+            start();
+            InputView.printResult(false);
+            String input = scanner.nextLine();
+            if(!GameNumberFormatValidator.validate(input)){
+                throw new IllegalArgumentException();
+            }
+            if(input.equals("2")){
+                isFinished = false;
+            }
+        }
+    }
+
     public void start(){
         Target target = new Target();
         Player player = new Player(scanner);
