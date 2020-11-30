@@ -17,7 +17,7 @@ public class Restart {
         }
 
         if (!answer.equals("1") && !answer.equals("2")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1과 2만 입력가능합니다!");
         }
 
         return restart;

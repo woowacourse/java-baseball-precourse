@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Application {
     final static int TARGET_LENGTH = 3;
 
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
         ArrayList<Integer> target = new ArrayList<Integer>();
@@ -20,15 +20,35 @@ public class Application {
                 restart = false;
             }
 
-            input = GetInput.inputNumberList(scanner);
-            isEnd = CompareNumber.compareNumber(target, input);
+            isEnd = catchExceptionOfGetInput(scanner, target);
 
             if (isEnd) {
-                restart = Restart.isRestart(scanner);
+                restart = catchExceptionOfRestart(scanner);
             }
-
             if (isEnd && !restart) {
                 break;
+            }
+        }
+    }
+
+    static boolean catchExceptionOfGetInput(Scanner scanner, ArrayList<Integer> target) {
+        boolean result = false;
+        try {
+            ArrayList<Integer> input = GetInput.inputNumberList(scanner);
+            result = CompareNumber.compareNumber(target, input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+
+    static boolean catchExceptionOfRestart(Scanner scanner) {
+        while (true) {
+            try {
+                return Restart.isRestart(scanner);
+
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
