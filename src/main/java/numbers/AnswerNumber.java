@@ -18,6 +18,7 @@ public class AnswerNumber {
 
     public static ArrayList<Integer> makeAnswerNumber() {
         ArrayList<Integer> randomNumberList = new ArrayList<>();
+
         while (randomNumberList.size() < NUMBER_LENGTH) {
             int number = RandomUtils.nextInt(1, 9);
             if (!randomNumberList.contains(number)) {

@@ -15,6 +15,7 @@ public class GameResult {
     boolean showResult(ArrayList<Integer> answerList, ArrayList<Integer> userList) {
         calculateResult(answerList, userList);
         Output.printHint(strikeNumber, ballNumber);
+
         if(strikeNumber!=3) {
             return false;
         } else {

@@ -15,12 +15,13 @@ public class UserSelectNumber {
 
     public void setUserSelectNumber(Scanner scanner) {
         String userInput = receiveUserString(scanner);
+
         this.userSelectNumber = StringHandler.stringToArrayList(userInput);
     }
 
     public String receiveUserString(Scanner scanner) {
-        String userInput;
-        userInput = scanner.nextLine();
+        String userInput = scanner.nextLine();
+
         UserInputValidator.isValidNumber(userInput);
         return userInput;
 

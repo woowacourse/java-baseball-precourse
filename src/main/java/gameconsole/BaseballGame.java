@@ -13,6 +13,7 @@ public class BaseballGame {
 
     public boolean playGame(ArrayList<Integer> answerNumber, Scanner scanner) {
         UserSelectNumber userSelectNumber = UserSelectNumber.createUserSelectNumber();
+
         while(true){
             Output.printSelect();
             GameResult gameResult = GameResult.createGameResult();
@@ -36,6 +37,7 @@ public class BaseballGame {
     public boolean selectContinue(Scanner scanner) {
         Output.printContinue();
         String continueSelect = scanner.nextLine();
+
         if (continueSelect.equals("1")) {
             return true;
         } else if (continueSelect.equals("2")) {

@@ -1,7 +1,5 @@
 package views;
 
-import numbers.UserSelectNumber;
-
 public class Output {
     public static void printSelect() {
         System.out.print("숫자를 입력해주세요 : ");
