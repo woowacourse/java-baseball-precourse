@@ -33,7 +33,7 @@ public class BaseballGame {
             hintAnswer = hint.ask(userInput);
 
             output.showResult(hintAnswer);
-        } while (!hint.correctSwitch);
+        } while (!hint.isitCorrect());
 
         endRound();
     }

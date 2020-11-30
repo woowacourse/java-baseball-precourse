@@ -6,7 +6,7 @@ import baseball.domain.NumberGenerator;
 public class Hint {
     NumberGenerator numberGenerator;
     Number correctNumber;
-    boolean correctSwitch;
+    private boolean correctSwitch;
 
     public Hint() {
         numberGenerator = new NumberGenerator();
@@ -77,5 +77,13 @@ public class Hint {
     public void createAnswer() {
         correctNumber = numberGenerator.execute();
         correctSwitch = false;
+    }
+
+    public boolean isitCorrect(){
+        if (correctSwitch) {
+            return true;
+        }
+
+        return false;
     }
 }
