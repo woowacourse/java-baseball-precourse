@@ -15,9 +15,9 @@ public class Player implements IPlayer {
     public void inputThreeNumber(Scanner scanner) {
         // TODO Auto-generated method stub
         int[] numbers = new int[BaseballGameNumber.SIZE_OF_ARRAY];
-        int input = scanner.nextInt();
+        String input = scanner.next();
         if (ValidateUtils.validateInput(input)) {
-            String[] split = String.valueOf(input).split("");
+            String[] split = input.split("");
             for (int i = 0; i < numbers.length; i++) {
                 numbers[i] = Integer.valueOf(split[i]);
             }
