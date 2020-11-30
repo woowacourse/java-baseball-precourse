@@ -5,6 +5,7 @@ import utils.*;
 import java.util.Set;
 
 import static utils.Constant.*;
+import static utils.Validator.*;
 
 public class BaseballGame {
 
@@ -18,21 +19,11 @@ public class BaseballGame {
     private void setBalls() {
         while (balls.length() < BALLS_LENGTH) {
             int ballCandidate = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
-            if(isNumberDuplicate(ballCandidate)) {
+            if (isNumberDuplicate(String.valueOf(ballCandidate))) {
                 continue;
-            }else{
+            } else {
                 balls += String.valueOf(ballCandidate);
             }
         }
     }
-
-    private boolean isNumberDuplicate(int number){
-        String candidate = String.valueOf(number);
-        if(balls.contains(candidate)){
-            return true;
-        }
-        return false;
-    }
-
-
 }
