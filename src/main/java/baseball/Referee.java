@@ -8,6 +8,8 @@ public class Referee {
     }
 
     private void initCnt() {
+        ballCnt = 0;
+        strikeCnt = 0;
     }
 
     public void compareNumber(String answer, String guess) {
