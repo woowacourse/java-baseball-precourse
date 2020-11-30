@@ -12,7 +12,7 @@ public class User {
         if (isValidInput(number)) {
             setUserNumber(number);
         } else {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+            throw new IllegalArgumentException(Constant.WRONG_INPUT);
         }
     }
 

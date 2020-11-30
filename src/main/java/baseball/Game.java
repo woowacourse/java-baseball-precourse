@@ -48,7 +48,7 @@ public class Game {
         } else if (restart == Constant.EXIT) {
             return false;
         } else {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+            throw new IllegalArgumentException(Constant.WRONG_INPUT);
         }
     }
 }
