@@ -1,6 +1,7 @@
 package gameconsole;
 
 import numbers.UserSelectNumber;
+import utils.UserInputValidator;
 import views.Output;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class BaseballGame {
             Output.printSelect();
             GameResult gameResult = GameResult.createGameResult();
             ArrayList<Integer> userNumber;
+
             try {
                 userSelectNumber.setUserSelectNumber(scanner);
                 userNumber = userSelectNumber.getUserSelectNumber();
@@ -25,7 +27,9 @@ public class BaseballGame {
                 e.printStackTrace();
                 continue;
             }
+
             boolean resultStatus = gameResult.showResult(answerNumber, userNumber);
+
             if (resultStatus) {
                 Output.printEndGame();
                 break;
@@ -37,13 +41,13 @@ public class BaseballGame {
     public boolean selectContinue(Scanner scanner) {
         Output.printContinue();
         String continueSelect = scanner.nextLine();
-
-        if (continueSelect.equals("1")) {
-            return true;
-        } else if (continueSelect.equals("2")) {
-            return false;
-        } else {
-            throw new IllegalArgumentException("1, 2중의 하나를 입력해주세요");
+        try {
+            UserInputValidator.isValidEndCode(continueSelect);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            selectContinue(scanner);
         }
+
+        return continueSelect.equals("1");
     }
 }
