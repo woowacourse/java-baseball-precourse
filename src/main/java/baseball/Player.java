@@ -8,13 +8,19 @@ public class Player {
     final Scanner scanner;
     private Game game;
     private char[] lastGuess = new char[Constants.ANSWER_LENGTH];
+    private boolean playing;
     private boolean guessSuccess;
     
     public Player(final Scanner scanner, Game game) {
         this.scanner = scanner;
         this.game = game;
-        this.guessSuccess = false;
         Arrays.fill(lastGuess, ' ');
+        this.playing = true;
+        this.guessSuccess = false;
+    }
+    
+    public boolean isPlaying() {
+        return this.playing;
     }
     
     public boolean isGuessSuccess() {
@@ -41,6 +47,23 @@ public class Player {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     
+    public void askContinue() {
+        String playerContinueInput;
+        
+        System.out.println("게임을 새로 시작하려면 " + Constants.CONTINUE + ", 종료하려면 "
+                + Constants.STOP + "를 입력하세요.");
+        
+        while (true) {
+            playerContinueInput = this.scanner.nextLine().trim();
+            try {
+                refreshPlaying(playerContinueInput);
+                break;
+            } catch (IllegalArgumentException exception) {
+                System.out.println(exception.getMessage());
+            }
+        }
+    }
+    
     private void refreshLastGuess(final String playerGuessInput) {
         try {
             checkValidGuessInput(playerGuessInput);
@@ -53,12 +76,42 @@ public class Player {
         }
     }
     
+    private void refreshPlaying(final String playerContinueInput) {
+        int continueInputParsed;
+        
+        try {
+            checkValidContinueInput(playerContinueInput);
+            
+        } catch (IllegalArgumentException exception) {
+            throw exception;
+        }
+        
+        continueInputParsed = Integer.parseInt(playerContinueInput);
+        
+        if (continueInputParsed == Constants.CONTINUE) {
+            this.playing = true;
+            this.guessSuccess = false;
+        } else if (continueInputParsed == Constants.STOP) {
+            this.playing = false;
+        }
+    }
+    
     private void checkValidGuessInput(final String playerGuessInput) {
         try {
             checkValidLength(playerGuessInput, Constants.ANSWER_LENGTH);
             checkAllDigits(playerGuessInput);
             checkAllInRange(playerGuessInput, Constants.MIN_DIGIT, Constants.MAX_DIGIT);
             checkNotDuplicated(playerGuessInput);
+        } catch (IllegalArgumentException exception) {
+            throw exception;
+        }
+    }
+    
+    private void checkValidContinueInput(final String playerGuessInput) {
+        try {
+            checkValidLength(playerGuessInput, 1);
+            checkAllDigits(playerGuessInput);
+            checkAllInRange(playerGuessInput, Constants.CONTINUE, Constants.STOP);
         } catch (IllegalArgumentException exception) {
             throw exception;
         }

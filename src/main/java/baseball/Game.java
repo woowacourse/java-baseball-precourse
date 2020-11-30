@@ -14,6 +14,7 @@ public class Game {
         StringBuilder digitPool = new StringBuilder();
         int randomIndex;
         
+        answerSet.clear();
         initializeDigitPool(digitPool, Constants.MIN_DIGIT, Constants.MAX_DIGIT);
         
         for (int i = 0; i < Constants.ANSWER_LENGTH; i++) {
