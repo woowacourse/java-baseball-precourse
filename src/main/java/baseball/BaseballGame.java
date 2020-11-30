@@ -28,6 +28,9 @@ public class BaseballGame {
     }
 
     public void run() {
+        do {
+            start();
+        } while (progressGame);
     }
 
     public void initGame () {
@@ -41,6 +44,17 @@ public class BaseballGame {
     }
 
     public void start() {
+        initGame();
+        System.out.println(answer);
+        while (!allStrike) {
+            askGuess();
+            referee.compareNumber(answer, guess);
+            ballCnt = referee.getBallCnt();
+            strikeCnt = referee.getStrikeCnt();
+            printer.printHint(ballCnt, strikeCnt);
+            isAllStrike(strikeCnt);
+        }
+        finish();
     }
 
     public String generateAnswer() {
@@ -52,6 +66,13 @@ public class BaseballGame {
     }
 
     public void finish() {
+        printer.printFinishMessage();
+        askProgress();
+        if (progress == RESTART_CODE) {
+            progressGame = true;
+        } else if (progress == FINISH_CODE) {
+            progressGame = false;
+        }
     }
 
     public void askGuess() {
