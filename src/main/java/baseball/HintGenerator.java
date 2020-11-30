@@ -26,4 +26,12 @@ public class HintGenerator {
         }
         return ballCount;
     }
+
+    public static int[] getHint(int answer, int guess) {
+        List<Integer> answerDigits = NumberConditionChecker.splitNumberToDigits(answer);
+        List<Integer> guessDigits = NumberConditionChecker.splitNumberToDigits(guess);
+        int ball = countBall(answerDigits, guessDigits);
+        int strike = countStrike(answerDigits, guessDigits);
+        return new int[] {ball, strike};
+    }
 }
