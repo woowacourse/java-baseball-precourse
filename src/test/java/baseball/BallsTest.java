@@ -23,23 +23,28 @@ class BallsTest {
     }
 
     @Test
+    void validateSuccess() {
+        assertDoesNotThrow(() -> generateBalls(1, 2, 3));
+    }
+
+    @Test
     void validateSize() {
-        assertThrows(IllegalArgumentException.class, () -> Balls.stringToBalls("1234"));
-        assertThrows(IllegalArgumentException.class, () -> Balls.stringToBalls("12"));
-        assertThrows(IllegalArgumentException.class, () -> Balls.stringToBalls(""));
-        assertDoesNotThrow(() -> Balls.stringToBalls("123"));
+        assertThrows(IllegalArgumentException.class, () -> generateBalls(1, 2, 3, 4));
+        assertThrows(IllegalArgumentException.class, () -> generateBalls(1, 2));
+        assertThrows(IllegalArgumentException.class, () -> generateBalls());
     }
 
     @Test
     void validateDuplicate() {
-        assertThrows(IllegalArgumentException.class, () -> Balls.stringToBalls("111"));
-        assertThrows(IllegalArgumentException.class, () -> Balls.stringToBalls("119"));
-        assertThrows(IllegalArgumentException.class, () -> Balls.stringToBalls("199"));
-        assertDoesNotThrow(() -> Balls.stringToBalls("123"));
-        assertDoesNotThrow(() -> Balls.stringToBalls("159"));
+        assertThrows(IllegalArgumentException.class, () -> generateBalls(1, 1, 1));
+        assertThrows(IllegalArgumentException.class, () -> generateBalls(1, 1, 9));
+        assertThrows(IllegalArgumentException.class, () -> generateBalls(9, 1, 1));
+        assertThrows(IllegalArgumentException.class, () -> generateBalls(1, 9, 1));
     }
 
-    /** judgeResult()로 Balls 객체끼리 비교해서 알맞은 GameResult를 반환하는지 테스트 */
+    /**
+     * judgeResult()로 Balls 객체끼리 비교해서 알맞은 GameResult를 반환하는지 테스트
+     */
     @Test
     void judgeResult() {
         Balls myBalls;
