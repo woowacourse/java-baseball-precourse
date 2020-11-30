@@ -29,7 +29,7 @@ public class Hint {
 		}
 	}
 
-	public int countStrike(char[] computer, char[] user) {
+	private int countStrike(char[] computer, char[] user) {
 		int strike = 0;
 
 		for (int i = 0; i < BASE_BALL_GAME_RANGE; ++i) {
@@ -41,7 +41,7 @@ public class Hint {
 		return strike;
 	}
 
-	public int countBall(char[] computer, char[] user) {
+	private int countBall(char[] computer, char[] user) {
 		int ball = 0;
 
 		for (int i = 0; i < BASE_BALL_GAME_RANGE; ++i) {
