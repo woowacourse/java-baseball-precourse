@@ -10,7 +10,7 @@ public class Application {
         // TODO 구현 진행
 
 
-        System.out.println(RandomUtils.makeGameNumber());
+        System.out.println(Game.makeGameNumber());
 
     }
 }
