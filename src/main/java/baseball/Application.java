@@ -11,12 +11,7 @@ public class Application {
         while(keepPlaying) {
             Player.playGame(scanner);
 
-            System.out.print("계속하려면 1 아니면 2 :");
-            int answer = scanner.nextInt();
-            if (answer == 2){
-                keepPlaying = false;
-            }
-
+            keepPlaying = Player.continueGame();
         }
 
 
