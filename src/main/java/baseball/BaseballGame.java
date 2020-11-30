@@ -1,25 +1,33 @@
 package baseball;
 
 import utils.*;
+
+import java.util.Scanner;
+
 import static utils.Constant.*;
 
 public class BaseballGame {
 
-    private String balls;
 
-    public BaseballGame() {
-        balls = "";
-        setBalls();
+    private Player player;
+    private Computer computer;
+    private int strike;
+    private int ball;
+
+    public BaseballGame(Scanner scanner) {
+        computer = new Computer();
+        player = new Player(scanner);
+        strike = 0;
+        ball = 0;
     }
 
-    private void setBalls() {
-        try {
-            int ballCandidate = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
-            balls = Validator.getValidateBall(String.valueOf(ballCandidate));
-            return;
-        } catch (IllegalArgumentException e) {
-            setBalls();
-        }
+    public void initialBalls(){
+        computer.setBalls();
+        player.inputBalls();
+    }
+
+    public void compareBalls(){
+        
     }
 
 }

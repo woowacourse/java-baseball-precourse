@@ -2,18 +2,14 @@ package baseball;
 
 import java.util.Scanner;
 
-import static utils.Constant.*;
-
 public class BaseballGameController {
 
     private Scanner scanner;
-    private Player player;
     private BaseballGame baseballGame;
 
     public BaseballGameController(Scanner scanner) {
         this.scanner = scanner;
-        player = new Player(scanner);
-        baseballGame = new BaseballGame();
+        baseballGame = new BaseballGame(scanner);
     }
 
     public void startGame(){
@@ -23,7 +19,8 @@ public class BaseballGameController {
     }
 
     private void playGame() {
-        player.inputBalls();
+        baseballGame.initialBalls();
+        baseballGame.compareBalls();
     }
 
     private boolean checkReplay() {
