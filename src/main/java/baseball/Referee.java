@@ -4,9 +4,6 @@ public class Referee {
     private int ballCnt;
     private int strikeCnt;
 
-    public Referee() {
-    }
-
     private void initCnt() {
         ballCnt = 0;
         strikeCnt = 0;
