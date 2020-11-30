@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import utils.RandomUtils;
 
@@ -41,7 +40,7 @@ public class Application {
                 correctValue = isValidInput(inputValue);
             }
             usrNum = setUserNumber(inputValue);
-            matchValue = countScore(comNum, usrNum);
+            matchValue = countBallsAndStrikes(comNum, usrNum);
             System.out.println(matchValue);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -148,7 +147,7 @@ public class Application {
     }
 
     /* computer와 user가 입력한 세 자리 숫자의 점수를 계산하는 메서드 */
-    public static String countScore(Number comNum, Number usrNum) {
+    public static String countBallsAndStrikes(Number comNum, Number usrNum) {
         int strike = 0, ball = 0;
         for (int i = 0; i < INPUT_NUM; i++) {
             int number = usrNum.getNumberAt(i);
@@ -161,6 +160,11 @@ public class Application {
             }
         }
 
+        return printGameResult(ball, strike);
+    }
+
+    /* 볼과 스트라이크 개수로 사용자에게 보여질 출력 결과를 반환하는 메서드 */
+    public static String printGameResult(int ball, int strike){
         if (strike == 0 && ball == 0) {
             return "낫싱";
         } else if (strike == 0) {
