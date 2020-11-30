@@ -11,7 +11,7 @@ public class User {
 
     public void enterNumber(Scanner scanner) {
         System.out.println(INPUT_MESSAGE);
-        String number = scanner.nextLine();
+        String number = scanner.next();
 
         if (isValidInput(number)) {
             setUserNumber(number);
