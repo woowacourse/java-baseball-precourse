@@ -50,8 +50,34 @@ public class Player {
     }
 
     private boolean checkDigit(int checkIfNumber) {
-        int numberLen = (int)(Math.log10(checkIfNumber) + 1);
-        return numberLen == 3;
+        int numberLen = (int) (Math.log10(checkIfNumber) + 1);
+        if (numberLen == 3) {
+            if (parseInput(checkIfNumber)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
+    private boolean parseInput(int rawNumber) {
+        ArrayList<Integer> parsedNumber = new ArrayList<>();
+
+        for(int digit = 0; digit < 3; digit++) {
+            int unitNum = rawNumber % 10;
+            rawNumber = rawNumber / 10;
+            if(!checkIfRepeat(parsedNumber, unitNum)) {
+                parsedNumber.add(0, unitNum);
+            } else {
+                return false;
+            }
+        }
+
+        inputNumber = parsedNumber;
+        return true;
+    }
+
+    private boolean checkIfRepeat(ArrayList<Integer> numList, int checkIfNumber) {
+        return numList.contains(checkIfNumber);
+    }
 }
