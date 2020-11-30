@@ -18,6 +18,7 @@ import java.util.List;
 import static baseball.domain.Computer.INDEX_OF_BALLS;
 import static baseball.domain.Computer.INDEX_OF_STRIKES;
 import static baseball.domain.RandomNumbers.NUMBER_LIST_SIZE;
+import static baseball.domain.ValidateChecker.isRestartFlag;
 
 /**
  * 전체 게임을 진행하는 클래스
@@ -62,12 +63,5 @@ public class GameController {
 
     private boolean isCorrectAnswer(int countsOfStrike) {
         return NUMBER_LIST_SIZE == countsOfStrike;
-    }
-
-    private boolean isRestartFlag(String userInput) {
-        if (!RESTART_NUMBER.equals(userInput) && !EXIT_NUMBER.equals(userInput)) {
-            throw new IllegalArgumentException("입력이 올바르지 않습니다.");
-        }
-        return RESTART_NUMBER.equals(userInput);
     }
 }

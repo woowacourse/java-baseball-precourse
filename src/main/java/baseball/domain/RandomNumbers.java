@@ -31,7 +31,7 @@ public class RandomNumbers {
     }
 
     private boolean isSizeIncorrect(int listSize) {
-        return listSize != NUMBER_LIST_SIZE;
+        return NUMBER_LIST_SIZE != listSize;
     }
 
     private void addDistinctNumber(Integer checkingNumber, List<Integer> randomNumbers) {

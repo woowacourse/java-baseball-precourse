@@ -17,7 +17,6 @@ import java.util.Scanner;
  * @version 1.0 2020년 11월 25일
  */
 public class InputView {
-
     private final Scanner scanner;
 
     public InputView(Scanner scanner) {
