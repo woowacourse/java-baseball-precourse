@@ -30,10 +30,16 @@
 
     ### Strike와 Ball의 수가 담긴 Array를 제공한다.
 
+## 정답을 맞출 때 까지 반복
+
+- 파일명 : BaseBallGameController class
+- 컴퓨터의 값을 받아와서 정답을 맞출 때 까지 반복한다.
+- 정답을 맞출 경우 종료한다.
 ## 재시작
 
 - UserInput class를 사용하여 사용자의 입력을 처리한다.
 - 입력에 따라 재시작, 혹은 종료한다.
+- 재시작의 경우 다시 baseBallGameController class의 메소드를 사용한다.
 
 <br>
 
