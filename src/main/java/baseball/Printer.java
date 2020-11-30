@@ -12,14 +12,26 @@ public class Printer {
     private static final String PROGRESS_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public void printStartMessage() {
+        System.out.println(START_MESSAGE);
     }
 
     public void printHint(final int ballCnt, final int strikeCnt) {
+        if ((ballCnt == 0) && (strikeCnt == 0)) {
+            System.out.println(NOTHING);
+        } else if ((ballCnt > 0) && (strikeCnt == 0)) {
+            System.out.printf(BALL + "\n", ballCnt);
+        } else if ((ballCnt == 0) && (strikeCnt > 0)) {
+            System.out.printf(STRIKE + "\n", strikeCnt);
+        } else {
+            System.out.printf(BALL + " " + STRIKE + "\n", ballCnt, strikeCnt);
+        }
     }
 
     public void printFinishMessage() {
+        System.out.println(FINISH_MESSAGE);
     }
 
     public void printProgressMessage() {
+        System.out.println(PROGRESS_MESSAGE);
     }
 }
