@@ -10,13 +10,21 @@ public class Application {
         while (true) {
             startGame(scanner);
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String playerInput = getPlayerInput(scanner, 1, 1, 2);
-
-            if (playerInput.equals("2")) {
+            if (endProgram(scanner)) {
                 break;
             }
         }
+    }
+
+    public static boolean endProgram(Scanner scanner) {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String playerInput = getPlayerInput(scanner, 1, 1, 2);
+
+        if (playerInput.equals("2")) {
+            return true;
+        }
+
+        return false;
     }
 
     public static String getPlayerInput(Scanner scanner, int requiredLength, int startInclusive, int endInclusive) {
