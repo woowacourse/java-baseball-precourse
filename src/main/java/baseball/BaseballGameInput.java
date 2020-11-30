@@ -13,12 +13,12 @@ public class BaseballGameInput {
     }
 
     public String baseballNumbersInput() {
-        System.out.println(BASEBALLS_INPUT_MESSAGE);
+        System.out.print(BASEBALLS_INPUT_MESSAGE);
         return scanner.nextLine();
     }
 
     public String restartOrExitInput() {
-        System.out.println(RESTART_OR_EXIT_MESSAGE);
+        System.out.print(RESTART_OR_EXIT_MESSAGE);
         return scanner.nextLine();
     }
 }
