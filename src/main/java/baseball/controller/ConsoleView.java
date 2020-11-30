@@ -33,8 +33,6 @@ public class ConsoleView {
 
     public void setBallCount(int ballCount) {
 
-        validateCount(ballCount);
-
         if (ballCount == NONE_USEFUL_NUMBER) {
             return;
         }
@@ -47,7 +45,6 @@ public class ConsoleView {
 
     public void setStrikeCount(int strikeCount) {
 
-        validateCount(strikeCount);
 
         if (strikeCount == SUCCESS_REQUIRE_COUNT) {
             appendGameSuccess();
@@ -76,9 +73,6 @@ public class ConsoleView {
         stringBuilder.append(GAME_CLEAR_MESSAGE);
     }
 
-    private void validateCount(int count) {
-        if(Validator)
-    }
 
     public static void printRestart() {
         System.out.println(GAME_RESTART_MESSAGE);

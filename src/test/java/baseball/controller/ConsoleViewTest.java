@@ -1,10 +1,10 @@
 package baseball.controller;
 
-        import jdk.jfr.Description;
-        import org.junit.jupiter.api.Assertions;
-        import org.junit.jupiter.api.Test;
-        import org.junit.jupiter.params.ParameterizedTest;
-        import org.junit.jupiter.params.provider.ValueSource;
+import jdk.jfr.Description;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import utils.Validator;
 
 class ConsoleViewTest {
 
@@ -67,21 +67,10 @@ class ConsoleViewTest {
 
         //when
         consoleView.setBallCount(ballCount);
-        consoleView.setStrikeCount(3 - ballCount);
+        consoleView.setStrikeCount(Validator.REQUIRE_NUMBER_COUNT - ballCount);
         //then
         consoleView.printResult();
         System.out.println("========================");
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {-1, Integer.MAX_VALUE, Integer.MIN_VALUE, 4})
-    @Description("1~3을 제외한 숫자가 들어오면 IllegalArgumentException 발생")
-    public void exceptionTest(int count) {
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            ConsoleView consoleView = new ConsoleView();
-            consoleView.setStrikeCount(count);
-        });
     }
 
 }

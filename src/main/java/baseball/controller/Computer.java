@@ -20,7 +20,7 @@ public class Computer {
 
         List<Integer> numbers = createNumbers();
         Collections.shuffle(numbers);
-        
+
         return new Computer(numbers);
     }
 

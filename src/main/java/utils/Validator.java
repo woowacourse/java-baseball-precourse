@@ -19,7 +19,7 @@ public class Validator {
 
     public static void validateInput(String input) {
 
-        if (!isIntType(input)) {    //숫자타입 체크
+        if (!isIntType(input)) {
             throw new IllegalArgumentException(INVALID_TYPE_MESSAGE);
         }
 
@@ -48,7 +48,6 @@ public class Validator {
     private static boolean isValidLength(String input) {
         return input.length() == REQUIRE_NUMBER_COUNT;
     }
-
 
     private static boolean hasDuplicate(String input) {
         return getDistinctCount(input) < REQUIRE_NUMBER_COUNT;
@@ -79,6 +78,6 @@ public class Validator {
             throw new IllegalArgumentException();
         }
 
-
     }
+
 }

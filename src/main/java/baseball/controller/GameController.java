@@ -13,11 +13,6 @@ public class GameController {
 
     private static int GAME_SUCCESS_COUNT = 3;
 
-    public static void testPring() {    //TODO 테스트용 삭제 필수
-        List<Integer> integers = computer.cloneNumbers();
-        System.out.println(integers.toString());
-    }
-
     public GameController(Scanner scanner) {
         this.inputController = new InputController(scanner);
     }
@@ -25,8 +20,6 @@ public class GameController {
     public void run() {
 
         initComputer();
-
-        testPring(); //TODO 정답용 프린터 꼭 삭제 프린터 꼭 삭제
 
         initPlayerInput();
 
@@ -98,9 +91,7 @@ public class GameController {
     }
 
     private void isRestart() {
-
         GameStatus gameStatus = inputController.inputRestart();
-
         if (gameStatus == GameStatus.RESTART) {
             run();
         }
