@@ -7,21 +7,20 @@ public class Application {
     private static final int RESTART = 1;
     private static final int END = 2;
     private static final String GAME_EXIT_CONDITIONS = "3스트라이크";
-    private static final String REINPUT = "다시 입력해주세요";
     private static final String GAME_START_STATEMENT = "숫자를 입력해주세요 : ";
     private static final String GAME_END_STATEMENT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료" +
                                                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-
-        String randomNumbersOfCompetitor = Competitor.getRandomNumbers();
+        Competitor competitor = new Competitor();
+        GamePlayer gamePlayer = new GamePlayer(scanner);
         while (true) {
             System.out.print(GAME_START_STATEMENT);
-            int kindOfGame = getIndexOfGameProgress(scanner, randomNumbersOfCompetitor);
+            int kindOfGame = getIndexOfGameProgress(competitor, gamePlayer);
 
             if (kindOfGame == RESTART) {
-                randomNumbersOfCompetitor = Competitor.getRandomNumbers();
+                competitor = new Competitor();
             }
 
             if (kindOfGame == END) {
@@ -30,11 +29,11 @@ public class Application {
         }
     }
 
-    private static int getIndexOfGameProgress(Scanner scanner, String randomNumbersOfCompetitor){
+    private static int getIndexOfGameProgress(Competitor competitor, GamePlayer gamePlayer){
         try {
-            String inputRandomNumbers = GamePlayer.getInputNumbers(scanner.next());
+            String inputRandomNumbers = gamePlayer.generateNumbersOfPlayerEntered();
             String comparativeResult = Comparator.getComparativeResult(
-                                            randomNumbersOfCompetitor, inputRandomNumbers);
+                                            competitor.getGeneratedRandomNumbers(), inputRandomNumbers);
 
             System.out.println(comparativeResult);
             if(!comparativeResult.equals(GAME_EXIT_CONDITIONS)){
@@ -42,7 +41,7 @@ public class Application {
             }
 
             System.out.println(GAME_END_STATEMENT);
-            int selectMenu = getSelectMenu(scanner);
+            int selectMenu = gamePlayer.selectRestartOrEnd();
             if(selectMenu == RESTART){
                 return RESTART;
             }
@@ -54,25 +53,4 @@ public class Application {
         }
     }
 
-    private static int getSelectMenu(Scanner scanner) throws IllegalArgumentException{
-        String inputNumber = scanner.next();
-
-        while (isInvalidInputNumber(inputNumber)) {
-            try {
-                throw new IllegalArgumentException(REINPUT);
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                inputNumber = scanner.next();
-            }
-        }
-
-        return inputNumber.charAt(0) - '0';
-    }
-
-    private static boolean isInvalidInputNumber(String inputNumber){
-        int singleDigitInputNumber = inputNumber.charAt(0) - '0';
-
-        return inputNumber.length() != 1
-                    || (singleDigitInputNumber != RESTART && singleDigitInputNumber != END);
-    }
 }
