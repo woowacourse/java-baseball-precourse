@@ -3,9 +3,9 @@ package baseball.controller;
 import utils.RandomUtils;
 
 public class RandomBallSet {
-    static final int START_INDEX = 1;
-    static final int END_INDEX = 9;
-    static final int NUMBER_OF_BALL = 3;
+    private static final int START_INDEX = 1;
+    private static final int END_INDEX = 9;
+    private static final int NUMBER_OF_BALL = 3;
 
     /**
      * 게임 진행을 위한 랜덤으로 선택되고 중복되지 않는 정수들로 이루어진 게임 세트 반환 메서드

@@ -4,7 +4,7 @@ import baseball.domain.User;
 import baseball.viewer.OutputShower;
 
 public class OutputShowSelector {
-    static final int END_GAME = 3;
+    private static final int END_GAME = 3;
 
     /**
      * 사용자의 게임 상태를 받아 상태를 판단하여 사용자에게 보여주는 메서드

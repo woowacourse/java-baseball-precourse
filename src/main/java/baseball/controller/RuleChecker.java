@@ -4,7 +4,7 @@ import baseball.domain.Computer;
 import baseball.domain.User;
 
 public class RuleChecker {
-    static final int NUMBER_OF_BALL = 3;
+    private static final int NUMBER_OF_BALL = 3;
 
     /**
      * 사용자와 컴퓨터가 가지고 있는 정보들을 바탕으로 점수를 채점, 사용자에게 스타라이크와 볼을 채점해주는 메서드

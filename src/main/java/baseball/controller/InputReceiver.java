@@ -5,8 +5,8 @@ import baseball.viewer.InputViewer;
 import java.util.Scanner;
 
 public class InputReceiver {
-    static final int NUMBER_OF_BALL = 3;
-    static final Scanner receiver = new Scanner(System.in);
+    private static final int NUMBER_OF_BALL = 3;
+    private static final Scanner receiver = new Scanner(System.in);
 
     /**
      * 사용자에게서 받는 숫자들을 정수형으로 변경한 후 각자리 숫자를 배열로 전환하는 메서드
