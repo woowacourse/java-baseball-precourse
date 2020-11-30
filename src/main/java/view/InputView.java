@@ -1,7 +1,7 @@
 package view;
 
 import baseball.Numbers;
-import utils.InputValidator;
+import baseball.PlayButton;
 import utils.NumbersFactory;
 
 import java.util.Scanner;
@@ -24,13 +24,12 @@ public class InputView {
         }
     }
 
-    public static String getPlayAgainButton(Scanner scanner){
+    public static PlayButton getPlayAgainButton(Scanner scanner){
         OutputView.printMsg(ASK_PLAY_AGAIN_MESSAGE);
 
         try{
             String answer = getInput(scanner);
-            InputValidator.checkValidPlayAgainBtn(answer);
-            return answer;
+            return new PlayButton(answer);
         }catch (IllegalArgumentException IAE){
             IAE.printStackTrace();
             return getPlayAgainButton(scanner);
