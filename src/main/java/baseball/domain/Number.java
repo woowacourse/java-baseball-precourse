@@ -1,20 +1,15 @@
 package baseball.domain;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class Number {
     public static int NUM_LENGTH = 3;
-    public static int MIN = 1;
-    public static int MAX = 9;
+    static int MIN = 1;
+    static int MAX = 9;
     private int[] number;
 
     public Number(int[] number){
         this.number = number;
-    }
-
-    public boolean isEquals(String number){
-        return this.number.equals(number);
     }
 
     public boolean contains(int number) {
@@ -39,7 +34,7 @@ public class Number {
                 return true;
             }
         }
-        
+
         return false;
     }
 }

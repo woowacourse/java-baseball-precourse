@@ -28,11 +28,12 @@ public class BaseballGame {
 
         do {
             output.inputNumber();
-            int[] userInput = input.inputNumber();
 
+            int[] userInput = input.inputNumber();
             hintAnswer = hint.ask(userInput);
+
             output.showResult(hintAnswer);
-        } while (!hint.correct);
+        } while (!hint.correctSwitch);
 
         endRound();
     }

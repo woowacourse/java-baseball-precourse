@@ -4,9 +4,9 @@ import baseball.domain.Number;
 import baseball.domain.NumberGenerator;
 
 public class Hint {
-    Number correctNumber;
     NumberGenerator numberGenerator;
-    boolean correct;
+    Number correctNumber;
+    boolean correctSwitch;
 
     public Hint() {
         numberGenerator = new NumberGenerator();
@@ -15,10 +15,13 @@ public class Hint {
     public String ask(int[] userInput) {
         String hintAnswer = "";
 
-        hintAnswer = hintAnswer + countBall(userInput);
+        hintAnswer = countBall(userInput);
+
+        /* ball이 존재하면 공백(" ") 추가 */
         if (!hintAnswer.equals("")) {
             hintAnswer += " ";
         }
+
         hintAnswer = hintAnswer + countStrike(userInput);
 
         return isNothing(hintAnswer);
@@ -45,7 +48,7 @@ public class Hint {
 
         if (strike > 0) {
             if (strike == Number.NUM_LENGTH) {
-                correct = true;
+                correctSwitch = true;
             }
             strikeAnswer = strike + "스트라이크";
         }
@@ -73,6 +76,6 @@ public class Hint {
 
     public void createAnswer() {
         correctNumber = numberGenerator.execute();
-        correct = false;
+        correctSwitch = false;
     }
 }
