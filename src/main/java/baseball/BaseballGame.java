@@ -81,9 +81,13 @@ public class BaseballGame {
     }
 
     public void askGuess() {
+        printer.printStartMessage();
+        guess = player.inputGuess();
     }
 
     public void askProgress() {
+        printer.printProgressMessage();
+        progress = player.inputProgress();
     }
 
 }
