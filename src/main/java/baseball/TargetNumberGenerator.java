@@ -23,6 +23,7 @@ public class TargetNumberGenerator {
             int generatedNumber = avoidRepeat(numberList);
             numberList.add(generatedNumber);
         }
+
         return numberList;
     }
 
@@ -31,6 +32,7 @@ public class TargetNumberGenerator {
         while(checkRepeat(finalNumbers, randomNumber)) {
             randomNumber = RandomUtils.nextInt(1, 9);
         }
+
         return randomNumber;
     }
 
