@@ -11,7 +11,7 @@ public class NumberBaseBallGame {
         this.scanner = scanner;
     }
 
-    private void reStart(){
+    private void askRestart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int doesPlayerWantPlayAgain = scanner.nextInt();
         validatePlayerWantPlayAgain(doesPlayerWantPlayAgain);
@@ -28,17 +28,19 @@ public class NumberBaseBallGame {
     }
 
     public void start(){
-        boolean isContinueGame;
+        boolean isContinueGame = true;
         Digits answer = RandomNumberGenerator.makeRandomNumber();
 
         do {
             System.out.print("숫자를 입력해주세요 : ");
-            Digits userInput = new Digits(scanner.nextInt());
+
+            Digits userInput = new Digits(scanner.nextInt()); // 에러 날 수 있는 곳.
             Discriminator discriminator = new Discriminator();
             isContinueGame = discriminator.judge(answer, userInput);
+
         } while (isContinueGame);
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        reStart();
+        askRestart();
     }
 }
