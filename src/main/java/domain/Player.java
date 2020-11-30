@@ -12,6 +12,7 @@ public class Player {
     private static final String DELIMITER = "";
     private static final String RESTART = "1";
     private static final String ENDGAME = "2";
+    private static final int NATURE_NUMBER_STANDARD = 0;
 
     public BaseballNumber createBaseballNumber(String input) {
         return new BaseballNumber(createNumbers(input));
@@ -37,7 +38,7 @@ public class Player {
     }
 
     private void checkNatureNumber(int number) {
-        if (number <= 0) {
+        if (number <= NATURE_NUMBER_STANDARD) {
             throw new IllegalArgumentException();
         }
     }
