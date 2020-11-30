@@ -5,14 +5,14 @@ import java.util.Scanner;
 public class PlayGame {
 
     private final CheckInputNumber checkInputNumber;
-    private final CheckDuplicate checkDuplicate;
+    private final CheckRandomNumber checkRandomNumber;
     private final Scanner scanner;
     private boolean goStop;
 
     public PlayGame(Scanner scanner){
         this.scanner= scanner;
         this.checkInputNumber = new CheckInputNumber(scanner);
-        this.checkDuplicate = new CheckDuplicate();
+        this.checkRandomNumber = new CheckRandomNumber(scanner);
     }
 
     public void start() {
@@ -24,7 +24,7 @@ public class PlayGame {
 
     private void play() {
         boolean win = false;
-        String random = checkDuplicate.makeRandomNumber();
+        String random = checkRandomNumber.makeRandomNumber();
         System.out.println(random);
 
         while(!win) {

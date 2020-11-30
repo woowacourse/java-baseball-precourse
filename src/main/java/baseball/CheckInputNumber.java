@@ -28,7 +28,7 @@ public class CheckInputNumber {
 		return input;
 	}
 
-	private boolean isValid(String input) {
+	public boolean isValid(String input) {
 
 		if (input.length() != 3) {
 			return false;
