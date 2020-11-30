@@ -18,13 +18,9 @@ public class Application {
         }while(checkPlayAgain(scanner));
     }
 
-    private static boolean checkPlayAgain(Scanner SCANNER){
-        String answer = askPlayAgain(SCANNER);
+    private static boolean checkPlayAgain(Scanner scanner){
+        String answer = InputView.getPlayAgainButton(scanner);
 
         return answer.equals(PLAY_AGAIN_BUTTON);
-    }
-
-    private static String askPlayAgain(Scanner scanner){
-        return InputView.getPlayAgainButton(scanner);
     }
 }
