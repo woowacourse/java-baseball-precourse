@@ -1,7 +1,5 @@
 package baseball;
 
-import utils.RandomUtils;
-
 import java.util.Scanner;
 
 public class Application {
@@ -9,8 +7,6 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
 
-
-        System.out.println(Game.makeGameNumber());
-
+        Game.playGame(scanner);
     }
 }
