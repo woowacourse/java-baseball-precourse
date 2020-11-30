@@ -16,8 +16,6 @@ import utils.RandomNumbers;
  */
 public class BaseballGameController {
     private static final int RANDOM_NUMBERS_SIZE = 3;
-    private static final String RESTART = "1";
-    private static final String ENDGAME = "2";
 
     private final Scanner scanner;
     private Player player;
@@ -25,8 +23,8 @@ public class BaseballGameController {
 
     public BaseballGameController(final Scanner scanner) {
         this.scanner = scanner;
-        this.baseballGame = new BaseballGame(new BaseballNumber(nonDuplicateNumber()));
         this.player = new Player();
+        this.baseballGame = new BaseballGame(new BaseballNumber(nonDuplicateNumber()));
     }
 
     private List<Integer> nonDuplicateNumber() {
@@ -34,17 +32,22 @@ public class BaseballGameController {
     }
 
     public void play() {
-        inputBaseballNumber();
-        BaseballNumber playerBaseballNumber = player.createBaseballNumber(getInput());
-        if (baseballGame.matchBaseball(playerBaseballNumber)) {
-            choiceRestartGameOrFinish();
-            return;
+        while (true) {
+            BaseballNumber playerBaseballNumber = createBaseball();
+            if (isBingo(playerBaseballNumber)) {
+                choiceRestartOrFinish();
+                return;
+            }
+            showHint(playerBaseballNumber);
         }
-        showHint(playerBaseballNumber);
-        restart();
     }
 
-    private void inputBaseballNumber() {
+    private BaseballNumber createBaseball() {
+        showInputMessage();
+        return player.createBaseballNumber(getInput());
+    }
+
+    private void showInputMessage() {
         System.out.print(INPUT_NUMBER.toString());
     }
 
@@ -52,25 +55,22 @@ public class BaseballGameController {
         return scanner.nextLine();
     }
 
-    private void choiceRestartGameOrFinish() {
-        switch (getInput()) {
-            case RESTART :
-                this.baseballGame = new BaseballGame(new BaseballNumber(nonDuplicateNumber()));
-                play();
-                break;
-            case ENDGAME :
-                break;
-            default:
-                throw new IllegalArgumentException();
+    private boolean isBingo(BaseballNumber playerBaseballNumber) {
+        return baseballGame.matchBaseball(playerBaseballNumber);
+    }
+
+    private void choiceRestartOrFinish() {
+        if (isRestart()) {
+            this.baseballGame = new BaseballGame(new BaseballNumber(nonDuplicateNumber()));
         }
+    }
+
+    private boolean isRestart() {
+        return player.choiceRestartGameOrFinish(getInput());
     }
 
     private void showHint(BaseballNumber playerBaseballNumber) {
         Hint hint = baseballGame.countStrikeAndBall(playerBaseballNumber);
         System.out.println(hint);
-    }
-
-    private void restart() {
-        play();
     }
 }

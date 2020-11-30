@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
  */
 public class Player {
     private static final String DELIMITER = "";
+    private static final String RESTART = "1";
+    private static final String ENDGAME = "2";
 
     public BaseballNumber createBaseballNumber(String input) {
         return new BaseballNumber(createNumbers(input));
@@ -27,5 +29,16 @@ public class Player {
     private void validateNumber(String input) {
         isNumeric(input);
         checkNatureNumber(Integer.parseInt(input));
+    }
+
+    public boolean choiceRestartGameOrFinish(String input) {
+        switch (input) {
+            case RESTART:
+                return true;
+            case ENDGAME:
+                return false;
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 }
