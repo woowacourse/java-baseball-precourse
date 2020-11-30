@@ -67,7 +67,11 @@ public class BaseballGame {
     }
 
     public void isAllStrike(int strikeCnt) {
-
+        if (strikeCnt == ALL_STRIKE_CNT) {
+            allStrike = true;
+        } else {
+            allStrike = false;
+        }
     }
 
     public void finish() {
