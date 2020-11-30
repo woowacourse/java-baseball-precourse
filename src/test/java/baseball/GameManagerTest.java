@@ -23,29 +23,32 @@ class GameManagerTest {
     @Test
     void testCheckAnswer() {
         GameManager gameManager = new GameManager(4, 8, 2);
-        String[] inputStrings = {"482", "182", "428", "591"};
+        String[] inputStrings = {"482", "182", "284", "591"};
         int[][] results = {{3, 0}, {2, 0}, {1, 2}, {0, 0}};
         ArrayList<ArrayList<Integer>> inputs = new ArrayList<ArrayList<Integer>>();
         for (String string : inputStrings) {
             inputs.add(stringToList(string));
         }
         for (int i = 0; i < inputs.size(); i++) {
-            assertArrayEquals(results[i], gameManager.checkAnswer(inputs.get(i)));
+            GameResult gameResult = gameManager.checkAnswer(inputs.get(i));
+            assertEquals(results[i][0], gameResult.getStrike());
+            assertEquals(results[i][1], gameResult.getBall());
         }
     }
 
     @Test
     void testRequestReplay() {
+        GameManager gameManager = new GameManager();
         String[] correctInputArray = {"1", "2"};
         String[] faultInputArray = {"\n", "3", "0", "a", "abc"};
         for (String input : correctInputArray) {
             Scanner scanner = new Scanner(input);
-            assertEquals(input, GameManager.requestReplay(scanner));
+            gameManager.requestReplay(scanner);
         }
         for (String input : faultInputArray) {
             Scanner scanner = new Scanner(input);
             try {
-                GameManager.requestReplay(scanner);
+                gameManager.requestReplay(scanner);
                 String message = String.format("%s는 IllegalArgumentException가 발생해야됩니다.", input);
                 fail(message);
             } catch (IllegalArgumentException iae) {

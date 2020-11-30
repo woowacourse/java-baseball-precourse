@@ -14,34 +14,14 @@ public class GameManager {
     private static final int MIN_ANSWER_NUMBER = 1; // 정답으로 가질 수 있는 최소 숫자
     private static final int MAX_ANSWER_NUMBER = 9; // 정답으로 가질 수 있는 최대 숫자
     private ArrayList<Integer> answer;
-
-    /**
-     * Game 상태를 나타냅니다.
-     * 
-     * ONGOING 아직 게임이 진행되는 상태입니다. RESTART 게임 한 판이 종료되고 재시작을 선택한 상태입니다. END 게임 한 판이 종료되고 게임 종료를 선택한
-     * 상태입니다.
-     * 
-     * @author junroot
-     */
-    public static enum GameStatus {
-        ONGOING("0"), RESTART("1"), END("2");
-
-        private final String value;
-
-        GameStatus(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-    }
+    private GameStatus gameStatus;
 
     /**
      * GameManager가 생성되면 랜덤한 정답을 만듭니다.
      */
     public GameManager() {
         this.generateAnswer();
+        gameStatus = GameStatus.ONGOING;
     }
 
     /**
@@ -56,6 +36,7 @@ public class GameManager {
         answer.add(first);
         answer.add(second);
         answer.add(third);
+        gameStatus = GameStatus.ONGOING;
     }
 
     /**
@@ -74,24 +55,27 @@ public class GameManager {
     }
 
     /**
-     * userAnswer를 answer와 비교 후, 스트라이크와 볼의 개수를 반환합니다.
+     * userAnswer를 answer와 비교 후, 스트라이크와 볼의 개수를 반환합니다. 정답이라면 gameStatus가 WAIT상태로 갱신됩니다.
      * 
      * @param userAnswer 검사할 정답을 입력합니다.
      * @return 배열의 첫번쨰 값은 스트라이크, 두번째 값은 볼의 개수입니다.
      */
-    public int[] checkAnswer(ArrayList<Integer> userAnswer) {
-        int strike = 0;
-        int ball = 0;
+    public GameResult checkAnswer(ArrayList<Integer> userAnswer) {
+        GameResult gameResult = new GameResult();
         for (int i = 0; i < NUMBER_ANSWER; i++) {
             int index = findIndexOfList(answer, NUMBER_ANSWER, userAnswer.get(i));
             if (index == i) {
                 // 정답에서 숫자의 위치와 같다면 strike 입니다.
-                strike++;
+                gameResult.increaseStrike();
             } else if (index != -1) {
-                ball++;
+                gameResult.increaseBall();
             }
         }
-        return new int[] {strike, ball};
+        if (gameResult.getStrike() == NUMBER_ANSWER) {
+            // 스트라이크가 정답의 개수와 같으면 상태를 WAIT으로 설정합니다.
+            gameStatus = GameStatus.WAIT;
+        }
+        return gameResult;
     }
 
     /**
@@ -112,37 +96,21 @@ public class GameManager {
     }
 
     /**
-     * 입력받은 strike와 ball로부터 스코어를 출력합니다.
-     * 
-     * @param strike 스트라이크 개수입니다.
-     * @param ball 볼 개수입니다.
-     */
-    public static void printScore(int strike, int ball) {
-        if ((ball == 0) && (strike == 0)) {
-            System.out.print("낫싱");
-        }
-        if (ball > 0) {
-            System.out.printf("%d볼 ", ball);
-        }
-        if (strike > 0) {
-            System.out.printf("%d스트라이크", strike);
-        }
-        System.out.println();
-    }
-
-    /**
-     * 사용자가 게임을 새로 시작하는지 입력을 받습니다. 1또는 2를 입력받지 않으면 예외처리합니다.
+     * 사용자가 게임을 새로 시작하는지 입력을 받습니다. 1또는 2를 입력받지 않으면 예외처리합니다. 입력을 받은 후 현재 게임의 상태를 갱신합니다.
      * 
      * @param scanner 입력으로 사용할 Scanner를 입력합니다. 일반적으로 System.in입니다.
      * @return 입력된 값을 반환합니다.
      */
-    public static String requestReplay(Scanner scanner) {
+    public void requestReplay(Scanner scanner) {
         String input = scanner.nextLine();
-        if (!input.equals(GameStatus.RESTART.getValue())
-                && !input.equals(GameStatus.END.getValue())) {
+        if (input.equals(GameStatus.RESTART.getValue())) {
+            this.generateAnswer();
+            this.gameStatus = GameStatus.ONGOING;
+        } else if (input.equals(GameStatus.END.getValue())) {
+            this.gameStatus = GameStatus.END;
+        } else {
             throw new IllegalArgumentException();
         }
-        return input;
     }
 
     /**
@@ -191,6 +159,15 @@ public class GameManager {
             throw new IllegalArgumentException();
         }
         return result;
+    }
+
+    /**
+     * 현재 게임의 상태를 반환합니다.
+     * 
+     * @return 현재 게임의 상태입니다.
+     */
+    public GameStatus getGameStatus() {
+        return gameStatus;
     }
 
     /**

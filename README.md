@@ -20,37 +20,52 @@
 <br>
 
 ## 🛠설계
-게임에 필요한 정답과 기능들을 `GameManager` Class에 구현하고, `Application`은 `GameManager`을 이용하여 게임 상황을 파악하고 거기에 맞는 입출력을 처리한다.
-### Application(Class)
-- 루프를 계속 돌며, 사용자에게 정답을 요청한다.
+게임에 필요한 정답과 기능들을 `GameManager`에 구현하고, `Application`은 `GameManager`을 이용하여 게임 상황을 파악하고 거기에 맞는 입출력을 처리한다. `GameResult`를 유저가 입력한 정답에 대한 결과값을 가지고, `GameStatus`는 현재 게임의 상태를 나타낸다.
+### Application(class)
+- `gameManager`의 `gameStatus`가 `ONGOING`일 때까지 루프를 계속 돌며, 사용자에게 정답을 요청한다.
   - 정답이 틀린 경우: 스트라이크와 볼을 출력하고 계속 루프를 돈다.
-  - 정답이 맞는 경우: 사용자에게 개임을 새로 시작할 것인지 물어보고 입력을 요청한다.
-    - 재시작(1): `GameManager`의 정답을 새로 생성하고 계속 루프를 돈다.
-    - 종료(2): 루프에서 빠져나와, 프로그램을 종료시킨다.
-### GameManager(Class)
+  - 정답이 맞는 경우: `gameManager`의 상태가 `WAIT`이 된다. 사용자에게 개임을 새로 시작할 것인지 물어보고 입력을 요청한다.
+    - 재시작(1): `gameManager`의 정답을 새로 생성하고 `gameManager`의 상태가 다시 `ONGOING`이 된다.
+    - 종료(2): `gameManager`의 상태는 `END`가 되고, 프로그램을 종료시킨다.
+### GameManager(class)
 - 변수
   - `NUMBER_ANSWER`: 게임에서 사용할 숫자의 개수. 요구사항에 맞춰 3으로 초기화한다.
   - `MIN_ANSWER_NUMBER`: 게임에서 사용할 수 있는 최소의 숫자이다. 요구사항에 맞춰 1로 초기화한다.
   - `MAX_ANSWER_NUMBER`: 게임에서 사용할 수 있는 최대의 숫자이다. 요구사항에 맞춰 9로 초기화한다.
   - `answer`: 게임의 정답. `ArrayList<Integer>`로 관리한다.
-- 인스턴스 Enumeration
-  - `GameStatus`: 현재 게임의 상태를 `enum`으로 관리한다. 새로 시작 요청시, 각 입력에 해당하는 `String`을 값으로 가진다.
-    - `ONGOING("0")`: 게임이 진행중인 상태.
-    - `RESTART("1")`: 사용자가 새로 시작을 요청한 상태.
-    - `END("2")`: 사용자가 종료를 요청한 상태.
+  - `gameStatus`: 게임의 상태를 나타낸다.
 - 생성자
-  - `GameManager()`: 랜덤한 정답을 생성한다. (`generateAnswer` 호출)
-  - `GameManager(Integer first, Integer second, Integer third)`: 입력받은 첫번째, 두번째, 세번째를 각각 정답으로 가지는 `GameManager`를 생성한다.
+  - `GameManager()`: 랜덤한 정답을 생성한다.(`generateAnswer` 호출) `gameStatus`를 `ONGOING`으로 설정한다.
+  - `GameManager(Integer first, Integer second, Integer third)`: 입력받은 첫번째, 두번째, 세번째를 각각 정답으로 가지는 `GameManager`를 생성한다. `gameStatus`를 `ONGOING`으로 설정한다.
 - 메소드
   - `generateAnswer`: `NUMBER_ANSWER`개수만큼의 `MIN_ANSEWR_NUMBER`와 `MAX_ANSWER_NUMBER`사이의 랜덤한 숫자를 `answer`에 저장한다. 숫자를 하나씩 생성할 때마다 중복되는 값이 있는지 매번 확인한다.(`findIndexOfList` 호출)
-  - `checkAnswer`: 유저가 제시한 답이 정답인지 확인한다. 한 글자씩 비교를 하여 같은 index에 같은 값이 있으면 strike를 다른 index에 같은 값이 있으면 ball를 1씩 늘린다. (`findIndexOfList` 호출) 스트라이크와 볼의 개수를 `int[]`로 반환한다.
+  - `checkAnswer`: 유저가 제시한 답이 정답인지 확인한다. 한 글자씩 비교를 하여 같은 index에 같은 값이 있으면 스트라이크를, 다른 index에 같은 값이 있으면 볼을 1씩 늘린다. (`findIndexOfList` 호출) 스트라이크와 볼의 개수를 `GameResult`로 반환한다. 만약 스트라이크 개수와 `NUMBER_ANSWER`가 같으면 현재 게임의 상태를 `WAIT`으로 설정한다.
   - `findIndexOfList`: 입력받은 `list`에서 입력받은 숫자가 존재하는지 확인하고 있다면 해당하는 `index`를 반환한다. 없다면 `-1`을 반환한다.
-  - `printScore`: 입력받은 `strike`와 `ball`을 통해, 스트라이크와 볼의 개수를 출력한다.
-  - `requestReplay`: 사용자에게 게임을 새로 시작하는지 입력을 받고, 1또는 2를 입력하지 않았다면 `IllegalArgumentException`을 발생시킨다. 입력된 값을 `String`형태로 반환한다.
+  - `requestReplay`: 사용자에게 게임을 새로 시작하는지 입력을 받고, 1또는 2를 입력하지 않았다면 `IllegalArgumentException`을 발생시킨다. 입력된 값이 1이면 현재 상태를 `ONGOING`으로, 2이면 현재 상태를 `END`로 설정한다.
   - `requestUserAnswer`: 사용자에게 숫자를 입력받고, 정답으로 나올 수 없는 입력일 경우 `IllegalArgumentException`을 발생시킨다. 입력된 값을 `ArrayList<Integer>`형태로 반환한다.(`convertStringToUserAnswer` 호출)
   - `convertStringToUserAnswer`: 입력받은 문자열을 `ArrayList<Integer>`형태로 변환하여 반환한다.(`convertCharToInteger` 호출) 이 떄 중복되는 숫자가 있거나 숫자가 아니면 `IllegalArgumentException`을 발생시킨다.(`convertCharToInteger` 호출)
   - `convertCharToInteger`: `Character.getNumericValue`메소드를 이용하여 `char`를 `Integer`로 변환시켜 반환한다. 이 때, 게임에서 사용할 수 없는 숫자나 문자가 있으면 `IllegalArgumentException`을 발생시킨다.
+  - `getGameStatus`: 현재 게임의 상태를 반환한다.
   - `getAnswer`: `answer`를 반환한다. 디버깅용 메소드다.
+### GameResult(class)
+- 변수
+  - `strike`: 스트라이크 개수이다.
+  - `ball`: 볼 개수이다.
+- 생성자
+  - `GameResult()`: 스트라이크와 볼을 각각 0으로 설정한다.
+  - `GameResult(int strike, int ball)`: 스트라이크와 볼을 설정하여 생성한다.
+- 메소드
+  - `printResult`: `strike`와 `ball`을 통해, 스트라이크와 볼의 개수를 출력한다.
+  - `increseStrike`: 스트라이크를 1증가시킨다.
+  - `increseBall`: 볼을 1증가시킨다.
+  - `getStrike`: 현재 스트라이크 수를 반환한다.
+  - `getBall`: 현재 볼 수 를 반환한다.
+### GameStatus(enum)
+현재 게임의 상태를 `enum`으로 관리한다. 새로 시작 요청시, 각 입력에 해당하는 `String`을 값으로 가진다.
+  - `ONGOING("0")`: 게임이 진행중인 상태.
+  - `RESTART("1")`: 사용자가 새로 시작을 요청한 상태.
+  - `END("2")`: 사용자가 종료를 요청한 상태.
+  - `WAIT("3")`: 정답을 맞추어 재시작 요청을 대기하는 상태이다.
 ### NotImplemnted(Annotation)
 - 구현하지 못한 메소드를 표기하기 위해 사용한다.
 
