@@ -36,8 +36,7 @@ public class Application {
             else if(numberChecker[inputNumbers[i]] == 1) ballConut++;
         }
         if(strikeConut == 3) return true;
-        System.out.println("strikeConut : " + strikeConut);
-        System.out.println("ballConut : " + ballConut);
+        System.out.println(ballConut+"볼 "+strikeConut+"스트라이크");
         return false;
     }
 
