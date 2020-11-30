@@ -11,11 +11,11 @@ public class Application {
 	private static final Integer REPLAY_NO = 2;
 	private static final Integer MAX_BALL_CNT = 3;
 	private static final Integer ZERO = 0;
-	private static final String NOTHING = "낫싱";
-	private static final String FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-	private static final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	private static final String BALL_WORD = "볼";
 	private static final String STRIKE_WORD = "스트라이크";
+	private static final String NOTHING_WORD = "낫싱";
+	private static final String FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+	private static final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	private static final Character WHITESPACE = 32;
 
 	public static void main(String[] args) {
@@ -88,6 +88,6 @@ public class Application {
 			return;
 		}
 
-		System.out.println(NOTHING);
+		System.out.println(NOTHING_WORD);
 	}
 }
