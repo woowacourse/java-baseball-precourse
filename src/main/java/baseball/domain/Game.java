@@ -1,6 +1,6 @@
 package baseball.domain;
 
 public class Game {
-    public static int GAME_START = 1;
-    public static int GAME_END = 2;
+    public static String GAME_START = "1";
+    public static String GAME_END = "2";
 }
