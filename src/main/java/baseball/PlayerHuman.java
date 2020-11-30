@@ -3,6 +3,7 @@ package baseball;
 import java.util.Scanner;
 
 public class PlayerHuman {
+
     private static final String MESSAGE_INPUT_NUMBER = "숫자를 입력해주세요 : ";
     private static final String MESSAGE_ASK_GAME_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String MESSAGE_INPUT_ERROR_RESTART = "1과 2 중에 하나를 입력해주세요!";
@@ -13,15 +14,16 @@ public class PlayerHuman {
     private static final String DELIMITER = "";
     private static int[] records = new int[Judge.RECORD_LENGTH];
 
-    static {
-        for(int i = 0; i < records.length; i++)
-            records[i] = -1;
-    }
-
     public int[] getRecords(Scanner scanner) {
+        initializeRecords();
         System.out.println(MESSAGE_INPUT_NUMBER);
         String[] stringArrayRecords = scanner.next().split(DELIMITER);
         return convertStringToInteger(stringArrayRecords);
+    }
+
+    private void initializeRecords() {
+        for(int i = 0; i < records.length; i++)
+            records[i] = -1;
     }
 
     private int[] convertStringToInteger(String[] stringArrayRecords) {

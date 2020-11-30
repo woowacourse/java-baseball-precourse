@@ -17,7 +17,7 @@ public class GameManager {
 
     public void gameStart(Scanner scanner) {
         int[] computerPlayerRecords = playerComputer.getRecords();
-//        printArray(computerPlayerRecords);
+        printArray(computerPlayerRecords);
         do {
             int[] humanPlayerRecords = playerHuman.getRecords(scanner);
             judge.compareRecords(humanPlayerRecords, computerPlayerRecords);
