@@ -44,4 +44,8 @@ public class Hint {
         }
         System.out.println();
     }
+
+    public int getStrike() {
+        return this.strike;
+    }
 }
