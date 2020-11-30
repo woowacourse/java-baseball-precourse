@@ -18,7 +18,7 @@ public class BaseballGameInput {
     }
 
     public String restartOrExitInput() {
-        System.out.print(RESTART_OR_EXIT_MESSAGE);
+        System.out.println(RESTART_OR_EXIT_MESSAGE);
         return scanner.nextLine();
     }
 }
