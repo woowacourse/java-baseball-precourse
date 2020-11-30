@@ -28,17 +28,21 @@
    
 <br>
 
-## 프로그램 구조도
+## 프로그램 구조
 
 - #### baseball
     - Application : BaseballGame 플레이 여부를 결정한다. 
     - BaseballGame : 사용자 입력을 받아 점수를 출력함을 종료 전까지 반복한다.
     - GameRule : 사용자 입력과 컴퓨터 입력을 비교하여 점수를 계산하고 승리 여부를 판별한다.
+    - Numbers : 지정된 범위(1~9)의, 지정된 개수(3)의 수 리스트를 저장한다.
+    - PlayButton : 사용자가 게임 진행을 더 할건지 여부를 저장한다.
+    - Score : 사용자가 추측한 수의 점수(스트라이크와 볼의 개수)를 저장한다.
     
 - #### utils
     - InputValidator : 사용자 입력이 유효한지 검증한다.
-    - NumberListGenerator : 컴퓨터의 서로 다른 세 숫자 List 생성하고, 사용자 입력 문자열을 List<Integer>로 변환한다.
-    - RnadomUtils : 범위 내 임의의 숫자를 리턴한다.
+    - NumbersFactory : 새로운 Numbers를 생성하거나, 사용자가 입력한 문자열로 Numbers를 생성한다.
+    - RandomUtils : 범위 내 임의의 숫자를 리턴한다.
+    - StringHandler : 사용자의 입력을 다루기 위한 문자열 처리 메소드를 포함한다.
     
 - #### view
     - InputView : 사용자로부터 입력을 받는다.
