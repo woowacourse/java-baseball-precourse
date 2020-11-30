@@ -1,27 +1,28 @@
 package utils;
 
+import baseball.Numbers;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NumberListGenerator {
+public class NumbersFactory {
     private static final int NUMBER_MAX = 9;
     private static final int NUMBER_MIN = 1;
 
-    public static ArrayList<Integer> makeTargetNumber(int digits){
-        ArrayList<Integer> targetNumber = new ArrayList<>();
+    public static Numbers getRandomNumbers(int digits){
+        List<Integer> numberList = new ArrayList<>();
 
-        while(targetNumber.size()<digits){
-            targetNumber.add(getRandWithoutDuplicate(targetNumber));
+        while(numberList.size()<digits){
+            numberList.add(getRandWithoutDuplicate(numberList));
         }
-        
-        return targetNumber;
+
+        return new Numbers(numberList);
     }
 
     private static int getRandWithoutDuplicate(List<Integer> list){
         int rand;
-
         do{
             rand = RandomUtils.nextInt(NUMBER_MIN, NUMBER_MAX);
         }
@@ -30,9 +31,11 @@ public class NumberListGenerator {
         return rand;
     }
 
-    public static List<Integer> ConvertStringToList(String num){
-        return Arrays.stream(num.split(""))
+    public static Numbers parseStringToNumbers(String num){
+        List numberList = Arrays.stream(num.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+
+        return new Numbers(numberList);
     }
 }
