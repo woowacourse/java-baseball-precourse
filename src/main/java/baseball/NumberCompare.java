@@ -33,9 +33,7 @@ public class NumberCompare {
      * */
     public static int compareBallCount() {
         int cnt = 0;
-        System.out.println(randomNumberList);
-        System.out.println(userNumberList);
-
+        
         for (int singleUserNumber : userNumberList) {
             if (randomNumberList.contains(singleUserNumber)) {
                 cnt++;
