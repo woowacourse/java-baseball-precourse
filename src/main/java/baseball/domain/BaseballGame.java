@@ -3,6 +3,7 @@ package baseball.domain;
 import static baseball.config.BaseballConfiguration.*;
 import static baseball.domain.Status.*;
 
+import baseball.view.GameView;
 import utils.RandomUtils;
 
 import java.util.*;
@@ -28,7 +29,7 @@ public class BaseballGame {
     public void compareBaseBallNumbers(List<Integer> playerBaseballNumbers) {
         initScore();
         countScore(playerBaseballNumbers);
-        printScore();
+        GameView.printScore(score);
         checkGameStatus();
     }
 
@@ -52,18 +53,6 @@ public class BaseballGame {
 
     private boolean isBall(List<Integer> playerBaseballNumbers, int index) {
         return baseballNumbers.contains(playerBaseballNumbers.get(index));
-    }
-
-    private void printScore() {
-        if (score.isZeroBall() && score.isZeroStrike()) {
-            System.out.println("낫싱");
-        } else if (score.isZeroStrike()) {
-            System.out.println(score.getBall() + "볼");
-        } else if (score.isZeroBall()) {
-            System.out.println(score.getStrike() + "스트라이크");
-        } else {
-            System.out.println(score.getBall() + "볼 " + score.getStrike() + "스트라이크");
-        }
     }
 
     private void checkGameStatus() {
