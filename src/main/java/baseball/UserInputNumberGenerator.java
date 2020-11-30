@@ -17,9 +17,9 @@ public class UserInputNumberGenerator {
     }
 
     /**
-     * 메서드 checkUserInput()는 플레이어가 입력한 인풋이 1에서 9까지 중복되지 않는 3자리 수인지 검증합니다.
-     * @param userInput 플레이어가 콘솔에 입력한 인풋입니다.
-     * @return userInputNumber userInput이 유효한 3자리 숫자라고 판단하면 이를 정수로 변환해 반환합니다.
+     * 메서드 checkUserInput()는 플레이어가 입력한 인풋이 1에서 9까지 중복되지 않는 3자리 수인지 검증
+     * @param userInput 플레이어가 콘솔에 입력한 인풋
+     * @return userInputNumber userInput이 유효한 3자리 숫자라고 판단하면 이를 정수로 변환해 반환
      */
     private static int checkUserInput(String userInput) {
         checkStringLength(userInput);

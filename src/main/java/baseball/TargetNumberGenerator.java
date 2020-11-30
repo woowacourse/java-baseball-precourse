@@ -10,8 +10,8 @@ public class TargetNumberGenerator {
     private static final int HUNDREDS_PLACE = 100;
 
     /**
-     * 메서드 makeTargetNumber()는 플레이어가 맞춰야할 중복되지 않는 임의의 수 3개를 정하는 역할을 합니다.
-     * @return 1에서 9까지 서로 다른 임의의 수 3개를 리턴합니다.
+     * 메서드 makeTargetNumber()는 플레이어가 맞춰야할 중복되지 않는 임의의 수 3개를 정하는 역할
+     * @return 1에서 9까지 서로 다른 임의의 수 3개를 리턴
      */
     public static int makeTargetNumber() {
         int firstTargetNumber = RandomUtils.nextInt(MIN_NUMBER, MAX_NUMBER);
