@@ -51,7 +51,6 @@ public class InputReceiver {
         } catch (Exception notIntegerType) {
             InputViewer.violentIntegerRule();
         }
-
         return integerAnswer;
     }
 
