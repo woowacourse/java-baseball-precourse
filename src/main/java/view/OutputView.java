@@ -3,12 +3,11 @@ package view;
 import baseball.Score;
 
 public class OutputView {
-    private static final String ANNOUNCE_BALL_CNT = "볼";
+    private static final String ANNOUNCE_BALL_CNT = "볼 ";
     private static final String ANNOUNCE_STRIKE_CNT = "스트라이크";
-    private static final String SEPARATOR_BALL_STRIKE = " ";
     private static final String ANNOUNCE_NOTHING = "낫싱";
     private static final String SEPARATOR_ROUND = "\n";
-    private static final String ANNOUNCE_ALL_CORRECT = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String ANNOUNCE_ALL_CORRECT = "개의 숫자를 모두 맞히셨습니다! 게임 종료 \n";
 
     private OutputView(){}
 
@@ -30,7 +29,6 @@ public class OutputView {
         if(ballCnt != 0){
             printMsg(ballCnt);
             printMsg(ANNOUNCE_BALL_CNT);
-            printMsg(SEPARATOR_BALL_STRIKE);
         }
     }
 
@@ -47,7 +45,6 @@ public class OutputView {
 
     public static void printGameOver(){
         printMsg(ANNOUNCE_ALL_CORRECT);
-        printMsg(SEPARATOR_ROUND);
     }
 
     public static void printMsg(Object msg){
