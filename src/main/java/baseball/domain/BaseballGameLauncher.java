@@ -8,6 +8,9 @@ import static baseball.view.IllegalArgumentExceptionView.PLEASE_INPUT_ONE_OR_TOW
 
 public class BaseballGameLauncher {
 
+    private BaseballGameLauncher() {
+    }
+
     public static void play(Scanner scanner) {
         playNewBaseballGame(scanner);
         try {
