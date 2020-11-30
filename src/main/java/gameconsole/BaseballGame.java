@@ -41,13 +41,15 @@ public class BaseballGame {
     public boolean selectContinue(Scanner scanner) {
         Output.printContinue();
         String continueSelect = scanner.nextLine();
+        boolean selectResult;    // 게임을 한번 더 할지의 여부(false : 그만, true : 계속)
         try {
             UserInputValidator.isValidEndCode(continueSelect);
+            selectResult = continueSelect.equals("1");
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-            selectContinue(scanner);
+            selectResult = selectContinue(scanner);
         }
 
-        return continueSelect.equals("1");
+        return selectResult;
     }
 }
