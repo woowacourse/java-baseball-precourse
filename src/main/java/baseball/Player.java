@@ -11,7 +11,7 @@ public class Player {
 
 		System.out.print("숫자를 입력해주세요 : ");
 		String input = scanner.next();
-		if (input.length() == 3 && isNum(input) && isContainZero(input)) {
+		if (checkLen(input) && isNum(input)) {
 			stringToIntArray(input);
 		} else {
 			System.out.println("입력하신 수의 형식이 올바르지 않습니다.");
@@ -28,6 +28,11 @@ public class Player {
 		}
 	}
 
+	// 입력값의 길이가 3인지 검증
+	public boolean checkLen(String input) {
+		return input.length() == 3;
+	}
+
 	// 입력값이 정수값인지, 1-9 범위 내에 있는지 검증
 	public boolean isNum(String input) {
 		String pattern = "^[1-9]+$";
@@ -36,14 +41,5 @@ public class Player {
 		} else {
 			return false;
 		}
-	}
-
-	// 입력값에 0이 포함되어 있는지 검증
-	public boolean isContainZero(String input) {
-		for (int i = 0; i < 3; i++) {
-			if (input.charAt(i) == '0')
-				return false;
-		}
-		return true;
 	}
 }
