@@ -10,8 +10,7 @@ public class BaseballGame {
     private final int NUMBER_OF_DIGITS;
     private final Scanner scanner;
 
-    private int strikeCnt;
-    private int ballCnt;
+    private boolean isGameEnd = false;
 
     public BaseballGame(int NUMBER_OF_DIGITS, Scanner scanner){
         this.NUMBER_OF_DIGITS = NUMBER_OF_DIGITS;
@@ -22,9 +21,11 @@ public class BaseballGame {
         final Numbers target = getNewTargetNumber();
         do{
             Numbers userGuess = readNumber();
-            calculateScore(target, userGuess);
-            printScore();
-        }while(!checkGameOver());
+            Score score = calculateScore(target, userGuess);
+            printScore(score);
+            checkGameOver(score);
+        }while(!isGameEnd);
+
         printAllCorrect();
     }
 
@@ -36,17 +37,19 @@ public class BaseballGame {
         return InputView.getGuessNumbers(scanner, NUMBER_OF_DIGITS);
     }
 
-    private void calculateScore(Numbers target, Numbers guess){
-        strikeCnt = GameRule.countStrike(target, guess);
-        ballCnt = GameRule.countBall(target, guess);
+    private Score calculateScore(Numbers target, Numbers guess){
+        int strikeCnt = GameRule.countStrike(target, guess);
+        int ballCnt = GameRule.countBall(target, guess);
+
+        return new Score(strikeCnt, ballCnt);
     }
 
-    private void printScore(){
-        OutputView.printScore(strikeCnt, ballCnt);
+    private void printScore(Score score){
+        OutputView.printScore(score);
     }
 
-    private boolean checkGameOver(){
-        return GameRule.checkGameEnd(strikeCnt, NUMBER_OF_DIGITS);
+    private boolean checkGameOver(Score score){
+        return GameRule.checkGameEnd(score, NUMBER_OF_DIGITS);
     }
 
     private void printAllCorrect() {

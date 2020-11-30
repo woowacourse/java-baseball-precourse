@@ -20,7 +20,7 @@ public class GameRule {
                 .count();
     }
 
-    public static boolean checkGameEnd(int strikeCnt, int digits){
-        return strikeCnt == digits;
+    public static boolean checkGameEnd(Score score, int digits){
+        return score.getStrikeCnt() == digits;
     }
 }

@@ -1,5 +1,7 @@
 package view;
 
+import baseball.Score;
+
 public class OutputView {
     private static final String ANNOUNCE_BALL_CNT = "볼";
     private static final String ANNOUNCE_STRIKE_CNT = "스트라이크";
@@ -10,14 +12,12 @@ public class OutputView {
 
     private OutputView(){}
 
-    public static void printScore(int strikeCnt, int ballCnt){
-        if(ballCnt != 0) {
-           printBallPoint(ballCnt);
-        }
+    public static void printScore(Score score){
+        int ballCnt = score.getBallCnt();
+        int strikeCnt = score.getStrikeCnt();
 
-        if(strikeCnt != 0){
-            printStrikePoint(strikeCnt);
-        }
+        printBallPoint(ballCnt);
+        printStrikePoint(strikeCnt);
 
         if(ballCnt == 0 && strikeCnt == 0){
             printScoreIsNothing();
@@ -27,14 +27,18 @@ public class OutputView {
     }
 
     private static void printBallPoint(int ballCnt){
-        printMsg(ballCnt);
-        printMsg(ANNOUNCE_BALL_CNT);
-        printMsg(SEPARATOR_BALL_STRIKE);
+        if(ballCnt != 0){
+            printMsg(ballCnt);
+            printMsg(ANNOUNCE_BALL_CNT);
+            printMsg(SEPARATOR_BALL_STRIKE);
+        }
     }
 
     private static void printStrikePoint(int strikeCnt){
-        printMsg(strikeCnt);
-        printMsg(ANNOUNCE_STRIKE_CNT);
+        if(strikeCnt != 0){
+            printMsg(strikeCnt);
+            printMsg(ANNOUNCE_STRIKE_CNT);
+        }
     }
 
     private static void printScoreIsNothing(){
