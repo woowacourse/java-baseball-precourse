@@ -19,16 +19,14 @@ public class GameManager {
 
     private void game() {
         Balls botBalls;
-        Balls myBalls;
         GameResult gameResult;
 
-        botBalls = Balls.generateRandomBalls();                 // 랜덤 생성 balls
+        botBalls = Balls.generateRandomBalls();                 // 랜덤 생성 수
         do {
             System.out.println(botBalls);// TODO 테스트
 
             System.out.print("숫자를 입력해주세요 : ");
-            myBalls = getMyBalls();                             // 사용자 balls
-            gameResult = myBalls.judgeResult(botBalls);         // 결과 계산
+            gameResult = getMyBalls().judgeResult(botBalls);    // 사용자 수 입력 & 결과 계산
             printResult(gameResult);                            // 결과 출력
 
         } while (!gameResult.isAllStrikes());                   // 3스트라이크: 루프탈출
