@@ -6,24 +6,41 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-        int[] answerList = generateNumber();
-        playGame(scanner, answerList);
+        baseballGame(scanner);
         scanner.close();
     }
 
-    private static void playGame(Scanner kbd, int[] answer) {
+    private static void baseballGame(Scanner kbd){
+        boolean newgame = true;
+        while(newgame) {
+            int[] answerList = generateNumber();
+            newgame = playGame(kbd, answerList);
+        }
+    }
+
+    private static boolean playGame(Scanner kbd, int[] answer) {
         boolean gameover = true;
+        boolean newgame;
         while (gameover) {
             int[] guess = getGuess(kbd);
             gameover = calResult(answer, guess);
         }
+        while (true) {
+            try {
+                newgame = checkGameState(kbd);
+                break;
+            } catch (Exception e) {
+                System.out.println("1 또는 2만 입력가능합니다");
+            }
+        }
+        return newgame;
     }
 
     private static int[] generateNumber() {
         /* 1~9의 서로 다른 수로 이루어진 3자리 난수 생성*/
         int[] answer = new int[3];
         while(answer[0] == answer[1] || answer[0] == answer[2] || answer[1] == answer[2]) {
-        /* 중복된 숫자가 있을 경우 다시 생성*/
+            /* 중복된 숫자가 있을 경우 다시 생성*/
             answer[0] = RandomUtils.nextInt(1,9);
             answer[1] = RandomUtils.nextInt(1,9);
             answer[2] = RandomUtils.nextInt(1,9);
@@ -114,5 +131,14 @@ public class Application {
             System.out.printf("%d볼 %d스트라이크\n", ball, strike);
             return true;
         }
+    }
+
+    private static boolean checkGameState(Scanner kbd) {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = kbd.next();
+        int state = Integer.parseInt(input);
+        if (state == 1) return true;
+        else if (state == 2) return false;
+        else throw new IllegalArgumentException();
     }
 }
