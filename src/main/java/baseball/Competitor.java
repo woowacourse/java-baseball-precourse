@@ -10,7 +10,17 @@ public class Competitor {
     private static final int LAST_BOUNDARY_VALUE = 9;
     private static final int RANDOM_NUMBER_COUNT = 3;
 
-    public static String getRandomNumbers(){
+    private final String generatedRandomNumbers;
+
+    public Competitor(){
+        this.generatedRandomNumbers = generateRandomNumbers();
+    }
+
+    public String getGeneratedRandomNumbers(){
+        return this.generatedRandomNumbers;
+    }
+
+    private String generateRandomNumbers(){
         Set<Integer> randomNumbers = new LinkedHashSet<>();
         while(randomNumbers.size() != RANDOM_NUMBER_COUNT){
             randomNumbers.add(RandomUtils.nextInt(FIRST_BOUNDARY_VALUE, LAST_BOUNDARY_VALUE));
