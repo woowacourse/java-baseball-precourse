@@ -14,7 +14,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
         int restartGame = 1;
-        while(restartGame == RESTART_CODE){
+        while (restartGame == RESTART_CODE) {
             restartGame = GameController.playGame(scanner);
         }
     }

@@ -7,29 +7,29 @@ public class GameController {
     public static final String REGAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String END_CONDITION = "3스트라이크";
 
-    public static int playGame(Scanner scanner){
+    public static int playGame(Scanner scanner) {
         //임의의 수를 생성한다
         String randomNumber = RandomNumber.generateNumbers(Application.NUMBER_LENGTH);
         System.out.println(randomNumber);
         String inputNumber = "";
         int restartGame = 0;
 
-        while(randomNumber != inputNumber){
+        while (randomNumber != inputNumber) {
             //유저에게 숫자를 입력받는다
             inputNumber = InputNumber.getInput(scanner);
             //입력값의 범위를 벗어나서 경고 메세지를 받은 경우
-            if (inputNumber.length() != Application.NUMBER_LENGTH){
+            if (inputNumber.length() != Application.NUMBER_LENGTH) {
                 System.out.println(inputNumber);
                 continue;
             }
             //심판에게 판단을 받는다
             String result = Referee.judgeNumber(randomNumber, inputNumber);
-            if(result.equals(END_CONDITION)){
+            if (result.equals(END_CONDITION)) {
                 System.out.println(END_MESSAGE);
                 System.out.println(REGAME_MESSAGE);
                 restartGame = scanner.nextInt();
                 break;
-            }else{
+            } else {
                 System.out.println(result);
             }
         }
