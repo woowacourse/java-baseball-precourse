@@ -1,8 +1,5 @@
 package domain;
 
-import utils.RandomUtils;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBall {

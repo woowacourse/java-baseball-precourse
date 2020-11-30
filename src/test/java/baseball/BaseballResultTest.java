@@ -29,7 +29,7 @@ class BaseballResultTest {
         //when
         BaseballResult baseballResult = new BaseballResult();
         //then
-        assertEquals(baseballResult.getResult(), NOTHING);
+        assertEquals(NOTHING, baseballResult.getResult());
     }
 
     @Test

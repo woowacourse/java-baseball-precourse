@@ -17,7 +17,7 @@ public class BaseballResult {
     }
 
     public void accumulateBallType(BallType ballType) {
-        result.put(ballType, result.getOrDefault(ballType, 0) + 1);
+        result.put(ballType, result.getOrDefault(ballType, ZERO) + 1);
     }
 
     public String getResult() {

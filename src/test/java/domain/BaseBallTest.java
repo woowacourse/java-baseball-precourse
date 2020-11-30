@@ -32,9 +32,9 @@ class BaseBallTest {
         //given
         List<Integer> inputNumber = Arrays.asList(1,2,3,4);
         //when
-        //then
         IllegalStateException exception
                 = assertThrows(IllegalStateException.class, () -> new BaseBall(inputNumber));
+        //then
         assertEquals("0을 제외한 3자리 숫자를 입력해주세요.", exception.getMessage());
 
     }
@@ -45,9 +45,9 @@ class BaseBallTest {
         //given
         List<Integer> inputNumber = Arrays.asList(9,9);
         //when
-        //then
         IllegalStateException exception
                 = assertThrows(IllegalStateException.class, () -> new BaseBall(inputNumber));
+        //then
         assertEquals("0을 제외한 3자리 숫자를 입력해주세요.", exception.getMessage());
 
     }
