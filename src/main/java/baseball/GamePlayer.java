@@ -9,7 +9,7 @@ public class GamePlayer {
         Scanner scanner = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
         userChoice.choice = scanner.nextLine();
-        while(ExceptionChecker.checkException(userChoice.choice)){
+        while(ExceptionChecker.checkChoiceException(userChoice.choice)){
             System.out.print("숫자를 입력해주세요 : ");
             userChoice.choice = scanner.nextLine();
         };

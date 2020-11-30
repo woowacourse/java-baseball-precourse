@@ -15,13 +15,13 @@ public class GameEmulator {
     static boolean checkGameCoin() {
         Scanner sc = new Scanner(System.in);
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int gameCoin = sc.nextInt();
+        String gameCoin = sc.nextLine();
 
-        while(ExceptionChecker.checkException(gameCoin)) {
+        while(ExceptionChecker.checkCoinException(gameCoin)) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            gameCoin = sc.nextInt();
+            gameCoin = sc.nextLine();
         }
-        
-        return gameCoin == 1;
+
+        return gameCoin.equals("1");
     }
 }

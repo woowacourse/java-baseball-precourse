@@ -2,7 +2,7 @@ package baseball;
 
 public class ExceptionChecker {
     
-    static boolean checkException(String userChoice) {
+    static boolean checkChoiceException(String userChoice) {
         try {
             if (userChoice.length() != 3) {
                 throw new IllegalArgumentException();
@@ -19,9 +19,9 @@ public class ExceptionChecker {
         return false;        
     }
 
-    static boolean checkException(int gameCoin) {
+    static boolean checkCoinException(String gameCoin) {
         try {
-            if (gameCoin !=1 && gameCoin != 2) {
+            if (!gameCoin.equals("1") && !gameCoin.equals("2")) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
