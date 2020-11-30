@@ -16,4 +16,14 @@ public class HintGenerator {
         }
         return strikeCount;
     }
+
+    public static int countBall(List<Integer> answer, List<Integer> guess) {
+        int ballCount = 0;
+        for (int index = 0; index < 3; index++) {
+            if (answer.contains(guess.get(index))) {
+                ballCount += 1;
+            }
+        }
+        return ballCount;
+    }
 }
