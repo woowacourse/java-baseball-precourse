@@ -38,6 +38,20 @@ class GameEngine{
       return ballNum;
 
   }
+
+    int getStrikeNum(String guessStr){
+        String answerStr = Integer.toString(this.answer);
+        int strikeNum = 0;
+
+        for(int i = 0; i < 3; i++){
+            if(guessStr.indexOf(i) == answerStr.indexOf(i)){
+              strikeNum += 1;
+            }
+        }
+
+        return strikeNum;
+    }
+
 };
 
 public class Application {
