@@ -28,7 +28,6 @@ public class Computer implements IComputer {
         }
 
         baseballGameNumber.setNumbers(numbers);
-        baseballGameNumber.printAllNumbers();
     }
 
 }

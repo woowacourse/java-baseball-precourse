@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.HashSet;
 import java.util.Scanner;
 
 public class Application {
@@ -10,11 +9,11 @@ public class Application {
     private static boolean isPlaying = true;
 
     private Computer computer;
-    private int[] computerNums = new int[3];
-    private int[] playerNums = new int[3];
+    private Player player;
 
     public Application() {
         computer = new Computer();
+        player = new Player();
     }
 
     public static void main(String[] args) {
@@ -46,54 +45,21 @@ public class Application {
         computer.makeRandomNumber();
         // initComputerNums();
         while (true) {
-            inputPlayerNums(scanner);
-            printResult();
-            if (isCorrectAnswer()) {
-                break;
-            }
+            player.inputThreeNumber(scanner);
+            // printResult();
+            // if (isCorrectAnswer()) {
+            // break;
+            // }
         }
     }
 
-    private void validateInput(int input) {
-        String inputString = String.valueOf(input);
-        if (inputString.length() != 3) {
-            throw new IllegalArgumentException("input only 3 digits");
-        }
-
-        HashSet<Integer> set = new HashSet<>();
-        for (int i = 0; i < inputString.length(); i++) {
-            int num = Integer.valueOf(inputString.substring(i, i + 1));
-            if (set.contains(num)) {
-                throw new IllegalArgumentException("number duplicate");
-            }
-
-            if (num < 1 || num > 9) {
-                throw new IllegalArgumentException("number range is 1 ~ 9");
-            }
-            set.add(num);
-        }
-    }
-
-    private void inputPlayerNums(Scanner scanner) {
-        int input = scanner.nextInt();
-        validateInput(input);
-
-        String[] split = String.valueOf(input).split("");
-        for (int i = 0; i < playerNums.length; i++) {
-            playerNums[i] = Integer.valueOf(split[i]);
-        }
-    }
-
-    // private void initComputerNums() {
-    // HashSet<Integer> set = new HashSet<>();
-    // for (int i = 0; i < computerNums.length; i++) {
-    // int randomNum = RandomUtils.nextInt(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
-    // // 중복된 숫자가 없을때까지 랜덤 숫자를 생성
-    // while (set.contains(randomNum)) {
-    // randomNum = RandomUtils.nextInt(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
-    // }
-    // set.add(randomNum);
-    // computerNums[i] = randomNum;
+    // private void inputPlayerNums(Scanner scanner) {
+    // int input = scanner.nextInt();
+    // validateInput(input);
+    //
+    // String[] split = String.valueOf(input).split("");
+    // for (int i = 0; i < playerNums.length; i++) {
+    // playerNums[i] = Integer.valueOf(split[i]);
     // }
     // }
 
