@@ -1,12 +1,7 @@
 package baseball;
 
-import static domain.Rule.BASEBALL_SIZE;
-
 import domain.BaseballNumber;
 import domain.Hint;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * @author yhh1056
@@ -28,23 +23,10 @@ public class BaseballGame {
     }
 
     public Hint countStrikeAndBall(BaseballNumber playerBaseballNumber) {
-        Hint hint = new Hint();
-        findStrikeAndBall(hint, playerBaseballNumber);
-        return hint;
+        return findStrikeAndBall(playerBaseballNumber);
     }
 
-    private void findStrikeAndBall(Hint hint, BaseballNumber playerBaseballNumber) {
-        for (int index : getIndexes()) {
-            int number = baseballNumber.getNumber(index);
-            int playerNumber = playerBaseballNumber.getNumber(index);
-            if (baseballNumber.contains(playerNumber)) {
-                hint.findStrike(number, playerNumber);
-                hint.findBall(number, playerNumber);
-            }
-        }
-    }
-
-    private List<Integer> getIndexes() {
-        return IntStream.range(0, BASEBALL_SIZE).boxed().collect(Collectors.toList());
+    private Hint findStrikeAndBall(BaseballNumber playerBaseballNumber) {
+        return new Hint(baseballNumber, playerBaseballNumber);
     }
 }

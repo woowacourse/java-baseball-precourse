@@ -4,6 +4,11 @@ import static domain.Message.BALL;
 import static domain.Message.BLANK;
 import static domain.Message.NOTHING;
 import static domain.Message.STRIKE;
+import static domain.Rule.BASEBALL_SIZE;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author yhh1056
@@ -15,13 +20,32 @@ public class Hint {
     private int strikeCount = 0;
     private int ballCount = 0;
 
-    public void findStrike(int number, int playerNumber) {
+    public Hint(BaseballNumber baseballNumber, BaseballNumber playerBaseballNumber) {
+        findHint(baseballNumber, playerBaseballNumber);
+    }
+
+    private void findHint(BaseballNumber baseballNumber, BaseballNumber playerBaseballNumber) {
+        for (int index : getIndexes()) {
+            int number = baseballNumber.getNumber(index);
+            int playerNumber = playerBaseballNumber.getNumber(index);
+            if (baseballNumber.contains(playerNumber)) {
+                findStrike(number, playerNumber);
+                findBall(number, playerNumber);
+            }
+        }
+    }
+
+    private List<Integer> getIndexes() {
+        return IntStream.range(0, BASEBALL_SIZE).boxed().collect(Collectors.toList());
+    }
+
+    private void findStrike(int number, int playerNumber) {
         if (number == playerNumber) {
             ++strikeCount;
         }
     }
 
-    public void findBall(int number, int playerNumber) {
+    private void findBall(int number, int playerNumber) {
         if (number != playerNumber) {
             ++ballCount;
         }
