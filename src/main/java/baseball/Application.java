@@ -10,7 +10,6 @@ public class Application {
         // TODO 구현 진행
 
         GameController gameController = new GameController(scanner);
-
         gameController.run();
 
     }

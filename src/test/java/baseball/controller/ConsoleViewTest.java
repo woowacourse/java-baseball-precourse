@@ -1,10 +1,10 @@
 package baseball.controller;
 
-import jdk.jfr.Description;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+        import jdk.jfr.Description;
+        import org.junit.jupiter.api.Assertions;
+        import org.junit.jupiter.api.Test;
+        import org.junit.jupiter.params.ParameterizedTest;
+        import org.junit.jupiter.params.provider.ValueSource;
 
 class ConsoleViewTest {
 

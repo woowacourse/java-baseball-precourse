@@ -14,7 +14,7 @@ public class ConsoleView {
     private static final int NONE_USEFUL_NUMBER = 0;
     private static String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String GAME_CLEAR_MESSAGE =
-            String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료",SUCCESS_REQUIRE_COUNT);
+            String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", SUCCESS_REQUIRE_COUNT);
 
 
     private static void resetStringBuilder() {
@@ -38,21 +38,29 @@ public class ConsoleView {
         if (ballCount == NONE_USEFUL_NUMBER) {
             return;
         }
-        stringBuilder.append(ballCount + PRINT_BALL_MESSAGE);
+        appendBall(ballCount);
+    }
 
+    private void appendBall(int ballCount) {
+        stringBuilder.append(ballCount + PRINT_BALL_MESSAGE);
     }
 
     public void setStrikeCount(int strikeCount) {
 
         validateCount(strikeCount);
 
+        if (strikeCount == SUCCESS_REQUIRE_COUNT) {
+            appendGameSuccess();
+            return;
+        }
+
         if (strikeCount == NONE_USEFUL_NUMBER) {
             return;
         }
-        if (strikeCount == SUCCESS_REQUIRE_COUNT) {
-            printGameSuccess();
-            return;
-        }
+        appendStrike(strikeCount);
+    }
+
+    private void appendStrike(int strikeCount) {
         stringBuilder.append(strikeCount + PRINT_STRIKE_MESSAGE);
     }
 
@@ -61,20 +69,18 @@ public class ConsoleView {
         System.out.println(PRINT_NOTING_MESSAGE);
     }
 
-    private void printGameSuccess() {
+    private void appendGameSuccess() {
         if (stringBuilder.length() != NONE_USEFUL_NUMBER) {
             resetStringBuilder();
         }
         stringBuilder.append(GAME_CLEAR_MESSAGE);
     }
 
-    private void validateCount(int count){
-        if(count > Validator.REQUIRE_NUMBER_COUNT || count < NONE_USEFUL_NUMBER){
-            throw new IllegalArgumentException();
-        }
+    private void validateCount(int count) {
+        if(Validator)
     }
 
-    public void printRestart() {
+    public static void printRestart() {
         System.out.println(GAME_RESTART_MESSAGE);
     }
 
