@@ -14,7 +14,7 @@ public class BaseballGame {
     public boolean playGame(ArrayList<Integer> answerNumber, Scanner scanner) {
         UserSelectNumber userSelectNumber = UserSelectNumber.createUserSelectNumber();
 
-        while(true){
+        while (true) {
             Output.printSelect();
             GameResult gameResult = GameResult.createGameResult();
             ArrayList<Integer> userNumber;

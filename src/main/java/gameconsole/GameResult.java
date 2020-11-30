@@ -16,7 +16,7 @@ public class GameResult {
         calculateResult(answerList, userList);
         Output.printHint(strikeNumber, ballNumber);
 
-        if(strikeNumber!=3) {
+        if (strikeNumber != 3) {
             return false;
         } else {
             return true;
@@ -25,7 +25,7 @@ public class GameResult {
 
     private void calculateResult(ArrayList<Integer> answerList, ArrayList<Integer> userList) {
         for (Integer number : userList) {
-            if(answerList.contains(number) && userList.indexOf(number) == answerList.indexOf(number)) {
+            if (answerList.contains(number) && userList.indexOf(number) == answerList.indexOf(number)) {
                 strikeNumber += 1;
             } else if (answerList.contains(number) && userList.indexOf(number) != answerList.indexOf(number)) {
                 ballNumber += 1;

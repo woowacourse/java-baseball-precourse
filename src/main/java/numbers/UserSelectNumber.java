@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class UserSelectNumber {
     private ArrayList<Integer> userSelectNumber;
 
-    public static UserSelectNumber createUserSelectNumber(){
+    public static UserSelectNumber createUserSelectNumber() {
         return new UserSelectNumber();
     }
 
