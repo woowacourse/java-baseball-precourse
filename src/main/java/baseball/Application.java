@@ -2,7 +2,6 @@ package baseball;
 
 import java.util.Scanner;
 
-
 public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
@@ -10,29 +9,28 @@ public class Application {
         boolean isRestart = true;
         boolean isPlaying;
 
-        System.out.println("========");
-        while(isRestart) {
+        while (isRestart) {
             Opponent opponent = new Opponent();
-            String opponentNumber = opponent.generateNumber();
+            opponent.generateNumber();
             isPlaying = true;
-            while(isPlaying) {
-                System.out.printf("숫자를 입력해주세요 : ");
-                String playerNumber = scanner.next();
-                Player player = new Player();
-                player.validate3Digits(playerNumber);
-                Service service = new Service();
 
-                service.counter(opponentNumber, playerNumber);
-                service.printHint(service.ballCount, service.strikeCount);
-                isPlaying = !service.isWin(service.ballCount, service.strikeCount);
+            while (isPlaying) {
+                System.out.printf("숫자를 입력해주세요 : ");
+                String playerInput = scanner.next();
+                String playerNumber = InputValidator.isValid3Digits(playerInput);
+
+                Service service = new Service();
+                service.counter(opponent.getOpponentNumber(), playerNumber);
+                service.printHint();
+                isPlaying = !service.isWin();
             }
 
-            if(!isPlaying) {
+            if (!isPlaying) {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String playerInput = scanner.next();
-                Player.validateDigit(playerInput);
-                isRestart = Service.finishBaseball(playerInput);
+                String playerAnswer = InputValidator.isValid1Digit(playerInput);
+                isRestart = Service.isRestartBaseball(playerAnswer);
             }
         }
-    } // end of Main
-} // end of Application
+    }
+}
