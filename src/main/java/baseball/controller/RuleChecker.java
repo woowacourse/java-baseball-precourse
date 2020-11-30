@@ -4,7 +4,7 @@ import baseball.domain.Computer;
 import baseball.domain.User;
 
 public class RuleChecker {
-    static final int NUMBEROFBALL = 3;
+    static final int NUMBER_OF_BALL = 3;
 
     public static void gradePoints(User user, Computer computer) {
         int strikeNumberThisTurn = 0;
@@ -12,7 +12,7 @@ public class RuleChecker {
         int[] userBallBunch = user.getBallBunch();
         int[] computerBallBunch = computer.getBallBunch();
 
-        for (int position = 0; position < NUMBEROFBALL; position++) {
+        for (int position = 0; position < NUMBER_OF_BALL; position++) {
             strikeNumberThisTurn += gradeStrike(userBallBunch, computerBallBunch, position);
             ballNumberThisTurn += gradeBall(userBallBunch, computerBallBunch, position);
         }
@@ -33,7 +33,7 @@ public class RuleChecker {
     private static int gradeBall(int[] userballBunch, int[] computerballBunch, int turn) {
         int thisBall = 0;
 
-        for (int rotate = 0; rotate < NUMBEROFBALL; rotate++) {
+        for (int rotate = 0; rotate < NUMBER_OF_BALL; rotate++) {
             if ((rotate != turn) && (userballBunch[turn] == computerballBunch[rotate])) {
                 thisBall += 1;
             }

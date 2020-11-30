@@ -3,14 +3,14 @@ package baseball.viewer;
 import baseball.domain.User;
 
 public class OutputShower {
-    static final int ENDGAME = 3;
+    static final int END_GAME = 3;
     static final int NOTHING = 0;
 
     public static void outputPrint(User user) {
         int ballNumber = user.getBallNumber();
         int strikeNumber = user.getStrikeNumber();
 
-        if (strikeNumber == ENDGAME) {
+        if (strikeNumber == END_GAME) {
             showGameOver();
             return;
         }

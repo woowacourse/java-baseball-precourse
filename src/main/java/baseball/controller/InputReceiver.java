@@ -4,7 +4,7 @@ import baseball.viewer.InputViewer;
 import java.util.Scanner;
 
 public class InputReceiver {
-    static final int NUMBEROFBALL = 3;
+    static final int NUMBER_OF_BALL = 3;
     static final Scanner receiver = new Scanner(System.in);
 
     public static int[] userAnswer() {
@@ -28,12 +28,12 @@ public class InputReceiver {
 
     private static int[] intergerArrayTranslator(String userIntialAnswer) {
         int userIntegerAnswer = integerTranslator(userIntialAnswer);
-        int[] integerArray = new int[NUMBEROFBALL];
+        int[] integerArray = new int[NUMBER_OF_BALL];
 
-        for (int position = 0; position < NUMBEROFBALL; position++) {
+        for (int position = 0; position < NUMBER_OF_BALL; position++) {
             int singleNumber = userIntegerAnswer % 10;
             zeroChecker(singleNumber);
-            integerArray[NUMBEROFBALL - position - 1] = singleNumber;
+            integerArray[NUMBER_OF_BALL - position - 1] = singleNumber;
             userIntegerAnswer /= 10;
         }
 
@@ -60,13 +60,13 @@ public class InputReceiver {
     }
 
     private static void overlappedChecker(int[] integerArray) {
-        for (int turn = 0; turn < NUMBEROFBALL; turn++) {
+        for (int turn = 0; turn < NUMBER_OF_BALL; turn++) {
             comparedOne(integerArray, turn);
         }
     }
 
     private static void comparedOne(int[] integerArray, int turn) {
-        for (int j = turn + 1; j < NUMBEROFBALL; j++) {
+        for (int j = turn + 1; j < NUMBER_OF_BALL; j++) {
             if (integerArray[turn] == integerArray[j]) {
                 InputViewer.overlappedReceive();
             }
