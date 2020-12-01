@@ -47,7 +47,7 @@ class GameResultTest {
         int strike = 1, ball = 1;
         assertEquals(
                 new GameResult(strike, ball).getResultMessage(),
-                strike + "스트라이크 " + ball + "볼");
+                "1볼 1스트라이크");
     }
 
     @Test
@@ -55,7 +55,7 @@ class GameResultTest {
         int strike = 1, ball = 0;
         assertEquals(
                 new GameResult(strike, ball).getResultMessage(),
-                strike + "스트라이크");
+                "1스트라이크");
     }
 
     @Test
@@ -63,6 +63,6 @@ class GameResultTest {
         int strike = 0, ball = 1;
         assertEquals(
                 new GameResult(strike, ball).getResultMessage(),
-                ball + "볼");
+                "1볼");
     }
 }
