@@ -25,15 +25,13 @@ public class Game {
     }
 
 
-    // 寃뚯엫�쓣 �떆�옉�븯硫댁꽌, 留욎텧 �닽�옄瑜� �깮�꽦�븳�떎.
     public static void startGame() {
         answer = Answer.makeAnswer();
         System.out.println(answer);
         playGame();
     }
 
-    // �닽�옄 鍮꾧탳
-    // �엺�듃瑜� 怨꾩궛�븯怨� 異쒕젰
+
     public static void playGame() {
         int inputNumber = Player.getPlayerInput();
         System.out.print(playMessage);
@@ -45,7 +43,6 @@ public class Game {
     }
 
 
-    // playGame �쓽 寃곌낵�뿉 �뵲�씪 硫붿떆吏�瑜� 異쒕젰�븳�떎.
     public static void printResult() {
         int sum = IntStream.of(result).sum();
         if (sum == 0) {
@@ -69,8 +66,7 @@ public class Game {
         playGame();
     }
 
-    // 寃뚯엫 醫낅즺
-    // �젙�떟�씠�씪硫� �셿猷뚰븷吏� 怨꾩냽 �븷吏�瑜� 諛쏅뒗�떎.
+
     public static void finish() {
         System.out.println(endMessage);
 
