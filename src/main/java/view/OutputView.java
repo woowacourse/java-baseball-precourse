@@ -17,10 +17,7 @@ public class OutputView {
 
         printBallPoint(ballCnt);
         printStrikePoint(strikeCnt);
-
-        if (ballCnt == 0 && strikeCnt == 0) {
-            printScoreIsNothing();
-        }
+        printIsNothing(ballCnt, strikeCnt);
 
         printMsg(SEPARATOR_ROUND);
     }
@@ -39,8 +36,10 @@ public class OutputView {
         }
     }
 
-    private static void printScoreIsNothing() {
-        printMsg(ANNOUNCE_NOTHING);
+    private static void printIsNothing(int ballCnt, int strikeCnt) {
+        if (ballCnt == 0 && strikeCnt == 0) {
+            printMsg(ANNOUNCE_NOTHING);
+        }
     }
 
     public static void printGameOver() {
