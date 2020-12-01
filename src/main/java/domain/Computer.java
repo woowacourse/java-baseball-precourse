@@ -19,7 +19,6 @@ public class Computer {
     }
 
     public boolean isCorrectAnswer(List<Integer> inputBalls) {
-        System.out.println("inputBalls : " + inputBalls);
         int ballCount = balls.countBall(inputBalls);
         int strikeCount = balls.countStrike(inputBalls);
 
