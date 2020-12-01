@@ -24,6 +24,10 @@ public class UserBaseballService {
 	private static Integer CURRENT_BALL_CNT = 0;
 
 	public UserBaseballService(Scanner scanner) {
+		initNumbers(scanner);
+	}
+	
+	public void initNumbers(Scanner scanner) {
 		/** 객체 불러오기 */
 		User user = User.getInstance();
 
