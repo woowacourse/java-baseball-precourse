@@ -55,6 +55,16 @@ public class Application {
 	{
 		answerPickNumber(answer, question);
 
+		if (strike == 3) {
+			System.out.println(GAME_OVER);
+			return true;
+		}
+
+		if (ball + strike == 0) {
+			System.out.println(NOT_THING);
+			return false;
+		}
+		
 		System.out.println("볼 : " + ball + " 스타라이크 : " + strike);
 
 		return false;
