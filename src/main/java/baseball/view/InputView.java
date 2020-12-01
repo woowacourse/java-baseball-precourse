@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.domain.game.GameResult;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -11,7 +12,7 @@ public class InputView {
     private static final String WRONG_INPUT_MESSAGE = "잘못 입력하셨습니다. 숫자를 다시 입력해주세요 : ";
     private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String INPUT_RESTART_DECISION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final char CHAR_TO_INT_CONVERTER_ASCII_CHARACTER = '0';
+    private static final String DELIMITER = "";
     private static final char MINIMUM_BASEBALL_NUMBER = '1';
     private static final char MAXIMUM_BASEBALL_NUMBER = '9';
     private static final char RESTART_NUMBER = '1';
@@ -33,9 +34,8 @@ public class InputView {
         while (!isValidInputBaseballNumbers(inputBaseballNumbers)) {
             inputBaseballNumbers = scanner.nextLine();
         }
-        return inputBaseballNumbers.chars()
-                .map(numberCharacter -> numberCharacter - CHAR_TO_INT_CONVERTER_ASCII_CHARACTER)
-                .boxed()
+        return Arrays.stream(inputBaseballNumbers.split(DELIMITER))
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
