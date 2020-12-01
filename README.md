@@ -30,7 +30,7 @@
 
 - 📁 baseball
     - 📁 domain
-        - 📃 Game : Game에 관한 정보 (게임시작=1, 게임종료=2)
+        - 📃 GameType : Game에 관한 정보 (게임시작=1, 게임종료=2)
         - 📃 Number : 숫자에 관한 정보 (숫자 길이, 숫자 범위)
         - 📃 NumberGenerator : 랜덤 숫자 생성 제너레이터
     - 📁 service
