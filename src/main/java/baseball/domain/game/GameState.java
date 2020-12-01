@@ -7,21 +7,25 @@ public enum GameState {
     RESTART(1),
     EXIT(2);
 
-    private final int signatureValue;
+    private final int gameStateNumber;
 
-    private GameState(int signatureValue) {
-        this.signatureValue = signatureValue;
-    }
-
-    public static GameState findGameState(int signatureValue) {
-        return Arrays.stream(values())
-                .filter(gameState -> gameState.signatureValue == signatureValue)
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+    private GameState(int gameStateNumber) {
+        this.gameStateNumber = gameStateNumber;
     }
 
     public static GameState initiate() {
         return GameState.KEEP_PLAYING;
+    }
+
+    public static GameState findGameState(int gameStateNumber) {
+        return Arrays.stream(values())
+                .filter(gameState -> gameState.isMatch(gameStateNumber))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+    private boolean isMatch(int gameStateNumber) {
+        return this.gameStateNumber == gameStateNumber;
     }
 
     public boolean isAbleToPlay() {
