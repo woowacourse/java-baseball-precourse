@@ -4,18 +4,18 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 class BallsTest {
 
     public static Balls generateBalls(int... intArr) {
-        List<Ball> balls = new ArrayList<>();
-        for (int i : intArr) {
-            balls.add(new Ball(i));
-        }
-        return new Balls(balls);
+        return new Balls(
+                Arrays.stream(intArr)
+                        .mapToObj(Ball::new)
+                        .collect(Collectors.toList())
+        );
     }
 
     @Test
