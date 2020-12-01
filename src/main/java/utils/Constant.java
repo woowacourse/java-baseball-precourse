@@ -1,6 +1,8 @@
 package utils;
 
 public class Constant {
+    public static final int INITIAL_GAME_STATUS_COUNT = 0;
+    public static final String INITIAL_BALLS = "";
     public static final int BALLS_LENGTH = 3;
     public static final int START_INCLUSIVE = 100;
     public static final int END_INCLUSIVE = 999;

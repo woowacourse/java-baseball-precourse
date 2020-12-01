@@ -36,11 +36,11 @@ public class BaseballGameController {
         int selectGameRestart = scanner.nextInt();
         if (selectGameRestart == SELECT_GAME_RESTART) {
             return true;
-        } else if (selectGameRestart == SELECT_GAME_END) {
-            return false;
-        } else {
-            return checkRestart();
         }
+        if (selectGameRestart == SELECT_GAME_END) {
+            return false;
+        }
+        return checkRestart();
     }
 
 }

@@ -1,7 +1,6 @@
 package baseball;
 
 import utils.OutputView;
-
 import java.util.Scanner;
 
 import static utils.Constant.*;
@@ -17,8 +16,8 @@ public class BaseballGame {
         computer = new Computer();
         computer.setBalls();
         player = new Player(scanner);
-        strike = 0;
-        ball = 0;
+        strike = INITIAL_GAME_STATUS_COUNT;
+        ball = INITIAL_GAME_STATUS_COUNT;
     }
 
     public boolean isGameEnd() {

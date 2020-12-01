@@ -3,15 +3,14 @@ package baseball;
 import utils.RandomUtils;
 import utils.Validator;
 
-import static utils.Constant.END_INCLUSIVE;
-import static utils.Constant.START_INCLUSIVE;
+import static utils.Constant.*;
 
 public class Computer {
 
     private String balls;
 
     public Computer() {
-        balls = "";
+        balls = INITIAL_BALLS;
     }
 
     public String getBalls() {

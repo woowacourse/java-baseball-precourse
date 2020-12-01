@@ -13,7 +13,7 @@ public class Player {
 
     public Player(Scanner scanner) {
         this.scanner = scanner;
-        balls = "";
+        balls = INITIAL_BALLS;
     }
 
     public String getBalls() {
