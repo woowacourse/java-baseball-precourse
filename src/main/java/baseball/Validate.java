@@ -22,6 +22,7 @@ public class Validate {
         }
         return true;
     }
+
     public static boolean isInteger(String guess) {
         try {
             Integer.parseInt(guess);
@@ -30,6 +31,7 @@ public class Validate {
             throw new IllegalArgumentException(ERR_MSG_NOT_INTEGER);
         }
     }
+
     public static boolean hasZero(String guess) {
         for (int i = 0; i < guess.length(); i++) {
             if (guess.charAt(i) < '1' || guess.charAt(i) > '9') {
@@ -38,12 +40,14 @@ public class Validate {
         }
         return false;
     }
+
     public static boolean exceedNumberSize(String guess) {
         if (guess.length() != 3) {
             throw new IllegalArgumentException(ERR_MSG_NOT_3_DIGITS);
         }
         return false;
     }
+
     public static boolean hasDuplicateNumber(String guess) {
         char first = guess.charAt(0);
         char second = guess.charAt(1);
@@ -53,6 +57,7 @@ public class Validate {
         }
         return true;
     }
+
     public static boolean isAnswer(String guess, String answer) {
         Integer strike = 0;
         Integer ball = 0;

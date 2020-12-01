@@ -22,6 +22,7 @@ public class Replay {
         }
         return true;
     }
+
     private static Integer parseResetNumber(String number) {
         try {
             Integer intNumber = Integer.parseInt(number);
