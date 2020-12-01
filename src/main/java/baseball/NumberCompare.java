@@ -11,12 +11,12 @@ public class NumberCompare {
     public void compare(int[] com, int[] user) {
         for (int i=0; i < 3; i++) {
             for (int j=0; j<3; j++) {
-                NumberCompare.check(com[i], user[j], i, j);
+                NumberCompare.compareWithcomNum(com[i], user[j], i, j);
             }
         }
     }
 
-    public static void check(int comNum, int userNum, int i, int j) {
+    public static void compareWithcomNum(int comNum, int userNum, int i, int j) {
         if (comNum==userNum && i == j) { // 숫자와 자리(인덱스) 모두 같은 경우
             strike++;
         } else if (comNum==userNum && i != j) { // 숫자는 같지만 자리(인덱스)는 다른 경우
