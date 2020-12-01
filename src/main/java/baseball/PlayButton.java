@@ -12,13 +12,13 @@ public class PlayButton {
 
     private final String playAgainButton;
 
-    public PlayButton(String userInput) throws IllegalArgumentException{
+    public PlayButton(String userInput) throws IllegalArgumentException {
         InputValidator.checkValidPlayAgainBtn(userInput);
 
         this.playAgainButton = userInput;
     }
 
-    public boolean playAgain(){
+    public boolean playAgain() {
         return playAgainButton.equals(PLAY_AGAIN_BUTTON);
     }
 }

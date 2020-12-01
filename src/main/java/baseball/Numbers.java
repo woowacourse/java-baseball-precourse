@@ -10,23 +10,23 @@ public class Numbers {
 
     private final List<Integer> numbers;
 
-    public Numbers(List numbers){
+    public Numbers(List numbers) {
         this.numbers = numbers;
     }
 
-    public Stream<Integer> stream(){
+    public Stream<Integer> stream() {
         return numbers.stream();
     }
 
-    public int get(int index){
+    public int get(int index) {
         return numbers.get(index);
     }
 
-    public int indexOf(Object object){
+    public int indexOf(Object object) {
         return numbers.indexOf(object);
     }
 
-    public boolean contains(Object object){
+    public boolean contains(Object object) {
         return numbers.contains(object);
     }
 }

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class NumbersFactory {
 
-    public static Numbers createNumbers(String num) throws IllegalArgumentException{
+    public static Numbers createNumbers(String num) throws IllegalArgumentException {
         InputValidator.checkValidNumbers(num, Numbers.DIGITS);
 
         List numberList = Arrays.stream(num.split(""))
@@ -19,10 +19,10 @@ public class NumbersFactory {
         return new Numbers(numberList);
     }
 
-    public static Numbers createRandomNumbers(){
+    public static Numbers createRandomNumbers() {
         List<Integer> numberList = new ArrayList<>();
 
-        while(numberList.size()< Numbers.DIGITS){
+        while (numberList.size()< Numbers.DIGITS){
             numberList.add(getRandWithoutDuplicate(numberList));
         }
 
@@ -31,10 +31,10 @@ public class NumbersFactory {
 
     private static int getRandWithoutDuplicate(List<Integer> list) {
         int rand;
+
         do {
             rand = RandomUtils.nextInt(Numbers.MIN, Numbers.MAX);
-        }
-        while (list.contains(rand));
+        } while (list.contains(rand));
 
         return rand;
     }

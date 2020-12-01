@@ -11,31 +11,31 @@ public class BaseballGame {
 
     private boolean isGameEnd = false;
 
-    public BaseballGame(Scanner scanner){
+    public BaseballGame(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public void play(){
+    public void play() {
         final Numbers target = NumbersFactory.createRandomNumbers();
 
-        do{
+        do {
             Numbers guess = InputView.getNumbers(scanner);
             Score score = calculateScore(target, guess);
             OutputView.printScore(score);
             checkGameOver(score);
-        }while(!isGameEnd);
+        } while (!isGameEnd);
 
         OutputView.printGameOver();
     }
 
-    private Score calculateScore(Numbers target, Numbers guess){
+    private Score calculateScore(Numbers target, Numbers guess) {
         int strikeCnt = GameRule.countStrike(target, guess);
         int ballCnt = GameRule.countBall(target, guess);
 
         return new Score(strikeCnt, ballCnt);
     }
 
-    private void checkGameOver(Score score){
+    private void checkGameOver(Score score) {
         isGameEnd = GameRule.checkGameEnd(score);
     }
 }

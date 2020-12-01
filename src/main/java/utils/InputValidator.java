@@ -10,25 +10,25 @@ public class InputValidator {
     private InputValidator(){}
 
     public static void checkValidPlayAgainBtn(String input) throws IllegalArgumentException {
-        if(!StringHandler.isValidLength(input, PlayButton.LEN)){
+        if (!StringHandler.isValidLength(input, PlayButton.LEN)) {
             throw new IllegalArgumentException(INVALID_LENGTH_MSG);
         }
 
-        if(!StringHandler.isInRange(input, PlayButton.MIN, PlayButton.MAX)){
+        if (!StringHandler.isInRange(input, PlayButton.MIN, PlayButton.MAX)) {
             throw new IllegalArgumentException(INVALID_RANGE_MSG);
         }
     }
 
     public static void checkValidNumbers(String input, int len) throws IllegalArgumentException {
-        if(!StringHandler.isValidLength(input, len)){
+        if (!StringHandler.isValidLength(input, len)) {
             throw new IllegalArgumentException(INVALID_LENGTH_MSG);
         }
 
-        if(!StringHandler.isInRange(input, Numbers.MIN, Numbers.MAX)){
+        if (!StringHandler.isInRange(input, Numbers.MIN, Numbers.MAX)) {
             throw new IllegalArgumentException(INVALID_RANGE_MSG);
         }
 
-        if(!StringHandler.isAllDifferent(input)){
+        if (!StringHandler.isAllDifferent(input)) {
             throw new IllegalArgumentException(INVALID_DUPLICATE_MSG);
         }
     }

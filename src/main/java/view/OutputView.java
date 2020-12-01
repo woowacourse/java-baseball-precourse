@@ -11,43 +11,43 @@ public class OutputView {
 
     private OutputView(){}
 
-    public static void printScore(Score score){
+    public static void printScore(Score score) {
         int ballCnt = score.getBallCnt();
         int strikeCnt = score.getStrikeCnt();
 
         printBallPoint(ballCnt);
         printStrikePoint(strikeCnt);
 
-        if(ballCnt == 0 && strikeCnt == 0){
+        if (ballCnt == 0 && strikeCnt == 0) {
             printScoreIsNothing();
         }
 
         printMsg(SEPARATOR_ROUND);
     }
 
-    private static void printBallPoint(int ballCnt){
-        if(ballCnt != 0){
+    private static void printBallPoint(int ballCnt) {
+        if (ballCnt != 0) {
             printMsg(ballCnt);
             printMsg(ANNOUNCE_BALL_CNT);
         }
     }
 
-    private static void printStrikePoint(int strikeCnt){
-        if(strikeCnt != 0){
+    private static void printStrikePoint(int strikeCnt) {
+        if (strikeCnt != 0) {
             printMsg(strikeCnt);
             printMsg(ANNOUNCE_STRIKE_CNT);
         }
     }
 
-    private static void printScoreIsNothing(){
+    private static void printScoreIsNothing() {
         printMsg(ANNOUNCE_NOTHING);
     }
 
-    public static void printGameOver(){
+    public static void printGameOver() {
         printMsg(ANNOUNCE_ALL_CORRECT);
     }
 
-    public static void printMsg(Object msg){
+    public static void printMsg(Object msg) {
         System.out.print(msg);
     }
 }
