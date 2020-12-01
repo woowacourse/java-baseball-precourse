@@ -1,11 +1,7 @@
 package baseball;
 
-
-import utils.RandomUtils;
-
 import java.util.Scanner;
 
-import static baseball.Constant.MAX_LENGTH;
 import static baseball.Game.*;
 import static baseball.Validation.validateInputNumber;
 

@@ -84,7 +84,10 @@ public class Game {
                 continue;
             }
 
+            if (continueGameNumber.compareTo("1") == 0){
+                return true;
+            }
+            return false;
         }
-
     }
 }
