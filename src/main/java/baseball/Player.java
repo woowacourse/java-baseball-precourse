@@ -7,8 +7,9 @@ import java.util.Scanner;
 public class Player {
 
     private final Scanner scanner;
-    private static final String wrongInput = "잘못된 입력입니다. 중복된 숫자가 없는 3자리 정수만 입력해주세요.";
+    private static final String wrongInputWords = "잘못된 입력입니다.";
     private static final String inputWords = "숫자를 입력해주세요 : ";
+    private static final String gameContinueWords = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     ArrayList<Integer> inputNumber = null;
 
     public Player(Scanner scanner) {
@@ -16,11 +17,34 @@ public class Player {
     }
 
     public ArrayList<Integer> getInputNumber() {
-        readInput();
+        readInputNumber();
         return inputNumber;
     }
 
-    private int readInput() {
+    public boolean getIfContinue() {
+        return readIfContinue() == 1;
+    }
+
+    private int readIfContinue() {
+        boolean isValid;
+        int number;
+        while(true) {
+            System.out.println(gameContinueWords);
+            number = checkIfNumber();
+            isValid = checkValidInput(number);
+            if(isValid) {
+                break;
+            } else {
+                System.out.println(wrongInputWords);
+            }
+        }
+
+        return number;
+    }
+
+
+
+    private int readInputNumber() {
         boolean isValid;
         int number;
         while(true) {
@@ -30,7 +54,7 @@ public class Player {
             if(isValid) {
                 break;
             } else {
-                System.out.println(wrongInput);
+                System.out.println(wrongInputWords);
             }
         }
 
@@ -49,12 +73,14 @@ public class Player {
         return num;
     }
 
+    private boolean checkValidInput(int number) {
+        return number == 1 || number == 2;
+    }
+
     private boolean checkDigit(int checkIfNumber) {
         int numberLen = (int) (Math.log10(checkIfNumber) + 1);
         if (numberLen == 3) {
-            if (parseInput(checkIfNumber)) {
-                return true;
-            }
+            return parseInput(checkIfNumber);
         }
 
         return false;
