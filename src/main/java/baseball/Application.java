@@ -77,5 +77,23 @@ public class Application {
 			answer /= 10;
 		}
 	}
+	
+	
+	static void checkBS(int answerTemp, int answerCount, int question) {
+		for (int questionCount = 0; questionCount < 3; questionCount++) {
+			int questionTemp = question % 10;
+			question /= 10;
+
+			if (answerTemp == questionTemp) {
+				ball = ball + 1;
+				if (answerCount == questionCount) {
+					ball = ball - 1;
+					strike = strike + 1;
+				}
+
+			}
+		}
+	}
+	
 }
 
