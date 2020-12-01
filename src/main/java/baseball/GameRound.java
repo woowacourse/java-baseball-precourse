@@ -77,6 +77,7 @@ public class GameRound {
                 String response = scanner.next();
                 askQuestion.askResponse(gameData, response);
             }
+            // assume that the input will not be valid
             askQuestion.setIsValidInput(false);
         }
     }
