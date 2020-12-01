@@ -104,6 +104,14 @@ private static final Random RANDOM = new Random();
 
 <br>
 
+## 구현 할 기능 목록
+- 종료된 게임을 다시 시작하거나 종료시키는 기능
+- 숫자를 입력받는 기능
+- 추측한 숫자와 정답을 비교하는 기능
+- 비교한 결과를 사용자에게 보여주는 기능
+
+
 ## 📝 License
+
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
