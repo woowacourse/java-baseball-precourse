@@ -15,7 +15,7 @@
 - 야구 게임을 실행할 수 있는 메서드로 가짐
 ### Controller
 - 실제 게임 시작 진행 
-#### NumberBaseBall
+#### NumberBaseball
 - 시작 및 종료를 인식
 - 전체적인 게임을 진행하는 메서드.
 #### RandomBallSet  

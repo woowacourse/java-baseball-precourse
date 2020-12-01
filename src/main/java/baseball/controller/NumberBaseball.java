@@ -4,7 +4,7 @@ import baseball.domain.Computer;
 import baseball.domain.User;
 import baseball.viewer.OutputShower;
 
-public class GameProcess {
+public class NumberBaseball {
     /* 게임 진행을 명령하는 메서드*/
     public void play() {
         boolean oneMoreGame;
