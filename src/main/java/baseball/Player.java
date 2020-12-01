@@ -10,7 +10,7 @@ public class Player {
 	private static final String errorMessage = "3자리의 수만 입력할 수 있습니다.";
 	
 	
-	// 유효한 플레이어 입력을 받는다. 
+	// 유효한 플레이어 입력을 받는다.
     public static int getPlayerInput() {
     	Scanner scanner = new Scanner(System.in);
     	
