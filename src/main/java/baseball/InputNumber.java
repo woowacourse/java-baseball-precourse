@@ -28,6 +28,12 @@ public class InputNumber {
         if (duplicateExist(inputNumber)) {
             throw new IllegalArgumentException();
         }
+        //문자열을 입력하면 예외를 발생시킨다
+        for (int i =0; i < inputNumber.length(); i++){
+            if (!Character.isDigit(inputNumber.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
+        }
         return true;
     }
 
