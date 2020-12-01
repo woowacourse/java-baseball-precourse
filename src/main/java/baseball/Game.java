@@ -17,4 +17,10 @@ public class Game {
     public void initNewGame() {
         this.target = valid.newTarget();
     }
+
+    /** 입력을 요청 */
+    public void readyForInput() {
+        printer.enterNumber();
+    }
+
 }

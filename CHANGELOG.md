@@ -5,7 +5,17 @@
 
 
 ---
-## [1.0.0]() (2020-12-01)
+## [1.0.1]() (2020-12-01)
+
+**Note:** feat<Game>: Add readyForInput feature
+
+Feature update : readyForInput
+- Game.java
+
+This feature calls the enterNumber method
+
+---
+## [1.0.0](https://github.com/weirdbb91/java-baseball-precourse/commit/f85e6d0722a3416c65d878d68fd0934243f33488) (2020-12-01)
 
 **Note:** feat<Game>: Add initNewGame feature
 
