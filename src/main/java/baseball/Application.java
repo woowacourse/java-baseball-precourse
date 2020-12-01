@@ -1,9 +1,5 @@
 package baseball;
 
-import static baseball.Constants.MESSAGE_GAME_FINISHED;
-import static baseball.Constants.MESSAGE_GAME_REPLAY;
-import static baseball.UtilityFunctions.parseGameExitString;
-
 import java.util.Scanner;
 
 public class Application {
