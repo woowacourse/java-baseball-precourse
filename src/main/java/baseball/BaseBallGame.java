@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class BaseBallGame {
 
-    private final Scanner scanner;
     private static final String CONTINUE = "1";
     private static final String QUIT = "2";
+
+    private final Scanner scanner;
 
     public BaseBallGame(Scanner scanner) {
         this.scanner = scanner;
@@ -16,7 +17,6 @@ public class BaseBallGame {
         do {
             singleGame();
         } while (continueGame());
-        scanner.close();
     }
 
     private void singleGame() {
