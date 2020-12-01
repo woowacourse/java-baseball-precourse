@@ -45,12 +45,16 @@ public class BaseBallGame {
             try {
                 userBalls = Balls.stringToBalls(getInputString());  // 사용자 생성 balls
             } catch (NumberFormatException e) {
-                System.out.println("3개의 1~9 사이의 수만 입력할 수 있습니다.");
+                printFormatExceptionMessage();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
         return userBalls;
+    }
+
+    private void printFormatExceptionMessage() {
+        System.out.printf("%d개의 1~9 사이의 수만 입력할 수 있습니다.%n", Balls.COUNT_OF_BALLS);
     }
 
     private Boolean continueGame() {
@@ -60,7 +64,7 @@ public class BaseBallGame {
             input = getInputString();
 
             if (!input.equals(CONTINUE) && !input.equals(QUIT)) {
-                System.out.println("1, 2만 입력 가능합니다. 다시 입력해주세요. 입력값:" + input);
+                System.out.println("1, 2만 입력 가능합니다. 다시 입력해주세요.");
                 continue;
             }
 
