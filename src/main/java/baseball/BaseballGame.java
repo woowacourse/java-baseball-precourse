@@ -3,6 +3,11 @@ package baseball;
 public class BaseballGame {
 
     private BaseballGameInput baseballGameInput;
+    private BaseballNumbers computerBaseballNumbers;
+    private BaseballNumbers userBaseballNumbers;
+    private BaseballGameResult baseballGameResult;
+
+    private final String FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임종료";
     private final int RESTART = 1;
 
     public BaseballGame(BaseballGameInput baseballGameInput) {
@@ -10,33 +15,30 @@ public class BaseballGame {
     }
 
     public void run() {
+        if(gameLogicAndIsRestart()) {
+            run();
+        }
+    }
 
-        BaseballNumbers computerBaseballNumbers;
-        BaseballNumbers userBaseballNumbers;
-
-        BaseballGameResult baseballGameResult;
-
+    private boolean gameLogicAndIsRestart() {
         computerBaseballNumbers = RandomBaseballNumbersGenerator.generate();
 
         do {
-            String baseballNumbersInput = baseballGameInput.baseballNumbersInput();
             userBaseballNumbers = BaseballNumbers
-                    .getBaseballNumberFromString(baseballNumbersInput);
-
-            if (!BaseballNumbersValidator.isValid(userBaseballNumbers)
-                    || !BaseballNumbersValidator.isValid(computerBaseballNumbers)) {
-                throw new IllegalArgumentException();
-            }
+                    .getBaseballNumberFromString(baseballGameInput.baseballNumbersInput());
 
             baseballGameResult = BaseballGameResult
                     .getBaseballGameResult(computerBaseballNumbers, userBaseballNumbers);
+
             System.out.println(baseballGameResult.toString());
         } while(baseballGameResult.isFinished());
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
-        String restartOrExitInput = baseballGameInput.restartOrExitInput();
-        if(!RestartOrExitValidator.isValid(restartOrExitInput)) throw new IllegalArgumentException();
+        return isRestart();
+    }
 
-        if(Integer.parseInt(restartOrExitInput) == RESTART) run();
+    private boolean isRestart() {
+        System.out.println(FINISH_MESSAGE);
+        String restartOrExitInput = baseballGameInput.restartOrExitInput();
+        return Integer.parseInt(restartOrExitInput) == RESTART;
     }
 }
