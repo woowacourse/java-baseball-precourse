@@ -34,6 +34,4 @@ public class StringHandler {
         }
         return true;
     }
-
-
 }

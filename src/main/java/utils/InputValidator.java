@@ -32,6 +32,4 @@ public class InputValidator {
             throw new IllegalArgumentException(INVALID_DUPLICATE_MSG);
         }
     }
-
-
 }
