@@ -3,10 +3,18 @@
 이 프로젝트의 주목할만한 변화들은 모두 이곳에 기입합니다.  
 작성 기준은 [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 를 따르도록 합니다.  
 
+---
+## [0.5.1]() (2020-12-01)
 
+**Note:** feat<Printer>: Add other comment print features
+
+Feature update : enterNumber, gameOver
+- Printer.java
+
+This feature shows game comments 
 
 ---
-## [0.5.0]() (2020-12-01)
+## [0.5.0](https://github.com/weirdbb91/java-baseball-precourse/commit/95ae4881ff133fe26dedae8bbb71ae9334c5988a) (2020-12-01)
 
 **Note:** feat<Printer>: Add ballAndStrike feature
 
