@@ -74,7 +74,7 @@ public class Game {
     }
 
     public static boolean continueGame(){
-        System.out.print("계속하려면 1 아니면 2 :");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Scanner s = new Scanner(System.in);
         while(true){
             String continueGameNumber = s.nextLine();
@@ -85,8 +85,10 @@ public class Game {
             }
 
             if (continueGameNumber.compareTo("1") == 0){
+                System.out.println("새로운 게임을 시작합니다.");
                 return true;
             }
+            System.out.println("프로그램을 종료합니다.");
             return false;
         }
     }

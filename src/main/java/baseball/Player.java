@@ -9,7 +9,7 @@ public class Player {
 
     public static void playGame(Scanner scanner){
         String gameNumber = makeGameNumber();
-        System.out.println(gameNumber);
+        System.out.print("숫자를 입력해주세요 : ");
 
         while (true){
             String inputNumber = scanner.nextLine();
@@ -26,6 +26,7 @@ public class Player {
 
             // 3스트라이크 게임 종료
             if(checkResult(strike)){
+                System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
                 break;
             }
         }
