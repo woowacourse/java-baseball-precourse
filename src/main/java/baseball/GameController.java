@@ -41,9 +41,10 @@ public class GameController {
 
     private Number requestPlayerNumber(Scanner scanner) {
         String playerInput = player.requestInput(scanner);
+        Number playerNumber;
 
         try {
-            Number.checkValidation(playerInput);
+            playerNumber = new Number(playerInput);
         } catch (Exception e) {
             System.out.print(e.getMessage());
             /*
@@ -52,7 +53,7 @@ public class GameController {
             return requestPlayerNumber(scanner);
         }
 
-        return new Number(playerInput);
+        return playerNumber;
     }
 
     private boolean checkAnswer(Hint hint) {

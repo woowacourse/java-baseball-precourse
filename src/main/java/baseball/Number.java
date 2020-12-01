@@ -24,6 +24,7 @@ public class Number {
     }
 
     public Number(String playerInput) {
+        checkValidation(playerInput);
         numbers = new ArrayList<>();
 
         for (int i = 0; i < NUMBER_LENGTH; i++) {
@@ -53,7 +54,7 @@ public class Number {
         return new Number(numbers);
     }
 
-    public static void checkValidation(String playerInput) {
+    private void checkValidation(String playerInput) {
         Set<Integer> duplicated = new HashSet<>();                      // 중복 체크용 Set
 
         if (playerInput.length() != NUMBER_LENGTH) {
