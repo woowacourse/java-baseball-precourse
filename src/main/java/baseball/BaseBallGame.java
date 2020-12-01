@@ -34,7 +34,7 @@ public class BaseBallGame {
     }
 
     private void printResult(GameResult gameResult) {
-        System.out.println(gameResult.getResult());
+        System.out.println(gameResult.getResultMessage());
     }
 
     private Balls getUserBalls() {

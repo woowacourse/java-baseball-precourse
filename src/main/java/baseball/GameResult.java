@@ -33,14 +33,14 @@ public class GameResult {
         }
     }
 
-    public String getResult() {
+    public String getResultMessage() {
         if (isNothing()) {
-            return NOTHING;                                             // 낫싱
+            return NOTHING;
         }
-
-        if (thereIsNoBall()) {
+        if (thereIsOnlyStrike()) {
             return strikeMessage();
-        } else if (thereIsNoStrike()) {
+        }
+        if (thereIsOnlyBall()) {
             return ballMessage();
         }
         return strikeBallMessage();
@@ -74,16 +74,16 @@ public class GameResult {
         return String.format("%d%s %d%s", strike, STRIKE, ball, BALL);
     }
 
-    private boolean thereIsNoStrike() {
-        return strike == 0;
+    private boolean thereIsOnlyBall() {
+        return strike == 0 && 0 < ball;
     }
 
     private boolean isNothing() {
         return strike == 0 && ball == 0;
     }
 
-    private boolean thereIsNoBall() {
-        return ball == 0;
+    private boolean thereIsOnlyStrike() {
+        return ball == 0 && 0 < strike;
     }
 
     public boolean isAllStrikes() {
