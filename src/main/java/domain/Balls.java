@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -12,7 +13,7 @@ public class Balls {
         validateBallsSize(balls);
         validateOverlappedNumber(balls);
         validateIfNumberIsNotZero(balls);
-        this.balls = balls;
+        this.balls = new ArrayList<>(balls);
     }
 
     public int countStrike(List<Integer> inputBalls) {
