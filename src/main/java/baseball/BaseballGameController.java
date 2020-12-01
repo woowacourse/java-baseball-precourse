@@ -3,6 +3,7 @@ package baseball;
 import utils.OutputView;
 
 import java.util.Scanner;
+import static utils.Constant.*;
 
 public class BaseballGameController {
 
@@ -28,11 +29,13 @@ public class BaseballGameController {
     }
 
     private boolean checkReplay() {
+
         OutputView.printRestart();
+
         int selectGameRestart = scanner.nextInt();
-        if(selectGameRestart == 1){
+        if(selectGameRestart == SELECT_GAME_RESTART){
             return true;
-        }else if(selectGameRestart == 2){
+        }else if(selectGameRestart == SELECT_GAME_END){
             return false;
         }else{
             return checkReplay();
