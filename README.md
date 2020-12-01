@@ -1,4 +1,4 @@
-# 미션 - 숫자 야구 게임
+# 미션 - 숫자 야구 게임 (후기 블로그 : https://jayb-log.tistory.com/163)
 
 ## 🚀 기능 구현 목록
 - [x] RandomUtils를 이용해 숫자 야구의 정답을 생성하는 generator 구현
