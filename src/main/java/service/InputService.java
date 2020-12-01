@@ -58,7 +58,7 @@ public class InputService {
     }
 
     private static void checkResumeInputValidity(String input) {
-        if(!input.equals("1") && !input.equals("2")) {
+        if (!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException("유효하지 않은 입력값입니다.(Required: 1(재시작) 또는 2(종료))");
         }
     }

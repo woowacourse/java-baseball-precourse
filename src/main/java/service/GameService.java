@@ -1,11 +1,11 @@
 package service;
 
 import dto.Result;
-import utils.RandomUtils;
 import java.util.Scanner;
+import utils.RandomUtils;
 
 public class GameService {
-    private GameService(){
+    private GameService() {
     }
 
     public static void start(Scanner scanner) {
@@ -53,7 +53,7 @@ public class GameService {
     private static Result compareGuessWithTarget(String guessValue, String targetValue) {
         Result result = new Result();
 
-        for (int i=0; i<guessValue.length(); i++){
+        for (int i=0; i<guessValue.length(); i++) {
             String response = judge(guessValue.charAt(i), i, targetValue);
             if (response.equals("ball")) {
                 result.setBall(result.getBall()+1);
@@ -70,7 +70,7 @@ public class GameService {
             return "strike";
         }
 
-        for(int i=0; i<targetValue.length(); i++) {
+        for (int i=0; i<targetValue.length(); i++) {
             if (i == idx) {
                 continue;
             }
