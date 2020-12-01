@@ -7,9 +7,9 @@ public class InputValidator {
         }
         int[] arr = new int[]{0,0,0,0,0,0,0,0,0};
         for(int i = 0; i<GamePlayer.NUMBER_LENGTH;i++){ // check duplicate
-            int checknum = Character.getNumericValue(number.charAt(i));
-            if(arr[checknum-1]==0){
-                arr[checknum-1]+=1;
+            int checkNum = Character.getNumericValue(number.charAt(i));
+            if(arr[checkNum-1]==0){
+                arr[checkNum-1]+=1;
             }else{ // already has same num at different index
                 return false;
             }
