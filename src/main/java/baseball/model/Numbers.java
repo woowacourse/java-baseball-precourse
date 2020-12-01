@@ -24,13 +24,13 @@ public class Numbers {
     }
 
     /* String을 받아 Numbers를 생성하는 메소드 */
-    public static Numbers valueOf(String input) {
+    public static Numbers from(String input) {
         isValidLengthOrThrowException(input);   /* 입력값의 길이 예외 처리 */
 
         ArrayList<Number> inputNumbers = new ArrayList<Number>();
         input.chars()
                 .map(Character::getNumericValue)
-                .mapToObj(Number::valueOf)      /* 정적 팩토리 메소드에 의해 Number 객체 생성 */
+                .mapToObj(Number::from)      /* 정적 팩토리 메소드에 의해 Number 객체 생성 */
                 .filter(number -> notContainsOrThrowException(inputNumbers, number))    /* 중복 예외 처리 */
                 .forEach(inputNumbers::add);
         return new Numbers(inputNumbers);
@@ -56,7 +56,7 @@ public class Numbers {
     public static Numbers createRandomNumbers() {
         ArrayList<Number> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < NUMBERS_LENGTH) {
-            Number randomNumber = Number.valueOf(RandomUtils.nextInt(Number.MIN, Number.MAX));
+            Number randomNumber = Number.from(RandomUtils.nextInt(Number.MIN, Number.MAX));
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
             }

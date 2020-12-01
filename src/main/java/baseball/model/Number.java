@@ -19,7 +19,7 @@ public class Number {
     }
 
     /* int값을 인자로 받아 Number 객체를 생성하는 메소드 */
-    public static Number valueOf(int number) {
+    public static Number from(int number) {
         if (number < MIN || MAX < number) {
             throw new IllegalArgumentException(INVALID_RANGE);
         }

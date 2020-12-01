@@ -16,8 +16,8 @@ public class BallCountTest {
 
     @Test
     public void calculateBallCountWithTest(){
-        Numbers a = Numbers.valueOf("123");
-        Numbers b = Numbers.valueOf("124");
+        Numbers a = Numbers.from("123");
+        Numbers b = Numbers.from("124");
         BallCount expected = BallCount.createBallCount(2, 0);
         BallCount result = a.calculateBallCountWith(b);
         System.out.println(result);

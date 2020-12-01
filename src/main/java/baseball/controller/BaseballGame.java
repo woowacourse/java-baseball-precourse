@@ -41,7 +41,7 @@ public class BaseballGame {
     /* 유저에게 숫자 입력을 요청하고 Numbers를 리턴. 예외 입력에 대해 재입력 요구 */
     private Numbers getNumbersFromUser() {
         try {
-            return Numbers.valueOf(InputView.getNumbers());
+            return Numbers.from(InputView.getNumbers());
         } catch (IllegalArgumentException e) {
             OutputView.showErrorMessage(e.getMessage());
             return getNumbersFromUser();

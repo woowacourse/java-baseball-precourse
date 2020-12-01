@@ -1,10 +1,6 @@
 package baseball.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.Test;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -15,43 +11,43 @@ public class NumbersTest {
     @Test
     public void outOfLengthExceptionTest(){
         try{
-            Numbers.valueOf("1234");
+            Numbers.from("1234");
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
         assertThatThrownBy(() -> {
-            Numbers.valueOf("1234");
+            Numbers.from("1234");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void overLappingExceptionTest(){
         try{
-            Numbers.valueOf("122");
+            Numbers.from("122");
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
         assertThatThrownBy(() -> {
-            Numbers.valueOf("122");
+            Numbers.from("122");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void outOfRangeExceptionTest(){
         try{
-            Numbers.valueOf("a23");
+            Numbers.from("a23");
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
         assertThatThrownBy(() -> {
-            Numbers.valueOf("a23");
+            Numbers.from("a23");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void toStringTest(){
-        System.out.println(Numbers.valueOf("123"));
-        assertThat(Numbers.valueOf("123").toString()).isEqualTo("123");
+        System.out.println(Numbers.from("123"));
+        assertThat(Numbers.from("123").toString()).isEqualTo("123");
     }
 
     @Test

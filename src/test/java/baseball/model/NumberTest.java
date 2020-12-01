@@ -7,16 +7,16 @@ public class NumberTest {
 
     @Test
     public void equalsTest(){
-        Number source = Number.valueOf(1);
-        Number destination = Number.valueOf(1);
+        Number source = Number.from(1);
+        Number destination = Number.from(1);
 
         assertThat(source).isEqualTo(destination);
     }
 
     @Test
     public void hashEqualsTest(){
-        Number source = Number.valueOf(1);
-        Number destination = Number.valueOf(1);
+        Number source = Number.from(1);
+        Number destination = Number.from(1);
 
         assertThat(source.hashCode()).isEqualTo(destination.hashCode());
     }
