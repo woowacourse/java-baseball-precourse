@@ -40,7 +40,7 @@ public class Input {
         validator = new RestartValidator();
         validator.execute(input);
 
-        if (input.equals(GameType.START.click())) {
+        if (GameType.START.equals(input)) {
             return true;
         }
         return false;

@@ -9,7 +9,7 @@ public enum GameType {
         this.gameButton = value;
     }
 
-    public String click(){
-        return gameButton;
+    public boolean equals(String input){
+        return gameButton.equals(input);
     }
 }
