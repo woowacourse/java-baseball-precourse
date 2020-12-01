@@ -19,4 +19,12 @@ public class Validator {
 			}
 		}
 	}
+	public static void checkZeroNumbers(char[] input) {
+		
+		for (int i = 0; i < input.length; i++) {
+			if (input[i] == '0') {
+				throw new IllegalArgumentException("잘못된 입력 입니다.");
+			}
+		}
+	}
 }
