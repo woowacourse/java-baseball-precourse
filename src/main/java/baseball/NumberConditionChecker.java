@@ -32,7 +32,6 @@ public class NumberConditionChecker {
 
     public static boolean checkNumberCondition(int number) {
         List<Integer> numbers = splitNumberToDigits(number);
-        boolean suitability = ! (checkZeroInList(numbers) || checkOverlapNumber(numbers));
-        return suitability;
+        return ! (checkZeroInList(numbers) || checkOverlapNumber(numbers));
     }
 }
