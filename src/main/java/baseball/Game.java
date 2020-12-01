@@ -23,4 +23,15 @@ public class Game {
         printer.enterNumber();
     }
 
+    /** 입력값으로 게임을 진행 */
+    public boolean playing(String input) {
+        score.count(valid.gameNumber(input), target);
+        printer.ballAndStrike(score.getBall(), score.getStrike());
+
+        if (target.equals(input)) {
+            printer.gameOver(target.length());
+            return false;
+        }
+        return true;
+    }
 }

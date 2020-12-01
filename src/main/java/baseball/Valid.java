@@ -28,7 +28,7 @@ public class Valid {
      * @param input 입력값
      * @return 입력값
      */
-    public String inputNumber(final String input) {
+    public String gameNumber(final String input) {
         numeric(input);
         size(input);
         return input;

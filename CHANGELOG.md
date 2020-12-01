@@ -5,7 +5,30 @@
 
 
 ---
-## [1.0.1]() (2020-12-01)
+## [2.0.0]() (2020-12-01)
+
+**Note:** feat<Game>: Add playing feature
+
+Feature update : playing
+- Game.java
+
+This feature is the main method of this game
+
+Logic update : loop
+- Application.java
+
+It will execute this game until put the correct numbers
+
+Style fixed : change inputNumber method's name
+- Valid.java
+
+Changed the name - inputNumber -> gameNumber
+
+### BREAKING CHANGE
+Now we can actually play this game
+
+---
+## [1.0.1](https://github.com/weirdbb91/java-baseball-precourse/commit/5dd68f6817c3c5f6249ae8e6a6c181299ff5a440) (2020-12-01)
 
 **Note:** feat<Game>: Add readyForInput feature
 

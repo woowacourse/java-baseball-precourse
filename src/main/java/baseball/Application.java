@@ -13,5 +13,13 @@ public class Application {
         Game baseballGame = new Game(printer, score, valid);
 
         baseballGame.initNewGame();
+
+
+        while (true) {
+            baseballGame.readyForInput();
+            if (baseballGame.playing(scanner.nextLine())) {
+                continue;
+            }
+        }
     }
 }
