@@ -28,7 +28,7 @@ public class GameResult {
 
     private void validateRange(Integer i) {
         if (i < 0 || Balls.COUNT_OF_BALLS < i) {
-            String msg = String.format("strike나 ball은 0~%d 사이의 수여야 합니다.", Balls.COUNT_OF_BALLS);
+            String msg = String.format("strike/ball은 0~%d 사이의 수여야 합니다.", Balls.COUNT_OF_BALLS);
             throw new IllegalArgumentException(msg);
         }
     }
@@ -89,9 +89,13 @@ public class GameResult {
 
     public boolean isAllStrikes() {
         if (strike == Balls.COUNT_OF_BALLS) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            printGameFinishMessage();
             return true;
         }
         return false;
+    }
+
+    private void printGameFinishMessage() {
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", Balls.COUNT_OF_BALLS);
     }
 }
