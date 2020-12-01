@@ -21,15 +21,14 @@ public class Referee {
 
     public static String judgeToString(int strikeCount, int ballCount) {
         if (strikeCount == Application.NUMBER_LENGTH) {
-            return Integer.toString(strikeCount)+STRIKE;
+            return Integer.toString(strikeCount) + STRIKE;
         }
-
         if (ballCount >0 && strikeCount >0) {
-            return Integer.toString(ballCount)+BALL+" "+Integer.toString(strikeCount)+STRIKE;
+            return Integer.toString(ballCount) + BALL + " " + Integer.toString(strikeCount) + STRIKE;
         } else if (ballCount > 0) {
-            return Integer.toString(ballCount)+BALL;
+            return Integer.toString(ballCount) + BALL;
         } else if (strikeCount > 0) {
-            return Integer.toString(strikeCount)+STRIKE;
+            return Integer.toString(strikeCount) + STRIKE;
         }
         return NOTHING;
     }
