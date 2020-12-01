@@ -43,6 +43,7 @@ public class Input {
         if (GameType.START.equals(input)) {
             return true;
         }
+        
         return false;
     }
 

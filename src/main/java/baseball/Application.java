@@ -11,5 +11,4 @@ public class Application {
         BaseballGame baseballGame = new BaseballGame(scanner);
         baseballGame.start();
     }
-
 }
