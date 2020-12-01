@@ -1,6 +1,7 @@
 # 미션 - 숫자 야구 게임
 
 ## 🚀 기능 요구사항
+
 - 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
 - 정답을 맞추기 위해 3자리수를 입력하고 힌트를 받는다.
 - 힌트는 야구용어인 볼과 스트라이크로 받는데, 같은 자리에 같은 숫자가 있는 경우를 `스트라이크`, 다른 자리에 숫자가 있는 경우를 `볼`로 정한다.
@@ -13,26 +14,35 @@
 <br>
 
 ## ✍🏻 입출력 요구사항
+
 ### ⌨️ 입력
+
 - 3자리의 수
 - 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수
 
 ### 🖥 출력
+
 - 입력한 수에 대한 결과를 볼, 스트라이크 갯수로 표시
+
 ```
 1볼 1스트라이크
 ```
-- 하나도 없는 경우 
+
+- 하나도 없는 경우
+
 ```
 낫싱
 ```
+
 - 3개의 숫자를 모두 맞힐 경우
+
 ```
 3스트라이크
 3개의 숫자를 모두 맞히셨습니다! 게임 종료
 ```
 
 ### 💻 프로그래밍 실행 결과 예시
+
 ```
 숫자를 입력해주세요 : 123
 1볼 1스트라이크
@@ -49,12 +59,13 @@
 1
 숫자를 입력해주세요 : 123
 1볼 1스트라이크
-… 
+…
 ```
 
 <br>
 
 ## 🎱 프로그래밍 요구사항
+
 - 자바 코드 컨벤션을 지키면서 프로그래밍한다.
   - 기본적으로 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)을 원칙으로 한다.
   - 단, 들여쓰기는 '2 spaces'가 아닌 '4 spaces'로 한다.
@@ -67,6 +78,7 @@
 - 비정상적 입력에 대해서는 IllegalArgumentException을 발생시킨다.
 
 ### 프로그래밍 요구사항 - Application
+
 - Application 클래스를 활용해 구현해야 한다.
 - Application의 패키지 구조와 구현은 변경하지 않는다.
 - `final Scanner scanner = new Scanner(System.in);`는 변경하지 않는다.
@@ -82,6 +94,7 @@ public class Application {
 ```
 
 ### 프로그래밍 요구사항 - RandomUtils
+
 - RandomUtils 클래스를 활용해 랜덤 기능을 구현해야 한다.
 - RandomUtils의 패키지 구조와 구현은 변경하지 않는다.
 
@@ -96,6 +109,7 @@ private static final Random RANDOM = new Random();
 <br>
 
 ## 📈 진행 요구사항
+
 - 미션은 [java-baseball-precourse 저장소](https://github.com/woowacourse/java-baseball-precourse) 를 fork/clone해 시작한다.
 - 기능을 구현하기 전에 java-baseball-precourse/README.md 파일에 구현할 기능 목록을 정리해 추가한다.
 - git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
@@ -103,6 +117,16 @@ private static final Random RANDOM = new Random();
 - [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 절차를 따라 미션을 제출한다.
 
 <br>
+
+## 🍳 구현할 기능 목록
+
+- [x] 컴퓨터가 세자리 숫자를 정함
+- [x] 사용자로 부터 세자리 숫자 입력 기능 구현
+- [x] 입력이 세자리 숫자인지 유효성 검증
+- [x] 정답 확인 로직 구현
+- [x] 정답이 아니라면 힌트(스트라이크/볼) 로직 구현
+- [x] 결과 출력 기능 구현
+      <br>
 
 ## 📝 License
 
