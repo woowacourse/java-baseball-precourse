@@ -1,11 +1,3 @@
-/*
- * InputView.java            1.0       2020-11-25
- *
- * Copyright (c) 2020 Yeonwoo Cho
- * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
- * All rights reserved
- */
-
 package baseball.view;
 
 import java.util.Scanner;

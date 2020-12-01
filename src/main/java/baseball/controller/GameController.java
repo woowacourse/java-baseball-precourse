@@ -1,11 +1,3 @@
-/*
- * GameController.java            1.0       2020-11-25
- *
- * Copyright (c) 2020 Yeonwoo Cho
- * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
- * All rights reserved
- */
-
 package baseball.controller;
 
 import baseball.domain.Computer;
@@ -47,8 +39,7 @@ public class GameController {
 
     private void playUnitGame(Computer computer) {
         while (true) {
-            final List<Integer> inputNumbers = generateInputNumbers(this.inputView.receiveInputNumbers());
-            final List<Integer> ballsAndStrikes = computer.calculateResult(inputNumbers);
+            final List<Integer> ballsAndStrikes = computer.calculateResult(generateInputNumbers(this.inputView.receiveInputNumbers()));
             this.outputView.printResult(ballsAndStrikes.get(INDEX_OF_BALLS), ballsAndStrikes.get(INDEX_OF_STRIKES));
             if (isCorrectAnswer(ballsAndStrikes.get(INDEX_OF_STRIKES))) {
                 break;

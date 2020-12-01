@@ -1,14 +1,5 @@
-/*
- * Computer.java            1.0       2020-11-25
- *
- * Copyright (c) 2020 Yeonwoo Cho
- * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
- * All rights reserved
- */
-
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,12 +17,13 @@ public class Computer {
 
     public Computer() {
         final RandomNumbers randomNumbers = new RandomNumbers();
-        this.madeRandomNumbers = randomNumbers.makeRandomNumbers(new ArrayList<>());
+        this.madeRandomNumbers = randomNumbers.makeRandomNumbers();
     }
 
     public List<Integer> calculateResult(List<Integer> inputNumbers) {
         int countsOfStrike = 0;
         int countsOfBall = 0;
+
         for (int i = 0; i < inputNumbers.size(); i++) {
             Integer numberInInputNumbers = inputNumbers.get(i);
             if (numberInInputNumbers.equals(this.madeRandomNumbers.get(i))) {

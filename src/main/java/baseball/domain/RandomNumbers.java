@@ -1,15 +1,8 @@
-/*
- * RandomNumbers.java            1.0       2020-11-25
- *
- * Copyright (c) 2020 Yeonwoo Cho
- * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
- * All rights reserved
- */
-
 package baseball.domain;
 
 import utils.RandomUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +16,8 @@ public class RandomNumbers {
     private static final int LOWER_BOUNDARY = 1;
     private static final int UPPER_BOUNDARY = 9;
 
-    public List<Integer> makeRandomNumbers(List<Integer> randomNumbers) {
+    public List<Integer> makeRandomNumbers() {
+        List<Integer> randomNumbers = new ArrayList<>();
         while (isSizeIncorrect(randomNumbers.size())) {
             addDistinctNumber(makeRandomNumber(), randomNumbers);
         }

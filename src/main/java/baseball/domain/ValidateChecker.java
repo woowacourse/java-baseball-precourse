@@ -1,11 +1,3 @@
-/*
- * ValidateChecker.java            1.0       2020-11-30
- *
- * Copyright (c) 2020 Yeonwoo Cho
- * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
- * All rights reserved
- */
-
 package baseball.domain;
 
 import java.util.List;

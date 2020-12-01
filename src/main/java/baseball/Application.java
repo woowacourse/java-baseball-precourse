@@ -1,11 +1,3 @@
-/*
- * Application.java            0.9       2020-11-25
- *
- * Copyright (c) 2020 Yeonwoo Cho
- * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
- * All rights reserved
- */
-
 package baseball;
 
 import baseball.controller.GameController;
