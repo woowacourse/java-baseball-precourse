@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Player {
@@ -24,31 +23,12 @@ public class Player {
         return readIfContinue() == 1;
     }
 
-    private int readIfContinue() {
-        boolean isValid;
-        int number;
-        while (true) {
-            System.out.println(GAME_RESTART);
-            number = checkIfNumber();
-            isValid = checkValidInput(number);
-            if (isValid) {
-                break;
-            } else {
-                System.out.println(WRONG_INPUT);
-            }
-        }
-
-        return number;
-    }
-
-
-
     private int readInputNumber() {
         boolean isValid;
         int number;
         while (true) {
             System.out.print(GET_INPUT);
-            number = checkIfNumber();
+            number = readFromKeyboard();
             isValid = checkDigit(number);
             if (isValid) {
                 break;
@@ -60,20 +40,44 @@ public class Player {
         return number;
     }
 
-    private int checkIfNumber() {
+    private int readIfContinue() {
+        boolean isValid;
+        int number;
+        while (true) {
+            System.out.println(GAME_RESTART);
+            number = readFromKeyboard();
+            isValid = checkValidInput(number);
+            if (isValid) {
+                break;
+            } else {
+                System.out.println(WRONG_INPUT);
+            }
+        }
+
+        return number;
+    }
+
+    private int readFromKeyboard() throws IllegalArgumentException {
+        String input;
         int num;
         try {
-            num = scanner.nextInt();
-        } catch (InputMismatchException e) {
-            scanner.nextLine();
+            input = scanner.nextLine();
+            num = checkIfNumber(input);
+        } catch (IllegalArgumentException e) {
             return -1;
         }
 
         return num;
     }
 
-    private boolean checkValidInput(int number) {
-        return number == 1 || number == 2;
+    private int checkIfNumber(String input) {
+        for (int digit = 0; digit < input.length(); digit++) {
+            if (!Character.isDigit(input.charAt(digit))) {
+                throw new IllegalArgumentException("숫자가 아닙니다.");
+            }
+        }
+
+        return Integer.parseInt(input);
     }
 
     private boolean checkDigit(int checkIfNumber) {
@@ -104,5 +108,9 @@ public class Player {
 
     private boolean checkIfRepeat(ArrayList<Integer> numList, int checkIfNumber) {
         return numList.contains(checkIfNumber);
+    }
+
+    private boolean checkValidInput(int number) {
+        return number == 1 || number == 2;
     }
 }
