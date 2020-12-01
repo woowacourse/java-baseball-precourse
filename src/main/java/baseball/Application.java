@@ -3,8 +3,8 @@ package baseball;
 import java.util.Scanner;
 
 import service.ComputerBaseballService;
-import service.HintService;
 import service.UserBaseballService;
+import utils.BallStrikeCheckUtils;
 
 public class Application {
 	private static final Integer REPLAY_YES = 1;
@@ -44,8 +44,8 @@ public class Application {
 	}
 
 	private static void checkResult(Scanner scanner) {
-		int ball = HintService.getBall();
-		int strike = HintService.getStrike();
+		int ball = BallStrikeCheckUtils.getBall();
+		int strike = BallStrikeCheckUtils.getStrike();
 
 		printHint(ball, strike);
 
