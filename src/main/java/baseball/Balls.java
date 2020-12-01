@@ -19,7 +19,6 @@ public class Balls {
     }
 
     public GameResult judgeResult(Balls botBalls) {
-        // TODO Balls 끼리 비교
         int STRIKE = 0;
         int BALL = 0;
 

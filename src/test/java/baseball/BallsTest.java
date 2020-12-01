@@ -20,7 +20,6 @@ class BallsTest {
 
     @Test
     void stringToBalls() {
-        // TODO 문자열 -> Balls 변환 잘되는지 어캐 검증하지...
         assertThrows(IllegalArgumentException.class, () -> Balls.stringToBalls(""));
         assertEquals(Balls.stringToBalls("123"), generateBalls(1, 2, 3));
     }
@@ -45,9 +44,6 @@ class BallsTest {
         assertThrows(IllegalArgumentException.class, () -> generateBalls(1, 9, 1));
     }
 
-    /**
-     * judgeResult()로 Balls 객체끼리 비교해서 알맞은 GameResult를 반환하는지 테스트
-     */
     @Test
     void judgeResult() {
         Balls myBalls;
