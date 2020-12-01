@@ -9,8 +9,9 @@ import utils.RandomUtils;
 
 public class Balls {
 
-    private final List<Ball> balls;
     public static final int COUNT_OF_BALLS = 3;
+
+    private final List<Ball> balls;
 
     public Balls(List<Ball> balls) {
         validateSize(balls);
@@ -21,11 +22,9 @@ public class Balls {
     public static Balls generateRandomBalls() {
         List<Ball> balls = new ArrayList<>();
         Ball ball;
-        int randomNumber;
 
         while (balls.size() != COUNT_OF_BALLS) {
-            randomNumber = RandomUtils.nextInt(1, 9);
-            ball = new Ball(randomNumber);
+            ball = new Ball(RandomUtils.nextInt(1, 9));
 
             if (!balls.contains(ball)) {
                 balls.add(ball);
@@ -44,22 +43,6 @@ public class Balls {
         return new Balls(balls);
     }
 
-    @Override
-    public String toString() {
-        return Arrays.toString(this.balls.toArray());
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        Balls balls;
-        if (obj instanceof Balls) {
-            balls = (Balls) obj;
-        } else {
-            throw new ClassCastException(this.getClass().getName() + " 객체 끼리만 비교가 가능합니다.");
-        }
-        return this.balls.equals(balls.balls);
-    }
-
     public Ball get(int index) {
         return balls.get(index);
     }
@@ -67,6 +50,7 @@ public class Balls {
     public boolean contains(Ball ball) {
         return this.balls.contains(ball);
     }
+
 
     private void validateSize(List<Ball> balls) {
         if (balls.size() != COUNT_OF_BALLS) {
@@ -81,5 +65,21 @@ public class Balls {
             String msg = "공들의 숫자는 중복되지 않아야 합니다.";
             throw new IllegalArgumentException(msg);
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Balls balls;
+        if (obj instanceof Balls) {
+            balls = (Balls) obj;
+        } else {
+            throw new ClassCastException(this.getClass().getName() + " 객체 끼리만 비교가 가능합니다.");
+        }
+        return this.balls.equals(balls.balls);
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(this.balls.toArray());
     }
 }
