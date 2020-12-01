@@ -21,7 +21,7 @@ public class Player {
     private List<Integer> createNumbers(String input) {
         validateNumber(input);
         return Arrays.stream(input.split(DELIMITER)).map(Integer::parseInt)
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
     private void validateNumber(String number) {
