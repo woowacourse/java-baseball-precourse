@@ -28,7 +28,6 @@ public class GameService {
 
         do {
             target = Integer.toString(RandomUtils.nextInt(100, 999));
-            System.out.println(target);
         } while (!checkTargetValidity(target));
 
         return target;
