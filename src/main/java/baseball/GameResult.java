@@ -28,8 +28,7 @@ public class GameResult {
 
     private void validateRange(Integer i) {
         if (i < 0 || Balls.COUNT_OF_BALLS < i) {
-            String msg = String
-                    .format("strike나 ball은 0~%d 사이의 수여야 합니다: %d", Balls.COUNT_OF_BALLS, i);
+            String msg = String.format("strike나 ball은 0~%d 사이의 수여야 합니다.", Balls.COUNT_OF_BALLS);
             throw new IllegalArgumentException(msg);
         }
     }
@@ -40,12 +39,11 @@ public class GameResult {
         }
 
         if (thereIsNoBall()) {
-            return String.format("%d%s", strike, STRIKE);               // N스트라이크
+            return strikeMessage();
         } else if (thereIsNoStrike()) {
-            return String.format("%d%s", ball, BALL);                   // N볼
+            return ballMessage();
         }
-
-        return String.format("%d%s %d%s", strike, STRIKE, ball, BALL);  // N스트라이크 N볼
+        return strikeBallMessage();
     }
 
     @Override
@@ -58,6 +56,18 @@ public class GameResult {
         }
 
         return this.strike.equals(gameResult.strike) && this.ball.equals(gameResult.ball);
+    }
+
+    private String ballMessage() {
+        return String.format("%d%s", ball, BALL);
+    }
+
+    private String strikeMessage() {
+        return String.format("%d%s", strike, STRIKE);
+    }
+
+    private String strikeBallMessage() {
+        return String.format("%d%s %d%s", strike, STRIKE, ball, BALL);
     }
 
     private boolean thereIsNoStrike() {
