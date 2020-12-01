@@ -15,26 +15,36 @@ public class Game {
 
     private static List<Integer> answer;
     private static boolean flag = false;
-
     private static int[] result = new int[2];
+    
+    static int playerNumber;
 
+    
+    // 게임을 시작. 먼저 숫자 야구의 정답을 생성한다.
     public static void startGame(Scanner scanner) {
         answer = Answer.makeAnswer(flag);
         System.out.println(answer);
         playGame();
     }
 
-
+    
+    // 플레이어의 숫자 입력을 받아 출력한다.
+    public static void setPlayer() {
+    	int playerNumber = Player.getPlayerInput();
+    	System.out.println(playMessage+playerNumber);
+    }
+    
+    
+    // 입력을 리스트로 만들어 Hint와 비교, 점수를 매긴다.
     public static void playGame() {
-        int inputNumber = Player.getPlayerInput();
-        System.out.println(playMessage+inputNumber);
-        List<Integer> userNumber = Player.numberToArray(inputNumber);
+        List<Integer> numberToList = Player.numberToArray(playerNumber);
 
-        result = Hint.grading(userNumber, answer);
+        result = Hint.grading(numberToList, answer);
         printResult();
     }
 
-
+    
+    // 점수를 출력한다.
     public static void printResult() {
         int sum = IntStream.of(result).sum();
         if (sum == 0) {
@@ -58,7 +68,8 @@ public class Game {
         playGame();
     }
 
-
+    
+    // 3스트라이크일 때 게임을 끝낸다.
     public static void finish() {
         System.out.println(endMessage);
 
