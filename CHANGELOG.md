@@ -5,6 +5,16 @@
 
 
 ---
+## [0.1.0](https://github.com/weirdbb91/java-baseball-precourse/commit/3c27fe98828c7832296f55dad6062e47569a7444) (2020-12-01)
+
+**Note:** feat<Valid>: Add newTarget feature
+
+Feature update : newTarget
+- Valid.java
+
+this feature makes new target composed of all different numbers for baseball game
+
+---
 ## [0.0.1](https://github.com/weirdbb91/java-baseball-precourse/commit/83a7c97f3a7783afe0a20f9bd374788b28ebc3c4) (2020-12-01)
 
 **Note:** docs< [README.md](https://github.com/weirdbb91/java-baseball-precourse/commit/2f9512d798f91eb7733ea6a0618f9a2a6f6d5598#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5) >: Update coding plan
