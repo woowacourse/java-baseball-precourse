@@ -27,7 +27,6 @@ public class GamePlay {
     private void setTargetNumber() {
         targetNumberGenerator = new TargetNumberGenerator();
         this.targetNumber = targetNumberGenerator.getTargetNumber();
-        System.out.println(targetNumber);
     }
 
     private void setPlayer() {
