@@ -7,6 +7,7 @@ public class User {
 
     public void enterNumber(Scanner scanner) {
         System.out.println(Constant.INPUT_MESSAGE);
+
         String number = scanner.next();
 
         if (Validation.isValidInput(number)) {
@@ -23,6 +24,7 @@ public class User {
     private void setUserNumber(String number) {
         for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
             int eachNum = Character.getNumericValue(number.charAt(i));
+
             userNumber[i] = eachNum;
         }
     }
