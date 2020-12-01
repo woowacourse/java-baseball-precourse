@@ -1,5 +1,6 @@
 package baseball.domain.game;
 
+import baseball.domain.exception.InvalidGameResultException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +18,7 @@ class GameResultTest {
     public void GameResult_범위_오류_예외_발생(int ballCounts, int strikeCounts) {
         assertThatCode(() -> {
             new GameResult(ballCounts, strikeCounts);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(InvalidGameResultException.class);
     }
 
     @DisplayName("볼이나 스트라이크 모두 1개도 못 맞춘 경우 isNothing은 true")

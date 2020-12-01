@@ -1,5 +1,7 @@
 package baseball.domain.game;
 
+import baseball.domain.exception.InvalidGameResultException;
+
 public class GameResult {
     private static final int MINIMUM_SCORE_COUNT = 0;
     private static final int MAXIMUM_SCORE_COUNT = 3;
@@ -15,13 +17,13 @@ public class GameResult {
 
     private void validateGameResult(int ballCounts, int strikeCounts) {
         if (ballCounts < MINIMUM_SCORE_COUNT || ballCounts > MAXIMUM_SCORE_COUNT) {
-            throw new IllegalArgumentException();
+            throw new InvalidGameResultException(ballCounts, strikeCounts);
         }
         if (strikeCounts < MINIMUM_SCORE_COUNT || strikeCounts > MAXIMUM_SCORE_COUNT) {
-            throw new IllegalArgumentException();
+            throw new InvalidGameResultException(ballCounts, strikeCounts);
         }
         if (ballCounts + strikeCounts > MAXIMUM_SCORE_COUNT) {
-            throw new IllegalArgumentException();
+            throw new InvalidGameResultException(ballCounts, strikeCounts);
         }
     }
 
