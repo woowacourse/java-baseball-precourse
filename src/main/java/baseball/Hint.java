@@ -15,16 +15,16 @@ public class Hint {
 			userInputNumbersArray = player.userNumbersArray(inputNumbers);
 			int strike = countStrike(RandomNumbersArray, userInputNumbersArray);
 			int ball = countBall(RandomNumbersArray, userInputNumbersArray);
-			
+
 			if (strike == Constant.BASE_BALL_GAME_RANGE) {
 				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 				finishGame = true;
 				break;
 			}
-			
+
 			printBallAndStrike(strike, ball);
-			printNothing(strike,ball);
-			printStrike(strike,ball);
+			printNothing(strike, ball);
+			printStrike(strike, ball);
 			printBall(strike, ball);
 		}
 	}

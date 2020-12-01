@@ -14,7 +14,7 @@ public class Computer {
 	public char[] inputRandomNumbersArray() {
 		int count = 0;
 		boolean[] alreadyInputNumber = overLapNumbersCheckArray();
-		
+
 		while (count < 3) {
 			int randomNumbers = utils.RandomUtils.nextInt(Constant.START_INCLUSIVE, Constant.END_INCLUSIVE);
 			if (!alreadyInputNumber[randomNumbers]) {

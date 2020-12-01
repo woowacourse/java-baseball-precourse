@@ -12,7 +12,7 @@ public class Application {
 		while (finish) {
 			System.out.println("게임을 새로 시작하려면 1번, 종료하려면 2번를 입력하세요.");
 			int selectGame = scanner.nextInt();
-			
+
 			switch (selectGame) {
 			case 1:
 				System.out.println("게임을 시작 합니다.");
