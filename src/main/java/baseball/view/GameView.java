@@ -39,7 +39,8 @@ public class GameView {
         System.out.print(GAME_OVER);
     }
 
-    public static void printExecuteOrTerminate() {
+    public static String inputExecuteOrTerminate(Scanner scanner) {
         System.out.print(GAME_EXECUTE_OR_TERMINATE);
+        return scanner.nextLine();
     }
 }
