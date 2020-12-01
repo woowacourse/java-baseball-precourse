@@ -13,7 +13,7 @@ public class GameController {
         String inputNumber = "";
         int restartGame = 0;
 
-        while (randomNumber != inputNumber) {
+        while (!randomNumber.equals(inputNumber)) {
             //유저에게 숫자를 입력받는다
             inputNumber = InputNumber.getInput(scanner);
             //입력값의 범위를 벗어나서 경고 메세지를 받은 경우
