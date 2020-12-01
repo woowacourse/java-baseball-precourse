@@ -1,6 +1,6 @@
 package baseball.domain.number;
 
-import baseball.domain.exception.InvalidBaseballNumberException;
+import baseball.domain.exception.BaseballNumberRangeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -25,6 +25,6 @@ class BaseballNumberTest {
     public void BaseballNumber_객체_생성_예외_발생(int baseballNumber) {
         assertThatThrownBy(() -> {
             BaseballNumber.valueOf(baseballNumber);
-        }).isInstanceOf(InvalidBaseballNumberException.class);
+        }).isInstanceOf(BaseballNumberRangeException.class);
     }
 }

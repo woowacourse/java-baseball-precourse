@@ -1,6 +1,6 @@
 package baseball.domain.number;
 
-import baseball.domain.exception.InvalidBaseballNumberException;
+import baseball.domain.exception.BaseballNumberRangeException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +23,7 @@ public class BaseballNumber {
 
     private static void validateBaseballNumberRange(int baseballNumber) {
         if (baseballNumber < RANGE_MINIMUM || baseballNumber > RANGE_MAXIMUM) {
-            throw new InvalidBaseballNumberException(baseballNumber);
+            throw new BaseballNumberRangeException(baseballNumber);
         }
     }
 }
