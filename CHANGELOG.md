@@ -6,6 +6,16 @@
 
 
 ---
+## [0.1.0](https://github.com/weirdbb91/java-baseball-precourse/commit/3430c584c0c10a4ea4c7778330acf55fd5ad18f2) (2020-12-01)
+
+**Note:** feat<Valid>: Add isFinish feature
+
+Feature update : isFinish
+- Valid.java
+
+This feature validates is input a right answer and return which is that input means "Game Finish" or "Replay"
+
+---
 ## [0.2.0](https://github.com/weirdbb91/java-baseball-precourse/commit/581c209ed8a2bb411b096446234dfcac2c5f8f13) (2020-12-01)
 
 **Note:** feat<Valid>: Add inputNumber feature
