@@ -1,7 +1,6 @@
 package baseball;
 
 import utils.RandomUtils;
-import baseball.NumberConditionChecker;
 
 public class AnswerGenerator {
     private static final int MIN_NUMBER = 123;
