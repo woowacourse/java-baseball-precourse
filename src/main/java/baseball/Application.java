@@ -67,9 +67,9 @@ public class Application {
     public static Number setComputerNumber() {
         Number comNum = new Number(INPUT_NUM);
         for (int i = 0; i < INPUT_NUM; i++) {
-            int randomNum = RandomUtils.nextInt(0, 9);
+            int randomNum = RandomUtils.nextInt(1, 9);
             while (comNum.isUsedNumber(randomNum)) {
-                randomNum = RandomUtils.nextInt(0, 9);
+                randomNum = RandomUtils.nextInt(1, 9);
             }
             comNum.setNumberAt(i, randomNum);
         }
