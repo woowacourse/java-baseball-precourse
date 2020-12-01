@@ -7,10 +7,10 @@ public class Validation {
     }
 
     private static boolean isNumber(String number) {
-        for (int i = 0; i < number.length(); i++) {
-            char eachNum = number.charAt(i);
+        for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
+            char eachDigit = number.charAt(i);
 
-            if (!Character.isDigit(eachNum)) {
+            if (!Character.isDigit(eachDigit)) {
                 return false;
             }
         }
@@ -19,17 +19,17 @@ public class Validation {
     }
 
     private static boolean isRightLength(String number) {
-        return number.length() == Constant.NUMBER_LEN;
+        return number.length() == Constant.NUMBER_LENGTH;
     }
 
     private static boolean isNotDuplicate(String number) {
         boolean[] alreadyUse = new boolean[Constant.MAX_VALUE + 1];
 
-        for (int i = 0; i < number.length(); i++) {
-            int eachNum = Character.getNumericValue(number.charAt(i));
+        for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
+            int eachDigit = Character.getNumericValue(number.charAt(i));
 
-            if (!alreadyUse[eachNum]) {
-                alreadyUse[eachNum] = true;
+            if (!alreadyUse[eachDigit]) {
+                alreadyUse[eachDigit] = true;
             } else {
                 return false;
             }
@@ -39,10 +39,10 @@ public class Validation {
     }
 
     private static boolean isRightRange(String number) {
-        for (int i = 0; i < number.length(); i++) {
-            int eachNum = Character.getNumericValue(number.charAt(i));
+        for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
+            int eachDigit = Character.getNumericValue(number.charAt(i));
 
-            if (eachNum < Constant.MIN_VALUE || eachNum > Constant.MAX_VALUE) {
+            if (eachDigit < Constant.MIN_VALUE || eachDigit > Constant.MAX_VALUE) {
                 return false;
             }
         }

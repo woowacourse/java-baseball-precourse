@@ -3,7 +3,7 @@ package baseball;
 import java.util.Scanner;
 
 public class User {
-    private int[] userNumber = new int[Constant.NUMBER_LEN];
+    private int[] userNumber = new int[Constant.NUMBER_LENGTH];
 
     public void enterNumber(Scanner scanner) {
         System.out.println(Constant.INPUT_MESSAGE);
@@ -21,7 +21,7 @@ public class User {
     }
 
     private void setUserNumber(String number) {
-        for (int i = 0; i < number.length(); i++) {
+        for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
             int eachNum = Character.getNumericValue(number.charAt(i));
             userNumber[i] = eachNum;
         }

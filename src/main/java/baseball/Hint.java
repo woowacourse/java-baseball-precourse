@@ -4,12 +4,12 @@ public class Hint {
     private int strike;
     private int ball;
 
-    public void countHint(int[] computerAnswer, int[] userAnswer) {
+    public void countHint(int[] answer, int[] userNumber) {
         initCount();
 
-        for (int i = 0; i < Constant.NUMBER_LEN; i++) {
-            countStrike(computerAnswer[i], userAnswer[i]);
-            countBall(computerAnswer, userAnswer[i], i);
+        for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
+            countStrike(answer[i], userNumber[i]);
+            countBall(answer, userNumber[i], i);
         }
     }
 
@@ -18,21 +18,21 @@ public class Hint {
         this.ball = 0;
     }
 
-    private void countStrike(int computerNum, int userNum) {
-        if (computerNum == userNum) {
+    private void countStrike(int computer, int user) {
+        if (computer == user) {
             this.strike++;
         }
     }
 
-    private void countBall(int[] computerAnswer, int userNum, int userNumIdx) {
-        for (int i = 0; i < Constant.NUMBER_LEN; i++) {
-            if (i != userNumIdx && computerAnswer[i] == userNum) {
+    private void countBall(int[] answer, int user, int userIdx) {
+        for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
+            if (i != userIdx && answer[i] == user) {
                 this.ball++;
             }
         }
     }
 
-    public void printHint() {
+    public void printResult() {
         if (this.ball > 0) {
             System.out.print(this.ball + Constant.BALL);
         }

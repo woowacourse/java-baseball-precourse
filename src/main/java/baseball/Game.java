@@ -28,7 +28,7 @@ public class Game {
         while (running) {
             user.enterNumber(scanner);
             hint.countHint(computer.getAnswer(), user.getUserNumber());
-            hint.printHint();
+            hint.printResult();
 
             if (hint.getStrike() == Constant.VICTORY_CONDITION) {
                 System.out.println(Constant.VICTORY_MESSAGE);
