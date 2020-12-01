@@ -1,5 +1,7 @@
 package baseball.domain.number;
 
+import baseball.domain.exception.BaseballNumberCountsException;
+import baseball.domain.exception.BaseballNumberRangeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,12 +22,15 @@ class BaseballNumbersTest {
                 Arguments.of(Arrays.asList(6, 7, 3)));
     }
 
-    private static Stream<Arguments> getWrongInputBaseballNumbers() {
+    private static Stream<Arguments> getDuplicatedInputBaseballNumbers() {
+        return Stream.of(Arguments.of(Arrays.asList(1, 2, 1)),
+                Arguments.of(Arrays.asList(2, 2, 2)));
+    }
+
+    private static Stream<Arguments> getOutOfRangeInputBaseballNumbers() {
         return Stream.of(Arguments.of(Arrays.asList(1, 2, 0)),
                 Arguments.of(Arrays.asList(3, 6, 10)),
-                Arguments.of(Arrays.asList(-1, 7, 3)),
-                Arguments.of(Arrays.asList(1, 2, 2)),
-                Arguments.of(Arrays.asList(2, 2, 2)));
+                Arguments.of(Arrays.asList(-1, 7, 3)));
     }
 
     private static Stream<Arguments> getBaseballNumbersForStrike() {
@@ -58,13 +63,22 @@ class BaseballNumbersTest {
         assertThat(strikeCounts).isEqualTo(3);
     }
 
-    @DisplayName("입력 숫자들이 1~9 범위가 아니거나 중복이 존재하면, BaseballNumbers 생성 실패")
+    @DisplayName("입력 숫자들에 중복이 존재하면, BaseballNumbers 생성 실패")
     @ParameterizedTest
-    @MethodSource("getWrongInputBaseballNumbers")
-    public void BaseballNumbers_숫자가_중복_혹은_범위_오류면_예외_발생(List<Integer> inputBaseballNumbers) {
+    @MethodSource("getDuplicatedInputBaseballNumbers")
+    public void BaseballNumbers_숫자가_중복_있으면_예외_발생(List<Integer> inputBaseballNumbers) {
         assertThatThrownBy(() -> {
             BaseballNumbers.generateInputBaseballNumbers(inputBaseballNumbers);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(BaseballNumberCountsException.class);
+    }
+
+    @DisplayName("입력 숫자들에 1~9 범위가 아닌 숫자가 존재하면, BaseballNumbers 생성 실패")
+    @ParameterizedTest
+    @MethodSource("getOutOfRangeInputBaseballNumbers")
+    public void BaseballNumbers_잘못된_범위_숫자_예외_발생(List<Integer> inputBaseballNumbers) {
+        assertThatThrownBy(() -> {
+            BaseballNumbers.generateInputBaseballNumbers(inputBaseballNumbers);
+        }).isInstanceOf(BaseballNumberRangeException.class);
     }
 
     @DisplayName("두 개의 BaseballNumbers를 비교하고, 스트라이크 개수를 정상 계산")

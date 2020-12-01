@@ -1,5 +1,6 @@
 package baseball.domain.number;
 
+import baseball.domain.exception.BaseballNumberCountsException;
 import utils.RandomUtils;
 
 import java.util.HashSet;
@@ -48,7 +49,7 @@ public class BaseballNumbers {
                 .distinct()
                 .count();
         if (distinctCounts != NECESSARY_BASEBALL_NUMBER_COUNTS) {
-            throw new IllegalArgumentException();
+            throw new BaseballNumberCountsException(distinctCounts);
         }
     }
 
