@@ -12,14 +12,14 @@ public class InputNumber {
             if (validateInput(inputNumber)) {
                 return inputNumber;
             }
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return getInput(scanner);
         }
         return "";
     }
 
     //입력값의 유효성 검사
-    public static boolean validateInput(String inputNumber) throws IllegalArgumentException{
+    public static boolean validateInput(String inputNumber) throws IllegalArgumentException {
         //3자리가 아니면 예외를 발생시킨다
         if (inputNumber.length() != Application.NUMBER_LENGTH) {
             throw new IllegalArgumentException();
@@ -29,7 +29,7 @@ public class InputNumber {
             throw new IllegalArgumentException();
         }
         //문자열을 입력하면 예외를 발생시킨다
-        for (int i =0; i < inputNumber.length(); i++){
+        for (int i =0; i < inputNumber.length(); i++) {
             if (!Character.isDigit(inputNumber.charAt(i))) {
                 throw new IllegalArgumentException();
             }
@@ -43,9 +43,9 @@ public class InputNumber {
         for (int i=0; i < inputNumber.length(); i++) {
             //i번째 char형 숫자를 int형으로 변환
             int ithInt = Character.getNumericValue(inputNumber.charAt(i));
-            numberArray[ithInt]+=1;
+            numberArray[ithInt] += 1;
             //이미 다른 숫자가 기록된 적 있다면 중복이므로 true를 반환한다
-            if (numberArray[ithInt]>1) {
+            if (numberArray[ithInt] > 1) {
                 return true;
             }
         }

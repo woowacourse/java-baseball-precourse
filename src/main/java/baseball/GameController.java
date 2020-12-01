@@ -9,7 +9,6 @@ public class GameController {
     public static int playGame(Scanner scanner) {
         //임의의 수를 생성한다
         String randomNumber = RandomNumber.generateNumbers(Application.NUMBER_LENGTH);
-        System.out.println(randomNumber);
         String inputNumber = "";
         int restartGame = 0;
 

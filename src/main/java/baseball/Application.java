@@ -1,9 +1,6 @@
 package baseball;
 
-import jdk.vm.ci.code.CodeUtil;
-
 import java.util.Scanner;
-import utils.RandomUtils;
 
 public class Application {
     public static final int NUMBER_LENGTH = 3;
