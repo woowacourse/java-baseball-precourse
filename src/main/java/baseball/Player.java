@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import static baseball.Constant.MAX_LENGTH;
 import static baseball.Game.*;
+import static baseball.Validation.validateInputNumber;
 
 public class Player {
 
@@ -33,29 +34,6 @@ public class Player {
             }
         }
     }
-
-    //
-    public static boolean validateInputNumber(String inputNumber){
-        if (!isNumeric(inputNumber) ||
-            !compareLength(inputNumber) ||
-            !isReduplication(inputNumber)){
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isNumeric(String inputNumber){
-        return inputNumber.chars().allMatch(Character::isDigit);
-    }
-
-    public static boolean compareLength(String inputNumber){
-        return inputNumber.length() == MAX_LENGTH;
-    }
-
-    public static boolean isReduplication(String inputNumber){
-        return false;
-    }
-
 
 
 }

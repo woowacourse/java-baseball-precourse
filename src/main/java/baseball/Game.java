@@ -5,6 +5,7 @@ import utils.RandomUtils;
 import java.util.Scanner;
 
 import static baseball.Constant.*;
+import static baseball.Validation.*;
 
 public class Game {
 
@@ -75,12 +76,15 @@ public class Game {
     public static boolean continueGame(){
         System.out.print("계속하려면 1 아니면 2 :");
         Scanner s = new Scanner(System.in);
-        int answer = s.nextInt();
+        while(true){
+            String continueGameNumber = s.nextLine();
 
-        if (answer == 2){
-            return false;
+            if (!validateContinueGameNumber(continueGameNumber)){
+                System.out.println("다시 입력해주세요");
+                continue;
+            }
+
         }
 
-        return true;
     }
 }
