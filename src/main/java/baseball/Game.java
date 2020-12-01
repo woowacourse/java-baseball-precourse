@@ -46,7 +46,7 @@ public class Game {
         return ball;
     }
 
-
+    // 입력결과를 바탕으로 볼 스트라이크 정보 제공
     public static void printHint(int countStrike, int countBall){
         if(countBall == 0 && countStrike == 0){
             System.out.println("낫싱");
@@ -66,6 +66,7 @@ public class Game {
         System.out.println(countBall+"볼 "+countStrike+"스트라이크");
     }
 
+    // 스트라이크가 3개인지 확인
     public static boolean checkResult(int strike){
         if(strike == MAX_LENGTH){
             return true;
@@ -73,6 +74,7 @@ public class Game {
         return false;
     }
 
+    // 새게임 진행 여부 확인
     public static boolean continueGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Scanner s = new Scanner(System.in);
