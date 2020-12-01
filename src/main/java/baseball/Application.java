@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Application {
 
 	private static final String INPUT_GUIDE = "숫자를 입력해주세요 : ";
+	private static int ball = 0;
+	private static int strike = 0;
 	
 	public static void main(String[] args) {
 		final Scanner scanner = new Scanner(System.in);
@@ -29,5 +31,15 @@ public class Application {
 		}
 
 		return question;
+	}
+	
+	static boolean makeCheck(int question, int number) {
+		while (question != 0) {
+			if (question % 10 == number) {
+				return false;
+			}
+			question /= 10;
+		}
+		return true;
 	}
 }
