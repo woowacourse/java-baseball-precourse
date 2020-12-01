@@ -13,11 +13,11 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         InputView inputView = new InputView(scanner);
-        startGame(inputView);
+        runBaseballGame(inputView);
         scanner.close();
     }
 
-    private static void startGame(InputView inputView) {
+    private static void runBaseballGame(InputView inputView) {
         BaseballGameMachine baseballGameMachine =
                 new BaseballGameMachine(BaseballNumbers.generateRandomBaseballNumbers());
         GameState gameState = GameState.initiate();
@@ -25,7 +25,7 @@ public class Application {
             baseballGameMachine = baseballGameMachine.prepareNextTry(gameState);
             BaseballNumbers userBaseballNumbers =
                     BaseballNumbers.generateInputBaseballNumbers(inputView.inputBaseballNumbers());
-            GameResult gameResult = baseballGameMachine.play(userBaseballNumbers);
+            GameResult gameResult = baseballGameMachine.calculateGameResult(userBaseballNumbers);
             OutputView.outputGameResult(gameResult);
             gameState = GameState.findGameState(inputView.inputGameState(gameResult));
         }

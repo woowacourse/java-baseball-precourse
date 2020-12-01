@@ -10,7 +10,7 @@ public class BaseballGameMachine {
         this.baseballNumbers = baseballNumbers;
     }
 
-    public GameResult play(BaseballNumbers targetBaseballNumbers) {
+    public GameResult calculateGameResult(BaseballNumbers targetBaseballNumbers) {
         int ballCounts = this.baseballNumbers.calculateBallCounts(targetBaseballNumbers);
         int strikeCounts = this.baseballNumbers.calculateStrikeCounts(targetBaseballNumbers);
         return new GameResult(ballCounts, strikeCounts);
