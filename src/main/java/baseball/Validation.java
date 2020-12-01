@@ -7,8 +7,8 @@ public class Validation {
     //
     public static boolean validateInputNumber(String inputNumber){
         if (!isNumeric(inputNumber) ||
-                !compareBaseballLength(inputNumber) ||
-                !isReduplication(inputNumber)){
+            !compareBaseballLength(inputNumber) ||
+             isReduplication(inputNumber)){
             return false;
         }
         return true;
@@ -36,8 +36,16 @@ public class Validation {
 
 
     public static boolean isReduplication(String inputNumber){
+        char temp_a = inputNumber.charAt(0);
+        char temp_b = inputNumber.charAt(1);
+        char temp_c = inputNumber.charAt(2);
 
-        return true;
+        if ((temp_a ^ temp_b) == 0 ||
+            (temp_a ^ temp_c) == 0 ||
+            (temp_b ^ temp_c) == 0 ){
+            return true;
+        }
+        return false;
     }
 
 }
