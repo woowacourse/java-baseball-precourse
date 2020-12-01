@@ -12,10 +12,10 @@
 - 모든 프로그램 시작을 맡고 있는 객체
 ### Game
 - 모든 게임 부분 시작을 맡고 있는 객체
-- 전체적인 게임을 실행할 수 있는 Process Start를 메소드로 가짐
+- 야구 게임을 실행할 수 있는 메서드로 가짐
 ### Controller
 - 실제 게임 시작 진행 
-#### GameProcess
+#### NumberBaseBall
 - 시작 및 종료를 인식
 - 전체적인 게임을 진행하는 메서드.
 #### RandomBallSet  
