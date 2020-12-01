@@ -9,7 +9,7 @@ public class Game {
         this.answer = AnswerGenerator.generateAnswer();
     }
 
-    public static boolean playGame(Scanner scanner) {
+    public boolean playGame(Scanner scanner) {
         boolean correct;
         do {
             correct = playRound(scanner);
@@ -17,12 +17,12 @@ public class Game {
         return GameResetter.getRestartFactor(scanner);
     }
 
-    public static boolean playRound(Scanner scanner) {
+    public boolean playRound(Scanner scanner) {
         int guess = UserInputScanner.getGuess(scanner);
         return roundResult(answer, guess);
     }
 
-    public static boolean roundResult(int answer, int guess) {
+    public boolean roundResult(int answer, int guess) {
         int[] hint = HintGenerator.getHint(answer, guess);
         int ball = hint[0];
         int strike = hint[1];
