@@ -57,12 +57,12 @@ public class BaseballNumbers {
     }
 
     // 현재 객체가 index 위치에 지닌 값이 value와 같은지 판별하는 메소드
-    private boolean isStrikeAtIndex(final int index, final int value) {
+    private boolean hasValueAtIndex(final int index, final int value) {
         return this.numberArray[index] == value;
     }
 
     // 현재 객체가 index를 제외한 위치에 지닌 값이 value와 같은지 판별하는 메소드
-    private boolean isBallOutsideIndex(final int index, final int value) {
+    private boolean hasValueNotAtIndex(final int index, final int value) {
         for (int i = 0; i < this.numberArray.length; i++) {
             // i와 index가 같은 경우는 스트라이크를 판별할 때만 사용하므로 제외
             if (i == index) {
@@ -79,7 +79,7 @@ public class BaseballNumbers {
     public int calculateStrikes(final BaseballNumbers friend) {
         int strikes = 0;
         for (int index = 0; index < this.numberArray.length; index++) {
-            if (isStrikeAtIndex(index, friend.numberArray[index])) {
+            if (hasValueAtIndex(index, friend.numberArray[index])) {
                 strikes++;
             }
         }
@@ -90,7 +90,7 @@ public class BaseballNumbers {
     public int calculateBalls(final BaseballNumbers friend) {
         int balls = 0;
         for (int index = 0; index < this.numberArray.length; index++) {
-            if (isBallOutsideIndex(index, friend.numberArray[index])) {
+            if (hasValueNotAtIndex(index, friend.numberArray[index])) {
                 balls++;
             }
         }
