@@ -24,7 +24,7 @@ public class GameRound {
     }
 
     public GameRound(GameData gameData, int userInput) {
-        Application application = new Application();
+        Application application = new Application(); // to use splitNumber()
         setGameData(gameData);
         setInput(application.splitNumber(userInput));
     }
@@ -72,11 +72,12 @@ public class GameRound {
         // victory case
         if (currentStrikeCount == Application.MAX_NUM_SIZE) {
             askQuestion.ask();
-            while (true) {
-                int response = scanner.nextInt();
+            while (!askQuestion.getIsVaildInput()) {
+                // scanner.next() don't require buffer flush in this situation
+                String response = scanner.next();
                 askQuestion.askResponse(gameData, response);
             }
-
+            askQuestion.setIsValidInput(false);
         }
     }
 
