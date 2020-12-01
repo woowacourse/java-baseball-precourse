@@ -13,6 +13,11 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         InputView inputView = new InputView(scanner);
+        startGame(inputView);
+        scanner.close();
+    }
+
+    private static void startGame(InputView inputView) {
         BaseballGameMachine baseballGameMachine =
                 new BaseballGameMachine(BaseballNumbers.generateRandomBaseballNumbers());
         GameState gameState = GameState.initiate();
@@ -24,6 +29,5 @@ public class Application {
             OutputView.outputGameResult(gameResult);
             gameState = GameState.findGameState(inputView.inputGameState(gameResult));
         }
-        scanner.close();
     }
 }
