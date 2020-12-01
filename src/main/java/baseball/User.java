@@ -16,15 +16,13 @@ public class User {
         }
     }
 
-    public int[] getUserNumber () {
+    public int[] getUserNumber() {
         return this.userNumber;
     }
 
     private void setUserNumber(String number) {
-        int eachNum;
-
         for (int i = 0; i < number.length(); i++) {
-            eachNum = Character.getNumericValue(number.charAt(i));
+            int eachNum = Character.getNumericValue(number.charAt(i));
             userNumber[i] = eachNum;
         }
     }
