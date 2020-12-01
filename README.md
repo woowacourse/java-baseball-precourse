@@ -15,7 +15,7 @@ RandomUtils.nextInt(int startInclusive, int endInclusive);
 - 책임
     - startInclusive와 endInclusive의 대소를 비교하고 startInclusive <= endInclusive의 경우에만 랜덤하게 수를 뽑는다. 나머지 경우에는 IllegalArgumentException이 발생한다.
 - 관계
-    - 문제에 따르면 서로 다른 임의의 수를 뽑아야 하므로 위 메소드로 뽑은 수가 그 전에 뽑은 수에 포함되었는지 검증한 후 없는 경우에만 포함시킨다. 따라서 이를 검증할 객체/메소를 구현해야 한다.
+    - 문제에 따르면 서로 다른 임의의 수를 뽑아야 하므로 위 메소드로 뽑은 수가 그 전에 뽑은 수에 포함되었는지 검증한 후 없는 경우에만 포함시킨다. 따라서 이를 검증할 객체를 구현해야 한다.
 
 <br>
 
