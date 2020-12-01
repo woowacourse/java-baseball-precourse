@@ -4,9 +4,10 @@ import utils.RandomUtils;
 
 import java.util.ArrayList;
 
+/** 3자리 번호를 생성하는 클래스 */
 public class NumberGenerator {
     private static boolean[] numFlag = new boolean[10]; //중복체크하는 배열
-    private static ArrayList<Integer> newNumber = new ArrayList<>(3); //세자리 수
+    private static int[] newNumber = new int[3]; //세자리 수
 
     /**
      * flag 배열을 false로 초기화해서 반환하는 메소드
@@ -24,16 +25,17 @@ public class NumberGenerator {
      * 1~9까지의 임의의 수 3개를 정하는 메소드
      * @return newNumber
      */
-    public static ArrayList<Integer> generatorNewNumber() {
+    public static int[] generatorNewNumber() {
         numFlag = initNumFlag();
 
-        while (newNumber.size() < 3) {
+        int count = 0;
+        while (count < 3) {
             int randomNumber = RandomUtils.nextInt(1, 9); //1~9사이의 랜덤값
             if(numFlag[randomNumber]) continue; //이미 사용되었으면 패스
             numFlag[randomNumber] = true; //방문체크
-            newNumber.add(randomNumber);
+            newNumber[count++] = randomNumber;
         }
-        
+
         return newNumber;
     }
 }
