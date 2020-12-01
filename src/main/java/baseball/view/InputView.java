@@ -19,7 +19,7 @@ public class InputView {
     private static final char EXIT_NUMBER = '2';
     private static final int KEEP_PLAYING_NUMBER = 0;
     private static final int VALID_INPUT_BASEBALL_NUMBER_COUNTS = 3;
-    private static final int VALID_INPUT_GAME_LENGTH = 1;
+    private static final int VALID_INPUT_GAME_STATE_LENGTH = 1;
     private static final int FIRST_CHARACTER_INDEX = 0;
 
     private final Scanner scanner;
@@ -86,7 +86,7 @@ public class InputView {
     }
 
     private void validateInputGameState(String inputGameState) {
-        if (inputGameState.length() != VALID_INPUT_GAME_LENGTH) {
+        if (inputGameState.length() != VALID_INPUT_GAME_STATE_LENGTH) {
             throw new IllegalArgumentException();
         }
         char gameStateNumber = inputGameState.charAt(FIRST_CHARACTER_INDEX);
