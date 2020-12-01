@@ -37,10 +37,10 @@ public class GameResult {
         if (isNothing()) {
             return NOTHING;
         }
-        if (thereIsOnlyStrike()) {
+        if (isOnlyStrike()) {
             return strikeMessage();
         }
-        if (thereIsOnlyBall()) {
+        if (isOnlyBall()) {
             return ballMessage();
         }
         return strikeBallMessage();
@@ -74,16 +74,17 @@ public class GameResult {
         return String.format("%d%s %d%s", strike, STRIKE, ball, BALL);
     }
 
-    private boolean thereIsOnlyBall() {
+    private boolean isOnlyBall() {
         return strike == 0 && 0 < ball;
+    }
+
+
+    private boolean isOnlyStrike() {
+        return ball == 0 && 0 < strike;
     }
 
     private boolean isNothing() {
         return strike == 0 && ball == 0;
-    }
-
-    private boolean thereIsOnlyStrike() {
-        return ball == 0 && 0 < strike;
     }
 
     public boolean isAllStrikes() {
