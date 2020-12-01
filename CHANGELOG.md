@@ -6,7 +6,28 @@
 
 
 ---
-## [0.1.0](https://github.com/weirdbb91/java-baseball-precourse/commit/3430c584c0c10a4ea4c7778330acf55fd5ad18f2) (2020-12-01)
+## [0.5.0]() (2020-12-01)
+
+**Note:** feat<Printer>: Add ballAndStrike feature
+
+Feature update : ballAndStrike
+- Printer.java
+
+This feature prints the scores balls and Strikes
+
+---
+## [0.4.0](https://github.com/weirdbb91/java-baseball-precourse/commit/d0e3e329cc85cacee2005ac2c50ea90c5ed6f4e7) (2020-12-01)
+
+**Note:** feat<Score>: Add count feature
+
+Feature update : count
+- Score.java
+
+This feature counts how many scores the input get
+
+
+---
+## [0.3.0](https://github.com/weirdbb91/java-baseball-precourse/commit/3430c584c0c10a4ea4c7778330acf55fd5ad18f2) (2020-12-01)
 
 **Note:** feat<Valid>: Add isFinish feature
 
