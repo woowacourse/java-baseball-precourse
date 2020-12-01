@@ -5,7 +5,7 @@ import utils.RandomUtils;
 // Data needed to play the game
 public class GameData {
 
-    public static final int DIGIT_SIZE = 10;
+    public static final int DIGIT_SIZE = 10; // 0 ~ 9
     public static final int MIN_RANDOM_VALUE = 1;
     public static final int MAX_RANDOM_VALUE = 9;
 
