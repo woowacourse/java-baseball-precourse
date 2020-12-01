@@ -1,6 +1,6 @@
 package baseball.service.ui;
 
-import baseball.domain.Game;
+import baseball.domain.GameType;
 import utils.InputConverter;
 import utils.validator.DuplicateValidator;
 import utils.validator.NumberValidator;
@@ -40,7 +40,7 @@ public class Input {
         validator = new RestartValidator();
         validator.execute(input);
 
-        if (input.equals(Game.GAME_START)) {
+        if (input.equals(GameType.START.click())) {
             return true;
         }
         return false;
