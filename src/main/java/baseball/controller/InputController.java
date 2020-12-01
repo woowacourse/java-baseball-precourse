@@ -1,6 +1,7 @@
 package baseball.controller;
 
-import utils.Validator;
+import baseball.domain.GameStatus;
+import baseball.util.Validator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +49,7 @@ public class InputController {
         String input = scanner.nextLine();
 
         try {
-            Validator.validateReStart(input);
+            Validator.validateRestart(input);
         } catch (IllegalArgumentException e) {
             return inputRestart();
         }

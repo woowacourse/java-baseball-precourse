@@ -1,12 +1,12 @@
-package baseball.controller;
+package baseball.domain;
 
 import utils.RandomUtils;
-import utils.Validator;
+import baseball.util.Validator;
 
 import java.util.*;
 
-import static utils.Validator.INPUT_MAX_NUMBER;
-import static utils.Validator.INPUT_MIN_NUMBER;
+import static baseball.util.Validator.INPUT_MAX_NUMBER;
+import static baseball.util.Validator.INPUT_MIN_NUMBER;
 
 public class Computer {
 

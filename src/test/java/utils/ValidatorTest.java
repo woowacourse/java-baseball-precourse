@@ -1,8 +1,8 @@
 package utils;
 
+import baseball.util.Validator;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
-import static utils.Validator.REQUIRE_NUMBER_COUNT;
+import static baseball.util.Validator.REQUIRE_NUMBER_COUNT;
 
 class ValidatorTest {
 
@@ -87,7 +87,7 @@ class ValidatorTest {
     public void validateReStartTest(String input) {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Validator.validateReStart(input);
+            Validator.validateRestart(input);
         });
     }
 
@@ -96,7 +96,7 @@ class ValidatorTest {
     @Description("validateReStart 발생x")
     public void validateReStartTest_success(String input) {
 
-        Validator.validateReStart(input);
+        Validator.validateRestart(input);
 
     }
 

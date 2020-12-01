@@ -1,7 +1,5 @@
 package baseball.controller;
 
-import utils.Validator;
-
 public class ConsoleView {
 
     private static final StringBuilder stringBuilder = new StringBuilder();

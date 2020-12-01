@@ -1,18 +1,19 @@
 package baseball.controller;
 
+import baseball.domain.Computer;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import utils.RandomUtils;
-import utils.Validator;
+import baseball.util.Validator;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static utils.Validator.INPUT_MAX_NUMBER;
-import static utils.Validator.INPUT_MIN_NUMBER;
+import static baseball.util.Validator.INPUT_MAX_NUMBER;
+import static baseball.util.Validator.INPUT_MIN_NUMBER;
 
 class ComputerTest {
 

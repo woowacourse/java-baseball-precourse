@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball.domain;
 
 public enum GameStatus {
 

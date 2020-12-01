@@ -1,4 +1,4 @@
-package utils;
+package baseball.util;
 
 import java.util.Arrays;
 
@@ -60,7 +60,7 @@ public class Validator {
     }
 
 
-    public static void validateReStart(String input) {
+    public static void validateRestart(String input) {
 
         if (input.isEmpty() || input == null) {
             throw new IllegalArgumentException();

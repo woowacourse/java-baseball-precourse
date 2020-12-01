@@ -1,9 +1,12 @@
 package baseball.controller;
 
+import baseball.domain.Computer;
+import baseball.domain.GameStatus;
+
 import java.util.List;
 import java.util.Scanner;
 
-import static utils.Validator.REQUIRE_NUMBER_COUNT;
+import static baseball.util.Validator.REQUIRE_NUMBER_COUNT;
 
 public class GameController {
 
