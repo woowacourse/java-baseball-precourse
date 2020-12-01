@@ -6,8 +6,6 @@ import java.util.stream.IntStream;
 
 public class Game {
 
-    private final Scanner scanner;
-
     private static final String playMessage = "숫자를 입력해주세요 : ";
     private static final String endMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String ballMessage = "볼 ";
@@ -20,13 +18,7 @@ public class Game {
 
     private static int[] result = new int[2];
 
-
-    public Game(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
-
-    public static void startGame() {
+    public static void startGame(Scanner scanner) {
         answer = Answer.makeAnswer(flag);
         System.out.println(answer);
         playGame();
@@ -35,8 +27,7 @@ public class Game {
 
     public static void playGame() {
         int inputNumber = Player.getPlayerInput();
-        System.out.print(playMessage);
-        System.out.println(inputNumber);
+        System.out.println(playMessage+inputNumber);
         List<Integer> userNumber = Player.numberToArray(inputNumber);
 
         result = Hint.grading(userNumber, answer);
@@ -75,7 +66,7 @@ public class Game {
         int response = scanner.nextInt();
         if (response == 1) {
         	flag = true;
-            startGame();
+            startGame(scanner);
         }
         scanner.close();
     }
