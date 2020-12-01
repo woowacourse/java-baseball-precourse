@@ -9,22 +9,22 @@ public class AnswerCheck {
         int ballCnt = 0;
         int strikeCnt = 0;
         for (int i = 0; i < GamePlayer.NUMBER_LENGTH; i++) {
-            if(answer.charAt(i)==userTrial.charAt(i)){ // condition of strike
+            if (answer.charAt(i) == userTrial.charAt(i)) { // condition of strike
                 strikeCnt += 1;
-            }else if(answer.contains(Character.toString(userTrial.charAt(i)))){ // condition of ball
+            } else if (answer.contains(Character.toString(userTrial.charAt(i)))) { // condition of ball
                 ballCnt += 1;
             }
         }
         if (ballCnt > 0 && strikeCnt > 0) {
             System.out.println(ballCnt+ball+" "+strikeCnt+strike);
-        }else if (strikeCnt > 0 && ballCnt ==0){
+        } else if (strikeCnt > 0 && ballCnt == 0) {
             System.out.println(strikeCnt+strike);
             if (strikeCnt == 3) { // condition of game end
                 return true;
             }
-        }else if (strikeCnt == 0 && ballCnt > 0){
+        } else if (strikeCnt == 0 && ballCnt > 0) {
             System.out.println(ballCnt + ball);
-        }else{
+        } else {
             System.out.println(nothing);
         }
         return false;
