@@ -55,6 +55,10 @@ public class GameResult {
             throw new ClassCastException(this.getClass().getName() + " 객체 끼리만 비교가 가능합니다.");
         }
 
+        return compareStrikeAndBall(gameResult);
+    }
+
+    private boolean compareStrikeAndBall(GameResult gameResult) {
         return this.strike.equals(gameResult.strike) && this.ball.equals(gameResult.ball);
     }
 
