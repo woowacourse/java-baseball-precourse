@@ -17,7 +17,7 @@ public class User {
         return balls;
     }
 
-    protected boolean isValidBalls(String candidate){
+    protected boolean isValidBalls(String candidate) {
         try {
             balls = Validator.getValidateBall(String.valueOf(candidate));
             return true;

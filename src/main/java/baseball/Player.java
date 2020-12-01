@@ -1,7 +1,9 @@
 package baseball;
 
 import utils.Validator;
+
 import java.util.*;
+
 import static utils.Constant.*;
 
 public class Player extends User {
@@ -14,7 +16,7 @@ public class Player extends User {
     }
 
     public void inputBalls() {
-        while (true){
+        while (true) {
             System.out.print(INPUT_PLAYER_BALLS);
             String ballCandidate = scanner.next();
             if (isValidBalls(String.valueOf(ballCandidate))) {

@@ -2,6 +2,7 @@ package baseball;
 
 import utils.ComparisonBalls;
 import utils.OutputView;
+
 import java.util.Scanner;
 
 import static utils.Constant.*;
