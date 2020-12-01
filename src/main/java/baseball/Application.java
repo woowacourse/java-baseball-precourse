@@ -4,9 +4,15 @@ import java.util.Scanner;
 
 public class Application {
 
+    public static final int MAX_NUM_SIZE = 3;
+    public static final int MIN_INPUT_NUM = 123;
+    public static final int MAX_INPUT_NUM = 987;
+
+    public enum NumberOrder { FIRST, SECOND, THIRD }
+
     public int[] splitNumber(int input) {
-        int[] resultSplit = new int[3];
-        int currentIndex = 2;
+        int[] resultSplit = new int[MAX_NUM_SIZE];
+        int currentIndex = MAX_NUM_SIZE - 1;
         while (input > 0) {
             int currentRest = input % 10;
             input /= 10;
@@ -18,7 +24,9 @@ public class Application {
 
     public boolean hasDuplicateNumber(int input) {
         int[] eachNumber = splitNumber(input);
-        if (eachNumber[0] == eachNumber[1] || eachNumber[0] == eachNumber[2] || eachNumber[1] == eachNumber[2]) {
+        if (eachNumber[NumberOrder.FIRST.ordinal()] == eachNumber[NumberOrder.SECOND.ordinal()]
+            || eachNumber[NumberOrder.FIRST.ordinal()] == eachNumber[NumberOrder.THIRD.ordinal()]
+            || eachNumber[NumberOrder.SECOND.ordinal()] == eachNumber[NumberOrder.THIRD.ordinal()]) {
             return true;
         } else {
             return false;
@@ -26,7 +34,7 @@ public class Application {
     }
 
     public void inputValidation(int input) {
-        if (input < 123 || 987 < input || hasDuplicateNumber(input)) {
+        if (input < MIN_INPUT_NUM || MAX_INPUT_NUM < input || hasDuplicateNumber(input)) {
             throw new IllegalArgumentException();
         }
     }

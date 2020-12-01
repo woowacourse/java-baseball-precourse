@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class GameRound {
 
     private GameData gameData;
-    private int[] input = new int[3];
+    private int[] input = new int[Application.MAX_NUM_SIZE];
 
     public GameData getGameData() {
         return gameData;
@@ -35,20 +35,23 @@ public class GameRound {
         gameData.initCounts();
 
         // count strike cases
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Application.MAX_NUM_SIZE; i++) {
             if (getInput(i) == getGameData().getChosenNumber(i)) {
                 getGameData().addStrikeCount();
             }
         }
 
         // count ball cases
-        if (getInput(0) == getGameData().getChosenNumber(1) || getInput(0) == getGameData().getChosenNumber(2)) {
+        if (getInput(Application.NumberOrder.FIRST.ordinal()) == getGameData().getChosenNumber(Application.NumberOrder.SECOND.ordinal())
+            || getInput(Application.NumberOrder.FIRST.ordinal()) == getGameData().getChosenNumber(Application.NumberOrder.THIRD.ordinal())) {
             getGameData().addBallCount();
         }
-        if (getInput(1) == getGameData().getChosenNumber(0) || getInput(1) == getGameData().getChosenNumber(2)) {
+        if (getInput(Application.NumberOrder.SECOND.ordinal()) == getGameData().getChosenNumber(Application.NumberOrder.FIRST.ordinal())
+            || getInput(Application.NumberOrder.SECOND.ordinal()) == getGameData().getChosenNumber(Application.NumberOrder.THIRD.ordinal())) {
             getGameData().addBallCount();
         }
-        if (getInput(2) == getGameData().getChosenNumber(0) || getInput(2) == getGameData().getChosenNumber(1)) {
+        if (getInput(Application.NumberOrder.THIRD.ordinal()) == getGameData().getChosenNumber(Application.NumberOrder.FIRST.ordinal())
+            || getInput(Application.NumberOrder.THIRD.ordinal()) == getGameData().getChosenNumber(Application.NumberOrder.SECOND.ordinal())) {
             getGameData().addBallCount();
         }
 
@@ -67,10 +70,13 @@ public class GameRound {
         System.out.println();
 
         // victory case
-        if (currentStrikeCount == 3) {
+        if (currentStrikeCount == Application.MAX_NUM_SIZE) {
             askQuestion.ask();
-            int response = scanner.nextInt();
-            askQuestion.askResponse(gameData, response);
+            while (true) {
+                int response = scanner.nextInt();
+                askQuestion.askResponse(gameData, response);
+            }
+
         }
     }
 

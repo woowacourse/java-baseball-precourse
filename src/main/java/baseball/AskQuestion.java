@@ -2,6 +2,9 @@ package baseball;
 
 public class AskQuestion {
 
+    public static final int GO = 1;
+    public static final int STOP = 2;
+
     private boolean keepGoing = true;
 
     public boolean getKeepGoing() {
@@ -19,7 +22,7 @@ public class AskQuestion {
     }
 
     public void askResponse(GameData gameData, int input) {
-        if (input == 1) {
+        if (input == GO) {
             // if start a game again, reset random values
             gameData.selectRandomNumber();
         } else {
