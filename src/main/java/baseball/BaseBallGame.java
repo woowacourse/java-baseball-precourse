@@ -26,7 +26,7 @@ public class BaseBallGame {
         botBalls = Balls.generateRandomBalls();                 // 랜덤 생성 수
         do {
             printInputMessage();
-            gameResult = GameResult.judgeResult(getUserBalls(), botBalls);// 사용자 수 입력 & 결과 계산
+            gameResult = GameResult.judgeResult(generateUserBalls(), botBalls);// 사용자 수 입력 & 결과 계산
             printResult(gameResult);                            // 결과 출력
         } while (!gameResult.isAllStrikes());                   // 3스트라이크: 루프탈출
     }
@@ -39,7 +39,7 @@ public class BaseBallGame {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    private Balls getUserBalls() {
+    private Balls generateUserBalls() {
         Balls userBalls = null;
         while (userBalls == null) {
             try {
