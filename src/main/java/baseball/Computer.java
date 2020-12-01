@@ -3,8 +3,8 @@ package baseball;
 import utils.RandomUtils;
 
 public class Computer {
-    int[] answer = new int[Constant.NUMBER_LEN];
-    boolean[] alreadyUse = new boolean[Constant.MAX_VALUE + 1];
+    private int[] answer = new int[Constant.NUMBER_LEN];
+    private boolean[] alreadyUse = new boolean[Constant.MAX_VALUE + 1];
 
     public void generateAnswer () {
         for (int i = 0; i < Constant.NUMBER_LEN; i++) {
@@ -17,5 +17,9 @@ public class Computer {
                 i--;
             }
         }
+    }
+
+    public int[] getAnswer () {
+        return this.answer;
     }
 }
