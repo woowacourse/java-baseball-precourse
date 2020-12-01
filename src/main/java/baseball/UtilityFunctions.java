@@ -31,8 +31,8 @@ public class UtilityFunctions {
         }
 
         for (int index = 0; index < answerArray.length; index++) {
-            // [0, numberList.size()] 사이의 무작위 값을 생성하여 이를 추출용 인덱스로 이용
-            final int indexForAnswer = RandomUtils.nextInt(0, numberList.size());
+            // [0, numberList.size()) 사이의 무작위 값을 생성하여 이를 추출용 인덱스로 이용
+            final int indexForAnswer = RandomUtils.nextInt(0, numberList.size() - 1);
             // numberList 의 추출 인덱스에 있는 값을 뽑아 answerArray 의 현재 인덱스에 대입
             answerArray[index] = numberList.remove(indexForAnswer);
         }
