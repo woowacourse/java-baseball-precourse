@@ -57,6 +57,16 @@ public class BaseballGame {
         finish();
     }
 
+    public void finish() {
+        printer.printFinishMessage();
+        askProgress();
+        if (progress == RESTART_CODE) {
+            progressGame = true;
+        } else if (progress == FINISH_CODE) {
+            progressGame = false;
+        }
+    }
+
     public void generateAnswer() {
         while (answer.length() < ANSWER_LENGTH) {
             int randomNum = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
@@ -90,16 +100,6 @@ public class BaseballGame {
             return true;
         } else {
             return false;
-        }
-    }
-
-    public void finish() {
-        printer.printFinishMessage();
-        askProgress();
-        if (progress == RESTART_CODE) {
-            progressGame = true;
-        } else if (progress == FINISH_CODE) {
-            progressGame = false;
         }
     }
 }
