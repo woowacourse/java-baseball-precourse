@@ -40,7 +40,7 @@ public class ComputerBaseballService {
 			if (computer.getNumbers().contains(nextNumber)) {
 				CURRENT_BALL_CNT--; // 중복일 경우 한번 더 진행
 			} else {
-				computer.setNumber(nextNumber); // 중복이 아닐 경우 숫자 리스트에 넣음
+				computer.addNumber(nextNumber); // 중복이 아닐 경우 숫자 리스트에 넣음
 			}
 		}
 	}

@@ -47,7 +47,7 @@ public class UserBaseballService {
 		for (CURRENT_BALL_CNT = ZERO; CURRENT_BALL_CNT < MAX_BALL_CNT; CURRENT_BALL_CNT++) {
 			/** 문자형의 입력값을 숫자형으로 변환해 숫자 리스트에 삽입 */
 			int nextNumber = Character.getNumericValue(input.charAt(CURRENT_BALL_CNT));
-			user.setNumber(nextNumber);
+			user.addNumber(nextNumber);
 		}
 	}
 }
