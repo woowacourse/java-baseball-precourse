@@ -61,7 +61,7 @@ public class BaseballGame {
         while (answer.length() < ANSWER_LENGTH) {
             int randomNum = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
             String randomStr = Integer.toString(randomNum);
-            if (!answer.contains(randomStr)) {
+            if (!isSameStr(answer, randomStr)) {
                 answer += randomStr;
             }
         }
@@ -75,6 +75,14 @@ public class BaseballGame {
     public void askProgress() {
         printer.printProgressMessage();
         progress = player.inputProgress();
+    }
+
+    public boolean isSameStr(String answer, String randomStr) {
+        if (answer.contains(randomStr)) {
+           return true;
+        } else {
+            return false;
+        }
     }
 
     public void isAllStrike(int strikeCnt) {
