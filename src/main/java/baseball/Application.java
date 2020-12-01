@@ -4,12 +4,12 @@ import java.util.Scanner;
 import utils.RandomUtils;
 
 /*
- *       숫자 야구 게임을 진행하는 클래스
- *       author: 483759/윤이진
+ *              숫자 야구 게임을 진행하는 클래스
+ * @author      483759/윤이진
  * */
 public class Application {
 
-    private static final int INPUT_NUM = 3;
+    private static final int INPUT_NUM = 3; //숫자 야구의 자릿수를 저장하는 변수
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
@@ -22,7 +22,6 @@ public class Application {
                 menu = selectMenu(scanner);
             }
         }
-        // TODO 구현 진행
     }
 
     /* 전반적인 게임 진행을 담당하는 메소드 */
@@ -32,7 +31,7 @@ public class Application {
         Number comNum = setComputerNumber();
         Number usrNum;
 
-        while (!matchValue.equals("3스트라이크")) {
+        while (!matchValue.equals(INPUT_NUM+"스트라이크")) {
             boolean correctValue = false;
             while (!correctValue) {
                 printNumberInput();
@@ -43,10 +42,11 @@ public class Application {
             matchValue = countBallsAndStrikes(comNum, usrNum);
             System.out.println(matchValue);
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(INPUT_NUM+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
         scanner.nextLine();
     }
 
+    /* 게임이 종료된 뒤, 재시작 혹은 종료를 선택하는 함수 */
     public static int selectMenu(Scanner scanner) {
         int menuNum = 0;
         System.out.printf("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
@@ -114,7 +114,7 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("3자리 숫자를 중복없이 입력해 주세요!");
+            System.out.println(INPUT_NUM+"자리 숫자를 중복없이 입력해 주세요!");
             return false;
         }
         return isValid;

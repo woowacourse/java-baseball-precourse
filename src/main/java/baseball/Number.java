@@ -1,12 +1,14 @@
 package baseball;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
+/*
+ *              Computer, User의 야구 숫자를 다루는 클래스
+ * @author      483759/윤이진
+ * */
 public class Number {
-    private int[] numArray;
-    private boolean[] isUsed;
+    private int[] numArray;     //해당 객체의 자리별 숫자를 저장하는 배열
+    private boolean[] isUsed;   //인덱스에 해당하는 숫자가 사용되었는지 체크하는 배열
 
+    /* Number객체가 생성될 때 배열을 할당 및 초기화하는 메소드 */
     public Number(int size){
         numArray= new int[size];
         isUsed=new boolean[10];
@@ -14,13 +16,16 @@ public class Number {
             isUsed[i]=false;
     }
 
+    /* index 번째 숫자를 number로 설정하는 메소드 */
     public void setNumberAt(int index, int number){
         this.numArray[index]=number;
         isUsed[number]=true;
     }
 
+    /* index 위치의 숫자를 반환하는 메소드 */
     public int getNumberAt(int index){return this.numArray[index];}
 
+    /* 특정 숫자가 사용되었는지 체크하는 메소드 */
     public boolean isUsedNumber(int number){
         return isUsed[number];
     }
@@ -29,10 +34,8 @@ public class Number {
     public int findNumber(int number){
         for(int i=0;i<numArray.length;i++)
             if(numArray[i]==number){
-                //number값의 원소를 반환
                 return i;
             }
-        //number와 일치하는 원소가 없다면 -1을 반환
         return -1;
     }
 }
