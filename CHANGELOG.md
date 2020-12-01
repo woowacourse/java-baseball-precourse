@@ -3,8 +3,29 @@
 이 프로젝트의 주목할만한 변화들은 모두 이곳에 기입합니다.  
 작성 기준은 [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 를 따르도록 합니다.  
 
+
 ---
-## [0.5.1]() (2020-12-01)
+## [1.0.0]() (2020-12-01)
+
+**Note:** feat<Game>: Add initNewGame feature
+
+Feature update : initNewGame
+- Game.java
+
+This feature calls the newTarget method
+
+Logic upload : initialize
+- Application.java
+
+Now in application initialize the game for play
+
+Style fixed : add comments
+- Printer.java
+
+Added some comments for methods
+
+---
+## [0.5.1](https://github.com/weirdbb91/java-baseball-precourse/commit/c01f631e8c52202b9c2fe0aa255a07ecaab5a5d1) (2020-12-01)
 
 **Note:** feat<Printer>: Add other comment print features
 

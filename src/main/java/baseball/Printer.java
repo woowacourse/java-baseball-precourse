@@ -10,10 +10,12 @@ public class Printer {
     private static final String GAME_END = "개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
             "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
 
+    /** 입력을 요청합니다 */
     public void enterNumber() {
         System.out.print(ENTER_NUMBER);
     }
 
+    /** 낫싱을 출력합니다 */
     private void nothing() {
         System.out.print(NOTHING);
     }
@@ -43,6 +45,7 @@ public class Printer {
         System.out.print(BLANK_LINE);
     }
 
+    /** 게임 종료를 안내합니다 */
     public void gameOver(int gameDigit) {
         System.out.print(gameDigit + GAME_END);
     }
