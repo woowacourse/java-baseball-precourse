@@ -22,7 +22,7 @@ public class OutputView {
         System.out.println(BALLS_LENGTH+GAME_END);
     }
 
-    public static void printRestart(){
+    public static void printSelectRestartOrEnd(){
         System.out.println(SELECT_GAME_RESTART_OR_END);
     }
 }

@@ -17,7 +17,7 @@ public class BaseballGameController {
     public void startGame(){
         do {
             playGame();
-        }while (checkReplay());
+        }while (checkRestart());
     }
 
     private void playGame() {
@@ -28,9 +28,9 @@ public class BaseballGameController {
         }
     }
 
-    private boolean checkReplay() {
+    private boolean checkRestart() {
 
-        OutputView.printRestart();
+        OutputView.printSelectRestartOrEnd();
 
         int selectGameRestart = scanner.nextInt();
         if(selectGameRestart == SELECT_GAME_RESTART){
@@ -38,7 +38,7 @@ public class BaseballGameController {
         }else if(selectGameRestart == SELECT_GAME_END){
             return false;
         }else{
-            return checkReplay();
+            return checkRestart();
         }
     }
 
