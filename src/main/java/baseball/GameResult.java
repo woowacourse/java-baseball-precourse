@@ -61,7 +61,7 @@ public class GameResult {
         if (isOnlyBall()) {
             return ballMessage();
         }
-        return strikeBallMessage();
+        return ballStrikeMessage();
     }
 
     @Override
@@ -88,8 +88,8 @@ public class GameResult {
         return String.format("%d%s", strike, STRIKE);
     }
 
-    private String strikeBallMessage() {
-        return String.format("%d%s %d%s", strike, STRIKE, ball, BALL);
+    private String ballStrikeMessage() {
+        return String.format("%d%s %d%s", ball, BALL, strike, STRIKE);
     }
 
     private boolean isOnlyBall() {
