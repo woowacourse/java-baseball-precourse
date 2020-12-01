@@ -26,12 +26,15 @@ public class Number {
     }
 
     public void setGuess(String input) throws IllegalArgumentException{
-        for(int c=0; c < 3; c++){
+        if(input.length() != 3){
+            throw new IllegalArgumentException("Wrong numberLength");
+        }
+        for(int c=0; c < input.length(); c++){
             if(Checker.checkInput(input.charAt(c))){
                 guess[c] = input.charAt(c) - '0';
             }
             else{
-                throw new IllegalArgumentException("Wrong Numbers");
+                throw new IllegalArgumentException("Wrong number");
             }
         }
     }
