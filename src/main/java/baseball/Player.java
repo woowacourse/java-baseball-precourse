@@ -19,6 +19,7 @@ public class Player {
 		Validator.checkRangeNumbers(userInputNumbersArray);
 		Validator.checkOverlapInputNumbers(userInputNumbersArray);
 		Validator.checkZeroNumbers(userInputNumbersArray);
+		Validator.checkNotText(userInputNumbersArray);
 		
 		return userInputNumbersArray;
 	}

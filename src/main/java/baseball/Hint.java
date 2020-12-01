@@ -21,7 +21,10 @@ public class Hint {
 				finishGame = true;
 			}
 			
-			printBallOrStrike(strike, ball);
+			printNothing(strike,ball);
+			printStrike(strike,ball);
+			printBall(strike, ball);
+			printBallAndStrike(strike, ball);
 		}
 	}
 
@@ -53,19 +56,30 @@ public class Hint {
 		return ball;
 	}
 
-	private void printBallOrStrike(int strike, int ball) {
+	private void printNothing(int strike, int ball) {
 
 		if (ball == Constant.MIN_LENGTH && strike == Constant.MIN_LENGTH) {
 			System.out.println("낫싱");
 		}
-		if (ball == Constant.MIN_LENGTH) {
+
+	}
+
+	private void printStrike(int strike, int ball) {
+		if (ball == Constant.MIN_LENGTH && strike > Constant.MIN_LENGTH) {
 			System.out.println(strike + " 스트라이크");
 		}
-		if (strike == Constant.MIN_LENGTH) {
+	}
+
+	private void printBall(int strike, int ball) {
+		if (strike == Constant.MIN_LENGTH && ball > Constant.MIN_LENGTH) {
 			System.out.println(ball + " 볼");
 		}
+	}
+
+	private void printBallAndStrike(int strike, int ball) {
 		if (strike > Constant.MIN_LENGTH && ball > Constant.MIN_LENGTH) {
 			System.out.println(strike + " 스트라이크" + ball + "볼");
 		}
 	}
+
 }
