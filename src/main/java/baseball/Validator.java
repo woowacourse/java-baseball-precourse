@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class Validator {
 
@@ -11,12 +12,13 @@ public class Validator {
 	}
 
 	public static void checkOverlapInputNumbers(char[] input) {
-		Arrays.sort(input);
-
-		for (int i = 0; i < input.length - 1; i++) {
-			if (input[i] == input[i + 1]) {
-				throw new IllegalArgumentException("잘못된 입력 입니다.");
-			}
+		HashSet<Character> hashSet = new HashSet<>();
+		
+		for (int i = 0; i <input.length; i++) {
+			hashSet.add(input[i]);
+		}
+		if(!(hashSet.size()==Constant.BASE_BALL_GAME_RANGE)) {
+			throw new IllegalArgumentException("잘못된 입력 입니다.");
 		}
 	}
 

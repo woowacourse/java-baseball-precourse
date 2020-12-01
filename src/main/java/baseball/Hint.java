@@ -15,16 +15,17 @@ public class Hint {
 			userInputNumbersArray = player.userNumbersArray(inputNumbers);
 			int strike = countStrike(RandomNumbersArray, userInputNumbersArray);
 			int ball = countBall(RandomNumbersArray, userInputNumbersArray);
-
+			
 			if (strike == Constant.BASE_BALL_GAME_RANGE) {
 				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 				finishGame = true;
+				break;
 			}
 			
+			printBallAndStrike(strike, ball);
 			printNothing(strike,ball);
 			printStrike(strike,ball);
 			printBall(strike, ball);
-			printBallAndStrike(strike, ball);
 		}
 	}
 
@@ -78,7 +79,7 @@ public class Hint {
 
 	private void printBallAndStrike(int strike, int ball) {
 		if (strike > Constant.MIN_LENGTH && ball > Constant.MIN_LENGTH) {
-			System.out.println(strike + " 스트라이크" + ball + "볼");
+			System.out.println(strike + " 스트라이크" + ball + " 볼");
 		}
 	}
 
