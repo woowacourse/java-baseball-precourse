@@ -1,5 +1,6 @@
 package baseball.domain.game;
 
+import baseball.domain.exception.CannotPlayException;
 import baseball.domain.number.BaseballNumbers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -82,6 +83,6 @@ class BaseballGameMachineTest {
                 new BaseballGameMachine(BaseballNumbers.generateRandomBaseballNumbers());
         assertThatCode(() -> {
             baseballGameMachine.prepareNextTry(GameState.EXIT);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(CannotPlayException.class);
     }
 }

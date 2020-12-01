@@ -1,5 +1,6 @@
 package baseball.domain.game;
 
+import baseball.domain.exception.CannotPlayException;
 import baseball.domain.number.BaseballNumbers;
 
 public class BaseballGameMachine {
@@ -18,7 +19,7 @@ public class BaseballGameMachine {
 
     public BaseballGameMachine prepareNextTry(GameState gameState) {
         if (!gameState.isAbleToPlay()) {
-            throw new IllegalArgumentException();
+            throw new CannotPlayException();
         }
         if (gameState.isRestart()) {
             return new BaseballGameMachine(BaseballNumbers.generateRandomBaseballNumbers());
