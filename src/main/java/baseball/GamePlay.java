@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GamePlay {
-
     private final Scanner scanner;
-    ArrayList<Integer> targetNumber;
-    TargetNumberGenerator targetNumberGenerator;
-    Player player;
-    Hint hint;
+    private ArrayList<Integer> targetNumber;
+    private TargetNumberGenerator targetNumberGenerator;
+    private Player player;
+    private Hint hint;
 
     public GamePlay(Scanner scanner) {
         this.scanner = scanner;
@@ -22,7 +21,7 @@ public class GamePlay {
             setHint(targetNumber);
             playGame();
         }
-        while(player.getIfContinue());
+        while (player.getIfContinue());
     }
 
     private void setTargetNumber() {
@@ -42,7 +41,7 @@ public class GamePlay {
     private void playGame() {
         boolean success = false;
         ArrayList<Integer> playerNumber;
-        while(!success) {
+        while (!success) {
             playerNumber = player.getInputNumber();
             String givenHint = hint.getHint(playerNumber);
             System.out.println(givenHint);

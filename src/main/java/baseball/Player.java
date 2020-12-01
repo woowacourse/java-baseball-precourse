@@ -5,7 +5,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Player {
-
     private final Scanner scanner;
     private static final String wrongInputWords = "잘못된 입력입니다.";
     private static final String inputWords = "숫자를 입력해주세요 : ";
@@ -28,11 +27,11 @@ public class Player {
     private int readIfContinue() {
         boolean isValid;
         int number;
-        while(true) {
+        while (true) {
             System.out.println(gameContinueWords);
             number = checkIfNumber();
             isValid = checkValidInput(number);
-            if(isValid) {
+            if (isValid) {
                 break;
             } else {
                 System.out.println(wrongInputWords);
@@ -47,11 +46,11 @@ public class Player {
     private int readInputNumber() {
         boolean isValid;
         int number;
-        while(true) {
+        while (true) {
             System.out.print(inputWords);
             number = checkIfNumber();
             isValid = checkDigit(number);
-            if(isValid) {
+            if (isValid) {
                 break;
             } else {
                 System.out.println(wrongInputWords);
@@ -78,7 +77,7 @@ public class Player {
     }
 
     private boolean checkDigit(int checkIfNumber) {
-        int numberLen = (int) (Math.log10(checkIfNumber) + 1);
+        int numberLen = (int)(Math.log10(checkIfNumber) + 1);
         if (numberLen == 3) {
             return parseInput(checkIfNumber);
         }
@@ -89,10 +88,10 @@ public class Player {
     private boolean parseInput(int rawNumber) {
         ArrayList<Integer> parsedNumber = new ArrayList<>();
 
-        for(int digit = 0; digit < 3; digit++) {
+        for (int digit = 0; digit < 3; digit++) {
             int unitNum = rawNumber % 10;
             rawNumber = rawNumber / 10;
-            if(!checkIfRepeat(parsedNumber, unitNum)) {
+            if (!checkIfRepeat(parsedNumber, unitNum)) {
                 parsedNumber.add(0, unitNum);
             } else {
                 return false;

@@ -3,10 +3,8 @@ package baseball;
 import java.util.ArrayList;
 
 public class Hint {
-
     private final ArrayList<Integer> targetNum;
     private ArrayList<Integer> playerNum;
-
     private int numBall = 0;
     private int numStrike = 0;
     private String hint;
@@ -32,7 +30,6 @@ public class Hint {
         initStatus();
         getPlayerNumber(playerNumber);
         checkNum();
-
         makeHint();
         return hint;
     }
@@ -43,23 +40,23 @@ public class Hint {
     }
 
     private void checkNum() {
-        for(int digit = 0; digit < 3; digit++) {
+        for (int digit = 0; digit < 3; digit++) {
             checkBall(digit);
         }
     }
 
     private void checkBall(int index) {
         boolean isStrike;
-        if(targetNum.contains(playerNum.get(index))) {
+        if (targetNum.contains(playerNum.get(index))) {
             isStrike = checkStrike(index);
-            if(!isStrike) {
+            if (!isStrike) {
                 numBall++;
             }
         }
     }
 
     private boolean checkStrike(int index) {
-        if(targetNum.get(index) == playerNum.get(index)) {
+        if (targetNum.get(index) == playerNum.get(index)) {
             numStrike++;
             return true;
         }
@@ -68,23 +65,23 @@ public class Hint {
     }
 
     private void makeHint() {
-        if(numStrike == 3) {
+        if (numStrike == 3) {
             isSuccess = true;
             hint = String.valueOf(numStrike).concat(isStrike).concat(isTarget);
             return;
         }
 
-        if(numBall == 0 && numStrike == 0) {
+        if (numBall == 0 && numStrike == 0) {
             hint = nothing;
             return;
         }
 
-        if(numBall == 0) {
+        if (numBall == 0) {
             hint = String.valueOf(numStrike).concat(isStrike);
             return;
         }
 
-        if(numStrike == 0) {
+        if (numStrike == 0) {
             hint = String.valueOf(numBall).concat(isBall);
             return;
         }
