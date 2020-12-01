@@ -35,10 +35,6 @@ public class BaseBallGame {
         System.out.println(gameResult.getResultMessage());
     }
 
-    private void printInputMessage() {
-        System.out.print("숫자를 입력해주세요 : ");
-    }
-
     private Balls generateUserBalls() {
         Balls userBalls = null;
         while (userBalls == null) {
@@ -53,23 +49,35 @@ public class BaseBallGame {
         return userBalls;
     }
 
-    private void printFormatExceptionMessage() {
-        System.out.printf("%d개의 1~9 사이의 수만 입력할 수 있습니다.%n", Balls.COUNT_OF_BALLS);
-    }
-
     private Boolean continueGame() {
         String input;
         while (true) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            printChoiceRestartMessage();
             input = getInputString();
 
             if (!input.equals(CONTINUE) && !input.equals(QUIT)) {
-                System.out.println("1, 2만 입력 가능합니다. 다시 입력해주세요.");
+                printChoiceInputExceptionMessage();
                 continue;
             }
 
             return input.equals(CONTINUE);
         }
+    }
+
+    private void printInputMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    private void printFormatExceptionMessage() {
+        System.out.printf("%d개의 1~9 사이의 수만 입력할 수 있습니다.%n", Balls.COUNT_OF_BALLS);
+    }
+
+    private void printChoiceInputExceptionMessage() {
+        System.out.println("1, 2만 입력 가능합니다. 다시 입력해주세요.");
+    }
+
+    private void printChoiceRestartMessage() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     private String getInputString() {
