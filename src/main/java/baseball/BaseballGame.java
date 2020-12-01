@@ -10,15 +10,14 @@ public class BaseballGame {
     private static final int ALL_STRIKE_CNT = 3;
     private static final char RESTART_CODE = '1';
     private static final char FINISH_CODE = '2';
-    private String guess;
     private Player player;
     private Printer printer;
     private Referee referee;
     private String answer;
+    private String guess;
     private int ballCnt;
     private int strikeCnt;
     private char progress;
-    private boolean allStrike;
     private boolean progressGame;
 
     public BaseballGame(Scanner scanner) {
@@ -34,7 +33,6 @@ public class BaseballGame {
         progress = '\u0000';
         ballCnt = 0;
         strikeCnt = 0;
-        allStrike = false;
         progressGame = true;
     }
 
@@ -46,13 +44,15 @@ public class BaseballGame {
 
     public void start() {
         initGame();
-        while (!allStrike) {
+        while (true) {
             askGuess();
             referee.compareNumber(answer, guess);
             ballCnt = referee.getBallCnt();
             strikeCnt = referee.getStrikeCnt();
             printer.printHint(ballCnt, strikeCnt);
-            isAllStrike(strikeCnt);
+            if (isAllStrike(strikeCnt)) {
+                break;
+            }
         }
         finish();
     }
@@ -85,11 +85,11 @@ public class BaseballGame {
         }
     }
 
-    public void isAllStrike(int strikeCnt) {
+    public boolean isAllStrike(int strikeCnt) {
         if (strikeCnt == ALL_STRIKE_CNT) {
-            allStrike = true;
+            return true;
         } else {
-            allStrike = false;
+            return false;
         }
     }
 
