@@ -1,11 +1,11 @@
-package baseball.model;
-
 /**
  * Number.java
  * 한자리의 숫자를 담을 Wrapper 클래스
  *
  * @author Kimun Kim / kkm97351@gmail.com
  */
+
+package baseball.model;
 
 public class Number {
     public static final int MIN = 1;

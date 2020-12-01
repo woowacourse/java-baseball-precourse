@@ -1,11 +1,12 @@
-package baseball.model;
-
 /**
  * BallCount.java
  * 스트라이크, 볼을 담을 Data Transfer Object
  *
  * @author Kimun Kim / kkm97351@gmail.com
  */
+
+package baseball.model;
+
 public class BallCount {
     private final int strike;
     private final int ball;

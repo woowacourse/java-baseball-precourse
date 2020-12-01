@@ -1,13 +1,14 @@
-package baseball.view;
-
-import baseball.model.BallCount;
-
 /**
  * OutputView.java
  * 입력을 제외한 출력을 담당하는 View 클래스
  *
  * @author Kimun Kim / kkm97351@gmail.com
  */
+
+package baseball.view;
+
+import baseball.model.BallCount;
+
 public class OutputView {
     private static final String WINNING_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String TERMINATION_MESSAGE = "프로그램을 종료합니다.";

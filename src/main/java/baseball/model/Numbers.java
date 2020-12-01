@@ -1,3 +1,10 @@
+/**
+ * Numbers.java
+ * Number 객체를 리스트로 가지는 일급 컬렉션
+ *
+ * @author Kimun Kim / kkm97351@gmail.com
+ */
+
 package baseball.model;
 
 import java.util.ArrayList;
@@ -6,15 +13,8 @@ import java.util.stream.IntStream;
 
 import utils.RandomUtils;
 
-/**
- * Numbers.java
- * Number 객체를 리스트로 가지는 일급 컬렉션
- *
- * @author Kimun Kim / kkm97351@gmail.com
- */
-
 public class Numbers {
-    public static final int NUMBERS_LENGTH = 3;     /* 몇 자리의 숫자 야구 게임을 할 지 정하는 상수 */
+    public static final int NUMBERS_LENGTH = 3;
     private static final int ZERO = 0;
 
     private final ArrayList<Number> numbers;
@@ -87,12 +87,10 @@ public class Numbers {
                 .count();
     }
 
-    /* Numbers에서 특정 위치의 Number를 리턴하는 메소드 */
     private Number get(int i) {
         return numbers.get(i);
     }
 
-    /* Numbers가 특정 Number를 가지고 있는지 확인하는 메소드 */
     private boolean contains(Number number) {
         return numbers.contains(number);
     }
