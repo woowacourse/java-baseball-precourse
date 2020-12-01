@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class GameResultTest {
 
     @Test
-    void getResult_s_b() {
+    void getResult_strikeAndBall() {
         int strike = 1, ball = 1;
         assertEquals(
                 new GameResult(strike, ball).getResult(),
@@ -15,7 +15,7 @@ class GameResultTest {
     }
 
     @Test
-    void getResult_s() {
+    void getResult_strike() {
         int strike = 1, ball = 0;
         assertEquals(
                 new GameResult(strike, ball).getResult(),
@@ -23,7 +23,7 @@ class GameResultTest {
     }
 
     @Test
-    void getResult_b() {
+    void getResult_ball() {
         int strike = 0, ball = 1;
         assertEquals(
                 new GameResult(strike, ball).getResult(),
