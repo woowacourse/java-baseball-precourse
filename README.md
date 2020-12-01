@@ -107,3 +107,22 @@ private static final Random RANDOM = new Random();
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+<br>
+
+## 🛒 기능 목록
+
+<img src="./logic_image.jpg" alt="logic_image" style="zoom:10%;" />
+
+- 게임 시작과 함께 **숫자를 생성**한다.
+- **플레이어 입력**
+  - 입력을 받는다.
+    - 예외처리 필요
+  - 입력을 **배열로 전환**한다. (비교를 용이하게)
+- 받은 입력을 **출력**한다.
+- 게임 진행
+  - **Hint를 만든다.**
+    - 배열을 비교해서 스트라이크와 볼을 카운트한다.
+  - **Hint를 출력한다.**
+- 게임 종료
+  - 게임을 재개할지 **다시 입력**을 받는다.
