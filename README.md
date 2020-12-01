@@ -34,7 +34,7 @@
         * 스트라이크만 존재하는 경우 : "x스트라이크"
         * 볼과 스트라이크가 모두 존재하지 않는 경우 : "낫싱"
 
-5. 프로그램이 게임의 진행 및 종료 조건을 판단하도록 한다.
+5. 프로그램이 게임의 진행 및 종료 조건 상태를 판단하도록 한다.
     * 3스트라이크를 맞추지 못한 경우, **2번** 으로 돌아가 다시 사용자로부터 입력값을 받으며 게임을 계속 진행한다.
     * 3스트라이크를 맞춘 경우, **게임 재시작/종료**에 대한 안내 메시지를 출력한다.
         * 사용자로부터 게임 재시작/종료에 대한 입력값을 받는다.
@@ -43,26 +43,31 @@
         * 이 때, 1과 2를 제외한 문자를 입력받는 경우 IllegalArgumentException을 발생시킨다.
         * 요구사항에는 별도의 명시 사항은 없으나, 예외가 발생하면 View에서 에러 메시지를 출력하고 다시 재입력을 받는다.
 
+* 발생 가능한 모든 입력 예외 케이스는 View에서 IllegalArgumentException으로 처리하고, Domain에서는 예외 검증 및 호출 시 사용자 정의 예외를 사용해본다.
+
 <br>
 
 ## 프로젝트를 진행하면서 고민한 내용들
 
-1. 스트라이크와 볼 개수를 계산하는 것은 어떤 객체의 책임이자 역할일까?
+미션을 진행하면서 고민했던 내용들을 개인적으로 공부해보고 [블로그](https://xlffm3.github.io/java/etc/Woowacourse_precourse_baseball/) 에 정리해보았습니다.
+
+1. 객체의 책임과 역할 : 스트라이크 및 볼 계산
     * 볼들의 리스트를 가지고 있는 객체(BaseballNumbers)가 인덱스를 순회하며 계산하는 것이 가장 쉽다.
-    * 별도의 ScoreChecker 등의 객체가 계산 규칙을 가지고 중간에서 계산을 개입하는 것은 어떨까?
-2. View의 입력 예외 처리와 역할에 대한 의문점
-    * Domain의 영역(비즈니스 로직)을 과도하게 침범하는 것이 아닌가?
-    * View에서 입력 예외를 try-catch로 완벽하게 처리했다면
-        * 입력 예외로 발생할 수 있는 Domain 객체 생성 예외는 처리하지 않아도 되는가?
-3. 가변 객체 vs 불변 객체의 Trade-Off?
-    * 상태를 변경하는 로직을 사용하면 Application 코드가 조금 더 깔끔해질 수 있다.
-        * BaseballGameMachine이 '변경될 수 있는' GameResult를 속성으로 가지고 있는 경우.
-4. equals를 꼭 오버라이드해야 할까?
-5. 입력 예외를 다룰 때 : try-catch recursion vs while?
-6. 구현 기능 목록을 어느정도로 상세하게 작성해야 할까?
-7. 커밋 메시지는 영어 혹은 한글, 단위는 어느 정도로?
-8. 테스트 메서드의 이름은 영어 혹은 한글?
-9. 정적 팩토리 메소드는 '항상' 좋은 것일까?
+    * 별도의 객체(ScoreChecker)가 계산 규칙을 가지고 중간에서 계산을 개입하는 것은 어떨까?
+2. 객체의 책임과 역할 : View 입력 예외 처리
+    * 입력 예외를 어느 시점 및 어디에서 검사하고 IllegalArgumentException을 호출해야 하는가?
+        * View or Domain?
+        * View에서 입력 예외를 처리하는 로직이 Domain 내부 로직을 과도하게 관여 및 침범하는게 아닌가?
+    * 입력 예외가 발생하면 단순히 예외를 호출하는 것으로 충분한가?
+        * View에서 try-catch를 통해 예외를 처리하고, 올바른 값을 다시 재입력받도록 코드를 짜야하는가?
+    * 발생 가능한 모든 입력 예외 케이스를 View에서 try-catch로 완벽하게 처리했다면,
+        * 입력값을 활용하는 Domain의 비즈니스 로직에서 발생 가능한 예외는 try-catch로 처리하지 않아도 되는가?
+    * 입력 예외를 다룰 때, try-catch recursion vs while?
+3. equals를 꼭 오버라이드해야 할까?
+4. 구현 기능 목록을 어느정도로 상세하게 작성해야 할까?
+5. 커밋 메시지는 영어 혹은 한글?
+6. 테스트 메서드의 이름은 영어 혹은 한글?
+7. 정적 팩토리 메소드 생성 기준?
 
 <br>
 
@@ -79,6 +84,12 @@
         * number 패키지
             * BaseballNumber
             * BaseballNumbers
+        * exception 패키지
+            * BaseballNumberCountsException
+            * BaseballNumberRangeException
+            * CannotFindGameStateException
+            * CannotPlayException
+            * InvalidGameResultException
     * view 패키지
         * InputView
         * OutputView
