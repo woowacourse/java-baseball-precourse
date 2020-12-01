@@ -19,6 +19,7 @@ public class Game {
 
     public void start() {
         do {
+            computer.generateAnswer();
             startGame();
         } while (isRestart());
     }
@@ -42,7 +43,6 @@ public class Game {
         int restart = scanner.nextInt();
 
         if (restart == Constant.RESTART) {
-            computer = new Computer();
             running = true;
             return true;
         } else if (restart == Constant.EXIT) {
