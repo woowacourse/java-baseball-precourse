@@ -42,6 +42,7 @@ public class Application {
 			System.out.println(RESTART_GUIDE);
 			String restartAnswer = scanner.nextLine();
 
+			gameEnd = restartCheck(restartAnswer);
 		}
 	}
 
@@ -108,6 +109,18 @@ public class Application {
 
 			}
 		}
+	}
+
+	static boolean restartCheck(String restartAnswer) {
+
+		if (restartAnswer.equals(RESTART_GAME)) {
+			return false;
+		}
+
+		if (restartAnswer.equals(END_GAME)) {
+			return true;
+		}
+		return true;
 	}
 
 }
