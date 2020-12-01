@@ -14,7 +14,8 @@
 - Validator Class
   - checkRangeNumbers : user가 입력한 값의 자리수가 맞지 않으면 예외 발생
   - checkOverlapInputNumbers : user가 입력한 값이 중복되는 수가 입력되면 예외 발생
-  - checkZeroNumbers : user가 0을 입력했을 시 예외 처리
+  - checkZeroNumbers : user가 0을 입력 했을 시 예외 처리
+  - checkNotText : user가 문자를 입력 했을 시 예외 처리
 - Game Class
   - start : 게임의 시작되는 메소드
 - Constant Class
