@@ -4,11 +4,17 @@ import java.util.Scanner;
 
 public class Application {
 
+	private static final String INPUT_GUIDE = "숫자를 입력해주세요 : ";
+	
 	public static void main(String[] args) {
 		final Scanner scanner = new Scanner(System.in);
 		// TODO 援ы쁽 吏꾪뻾
+		System.out.print(INPUT_GUIDE);
+		input = scanner.nextLine();
+
+		int answer = Integer.parseInt(input);
 		
-		System.out.println(makeQuestion());
+		System.out.println("입력 : " + input + "랜덤수 : " + makeQuestion());
 	}
 
 	static int makeQuestion() {
