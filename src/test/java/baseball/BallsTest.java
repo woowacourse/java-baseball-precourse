@@ -43,35 +43,4 @@ class BallsTest {
         assertThrows(IllegalArgumentException.class, () -> generateBalls(9, 1, 1));
         assertThrows(IllegalArgumentException.class, () -> generateBalls(1, 9, 1));
     }
-
-    @Test
-    void judgeResult() {
-        Balls myBalls;
-        Balls botBalls;
-        GameResult gameResult;
-
-        // 3s 0b
-        myBalls = generateBalls(1, 2, 3);
-        botBalls = generateBalls(1, 2, 3);
-        gameResult = myBalls.judgeResult(botBalls);
-        assertEquals(new GameResult(3, 0), gameResult);
-
-        // 0s 3b
-        myBalls = generateBalls(1, 2, 3);
-        botBalls = generateBalls(3, 1, 2);
-        gameResult = myBalls.judgeResult(botBalls);
-        assertEquals(new GameResult(0, 3), gameResult);
-
-        // 1s 1b
-        myBalls = generateBalls(1, 2, 3);
-        botBalls = generateBalls(1, 3, 2);
-        gameResult = myBalls.judgeResult(botBalls);
-        assertEquals(new GameResult(1, 2), gameResult);
-
-        // 0s 0b
-        myBalls = generateBalls(1, 2, 3);
-        botBalls = generateBalls(4, 5, 6);
-        gameResult = myBalls.judgeResult(botBalls);
-        assertEquals(new GameResult(0, 0), gameResult);
-    }
 }

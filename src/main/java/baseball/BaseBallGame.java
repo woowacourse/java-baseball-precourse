@@ -25,16 +25,18 @@ public class BaseBallGame {
 
         botBalls = Balls.generateRandomBalls();                 // 랜덤 생성 수
         do {
-            System.out.println(botBalls);// TODO 테스트
-
-            System.out.print("숫자를 입력해주세요 : ");
-            gameResult = getUserBalls().judgeResult(botBalls);  // 사용자 수 입력 & 결과 계산
+            printInputMessage();
+            gameResult = GameResult.judgeResult(getUserBalls(), botBalls);// 사용자 수 입력 & 결과 계산
             printResult(gameResult);                            // 결과 출력
         } while (!gameResult.isAllStrikes());                   // 3스트라이크: 루프탈출
     }
 
     private void printResult(GameResult gameResult) {
         System.out.println(gameResult.getResultMessage());
+    }
+
+    private void printInputMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private Balls getUserBalls() {

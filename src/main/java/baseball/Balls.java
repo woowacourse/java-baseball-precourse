@@ -18,22 +18,6 @@ public class Balls {
         this.balls = balls;
     }
 
-    public GameResult judgeResult(Balls botBalls) {
-        int STRIKE = 0;
-        int BALL = 0;
-
-        for (int i = 0; i < COUNT_OF_BALLS; i++) {
-            Ball myBall = this.get(i);
-
-            if (myBall.equals(botBalls.get(i))) {
-                STRIKE++;
-            } else if (botBalls.contains(myBall)) {
-                BALL++;
-            }
-        }
-        return new GameResult(STRIKE, BALL);
-    }
-
     public static Balls generateRandomBalls() {
         List<Ball> balls = new ArrayList<>();
         Ball ball;
@@ -76,11 +60,11 @@ public class Balls {
         return this.balls.equals(balls.balls);
     }
 
-    private Ball get(int index) {
+    public Ball get(int index) {
         return balls.get(index);
     }
 
-    private boolean contains(Ball ball) {
+    public boolean contains(Ball ball) {
         return this.balls.contains(ball);
     }
 

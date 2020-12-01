@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Balls.COUNT_OF_BALLS;
+
 /**
  * 게임의 결과에 대한 정보를 가진 객체: 결과를 계산, 출력
  */
@@ -20,15 +22,31 @@ public class GameResult {
         this.ball = ball;
     }
 
+    public static GameResult judgeResult(Balls balls1, Balls balls2) {
+        int STRIKE = 0;
+        int BALL = 0;
+
+        for (int i = 0; i < COUNT_OF_BALLS; i++) {
+            Ball myBall = balls1.get(i);
+
+            if (myBall.equals(balls2.get(i))) {
+                STRIKE++;
+            } else if (balls2.contains(myBall)) {
+                BALL++;
+            }
+        }
+        return new GameResult(STRIKE, BALL);
+    }
+
     private void validateMaximum(Integer strike, Integer ball) {
-        if (strike + ball > Balls.COUNT_OF_BALLS) {
+        if (strike + ball > COUNT_OF_BALLS) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateRange(Integer i) {
-        if (i < 0 || Balls.COUNT_OF_BALLS < i) {
-            String msg = String.format("strike/ball은 0~%d 사이의 수여야 합니다.", Balls.COUNT_OF_BALLS);
+        if (i < 0 || COUNT_OF_BALLS < i) {
+            String msg = String.format("strike/ball은 0~%d 사이의 수여야 합니다.", COUNT_OF_BALLS);
             throw new IllegalArgumentException(msg);
         }
     }
@@ -88,7 +106,7 @@ public class GameResult {
     }
 
     public boolean isAllStrikes() {
-        if (strike == Balls.COUNT_OF_BALLS) {
+        if (strike == COUNT_OF_BALLS) {
             printGameFinishMessage();
             return true;
         }
@@ -96,6 +114,6 @@ public class GameResult {
     }
 
     private void printGameFinishMessage() {
-        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", Balls.COUNT_OF_BALLS);
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", COUNT_OF_BALLS);
     }
 }
