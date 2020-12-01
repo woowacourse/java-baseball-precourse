@@ -5,7 +5,7 @@ import utils.RandomUtils;
 
 /**
  * 숫자야구의 컴퓨터(상대방)턴
- * 기능 1. 중복되지 않도록 임의의 숫자를 생성해 저장
+ * 기능 1. 중복되지 않도록 임의의 숫자를 생성해 숫자 리스트에 저장
  */
 public class ComputerBaseballService {
 	/** 최대로 생성할 수 있는 숫자 갯수를 한정하는 상수 */
