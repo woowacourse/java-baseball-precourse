@@ -26,6 +26,7 @@ public class Game implements IGame {
         computer.makeRandomNumber();
 
         while (true) {
+            printInputMessage();
             player.inputThreeNumber(scanner);
             printHint();
             if (hint.isCorrectAnswer(player.getBaseballGameNumber(),
@@ -41,6 +42,10 @@ public class Game implements IGame {
     private void inputForRestartFromPlayer(Scanner scanner) {
         int input = player.inputForRestart(scanner);
         isPlaying = input == INPUT_RESTART;
+    }
+
+    private void printInputMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private void printGameEndMessage() {
