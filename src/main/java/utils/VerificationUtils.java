@@ -1,9 +1,9 @@
 package utils;
 
 public class VerificationUtils {
+    private static final String ERROR_MESSAGE = "잘못 입력하셨습니다.";
     private static final int GUESS_NUMBER_LENGTH = 3;
     private static final int PROGRESS_NUMBER_LENGTH = 1;
-    private static final String ERROR_MESSAGE = "잘못 입력하셨습니다.";
 
     private VerificationUtils() {
     }
