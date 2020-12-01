@@ -2,9 +2,9 @@ package baseball;
 
 import utils.RandomUtils;
 
-public class PlayerComputer extends Player {
-    private static int[] records = Player.makeRecordContainer();
-
+public class PlayerComputer {
+    private static int[] records = new int[Judge.RECORD_LENGTH];
+    private static final int INITIALIZER = -1;
 
     public int[] getRecords() {
         initializeRecords();
