@@ -9,7 +9,18 @@ public class GameService {
     }
 
     public static void start(Scanner scanner) {
-        String target = generateTarget();
+        String targetValue = generateTarget();
+
+        while (true) {
+            String guessValue = InputService.guess(scanner);
+            Result result = compareGuessWithTarget(guessValue, targetValue);
+            System.out.println(result);
+            if (result.getStrike() == 3) {
+                break;
+            }
+        }
+
+        return;
     }
 
     private static String generateTarget() {
