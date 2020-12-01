@@ -23,15 +23,30 @@ public class OutputShower {
         System.out.println(nothingMessage);
     }
 
-    /* 현재 스트라이크와 볼 상황을 보여주는 메서드 */
+    /**
+     * 현재 스트라이크와 볼 상황을 보여주는 메서드
+     *
+     * @param ballNumber 현재 유저가 채점 받은 볼의 갯수
+     * @param strikeNumber 현재 유저가 채점 받은 스트라이크 갯수
+     */
     public static void showBothBallStrike(int ballNumber, int strikeNumber) {
         System.out.printf(bothBallStrikeMessage, ballNumber, strikeNumber);
     }
 
+    /**
+     * 현재 볼만 가지고 있을 때, 상황을 보여주는 메서드
+     *
+     * @param ballNumber 현재 유저가 채점 받은 볼의 갯수
+     */
     public static void showBall(int ballNumber) {
         System.out.printf(ballMessage, ballNumber);
     }
 
+    /**
+     * 현재 스트라이크만 가지고 있을 때, 상황을 보여주는 메서드
+     *
+     * @param strikeNumber 현재 유저가 채점 받은 스트라이크의 갯수
+     */
     public static void showStrike(int strikeNumber) {
         System.out.printf(strikeMessage, strikeNumber);
     }
