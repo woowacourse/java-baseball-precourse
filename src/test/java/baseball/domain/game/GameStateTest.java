@@ -1,5 +1,6 @@
 package baseball.domain.game;
 
+import baseball.domain.exception.CannotFindGameStateException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -44,7 +45,7 @@ class GameStateTest {
     public void findGameState_예외값_예외발생(int gameStateNumber) {
         assertThatCode(() -> {
             GameState.findGameState(gameStateNumber);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(CannotFindGameStateException.class);
     }
 
     @DisplayName("Exit enum의 경우 더이상 게임 플레이 진행 불가")

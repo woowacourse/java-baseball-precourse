@@ -1,5 +1,7 @@
 package baseball.domain.game;
 
+import baseball.domain.exception.CannotFindGameStateException;
+
 import java.util.Arrays;
 
 public enum GameState {
@@ -21,7 +23,7 @@ public enum GameState {
         return Arrays.stream(values())
                 .filter(gameState -> gameState.isMatch(gameStateNumber))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new CannotFindGameStateException(gameStateNumber));
     }
 
     private boolean isMatch(int gameStateNumber) {
