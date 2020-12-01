@@ -15,11 +15,13 @@ public class BaseballGameLauncher {
 
     public static void play(Scanner scanner) {
         playNewBaseballGame(scanner);
-        try {
-            confirmGameRestart(scanner);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            confirmGameRestart(scanner);
+        while (true) {
+            try {
+                confirmGameRestart(scanner);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
