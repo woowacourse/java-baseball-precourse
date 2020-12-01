@@ -19,12 +19,11 @@ public class UserSelectNumber {
         this.userSelectNumber = StringHandler.stringToArrayList(userInput);
     }
 
-    public String receiveUserString(Scanner scanner) {
+    private String receiveUserString(Scanner scanner) {
         String userInput = scanner.nextLine();
 
         UserInputValidator.isValidNumber(userInput);
         return userInput;
-
     }
 
     public ArrayList<Integer> getUserSelectNumber() {

@@ -12,6 +12,7 @@ public class BaseballGame {
         return new BaseballGame();
     }
 
+    // 한번의 게임진행을 하는 메소드
     public boolean playGame(ArrayList<Integer> answerNumber, Scanner scanner) {
         UserSelectNumber userSelectNumber = UserSelectNumber.createUserSelectNumber();
 
@@ -38,7 +39,7 @@ public class BaseballGame {
         return selectContinue(scanner);
     }
 
-    public boolean selectContinue(Scanner scanner) {
+    private boolean selectContinue(Scanner scanner) {
         Output.printContinue();
         String continueSelect = scanner.nextLine();
         boolean selectResult;    // 게임을 한번 더 할지의 여부(false : 그만, true : 계속)

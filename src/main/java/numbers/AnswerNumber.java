@@ -16,7 +16,7 @@ public class AnswerNumber {
         return new AnswerNumber(makeAnswerNumber());
     }
 
-    public static ArrayList<Integer> makeAnswerNumber() {
+    private static ArrayList<Integer> makeAnswerNumber() {
         ArrayList<Integer> randomNumberList = new ArrayList<>();
 
         while (randomNumberList.size() < NUMBER_LENGTH) {
