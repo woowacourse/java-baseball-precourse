@@ -30,8 +30,10 @@
     - [X] 클래스 변수
     - [X] 생성자
     - [X] 경기를 진행하는 메소드
-- [X] `Application` 클래스
+- [X] `ConsoleBaseballProgram` 클래스
     - [X] 게임 진행 메소드
+    - [X] 게임 반복 메소드
+- [X] `Application` 클래스
     - [X] `main` 메소드
 
 ## 🤔 구현 세부 사항
