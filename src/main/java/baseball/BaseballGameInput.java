@@ -19,6 +19,12 @@ public class BaseballGameInput {
 
     public String restartOrExitInput() {
         System.out.println(RESTART_OR_EXIT_MESSAGE);
-        return scanner.nextLine();
+
+        String input = scanner.nextLine();
+        if(!RestartOrExitValidator.isValid(input)) {
+            throw new IllegalArgumentException();
+        }
+
+        return input;
     }
 }
