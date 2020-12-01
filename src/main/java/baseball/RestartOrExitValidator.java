@@ -3,8 +3,6 @@ package baseball;
 public class RestartOrExitValidator {
 
     static final int RIGHT_LENGTH = 1;
-    static final int RESTART = 1;
-    static final int EXIT = 2;
 
     private RestartOrExitValidator(){}
 
@@ -28,6 +26,6 @@ public class RestartOrExitValidator {
     private static boolean isRightInput(String input) {
         int inputIntValue = Integer.parseInt(input);
 
-        return inputIntValue == RESTART || inputIntValue == EXIT;
+        return inputIntValue == BaseballGame.RESTART || inputIntValue == BaseballGame.EXIT;
     }
 }
