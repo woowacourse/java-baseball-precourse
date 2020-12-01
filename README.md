@@ -1,10 +1,27 @@
 # 미션 - 숫자 야구 게임
 
 ## 구현 기능
-- 사용자 입력
-- 숫자 배열화
-- 힌트 
-- 출력
+- Player Class
+  - inputNumbers : 1 ~9 까지의 정수 입력 (String 타입으로 리턴) 메소드
+  - userInputNumbers : user가 입력한 값을 char배열로 저장
+- Computer Class
+  - overLapNumbersCheckArray : 랜덤값에 대한 중복 검사로 이용할 길이 10인 boolean 배열 생성
+  - inputRandomNumbersArray :  랜덤값을 생성하여 중복된 숫자를 제외하고 randomNumbersArray에 저장
+- Hint Class
+  - countStrike : 인덱스와 value가 맞으면 strike 변수에 1++ 할당
+  - countBall : value가 맞으면 ball 변수에 1++ 할당
+  - printBallOrStrike : 스트라이크와 볼, 낫싱을 strike, ball에 갯수에 맞춰 출력
+- Validator Class
+  - checkRangeNumbers : user가 입력한 값의 자리수가 맞지 않으면 예외 발생
+  - checkOverlapInputNumbers : user가 입력한 값이 중복되는 수가 입력되면 예외 발생
+  - checkZeroNumbers : user가 0을 입력했을 시 예외 처리
+- Game Class
+  - start : 게임의 시작되는 메소드
+- Constant Class
+  - 상수들을 static 메모리에 초기화
+- Application Class
+  - 게임이 시작할지 게임을 종료할지 선택
+
 
 
 
