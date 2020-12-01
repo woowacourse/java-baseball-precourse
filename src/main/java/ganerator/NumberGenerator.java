@@ -2,8 +2,6 @@ package ganerator;
 
 import utils.RandomUtils;
 
-import java.util.ArrayList;
-
 /** 3자리 번호를 생성하는 클래스 */
 public class NumberGenerator {
     private static boolean[] numFlag = new boolean[10]; //중복체크하는 배열
