@@ -8,9 +8,9 @@ public class RestartNumber {
     public static int askRestart(Scanner scanner){
         try {
             System.out.println(REGAME_MESSAGE);
-            int number = scanner.nextInt();
+            String number = scanner.next();
             if (validateInput(number)){
-                return number;
+                return Integer.parseInt(number);
             }
         } catch (IllegalArgumentException e) {
             return askRestart(scanner);
@@ -18,11 +18,11 @@ public class RestartNumber {
         return 0;
     }
 
-    public static boolean validateInput (int number) throws IllegalArgumentException {
-        if (number < 1 || number > 2){
-            throw new IllegalArgumentException();
-        } else {
+    public static boolean validateInput (String number) throws IllegalArgumentException {
+        if (number.equals("1") || number.equals("2")){
             return true;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }
