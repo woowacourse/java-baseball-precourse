@@ -54,7 +54,7 @@ public class BaseballNumbers {
 
     public int calculateStrikeCounts(BaseballNumbers targetBaseballNumbers) {
         return (int) IntStream.rangeClosed(FIRST_BALL_INDEX, LAST_BALL_INDEX)
-                .filter(i -> isStrike(i, targetBaseballNumbers))
+                .filter(index -> isStrike(index, targetBaseballNumbers))
                 .count();
     }
 
@@ -67,7 +67,7 @@ public class BaseballNumbers {
 
     public int calculateBallCounts(BaseballNumbers targetBaseballNumbers) {
         return (int) IntStream.rangeClosed(FIRST_BALL_INDEX, LAST_BALL_INDEX)
-                .filter(i -> isBall(i, targetBaseballNumbers))
+                .filter(index -> isBall(index, targetBaseballNumbers))
                 .count();
     }
 
