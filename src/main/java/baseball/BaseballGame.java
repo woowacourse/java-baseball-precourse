@@ -1,5 +1,6 @@
 package baseball;
 
+import utils.ComparisonBalls;
 import utils.OutputView;
 import java.util.Scanner;
 
@@ -38,8 +39,8 @@ public class BaseballGame {
     }
 
     public void compareBalls() {
-        strike = CompareBalls.getStrikeCount(computer.getBalls(), player.getBalls());
-        ball = CompareBalls.getBallCount(computer.getBalls(), player.getBalls());
+        strike = ComparisonBalls.getStrikeCount(computer.getBalls(), player.getBalls());
+        ball = ComparisonBalls.getBallCount(computer.getBalls(), player.getBalls());
     }
 
 }
