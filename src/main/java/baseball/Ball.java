@@ -13,11 +13,6 @@ public class Ball {
         this(Integer.parseInt(String.valueOf(c)));
     }
 
-    @Override
-    public String toString() {
-        return this.number.toString();
-    }
-
     private void validateRange(int number) {
         if (number < 1 || 9 < number) {
             throw new IllegalArgumentException("공의 숫자는 1~9의 자연수만 가능합니다. number:" + number);
@@ -41,5 +36,10 @@ public class Ball {
             return 0;
         }
         return number.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return this.number.toString();
     }
 }
