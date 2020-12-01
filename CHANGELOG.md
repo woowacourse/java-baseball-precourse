@@ -3,9 +3,12 @@
 이 프로젝트의 주목할만한 변화들은 모두 이곳에 기입합니다.  
 작성 기준은 [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 를 따르도록 합니다.  
 
+**Note:** docs<CHANGELOG.md>: complete the project
+
+This project has completed
 
 ---
-## [3.0.0]() (2020-12-01)
+## [3.0.0](https://github.com/weirdbb91/java-baseball-precourse/commit/844dd33ac97cb841ee203b4bc075fc9301a1fd9a) (2020-12-01)
 
 **Note:** feat<Game>: Add askStop feature
 
