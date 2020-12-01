@@ -12,7 +12,7 @@ public class Game {
     public Game(Scanner scanner) {
         this.computer = new Computer();
         this.user = new User();
-        this.hint = new Hint(0, 0);
+        this.hint = new Hint();
         this.running = true;
         this.scanner = scanner;
     }
@@ -43,7 +43,7 @@ public class Game {
         int restart = scanner.nextInt();
 
         if (restart == Constant.RESTART) {
-            running = true;
+            this.running = true;
             return true;
         } else if (restart == Constant.EXIT) {
             return false;
