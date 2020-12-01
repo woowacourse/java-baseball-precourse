@@ -5,6 +5,8 @@ import utils.RandomUtils;
 /** 검증기준 */
 public class Valid {
     private static final int GAME_DIGIT = 3;
+    private static final String REPLAY = "1";
+    private static final String FINISH_GAME = "2";
 
     /**
      * 새 게임을 위한 새 정답을 반환
@@ -43,6 +45,19 @@ public class Valid {
     private void size(final String input) {
         if (input.length() != Valid.GAME_DIGIT) {
             throw new IllegalArgumentException(Valid.GAME_DIGIT + "자리가 아닙니다.");
+        }
+    }
+
+    /** 값이 종료인지 확인 */
+    public boolean isFinish(final String input) {
+        rightAnswer(input);
+        return input.equals(Valid.FINISH_GAME);
+    }
+
+    /** 값이 종료 또는 다시시작인지 확인 */
+    private void rightAnswer(final String input) {
+        if (!input.equals(Valid.FINISH_GAME) && !input.equals(Valid.REPLAY)) {
+            throw new IllegalArgumentException("올바른 대답이 아닙니다.");
         }
     }
 }
