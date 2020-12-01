@@ -10,6 +10,10 @@ public class BaseballGameResult {
     private final int STRIKE = 1;
     private final int FINISH_THRESHOLD = 3;
 
+    private final String BALL_MESSAGE = "볼";
+    private final String STRIKE_MESSAGE = "스트라이크";
+    private final String NOTHING_MESSAGE = "낫싱";
+
     private BaseballNumbers computerBaseballNumbers;
     private BaseballNumbers userBaseballNumbers;
 
@@ -61,15 +65,15 @@ public class BaseballGameResult {
         List<String> results = new ArrayList<>();
 
         if (compareResult.get(BALL) != 0) {
-            results.add(compareResult.get(BALL) + "볼");
+            results.add(compareResult.get(BALL) + BALL_MESSAGE);
         }
 
         if (compareResult.get(STRIKE) != 0) {
-            results.add(compareResult.get(STRIKE) + "스트라이크");
+            results.add(compareResult.get(STRIKE) + STRIKE_MESSAGE);
         }
 
         if (results.size() == 0) {
-            results.add("낫싱");
+            results.add(NOTHING_MESSAGE);
         }
 
         return String.join(" ", results);
