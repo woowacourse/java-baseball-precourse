@@ -16,9 +16,12 @@ public class Application {
 		int question = 0;
 		while (max != 3) {
 			int number = RandomUtils.nextInt(1, 9);
-			question = question * 10 + number;
-			max++;
+			if (makeCheck(question, number)) {
+				question = question * 10 + number;
+				max++;
+			}
 		}
+
 		return question;
 	}
 }
