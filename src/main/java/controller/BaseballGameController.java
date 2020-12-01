@@ -37,7 +37,7 @@ public class BaseballGameController {
             if (isBingo(playerBaseballNumber)) {
                 showBingoMessage();
                 choiceRestartOrFinish();
-                return;
+                break;
             }
             showHint(playerBaseballNumber);
         }
