@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 public class BaseballGameResult {
-    private final int BALL = 0;
-    private final int STRIKE = 1;
-    private final int FINISH_THRESHOLD = 3;
+    static final int BALL = 0;
+    static final int STRIKE = 1;
+    static final int FINISH_THRESHOLD = 3;
 
-    private final String BALL_MESSAGE = "볼";
-    private final String STRIKE_MESSAGE = "스트라이크";
-    private final String NOTHING_MESSAGE = "낫싱";
+    static final String BALL_MESSAGE = "볼";
+    static final String STRIKE_MESSAGE = "스트라이크";
+    static final String NOTHING_MESSAGE = "낫싱";
 
     private BaseballNumbers computerBaseballNumbers;
     private BaseballNumbers userBaseballNumbers;

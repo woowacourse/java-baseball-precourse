@@ -2,9 +2,9 @@ package baseball;
 
 public class RestartOrExitValidator {
 
-    final private static int RIGHT_LENGTH = 1;
-    final private static int RESTART = 1;
-    final private static int EXIT = 2;
+    static final int RIGHT_LENGTH = 1;
+    static final int RESTART = 1;
+    static final int EXIT = 2;
 
     private RestartOrExitValidator(){}
 

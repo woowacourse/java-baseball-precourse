@@ -1,9 +1,9 @@
 package baseball;
 
 public class BaseballNumbersValidator {
-    private final static int BASEBALL_NUMBER_LENGTH = 3;
-    private final static int BASEBALL_NUMBER_MINIMUM = 1;
-    private final static int BASEBALL_NUMBER_MAXIMUM = 9;
+    static final int BASEBALL_NUMBER_LENGTH = 3;
+    static final int BASEBALL_NUMBER_MINIMUM = 1;
+    static final int BASEBALL_NUMBER_MAXIMUM = 9;
 
     public static boolean isValid(BaseballNumbers baseballNumbers) {
         return isRightLength(baseballNumbers)

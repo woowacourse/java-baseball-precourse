@@ -4,9 +4,9 @@ import utils.RandomUtils;
 import java.util.*;
 
 public class RandomBaseballNumbersGenerator {
-    private final static int BASEBALL_NUMBER_LENGTH = 3;
-    private final static int BASEBALL_NUMBER_MINIMUM = 1;
-    private final static int BASEBALL_NUMBER_MAXIMUM = 9;
+    static final int BASEBALL_NUMBER_LENGTH = 3;
+    static final int BASEBALL_NUMBER_MINIMUM = 1;
+    static final int BASEBALL_NUMBER_MAXIMUM = 9;
 
     public static BaseballNumbers generate() {
         return generateNewBaseballNumbers();

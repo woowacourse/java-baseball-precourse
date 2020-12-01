@@ -7,8 +7,8 @@ public class BaseballGame {
     private BaseballNumbers userBaseballNumbers;
     private BaseballGameResult baseballGameResult;
 
-    private final String FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임종료";
-    private final int RESTART = 1;
+    static final String FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임종료";
+    static final int RESTART = 1;
 
     public BaseballGame(BaseballGameInput baseballGameInput) {
         this.baseballGameInput = baseballGameInput;
