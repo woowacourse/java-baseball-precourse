@@ -4,6 +4,8 @@ import baseball.view.GameView;
 
 import java.util.Scanner;
 
+import static baseball.domain.Status.EXECUTION;
+import static baseball.domain.Status.TERMINATION;
 import static baseball.view.IllegalArgumentExceptionView.PLEASE_INPUT_ONE_OR_TOW;
 
 public class BaseballGameLauncher {
@@ -32,11 +34,10 @@ public class BaseballGameLauncher {
     }
 
     private static void confirmGameRestart(Scanner scanner) {
-        GameView.printExecuteOrTerminate();
-        String confirm = scanner.nextLine();
-        if (confirm.equals("1")) {
+        String confirm = GameView.inputExecuteOrTerminate(scanner);
+        if (confirm.equals(EXECUTION.toString())) {
             play(scanner);
-        } else if (!confirm.equals("2")) {
+        } else if (!confirm.equals(TERMINATION.toString())) {
             throw new IllegalArgumentException(PLEASE_INPUT_ONE_OR_TOW);
         }
     }
