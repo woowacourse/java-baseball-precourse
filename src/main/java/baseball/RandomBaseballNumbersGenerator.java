@@ -20,6 +20,10 @@ public class RandomBaseballNumbersGenerator {
                 newBaseballNumbers::add
         );
 
+        if(!BaseballNumbersValidator.isValid(newBaseballNumbers)){
+            throw new IllegalArgumentException();
+        }
+
         return newBaseballNumbers;
     }
 

@@ -27,7 +27,12 @@ public class BaseballNumbers {
                 .map(baseballNumber -> baseballNumber-'0')
                 .toArray();
 
-        return new BaseballNumbers(intValueBaseballNumber);
+        BaseballNumbers newBaseballNumbers = new BaseballNumbers(intValueBaseballNumber);
+        if(!BaseballNumbersValidator.isValid(newBaseballNumbers)) {
+            throw new IllegalArgumentException();
+        }
+
+        return newBaseballNumbers;
     }
 
     public void add(int baseballNumber) {
