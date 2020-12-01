@@ -2,17 +2,21 @@ package baseball;
 
 import java.util.Scanner;
 
+/**
+ * 게임을 시작하는 함수를 호출하고 게임 종료 후 게임을 새로 시작할지 종료할지를 입력받는 클래스
+ *
+ * @version 1.0 2020-11-29
+ */
 public class Starter {
 
-    private final String RESTART = "1";
-    private final String EXIT = "2";
+    private static final String RESTART = "1";
+    private static final String EXIT = "2";
 
     public void startGame(Scanner scanner) {
         while (true) {
             new BaseballGame().playGame();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-            String inputNum = inputUserNumber(scanner);
+            String inputNum = getUserInputNumber(scanner);
 
             if (inputNum.equals(EXIT)) {
                 System.out.println("프로그램을 종료합니다.");
@@ -28,7 +32,7 @@ public class Starter {
      * @param scanner 입력 받기위한 Scanner 타입의 매개변수
      * @return 1또는 2의 값을 반환합니다.
      */
-    private String inputUserNumber(Scanner scanner) {
+    private String getUserInputNumber(Scanner scanner) {
         while (true) {
             String inputNum = scanner.nextLine();
             try {
@@ -54,10 +58,10 @@ public class Starter {
     }
 
     /**
-     * 매개변수 inputNum이 1또는 2인지 확인하는 메서드
+     * 매개변수 inputNum 이 RESTART 또는 EXIT인지 확인하는 메서드
      *
      * @param inputNum 사용자가 입력한 값
-     * @return 1또는 2 라면 true, 아니라면 false
+     * @return RESTART 또는 EXIT 라면 true, 아니라면 false
      */
     private boolean isRestartOrExit(String inputNum) {
         return inputNum.equals(RESTART) || inputNum.equals(EXIT);

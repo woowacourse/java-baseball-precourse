@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 컴퓨터가 1에서 9까지의 서로 다른 임의의 수 3개를 정하게 하는 클래스
+ * 컴퓨터가 1에서 9까지의 서로 다른 임의의 수 3개를 정하는 클래스
  *
  * @version 1.0 2020-11-29
  *
@@ -26,7 +26,6 @@ public class Computer {
      * 운이 나쁘면 임의의 수를 여러번 만들어야 하는 단점이 있었습니다.
      */
     public Computer() {
-
         List<Integer> list = makeNumberList();
 
         for (int i = 0; i < SIZE; i++) {

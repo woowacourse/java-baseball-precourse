@@ -11,13 +11,13 @@ public class BaseballGame {
     private Computer computer;
     private User user = new User();
 
-    private final int SIZE = 3;
+    private static final int SIZE = 3;
 
     /**
      * 숫자 야구 게임을 시작하는 메서드
      */
     public void playGame() {
-        computer = new Computer();
+        this.computer = new Computer();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -43,7 +43,7 @@ public class BaseballGame {
      * @return 정답이면 true, 오답이면 false를 반환
      */
     private boolean isCorrectAnswer() {
-        if (this.computer.getNumber().equals(user.getNumber())) {
+        if (this.computer.getNumber().equals(this.user.getNumber())) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
@@ -63,7 +63,7 @@ public class BaseballGame {
 
         for (int i = 0; i < SIZE; i++) {
 
-            if (isStrike(i)) {
+            if (this.isStrike(i)) {
                 strike++;
             } else if (isBall(i)) {
                 ball++;
@@ -81,7 +81,7 @@ public class BaseballGame {
      * @return 같은 자리에 같은 숫자가 있으면 true, 아니면 false
      */
     private boolean isStrike(int index) {
-        return this.computer.getNumber().charAt(index) == user.getNumber().charAt(index);
+        return this.computer.getNumber().charAt(index) == this.user.getNumber().charAt(index);
     }
 
     /**
@@ -91,7 +91,7 @@ public class BaseballGame {
      * @return 사용자의 숫자 하나가 같은 자리는 아니지만 컴퓨터의 숫자안에 존재한다면 true, 아니면 false
      */
     private boolean isBall(int index) {
-        return this.computer.getNumber().contains(String.valueOf(user.getNumber().charAt(index)));
+        return this.computer.getNumber().contains(String.valueOf(this.user.getNumber().charAt(index)));
     }
 
     /**

@@ -22,7 +22,7 @@ public class User {
         checkInputSize(input);
         checkNumber(input);
         checkDuplicate(input);
-        number = input;
+        this.number = input;
     }
 
     /**
@@ -85,6 +85,6 @@ public class User {
     }
 
     public String getNumber() {
-        return number;
+        return this.number;
     }
 }
