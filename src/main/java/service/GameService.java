@@ -1,7 +1,7 @@
 package service;
 
+import dto.Result;
 import utils.RandomUtils;
-
 import java.util.Scanner;
 
 public class GameService {
@@ -37,5 +37,37 @@ public class GameService {
         }
 
         return true;
+    }
+
+    private static Result compareGuessWithTarget(String guessValue, String targetValue) {
+        Result result = new Result();
+
+        for (int i=0; i<guessValue.length(); i++){
+            String response = judge(guessValue.charAt(i), i, targetValue);
+            if (response.equals("ball")) {
+                result.setBall(result.getBall()+1);
+            } else if (response.equals("strike")) {
+                result.setStrike(result.getStrike()+1);
+            }
+        }
+
+        return result;
+    }
+
+    private static String judge(char charAtIdx, int idx, String targetValue) {
+        if (targetValue.charAt(idx) == charAtIdx) {
+            return "strike";
+        }
+
+        for(int i=0; i<targetValue.length(); i++) {
+            if (i == idx) {
+                continue;
+            }
+            if (targetValue.charAt(i) == charAtIdx) {
+                return "ball";
+            }
+        }
+
+        return "";
     }
 }
