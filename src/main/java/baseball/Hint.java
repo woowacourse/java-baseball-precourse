@@ -1,8 +1,8 @@
 package baseball;
 
 public class Hint {
-    int strike;
-    int ball;
+    private int strike;
+    private int ball;
 
     public void countHint(int[] computerAnswer, int[] userAnswer) {
         initCount();
