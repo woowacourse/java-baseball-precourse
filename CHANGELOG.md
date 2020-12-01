@@ -5,7 +5,25 @@
 
 
 ---
-## [2.0.0]() (2020-12-01)
+## [3.0.0]() (2020-12-01)
+
+**Note:** feat<Game>: Add askStop feature
+
+Feature update : askStop
+- Game.java
+
+This feature let player decide quit the game or restart
+
+Logic update : escape, reset the target
+- Application.java
+
+Now player can escape from the loop when player got victory
+
+### BREAKING CHANGE
+Absolutely completed
+
+---
+## [2.0.0](https://github.com/weirdbb91/java-baseball-precourse/commit/6e86bfbd1caa41a24e3583c134b0b9128c1bbe09) (2020-12-01)
 
 **Note:** feat<Game>: Add playing feature
 

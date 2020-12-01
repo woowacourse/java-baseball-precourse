@@ -20,6 +20,10 @@ public class Application {
             if (baseballGame.playing(scanner.nextLine())) {
                 continue;
             }
+            if (baseballGame.askStop(scanner.nextLine())) {
+                break;
+            }
+            baseballGame.initNewGame();
         }
     }
 }

@@ -34,4 +34,9 @@ public class Game {
         }
         return true;
     }
+
+    /** 입력값이 종료가 맞는지 확인 */
+    public boolean askStop(String input) {
+        return valid.isFinish(input);
+    }
 }
