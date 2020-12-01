@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class Player {
     private final Scanner scanner;
-    private static final String wrongInputWords = "잘못된 입력입니다.";
-    private static final String inputWords = "숫자를 입력해주세요 : ";
-    private static final String gameContinueWords = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String WRONG_INPUT = "잘못된 입력입니다.";
+    private static final String GET_INPUT = "숫자를 입력해주세요 : ";
+    private static final String GAME_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     ArrayList<Integer> inputNumber = null;
 
     public Player(Scanner scanner) {
@@ -28,13 +28,13 @@ public class Player {
         boolean isValid;
         int number;
         while (true) {
-            System.out.println(gameContinueWords);
+            System.out.println(GAME_RESTART);
             number = checkIfNumber();
             isValid = checkValidInput(number);
             if (isValid) {
                 break;
             } else {
-                System.out.println(wrongInputWords);
+                System.out.println(WRONG_INPUT);
             }
         }
 
@@ -47,13 +47,13 @@ public class Player {
         boolean isValid;
         int number;
         while (true) {
-            System.out.print(inputWords);
+            System.out.print(GET_INPUT);
             number = checkIfNumber();
             isValid = checkDigit(number);
             if (isValid) {
                 break;
             } else {
-                System.out.println(wrongInputWords);
+                System.out.println(WRONG_INPUT);
             }
         }
 

@@ -9,10 +9,10 @@ public class Hint {
     private int numStrike = 0;
     private String hint;
     private boolean isSuccess = false;
-    private static final String isBall = "볼 ";
-    private static final String isStrike = "스트라이크 ";
-    private static final String nothing = "낫싱";
-    private static final String isTarget = "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String IS_BALL = "볼 ";
+    private static final String IS_STRIKE = "스트라이크 ";
+    private static final String IS_NOTHING = "낫싱";
+    private static final String IS_TARGET = "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public Hint(ArrayList<Integer> targetNum) {
         this.targetNum = targetNum;
@@ -67,26 +67,26 @@ public class Hint {
     private void makeHint() {
         if (numStrike == 3) {
             isSuccess = true;
-            hint = String.valueOf(numStrike).concat(isStrike).concat(isTarget);
+            hint = String.valueOf(numStrike).concat(IS_STRIKE).concat(IS_TARGET);
             return;
         }
 
         if (numBall == 0 && numStrike == 0) {
-            hint = nothing;
+            hint = IS_NOTHING;
             return;
         }
 
         if (numBall == 0) {
-            hint = String.valueOf(numStrike).concat(isStrike);
+            hint = String.valueOf(numStrike).concat(IS_STRIKE);
             return;
         }
 
         if (numStrike == 0) {
-            hint = String.valueOf(numBall).concat(isBall);
+            hint = String.valueOf(numBall).concat(IS_BALL);
             return;
         }
 
-        hint = String.valueOf(numBall).concat(isBall);
-        hint = hint.concat(String.valueOf(numStrike)).concat(isStrike);
+        hint = String.valueOf(numBall).concat(IS_BALL);
+        hint = hint.concat(String.valueOf(numStrike)).concat(IS_STRIKE);
     }
 }
