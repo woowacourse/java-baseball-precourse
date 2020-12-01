@@ -1,7 +1,9 @@
 package baseball;
 
 import utils.OutputView;
+
 import java.util.Scanner;
+
 import static utils.Constant.*;
 
 public class BaseballGame {
@@ -19,24 +21,24 @@ public class BaseballGame {
         ball = 0;
     }
 
-    public boolean isGameEnd(){
-        if(strike == BALLS_LENGTH){
+    public boolean isGameEnd() {
+        if (strike == BALLS_LENGTH) {
             OutputView.printGameEnd();
             return true;
         }
         return false;
     }
 
-    public void inputPlayerBalls(){
+    public void inputPlayerBalls() {
         player.inputBalls();
     }
 
-    public void getHint(){
+    public void getHint() {
         compareBalls();
         OutputView.printHint(strike, ball);
     }
 
-    public void compareBalls(){
+    public void compareBalls() {
         strike = CompareBalls.getStrikeCount(computer.getBalls(), player.getBalls());
         ball = CompareBalls.getBallCount(computer.getBalls(), player.getBalls());
     }

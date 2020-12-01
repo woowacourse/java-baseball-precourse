@@ -3,6 +3,7 @@ package baseball;
 import utils.OutputView;
 
 import java.util.Scanner;
+
 import static utils.Constant.*;
 
 public class BaseballGameController {
@@ -14,10 +15,10 @@ public class BaseballGameController {
         this.scanner = scanner;
     }
 
-    public void startGame(){
+    public void startGame() {
         do {
             playGame();
-        }while (checkRestart());
+        } while (checkRestart());
     }
 
     private void playGame() {
@@ -33,11 +34,11 @@ public class BaseballGameController {
         OutputView.printSelectRestartOrEnd();
 
         int selectGameRestart = scanner.nextInt();
-        if(selectGameRestart == SELECT_GAME_RESTART){
+        if (selectGameRestart == SELECT_GAME_RESTART) {
             return true;
-        }else if(selectGameRestart == SELECT_GAME_END){
+        } else if (selectGameRestart == SELECT_GAME_END) {
             return false;
-        }else{
+        } else {
             return checkRestart();
         }
     }

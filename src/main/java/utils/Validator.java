@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.HashSet;
+
 import static utils.Constant.*;
 
 public class Validator {
@@ -12,12 +13,13 @@ public class Validator {
         checkNumberDuplicate(candidate);
         return candidate;
     }
+
     private static void checkNumberDuplicate(String candidate) {
         HashSet<Character> hashSet = new HashSet<Character>();
-        for(int i=0; i<BALLS_LENGTH; i++){
+        for (int i = 0; i < BALLS_LENGTH; i++) {
             hashSet.add(candidate.charAt(i));
         }
-        if(hashSet.size() != BALLS_LENGTH) {
+        if (hashSet.size() != BALLS_LENGTH) {
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_NUMBER_DUPLICATE);
         }
     }
@@ -25,23 +27,22 @@ public class Validator {
     private static void checkInteger(String candidate) {
         try {
             Integer.parseInt(candidate);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_NOT_NUMBER);
         }
     }
 
     private static void checkContainZero(String candidate) {
-        if(candidate.contains("0")){
+        if (candidate.contains("0")) {
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_CONTAIN_ZERO);
         }
     }
 
     private static void checkIncorrectLength(String candidate) {
-        if(candidate.length() != BALLS_LENGTH){
+        if (candidate.length() != BALLS_LENGTH) {
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_INCORRECT_LENGTH);
         }
     }
-
 
 
 }

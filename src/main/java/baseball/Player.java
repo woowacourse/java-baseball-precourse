@@ -3,12 +3,13 @@ package baseball;
 import utils.Validator;
 
 import java.util.*;
+
 import static utils.Constant.*;
 
 public class Player {
 
     private Scanner scanner;
-    private String balls ;
+    private String balls;
 
     public Player(Scanner scanner) {
         this.scanner = scanner;
@@ -19,14 +20,15 @@ public class Player {
         return balls;
     }
 
-    public void inputBalls(){
-        while(true){
+    public void inputBalls() {
+        while (true) {
             try {
                 System.out.print(INPUT_PLAYER_BALLS);
                 String ballCandidate = scanner.next();
-                balls = Validator.getValidateBall(ballCandidate);;
+                balls = Validator.getValidateBall(ballCandidate);
+                ;
                 return;
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 continue;
             }
