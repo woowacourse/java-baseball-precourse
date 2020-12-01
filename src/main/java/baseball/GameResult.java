@@ -38,19 +38,6 @@ public class GameResult {
         return new GameResult(STRIKE, BALL);
     }
 
-    private void validateMaximum(Integer strike, Integer ball) {
-        if (strike + ball > COUNT_OF_BALLS) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validateRange(Integer i) {
-        if (i < 0 || COUNT_OF_BALLS < i) {
-            String msg = String.format("strike/ball은 0~%d 사이의 수여야 합니다.", COUNT_OF_BALLS);
-            throw new IllegalArgumentException(msg);
-        }
-    }
-
     public String getResultMessage() {
         if (isNothing()) {
             return NOTHING;
@@ -64,6 +51,15 @@ public class GameResult {
         return ballStrikeMessage();
     }
 
+    public boolean isAllStrikes() {
+        if (strike == COUNT_OF_BALLS) {
+            printGameFinishMessage();
+            return true;
+        }
+        return false;
+    }
+
+
     @Override
     public boolean equals(Object obj) {
         GameResult gameResult;
@@ -74,6 +70,19 @@ public class GameResult {
         }
 
         return compareStrikeAndBall(gameResult);
+    }
+
+    private void validateMaximum(Integer strike, Integer ball) {
+        if (strike + ball > COUNT_OF_BALLS) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateRange(Integer i) {
+        if (i < 0 || COUNT_OF_BALLS < i) {
+            String msg = String.format("strike/ball은 0~%d 사이의 수여야 합니다.", COUNT_OF_BALLS);
+            throw new IllegalArgumentException(msg);
+        }
     }
 
     private boolean compareStrikeAndBall(GameResult gameResult) {
@@ -96,21 +105,12 @@ public class GameResult {
         return strike == 0 && 0 < ball;
     }
 
-
     private boolean isOnlyStrike() {
         return ball == 0 && 0 < strike;
     }
 
     private boolean isNothing() {
         return strike == 0 && ball == 0;
-    }
-
-    public boolean isAllStrikes() {
-        if (strike == COUNT_OF_BALLS) {
-            printGameFinishMessage();
-            return true;
-        }
-        return false;
     }
 
     private void printGameFinishMessage() {
