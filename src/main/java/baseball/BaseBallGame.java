@@ -45,10 +45,6 @@ public class BaseBallGame {
         return userBalls;
     }
 
-    private void printResult(GameResult gameResult) {
-        System.out.println(gameResult.getResultMessage());
-    }
-
     private Boolean continueGame() {
         String input = "";
 
@@ -59,6 +55,11 @@ public class BaseBallGame {
 
         printChoiceRestartExceptionMessage();
         return input.equals(CONTINUE);
+    }
+
+
+    private void printResult(GameResult gameResult) {
+        System.out.println(gameResult.getResultMessage());
     }
 
     private boolean invalidInput(String input) {
