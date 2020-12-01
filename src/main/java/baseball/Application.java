@@ -10,8 +10,7 @@ public class Application {
 
         while(keepPlaying) {
             Player.playGame(scanner);
-
-            keepPlaying = Player.continueGame();
+            keepPlaying = Game.continueGame();
         }
 
 

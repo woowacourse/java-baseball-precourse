@@ -25,7 +25,7 @@ public class Game {
         return gameNumber;
     }
 
-    // 스트라이크
+    // 스트라이크 카운트 계산
     public static int countStrike(String gameNumber, String inputNumber){
         int strike = 0;
         for (int i = 0; i < MAX_LENGTH; i++){
@@ -35,7 +35,7 @@ public class Game {
         }
         return strike;
     }
-    // 볼
+    // 볼 카운트 계산
     public static int countBall(String gameNumber, String inputNumber){
         int ball = 0;
         for (int i =0; i <MAX_LENGTH; i++){
@@ -45,6 +45,7 @@ public class Game {
         }
         return ball;
     }
+
 
     public static void printHint(int countStrike, int countBall){
         if(countBall == 0 && countStrike == 0){
@@ -70,5 +71,17 @@ public class Game {
             return true;
         }
         return false;
+    }
+
+    public static boolean continueGame(){
+        System.out.print("계속하려면 1 아니면 2 :");
+        Scanner s = new Scanner(System.in);
+        int answer = s.nextInt();
+
+        if (answer == 2){
+            return false;
+        }
+
+        return true;
     }
 }

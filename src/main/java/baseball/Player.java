@@ -1,6 +1,8 @@
 package baseball;
 
 
+import utils.RandomUtils;
+
 import java.util.Scanner;
 
 import static baseball.Game.*;
@@ -19,6 +21,7 @@ public class Player {
 
             // 길이 확인
             boolean compareLength = inputNumber.length() == gameNumber.length();
+
             if (!isNumeric || !compareLength) {
                 System.out.printf("%b %b \n",isNumeric,compareLength);
                 continue;
@@ -38,17 +41,6 @@ public class Player {
         }
     }
 
-    public static boolean continueGame(){
-        System.out.print("계속하려면 1 아니면 2 :");
-        Scanner s = new Scanner(System.in);
-        int answer = s.nextInt();
-
-        if (answer == 2){
-            return false;
-        }
-
-        return true;
-    }
 
 }
 
