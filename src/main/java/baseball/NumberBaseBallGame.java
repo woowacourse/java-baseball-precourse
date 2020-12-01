@@ -24,13 +24,13 @@ public class NumberBaseBallGame {
         ball = 0;
     }
 
-    public static void initGameConfig() {
+    private static void initGameConfig() {
         answerNumber = new LinkedList<>();
         questionNumber = new LinkedList<>();
         initStrikeAndBall();
     }
 
-    public static void setAnswerNumber() {
+    private static void setAnswerNumber() {
         Set<Integer> set = new HashSet<>();
 
         while (answerNumber.size() < NUMBER_LEN) {
@@ -42,7 +42,7 @@ public class NumberBaseBallGame {
         }
     }
 
-    public static void setQuestionNumber() {
+    private static void setQuestionNumber() {
         int num = Input.getQuestionNumber();
 
         while (num > 0) {
