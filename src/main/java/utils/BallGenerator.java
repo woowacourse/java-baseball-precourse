@@ -28,6 +28,7 @@ public class BallGenerator {
         System.out.print(INPUT_USER_BALL_MESSAGE);
         String num = sc.next();
         validateNumberLength(num);
+        validateIsOnlyDigit(num);
         validateNumberRange(num);
         validateNumberDuplicate(num);
         return parseStringToIntegerList(num);

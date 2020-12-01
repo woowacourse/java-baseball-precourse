@@ -15,10 +15,17 @@ public class InputValidation {
         }
     }
 
+    public static void validateIsOnlyDigit(String num) {
+        boolean isOnlyDigit = num.chars().allMatch(Character::isDigit);
+        if(!isOnlyDigit) {
+            throw new IllegalArgumentException("입력 값에 숫자가 아닌 값이 입력되었습니다.");
+        }
+    }
+
     public static void validateNumberRange(String num) {
         boolean isOutOfRange = Arrays.stream(num.split(""))
                 .mapToInt(Integer::parseInt)
-                .filter(n -> (n > 0 && n < 10))
+                .filter(n -> (n >= NUMBER_RANGE_ONE && n <= NUMBER_RANGE_NINE))
                 .count() != NUMBER_LENGTH;
         if(isOutOfRange) {
             throw new IllegalArgumentException("입력 값의 범위를 벗어났습니다.");

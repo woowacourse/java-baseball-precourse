@@ -35,6 +35,19 @@ class InputValidationTest {
     }
 
     @Test
+    public void 입력값이_숫자인지_검증한다() throws Exception {
+        //given
+        String str = "-29";
+
+        //when
+        boolean isNumber = str.chars().allMatch(Character::isDigit);
+
+        //then
+        System.out.println(isNumber);
+        assertThat(isNumber).isFalse();
+    }
+
+    @Test
     public void 입력값_중복여부_검증한다() throws Exception {
         //given
         String str = "346";
