@@ -21,17 +21,14 @@ public class Player {
     }
 
     public void inputBalls() {
-        while (true) {
-            try {
-                System.out.print(INPUT_PLAYER_BALLS);
-                String ballCandidate = scanner.next();
-                balls = Validator.getValidateBall(ballCandidate);
-                ;
-                return;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                continue;
-            }
+        try {
+            System.out.print(INPUT_PLAYER_BALLS);
+            String ballCandidate = scanner.next();
+            balls = Validator.getValidateBall(ballCandidate);
+            return;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            inputBalls();
         }
     }
 
