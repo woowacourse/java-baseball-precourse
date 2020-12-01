@@ -1,35 +1,28 @@
 package baseball;
 
 import utils.Validator;
-
 import java.util.*;
-
 import static utils.Constant.*;
 
-public class Player {
+public class Player extends User {
 
     private Scanner scanner;
-    private String balls;
 
     public Player(Scanner scanner) {
+        super();
         this.scanner = scanner;
-        balls = INITIAL_BALLS;
-    }
-
-    public String getBalls() {
-        return balls;
     }
 
     public void inputBalls() {
-        try {
+        while (true){
             System.out.print(INPUT_PLAYER_BALLS);
             String ballCandidate = scanner.next();
-            balls = Validator.getValidateBall(ballCandidate);
-            return;
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            inputBalls();
+            if (isValidBalls(String.valueOf(ballCandidate))) {
+                return;
+            }
         }
+
+
     }
 
 }

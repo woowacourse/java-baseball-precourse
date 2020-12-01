@@ -1,29 +1,21 @@
 package baseball;
 
 import utils.RandomUtils;
-import utils.Validator;
 
 import static utils.Constant.*;
 
-public class Computer {
-
-    private String balls;
+public class Computer extends User{
 
     public Computer() {
-        balls = INITIAL_BALLS;
-    }
-
-    public String getBalls() {
-        return balls;
+        super();
     }
 
     public void setBalls() {
-        try {
+        while(true) {
             int ballCandidate = RandomUtils.nextInt(START_INCLUSIVE, END_INCLUSIVE);
-            balls = Validator.getValidateBall(String.valueOf(ballCandidate));
-            return;
-        } catch (IllegalArgumentException e) {
-            setBalls();
+            if (isValidBalls(String.valueOf(ballCandidate))) {
+                return;
+            }
         }
     }
 }
