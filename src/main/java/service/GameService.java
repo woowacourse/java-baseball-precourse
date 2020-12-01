@@ -9,16 +9,33 @@ public class GameService {
     }
 
     public static void start(Scanner scanner) {
+        String target = generateTarget();
     }
 
     private static String generateTarget() {
         String target;
 
-        while (true) {
+        do {
             target = Integer.toString(RandomUtils.nextInt(100, 999));
-            break;
-        }
+            System.out.println(target);
+        } while (!checkTargetValidity(target));
 
         return target;
+    }
+
+    private static boolean checkTargetValidity(String target) {
+        if (target.charAt(0) == target.charAt(1)
+                || target.charAt(1) == target.charAt(2)
+                || target.charAt(0) == target.charAt(2)) {
+            return false;
+        }
+
+        if (target.charAt(0) == '0'
+                || target.charAt(1) == '0'
+                || target.charAt(2) == '0') {
+            return false;
+        }
+
+        return true;
     }
 }
