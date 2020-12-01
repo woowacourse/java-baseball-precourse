@@ -46,6 +46,7 @@ public class Game {
             this.running = true;
             return true;
         } else if (restart == Constant.EXIT) {
+            System.out.println(Constant.EXIT_MESSAGE);
             return false;
         } else {
             throw new IllegalArgumentException(Constant.WRONG_INPUT);
