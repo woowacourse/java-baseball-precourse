@@ -4,10 +4,9 @@ import utils.RandomUtils;
 
 import java.util.Scanner;
 
+import static baseball.Constant.*;
+
 public class Game {
-    static final int MIN_NUMBER = 1;
-    static final int MAX_NUMBER = 9;
-    static final int MAX_LENGTH = 3;
 
     // 1~9사이의 3자리 랜덤 숫자 생성
     public static String makeGameNumber(){

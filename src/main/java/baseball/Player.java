@@ -5,6 +5,7 @@ import utils.RandomUtils;
 
 import java.util.Scanner;
 
+import static baseball.Constant.MAX_LENGTH;
 import static baseball.Game.*;
 
 public class Player {
@@ -16,18 +17,10 @@ public class Player {
         while (true){
             String inputNumber = scanner.nextLine();
 
-            // 숫자 확인
-            boolean isNumeric = inputNumber.chars().allMatch(Character::isDigit);
-
-            // 길이 확인
-            boolean compareLength = inputNumber.length() == gameNumber.length();
-
-            if (!isNumeric || !compareLength) {
-                System.out.printf("%b %b \n",isNumeric,compareLength);
+            if(!validateInputNumber(inputNumber)){
+                System.out.println("다시 입력해주세요");
                 continue;
             }
-
-            // 입력값 중복 확인 (추가)
 
             // 볼,스트라이크 체크
             int strike = countStrike(gameNumber,inputNumber);
@@ -40,6 +33,29 @@ public class Player {
             }
         }
     }
+
+    //
+    public static boolean validateInputNumber(String inputNumber){
+        if (!isNumeric(inputNumber) ||
+            !compareLength(inputNumber) ||
+            !isReduplication(inputNumber)){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isNumeric(String inputNumber){
+        return inputNumber.chars().allMatch(Character::isDigit);
+    }
+
+    public static boolean compareLength(String inputNumber){
+        return inputNumber.length() == MAX_LENGTH;
+    }
+
+    public static boolean isReduplication(String inputNumber){
+        return false;
+    }
+
 
 
 }
