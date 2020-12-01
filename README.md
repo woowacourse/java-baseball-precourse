@@ -117,9 +117,17 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 
 - 입력 받기 (InputService)
     * 예상값 입력받음(guess)
-    * 예상값의 유효성 검사(checkInputValidity)
+    * 예상값의 유효성 검사(checkGuessInputValidity)
+        1) 입력의 길이가 3인지
+        2) 입력이 1에서 9까지의 수로 이루어졌는지
     * 재시작/종료 여부 입력(resume)
+    * 재시작/종료 여부 유효성 검사(checkResumeInputValidity)
+        1) 입력이 1 또는 2로 들어왔는지
 - 게임 기능 (GameService)
+    * 게임 시작(start)
     * 목표값 생성(generateTarget)
     * 목표값의 유효성 검사(checkTargetValidity)
+        1) 목표값이 서로 다른 수로 이루어졌는지
+        2) 목표값이 1에서 9까지의 수로 이루어졌는지
     * 목표값과 예상값 비교(compareInputWithTarget)
+    * 예상값의 특정 자리 값이 볼인지 스트라이크인지 판단(judge)
