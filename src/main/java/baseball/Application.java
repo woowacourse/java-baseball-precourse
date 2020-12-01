@@ -11,12 +11,20 @@ public class Application {
 	public static void main(String[] args) {
 		final Scanner scanner = new Scanner(System.in);
 		// TODO êµ¬í˜„ ì§„í–‰
-		System.out.print(INPUT_GUIDE);
-		input = scanner.nextLine();
+		threeStrike = false;
 
-		int answer = Integer.parseInt(input);
-		
-		System.out.println("ÀÔ·Â : " + input + "·£´ý¼ö : " + makeQuestion());
+		while (!threeStrike) {
+			System.out.print(INPUT_GUIDE);
+			input = scanner.nextLine();
+
+			int answer = Integer.parseInt(input);
+
+			threeStrike = checkNumber(answer, question);
+
+			ball = 0;
+			strike = 0;
+		}
+
 	}
 
 	static int makeQuestion() {
@@ -42,4 +50,22 @@ public class Application {
 		}
 		return true;
 	}
+	
+	static boolean checkNumber(int answer, int question)
+	{
+		answerPickNumber(answer, question);
+
+		System.out.println("º¼ : " + ball + " ½ºÅ¸¶óÀÌÅ© : " + strike);
+
+		return false;
+	}
+	
+	static void answerPickNumber(int answer, int question)
+	{
+		for (int answerCount = 0; answerCount < 3; answerCount++) {
+			checkBS(answer % 10, answerCount, question);
+			answer /= 10;
+		}
+	}
 }
+
