@@ -16,6 +16,7 @@ public class Game {
     private static final String nothingMessage = "낫싱";
 
     private static List<Integer> answer;
+    private static boolean flag = false;
 
     private static int[] result = new int[2];
 
@@ -26,7 +27,7 @@ public class Game {
 
 
     public static void startGame() {
-        answer = Answer.makeAnswer();
+        answer = Answer.makeAnswer(flag);
         System.out.println(answer);
         playGame();
     }
@@ -73,6 +74,7 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         int response = scanner.nextInt();
         if (response == 1) {
+        	flag = true;
             startGame();
         }
         scanner.close();
