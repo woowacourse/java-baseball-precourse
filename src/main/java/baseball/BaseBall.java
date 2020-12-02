@@ -29,29 +29,29 @@ public class BaseBall {
     public void playGame() {
         String result = "";
 
-		do {
+        do {
             System.out.print(SystemMessage.INPUT_MESSAGE);
-			userNum = next();
-		    result = umpire();
+            userNum = next();
+            result = umpire();
             System.out.println(result);
-		} while (!result.equals(SystemMessage.GAME_CLEAR_MESSAGE));
-	}
+        } while (!result.equals(SystemMessage.GAME_CLEAR_MESSAGE));
+    }
 
     // 유저가 입력한 수에 따라 볼과 스트라이크를 판단하고 힌트를 제공함.
     private String umpire() {
-		int ballNum = 0;
-		int strikeNum = 0;
+        int ballNum = 0;
+        int strikeNum = 0;
 
-		for (int i = 0; i < DIGIT_NUM; i++) {
-			char digit = userNum.charAt(i);
+        for (int i = 0; i < DIGIT_NUM; i++) {
+            char digit = userNum.charAt(i);
 
-			if (isStrike(digit, i)) {
-				strikeNum++;
-			} else if (isBall(digit)) {
-				ballNum++;
-			}
+            if (isStrike(digit, i)) {
+                strikeNum++;
+            } else if (isBall(digit)) {
+                ballNum++;
+            }
         }
-		return getHint(ballNum, strikeNum);
+        return getHint(ballNum, strikeNum);
     }
 
     // umpire에서 구한 볼과 스트라이크 개수에 따라
@@ -65,27 +65,27 @@ public class BaseBall {
             return strikeNum + SystemMessage.STRIKE;
         } else if (strikeNum == 0) {
             return ballNum + SystemMessage.BALL;
-        } 
+        }
         return ballNum + SystemMessage.BALL + " " + strikeNum + SystemMessage.STRIKE;
     }
 
-	private boolean isStrike(final char digit, final int pos) {
-		for (int i = 0; i < DIGIT_NUM; i++) {
-			if (digit == randNum.charAt(i) && pos == i) {
-			 return true;
-			}
-		}
-		return false;
-	}
+    private boolean isStrike(final char digit, final int pos) {
+        for (int i = 0; i < DIGIT_NUM; i++) {
+            if (digit == randNum.charAt(i) && pos == i) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-	private boolean isBall(final char digit) {
-		for (int i = 0; i < DIGIT_NUM; i++) {
-			if (digit == randNum.charAt(i)) {
-			 return true;
-			}
-		}
-		return false;
-	}
+    private boolean isBall(final char digit) {
+        for (int i = 0; i < DIGIT_NUM; i++) {
+            if (digit == randNum.charAt(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     // 1에서 9까지 서로 다른 임의의 세 자리 난수를 생성함.
     private String makeRandNum(final int digit) {
@@ -111,7 +111,7 @@ public class BaseBall {
     public boolean isUserWantContinue() {
         System.out.println(SystemMessage.GAME_RESTART_OR_END_MESSAGE);
         String sel = scanner.next();
-	
+
         if (sel.equals(RESTART)) {
             return true;
         } else if (sel.equals(END)) {
@@ -125,7 +125,7 @@ public class BaseBall {
         String input = scanner.next();
 
         if (input.length() != DIGIT_NUM) {
-            throw new IllegalArgumentException(); 
+            throw new IllegalArgumentException();
         }
 
         char compare = input.charAt(0);
