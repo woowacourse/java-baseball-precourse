@@ -13,13 +13,12 @@ public class Application {
         // TODO 구현 진행
         startBaseBallGame(scanner);
 
-        while(true) {
+        while (true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int select = scanner.nextInt();
-            if(select == 1) {
+            if (select == 1) {
                 startBaseBallGame(scanner);
-            }
-            else if (select == 2) {
+            } else if (select == 2) {
                 break;
             } else {
                 throw new IllegalArgumentException();
@@ -32,9 +31,9 @@ public class Application {
         int[] correctValue = new int[3];
         int index = 0;
 
-        while(correctSet.size() < 3) {
+        while (correctSet.size() < 3) {
             int randomNumber = RandomUtils.nextInt(1, 9);
-            if(!correctSet.contains(randomNumber)) {
+            if (!correctSet.contains(randomNumber)) {
                 correctSet.add(randomNumber);
                 correctValue[index++] = randomNumber;
             }
@@ -43,7 +42,7 @@ public class Application {
         System.out.println(Arrays.toString(correctValue));
 
         boolean isFinish = false;
-        while(!isFinish) {
+        while (!isFinish) {
             String input = inputNumber(scanner);
             checkInputLengthThree(input);
 
@@ -59,23 +58,23 @@ public class Application {
         int strike = 0;
         int ball = expectSet.size();
 
-        for(int i=0; i<3; i++) {
-            if(expectValue[i] == correctValue[i]) {
+        for (int i = 0; i < 3; i++) {
+            if (expectValue[i] == correctValue[i]) {
                 strike++;
                 ball--;
             }
         }
-        if(ball == 0 && strike == 0) {
+        if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
-        } else if(ball == 0 && strike != 0) {
-            System.out.println(strike+"스트라이크");
-        } else if(ball != 0 && strike == 0) {
-            System.out.println(ball+"볼");
+        } else if (ball == 0 && strike != 0) {
+            System.out.println(strike + "스트라이크");
+        } else if (ball != 0 && strike == 0) {
+            System.out.println(ball + "볼");
         } else {
-            System.out.println(ball+"볼 "+strike+"스트라이크");
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
 
-        if(strike == 3) {
+        if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             result = true;
         }
@@ -85,9 +84,9 @@ public class Application {
 
     private static int[] changeInputToExpectValue(String input, Set<Integer> expectSet) {
         int[] expectValue = new int[3];
-        for(int i = 0; i< input.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {
             int expectNumber = input.charAt(i) - '0';
-            if(expectNumber <= 0 || expectNumber > 9 || expectSet.contains(expectNumber)) {
+            if (expectNumber <= 0 || expectNumber > 9 || expectSet.contains(expectNumber)) {
                 throw new IllegalArgumentException();
             }
             expectSet.add(expectNumber);
@@ -97,7 +96,7 @@ public class Application {
     }
 
     private static void checkInputLengthThree(String input) {
-        if(input.length() != 3) {
+        if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
     }
