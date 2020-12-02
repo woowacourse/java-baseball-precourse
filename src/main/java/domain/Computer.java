@@ -12,13 +12,13 @@ public class Computer {
     private final static int VALID_NUMBER_SIZE = 3;
     private final static int STRIKE_FULL_COUNT = 3;
     private Balls balls;
-    private List<Integer> randomBalls = new ArrayList<>();
+    private List<Ball> randomBalls = new ArrayList<>();
 
     public Computer() {
-        this.balls = new Balls(makeRandomBalls());
+        this.balls = getRandomBalls();
     }
 
-    public boolean isCorrectAnswer(List<Integer> inputBalls) {
+    public boolean isCorrectAnswer(List<Ball> inputBalls) {
         int ballCount = balls.countBall(inputBalls);
         int strikeCount = balls.countStrike(inputBalls);
 
@@ -30,16 +30,27 @@ public class Computer {
         return false;
     }
 
-    private List<Integer> makeRandomBalls() {
+    private Balls getRandomBalls() {
+        List<Integer> randomNumbers = new ArrayList<>();
+        setRandomNumbers(randomNumbers);
+
+        for (int i = 0; i < randomNumbers.size(); i++) {
+            randomBalls.add(new Ball(randomNumbers.get(i)));
+        }
+
+        return new Balls(randomBalls);
+    }
+
+    private List<Integer> setRandomNumbers(List<Integer> storage) {
         int randomNumber = RandomUtils.nextInt(
                 START_VALUE_IN_RANDOM_NUMBER_RANGE,
                 END_VALUE_IN_RANDOM_NUMBER_RANGE);
-        if (!randomBalls.contains(randomNumber)) {
-            randomBalls.add(randomNumber);
+        if (!storage.contains(randomNumber)) {
+            storage.add(randomNumber);
         }
-        if (randomBalls.size() != VALID_NUMBER_SIZE) {
-            makeRandomBalls();
+        if (storage.size() != VALID_NUMBER_SIZE) {
+            setRandomNumbers(storage);
         }
-        return randomBalls;
+        return storage;
     }
 }

@@ -1,5 +1,6 @@
 package ui;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
@@ -8,8 +9,8 @@ public class Input {
         return scanner.nextLine();
     }
 
-    public static int receiveRestartGameInput(Scanner scanner) {
+    public static String receiveRestartGameInput(Scanner scanner) {
         Output.printRequestRestartGameInput();
-        return scanner.nextInt();
+        return scanner.nextLine();
     }
 }
