@@ -11,11 +11,13 @@ public class InputView {
     private static final int NUMBER_LEN = 3;
     private static final String CONTINUE = "1";
     private static final String END = "2";
+    private static final String NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String CONTINUE_GAME_QUESTION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static Scanner scanner;
 
     public static int getQuestionNumber() {
         try {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(NUMBER_INPUT_MESSAGE);
             String input = scanner.nextLine();
             validateIsNumber(input);
             int number = Integer.parseInt(input);
@@ -73,7 +75,7 @@ public class InputView {
 
     public static String getGameContinueFlag() {
         try {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(CONTINUE_GAME_QUESTION_MESSAGE);
             String input = scanner.nextLine();
             validateIsNumber(input);
             validateContinueFlag(input);
