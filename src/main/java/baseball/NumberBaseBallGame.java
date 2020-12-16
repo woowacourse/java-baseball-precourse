@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import utils.Input;
-import utils.Output;
+import view.InputView;
+import view.OutputView;
 import utils.RandomUtils;
 
 public class NumberBaseBallGame {
@@ -43,7 +43,7 @@ public class NumberBaseBallGame {
     }
 
     private static void setQuestionNumber() {
-        int num = Input.getQuestionNumber();
+        int num = InputView.getQuestionNumber();
 
         while (num > 0) {
             questionNumber.add(num % 10);
@@ -71,9 +71,9 @@ public class NumberBaseBallGame {
             initStrikeAndBall();
             setQuestionNumber();
             checkAnswer();
-            Output.printBallAndStrike(ball, strike);
+            OutputView.printBallAndStrike(ball, strike);
             if (isThreeStrike()) {
-                Output.printAnswerMessage();
+                OutputView.printAnswerMessage();
                 return true;
             }
         }
@@ -86,7 +86,7 @@ public class NumberBaseBallGame {
             initGameConfig();
             setAnswerNumber();
             if (tryAnswer()) {
-                flag = Input.getGameContinueFlag();
+                flag = InputView.getGameContinueFlag();
             }
         }
     }

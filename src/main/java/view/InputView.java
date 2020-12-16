@@ -1,10 +1,10 @@
-package utils;
+package view;
 
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Input {
+public class InputView {
 
     private static final int MIN = 1;
     private static final int MAX = 9;

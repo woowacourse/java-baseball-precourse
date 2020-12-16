@@ -1,6 +1,6 @@
-package utils;
+package view;
 
-public class Output {
+public class OutputView {
 
     public static void printBallAndStrike(int ball, int strike) {
         if (ball > 0) {
