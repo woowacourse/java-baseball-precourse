@@ -21,14 +21,18 @@ public class InputView {
             String input = scanner.nextLine();
             validateIsNumber(input);
             int number = Integer.parseInt(input);
-            validateLessThanZero(number);
-            validateDigitLength(number);
-            validateEachDigitRange(number);
-            validateIsDuplicateDigit(number);
+            validateQuestionNumber(number);
             return number;
         } catch (Exception e) {
             return getQuestionNumber();
         }
+    }
+
+    private static void validateQuestionNumber(int number) {
+        validateLessThanZero(number);
+        validateDigitLength(number);
+        validateEachDigitRange(number);
+        validateIsDuplicateDigit(number);
     }
 
     private static void validateIsNumber(String input) {
@@ -46,7 +50,7 @@ public class InputView {
     }
 
     private static void validateDigitLength(int number) {
-        if ((int) (Math.log10(number) + 1) != NUMBER_LEN) {
+        if (Integer.toString(number).length() != NUMBER_LEN) {
             throw new IllegalArgumentException();
         }
     }
@@ -73,19 +77,19 @@ public class InputView {
         }
     }
 
-    public static String getGameContinueFlag() {
+    public static int getGameContinueInput() {
         try {
             System.out.println(CONTINUE_GAME_QUESTION_MESSAGE);
             String input = scanner.nextLine();
             validateIsNumber(input);
-            validateContinueFlag(input);
-            return input;
+            validateIsContinueInput(input);
+            return Integer.parseInt(input);
         } catch (Exception e) {
-            return getGameContinueFlag();
+            return getGameContinueInput();
         }
     }
 
-    private static void validateContinueFlag(String input) {
+    private static void validateIsContinueInput(String input) {
         if (!input.equals(CONTINUE) && !input.equals(END)) {
             throw new IllegalArgumentException();
         }

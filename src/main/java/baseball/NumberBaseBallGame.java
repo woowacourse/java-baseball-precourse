@@ -14,7 +14,7 @@ public class NumberBaseBallGame {
     private static final int MIN = 1;
     private static final int MAX = 9;
     private static final int NUMBER_LEN = 3;
-    private static final String CONTINUE = "1";
+    private static final int CONTINUE = 1;
     private static List<Integer> answerNumber;
     private static List<Integer> questionNumber;
     private static int strike, ball;
@@ -80,13 +80,13 @@ public class NumberBaseBallGame {
     }
 
     public void run() {
-        String flag = CONTINUE;
+        int isContinue = CONTINUE;
 
-        while (flag.equals(CONTINUE)) {
+        while (isContinue == CONTINUE) {
             initGameConfig();
             setAnswerNumber();
             if (tryAnswer()) {
-                flag = InputView.getGameContinueFlag();
+                isContinue = InputView.getGameContinueInput();
             }
         }
     }
