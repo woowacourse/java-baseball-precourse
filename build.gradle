@@ -4,6 +4,14 @@ apply plugin: 'eclipse'
 version = '1.0.0'
 sourceCompatibility = 1.8
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'baseball.Application'
+        )
+    }
+}
+
 repositories {
     mavenCentral()
 }
