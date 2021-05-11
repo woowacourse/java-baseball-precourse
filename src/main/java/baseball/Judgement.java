@@ -15,7 +15,13 @@ public class Judgement {
         return result;
     }
 
-    public boolean hasPlace(int place, int number) {
-        return false;
+    public boolean hasPlace(List<Integer> computer, int placeIndex, int number) { // placeIndex 해주는 이유 : 컴퓨터는 0으로 시작함
+        return computer.get(placeIndex) == number;
+        // 같은 코드
+//        if(computer.get(placeIndex) == number){
+//            return true;
+//        }
+//
+//        return false;
     }
 }
