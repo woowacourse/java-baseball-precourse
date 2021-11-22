@@ -12,15 +12,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public abstract class BaseTest {
+    private PrintStream standardOut;
     private OutputStream captor;
 
     protected void setUp() {
+        standardOut = System.out;
         captor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(captor));
     }
 
     /**
      * 사용자의 입력을 기다리는 상황에서 테스트 종료
+     *
      * @param args
      */
     protected void running(final String... args) {
@@ -31,6 +34,7 @@ public abstract class BaseTest {
 
     /**
      * 프로그램이 정상적으로 종료
+     *
      * @param args
      */
     protected void run(final String... args) {
@@ -55,5 +59,10 @@ public abstract class BaseTest {
 
     protected String output() {
         return captor.toString().trim();
+    }
+
+    protected void outputStandard() {
+        System.setOut(standardOut);
+        System.out.println(output());
     }
 }

@@ -1,14 +1,32 @@
 # 미션 - 숫자 야구 게임
 
+## 🔍 진행방식
+- 미션은 **기능 요구사항, 프로그래밍 요구사항, 과제 진행 요구사항** 세 가지로 구성되어 있다.
+- 세 개의 요구사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만들고, 기능 단위로 commit하는 방식으로 진행한다.
+
+## ✉️ 미션 제출 방법
+
+- 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
+  - GitHub을 활용한 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 참고해 제출한다.
+- GitHub에 미션을 제출한 후 [우아한테크코스 지원 플랫폼](https://apply.techcourse.co.kr/) 에 접속하여 프리코스 과제를 제출한다.
+  - 자세한 방법은 [링크](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 를 참고한다. 
+  - **Pull Request만 보내고, 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
+
+## ✔️ 과제 제출 전 체크리스트 - 0점 방지
+
+- 터미널에서 “java -version”을 실행해 자바 8인지 확인한다. 또는 Eclipse, Intellij와 같은 IDE의 자바 8로 실행하는지 확인한다.
+- 터미널에서 “./gradlew clean test” (윈도우 사용자의 경우, “./gradlew.bat clean test”) 명령을 실행했을 때 모든 테스트가 통과하는지 확인한다.
+
+---
+
 ## 🚀 기능 요구사항
-- 이 게임은 프로그램이 1에서 9까지 서로 다른 임의의 수 3개를 정하고 이를 플레이어가 맞추는 게임이다.
-- 정답을 맞추기 위해 3자리수를 입력하고 힌트를 받는다.
-- 힌트는 야구용어인 볼과 스트라이크로 받는데, 같은 자리에 같은 숫자가 있는 경우를 `스트라이크`, 다른 자리에 숫자가 있는 경우를 `볼`로 정한다.
-- 같은 숫자가 하나도 없는 경우 힌트로 `낫싱`을 받는다.
-  - 예시) 상대방(컴퓨터)의 수가 425일 때, 123을 제시한 경우: 1스트라이크, 456을 제시한 경우: 1볼 1스트라이크, 789를 제시한 경우: 낫싱
-- 3자리 숫자가 정답과 같은 경우 게임이 종료된다.
+- 기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
+- 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 포볼 또는 낫싱이란 힌트를 얻고, 그 힌트를 이용해서 먼저 상대방(컴퓨터)의 수를 맞추면 승리한다.
+  - [예] 상대방(컴퓨터)의 수가 425일 때, 123을 제시한 경우 : 1스트라이크, 456을 제시한 경우 : 1스트라이크 1볼, 789를 제시한 경우 : 낫싱
+- 위 숫자 야구게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 3개의 숫자를 입력하고, 컴퓨터는 입력한 숫자에 대한 결과를 출력한다.
+- 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
-- 아래의 프로그래밍 실행 결과 예시와 동일하게 입력과 출력이 이루어져야 한다.
+- 사용자가 잘못된 값을 입력할 경우 [ERROR]로 시작하는 에러 메시지를 출력하고 게임을 계속 진행할 수 있어야 한다.
 
 <br>
 
@@ -20,7 +38,7 @@
 ### 🖥 출력
 - 입력한 수에 대한 결과를 볼, 스트라이크 갯수로 표시
 ```
-1볼 1스트라이크
+1스트라이크 1볼 
 ```
 - 하나도 없는 경우 
 ```
@@ -29,80 +47,64 @@
 - 3개의 숫자를 모두 맞힐 경우
 ```
 3스트라이크
-3개의 숫자를 모두 맞히셨습니다! 게임 종료
+3개의 숫자를 모두 맞히셨습니다! 게임 끝
 ```
 
 ### 💻 프로그래밍 실행 결과 예시
 ```
 숫자를 입력해주세요 : 123
-1볼 1스트라이크
+1스트라이크 1볼 
 숫자를 입력해주세요 : 145
-1볼
+1볼 
 숫자를 입력해주세요 : 671
-2볼
+2볼 
 숫자를 입력해주세요 : 216
-1스트라이크
+1스트라이크 
 숫자를 입력해주세요 : 713
-3스트라이크
-3개의 숫자를 모두 맞히셨습니다! 게임 종료
+3스트라이크 
+3개의 숫자를 모두 맞히셨습니다! 게임 끝
 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
 1
 숫자를 입력해주세요 : 123
-1볼 1스트라이크
+1볼
 … 
 ```
 
 <br>
 
+---
+
 ## 🎱 프로그래밍 요구사항
+- 숫자 야구게임을 실행하는 시작점은 src/main/java 폴더의 baseball.Application의 main()이다.
+- 숫자 야구게임은 JDK 8 버전에서 실행가능해야 한다. **JDK 8에서 정상 동작하지 않을 경우 0점 처리**한다.
 - 자바 코드 컨벤션을 지키면서 프로그래밍한다.
-  - 기본적으로 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)을 원칙으로 한다.
-  - 단, 들여쓰기는 '2 spaces'가 아닌 '4 spaces'로 한다.
-- indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
+  - https://naver.github.io/hackday-conventions-java/
+- indent(인덴트, 들여쓰기) depth를 3가 넘지 않도록 구현한다. 2까지만 허용한다.
   - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
   - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메소드)를 분리하면 된다.
 - 3항 연산자를 쓰지 않는다.
 - 함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게 만들어라.
-- System.exit 메소드를 사용하지 않는다.
-- 비정상적 입력에 대해서는 IllegalArgumentException을 발생시킨다.
 
-### 프로그래밍 요구사항 - Application
-- Application 클래스를 활용해 구현해야 한다.
-- Application의 패키지 구조와 구현은 변경하지 않는다.
-- `final Scanner scanner = new Scanner(System.in);`는 변경하지 않는다.
-- `// TODO 구현 진행` 이 후 부터 구현한다.
-
-```java
-public class Application {
-    public static void main(String[] args) {
-        final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
-    }
-}
-```
-
-### 프로그래밍 요구사항 - RandomUtils
-- RandomUtils 클래스를 활용해 랜덤 기능을 구현해야 한다.
-- RandomUtils의 패키지 구조와 구현은 변경하지 않는다.
-
-```java
-private static final Random RANDOM = new Random();
-    private RandomUtils() {
-    }
-    public static int nextInt(final int startInclusive, final int endInclusive) {
-    ...
-```
+### 프로그래밍 요구사항 - Randoms, Console
+- JDK에서 기본 제공하는 Random, Scanner API 대신 camp.nextstep.edu.missionutils 에서 제공하는 Randoms, Console API를 활용해 구현해야 한다.
+  - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
+  - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+- 프로그램 구현을 완료했을 때 src/test/java 폴더의 baseball.ApplicationTest에 있는 2개의 Test Case가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
 
 <br>
 
-## 📈 진행 요구사항
+---
+
+## 📈 과제 진행 요구사항
 - 미션은 [java-baseball-precourse 저장소](https://github.com/woowacourse/java-baseball-precourse) 를 fork/clone해 시작한다.
-- 기능을 구현하기 전에 java-baseball-precourse/README.md 파일에 구현할 기능 목록을 정리해 추가한다.
-- git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
+- **기능을 구현하기 전에 java-baseball-precourse/README.md 파일에 구현할 기능 목록을 정리**해 추가한다.
+- **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위**로 추가한다.
   - [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.
 - [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 절차를 따라 미션을 제출한다.
 
 <br>
+
+---
 
 ## 📝 License
 

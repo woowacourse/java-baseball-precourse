@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -8,7 +9,7 @@ import org.mockito.MockedStatic;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
-class ApplicationTest extends BaseTest{
+class ApplicationTest extends BaseTest {
     @BeforeEach
     void beforeEach() {
         super.setUp();
@@ -34,6 +35,11 @@ class ApplicationTest extends BaseTest{
             run("713", "1", "597", "589", "2");
             verify("3스트라이크", "게임 끝", "1스트라이크 1볼");
         }
+    }
+
+    @AfterEach
+    void tearDown() {
+        outputStandard();
     }
 
     @Override
