@@ -1,45 +1,32 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
 
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mockStatic;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class ApplicationTest extends BaseTest {
-    @BeforeEach
-    void beforeEach() {
-        super.setUp();
-    }
-
-    @Test
-    void 낫싱() {
-        try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
-            mockRandoms
-                    .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                    .thenReturn(1, 3, 5);
-            running("246");
-            verify("낫싱");
-        }
-    }
+class ApplicationTest extends NsTest {
 
     @Test
     void 게임종료_후_재시작() {
-        try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
-            mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                    .thenReturn(7, 1, 3)
-                    .thenReturn(5, 8, 9);
-            run("713", "1", "597", "589", "2");
-            verify("3스트라이크", "게임 끝", "1스트라이크 1볼");
-        }
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "135", "1", "597", "589", "2");
+                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
     }
 
-    @AfterEach
-    void tearDown() {
-        outputStandard();
+    @Test
+    void 예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Override
