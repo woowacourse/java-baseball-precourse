@@ -2,6 +2,10 @@ package baseball;
 
 public class JudgeResultFormatter {
 	public String format(JudgeResult result) {
+		if(result.equals(JudgeResult.nothing())) {
+			return "낫싱";
+		}
+
 		String message = "";
 
 		if (result.getBall() > 0) {
