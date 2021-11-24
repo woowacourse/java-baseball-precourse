@@ -30,6 +30,7 @@ public class Validation {
             if (usedNumber[eachDigit]) {
                 throw new IllegalArgumentException(Message.ERROR_INPUT_DUPLICATE);
             }
+            usedNumber[eachDigit] = true;
         }
         return true;
     }
