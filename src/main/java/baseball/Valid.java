@@ -8,7 +8,8 @@ public class Valid {
 	public static final String GAME_START = "1";
 	public static final String PROGRAM_EXIT = "2";
 
-	public Valid() {}
+	public Valid() {
+	}
 
 	public static boolean validateNumbersList(List<Integer> numbers) {
 		if (numbers.size() != 3) {
