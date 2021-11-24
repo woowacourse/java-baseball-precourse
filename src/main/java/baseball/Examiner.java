@@ -32,7 +32,7 @@ public class Examiner {
         return strikeCount;
     }
 
-    public boolean isStrike(List<Integer> inputNumberList, int index) {
+    private boolean isStrike(List<Integer> inputNumberList, int index) {
         return randomNumberList.get(index).equals(inputNumberList.get(index));
     }
 
@@ -48,7 +48,7 @@ public class Examiner {
         return ballCount;
     }
 
-    public boolean isBall(List<Integer> inputNumberList, int index) {
+    private boolean isBall(List<Integer> inputNumberList, int index) {
         return !isStrike(inputNumberList, index) && randomNumberList.contains(inputNumberList.get(index));
     }
 
