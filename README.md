@@ -11,13 +11,14 @@
 
 
 3. 게임 재시작 or 종료 입력 요청
-   - GameStatus.RESTART -> 반복문 재시작
-   - GameStatus.STOP -> 종료
+   - RESTART -> 반복문 재시작
+   - STOP -> 종료
 
 ### ✅ GamePlayer
 #### package java.baseball
 
 1. 플레이어 입력 요청
+   - GameValidator에서 검증
 
 
 ### ✅ GameValidator
@@ -35,10 +36,6 @@
 
 
 2. 게임 결과 출력
-
-### ✅ GameStatus
-#### package java.baseball
-1. enum 타입으로 Game 진행 현황 파악
 
 ### ✅ GameConstant
 #### package java.util
