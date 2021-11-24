@@ -31,11 +31,11 @@ public class Player {
                 return false;
             }
 
-            if(!hashMap.containsKey(number.charAt(i))) {
-                hashMap.put(number.charAt(i), 1);
-            } else {
+            if(hashMap.containsKey(number.charAt(i))) {
                 return false;
             }
+
+            hashMap.put(number.charAt(i), 1);
         }
 
         return true;

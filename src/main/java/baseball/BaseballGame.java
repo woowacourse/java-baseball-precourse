@@ -1,19 +1,24 @@
 package baseball;
 
 public class BaseballGame {
-
-    private RandomNumberGenerator randomNumberGenerator;
-    private Player player;
+    private NumberComparator numberComparator;
     private String playerNumber;
     private String computerNumber;
 
     public void startGame() {
+
+        numberComparator = new NumberComparator();
+
+        setComputer();
+        numberComparator.setComputerNumber(computerNumber);
         do {
-            setComputer();
             getPlayer();
-            // verifyNumber();
+            numberComparator.clear();
+            numberComparator.setPlayerNumber(playerNumber);
+            numberComparator.compareNumber();
+
             // getResult();
-        } while(true); // continueGame()
+        } while (true); // continueGame()
     }
 
     private void getPlayer() {
@@ -22,7 +27,7 @@ public class BaseballGame {
             playerNumber = player.scanNumber();
             System.out.println("PLAYERNUM = " + playerNumber);
 
-        }catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             System.exit(0);
         }
