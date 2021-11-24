@@ -11,5 +11,8 @@ public class OutputView {
 
 	public static void printGameResult(Game game) {
 		System.out.println(game);
+		if (game.getStrike() == 3) {
+			System.out.println(HINT_GAME_OVER.getString());
+		}
 	}
 }
