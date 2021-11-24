@@ -1,23 +1,23 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
 
     private final int DIGIT = 3;
 
     private String makeRandNum () {
-        StringBuilder RandNum = new StringBuilder();
+        StringBuilder randNum = new StringBuilder();
 
-        while (RandNum.length() < DIGIT) {
+        while (randNum.length() < DIGIT) {
             String temp = Integer.toString(Randoms.pickNumberInRange(1, 9));
 
-            if (!RandNum.toString().contains(temp)) {
-                RandNum.append(temp);
+            if (!randNum.toString().contains(temp)) {
+                randNum.append(temp);
             }
         }
 
-        return String.valueOf(RandNum);
+        return String.valueOf(randNum);
     }
 }
