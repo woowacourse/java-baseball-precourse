@@ -1,6 +1,8 @@
 package controller;
 
 import domain.Numbers;
+import view.InputView;
+import view.OutputView;
 
 public class Game {
 
@@ -10,8 +12,14 @@ public class Game {
 		this.targetNumbers = new Numbers();
 	}
 
+	private String getNumberInput() {
+		OutputView.printInstruction();
+		return InputView.getInput();
+	}
+
 	public void start() {
-		// TODO: 게임 로직 추가 필요
+		String userInput = getNumberInput();
+		Numbers numbers = new Numbers(userInput);
 	}
 
 }
