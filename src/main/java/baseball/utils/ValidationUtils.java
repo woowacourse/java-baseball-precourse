@@ -2,6 +2,7 @@ package baseball.utils;
 
 import static baseball.constants.GameConstants.Digit.*;
 import static baseball.constants.GameConstants.DigitRange.*;
+import static baseball.constants.GameConstants.GameOverInput.*;
 import static baseball.constants.GameConstants.Message.*;
 
 import java.util.List;
@@ -44,6 +45,18 @@ public class ValidationUtils {
 			if (duplicateCheck[number])
 				throw new IllegalArgumentException(ERR_DUPLICATE_EXISTS.getMessage());
 			duplicateCheck[number] = true;
+		}
+	}
+
+	public static void validateUserGameOverInputLength(String userInputString) {
+		if (userInputString.length() != INPUT_LENGTH.getNumber())
+			throw new IllegalArgumentException(ERR_IMPROPER_USER_SELECTION.getMessage());
+	}
+
+	public static void validateUserGameOverInputInRange(String userInputString) {
+		int userInputNumber = Integer.parseInt(userInputString);
+		if (RESTART.getNumber() > userInputNumber || STOP.getNumber() < userInputNumber) {
+			throw new IllegalArgumentException(ERR_IMPROPER_USER_SELECTION.getMessage());
 		}
 	}
 }

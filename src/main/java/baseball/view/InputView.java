@@ -17,4 +17,11 @@ public class InputView {
 
 		return userNumberList;
 	}
+
+	public int inputUserGameOverSelection() {
+		String userInput = Console.readLine();
+		ValidationUtils.validateUserGameOverInputLength(userInput);
+		ValidationUtils.validateUserGameOverInputInRange(userInput);
+		return Integer.parseInt(userInput);
+	}
 }
