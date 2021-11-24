@@ -31,3 +31,34 @@
 |rename|파일 혹은 폴더명을 수정하거나 옮기는 작업만인 경우
 |remove|파일을 삭제하는 작업만 수행한 경우|
 
+## Java 컨벤션 자주쓰거나 주의할 사항
+### 접근제한자
+클래스 및 멤버 수정자가 있는 경우 Java 언어 사양에서 권장하는 순서로 나타냄
+```java
+public protected private abstract default static final transient volatile synchronized native strictfp
+```
+
+### 예외 잡기: 생략하지 않음
+
+아래 명시되있는 것말고 예외를 잡고 아무것도 안하는 것은 거의 있을 수 없습니다. (전형적인 반응은 로그를 남기는 것 혹은 불가능하다고 간주되면 AssertionError로 다시 던져줍니다.)
+캐치 블록에서 아무것도 하지 않는 것이 정당하다면 주석을 남기는 것으로 정당화합니다.
+
+```java
+try {
+    int i = Integer.parseInt(response);
+    return handleNumericResponse(i);
+} catch (NumberFormatException ok) {
+    // it's not numeric; that's fine, just continue
+}
+return handleTextResponse(response);
+```
+
+예외: 테스트에서 예외를 잡는 부분은 expected, 혹은 expected로 시작하는 이름을 지으면서 무시할 수 있습니다. 다음 예제는 테스트에서 예외가 나오는게 확실한 상황에서 사용되는 대중적인 형식으로 주석이 필요없습니다.
+
+```java
+try {
+    emptyStack.pop();
+    fail();
+} catch (NoSuchElementException expected) {
+}
+```
