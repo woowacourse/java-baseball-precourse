@@ -32,7 +32,8 @@ public class GameConstants {
 	public enum Message {
 		ERR_NOT_IN_RANGE("범위 내의 숫자가 아닙니다"),
 		ERR_IMPROPER_LENGTH("적절한 길이가 아닙니다"),
-		ERR_DUPLICATE_EXISTS("중복된 수가 있습니다");
+		ERR_DUPLICATE_EXISTS("중복된 수가 있습니다"),
+		ERR_IMPROPER_USER_SELECTION("잘못된 선택입니다");
 
 		private final String message;
 
@@ -58,6 +59,36 @@ public class GameConstants {
 
 		public String getString() {
 			return string;
+		}
+	}
+
+	public enum Hint {
+		HINT_ASK_INPUT("숫자를 입력해주세요 : ");
+
+		private final String string;
+
+		Hint(String string) {
+			this.string = string;
+		}
+
+		public String getString() {
+			return string;
+		}
+	}
+
+	public enum GameOverInput {
+		INPUT_LENGTH(1),
+		RESTART(1),
+		STOP(2);
+
+		private final int number;
+
+		GameOverInput(int number) {
+			this.number = number;
+		}
+
+		public int getNumber() {
+			return number;
 		}
 	}
 }
