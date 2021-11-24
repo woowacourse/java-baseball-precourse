@@ -3,19 +3,23 @@ package baseball;
 import camp.nextstep.edu.missionutils.*;
 
 public class Application {
+    static  int[] randomAns;
+
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
 
-        // 1. 타겟 넘버 생성
-        int[] randomAns = createTargetNum();
+        boolean start = true;
+        // 재실행 여부
+        while(start){
+            // 1. 타겟 넘버 생성
+            randomAns = createTargetNum();
 
-        // 2. 유저에게 입력 받기
-        int[] userInputNumArr = userInputNum();
-
-        // 3. 유저에게 결과 알려주기
-
-
-        // 4. 재실행 여부
+            // 2. 유저에게 입력 받기
+            // 3. 유저에게 결과 알려주기
+            boolean ansCheck = false;
+            while(!ansCheck) ansCheck = compareToRandomAns(userInputNum());
+            start = checkRestart();
+        }
     }
 
     static int[] createTargetNum(){
@@ -59,6 +63,19 @@ public class Application {
         return userInputNumArr;
     }
 
+    static boolean compareToRandomAns(int[] userInputNumArr){
+        // 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 포볼 또는 낫싱
 
+
+        return true;
+    }
+
+    static boolean checkRestart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userRestartInput = Console.readLine();
+        if(userRestartInput=="1") return true;
+        else if(userRestartInput=="2") return false;
+        else throw new IllegalArgumentException();
+    }
 
 }
