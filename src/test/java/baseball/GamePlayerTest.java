@@ -1,16 +1,22 @@
 package baseball;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class GamePlayerTest {
+
+    private GamePlayer gamePlayer;
+
+    @BeforeEach
+    void setUp(){
+        gamePlayer = new GamePlayer();
+    }
 
     @DisplayName("정상 작동")
     @Test
@@ -18,7 +24,6 @@ class GamePlayerTest {
         String input = "123";
         enterSystemInput(input);
 
-        GamePlayer gamePlayer = new GamePlayer();
         gamePlayer.writeAnswer();
         int[] playerAnswer = gamePlayer.getPlayerAnswer();
 
@@ -36,8 +41,6 @@ class GamePlayerTest {
         String input = "113";
         enterSystemInput(input);
 
-        GamePlayer gamePlayer = new GamePlayer();
-
         assertThrows(IllegalArgumentException.class, () -> gamePlayer.writeAnswer());
     }
 
@@ -46,8 +49,6 @@ class GamePlayerTest {
     void enter_NotNumber(){
         String input = "21t";
         enterSystemInput(input);
-
-        GamePlayer gamePlayer = new GamePlayer();
 
         assertThrows(IllegalArgumentException.class, () -> gamePlayer.writeAnswer());
     }
@@ -58,8 +59,6 @@ class GamePlayerTest {
         String input = "1534";
         enterSystemInput(input);
 
-        GamePlayer gamePlayer = new GamePlayer();
-
         assertThrows(IllegalArgumentException.class, () -> gamePlayer.writeAnswer());
     }
 
@@ -68,8 +67,6 @@ class GamePlayerTest {
     void enter_enterZero(){
         String input = "120";
         enterSystemInput(input);
-
-        GamePlayer gamePlayer = new GamePlayer();
 
         assertThrows(IllegalArgumentException.class, () -> gamePlayer.writeAnswer());
     }
