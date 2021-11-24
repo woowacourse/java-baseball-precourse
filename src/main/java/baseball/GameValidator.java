@@ -6,7 +6,7 @@ import java.util.Set;
 
 import static util.GameConstant.*;
 
-public class GameValidator {
+class GameValidator {
 
     public static boolean isValidInput(String input){
         return isNumber(input) && isRightLength(input)

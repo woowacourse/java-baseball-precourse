@@ -9,11 +9,15 @@ import static util.GameConstant.*;
 
 class GameProvider {
     private int[] systemAnswer = new int[NUMBER_LENGTH];
+    private GameStatus gameStatus;
+    private GameScore gameScore;
 
     /**
      * 최초 생성자에서 정답 생성
      */
     public GameProvider(){
+        gameStatus = GameStatus.START;
+        gameScore = new GameScore();
         putRandomNumbers();
     }
 
@@ -28,19 +32,25 @@ class GameProvider {
     }
 
     public GameScore checkAnswer(int[] playerAnswer){
-        GameScore gameScore = new GameScore();
         for(int i = 0; i < NUMBER_LENGTH; i++){
-            int index = checkStrikeOrBall(playerAnswer[i]);
-            if(index == NO_SAME_VALUE){
-                continue;
-            }
-            if(index == i){
-               gameScore.addStrike();
-               continue;
-            }
-            gameScore.addBall();
+            int findIndex = checkStrikeOrBall(playerAnswer[i]);
+            addStrikeOrBall(i, findIndex);
+        }
+        if(gameScore.getStrike() == NUMBER_LENGTH){
+            gameStatus = GameStatus.PAUSE;
         }
         return gameScore;
+    }
+
+    private void addStrikeOrBall(int currentIndex, int findIndex) {
+        if(findIndex == NO_SAME_VALUE){
+            return;
+        }
+        if(findIndex == currentIndex){
+           gameScore.addStrike();
+            return;
+        }
+        gameScore.addBall();
     }
 
     private int checkStrikeOrBall(int value){
@@ -81,5 +91,10 @@ class GameProvider {
     public String toString() {
         return "Game Answer =" + systemAnswer[0] + systemAnswer[1] + systemAnswer[2];
     }
+
+    public GameStatus getGameStatus() {
+        return gameStatus;
+    }
+
 
 }

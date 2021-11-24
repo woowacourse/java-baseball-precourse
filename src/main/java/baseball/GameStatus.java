@@ -1,6 +1,6 @@
 package baseball;
 
-public enum GameStatus {
+enum GameStatus {
     START("0")
     ,RESTART("1")
     ,STOP("2")
