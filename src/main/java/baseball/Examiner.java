@@ -62,4 +62,13 @@ public class Examiner {
         return !isStrike(inputNumberList, index) && randomNumberList.contains(inputNumberList.get(index));
     }
 
+    public boolean isNothing(List<Integer> inputNumberList) {
+        for (int number : inputNumberList) {
+            if (randomNumberList.contains(number)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
