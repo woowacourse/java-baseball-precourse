@@ -44,4 +44,20 @@ public class GameConstants {
 			return message;
 		}
 	}
+
+	public enum Terminology {
+		STRIKE("스트라이크"),
+		BALL("볼"),
+		NOTHING("낫싱");
+
+		private final String string;
+
+		Terminology(String string) {
+			this.string = string;
+		}
+
+		public String getString() {
+			return string;
+		}
+	}
 }
