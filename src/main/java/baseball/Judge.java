@@ -2,10 +2,12 @@ package baseball;
 
 public class Judge {
     private static char[] defendNumber;
-
-    private Judge(){}
+    public static boolean flag;
+    private Judge(){ }
     public static Judge passNumberToJudge(String number) {
+        System.out.println(number);
         defendNumber = number.toCharArray();
+        flag = false;
 //        System.out.println("passToJudge");
 //        for (char c : defendNumber) {
 //            System.out.print(c);
@@ -38,6 +40,7 @@ public class Judge {
                 sb.append(ball + "볼 ");
             }
             if (strike> 0) {
+                if(strike==3) flag=true;
                 sb.append(strike + "스트라이크");
             }
         }
