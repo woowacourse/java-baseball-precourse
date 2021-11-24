@@ -16,8 +16,6 @@ public class BaseBallGame {
 	public static void start() {
 		getRandomNumber();
 		getUserNumber();
-		System.out.println(randomNumber);
-		System.out.println(userNumber);
 	}
 
 	private static void getRandomNumber() {
