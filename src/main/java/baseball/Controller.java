@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Valid.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Controller {
@@ -8,15 +9,17 @@ public class Controller {
 
 	public void start() {
 		Computer computer = new Computer();
-		int start = 1;
+		String state = GAME_START;
 
-		while (start == 1) {
+		while (state.equals(GAME_START)) {
 			computer.init();
 			Game game = new Game(computer);
 			game.play();
 			printSuccessMessage();
 			String userInputMessage = readLine();
-			start = Integer.parseInt(userInputMessage);
+			if (validateRestartMessage(userInputMessage)) {
+				state = userInputMessage;
+			}
 		}
 	}
 

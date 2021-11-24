@@ -5,6 +5,8 @@ import java.util.List;
 public class Valid {
 	public static final boolean VALID_SUCCESS = true;
 	public static final boolean VALID_FAILED = false;
+	public static final String GAME_START = "1";
+	public static final String PROGRAM_EXIT = "2";
 
 	public Valid() {}
 
@@ -29,4 +31,13 @@ public class Valid {
 		}
 		return VALID_SUCCESS;
 	}
+
+	public static boolean validateRestartMessage(String userInputMessage) {
+		if (userInputMessage.equals(GAME_START)
+			|| userInputMessage.equals(PROGRAM_EXIT)) {
+			return VALID_SUCCESS;
+		}
+		throw new IllegalArgumentException();
+	}
+
 }
