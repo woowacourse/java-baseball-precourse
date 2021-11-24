@@ -11,6 +11,7 @@ public class Game {
     private static final int NUMBER_LENGTH = 3;
     private static final String INPUT_CHECK_REGEX = "[1-9][1-9][1-9]";
     private String randomNumber;
+    private String userNumber;
 
     public void init() {
         LinkedHashSet<Integer> hashSet = new LinkedHashSet<>();
@@ -26,6 +27,17 @@ public class Game {
         }
 
         randomNumber = stringBuilder.toString();
+    }
+
+    private void takeInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+
+        String input = Console.readLine();
+        if (!isValid(input)) {
+            throw new IllegalArgumentException();
+        }
+
+        userNumber = input;
     }
 
     private boolean isValid(String input) {
@@ -44,5 +56,4 @@ public class Game {
 
         return true;
     }
-
 }
