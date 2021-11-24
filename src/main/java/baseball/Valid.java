@@ -12,6 +12,13 @@ public class Valid {
 		if (numbers.size() != 3) {
 			return VALID_FAILED;
 		}
+
+		for (int i = 0; i < 3; i++) {
+			if (numbers.get(i) < 1 || 9 < numbers.get(i)) {
+				return VALID_FAILED;
+			}
+		}
+
 		int number0 = numbers.get(0);
 		int number1 = numbers.get(1);
 		int number2 = numbers.get(2);
