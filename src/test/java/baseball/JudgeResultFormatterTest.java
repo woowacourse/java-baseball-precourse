@@ -10,4 +10,10 @@ public class JudgeResultFormatterTest {
 		JudgeResultFormatter formatter = new JudgeResultFormatter();
 		assertThat(formatter.format(JudgeResult.of(0, 2))).isEqualTo("2볼");
 	}
+
+	@Test
+	void format_message_only_strike() throws Exception {
+		JudgeResultFormatter formatter = new JudgeResultFormatter();
+		assertThat(formatter.format(JudgeResult.of(2, 0))).isEqualTo("2스트라이크");
+	}
 }
