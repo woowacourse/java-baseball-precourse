@@ -4,20 +4,30 @@
 ### ✅ GameProvider
 #### package java.baseball
 1. 서로 다른 세자리 수를 가진 ```Random Answer``` 생성
-   - 서로 다른 세자리 수 검증 **(1,2번 공통)**   
-   
-
-2. 플레이어 입력 요청
-   - 서로 다른 세자리 수 검증 **(1,2번 공통)**
-   - 0 미포함 검증
+   - 서로 다른 세자리 수 검증
 
 
-3. 플레이어가 입력하는 ```Answer```와 생성된 ```Random Answer``` 비교, ```GameScore``` 인스턴스 반환   
+2. 플레이어가 입력하는 ```Answer```와 생성된 ```Random Answer``` 비교, ```GameScore``` 인스턴스 반환   
 
 
-4. 게임 재시작 or 종료 입력 요청
+3. 게임 재시작 or 종료 입력 요청
    - GameStatus.RESTART -> 반복문 재시작
    - GameStatus.STOP -> 종료
+
+### ✅ GamePlayer
+#### package java.baseball
+
+1. 플레이어 입력 요청
+
+
+### ✅ GameValidator
+#### package java.baseball
+1. ```Player``` 입력값 검증
+   - 입력한 값이 숫자인지?
+   - 0이 포함되어있는지?
+   - 중복된 수는 없는지?
+   - 세자리 숫자인지?
+
 
 ### ✅ GameScore
 #### package java.baseball
