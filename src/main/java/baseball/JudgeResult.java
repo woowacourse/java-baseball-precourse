@@ -27,6 +27,10 @@ public class JudgeResult {
 		return ball;
 	}
 
+
+	public boolean isNothing() {
+		return strike == 0 && ball == 0;
+	}
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;

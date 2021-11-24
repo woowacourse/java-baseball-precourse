@@ -2,7 +2,7 @@ package baseball;
 
 public class JudgeResultFormatter {
 	public String format(JudgeResult result) {
-		if(result.equals(JudgeResult.nothing())) {
+		if(result.isNothing()) {
 			return "낫싱";
 		}
 
