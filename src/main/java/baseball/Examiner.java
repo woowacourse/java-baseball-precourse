@@ -38,4 +38,23 @@ public class Examiner {
         return randomNumberList.get(index).equals(inputNumberList.get(index));
     }
 
+    public int countBall(List<Integer> inputNumberList) {
+        int ballCount = 0;
+
+        for (int i = 0 ; i < NUMBER_LENGTH ; i++) {
+            if (isBall(randomNumberList, inputNumberList, i)) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
+    }
+
+    public boolean isBall(List<Integer> randomNumberList,
+                          List<Integer> inputNumberList,
+                          int index) {
+        return !isStrike(randomNumberList, inputNumberList, index)
+                && randomNumberList.contains(inputNumberList.get(index));
+    }
+
 }
