@@ -8,7 +8,11 @@ public class GameManager {
 	private String answerNumber;
 	private boolean isGameFinished;
 
-	public GameManager(Display display, BaseballNumberGenerator generator, BaseballNumberReferee referee, JudgeResultFormatter formatter) {
+	public GameManager(
+			Display display,
+			BaseballNumberGenerator generator,
+			BaseballNumberReferee referee,
+			JudgeResultFormatter formatter) {
 		this.display = display;
 		this.generator = generator;
 		this.referee = referee;
