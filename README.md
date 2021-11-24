@@ -145,10 +145,11 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
     3. 3스트라이크 : 3개의 숫자를 모두 맞힐 경우
         + 3개의 숫자를 모두 맞히셨습니다! 게임 종료
 3. 구현할 기능 목록
-    1. 컴퓨터 숫자 생성 클래스
-       1. 숫자 담을 정수 배열
-       2. 생성자
-       3. 세 숫자 중복인지 확인하는 함수
+    1. ComputerNumGenerator : 컴퓨터 숫자 생성 클래스
+       1. nums : 숫자 담을 정수 배열
+       2. ComputerNumGenerator() : 생성자, 1-9 서로 다른 세 수를 nums에 저장
+       3. pickThreeNum() : 랜덤하게 세 숫자를 뽑아 배열에 저장하는 함수
+       4. isNotSame() : 세 숫자 중복인지 확인하는 함수
     2. 유저에게 3자리 정수 인풋 받기
     3. 결과 출력
     4. 반복, 종료
