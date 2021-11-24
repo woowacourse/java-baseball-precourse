@@ -32,6 +32,19 @@ public class Application {
 		}
 	}
 
+	private static boolean selectRestartOrExit() {
+
+		int restartOrExit = Integer.parseInt(Console.readLine());
+
+		verifyInput(restartOrExit);
+
+		if (restartOrExit == 2) {
+			return true;
+		}
+
+		return false;
+	}
+
 	static void verifyInput(int input) {
 
 		if (input != 1 && input != 2) {
