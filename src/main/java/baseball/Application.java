@@ -73,9 +73,8 @@ public class Application {
     static boolean checkRestart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userRestartInput = Console.readLine();
-        if(userRestartInput=="1") return true;
-        else if(userRestartInput=="2") return false;
+        if(userRestartInput.equals("1")) return true;
+        else if(userRestartInput.equals("2")) return false;
         else throw new IllegalArgumentException();
     }
-
 }
