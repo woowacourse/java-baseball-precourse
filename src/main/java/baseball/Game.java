@@ -30,6 +30,9 @@ public class Game {
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
 		}
+
+		strike = computer.checkStrikeCount(userNumbers);
+		ball = computer.checkBallCount(userNumbers);
 	}
 
 	public List<Integer> toIntegerList(String input) {

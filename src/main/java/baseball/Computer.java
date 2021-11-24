@@ -27,4 +27,27 @@ public class Computer {
 			}
 		}
 	}
+
+	public int checkBallCount(List<Integer> userNumbers) {
+		int ballCount = 0;
+		for (int i = 0; i < 3; i++) {
+			int userNumber = userNumbers.get(i);
+			if (randomNumbers.contains(userNumber)
+				&& userNumber != randomNumbers.get(i)) {
+				ballCount++;
+			}
+		}
+		return ballCount;
+	}
+
+	public int checkStrikeCount(List<Integer> userNumbers) {
+		int strikeCount = 0;
+		for (int i = 0; i < 3; i++) {
+			int userNumber = userNumbers.get(i);
+			if (userNumber == randomNumbers.get(i)) {
+				strikeCount++;
+			}
+		}
+		return strikeCount;
+	}
 }
