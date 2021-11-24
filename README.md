@@ -1,6 +1,13 @@
-# 미션 - 숫자 야구 게임 by HyoTaek-Jang
+# 미션 - 숫자 야구 게임
 
-## 기능목록
+
+### 기능목록 - 게임 flow에 따라 작성
+0. 게임 시작
+1. 랜덤한 숫자 3개 받기 - 정답 값
+2. 사용자 응답 받기 with catch exception
+3. 응답에 따른 결과 받기
+4. 정답 후, 진행 여부 선택
+
 
 ### 미션 관련 알고 있을 정보 정리
 0. 3자리 수는 1-9까지 중복이 없다.
@@ -24,10 +31,9 @@
 6. 기본적으로 테스트 코드를 다 통과해야함.
 
 ### 라이브러리 정보
-#### 
 1. camp.nextstep.edu.missionutils에서 제공하는 Randoms, Console API를 활용해 구현
-   1. Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용\
-   2. 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
+  1. Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
+  2. 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
 
 ## 🔍 진행방식
 
@@ -157,3 +163,4 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
