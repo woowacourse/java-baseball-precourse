@@ -1,7 +1,6 @@
 package baseball;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.stream.Stream;
 
 public class BaseballNumberValidator {
 	public boolean validate(String number) {
@@ -17,10 +16,7 @@ public class BaseballNumberValidator {
 	}
 
 	private boolean isUniqueNumber(String number) {
-		Set<Character> set = new HashSet<>();
-		for (Character ch : number.toCharArray()) {
-			set.add(ch);
-		}
-		return set.size() == 3;
+		Stream<Character> stream = number.chars().mapToObj(c -> (char)c);
+		return stream.distinct().count() == 3;
 	}
 }
