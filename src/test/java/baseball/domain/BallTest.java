@@ -13,7 +13,7 @@ public class BallTest {
 	void testStrike(int index, int no) {
 		Ball myBall = Ball.of(index, no);
 		Ball comBall = Ball.of(index, no);
-		assertThat(myBall.compare(comBall)).isEqualTo(Score.STRIKE);
+		assertThat(myBall.compare(comBall).isStrike()).isTrue();
 	}
 
 	@DisplayName("볼 테스트")
@@ -22,7 +22,7 @@ public class BallTest {
 	void testBall(int myIdx, int myNo, int comIdx, int comNo) {
 		Ball myBall = Ball.of(myIdx, myNo);
 		Ball comBall = Ball.of(comIdx, comNo);
-		assertThat(myBall.compare(comBall)).isEqualTo(Score.BALL);
+		assertThat(myBall.compare(comBall).isBall()).isTrue();
 	}
 
 	@DisplayName("낫싱 테스트")

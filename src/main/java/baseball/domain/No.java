@@ -14,9 +14,13 @@ public class No {
 	}
 
 	private void checkValid(int no) {
-		if (!(no >= MIN_NO && no <= MAX_NO)) {
+		if (!isValidNo(no)) {
 			throw new IllegalArgumentException("1부터 9 사이의 숫자를 입력하세요.");
 		}
+	}
+
+	private boolean isValidNo(int no) {
+		return no >= MIN_NO && no <= MAX_NO;
 	}
 
 	@Override

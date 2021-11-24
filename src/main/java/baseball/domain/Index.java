@@ -14,9 +14,13 @@ public class Index {
 	}
 
 	private void checkValid(int index) {
-		if (!(index >= MIN_NO && index <= MAX_NO)) {
+		if (!isValidIndex(index)) {
 			throw new IllegalArgumentException("0부터 2 사이의 숫자를 입력하세요.");
 		}
+	}
+
+	private boolean isValidIndex(int index) {
+		return index >= MIN_NO && index <= MAX_NO;
 	}
 
 	@Override
