@@ -2,11 +2,11 @@ package baseball.domain;
 
 public class Ball {
 	private final Index index;
-	private final int no;
+	private final No no;
 
 	private Ball(int index, int no) {
 		this.index = new Index(index);
-		this.no = no;
+		this.no = new No(no);
 	}
 
 	static Ball of(int index, int no) {
@@ -23,11 +23,11 @@ public class Ball {
 		return Score.NOTHING;
 	}
 
-	private boolean isStrike(Index index, int no) {
-		return this.index.equals(index) && this.no == no;
+	private boolean isStrike(Index index, No no) {
+		return this.index.equals(index) && this.no.equals(no);
 	}
 
-	private boolean isBall(Index index, int no) {
-		return !this.index.equals(index) && this.no == no;
+	private boolean isBall(Index index, No no) {
+		return !this.index.equals(index) && this.no.equals(no);
 	}
 }
