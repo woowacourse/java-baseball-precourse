@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Examiner {
@@ -70,5 +71,9 @@ public class Examiner {
         }
 
         return true;
+    }
+
+    public boolean isCorrect(List<Integer> inputNumberList) {
+        return Arrays.equals(randomNumberList.toArray(), inputNumberList.toArray());
     }
 }
