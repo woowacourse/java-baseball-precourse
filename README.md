@@ -128,3 +128,15 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+<br>
+
+---
+
+## 기능 목록
+- 컴퓨터가 랜덤 숫자 3개를 생성하는 것 구현
+- 사용자가 숫자를 입력하는 기능 구현
+  - 잘못된 값을 입력할 경우 에러 발생 후 애플리케이션 종료 구현
+- 사용자가 입력한 값과 컴퓨터 값을 비교하여 결과 값을 도출하는 기능 구현
+- 3자리 수, 게임 끝난 경우 재시작/종료를 구분하는 입력문 구현
+- 입력 수에 대한 결과 출력 구현
