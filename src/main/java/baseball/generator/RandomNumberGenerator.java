@@ -16,7 +16,7 @@ public class RandomNumberGenerator {
 	private static final Integer START_RANDOM_VALUE = 1;
 	private static final Integer END_RANDOM_VALUE = 9;
 	private static final Integer USED_VALUE_CHECK = 1;
-	public static int[] duplicateNumberFlag = new int[FLAG_SIZE];
+	private static int[] duplicateNumberFlag = new int[FLAG_SIZE];
 
 	/**
 	 * 중복확인을 위한 flag 배열을 초기화하는 함수
