@@ -1,10 +1,16 @@
 package baseball.domain;
 
+import static baseball.constants.GameConstants.Digit.*;
+import static baseball.constants.GameConstants.GameOverInput.*;
 import static baseball.constants.GameConstants.Terminology.*;
 
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+
+import baseball.constants.GameConstants;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Game {
 
@@ -19,6 +25,22 @@ public class Game {
 	private void resetGameResult() {
 		this.ball = 0;
 		this.strike = 0;
+	}
+
+	public int runGameOnce() {
+		int userGameOverSelection;
+		while (true) {
+			OutputView.printInputHint();
+			List<Integer> userNumberList = InputView.inputUserNumber();
+			player.setNumberList(userNumberList);
+			runComparison();
+			OutputView.printGameResult(this);
+			if (strike == LENGTH.getNumber()) {
+				userGameOverSelection = InputView.inputUserGameOverSelection();
+				break;
+			}
+		}
+		return userGameOverSelection;
 	}
 
 	public void runComparison() {
