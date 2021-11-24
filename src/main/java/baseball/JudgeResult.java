@@ -44,10 +44,16 @@ public class JudgeResult {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		JudgeResult that = (JudgeResult) o;
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+
+		JudgeResult that = (JudgeResult) obj;
 		return strike == that.strike && ball == that.ball;
 	}
 
