@@ -16,7 +16,7 @@ public class Validation {
     private static boolean isInteger(String numbers) {
         for (int i = 0; i < Rules.NUMBER_LENGTH; i++) {
             char eachDigit = numbers.charAt(i);
-            if (!Character.isDigit(eachDigit) || eachDigit != 0) {
+            if (!Character.isDigit(eachDigit) || eachDigit == 0) {
                 throw new IllegalArgumentException(Message.ERROR_INPUT_TYPE);
             }
         }
@@ -24,5 +24,13 @@ public class Validation {
     }
 
     private static boolean isUnique(String numbers) {
+        boolean[] usedNumber = new boolean[Rules.END_NUMBER + 1];
+        for (int i = 0; i < Rules.NUMBER_LENGTH; i++) {
+            int eachDigit = Character.getNumericValue(numbers.charAt(i));
+            if (usedNumber[eachDigit]) {
+                throw new IllegalArgumentException(Message.ERROR_INPUT_DUPLICATE);
+            }
+        }
+        return true;
     }
 }
