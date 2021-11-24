@@ -12,6 +12,14 @@ public class BaseballNumberReferee {
 			throw new IllegalArgumentException(String.format("%s는 잘못된 입력값입니다.", input));
 		}
 
-		return new JudgeResult();
+		int strike = 0;
+
+		for (int i = 0; i < number.length(); i++) {
+			if(input.charAt(i) == number.charAt(i)) {
+				strike++;
+			}
+		}
+
+		return new JudgeResult(strike);
 	}
 }

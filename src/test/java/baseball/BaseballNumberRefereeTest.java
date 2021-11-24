@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class BaseballNumberRefereeTest {
@@ -24,5 +25,14 @@ public class BaseballNumberRefereeTest {
 		JudgeResult result = referee.judge("123", "456");
 		assertThat(result.getStrike()).isEqualTo(0);
 		assertThat(result.getBall()).isEqualTo(0);
+	}
+
+	@ParameterizedTest(name = "입력값 : {0}, 정답 : {1}, 스트라이크 개수 : {2}")
+	@DisplayName("스트라이크 판단")
+	@CsvSource({"123, 156, 1", "152, 172, 2", "672, 672, 3"})
+	void judge_strike(String input, String answer, int numberOfStrike) throws Exception {
+	 	BaseballNumberReferee referee = new BaseballNumberReferee(new BaseballNumberValidator());
+	 	JudgeResult result = referee.judge(input, answer);
+	 	assertThat(result.getStrike()).isEqualTo(numberOfStrike);
 	}
 }
