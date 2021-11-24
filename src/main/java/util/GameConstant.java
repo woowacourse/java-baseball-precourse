@@ -7,6 +7,7 @@ public class GameConstant {
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 9;
     public static final int NUMBER_LENGTH = 3;
+    public static final int NO_SAME_VALUE = -1;
 
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";

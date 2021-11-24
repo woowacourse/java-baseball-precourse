@@ -31,8 +31,7 @@ class GameProvider {
         GameScore gameScore = new GameScore();
         for(int i = 0; i < NUMBER_LENGTH; i++){
             int index = checkStrikeOrBall(playerAnswer[i]);
-
-            if(index == -1){
+            if(index == NO_SAME_VALUE){
                 continue;
             }
             if(index == i){
@@ -50,7 +49,7 @@ class GameProvider {
                 return i;
             }
         }
-        return -1;
+        return NO_SAME_VALUE;
     }
 
     private void putRandomNumbers(){
@@ -76,14 +75,11 @@ class GameProvider {
 
     /**
      * Test, Debug 용 toString Override
-     * @return Game Answer = 1 2 3
+     * @return Game Answer = 123
      */
     @Override
     public String toString() {
         return "Game Answer =" + systemAnswer[0] + systemAnswer[1] + systemAnswer[2];
     }
 
-    public int[] getAnswer() {
-        return systemAnswer;
-    }
 }
