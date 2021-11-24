@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.handler.InputExceptionHandler;
 import baseball.view.InputView;
 
 /**
@@ -22,7 +23,9 @@ public class GameController {
 
 		InputView.askNumber();
 		playerNumber = InputView.writeInput();
-		System.out.println(playerNumber);
+		if (InputExceptionHandler.checkValidation(playerNumber)) {
+			// execute function that prints out about hints in the class of OutputView
+		}
 	}
 
 }
