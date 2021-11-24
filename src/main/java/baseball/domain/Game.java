@@ -68,13 +68,13 @@ public class Game {
 	@Override
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
-		if (strike > 0) {
-			stringBuilder.append(strike).append(STRIKE.getString());
-		}
 		if (ball > 0) {
-			if (strike > 0)
-				stringBuilder.append(' ');
 			stringBuilder.append(ball).append(BALL.getString());
+		}
+		if (strike > 0) {
+			if (ball > 0)
+				stringBuilder.append(' ');
+			stringBuilder.append(strike).append(STRIKE.getString());
 		}
 		if (strike == 0 && ball == 0) {
 			stringBuilder.append(NOTHING.getString());
