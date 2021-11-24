@@ -1,5 +1,9 @@
 # 미션 - 숫자 야구 게임
 
+<details>
+<summary>과제 설명</summary>
+<div markdown="1">
+
 ## 🔍 진행방식
 
 - 미션은 **기능 요구사항, 프로그래밍 요구사항, 과제 진행 요구사항** 세 가지로 구성되어 있다.
@@ -19,7 +23,14 @@
 - 터미널에서 `java -version`을 실행해 자바 8인지 확인한다. 또는 Eclipse, IntelliJ IDEA와 같은 IDE의 자바 8로 실행하는지 확인한다.
 - 터미널에서 맥 또는 리눅스 사용자의 경우 `./gradlew clean test`, 윈도우 사용자의 경우 `gradlew.bat clean test` 명령을 실행했을 때 모든 테스트가 통과하는지 확인한다.
 
+</div>
+</details>
+
 ---
+
+<details>
+<summary>요구사항</summary>
+<div markdown="1">
 
 ## 🚀 기능 요구사항
 
@@ -124,34 +135,41 @@
       남긴다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고한다.
 
-<br>
+</div>
+</details>
 
 ---
+<details>
+<summary>라이센스</summary>
+
+<div markdown="1">
 
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
 
-<br>
+</div>
+</details>
 
 ---
 
 ## 🐾 구현할 기능 목록
 
-- 1부터 9까지의 서로 다른 수로 이루어진 3자리 수 생성
-    + idea : 1~9 고르고 해당 수 빼고 고르기 2번 반복?
-    + Java 에서 조합 구현하는 방법 찾기
-- 스트라이크, 볼, 낫싱 3개의 힌트를 제공
+- [X] 1부터 9까지의 서로 다른 수로 이루어진 3자리 수 생성
+    + ~~idea1 : 1~9 고르고 해당 수 빼고 고르기 2번 반복  
+      -> Java 는 배열 크기 변경이 자유롭지 않음~~
+    + idea2 : 중복을 허용하지 않음 -> 집합을 사용해 길이가 3이 될때까지 랜덤하게 숫자 뽑기
+- [ ] 스트라이크, 볼, 낫싱 3개의 힌트를 제공
     + idea : 스트라이크, 볼 개수 > 0 이면 출력 else 낫싱
     + if - else 문으로 구현 / 문자열 * 숫자 구현 방법 생각해보기
-- 게임 끝난 후 입력 값이 1이면 게임 재시작, 2이면 게임 종료
+- [ ] 게임 끝난 후 입력 값이 1이면 게임 재시작, 2이면 게임 종료
     + idea : do - while 문 이용
     + 그 외의 입력은 IllegalArgumentException 발생시키고 종료
-- 게임 진행 중 입력값이 3자리의 수가 아닌 경우 IllegalArgumentException 발생시키고 종료
+- [ ] 게임 진행 중 입력값이 3자리의 수가 아닌 경우 IllegalArgumentException 발생시키고 종료
     + idea : 오류 발생 범위 나누기
     + 자료형이 int 가 아닌 경우 (String, Bool, ...)
     + 자연수가 아닌 경우 (음수, 0)
     + 자릿수가 3자리 수가 아닌 경우
     + 예외 처리 순서는 효율적인 방향으로 다시 생각해보기
-- 숫자를 모두 맞힌 경우 게임 종료 메세지 띄우기
+- [ ] 숫자를 모두 맞힌 경우 게임 종료 메세지 띄우기
     + idea : 3스트라이크 조건에 적합하면 출력
