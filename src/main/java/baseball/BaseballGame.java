@@ -4,7 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
     private RandomNumberGenerator randomNumberGenerator;
+    private Hint hint;
 
+    public BaseballGame() {
+        this.randomNumberGenerator = new RandomNumberGenerator();
+        this.hint = new Hint();
+    }
 
     public void start() {
         do {
@@ -20,10 +25,7 @@ public class BaseballGame {
             System.out.print(Message.REQUEST_ENTER_NUMBER);
             String userInput = Console.readLine();
             Validation.checkInput(userInput);
-
-
+            hint.countHint(answer, userInput);
         }
-
     }
-
 }
