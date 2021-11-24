@@ -4,8 +4,8 @@
     - [X] 1 ~ 9만 사용
     - [x] 3자리 숫자
 * 컴퓨터가 사용할 숫자 생성
-    - [ ] Randoms.pickNumberInRange 메서드 사용
-    - [ ] 랜덤한 값이 숫자 검증기를 통과하지 못하면 통과할 때 까지 재생성
+    - [X] Randoms.pickNumberInRange 메서드 사용
+    - [X] 랜덤한 값이 숫자 검증기를 통과하지 못하면 통과할 때 까지 재생성
 * 입력값 처리
     - [ ] 잘못된 입력값(4자리수 이상, 숫자외의 값 등)의 경우 IllegalArgumentException 발생
     - [ ] 3자리 숫자 입력 처리
