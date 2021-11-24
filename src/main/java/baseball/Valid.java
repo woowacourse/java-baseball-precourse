@@ -3,8 +3,8 @@ package baseball;
 import java.util.List;
 
 public class Valid {
-	private static final boolean VALID_SUCCESS = true;
-	private static final boolean VALID_FAILED = false;
+	public static final boolean VALID_SUCCESS = true;
+	public static final boolean VALID_FAILED = false;
 
 	public Valid() {}
 
