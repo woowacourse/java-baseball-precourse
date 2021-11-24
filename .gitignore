@@ -4,7 +4,7 @@
 !gradle/wrapper/gradle-wrapper.jar
 /out/
 /target/
-
+.java-version
 ### STS ###
 .apt_generated
 .classpath
