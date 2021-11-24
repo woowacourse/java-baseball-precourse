@@ -24,21 +24,21 @@ public class GameManagerTest {
 	@Test
 	@DisplayName("게임을 시작하면 \"숫자를 입력하세요 : \" 메시지 출력")
 	void display_input_number_message_when_start_game() throws Exception {
-		Console console = mock(Console.class);
-		GameManager gameManager = new GameManager(console, generator, referee, formatter);
+		Display display = mock(Display.class);
+		GameManager gameManager = new GameManager(display, generator, referee, formatter);
 
 		gameManager.startGame();
 
-		then(console).should().print("숫자를 입력하세요 : ");
+		then(display).should().print("숫자를 입력하세요 : ");
 	}
 
 	@Test
 	@DisplayName("입력한 숫자의 결과를 출력")
 	void display_judge_result_message_when_input_number() throws Exception {
-		Console console = mock(Console.class);
+		Display display = mock(Display.class);
 		generator = mock(BaseballNumberGenerator.class);
 		when(generator.generate()).thenReturn("123");
-		GameManager gameManager = new GameManager(console, generator, referee, formatter);
+		GameManager gameManager = new GameManager(display, generator, referee, formatter);
 
 		gameManager.startGame();
 		gameManager.handleGuessNumber("132");
@@ -46,16 +46,16 @@ public class GameManagerTest {
 		gameManager.handleGuessNumber("156");
 		gameManager.handleGuessNumber("569");
 
-		InOrder inOrder = inOrder(console);
-		inOrder.verify(console).print("숫자를 입력하세요 : ");
-		inOrder.verify(console).println("2볼 1스트라이크");
-		inOrder.verify(console).print("숫자를 입력하세요 : ");
-		inOrder.verify(console).println("1볼");
-		inOrder.verify(console).print("숫자를 입력하세요 : ");
-		inOrder.verify(console).println("1스트라이크");
-		inOrder.verify(console).print("숫자를 입력하세요 : ");
-		inOrder.verify(console).println("낫싱");
-		inOrder.verify(console).print("숫자를 입력하세요 : ");
+		InOrder inOrder = inOrder(display);
+		inOrder.verify(display).print("숫자를 입력하세요 : ");
+		inOrder.verify(display).println("2볼 1스트라이크");
+		inOrder.verify(display).print("숫자를 입력하세요 : ");
+		inOrder.verify(display).println("1볼");
+		inOrder.verify(display).print("숫자를 입력하세요 : ");
+		inOrder.verify(display).println("1스트라이크");
+		inOrder.verify(display).print("숫자를 입력하세요 : ");
+		inOrder.verify(display).println("낫싱");
+		inOrder.verify(display).print("숫자를 입력하세요 : ");
 
 		assertThat(gameManager.isGameFinished()).isFalse();
 	}
@@ -63,19 +63,19 @@ public class GameManagerTest {
 	@Test
 	@DisplayName("삼진아웃일 경우 게임 종료 메시지 출력")
 	void display_end_message_when_strikeout() throws Exception {
-		Console console = mock(Console.class);
+		Display display = mock(Display.class);
 		generator = mock(BaseballNumberGenerator.class);
 		when(generator.generate()).thenReturn("123");
-		GameManager gameManager = new GameManager(console, generator, referee, formatter);
+		GameManager gameManager = new GameManager(display, generator, referee, formatter);
 
 		gameManager.startGame();
 		gameManager.handleGuessNumber("123");
 
-		InOrder inOrder = inOrder(console);
-		inOrder.verify(console).print("숫자를 입력하세요 : ");
-		inOrder.verify(console).println("3스트라이크");
-		inOrder.verify(console).println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-		inOrder.verify(console).println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		InOrder inOrder = inOrder(display);
+		inOrder.verify(display).print("숫자를 입력하세요 : ");
+		inOrder.verify(display).println("3스트라이크");
+		inOrder.verify(display).println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		inOrder.verify(display).println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
 		assertThat(gameManager.isGameFinished()).isTrue();
 	}
