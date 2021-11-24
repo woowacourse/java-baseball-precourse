@@ -2,12 +2,12 @@ package baseball;
 
 public class JudgeResultFormatter {
 	public String format(JudgeResult result) {
-		if(result.isNothing()) {
+		if (result.isNothing()) {
 			return "낫싱";
 		}
 
 		return removeLastSpaceCharacter(
-			formatMessageForBallAndStrike(result));
+				formatMessageForBallAndStrike(result));
 	}
 
 	private String removeLastSpaceCharacter(String message) {
@@ -19,7 +19,7 @@ public class JudgeResultFormatter {
 	}
 
 	private String formatMessageForStrike(JudgeResult result) {
-		if(result.hasStrike()) {
+		if (result.hasStrike()) {
 			return result.getStrike() + "스트라이크 ";
 		}
 
