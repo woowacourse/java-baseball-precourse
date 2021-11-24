@@ -13,8 +13,14 @@ public class Player {
     private static final int DIGIT = 3;
 
     public List<Integer> playerNumber() {
-        String inputNumber = readLine();
-        return validateInputNumber(inputNumber);
+        System.out.print("숫자를 입력해주세요 : ");
+        try {
+            String inputNumber = readLine();
+            return validateInputNumber(inputNumber);
+        } catch (IllegalArgumentException exception) {
+            exception.getMessage();
+            return playerNumber();
+        }
     }
 
     private List<Integer> validateInputNumber(String inputNumber) throws IllegalArgumentException {
