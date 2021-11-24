@@ -11,6 +11,16 @@ public class Game {
     private int ball;
     private int strike;
 
+    public void startGame() {
+        while (true) {
+            startRound();
+
+            if (!restart()) {
+                return;
+            }
+        }
+    }
+
     private void startRound() {
         randNum = makeRandNum();
 
