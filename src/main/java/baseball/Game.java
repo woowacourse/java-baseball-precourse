@@ -110,4 +110,17 @@ public class Game {
         }
         return ball + "볼 " + strike + "스트라이크";
     }
+
+    private boolean restart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+
+        if (input.equals("1")) {
+            return true;
+        }
+        if (input.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
 }
