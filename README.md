@@ -33,7 +33,33 @@
     - 동일한 수가 중복 입력된 경우
   - [ ] 유저의 프로그램 종료를 위한 입력에 대한 비정상적인 입력
     - `1`과 `2` 이외의 값이 입력된 경우
+
+<br>
+
+### 프로그램 구조도
+```
+baseball
+  - controller
+    - GameController
+
+  - generator
+    - HintGenerator
+    - RandomNumberGenerator
+    
+  - handler
+    - InputExceptionHandler
+    - TerminateHandler
+    
+  - view
+    - InputView
+    - OutputView
+
+  - Application
   
+```
+
+<br>
+
 ### 미션 설명
 <details>
 <summary>접기 / 펼치기 버튼</summary>
@@ -122,10 +148,10 @@
 1볼
 … 
 ```
-
 <br>
+
 ---
----
+
 ## 🎱 프로그래밍 요구사항
 
 - 프로그램을 실행하는 시작점은 `Application`의 `main()`이다.
