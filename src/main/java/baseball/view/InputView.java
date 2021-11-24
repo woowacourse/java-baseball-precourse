@@ -7,7 +7,7 @@ import baseball.utils.ValidationUtils;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-	public List<Integer> inputUserNumber(){
+	public static List<Integer> inputUserNumber(){
 		String userInput = Console.readLine();
 		ValidationUtils.validateUserInputDigitsLength(userInput);
 		ValidationUtils.validateUserInputDigitsInRange(userInput);
@@ -18,7 +18,7 @@ public class InputView {
 		return userNumberList;
 	}
 
-	public int inputUserGameOverSelection() {
+	public static int inputUserGameOverSelection() {
 		String userInput = Console.readLine();
 		ValidationUtils.validateUserGameOverInputLength(userInput);
 		ValidationUtils.validateUserGameOverInputInRange(userInput);
