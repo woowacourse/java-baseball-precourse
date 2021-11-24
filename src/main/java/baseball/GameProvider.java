@@ -8,28 +8,61 @@ import java.util.Set;
 import static util.GameConstant.*;
 
 class GameProvider {
-    private int[] answer = new int[NUMBER_LENGTH];
+    private int[] systemAnswer = new int[NUMBER_LENGTH];
 
+    /**
+     * 최초 생성자에서 정답 생성
+     */
     public GameProvider(){
         putRandomNumbers();
     }
 
+    /**
+     * 최초에 생성된 정답을 바탕으로 중복값 탐색
+     * 중복일 경우 정답 생성
+     */
     public void generateAnswer(){
-        while (isDuplicateNumberExist()){
+        while (!isNotDuplicateInSystemAnswer()){
             putRandomNumbers();
         }
     }
 
+    public GameScore checkAnswer(int[] playerAnswer){
+        GameScore gameScore = new GameScore();
+        for(int i = 0; i < NUMBER_LENGTH; i++){
+            int index = checkStrikeOrBall(playerAnswer[i]);
+
+            if(index == -1){
+                continue;
+            }
+            if(index == i){
+               gameScore.addStrike();
+               continue;
+            }
+            gameScore.addBall();
+        }
+        return gameScore;
+    }
+
+    private int checkStrikeOrBall(int value){
+        for(int i = 0 ; i < NUMBER_LENGTH; i++){
+            if(value == systemAnswer[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     private void putRandomNumbers(){
         for(int i = 0 ; i < NUMBER_LENGTH; i++){
-          answer[i] = Randoms.pickNumberInRange(START_NUMBER,END_NUMBER);
+            systemAnswer[i] = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
         }
     }
 
-    private boolean isDuplicateNumberExist(){
+    private boolean isNotDuplicateInSystemAnswer(){
         Set<Integer> tempSet = new HashSet<>();
-        for(int i = 0 ; i < answer.length; i++){
-            tempSet.add(answer[i]);
+        for(int i = 0 ; i < systemAnswer.length; i++){
+            tempSet.add(systemAnswer[i]);
         }
         if(findDuplicateNumber(tempSet)){
             return true;
@@ -38,7 +71,7 @@ class GameProvider {
     }
 
     private boolean findDuplicateNumber(Set<Integer> tempSet) {
-        return tempSet.size() != NUMBER_LENGTH;
+        return tempSet.size() == NUMBER_LENGTH;
     }
 
     /**
@@ -47,10 +80,10 @@ class GameProvider {
      */
     @Override
     public String toString() {
-        return "Game Answer =" + answer[0] + " " + answer[1] + answer[2];
+        return "Game Answer =" + systemAnswer[0] + systemAnswer[1] + systemAnswer[2];
     }
 
     public int[] getAnswer() {
-        return answer;
+        return systemAnswer;
     }
 }
