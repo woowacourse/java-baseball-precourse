@@ -14,15 +14,21 @@ public class Defender {
             availableSet = initAvailableNumber();
              System.out.println("availableSet init");
         }
-        while(!availableSet.contains(num)){
-            num = pickNumberInRange(123,987);
-        }
+        num =shuffle();
         System.out.println("set Number :" + num);
         return new Defender(num);
     }
 
     private Defender(int number){ this.number = number; }
     public int getNumber(){ return number; }
+    public void changeNumber(){ number =shuffle(); }
+    private static int shuffle(){
+        int num=0;
+        while(!availableSet.contains(num)){
+            num =pickNumberInRange(123,987);
+        }
+        return num;
+    }
 
     private static Set<Integer> initAvailableNumber(){
         Set<Integer> initSet = new HashSet<>();
