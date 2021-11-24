@@ -20,21 +20,23 @@ public class Game {
 
 	public void play() {
 		List<Integer> userNumbers;
-		try {
-			System.out.print("숫자를 입력해주세요 : ");
-			String userInputMessage = readLine();
-			userNumbers = toIntegerList(userInputMessage);
-			if (Valid.validateNumbersList(userNumbers) == VALID_FAILED) {
+		while (strike < 3) {
+			try {
+				System.out.print("숫자를 입력해주세요 : ");
+				String userInputMessage = readLine();
+				userNumbers = toIntegerList(userInputMessage);
+				if (Valid.validateNumbersList(userNumbers) == VALID_FAILED) {
+					throw new IllegalArgumentException();
+				}
+			} catch (Exception e) {
 				throw new IllegalArgumentException();
 			}
-		} catch (Exception e) {
-			throw new IllegalArgumentException();
+
+			strike = computer.checkStrikeCount(userNumbers);
+			ball = computer.checkBallCount(userNumbers);
+
+			printHint();
 		}
-
-		strike = computer.checkStrikeCount(userNumbers);
-		ball = computer.checkBallCount(userNumbers);
-
-		printHint();
 	}
 
 	public List<Integer> toIntegerList(String input) {
