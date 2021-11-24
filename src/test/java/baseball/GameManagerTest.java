@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
-import org.mockito.Mockito;
 
 public class GameManagerTest {
 	BaseballNumberReferee referee;
@@ -59,5 +58,25 @@ public class GameManagerTest {
 		inOrder.verify(console).print("숫자를 입력하세요 : ");
 
 		assertThat(gameManager.isGameFinished()).isFalse();
+	}
+
+	@Test
+	@DisplayName("삼진아웃일 경우 게임 종료 메시지 출력")
+	void display_end_message_when_strikeout() throws Exception {
+		Console console = mock(Console.class);
+		generator = mock(BaseballNumberGenerator.class);
+		when(generator.generate()).thenReturn("123");
+		GameManager gameManager = new GameManager(console, generator, referee, formatter);
+
+		gameManager.startGame();
+		gameManager.handleGuessNumber("123");
+
+		InOrder inOrder = inOrder(console);
+		inOrder.verify(console).print("숫자를 입력하세요 : ");
+		inOrder.verify(console).println("3스트라이크");
+		inOrder.verify(console).println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		inOrder.verify(console).println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+		assertThat(gameManager.isGameFinished()).isTrue();
 	}
 }

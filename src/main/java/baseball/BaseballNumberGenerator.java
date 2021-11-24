@@ -9,11 +9,11 @@ public class BaseballNumberGenerator {
 		this.validator = validator;
 	}
 
-	public int generate() {
+	public String generate() {
 		int number = pickNumberInRange(123, 987);
 
 		if (validator.validate(String.valueOf(number))) {
-			return number;
+			return String.valueOf(number);
 		}
 
 		return generate();
