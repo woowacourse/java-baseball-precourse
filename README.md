@@ -34,7 +34,7 @@
     - 2라면, 종료
 <br>
 
-## Commit Conventions 
+## ✔️ Commit Conventions 
  - [feat]: 기능 관련 커밋
  - [fix]: 버그 수정 관련 커밋
  - [docs]: 문서 관련 커밋
