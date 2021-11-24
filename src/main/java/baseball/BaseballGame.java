@@ -16,12 +16,12 @@ public class BaseballGame {
     }
 
     public void gameStart() {
-        boolean end = false;
-
-        do {
+        while (true) {
             takePlayerNum();
-            end = checkResult();
-        } while (true);
+            if (checkResult() && !decideToRestart()) {
+                return;
+            }
+        }
     }
 
     private void takePlayerNum() {
@@ -41,8 +41,8 @@ public class BaseballGame {
     }
 
     private boolean checkResult() {
-        int strike=0;
-        int ball=0;
+        int strike = 0;
+        int ball = 0;
         for (int i = 0; i < 3; i++) {
             if (playerNum[i] == enemyNum[i]) {
                 strike++;
@@ -55,6 +55,24 @@ public class BaseballGame {
             }
         }
         return printResult(strike, ball);
+    }
+
+    private boolean decideToRestart() {
+        String stringRestartValue;
+        char charRestartValue;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        stringRestartValue = Console.readLine();
+        if (stringRestartValue.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+        charRestartValue = stringRestartValue.charAt(0);
+        if (charRestartValue == '1') {
+            return true;
+        } else if (charRestartValue == '2') {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     private boolean printResult(int strike, int ball) {
