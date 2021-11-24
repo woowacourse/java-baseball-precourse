@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
@@ -9,7 +10,7 @@ public class Game {
 
     private static final int NUMBER_LENGTH = 3;
     private static final String INPUT_CHECK_REGEX = "[1-9][1-9][1-9]";
-    private int randomNumber;
+    private String randomNumber;
 
     public void init() {
         LinkedHashSet<Integer> hashSet = new LinkedHashSet<>();
@@ -24,7 +25,7 @@ public class Game {
             stringBuilder.append(number);
         }
 
-        randomNumber = Integer.parseInt(stringBuilder.toString());
+        randomNumber = stringBuilder.toString();
     }
 
     private boolean isValid(String input) {
