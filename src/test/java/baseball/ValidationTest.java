@@ -8,8 +8,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidationTest {
 
     @Test
-    void checkLength() {
+    void checkShortLength() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Validation.checkInput("12"));
+        String message = exception.getMessage();
+        assertEquals(Message.ERROR_INPUT_LENGTH, message);
+    }
+
+    @Test
+    void checkLongLength() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Validation.checkInput("1234"));
         String message = exception.getMessage();
         assertEquals(Message.ERROR_INPUT_LENGTH, message);
     }
