@@ -16,8 +16,12 @@ public class BaseballGame {
     }
 
     public void gameStart() {
-        takePlayerNum();
-        checkResult();
+        boolean end = false;
+
+        do {
+            takePlayerNum();
+            end = checkResult();
+        } while (true);
     }
 
     private void takePlayerNum() {
@@ -54,7 +58,21 @@ public class BaseballGame {
     }
 
     private boolean printResult(int strike, int ball) {
-        return true;
+        if (ball != 0) {
+            System.out.print(String.format("%d볼 ", ball));
+        }
+        if (strike != 0) {
+            System.out.print(String.format("%d스트라이크", strike));
+        }
+        if (ball + strike == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println("");
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
     }
 
     private void setEnemyNum() {
