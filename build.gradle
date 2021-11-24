@@ -1,8 +1,20 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'org.ec4j.editorconfig' version '0.0.3'
+}
 
 version = '1.0.0'
 sourceCompatibility = 1.8
+
+editorconfig {
+    excludes = ['build']
+}
+
+check.dependsOn editorconfigCheck
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
 repositories {
     maven { url 'https://jitpack.io' }
