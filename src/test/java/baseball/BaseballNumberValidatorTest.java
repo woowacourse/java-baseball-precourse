@@ -36,4 +36,11 @@ public class BaseballNumberValidatorTest {
 	void validate_wrong_length_number(String number) {
 		assertThat(validator.validate(number)).isFalse();
 	}
+
+	@ParameterizedTest(name = "입력값 : {0}")
+	@ValueSource(strings = {"012", "number", "!@#"})
+	@DisplayName("잘못된 문자의 입력값 테스트")
+	void validate_invalid_character_number(String number) {
+		assertThat(validator.validate(number)).isFalse();
+	}
 }
