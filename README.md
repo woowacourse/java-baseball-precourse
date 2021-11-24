@@ -3,10 +3,12 @@
 ## 📌 구현할 기능 목록
 
 - (baseball.domain.Ball) 한자리 숫자 비교하기 반환 값 문자열
-  - 유효성 검사
-      - 오직 숫자만
-      - 0 포함되면 안됨
-      - 음수도 안됨
+  - (baseball.domain.Index) 인덱스값 비교하기 반환 값 boolean
+    - 유효성 검사
+      - 0부터 2까지의 숫자만 허용
+  - (baseball.domain.No) 숫자 비교하기 반환 값 boolean
+    - 유효성 검사
+      - 1~9까지의 숫자만 허용
 - (baseball.domain.Balls) 세자리 숫자 비교하기 반환 값 문자열
   - 유효성 검사
     - 중복된 숫자도 안됨
