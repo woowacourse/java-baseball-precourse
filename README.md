@@ -128,3 +128,14 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+---
+## 🚀 기능 구현
+###[toDo]
+- 프로그램 실행 
+- 3자리 랜덤 숫자 생성 (API 사용 주의)
+- 사용자로 부터 3자리 숫자 입력 받기 (API 사용 주의)
+- 랜덤 숫자와 사용자로 부터 입력 받은 숫자 비교
+  - 랜덤 숫자와 사용자로 부터 입력 받은 숫자가 동일할 경우 안내 메세지 출력
+  - 랜덤 숫자와 사용자로 부터 입력 받은 숫자가 다를 경우 결과 메세지 출력
+
