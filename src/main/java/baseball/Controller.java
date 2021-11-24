@@ -1,15 +1,23 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Controller {
 	public Controller() {
 	}
 
 	public void start() {
 		Computer computer = new Computer();
-		computer.init();
-		Game game = new Game(computer);
-		game.play();
-		printSuccessMessage();
+		int start = 1;
+
+		while (start == 1) {
+			computer.init();
+			Game game = new Game(computer);
+			game.play();
+			printSuccessMessage();
+			String userInputMessage = readLine();
+			start = Integer.parseInt(userInputMessage);
+		}
 	}
 
 	private void printSuccessMessage() {
