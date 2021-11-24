@@ -17,7 +17,10 @@ public class BaseballGame {
 
     private void playGame(int[] answer) {
         while (true) {
-            System.out.print(Message.ENTER_NUMBER);
+            System.out.print(Message.REQUEST_ENTER_NUMBER);
+            String userInput = Console.readLine();
+            Validation.checkInput(userInput);
+
 
         }
 
