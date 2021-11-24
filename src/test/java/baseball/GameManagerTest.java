@@ -79,4 +79,36 @@ public class GameManagerTest {
 
 		assertThat(gameManager.isGameFinished()).isTrue();
 	}
+
+	@Test
+	@DisplayName("게임 재시작")
+	void restart_game() throws Exception {
+		Display display = mock(Display.class);
+		generator = mock(BaseballNumberGenerator.class);
+		when(generator.generate())
+			.thenReturn("123")
+			.thenReturn("456");
+		GameManager gameManager = new GameManager(display, generator, referee, formatter);
+
+		gameManager.startGame();
+		gameManager.handleGuessNumber("123");
+		assertThat(gameManager.isGameFinished()).isTrue();
+
+		gameManager.handleOptionNumber("1");
+		assertThat(gameManager.isGameFinished()).isFalse();
+		gameManager.handleGuessNumber("456");
+		gameManager.handleOptionNumber("2");
+		assertThat(gameManager.isGameFinished()).isTrue();
+
+		InOrder inOrder = inOrder(display, generator);
+		inOrder.verify(display).print("숫자를 입력하세요 : ");
+		inOrder.verify(display).println("3스트라이크");
+		inOrder.verify(display).println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		inOrder.verify(display).println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		inOrder.verify(generator).generate();
+		inOrder.verify(display).print("숫자를 입력하세요 : ");
+		inOrder.verify(display).println("3스트라이크");
+		inOrder.verify(display).println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		inOrder.verify(display).println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+	}
 }

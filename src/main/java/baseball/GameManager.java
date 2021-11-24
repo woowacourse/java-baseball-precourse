@@ -39,4 +39,10 @@ public class GameManager {
 	public boolean isGameFinished() {
 		return isGameFinished;
 	}
+
+	public void handleOptionNumber(String optionNumber) {
+		if(optionNumber.equals("1")) {
+			startGame();
+		}
+	}
 }
