@@ -20,7 +20,7 @@ public class Application {
 	private static void run(GameManager gameManager) {
 		gameManager.startGame();
 
-		while(!gameManager.isGameFinished()) {
+		while (!gameManager.isGameFinished()) {
 			handleInput(gameManager);
 		}
 	}
@@ -28,7 +28,7 @@ public class Application {
 	private static void handleInput(GameManager gameManager) {
 		gameManager.handleGuessNumber(Console.readLine());
 
-		if(gameManager.isGameFinished()) {
+		if (gameManager.isGameFinished()) {
 			gameManager.handleOptionNumber(Console.readLine());
 		}
 	}
