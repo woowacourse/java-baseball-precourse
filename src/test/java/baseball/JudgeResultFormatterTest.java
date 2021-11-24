@@ -19,8 +19,8 @@ public class JudgeResultFormatterTest {
 
 	@Test
 	void format_message_both_strike_and_ball() throws Exception {
-	 	JudgeResultFormatter formatter = new JudgeResultFormatter();
-	 	assertThat(formatter.format(JudgeResult.of(2, 1))).isEqualTo("1볼 2스트라이크");
+		JudgeResultFormatter formatter = new JudgeResultFormatter();
+		assertThat(formatter.format(JudgeResult.of(2, 1))).isEqualTo("1볼 2스트라이크");
 	}
 
 	@Test
