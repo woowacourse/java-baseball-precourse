@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Valid.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.Arrays;
@@ -18,9 +19,17 @@ public class Game {
 	}
 
 	public void play() {
-		System.out.print("숫자를 입력해주세요 : ");
-		String userInputMessage = readLine();
-		List<Integer> userNumbers = toIntegerList(userInputMessage);
+		List<Integer> userNumbers;
+		try {
+			System.out.print("숫자를 입력해주세요 : ");
+			String userInputMessage = readLine();
+			userNumbers = toIntegerList(userInputMessage);
+			if (Valid.validateNumbersList(userNumbers) == VALID_FAILED) {
+				throw new IllegalArgumentException();
+			}
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	public List<Integer> toIntegerList(String input) {
