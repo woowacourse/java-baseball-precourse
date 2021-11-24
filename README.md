@@ -128,3 +128,12 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+---
+
+
+
+## 구현한 기능 목록
+
+- 정답숫자를 생성하는 메서드
+- 예외처리하는 메서드
