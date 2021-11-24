@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.stream.IntStream;
+
 public class BaseballGame {
     private int[] enemyNum;
     private int[] playerNum;
@@ -15,6 +17,7 @@ public class BaseballGame {
 
     public void gameStart() {
         takePlayerNum();
+        checkResult();
     }
 
     private void takePlayerNum() {
@@ -31,6 +34,27 @@ public class BaseballGame {
             }
             playerNum[i] = Character.getNumericValue(charPlayerNum);
         }
+    }
+
+    private boolean checkResult() {
+        int strike=0;
+        int ball=0;
+        for (int i = 0; i < 3; i++) {
+            if (playerNum[i] == enemyNum[i]) {
+                strike++;
+                playerNum[i] = -1;
+            }
+        }
+        for (Integer num : playerNum) {
+            if (IntStream.of(enemyNum).anyMatch(x -> x == num)) {
+                ball++;
+            }
+        }
+        return printResult(strike, ball);
+    }
+
+    private boolean printResult(int strike, int ball) {
+        return true;
     }
 
     private void setEnemyNum() {
