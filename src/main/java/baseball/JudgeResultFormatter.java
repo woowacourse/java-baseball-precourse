@@ -2,9 +2,16 @@ package baseball;
 
 public class JudgeResultFormatter {
 	public String format(JudgeResult result) {
+		String message = "";
+
 		if (result.getBall() > 0) {
-			return result.getBall() + "볼";
+			message += result.getBall() + "볼 ";
 		}
-		return result.getStrike() + "스트라이크";
+
+		if(result.getStrike() > 0) {
+			message += result.getStrike() + "스트라이크 ";
+		}
+
+		return message.substring(0, message.length() - 1);
 	}
 }
