@@ -1,20 +1,21 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class BaseballGame {
 
-    private int computerNumber;
+    private RandomNumberGenerator randomNumberGenerator;
 
     public void startGame() {
-        setComputerNumber();
-        // getPlayerNumber();
+        setComputer();
+        // getPlayer();
         // verifyNumber();
         // getResult();
         // continueGame() using do..while
     }
 
-    public void setComputerNumber() {
+    public void setComputer() {
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        String computer = randomNumberGenerator.generateNumber();
 
+        System.out.println(computer);
     }
 }
