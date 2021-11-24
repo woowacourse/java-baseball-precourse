@@ -1,5 +1,8 @@
 package baseball.utils;
 
+import static baseball.constants.GameConstants.Digit.*;
+import static baseball.constants.GameConstants.DigitRange.*;
+import static baseball.constants.GameConstants.Message.*;
 
 import java.util.List;
 
@@ -7,7 +10,7 @@ import baseball.constants.GameConstants;
 
 public class ValidationUtils {
 	public static boolean validateRandomDigits(List<Integer> numberList) {
-		boolean[] duplicateCheck = new boolean[GameConstants.RandomRange.END_INCLUSIVE.getNumber() + 1];
+		boolean[] duplicateCheck = new boolean[END_INCLUSIVE.getNumber() + 1];
 
 		for (Integer number : numberList) {
 			if (duplicateCheck[number]) {
