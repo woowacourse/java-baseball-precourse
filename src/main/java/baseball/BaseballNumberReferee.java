@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.stream.IntStream;
+
 public class BaseballNumberReferee {
 	private final BaseballNumberValidator validator;
 
@@ -12,14 +14,16 @@ public class BaseballNumberReferee {
 			throw new IllegalArgumentException(String.format("%s는 잘못된 입력값입니다.", input));
 		}
 
-		int strike = 0;
+		return new JudgeResult(numberOfStrike(input, number));
+	}
 
-		for (int i = 0; i < number.length(); i++) {
-			if(input.charAt(i) == number.charAt(i)) {
-				strike++;
-			}
-		}
+	private int numberOfStrike(String input, String number) {
+		return (int) IntStream.range(0, input.length())
+			.filter(i -> isEqualCharacter(input.charAt(i), number.charAt(i)))
+			.count();
+	}
 
-		return new JudgeResult(strike);
+	private boolean isEqualCharacter(char inputChar, char numberChar) {
+		return inputChar == numberChar;
 	}
 }
