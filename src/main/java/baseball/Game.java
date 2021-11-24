@@ -33,6 +33,8 @@ public class Game {
 
 		strike = computer.checkStrikeCount(userNumbers);
 		ball = computer.checkBallCount(userNumbers);
+
+		printHint();
 	}
 
 	public List<Integer> toIntegerList(String input) {
@@ -42,5 +44,22 @@ public class Game {
 			.map(Integer::parseInt)
 			.collect(Collectors.toList());
 		return integerList;
+	}
+
+	private void printHint() {
+		if (strike == 0 && ball == 0) {
+			System.out.println("낫싱");
+			return;
+		}
+		StringBuilder stringBuilder = new StringBuilder();
+		if (ball != 0) {
+			stringBuilder.append(ball)
+				.append("볼 ");
+		}
+		if (strike != 0) {
+			stringBuilder.append(strike)
+				.append("스트라이크");
+		}
+		System.out.println(stringBuilder.toString());
 	}
 }
