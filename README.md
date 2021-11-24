@@ -151,6 +151,10 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
        3. pickThreeNum() : 랜덤하게 세 숫자를 뽑아 배열에 저장하는 함수
        4. isNotSame() : 세 숫자 중복인지 확인하는 함수
     2. 유저에게 3자리 정수 인풋 받기
+       1. 숫자 담을 정수 배열
+       2. 유저 인풋 받기
+          1. 예외처리
+       3. 배열에 인풋 저장
     3. 결과 출력
     4. 반복, 종료
 
