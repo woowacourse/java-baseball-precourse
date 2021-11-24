@@ -29,19 +29,19 @@ public class BaseballNumberReferee {
 
 	private int numberOfBall(String input, String number) {
 		return (int) IntStream
-			.range(0, input.length())
-			.filter(i -> isBall(i, input, number))
-			.count();
+				.range(0, input.length())
+				.filter(i -> isBall(i, input, number))
+				.count();
 	}
 
 	private boolean isBall(int indexOfInput, String input, String number) {
 		return IntStream
-			.range(0, number.length())
-			.filter(indexOfNumber -> isNotSameIndex(indexOfInput, indexOfNumber))
-			.anyMatch(indexOfNumber -> isEqualCharacter(input.charAt(indexOfInput), number.charAt(indexOfNumber)));
+				.range(0, number.length())
+				.filter(indexOfNumber -> isNotSameIndex(indexOfInput, indexOfNumber))
+				.anyMatch(indexOfNumber -> isEqualCharacter(input.charAt(indexOfInput), number.charAt(indexOfNumber)));
 	}
 
-	private boolean isNotSameIndex(int indexOfInput, int i) {
-		return i != indexOfInput;
+	private boolean isNotSameIndex(int index1, int index2) {
+		return index1 != index2;
 	}
 }
