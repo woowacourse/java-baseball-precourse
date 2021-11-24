@@ -1,5 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
 
 version = '1.0.0'
 sourceCompatibility = 1.8
@@ -16,3 +15,39 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "se.bjurr.gitchangelog:git-changelog-gradle-plugin:+"
+    }
+}
+//apply plugin: 'se.bjurr.gitchangelog.git-changelog-gradle-plugin'
+//
+//task generateGitChangelogInlineTemplate(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
+//    fromRepo = file(".");
+//    file = new File("CHANGELOG_inline.md");
+//    templateContent = """
+//# Git Changelog Maven plugin changelog
+//Changelog of Git Changelog Maven plugin.
+//{{#tags}}
+//## {{name}}
+// {{#issues}}
+//  {{#hasLink}}
+//### {{name}} [{{issue}}]({{link}}) {{title}}
+//  {{/hasLink}}
+//  {{^hasLink}}
+//### {{name}}
+//  {{/hasLink}}
+//  {{#commits}}
+//[{{hash}}](https://github.com/tomasbjerre/git-changelog-maven-plugin/commit/{{hash}}) {{authorName}} *{{commitTime}}*
+//{{{message}}}
+//  {{/commits}}
+// {{/issues}}
+//{{/tags}}
+// """;
+//}
