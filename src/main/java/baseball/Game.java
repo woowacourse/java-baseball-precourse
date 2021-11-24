@@ -6,7 +6,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Game {
 
     private final int DIGIT = 3;
+    private String randNum;
     private String userNum;
+    private int ball;
+    private int strike;
 
     private String makeRandNum () {
         StringBuilder randNum = new StringBuilder();
@@ -51,6 +54,25 @@ public class Game {
             if (userNum.charAt(i) == userNum.charAt(j)) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    private void compareNumbs() {
+        ball = 0;
+        strike = 0;
+
+        for (int i = 0; i < DIGIT; i++) {
+            parseNum(i, randNum.charAt(i));
+        }
+    }
+
+    private void parseNum(int i, char curNum) {
+        if (userNum.contains(Character.toString(curNum))) {
+            if (userNum.charAt(i) == curNum) {
+                strike++;
+                return;
+            }
+            ball++;
         }
     }
 }
