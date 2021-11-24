@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Examiner {
@@ -10,14 +11,23 @@ public class Examiner {
     public static final int END_INCLUSIVE = 9;
     public static final int NUMBER_LENGTH = 3;
 
-    private List<Integer> randomNumberList;
+    private List<Integer> randomNumberList = new ArrayList<>();
+
+    public Examiner() {}
 
     public void init() {
         generateNewNumberList();
     }
 
     public void generateNewNumberList() {
-        randomNumberList = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, NUMBER_LENGTH);
+        int randomNumber;
+
+        while (randomNumberList.size() < NUMBER_LENGTH) {
+            randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+            if (!randomNumberList.contains(randomNumber)) {
+                randomNumberList.add(randomNumber);
+            }
+        }
     }
 
     public int countStrike(List<Integer> inputNumberList) {
