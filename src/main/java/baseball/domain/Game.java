@@ -20,6 +20,8 @@ public class Game {
 
 	public Game() {
 		resetGameResult();
+		this.computer = new Computer();
+		this.player = new Player();
 	}
 
 	private void resetGameResult() {
