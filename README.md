@@ -1,5 +1,43 @@
 # 미션 - 숫자 야구 게임
 
+## 구현할 기능 목록
+
+### 프로그램
+- [ ] 1에서 9까지 서로 다른 임의의 수 3개를 정한다.
+
+### 유저
+
+- [ ] 1에서 9까지 서로 다른 3자리 수를 입력한다.
+- [ ] 입력한 수에 대한 힌트를 받는다.
+- [ ] 정답을 맞춘 경우 프로그램 종료 여부를 입력한다.
+
+### 힌트
+
+- [ ] 같은 자리에 같은 숫자가 있는 경우 `스트라이크`이다.
+- [ ] 다른 자리에 숫자가 있는 경우 `볼`이다.
+- [ ] 같은 숫자가 하나도 없는 경우 `낫싱`이다.
+
+### 종료
+
+- [ ] 유저가 입력한 3자리 숫자가 정답(프로그램의 수)과 같은 경우 게임이 종료된다.
+- [ ] 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
+  - 게임을 재시작하기 위해서 `1`을 입력한다.
+  - 게임을 종료하기 위해서 `2`를 입력한다.
+
+### 예외처리
+
+- 유저의 비정상적인 입력에 대해서 IllegalArgumentException을 발생시킨다.
+  - [ ] 유저의 3자리 수에 입력에 대한 비정상적인 입력
+    - 입력한 수의 길이가 3보다 짧거나 긴 경우
+    - 입력한 수가 1~9 이외의 값인 경우
+    - 동일한 수가 중복 입력된 경우
+  - [ ] 유저의 프로그램 종료를 위한 입력에 대한 비정상적인 입력
+    - `1`과 `2` 이외의 값이 입력된 경우
+  
+### 미션 설명
+<details>
+<summary>접기 / 펼치기 버튼</summary>
+
 ## 🔍 진행방식
 
 - 미션은 **기능 요구사항, 프로그래밍 요구사항, 과제 진행 요구사항** 세 가지로 구성되어 있다.
@@ -34,7 +72,6 @@
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 - 아래의 프로그래밍 실행 결과 예시와 동일하게 입력과 출력이 이루어져야 한다.
-
 <br>
 
 ## ✍🏻 입출력 요구사항
@@ -87,9 +124,8 @@
 ```
 
 <br>
-
 ---
-
+---
 ## 🎱 프로그래밍 요구사항
 
 - 프로그램을 실행하는 시작점은 `Application`의 `main()`이다.
@@ -108,7 +144,6 @@
   - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
   - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 - 프로그램 구현을 완료했을 때 `src/test/java` 디렉터리의 `ApplicationTest`에 있는 모든 테스트 케이스가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
-
 <br>
 
 ---
@@ -120,7 +155,6 @@
 - **Git의 커밋 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위**로 추가한다.
   - [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고한다.
-
 <br>
 
 ---
@@ -128,3 +162,5 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+</details>
