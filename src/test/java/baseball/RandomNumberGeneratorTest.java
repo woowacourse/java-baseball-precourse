@@ -5,14 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class RandomNumberGeneratorTest {
 
     @Test
     void makeRandomNumber() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         int[] numbers = randomNumberGenerator.makeRandomNumber();
-        Assertions.assertThat(Arrays.stream(numbers).distinct().count()).isEqualTo(Rules.NUMBER_SIZE);
+        Assertions.assertThat(Arrays.stream(numbers).distinct().count()).isEqualTo(Rules.NUMBER_LENGTH);
     }
 }
