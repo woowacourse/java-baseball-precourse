@@ -1,7 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class BaseballGame {
 
     private RandomNumberGenerator randomNumberGenerator;
@@ -10,15 +8,24 @@ public class BaseballGame {
     private String computerNumber;
 
     public void startGame() {
-        setComputer();
-        getPlayer();
-        // verifyNumber();
-        // getResult();
+        do {
+            setComputer();
+            getPlayer();
+            // verifyNumber();
+            // getResult();
+        } while(true); // continueGame()
     }
 
     private void getPlayer() {
-        Player player = new Player();
-        playerNumber = player.scanNumber();
+        try {
+            Player player = new Player();
+            playerNumber = player.scanNumber();
+            System.out.println("PLAYERNUM = " + playerNumber);
+
+        }catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
+        }
     }
 
     public void setComputer() {
