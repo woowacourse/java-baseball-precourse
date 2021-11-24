@@ -1,6 +1,5 @@
 package baseball;
 
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,9 +7,14 @@ import static util.GameConstant.*;
 
 class GameValidator {
 
+    /**
+     * 사용자 정답 입력값에 대한 검증
+     * @param input
+     * @return true -> pass
+     */
     public static boolean isValidInput(String input){
         return isNumber(input) && isRightLength(input)
-                && isNotDuplicate(input) && isRangeBetweenOneToTen(input);
+                && isNotDuplicate(input) && isRangeBetweenOneToNine(input);
     }
 
     private static boolean isNumber(String input){
@@ -38,7 +42,7 @@ class GameValidator {
         return false;
     }
 
-    private static boolean isRangeBetweenOneToTen(String input){
+    private static boolean isRangeBetweenOneToNine(String input){
         for(int i = 0 ; i < NUMBER_LENGTH; i++){
             int digit = Character.getNumericValue(input.charAt(i));
 

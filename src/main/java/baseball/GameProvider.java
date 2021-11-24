@@ -28,59 +28,16 @@ class GameProvider {
         }
     }
 
-    public GameScore checkAnswer(int[] playerAnswer){
-        for(int i = 0; i < NUMBER_LENGTH; i++){
-            int findIndex = checkStrikeOrBall(playerAnswer[i]);
-            addStrikeOrBall(i, findIndex);
-        }
-        if(gameScore.getStrike() == NUMBER_LENGTH){
-            gameStatus = CORRECT;
-        }
-        return gameScore;
-    }
-
-    public void askRestartOrStop(){
-        String input = Console.readLine();
-        isRightResumeInput(input);
-        if(input.equals(RESTART)){
-            gameStatus = ON_GOING;
-            return;
-        }
-        gameStatus = STOP;
-    }
-
-    private void isRightResumeInput(String input){
-        if(!input.equals(RESTART) && !input.equals(STOP)){
-            throw new IllegalArgumentException(INVALID_INPUT_ERROR);
-        }
-    }
-
-    private void addStrikeOrBall(int currentIndex, int findIndex) {
-        if(findIndex == NO_SAME_VALUE){
-            return;
-        }
-        if(findIndex == currentIndex){
-           gameScore.addStrike();
-            return;
-        }
-        gameScore.addBall();
-    }
-
-    private int checkStrikeOrBall(int value){
-        for(int i = 0 ; i < NUMBER_LENGTH; i++){
-            if(value == systemAnswer[i]){
-                return i;
-            }
-        }
-        return NO_SAME_VALUE;
-    }
-
     private void putRandomNumbers(){
         for(int i = 0 ; i < NUMBER_LENGTH; i++){
             systemAnswer[i] = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
         }
     }
 
+    /**
+     * Random 값으로 들어온 정답 중 중복값이 있는지 확인
+     * @return true -> pass
+     */
     private boolean isNotDuplicateInSystemAnswer(){
         Set<Integer> tempSet = new HashSet<>();
         for(int i = 0 ; i < systemAnswer.length; i++){
@@ -97,12 +54,67 @@ class GameProvider {
     }
 
     /**
+     * 정답 확인
+     * @param playerAnswer
+     * @return gameScore, 출력을 위한 return
+     */
+    public GameScore checkAnswer(int[] playerAnswer){
+        for(int i = 0; i < NUMBER_LENGTH; i++){
+            int findIndex = checkStrikeOrBall(playerAnswer[i]);
+            addStrikeOrBall(i, findIndex);
+        }
+        if(gameScore.getStrike() == NUMBER_LENGTH){
+            gameStatus = CORRECT;
+        }
+        return gameScore;
+    }
+
+    private void addStrikeOrBall(int currentIndex, int findIndex) {
+        if(findIndex == NO_SAME_VALUE){
+            return;
+        }
+        if(findIndex == currentIndex){
+            gameScore.addStrike();
+            return;
+        }
+        gameScore.addBall();
+    }
+
+    private int checkStrikeOrBall(int value){
+        for(int i = 0 ; i < NUMBER_LENGTH; i++){
+            if(value == systemAnswer[i]){
+                return i;
+            }
+        }
+        return NO_SAME_VALUE;
+    }
+
+    /**
+     * Game 재시작 혹은 종료 여부 확인
+     */
+    public void askRestartOrStop(){
+        String input = Console.readLine();
+        isRightInputRestartOrStop(input);
+        if(input.equals(RESTART)){
+            gameStatus = ON_GOING;
+            return;
+        }
+        gameStatus = STOP;
+    }
+
+    private void isRightInputRestartOrStop(String input){
+        if(!input.equals(RESTART) && !input.equals(STOP)){
+            throw new IllegalArgumentException(INVALID_INPUT_ERROR);
+        }
+    }
+
+    /**
      * Test, Debug 용 toString Override
      * @return Game Answer = 123
      */
     @Override
     public String toString() {
-        return "Game Answer =" + systemAnswer[0] + systemAnswer[1] + systemAnswer[2];
+        return "Game Answer = " + systemAnswer[0] + systemAnswer[1] + systemAnswer[2];
     }
 
     public String getGameStatus() {
