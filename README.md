@@ -2,7 +2,12 @@
 
 ## ✍🏻 구현할 기능 목록
 
-- <b>[게임 시작] 타겟 넘버 생성</b>
+- <b>[게임 시작] 프로그램 실행</b>
+
+  - Application의 main()에서 BaseballGame을 시작한다.
+    <br>
+
+- <b>[게임 진행] 타겟 넘버 생성</b>
 
   - 1부터 9까지 서로 다른 숫자로 이루어진 3자리의 수의 타겟 넘버를 생성한다.
   - camp.nextstep.edu.missionutils에서 제공하는 Randoms API를 활용하여 생성한다.
