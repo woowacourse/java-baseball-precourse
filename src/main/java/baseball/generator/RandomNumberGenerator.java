@@ -3,6 +3,9 @@ package baseball.generator;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
 
+/**
+ * 1에서 9까지 서로 다른 임의의 수 3개를 생성하는 클래스
+ */
 public class RandomNumberGenerator {
 
 	private static final Integer MINIMUM_INDEX = 0;

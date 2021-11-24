@@ -2,6 +2,9 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+/**
+ * 유저에게 입력을 받는 뷰 클래스
+ */
 public class InputView {
 
 	private static String askNumberMessage = "숫자를 입력해주세요 : ";

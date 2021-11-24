@@ -2,6 +2,9 @@ package baseball.controller;
 
 import baseball.view.InputView;
 
+/**
+ * 숫자 야구 게임 진행을 제어하는 클래스
+ */
 public class GameController {
 
 	/**
