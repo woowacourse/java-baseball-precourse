@@ -4,8 +4,8 @@ package util;
  * Game 진행에 사용될 상수값
  */
 public class GameConstant {
-    public static final int START_NUMBER = 1;
-    public static final int END_NUMBER = 9;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 9;
     public static final int NUMBER_LENGTH = 3;
 
     public static final String BALL = "볼";
