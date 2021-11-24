@@ -1,5 +1,24 @@
 # 미션 - 숫자 야구 게임
 
+## 📌 구현할 기능 목록
+
+- (baseball.domain.Ball) 한자리 숫자 비교하기 반환 값 문자열
+  - 유효성 검사
+      - 오직 숫자만
+      - 0 포함되면 안됨
+      - 음수도 안됨
+- (baseball.domain.Balls) 세자리 숫자 비교하기 반환 값 문자열
+  - 유효성 검사
+    - 중복된 숫자도 안됨
+    - 길이는 세자리만 허용
+- (baseball.domain.Score) 결과를 문자열로 반환하기
+- (baseball.domain.Scores) 결과를 문자열로 반환하기
+- (baseball.domain.Scores) 3스트라이크 확인하기
+- (baseball.domain.BaseballGame) 입력값(Token) 받아서 게임을 종료 또는 재시작 하기
+- (baseball.domain.Token)
+  - 유효성 검사
+    - 숫자 1또는 2만 가능함
+
 ## 🔍 진행방식
 
 - 미션은 **기능 요구사항, 프로그래밍 요구사항, 과제 진행 요구사항** 세 가지로 구성되어 있다.
