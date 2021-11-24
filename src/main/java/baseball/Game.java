@@ -25,9 +25,7 @@ public class Game {
 				System.out.print("숫자를 입력해주세요 : ");
 				String userInputMessage = readLine();
 				userNumbers = toIntegerList(userInputMessage);
-				if (Valid.validateNumbersList(userNumbers) == VALID_FAILED) {
-					throw new IllegalArgumentException();
-				}
+				validateUserNumbers(userNumbers);
 			} catch (Exception e) {
 				throw new IllegalArgumentException();
 			}
@@ -63,5 +61,11 @@ public class Game {
 				.append("스트라이크");
 		}
 		System.out.println(stringBuilder.toString());
+	}
+
+	private void validateUserNumbers(List<Integer> userNumbers) {
+		if (Valid.validateNumbersList(userNumbers) == VALID_FAILED) {
+			throw new IllegalArgumentException();
+		}
 	}
 }
