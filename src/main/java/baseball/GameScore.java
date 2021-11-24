@@ -30,13 +30,15 @@ class GameScore {
         }else{
             System.out.println(NOTHING);
         }
+        resetScore();
     }
 
     public int getStrike() {
         return strike;
     }
 
-    public int getBall() {
-        return ball;
+    public void resetScore(){
+        strike = 0;
+        ball = 0;
     }
 }

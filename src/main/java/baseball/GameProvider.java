@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
@@ -9,23 +10,19 @@ import static util.GameConstant.*;
 
 class GameProvider {
     private int[] systemAnswer = new int[NUMBER_LENGTH];
-    private GameStatus gameStatus;
+    private String gameStatus;
     private GameScore gameScore;
 
-    /**
-     * 최초 생성자에서 정답 생성
-     */
     public GameProvider(){
-        gameStatus = GameStatus.START;
+        gameStatus = ON_GOING;
         gameScore = new GameScore();
-        putRandomNumbers();
     }
 
     /**
-     * 최초에 생성된 정답을 바탕으로 중복값 탐색
-     * 중복일 경우 정답 생성
+     * 중복일 경우 새 정답 생성
      */
     public void generateAnswer(){
+        putRandomNumbers();
         while (!isNotDuplicateInSystemAnswer()){
             putRandomNumbers();
         }
@@ -37,9 +34,25 @@ class GameProvider {
             addStrikeOrBall(i, findIndex);
         }
         if(gameScore.getStrike() == NUMBER_LENGTH){
-            gameStatus = GameStatus.PAUSE;
+            gameStatus = CORRECT;
         }
         return gameScore;
+    }
+
+    public void askRestartOrStop(){
+        String input = Console.readLine();
+        isRightResumeInput(input);
+        if(input.equals(RESTART)){
+            gameStatus = ON_GOING;
+            return;
+        }
+        gameStatus = STOP;
+    }
+
+    private void isRightResumeInput(String input){
+        if(!input.equals(RESTART) && !input.equals(STOP)){
+            throw new IllegalArgumentException(INVALID_INPUT_ERROR);
+        }
     }
 
     private void addStrikeOrBall(int currentIndex, int findIndex) {
@@ -92,7 +105,7 @@ class GameProvider {
         return "Game Answer =" + systemAnswer[0] + systemAnswer[1] + systemAnswer[2];
     }
 
-    public GameStatus getGameStatus() {
+    public String getGameStatus() {
         return gameStatus;
     }
 
