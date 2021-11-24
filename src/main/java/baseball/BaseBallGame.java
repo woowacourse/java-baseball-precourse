@@ -13,7 +13,7 @@ public class BaseBallGame {
     private static final int NUMBER_LENGTH = 3;
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
-    private static int REPLAY_OR_AND = 1;
+    private static int REPLAY_OR_END = 1;
     private static int REPLAY = 1;
     private static int EMD = 2;
     private final List<Integer> targetNumber;
@@ -39,6 +39,7 @@ public class BaseBallGame {
             ballAndStrike(playerNumber);
             playerNumber = player.playerNumber();
         }
+        gameEnd();
     }
 
     private boolean threeStrike(List<Integer> playerNumber) {
@@ -79,5 +80,19 @@ public class BaseBallGame {
             return "낫싱";
         }
         return result;
+    }
+
+    private void gameEnd() {
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        checkReplay();
+    }
+
+    private void checkReplay() {
+        REPLAY_OR_END = player.replayOrEndNumber();
+        if (REPLAY_OR_END == REPLAY) {
+            new BaseBallGame();
+        }
     }
 }

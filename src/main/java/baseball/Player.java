@@ -12,6 +12,7 @@ public class Player {
 
     private static final int DIGIT = 3;
     private static final String PLAYER_NUMBER_REGEX = "^[1-9]{3}$";
+    private static final String REPLAY_OR_END_NUMBER_REGEX = "^[1-2]$";
 
     public List<Integer> playerNumber() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
@@ -45,5 +46,11 @@ public class Player {
         return stringNumbers.stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public int replayOrEndNumber() throws IllegalArgumentException {
+        String inputNumber = readLine();
+        validateNumberRange(inputNumber, REPLAY_OR_END_NUMBER_REGEX);
+        return Integer.parseInt(inputNumber);
     }
 }
