@@ -1,8 +1,15 @@
+plugins {
+    id 'org.ec4j.editorconfig' version '0.0.3'
+    id 'checkstyle'
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
+
 version = '1.0.0'
 sourceCompatibility = 1.8
+
 
 repositories {
     maven { url 'https://jitpack.io' }
@@ -15,4 +22,19 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+editorconfig {
+    excludes = ['build']
+}
+
+check.dependsOn editorconfig
+
+checkstyle {
+    maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail을 내고 싶다면 이 선언을 추가한다.
+    configFile = file("${rootDir}/naver-chestyle-rules.xml")
+    configProperties = ["suppressionFile" : "${rootDir}/naver-checkstyle-suppressions.xml"]
+    toolVersion ="8.24"  // checkstyle 버전 8.24 이상 선언
 }
