@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
@@ -21,7 +20,22 @@ public class Examiner {
         randomNumberList = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, NUMBER_LENGTH);
     }
 
+    public int countStrike(List<Integer> inputNumberList) {
+        int strikeCount = 0;
 
+        for (int i = 0 ; i < NUMBER_LENGTH ; i++) {
+            if (isStrike(randomNumberList, inputNumberList, i)) {
+                strikeCount++;
+            }
+        }
 
+        return strikeCount;
+    }
+
+    public boolean isStrike(List<Integer> randomNumberList,
+                            List<Integer> inputNumberList,
+                            int index) {
+        return randomNumberList.get(index).equals(inputNumberList.get(index));
+    }
 
 }
