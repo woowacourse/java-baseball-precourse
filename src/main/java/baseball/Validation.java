@@ -15,7 +15,8 @@ public class Validation {
 
     private static boolean isInteger(String numbers) {
         for (int i = 0; i < Rules.NUMBER_LENGTH; i++) {
-            if (!Character.isDigit(numbers.charAt(i)) && numbers.charAt(i) != 0) {
+            char eachDigit = numbers.charAt(i);
+            if (!Character.isDigit(eachDigit) || eachDigit != 0) {
                 throw new IllegalArgumentException(Message.ERROR_INPUT_TYPE);
             }
         }
