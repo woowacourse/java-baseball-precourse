@@ -24,7 +24,7 @@ public class Examiner {
         int strikeCount = 0;
 
         for (int i = 0 ; i < NUMBER_LENGTH ; i++) {
-            if (isStrike(randomNumberList, inputNumberList, i)) {
+            if (isStrike(inputNumberList, i)) {
                 strikeCount++;
             }
         }
@@ -32,9 +32,7 @@ public class Examiner {
         return strikeCount;
     }
 
-    public boolean isStrike(List<Integer> randomNumberList,
-                            List<Integer> inputNumberList,
-                            int index) {
+    public boolean isStrike(List<Integer> inputNumberList, int index) {
         return randomNumberList.get(index).equals(inputNumberList.get(index));
     }
 
@@ -42,7 +40,7 @@ public class Examiner {
         int ballCount = 0;
 
         for (int i = 0 ; i < NUMBER_LENGTH ; i++) {
-            if (isBall(randomNumberList, inputNumberList, i)) {
+            if (isBall(inputNumberList, i)) {
                 ballCount++;
             }
         }
@@ -50,11 +48,8 @@ public class Examiner {
         return ballCount;
     }
 
-    public boolean isBall(List<Integer> randomNumberList,
-                          List<Integer> inputNumberList,
-                          int index) {
-        return !isStrike(randomNumberList, inputNumberList, index)
-                && randomNumberList.contains(inputNumberList.get(index));
+    public boolean isBall(List<Integer> inputNumberList, int index) {
+        return !isStrike(inputNumberList, index) && randomNumberList.contains(inputNumberList.get(index));
     }
 
 }
