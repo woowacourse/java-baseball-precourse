@@ -7,6 +7,8 @@ public class BallRepository {
     List<Ball> balls = new ArrayList<>();
 
     public BallRepository(List<Integer> input) {
+        validationNumbers(input);
+
         for (int i = 0; i < input.size(); i++) {
             if (validationNumber(input.get(i))) {
                 balls.add(new Ball(i, input.get(i)));
@@ -19,5 +21,11 @@ public class BallRepository {
             return true;
         }
         throw new IllegalArgumentException();
+    }
+
+    private void validationNumbers(List<Integer> numbers) {
+        if (numbers.size() > 3) {
+            throw new IllegalArgumentException();
+        }
     }
 }
