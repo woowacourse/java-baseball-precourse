@@ -77,7 +77,10 @@ public class BaseballGame {
 
     private boolean printResult(int strike, int ball) {
         if (ball != 0) {
-            System.out.print(String.format("%d볼 ", ball));
+            System.out.print(String.format("%d볼", ball));
+        }
+        if (ball != 0 && strike != 0) {
+            System.out.print(" ");
         }
         if (strike != 0) {
             System.out.print(String.format("%d스트라이크", strike));
