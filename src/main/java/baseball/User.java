@@ -59,9 +59,9 @@ public class User {
     }
 
     private static boolean isContainZero(String number) {
-        char[] userNumber = number.toCharArray();
+        String zero = Character.toString('0');
 
-        if (userNumber[0] == '0' || userNumber[1] == '0' || userNumber[2] == '0') {
+        if (number.contains(zero)) {
             throw new IllegalArgumentException();
         }
         return true;
