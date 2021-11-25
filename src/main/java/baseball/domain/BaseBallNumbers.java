@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class UserNumbers {
+public class BaseBallNumbers {
     private static final int START_INCLUSIVE = 0;
-    private static final int END_INCLUSIVE = 0;
+    private static final int END_INCLUSIVE = 2;
     private static List<BaseBallNumber> userBaseballNumbers;
 
-    public UserNumbers(String userNumbers) {
+    public BaseBallNumbers(String userNumbers) {
         validateUserNumbers(userNumbers);
         this.userBaseballNumbers = converUserNumberFroamt(userNumbers);
     }
@@ -36,16 +36,21 @@ public class UserNumbers {
     private boolean isBall(int targetIndex, List<BaseBallNumber> randomNumbers) {
         BaseBallNumber randomBaseBallNumber = randomNumbers.get(targetIndex);
         BaseBallNumber userBaseBallNumber = userBaseballNumbers.get(targetIndex);
-        return !randomBaseBallNumber.equals(userBaseBallNumber) && userBaseballNumbers.contains(randomBaseBallNumber);
+        return !randomBaseBallNumber.equals(userBaseBallNumber) && contains(randomBaseBallNumber);
     }
 
     public int calculateStrikeCount(List<BaseBallNumber> randomNumbers) {
-        return (int) IntStream.rangeClosed(0, 2).filter(i -> isStrike(i, randomNumbers)).count();
+        return (int) IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE).filter(i -> isStrike(i, randomNumbers)).count();
     }
 
     private boolean isStrike(int targetIndex, List<BaseBallNumber> randomNumbers) {
         BaseBallNumber randomBaseBallNumber = randomNumbers.get(targetIndex);
         BaseBallNumber userBaseBallNumber = userBaseballNumbers.get(targetIndex);
         return randomBaseBallNumber.equals(userBaseBallNumber);
+    }
+
+    public boolean contains(BaseBallNumber compareBaseBallNumber) {
+        return userBaseballNumbers.stream()
+            .anyMatch(baseBallNumber -> baseBallNumber.equals(compareBaseBallNumber));
     }
 }
