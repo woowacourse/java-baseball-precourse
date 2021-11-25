@@ -5,8 +5,14 @@ import baseball.domain.AnswerNumber;
 import baseball.util.RandomNumberGenerator;
 
 public class GameController {
+	private final AnswerNumber answerNumber;
+
+	public GameController() {
+		answerNumber = new AnswerNumber();
+	}
+
 	public void startGame() {
-		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-		AnswerNumber.setAnswer(randomNumberGenerator.generate());
+		answerNumber.setAnswer(RandomNumberGenerator.generate());
+	}
 	}
 }

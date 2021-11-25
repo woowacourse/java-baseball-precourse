@@ -9,7 +9,7 @@ import baseball.domain.AnswerNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumberGenerator {
-	public List<Integer> generate() {
+	public static List<Integer> generate() {
 		Set<Integer> randomNumberSet = new HashSet<>();
 		while (randomNumberSet.size() < AnswerNumber.ANSWER_LENGTH) {
 			randomNumberSet.add(

@@ -8,14 +8,11 @@ public class AnswerNumber {
 	public static final int ANSWER_MIN_VALUE = 1;
 	public static final int ANSWER_MAX_VALUE = 9;
 
-	private AnswerNumber() {
-	}
-
-	public static void setAnswer(List<Integer> numberList) {
+	public void setAnswer(List<Integer> numberList) {
 		answer = numberList;
 	}
 
-	public static List<Integer> getAnswer() {
+	public List<Integer> getAnswer() {
 		return answer;
 	}
 }
