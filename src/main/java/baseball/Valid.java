@@ -21,13 +21,7 @@ public class Valid {
 				return VALID_FAILED;
 			}
 		}
-
-		int number0 = numbers.get(0);
-		int number1 = numbers.get(1);
-		int number2 = numbers.get(2);
-		if (number0 == number1
-			|| number0 == number2
-			|| number1 == number2) {
+		if (numbers.stream().distinct().count() != 3) {
 			return VALID_FAILED;
 		}
 		return VALID_SUCCESS;
