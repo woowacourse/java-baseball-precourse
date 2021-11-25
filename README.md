@@ -1,5 +1,5 @@
 # 미션 - 숫자 야구 게임
-
+[1주차 미션을 진행하며 고민하고 공부한 내용 정리](https://github.com/jayjaehunchoi/woowafreecourse_study/tree/main/1%EC%A3%BC%EC%B0%A8) 
 ## ✍️ 구현할 기능
 
 ### ✅ BaseballGame
@@ -13,7 +13,7 @@
 #### package java.baseball
 1. 서로 다른 세자리 수를 가진 ```Random Answer``` 생성
    - 서로 다른 세자리 수 검증
-   - 만약 정답이 생성됐는데, 중복되는 수가 있다면 새로운 ```Random Answer``` 생성
+   - 만약 정답이 생성됐는데, 중복되는 수가 있다면 ```Randoms.pickNumberInRange``` 재실행
    - 외부 공개 X
 
 
