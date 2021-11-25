@@ -1,8 +1,8 @@
 package baseball.domain;
 
 public class Referee {
-	int[] playerNum;
-	int[] answer;
+	private final int[] playerNum;
+	private final int[] answer;
 
 	public Referee(int[] playerNum, int[] answer) {
 		this.playerNum = playerNum;
