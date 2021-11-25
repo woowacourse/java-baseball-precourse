@@ -9,11 +9,11 @@ import java.util.Set;
 import java.util.stream.IntStream;
 
 public class BaseBallGame {
-
     public static final int NUMBER_LENGTH = 3;
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
     private static final int REPLAYING_NUMBER = 1;
+    private static final int MIN_COUNT = 0;
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String BALL_MESSAGE = "볼";
     private static final String NOTHING_MESSAGE = "낫싱";
@@ -59,30 +59,30 @@ public class BaseBallGame {
         System.out.println(GAME_CLEAR_MESSAGE);
         System.out.println(REPLAYING_OR_END_MESSAGE);
     }
-    
+
     private void checkBallAndStrike(List<Integer> playerNumber) {
-        int strike = countStrike(playerNumber);
-        int ball = countBall(playerNumber, strike);
-        System.out.println(getBallAndStrikeMessage(ball, strike));
+        int strikes = countStrike(playerNumber);
+        int balls = countBall(playerNumber, strikes);
+        System.out.println(getBallAndStrikeMessage(balls, strikes));
     }
 
     private int countStrike(List<Integer> playerNumber) {
-        int strike = (int) IntStream.range(0, NUMBER_LENGTH - 1)
-                .filter(i -> targetNumber.get(i).equals(playerNumber.get(i)))
+        int strikes = (int) IntStream.range(0, NUMBER_LENGTH - 1)
+                .filter(index -> targetNumber.get(index).equals(playerNumber.get(index)))
                 .count();
-        return strike;
+        return strikes;
     }
 
-    private int countBall(List<Integer> playerNumber, int strike) {
-        int ball = (int) playerNumber.stream()
+    private int countBall(List<Integer> playerNumber, int strikes) {
+        int balls = (int) playerNumber.stream()
                 .filter(targetNumber::contains)
-                .count() - strike;
-        return ball;
+                .count() - strikes;
+        return balls;
     }
 
-    private String getBallAndStrikeMessage(int ball, int strike) {
-        String ballMessage = getBallMessage(ball);
-        String strikeMessage = getStrikeMessage(strike);
+    private String getBallAndStrikeMessage(int balls, int strikes) {
+        String ballMessage = getBallMessage(balls);
+        String strikeMessage = getStrikeMessage(strikes);
         String result = ballMessage + strikeMessage;
         if (result.equals("")) {
             return NOTHING_MESSAGE;
@@ -90,16 +90,16 @@ public class BaseBallGame {
         return result;
     }
 
-    private String getBallMessage(int ball) {
-        if (ball > 0) {
-            return String.format("%d%s ", ball, BALL_MESSAGE);
+    private String getBallMessage(int balls) {
+        if (balls > MIN_COUNT) {
+            return String.format("%d%s ", balls, BALL_MESSAGE);
         }
         return "";
     }
 
-    private String getStrikeMessage(int strike) {
-        if (strike > 0) {
-            return String.format("%d%s", strike, STRIKE_MESSAGE);
+    private String getStrikeMessage(int strikes) {
+        if (strikes > MIN_COUNT) {
+            return String.format("%d%s", strikes, STRIKE_MESSAGE);
         }
         return "";
     }

@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Player {
-
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String PLAYER_NUMBER_REGEX = "^[1-9]{3}$";
     private static final String REPLAYING_OR_END_NUMBER_REGEX = "^[1-2]$";
