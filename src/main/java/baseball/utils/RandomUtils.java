@@ -6,13 +6,30 @@ public class RandomUtils {
     public RandomUtils() {
     }
 
-    public static int[] getRandomNumbers(int size, int startInclusive, int endInclusive) {
+    public static int[] getRandomNumbers(int size, int start, int end) {
         int[] numbers = new int[3];
 
         for (int i = 0; i < size; i++) {
-            numbers[i] = Randoms.pickNumberInRange(startInclusive, endInclusive);
+            numbers[i] = uniqueRandomNumber(start, end, numbers, i);
         }
 
         return numbers;
+    }
+
+    private static int uniqueRandomNumber(int start, int end, int[] numbers, int i) {
+        int randomNumber = Randoms.pickNumberInRange(start, end);
+        while (!isUnique(numbers, i, randomNumber)) {
+            randomNumber = Randoms.pickNumberInRange(start, end);
+        }
+        return randomNumber;
+    }
+
+    private static Boolean isUnique(int[] numbers, int i, int randomNumber) {
+        for (int j = 0; j < i; j++) {
+            if (numbers[j] == randomNumber) {
+                return false;
+            }
+        }
+        return true;
     }
 }
