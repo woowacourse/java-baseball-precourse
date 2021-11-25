@@ -1,7 +1,9 @@
 package baseball.view;
 
+import static baseball.constants.GameConstants.Digit.*;
 import static baseball.constants.GameConstants.Hint.*;
 
+import baseball.constants.GameConstants;
 import baseball.domain.Game;
 
 public class OutputView {
@@ -11,8 +13,7 @@ public class OutputView {
 
 	public static void printGameResult(Game game) {
 		System.out.println(game);
-		if (game.getStrike() == 3) {
+		if (game.getStrike() == LENGTH.getNumber())
 			System.out.println(HINT_GAME_OVER.getString());
-		}
 	}
 }
