@@ -8,14 +8,14 @@ import camp.nextstep.edu.missionutils.Randoms;
  */
 public class RandomNumberGenerator {
 
-	private static final Integer MINIMUM_INDEX = 0;
-	private static final Integer MAXIMUM_INDEX = 9;
-	private static final Integer INITIAL_VALUE = 0;
-	private static final Integer FLAG_SIZE = 10;
-	private static final Integer RANDOM_NUMBER_SIZE = 3;
-	private static final Integer START_RANDOM_VALUE = 1;
-	private static final Integer END_RANDOM_VALUE = 9;
-	private static final Integer USED_VALUE_CHECK = 1;
+	private static final int MINIMUM_INDEX = 0;
+	private static final int MAXIMUM_INDEX = 9;
+	private static final int INITIAL_VALUE = 0;
+	private static final int FLAG_SIZE = 10;
+	private static final int RANDOM_NUMBER_SIZE = 3;
+	private static final int START_RANDOM_VALUE = 1;
+	private static final int END_RANDOM_VALUE = 9;
+	private static final int USED_VALUE_CHECK = 1;
 	private static int[] duplicateNumberFlag = new int[FLAG_SIZE];
 	private static ArrayList<Integer> answerNumber = new ArrayList<>();
 
@@ -46,9 +46,9 @@ public class RandomNumberGenerator {
 	/**
 	 * 랜덤값의 중복을 확인하는 함수
 	 *
-	 * @param randomNumber: Integer
+	 * @param randomNumber: int
 	 */
-	public static void duplicateNumberCheck(Integer randomNumber) {
+	public static void duplicateNumberCheck(int randomNumber) {
 		int index = randomNumber - 1;
 		if (duplicateNumberFlag[index] == INITIAL_VALUE) {
 			duplicateNumberFlag[index] = USED_VALUE_CHECK;

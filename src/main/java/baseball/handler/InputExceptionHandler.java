@@ -7,11 +7,11 @@ import java.util.Arrays;
  */
 public class InputExceptionHandler {
 
-	private static final Integer MINIMUM_INDEX = 0;
-	private static final Integer MAXIMUM_INDEX = 2;
-	private static final Integer VALID_NUMBER_LENGTH = 3;
-	private static final Integer VALID_MINIMUM_RANGE = 49;
-	private static final Integer VALID_MAXIMUM_RANGE = 57;
+	private static final int MINIMUM_INDEX = 0;
+	private static final int MAXIMUM_INDEX = 2;
+	private static final int VALID_NUMBER_LENGTH = 3;
+	private static final int VALID_MINIMUM_RANGE = 49;
+	private static final int VALID_MAXIMUM_RANGE = 57;
 	private static final String INVALID_LENGTH_MESSAGE = "잘못된 숫자의 길이가 입력되었습니다.";
 	private static final String INVALID_RANGE_MESSAGE = "잘못된 범위의 문자가 입력되었습니다.";
 	private static final String INVALID_DUPLICATE_MESSAGE = "중복된 숫자가 입력되었습니다.";
