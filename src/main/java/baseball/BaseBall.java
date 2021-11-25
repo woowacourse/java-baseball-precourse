@@ -2,6 +2,7 @@ package baseball;
 
 import constant.SystemMessage;
 
+
 public class BaseBall {
     private Computer computer;
     private Player player;
@@ -11,13 +12,12 @@ public class BaseBall {
         player = new Player();
     }
 
-    public void playGame(){
+    public void playGame() throws IllegalArgumentException{
         computer.decideRandomNumber();
         int predict = SystemMessage.FIRST_VALUE;
         do {
             predict = player.predictNumber();
         } while (!computer.canFinish(predict));
         System.out.printf("%s\n", SystemMessage.END_GAME_MESSAGE);
-
     }
 }

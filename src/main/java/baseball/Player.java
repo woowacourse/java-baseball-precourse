@@ -11,11 +11,10 @@ public class Player {
         return Integer.parseInt(input);
     }
 
-    private void isValidNumber(String input){
+    private void isValidNumber(String input) {
         int value = getNumber(input);
         isValidRange(value);
         containZero(value);
-
     }
 
     private int getNumber(String input) {
