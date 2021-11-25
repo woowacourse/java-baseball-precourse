@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 public class BaseBallNumbers {
     private static final int START_INCLUSIVE = 0;
     private static final int END_INCLUSIVE = 2;
+    private static final int BASEBALL_NUMBERS_LENGTH = 3;
     private static List<BaseBallNumber> userBaseballNumbers;
 
     public BaseBallNumbers(String userNumbers) {
@@ -24,7 +25,7 @@ public class BaseBallNumbers {
     }
 
     private void validateUserNumbers(String userNumbers) {
-        if (userNumbers.length() != 3) {
+        if (userNumbers.length() != BASEBALL_NUMBERS_LENGTH) {
             throw new InvalidIntegerLengthException();
         }
     }
