@@ -1,9 +1,12 @@
-package utils;
+package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomUtils {
-    public int getRandomNumbers(int size, final int startInclusive, final int endInclusive) {
+    public RandomUtils() {
+    }
+
+    public static int getRandomNumbers(int size, final int startInclusive, final int endInclusive) {
         int numbers = 0;
 
         for (int i = 0; i < size; i++) {
