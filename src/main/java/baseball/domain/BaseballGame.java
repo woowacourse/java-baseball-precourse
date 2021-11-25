@@ -1,5 +1,8 @@
-package baseball;
+package baseball.domain;
 
+import baseball.util.Converter;
+import baseball.util.DupChecker;
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame {
@@ -27,9 +30,21 @@ public class BaseballGame {
 		return answer;
 	}
 
-	public Result offer(int num) {
+	public Result offer(String input) {
 		// TODO 숫자를 입력받는다.
-		// BaseballGame이 가진 수와 num을 비교하여 Result를 생성하여 리턴한다.
+		// input에 대한 유효성을 검사한다
+		if(!Validator.isNumeric(input)){
+			throw new IllegalArgumentException();
+		}
+		int[] playerNum = Converter.convertToIntArr(input);
+		Validator.valid(playerNum);
+
+		// 만약 input이 맞다면 정답과 비교한다
 		return null;
+	}
+
+	public boolean printResult(Result result) {
+		// 결과를 출력한다.
+		return false;
 	}
 }
