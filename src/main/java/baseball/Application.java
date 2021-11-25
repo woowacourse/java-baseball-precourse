@@ -20,7 +20,6 @@ public class Application {
     }
 
     private static boolean decideNextGame() {
-
         String userInput = Console.readLine();
         isValidInput(userInput);
         int next_game = Integer.parseInt(userInput);
