@@ -6,17 +6,14 @@ public class Computer {
 
     private int[] eachDigitOfGuessNumber = new int[3];
     private int[] answerMadeByComputer = new int[3];
-    boolean[] alreadyUse = new boolean[10];
 
     public void makeThreeDigitNumber() {
-        while (true) {
-            makeEachDigitUsingRandom();
-//            System.out.println("정답 : "+ Integer.toString(answerMadeByComputer[0]) + Integer.toString(answerMadeByComputer[1]) + Integer.toString(answerMadeByComputer[2])); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
-
-        }
+        makeEachDigitUsingRandom();
+//        System.out.println("정답 : "+ Integer.toString(answerMadeByComputer[0]) + Integer.toString(answerMadeByComputer[1]) + Integer.toString(answerMadeByComputer[2])); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
     }
 
     private void makeEachDigitUsingRandom() {
+        boolean[] alreadyUse = new boolean[10];
         int randomNumber;
         for (int i = 0; i < 3; i++) {
             randomNumber = Randoms.pickNumberInRange(1,9);
