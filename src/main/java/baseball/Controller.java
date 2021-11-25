@@ -17,14 +17,19 @@ public class Controller {
 			game.init();
 			game.play();
 			printRestartRequestMessage();
-			String userInputMessage = readLine();
-			if (validateRestartMessage(userInputMessage)) {
-				state = userInputMessage;
-			}
+			state = readUserRestartRequest();
 		}
 	}
 
 	private void printRestartRequestMessage() {
 		System.out.println(RESTART_REQUEST_MESSAGE);
+	}
+
+	private String readUserRestartRequest() {
+		String userRestartRequest = readLine();
+		if (validateRestartRequest(userRestartRequest) != VALID_SUCCESS) {
+			throw new IllegalArgumentException();
+		}
+		return userRestartRequest;
 	}
 }

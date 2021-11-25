@@ -28,12 +28,11 @@ public class Valid {
 		return VALID_SUCCESS;
 	}
 
-	public static boolean validateRestartMessage(String userInputMessage) {
-		if (userInputMessage.equals(GAME_START)
-			|| userInputMessage.equals(PROGRAM_EXIT)) {
-			return VALID_SUCCESS;
+	public static boolean validateRestartRequest(String userRestartRequest) {
+		if (!userRestartRequest.equals(GAME_START) && !userRestartRequest.equals(PROGRAM_EXIT)) {
+			throw new IllegalArgumentException();
 		}
-		throw new IllegalArgumentException();
+		return VALID_SUCCESS;
 	}
 
 }
