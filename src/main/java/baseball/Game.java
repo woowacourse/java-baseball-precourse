@@ -29,6 +29,15 @@ public class Game {
         randomNumber = stringBuilder.toString();
     }
 
+    public boolean play() {
+        takeInput();
+        Result result = compareNumber();
+        result.createMessage();
+        result.printMessage();
+
+        return result.isFinish(NUMBER_LENGTH);
+    }
+
     private void takeInput() {
         System.out.print("숫자를 입력해주세요 : ");
 
