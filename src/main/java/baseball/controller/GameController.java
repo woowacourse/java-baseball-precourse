@@ -42,7 +42,7 @@ public class GameController {
 	 */
 	public static void startGame() {
 		OutputView.askNumber();
-		String inputNumber = InputView.writeInput();
+		String inputNumber = InputView.writeInputNumber();
 		InputExceptionHandler.checkValidation(inputNumber);
 		PLAYER_NUMBER = stringToArrayList(inputNumber);
 	}

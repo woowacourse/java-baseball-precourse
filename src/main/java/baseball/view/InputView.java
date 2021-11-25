@@ -12,7 +12,7 @@ public class InputView {
 	 *
 	 * @return playerNum
 	 */
-	public static String writeInput() {
+	public static String writeInputNumber() {
 		String playerNum;
 
 		playerNum = Console.readLine();
