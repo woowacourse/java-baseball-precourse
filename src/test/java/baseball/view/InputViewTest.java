@@ -8,6 +8,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class InputViewTest {
 
@@ -39,6 +41,48 @@ class InputViewTest {
         // when & then
         assertThatThrownBy(() -> {
             inputView.getInputNumbers();
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("command 1은 게임 재시작을 의미하며 true를 반환한다.")
+    @Test
+    void isStartThenTrue() {
+        // given
+        System.setIn(generateStream("1"));
+        InputView inputView = new InputView();
+
+        // when
+        boolean restart = inputView.isRestart();
+
+        // then
+        assertThat(restart).isTrue();
+    }
+
+    @DisplayName("command 2는 게임 종료를 의미하며 false를 반환한다.")
+    @Test
+    void isStartThenFalse() {
+        // given
+        System.setIn(generateStream("2"));
+        InputView inputView = new InputView();
+
+        // when
+        boolean restart = inputView.isRestart();
+
+        // then
+        assertThat(restart).isFalse();
+    }
+
+    @DisplayName("command로 1과 2 이외의 값을 입력 받으면 IllegalArgumentException을 던진다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"11", "22", "abc"})
+    void getInputCommandNotOneTwoThrowIllegalArgumentException(String inputCommand) {
+        // given
+        System.setIn(generateStream(inputCommand));
+        InputView inputView = new InputView();
+
+        // when & then
+        assertThatThrownBy(() -> {
+            inputView.isRestart();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
