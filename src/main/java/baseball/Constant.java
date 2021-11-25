@@ -12,4 +12,7 @@ public class Constant {
     public static final String NUMBER_INPUT_ALARM_MESSAGE = "숫자를 입력해주세요 : ";
     public static final String GAME_WIN_MESSAGE = MAX_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String GAME_RESTART_OR_EXIT_MESSAGE = "게임을 새로 시작하려면 " + RESTART_BUTTON + ", 종료하려면 " + EXIT_BUTTON + "를 입력하세요.";
+    public static final String OUTPUT_STRIKE_MESSAGE = "스트라이크";
+    public static final String OUTPUT_BALL_MESSAGE = "볼";
+    public static final String OUTPUT_NOTHING_MESSAGE = "낫싱";
 }

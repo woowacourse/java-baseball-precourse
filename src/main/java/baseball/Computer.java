@@ -8,6 +8,10 @@ import java.util.List;
 public class Computer {
     private List<Ball> balls;
 
+    public List<Ball> getBalls() {
+        return balls;
+    }
+
     public Computer() {
         balls = new ArrayList<>();
         int position = 1;

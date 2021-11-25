@@ -9,4 +9,16 @@ public class OutputView {
         System.out.println(Constant.GAME_WIN_MESSAGE);
         System.out.println(Constant.GAME_RESTART_OR_EXIT_MESSAGE);
     }
+
+    public static void gameResultShow(int stikeCount, int ballCount){
+        if (stikeCount > 0 && ballCount > 0) {
+            System.out.println(ballCount + Constant.OUTPUT_BALL_MESSAGE + " " + stikeCount + Constant.OUTPUT_STRIKE_MESSAGE);
+        } else if (stikeCount == 0 && ballCount > 0) {
+            System.out.println(ballCount + Constant.OUTPUT_BALL_MESSAGE);
+        } else if (stikeCount > 0 && ballCount == 0) {
+            System.out.println(stikeCount + Constant.OUTPUT_STRIKE_MESSAGE);
+        } else {
+            System.out.println(Constant.OUTPUT_NOTHING_MESSAGE);
+        }
+    }
 }
