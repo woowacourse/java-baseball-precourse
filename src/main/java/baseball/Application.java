@@ -10,26 +10,15 @@ public class Application {
         String inputNumber = getConsoleInput();
         validateInput(inputNumber);
 
-        int ballCount = 0;
-        int strikeCount = 0;
+        BaseBallResult result = new BaseBallResult();
         for (int i = 0; i < inputNumber.length(); i++) {
             if (inputNumber.charAt(i) == targetNumber.charAt(i)) {
-                strikeCount++;
+                result.strikeCount++;
             } else if (targetNumber.contains(String.valueOf(inputNumber.charAt(i)))) {
-                ballCount++;
+                result.ballCount++;
             }
         }
 
-        String result = "";
-        if (ballCount > 0) {
-            result += ballCount + "볼";
-        }
-        if (strikeCount > 0) {
-            result += strikeCount + "스트라이크";
-        }
-        if (ballCount == 0 && strikeCount == 0) {
-            result = "낫싱";
-        }
         System.out.println(result);
     }
 
