@@ -7,12 +7,14 @@ public class Application {
         //TODO: 숫자 야구 게임 구현
         String targetNumber = NumberGenerator.generate();
         System.out.println(targetNumber);
-        String inputNumber = getConsoleInput();
-        validateInput(inputNumber);
+        String inputNumber = "";
 
-        BaseBallResult result = calculateResult(targetNumber, inputNumber);
+        while (!inputNumber.equals(targetNumber)) {
+            inputNumber = getConsoleInput();
 
-        System.out.println(result);
+            BaseBallResult result = calculateResult(targetNumber, inputNumber);
+            System.out.println(result);
+        }
     }
 
     private static BaseBallResult calculateResult(String target, String input) {
@@ -29,7 +31,9 @@ public class Application {
 
     private static String getConsoleInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
+        String input = Console.readLine();
+        validateInput(input);
+        return input;
     }
 
     private static void validateInput(String input) throws IllegalArgumentException {
