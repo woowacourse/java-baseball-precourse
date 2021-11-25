@@ -65,6 +65,54 @@ public class Application {
         return input;
     }
 
+    public static int[] compareValues(String randomNumber, String inputNumber) {
+        char[] randomNumberArray = randomNumber.toCharArray();
+        char[] inputNumberArray = inputNumber.toCharArray();
+
+        int find = 0;
+        int index = 0;
+        int strike = 0;
+        int ball = 0;
+
+        for (int k = 0; k < 3; k++) {
+            if (inputNumberArray[k] == randomNumberArray[0]) {
+                index = 0;
+                find = 1;
+            }
+            if (inputNumberArray[k] == randomNumberArray[1]) {
+                index = 1;
+                find = 1;
+            }
+            if (inputNumberArray[k] == randomNumberArray[2]) {
+                index = 2;
+                find = 1;
+            }
+
+            if (find == 1 && index == k) {
+//                System.out.println("strike");
+                strike += 1;
+                find = 0;
+            } else if (find == 1) {
+//                System.out.println("ball");
+                ball += 1;
+                find = 0;
+            }
+        }
+        if (strike + ball == 0) {
+            System.out.println("out!");
+        } else if (strike == 0) {
+            System.out.println(ball + " Ball");
+        } else if (ball == 0) {
+            System.out.println(strike + " Strike");
+        } else {
+            System.out.println(strike + " Strike" + " " + ball + " Ball");
+        }
+
+        int[] result = {strike, ball};
+
+        return result;
+    }
+
     public static void main(String[] args) {
         String randomNumber = getRandomNumber();
         System.out.println(randomNumber);
