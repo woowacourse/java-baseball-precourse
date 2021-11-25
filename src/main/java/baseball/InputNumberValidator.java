@@ -21,17 +21,17 @@ public class InputNumberValidator {
         return lengthCheck() && rightRangeCheck() && distinctCheck();
     }
 
-    public Boolean lengthCheck() {
+    public boolean lengthCheck() {
         return inputNumberList.size() == NUMBER_LENGTH;
     }
 
-    public Boolean rightRangeCheck() {
+    public boolean rightRangeCheck() {
         return inputNumberList.stream()
                 .filter(number -> RANGE_START <= number && number <= RANGE_END)
                 .count() == NUMBER_LENGTH;
     }
 
-    public Boolean distinctCheck() {
+    public boolean distinctCheck() {
         return inputNumberList.stream()
                 .distinct()
                 .count() == NUMBER_LENGTH;
