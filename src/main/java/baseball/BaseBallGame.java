@@ -16,9 +16,9 @@ public class BaseBallGame {
         while (true) {
             makeAnswerNum();
             getInputNumByConsole();
+            System.out.println(answerNum);
             if(!checkRangeOfInputNum()) {
-                System.out.println("입력값이 잘못되었습니다.");
-                break;
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -30,11 +30,7 @@ public class BaseBallGame {
     private void getInputNumByConsole() {
         System.out.print("숫자를 입력해주세요 : ");
         String strNum = Console.readLine();
-        try {
-            inputNum = Integer.parseInt(strNum);
-        } catch (IllegalArgumentException e) {
-            System.out.println("입력값이 잘못되었습니다.");
-        }
+        inputNum = Integer.parseInt(strNum);
     }
 
     private boolean checkRangeOfInputNum() {
