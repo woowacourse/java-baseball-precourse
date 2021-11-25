@@ -4,15 +4,21 @@ import baseball.number.BaseballNumber;
 
 public class GameResultService {
 
+    GameResult gameResult;
+
+    public GameResultService(GameResult gameResult) {
+        this.gameResult = gameResult;
+    }
+
     //스트라이크 개수 세기
-    public int countStrike(BaseballNumber computerNumber, BaseballNumber userNumber) {
+    public void countStrike(BaseballNumber computerNumber, BaseballNumber userNumber) {
         int[] a = computerNumber.getNumber();
         int[] b = userNumber.getNumber();
         int strikes = 0;
         for (int i = 0; i < 3; i++) {
             strikes += isStrike(a[i], b[i]);
         }
-        return strikes;
+        gameResult.setStrikeCount(strikes);
     }
 
     private int isStrike(int a, int b) {
@@ -23,14 +29,16 @@ public class GameResultService {
     }
 
     //볼 개수 세기
-    public int countBall(BaseballNumber computerNumber, BaseballNumber userNumber) {
+    public void countBall(BaseballNumber computerNumber, BaseballNumber userNumber) {
         int[] a = computerNumber.getNumber();
         int[] b = userNumber.getNumber();
         int balls = 0;
         for (int i : a) {
             balls += isBall(i, b);
         }
-        return balls;
+
+        balls -= gameResult.getStrikeCount(); //Strike의 개수도 포함되어있음
+        gameResult.setBallCount(balls);
     }
 
     private int isBall(int a, int[] b) {
@@ -43,9 +51,9 @@ public class GameResultService {
         return 0;
     }
 
-    public void createResultMessage(GameResult result) {
-        int ballCount = result.getBallCount();
-        int strikeCount = result.getStrikeCount();
+    public void createResultMessage() {
+        int ballCount = gameResult.getBallCount();
+        int strikeCount = gameResult.getStrikeCount();
         String resultMessage = "";
 
         if (ballCount == 0 && strikeCount == 0) {
@@ -58,6 +66,6 @@ public class GameResultService {
             resultMessage += strikeCount + "스트라이크 ";
         }
 
-        result.setResultMessage(resultMessage);
+        gameResult.setResultMessage(resultMessage);
     }
 }

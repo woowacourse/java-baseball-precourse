@@ -13,7 +13,7 @@ public class PlayBall {
     NumberService numberService;
     UserNumber userNumber;
     GameResult gameResult;
-    GameResultService gameResultService = new GameResultService();
+    GameResultService gameResultService;
 
     //게임 진행을 위한 초기화
     public void startGame() {
@@ -43,27 +43,26 @@ public class PlayBall {
         try {
             numberService.checkUserInput(userInput, userNumber);
 
-            playBall();
+            getGameResult();
         } catch (IllegalArgumentException e){
             return;
         }
     }
 
     //게임 실행 후 결과 저장
-    private void playBall() {
+    private void getGameResult() {
         gameResult = new GameResult();
-        int ballCount = gameResultService.countBall(computerNumber, userNumber);
-        int strikeCount = gameResultService.countStrike(computerNumber, userNumber);
+        gameResultService = new GameResultService(gameResult);
 
-        gameResult.setBallCount(ballCount - strikeCount);
-        gameResult.setStrikeCount(strikeCount);
+        gameResultService.countStrike(computerNumber, userNumber);
+        gameResultService.countBall(computerNumber, userNumber);
 
         createResultMessage();
     }
 
     //결과에 따른 출력 메세지 생성
     private void createResultMessage() {
-        gameResultService.createResultMessage(gameResult);
+        gameResultService.createResultMessage();
 
         printResult();
     }
@@ -80,7 +79,7 @@ public class PlayBall {
         if (gameResult.getStrikeCount() == 3) {
 //            BaseballView.printGameOverView();
 //            getRepeatInput();
-//            return;
+            return;
         }
 
         getUserInput();

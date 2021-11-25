@@ -6,7 +6,7 @@
 
 1. ```
    2021/11/24
-   "docs(readme.md) : add README.md to list up application functions"
+   "docs(README.md) : add README.md to list up application functions"
    
    프로젝트 생성 및 요구사항에 맞는 기능 목록을 포함하여 리드미 작성
    ```
@@ -40,7 +40,7 @@
 
 5. ```
    2021/11/25
-   "feat(result) : add result service to calculate game result deciding when the game over and print result message"
+   "feat(Result) : add result service to calculate game result deciding when the game over and print result message"
    
    사용자 숫자와 컴퓨터 숫자간의 숫자 야구 게임 진행
    스트라이크와 볼, 그에 따른 결과 메세지를 저장하는 result객체 추가
@@ -49,7 +49,15 @@
    3스트라이크 시 게임이 종료 됨.
    ```
 
-6. 
+6. ```
+   2021/11/25
+   "refactor(ResultService) : change ResultService structure to carry out result model per each, not every model"
+   
+   ResultService에 대한 어플리케이션의 의존도를 낮추기 위한 리팩토링.
+   ResultService의 역할을 위임 없이 모두 수행하도록 변경
+   ```
+
+7. 
 
 
 
