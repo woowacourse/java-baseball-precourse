@@ -1,11 +1,12 @@
 package baseball.util;
 
+import baseball.constant.BaseballConst;
+
 public class Validator {
-	static final int NUM_LEN_LIMIT = 3;
 
 	public static void valid(int[] input) {
 		// 1.3자리 수인지 확인
-		if (!checkRange(input, NUM_LEN_LIMIT)) {
+		if (!checkRange(input, BaseballConst.NUM_LEN_LIMIT)) {
 			throw new IllegalArgumentException("지정된 수의 크기에서 벗어났습니다.");
 		}
 		// 2.각 자리의 숫자가 범위가 넘어갔는지 확인 ( 0이 포함되어있는지 )
@@ -18,7 +19,21 @@ public class Validator {
 		}
 	}
 
-	public static boolean isNumeric(String str) {
+	public static void checkNumeric(String str) {
+		if (!Validator.isNumeric(str)) {
+			throw new IllegalArgumentException("숫자만 입력해주세요.");
+		}
+	}
+
+	public static void checkSelectValid(String select) {
+		checkNumeric(select);
+		int selectNum = Integer.parseInt(select);
+		if (selectNum != 1 && selectNum != 2) {
+			throw new IllegalArgumentException("지정된 번호만 입력 가능합니다.");
+		}
+	}
+
+	private static boolean isNumeric(String str) {
 		return str.chars().allMatch(Character::isDigit);
 	}
 

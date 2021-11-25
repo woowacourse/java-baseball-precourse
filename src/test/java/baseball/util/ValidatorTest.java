@@ -6,12 +6,11 @@ import org.junit.jupiter.api.Test;
 
 class ValidatorTest {
 	@Test
-	public void isNumeric() throws Exception {
+	public void checkNumeric() throws Exception {
 		//then
-		assertTrue(Validator.isNumeric("300"));
-		assertTrue(Validator.isNumeric("2457"));
-		assertFalse(Validator.isNumeric("test"));
-		assertFalse(Validator.isNumeric(" "));
+		IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+			() -> Validator.checkNumeric("13김"));
+		assertEquals("숫자만 입력해주세요.", ex.getMessage());
 	}
 
 	@Test

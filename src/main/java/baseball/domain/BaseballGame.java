@@ -28,9 +28,7 @@ public class BaseballGame {
 
 	public int[] validCheck(String input) {
 		// input에 대한 유효성을 검사한다
-		if (!Validator.isNumeric(input)) {
-			throw new IllegalArgumentException();
-		}
+		Validator.checkNumeric(input);
 		int[] playerNum = Converter.convertToIntArr(input);
 		Validator.valid(playerNum);
 		return playerNum;
