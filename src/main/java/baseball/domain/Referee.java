@@ -5,9 +5,16 @@ import java.util.List;
 public class Referee {
 
     public Result judge(final List<Integer> answer, final List<Integer> guess) {
+        validateSameSize(answer, guess);
         int strikeCount = countStrike(answer, guess);
         int ballCount = countBall(answer, guess);
         return new Result(strikeCount, ballCount);
+    }
+
+    private void validateSameSize(List<Integer> answer, List<Integer> guess) {
+        if (answer.size() != guess.size()) {
+            throw new IllegalArgumentException("The answer and guess should be the same size");
+        }
     }
 
     private int countBall(List<Integer> answer, List<Integer> guess) {
