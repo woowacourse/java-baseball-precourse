@@ -10,7 +10,7 @@
 
 #### 컴퓨터 랜덤 수 생성
 
-- [ ] 1 ~ 9까지 서로 다른 임의의 수 3개를 생성한다.
+- [x] 1 ~ 9까지 서로 다른 임의의 수 3개를 생성한다.
     - `camp.nextstep.edu.missionutils.Randoms` 의 `pickNumberInRange()` 를 활용한다.
 
 #### 입력
