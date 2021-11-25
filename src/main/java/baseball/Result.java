@@ -36,4 +36,8 @@ public class Result {
     public void printMessage() {
         System.out.println(message);
     }
+
+    public boolean isFinish(int numberLength) {
+        return numberLength == this.strike;
+    }
 }
