@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Arrays;
+import camp.nextstep.edu.missionutils.Randoms;
 
 class ThreeDifferentDigits{
     private String[] ThreeDifferentDigits;
@@ -10,27 +12,27 @@ class ThreeDifferentDigits{
 
     ThreeDifferentDigits(){
         init3DiffDigits();
+        System.out.println(Arrays.toString(ThreeDifferentDigits));
     }
 
-    void init3DiffDigits(){
+    private void init3DiffDigits(){
         ThreeDifferentDigits = new String[3];
-        int[] arr = getShuffledNumArr();
-
-        for (int i=0; i<3; i++){
-            ThreeDifferentDigits[i] = Integer.toString(arr[i]);
+        int i = 0;
+        while (i < 3){
+            i = changeNullOfIndex(i);
         }
     }
 
-    int[] getShuffledNumArr(){
-        int[] arr = {1,2,3,4,5,6,7,8,9};
+    private int changeNullOfIndex(int index){
+        int rand = Randoms.pickNumberInRange(1,9);
+        String strOfRand = Integer.toString(rand);
 
-        for (int i=0; i<25; i++){
-            int rand = (int)(Math.random()*9);
-            int temp = arr[rand];
-            arr[rand] = arr[0];
-            arr[0] = temp;
+        if (Arrays.asList(ThreeDifferentDigits).contains(strOfRand)) {
+            return index;
         }
 
-        return arr;
+        ThreeDifferentDigits[index] = strOfRand;
+        index++;
+        return index;
     }
 }
