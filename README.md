@@ -33,7 +33,111 @@
 |rename|파일 혹은 폴더명을 수정하거나 옮기는 작업만인 경우
 |remove|파일을 삭제하는 작업만 수행한 경우|
 
-## Java 컨벤션 자주쓰거나 주의할 사항
+## Java 컨벤션 (내가) 주의할 사항
+
+### import
+import 선언의 순서와 빈 줄 삽입
+[import-grouping]
+
+import 구절은 아래와 같은 순서로 그룹을 묶어서 선언한다.
+
+- static imports
+- java.
+- javax.
+- org.
+- net.
+- 8~10을 제외한 com.*
+- 1~6, 8~10을 제외한 패키지에 있는 클래스
+- com.nhncorp.
+- com.navercorp.
+- com.naver. 
+
+각 그룹 사이에는 빈줄을 삽입한다. 같은 그룹 내에서는 알파벳 순으로 정렬한다.
+
+좋은 예
+```java
+import java.util.Date;
+import java.util.List;
+
+import javax.naming.NamingException;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.util.Assert;
+
+import com.google.common.base.Function;
+
+import com.naver.lucy.util.AnnotationUtils;
+```
+이 규칙은 대부분 IDE에서 자동으로 정리해주는 대로 쓰기 때문에 IDE 설정을 일치시키는데 신경을 써야 한다.
+
+### 줄바꿈 위치
+줄바꿈 허용 위치
+[line-wrapping-position]
+
+가독성을 위해 줄을 바꾸는 위치는 다음 중의 하나로 한다.
+
+- extends 선언 후
+- implements 선언 후
+- throws 선언 후
+- 시작 소괄호(() 선언 후
+- 콤마(,) 후
+- . 전
+- 연산자 전
+  - +, -, *, /, %
+  - ==, !=, >=, >,⇐, <, &&, ||
+  - &, |, ^, >>>, >>, <<, ?
+  - instanceof
+
+좋은 예
+```java
+public boolen isAbnormalAccess (
+User user, AccessLog log) {
+
+    String message = user.getId() + "|" | log.getPrefix()
+        + "|" + SUFFIX;
+}
+```
+
+### import 와일드카드 
+static import에만 와일드 카드 허용
+[avoid-star-import]
+
+클래스를 import할때는 와일드카드(*) 없이 모든 클래스명을 다 쓴다. static import에서는 와일드카드를 허용한다.
+
+나쁜 예
+```java
+import java.util.*;
+```
+
+좋은 예
+```java
+import java.util.List;
+import java.util.ArrayList;
+```
+
+### 탑레벨 클래스
+소스파일당 1개의 탑레벨 클래스를 담기
+[1-top-level-class]
+
+탑레벨 클래스(Top level class)는 소스 파일에 1개만 존재해야 한다. ( 탑레벨 클래스 선언의 컴파일타임 에러 체크에 대해서는 Java Language Specification 7.6 참조 )
+
+나쁜 예
+```java
+public class LogParser {
+}
+class LogType {
+}
+```
+좋은 예
+```java
+public class LogParser {
+// 굳이 한 파일안에 선언해야 한다면 내부 클래스로 선언
+class LogType {
+}
+}
+```
+
 ### 접근제한자
 클래스 및 멤버 수정자가 있는 경우 Java 언어 사양에서 권장하는 순서로 나타냄
 ```java
