@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Hint {
 	private int ball = 0;
 	private int strike = 0;
@@ -16,6 +19,21 @@ public class Hint {
 
 	public int getStrike() {
 		return strike;
+	}
+
+	public String getHintMessage() {
+		List<String> sList = new ArrayList<>();
+
+		if (this.ball == 0 && this.strike == 0)
+			return Const.NOTHING;
+
+		if (this.ball != 0)
+			sList.add(ball + Const.BALL);
+
+		if (this.strike != 0)
+			sList.add(strike + Const.STRIKE);
+
+		return String.join(" ", sList);
 	}
 
 	private boolean isBall(int[] answerNumber, int index, int num) {
