@@ -42,3 +42,9 @@ editorconfig {
 }
 
 check.dependsOn editorconfigCheck
+
+// java UTF-8 encoding
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
