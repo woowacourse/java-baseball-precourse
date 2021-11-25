@@ -9,14 +9,14 @@ public class BaseballGame {
 
     public static void gameStart() {
         while (true) {
-            int continueGame = playGameUntilGetAnswer(); // 1이면 게임을 계속한다. 2면 그만한다.
-            if (continueGame == 2) {
+            Boolean stopGame = playGameUntilGetAnswer(); // 1이면 게임을 계속한다. 2면 그만한다.
+            if (stopGame) {
                 break;
             }
         }
     }
 
-    private static int playGameUntilGetAnswer() {
+    private static Boolean playGameUntilGetAnswer() {
         computer.makeThreeDigitNumber();
         while (true) {
             int guessNumber = player.guessNumber();
@@ -29,10 +29,10 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String continueGame = Console.readLine();
         if (continueGame.equals("1")) {
-            return 1;
+            return false;
         }
         if (continueGame.equals("2")) {
-            return 2;
+            return true;
         }
         throw new IllegalArgumentException("1 또는 2 이외의 값을 입력하셨습니다.");
     }
