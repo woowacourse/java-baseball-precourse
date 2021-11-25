@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static util.GameConstant.*;
@@ -26,35 +27,19 @@ class GameProvider {
      * 중복일 경우 새 정답 생성
      */
     private void generateAnswer(){
-        putRandomNumbers();
-        while (!isNotDuplicateInSystemAnswer()){
-            putRandomNumbers();
-        }
-    }
+        Integer[] tempArr = createNotDuplicateArr();
 
-    private void putRandomNumbers(){
         for(int i = 0 ; i < NUMBER_LENGTH; i++){
-            systemAnswer[i] = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            systemAnswer[i] = tempArr[i];
         }
     }
 
-    /**
-     * Random 값으로 들어온 정답 중 중복값이 있는지 확인
-     * @return true -> pass
-     */
-    private boolean isNotDuplicateInSystemAnswer(){
-        Set<Integer> tempSet = new HashSet<>();
-        for(int i = 0 ; i < systemAnswer.length; i++){
-            tempSet.add(systemAnswer[i]);
+    private Integer[] createNotDuplicateArr() {
+        Set<Integer> tempSet = new LinkedHashSet<>();
+        while (tempSet.size() < NUMBER_LENGTH){
+            tempSet.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
         }
-        if(findDuplicateNumber(tempSet)){
-            return true;
-        }
-        return false;
-    }
-
-    private boolean findDuplicateNumber(Set<Integer> tempSet) {
-        return tempSet.size() == NUMBER_LENGTH;
+        return tempSet.toArray(new Integer[3]);
     }
 
     /**
