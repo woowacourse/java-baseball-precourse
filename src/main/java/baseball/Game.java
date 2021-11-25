@@ -57,7 +57,7 @@ public class Game {
 		// 1~9 숫자가 아님
 		for (int i = 0; i < inputText.length(); i++) {
 			int n = inputText.charAt(i) - '0';
-			boolean isSingleDigit = n <= 9 && n >= 1;
+			boolean isSingleDigit = n <= Const.MAX_ANSWER_VALUE && n >= Const.MIN_ANSWER_VALUE;
 			if (!isSingleDigit)
 				return false;
 		}
