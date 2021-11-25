@@ -11,11 +11,11 @@ public class BaseballGame {
         this.playerNumber = playerNumber;
     }
 
-    public String inputNumber() {
+    public void inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String number = Console.readLine();
         checkNumberException(number);
-        return number;
+        this.playerNumber = number;
     }
 
     public void checkNumberException(String number) {
@@ -50,13 +50,6 @@ public class BaseballGame {
             }
         }
         return count;
-    }
-
-    public boolean calcNothing() {
-        if(calcStrike() == 0 && calcBall() == 0) {
-            return true;
-        }
-        return false;
     }
 
     public void compareNumber() {

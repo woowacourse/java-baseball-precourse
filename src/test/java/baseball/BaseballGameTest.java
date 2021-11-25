@@ -2,10 +2,6 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Field;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class BaseballGameTest {
     final BaseballGame baseballGame = new BaseballGame("425","456");
     final BaseballGame baseballGame2 = new BaseballGame("425","789");
@@ -26,9 +22,9 @@ class BaseballGameTest {
     }
 
     @Test
-    void calcNothing() {
-        assert !baseballGame.calcNothing();
-        assert baseballGame2.calcNothing();
-        assert !baseballGame3.calcNothing();
+    void printResult() {
+        baseballGame.printResult(1,2);
+        baseballGame2.printResult(0,0);
+        baseballGame3.printResult(0,3);
     }
 }
