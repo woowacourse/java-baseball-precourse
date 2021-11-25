@@ -7,7 +7,6 @@ public class Application {
         GamePlayer gamePlayer = new GamePlayer();
         GameProvider gameProvider = new GameProvider();
         while (gameProvider.getGameStatus().equals(ON_GOING)){
-            gameProvider.generateAnswer();
             gamePlayer.writeAnswer();
             GameScore gameScore = gameProvider.checkAnswer(gamePlayer.getPlayerAnswer());
             gameScore.printResult();
