@@ -23,7 +23,6 @@ public class BaseBallPlayer {
 			throw new IllegalArgumentException();
 		}
 		userInputToUserNumber(userInput);
-		System.out.println(userNumber);
 	}
 
 	public int checkNumber(Integer providerNumber, Integer index) {

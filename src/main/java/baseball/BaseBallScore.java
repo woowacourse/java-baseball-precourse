@@ -39,7 +39,14 @@ public class BaseBallScore {
 		return message;
 	}
 
+	private void resetScore() {
+		ball = 0;
+		strike = 0;
+	}
+
 	public boolean isAllStrike() {
-		return strike == NUMBER_LENGTH;
+		int strikeResult = strike;
+		resetScore();
+		return strikeResult == NUMBER_LENGTH;
 	}
 }
