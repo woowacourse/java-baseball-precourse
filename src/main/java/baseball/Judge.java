@@ -3,23 +3,18 @@ package baseball;
 public class Judge {
     private static char[] defendNumber;
     public static boolean flag;
+
     private Judge(){ }
+
     public static Judge passNumberToJudge(String number) {
-        System.out.println(number);
         defendNumber = number.toCharArray();
         flag = false;
-//        System.out.println("passToJudge");
-//        for (char c : defendNumber) {
-//            System.out.print(c);
-//        }
-//        System.out.println();
         return new Judge();
     }
 
     public String judging(String attackNumber){
         if(attackNumber.length()!=3 || attackNumber.contains("0")) {
-            System.out.println("입력 오류 ");
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
         char[] a =attackNumber.toCharArray();
         int strike=0;

@@ -15,7 +15,7 @@
     2. Attacker(Player)의 숫자와 Defender 숫자 비교하기
         - Attacker의 숫자가 3개가 아닌 경우, 0이 포함된 경우 예외 처리(IllegalArgumentException)
         - 자리와 숫자 일치하면 strike, 숫자만 일치하면 ball
-             - "싱" : strike=0, ball=0
+             - "낫싱" : strike=0, ball=0
              - "x스트라이크" : strike>0
              - "x볼" : ball>0 
              - "3스트라이크" : 게임 종료 (strike==3)
