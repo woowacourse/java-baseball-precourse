@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class BaseBallGame {
     private int answerNum;
     private int inputNum;
@@ -29,7 +32,7 @@ public class BaseBallGame {
     private void play() {
         while(true) {
             getInputNumByConsole();
-            if(!checkRangeOfInputNum()) {
+            if(!checkRangeOfGameNum(inputNum)) {
                 throw new IllegalArgumentException();
             }
 
@@ -49,17 +52,41 @@ public class BaseBallGame {
     }
 
     private void makeAnswerNum() {
-        answerNum = Randoms.pickNumberInRange(111, 999);
+        int randomNum = 0;
+        while (true) {
+            randomNum = Randoms.pickNumberInRange(123, 987);
+            System.out.println("random " + randomNum);
+            if(checkRangeOfGameNum(randomNum)) {
+                break;
+            }
+        }
+        answerNum = randomNum;
+    }
+
+    private boolean checkRangeOfGameNum(int num) {
+        String str = Integer.toString(num);
+        if(str.length() != 3) {
+            return false;
+        }
+        if(str.contains("0")) {
+            return false;
+        }
+
+        Set set = new HashSet();
+        for(int i = 0; i < str.length(); i++) {
+            set.add(str.charAt(i));
+        }
+        if(set.size() != 3) {
+            return false;
+        }
+
+        return true;
     }
 
     private void getInputNumByConsole() {
         System.out.print("숫자를 입력해주세요 : ");
         String strNum = Console.readLine();
         inputNum = Integer.parseInt(strNum);
-    }
-
-    private boolean checkRangeOfInputNum() {
-        return (111 <= inputNum && inputNum <= 999);
     }
 
     private String[] makeStringArrayFromInt(int num) {
