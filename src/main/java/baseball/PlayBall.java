@@ -77,15 +77,42 @@ public class PlayBall {
     //3스트라이크인지 확인 후 진행사항 결정
     private void checkGameOver() {
         if (gameResult.getStrikeCount() == 3) {
-//            BaseballView.printGameOverView();
-//            getRepeatInput();
+            BaseballView.printGameOverView();
+
+            getRepeatInput();
             return;
         }
 
         getUserInput();
     }
 
+    //게임종료 후 새로 시작
     private void getRepeatInput() {
+        String userRestartInput = BaseballView.getUserRestartInput();
 
+        try {
+            checkUserRestartInput(userRestartInput);
+
+            isRestart(userRestartInput);
+        } catch (IllegalArgumentException e) {
+            return;
+        }
+
+    }
+
+    //재시작 입력이 정상 입력인지 확인
+    private void checkUserRestartInput(String userRestartInput) throws IllegalArgumentException {
+        if (userRestartInput.equals("1")
+                || userRestartInput.equals("2")) {
+            return;
+        }
+        throw new IllegalArgumentException();
+    }
+
+    //재시작 결정
+    private void isRestart(String userRepeatInput) {
+        if (userRepeatInput.equals("1")) {
+            startGame();
+        }
     }
 }

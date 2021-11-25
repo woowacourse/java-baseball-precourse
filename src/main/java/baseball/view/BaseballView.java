@@ -17,12 +17,14 @@ public class BaseballView {
         System.out.println(result.getResultMessage());
     }
 
-//    public static void printGameOverView() {
-//        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
-//                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-//    }
-//
-//    private static String getUserRepeatInput() {
-//        return Console.readLine();
-//    }
+    //게임 종료시 화면 출력
+    public static void printGameOverView() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    //재시작 여부 입력 받기
+    public static String getUserRestartInput() {
+        return Console.readLine();
+    }
 }
