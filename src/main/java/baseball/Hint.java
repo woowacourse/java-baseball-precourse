@@ -29,6 +29,21 @@ public class Hint {
     }
 
     public void printHintMessage() {
-        System.out.println(this.ballCount + "볼, " + this.strikeCount+"스트라이크");
+        if (this.strikeCount == 3) {
+            return;
+        }
+        if (this.ballCount == 0 && this.strikeCount == 0) {
+            System.out.println(Message.RESULT_NOTHING_MESSAGE);
+            return;
+        }
+        if (this.ballCount == 0 && this.strikeCount > 0) {
+            System.out.println(this.strikeCount+"스트라이크");
+            return;
+        }
+        if (this.ballCount > 0 && this.strikeCount == 0) {
+            System.out.println(this.ballCount+"볼");
+            return;
+        }
+        System.out.println(this.ballCount + "볼 " + this.strikeCount+"스트라이크");
     }
 }

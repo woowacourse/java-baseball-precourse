@@ -17,6 +17,7 @@ public class Game {
         boolean isCorrect;
 
         do {
+            System.out.print(Message.INPUT_MESSAGE);
             input = InputUtil.getPlayerAnswer();
             isCorrect = checkAnswer(randomNum, input);
 
