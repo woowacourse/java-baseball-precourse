@@ -26,7 +26,7 @@ public class Result {
             list.add(this.ball + "볼");
         }
 
-        if (0 < this.strike && this.strike < 3) {
+        if (this.strike != 0) {
             list.add(this.strike + "스트라이크");
         }
 
