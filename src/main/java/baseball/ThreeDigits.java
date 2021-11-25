@@ -14,18 +14,18 @@ public class ThreeDigits {
         Random random = new Random();
         boolean [] IsChecked = new boolean[10];
 
-        String ThreeRandomDigits = "";
+        StringBuilder ThreeRandomDigits = new StringBuilder();
         int count = 0;
         while (count != 3) {
             int rand = random.nextInt(8) + 1;  // generate 1 ~ 9
             if (!IsChecked[rand]) {
                 count++;
                 IsChecked[rand] = true;
-                ThreeRandomDigits += String.valueOf(rand);
+                ThreeRandomDigits.append(String.valueOf(rand));
             }
         }
 
-        this.threeDigits = ThreeRandomDigits;
+        this.threeDigits = ThreeRandomDigits.toString();
     }
 
     public int checkStrike(int numberInt) {
@@ -44,7 +44,7 @@ public class ThreeDigits {
         String numberStr = String.valueOf(numberInt);
         int ballCount = 0;
         for (int i = 0; i < this.threeDigits.length(); i++) {
-            if (this.IsJudged[i]) {
+            if (this.IsJudged[i]) { // 스트라이크로 판정 이미 끝난 자리는 skip
                 continue;
             }
 
