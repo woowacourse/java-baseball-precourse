@@ -13,6 +13,8 @@ public class Application {
 
 			proceed(answer);
 
+			System.out.println(Message.CLEAR);
+
 			System.out.println(Message.RESTART_OR_EXIT);
 
 		} while (selectRestartOrExit());
@@ -21,7 +23,9 @@ public class Application {
 
 	private static void proceed(String answer) {
 
-		while (true) {
+		String resultMessage;
+
+		do {
 
 			System.out.print(Message.QUESTION);
 
@@ -29,17 +33,11 @@ public class Application {
 
 			Verification.ofInput(input);
 
-			String resultMessage = Game.play(answer, input);
+			resultMessage = Game.play(answer, input);
 
 			System.out.println(resultMessage);
 
-			if (resultMessage.equals(3 + Message.STRIKE)) {
-
-				System.out.println(Message.CLEAR);
-
-				break;
-			}
-		}
+		} while (!resultMessage.equals(3 + Message.STRIKE));
 	}
 
 	private static boolean selectRestartOrExit() {
