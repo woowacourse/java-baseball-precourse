@@ -55,4 +55,10 @@ public class ThreeDigits {
         }
         return ballCount;
     }
+
+    public void initIsJudged() {
+        for (int i = 0; i < 3; i++) {
+            IsJudged[i] = false;
+        }
+    }
 }
