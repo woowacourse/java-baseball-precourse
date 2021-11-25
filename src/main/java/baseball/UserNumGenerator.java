@@ -13,7 +13,7 @@ public class UserNumGenerator extends IllegalArgumentException {
 		System.out.print("숫자를 입력해주세요 : ");
 		String numsString = Console.readLine();
 		int[] nums = stringToIntArray(numsString);
-		if (isThreeLength(nums) && isOneNineInt(nums) && isNotSame(nums)) {
+		if (nums.length == 3 && isOneNineInt(nums) && isNotSame(nums)) {
 			return nums;
 		}
 		throw new IllegalArgumentException();
@@ -34,10 +34,6 @@ public class UserNumGenerator extends IllegalArgumentException {
 			}
 		}
 		return true;
-	}
-
-	public static boolean isThreeLength(int[] nums) {
-		return nums.length == 3;
 	}
 
 	public static boolean isNotSame(int[] nums) {
