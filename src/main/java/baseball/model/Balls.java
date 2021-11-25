@@ -3,7 +3,6 @@ package baseball.model;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Balls {
@@ -21,17 +20,6 @@ public class Balls {
         ));
     }
 
-    public PlayType play(Ball opponentBall) {
-        List<PlayType> playTypes = getPlayTypes(opponentBall);
-        if (hasStrike(playTypes)) {
-            return PlayType.STRIKE;
-        }
-        if (hasBall(playTypes)) {
-            return PlayType.BALL;
-        }
-        return PlayType.NOTHING;
-    }
-
     private boolean hasBall(List<PlayType> playTypes) {
         return playTypes.stream()
                 .anyMatch(PlayType.BALL::equals);
@@ -46,5 +34,23 @@ public class Balls {
         return balls.stream()
                 .map(opponentBall::play)
                 .collect(Collectors.toList());
+    }
+
+    // N:1 관계 하나의 볼과 게임을 한다
+    public PlayType play(Ball opponentBall) {
+        List<PlayType> playTypes = getPlayTypes(opponentBall);
+        if (hasStrike(playTypes)) {
+            return PlayType.STRIKE;
+        }
+        if (hasBall(playTypes)) {
+            return PlayType.BALL;
+        }
+        return PlayType.NOTHING;
+    }
+
+    // N:M 관계 여러개의 볼과 게임을 한다
+    public PlayTypes play(Balls computerBalls) {
+        List<PlayType> playTypeList = balls.stream().map(computerBalls::play).collect(Collectors.toList());
+        return new PlayTypes(playTypeList);
     }
 }

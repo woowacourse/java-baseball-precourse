@@ -3,6 +3,7 @@ package baseball;
 import baseball.model.Ball;
 import baseball.model.Balls;
 import baseball.model.PlayType;
+import baseball.model.PlayTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

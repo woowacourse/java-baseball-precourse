@@ -19,6 +19,7 @@ public class Ball {
         return value;
     }
 
+    // 1:1 관계
     public PlayType play(Ball opponentBall) {
         if (this.equals(opponentBall)) {
             return PlayType.STRIKE;
