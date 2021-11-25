@@ -20,15 +20,18 @@
 2. 플레이어가 입력하는 ```Answer```와 생성된 ```Random Answer``` 비교, ```GameScore``` 인스턴스 반환   
 
 
-3. 게임 재시작 or 종료 입력 요청
+3. 게임 재시작 or 종료 입력 확인
    - RESTART -> 반복문 재시작 (generate Answer)
    - STOP -> 종료
 
 ### ✅ GamePlayer
 #### package java.baseball
 
-1. 플레이어 입력 요청
+1. 플레이어 정답 입력 요청
    - GameValidator에서 검증 > 잘못된 입력이라면 ```IllegalArgumentException``` 발생
+
+2. 종료 재시작 입력 요청
+   - 입력값 1 or 2 검증 > 잘못된 입력이라면 ```IlleagalArgumentException``` 발생
    
 
 
