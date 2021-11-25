@@ -11,11 +11,11 @@ public class BaseBallResult {
             result += ballCount + "볼";
         }
         if (strikeCount > 0) {
-            result += strikeCount + "스트라이크";
+            result += " " + strikeCount + "스트라이크";
         }
         if (ballCount == 0 && strikeCount == 0) {
             result = "낫싱";
         }
-        return result;
+        return result.trim();
     }
 }
