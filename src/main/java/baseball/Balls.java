@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Balls {
-	List<Integer> balls = new ArrayList<>();
+	List<Ball> balls = new ArrayList<>();
 
 	public Balls(String input) {
 		if (checkException(input)) {
@@ -13,8 +13,16 @@ public class Balls {
 		}
 
 		for (char number : input.toCharArray()) {
-			balls.add(Character.getNumericValue(number));
+			balls.add(new Ball(Character.getNumericValue(number), balls.size() + 1));
 		}
+	}
+
+	public boolean isSame(List<Ball> otherBalls) {
+		return balls.containsAll(otherBalls);
+	}
+
+	public List<Ball> getBalls() {
+		return balls;
 	}
 
 	private boolean checkException(String input) {
@@ -39,7 +47,4 @@ public class Balls {
 		return input.length() != 3;
 	}
 
-	public boolean isSame(List<Integer> otherBalls) {
-		return balls.containsAll(otherBalls);
-	}
 }
