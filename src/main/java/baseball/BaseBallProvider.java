@@ -10,24 +10,34 @@ import java.util.Set;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseBallProvider {
-	private static List<Integer> randomNumber;
+	private List<Integer> answer;
 
-	public static List<Integer> getRandomNumber() {
+	public BaseBallProvider() {
+		this.answer = new ArrayList<>(NUMBER_LENGTH);
+	}
+
+	public void makeAnswer() {
+		List<Integer> randomNumber;
 		do {
 			randomNumber = new ArrayList<>();
 			for (int i = 0; i < NUMBER_LENGTH; i++) {
 				randomNumber.add(Randoms.pickNumberInRange(START_NUMBER, END_NUMBER));
 			}
 		} while (!isUnique(randomNumber) || !isRightLength(randomNumber));
-		return randomNumber;
+
+		answer = new ArrayList<>(randomNumber);
 	}
 
-	private static boolean isUnique(List<Integer> randomNumber) {
+	public List<Integer> getAnswer() {
+		return answer;
+	}
+
+	private boolean isUnique(List<Integer> randomNumber) {
 		Set<Integer> randomDigits = new HashSet<>(randomNumber);
 		return randomDigits.size() == 3;
 	}
 
-	private static boolean isRightLength(List<Integer> randomNumber) {
+	private boolean isRightLength(List<Integer> randomNumber) {
 		return randomNumber.size() == 3;
 	}
 }
