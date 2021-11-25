@@ -1,0 +1,51 @@
+package baseball.domain;
+
+import baseball.exception.InvalidIntegerLengthException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+
+public class UserNumbers {
+    private static final int START_INCLUSIVE = 0;
+    private static final int END_INCLUSIVE = 0;
+    private static List<BaseBallNumber> userBaseballNumbers;
+
+    public UserNumbers(String userNumbers) {
+        validateUserNumbers(userNumbers);
+        this.userBaseballNumbers = converUserNumberFroamt(userNumbers);
+    }
+
+    private List<BaseBallNumber> converUserNumberFroamt(String userNumbers) {
+        List<BaseBallNumber> userNumbersList = new ArrayList<>();
+        for (int i = 0; i < userNumbers.length(); i++) {
+            userNumbersList.add(new BaseBallNumber(userNumbers.charAt(i)));
+        }
+        return userNumbersList;
+    }
+
+    private void validateUserNumbers(String userNumbers) {
+        if (userNumbers.length() != 3) {
+            throw new InvalidIntegerLengthException();
+        }
+    }
+
+    public int calculateBallCount(List<BaseBallNumber> randomNumbers) {
+        return (int) IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE).filter(i -> isBall(i, randomNumbers)).count();
+    }
+
+    private boolean isBall(int targetIndex, List<BaseBallNumber> randomNumbers) {
+        BaseBallNumber randomBaseBallNumber = randomNumbers.get(targetIndex);
+        BaseBallNumber userBaseBallNumber = userBaseballNumbers.get(targetIndex);
+        return !randomBaseBallNumber.equals(userBaseBallNumber) && userBaseballNumbers.contains(randomBaseBallNumber);
+    }
+
+    public int calculateStrikeCount(List<BaseBallNumber> randomNumbers) {
+        return (int) IntStream.rangeClosed(0, 2).filter(i -> isStrike(i, randomNumbers)).count();
+    }
+
+    private boolean isStrike(int targetIndex, List<BaseBallNumber> randomNumbers) {
+        BaseBallNumber randomBaseBallNumber = randomNumbers.get(targetIndex);
+        BaseBallNumber userBaseBallNumber = userBaseballNumbers.get(targetIndex);
+        return randomBaseBallNumber.equals(userBaseBallNumber);
+    }
+}
