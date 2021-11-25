@@ -30,15 +30,23 @@ public class Numbers {
 		return this.numbers.indexOf(new Number(number));
 	}
 
-	private List<Number> removeDuplicationFromNumbers(List<Number> numbers) {
-		return numbers.stream()
-			.distinct()
-			.collect(Collectors.toList());
+	private int convertLetterToInt(String letter) {
+		try {
+			return Integer.parseInt(letter);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+		}
 	}
 
 	private List<Number> generateNumbersFromInput(String input) {
 		return Arrays.stream(input.split(""))
-			.map(Number::new)
+			.map(letter -> new Number(convertLetterToInt(letter)))
+			.collect(Collectors.toList());
+	}
+
+	private List<Number> removeDuplicationFromNumbers(List<Number> numbers) {
+		return numbers.stream()
+			.distinct()
 			.collect(Collectors.toList());
 	}
 
