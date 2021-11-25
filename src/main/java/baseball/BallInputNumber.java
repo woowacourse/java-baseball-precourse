@@ -29,6 +29,7 @@ public class BallInputNumber {
     }
 
     public List<Integer> inputNumberByClient() {
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         List<Integer> inputNumberList = new ArrayList<>();
         for (int i = 0; i < inputNumber.length(); i++) {
