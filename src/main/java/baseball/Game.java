@@ -56,4 +56,30 @@ public class Game {
 
         return true;
     }
+
+    private Result compareNumber() {
+        Result result = new Result();
+
+        HashSet<Integer> hashSet = new HashSet<>();
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            int currentUserNumber = userNumber.charAt(i) - '0';
+            int currentRandomNumber = randomNumber.charAt(i) - '0';
+
+            if (currentUserNumber == currentRandomNumber) {
+                result.addStrikeCount();
+                continue;
+            }
+
+            hashSet.add(currentUserNumber);
+        }
+
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            int currentRandomNumber = randomNumber.charAt(i) - '0';
+            if (hashSet.contains(currentRandomNumber)) {
+                result.addBallCount();
+            }
+        }
+
+        return result;
+    }
 }
