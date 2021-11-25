@@ -11,6 +11,10 @@ public class User {
     private static final int RANDOM_START_INCLUSIVE = 1;
     private static final int RANDOM_END_INCLUSIVE = 9;
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해 주세요 : ";
+    private static final String NEW_LINE = "\n";
+    private static final String STRIKE_KOREAN = "스트라이크";
+    private static final String BALL_KOREAN = "볼";
+    private static final String NOTHING = "낫싱";
     public static final int ZERO = 0;
     public static final String STRIKE_ENGLISH = "strike";
     public static final String BALL_ENGLISH = "ball";
@@ -63,6 +67,51 @@ public class User {
         }
 
         return decide;
+    }
+
+    public String writeHintMessage(final int strike, final int ball) {
+        final StringBuilder stringBuilder = new StringBuilder();
+
+        if ((strike == 0) && (ball > 0)) {
+            stringBuilder.append(appendBallHintMessage(ball, stringBuilder));
+            return stringBuilder.toString();
+        }
+
+        if ((strike > 0) && (ball == 0)) {
+            stringBuilder.append(appendStrikeHintMessage(strike, stringBuilder));
+            return stringBuilder.toString();
+
+        }
+
+        if ((strike == 0) && (ball == 0)) {
+            stringBuilder.append(appendNothingHintMessage(stringBuilder));
+            return stringBuilder.toString();
+        }
+
+        stringBuilder.append(appendBallHintMessage(ball, stringBuilder))
+                .append(appendStrikeHintMessage(strike, stringBuilder));
+
+        return stringBuilder.toString();
+    }
+
+    public String appendNothingHintMessage(final StringBuilder stringBuilder) {
+        return NOTHING;
+    }
+
+    public String appendStrikeHintMessage(final int strike, final StringBuilder stringBuilder) {
+        stringBuilder.append(strike)
+                .append(STRIKE_KOREAN)
+                .append(NEW_LINE);
+
+        return stringBuilder.toString();
+    }
+
+    public String appendBallHintMessage(final int ball, final StringBuilder stringBuilder) {
+        stringBuilder.append(ball)
+                .append(BALL_KOREAN)
+                .append(NEW_LINE);
+
+        return stringBuilder.toString();
     }
 
     public boolean checkAnswer(final String answer, final String guessNumber) {
