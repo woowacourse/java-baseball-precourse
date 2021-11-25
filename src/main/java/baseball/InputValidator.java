@@ -21,4 +21,12 @@ public class InputValidator {
         }
         return true;
     }
+
+    public boolean checkSelectScope(String number) {
+        int numberInt = Integer.parseInt(number);
+        if(numberInt != 1 && numberInt != 2) {
+            return false;
+        }
+        return true;
+    }
 }

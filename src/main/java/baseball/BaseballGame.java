@@ -11,6 +11,38 @@ public class BaseballGame {
         this.playerNumber = playerNumber;
     }
 
+    public boolean isRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String number = Console.readLine();
+        checkAnswerException(number);
+        if(number.equals("1")) {
+            return true;
+        }
+        return false;
+    }
+
+    public void checkAnswerException(String number) {
+        InputValidator inputValidator=new InputValidator();
+        try {
+            if(!inputValidator.isNumber(number) || !inputValidator.checkSelectScope(number)) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e){
+            System.exit(1);
+        }
+    }
+
+    public void play() {
+        while(true) {
+            inputNumber();
+            compareNumber();
+            if(calcStrike() == 3) {
+                System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }
+        }
+    }
+
     public void inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String number = Console.readLine();
