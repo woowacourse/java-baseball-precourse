@@ -24,7 +24,7 @@ public class Parser {
             if ('0' > input.charAt(i) || input.charAt(i) > '9') {
                 throw new IllegalArgumentException();
             }
-            parseInt[i] = Integer.parseInt(input, i);
+            parseInt[i] = input.charAt(i) - '0';
         }
         return parseInt;
     }
