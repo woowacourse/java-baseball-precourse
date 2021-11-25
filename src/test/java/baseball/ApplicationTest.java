@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 class ApplicationTest extends NsTest {
 
-    // @Test
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -27,7 +27,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    // @Test
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
@@ -46,7 +46,7 @@ class ApplicationTest extends NsTest {
         System.out.println("ball : " + result.getBall());
     }
 
-    @Test
+    // @Test
     void 컨버터_입력값_테스트() {
         Converter converter = new Converter();
         converter.convertStringToIntegerList("132");
@@ -61,7 +61,7 @@ class ApplicationTest extends NsTest {
         return givenNumbers;
     }
 
-    // @Override
+    @Override
     public void runMain() {
         Application.main(new String[]{});
     }

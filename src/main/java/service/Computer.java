@@ -15,6 +15,7 @@ public class Computer {
 	public Computer() {
 		init();
 		generateRandomNumber();
+		// generateRandomNumber_test();
 	}
 
 	private void init() {
@@ -26,12 +27,13 @@ public class Computer {
 			int random = Randoms.pickNumberInRange(Constants.START_NUMBER, Constants.END_NUMBER);
 			randomNumberList.add(random);
 		}
+		System.out.println("Computer Generated : " + randomNumberList.toString());
 	}
 
 	private void generateRandomNumber_test() {
-		randomNumberList.add(4);
-		randomNumberList.add(2);
-		randomNumberList.add(5);
+		randomNumberList.add(7);
+		randomNumberList.add(1);
+		randomNumberList.add(3);
 	}
 
 	public CompareResult compareNumbers(List<Integer> givenNumbers) {
