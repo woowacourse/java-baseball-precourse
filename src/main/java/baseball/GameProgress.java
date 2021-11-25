@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameProgress {
     private static void printInputMessage(){
@@ -11,7 +12,12 @@ public class GameProgress {
         return Console.readLine();
     }
 
+    private static int inputAnswerNumber(){
+        return Randoms.pickNumberInRange(0,3);
+    }
+
     private static void gameProgress(){
+        int answer = inputAnswerNumber();
         printInputMessage();
         String inputNumber = inputPlayerNumber();
     }
