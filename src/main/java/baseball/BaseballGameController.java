@@ -19,22 +19,32 @@ public class BaseballGameController {
             + "를 입력하세요.";
     private static final String NUMBER_INPUT_MSG = "숫자를 입력해주세요 : ";
 
+    private final Referee referee;
+    private final AnswerGenerator answerGenerator;
 
-    public void run() {
+    public BaseballGameController(Referee referee, AnswerGenerator answerGenerator) {
+        this.referee = referee;
+        this.answerGenerator = answerGenerator;
+    }
+
+    public void runGame() {
         Command inputCommand;
 
         do {
             runPhase();
-            System.out.println(RESULT_MSG);
-            System.out.println(COMMAND_INPUT_MSG);
+            printEndingMessage();
             inputCommand = Command.findCommandBySymbol(Console.readLine());
         } while (inputCommand == Command.RESTART);
     }
 
+    private void printEndingMessage() {
+        System.out.println(RESULT_MSG);
+        System.out.println(COMMAND_INPUT_MSG);
+    }
+
     private void runPhase() {
         int strikeCount = 0;
-        Referee referee = new Referee();
-        List<Integer> answer = new AnswerGenerator().generate();
+        List<Integer> answer = answerGenerator.generate();
 
         while (strikeCount != COUNT) {
             System.out.print(NUMBER_INPUT_MSG);
