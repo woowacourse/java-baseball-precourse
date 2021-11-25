@@ -13,6 +13,11 @@ public class Application {
             inputNumber = getConsoleInput();
             getResult(targetNumber, inputNumber);
         }
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restart = Console.readLine();
+        validateRestart(restart);
     }
 
     private static void getResult(String targetNumber, String inputNumber) {
@@ -51,6 +56,17 @@ public class Application {
             return true;
         } catch (NumberFormatException e) {
             return false;
+        }
+    }
+
+    private static void validateRestart(String input) throws IllegalArgumentException {
+        if (!isNumeric(input)) {
+            throw new IllegalArgumentException();
+        }
+
+        int i = Integer.parseInt(input);
+        if (i != 1 && i != 2) {
+            throw new IllegalArgumentException();
         }
     }
 }
