@@ -28,4 +28,18 @@ class ValidatorTest {
 		ex = assertThrows(IllegalArgumentException.class, () -> Validator.valid(new int[] {1, 3, 3}));
 		assertEquals("중복된 수가 존재합니다.", ex.getMessage());
 	}
+
+	@Test
+	public void checkSelectValid() throws Exception {
+		// 숫자가 아닌 다른 문자가 포함되있을 경우
+		IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+			() -> Validator.checkSelectValid("김12"));
+		assertEquals("숫자만 입력해주세요.", ex.getMessage());
+
+		// 숫자가 1, 2가 아닌 경우
+		ex = assertThrows(IllegalArgumentException.class,
+			() -> Validator.checkSelectValid("123"));
+		assertEquals("지정된 번호만 입력 가능합니다.", ex.getMessage());
+
+	}
 }
