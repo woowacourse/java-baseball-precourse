@@ -13,12 +13,13 @@ public class Computer {
 
     public void makeThreeDigitNumber() {
         makeEachDigitUsingRandom();
-//        System.out.println("정답 : "+ Integer.toString(answerMadeByComputer[0]) + Integer.toString(answerMadeByComputer[1]) + Integer.toString(answerMadeByComputer[2])); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
+        System.out.println("정답 : "+ Integer.toString(answerMadeByComputer[0]) + Integer.toString(answerMadeByComputer[1]) + Integer.toString(answerMadeByComputer[2])); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
     }
 
     private void makeEachDigitUsingRandom() {
         boolean[] alreadyUse = new boolean[MAX_RANGE + 1];
         int randomNumber;
+
         for (int i = 0; i < NUMBER_LEN; i++) {
             randomNumber = Randoms.pickNumberInRange(MIN_RANGE,MAX_RANGE);
             while (alreadyUse[randomNumber]) {
@@ -37,18 +38,33 @@ public class Computer {
     private Result makeResult() {
         int strikeCnt = 0;
         int ballCnt = 0;
-        for (int i = 0; i < NUMBER_LEN; i++) {
-            if (eachDigitOfGuessNumber[i] == answerMadeByComputer[i]) {
+
+        for (int digitOfGuessNumber = 0; digitOfGuessNumber < NUMBER_LEN; digitOfGuessNumber++) { // 입력값이 245, 222 면 하나씩 확인한다.
+            if (isStrike(digitOfGuessNumber)) {
                 strikeCnt += 1;
                 continue;
             }
-            for (int j = 0; j < NUMBER_LEN; j++) {
-                if (eachDigitOfGuessNumber[i] == answerMadeByComputer[j]) {
-                    ballCnt += 1;
-                }
+            if (isBall(digitOfGuessNumber)) {
+                ballCnt += 1;
             }
         }
         return new Result(strikeCnt, ballCnt);
+    }
+
+    private boolean isStrike(int digitOfGuessNumber) {
+        if (eachDigitOfGuessNumber[digitOfGuessNumber] == answerMadeByComputer[digitOfGuessNumber]) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isBall(int digitOfGuessNumber) {
+        for (int digitOfAnswer = 0; digitOfAnswer < NUMBER_LEN; digitOfAnswer++) {
+            if (eachDigitOfGuessNumber[digitOfGuessNumber] == answerMadeByComputer[digitOfAnswer]) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void putGuessNumberInArray(int guessNumber) {
