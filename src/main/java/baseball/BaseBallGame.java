@@ -26,6 +26,9 @@ public class BaseBallGame {
             answerNumStrArr = makeStringArrayFromInt(answerNum);
 
             play();
+            if(isFinishedGame()) {
+                break;
+            }
         }
     }
 
@@ -140,5 +143,14 @@ public class BaseBallGame {
         if(strike > 0) {
             System.out.println(strike + "스트라이크");
         }
+    }
+
+    private boolean isFinishedGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String str = Console.readLine();
+        if(str.equals("2")) {
+            return true;
+        }
+        return false;
     }
 }
