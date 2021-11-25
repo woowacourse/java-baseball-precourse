@@ -12,6 +12,7 @@ public class Computer {
     public void makeThreeDigitNumber() {
         makeEachDigitUsingRandom();
         verifyEachDigitIsDuplicated();
+        System.out.println("정답 : "+ Integer.toString(firstDigit) + Integer.toString(secondDigit) + Integer.toString(thirdDigit)); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
     }
 
     private void verifyEachDigitIsDuplicated() {
