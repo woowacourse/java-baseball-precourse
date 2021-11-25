@@ -2,13 +2,18 @@ package baseball;
 
 
 import baseball.computer.Computer;
+import baseball.user.User;
 
 public class Application {
     public static void main(String[] args) {
         //computer 클래스 생성
         Computer computer= new Computer();
-        //맞춰야 하는 target 숫자 생성
 
+        User user = new User();
+        user.getInput();
+        System.out.println(user.input[0]);
+        System.out.println(user.input[1]);
+        System.out.println(user.input[2]);
 
     }
 }
