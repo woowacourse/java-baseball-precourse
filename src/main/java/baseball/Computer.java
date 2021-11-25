@@ -14,13 +14,17 @@ public class Computer {
         int i = 0;
         do {
             int newNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (Arrays.stream(computerNumber).anyMatch(k -> k == newNumber)) {
+            if (isOverlap(computerNumber, newNumber)) {
                 continue;
             }
             computerNumber[i] = newNumber;
             i = i + 1;
         } while (i < LENGTH_NUMBER);
 
-        return Arrays.toString(computerNumber).replaceAll("[^0-9]","");
+        return Arrays.toString(computerNumber).replaceAll("[^0-9]", "");
+    }
+
+    private static boolean isOverlap(int[] computerNumber, int newNumber) {
+        return Arrays.stream(computerNumber).anyMatch(k -> k == newNumber);
     }
 }
