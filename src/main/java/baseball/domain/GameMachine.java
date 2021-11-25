@@ -20,7 +20,6 @@ public class GameMachine {
     }
 
     private void start(BaseballNumbers baseballNumbers) {
-        System.out.println(baseballNumbers.getNumbers());
         while (true) {
             List<Integer> inputNumbers = inputView.getInputNumbers();
             BaseballState baseballState = baseballReferee.referee(baseballNumbers.getNumbers(), inputNumbers);
@@ -29,8 +28,15 @@ public class GameMachine {
 
             if (baseballState.isSuccess()) {
                 System.out.println(END_MESSAGE);
+                restart();
                 break;
             }
+        }
+    }
+
+    private void restart() {
+        if (inputView.isRestart()) {
+            run();
         }
     }
 }
