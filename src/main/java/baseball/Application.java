@@ -15,12 +15,12 @@ public class Application {
         System.out.println(result);
     }
 
-    private static BaseBallResult calculateResult(String targetNumber, String inputNumber) {
+    private static BaseBallResult calculateResult(String target, String input) {
         BaseBallResult result = new BaseBallResult();
-        for (int i = 0; i < inputNumber.length(); i++) {
-            if (inputNumber.charAt(i) == targetNumber.charAt(i)) {
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == target.charAt(i)) {
                 result.strikeCount++;
-            } else if (targetNumber.contains(String.valueOf(inputNumber.charAt(i)))) {
+            } else if (target.contains(String.valueOf(input.charAt(i)))) {
                 result.ballCount++;
             }
         }
