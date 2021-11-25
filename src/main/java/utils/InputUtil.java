@@ -8,6 +8,7 @@ import java.util.List;
 
 public class InputUtil {
 
+
     public static List<Integer> getPlayerAnswer() {
         String answerStr = Console.readLine();
 
@@ -32,7 +33,7 @@ public class InputUtil {
 
     private static void checkInvalidDigit(char digit) {
         if (digit < '1' || digit > '9') {
-            throw new IllegalArgumentException(Message.INPUT_ERROR_INVALID_DIGIT);
+            throw new IllegalArgumentException(Message.INPUT_ERROR_INVALID_INPUT);
         }
     }
 
@@ -45,6 +46,4 @@ public class InputUtil {
             check[digit] = true;
         }
     }
-
-
 }
