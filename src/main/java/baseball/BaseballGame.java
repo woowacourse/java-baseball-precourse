@@ -23,12 +23,8 @@ public class BaseballGame {
 
     public void checkAnswerException(String number) {
         InputValidator inputValidator=new InputValidator();
-        try {
-            if(!inputValidator.isNumber(number) || !inputValidator.checkSelectScope(number)) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e){
-            System.exit(1);
+        if(!inputValidator.isNumber(number) || !inputValidator.checkSelectScope(number)) {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -52,13 +48,9 @@ public class BaseballGame {
 
     public void checkNumberException(String number) {
         InputValidator inputValidator=new InputValidator();
-        try {
-            if(!inputValidator.isNumber(number) || !inputValidator.checkLength(number,3)
+        if(!inputValidator.isNumber(number) || !inputValidator.checkLength(number,computerNumber.length())
                 || !inputValidator.checkNumberScope(number)) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e){
-            System.exit(1);
+            throw new IllegalArgumentException();
         }
     }
 
