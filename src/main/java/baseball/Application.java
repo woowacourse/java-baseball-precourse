@@ -7,7 +7,7 @@ public class Application {
 
 	public static void main(String[] args) {
 
-		while (true) {
+		do {
 
 			String answer = Random.createAnswer();
 
@@ -15,10 +15,7 @@ public class Application {
 
 			System.out.println(Message.RESTART_OR_EXIT);
 
-			if (selectRestartOrExit()) {
-				break;
-			}
-		}
+		} while (selectRestartOrExit());
 
 	}
 
@@ -51,7 +48,7 @@ public class Application {
 
 		verifyInput(restartOrExit);
 
-		if (restartOrExit == 2) {
+		if (restartOrExit == 1) {
 			return true;
 		}
 
