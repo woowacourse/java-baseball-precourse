@@ -27,7 +27,7 @@ public class Result {
 
     public String makeResultSentence() {
         if (strikeCnt == 3) {
-            return "3스트라이크";
+            return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
         if (strikeCnt == 0 & ballCnt == 0) {
             return "낫싱";

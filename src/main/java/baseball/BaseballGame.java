@@ -8,8 +8,13 @@ public class BaseballGame {
     public static Player player = new Player();
 
     public static void gameStart() {
-        int continueGame = playGameUntilGetAnswer(); // 1이면 게임을 계속한다. 2면 그만한다.
-        System.out.println("continueGame = " + continueGame);
+        while (true) {
+            int continueGame = playGameUntilGetAnswer(); // 1이면 게임을 계속한다. 2면 그만한다.
+            if (continueGame == 2) {
+                break;
+            }
+        }
+
 
     }
 
