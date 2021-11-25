@@ -19,13 +19,18 @@ public class BaseBallGame {
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String GAME_CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String REPLAYING_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private final List<Integer> targetNumber;
     private final Player player;
+    private List<Integer> targetNumber;
 
     public BaseBallGame() {
-        targetNumber = getTargetNumber();
         player = new Player();
         startGame();
+    }
+
+    private void startGame() {
+        targetNumber = getTargetNumber();
+        playGame();
+        checkReplaying();
     }
 
     private List<Integer> getTargetNumber() {
@@ -34,11 +39,6 @@ public class BaseBallGame {
             result.add(pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
         }
         return new ArrayList<>(result);
-    }
-
-    private void startGame() {
-        playGame();
-        checkReplaying();
     }
 
     private void playGame() {
@@ -50,16 +50,16 @@ public class BaseBallGame {
         printClearMessage();
     }
 
+    private boolean isThreeStrike(List<Integer> playerNumber) {
+        return targetNumber.equals(playerNumber);
+    }
+
     private void printClearMessage() {
         System.out.println(NUMBER_LENGTH + STRIKE_MESSAGE);
         System.out.println(GAME_CLEAR_MESSAGE);
         System.out.println(REPLAYING_OR_END_MESSAGE);
     }
-
-    private boolean isThreeStrike(List<Integer> playerNumber) {
-        return targetNumber.equals(playerNumber);
-    }
-
+    
     private void checkBallAndStrike(List<Integer> playerNumber) {
         int strike = countStrike(playerNumber);
         int ball = countBall(playerNumber, strike);
@@ -107,7 +107,7 @@ public class BaseBallGame {
     private void checkReplaying() {
         int replayingOrEndNumber = player.getReplayingOrEndNumber();
         if (replayingOrEndNumber == REPLAYING_NUMBER) {
-            new BaseBallGame();
+            startGame();
         }
     }
 }
