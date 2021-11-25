@@ -8,20 +8,14 @@ import java.util.Set;
 
 public class AnswerGenerator {
 
-    private final int startInclusive;
-    private final int endInclusive;
-    private final int count;
-
-    public AnswerGenerator(int startInclusive, int endInclusive, int count) {
-        this.startInclusive = startInclusive;
-        this.endInclusive = endInclusive;
-        this.count = count;
-    }
+    private static final int START_INCLUSIVE = Rule.START_INCLUSIVE.value();
+    private static final int END_INCLUSIVE = Rule.END_INCLUSIVE.value();
+    private static final int COUNT = Rule.COUNT.value();
 
     public List<Integer> generate() {
         Set<Integer> result = new HashSet<>();
-        while (result.size() < count) {
-            result.add(Randoms.pickNumberInRange(startInclusive, endInclusive));
+        while (result.size() < COUNT) {
+            result.add(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
         }
         return new ArrayList<>(result);
     }

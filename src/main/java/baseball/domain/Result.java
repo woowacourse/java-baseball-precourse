@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Result {
 
+    private static final String NEGATIVE_NUMBER_ERROR_MSG = "Count cannot be a negative number";
+
     private final int strikeCount;
     private final int ballCount;
 
@@ -16,8 +18,12 @@ public class Result {
 
     private void validatePositive(int count) {
         if (count < 0) {
-            throw new IllegalArgumentException("count cannot be negative");
+            throw new IllegalArgumentException(NEGATIVE_NUMBER_ERROR_MSG);
         }
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
     }
 
     @Override
@@ -52,9 +58,5 @@ public class Result {
         }
 
         return ballCount + "볼 " + strikeCount + "스트라이크";
-    }
-
-    public int getStrikeCount() {
-        return strikeCount;
     }
 }

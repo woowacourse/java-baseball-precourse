@@ -14,7 +14,7 @@ class GuessTest {
     @Test
     void input_must_be_a_numeric_value() {
         assertThatThrownBy(() -> {
-            new Guess("a12", startInclusive, endInclusive, count);
+            new Guess("a12");
         }).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("numeric");
     }
@@ -22,7 +22,7 @@ class GuessTest {
     @Test
     void all_digits_must_be_unique() {
         assertThatThrownBy(() -> {
-            new Guess("111", startInclusive, endInclusive, count);
+            new Guess("111");
         }).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("unique");
     }
@@ -30,7 +30,7 @@ class GuessTest {
     @Test
     void test_validate_range() {
         assertThatThrownBy(() -> {
-            new Guess("901", startInclusive, endInclusive, count);
+            new Guess("901");
         }).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("less than");
     }
@@ -38,7 +38,7 @@ class GuessTest {
     @Test
     void test_validate_size() {
         assertThatThrownBy(() -> {
-            new Guess("12345", startInclusive, endInclusive, count);
+            new Guess("12345");
         }).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("length");
     }

@@ -6,15 +6,20 @@ import java.util.List;
 
 public class Guess {
 
-    private final int startInclusive;
-    private final int endInclusive;
-    private final int count;
+    private static final int START_INCLUSIVE = Rule.START_INCLUSIVE.value();
+    private static final int END_INCLUSIVE = Rule.END_INCLUSIVE.value();
+    private static final int COUNT = Rule.COUNT.value();
+
+    private static final String SIZE_ERROR_MSG = "The length of the user input must be " + COUNT;
+    private static final String NOT_NUMERIC_ERROR_MSG = "User input must be a numeric value";
+    private static final String DUPLICATE_ERROR_MSG = "All digits must be unique";
+    private static final String RANGE_ERROR_MSG =
+        "All digits must not be less than " + START_INCLUSIVE
+            + " and must not be greater than " + END_INCLUSIVE;
+
     private final List<Integer> numbers;
 
-    public Guess(String userInput, int startInclusive, int endInclusive, int count) {
-        this.startInclusive = startInclusive;
-        this.endInclusive = endInclusive;
-        this.count = count;
+    public Guess(String userInput) {
         validateUserInput(userInput);
         this.numbers = toList(userInput);
     }
@@ -35,15 +40,15 @@ public class Guess {
     }
 
     private void validateSize(String userInput) {
-        if (userInput.length() != count) {
-            throw new IllegalArgumentException("The length of the user input must be " + count);
+        if (userInput.length() != COUNT) {
+            throw new IllegalArgumentException(SIZE_ERROR_MSG);
         }
     }
 
     private void validateIsNumericValue(String userInput) {
         for (char c : userInput.toCharArray()) {
             if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException("User input should be a numeric value");
+                throw new IllegalArgumentException(NOT_NUMERIC_ERROR_MSG);
             }
         }
     }
@@ -54,17 +59,15 @@ public class Guess {
             set.add(userInput.charAt(i));
         }
         if (set.size() != userInput.length()) {
-            throw new IllegalArgumentException("All digits should be unique");
+            throw new IllegalArgumentException(DUPLICATE_ERROR_MSG);
         }
     }
 
     private void validateRange(String userInput) {
         for (char c : userInput.toCharArray()) {
             int digit = Character.getNumericValue(c);
-            if (digit < 1 || digit > 9) {
-                throw new IllegalArgumentException(
-                    "All digits should not be less than " + startInclusive
-                        + " and should not be greater than " + endInclusive);
+            if (digit < START_INCLUSIVE || digit > END_INCLUSIVE) {
+                throw new IllegalArgumentException(RANGE_ERROR_MSG);
             }
         }
     }

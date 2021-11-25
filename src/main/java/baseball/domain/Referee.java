@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Referee {
 
+    private static final String DIFF_SIZE_ERROR_MSG = "The answer and guess must be the same size";
+
     public Result judge(final List<Integer> answer, final List<Integer> guess) {
         validateSameSize(answer, guess);
         int strikeCount = countStrike(answer, guess);
@@ -13,7 +15,7 @@ public class Referee {
 
     private void validateSameSize(List<Integer> answer, List<Integer> guess) {
         if (answer.size() != guess.size()) {
-            throw new IllegalArgumentException("The answer and guess should be the same size");
+            throw new IllegalArgumentException(DIFF_SIZE_ERROR_MSG);
         }
     }
 

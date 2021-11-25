@@ -8,14 +8,10 @@ import org.junit.jupiter.api.Test;
 
 class AnswerGeneratorTest {
 
-    private final int startInclusive = 1;
-    private final int endInclusive = 9;
-    private final int count = 3;
-
     @Test
     void generate_valid_size_test() {
         //given
-        AnswerGenerator answerGenerator = new AnswerGenerator(startInclusive, endInclusive, count);
+        AnswerGenerator answerGenerator = new AnswerGenerator();
 
         //when
         List<Integer> answer = answerGenerator.generate();
