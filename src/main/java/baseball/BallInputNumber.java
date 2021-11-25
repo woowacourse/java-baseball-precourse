@@ -10,10 +10,6 @@ import java.util.List;
  * 같은 숫자가 있거나, 올바르지 않은 숫자의 경우 예외를 발생시킴.
  */
 public class BallInputNumber {
-    static final int NUMBER_LENGTH = 3;
-    static final int RANGE_START = 1;
-    static final int RANGE_END = 9;
-
     private List<Integer> clientNumber;
 
     public BallInputNumber() {
@@ -37,6 +33,4 @@ public class BallInputNumber {
         }
         return inputNumberList;
     }
-
-
 }
