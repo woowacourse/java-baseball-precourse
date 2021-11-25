@@ -35,14 +35,16 @@ public class BaseBallGame {
             if(!checkRangeOfGameNum(inputNum)) {
                 throw new IllegalArgumentException();
             }
-
+            if(isAnswer()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }
             inputNumStrArr = makeStringArrayFromInt(inputNum);
 
             initializeScore();
             calculateBall();
-            System.out.println(ball + "볼");
             calculateStrike();
-            System.out.println(strike + "스트라이크");
+            printScore();
         }
     }
 
@@ -52,7 +54,7 @@ public class BaseBallGame {
     }
 
     private void makeAnswerNum() {
-        int randomNum = 0;
+        int randomNum;
         while (true) {
             randomNum = Randoms.pickNumberInRange(123, 987);
             System.out.println("random " + randomNum);
@@ -72,11 +74,11 @@ public class BaseBallGame {
             return false;
         }
 
-        Set set = new HashSet();
+        Set<Character> s = new HashSet<>();
         for(int i = 0; i < str.length(); i++) {
-            set.add(str.charAt(i));
+            s.add(str.charAt(i));
         }
-        if(set.size() != 3) {
+        if(s.size() != 3) {
             return false;
         }
 
@@ -116,5 +118,27 @@ public class BaseBallGame {
             }
         }
         return false;
+    }
+
+    private boolean isAnswer() {
+        return answerNum == inputNum;
+    }
+
+    private void printScore() {
+        if(ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if(ball > 0 && strike > 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+            return;
+        }
+        if(ball > 0) {
+            System.out.println(ball + "볼");
+            return;
+        }
+        if(strike > 0) {
+            System.out.println(strike + "스트라이크");
+        }
     }
 }
