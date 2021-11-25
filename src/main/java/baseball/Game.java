@@ -38,6 +38,22 @@ public class Game {
         return result.isFinish(NUMBER_LENGTH);
     }
 
+    public boolean askRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String input = Console.readLine();
+        if (!input.matches("[1-2]")) {
+            throw new IllegalArgumentException();
+        }
+
+        if (input.equals("1")) {
+            init();
+            return true;
+        }
+
+        return false;
+    }
+
     private void takeInput() {
         System.out.print("숫자를 입력해주세요 : ");
 
