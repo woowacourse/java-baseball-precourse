@@ -133,5 +133,6 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 
 ---
 ## 💻 구현할 기능 목록  
--  컴퓨터가 사용할 랜덤한 3자리 수를 구하는 클래스 구현(class name: RandomNumber, branch: feature/random-number)
-- 컴퓨터 플레이어 정보에 대한 클래스 구현(class name: ComputerPlayer, barnch: feature/player-computer)  
+- 컴퓨터가 사용할 랜덤한 3자리 수를 구하는 클래스 구현(class name: RandomNumber, branch: feature/random-number)
+- 컴퓨터 플레이어 정보에 대한 클래스 구현(class name: ComputerPlayer, branch: feature/player-computer)  
+- 사람 플레이어 정보에 대한 클래스 구현(class name: HumanPlayer, branch: feature/human-player)
