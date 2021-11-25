@@ -3,6 +3,8 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.*;
 import static camp.nextstep.edu.missionutils.Randoms.*;
 
+import java.util.ArrayList;
+
 public class BaseballGame {
 
 	static final int START_NUMBER = 1;
@@ -11,11 +13,27 @@ public class BaseballGame {
 
 	public static boolean play() {
 		String answer = makeAnswer();
-		String input = readLine();
-		try {
-			checkInput(input);
-		} catch (Exception execption) {
-			System.exit(0);
+		// log
+		System.out.println(answer);
+		while (true) {
+			System.out.print("숫자를 입력해주세요 : ");
+			String input = readLine();
+			try {
+				checkInput(input);
+			} catch (Exception execption) {
+				System.exit(0);
+			}
+			ArrayList<Integer> ballAndStrikeCount = new ArrayList<Integer>(countBallAndStrike(answer, input));
+			int ballCount = ballAndStrikeCount.get(0);
+			int strikeCount = ballAndStrikeCount.get(1);
+			if (strikeCount == ANSWER_LENGTH) {
+				System.out.println(ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임종료");
+				break;
+			} else if (ballCount == 0 && strikeCount == 0) {
+				System.out.println("낫싱");
+			} else {
+				System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+			}
 		}
 		return false;
 	}
@@ -46,4 +64,28 @@ public class BaseballGame {
 			}
 		}
 	}
+
+	public static ArrayList<Integer> countBallAndStrike(String answer, String input) {
+		ArrayList<Integer> ballAndStrikeCount = new ArrayList<Integer>();
+		int ballCount = 0;
+		int strikeCount = 0;
+		int[] answerNumberCount = new int[END_NUMBER - START_NUMBER + 1];
+		for (int i = 0; i < ANSWER_LENGTH; i++) {
+			int answerNumber = answer.charAt(i) - '0';
+			answerNumberCount[answerNumber - START_NUMBER]++;
+		}
+		for (int i = 0; i < ANSWER_LENGTH; i++) {
+			int answerNumber = answer.charAt(i) - '0';
+			int inputNumber = input.charAt(i) - '0';
+			if (answerNumber == inputNumber) {
+				strikeCount++;
+			} else if (answerNumberCount[inputNumber - START_NUMBER] > 0) {
+				ballCount++;
+			}
+		}
+		ballAndStrikeCount.add(ballCount);
+		ballAndStrikeCount.add(strikeCount);
+		return ballAndStrikeCount;
+	}
+
 }
