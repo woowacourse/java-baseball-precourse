@@ -20,21 +20,21 @@ public class BallTest {
     }
 
     @Test
-    void 스트라이크_1() {
+    void 결과_1스트라이크() {
         Ball myBall = new Ball(4, 1);
         PlayType playType = myBall.play(computerBall);
         assertThat(myBall.play(computerBall)).isEqualTo(PlayType.STRIKE);
     }
 
     @Test
-    void 볼_1() {
+    void 결과_1볼() {
         Ball myBall = new Ball(4, 2);
         PlayType playType = myBall.play(computerBall);
         assertThat(myBall.play(computerBall)).isEqualTo(PlayType.BALL);
     }
 
     @Test
-    void 낫싱_1() {
+    void 결과_낫싱() {
         Ball myBall = new Ball(5, 3);
         PlayType playType = myBall.play(computerBall);
         assertThat(myBall.play(computerBall)).isEqualTo(PlayType.NOTHING);

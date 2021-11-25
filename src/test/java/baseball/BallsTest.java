@@ -18,23 +18,24 @@ public class BallsTest {
     }
 
     @Test
-    void 스트라이크_1() {
+    void 결과_1스트라이크() {
         Ball myBall = new Ball(4, 1);
         PlayType playType = computerBalls.play(myBall);
         assertThat(playType).isEqualTo(PlayType.STRIKE);
     }
 
     @Test
-    void 볼_1() {
+    void 결과_1볼() {
         Ball myBall = new Ball(4, 2);
         PlayType playType = computerBalls.play(myBall);
         assertThat(playType).isEqualTo(PlayType.BALL);
     }
 
     @Test
-    void 낫싱() {
+    void 결과_낫싱() {
         Ball myBall = new Ball(5, 3);
         PlayType playType = computerBalls.play(myBall);
         assertThat(playType).isEqualTo(PlayType.NOTHING);
     }
+
 }
