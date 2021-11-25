@@ -37,7 +37,7 @@ class RandomGeneratorTest {
         showArray(arr3);
 
         // then
-        assertThat(arr2).isNotEqualTo(arr2);
+        assertThat(arr1).isNotEqualTo(arr2);
         assertThat(arr2).containsExactly(arr3);
     }
 
