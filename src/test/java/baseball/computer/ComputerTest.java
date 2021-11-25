@@ -16,7 +16,6 @@ public class ComputerTest {
     void checkTarget() {
         //타겟 넘버 생성
         Computer computer = new Computer();
-        computer.makeTarget();
 
         //서로 다른 수 확인을 위한 set 자료구조 생성
         Set<Integer> set = new HashSet<>();
@@ -30,7 +29,7 @@ public class ComputerTest {
         //타켓 넘버들이 1~9사이의 숫자인지 확인
         Arrays.stream(computer.target).forEach(number -> {
             assertThat(number)
-                    .isGreaterThan(1)
+                    .isGreaterThanOrEqualTo(1)
                     .isLessThanOrEqualTo(9);
         });
 

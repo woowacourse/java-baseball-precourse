@@ -6,9 +6,8 @@ public class Computer {
     //맞춰야 할 숫자
     public Integer[] target = new Integer[3];
 
-    //target 숫자를 만드는 함수
-    public void makeTarget(){
-
+    //Computer 인스턴스 생성시 target 만들어짐
+    public Computer(){
         target[0]=pickNumberInRange(1,9);
 
         for (int i=1;i<3;i++){
@@ -20,6 +19,5 @@ public class Computer {
             }
             target[i]=number;
         }
-
     }
 }
