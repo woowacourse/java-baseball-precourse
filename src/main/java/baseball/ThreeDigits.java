@@ -13,9 +13,6 @@ public class ThreeDigits {
     public void genThreeRandomDigits() {
         Random random = new Random();
         boolean [] IsChecked = new boolean[10];
-        for (int i = 1; i <= 9; i++) {
-            IsChecked[i] = false;
-        }
 
         String ThreeRandomDigits = "";
         int count = 0;
@@ -29,5 +26,16 @@ public class ThreeDigits {
         }
 
         this.threeDigits = ThreeRandomDigits;
+    }
+
+    public int checkStrike(int numberInt) {
+        String numberStr = String.valueOf(numberInt);
+        int strikeCount = 0;
+        for (int i = 0; i < this.threeDigits.length(); i++) {
+            if (numberStr.charAt(i) == this.threeDigits.charAt(i)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
     }
 }
