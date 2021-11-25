@@ -1,6 +1,8 @@
 package baseball;
 
 import baseball.domain.BaseballGame;
+import baseball.util.Converter;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -10,6 +12,8 @@ public class Application {
 		BaseballGame baseballGame = new BaseballGame();
 		baseballGame.init();
 		OutputView.printInputMessage();
-		baseballGame.offer(Console.readLine());
+		String playerInput = InputView.enterNum();
+		int[] playerNum = baseballGame.validCheck(playerInput);
+		baseballGame.offer(playerNum);
 	}
 }
