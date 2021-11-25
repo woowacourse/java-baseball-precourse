@@ -11,6 +11,7 @@ public class BaseBall {
 
     public void playGame(){
         computer.decideRandomNumber();
+        int predict = player.predictNumber();
 
     }
 }
