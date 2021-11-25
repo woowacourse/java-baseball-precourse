@@ -50,10 +50,10 @@ public class BaseballGame {
 
         String answer = user.connectEachAnswerNumbers();
         user.printInputMessage();
-        String guessNumber = user.inputPlayerNumber();
+        String guessAnswer = user.inputPlayerNumber();
 
-        while (user.checkAnswer(answer, guessNumber)) {
-            final Map<String, Integer> strikeBallCount = user.countStrikeBallNumber(answer, guessNumber);
+        while (!user.checkAnswer(answer, guessAnswer)) {
+            final Map<String, Integer> strikeBallCount = user.countStrikeBallNumber(answer, guessAnswer);
 
             int strikeCount = strikeBallCount.get(STRIKE_ENGLISH);
             int ballCount = strikeBallCount.get(BALL_ENGLISH);
@@ -62,7 +62,7 @@ public class BaseballGame {
             user.printHintMessage(hitMessage);
 
             user.printInputMessage();
-            guessNumber = user.inputPlayerNumber();
+            guessAnswer = user.inputPlayerNumber();
         }
 
         printCorrectAnswer();

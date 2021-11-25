@@ -28,8 +28,13 @@ public class User {
         for (int i = 0; i < answer.length(); i++) {
             int strikeBall = decideStrikeBall(answer, i, guessNumber);
 
-            strike += addStrikeBallCount(strike, ball, strikeBall);
-            ball += addStrikeBallCount(strike, ball, strikeBall);
+            if (strikeBall == 1) {
+                strike += addStrikeBallCount(strike, ball, strikeBall);
+            }
+
+            if (strikeBall == 2) {
+                ball += addStrikeBallCount(strike, ball, strikeBall);
+            }
         }
 
         strikeBallCount.put(STRIKE_ENGLISH, strike);
@@ -118,8 +123,8 @@ public class User {
         return stringBuilder.toString();
     }
 
-    public boolean checkAnswer(final String answer, final String guessNumber) {
-        return answer.equals(guessNumber);
+    public boolean checkAnswer(final String answer, final String guessAnswer) {
+        return answer.equals(guessAnswer);
     }
 
     public void printInputMessage() {
