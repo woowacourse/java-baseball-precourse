@@ -11,15 +11,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BallsTest {
 
     Balls computerBalls;
+
     @BeforeEach
     void setUp() {
         computerBalls = new Balls(4, 6, 8);
     }
 
     @Test
-    void 스트라이크1() {
+    void 스트라이크_1() {
         Ball myBall = new Ball(4, 0);
         PlayType playType = computerBalls.play(myBall);
         assertThat(playType).isEqualTo(PlayType.STRIKE);
+    }
+
+    @Test
+    void 볼_1() {
+        Ball myBall = new Ball(4, 1);
+        PlayType playType = computerBalls.play(myBall);
+        assertThat(playType).isEqualTo(PlayType.BALL);
     }
 }
