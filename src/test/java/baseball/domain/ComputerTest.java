@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import baseball.utils.ValidationUtils;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerTest {
 

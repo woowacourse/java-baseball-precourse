@@ -4,8 +4,6 @@ import static baseball.constants.GameConstants.Digit.*;
 import static baseball.constants.GameConstants.Terminology.*;
 
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -43,18 +41,13 @@ public class Game {
 	}
 
 	public void runComparison() {
-		List<Integer> playerNumberList = player.getNumberList();
-		List<Integer> computerNumberList = computer.getNumberList();
 		resetGameResult();
 
-		Map<Integer, Integer> occurrences = new TreeMap<>();
-		for (int i = 0; i < computerNumberList.size(); i++)
-			occurrences.put(computerNumberList.get(i), i);
-
-		for (int position = 0; position < playerNumberList.size(); position++) {
-			int playerNumber = playerNumberList.get(position);
-			boolean isNumberCorrect = occurrences.containsKey(playerNumber);
-			boolean isPositionCorrect = isNumberCorrect && occurrences.get(playerNumber).equals(position);
+		for (int position = 0; position < player.getNumberList().size(); position++) {
+			int playerNumber = player.getNumberList().get(position);
+			boolean isNumberCorrect = computer.getNumberOccurrences().containsKey(playerNumber);
+			boolean isPositionCorrect =
+				isNumberCorrect && computer.getNumberOccurrences().get(playerNumber).equals(position);
 			if (isNumberCorrect && isPositionCorrect)
 				this.strike += 1;
 			if (isNumberCorrect && !isPositionCorrect)
