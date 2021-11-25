@@ -25,6 +25,13 @@ public class BaseballGame {
 			String userInput = Console.readLine();
 			Validation.checkInput(userInput);
 			hint.countHint(answer, userInput);
+			hint.printResult();
+
+			if (hint.getStrike() == Rules.NUMBER_LENGTH) {
+				System.out.println(Message.GAME_CLEAR);
+			}
+
+
 		}
 	}
 }
