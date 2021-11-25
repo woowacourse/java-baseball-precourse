@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 

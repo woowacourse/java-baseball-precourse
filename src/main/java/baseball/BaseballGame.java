@@ -1,7 +1,6 @@
 package baseball;
 
 import static util.GameConstant.*;
-import static util.GameConstant.ASK_RESTART_OR_STOP;
 
 public class BaseballGame {
     private GamePlayer gamePlayer;
