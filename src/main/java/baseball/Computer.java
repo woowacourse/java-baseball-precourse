@@ -3,43 +3,38 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
-    private int firstDigit;
-    private int secondDigit;
-    private int thirdDigit;
+
     int[] eachDigitOfGuessNumber = new int[3];
     int[] answer = new int[3];
 
     public void makeThreeDigitNumber() {
         makeEachDigitUsingRandom();
         verifyEachDigitIsDuplicated();
-        System.out.println("정답 : "+ Integer.toString(firstDigit) + Integer.toString(secondDigit) + Integer.toString(thirdDigit)); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
+//        System.out.println("정답 : "+ Integer.toString(firstDigit) + Integer.toString(secondDigit) + Integer.toString(thirdDigit)); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
     }
 
     private void verifyEachDigitIsDuplicated() {
         verifySecondDigitIsDuplicated();
         verifyThirdDigitIsDuplicated();
-        answer[0] = firstDigit;
-        answer[1] = secondDigit;
-        answer[2] = thirdDigit;
     }
 
     private void verifyThirdDigitIsDuplicated() {
-        while (thirdDigit == firstDigit || thirdDigit == secondDigit) {
-            thirdDigit = Randoms.pickNumberInRange(1, 9);
+        while (answer[2] == answer[0] || answer[2] == answer[1]) {
+            answer[2] = Randoms.pickNumberInRange(1, 9);
         }
 
     }
 
     private void verifySecondDigitIsDuplicated() {
-        while (secondDigit == firstDigit) {
-            this.secondDigit = Randoms.pickNumberInRange(1, 9);
+        while (answer[1] == answer[0]) {
+            this.answer[1] = Randoms.pickNumberInRange(1, 9);
         }
     }
 
     private void makeEachDigitUsingRandom() {
-        this.firstDigit = Randoms.pickNumberInRange(1, 9);
-        this.secondDigit = Randoms.pickNumberInRange(1, 9);
-        this.thirdDigit = Randoms.pickNumberInRange(1, 9);
+        answer[0] = Randoms.pickNumberInRange(1, 9);
+        answer[1] = Randoms.pickNumberInRange(1, 9);
+        answer[2] = Randoms.pickNumberInRange(1, 9);
     }
 
     public Result compareGuessNumberAndAnswer(int guessNumber) {

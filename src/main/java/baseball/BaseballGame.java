@@ -14,8 +14,6 @@ public class BaseballGame {
                 break;
             }
         }
-
-
     }
 
     private static int playGameUntilGetAnswer() {
