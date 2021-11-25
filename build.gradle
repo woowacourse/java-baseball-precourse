@@ -1,3 +1,21 @@
+// C.2.1. 인코딩 지정
+// java plugin의 속성에서 인코딩을 지정 -> Settings-File Encodings에서 UTF-8 설정
+
+plugins {
+    // C.2.2. .editorconfig 플러그인 설정
+    id 'org.ec4j.editorconfig' version '0.0.3'
+    // C.2.3. Checkstyle 플러그인 설정
+    id 'checkstyle'
+}
+
+// C.2.3. Checkstyle 플러그인 설정
+checkstyle {
+    maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail을 내고 싶다면 이 선언을 추가한다.
+    configFile = file("${rootDir}/naver-chestyle-rules.xml")
+    configProperties = ["suppressionFile": "${rootDir}/naver-checkstyle-suppressions.xml"]
+    toolVersion = "8.24"  // checkstyle 버전 8.24 이상 선언
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
@@ -16,3 +34,11 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+// 위에 다가 놓으면 build error남
+// C.2.2. .editorconfig 플러그인 설정
+editorconfig {
+    excludes = ['build']
+}
+
+check.dependsOn editorconfigCheck
