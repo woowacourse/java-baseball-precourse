@@ -1,5 +1,6 @@
 package controller;
 
+import domain.Hint;
 import domain.Numbers;
 import domain.TargetNumbers;
 import view.InputView;
@@ -22,7 +23,9 @@ public class Game {
 		String userInput = getNumberInput();
 		Numbers numbers = new Numbers(userInput);
 
-		targetNumbers.compare(numbers);
+		Hint hint = targetNumbers.compare(numbers);
+
+		OutputView.printHint(hint);
 	}
 
 }

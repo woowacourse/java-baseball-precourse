@@ -23,7 +23,7 @@ public class TargetNumbers extends Numbers {
 		return generatedNumbers;
 	}
 
-	public void compare(Numbers numbers) {
+	public Hint compare(Numbers numbers) {
 		int ballCount = 0, strikeCount = 0;
 
 		for (int i = 0; i < NUMBERS_SIZE; i++) {
@@ -41,7 +41,7 @@ public class TargetNumbers extends Numbers {
 			ballCount++;
 		}
 
-		System.out.println(ballCount + "볼 " + strikeCount + "스트라이크"); // TODO: Hint 클래스 정의하고 객체로 반환하도록 변경해야함
+		return new Hint(ballCount, strikeCount);
 	}
 
 }
