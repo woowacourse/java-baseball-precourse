@@ -12,6 +12,7 @@ public class View {
 	private static final String IS_BALL = "볼";
 	private static final String IS_STRIKE = "스트라이크";
 	private static final String IS_NOTHING = "낫싱";
+	private static final String GAME_RESTART_OR_NOT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 	public static void printNumberInputMessage() {
 		System.out.print(NUMBER_INPUT);
@@ -44,5 +45,14 @@ public class View {
 			return;
 		}
 		System.out.println(String.valueOf(ball) + IS_BALL + " " + String.valueOf(strike) + IS_STRIKE);
+	}
+
+	public static void printGameRestartMessage() {
+		System.out.println(GAME_RESTART_OR_NOT);
+	}
+
+	public static int inputGameRestartOrNot() {
+		String inputGameRestart = Console.readLine();
+		return Integer.parseInt(inputGameRestart);
 	}
 }
