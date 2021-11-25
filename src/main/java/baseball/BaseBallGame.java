@@ -67,7 +67,7 @@ public class BaseBallGame {
     }
 
     private int countStrike(List<Integer> playerNumber) {
-        int strikes = (int) IntStream.range(0, NUMBER_LENGTH - 1)
+        int strikes = (int) IntStream.range(0, NUMBER_LENGTH)
                 .filter(index -> targetNumber.get(index).equals(playerNumber.get(index)))
                 .count();
         return strikes;
