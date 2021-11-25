@@ -22,7 +22,6 @@ public class Player {
             throw new IllegalArgumentException("세 자리 정수를 입력하세요.");
         }
     }
-
     private void inputValue() {
         System.out.print("숫자를 입력해주세요 : ");
         this.guessNumber = Console.readLine();

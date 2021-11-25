@@ -41,16 +41,9 @@ public class Computer {
         this.thirdDigit = Randoms.pickNumberInRange(1, 9);
     }
 
-    public void compareGuessNumberAndAnswer(int guessNumber) {
-
-        System.out.println("guessNumber = " + guessNumber);
-        System.out.println("answer = " + answer[0]+answer[1]+answer[2]);
+    public Result compareGuessNumberAndAnswer(int guessNumber) {
         putGuessNumberInArray(guessNumber);
-        Result result = makeResult();
-
-        System.out.println("strikeCnt = " + result.getStrikeCnt());
-        System.out.println("ballCnt = " + result.getBallCnt());
-
+        return makeResult();
     }
 
     private Result makeResult() {
