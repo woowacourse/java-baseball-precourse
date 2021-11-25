@@ -13,15 +13,19 @@ class GameProvider {
     private String gameStatus;
     private GameScore gameScore;
 
+    /**
+     * 최초 정답 생성
+     */
     public GameProvider(){
         gameStatus = ON_GOING;
         gameScore = new GameScore();
+        generateAnswer();
     }
 
     /**
      * 중복일 경우 새 정답 생성
      */
-    public void generateAnswer(){
+    private void generateAnswer(){
         putRandomNumbers();
         while (!isNotDuplicateInSystemAnswer()){
             putRandomNumbers();
@@ -97,6 +101,7 @@ class GameProvider {
         isRightInputRestartOrStop(input);
         if(input.equals(RESTART)){
             gameStatus = ON_GOING;
+            generateAnswer();
             return;
         }
         gameStatus = STOP;

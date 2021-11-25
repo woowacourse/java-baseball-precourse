@@ -14,7 +14,6 @@ class GameProviderTest {
     @BeforeEach
     void setUp(){
         gameProvider = new GameProvider();
-        gameProvider.generateAnswer();
         System.out.println(gameProvider);
     }
 
