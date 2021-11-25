@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.Computer;
 import baseball.domain.BaseBallNumbers;
+import baseball.exception.InvalidContinueMessageFormatException;
 import baseball.view.InputView;
 import baseball.view.ResultView;
 
@@ -26,7 +27,7 @@ public class baseballGameController {
             return;
         }
 
-        throw new IllegalArgumentException("잘못 된 입력입니다. (1또는 2를 입력해야 합니다.)");
+        throw new InvalidContinueMessageFormatException();
     }
 
     private static void runBaseBallGame() {
