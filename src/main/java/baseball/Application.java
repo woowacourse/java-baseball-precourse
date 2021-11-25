@@ -10,14 +10,18 @@ public class Application {
     private static void startGame() {
         String targetNumber = NumberGenerator.generate();
         System.out.println(targetNumber);
+        getInputUntilCorrectAnswer(targetNumber);
+
+        configureRestartGame();
+    }
+
+    private static void getInputUntilCorrectAnswer(String targetNumber) {
         String inputNumber = "";
 
         while (!inputNumber.equals(targetNumber)) {
             inputNumber = getConsoleInput();
-            getResult(targetNumber, inputNumber);
+            printHint(targetNumber, inputNumber);
         }
-
-        configureRestartGame();
     }
 
     private static void configureRestartGame() {
@@ -35,13 +39,13 @@ public class Application {
         return  Console.readLine();
     }
 
-    private static void getResult(String targetNumber, String inputNumber) {
-        BaseBallResult result = calculateResult(targetNumber, inputNumber);
-        System.out.println(result);
+    private static void printHint(String targetNumber, String inputNumber) {
+        BaseBallHint hint = calculateHint(targetNumber, inputNumber);
+        System.out.println(hint);
     }
 
-    private static BaseBallResult calculateResult(String target, String input) {
-        BaseBallResult result = new BaseBallResult();
+    private static BaseBallHint calculateHint(String target, String input) {
+        BaseBallHint result = new BaseBallHint();
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == target.charAt(i)) {
                 result.strikeCount++;

@@ -1,6 +1,6 @@
 package baseball;
 
-public class BaseBallResult {
+public class BaseBallHint {
     int ballCount = 0;
     int strikeCount = 0;
 
