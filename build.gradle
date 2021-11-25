@@ -9,6 +9,11 @@ repositories {
     mavenCentral()
 }
 
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     implementation('com.github.woowacourse-projects:mission-utils:1.0.0')
 }
