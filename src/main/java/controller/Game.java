@@ -21,6 +21,8 @@ public class Game {
 	public void start() {
 		String userInput = getNumberInput();
 		Numbers numbers = new Numbers(userInput);
+
+		targetNumbers.compare(numbers);
 	}
 
 }

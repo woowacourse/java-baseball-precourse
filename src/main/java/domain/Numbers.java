@@ -26,6 +26,10 @@ public class Numbers {
 		this.numbers = distinctNumbers;
 	}
 
+	public int find(int number) {
+		return this.numbers.indexOf(new Number(number));
+	}
+
 	private List<Number> removeDuplicationFromNumbers(List<Number> numbers) {
 		return numbers.stream()
 			.distinct()
