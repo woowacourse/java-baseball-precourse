@@ -11,10 +11,23 @@ public class Game {
 	private static final String RESTART_INPUT = "1";
 	private static final String QUIT_INPUT = "2";
 
-	private final TargetNumbers targetNumbers;
+	private TargetNumbers targetNumbers;
 
-	public Game() {
+	private void createNewTargetNumbers() {
 		this.targetNumbers = new TargetNumbers();
+	}
+
+	private boolean selectQuit() {
+		OutputView.printQuitInstruction();
+		String input = InputView.getInput();
+
+		if (input.equals(QUIT_INPUT))
+			return true;
+
+		if (input.equals(RESTART_INPUT))
+			return false;
+
+		throw new IllegalArgumentException("1 또는 2 만 입력할 수 있습니다.");
 	}
 
 	private String getNumberInput() {
@@ -22,38 +35,27 @@ public class Game {
 		return InputView.getInput();
 	}
 
-	private boolean getQuitInput() {
-		OutputView.printQuitInstruction();
-		String input = InputView.getInput();
-
-		if (input.equals(QUIT_INPUT))
-			return true;
-		if (input.equals(RESTART_INPUT))
-			return false;
-
-		throw new IllegalArgumentException("1 또는 2 만 입력할 수 있습니다.");
-	}
-
 	public void start() {
 		while (true) {
-			boolean isGameEnd = play();
-			if (isGameEnd)
+			createNewTargetNumbers();
+			startRound();
+			if (selectQuit())
 				break;
 		}
 	}
 
-	public boolean play() {
-		String userInput = getNumberInput();
-		Numbers numbers = new Numbers(userInput);
+	public void startRound() {
+		while (true) {
+			String userInput = getNumberInput();
+			Numbers numbers = new Numbers(userInput);
 
-		Hint hint = targetNumbers.compare(numbers);
+			Hint hint = targetNumbers.compare(numbers);
 
-		OutputView.printHint(hint);
+			OutputView.printHint(hint);
 
-		if (hint.getStrike() == 3)
-			return getQuitInput();
-
-		return false;
+			if (hint.getStrike() == 3)
+				break;
+		}
 	}
 
 }
