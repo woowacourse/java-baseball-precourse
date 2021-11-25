@@ -12,6 +12,8 @@
   - 3자리 수 입력 
   - camp.nextstep.edu.missionutils.Console의 readLine() 활용
   - 잘못된 숫자일 경우 IllegalArgumentException 및 종료
+    + 맨 앞자리가 0일때
+    + 3자리 숫자가 아닐때
 
 3. 종료
   - 숫자가 맞거나 잘못된 숫자를 입력했으면 종료
