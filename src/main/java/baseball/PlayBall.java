@@ -45,7 +45,7 @@ public class PlayBall {
 
             getGameResult();
         } catch (IllegalArgumentException e){
-            return;
+            throw new IllegalArgumentException();
         }
     }
 
@@ -95,7 +95,7 @@ public class PlayBall {
 
             isRestart(userRestartInput);
         } catch (IllegalArgumentException e) {
-            return;
+            throw new IllegalArgumentException();
         }
 
     }
