@@ -11,9 +11,6 @@ public class Computer {
         makeEachDigitUsingRandom();
         verifyEachDigitIsDuplicated();
 
-        System.out.println("firstDigit = " + firstDigit);
-        System.out.println("secondDigit = " + secondDigit);
-        System.out.println("thirdDigit = " + thirdDigit);
     }
 
     private void verifyEachDigitIsDuplicated() {
