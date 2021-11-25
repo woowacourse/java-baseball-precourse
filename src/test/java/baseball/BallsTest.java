@@ -30,4 +30,11 @@ public class BallsTest {
         PlayType playType = computerBalls.play(myBall);
         assertThat(playType).isEqualTo(PlayType.BALL);
     }
+
+    @Test
+    void 낫싱() {
+        Ball myBall = new Ball(5, 1);
+        PlayType playType = computerBalls.play(myBall);
+        assertThat(playType).isEqualTo(PlayType.NOTHING);
+    }
 }
