@@ -6,6 +6,7 @@ public class BaseballGame {
 
     public static final String STRIKE_ENGLISH = "strike";
     public static final String BALL_ENGLISH = "ball";
+    public static final String COLLECT_ANSWER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public void startGame() {
         progressGame();
@@ -30,6 +31,12 @@ public class BaseballGame {
             user.printInputMessage();
             guessNumber = user.inputPlayerNumber();
         }
+
+        printCorrectAnswer();
+    }
+
+    private void printCorrectAnswer() {
+        System.out.println(COLLECT_ANSWER_MESSAGE);
     }
 
 }
