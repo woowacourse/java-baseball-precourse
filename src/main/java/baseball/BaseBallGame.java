@@ -9,7 +9,29 @@ public class BaseBallGame {
 	private static final int NUM_OF_DIGIT = 3;
 	private static final char START_CHAR = '1';
 	private static final char END_CHAR = '9';
-	
+	private List<Integer> randomNumbers;
+	private List<Integer> playerNumbers;
+
+	public void init() {
+		randomNumbers = RandomNumbers.getRandomNumbers();
+	}
+
+	public void game(){
+
+	}
+
+	private int getStrikeCount() {
+		int numOfStrike = 0;
+		for (int i = 0; i < NUM_OF_DIGIT; i++) {
+			int randomNum = randomNumbers.get(i);
+			int playerNum = playerNumbers.get(i);
+			if (randomNum == playerNum) {
+				numOfStrike += 1;
+			}
+		}
+		return numOfStrike;
+	}
+
 	public List<Integer> getInput() {
 		String readLine = Console.readLine();
 		List<Integer> inputNumbers = new ArrayList<>();
