@@ -20,8 +20,19 @@ public class GameSystem {
         }
     }
 
-    private void playGame() {}
-    private void determineContinueGame() {}
+    private void playGame() {
+    }
 
-    public
+    private void determineContinueGame() {
+        String users_signal = Console.readLine();
+        if (users_signal.equals("2"))
+            signal = 2;
+        try {
+            if (!users_signal.equals("1")) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            signal = 2;
+        }
+    }
 }
