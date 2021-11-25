@@ -14,7 +14,7 @@ class ValidationUtilsTest {
 		List<Integer> randomNumberList = Arrays.asList(1, 1, 2);
 
 		// then
-		Assertions.assertThat(ValidationUtils.validateRandomDigits(randomNumberList)).isFalse();
+		Assertions.assertThat(ValidationUtils.validateRandomDigitsDuplicate(randomNumberList)).isFalse();
 	}
 
 	@Test

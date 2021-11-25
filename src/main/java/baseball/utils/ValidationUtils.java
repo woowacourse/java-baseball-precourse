@@ -8,7 +8,7 @@ import static baseball.constants.GameConstants.Message.*;
 import java.util.List;
 
 public class ValidationUtils {
-	public static boolean validateRandomDigits(List<Integer> numberList) {
+	public static boolean validateRandomDigitsDuplicate(List<Integer> numberList) {
 		boolean[] duplicateCheck = new boolean[END_INCLUSIVE.getNumber() + 1];
 
 		for (Integer number : numberList) {
