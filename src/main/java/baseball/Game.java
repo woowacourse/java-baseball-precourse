@@ -31,8 +31,8 @@ public class Game {
 		while (strike < NUMBER_DIGITS) {
 			try {
 				System.out.print("숫자를 입력해주세요 : ");
-				String userInputMessage = readLine();
-				userNumbers = toIntegerList(userInputMessage);
+				String userInput = readLine();
+				userNumbers = toIntegerList(userInput);
 				validateUserNumbers(userNumbers);
 			} catch (Exception e) {
 				throw new IllegalArgumentException();
@@ -46,13 +46,12 @@ public class Game {
 		printSuccessMessage();
 	}
 
-	public List<Integer> toIntegerList(String input) {
-		String[] splitInput = input.split("");
-		List<Integer> integerList = Arrays
+	private List<Integer> toIntegerList(String userInput) {
+		String[] splitInput = userInput.split("");
+		return Arrays
 			.stream(splitInput)
 			.map(Integer::parseInt)
 			.collect(Collectors.toList());
-		return integerList;
 	}
 
 	private void printHint() {
