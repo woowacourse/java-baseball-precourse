@@ -51,12 +51,12 @@ public class Computer {
         int strikeCnt = 0;
         int ballCnt = 0;
         for (int i = 0; i < 3; i++) {
-            if (answer[i] == eachDigitOfGuessNumber[i]) {
+            if (eachDigitOfGuessNumber[i] == answer[i]) {
                 strikeCnt += 1;
                 continue;
             }
             for (int j = 0; j < 3; j++) {
-                if (answer[i] == eachDigitOfGuessNumber[j]) {
+                if (eachDigitOfGuessNumber[i] == answer[j]) {
                     ballCnt += 1;
                 }
             }
