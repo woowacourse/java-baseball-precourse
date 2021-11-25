@@ -1,26 +1,29 @@
 package baseball;
 
-public class Application {
+import camp.nextstep.edu.missionutils.Console;
+
+public class Application extends IllegalArgumentException {
 	public static void main(String[] args) {
-		int[] computerNums = new ComputerNumGenerator().nums;
 		do {
-			int[] userNums = new UserNumGenerator().nums;
-			BaseballCount baseballCount = new BaseballCount(userNums, computerNums);
-			if (baseballCount.strikeCount == 3) {
-				System.out.println("3스트라이크");
-				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-				break;
+			BaseballSystem system = new BaseballSystem();
+			system.gameStart();
+		} while (!exit());
+	}
+
+	public static boolean exit() {
+		try {
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			String exitNum = Console.readLine();
+			if (exitNum.equals("1")) {
+				return false;
 			}
-			if (baseballCount.ballCount != 0) {
-				System.out.print(baseballCount.ballCount + "볼 ");
+			if (exitNum.equals("2")) {
+				return true;
 			}
-			if (baseballCount.strikeCount != 0) {
-				System.out.print(baseballCount.strikeCount + "스트라이크");
-			}
-			if (baseballCount.ballCount == 0 && baseballCount.strikeCount == 0) {
-				System.out.print("낫싱");
-			}
-			System.out.println();
-		} while (true);
+			throw new IllegalArgumentException();
+		} catch (IllegalArgumentException e) {
+			System.exit(0);
+			return false;
+		}
 	}
 }
