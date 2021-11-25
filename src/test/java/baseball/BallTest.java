@@ -23,4 +23,11 @@ public class BallTest {
         PlayType playType = myBall.play(computerBall);
         assertThat(myBall.play(computerBall)).isEqualTo(PlayType.STRIKE);
     }
+
+    @Test
+    void 볼_1() {
+        Ball myBall = new Ball(4, 1);
+        PlayType playType = myBall.play(computerBall);
+        assertThat(myBall.play(computerBall)).isEqualTo(PlayType.BALL);
+    }
 }
