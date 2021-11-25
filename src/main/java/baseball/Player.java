@@ -20,6 +20,12 @@ public class Player {
         return toIntegerList(inputNumber);
     }
 
+    public int getReplayingOrEndNumber() throws IllegalArgumentException {
+        String inputNumber = readLine();
+        validateNumberRange(REPLAYING_OR_END_NUMBER_REGEX, inputNumber);
+        return Integer.parseInt(inputNumber);
+    }
+
     private List<Integer> toIntegerList(String inputNumber) throws IllegalArgumentException {
         validateInputNumber(inputNumber);
         List<String> numbers = Arrays.asList(inputNumber.split(""));
@@ -46,11 +52,5 @@ public class Player {
         if (numbers.size() != BaseBallGame.NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public int getReplayingOrEndNumber() throws IllegalArgumentException {
-        String inputNumber = readLine();
-        validateNumberRange(REPLAYING_OR_END_NUMBER_REGEX, inputNumber);
-        return Integer.parseInt(inputNumber);
     }
 }
