@@ -47,9 +47,9 @@
   - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
   - [ ] 입력값이 숫자로 이뤄졌는지 확인한다. 아니면 예외를 발생시킨다.
 
-- [ ] 사용자로부터 숫자를 입력받는다.
-  - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-  - [ ] 입력값이 숫자인지 확인한다. 아니면 예외를 발생시킨다.
+- [x] 사용자로부터 숫자를 입력받는다.
+  - [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+  - [x] 입력값이 숫자인지 확인한다. 아니면 예외를 발생시킨다.
 
 ### 예외처리
 - [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨다.
