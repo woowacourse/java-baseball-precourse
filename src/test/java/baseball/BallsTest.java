@@ -19,10 +19,13 @@ public class BallsTest {
 	}
 
 	@Test
-	void 사용자_세자릿수_입력() {
-		assertThat(user.isSame(
-			Arrays.asList(new Ball(1, 1), new Ball(2, 2), new Ball(3, 3)))
-		).isTrue();
+	void 사용자_입력값_변환() {
+		assertThat(user.getBalls())
+			.containsExactly(
+				new Ball(1, 1),
+				new Ball(2, 2),
+				new Ball(3, 3)
+			);
 	}
 
 	@ParameterizedTest
