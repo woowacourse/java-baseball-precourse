@@ -9,6 +9,9 @@ public class Application {
 		// Application 실행시 필요한 인스턴스들을 주입해주기 위한 설정 객체
 		Config config = new Config();
 
+		// 3자리 무작위 숫자조합 생성
+		String targetNumber = config.randomNumber.makeRandomNumber();
+
 		// 게임 진행 여부를 체크 하는 변수
 		boolean gameSwitch = true;
 
