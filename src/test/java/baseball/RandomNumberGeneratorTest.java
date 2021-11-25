@@ -10,7 +10,7 @@ class RandomNumberGeneratorTest {
 	@Test
 	void makeRandomNumber() {
 		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-		int[] numbers = randomNumberGenerator.makeRandomNumber();
-		Assertions.assertThat(Arrays.stream(numbers).distinct().count()).isEqualTo(Rules.NUMBER_LENGTH);
+		randomNumberGenerator.makeRandomNumber();
+		Assertions.assertThat(Arrays.stream(randomNumberGenerator.getAnswer()).distinct().count()).isEqualTo(Rules.NUMBER_LENGTH);
 	}
 }

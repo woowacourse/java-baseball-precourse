@@ -13,19 +13,20 @@ public class BaseballGame {
 		this.running = true;
 	}
 
+
 	public void start() {
 		do {
-			int[] answer = randomNumberGenerator.makeRandomNumber();
-			playGame(answer);
-		} while (restartGame());//TODO 재시작 여부
+			randomNumberGenerator.makeRandomNumber();
+			playGame();
+		} while (restartGame());
 	}
 
 	private boolean restartGame() {
 		System.out.println(Message.REQUEST_RESTART_NUMBER);
 		String requestInput = Console.readLine();
+		System.out.println(requestInput);
 		Validation.checkRestartInput(requestInput);
-		int inputValue = Integer.parseInt(requestInput);
-		if (inputValue == 1) {
+		if (requestInput.equals("1")) {
 			running = true;
 			return true;
 		}
@@ -33,12 +34,12 @@ public class BaseballGame {
 		return false;
 	}
 
-	private void playGame(int[] answer) {
+	private void playGame() {
 		while (running) {
 			System.out.print(Message.REQUEST_ENTER_NUMBER);
 			String userInput = Console.readLine();
 			Validation.checkInput(userInput);
-			hint.countHint(answer, userInput);
+			hint.countHint(randomNumberGenerator.getAnswer(), userInput);
 			hint.printResult();
 
 			if (hint.getStrike() == Rules.NUMBER_LENGTH) {
