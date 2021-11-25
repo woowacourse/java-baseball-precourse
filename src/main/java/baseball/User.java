@@ -27,7 +27,6 @@ public class User {
 
         for (int i = 0; i < answer.length(); i++) {
             int strikeBall = decideStrikeBall(answer, i, guessNumber);
-
             if (strikeBall == 1) {
                 strike += addStrikeBallCount(strike, ball, strikeBall);
             }
@@ -49,7 +48,7 @@ public class User {
             return strike;
         }
 
-        if (strike == 2) {
+        if (strikeBall == 2) {
             ball++;
             return ball;
         }
@@ -82,25 +81,18 @@ public class User {
         final StringBuilder stringBuilder = new StringBuilder();
 
         if ((strike == 0) && (ball > 0)) {
-            stringBuilder.append(appendBallHintMessage(ball, stringBuilder));
-            return stringBuilder.toString();
+            return appendBallHintMessage(ball, stringBuilder);
         }
 
         if ((strike > 0) && (ball == 0)) {
-            stringBuilder.append(appendStrikeHintMessage(strike, stringBuilder));
-            return stringBuilder.toString();
-
+            return appendStrikeHintMessage(strike, stringBuilder);
         }
 
         if ((strike == 0) && (ball == 0)) {
-            stringBuilder.append(appendNothingHintMessage(stringBuilder));
-            return stringBuilder.toString();
+            return appendNothingHintMessage(stringBuilder);
         }
 
-        stringBuilder.append(appendBallHintMessage(ball, stringBuilder))
-                .append(appendStrikeHintMessage(strike, stringBuilder));
-
-        return stringBuilder.toString();
+        return appendBallHintMessage(ball, stringBuilder) + appendStrikeHintMessage(strike, stringBuilder);
     }
 
     public String appendNothingHintMessage(final StringBuilder stringBuilder) {
@@ -109,16 +101,14 @@ public class User {
 
     public String appendStrikeHintMessage(final int strike, final StringBuilder stringBuilder) {
         stringBuilder.append(strike)
-                .append(STRIKE_KOREAN)
-                .append(NEW_LINE);
+                .append(STRIKE_KOREAN);
 
         return stringBuilder.toString();
     }
 
     public String appendBallHintMessage(final int ball, final StringBuilder stringBuilder) {
         stringBuilder.append(ball)
-                .append(BALL_KOREAN)
-                .append(NEW_LINE);
+                .append(BALL_KOREAN);
 
         return stringBuilder.toString();
     }
