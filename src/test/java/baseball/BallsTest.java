@@ -6,6 +6,8 @@ import baseball.model.PlayType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BallsTest {
@@ -38,4 +40,11 @@ public class BallsTest {
         assertThat(playType).isEqualTo(PlayType.NOTHING);
     }
 
+    @Test
+    void 결과_3스트라이크() {
+        Balls myBall = new Balls(4, 6, 8);
+        PlayTypes playTypes = myBall.play(computerBalls);
+        List<PlayType> playTypeList = playTypes.getPlayType();
+        assertThat(playTypeList).containsExactly(PlayType.STRIKE, PlayType.STRIKE, PlayType.STRIKE);
+    }
 }
