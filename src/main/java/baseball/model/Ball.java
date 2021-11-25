@@ -7,6 +7,9 @@ public class Ball {
     private final int value;
     private final int index;
 
+    /**
+     * 초기 index는 1부터 시작합니다
+     */
     public Ball(int value, int index) {
         this.value = value;
         this.index = index;

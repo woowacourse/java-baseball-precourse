@@ -10,11 +10,14 @@ public class Balls {
 
     List<Ball> balls;
 
+    /**
+     * 초기 index는 1부터 시작합니다
+     */
     public Balls(int firstBall, int secondBall, int thirdBall) {
         balls = new LinkedList<>(Arrays.asList(
-                new Ball(firstBall, 0),
-                new Ball(secondBall, 1),
-                new Ball(thirdBall, 2)
+                new Ball(firstBall, 1),
+                new Ball(secondBall, 2),
+                new Ball(thirdBall, 3)
         ));
     }
 

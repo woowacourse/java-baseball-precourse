@@ -16,26 +16,26 @@ public class BallTest {
 
     @BeforeEach
     void setUp() {
-        computerBall = new Ball(4, 0);
+        computerBall = new Ball(4, 1);
     }
 
     @Test
     void 스트라이크_1() {
-        Ball myBall = new Ball(4, 0);
+        Ball myBall = new Ball(4, 1);
         PlayType playType = myBall.play(computerBall);
         assertThat(myBall.play(computerBall)).isEqualTo(PlayType.STRIKE);
     }
 
     @Test
     void 볼_1() {
-        Ball myBall = new Ball(4, 1);
+        Ball myBall = new Ball(4, 2);
         PlayType playType = myBall.play(computerBall);
         assertThat(myBall.play(computerBall)).isEqualTo(PlayType.BALL);
     }
 
     @Test
     void 낫싱_1() {
-        Ball myBall = new Ball(5, 1);
+        Ball myBall = new Ball(5, 3);
         PlayType playType = myBall.play(computerBall);
         assertThat(myBall.play(computerBall)).isEqualTo(PlayType.NOTHING);
     }
