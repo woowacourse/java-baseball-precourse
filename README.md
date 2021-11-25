@@ -1,24 +1,35 @@
 # 미션 - 숫자 야구 게임
 
 ## ✍️ 구현할 기능
+
+### ✅ BaseballGame
+#### package java.baseball
+1. 게임 실행 클래스
+   - ```GameProvider```, ```GamePlayer``` 의존성 주입
+   - ```run``` 메서드를 통한 실행
+
+
 ### ✅ GameProvider
 #### package java.baseball
 1. 서로 다른 세자리 수를 가진 ```Random Answer``` 생성
    - 서로 다른 세자리 수 검증
+   - 만약 정답이 생성됐는데, 중복되는 수가 있다면 새로운 ```Random Answer``` 생성
+   - 외부 공개 X
 
 
 2. 플레이어가 입력하는 ```Answer```와 생성된 ```Random Answer``` 비교, ```GameScore``` 인스턴스 반환   
 
 
 3. 게임 재시작 or 종료 입력 요청
-   - RESTART -> 반복문 재시작
+   - RESTART -> 반복문 재시작 (generate Answer)
    - STOP -> 종료
 
 ### ✅ GamePlayer
 #### package java.baseball
 
 1. 플레이어 입력 요청
-   - GameValidator에서 검증
+   - GameValidator에서 검증 > 잘못된 입력이라면 ```IllegalArgumentException``` 발생
+   
 
 
 ### ✅ GameValidator
@@ -33,16 +44,42 @@
 ### ✅ GameScore
 #### package java.baseball
 1. ```strike```, ```ball``` 관리
+   - ```strike``` 증가
+   - ```ball``` 증가
+   - ```strike```, ```ball``` 기록 초기화
 
 
 2. 게임 결과 출력
+   - ```strike```와 ```ball```이 모두 존재하는 경우
+   - ```strike```만 존재하는 경우
+   - ```ball```만 존재하는 경우
+   - 모두 존재하지 않는 경우
 
 ### ✅ GameConstant
 #### package java.util
 1. ```NumberRange``` 상수값 선언
-2. ```Score``` 출력 상수값 선언
-3. 게임 안내 메시지 출력 상수값 선언
+2. 게임 재개, 멈춤 관련 상수값 선언
+3. ```Score``` 출력 상수값 선언
+4. 게임 안내 메시지 출력 상수값 선언
 
+### ✅ 프로그래밍 요구사항 체크리스트
+
+#### 기본 요구사항
+|No|내용|Check|   
+|--|--|--|    
+|1|시작점은 Application의 main()이다.|o|   
+|2|JDK 8 버전에서 실행 가능해야 한다.|o|  
+|3|자바 코드 컨벤션을 지키면서 프로그래밍한다.|o|  
+|4|indent depth를 3이 넘지 않도록 구현한다.|o|  
+|5|3항 연산자를 쓰지 않는다.|o|  
+|6|함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게 만들어라.|o|
+
+#### Randoms, Console 라이브러리 사용 요구사항
+|No|내용|Check|      
+|--|--|--|  
+|1|pickNumberInRange() 사용할 것|o|  
+|2|readLine() 사용할 것|o|  
+|3|test 성공|o|
 
 ## 🔍 진행방식
 
