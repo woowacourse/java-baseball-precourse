@@ -8,7 +8,7 @@ public class Game {
     Player player = new Player();
     Referee referee = new Referee();
 
-    public void play() {
+    public boolean play() {
         referee.resetCount();
         OutputView.numberInputMessageShow();
         List<Ball> userBalls = player.selectBalls(InputView.StringChangeList());
@@ -17,5 +17,16 @@ public class Game {
         }
         Map<BallResult, Integer> totalResult = referee.getResult();
         OutputView.gameResultShow(totalResult.get(BallResult.STRIKE), totalResult.get(BallResult.BALL));
+        if(referee.allStrikeCheck()){
+            if(replay() == 2)
+                return false;
+        }
+        return true;
+    }
+
+    public int replay() {
+        OutputView.gameEndMessageShow();
+        String input = InputView.trimInput();
+        return Integer.parseInt(input);
     }
 }

@@ -17,6 +17,10 @@ public class Referee {
         result = new HashMap<>();
     }
 
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
     public BallResult ballCompare(Ball ball1, Ball ball2) {
         if (ball1.equals(ball2)) {
             return BallResult.STRIKE;
@@ -44,5 +48,9 @@ public class Referee {
     public void resetCount() {
         strikeCount = 0;
         ballCount = 0;
+    }
+
+    public boolean allStrikeCheck() {
+        return strikeCount == Constant.MAX_SIZE;
     }
 }
