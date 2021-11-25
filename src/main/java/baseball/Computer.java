@@ -17,11 +17,11 @@ public class Computer {
 
 	public void init() {
 		do {
-			setNewRandomNumbers();
+			generateNewRandomNumbers();
 		} while (validateNumbersList(randomNumbers) == VALID_FAILED);
 	}
 
-	public void setNewRandomNumbers() {
+	private void generateNewRandomNumbers() {
 		randomNumbers = new ArrayList<>();
 		while (randomNumbers.size() < NUMBER_DIGITS) {
 			int number = pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
