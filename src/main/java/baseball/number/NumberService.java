@@ -1,15 +1,42 @@
 package baseball.number;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class NumberService {
 
-    public static boolean isBaseballNumber(int[] num) {
+    public void createComputerNumber(BaseballNumber computerNumber) {
+        int[] tmpNumber = getRandomNumber();
+        boolean isBaseballNumber = checkNumber(tmpNumber);
+        if(isBaseballNumber) {
+            computerNumber.setNumber(tmpNumber);
+        } else if (!isBaseballNumber){
+            createComputerNumber(computerNumber);
+        }
+    }
+
+    private boolean checkNumber(int[] num) {
+        return isBaseballNumber(num);
+    }
+
+    private int[] getRandomNumber() {
+        int[] tmpComputerNumber = new int[3];
+        int START_INCLUSIVE = 1;
+        int END_INCLUSIVE = 9;
+        for (int i = 0; i < 3; i++) {
+            int digit = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+            tmpComputerNumber[i] = digit;
+        }
+        return tmpComputerNumber;
+    }
+
+    private boolean isBaseballNumber(int[] num) {
         if(checkOverlappedNum(num)){
             return true;
         }
         return false;
     }
 
-    private static boolean checkOverlappedNum(int[] num) {
+    private boolean checkOverlappedNum(int[] num) {
         if(num[0] == num[1]
                 || num[1] == num[2]
                 || num[0] == num[2]) {

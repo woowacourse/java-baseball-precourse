@@ -21,7 +21,15 @@
    랜덤하게 생성된 숫자의 예외처리 기능(중복) 추가
    ```
 
+3. ```
+   2021/11/24
+   "fix : change number pacakge structure to seperate model and service"
    
+   컴퓨터 난수 생성과 컴퓨터 난수 저장의 역할 분리를 위한 코드 리팩토링
+   baseball이라는 인터페이스로 통합하여 추후 추가될 사용자 입력에 대한 처리도 가능하게 함
+   ```
+
+4. 
 
 
 
