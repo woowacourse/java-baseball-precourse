@@ -11,10 +11,13 @@ public class Application {
 
         while (!inputNumber.equals(targetNumber)) {
             inputNumber = getConsoleInput();
-
-            BaseBallResult result = calculateResult(targetNumber, inputNumber);
-            System.out.println(result);
+            getResult(targetNumber, inputNumber);
         }
+    }
+
+    private static void getResult(String targetNumber, String inputNumber) {
+        BaseBallResult result = calculateResult(targetNumber, inputNumber);
+        System.out.println(result);
     }
 
     private static BaseBallResult calculateResult(String target, String input) {
