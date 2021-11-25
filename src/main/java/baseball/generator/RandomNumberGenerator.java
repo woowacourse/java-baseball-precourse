@@ -55,4 +55,15 @@ public class RandomNumberGenerator {
 			answerNumber.add(randomNumber);
 		}
 	}
+
+	/**
+	 * 게임 재시작을 위해 정해진 랜덤값을 초기화시키는 함수
+	 *
+	 * @param answerNumber: ArrayList<Integer>
+	 */
+	public static void initProgramNumber(ArrayList<Integer> answerNumber) {
+		if (!answerNumber.isEmpty()) {
+			answerNumber.clear();
+		}
+	}
 }

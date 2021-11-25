@@ -13,19 +13,26 @@ import java.util.ArrayList;
  */
 public class GameController {
 
+	private static final int ANSWER_NUMBER_SIZE = 3;
 	private static String INPUT_NUMBER;
+	private static ArrayList<Integer> ANSWER_NUMBER = new ArrayList<>(ANSWER_NUMBER_SIZE);
 
 	/**
 	 * 게임을 제어하는 함수
 	 */
 	public static void controlGame() {
-		ArrayList<Integer> answerNumber = RandomNumberGenerator.generateRandomNumber();
+		RandomNumberGenerator.initProgramNumber(ANSWER_NUMBER);
+		ANSWER_NUMBER = RandomNumberGenerator.generateRandomNumber();
 
 		while (true) {
 			startGame();
 			ArrayList<Integer> playerNumber = stringToArrayList(INPUT_NUMBER);
-			giveHint(answerNumber, playerNumber);
-			if (finishGame(answerNumber, playerNumber)) {
+			giveHint(ANSWER_NUMBER, playerNumber);
+			if (finishGame(ANSWER_NUMBER, playerNumber)) {
+				OutputView.askReplay();
+				if (TerminateHandler.decideReplay()) {
+					controlGame();
+				}
 				break;
 			}
 		}

@@ -18,4 +18,16 @@ public class InputView {
 		playerNum = Console.readLine();
 		return playerNum;
 	}
+
+	/**
+	 * 유저가 게임 재시작을 할지 말지 입력하는 함수
+	 *
+	 * @return number
+	 */
+	public static String writeReplayOrNot() {
+		String number;
+
+		number = Console.readLine();
+		return number;
+	}
 }

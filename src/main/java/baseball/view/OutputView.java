@@ -10,6 +10,7 @@ public class OutputView {
 	private static final String STRIKE = "스트라이크";
 	private static final String NOTHING = "낫싱";
 	private static final String CORRECT_ANSWER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+	private static final String REPLAY_OR_NOT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 	/**
 	 * 숫자 입력을 요구하는 메시지를 출력하는 함수
@@ -55,5 +56,12 @@ public class OutputView {
 	 */
 	public static void printCorrectAnswer() {
 		System.out.println(CORRECT_ANSWER);
+	}
+
+	/**
+	 * 게임을 재시작할지 묻는 함수
+	 */
+	public static void askReplay() {
+		System.out.println(REPLAY_OR_NOT);
 	}
 }
