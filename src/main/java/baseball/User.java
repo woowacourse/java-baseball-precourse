@@ -29,7 +29,7 @@ public class User {
         return input;
     }
 
-    public static boolean checkNumeric(char c) {
+    public static void checkNumeric(char c) {
         if(Character.isDigit(c)) {
             throw new IllegalArgumentException("잘못 입력하셨습니다.");
         }
