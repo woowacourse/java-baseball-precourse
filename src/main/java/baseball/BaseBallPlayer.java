@@ -1,6 +1,6 @@
 package baseball;
 
-import static constants.SystemMessage.*;
+import static constants.BaseBallConstant.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -19,13 +19,21 @@ public class BaseBallPlayer {
 			throw new IllegalArgumentException();
 		}
 		userInputToUserNumber(userInput);
-		System.out.println(userNumber);
+	}
+
+	public int checkNumber(Integer providerNumber, Integer index) {
+		if (userNumber.get(index).equals(providerNumber)) {
+			return STRIKE_RESULT;
+		}
+		if (userNumber.contains(providerNumber)) {
+			return BALL_RESULT;
+		}
+		return NOTHING_RESULT;
 	}
 
 	private static boolean checkUserInput(String userInput) {
 		return isAllDigit(userInput) && isRightLength(userInput) && isRightNumberRange(userInput) && isNotDuplicate(
 			userInput);
-
 	}
 
 	private static boolean isRightLength(String userInput) {
@@ -64,5 +72,4 @@ public class BaseBallPlayer {
 			userNumber.add(Character.getNumericValue(userInput.charAt(i)));
 		}
 	}
-
 }
