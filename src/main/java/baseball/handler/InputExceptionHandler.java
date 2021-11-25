@@ -16,12 +16,13 @@ public class InputExceptionHandler {
 	private static final String INVALID_RANGE_MESSAGE = "잘못된 범위의 문자가 입력되었습니다.";
 	private static final String INVALID_DUPLICATE_MESSAGE = "중복된 숫자가 입력되었습니다.";
 
-	/** 비정상적인 입력이라면 예외처리를 하는 함수
+	/**
+	 * 비정상적인 입력이라면 예외처리를 하는 함수
 	 *
 	 * @param playerNumber: String
-	 * @return true
 	 */
-	public static boolean checkValidation(String playerNumber) {
+
+	public static void checkValidation(String playerNumber) {
 
 		if (!checkLength(playerNumber, VALID_NUMBER_LENGTH)) {
 			throw new IllegalArgumentException(INVALID_LENGTH_MESSAGE);
@@ -32,7 +33,6 @@ public class InputExceptionHandler {
 		if (!checkDuplicate(playerNumber)) {
 			throw new IllegalArgumentException(INVALID_DUPLICATE_MESSAGE);
 		}
-		return true;
 	}
 
 	/**
