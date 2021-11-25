@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class BallsTest {
 
@@ -14,31 +16,10 @@ public class BallsTest {
 		assertThat(balls.isSame(Arrays.asList(1, 2, 3))).isTrue();
 	}
 
-	@Test
-	void 예외_문자_입력() {
-		assertThatThrownBy(() -> new Balls("12가"))
+	@ParameterizedTest
+	@ValueSource(strings = {"12가", "12", "1234", "122", "102"})
+	void 예외처리(String input) {
+		assertThatThrownBy(() -> new Balls(input))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
-
-	@Test
-	void 예외_두자릿수_네자릿수_입력() {
-		assertThatThrownBy(() -> new Balls("12"))
-			.isInstanceOf(IllegalArgumentException.class);
-
-		assertThatThrownBy(() -> new Balls("1234"))
-			.isInstanceOf(IllegalArgumentException.class);
-	}
-
-	@Test
-	void 예외_자릿수가_중복() {
-		assertThatThrownBy(() -> new Balls("122"))
-			.isInstanceOf(IllegalArgumentException.class);
-	}
-
-	@Test
-	void 예외_자릿수에_0포함() {
-		assertThatThrownBy(() -> new Balls("102"))
-			.isInstanceOf(IllegalArgumentException.class);
-	}
-
 }
