@@ -11,14 +11,28 @@ public class User {
 
         input = Console.readLine();
 
+        // 유저 입력에 0이 포함된 경우
         if(input.contains("0")) {
             throw new IllegalArgumentException("잘못 입력하셨습니다.");
         }
 
+        // 유저 입력이 3자리가 아닌 경우
         if(input.length() != 3) {
             throw new IllegalArgumentException("잘못 입력하셨습니다.");
         }
+
+        // 유저 입력에 문자가 포함된 경우
+        for(int i=0; i<3; i++) {
+            checkNumeric(input.charAt(i));
+        }
+
         return input;
+    }
+
+    public static boolean checkNumeric(char c) {
+        if(Character.isDigit(c)) {
+            throw new IllegalArgumentException("잘못 입력하셨습니다.");
+        }
     }
 
 
