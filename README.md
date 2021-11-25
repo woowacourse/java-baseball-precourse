@@ -4,8 +4,9 @@
 ## ✔️ 구현 목록
 
 1. 시작
-   - 3자리 난수 생성
+   - 3자리 난수 생성 ✔BaseballUtil.generateAnswer()
    - 3자리 숫자 입력
+     - 입력값 유효성 검사
 2. 점수 출력
    - 정답 여부 검사
    - strike, ball 검사
