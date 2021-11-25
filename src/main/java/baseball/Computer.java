@@ -4,8 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
-    private int[] eachDigitOfGuessNumber = new int[3];
-    private int[] answerMadeByComputer = new int[3];
+    private static final int NUMBER_LEN = 3;
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 9;
+
+    private int[] eachDigitOfGuessNumber = new int[NUMBER_LEN];
+    private int[] answerMadeByComputer = new int[NUMBER_LEN];
 
     public void makeThreeDigitNumber() {
         makeEachDigitUsingRandom();
@@ -13,12 +17,12 @@ public class Computer {
     }
 
     private void makeEachDigitUsingRandom() {
-        boolean[] alreadyUse = new boolean[10];
+        boolean[] alreadyUse = new boolean[MAX_RANGE + 1];
         int randomNumber;
-        for (int i = 0; i < 3; i++) {
-            randomNumber = Randoms.pickNumberInRange(1,9);
+        for (int i = 0; i < NUMBER_LEN; i++) {
+            randomNumber = Randoms.pickNumberInRange(MIN_RANGE,MAX_RANGE);
             while (alreadyUse[randomNumber]) {
-                randomNumber = Randoms.pickNumberInRange(1,9);
+                randomNumber = Randoms.pickNumberInRange(MIN_RANGE,MAX_RANGE);
             }
             answerMadeByComputer[i] = randomNumber;
             alreadyUse[randomNumber] = true;
@@ -33,12 +37,12 @@ public class Computer {
     private Result makeResult() {
         int strikeCnt = 0;
         int ballCnt = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_LEN; i++) {
             if (eachDigitOfGuessNumber[i] == answerMadeByComputer[i]) {
                 strikeCnt += 1;
                 continue;
             }
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < NUMBER_LEN; j++) {
                 if (eachDigitOfGuessNumber[i] == answerMadeByComputer[j]) {
                     ballCnt += 1;
                 }
