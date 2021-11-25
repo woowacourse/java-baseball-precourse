@@ -4,15 +4,19 @@
 
 ### 1. 랜덤 숫자 값 생성(Computer.class)
 - 1부터 9까지 서로 다른 수로 이루어진 세 자리의 수
-### 2. 랜덤 숫자 값을 검증(Valid.class)
+### 2. 랜덤 숫자 값을 검증(Computer.class)
 - 3자리의 자연수인지 확인
 - 1부터 9까지의 서로 다른 수로만 이루어져 있는지 확인
 - 통과 시 true(VALID_SUCCESS), 실패 시 false(VALID_FAILED) 리턴
+  - `validateNumbers()`
 - 잘못된 경우 (1)의 과정 반복
 ### 3. 사용자 숫자 값 입력(Game.class)
 - 1부터 9까지 서로 다른 수로 이루어진 세 자리의 수
-### 4. 사용자 입력 숫자 값을 검증(Valid.class)
-- (2)의 메서드로 사용자의 입력 숫자 값을 검증
+### 4. 사용자 입력 숫자 값을 검증(Game.class)
+- 사용자의 입력 숫자 값을 검증
+  - `validateDateType()`
+  - `validateCount()`
+  - `validateRange()`
 - 잘못 입력한 경우 `IllegalArgumentException`를 발생
 ### 5. 입력 숫자 값과 랜덤 숫자 값을 비교(Computer.class)
 - 같은 수가 같은 자리에 있으면 스트라이크
