@@ -6,6 +6,12 @@ public class Validation {
 		return isLengthOk(numbers) && isInteger(numbers) && isUnique(numbers);
 	}
 
+	public static void checkRestartInput(String request) {
+		if (!request.equals("1") && !request.equals("2")) {
+			throw new IllegalArgumentException(Message.ERROR_REQUEST_INPUT);
+		}
+	}
+
 	private static boolean isLengthOk(String numbers) {
 		if (numbers.length() != Rules.NUMBER_LENGTH) {
 			throw new IllegalArgumentException(Message.ERROR_INPUT_LENGTH);
@@ -34,4 +40,5 @@ public class Validation {
 		}
 		return true;
 	}
+
 }
