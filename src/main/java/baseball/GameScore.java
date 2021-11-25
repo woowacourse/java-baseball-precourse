@@ -21,17 +21,17 @@ class GameScore {
     }
 
     public void printResult(){
-        StringBuilder sb = new StringBuilder();
+        StringBuilder resultBuilder = new StringBuilder();
         if(ball > 0){
-            sb.append(ball + BALL);
+            resultBuilder.append(ball + BALL);
         }
         if(strike > 0){
-            sb.append(strike + STRIKE);
+            resultBuilder.append(strike + STRIKE);
         }
         if(strike == 0 && ball == 0){
-            sb.append(NOTHING);
+            resultBuilder.append(NOTHING);
         }
-        System.out.println(sb.toString());
+        System.out.println(resultBuilder.toString());
         resetScore();
     }
 

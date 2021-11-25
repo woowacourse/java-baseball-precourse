@@ -26,14 +26,14 @@ class GameProvider {
      * 중복없는 SystemAnswer 생성
      */
     private void generateAnswer(){
-        Integer[] tempArr = createNotDuplicateArr();
+        Integer[] tempArr = createTempAnswer();
 
         for(int i = 0 ; i < NUMBER_LENGTH; i++){
             systemAnswer[i] = tempArr[i];
         }
     }
 
-    private Integer[] createNotDuplicateArr() {
+    private Integer[] createTempAnswer() {
         Set<Integer> tempSet = new LinkedHashSet<>();
         while (tempSet.size() < NUMBER_LENGTH){
             tempSet.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));

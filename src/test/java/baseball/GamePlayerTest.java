@@ -21,11 +21,11 @@ class GamePlayerTest {
 
     @DisplayName("입력값 정상 작동")
     @Test
-    void enter_rightInput(){
+    void enter_rightInput_True(){
         String input = "123";
-        enterSystemInput(input);
+        insertSystemInput(input);
 
-        gamePlayer.writeAnswer();
+        gamePlayer.insertAnswer();
         int[] playerAnswer = gamePlayer.getPlayerAnswer();
 
         for(int i = 0 ; i < playerAnswer.length; i++){
@@ -38,41 +38,41 @@ class GamePlayerTest {
 
     @DisplayName("중복값 입력 에러 발생")
     @Test
-    void enter_duplicateNumber(){
+    void enter_duplicateNumber_False(){
         String input = "113";
-        enterSystemInput(input);
+        insertSystemInput(input);
 
-        assertThrows(IllegalArgumentException.class, () -> gamePlayer.writeAnswer());
+        assertThrows(IllegalArgumentException.class, () -> gamePlayer.insertAnswer());
     }
 
     @DisplayName("숫자 아닌값 입력 에러 발생")
     @Test
-    void enter_NotNumber(){
+    void enter_NotNumber_False(){
         String input = "21t";
-        enterSystemInput(input);
+        insertSystemInput(input);
 
-        assertThrows(IllegalArgumentException.class, () -> gamePlayer.writeAnswer());
+        assertThrows(IllegalArgumentException.class, () -> gamePlayer.insertAnswer());
     }
 
     @DisplayName("3자 이상 입력 에러 발생")
     @Test
-    void enter_NotRightLength(){
+    void enter_NotRightLength_False(){
         String input = "1534";
-        enterSystemInput(input);
+        insertSystemInput(input);
 
-        assertThrows(IllegalArgumentException.class, () -> gamePlayer.writeAnswer());
+        assertThrows(IllegalArgumentException.class, () -> gamePlayer.insertAnswer());
     }
 
     @DisplayName("0 입력 에러 발생")
     @Test
-    void enter_enterZero(){
+    void enter_enterZero_False(){
         String input = "120";
-        enterSystemInput(input);
+        insertSystemInput(input);
 
-        assertThrows(IllegalArgumentException.class, () -> gamePlayer.writeAnswer());
+        assertThrows(IllegalArgumentException.class, () -> gamePlayer.insertAnswer());
     }
 
-    private void enterSystemInput(String input) {
+    private void insertSystemInput(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
     }

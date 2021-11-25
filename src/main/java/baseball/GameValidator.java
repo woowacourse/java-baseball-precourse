@@ -14,7 +14,7 @@ class GameValidator {
      */
     public static boolean isValidInput(String input){
         return isRightLength(input) && isNumber(input)
-                && isNotDuplicate(input) && isRangeBetweenOneToNine(input);
+                && isNotDuplicate(input) && isRightRange(input);
     }
 
     private static boolean isRightLength(String input){
@@ -42,7 +42,7 @@ class GameValidator {
         return false;
     }
 
-    private static boolean isRangeBetweenOneToNine(String input){
+    private static boolean isRightRange(String input){
         for(int i = 0 ; i < NUMBER_LENGTH; i++){
             int digit = Character.getNumericValue(input.charAt(i));
 

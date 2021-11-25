@@ -13,7 +13,7 @@ public class BaseballGame {
 
     public void run() {
         while (gameProvider.getGameStatus().equals(ON_GOING)) {
-            gamePlayer.writeAnswer();
+            gamePlayer.insertAnswer();
             GameScore gameScore = gameProvider.checkAnswer(gamePlayer.getPlayerAnswer());
             gameScore.printResult();
 
