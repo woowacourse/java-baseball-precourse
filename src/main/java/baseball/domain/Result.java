@@ -53,4 +53,8 @@ public class Result {
 
         return ballCount + "볼 " + strikeCount + "스트라이크";
     }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
 }

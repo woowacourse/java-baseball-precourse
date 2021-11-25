@@ -9,14 +9,14 @@ public class Guess {
     private final int startInclusive;
     private final int endInclusive;
     private final int count;
-    private final List<Integer> guess;
+    private final List<Integer> numbers;
 
     public Guess(String userInput, int startInclusive, int endInclusive, int count) {
         this.startInclusive = startInclusive;
         this.endInclusive = endInclusive;
         this.count = count;
         validateUserInput(userInput);
-        this.guess = toList(userInput);
+        this.numbers = toList(userInput);
     }
 
     private List<Integer> toList(String userInput) {
@@ -67,5 +67,9 @@ public class Guess {
                         + " and should not be greater than " + endInclusive);
             }
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
