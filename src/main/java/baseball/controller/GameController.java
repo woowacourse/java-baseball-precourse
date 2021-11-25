@@ -13,33 +13,32 @@ import java.util.ArrayList;
  */
 public class GameController {
 
+	private static String INPUT_NUMBER;
+
 	/**
 	 * 게임을 제어하는 함수
 	 */
 	public static void controlGame() {
-		startGame();
+		ArrayList<Integer> answerNumber = RandomNumberGenerator.generateRandomNumber();
+
+		while (true) {
+			startGame();
+			ArrayList<Integer> playerNumber = stringToArrayList(INPUT_NUMBER);
+			giveHint(answerNumber, playerNumber);
+			if (finishGame(answerNumber, playerNumber)) {
+				break;
+			}
+		}
 	}
 
 	/**
 	 * 게임을 시작하는 함수
 	 */
 	public static void startGame() {
-		String inputNumber;
-		ArrayList<Integer> answerNumber = RandomNumberGenerator.generateRandomNumber();
+		OutputView.askNumber();
+		INPUT_NUMBER = InputView.writeInput();
 
-		while (true) {
-			OutputView.askNumber();
-			inputNumber = InputView.writeInput();
-
-			if (InputExceptionHandler.checkValidation(inputNumber)) {
-				ArrayList<Integer> playerNumber = (stringToArrayList(inputNumber));
-
-				giveHint(answerNumber, playerNumber);
-				if (finishGame(answerNumber, playerNumber)) {
-					break;
-				}
-			}
-		}
+		InputExceptionHandler.checkValidation(INPUT_NUMBER);
 	}
 
 	/**
@@ -70,13 +69,15 @@ public class GameController {
 		return arr;
 	}
 
-	/** 게임을 종료하는 함수
+	/**
+	 * 게임을 종료하는 함수
 	 *
 	 * @param answerNumber: ArrayList<Integer>
 	 * @param playerNumber: ArrayList<Integer>
 	 * @return true or false
 	 */
-	public static boolean finishGame(ArrayList<Integer> answerNumber, ArrayList<Integer> playerNumber) {
+	public static boolean finishGame(ArrayList<Integer> answerNumber,
+		ArrayList<Integer> playerNumber) {
 		if (TerminateHandler.correctAnswer(answerNumber, playerNumber)) {
 			OutputView.printCorrectAnswer();
 			return true;
