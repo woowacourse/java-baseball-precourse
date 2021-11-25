@@ -1,11 +1,11 @@
-package utils;
+package baseball;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
-public class Answer{
+public class Computer{
     private int[] answer = new int[3];
     private boolean[] usedNum = new boolean[9];
 
-    public void generateAnswer(){
+    public int[] generateAnswer(){
         for(int digit = 0; digit < 3; digit++){
             int pickNum = pickNumberInRange(1,9);
 
@@ -16,11 +16,8 @@ public class Answer{
             }
             digit--;
         }
-    }
 
-    public int[] returnAnswer(){
-        generateAnswer();
-        return this.answer;
+        return answer;
     }
 
 }
