@@ -34,11 +34,22 @@
    "feat : add user input view and service with handling exception"
    
    사용자 입력에 관한 기능 추가
-   입력하기 위한 출력 메세지 추가
+   입력하기 위한 메세지 출력기능 추가
    입력을 판단하고 이에 따른 어플리케이션 진행여부를 결정 하도록 함
    ```
 
-5. 
+5. ```
+   2021/11/25
+   "feat(result) : add result service to calculate game result deciding when the game over and print result message"
+   
+   사용자 숫자와 컴퓨터 숫자간의 숫자 야구 게임 진행
+   스트라이크와 볼, 그에 따른 결과 메세지를 저장하는 result객체 추가
+   형식에 맞는 게임 결과 출력
+   3스트라이크가 될 때까지 사용자에게 숫자를 입력받는 기능 추가
+   3스트라이크 시 게임이 종료 됨.
+   ```
+
+6. 
 
 
 

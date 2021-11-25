@@ -3,12 +3,17 @@ package baseball;
 import baseball.number.ComputerNumber;
 import baseball.number.NumberService;
 import baseball.number.UserNumber;
+import baseball.result.GameResult;
+import baseball.result.GameResultService;
 import baseball.view.BaseballView;
 
 public class PlayBall {
+
     ComputerNumber computerNumber;
     NumberService numberService;
     UserNumber userNumber;
+    GameResult gameResult;
+    GameResultService gameResultService = new GameResultService();
 
     //게임 진행을 위한 초기화
     public void startGame() {
@@ -29,6 +34,7 @@ public class PlayBall {
     private void getUserInput() {
         userNumber = new UserNumber();
         String userInput = BaseballView.getUserInput();
+
         checkUserInput(userInput);
     }
 
@@ -36,8 +42,51 @@ public class PlayBall {
     private void checkUserInput(String userInput) {
         try {
             numberService.checkUserInput(userInput, userNumber);
+
+            playBall();
         } catch (IllegalArgumentException e){
             return;
         }
+    }
+
+    //게임 실행 후 결과 저장
+    private void playBall() {
+        gameResult = new GameResult();
+        int ballCount = gameResultService.countBall(computerNumber, userNumber);
+        int strikeCount = gameResultService.countStrike(computerNumber, userNumber);
+
+        gameResult.setBallCount(ballCount - strikeCount);
+        gameResult.setStrikeCount(strikeCount);
+
+        createResultMessage();
+    }
+
+    //결과에 따른 출력 메세지 생성
+    private void createResultMessage() {
+        gameResultService.createResultMessage(gameResult);
+
+        printResult();
+    }
+
+    //결과 메세지 출력
+    private void printResult() {
+        BaseballView.printResultMessage(gameResult);
+
+        checkGameOver();
+    }
+
+    //3스트라이크인지 확인 후 진행사항 결정
+    private void checkGameOver() {
+        if (gameResult.getStrikeCount() == 3) {
+//            BaseballView.printGameOverView();
+//            getRepeatInput();
+//            return;
+        }
+
+        getUserInput();
+    }
+
+    private void getRepeatInput() {
+
     }
 }
