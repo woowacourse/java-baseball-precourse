@@ -36,7 +36,7 @@ public class Game {
         }
     }
 
-    private String makeRandNum () {
+    private String makeRandNum() {
         StringBuilder randNum = new StringBuilder();
 
         while (randNum.length() < DIGIT) {
@@ -75,7 +75,7 @@ public class Game {
     }
 
     private void noOverlap(int i) {
-        for (int j = i+1; j < DIGIT; j++) {
+        for (int j = i + 1; j < DIGIT; j++) {
             if (userNum.charAt(i) == userNum.charAt(j)) {
                 throw new IllegalArgumentException();
             }
