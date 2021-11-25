@@ -6,15 +6,14 @@ import constant.SystemMessage;
 public class Player {
     public int predictNumber() {
         System.out.printf("%s", SystemMessage.ENTER_NUMBER_MESSAGE);
-        String input = Console.readLine();
-        isValidNumber(input);
-        return Integer.parseInt(input);
+        return isValidNumber(Console.readLine());
     }
 
-    private void isValidNumber(String input) {
+    private int isValidNumber(String input) {
         int value = getNumber(input);
         isValidRange(value);
         containZero(value);
+        return Integer.parseInt(input);
     }
 
     private int getNumber(String input) {

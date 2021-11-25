@@ -9,25 +9,24 @@ public class Application {
         do {
             BaseBall baseBall = new BaseBall();
             baseBall.playGame();
-            System.out.println(SystemMessage.ENTER_NEXT_GAME_MESSAGE);
         } while (decideNextGame());
     }
 
     private static boolean decideNextGame() {
-        String userInput = Console.readLine();
-        isValidInput(userInput);
-        int next_game = Integer.parseInt(userInput);
+        System.out.println(SystemMessage.ENTER_NEXT_GAME_MESSAGE);
+        int next_game = isValidInput(Console.readLine());
         if (next_game == SystemMessage.REPEAT) return true;
         return false;
     }
 
-    private static void isValidInput(String input) {
+    private static int isValidInput(String input) {
         for (char ch : input.toCharArray()) {
             if (!Character.isDigit(ch)) throw new IllegalArgumentException(SystemMessage.NO_NUMBER_ERROR);
         }
         int value = Integer.parseInt(input);
         if (value != SystemMessage.REPEAT && value != SystemMessage.STOP)
             throw new IllegalArgumentException(SystemMessage.INVALID_NUMBER);
+        return Integer.parseInt(input);
     }
 
 }

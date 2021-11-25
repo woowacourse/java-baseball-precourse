@@ -12,7 +12,7 @@ public class BaseBall {
         player = new Player();
     }
 
-    public void playGame() throws IllegalArgumentException {
+    public void playGame() {
         computer.decideRandomNumber();
         int predict = SystemMessage.FIRST_VALUE;
         do {
