@@ -3,7 +3,7 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Randoms.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
@@ -26,11 +26,11 @@ public class BaseBallGame {
     }
 
     private List<Integer> makeRandomNumber() {
-        Set<Integer> result = new HashSet<>();
+        Set<Integer> result = new LinkedHashSet<>();
         while (result.size() < NUMBER_LENGTH) {
             result.add(pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
         }
-        return shuffle(new ArrayList<>(result));
+        return new ArrayList<>(result);
     }
 
     private void gameStart() {
