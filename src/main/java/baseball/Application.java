@@ -7,12 +7,16 @@ public class Application {
 
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         Printer printer = new Printer();
+        Validator validator = new Validator();
 
         String randomNumber = String.valueOf(randomNumberGenerator.makeRandomNumber(3));
 
         while (true) {
             printer.printNumberInputMessage();
             String input = Console.readLine();
+            validator.validateInputNumber(input);
+
+
         }
 
     }
