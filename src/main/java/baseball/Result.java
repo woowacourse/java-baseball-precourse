@@ -1,8 +1,11 @@
 package baseball;
 
+import java.util.ArrayList;
+
 public class Result {
     private int strike;
     private int ball;
+    private String message;
 
     public void addStrikeCount() {
         this.strike++;
@@ -12,5 +15,21 @@ public class Result {
         this.ball++;
     }
 
-    // TODO: 결과 메세지를 출력하는 함수작성
+    public void createMessage() {
+        if (this.strike == 0 && this.ball == 0) {
+            this.message = "낫싱";
+            return;
+        }
+
+        ArrayList<String> list = new ArrayList<>();
+        if (this.ball != 0) {
+            list.add(this.ball + "볼");
+        }
+
+        if (0 < this.strike && this.strike < 3) {
+            list.add(this.strike + "스트라이크");
+        }
+
+        this.message = String.join(" ", list);
+    }
 }
