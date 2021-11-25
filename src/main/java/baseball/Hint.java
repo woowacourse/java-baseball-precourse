@@ -13,6 +13,20 @@ public class Hint {
 		}
 	}
 
+	public void printResult() {
+		StringBuilder stringBuilder = new StringBuilder();
+		if (ball > 0) {
+			stringBuilder.append(ball).append("볼 ");
+		}
+		if (strike > 0) {
+			stringBuilder.append(strike).append("스트라이크");
+		}
+		if (strike == 0 && ball == 0) {
+			stringBuilder.append("낫싱");
+		}
+		System.out.println(stringBuilder);
+	}
+
 	private void initCount() {
 		this.strike = 0;
 		this.ball = 0;
@@ -30,5 +44,9 @@ public class Hint {
 				this.ball++;
 			}
 		}
+	}
+
+	public int getStrike() {
+		return strike;
 	}
 }
