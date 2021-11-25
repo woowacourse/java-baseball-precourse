@@ -8,6 +8,8 @@ import java.util.List;
 public class BaseballGameInput {
 
     private static final String BASEBALL_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String BASEBALL_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final int RESTART_CODE = 1;
 
     private final BaseballGameInputValidator inputValidator;
 
@@ -32,5 +34,13 @@ public class BaseballGameInput {
             numberList.add(number - '0');
         }
         return numberList;
+    }
+
+    public boolean isContinue() {
+        System.out.println(BASEBALL_RESTART_MESSAGE);
+
+        int code = Integer.parseInt(Console.readLine());
+
+        return code == RESTART_CODE;
     }
 }
