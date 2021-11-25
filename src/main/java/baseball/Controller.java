@@ -1,11 +1,13 @@
 package baseball;
 
+import baseball.utils.Parser;
 import baseball.utils.RandomUtils;
 import baseball.view.UserInput;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Controller {
 
+    Parser parser = new Parser();
     public int gameNumber;
 
     public void run() {
@@ -19,9 +21,17 @@ public class Controller {
     }
 
     private void gameStart() {
+        int userInput = getUserInput();
+
+    }
+
+    private int getUserInput() {
         UserInput.UserInputData();
+
         String input = Console.readLine();
-        System.out.println(input);
+        int inputNum = parser.userInputParser(input);
+
+        return inputNum;
     }
 
     private void gameEnd() {
