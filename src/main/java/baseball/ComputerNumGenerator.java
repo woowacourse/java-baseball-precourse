@@ -3,16 +3,17 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerNumGenerator {
-	public int[] nums = new int[3];
+	public int[] nums;
 
 	public ComputerNumGenerator() {
 		do {
-			nums = pickThreeNum(nums);
+			this.nums = pickThreeNum();
 		} while (!isNotSame(nums));
 	}
 
-	public static int[] pickThreeNum(int[] nums) {
-		for (int i = 0; i < nums.length; i++) {
+	public static int[] pickThreeNum() {
+		int[] nums = new int[3];
+		for (int i = 0; i < 3; i++) {
 			nums[i] = Randoms.pickNumberInRange(1, 9);
 		}
 		return nums;
