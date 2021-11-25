@@ -9,6 +9,7 @@ public class BaseBallGame {
     private String[] answerNumStrArr;
     private String[] inputNumStrArr;
     private int ball;
+    private int strike;
 
     public BaseBallGame() {
         answerNum = 0;
@@ -37,11 +38,14 @@ public class BaseBallGame {
             initializeScore();
             calculateBall();
             System.out.println(ball + "볼");
+            calculateStrike();
+            System.out.println(strike + "스트라이크");
         }
     }
 
     private void initializeScore() {
         ball = 0;
+        strike = 0;
     }
 
     private void makeAnswerNum() {
@@ -66,6 +70,14 @@ public class BaseBallGame {
         for(String s : inputNumStrArr) {
             if(isContainedInAnswer(s)) {
                 ball++;
+            }
+        }
+    }
+
+    private void calculateStrike() {
+        for(int i = 0; i < answerNumStrArr.length; i++) {
+            if(answerNumStrArr[i].equals(inputNumStrArr[i])) {
+                strike++;
             }
         }
     }
