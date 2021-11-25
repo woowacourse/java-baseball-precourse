@@ -24,7 +24,7 @@ public class Controller {
     }
 
     private void gameStart() throws IllegalArgumentException{
-        System.out.println(gameNumber[0]+""+gameNumber[1]+""+gameNumber[2]);
+//        System.out.println(gameNumber[0]+""+gameNumber[1]+""+gameNumber[2]);
         play();
         gameOver();
     }
