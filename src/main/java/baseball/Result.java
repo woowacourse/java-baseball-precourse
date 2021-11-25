@@ -32,4 +32,8 @@ public class Result {
 
         this.message = String.join(" ", list);
     }
+
+    public void printMessage() {
+        System.out.println(message);
+    }
 }
