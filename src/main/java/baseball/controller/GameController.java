@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.generator.HintGenerator;
 import baseball.generator.RandomNumberGenerator;
 import baseball.handler.InputExceptionHandler;
+import baseball.handler.TerminateHandler;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.ArrayList;
@@ -34,6 +35,9 @@ public class GameController {
 				ArrayList<Integer> playerNumber = (stringToArrayList(inputNumber));
 
 				giveHint(answerNumber, playerNumber);
+				if (finishGame(answerNumber, playerNumber)) {
+					break;
+				}
 			}
 		}
 	}
@@ -66,4 +70,17 @@ public class GameController {
 		return arr;
 	}
 
+	/** 게임을 종료하는 함수
+	 *
+	 * @param answerNumber: ArrayList<Integer>
+	 * @param playerNumber: ArrayList<Integer>
+	 * @return true or false
+	 */
+	public static boolean finishGame(ArrayList<Integer> answerNumber, ArrayList<Integer> playerNumber) {
+		if (TerminateHandler.correctAnswer(answerNumber, playerNumber)) {
+			OutputView.printCorrectAnswer();
+			return true;
+		}
+		return false;
+	}
 }

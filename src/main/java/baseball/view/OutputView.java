@@ -9,6 +9,7 @@ public class OutputView {
 	private static final String BALL = "볼 ";
 	private static final String STRIKE = "스트라이크";
 	private static final String NOTHING = "낫싱";
+	private static final String CORRECT_ANSWER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
 	/**
 	 * 숫자 입력을 요구하는 메시지를 출력하는 함수
@@ -47,5 +48,12 @@ public class OutputView {
 	 */
 	public static void printNothing() {
 		System.out.println(NOTHING);
+	}
+
+	/**
+	 * 정답을 맞췄음을 출력하는 함수
+	 */
+	public static void printCorrectAnswer() {
+		System.out.println(CORRECT_ANSWER);
 	}
 }
