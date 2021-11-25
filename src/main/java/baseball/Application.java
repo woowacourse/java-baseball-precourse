@@ -4,7 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
+        startGame();
+    }
+
+    private static void startGame() {
         String targetNumber = NumberGenerator.generate();
         System.out.println(targetNumber);
         String inputNumber = "";
@@ -18,6 +21,10 @@ public class Application {
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restart = Console.readLine();
         validateRestart(restart);
+
+        if (restart.equals("1")) {
+            startGame();
+        }
     }
 
     private static void getResult(String targetNumber, String inputNumber) {
