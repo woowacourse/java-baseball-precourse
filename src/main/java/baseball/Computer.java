@@ -2,9 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import constant.SystemMessage;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashSet;
 
 public class Computer {
@@ -61,10 +59,5 @@ public class Computer {
         if (ball == 0 && strike == 0) System.out.printf("%s",SystemMessage.NOTHING);
         System.out.println();
     }
-
-
-
-
-
 
 }
