@@ -5,7 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.regex.Pattern;
 
-import static baseball.PrintStatement.INPUT_REQUEST_MESSAGE;
+import static baseball.Message.INPUT_REQUEST_MESSAGE;
+import static baseball.Message.NOT_THREE_DIGIT_INTEGER_MESSAGE;
 
 public class Player {
     static final String INPUT_VALUE_REGEX = "^[1-9]{3}$";
@@ -21,7 +22,7 @@ public class Player {
         boolean isThreeDigitsInteger = Pattern.matches(INPUT_VALUE_REGEX, guessedNumber);
 
         if (!isThreeDigitsInteger) {
-            throw new IllegalArgumentException("세 자리 정수를 입력하세요.");
+            throw new IllegalArgumentException(NOT_THREE_DIGIT_INTEGER_MESSAGE);
         }
     }
     private void inputValue() {

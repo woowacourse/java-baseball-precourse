@@ -2,7 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.PrintStatement.ASK_GAME_RESTART_MESSAGE;
+import static baseball.Message.ASK_GAME_RESTART_MESSAGE;
+import static baseball.Message.NOT_RELATED_ABOUT_RESTART_MESSAGE;
 
 public class BaseballGame {
 
@@ -41,6 +42,6 @@ public class BaseballGame {
         if (continueGame.equals("2")) {
             return false;
         }
-        throw new IllegalArgumentException("1 또는 2 이외의 값을 입력하셨습니다.");
+        throw new IllegalArgumentException(NOT_RELATED_ABOUT_RESTART_MESSAGE);
     }
 }
