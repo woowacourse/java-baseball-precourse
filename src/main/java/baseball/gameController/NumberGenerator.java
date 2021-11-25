@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class NumberGenerator {
 
-	public HashSet<Integer> generateNumSet() {
+	private HashSet<Integer> generateNumSet() {
 		HashSet<Integer> selectedNum = new HashSet<>();
 
 		while (selectedNum.size() < 3) {
