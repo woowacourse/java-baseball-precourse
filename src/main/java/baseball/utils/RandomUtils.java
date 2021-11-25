@@ -6,7 +6,7 @@ public class RandomUtils {
     public RandomUtils() {
     }
 
-    public static int[] getRandomNumbers(int size, final int startInclusive, final int endInclusive) {
+    public static int[] getRandomNumbers(int size, int startInclusive, int endInclusive) {
         int[] numbers = new int[3];
 
         for (int i = 0; i < size; i++) {
