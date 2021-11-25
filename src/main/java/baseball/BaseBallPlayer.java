@@ -41,7 +41,7 @@ public class BaseBallPlayer {
 	}
 
 	private boolean isRightLength(String userInput) {
-		return userInput.length() <= 4;
+		return userInput.length() == 3;
 	}
 
 	private boolean isRightNumberRange(String userInput) {
