@@ -16,7 +16,8 @@ public class RandomNumberGenerator {
 	private static final Integer START_RANDOM_VALUE = 1;
 	private static final Integer END_RANDOM_VALUE = 9;
 	private static final Integer USED_VALUE_CHECK = 1;
-	private static final int[] duplicateNumberFlag = new int[FLAG_SIZE];
+	private static int[] duplicateNumberFlag = new int[FLAG_SIZE];
+	private static ArrayList<Integer> answerNumber = new ArrayList<>();
 
 	/**
 	 * 중복확인을 위한 flag 배열을 초기화하는 함수
@@ -33,34 +34,25 @@ public class RandomNumberGenerator {
 	 * @return AnswerNumber
 	 */
 	public static ArrayList<Integer> generateRandomNumber() {
-		ArrayList<Integer> AnswerNumber = new ArrayList<>();
+		initNumberFlag();
 
-		while (AnswerNumber.size() < RANDOM_NUMBER_SIZE) {
-			int randomNumber = Randoms.pickNumberInRange(START_RANDOM_VALUE,
-				END_RANDOM_VALUE);
-			if (duplicateNumberCheck(randomNumber)) {
-				continue;
-			} else if (!duplicateNumberCheck(randomNumber)) {
-				AnswerNumber.add(randomNumber);
-			}
+		while (answerNumber.size() < RANDOM_NUMBER_SIZE) {
+			int randomNumber = Randoms.pickNumberInRange(START_RANDOM_VALUE, END_RANDOM_VALUE);
+			duplicateNumberCheck(randomNumber);
 		}
-		return AnswerNumber;
+		return answerNumber;
 	}
 
 	/**
 	 * 랜덤값의 중복을 확인하는 함수
 	 *
 	 * @param randomNumber: Integer
-	 * @return true or false
 	 */
-	public static boolean duplicateNumberCheck(Integer randomNumber) {
+	public static void duplicateNumberCheck(Integer randomNumber) {
 		int index = randomNumber - 1;
-		initNumberFlag();
 		if (duplicateNumberFlag[index] == INITIAL_VALUE) {
 			duplicateNumberFlag[index] = USED_VALUE_CHECK;
-			return false;
-		} else {
-			return true;
+			answerNumber.add(randomNumber);
 		}
 	}
 }
