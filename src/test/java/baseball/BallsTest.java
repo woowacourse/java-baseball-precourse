@@ -48,4 +48,12 @@ public class BallsTest {
         List<PlayType> playTypeList = playTypes.getPlayType();
         assertThat(playTypeList).containsExactly(PlayType.STRIKE, PlayType.STRIKE, PlayType.STRIKE);
     }
+
+    @Test
+    void 결과_1볼_1스트라이크() {
+        Balls myBall = new Balls(4, 3, 6);
+        PlayTypes playTypes = myBall.play(computerBalls);
+        List<PlayType> playTypeList = playTypes.getPlayType();
+        assertThat(playTypeList).containsExactly(PlayType.STRIKE, PlayType.NOTHING, PlayType.BALL);
+    }
 }
