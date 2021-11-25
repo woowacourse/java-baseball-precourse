@@ -15,7 +15,7 @@ public class Application {
 		while (true) {
 			int userGameSelection = game.runGameOnce();
 			if (userGameSelection == RESTART.getNumber())
-				game.setComputer(new Computer());
+				game.resetComputer();
 			if (userGameSelection == STOP.getNumber())
 				break;
 		}

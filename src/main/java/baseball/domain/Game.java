@@ -24,6 +24,10 @@ public class Game {
 		this.strike = 0;
 	}
 
+	public void resetComputer() {
+		this.computer = new Computer();
+	}
+
 	public int runGameOnce() {
 		int userGameOverSelection;
 		while (true) {
