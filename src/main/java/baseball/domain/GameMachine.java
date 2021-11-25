@@ -22,11 +22,10 @@ public class GameMachine {
 
     private void start(BaseballNumbers baseballNumbers) {
         while (true) {
-            List<Integer> inputNumbers = inputView.getInputNumbers();
-            BaseballState baseballState = baseballReferee.referee(baseballNumbers.getNumbers(), inputNumbers);
-            outputView.outputRefereeResult(baseballState.getMessage());
+            BaseballState state = baseballReferee.referee(baseballNumbers.getNumbers(), inputView.getInputNumbers());
+            outputView.outputRefereeResult(state.getMessage());
 
-            if (baseballState.isSuccess()) {
+            if (state.isSuccess()) {
                 outputView.outputSuccess();
                 restart();
                 break;
