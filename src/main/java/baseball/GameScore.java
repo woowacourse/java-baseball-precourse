@@ -39,6 +39,10 @@ class GameScore {
         return strike;
     }
 
+    public int getBall(){
+        return ball;
+    }
+
     public void resetScore(){
         strike = 0;
         ball = 0;
