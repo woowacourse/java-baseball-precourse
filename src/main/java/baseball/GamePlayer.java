@@ -27,6 +27,19 @@ class GamePlayer {
         return Character.getNumericValue(digit);
     }
 
+    public String insertRestartOrStop(){
+        System.out.println(ASK_RESTART_OR_STOP);
+        String input = Console.readLine();
+        isRightInputRestartOrStop(input);
+        return input;
+    }
+
+    private void isRightInputRestartOrStop(String input){
+        if(!input.equals(RESTART) && !input.equals(STOP)){
+            throw new IllegalArgumentException(INVALID_INPUT_ERROR);
+        }
+    }
+
     public int[] getPlayerAnswer() {
         return playerAnswer;
     }

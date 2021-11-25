@@ -80,21 +80,13 @@ class GameProvider {
     /**
      * Game 재시작 혹은 종료 여부 확인
      */
-    public void askRestartOrStop(){
-        String input = Console.readLine();
-        isRightInputRestartOrStop(input);
+    public void checkRestartOrStop(String input){
         if(input.equals(RESTART)){
             gameStatus = ON_GOING;
             generateAnswer();
             return;
         }
         gameStatus = STOP;
-    }
-
-    private void isRightInputRestartOrStop(String input){
-        if(!input.equals(RESTART) && !input.equals(STOP)){
-            throw new IllegalArgumentException(INVALID_INPUT_ERROR);
-        }
     }
 
     /**

@@ -19,8 +19,7 @@ public class BaseballGame {
 
             if (gameProvider.getGameStatus().equals(CORRECT)) {
                 System.out.println(THREE_STRIKE);
-                System.out.println(ASK_RESTART_OR_STOP);
-                gameProvider.askRestartOrStop();
+                gameProvider.checkRestartOrStop(gamePlayer.insertRestartOrStop());
             }
         }
     }
