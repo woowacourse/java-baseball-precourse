@@ -7,9 +7,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame {
 	private int[] answer;
+	private Referee referee;
 
 	public BaseballGame() {
 		answer = null;
+		referee = null;
 	}
 
 	public void init() {
@@ -24,6 +26,8 @@ public class BaseballGame {
 				answer[cnt++] = nowNum;
 			}
 		}
+		// 레프리 생성 : answer 값을 저장해둔다.
+		referee = new Referee(answer);
 	}
 
 	public int[] validCheck(String input) {
@@ -35,7 +39,6 @@ public class BaseballGame {
 	}
 
 	public Result offer(int[] playerNum) {
-		Referee referee = new Referee(playerNum, answer);
-		return referee.check();
+		return referee.check(playerNum);
 	}
 }

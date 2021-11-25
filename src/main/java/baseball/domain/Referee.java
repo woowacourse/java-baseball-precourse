@@ -1,15 +1,13 @@
 package baseball.domain;
 
 public class Referee {
-	private final int[] playerNum;
 	private final int[] answer;
 
-	public Referee(int[] playerNum, int[] answer) {
-		this.playerNum = playerNum;
+	public Referee(int[] answer) {
 		this.answer = answer;
 	}
 
-	public Result check() {
+	public Result check(int[] playerNum) {
 		int strikeCount = 0;
 		int ballCount = 0;
 		for (int i = 0; i < playerNum.length; i++) {
