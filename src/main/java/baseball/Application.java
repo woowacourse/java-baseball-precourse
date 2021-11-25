@@ -9,14 +9,17 @@ public class Application {
 
         while (true) {
             boolean isFinish = game.play();
-            if (isFinish) {
-                game.printEndMessage();
-                String input = Console.readLine();
-                if (input.equals("2")) {
-                    break;
-                }
-                game.init();
+            if (!isFinish) {
+                continue;
             }
+
+            game.printEndMessage();
+            String input = Console.readLine();
+            if (input.equals("2")) {
+                break;
+            }
+
+            game.init();
         }
     }
 }
