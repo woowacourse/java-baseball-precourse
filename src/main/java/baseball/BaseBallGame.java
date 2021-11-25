@@ -25,7 +25,6 @@ public class BaseBallGame {
 		while (gameStatus == GOING) {
 			baseBallProvider.makeAnswer();
 			while (!baseBallScore.isAllStrike()) {
-				System.out.println(baseBallProvider.getAnswer());
 				baseBallPlayer.getUserNumber();
 				baseBallScore.countScore(baseBallProvider.getAnswer(), baseBallPlayer);
 				System.out.println(baseBallScore.scoreString());
