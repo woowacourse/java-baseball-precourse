@@ -8,7 +8,6 @@ public class Player {
         System.out.printf("%s", SystemMessage.ENTER_NUMBER_MESSAGE);
         String input = Console.readLine();
         isValidNumber(input);
-
         return Integer.parseInt(input);
     }
 

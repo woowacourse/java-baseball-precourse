@@ -1,5 +1,7 @@
 package baseball;
 
+import constant.SystemMessage;
+
 public class BaseBall {
     private Computer computer;
     private Player player;
@@ -11,7 +13,11 @@ public class BaseBall {
 
     public void playGame(){
         computer.decideRandomNumber();
-        int predict = player.predictNumber();
+        int predict = SystemMessage.FIRST_VALUE;
+        do {
+            predict = player.predictNumber();
+        } while (!computer.canFinish(predict));
+        System.out.printf("%s\n", SystemMessage.END_GAME_MESSAGE);
 
     }
 }
