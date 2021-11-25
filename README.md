@@ -139,6 +139,7 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
   - `camp.nextstep.edu.missionutils.Console` API를 사용하여 입력받음
   - 예외처리
     - 3자리 숫자가 아닐경우 `IllegalArgumentException`
+    - 입력된 숫자중 중복이 있을 경우 `IllegalArgumentException`
 - 볼 / 스트라이크 출력
   - 유저가 입력한 inputNumber와 컴퓨터의 answerNumber를 비교하여 볼 / 스트라이크 카운팅
   - 3스트라이크일 경우 정답처리. 게임 종료
