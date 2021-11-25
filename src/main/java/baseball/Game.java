@@ -9,12 +9,7 @@ public class Game {
     Referee referee = new Referee();
 
     public void play() {
-        // 게임이 잘 돌아가는지 확인하기 위함
-        List<Ball> balls = computer.getBalls();
-        for (int i = 0; i < balls.size(); i++) {
-            System.out.print(balls.get(i).getValue()+" ");
-        }
-        // ------------------------
+        referee.resetCount();
         OutputView.numberInputMessageShow();
         List<Ball> userBalls = player.selectBalls(InputView.StringChangeList());
         for (int i = 0; i < Constant.MAX_SIZE; i++) {

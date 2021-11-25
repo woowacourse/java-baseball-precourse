@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +15,6 @@ public class Referee {
 
     public Referee() {
         result = new HashMap<>();
-        result.put(BallResult.STRIKE, 0);
-        result.put(BallResult.BALL, 0);
     }
 
     public BallResult ballCompare(Ball ball1, Ball ball2) {
@@ -42,5 +39,10 @@ public class Referee {
         result.put(BallResult.STRIKE, strikeCount);
         result.put(BallResult.BALL, ballCount);
         return result;
+    }
+
+    public void resetCount() {
+        strikeCount = 0;
+        ballCount = 0;
     }
 }
