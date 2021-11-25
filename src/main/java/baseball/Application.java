@@ -114,9 +114,28 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        String randomNumber = getRandomNumber();
-        System.out.println(randomNumber);
-        String inputNumber = getInputNumber();
-        System.out.println(inputNumber);
+        int[] compareValues = new int[2];
+//        System.out.println(compareValues[0] + "" + compareValues[1]);
+        while (true) {
+            String randomNumber = getRandomNumber();
+            System.out.println(randomNumber);
+            while (compareValues[0] != 3) {
+                String inputNumber = getInputNumber();
+//                System.out.println(inputNumber);
+                compareValues = compareValues(randomNumber, inputNumber);
+//                System.out.println(compareValues[0] + "" + compareValues[1]);
+            }
+            System.out.println("restart = 1, exit = 2");
+            String gameStart = Console.readLine();
+//            System.out.println(gameStart);
+            if (gameStart.equals("1")) {
+                compareValues = new int[2];
+//                System.out.println(compareValues[0] + "" + compareValues[1]);
+            } else if (gameStart.equals("2")) {
+                break;
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
