@@ -49,13 +49,24 @@ class ValidationUtilsTest {
 	}
 
 	@Test
-	void 유저_입력_문자() {
+	void 유저_입력_문자_숫자_3자리() {
 		// given, when
 		String userInputNumberString = "a12";
 
 		// then
 		Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
 			ValidationUtils.validateUserInputDigitsInRange(userInputNumberString);
+		});
+	}
+
+	@Test
+	void 유저_입력_문자_1자리() {
+		// given, when
+		String userInputNumberString = "a";
+
+		// then
+		Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+			ValidationUtils.validateUserGameOverInputNumber(userInputNumberString);
 		});
 	}
 

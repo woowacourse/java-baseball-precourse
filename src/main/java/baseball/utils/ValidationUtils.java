@@ -46,6 +46,14 @@ public class ValidationUtils {
 		}
 	}
 
+	public static void validateUserGameOverInputNumber(String userInputString) {
+		try {
+			Integer.parseInt(userInputString);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException(ERR_IMPROPER_USER_SELECTION.getMessage());
+		}
+	}
+
 	public static void validateUserGameOverInputLength(String userInputString) {
 		if (userInputString.length() != INPUT_LENGTH.getNumber())
 			throw new IllegalArgumentException(ERR_IMPROPER_USER_SELECTION.getMessage());

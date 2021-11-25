@@ -22,6 +22,7 @@ public class InputView {
 
 	public static int inputUserGameOverSelection() {
 		String userInput = Console.readLine();
+		validateUserGameOverInputNumber(userInput);
 		validateUserGameOverInputLength(userInput);
 		validateUserGameOverInputInRange(userInput);
 		return Integer.parseInt(userInput);
