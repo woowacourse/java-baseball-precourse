@@ -9,7 +9,7 @@ import baseball.utils.ValidationUtils;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-	public static List<Integer> inputUserNumber(){
+	public static List<Integer> inputUserNumber() {
 		String userInput = Console.readLine();
 		validateUserInputDigitsLength(userInput);
 		validateUserInputDigitsInRange(userInput);
