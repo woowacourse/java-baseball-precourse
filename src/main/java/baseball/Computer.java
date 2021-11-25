@@ -6,35 +6,26 @@ public class Computer {
 
     private int[] eachDigitOfGuessNumber = new int[3];
     private int[] answerMadeByComputer = new int[3];
+    boolean[] alreadyUse = new boolean[10];
 
     public void makeThreeDigitNumber() {
-        makeEachDigitUsingRandom();
-        verifyEachDigitIsDuplicated();
-//        System.out.println("정답 : "+ Integer.toString(firstDigit) + Integer.toString(secondDigit) + Integer.toString(thirdDigit)); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
-    }
+        while (true) {
+            makeEachDigitUsingRandom();
+//            System.out.println("정답 : "+ Integer.toString(answerMadeByComputer[0]) + Integer.toString(answerMadeByComputer[1]) + Integer.toString(answerMadeByComputer[2])); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
 
-    private void verifyEachDigitIsDuplicated() {
-        verifySecondDigitIsDuplicated();
-        verifyThirdDigitIsDuplicated();
-    }
-
-    private void verifyThirdDigitIsDuplicated() {
-        while (answerMadeByComputer[2] == answerMadeByComputer[0] || answerMadeByComputer[2] == answerMadeByComputer[1]) {
-            answerMadeByComputer[2] = Randoms.pickNumberInRange(1, 9);
-        }
-
-    }
-
-    private void verifySecondDigitIsDuplicated() {
-        while (answerMadeByComputer[1] == answerMadeByComputer[0]) {
-            this.answerMadeByComputer[1] = Randoms.pickNumberInRange(1, 9);
         }
     }
 
     private void makeEachDigitUsingRandom() {
-        answerMadeByComputer[0] = Randoms.pickNumberInRange(1, 9);
-        answerMadeByComputer[1] = Randoms.pickNumberInRange(1, 9);
-        answerMadeByComputer[2] = Randoms.pickNumberInRange(1, 9);
+        int randomNumber;
+        for (int i = 0; i < 3; i++) {
+            randomNumber = Randoms.pickNumberInRange(1,9);
+            while (alreadyUse[randomNumber]) {
+                randomNumber = Randoms.pickNumberInRange(1,9);
+            }
+            answerMadeByComputer[i] = randomNumber;
+            alreadyUse[randomNumber] = true;
+        }
     }
 
     public Result compareGuessNumberAndAnswer(int guessNumber) {
