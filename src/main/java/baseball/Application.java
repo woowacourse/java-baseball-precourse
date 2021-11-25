@@ -10,6 +10,12 @@ public class Application {
         String inputNumber = getConsoleInput();
         validateInput(inputNumber);
 
+        BaseBallResult result = calculateResult(targetNumber, inputNumber);
+
+        System.out.println(result);
+    }
+
+    private static BaseBallResult calculateResult(String targetNumber, String inputNumber) {
         BaseBallResult result = new BaseBallResult();
         for (int i = 0; i < inputNumber.length(); i++) {
             if (inputNumber.charAt(i) == targetNumber.charAt(i)) {
@@ -18,8 +24,7 @@ public class Application {
                 result.ballCount++;
             }
         }
-
-        System.out.println(result);
+        return result;
     }
 
     private static String getConsoleInput() {
