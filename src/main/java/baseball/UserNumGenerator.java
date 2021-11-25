@@ -6,18 +6,21 @@ public class UserNumGenerator extends IllegalArgumentException {
 	public int[] nums = new int[3];
 
 	public UserNumGenerator() {
-		this.nums = pickThreeNum(this.nums);
+		try {
+			this.nums = pickThreeNum();
+		} catch (IllegalArgumentException e) {
+			System.exit(0);
+		}
 	}
 
-	public static int[] pickThreeNum(int[] nums) {
+	public int[] pickThreeNum() {
 		System.out.print("숫자를 입력해주세요 : ");
 		String numsString = Console.readLine();
-		System.out.println("numString: " + numsString);
 		if (numsString == null || numsString.length() != 3) {
 			// null, not len 3
 			throw new IllegalArgumentException();
 		}
-		for (int i = 0; i < nums.length; i++) {
+		for (int i = 0; i < 3; i++) {
 			char numChar = numsString.charAt(i);
 			if (Character.isDigit(numChar) && numChar != '0') {
 				nums[i] = numChar - '0';
