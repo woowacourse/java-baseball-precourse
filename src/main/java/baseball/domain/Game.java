@@ -29,19 +29,14 @@ public class Game {
 	}
 
 	public int runGameOnce() {
-		int userGameOverSelection;
 		while (true) {
 			OutputView.printInputHint();
-			List<Integer> userNumberList = InputView.inputUserNumber();
-			player.setNumberList(userNumberList);
+			player.setNumberList(InputView.inputUserNumber());
 			runComparison();
 			OutputView.printGameResult(this);
-			if (strike == LENGTH.getNumber()) {
-				userGameOverSelection = InputView.inputUserGameOverSelection();
-				break;
-			}
+			if (strike == LENGTH.getNumber())
+				return InputView.inputUserGameOverSelection();
 		}
-		return userGameOverSelection;
 	}
 
 	public void runComparison() {

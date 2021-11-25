@@ -16,7 +16,7 @@ public class Computer {
 
 	public Computer(List<Integer> numberList) {
 		this.numberList = numberList;
-		numberOccurrences = new HashMap<>();
+		this.numberOccurrences = new HashMap<>();
 		for (int i = 0; i < numberList.size(); i++)
 			numberOccurrences.put(numberList.get(i), i);
 	}
