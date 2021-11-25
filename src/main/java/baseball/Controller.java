@@ -1,6 +1,8 @@
 package baseball;
 
 import baseball.utils.RandomUtils;
+import baseball.view.UserInput;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Controller {
 
@@ -17,7 +19,9 @@ public class Controller {
     }
 
     private void gameStart() {
-
+        UserInput.UserInputData();
+        String input = Console.readLine();
+        System.out.println(input);
     }
 
     private void gameEnd() {
