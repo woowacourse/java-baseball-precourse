@@ -11,19 +11,14 @@ public class Application extends IllegalArgumentException {
 	}
 
 	public static boolean exit() {
-		try {
-			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-			String exitNum = Console.readLine();
-			if (exitNum.equals("1")) {
-				return false;
-			}
-			if (exitNum.equals("2")) {
-				return true;
-			}
-			throw new IllegalArgumentException();
-		} catch (IllegalArgumentException e) {
-			System.exit(0);
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		String exitNum = Console.readLine();
+		if (exitNum.equals("1")) {
 			return false;
 		}
+		if (exitNum.equals("2")) {
+			return true;
+		}
+		throw new IllegalArgumentException();
 	}
 }
