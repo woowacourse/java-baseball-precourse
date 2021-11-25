@@ -15,7 +15,7 @@ class RandomDigitsBuilderTest {
 		List<Integer> randomDigitList = RandomDigitsBuilder.getRandomDigitList();
 
 		// then
-		Assertions.assertThat(ValidationUtils.validateRandomDigits(randomDigitList)).isTrue();
+		Assertions.assertThat(ValidationUtils.validateRandomDigitsDuplicate(randomDigitList)).isTrue();
 		Assertions.assertThat(ValidationUtils.validateRandomDigitsLength(randomDigitList)).isTrue();
 	}
 }

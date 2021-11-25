@@ -13,7 +13,7 @@ public class ComputerTest {
 		Computer computer = new Computer();
 
 		// then
-		Assertions.assertThat(ValidationUtils.validateRandomDigits(computer.getNumberList())).isTrue();
+		Assertions.assertThat(ValidationUtils.validateRandomDigitsDuplicate(computer.getNumberList())).isTrue();
 		Assertions.assertThat(ValidationUtils.validateRandomDigitsLength(computer.getNumberList())).isTrue();
 	}
 }
