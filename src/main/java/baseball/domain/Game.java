@@ -1,19 +1,16 @@
 package baseball.domain;
 
 import static baseball.constants.GameConstants.Digit.*;
-import static baseball.constants.GameConstants.GameOverInput.*;
 import static baseball.constants.GameConstants.Terminology.*;
 
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import baseball.constants.GameConstants;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Game {
-
 	private Computer computer;
 	private Player player;
 	private int ball, strike;
@@ -68,16 +65,14 @@ public class Game {
 	@Override
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
-		if (ball > 0) {
+		if (strike == 0 && ball == 0)
+			stringBuilder.append(NOTHING.getString());
+		if (ball > 0)
 			stringBuilder.append(ball).append(BALL.getString());
-		}
 		if (strike > 0) {
 			if (ball > 0)
 				stringBuilder.append(' ');
 			stringBuilder.append(strike).append(STRIKE.getString());
-		}
-		if (strike == 0 && ball == 0) {
-			stringBuilder.append(NOTHING.getString());
 		}
 		return stringBuilder.toString();
 	}
@@ -88,10 +83,6 @@ public class Game {
 
 	public void setPlayer(Player player) {
 		this.player = player;
-	}
-
-	public int getBall() {
-		return ball;
 	}
 
 	public int getStrike() {

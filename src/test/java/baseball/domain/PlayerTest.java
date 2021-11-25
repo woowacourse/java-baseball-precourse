@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import baseball.utils.ConversionUtils;
 
 class PlayerTest {
+
 	@Test
 	void 사용자_수_입력(){
 		// given, when
