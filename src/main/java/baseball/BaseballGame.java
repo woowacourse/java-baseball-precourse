@@ -12,20 +12,22 @@ public class BaseballGame {
         while (continueGame) {
             continueGame = playGameUntilGetAnswer();
         }
-//        while (playGameUntilGetAnswer()) { } -> 코드는 짧아지는데 가독성이 안좋다고 생각함. 위에 방식을 사용할거. 나중에 마음이 바뀔 수도 있으니 기록에 남겨두기 위해 주석을 달았다.
     }
 
     private static Boolean playGameUntilGetAnswer() {
         computer.makeThreeDigitNumber();
+        guessUntilGetAnswer();
+        return decideToContinueGame();
+    }
+
+    private static void guessUntilGetAnswer() {
         while (true) {
-            int guessNumber = player.guessNumber();
-            Result resultOfGuess = computer.compareGuessNumberAndAnswer(guessNumber);
+            Result resultOfGuess = computer.compareGuessNumberAndAnswer(player.guessNumber());
             System.out.println(resultOfGuess.makeResultSentence());
             if (resultOfGuess.isAnswer()) {
                 break;
             }
         }
-        return decideToContinueGame();
     }
 
     private static Boolean decideToContinueGame() {
