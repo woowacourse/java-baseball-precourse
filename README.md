@@ -9,7 +9,6 @@
   - 숫자를 입력한다(추측한다).
     - 각 자리에 1~9를 제외한 값이 들어가면, IllegalArgumentException이 발생한다.
     - 입력된 값이 세 자리가 아니라면, IllegalArgumentException이 발생한다.
-    - 각 자리에 입력된 숫자 중 겹치는 숫자가 있으면, IllegalArgumentException 발생한다.
   - 컴퓨터에게 입력한 값을 전달한다.
 ### 3. 컴퓨터는 입력값에 따라 결과를 만든다.
   - 결과를 플레이어에게 전달한다.
