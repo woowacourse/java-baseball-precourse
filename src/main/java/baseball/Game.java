@@ -12,10 +12,10 @@ public class Game {
 		System.out.println(Arrays.toString(answerNumber)); // 생성된 난수 확인 위한 코드 추후 제거
 
 		System.out.print(Const.INPUT_MESSAGE);
-		String inputNumber = Console.readLine();
+		int[] inputNumber = getInputNumber();
 
-		if (!isCorrectInput(inputNumber))
-			throw new IllegalArgumentException();
+		Hint hint = new Hint(answerNumber, inputNumber);
+
 	}
 
 	private static int[] generateAnswer() {
@@ -71,6 +71,20 @@ public class Game {
 		}
 
 		return true;
+	}
+
+	private static int[] getInputNumber() {
+		int[] result = new int[Const.ANSWER_SIZE];
+
+		String inputNumber = Console.readLine();
+
+		if (!isCorrectInput(inputNumber))
+			throw new IllegalArgumentException();
+
+		for (int i = 0; i < inputNumber.length(); i++)
+			result[i] = Character.getNumericValue(inputNumber.charAt(i));
+
+		return result;
 	}
 
 }
