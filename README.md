@@ -34,24 +34,24 @@
 <hr>
 
 # 📋 구현 체크
-* [ ] Game 시작 메서드 생성
-* [ ] 랜덤 값으로 상대방(컴퓨터) 수 생성해주는 메서드 생성
-   * [ ] `camp.nextstep.edu.missionutils`에서 제공하는 Randoms API를 활용해 구현해야 한다.
-   * [ ] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용해야한다.
-* [ ] 사용자로부터 입력 받는 함수 생성
-   * [ ] `camp.nextstep.edu.missionutils`에서 제공하는 Console API를 활용해야한다.
-   * [ ] 입력 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해야한다.
-* [ ] 입력 값이 잘못된 값인지 체크하는 함수 생성 (잘못된 값을 입력할 경우 IllegalArgumentException을 발생)
-   * [ ] 서로다른 수인지 체크 함수
-   * [ ] 1~9로만 이루어져 있는지 체크 함수
-   * [ ] 3자리 수인지 체크 함수
-* [ ] 정답 여부 체크 함수 생성
-   * [ ] 숫자가 일치하면 게임을 다시 시작할지 선택하는 함수를 호출
-   * [ ] 정답과 다르다면 힌트 출력
-* [ ] 힌트 클래스 생성 
-   * [ ] 사용자 입력에 대한 힌트 탐색 함수 생성
-   * [ ] 힌트 출력 함수 생성
-* [ ] 게임 restart를 할지 여부를 묻는 함수 호출
+* [X] Game 시작 메서드 생성
+* [X] 랜덤 값으로 상대방(컴퓨터) 수 생성해주는 메서드 생성
+   * [X] `camp.nextstep.edu.missionutils`에서 제공하는 Randoms API를 활용해 구현해야 한다.
+   * [X] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용해야한다.
+* [X] 사용자로부터 입력 받는 함수 생성
+   * [X] `camp.nextstep.edu.missionutils`에서 제공하는 Console API를 활용해야한다.
+   * [X] 입력 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해야한다.
+* [X] 입력 값이 잘못된 값인지 체크하는 함수 생성 (잘못된 값을 입력할 경우 IllegalArgumentException을 발생)
+   * [X] 서로다른 수인지 체크 함수
+   * [X] 1~9로만 이루어져 있는지 체크 함수
+   * [X] 3자리 수인지 체크 함수
+* [X] 정답 여부 체크 함수 생성
+   * [X] 숫자가 일치하면 게임을 다시 시작할지 선택하는 함수를 호출
+   * [X] 정답과 다르다면 힌트 출력
+* [X] 힌트 클래스 생성 
+   * [X] 사용자 입력에 대한 힌트 탐색 함수 생성
+   * [X] 힌트 출력 함수 생성
+* [X] 게임 restart를 할지 여부를 묻는 함수 호출
 
 <br>
 
