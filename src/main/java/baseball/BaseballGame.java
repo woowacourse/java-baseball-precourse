@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static baseball.PrintStatement.ASK_GAME_RESTART_MESSAGE;
+
 public class BaseballGame {
 
     public static Computer computer = new Computer();
@@ -31,7 +33,7 @@ public class BaseballGame {
     }
 
     private static Boolean decideToContinueGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(ASK_GAME_RESTART_MESSAGE);
         String continueGame = Console.readLine();
         if (continueGame.equals("1")) {
             return true;
