@@ -12,7 +12,7 @@ public class InputView {
     private static final int INPUT_NUMBERS_SIZE = 3;
 
     public List<Integer> getInputNumbers() {
-        System.out.println(INPUT_NUMBERS_MESSAGE);
+        System.out.print(INPUT_NUMBERS_MESSAGE);
         String inputNumbers = Console.readLine();
         validateSize(inputNumbers.length());
         return toList(inputNumbers);
