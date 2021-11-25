@@ -10,25 +10,32 @@ import java.util.stream.Collectors;
 
 public class Player {
 
-    private static final int DIGIT = 3;
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String PLAYER_NUMBER_REGEX = "^[1-9]{3}$";
-    private static final String REPLAY_OR_END_NUMBER_REGEX = "^[1-2]$";
+    private static final String REPLAYING_OR_END_NUMBER_REGEX = "^[1-2]$";
 
     public List<Integer> getPlayerNumber() throws IllegalArgumentException {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_MESSAGE);
         String inputNumber = readLine();
-        return validateInputNumber(inputNumber);
-    }
-
-    private List<Integer> validateInputNumber(String inputNumber) throws IllegalArgumentException {
-        validateNumberRange(inputNumber, PLAYER_NUMBER_REGEX);
-        validateNumberDuplication(inputNumber);
         return toIntegerList(inputNumber);
     }
 
-    private void validateNumberRange(String inputNumber, String pattern) {
-        if (!Pattern.matches(pattern, inputNumber)) {
-            throw new IllegalArgumentException("정확한 값이 입력되지 않았습니다.");
+    private List<Integer> toIntegerList(String inputNumber) throws IllegalArgumentException {
+        validateInputNumber(inputNumber);
+        List<String> numbers = Arrays.asList(inputNumber.split(""));
+        return numbers.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
+    private void validateInputNumber(String inputNumber) throws IllegalArgumentException {
+        validateNumberRange(PLAYER_NUMBER_REGEX, inputNumber);
+        validateNumberDuplication(inputNumber);
+    }
+
+    private void validateNumberRange(String regex, String inputNumber) {
+        if (!Pattern.matches(regex, inputNumber)) {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -36,21 +43,14 @@ public class Player {
         HashSet<String> numbers = new HashSet<>(
                 Arrays.asList(inputNumber.split(""))
         );
-        if (numbers.size() != DIGIT) {
-            throw new IllegalArgumentException("중복되지 않은 3개의 숫자를 입력해주세요.");
+        if (numbers.size() != BaseBallGame.NUMBER_LENGTH) {
+            throw new IllegalArgumentException();
         }
     }
 
-    private List<Integer> toIntegerList(String inputNumber) {
-        List<String> stringNumbers = Arrays.asList(inputNumber.split(""));
-        return stringNumbers.stream()
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
-
-    public int getReplayOrEndNumber() throws IllegalArgumentException {
+    public int getReplayingOrEndNumber() throws IllegalArgumentException {
         String inputNumber = readLine();
-        validateNumberRange(inputNumber, REPLAY_OR_END_NUMBER_REGEX);
+        validateNumberRange(REPLAYING_OR_END_NUMBER_REGEX, inputNumber);
         return Integer.parseInt(inputNumber);
     }
 }
