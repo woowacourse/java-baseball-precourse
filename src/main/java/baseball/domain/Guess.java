@@ -6,9 +6,15 @@ import java.util.List;
 
 public class Guess {
 
+    private final int startInclusive;
+    private final int endInclusive;
+    private final int count;
     private final List<Integer> guess;
 
-    public Guess(String userInput) {
+    public Guess(String userInput, int startInclusive, int endInclusive, int count) {
+        this.startInclusive = startInclusive;
+        this.endInclusive = endInclusive;
+        this.count = count;
         validateUserInput(userInput);
         this.guess = toList(userInput);
     }
@@ -29,8 +35,8 @@ public class Guess {
     }
 
     private void validateSize(String userInput) {
-        if (userInput.length() != 3) {
-            throw new IllegalArgumentException("The length of the user input must be 3");
+        if (userInput.length() != count) {
+            throw new IllegalArgumentException("The length of the user input must be " + count);
         }
     }
 
@@ -57,7 +63,8 @@ public class Guess {
             int digit = Character.getNumericValue(c);
             if (digit < 1 || digit > 9) {
                 throw new IllegalArgumentException(
-                    "All digits should not be less than 1 and should not be greater than 9");
+                    "All digits should not be less than " + startInclusive
+                        + " and should not be greater than " + endInclusive);
             }
         }
     }

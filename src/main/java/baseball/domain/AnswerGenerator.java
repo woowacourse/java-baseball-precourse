@@ -8,9 +8,15 @@ import java.util.Set;
 
 public class AnswerGenerator {
 
-    private static final int startInclusive = 1;
-    private static final int endInclusive = 9;
-    private static final int count = 3;
+    private final int startInclusive;
+    private final int endInclusive;
+    private final int count;
+
+    public AnswerGenerator(int startInclusive, int endInclusive, int count) {
+        this.startInclusive = startInclusive;
+        this.endInclusive = endInclusive;
+        this.count = count;
+    }
 
     public List<Integer> generate() {
         Set<Integer> result = new HashSet<>();
