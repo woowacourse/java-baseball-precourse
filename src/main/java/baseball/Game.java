@@ -7,6 +7,7 @@ public class Game {
     Examiner examiner = new Examiner();
     GameExecutor gameExecutor = new GameExecutor();
     List<Integer> userInputNumberList;
+    boolean wantReply = true;
 
     public void play() {
         int strikeCount = 0;
@@ -14,7 +15,7 @@ public class Game {
 
         examiner.init();
 
-        while (true) {
+        while (wantReply) {
             userInputNumberList = gameExecutor.getUserAnswer();
             if (examiner.isNothing(userInputNumberList)) {
                 gameExecutor.printNothing();
@@ -25,7 +26,18 @@ public class Game {
             }
             if (examiner.isCorrect(userInputNumberList)) {
                 gameExecutor.printCorrect();
+                selectOption(gameExecutor.getUserSelection());
             }
+        }
+    }
+
+    private void selectOption(int selection) {
+        if (selection == 1) {
+            examiner.generateNewNumberList();
+        } else if (selection == 2) {
+            wantReply = false;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }
