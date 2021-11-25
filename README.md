@@ -146,16 +146,24 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
         + 3개의 숫자를 모두 맞히셨습니다! 게임 종료
 3. 구현할 기능 목록
     1. ComputerNumGenerator : 컴퓨터 숫자 생성 클래스
-       1. nums : 숫자 담을 정수 배열
-       2. ComputerNumGenerator() : 생성자, 1-9 서로 다른 세 수를 nums에 저장
-       3. pickThreeNum() : 랜덤하게 세 숫자를 뽑아 배열에 저장하는 함수
-       4. isNotSame() : 세 숫자 중복인지 확인하는 함수
-    2. 유저에게 3자리 정수 인풋 받기
-       1. 숫자 담을 정수 배열
-       2. 유저 인풋 받기
-          1. 예외처리
-       3. 배열에 인풋 저장
+        1. nums : 숫자 담을 정수 배열
+        2. ComputerNumGenerator() : 생성자, 1-9 서로 다른 세 수를 nums에 저장
+        3. pickThreeNum() : 랜덤하게 세 숫자를 뽑아 배열에 저장하는 함수
+        4. isNotSame() : 세 숫자 중복인지 확인하는 함수
+    2. UserNumGenerator : 유저에게 3자리 정수 인풋 받는 클래스
+        1. nums : 숫자 담을 정수 배열
+        2. pickThreeNum() : 유저 인풋 받기
+            1. IllegalArgumentException() 예외처리 :
+                1. null, 길이 3 아닐 때
+                2. 1-9 숫자 아닐때
+                3. 같은 숫자 있을 때
+        3. 배열 nums에 인풋 저장
     3. 결과 출력
+        1. int 볼, 스트라이크
+        2. 생성자 -> 두 배열 userNums, computerNums 받기
+        3. 스트라이크, 볼 개수 세기
+            1. 같은 수 -> 같은자리:스트라잌/ 다른자리:볼
+        4. 아웃풋 구현
     4. 반복, 종료
 
 4. 구현 로직
