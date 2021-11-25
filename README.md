@@ -49,7 +49,7 @@
   - [ ] 입력값이 `1` 또는 `2` 인지 확인한다. 아니면 예외를 발생시킨다.
 
 ### 예외처리
-- [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨다.
+- [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨다.
 
 
 ---
