@@ -19,10 +19,16 @@ public class Application {
 		while (gameSwitch) {
 			// 콘솔로 숫자를 입력 받는다.
 			System.out.print("숫자를 입력해주세요 : ");
-			String gameInput = Console.readLine();
+			String gameInputNumber = Console.readLine();
 
 			// 게임을 하기 위한 인풋이 적절한지 검사
-			config.gameInputChecking.inputCheck(gameInput);
+			config.gameInputChecking.inputCheck(gameInputNumber);
+
+			// gameInputNumber 의 볼, 스트라이크를 계산하고 문자열로 생성한다.
+			String calculateMassage = config.ballStrikeCalculator.calculate(gameInputNumber, targetNumber);
+
+			// calculateMassage 를 콘솔로 출력
+			System.out.println(calculateMassage);
 		}
 	}
 }
