@@ -22,13 +22,17 @@ public class Examiner {
 
     public void generateNewNumberList() {
         int randomNumber;
-
+        clearNumberList();
         while (randomNumberList.size() < NUMBER_LENGTH) {
             randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
             if (!randomNumberList.contains(randomNumber)) {
                 randomNumberList.add(randomNumber);
             }
         }
+    }
+
+    private void clearNumberList() {
+        randomNumberList.clear();
     }
 
     public int countStrike(List<Integer> inputNumberList) {
