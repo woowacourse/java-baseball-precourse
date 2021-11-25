@@ -20,12 +20,17 @@ public class Game {
 	}
 
 	public void start() {
-		String userInput = getNumberInput();
-		Numbers numbers = new Numbers(userInput);
+		while (true) {
+			String userInput = getNumberInput();
+			Numbers numbers = new Numbers(userInput);
 
-		Hint hint = targetNumbers.compare(numbers);
+			Hint hint = targetNumbers.compare(numbers);
 
-		OutputView.printHint(hint);
+			OutputView.printHint(hint);
+
+			if (hint.getStrike() == 3)
+				break;
+		}
 	}
 
 }
