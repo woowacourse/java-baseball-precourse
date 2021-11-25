@@ -12,15 +12,6 @@ public class Computer {
         return balls;
     }
 
-    public Computer() {
-        balls = new ArrayList<>();
-        int position = 1;
-        for (int generateNumber : RandomNumberGenerate()) {
-            Ball ball = new Ball(position++, generateNumber);
-            balls.add(ball);
-        }
-    }
-
     public List<Integer> RandomNumberGenerate() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < Constant.MAX_SIZE) {
@@ -29,5 +20,15 @@ public class Computer {
                 randomNumbers.add(number);
         }
         return randomNumbers;
+    }
+
+    public List<Ball> selectBalls() {
+        balls = new ArrayList<>();
+        int position = 1;
+        for (int generateNumber : RandomNumberGenerate()) {
+            Ball ball = new Ball(position++, generateNumber);
+            balls.add(ball);
+        }
+        return balls;
     }
 }

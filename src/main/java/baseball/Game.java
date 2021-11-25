@@ -8,25 +8,29 @@ public class Game {
     Player player = new Player();
     Referee referee = new Referee();
 
-    public boolean play() {
-        referee.resetCount();
-        OutputView.numberInputMessageShow();
-        List<Ball> userBalls = player.selectBalls(InputView.StringChangeList());
-        for (int i = 0; i < Constant.MAX_SIZE; i++) {
-            referee.ballsCompare(computer.getBalls(), userBalls.get(i));
+    public void play() {
+        computer.selectBalls();
+        while (true){
+            OutputView.numberInputMessageShow();
+            List<Ball> userBalls = player.selectBalls(InputView.StringChangeList());
+            calculate(userBalls);
+            if (referee.allStrikeCheck() && replay() == 2) {
+                break;
+            }
         }
+    }
+
+    public void calculate(List<Ball> userBalls) {
+        referee.totalUserBallsCompare(computer.getBalls(), userBalls);
         Map<BallResult, Integer> totalResult = referee.getResult();
         OutputView.gameResultShow(totalResult.get(BallResult.STRIKE), totalResult.get(BallResult.BALL));
-        if(referee.allStrikeCheck()){
-            if(replay() == 2)
-                return false;
-        }
-        return true;
     }
+
 
     public int replay() {
         OutputView.gameEndMessageShow();
         String input = InputView.trimInput();
+        computer.selectBalls();
         return Integer.parseInt(input);
     }
 }

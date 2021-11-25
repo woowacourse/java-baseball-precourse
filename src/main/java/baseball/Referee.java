@@ -17,10 +17,6 @@ public class Referee {
         result = new HashMap<>();
     }
 
-    public int getStrikeCount() {
-        return strikeCount;
-    }
-
     public BallResult ballCompare(Ball ball1, Ball ball2) {
         if (ball1.equals(ball2)) {
             return BallResult.STRIKE;
@@ -43,6 +39,13 @@ public class Referee {
         result.put(BallResult.STRIKE, strikeCount);
         result.put(BallResult.BALL, ballCount);
         return result;
+    }
+
+    public void totalUserBallsCompare(List<Ball>computerBalls , List<Ball> userBalls) {
+        resetCount();
+        for (int i = 0; i < Constant.MAX_SIZE; i++) {
+            ballsCompare(computerBalls, userBalls.get(i));
+        }
     }
 
     public void resetCount() {
