@@ -144,33 +144,67 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
     2. 낫싱 : 같은 수가 하나도 없는 경우
     3. 3스트라이크 : 3개의 숫자를 모두 맞힐 경우
         + 3개의 숫자를 모두 맞히셨습니다! 게임 종료
+
 3. 구현할 기능 목록
-    1. ComputerNumGenerator : 컴퓨터 숫자 생성 클래스
-        1. nums : 숫자 담을 정수 배열
-        2. ComputerNumGenerator() : 생성자, 1-9 서로 다른 세 수를 nums에 저장
-        3. pickThreeNum() : 랜덤하게 세 숫자를 뽑아 배열에 저장하는 함수
-        4. isNotSame() : 세 숫자 중복인지 확인하는 함수
-    2. UserNumGenerator : 유저에게 3자리 정수 인풋 받는 클래스
-        1. nums : 숫자 담을 정수 배열
-        2. pickThreeNum() : 유저 인풋 받기
-            1. IllegalArgumentException() 예외처리 :
-                1. null, 길이 3 아닐 때
-                2. 1-9 숫자 아닐때
-                3. 같은 숫자 있을 때
-        3. 배열 nums에 인풋 저장
-    3. 결과 출력
-        1. int 볼, 스트라이크
-        2. 생성자 -> 두 배열 userNums, computerNums 받기
-        3. 스트라이크, 볼 개수 세기
-            1. 같은 수 -> 같은자리:스트라잌/ 다른자리:볼
-        4. 아웃풋 구현
-    4. 반복, 종료
-        1. BaseballSystem : 시스템 클래스
-            1. 생성자 -> 메인함수 실행
-        2. Application 클래스 Main
-            1. BaseballSystem 객체 반복 생성(do)
-                1. 인풋이 1일 시 반복
-                2. 2일 시 브레이크, 종료
+   1. 숫자 생성
+       1. ComputerNumGenerator : 컴퓨터 숫자 생성 클래스
+           1. int[] nums : 숫자 담을 정수 배열
+           2. ComputerNumGenerator() : 생성자
+              1. 1-9 서로 다른 세 수를 nums에 저장
+           3. int[] pickThreeNum() : 
+              1. 랜덤하게 세 숫자를 뽑아 
+              2. 배열로 리턴
+           4. boolean isNotSame(int[] nums) : 
+              1. nums 속 세 숫자가 
+              2. 중복이면 false, 아니면 true 리턴
+       2. UserNumGenerator : 유저에게 3자리 정수 인풋 받는 클래스
+           1. int[] nums : 숫자 담을 정수 배열
+           2. UserNumGenerator() : 생성자
+              1. pickThreeNum()을 nums에 저장
+           3. int[] pickThreeNum() : 
+              1. 유저 인풋을 받고 예외처리 
+              2. 정수 배열로 리턴
+           4. int[] stringToIntArray(String str) : 
+              1. 문자열을 
+              2. 정수 배열로 리턴
+           5. boolean isOneNineInt(int[] nums) : 
+              1. nums 안 숫자가 
+              2. 1-9 사이이면 true, 아니면 false
+           6. boolean isNotSame(int[] nums) : 
+              1. nums 안 숫자에 
+              2. 중복이 없으면 true, 아니면 false
+   2. 일치 개수 계산
+      1. BaseballCount : 볼,스트라이크 개수 세는 클래스
+          1. int ballCount, strikeCount : 볼/스트라이크 개수
+          2. int[] userNums, computerNums : 유저, 컴퓨터 생성 정수 배열
+          3. BaseballCount(int[] userNums, int[] computerNums) : 생성자
+             1. 파라미터 저장 후 count() 실행
+          4. void count() : 
+             1. 스트라이크, 볼 개수를 구한 뒤 
+             2. ballCount, strikeCount에 저장
+          5. boolean isInArray(int num, int[] numArray) : 
+             1. numArray 안에 num 이 있으면 true,아니면 false 리턴
+   3. 게임 단위 실행
+       1. BaseballSystem : 시스템 클래스
+          1. int[] computerNums : 컴퓨터 숫자 배열
+          2. BaseballSystem() : 생성자
+             1. ComputerNumGenerator() 클래스로 컴퓨터 숫자배열 가져오기
+          3. void gameStart() : 게임(1세트)시작 함수
+             1. 반복
+                1. UserNumGenerator() 클래스로 유저 숫자배열 가져오기
+                2. 볼, 스트라이크, 낫싱 프린트
+             2. 3스트라이크 시 종료
+       2. Application : Main 클래스
+          1. main() : 메인함수
+             1. 반복
+                1. 새 BaseballSystem() 생성
+                2. gamestart()로 게임시작
+             2. exit() 시 종료
+          2. boolean exit() : 최종 종료여부 확인 함수
+             1. 인풋 받기
+                 1. 인풋이 1일 시 반복
+                 2. 2일 시 브레이크, 종료
+                 3. 예외처리
 
 4. 구현 로직
     + 반복
