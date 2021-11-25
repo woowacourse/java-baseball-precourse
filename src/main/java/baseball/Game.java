@@ -1,5 +1,6 @@
 package baseball;
 
+import utils.InputUtil;
 import utils.RandomUtil;
 
 import java.util.List;
@@ -10,7 +11,8 @@ public class Game {
 
     public void gameStart() {
         List<Integer> randomNum = RandomUtil.generateRandomNum();
-        int input = 0;
+        List<Integer> input = InputUtil.getPlayerAnswer();
+
         boolean correct = false;
 //        while (!correct) {
 //        }
