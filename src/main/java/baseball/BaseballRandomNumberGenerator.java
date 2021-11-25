@@ -18,7 +18,6 @@ public class BaseballRandomNumberGenerator {
             int randomNumber = Randoms.pickNumberInRange(BASEBALL_NUMBER_MIN_VALUE, BASEBALL_NUMBER_MAX_VALUE);
 
             if (!checkDuplicate(randomNumbers, randomNumber)) {
-                System.out.println(randomNumber);
                 randomNumbers.add(randomNumber);
             }
         }
