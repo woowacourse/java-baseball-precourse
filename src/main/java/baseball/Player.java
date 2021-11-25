@@ -7,15 +7,14 @@ import java.util.regex.Pattern;
 
 public class Player {
     static final String INPUT_VALUE_REGEX = "^[1-9]{3}$";
-    
-    public void guessNumbers() {
-        String guessedNumber = inputValue();
+    private String guessNumber;
 
-        verifyInputValueIsThreeDigitInteger(guessedNumber);
-
+    public void guessNumber() {
+        inputValue();
+        verifyGuessNumberIsThreeDigitInteger(guessNumber);
     }
 
-    private void verifyInputValueIsThreeDigitInteger(String guessedNumber) {
+    private void verifyGuessNumberIsThreeDigitInteger(String guessedNumber) {
         boolean isThreeDigitsInteger = Pattern.matches(INPUT_VALUE_REGEX, guessedNumber);
 
         if (!isThreeDigitsInteger) {
@@ -23,9 +22,8 @@ public class Player {
         }
     }
 
-    private String inputValue() {
+    private void inputValue() {
         System.out.print("숫자를 입력해주세요 : ");
-        String guessedNumber = Console.readLine();
-        return guessedNumber;
+        this.guessNumber = Console.readLine();
     }
 }
