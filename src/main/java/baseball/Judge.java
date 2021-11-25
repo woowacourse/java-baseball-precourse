@@ -15,6 +15,12 @@ public class Judge {
         rightAnswer = threeDigitNum;
     }
 
-
+    private boolean sameEachOther(final String target, final String comparator) {
+        if (target.equals(comparator)) {
+            return true;
+        }
+        return false;
+    }
 
 }
+
