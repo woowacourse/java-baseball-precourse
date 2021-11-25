@@ -27,7 +27,7 @@ public class GameController {
 		while (true) {
 			startGame();
 			giveHint(ANSWER_NUMBER, PLAYER_NUMBER);
-			if (finishGame(ANSWER_NUMBER, PLAYER_NUMBER)) {
+			if (TerminateHandler.finishGame(ANSWER_NUMBER, PLAYER_NUMBER)) {
 				OutputView.askReplay();
 				if (TerminateHandler.decideReplay()) {
 					controlGame();
@@ -73,21 +73,5 @@ public class GameController {
 			arr.add(Integer.parseInt(str.split("")[arr.size()]));
 		}
 		return arr;
-	}
-
-	/**
-	 * 게임을 종료하는 함수
-	 *
-	 * @param answerNumber: ArrayList<Integer>
-	 * @param playerNumber: ArrayList<Integer>
-	 * @return true or false
-	 */
-	public static boolean finishGame(ArrayList<Integer> answerNumber,
-		ArrayList<Integer> playerNumber) {
-		if (TerminateHandler.correctAnswer(answerNumber, playerNumber)) {
-			OutputView.printCorrectAnswer();
-			return true;
-		}
-		return false;
 	}
 }

@@ -1,6 +1,7 @@
 package baseball.handler;
 
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -29,5 +30,21 @@ public class TerminateHandler {
 	public static boolean decideReplay() {
 		String number = InputView.writeReplayOrNot();
 		return (Objects.equals(number, "1"));
+	}
+
+	/**
+	 * 게임을 종료하는 함수
+	 *
+	 * @param answerNumber: ArrayList<Integer>
+	 * @param playerNumber: ArrayList<Integer>
+	 * @return true or false
+	 */
+	public static boolean finishGame(ArrayList<Integer> answerNumber,
+		ArrayList<Integer> playerNumber) {
+		if (TerminateHandler.correctAnswer(answerNumber, playerNumber)) {
+			OutputView.printCorrectAnswer();
+			return true;
+		}
+		return false;
 	}
 }
