@@ -1,7 +1,6 @@
 package baseball;
 
-import static baseball.Computer.NUMBER_DIGITS;
-import static baseball.Valid.*;
+import static baseball.Computer.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.Arrays;
@@ -29,14 +28,12 @@ public class Game {
 	public void play() {
 		List<Integer> userNumbers;
 		while (strike < NUMBER_DIGITS) {
-			try {
-				System.out.print("숫자를 입력해주세요 : ");
-				String userInput = readLine();
-				userNumbers = toIntegerList(userInput);
-				validateUserNumbers(userNumbers);
-			} catch (Exception e) {
-				throw new IllegalArgumentException();
-			}
+			System.out.print("숫자를 입력해주세요 : ");
+			String userInput = readLine();
+			validateDataType(userInput);
+			userNumbers = toIntegerList(userInput);
+			validateCount(userNumbers);
+			validateRange(userNumbers);
 
 			strike = computer.checkStrikeCount(userNumbers);
 			ball = computer.checkBallCount(userNumbers);
@@ -75,9 +72,28 @@ public class Game {
 		System.out.println(SUCCESS_MESSAGE);
 	}
 
-	private void validateUserNumbers(List<Integer> userNumbers) {
-		if (Valid.validateNumbersList(userNumbers) == VALID_FAILED) {
-			throw new IllegalArgumentException();
+	private void validateDataType(String userInput) {
+		try {
+			Integer.parseInt(userInput);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("the input is not a Integer.");
+		}
+	}
+
+	private void validateCount(List<Integer> userNumbers) {
+		if (userNumbers.size() != NUMBER_DIGITS) {
+			throw new IllegalArgumentException("the input length is invalid.");
+		}
+		if (userNumbers.stream().distinct().count() != userNumbers.size()) {
+			throw new IllegalArgumentException("duplicate number in input.");
+		}
+	}
+
+	private void validateRange(List<Integer> userNumbers) {
+		for (int number : userNumbers) {
+			if (number < MIN_NUMBER || MAX_NUMBER < number) {
+				throw new IllegalArgumentException("the input range is invalid.");
+			}
 		}
 	}
 }
