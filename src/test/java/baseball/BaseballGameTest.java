@@ -8,7 +8,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class BaseballGameApplicationTest extends NsTest {
+class BaseballGameTest extends NsTest {
 
     @Test
     void 게임종료_후_재시작() {
@@ -31,6 +31,6 @@ class BaseballGameApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        BaseballGameApplication.main(new String[]{});
+        Application.main(new String[]{});
     }
 }
