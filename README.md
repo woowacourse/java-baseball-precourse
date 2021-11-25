@@ -128,3 +128,9 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+<br>
+
+---
+## 💻 구현할 기능 목록  
+-  컴퓨터가 사용할 랜덤한 3자리 수를 구하는 클래스 구현(class name: RandomNumber, branch: feature/random-number)
