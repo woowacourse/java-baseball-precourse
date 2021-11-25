@@ -1,10 +1,10 @@
 package baseball.view;
 
-public class UserOutput {
-    public UserOutput() {
+public class Output {
+    public Output() {
     }
 
-    public void UserOutputData(int ball, int strike) {
+    public void outputScore(int ball, int strike) {
         if (strike == 0) {
             System.out.println("낫싱");
         }
@@ -14,5 +14,9 @@ public class UserOutput {
         if (strike == 3) {
             System.out.println(strike + "스트라이크");
         }
+    }
+
+    public void gameSetMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
     }
 }
