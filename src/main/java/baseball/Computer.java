@@ -6,16 +6,20 @@ public class Computer {
     private int firstDigit;
     private int secondDigit;
     private int thirdDigit;
+    int[] eachDigitOfGuessNumber = new int[3];
+    int[] answer = new int[3];
 
     public void makeThreeDigitNumber() {
         makeEachDigitUsingRandom();
         verifyEachDigitIsDuplicated();
-
     }
 
     private void verifyEachDigitIsDuplicated() {
         verifySecondDigitIsDuplicated();
         verifyThirdDigitIsDuplicated();
+        answer[0] = firstDigit;
+        answer[1] = secondDigit;
+        answer[2] = thirdDigit;
     }
 
     private void verifyThirdDigitIsDuplicated() {
@@ -37,4 +41,42 @@ public class Computer {
         this.thirdDigit = Randoms.pickNumberInRange(1, 9);
     }
 
+    public void compareGuessNumberAndAnswer(int guessNumber) {
+
+        System.out.println("guessNumber = " + guessNumber);
+        System.out.println("answer = " + answer[0]+answer[1]+answer[2]);
+        putGuessNumberInArray(guessNumber);
+        Result result = makeResult();
+
+        System.out.println("strikeCnt = " + result.getStrikeCnt());
+        System.out.println("ballCnt = " + result.getBallCnt());
+
+    }
+
+    private Result makeResult() {
+        int strikeCnt = 0;
+        int ballCnt = 0;
+        for (int i = 0; i < 3; i++) {
+            if (answer[i] == eachDigitOfGuessNumber[i]) {
+                strikeCnt += 1;
+                continue;
+            }
+            for (int j = 0; j < 3; j++) {
+                if (answer[i] == eachDigitOfGuessNumber[j]) {
+                    ballCnt += 1;
+                }
+            }
+        }
+        return new Result(strikeCnt, ballCnt);
+    }
+
+    private void putGuessNumberInArray(int guessNumber) {
+        eachDigitOfGuessNumber[0] = guessNumber / 100;
+        guessNumber %= 100;
+
+        eachDigitOfGuessNumber[1] = guessNumber / 10;
+        guessNumber %= 10;
+
+        eachDigitOfGuessNumber[2] = guessNumber;
+    }
 }

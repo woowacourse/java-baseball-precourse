@@ -9,9 +9,10 @@ public class Player {
     static final String INPUT_VALUE_REGEX = "^[1-9]{3}$";
     private String guessNumber;
 
-    public void guessNumber() {
+    public int guessNumber() {
         inputValue();
         verifyGuessNumberIsThreeDigitInteger(guessNumber);
+        return Integer.parseInt(guessNumber);
     }
 
     private void verifyGuessNumberIsThreeDigitInteger(String guessedNumber) {
