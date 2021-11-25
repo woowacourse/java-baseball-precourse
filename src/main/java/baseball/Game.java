@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Game {
+	private static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 	private Computer computer;
 	private int strike;
 	private int ball;
@@ -36,6 +37,7 @@ public class Game {
 
 			printHint();
 		}
+		printSuccessMessage();
 	}
 
 	public List<Integer> toIntegerList(String input) {
@@ -62,6 +64,10 @@ public class Game {
 				.append("스트라이크");
 		}
 		System.out.println(stringBuilder.toString());
+	}
+
+	private void printSuccessMessage() {
+		System.out.println(SUCCESS_MESSAGE);
 	}
 
 	private void validateUserNumbers(List<Integer> userNumbers) {
