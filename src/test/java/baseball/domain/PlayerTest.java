@@ -11,7 +11,7 @@ import baseball.utils.ConversionUtils;
 class PlayerTest {
 
 	@Test
-	void 사용자_수_입력(){
+	void 사용자_수_입력() {
 		// given, when
 		Player player = new Player();
 		String userInputNumber = "123";
@@ -19,7 +19,7 @@ class PlayerTest {
 		player.setNumberList(userInputNumberList);
 
 		// then
-		Assertions.assertThat(player.getNumberList()).isEqualTo(Arrays.asList(1,2,3));
+		Assertions.assertThat(player.getNumberList()).isEqualTo(Arrays.asList(1, 2, 3));
 	}
 
 }
