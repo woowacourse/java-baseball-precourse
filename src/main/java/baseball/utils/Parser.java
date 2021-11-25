@@ -5,9 +5,9 @@ public class Parser {
     public Parser() {
     }
 
-    public int userInputParser(String input) {
+    public int[] userInputParser(String input) {
         checkSize(input, 3);
-        int parseInt = getParseInt(input);
+        int parseInt[] = getParseInt(input);
         return parseInt;
     }
 
@@ -17,14 +17,14 @@ public class Parser {
         }
     }
 
-    private int getParseInt(String input) {
-        int parseInt = 0;
+    private int[] getParseInt(String input) {
+        int parseInt[] = new int[3];
+
         for (int i = 0; i < input.length(); i++) {
             if ('0' > input.charAt(i) || input.charAt(i) > '9') {
                 throw new IllegalArgumentException();
             }
-            parseInt *= 10;
-            parseInt += Integer.parseInt(input, i);
+            parseInt[i] = Integer.parseInt(input, i);
         }
         return parseInt;
     }

@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Controller {
 
     Parser parser = new Parser();
-    public int gameNumber;
+    public int[] gameNumber;
 
     public void run() {
         gameSet();
@@ -21,15 +21,15 @@ public class Controller {
     }
 
     private void gameStart() {
-        int userInput = getUserInput();
+        int userInput[] = getUserInput();
 
     }
 
-    private int getUserInput() {
+    private int[] getUserInput() {
         UserInput.UserInputData();
 
         String input = Console.readLine();
-        int inputNum = parser.userInputParser(input);
+        int inputNum[] = parser.userInputParser(input);
 
         return inputNum;
     }
