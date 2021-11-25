@@ -7,12 +7,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Game {
 
 	public static void play() {
-		int[] answer = generateAnswer();
-		System.out.println(Arrays.toString(answer));
+		int[] answerNumber = generateAnswer();
+		System.out.println(Arrays.toString(answerNumber)); // 생성된 난수 확인 위한 코드 추후 제거
+
+
 	}
 
 	private static int[] generateAnswer() {
-		int[] answer = new int[3];
+		int[] answer = new int[Const.ANSWER_SIZE];
 		for (int i = 0; i < answer.length; i++) {
 			insertUniqueNumber(answer, i);
 		}
@@ -22,7 +24,7 @@ public class Game {
 
 	private static void insertUniqueNumber(int[] arr, int index) {
 		while (true) {
-			int r = Randoms.pickNumberInRange(1, 9);
+			int r = Randoms.pickNumberInRange(Const.MIN_ANSWER_VALUE, Const.MAX_ANSWER_VALUE);
 
 			if (contains(arr, index, r))
 				continue;
