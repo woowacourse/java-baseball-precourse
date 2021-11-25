@@ -13,11 +13,14 @@ public class Game {
         List<Integer> randomNum = RandomUtil.generateRandomNum();
         for (int i:randomNum) System.out.print(i);
         List<Integer> input;
+        Hint hint = new Hint();
         boolean isCorrect;
 
         do {
             input = InputUtil.getPlayerAnswer();
             isCorrect = checkAnswer(randomNum, input);
+
+            hint.countStrikeAndBall(randomNum, input);
         } while (!isCorrect);
 
         System.out.println(Message.SUCCESS_MESSAGE);
