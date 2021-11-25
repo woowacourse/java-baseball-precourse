@@ -1,15 +1,16 @@
 package controller;
 
 import domain.Numbers;
+import domain.TargetNumbers;
 import view.InputView;
 import view.OutputView;
 
 public class Game {
 
-	private final Numbers targetNumbers;
+	private final TargetNumbers targetNumbers;
 
 	public Game() {
-		this.targetNumbers = new Numbers();
+		this.targetNumbers = new TargetNumbers();
 	}
 
 	private String getNumberInput() {
