@@ -13,16 +13,15 @@ public class BaseBallGame {
     private static final int NUMBER_LENGTH = 3;
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
+    private static final int REPLAY = 1;
     private static int REPLAY_OR_END = 1;
-    private static int REPLAY = 1;
-    private static int EMD = 2;
     private final List<Integer> targetNumber;
     private final Player player;
 
     public BaseBallGame() {
         targetNumber = makeRandomNumber();
         player = new Player();
-        gameStart();
+        startGame();
     }
 
     private List<Integer> makeRandomNumber() {
@@ -33,64 +32,72 @@ public class BaseBallGame {
         return new ArrayList<>(result);
     }
 
-    private void gameStart() {
-        List<Integer> playerNumber = player.playerNumber();
-        while (!threeStrike(playerNumber)) {
-            ballAndStrike(playerNumber);
-            playerNumber = player.playerNumber();
-        }
-        gameEnd();
-    }
-
-    private boolean threeStrike(List<Integer> playerNumber) {
-        return targetNumber.equals(playerNumber);
-    }
-
-    private void ballAndStrike(List<Integer> playerNumber) {
-        int strike = strikeCount(playerNumber);
-        int ball = ballCount(playerNumber, strike);
-        System.out.println(printBallAndStrike(ball, strike));
-    }
-
-    private int strikeCount(List<Integer> playerNumber) {
-        int strike = (int) IntStream.range(0, playerNumber.size())
-                .filter(i -> targetNumber.get(i).equals(playerNumber.get(i)))
-                .count();
-        return strike;
-    }
-
-    private int ballCount(List<Integer> playerNumber, int strike) {
-        int ball = (int) playerNumber.stream()
-                .filter(targetNumber::contains)
-                .count() - strike;
-        return ball;
-    }
-
-    private String printBallAndStrike(int ball, int strike) {
-        String printBall = "";
-        String printStrike = "";
-        if (ball > 0) {
-            printBall = String.format("%d볼 ", ball);
-        }
-        if (strike > 0) {
-            printStrike = String.format("%d스트라이크", strike);
-        }
-        String result = printBall + printStrike;
-        if (result.equals("")) {
-            return "낫싱";
-        }
-        return result;
-    }
-
-    private void gameEnd() {
+    private void startGame() {
+        playGame();
         System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         checkReplay();
     }
 
+    private void playGame() {
+        List<Integer> playerNumber = player.getPlayerNumber();
+        while (!isThreeStrike(playerNumber)) {
+            checkBallAndStrike(playerNumber);
+            playerNumber = player.getPlayerNumber();
+        }
+    }
+
+    private boolean isThreeStrike(List<Integer> playerNumber) {
+        return targetNumber.equals(playerNumber);
+    }
+
+    private void checkBallAndStrike(List<Integer> playerNumber) {
+        int strike = countStrike(playerNumber);
+        int ball = countBall(playerNumber, strike);
+        System.out.println(getBallAndStrikeMessage(ball, strike));
+    }
+
+    private int countStrike(List<Integer> playerNumber) {
+        int strike = (int) IntStream.range(0, playerNumber.size())
+                .filter(i -> targetNumber.get(i).equals(playerNumber.get(i)))
+                .count();
+        return strike;
+    }
+
+    private int countBall(List<Integer> playerNumber, int strike) {
+        int ball = (int) playerNumber.stream()
+                .filter(targetNumber::contains)
+                .count() - strike;
+        return ball;
+    }
+
+    private String getBallAndStrikeMessage(int ball, int strike) {
+        String ballMessage = getBallMessage(ball);
+        String strikeMessage = getStrikeMessage(strike);
+        String result = ballMessage + strikeMessage;
+        if (result.equals("")) {
+            return "낫싱";
+        }
+        return result;
+    }
+
+    private String getBallMessage(int ball) {
+        if (ball > 0) {
+            return String.format("%d볼 ", ball);
+        }
+        return "";
+    }
+
+    private String getStrikeMessage(int strike) {
+        if (strike > 0) {
+            return String.format("%d스트라이크", strike);
+        }
+        return "";
+    }
+
     private void checkReplay() {
-        REPLAY_OR_END = player.replayOrEndNumber();
+        REPLAY_OR_END = player.getReplayOrEndNumber();
         if (REPLAY_OR_END == REPLAY) {
             new BaseBallGame();
         }

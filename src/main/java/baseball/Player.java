@@ -14,7 +14,7 @@ public class Player {
     private static final String PLAYER_NUMBER_REGEX = "^[1-9]{3}$";
     private static final String REPLAY_OR_END_NUMBER_REGEX = "^[1-2]$";
 
-    public List<Integer> playerNumber() throws IllegalArgumentException {
+    public List<Integer> getPlayerNumber() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = readLine();
         return validateInputNumber(inputNumber);
@@ -23,7 +23,7 @@ public class Player {
     private List<Integer> validateInputNumber(String inputNumber) throws IllegalArgumentException {
         validateNumberRange(inputNumber, PLAYER_NUMBER_REGEX);
         validateNumberDuplication(inputNumber);
-        return stringToIntegerList(inputNumber);
+        return toIntegerList(inputNumber);
     }
 
     private void validateNumberRange(String inputNumber, String pattern) {
@@ -41,14 +41,14 @@ public class Player {
         }
     }
 
-    private List<Integer> stringToIntegerList(String inputNumber) {
+    private List<Integer> toIntegerList(String inputNumber) {
         List<String> stringNumbers = Arrays.asList(inputNumber.split(""));
         return stringNumbers.stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
-    public int replayOrEndNumber() throws IllegalArgumentException {
+    public int getReplayOrEndNumber() throws IllegalArgumentException {
         String inputNumber = readLine();
         validateNumberRange(inputNumber, REPLAY_OR_END_NUMBER_REGEX);
         return Integer.parseInt(inputNumber);
