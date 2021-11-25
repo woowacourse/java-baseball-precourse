@@ -12,9 +12,9 @@ public class Controller {
 	public void start() {
 		String state = GAME_START;
 		Computer computer = new Computer();
+		Game game = new Game(computer);
 		while (state.equals(GAME_START)) {
-			computer.init();
-			Game game = new Game(computer);
+			game.init();
 			game.play();
 			printRestartRequestMessage();
 			String userInputMessage = readLine();

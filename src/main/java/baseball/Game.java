@@ -20,6 +20,12 @@ public class Game {
 		this.ball = 0;
 	}
 
+	public void init() {
+		computer.init();
+		strike = 0;
+		ball = 0;
+	}
+
 	public void play() {
 		List<Integer> userNumbers;
 		while (strike < NUMBER_DIGITS) {
