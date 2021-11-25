@@ -18,7 +18,7 @@ class GamePlayerTest {
         gamePlayer = new GamePlayer();
     }
 
-    @DisplayName("정상 작동")
+    @DisplayName("입력값 정상 작동")
     @Test
     void enter_rightInput(){
         String input = "123";

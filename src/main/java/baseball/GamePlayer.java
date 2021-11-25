@@ -24,7 +24,7 @@ class GamePlayer {
     }
 
     private int convertCharToInt(char digit){
-        return digit - '0';
+        return Character.getNumericValue(digit);
     }
 
     public int[] getPlayerAnswer() {
