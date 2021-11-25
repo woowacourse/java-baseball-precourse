@@ -11,13 +11,13 @@ public class Parser {
         return parseInt;
     }
 
-    private void checkSize(String input, int size) {
+    private void checkSize(String input, int size) throws IllegalArgumentException{
         if (input.length() != size) {
             throw new IllegalArgumentException();
         }
     }
 
-    private int[] getParseInt(String input) {
+    private int[] getParseInt(String input) throws IllegalArgumentException{
         int parseInt[] = new int[3];
 
         for (int i = 0; i < input.length(); i++) {
