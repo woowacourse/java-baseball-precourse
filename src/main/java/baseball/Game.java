@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Computer.NUMBER_DIGITS;
 import static baseball.Valid.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -20,7 +21,7 @@ public class Game {
 
 	public void play() {
 		List<Integer> userNumbers;
-		while (strike < 3) {
+		while (strike < NUMBER_DIGITS) {
 			try {
 				System.out.print("숫자를 입력해주세요 : ");
 				String userInputMessage = readLine();

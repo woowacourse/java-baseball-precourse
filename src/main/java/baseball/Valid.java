@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Computer.*;
+
 import java.util.List;
 
 public class Valid {
@@ -12,16 +14,15 @@ public class Valid {
 	}
 
 	public static boolean validateNumbersList(List<Integer> numbers) {
-		if (numbers.size() != 3) {
+		if (numbers.size() != NUMBER_DIGITS) {
 			return VALID_FAILED;
 		}
-
-		for (int i = 0; i < 3; i++) {
-			if (numbers.get(i) < 1 || 9 < numbers.get(i)) {
+		for (int i = 0; i < NUMBER_DIGITS; i++) {
+			if (numbers.get(i) < MIN_NUMBER || MAX_NUMBER < numbers.get(i)) {
 				return VALID_FAILED;
 			}
 		}
-		if (numbers.stream().distinct().count() != 3) {
+		if (numbers.stream().distinct().count() != NUMBER_DIGITS) {
 			return VALID_FAILED;
 		}
 		return VALID_SUCCESS;
