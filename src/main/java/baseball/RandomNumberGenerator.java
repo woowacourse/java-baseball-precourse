@@ -3,13 +3,19 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumberGenerator {
-	private int[] answer = new int[Rules.NUMBER_LENGTH];
-	private static boolean[] usedNumber = new boolean[Rules.END_NUMBER + 1];
+	private int[] answer;
+	private static boolean[] usedNumber;
 
 	public void makeRandomNumber() {
+		initAnswer();
 		for (int i = 0; i < Rules.NUMBER_LENGTH; i++) {
 			answer[i] = makeUniqueNumber();
 		}
+	}
+
+	private void initAnswer() {
+		answer = new int[Rules.NUMBER_LENGTH];
+		usedNumber = new boolean[Rules.END_NUMBER + 1];
 	}
 
 	private int makeUniqueNumber() {

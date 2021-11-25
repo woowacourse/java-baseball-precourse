@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Arrays;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
@@ -13,7 +15,6 @@ public class BaseballGame {
 		this.running = true;
 	}
 
-
 	public void start() {
 		do {
 			randomNumberGenerator.makeRandomNumber();
@@ -24,7 +25,6 @@ public class BaseballGame {
 	private boolean restartGame() {
 		System.out.println(Message.REQUEST_RESTART_NUMBER);
 		String requestInput = Console.readLine();
-		System.out.println(requestInput);
 		Validation.checkRestartInput(requestInput);
 		if (requestInput.equals("1")) {
 			running = true;
