@@ -23,7 +23,7 @@ class GameProvider {
     }
 
     /**
-     * 중복일 경우 새 정답 생성
+     * 중복없는 SystemAnswer 생성
      */
     private void generateAnswer(){
         Integer[] tempArr = createNotDuplicateArr();
