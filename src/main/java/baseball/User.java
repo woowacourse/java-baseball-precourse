@@ -69,6 +69,10 @@ public class User {
         return decide;
     }
 
+    public void printHintMessage(final String hintMessage) {
+        System.out.println(hintMessage);
+    }
+
     public String writeHintMessage(final int strike, final int ball) {
         final StringBuilder stringBuilder = new StringBuilder();
 

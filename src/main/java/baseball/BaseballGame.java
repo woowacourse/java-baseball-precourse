@@ -24,6 +24,9 @@ public class BaseballGame {
             int strikeCount = strikeBallCount.get(STRIKE_ENGLISH);
             int ballCount = strikeBallCount.get(BALL_ENGLISH);
 
+            String hitMessage = user.writeHintMessage(strikeCount, ballCount);
+            user.printHintMessage(hitMessage);
+
             user.printInputMessage();
             guessNumber = user.inputPlayerNumber();
         }
