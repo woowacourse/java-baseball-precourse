@@ -13,8 +13,12 @@ class GameValidator {
      * @return true -> pass
      */
     public static boolean isValidInput(String input){
-        return isNumber(input) && isRightLength(input)
+        return isRightLength(input) && isNumber(input)
                 && isNotDuplicate(input) && isRangeBetweenOneToNine(input);
+    }
+
+    private static boolean isRightLength(String input){
+        return input.length() == NUMBER_LENGTH;
     }
 
     private static boolean isNumber(String input){
@@ -25,10 +29,6 @@ class GameValidator {
             }
         }
         return true;
-    }
-
-    private static boolean isRightLength(String input){
-        return input.length() == NUMBER_LENGTH;
     }
 
     private static boolean isNotDuplicate(String input){
