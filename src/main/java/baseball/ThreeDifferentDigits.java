@@ -12,7 +12,6 @@ class ThreeDifferentDigits{
 
     ThreeDifferentDigits(){
         init3DiffDigits();
-        System.out.println(Arrays.toString(ThreeDifferentDigits));
     }
 
     private void init3DiffDigits(){
