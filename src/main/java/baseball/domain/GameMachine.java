@@ -3,16 +3,17 @@ package baseball.domain;
 import java.util.List;
 
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class GameMachine {
-    private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-
     private final BaseballReferee baseballReferee;
     private final InputView inputView;
+    private final OutputView outputView;
 
-    public GameMachine(BaseballReferee baseballReferee, InputView inputView) {
+    public GameMachine(BaseballReferee baseballReferee, InputView inputView, OutputView outputView) {
         this.baseballReferee = baseballReferee;
         this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
@@ -23,11 +24,10 @@ public class GameMachine {
         while (true) {
             List<Integer> inputNumbers = inputView.getInputNumbers();
             BaseballState baseballState = baseballReferee.referee(baseballNumbers.getNumbers(), inputNumbers);
-
-            System.out.println(baseballState.getMessage());
+            outputView.outputRefereeResult(baseballState.getMessage());
 
             if (baseballState.isSuccess()) {
-                System.out.println(END_MESSAGE);
+                outputView.outputSuccess();
                 restart();
                 break;
             }
