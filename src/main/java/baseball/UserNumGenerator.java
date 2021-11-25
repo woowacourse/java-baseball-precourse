@@ -3,37 +3,41 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserNumGenerator extends IllegalArgumentException {
-	public int[] nums = new int[3];
+	public int[] nums;
 
 	public UserNumGenerator() {
-		try {
-			this.nums = pickThreeNum();
-		} catch (IllegalArgumentException e) {
-			System.exit(0);
-		}
+		this.nums = pickThreeNum();
 	}
 
-	public int[] pickThreeNum() {
+	public static int[] pickThreeNum() {
 		System.out.print("숫자를 입력해주세요 : ");
 		String numsString = Console.readLine();
-		if (numsString == null || numsString.length() != 3) {
-			// null, not len 3
-			throw new IllegalArgumentException();
+		int[] nums = stringToIntArray(numsString);
+		if (isThreeLength(nums) && isOneNineInt(nums) && isNotSame(nums)) {
+			return nums;
 		}
-		for (int i = 0; i < 3; i++) {
-			char numChar = numsString.charAt(i);
-			if (Character.isDigit(numChar) && numChar != '0') {
-				nums[i] = numChar - '0';
-				continue;
-			}
-			// not num, 0
-			throw new IllegalArgumentException();
-		}
-		if (!isNotSame(nums)) {
-			// same num
-			throw new IllegalArgumentException();
+		throw new IllegalArgumentException();
+	}
+
+	public static int[] stringToIntArray(String str) {
+		int[] nums = new int[str.length()];
+		for (int i = 0; i < str.length(); i++) {
+			nums[i] = str.charAt(i) - '0';
 		}
 		return nums;
+	}
+
+	public static boolean isOneNineInt(int[] nums) {
+		for (int num : nums) {
+			if (num < 1 || num > 9) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static boolean isThreeLength(int[] nums) {
+		return nums.length == 3;
 	}
 
 	public static boolean isNotSame(int[] nums) {
