@@ -1,9 +1,16 @@
 package baseball;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 
-public class RandomGenerator {
+public class Computer {
+    public static ArrayList<Integer> numberGenerator(){
+        ArrayList<Integer> computerNumbers = new ArrayList<Integer>();
+        computerNumbers = RandomGenerator();
+        return computerNumbers;
+    }
+
     public static ArrayList<Integer> RandomGenerator() {
         ArrayList<Integer> numbers = new ArrayList<Integer>();
 

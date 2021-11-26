@@ -1,11 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
-import camp.nextstep.edu.missionutils.Console;
 
-public class UserNumbers {
-    public static ArrayList<Integer> UserNumbers() {
+public class User {
+    public static ArrayList<Integer> numberGenerator() {
         ArrayList<Integer> userNumbers = new ArrayList<Integer>();
         System.out.print("숫자를 입력해주세요 : ");
         String tmpUserNumbers = Console.readLine();
