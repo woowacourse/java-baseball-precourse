@@ -58,4 +58,22 @@ public class BaseballGamePlayer {
         } while (strikeCount != 3);
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
+    /**
+     * 정답을 맞췄을 때, 게임 추가 진행을 입력받고 그 여부를 반환하는 메서드
+     * @Return boolean
+     */
+    public boolean getNewGame() {
+        final int startNewGame = 1;
+        final int exitProgram = 2;
+        String inputString = Console.readLine();
+        InputStringChecker.checkStringIsOneOrTwo(inputString);
+        int answer = Integer.parseInt(inputString);
+        if (answer == startNewGame) {
+            return true;
+        } else if (answer == exitProgram) {
+            return false;
+        }
+        throw new IllegalArgumentException("getNewGame IllegalArgumentException.");
+    }
 }
