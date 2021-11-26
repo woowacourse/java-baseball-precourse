@@ -45,13 +45,8 @@ public class BaseballGame {
     }
 
     private void getPlayer() {
-        try {
-            Player player = new Player();
-            playerNumber = player.scanNumber();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            System.exit(0);
-        }
+        Player player = new Player();
+        playerNumber = player.scanNumber();
     }
 
     public void setComputer() {

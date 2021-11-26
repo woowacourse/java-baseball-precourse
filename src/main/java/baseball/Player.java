@@ -8,14 +8,15 @@ public class Player {
     private static final String INPUT = "숫자를 입력해주세요: ";
     private static final String ERR_MSG = "올바르지 않은 형식의 숫자를 입력하셨습니다. (1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 입력하세요.)";
 
-    public String scanNumber() throws IllegalArgumentException {
+    public String scanNumber() {
         System.out.print(INPUT);
         String number = Console.readLine();
 
         if(checkNumber(number)) {
             return number;
         } else {
-            throw new IllegalArgumentException(ERR_MSG);
+            System.out.println(ERR_MSG);
+            throw new IllegalArgumentException();
         }
     }
 

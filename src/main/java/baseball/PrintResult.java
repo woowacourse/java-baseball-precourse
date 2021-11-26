@@ -19,9 +19,6 @@ public class PrintResult {
         strikeCnt = numberComparator.getStrike();
 
         printMsg();
-        if (strikeCnt == 3) {
-
-        }
     }
 
     private void printMsg() {
