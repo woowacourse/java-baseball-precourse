@@ -27,7 +27,27 @@ public class Application {
         }
     }
 
+    public static int[] getUserInput() {
+        String inputNumber = Console.readLine();
+
+        if (inputNumber.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        try {
+            Integer.parseInt(inputNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        return new int[]{
+                inputNumber.charAt(0) - '0',
+                inputNumber.charAt(1) - '0',
+                inputNumber.charAt(2) - '0'
+        };
+    }
+
     public static void main(String[] args) {
-        generateNumber();
+
     }
 }
