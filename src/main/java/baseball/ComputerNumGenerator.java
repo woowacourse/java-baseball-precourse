@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Arrays;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerNumGenerator {
@@ -12,11 +14,9 @@ public class ComputerNumGenerator {
 	}
 
 	public static int[] pickThreeNum() {
-		int[] nums = new int[3];
-		for (int i = 0; i < 3; i++) {
-			nums[i] = Randoms.pickNumberInRange(1, 9);
-		}
-		return nums;
+		return Arrays.stream(new int[3])
+			.map(num -> Randoms.pickNumberInRange(1, 9))
+			.toArray();
 	}
 
 	public static boolean isNotSame(int[] nums) {

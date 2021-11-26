@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Arrays;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserNumGenerator extends IllegalArgumentException {
@@ -11,29 +13,23 @@ public class UserNumGenerator extends IllegalArgumentException {
 
 	public static int[] pickThreeNum() {
 		System.out.print("숫자를 입력해주세요 : ");
-		String numsString = Console.readLine();
-		int[] nums = stringToIntArray(numsString);
+		String numString = Console.readLine();
+		int[] nums = stringToIntArray(numString);
 		if (nums.length == 3 && isOneNineInt(nums) && isNotSame(nums)) {
 			return nums;
 		}
-		throw new IllegalArgumentException();
+		throw new IllegalArgumentException("IllegalArgumentException!");
 	}
 
 	public static int[] stringToIntArray(String str) {
-		int[] nums = new int[str.length()];
-		for (int i = 0; i < str.length(); i++) {
-			nums[i] = str.charAt(i) - '0';
-		}
-		return nums;
+		return str.chars()
+			.map(num -> num - '0')
+			.toArray();
 	}
 
 	public static boolean isOneNineInt(int[] nums) {
-		for (int num : nums) {
-			if (num < 1 || num > 9) {
-				return false;
-			}
-		}
-		return true;
+		return Arrays.stream(nums)
+			.allMatch(num -> 1 <= num && num <= 9);
 	}
 
 	public static boolean isNotSame(int[] nums) {

@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Arrays;
+
 public class BaseballCount {
 	public int ballCount = 0;
 	public int strikeCount = 0;
@@ -20,12 +22,8 @@ public class BaseballCount {
 		}
 	}
 
-	public boolean isInArray(int num, int[] numArray) {
-		for (int arrayNum : numArray) {
-			if (arrayNum == num) {
-				return true;
-			}
-		}
-		return false;
+	public boolean isInArray(int num, int[] nums) {
+		return Arrays.stream(nums)
+			.anyMatch(arrayNum -> arrayNum == num);
 	}
 }
