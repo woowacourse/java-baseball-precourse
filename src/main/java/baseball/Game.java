@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +26,9 @@ public class Game {
 
     public Game() {
         computerNumber = new ComputerNumber();
+        ballInputNumber = new BallInputNumber();
+
+        inputNumberList = new ArrayList<>();
         answerNumberList = computerNumber.getComputerNumber();
     }
 
@@ -32,8 +36,7 @@ public class Game {
         int ball = 0;
         int strike = 0;
         do {
-            ballInputNumber = new BallInputNumber();
-            inputNumberList = ballInputNumber.getClientNumber();
+            inputNumberList = ballInputNumber.inputNumberByClient();
             ball = getBall();
             strike = getStrike();
             getHint(ball, strike);
@@ -94,9 +97,7 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String isRestart = Console.readLine();
 
-        RestartNumberValidator restartNumberValidator
-                = new RestartNumberValidator(isRestart);
-        if (!restartNumberValidator.rightInputRestartCheck()) {
+        if (!RestartNumberValidator.rightInputRestartCheck(isRestart)) {
             throw new IllegalArgumentException();
         }
         return isRestart.equals(RESTART);

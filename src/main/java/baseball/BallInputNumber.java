@@ -13,18 +13,10 @@ public class BallInputNumber {
     private List<Integer> clientNumber;
 
     public BallInputNumber() {
-        clientNumber = inputNumberByClient();
-        InputNumberValidator inputNumberValidator = new InputNumberValidator(clientNumber);
-        if (!inputNumberValidator.inputNumberExceptionCheck()) {
-            throw new IllegalArgumentException();
-        }
+        clientNumber = new ArrayList<>();
     }
 
-    public List<Integer> getClientNumber() {
-        return clientNumber;
-    }
-
-    public List<Integer> inputNumberByClient() {
+    public List<Integer> makeInputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         List<Integer> inputNumberList = new ArrayList<>();
@@ -32,5 +24,14 @@ public class BallInputNumber {
             inputNumberList.add(inputNumber.charAt(i) - '0');
         }
         return inputNumberList;
+    }
+
+    public List<Integer> inputNumberByClient() {
+        List<Integer> inputNumberList = makeInputNumber();
+        if (!InputNumberValidator.inputNumberExceptionCheck(inputNumberList)) {
+            throw new IllegalArgumentException();
+        }
+        clientNumber = inputNumberList;
+        return clientNumber;
     }
 }
