@@ -1,6 +1,5 @@
 package baseball;
 
-
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.regex.Pattern;
@@ -25,6 +24,7 @@ public class Player {
             throw new IllegalArgumentException(NOT_THREE_DIGIT_INTEGER_MESSAGE);
         }
     }
+
     private void inputValue() {
         System.out.print(INPUT_REQUEST_MESSAGE);
         this.guessNumber = Console.readLine();

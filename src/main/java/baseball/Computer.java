@@ -13,7 +13,7 @@ public class Computer {
 
     public void makeThreeDigitNumber() {
         makeEachDigitUsingRandom();
-        System.out.println("정답 : "+ Integer.toString(answerMadeByComputer[0]) + Integer.toString(answerMadeByComputer[1]) + Integer.toString(answerMadeByComputer[2])); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
+//        System.out.println("정답 : "+ Integer.toString(answerMadeByComputer[0]) + Integer.toString(answerMadeByComputer[1]) + Integer.toString(answerMadeByComputer[2])); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
     }
 
     private void makeEachDigitUsingRandom() {
@@ -40,11 +40,11 @@ public class Computer {
         int ballCnt = 0;
 
         for (int digitOfGuessNumber = 0; digitOfGuessNumber < NUMBER_LEN; digitOfGuessNumber++) { // 입력값이 245, 222 면 하나씩 확인한다.
+
             if (isStrike(digitOfGuessNumber)) {
                 strikeCnt += 1;
                 continue;
-            }
-            if (isBall(digitOfGuessNumber)) {
+            } else if (isBall(digitOfGuessNumber)) {
                 ballCnt += 1;
             }
         }
@@ -60,6 +60,7 @@ public class Computer {
 
     private boolean isBall(int digitOfGuessNumber) {
         for (int digitOfAnswer = 0; digitOfAnswer < NUMBER_LEN; digitOfAnswer++) {
+
             if (eachDigitOfGuessNumber[digitOfGuessNumber] == answerMadeByComputer[digitOfAnswer]) {
                 return true;
             }

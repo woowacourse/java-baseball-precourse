@@ -10,7 +10,7 @@ public class BaseballGame {
     public static Computer computer = new Computer();
     public static Player player = new Player();
 
-    public static void gameStart() {
+    public static void startGame() {
         boolean continueGame = true;
         while (continueGame) {
             continueGame = playGameUntilGetAnswer();
@@ -38,8 +38,7 @@ public class BaseballGame {
         String continueGame = Console.readLine();
         if (continueGame.equals("1")) {
             return true;
-        }
-        if (continueGame.equals("2")) {
+        } else if (continueGame.equals("2")) {
             return false;
         }
         throw new IllegalArgumentException(NOT_RELATED_ABOUT_RESTART_MESSAGE);
