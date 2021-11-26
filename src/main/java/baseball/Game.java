@@ -15,6 +15,7 @@ public class Game {
 			User user = new User(input);
 			BallRepository userBalls = user.getBalls();
 			referee.judge(userBalls.getBalls());
+			Output.printResult(referee.getStrikeCount(), referee.getBallCount());
 		}
 	}
 }
