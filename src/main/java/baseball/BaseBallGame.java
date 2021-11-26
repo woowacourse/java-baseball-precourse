@@ -3,6 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
+    private static final String BASEBALL_INPUT_REQUEST_TEXT = "숫자를 입력해주세요 : ";
+    private static final String RESTART_INPUT_REQUEST_TEXT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     public void start() {
         String targetNumber = NumberGenerator.generate();
         System.out.println(targetNumber);
@@ -30,8 +34,7 @@ public class BaseBallGame {
     }
 
     private String getRestartInput() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
-                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(BASEBALL_INPUT_REQUEST_TEXT);
         return  Console.readLine();
     }
 
@@ -53,7 +56,7 @@ public class BaseBallGame {
     }
 
     private String getBaseBallInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(RESTART_INPUT_REQUEST_TEXT);
         String input = Console.readLine();
         BaseBallValidator.validateBaseBallInput(input);
         return input;
