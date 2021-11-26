@@ -7,9 +7,9 @@ public class InputException {
 	private static final String INVALID_INPUT_ERROR = "[ERROR] 잘못된 값을 입력했습니다. 게임을 종료하겠습니다.";
 	private static final int NUMBER_LENGTH = 3;
 
-	public static String userInputValidationCheck(String input) {
+	public static void userInputValidationCheck(String input) {
 		if (isThreeLength(input) && isInteger(input) && haveNotDuplicatedNumber(input) && haveNotZero(input)) {
-			return input;
+			return;
 		}
 		throw new IllegalArgumentException(INVALID_INPUT_ERROR);
 	}
