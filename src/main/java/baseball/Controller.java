@@ -14,15 +14,6 @@ public class Controller {
 
 	public void start() {
 
-		loop(answer);
-
-		System.out.println(CLEAR);
-
-		System.out.println(RESTART_OR_EXIT);
-	}
-
-	private void loop(String answer) {
-
 		String resultMessage;
 
 		do {
@@ -38,5 +29,7 @@ public class Controller {
 			System.out.println(resultMessage);
 
 		} while (!resultMessage.equals(INPUT_LENGTH + STRIKE));
+
+		System.out.println(CLEAR);
 	}
 }

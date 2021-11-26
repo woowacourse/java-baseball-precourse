@@ -11,15 +11,15 @@ public class Application {
 
 		do {
 
-			String answer = Random.createAnswer();
-
-			Controller controller = new Controller(answer);
+			Controller controller = new Controller(Random.createAnswer());
 			controller.start();
 
 		} while (selectRestartOrExit());
 	}
 
 	private static boolean selectRestartOrExit() {
+
+		System.out.println(RESTART_OR_EXIT);
 
 		String reStartOrExitInput = Console.readLine();
 
