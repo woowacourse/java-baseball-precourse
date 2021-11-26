@@ -14,9 +14,11 @@ public class NumberBaseballGameController {
 		Computer computer = new Computer();
 		Player player = new Player();
 		NumberBaseballGame numberBaseballGame = new NumberBaseballGame();
-
+		numberBaseballGame.startGame();
 		computer.createRandomNumbers();
-		play(numberBaseballGame, player, computer);
+		do {
+			play(numberBaseballGame, player, computer);
+		} while (numberBaseballGame.getGameState());
 	}
 
 	private static void play(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
@@ -25,6 +27,7 @@ public class NumberBaseballGameController {
 			int strikeCounts = computer.getStrikeCounts(answer);
 			int ballCounts = computer.getBallCounts(answer);
 			OutputView.hintMessage(ballCounts, strikeCounts);
+			changeGameState(numberBaseballGame, computer);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e);
 		}
@@ -34,5 +37,12 @@ public class NumberBaseballGameController {
 		List<Integer> inputResult = InputView.getAnswerNumbers();
 		numberBaseballGame.validateInputNumber(inputResult);
 		return player.receiveAnswerNumbers(inputResult);
+	}
+
+	private static void changeGameState(NumberBaseballGame numberBaseballGame, Computer computer) {
+		if (computer.isCorrect() == Boolean.TRUE) {
+			numberBaseballGame.closeGame();
+			OutputView.successMessage();
+		}
 	}
 }

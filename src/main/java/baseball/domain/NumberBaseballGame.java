@@ -11,6 +11,7 @@ public class NumberBaseballGame {
 	private static final String DUPLICATE_INPUT = "입력할 숫자는 서로 달라야 합니다.";
 
 	private List<Integer> inputList;
+	private Boolean gameState;
 
 	public void validateInputNumber(List<Integer> inputList) {
 		this.inputList = inputList;
@@ -40,5 +41,17 @@ public class NumberBaseballGame {
 		if (validateDuplicationResult) {
 			throw new IllegalArgumentException(DUPLICATE_INPUT);
 		}
+	}
+
+	public Boolean getGameState() {
+		return this.gameState;
+	}
+
+	public void startGame() {
+		this.gameState = Boolean.TRUE;
+	}
+
+	public void closeGame() {
+		this.gameState = Boolean.FALSE;
 	}
 }
