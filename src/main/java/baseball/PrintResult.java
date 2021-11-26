@@ -42,7 +42,7 @@ public class PrintResult {
         int[] result;
         result = countResult(target, userNum);
 
-        if(result[1] == 3) {
+        if(result[0] == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         } else {
