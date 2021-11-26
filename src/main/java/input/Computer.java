@@ -6,13 +6,14 @@ import java.util.*;
 
 public class Computer {
 
-    public static Set<Integer> randomNumbers = new HashSet<>();
+    public static Set<Integer> randomNumbers;
 
     static final int BASEBALL_LOWER_BOUND = 1;
     static final int BASEBALL_UPPER_BOUND = 9;
     static final int BASEBALL_SIZE = 3;
 
     public static Set<Integer> extractRandomNumbers() {
+        resetRandomNumbers();
         while (!checkSize()) {
             extractRandomNumber();
         }
