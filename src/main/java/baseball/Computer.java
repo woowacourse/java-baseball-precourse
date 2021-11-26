@@ -8,8 +8,11 @@ public class Computer {
     private static final int LENGTH = 3;
     private static final int MAX = 9;
     private static final int MIN = 1;
+    private ArrayList<Integer> computerNumber;
 
-    private ArrayList<Integer> computerNumber = new ArrayList<Integer>();
+    public Computer() {
+        computerNumber = new ArrayList<>();
+    }
 
     public ArrayList<Integer> createComputerNumber() {
         int number;
@@ -27,7 +30,7 @@ public class Computer {
         if (computerNumber.contains(number)) {
             return;
         }
-        
+
         computerNumber.add(number);
     }
 

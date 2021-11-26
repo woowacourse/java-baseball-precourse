@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,7 +26,7 @@ public class User {
     }
 
     private void changeArrayList(String[] inputNumberList) {
-        userNumberList = new ArrayList<Integer>();
+        userNumberList = new ArrayList<>();
         for (String number : inputNumberList) {
             userNumberList.add(Integer.parseInt(number));
         }
@@ -48,10 +49,7 @@ public class User {
 
     /* Case 1. 입력한 문자열이 3자리가 아닐 경우 */
     private boolean validateNumberLength(String[] inputNumberList) {
-        if (inputNumberList.length == LENGTH) {
-            return true;
-        }
-        return false;
+        return inputNumberList.length == LENGTH;
     }
 
     /* Case 2. 1~9가 아닌 값이 들어간 경우 */
@@ -66,14 +64,9 @@ public class User {
 
     /* Case 3. 중복되는 숫자가 존재할 경우 */
     private boolean checkDuplicateNumberInString(String[] inputNumberList) {
-        Set<String> numberSet = new HashSet<String>();
-        for (String userNumber : inputNumberList) {
-            numberSet.add(userNumber);
-        }
-        if (numberSet.size() == LENGTH) {
-            return true;
-        }
-        return false;
+        Set<String> numberSet = new HashSet<>();
+        Collections.addAll(numberSet, inputNumberList);
+        return numberSet.size() == LENGTH;
     }
 
 }

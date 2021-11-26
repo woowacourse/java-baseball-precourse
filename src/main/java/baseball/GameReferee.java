@@ -8,17 +8,21 @@ public class GameReferee {
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String WIN = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private int ballCount;
-    private int strikeCount;
     private ArrayList<Integer> computerNumberList;
     private ArrayList<Integer> userNumberList;
     private String resultMessage;
+    private int ballCount;
+    private int strikeCount;
 
-    public boolean decideResult(ArrayList<Integer> computerNumberList, ArrayList<Integer> userNumberList) {
+    public boolean decideRefereeResult(ArrayList<Integer> computerNumberList, ArrayList<Integer> userNumberList) {
         this.initializeReferee(computerNumberList, userNumberList);
         this.countStrikeAndBall();
         this.createResultMessage();
         System.out.println(resultMessage);
+        return this.makeDecisionWinOrLose();
+    }
+
+    private boolean makeDecisionWinOrLose() {
         if (strikeCount == LENGTH) {
             System.out.println(WIN);
             return true;
