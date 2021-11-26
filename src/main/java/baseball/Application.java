@@ -4,30 +4,38 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
+	// private static final int newGame = 1;
+	// private static final int quitGame = 2;
+
 	public static void main(String[] args) {
-		Answer rightAnswer = new Answer();
-		System.out.println(rightAnswer);
-
-		String userInput;
-		Answer answer;
-		Hint hint;
-
 		while (true) {
-			System.out.print("숫자를 입력해주세요 : ");
-			userInput = readLine();
-			if (!Answer.checkInputValue(userInput)) {
-				throw new IllegalArgumentException();
+			Answer rightAnswer = new Answer();
+			System.out.println(rightAnswer);
+
+			String userInput;
+			Answer answer;
+			Hint hint;
+
+			while (true) {
+				System.out.print("숫자를 입력해주세요 : ");
+				userInput = readLine();
+				if (!Answer.checkInputValue(userInput)) {
+					throw new IllegalArgumentException();
+				}
+
+				answer = new Answer(userInput);
+
+				hint = new Hint();
+				hint.compareAnswer(answer, rightAnswer);
+				hint.showResult();
+
+				if (hint.strike == Answer.numberCount) {
+					System.out.println(Answer.numberCount + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+					// System.out.println("게임을 새로 시작하려면 " + newGame + ", 종료하려면 " + quitGame + "를 입력하세요.");
+					break;
+				}
 			}
-
-			answer = new Answer(userInput);
-
-			hint = new Hint();
-			hint.compareAnswer(answer, rightAnswer);
-			System.out.println(hint);
 		}
-
-		// 힌트에 따라 결과 출력
-
 	}
 
 	// 게임 재시작여부 확인 함수
@@ -181,5 +189,23 @@ class Hint extends Answer {
 		}
 	}
 
-	// 결과 출력 함수수
+	void showResult() {
+		String result = "";
+		if (this.ball != 0) {
+			result += this.ball + "볼";
+		}
+
+		if (this.strike != 0) {
+			if (this.ball != 0) {
+				result += " ";
+			}
+			result += this.strike + "스트라이크";
+		}
+
+		if (result.equals("")) {
+			result = "낫싱";
+		}
+
+		System.out.println(result);
+	}
 }
