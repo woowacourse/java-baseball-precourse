@@ -25,7 +25,7 @@ public class Validation {
 	private static boolean isInteger(String numbers) {
 		for (int i = 0; i < NUMBER_LENGTH; i++) {
 			char eachDigit = numbers.charAt(i);
-			if (!Character.isDigit(eachDigit) || eachDigit == 0) {
+			if (!Character.isDigit(eachDigit) || eachDigit == '0') {
 				throw new IllegalArgumentException(ERROR_INPUT_TYPE);
 			}
 		}
