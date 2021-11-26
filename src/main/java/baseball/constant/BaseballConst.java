@@ -2,6 +2,9 @@ package baseball.constant;
 
 public class BaseballConst {
 	public static final int NUM_LEN_LIMIT = 3;
+	public static final int MIN_NUM = 1;
+	public static final int MAX_NUM = 9;
+
 	public static final int RETRY = 1;
 	public static final int EXIT = 2;
 
