@@ -13,7 +13,7 @@ public class Game {
     static final int BASEBALL_SIZE = 3;
     static final int RESTART_NUMBER = 1;
     List<Integer> randomNumbers;
-    String userInput;
+    List<Integer> userInput;
 
 
     public void startGame() {
@@ -31,7 +31,7 @@ public class Game {
     public void runGame() {
         int strike, ball;
         do {
-            this.userInput = User.userInput();
+            this.userInput = User.readUserInput();
             ball = countBall();
             strike = countStrike();
             Output.printResult(ball - strike, strike);
@@ -47,7 +47,7 @@ public class Game {
     }
 
     private int isMatchStrike(int i) {
-        if (randomNumbers.get(i) == userInput.charAt(i) - '0')
+        if (randomNumbers.get(i) == userInput.get(i))
             return 1;
         return 0;
     }
@@ -61,7 +61,7 @@ public class Game {
     }
 
     private int isMatchBall(int i) {
-        if (randomNumbers.contains(userInput.charAt(i) - '0'))
+        if (randomNumbers.contains(userInput.get(i)))
             return 1;
         return 0;
     }
