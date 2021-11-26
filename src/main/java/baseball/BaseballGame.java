@@ -11,6 +11,8 @@ public class BaseballGame {
     public static final String COLLECT_ANSWER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String RESTART_OR_NOT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String GAME_RESTART_NUMBER = "1";
+    public static final String THREE_STRIKE = "3스트라이크";
+    public static final String NEW_LINE = "\n";
 
     public void startGame() {
 
@@ -67,7 +69,7 @@ public class BaseballGame {
     }
 
     private void printCorrectAnswerMessage() {
-        System.out.println(COLLECT_ANSWER_MESSAGE);
+        System.out.println(THREE_STRIKE + NEW_LINE + COLLECT_ANSWER_MESSAGE);
     }
 
 }
