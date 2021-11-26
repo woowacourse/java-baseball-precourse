@@ -5,15 +5,12 @@ import baseball.constant.BaseballConst;
 public class Validator {
 
 	public static void valid(int[] input) {
-		// 1.3자리 수인지 확인
 		if (!checkLength(input)) {
 			throw new IllegalArgumentException("지정된 수의 크기에서 벗어났습니다.");
 		}
-		// 2.각 자리의 숫자가 범위가 넘어갔는지 확인 ( 0이 포함되어있는지 )
 		if (!checkContainZero(input)) {
 			throw new IllegalArgumentException("입력한 수에 0이 포함되어있습니다.");
 		}
-		// 3.각 자리 수가 중복되는지 확인
 		if (!checkDup(input)) {
 			throw new IllegalArgumentException("중복된 수가 존재합니다.");
 		}

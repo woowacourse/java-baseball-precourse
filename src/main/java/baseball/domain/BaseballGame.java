@@ -16,9 +16,7 @@ public class BaseballGame {
 	}
 
 	public void init() {
-		// 초기값 세팅 : 중복되지 않는 1~9로 구성된 세 자리 수 생성
 		chooseRandomAnswer();
-		// 레프리 생성 : answer 값을 저장해둔다.
 		refereeInit();
 	}
 
