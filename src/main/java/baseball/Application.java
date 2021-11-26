@@ -1,6 +1,8 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -12,6 +14,7 @@ public class Application {
         int retryOrExitFlag = 3;
 
         computerNumbers = ComputerNumbers.ComputerNumbers();
+
         //Random test
 //        for (int i = 0; i < computerNumbers.size(); i++)
 //            System.out.println(computerNumbers.get(i));
@@ -21,7 +24,6 @@ public class Application {
             if (retryOrExitFlag == 2)
                 return;
             if (retryOrExitFlag == 1) {
-                strikeCount = 0;
                 computerNumbers = ComputerNumbers.ComputerNumbers();
                 retryOrExitFlag = 3;
             }
