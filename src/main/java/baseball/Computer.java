@@ -7,16 +7,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
 public class Computer {
-    private LinkedHashSet<Integer> randomNumberSet = new LinkedHashSet<>();
     private ArrayList<Integer> randomNumberList = new ArrayList<>();
 
     public void decideRandomNumber() {
-        while (randomNumberSet.size() < 3) {
-            randomNumberSet.add(Randoms.pickNumberInRange(1, 9));
-        }
-        for (int num : randomNumberSet) {
-            randomNumberList.add(num);
-        }
+        makeRandomNumberList(makeRandomNumber());
     }
 
     public boolean canFinish(int predict) {
@@ -25,8 +19,23 @@ public class Computer {
         return false;
     }
 
+    private LinkedHashSet<Integer> makeRandomNumber(){
+        LinkedHashSet<Integer> randomNumberSet = new LinkedHashSet<>();
+        while (randomNumberSet.size() < 3) {
+            randomNumberSet.add(Randoms.pickNumberInRange(1, 9));
+        }
+        return randomNumberSet;
+    }
+
+    private void makeRandomNumberList(LinkedHashSet<Integer> randomNumberSet){
+        for (int num : randomNumberSet) {
+            randomNumberList.add(num);
+        }
+    }
+
     private int calculateBallCount(int predict) {
-        int strike = SystemMessage.FIRST_VALUE, ball = SystemMessage.FIRST_VALUE;
+        int strike = SystemMessage.FIRST_VALUE;
+        int ball = SystemMessage.FIRST_VALUE;
         ArrayList<Integer> predictList = makeNumberToList(predict);
         for (int i = 0; i < predictList.size(); ++i) {
             if (randomNumberList.get(i) == predictList.get(i)) {
@@ -37,7 +46,7 @@ public class Computer {
                 ++ball;
             }
         }
-        ballCount(strike, ball);
+        printBallCount(strike, ball);
         return strike;
     }
 
@@ -50,10 +59,16 @@ public class Computer {
         return list;
     }
 
-    private void ballCount(int strike, int ball) {
-        if (ball != 0) System.out.printf("%d%s ", ball, SystemMessage.BALL);
-        if (strike != 0) System.out.printf("%d%s", strike, SystemMessage.STRIKE);
-        if (ball == 0 && strike == 0) System.out.printf("%s", SystemMessage.NOTHING);
+    private void printBallCount(int strike, int ball) {
+        if (ball != 0) {
+            System.out.printf("%d%s ", ball, SystemMessage.BALL);
+        }
+        if (strike != 0) {
+            System.out.printf("%d%s", strike, SystemMessage.STRIKE);
+        }
+        if (ball == 0 && strike == 0) {
+            System.out.printf("%s", SystemMessage.NOTHING);
+        }
         System.out.println();
     }
 

@@ -5,6 +5,10 @@ public class SystemMessage {
     public static final int STOP = 2;
     public static final int FIRST_VALUE = 0;
 
+    public static final int ZERO = 0;
+    public static final int START_INCLUSIVE = 100;
+    public static final int END_INCLUSIVE = 999;
+
     public static final String NO_NUMBER_ERROR = "[ERROR] 숫자를 입력해야 합니다";
     public static final String INVALID_NUMBER = "[ERROR] 1과 2 중 하나를 입력해야 합니다";
     public static final String INVALID_RANGE = "[ERROR] 세자리수 여야 합니다";
