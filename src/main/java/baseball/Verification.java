@@ -1,33 +1,31 @@
 package baseball;
 
+import static constant.Constant.*;
+
 public class Verification {
 
-	public static int ofReStartOrExitInput(String input) {
+	public static void ofReStartOrExitInput(String input) {
 
-		int integerInput = isInteger(input);
+		isInteger(input);
 
-		if (integerInput != 1 && integerInput != 2) {
-			throw new IllegalArgumentException("1과 2 중에서 선택해야 합니다.");
+		if (!input.equals(RE_START) && !input.equals(EXIT)) {
+			throw new IllegalArgumentException(ERROR);
 		}
-
-		return integerInput;
 	}
 
 	public static void ofInput(String input) {
 
 		isInteger(input);
 
-		if (input.length() != 3) {
-			throw new IllegalArgumentException("세 자리 수를 입력해야 합니다.");
+		if (input.length() != INPUT_LENGTH) {
+			throw new IllegalArgumentException(ERROR);
 		}
 	}
 
-	private static int isInteger(String input) {
+	private static void isInteger(String input) {
 
-		if (!input.matches("-?\\d+")) {
-			throw new IllegalArgumentException("정수를 입력해야 합니다.");
+		if (!input.matches(INTEGER)) {
+			throw new IllegalArgumentException(ERROR);
 		}
-
-		return Integer.parseInt(input);
 	}
 }

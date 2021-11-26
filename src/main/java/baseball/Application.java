@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import static constant.Constant.*;
 import random.Random;
 
 public class Application {
@@ -13,9 +14,9 @@ public class Application {
 
 			proceed(answer);
 
-			System.out.println(Message.CLEAR);
+			System.out.println(CLEAR);
 
-			System.out.println(Message.RESTART_OR_EXIT);
+			System.out.println(RESTART_OR_EXIT);
 
 		} while (selectRestartOrExit());
 
@@ -27,7 +28,7 @@ public class Application {
 
 		do {
 
-			System.out.print(Message.QUESTION);
+			System.out.print(QUESTION);
 
 			String input = Console.readLine();
 
@@ -37,16 +38,16 @@ public class Application {
 
 			System.out.println(resultMessage);
 
-		} while (!resultMessage.equals(3 + Message.STRIKE));
+		} while (!resultMessage.equals(INPUT_LENGTH + STRIKE));
 	}
 
 	private static boolean selectRestartOrExit() {
 
 		String reStartOrExitInput = Console.readLine();
 
-		int restartOrExit = Verification.ofReStartOrExitInput(reStartOrExitInput);
+		Verification.ofReStartOrExitInput(reStartOrExitInput);
 
-		if (restartOrExit == 1) {
+		if (reStartOrExitInput.equals(RE_START)) {
 			return true;
 		}
 

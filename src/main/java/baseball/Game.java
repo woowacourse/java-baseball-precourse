@@ -1,5 +1,7 @@
 package baseball;
 
+import static constant.Constant.*;
+
 public class Game {
 
 	public static String play(String answer, String input) {
@@ -10,13 +12,13 @@ public class Game {
 		int strike = 0;
 		int ball = 0;
 
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < INPUT_LENGTH; i++) {
 
 			String result = checkOneNumber(answerArray, inputArray[i], i);
 
-			if (result.equals(Message.STRIKE)) {
+			if (result.equals(STRIKE)) {
 				strike++;
-			} else if (result.equals(Message.BALL)) {
+			} else if (result.equals(BALL)) {
 				ball++;
 			}
 		}
@@ -28,30 +30,30 @@ public class Game {
 
 	private static String checkOneNumber(String[] answerArray, String number, int index) {
 
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < INPUT_LENGTH; i++) {
 
 			if (answerArray[i].equals(number) && index == i) {
-				return Message.STRIKE;
+				return STRIKE;
 			} else if (answerArray[i].equals(number)) {
-				return Message.BALL;
+				return BALL;
 			}
 		}
 
-		return Message.NOTHING;
+		return NOTHING;
 	}
 
 	private static String makeMessage(int strike, int ball, String message) {
 
 		if (ball == 0 && strike == 0) {
-			return Message.NOTHING;
+			return NOTHING;
 		}
 
 		if (ball > 0) {
-			message += ball + Message.BALL + " ";
+			message += ball + BALL + " ";
 		}
 
 		if (strike > 0) {
-			message += strike + Message.STRIKE;
+			message += strike + STRIKE;
 		}
 
 		return message;

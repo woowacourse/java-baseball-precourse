@@ -1,11 +1,10 @@
 package random;
 
+import static constant.Constant.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Random {
-
-	static final int MIN_NUMBER = 1;
-	static final int MAX_NUMBER = 9;
 
 	public static String createAnswer() {
 
