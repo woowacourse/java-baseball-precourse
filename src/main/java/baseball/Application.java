@@ -4,41 +4,55 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-	// private static final int newGame = 1;
-	// private static final int quitGame = 2;
+	private static final int newGame = 1;
+	private static final int quitGame = 2;
 
 	public static void main(String[] args) {
+		Answer rightAnswer = new Answer();
+
 		while (true) {
-			Answer rightAnswer = new Answer();
-			System.out.println(rightAnswer);
+			System.out.print("숫자를 입력해주세요 : ");
+			String userInput = readLine();
+			Answer.checkInputValue(userInput);
 
-			String userInput;
-			Answer answer;
-			Hint hint;
+			Answer answer = new Answer(userInput);
 
-			while (true) {
-				System.out.print("숫자를 입력해주세요 : ");
-				userInput = readLine();
-				if (!Answer.checkInputValue(userInput)) {
-					throw new IllegalArgumentException();
-				}
+			Hint hint = new Hint();
+			hint.compareAnswer(answer, rightAnswer);
+			hint.showResult();
 
-				answer = new Answer(userInput);
+			if (hint.strike != Answer.numberCount) {
+				continue;
+			}
 
-				hint = new Hint();
-				hint.compareAnswer(answer, rightAnswer);
-				hint.showResult();
+			System.out.println(Answer.numberCount + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			System.out.println("게임을 새로 시작하려면 " + newGame + ", 종료하려면 " + quitGame + "를 입력하세요.");
+			String newGameAnswer = readLine();
 
-				if (hint.strike == Answer.numberCount) {
-					System.out.println(Answer.numberCount + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-					// System.out.println("게임을 새로 시작하려면 " + newGame + ", 종료하려면 " + quitGame + "를 입력하세요.");
-					break;
-				}
+			int newGameAnswerNumber = Application.getNewGameAnswerNumber(newGameAnswer);
+
+			if (newGameAnswerNumber == newGame) {
+				rightAnswer = new Answer();
+			} else if (newGameAnswerNumber == quitGame) {
+				break;
 			}
 		}
 	}
 
-	// 게임 재시작여부 확인 함수
+	private static int getNewGameAnswerNumber(String str) {
+		int intValue;
+		try {
+			intValue = Integer.parseInt(str);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException();
+		}
+
+		if (intValue != 1 && intValue != 2) {
+			throw new IllegalArgumentException();
+		}
+
+		return intValue;
+	}
 }
 
 class Array {
@@ -114,24 +128,23 @@ class Answer {
 		return pickNumberInRange(Answer.startRange, Answer.endRange);
 	}
 
-	static boolean checkInputValue(final String str) {
+	static void checkInputValue(final String str) {
 		if (!Answer.checkInputLength(str)) {
-			return false;
+			throw new IllegalArgumentException();
 		}
 		if (!Answer.checkInputNumber(str)) {
-			return false;
+			throw new IllegalArgumentException();
 		}
 		if (!Answer.checkEqualNumber(str)) {
-			return false;
+			throw new IllegalArgumentException();
 		}
-		return true;
 	}
 
-	private static boolean checkInputLength(final String str) {
+	static boolean checkInputLength(final String str) {
 		return str.length() == Answer.numberCount;
 	}
 
-	private static boolean checkInputNumber(String str) {
+	static boolean checkInputNumber(String str) {
 		try {
 			int numberValue = Integer.parseInt(str);
 		} catch (NumberFormatException e) {
@@ -141,7 +154,7 @@ class Answer {
 		return !Array.checkArrayContains(numberArray, '0');
 	}
 
-	private static boolean checkEqualNumber(String str) {
+	static boolean checkEqualNumber(String str) {
 		char[] checkEqual = new char[str.length()];
 		char[] word = Array.getCharArrayFromString(str);
 
