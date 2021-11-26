@@ -9,6 +9,13 @@ public class PrintResult {
         return false;
     }
 
-    
+    public static boolean countBall(int[] target, int userNum) {
+        for(int i=0; i<3; i++) {
+            if(validateSameNumber(target[i], userNum)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
