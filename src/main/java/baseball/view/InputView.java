@@ -2,7 +2,7 @@ package baseball.view;
 
 import java.util.Objects;
 
-import baseball.domain.Number;
+import baseball.domain.vo.number.Number;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {

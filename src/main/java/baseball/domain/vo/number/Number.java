@@ -1,18 +1,20 @@
-package baseball.domain;
+package baseball.domain.vo.number;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import baseball.domain.vo.BallStrikeCount;
+
 public class Number {
 
     private static final int NOTHING = 0;
     private static final int THREE_STRIKE = 3;
 
-    int first;
-    int second;
-    int third;
+    private int first;
+    private int second;
+    private int third;
 
     private Number(int first, int second, int third) {
         this.first = first;

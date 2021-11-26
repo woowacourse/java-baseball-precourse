@@ -1,8 +1,6 @@
-package baseball.domain;
+package baseball.domain.vo.number;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;

@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.BallStrikeCount;
+import baseball.domain.vo.BallStrikeCount;
 
 public class OutputView {
 

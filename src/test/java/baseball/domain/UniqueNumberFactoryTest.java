@@ -2,10 +2,10 @@ package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-import java.util.Objects;
-
 import org.junit.jupiter.api.Test;
+
+import baseball.domain.vo.number.Number;
+import baseball.domain.vo.number.UniqueNumberFactory;
 
 class UniqueNumberFactoryTest {
 

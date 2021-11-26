@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.runner.GameRunner;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

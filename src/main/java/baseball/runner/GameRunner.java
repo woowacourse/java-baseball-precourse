@@ -1,8 +1,9 @@
-package baseball;
+package baseball.runner;
 
-import baseball.domain.BallStrikeCount;
-import baseball.domain.Number;
-import baseball.domain.UniqueNumberFactory;
+import baseball.domain.vo.BallStrikeCount;
+import baseball.domain.Computer;
+import baseball.domain.vo.number.Number;
+import baseball.domain.vo.number.UniqueNumberFactory;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

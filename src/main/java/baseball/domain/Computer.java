@@ -1,7 +1,7 @@
-package baseball;
+package baseball.domain;
 
-import baseball.domain.BallStrikeCount;
-import baseball.domain.Number;
+import baseball.domain.vo.BallStrikeCount;
+import baseball.domain.vo.number.Number;
 
 public class Computer {
 

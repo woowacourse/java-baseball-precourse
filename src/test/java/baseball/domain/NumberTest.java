@@ -1,16 +1,17 @@
-package baseball;
+package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
-import baseball.domain.BallStrikeCount;
-import baseball.domain.Number;
+import baseball.domain.vo.BallStrikeCount;
+import baseball.domain.vo.number.Number;
 
-class BallStrikeServiceTest {
+class NumberTest {
+
+    // 이건 Number 테스트?
+    // BallStrikeCount 테스트??
+    // 하드 코딩을 해야 할까?
 
     @Test
     public void 공격숫자와_컴퓨터숫자가_일치하지않으면_낫싱_인스턴스를_리턴한다() {
