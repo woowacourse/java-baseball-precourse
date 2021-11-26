@@ -14,6 +14,8 @@ public class Application {
 			game.start();
 			gameReply.askReply();
 			result.matchAnswer(game.getAnswer(), gameReply.getGameReply());
+			result.printResult();
+
 			continueGame = game.afterGame();
 		}
 	}
