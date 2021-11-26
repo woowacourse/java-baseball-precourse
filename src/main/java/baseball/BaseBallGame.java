@@ -10,22 +10,22 @@ public class BaseBallGame {
     public void start() {
         String targetNumber = NumberGenerator.generate();
         System.out.println(targetNumber);
-        getInputUntilCorrectAnswer(targetNumber);
+        requestInputUntilCorrectAnswer(targetNumber);
 
         configureRestartGame();
     }
 
-    private void getInputUntilCorrectAnswer(String targetNumber) {
+    private void requestInputUntilCorrectAnswer(String targetNumber) {
         String inputNumber = "";
 
         while (!inputNumber.equals(targetNumber)) {
-            inputNumber = getBaseBallInput();
-            printHint(targetNumber, inputNumber);
+            inputNumber = requestBaseBallInput();
+            printCalculatedHint(targetNumber, inputNumber);
         }
     }
 
     private void configureRestartGame() {
-        String restart = getRestartInput();
+        String restart = requestRestartInput();
         BaseBallValidator.validateRestart(restart);
 
         if (RestartInput.byNumber(restart) == RestartInput.RESTART) {
@@ -33,12 +33,7 @@ public class BaseBallGame {
         }
     }
 
-    private String getRestartInput() {
-        System.out.println(RESTART_INPUT_REQUEST_TEXT);
-        return  Console.readLine();
-    }
-
-    private void printHint(String targetNumber, String inputNumber) {
+    private void printCalculatedHint(String targetNumber, String inputNumber) {
         BaseBallHint hint = calculateHint(targetNumber, inputNumber);
         System.out.println(hint);
     }
@@ -55,10 +50,15 @@ public class BaseBallGame {
         return result;
     }
 
-    private String getBaseBallInput() {
+    private String requestBaseBallInput() {
         System.out.print(BASEBALL_INPUT_REQUEST_TEXT);
         String input = Console.readLine();
         BaseBallValidator.validateBaseBallInput(input);
         return input;
+    }
+
+    private String requestRestartInput() {
+        System.out.println(RESTART_INPUT_REQUEST_TEXT);
+        return Console.readLine();
     }
 }
