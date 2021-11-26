@@ -50,7 +50,7 @@ public class Controller {
         RequestInput.requestInputData();
 
         String input = Console.readLine();
-        int inputNum[] = parser.userInputParser(input);
+        int inputNum[] = parser.parseUserInput(input, SIZE);
 
         return inputNum;
     }

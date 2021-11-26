@@ -2,9 +2,9 @@ package baseball.utils;
 
 public class Parser {
 
-    public int[] userInputParser(String input) {
-        checkSize(input, 3);
-        int parseInt[] = getParseInt(input);
+    public int[] parseUserInput(String input, int size) {
+        checkSize(input, size);
+        int parseInt[] = getParseInt(input, size);
         return parseInt;
     }
 
@@ -14,8 +14,8 @@ public class Parser {
         }
     }
 
-    private int[] getParseInt(String input) throws IllegalArgumentException{
-        int parseInt[] = new int[3];
+    private int[] getParseInt(String input, int size) throws IllegalArgumentException{
+        int parseInt[] = new int[size];
 
         for (int i = 0; i < input.length(); i++) {
             if ('0' > input.charAt(i) || input.charAt(i) > '9') {
