@@ -6,11 +6,9 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import constant.MessageList;
 
 public class Computer {
-    private static final int START_RANGE = 1;
-    private static final int END_RANGE = 9;
-    private static final int SIZE_RANGE = 3;
     private static Set<Integer> randomNumbers;
     private static BoundaryChecker boundaryChecker;
 
@@ -21,8 +19,8 @@ public class Computer {
     }
 
     public void setRandomNumbers() {
-        while (randomNumbers.size() < SIZE_RANGE) {
-            int choice = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+        while (randomNumbers.size() < MessageList.SIZE_RANGE) {
+            int choice = Randoms.pickNumberInRange(MessageList.START_RANGE, MessageList.END_RANGE);
             randomNumbers.add(choice);
         }
         boundaryChecker.checkRange(Integer.parseInt(toString()));
@@ -41,6 +39,6 @@ public class Computer {
 
     @Override
     public String toString() {
-        return randomNumbers.toString().replaceAll("[^0-9]", "");
+        return randomNumbers.toString().replaceAll("[^0-9]", MessageList.NULL_STRING);
     }
 }

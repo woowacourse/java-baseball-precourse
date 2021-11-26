@@ -6,7 +6,7 @@
 안녕하세요. 허수진입니다. 미션을 수행하며 궁금했던 부분을 `Wiki` 에 정리했습니다. 감사합니다 :)
 - [OracleJDK 와 OpenJDK 와 AdoptOpenJDK 의 차이가 뭘까?](https://github.com/her0807/java-baseball-precourse/wiki/Mac%EC%97%90%EC%84%9C-JAVA-%EB%B2%84%EC%A0%84-%ED%99%95%EC%9D%B8%EA%B3%BC-IntelliJ-%EC%97%90%EC%84%9C-JDK-%EB%B3%80%ED%99%98%ED%95%98%EA%B8%B0)
 - [HashSet은 왜 순서를 보장하지 않을까?](https://github.com/her0807/java-baseball-precourse/wiki/HashSet,-TreeSet,-LinkedHashSet)
-- [오류와 에러는 같은걸까?](https://github.com/her0807/java-baseball-precourse/wiki/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC)
+- [오류와 예외는 같은걸까?](https://github.com/her0807/java-baseball-precourse/wiki/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC)
 - [매직 넘버/매직 리터럴을 static final로 선언하는 이유가 뭘까?](https://github.com/her0807/java-baseball-precourse/wiki/final-%EA%B3%BC-static-final-%EC%9D%98-%EC%B0%A8%EC%9D%B4%3F)
 
 ## ✍🏻 구현할 기능 목록

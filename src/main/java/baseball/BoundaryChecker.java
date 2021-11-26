@@ -4,14 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class BoundaryChecker {
-    private static final int MIN_NUMBER = 123;
-    private static final int MAX_NUMBER = 987;
-    private static final int SIZE_RANGE = 3;
-    private static final String ZERO = "0";
+import constant.MessageList;
 
-    public BoundaryChecker() {
-    }
+public class BoundaryChecker {
 
     public void convertInt(String inputNumbers) {
         try {
@@ -22,23 +17,23 @@ public class BoundaryChecker {
     }
 
     public void checkLength(String inputNumbers) {
-        if (inputNumbers.length() != SIZE_RANGE) {
+        if (inputNumbers.length() != MessageList.SIZE_RANGE) {
             throw new IllegalArgumentException();
         }
     }
 
     public void checkDuplicate(ArrayList<Integer> targetList) {
         Set<Integer> checkList = new HashSet<>(targetList);
-        if (checkList.size() != SIZE_RANGE) {
+        if (checkList.size() != MessageList.SIZE_RANGE) {
             throw new IllegalArgumentException();
         }
     }
 
     public void checkRange(Integer targetNumber) {
-        if (targetNumber.toString().contains(ZERO)) {
+        if (targetNumber.toString().contains(MessageList.FIND_ZERO)) {
             throw new IllegalArgumentException();
         }
-        if (!(targetNumber >= MIN_NUMBER) && (targetNumber <= MAX_NUMBER)) {
+        if (!(targetNumber >= MessageList.MIN_NUMBER) && (targetNumber <= MessageList.MAX_NUMBER)) {
             throw new IllegalArgumentException();
         }
     }
