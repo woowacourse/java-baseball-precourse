@@ -52,4 +52,9 @@ public class BallsTest {
         List<PlayType> playTypeList = playTypes.getPlayType();
         assertThat(playTypeList).containsExactly(PlayType.STRIKE, PlayType.NOTHING, PlayType.BALL);
     }
+
+    @Test
+    void 서로다른_Balls_생성자_같은지_확인() {
+        assertThat(new Balls(123)).isEqualTo(new Balls(1, 2, 3));
+    }
 }
