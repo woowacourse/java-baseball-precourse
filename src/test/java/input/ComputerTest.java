@@ -29,8 +29,9 @@ class ComputerTest {
 
         //랜덤으로 추출된 값이 숫자여야한다.
         randomNumbers.stream().forEach(
-                n -> assertTrue(n >= 1 && n < 9)
+                n -> assertTrue(n >= 1 && n <= 9)
         );
+
 
     }
 
