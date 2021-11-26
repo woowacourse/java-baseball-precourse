@@ -13,11 +13,13 @@ public class Constant {
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";
 
+    public static final String RESTART_YES = "1";
+    public static final String RESTART_NO = "2";
+
     public static final int RESTART_ANSWER_LENGTH = 1;
     public static final int NUM_LENGTH = 3;
     public static final int INITIAL_VALUE = 0;
+    public static final int DECIMAL_DIGIT = 10;
     public static final int MIN_NUM = 1;
     public static final int MAX_NUM = 9;
-    public static final int DECIMAL_DIGIT = 10;
-
 }

@@ -2,13 +2,13 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.Constant.RESTART_ANSWER_LENGTH;
+import static baseball.Constant.*;
 
 public class Application {
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
         Game game = new Game();
-        boolean flag = true;
+        boolean flag;
         do {
             game.gameStart();
             flag = startNewGame();
@@ -23,11 +23,11 @@ public class Application {
             throw new IllegalArgumentException(Constant.INPUT_ERROR_INVALID_INPUT);
         }
 
-        if (answer.charAt(0) != '1' || answer.charAt(0) != '0') {
+        if (!answer.equals(RESTART_YES) && !answer.equals(RESTART_NO)) {
             throw new IllegalArgumentException(Constant.INPUT_ERROR_INVALID_INPUT);
         }
 
-        if (answer.charAt(0) == '1') {
+        if (answer.equals(RESTART_YES)) {
             return true;
         }
         return false;

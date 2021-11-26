@@ -6,8 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Constant.DECIMAL_DIGIT;
-import static baseball.Constant.NUM_LENGTH;
+import static baseball.Constant.*;
 
 public class InputUtil {
 
@@ -17,9 +16,10 @@ public class InputUtil {
         checkInputLength(answerStr);
 
         List<Integer> inputList = new ArrayList<>();
-        for (int i = 0; i < NUM_LENGTH; i++) {
-            checkInvalidDigit(answerStr.charAt(i));
-            inputList.add(Integer.parseInt(String.valueOf(answerStr.charAt(i))));
+        for (int i = INITIAL_VALUE; i < NUM_LENGTH; i++) {
+            int digit = Integer.parseInt(String.valueOf(answerStr.charAt(i)));
+            checkInvalidDigit(digit);
+            inputList.add(digit);
         }
 
         checkDuplicate(inputList);
@@ -33,8 +33,8 @@ public class InputUtil {
         }
     }
 
-    private static void checkInvalidDigit(char digit) {
-        if (digit < '1' || digit > '9') {
+    private static void checkInvalidDigit(int digit) {
+        if (digit < MIN_NUM || digit > MAX_NUM) {
             throw new IllegalArgumentException(Constant.INPUT_ERROR_INVALID_INPUT);
         }
     }
