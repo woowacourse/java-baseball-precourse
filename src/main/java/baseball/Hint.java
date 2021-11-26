@@ -17,7 +17,7 @@ public class Hint {
     public void countStrikeAndBall(List<Integer> randomNum, List<Integer> input) {
         this.ballCount = INITIAL_VALUE;
         this.strikeCount = INITIAL_VALUE;
-        for (int i=INITIAL_VALUE; i<NUM_LENGTH; i++) {
+        for (int i = INITIAL_VALUE; i < NUM_LENGTH; i++) {
             if (randomNum.get(i) == input.get(i)) {
                 this.strikeCount++;
                 continue;
@@ -38,13 +38,13 @@ public class Hint {
             return;
         }
         if (this.ballCount == INITIAL_VALUE && this.strikeCount > INITIAL_VALUE) {
-            System.out.println(this.strikeCount+STRIKE);
+            System.out.println(this.strikeCount + STRIKE);
             return;
         }
         if (this.ballCount > INITIAL_VALUE && this.strikeCount == INITIAL_VALUE) {
-            System.out.println(this.ballCount+BALL);
+            System.out.println(this.ballCount + BALL);
             return;
         }
-        System.out.println(this.ballCount + BALL + " " + this.strikeCount+STRIKE);
+        System.out.println(this.ballCount + BALL + " " + this.strikeCount + STRIKE);
     }
 }

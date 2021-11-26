@@ -11,7 +11,7 @@ public class Game {
 
     public void gameStart() {
         List<Integer> randomNum = RandomUtil.generateRandomNum();
-        for (int i:randomNum) System.out.print(i);
+        for (int i : randomNum) System.out.print(i);
         List<Integer> input;
         Hint hint = new Hint();
         boolean isCorrect;
@@ -27,8 +27,8 @@ public class Game {
         System.out.println(SUCCESS_MESSAGE);
     }
 
-    private boolean checkAnswer (List<Integer> randomNum, List<Integer> input) {
-        for (int i=INITIAL_VALUE; i<NUM_LENGTH; i++) {
+    private boolean checkAnswer(List<Integer> randomNum, List<Integer> input) {
+        for (int i = INITIAL_VALUE; i < NUM_LENGTH; i++) {
             if (randomNum.get(i) != input.get(i)) {
                 return false;
             }

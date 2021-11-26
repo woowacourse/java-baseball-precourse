@@ -13,7 +13,7 @@ public class Application {
         do {
             game.gameStart();
             flag = startNewGame();
-        } while(flag);
+        } while (flag);
     }
 
     private static boolean startNewGame() {
