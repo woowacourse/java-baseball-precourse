@@ -3,30 +3,23 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class RandomNumbers {
-    private List<Integer> numbers = new ArrayList<>();
+	private LinkedHashSet<Integer> numbers = new LinkedHashSet<>(3);
 
-    public RandomNumbers() {
-        createNumbers();
-    }
+	public RandomNumbers() {
+		addNumbers();
+	}
 
-    private void createNumbers() {
-        while (numbers.size() < 3) {
-            int value = Randoms.pickNumberInList(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-            if (validationNumber(value)) {
-                numbers.add(value);
-            }
-        }
-    }
+	private void addNumbers() {
+		while (numbers.size() < 3) {
+			numbers.add(Randoms.pickNumberInRange(1, 9));
+		}
+	}
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
-    private boolean validationNumber(int number) {
-        return !numbers.contains(number);
-    }
+	public List<Integer> getNumberList() {
+		return new ArrayList<>(numbers);
+	}
 }
