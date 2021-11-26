@@ -11,11 +11,11 @@ public class Application {
 		Scanner scanner = new Scanner(System.in);
 		int playingStatus;
 
-		do {
-			ArrayList<Integer> generationNumbers = Number.createRandomNumbers();
-			Game.play(scanner, generationNumbers);
-			playingStatus = Game.isContinue(scanner);
-		} while (playingStatus == RESTART_CODE);
+		// do {
+		// 	ArrayList<Integer> generationNumbers = Number.createRandomNumbers();
+		// 	Game.play(scanner, generationNumbers);
+		// 	playingStatus = Game.isContinue(scanner);
+		// } while (playingStatus == RESTART_CODE);
 
 		scanner.close();
 	}
