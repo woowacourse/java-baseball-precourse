@@ -5,6 +5,13 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.stream.IntStream;
 
 public class BaseballGame {
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String GAME_CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String DECIDING_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String BALL_HINT_MESSAGE="%d볼";
+    private static final String STRIKE_HINT_MESSAGE="%d스트라이크";
+    private static final String OUT_HINT_MESSAGE="낫싱";
+
     private int[] enemyNum;
     private int[] playerNum;
 
@@ -40,7 +47,7 @@ public class BaseballGame {
 
     private void takePlayerNum() {
         char charPlayerNum;
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_MESSAGE);
         String userInput = Console.readLine();
         if (userInput.length() != 3) {
             throw new IllegalArgumentException();
@@ -73,20 +80,20 @@ public class BaseballGame {
 
     private boolean printResult(int strike, int ball) {
         if (ball != 0) {
-            System.out.print(String.format("%d볼", ball));
+            System.out.print(String.format(BALL_HINT_MESSAGE, ball));
         }
         if (ball != 0 && strike != 0) {
             System.out.print(" ");
         }
         if (strike != 0) {
-            System.out.print(String.format("%d스트라이크", strike));
+            System.out.print(String.format(STRIKE_HINT_MESSAGE, strike));
         }
         if (ball + strike == 0) {
-            System.out.print("낫싱");
+            System.out.print(OUT_HINT_MESSAGE);
         }
         System.out.println("");
         if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(GAME_CLEAR_MESSAGE);
             return true;
         }
         return false;
@@ -95,7 +102,7 @@ public class BaseballGame {
     public boolean decideToRestart() {
         String stringRestartValue;
         char charRestartValue;
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(DECIDING_RESTART_MESSAGE);
         stringRestartValue = Console.readLine();
         if (stringRestartValue.length() != 1) {
             throw new IllegalArgumentException();
