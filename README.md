@@ -1,7 +1,8 @@
 # 미션 - 숫자 야구 게임
 
 ## 📌 구현할 기능 목록
-
+- (baseball.domain.Com) 랜덤한 3자리 숫자 생성
+  - (baseball.domain.Balls)를 통해서 유효성 검사
 - (baseball.domain.Ball) 한자리 숫자 비교하기 반환 값 문자열
   - (baseball.domain.Index) 인덱스값 비교하기 반환 값 boolean
     - 유효성 검사
