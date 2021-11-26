@@ -1,5 +1,8 @@
 package baseball.exception;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import baseball.view.InputView;
 
 public class InputException {
@@ -7,10 +10,17 @@ public class InputException {
 	private static final int NUMBER_LENGTH = 3;
 
 	public static String validationCheck(String input) {
-		if (isThreeLength(input) && isInteger(input)) {
+		if (isThreeLength(input) && isInteger(input) && haveNotDuplicatedNumber(input)) {
 			return input;
 		}
 		throw new IllegalArgumentException(INVALID_INPUT_ERROR);
+	}
+
+	private static boolean isThreeLength(String input) {
+		if (input.length() == NUMBER_LENGTH) {
+			return true;
+		}
+		return false;
 	}
 
 	private static boolean isInteger(String input) {
@@ -22,16 +32,16 @@ public class InputException {
 		return true;
 	}
 
-	private static boolean isThreeLength(String input) {
-		if (input.length() == NUMBER_LENGTH) {
+	private static boolean haveNotDuplicatedNumber(String input) {
+		Set<Character> inputSet = new HashSet<>();
+		for (int i = 0; i < NUMBER_LENGTH; i++) {
+			inputSet.add(input.charAt(i));
+		}
+		if (inputSet.size() == input.length()) {
 			return true;
 		}
 		return false;
 	}
-
-	/**
-	 * 유저의 입력값에 중복이 있으면 예외처리
-	 */
 
 	/**
 	 * 유저의 입력값에 0 이 들어있으면 예외처리(1~9까지만 받는다.)
