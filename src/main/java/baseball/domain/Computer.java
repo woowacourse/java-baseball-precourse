@@ -47,7 +47,7 @@ public class Computer {
 	private Boolean isNewNumber(int number) {
 		return !Arrays.stream(randomNumbers).anyMatch(randomNumber -> randomNumber == number);
 	}
-	
+
 	public int getStrikeCounts(int[] answer) {
 		strikeCounts = 0;
 		for (int i = 0; i < BASEBALL_GAME_BALL_COUNT; i++) {
@@ -68,5 +68,12 @@ public class Computer {
 			}
 		}
 		return ballCounts;
+	}
+
+	public boolean isCorrect() {
+		if (strikeCounts == BASEBALL_GAME_BALL_COUNT) {
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
 	}
 }
