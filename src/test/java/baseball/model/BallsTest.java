@@ -42,7 +42,7 @@ public class BallsTest {
         Balls myBall = new Balls(4, 6, 8);
         PlayTypes playTypes = myBall.play(computerBalls);
         List<PlayType> playTypeList = playTypes.getPlayType();
-        assertThat(playTypeList).containsExactly(PlayType.STRIKE, PlayType.STRIKE, PlayType.STRIKE);
+        assertThat(playTypeList).contains(PlayType.STRIKE, PlayType.STRIKE, PlayType.STRIKE);
     }
 
     @Test
@@ -50,7 +50,23 @@ public class BallsTest {
         Balls myBall = new Balls(4, 3, 6);
         PlayTypes playTypes = myBall.play(computerBalls);
         List<PlayType> playTypeList = playTypes.getPlayType();
-        assertThat(playTypeList).containsExactly(PlayType.STRIKE, PlayType.NOTHING, PlayType.BALL);
+        assertThat(playTypeList).contains(PlayType.STRIKE, PlayType.NOTHING, PlayType.BALL);
+    }
+
+    @Test
+    void 결과_2스트라이크() {
+        Balls myBall = new Balls(1, 6, 8);
+        PlayTypes playTypes = myBall.play(computerBalls);
+        List<PlayType> playTypeList = playTypes.getPlayType();
+        assertThat(playTypeList).contains(PlayType.STRIKE, PlayType.STRIKE, PlayType.NOTHING);
+    }
+
+    @Test
+    void 결과_2볼() {
+        Balls myBall = new Balls(6, 4, 1);
+        PlayTypes playTypes = myBall.play(computerBalls);
+        List<PlayType> playTypeList = playTypes.getPlayType();
+        assertThat(playTypeList).contains(PlayType.BALL, PlayType.BALL, PlayType.NOTHING);
     }
 
     @Test
