@@ -34,7 +34,7 @@ public class BaseBallGame {
     }
 
     private String getRestartInput() {
-        System.out.println(BASEBALL_INPUT_REQUEST_TEXT);
+        System.out.println(RESTART_INPUT_REQUEST_TEXT);
         return  Console.readLine();
     }
 
@@ -56,7 +56,7 @@ public class BaseBallGame {
     }
 
     private String getBaseBallInput() {
-        System.out.print(RESTART_INPUT_REQUEST_TEXT);
+        System.out.print(BASEBALL_INPUT_REQUEST_TEXT);
         String input = Console.readLine();
         BaseBallValidator.validateBaseBallInput(input);
         return input;
