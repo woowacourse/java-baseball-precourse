@@ -1,10 +1,9 @@
-## 미션 - 숫자 야구 게임
+# 미션 - 숫자 야구 게임
 
 우아한테크코스 1주차 미션
 
-### 💁‍♂️ Wiki & Notion 
+## 💁‍♂️ Wiki & Notion 
 
----
 - 📌 [미션 내용](https://github.com/maprk/java-baseball-precourse/wiki/Mission-Contents)
 - 📅 [과제 계획](https://github.com/maprk/java-baseball-precourse/wiki/Plan-List)
 - 🔍 [문제 분석](https://github.com/maprk/java-baseball-precourse/wiki/Problem-Analysis)
@@ -13,7 +12,7 @@
 - 🗒 [개발 일지](https://github.com/maprk/java-baseball-precourse/progress)
 - ✔️ [Notion Link](https://tricolor-silk-b6e.notion.site/woowacourse-cd272b35cbfc448d88a47d1a338fee14)
 
-### 구현할 기능 목록
+## 구현할 기능 목록
 
 <details>
 <summary>입출력 기능</summary>
