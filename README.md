@@ -155,21 +155,34 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 
 ## 🐾 구현할 기능 목록
 
+### 🎮 Game Controller
+
 - [X] 1부터 9까지의 서로 다른 수로 이루어진 3자리 수 생성
     + ~~idea1 : 1~9 고르고 해당 수 빼고 고르기 2번 반복  
       -> Java 는 배열 크기 변경이 자유롭지 않음~~
     + idea2 : 중복을 허용하지 않음 -> 집합을 사용해 길이가 3이 될때까지 랜덤하게 숫자 뽑기
+- [ ] 게임에서 생성된 ```real answer```과 플레이어가 입력한 ```player answer``` 비교
+    + idea : 먼저 각 자리 숫자가 동일한지 비교 후 각 숫자의 조합이 같은지 비교(set?)
 - [ ] 스트라이크, 볼, 낫싱 3개의 힌트를 제공
     + idea : 스트라이크, 볼 개수 > 0 이면 출력 else 낫싱
     + if - else 문으로 구현 / 문자열 * 숫자 구현 방법 생각해보기
-- [ ] 게임 끝난 후 입력 값이 1이면 게임 재시작, 2이면 게임 종료
-    + idea : do - while 문 이용
-    + 그 외의 입력은 IllegalArgumentException 발생시키고 종료
-- [ ] 게임 진행 중 입력값이 3자리의 수가 아닌 경우 IllegalArgumentException 발생시키고 종료
+- [ ] Error Handler 에서 재시작에 대한 입력값이 유효한 경우 처리
+    + 1이면 재시작
+    + 2이면 종료
+    + idea : do - while 로 구현
+- [ ] 숫자를 모두 맞힌 경우 게임 종료 메세지 띄우기
+    + idea : 3스트라이크 조건에 적합하면 출력
+
+### 👾 Input Validator
+
+- [ ] 게임 진행 중 입력값이 3자리의 수가 아닌 경우 처리
     + idea : 오류 발생 범위 나누기
     + 자료형이 int 가 아닌 경우 (String, Bool, ...)
     + 자연수가 아닌 경우 (음수, 0)
     + 자릿수가 3자리 수가 아닌 경우
     + 예외 처리 순서는 효율적인 방향으로 다시 생각해보기
-- [ ] 숫자를 모두 맞힌 경우 게임 종료 메세지 띄우기
-    + idea : 3스트라이크 조건에 적합하면 출력
+
+### 🛠 Error Handler
+
+- [ ] Input Validator 에서 처리한 플레이어 정답이 유효하지 않으면 IllegalArgumentException 발생
+- [ ] 재시작 메시지에 대한 입력이 1 또는 2가 아니라면 IllegalArgumentException 발생
