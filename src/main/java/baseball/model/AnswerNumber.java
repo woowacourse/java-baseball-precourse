@@ -26,10 +26,10 @@ public class AnswerNumber {
     }
 
     public static void isNumberInList(String number, ArrayList<String> list) {
-        if (list.contains(number)) {
-
+        if (!list.contains(number)) {
+            list.add(number);
         }
-        list.add(number);
+
     }
 
     public static String getStringRandomNumber() {
