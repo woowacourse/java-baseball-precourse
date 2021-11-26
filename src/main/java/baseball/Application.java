@@ -17,7 +17,7 @@ public class Application {
 
 	private static void runGameLoop() {
 		Computer computer = new Computer(RandomDigitsBuilder.getRandomDigitList());
-		Player player = new Player(new ArrayList<>());
+		Player player = new Player();
 		UserGameSelection userGameSelection = new UserGameSelection(RESTART);
 		Game game = new Game(computer, player, userGameSelection);
 		while (true) {
