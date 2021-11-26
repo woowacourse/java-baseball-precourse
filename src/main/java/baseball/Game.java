@@ -5,9 +5,9 @@ import utils.RandomUtil;
 
 import java.util.List;
 
-public class Game {
+import static baseball.Constant.*;
 
-    public static final int NUM_LENGTH = 3;
+public class Game {
 
     public void gameStart() {
         List<Integer> randomNum = RandomUtil.generateRandomNum();
@@ -17,18 +17,18 @@ public class Game {
         boolean isCorrect;
 
         do {
-            System.out.print(Message.INPUT_MESSAGE);
+            System.out.print(INPUT_MESSAGE);
             input = InputUtil.getPlayerAnswer();
             isCorrect = checkAnswer(randomNum, input);
 
             hint.countStrikeAndBall(randomNum, input);
         } while (!isCorrect);
 
-        System.out.println(Message.SUCCESS_MESSAGE);
+        System.out.println(SUCCESS_MESSAGE);
     }
 
     private boolean checkAnswer (List<Integer> randomNum, List<Integer> input) {
-        for (int i=0; i<NUM_LENGTH; i++) {
+        for (int i=INITIAL_VALUE; i<NUM_LENGTH; i++) {
             if (randomNum.get(i) != input.get(i)) {
                 return false;
             }

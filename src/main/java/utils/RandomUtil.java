@@ -1,17 +1,18 @@
 package utils;
 
-import baseball.Game;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Constant.*;
+
 public class RandomUtil {
 
     static public List<Integer> generateRandomNum() {
         List<Integer> randomNumList = new ArrayList<>();
-        for (int i = 0; i < Game.NUM_LENGTH; i++) {
-            randomNumList.add(Randoms.pickNumberInRange(1, 9));
+        for (int i = INITIAL_VALUE; i < NUM_LENGTH; i++) {
+            randomNumList.add(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM));
         }
         return randomNumList;
     }
