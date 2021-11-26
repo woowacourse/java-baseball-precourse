@@ -2,24 +2,26 @@ package random;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-
 public class Random {
 
-    public static String createAnswer() {
+	static final int MIN_NUMBER = 1;
+	static final int MAX_NUMBER = 9;
 
-        int firstNumber = Randoms.pickNumberInRange(1, 9);
-        int secondNumber;
-        int thirdNumber;
+	public static String createAnswer() {
 
-        do {
-            secondNumber = Randoms.pickNumberInRange(1, 9);
-        }while (secondNumber == firstNumber);
+		int firstNumber = Randoms.pickNumberInRange(MAX_NUMBER, MIN_NUMBER);
+		int secondNumber;
+		int thirdNumber;
 
-        do {
-            thirdNumber = Randoms.pickNumberInRange(1, 9);
-        }while (thirdNumber == secondNumber || thirdNumber == firstNumber);
+		do {
+			secondNumber = Randoms.pickNumberInRange(MAX_NUMBER, MIN_NUMBER);
+		} while (secondNumber == firstNumber);
 
-        return firstNumber + "" + secondNumber + thirdNumber;
-    }
+		do {
+			thirdNumber = Randoms.pickNumberInRange(MAX_NUMBER, MIN_NUMBER);
+		} while (thirdNumber == secondNumber || thirdNumber == firstNumber);
+
+		return firstNumber + "" + secondNumber + thirdNumber;
+	}
 
 }
