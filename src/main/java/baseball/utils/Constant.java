@@ -16,4 +16,5 @@ public class Constant {
 	public static final String START_GAME_MSG = "게임을 시작합니다.";
 	public static final String CORRECT_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 	public static final String CHECK_END_MSG = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+	public static final String END_MSG = "게임을 종료합니다.";
 }

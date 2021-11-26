@@ -4,6 +4,7 @@ import static baseball.utils.Constant.*;
 
 import baseball.players.Computer;
 import baseball.players.User;
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
 	private Computer computer;
@@ -18,21 +19,37 @@ public class BaseballGame {
 		this.strikeCount = 0;
 	}
 
+	/**
+	 * 전체 게임을 플레이하는 메소드. 각 회차가 종료되면 게임 재시작 여부를 입력받아서
+	 * 재시작 또는 종료를 한다.
+	 */
 	public void run() {
-		boolean isGameContinued = true;
-		System.out.println(START_GAME_MSG);
+		try {
+			boolean isGameContinued = true;
+			System.out.println(START_GAME_MSG);
+			do {
+				playGame();
+				isGameContinued = checkRetry();
+			} while (isGameContinued);
+			System.out.println(END_MSG);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	/**
+	 * 한 회차의 게임 플레이를 하는 메소드.
+	 * @throws IllegalArgumentException User에서 input 도중 IllegalArgumentException이 발생할 경우
+	 * 그대로 예외를 던져서 상위 메소드에서 처리한다.
+	 */
+	public void playGame() throws IllegalArgumentException {
+		boolean isEnd = false;
 		do {
-			try {
-				user.inputNumbers();
-			} catch (IllegalArgumentException e) {
-				System.out.println(e.getMessage());
-				break;
-			}
+			user.inputNumbers();
 			countResult();
 			printHint();
-			isGameContinued = checkResult();
-		} while (isGameContinued);
-		System.out.println();
+			isEnd = checkResult();
+		} while (!isEnd);
 	}
 
 	/**
@@ -58,10 +75,10 @@ public class BaseballGame {
 	 */
 	private boolean checkResult() {
 		if (strikeCount != LENGTH_OF_NUMBERS) {
-			return true;
+			return false;
 		}
 		System.out.println(CORRECT_MSG);
-		return false;
+		return true;
 	}
 
 	/**
@@ -97,5 +114,22 @@ public class BaseballGame {
 			resultString += strikeCount + STRIKE;
 		}
 		System.out.println(resultString);
+	}
+
+	/**
+	 * 사용자에게 게임 재시작 여부를 입력받는다.
+	 * @return 1을 입력받으면 true, 2를 입력받으면 false를 반환하고,
+	 * 그 외의 경우 IllegalArgumentException을 발생시킨다.
+	 */
+	private boolean checkRetry() {
+		System.out.println(CHECK_END_MSG);
+		String input = Console.readLine();
+		if (input.equals("1")) {
+			return true;
+		}
+		if (input.equals("2")) {
+			return false;
+		}
+		throw new IllegalArgumentException(ERR_INPUT_MSG);
 	}
 }
