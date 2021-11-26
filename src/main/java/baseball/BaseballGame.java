@@ -21,30 +21,6 @@ public class BaseballGame {
 
     }
 
-    public String inputRestartOrNotNumber() {
-        return Console.readLine();
-    }
-
-    private boolean decideRestartGame() {
-        boolean decide = false;
-
-        String restartOrNotNumber = inputRestartOrNotNumber();
-
-        if (restartOrNotNumber.equals(GAME_RESTART_NUMBER)) {
-            decide = true;
-        }
-
-        return decide;
-    }
-
-    private void printRestartOrNotMessage() {
-        System.out.println(RESTART_OR_NOT_MESSAGE);
-    }
-
-    private void printCorrectAnswer() {
-        System.out.println(COLLECT_ANSWER_MESSAGE);
-    }
-
     public void progressGame() {
         User user = new User();
 
@@ -67,6 +43,30 @@ public class BaseballGame {
         }
 
         printCorrectAnswer();
+    }
+
+    public String inputRestartOrNotNumber() {
+        return Console.readLine();
+    }
+
+    private boolean decideRestartGame() {
+        boolean decide = false;
+
+        String restartOrNotNumber = inputRestartOrNotNumber();
+
+        if (restartOrNotNumber.equals(GAME_RESTART_NUMBER)) {
+            decide = true;
+        }
+
+        return decide;
+    }
+
+    private void printRestartOrNotMessage() {
+        System.out.println(RESTART_OR_NOT_MESSAGE);
+    }
+
+    private void printCorrectAnswer() {
+        System.out.println(COLLECT_ANSWER_MESSAGE);
     }
 
 }

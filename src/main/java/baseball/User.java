@@ -11,13 +11,13 @@ public class User {
     private static final int RANDOM_START_INCLUSIVE = 1;
     private static final int RANDOM_END_INCLUSIVE = 9;
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해 주세요 : ";
-    private static final String NEW_LINE = "\n";
     private static final String STRIKE_KOREAN = "스트라이크";
     private static final String BALL_KOREAN = "볼";
     private static final String NOTHING = "낫싱";
     public static final int ZERO = 0;
     public static final String STRIKE_ENGLISH = "strike";
     public static final String BALL_ENGLISH = "ball";
+    public static final String SPACE = " ";
 
     public Map<String, Integer> countStrikeBallNumber(final String answer, final String guessNumber) {
         final Map<String, Integer> strikeBallCount = new HashMap<>();
@@ -27,12 +27,13 @@ public class User {
 
         for (int i = 0; i < answer.length(); i++) {
             int strikeBall = decideStrikeBall(answer, i, guessNumber);
+
             if (strikeBall == 1) {
-                strike += addStrikeBallCount(strike, ball, strikeBall);
+                strike = addStrikeBallCount(strike, ball, strikeBall);
             }
 
             if (strikeBall == 2) {
-                ball += addStrikeBallCount(strike, ball, strikeBall);
+                ball = addStrikeBallCount(strike, ball, strikeBall);
             }
         }
 
@@ -78,39 +79,32 @@ public class User {
     }
 
     public String writeHintMessage(final int strike, final int ball) {
-        final StringBuilder stringBuilder = new StringBuilder();
 
         if ((strike == 0) && (ball > 0)) {
-            return appendBallHintMessage(ball, stringBuilder);
+            return appendBallHintMessage(ball);
         }
 
         if ((strike > 0) && (ball == 0)) {
-            return appendStrikeHintMessage(strike, stringBuilder);
+            return appendStrikeHintMessage(strike);
         }
 
         if ((strike == 0) && (ball == 0)) {
-            return appendNothingHintMessage(stringBuilder);
+            return appendNothingHintMessage();
         }
 
-        return appendBallHintMessage(ball, stringBuilder) + appendStrikeHintMessage(strike, stringBuilder);
+        return appendBallHintMessage(ball) + SPACE + appendStrikeHintMessage(strike);
     }
 
-    public String appendNothingHintMessage(final StringBuilder stringBuilder) {
+    public String appendNothingHintMessage() {
         return NOTHING;
     }
 
-    public String appendStrikeHintMessage(final int strike, final StringBuilder stringBuilder) {
-        stringBuilder.append(strike)
-                .append(STRIKE_KOREAN);
-
-        return stringBuilder.toString();
+    public String appendStrikeHintMessage(final int strike) {
+        return strike + STRIKE_KOREAN;
     }
 
-    public String appendBallHintMessage(final int ball, final StringBuilder stringBuilder) {
-        stringBuilder.append(ball)
-                .append(BALL_KOREAN);
-
-        return stringBuilder.toString();
+    public String appendBallHintMessage(final int ball) {
+        return ball + BALL_KOREAN;
     }
 
     public boolean checkAnswer(final String answer, final String guessAnswer) {
@@ -128,11 +122,16 @@ public class User {
     public String connectEachAnswerNumbers() {
         final StringBuilder stringBuilder = new StringBuilder();
 
-        for (int i = 0; i < 3; i++) {
-            stringBuilder.append(inputAnswerNumber());
+        while (checkAnswerNumberLength(stringBuilder)) {
+            int number = inputAnswerNumber();
+            stringBuilder.append(number);
         }
 
         return stringBuilder.toString();
+    }
+
+    private boolean checkAnswerNumberLength(final StringBuilder stringBuilder) {
+        return stringBuilder.length() < 3;
     }
 
     private int inputAnswerNumber() {
