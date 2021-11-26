@@ -8,7 +8,7 @@
    - 3자리 숫자 입력 ✔BaseballUtil.checkAnswer()
      - 입력값 유효성 검사
 2. 점수 출력
-   - strike, ball count
-   - 결과 출력
+   - strike, ball count ✔BaseballUtil.countScore()
+   - 결과 출력 ✔BaseballUtil.printScore()
 3. 종료
    - 재시작 여부 검사
