@@ -8,6 +8,12 @@ public class BaseballGame {
     private static final String NEW_GAME_MSG = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String NEW_GAME_INPUT_ERR_MSG = "잘못된 입력입니다. 게임 종료";
 
+    public void run() {
+        do {
+            startGame();
+        } while (shouldRestartGame());
+    }
+
     public void startGame() {
         setComputer();
         NumberComparator numberComparator = new NumberComparator();
@@ -18,12 +24,10 @@ public class BaseballGame {
             PrintResult printResult = new PrintResult();
             printResult.setNumberComparator(numberComparator);
             printResult.result();
-        } while (continueGame());
-
-        startNewGame();
+        } while (shouldContinueGame());
     }
 
-    private void startNewGame() {
+    private boolean shouldRestartGame() {
         System.out.println(NEW_GAME_MSG);
         int input = Integer.parseInt(Console.readLine());
 
@@ -32,11 +36,13 @@ public class BaseballGame {
         }
 
         if (input == 1) {
-            startGame();
+            return true;
         }
+
+        return false;
     }
 
-    private boolean continueGame() {
+    private boolean shouldContinueGame() {
         if (computerNumber.equals(playerNumber)) {
             return false;
         }
