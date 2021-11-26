@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Arrays;
+
 public class PrintResult {
 
     public static boolean strike(int target, int userNum) {
@@ -35,4 +37,18 @@ public class PrintResult {
         return result;
     }
 
+    public static void printResult(int[] target, int[] userNum) {
+        int[] result;
+        result = countResult(target, userNum);
+
+        if(Arrays.stream(result).sum() == 0) {
+            System.out.println("낫싱");
+       } else if(result[0] == 0 && result[1] != 0) {
+            System.out.println(result[1]+"볼");
+        } else if(result[0] != 0 && result[1] == 0) {
+            System.out.println(result[0]+"스트라이크");
+        } else {
+            System.out.println(result[1]+"볼 "+result[0]+"스트라이크");
+        }
+    }
 }
