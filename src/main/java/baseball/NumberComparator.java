@@ -15,12 +15,24 @@ public class NumberComparator {
         this.playerNumber = playerNumber;
     }
 
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public void run(String playerNumber) {
+        clear();
+        setPlayerNumber(playerNumber);
+        compareNumber();
+
+    }
     public void compareNumber() {
         for(int i = 0; i < computerNumber.length(); i++) {
             checkStrikeOrBall(i);
         }
-
-        System.out.println("볼: " + ball + "   스트라이크: " + strike);
     }
 
     private void checkStrikeOrBall(int computerIndex) {
