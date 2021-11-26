@@ -10,7 +10,7 @@ public class Computer {
 
     static final int BASEBALL_LOWER_BOUND = 1;
     static final int BASEBALL_UPPER_BOUND = 9;
-    static final int BASEBALL_SIZE = 3;
+    static final int BASEBALL_MAX_SIZE = 3;
 
     public static Set<Integer> extractRandomNumbers() {
         resetRandomNumbers();
@@ -21,7 +21,7 @@ public class Computer {
     }
 
     private static boolean checkSize() {
-        if (randomNumbers.size() == BASEBALL_SIZE)
+        if (randomNumbers.size() == BASEBALL_MAX_SIZE)
             return true;
         return false;
     }
@@ -30,8 +30,8 @@ public class Computer {
         randomNumbers.add(Randoms.pickNumberInRange(BASEBALL_LOWER_BOUND, BASEBALL_UPPER_BOUND));
     }
 
-    public static void resetRandomNumbers(){
-        randomNumbers=new HashSet<>();
+    public static void resetRandomNumbers() {
+        randomNumbers = new HashSet<>();
     }
 
 }
