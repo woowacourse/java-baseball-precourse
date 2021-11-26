@@ -40,6 +40,6 @@ public class BaseballGameController {
 	private int[] enterNum() {
 		OutputView.printInputMessage();
 		String playerInput = InputView.enterNum();
-		return baseballGame.validCheck(playerInput);
+		return baseballGame.checkValid(playerInput);
 	}
 }

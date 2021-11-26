@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.constant.BaseballConst;
 import baseball.util.Converter;
 import baseball.util.DupChecker;
 import baseball.util.Validator;
@@ -27,14 +28,14 @@ public class BaseballGame {
 		DupChecker dupChecker = new DupChecker();
 
 		while (cnt < 3) {
-			int nowNum = Randoms.pickNumberInRange(1, 9);
+			int nowNum = Randoms.pickNumberInRange(BaseballConst.MIN_NUM, BaseballConst.MAX_NUM);
 			if (dupChecker.check(nowNum)) {
 				answer[cnt++] = nowNum;
 			}
 		}
 	}
 
-	public int[] validCheck(String input) {
+	public int[] checkValid(String input) {
 		// input에 대한 유효성을 검사한다
 		Validator.checkNumeric(input);
 		int[] playerNum = Converter.convertToIntArr(input);
