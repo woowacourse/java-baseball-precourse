@@ -15,7 +15,6 @@ public class Computer {
 	public Computer() {
 		init();
 		generateRandomNumber();
-		// generateRandomNumber_test();
 	}
 
 	private void init() {
@@ -29,19 +28,13 @@ public class Computer {
 		}
 	}
 
-	private void generateRandomNumber_test() {
-		randomNumberList.add(3);
-		randomNumberList.add(4);
-		randomNumberList.add(2);
-	}
-
 	public CompareResult compareNumbers(List<Integer> givenNumbers) {
 		int strike = 0;
 		int ball = 0;
 		for(int i = 0 ; i < Constants.RANDOM_NUMBER_SIZE; i++) {
 			if(checkStrike(givenNumbers.get(i), randomNumberList.get(i))) {
 				strike++;
-			} else if(checkBall(givenNumbers.get(i))){
+			} else if (checkBall(givenNumbers.get(i))){
 				ball++;
 			}
 		}

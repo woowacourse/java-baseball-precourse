@@ -9,10 +9,12 @@ import dto.CompareResult;
 public class UserInterface {
 	private Computer computer;
 	private Converter converter;
+	private Validator validator;
 
 	public UserInterface() {
 		computer = new Computer();
 		converter = new Converter();
+		validator = new Validator();
 	}
 
 	public void start() {
@@ -34,7 +36,7 @@ public class UserInterface {
 
 	private List<Integer> getUserGivenNumbers() {
 		String givenString = readLineFromUser();
-		converter.checkGivenNumbersAvailable(givenString);
+		validator.validateInputString(givenString, Constants.RANDOM_NUMBER_SIZE);
 		return converter.convertStringToIntegerList(givenString);
 	}
 
@@ -74,7 +76,7 @@ public class UserInterface {
 
 	private int getResumeIntention() {
 		String restart = Console.readLine();
-		converter.checkRestartNumberAvailable(restart);
+		validator.validateInputString(restart, Constants.RESTART_NUMBER_SIZE);
 		return converter.convertStringToInt(restart);
 	}
 
