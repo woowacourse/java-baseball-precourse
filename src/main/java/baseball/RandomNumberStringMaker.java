@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.SystemMessage.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.LinkedHashSet;
@@ -19,8 +21,8 @@ public class RandomNumberStringMaker {
 		Set<Integer> randomNumberSet = new LinkedHashSet<>();
 		StringBuilder stringBuilder = new StringBuilder();
 
-		while (randomNumberSet.size() != 3) {
-			randomNumberSet.add(Randoms.pickNumberInRange(1, 9));
+		while (randomNumberSet.size() != GAME_STRING_LENGTH) {
+			randomNumberSet.add(Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX));
 		}
 		randomNumberSet.stream().forEach(number -> stringBuilder.append(number));
 		return stringBuilder.toString();

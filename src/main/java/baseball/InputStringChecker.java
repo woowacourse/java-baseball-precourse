@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.SystemMessage.*;
+
 /**
  * 입력값의 유효성을 체크하는 클래스
  */
@@ -11,12 +13,12 @@ public class InputStringChecker {
 	 * @return
 	 */
 	public static boolean checkStringIsNumbers(String inputString) {
-		if (inputString.length() != 3) {
-			throw new IllegalArgumentException("String length is not 3.");
+		if (inputString.length() != GAME_STRING_LENGTH) {
+			throw new IllegalArgumentException(INVALID_GAME_STRING_LENGTH);
 		}
 		for (int i = 0; i < inputString.length(); i++) {
 			if (checkCharIsNumber(inputString.charAt(i)) != true) {
-				throw new IllegalArgumentException("String is not Number.");
+				throw new IllegalArgumentException(STRING_NOT_NUMBER);
 			}
 		}
 		return true;
@@ -42,12 +44,12 @@ public class InputStringChecker {
 	public static boolean checkStringIsOneOrTwo(String inputString) {
 		char inputChar;
 		if (inputString.length() != 1) {
-			throw new IllegalArgumentException("String length is not 1.");
+			throw new IllegalArgumentException(STRING_LENGTH_NOT_ONE);
 		}
 		inputChar = inputString.charAt(0);
 		if (inputChar == '1' || inputChar == '2') {
 			return true;
 		}
-		throw new IllegalArgumentException("String is not 1 or 2.");
+		throw new IllegalArgumentException(STRING_NOT_ONE_OR_TWO);
 	}
 }

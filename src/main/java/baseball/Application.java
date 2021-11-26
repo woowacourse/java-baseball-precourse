@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.SystemMessage.*;
+
 /**
  * 게임 플레이어를 생성해서 게임 로직을 구현한 클래스
  */
@@ -10,7 +12,7 @@ public class Application {
 		do {
 			baseballGamePlayer.setRandomGoalNumberString();
 			baseballGamePlayer.playBaseballGame();
-			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			System.out.println(ASK_NEW_GAME);
 		} while (baseballGamePlayer.getNewGame());
 	}
 }

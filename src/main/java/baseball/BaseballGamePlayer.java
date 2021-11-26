@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.SystemMessage.*;
+
 import camp.nextstep.edu.missionutils.Console;
 
 /**
@@ -50,13 +52,13 @@ public class BaseballGamePlayer {
 	 */
 	public void playBaseballGame() {
 		do {
-			System.out.print("숫자를 입력해주세요 : ");
+			System.out.print(INPUT_NUMBERS);
 			String inputString = Console.readLine();
 			InputStringChecker.checkStringIsNumbers(inputString);
 			compareString(inputString);
 			printResult();
 		} while (strikeCount != 3);
-		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println(THREE_STRIKE_SUCCESS);
 	}
 
 	/**
