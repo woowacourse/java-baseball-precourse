@@ -3,7 +3,6 @@ package baseball.view;
 import static baseball.constants.GameConstants.Digit.*;
 import static baseball.constants.GameConstants.Hint.*;
 
-import baseball.constants.GameConstants;
 import baseball.domain.Game;
 
 public class OutputView {

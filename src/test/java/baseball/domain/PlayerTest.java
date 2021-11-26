@@ -13,10 +13,9 @@ class PlayerTest {
 	@Test
 	void 사용자_수_입력() {
 		// given, when
-		Player player = new Player();
 		String userInputNumber = "123";
 		List<Integer> userInputNumberList = ConversionUtils.userInputStringToIntegerList(userInputNumber);
-		player.setNumberList(userInputNumberList);
+		Player player = new Player(userInputNumberList);
 
 		// then
 		Assertions.assertThat(player.getNumberList()).isEqualTo(Arrays.asList(1, 2, 3));

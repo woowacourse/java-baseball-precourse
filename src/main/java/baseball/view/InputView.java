@@ -1,11 +1,12 @@
 package baseball.view;
 
+import static baseball.constants.GameConstants.GameOverInput.*;
 import static baseball.utils.ValidationUtils.*;
 
 import java.util.List;
 
+import baseball.constants.GameConstants;
 import baseball.utils.ConversionUtils;
-import baseball.utils.ValidationUtils;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -20,11 +21,14 @@ public class InputView {
 		return userNumberList;
 	}
 
-	public static int inputUserGameOverSelection() {
+	public static GameConstants.GameOverInput inputUserGameOverSelection() {
 		String userInput = Console.readLine();
 		validateUserGameOverInputNumber(userInput);
 		validateUserGameOverInputLength(userInput);
 		validateUserGameOverInputInRange(userInput);
-		return Integer.parseInt(userInput);
+		if (userInput.equals("1"))
+			return RESTART;
+		else
+			return STOP;
 	}
 }

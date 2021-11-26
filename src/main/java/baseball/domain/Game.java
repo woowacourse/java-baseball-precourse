@@ -1,22 +1,27 @@
 package baseball.domain;
 
 import static baseball.constants.GameConstants.Digit.*;
+import static baseball.constants.GameConstants.GameOverInput.*;
 import static baseball.constants.GameConstants.Terminology.*;
-
-import java.util.List;
 
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Game {
-	private Computer computer;
-	private Player player;
+	private final Computer computer;
+	private final Player player;
+	private final UserGameSelection userGameSelection;
 	private int ball, strike;
 
-	public Game() {
+	public Game(Computer computer, Player player) {
+		this(computer, player, new UserGameSelection(RESTART));
+	}
+
+	public Game(Computer computer, Player player, UserGameSelection userGameSelection) {
 		resetGameResult();
-		this.computer = new Computer();
-		this.player = new Player();
+		this.computer = computer;
+		this.player = player;
+		this.userGameSelection = userGameSelection;
 	}
 
 	private void resetGameResult() {
@@ -24,18 +29,16 @@ public class Game {
 		this.strike = 0;
 	}
 
-	public void resetComputer() {
-		this.computer = new Computer();
-	}
-
-	public int runGameOnce() {
+	public void runGameOnce() {
 		while (true) {
 			OutputView.printInputHint();
 			player.setNumberList(InputView.inputUserNumber());
 			runComparison();
 			OutputView.printGameResult(this);
-			if (strike == LENGTH.getNumber())
-				return InputView.inputUserGameOverSelection();
+			if (strike == LENGTH.getNumber()) {
+				userGameSelection.setUserGameSelection(InputView.inputUserGameOverSelection());
+				break;
+			}
 		}
 	}
 
@@ -67,14 +70,6 @@ public class Game {
 			stringBuilder.append(strike).append(STRIKE.getString());
 		}
 		return stringBuilder.toString();
-	}
-
-	public void setComputer(Computer computer) {
-		this.computer = computer;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
 	}
 
 	public int getStrike() {

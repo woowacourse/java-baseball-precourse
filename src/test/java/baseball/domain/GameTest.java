@@ -9,23 +9,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
-	private Game game;
+	private Computer computer;
 	private Player player;
 
 	@BeforeEach
 	void setUp() {
-		game = new Game();
-		game.setComputer(new Computer(Arrays.asList(1, 2, 3)));
-		player = new Player();
+		computer = new Computer(Arrays.asList(1, 2, 3));
 	}
 
 	@Test
 	void 판정_3_스트라이크() {
-		// given
-		player.setNumberList(Arrays.asList(1, 2, 3));
-		game.setPlayer(player);
-
-		// when
+		// given, when
+		player = new Player(Arrays.asList(1, 2, 3));
+		Game game = new Game(computer, player);
 		game.runComparison();
 
 		//then
@@ -34,11 +30,9 @@ public class GameTest {
 
 	@Test
 	void 판정_낫싱() {
-		// given
-		player.setNumberList(Arrays.asList(4, 5, 6));
-		game.setPlayer(player);
-
-		// when
+		// given, when
+		player = new Player(Arrays.asList(4, 5, 6));
+		Game game = new Game(computer, player);
 		game.runComparison();
 
 		//then
@@ -47,11 +41,9 @@ public class GameTest {
 
 	@Test
 	void 판정_1볼() {
-		// given
-		player.setNumberList(Arrays.asList(4, 1, 6));
-		game.setPlayer(player);
-
-		// when
+		// given, when
+		player = new Player(Arrays.asList(4, 1, 6));
+		Game game = new Game(computer, player);
 		game.runComparison();
 
 		//then
@@ -60,11 +52,9 @@ public class GameTest {
 
 	@Test
 	void 판정_1볼_1스트라이크() {
-		// given
-		player.setNumberList(Arrays.asList(4, 1, 3));
-		game.setPlayer(player);
-
-		// when
+		// given, when
+		player = new Player(Arrays.asList(4, 1, 3));
+		Game game = new Game(computer, player);
 		game.runComparison();
 
 		//then
@@ -73,11 +63,9 @@ public class GameTest {
 
 	@Test
 	void 판정_3볼() {
-		// given
-		player.setNumberList(Arrays.asList(3, 1, 2));
-		game.setPlayer(player);
-
-		// when
+		// given, when
+		player = new Player(Arrays.asList(3, 1, 2));
+		Game game = new Game(computer, player);
 		game.runComparison();
 
 		//then
@@ -86,11 +74,9 @@ public class GameTest {
 
 	@Test
 	void 판정_2볼_1스트라이크() {
-		// given
-		player.setNumberList(Arrays.asList(1, 3, 2));
-		game.setPlayer(player);
-
-		// when
+		// given, when
+		player = new Player(Arrays.asList(1, 3, 2));
+		Game game = new Game(computer, player);
 		game.runComparison();
 
 		//then
