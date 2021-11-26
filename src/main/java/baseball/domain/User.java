@@ -1,14 +1,17 @@
 package baseball.domain;
 
 public class User {
-	private String number;
+	private static final int NUMBER_LENGTH = 3;
+	private int[] expectedAnswer;
 
 	public User() {
-		this.number = "";
+		this.expectedAnswer = new int[NUMBER_LENGTH];
 	}
 
 	public void setNumberOfUser(String number) {
-		this.number = number;
+		for (int i = 0; i < NUMBER_LENGTH; i++) {
+			this.expectedAnswer[i] = Character.getNumericValue(number.charAt(i));
+		}
 	}
 
 }
