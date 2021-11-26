@@ -1,15 +1,14 @@
 package baseball.utils;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ConversionUtils {
 	public static List<Integer> userInputStringToIntegerList(String userInputString) {
-		List<Integer> userInputDigitList = new ArrayList<>();
-		for (int i = 0; i < userInputString.length(); i++) {
-			int userInputNumber = Character.getNumericValue(userInputString.charAt(i));
-			userInputDigitList.add(userInputNumber);
-		}
-		return userInputDigitList;
+		return IntStream.range(0, userInputString.length())
+			.map(i -> Character.getNumericValue(userInputString.charAt(i)))
+			.boxed()
+			.collect(Collectors.toList());
 	}
 }

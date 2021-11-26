@@ -4,6 +4,8 @@ import static baseball.constants.GameConstants.Digit.*;
 import static baseball.constants.GameConstants.GameOverInput.*;
 import static baseball.constants.GameConstants.Terminology.*;
 
+import java.util.stream.IntStream;
+
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -45,7 +47,7 @@ public class Game {
 	public void runComparison() {
 		resetGameResult();
 
-		for (int position = 0; position < player.getNumberList().size(); position++) {
+		IntStream.range(0, player.getNumberList().size()).forEach(position -> {
 			int playerNumber = player.getNumberList().get(position);
 			boolean isNumberCorrect = computer.getNumberOccurrences().containsKey(playerNumber);
 			boolean isPositionCorrect =
@@ -54,7 +56,7 @@ public class Game {
 				this.strike += 1;
 			if (isNumberCorrect && !isPositionCorrect)
 				this.ball += 1;
-		}
+		});
 	}
 
 	@Override

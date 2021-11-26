@@ -6,11 +6,11 @@ import static baseball.constants.GameConstants.GameOverInput.*;
 import static baseball.constants.GameConstants.Message.*;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ValidationUtils {
 	public static boolean validateRandomDigitsDuplicate(List<Integer> numberList) {
 		boolean[] duplicateCheck = new boolean[END_INCLUSIVE.getNumber() + 1];
-
 		for (Integer number : numberList) {
 			if (duplicateCheck[number])
 				return false;
@@ -29,21 +29,23 @@ public class ValidationUtils {
 	}
 
 	public static void validateUserInputDigitsInRange(String userInputString) {
-		for (int i = 0; i < userInputString.length(); i++) {
-			int userInputNumber = Character.getNumericValue(userInputString.charAt(i));
-			if (START_INCLUSIVE.getNumber() > userInputNumber || END_INCLUSIVE.getNumber() < userInputNumber)
+		IntStream.range(0, userInputString.length())
+			.map(i -> Character.getNumericValue(userInputString.charAt(i)))
+			.filter(userInputNumber -> START_INCLUSIVE.getNumber() > userInputNumber
+				|| END_INCLUSIVE.getNumber() < userInputNumber)
+			.forEach(userInputNumber -> {
 				throw new IllegalArgumentException(ERR_NOT_IN_RANGE.getMessage());
-		}
+			});
 	}
 
 	public static void validateUserInputDigitListDuplicate(List<Integer> numberList) {
 		boolean[] duplicateCheck = new boolean[END_INCLUSIVE.getNumber() + 1];
 
-		for (Integer number : numberList) {
+		numberList.forEach(number -> {
 			if (duplicateCheck[number])
 				throw new IllegalArgumentException(ERR_DUPLICATE_EXISTS.getMessage());
 			duplicateCheck[number] = true;
-		}
+		});
 	}
 
 	public static void validateUserGameOverInputNumber(String userInputString) {
