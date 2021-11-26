@@ -5,15 +5,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Computer {
 
     private static final int NUMBER_LEN = 3;
-    private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 9;
+    private static final int MIN_RANGE = 1;
 
-    private int[] eachDigitOfGuessNumber = new int[NUMBER_LEN];
-    private int[] answerMadeByComputer = new int[NUMBER_LEN];
+    private final int[] eachDigitOfGuessNumber = new int[NUMBER_LEN];
+    private final int[] answerMadeByComputer = new int[NUMBER_LEN];
 
     public void makeThreeDigitNumber() {
         makeEachDigitUsingRandom();
-       System.out.println("정답 : "+ answerMadeByComputer[0] + answerMadeByComputer[1] + answerMadeByComputer[2]); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
+        System.out.println("정답 : " + answerMadeByComputer[0]
+            + answerMadeByComputer[1] + answerMadeByComputer[2]); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
     }
 
     private void makeEachDigitUsingRandom() {
@@ -21,9 +22,9 @@ public class Computer {
         int randomNumber;
 
         for (int i = 0; i < NUMBER_LEN; i++) {
-            randomNumber = Randoms.pickNumberInRange(MIN_RANGE,MAX_RANGE);
+            randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
             while (alreadyUse[randomNumber]) {
-                randomNumber = Randoms.pickNumberInRange(MIN_RANGE,MAX_RANGE);
+                randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
             }
             answerMadeByComputer[i] = randomNumber;
             alreadyUse[randomNumber] = true;
@@ -39,7 +40,7 @@ public class Computer {
         int strikeCnt = 0;
         int ballCnt = 0;
 
-        for (int digitOfGuessNumber = 0; digitOfGuessNumber < NUMBER_LEN; digitOfGuessNumber++) { // 입력값이 245, 222 면 하나씩 확인한다.
+        for (int digitOfGuessNumber = 0; digitOfGuessNumber < NUMBER_LEN; digitOfGuessNumber++) {
 
             if (isStrike(digitOfGuessNumber)) {
                 strikeCnt += 1;
@@ -51,10 +52,7 @@ public class Computer {
     }
 
     private boolean isStrike(int digitOfGuessNumber) {
-        if (eachDigitOfGuessNumber[digitOfGuessNumber] == answerMadeByComputer[digitOfGuessNumber]) {
-            return true;
-        }
-        return false;
+        return eachDigitOfGuessNumber[digitOfGuessNumber] == answerMadeByComputer[digitOfGuessNumber];
     }
 
     private boolean isBall(int digitOfGuessNumber) {
