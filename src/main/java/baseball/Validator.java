@@ -1,7 +1,7 @@
 package baseball;
 
 public class Validator {
-    public boolean [] numberChecked = new boolean[10];
+    public boolean[] numberChecked = new boolean[10];
 
     public void validateNumberInput(String numberInputStr) {
         this.initNumberChecked();
@@ -11,7 +11,6 @@ public class Validator {
             throw new IllegalArgumentException();
         }
 
-        numberChecked[0] = true;  // 0은 true로 set
         for (int i = 0; i < length; i++) {
             char ch = numberInputStr.charAt(i);
             int digit = ch - '0';
@@ -24,15 +23,22 @@ public class Validator {
             // 중복된 digit의 등장 => 유효하지 않음
             if (numberChecked[digit]) {
                 throw new IllegalArgumentException();
-            }
-            else {
+            } else {
                 numberChecked[digit] = true;
             }
         }
     }
 
     public void validateDecisionInput(String decisionInputStr) {
+        int length = decisionInputStr.length();
+        if (length != 1) {
+            throw new IllegalArgumentException();
+        }
 
+        char ch = decisionInputStr.charAt(0);
+        if (!(ch == '1' || ch == '2')) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void initNumberChecked() {
