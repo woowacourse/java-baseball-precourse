@@ -50,11 +50,8 @@ public class Controller {
 
     private int[] getUserNumber() throws IllegalArgumentException{
         RequestInput.requestInputData();
-
         String input = Console.readLine();
-        int inputNum[] = parser.parseUserInput(input, SIZE);
-
-        return inputNum;
+        return parser.parseUserInput(input, SIZE);
     }
 
     private void gameOver() throws IllegalArgumentException{
