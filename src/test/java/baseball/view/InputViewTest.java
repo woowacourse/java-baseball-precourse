@@ -11,14 +11,25 @@ import org.junit.jupiter.api.Test;
 
 public class InputViewTest {
 
-    @DisplayName("숫자 입력 시 정상 작동 여부 확인")
+    @DisplayName("게임진행여부 입력 시 정상 작동 여부 확인")
     @Test
-    void inputNumberTest() {
-        int inputData = 123;
+    void inputPlayOrStopTest() {
+        int inputData = 1;
         reassignOutputStream(String.valueOf(inputData));
 
-        int number = InputView.inputNumber();
+        int number = InputView.inputPlayOrStop();
         assertThat(number).isEqualTo(inputData);
+    }
+
+    @DisplayName("범위 밖의 값 입력 시 에러 발생")
+    @Test
+    void inputPlayOrStopRangeTest() {
+        String inputData = "123";
+        reassignOutputStream(inputData);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            int number = InputView.inputPlayOrStop();
+        });
     }
 
     @DisplayName("숫자가 아닌 값 입력 시 에러 발생")
@@ -28,7 +39,7 @@ public class InputViewTest {
         reassignOutputStream(inputData);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            int number = InputView.inputNumber();
+            int number = InputView.inputPlayOrStop();
         });
     }
 
