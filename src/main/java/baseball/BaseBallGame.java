@@ -10,7 +10,6 @@ public class BaseBallGame {
 
     public void start() {
         generateTarget();
-        System.out.println(targetNumber);
         requestInputUntilCorrectAnswer();
         configureRestartGame();
     }
