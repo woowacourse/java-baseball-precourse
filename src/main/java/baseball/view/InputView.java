@@ -10,9 +10,14 @@ import baseball.resource.GameRule;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-
-    public static int inputPlayOrStop() {
-        OutputView.printMessageWithLine(GameMessage.REQUEST_PLAY_OR_STOP_MESSAGE);
+    private OutputView outputView;
+    
+    public InputView(OutputView outputView) {
+        this.outputView = outputView;
+    }
+    
+    public int inputPlayOrStop() {
+        outputView.printMessageWithLine(GameMessage.REQUEST_PLAY_OR_STOP_MESSAGE);
         int number = inputNumber();
 
         checkNumberIsPlayOrStop(number);
@@ -20,8 +25,8 @@ public class InputView {
         return number;
     }
 
-    public static List<Integer> inputPlayerNumbers() {
-        OutputView.printMessage(GameMessage.REQUEST_NUMBERS_MESSAGE);
+    public List<Integer> inputPlayerNumbers() {
+        outputView.printMessage(GameMessage.REQUEST_NUMBERS_MESSAGE);
         List<Integer> numbers = inputNumbers();
 
         checkNumbersDigit(numbers);
@@ -32,7 +37,7 @@ public class InputView {
     }
 
 
-    private static int inputNumber() {
+    private int inputNumber() {
         try {
             String userInputData = Console.readLine();
             return Integer.parseInt(userInputData);
@@ -41,7 +46,7 @@ public class InputView {
         }
     }
 
-    private static List<Integer> inputNumbers() {
+    private List<Integer> inputNumbers() {
         try {
             String userInputData = Console.readLine();
             List<Integer> numbers = new ArrayList<>();
@@ -56,19 +61,19 @@ public class InputView {
         }
     }
 
-    private static void checkNumberIsPlayOrStop(int number) {
+    private void checkNumberIsPlayOrStop(int number) {
         if (number != GameRule.NUMBER_GAME_PLAY && number != GameRule.NUMBER_GAME_STOP) {
             throw new BaseballException(GameMessage.NUMBER_NOT_IN_RANGE_MESSAGE);
         }
     }
 
-    private static void checkNumbersDigit(List<Integer> numbers) {
+    private void checkNumbersDigit(List<Integer> numbers) {
         if (numbers.size() != GameRule.NUMBERS_DIGITS) {
             throw new BaseballException(GameMessage.NUMBERS_NOT_MATCH_DIGITS_MESSAGE);
         }
     }
 
-    private static void checkNumbersRange(List<Integer> numbers) {
+    private void checkNumbersRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (isNotInRange(number)) {
                 throw new BaseballException(GameMessage.NUMBER_NOT_IN_RANGE_MESSAGE);
@@ -76,7 +81,7 @@ public class InputView {
         }
     }
 
-    private static void checkNumbersDuplication(List<Integer> numbers) {
+    private void checkNumbersDuplication(List<Integer> numbers) {
         boolean[] bits = new boolean[10];
         for (int number : numbers) {
             if (bits[number]) {
@@ -86,7 +91,7 @@ public class InputView {
         }
     }
 
-    private static boolean isNotInRange(int number) {
+    private boolean isNotInRange(int number) {
         return (number < GameRule.NUMBERS_START_INCLUSION || GameRule.NUMBERS_END_INCLUSION < number);
     }
 }

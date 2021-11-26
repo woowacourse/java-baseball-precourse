@@ -6,10 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.*;
 import java.util.List;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class InputViewTest {
+
+    private static OutputView outputView = new OutputView();
+    private static InputView inputView = new InputView(outputView);
 
     @DisplayName("게임진행여부 입력 시 정상 작동 여부 확인")
     @Test
@@ -17,7 +19,7 @@ public class InputViewTest {
         int inputData = 1;
         reassignOutputStream(String.valueOf(inputData));
 
-        int number = InputView.inputPlayOrStop();
+        int number = inputView.inputPlayOrStop();
         assertThat(number).isEqualTo(inputData);
     }
 
@@ -28,7 +30,7 @@ public class InputViewTest {
         reassignOutputStream(inputData);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            int number = InputView.inputPlayOrStop();
+            int number = inputView.inputPlayOrStop();
         });
     }
 
@@ -39,7 +41,7 @@ public class InputViewTest {
         reassignOutputStream(inputData);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            int number = InputView.inputPlayOrStop();
+            int number = inputView.inputPlayOrStop();
         });
     }
 
@@ -50,7 +52,7 @@ public class InputViewTest {
         String inputData = "123";
         reassignOutputStream(inputData);
 
-        List<Integer> numberList = InputView.inputPlayerNumbers();
+        List<Integer> numberList = inputView.inputPlayerNumbers();
         assertThat(numberList.size()).isEqualTo(realNumber.length);
 
         for (int i = 0; i < realNumber.length; i++) {
@@ -66,7 +68,7 @@ public class InputViewTest {
         reassignOutputStream(inputData);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            List<Integer> numberList = InputView.inputPlayerNumbers();
+            List<Integer> numberList = inputView.inputPlayerNumbers();
         });
     }
 
@@ -78,7 +80,7 @@ public class InputViewTest {
         reassignOutputStream(inputData);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            List<Integer> numberList = InputView.inputPlayerNumbers();
+            List<Integer> numberList = inputView.inputPlayerNumbers();
         });
     }
 
@@ -89,7 +91,7 @@ public class InputViewTest {
         reassignOutputStream(inputData);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            List<Integer> numberList = InputView.inputPlayerNumbers();
+            List<Integer> numberList = inputView.inputPlayerNumbers();
         });
     }
 
