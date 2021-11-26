@@ -2,14 +2,10 @@ package baseball;
 
 import static constants.BaseBallConstant.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import camp.nextstep.edu.missionutils.Console;
 
 /** 야구 게임의 전체적인 흐름을 구성 */
 public class BaseBallGame {
-	private List<Integer> answer;
 	private BaseBallPlayer baseBallPlayer;
 	private BaseBallProvider baseBallProvider;
 	private Integer gameStatus;
