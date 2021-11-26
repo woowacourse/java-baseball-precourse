@@ -9,23 +9,20 @@ public class OutputView {
 	}
 
 	public static void printResult(Result result) {
-		if (result.getStrikeCount() == 0 && result.getBallCount() == 0) {
-			System.out.println(BaseballConst.NOTHING);
+		if (isNothing(result)) {
+			printNothingMessage();
 			return;
 		}
 
 		StringBuilder sb = new StringBuilder();
-
-		if (result.getBallCount() > 0) {
-			sb.append(result.getBallCount());
-			sb.append(BaseballConst.BALL + " ");
+		if (haveBall(result)) {
+			addBallMessage(result, sb);
 		}
-		if (result.getStrikeCount() > 0) {
-			sb.append(result.getStrikeCount());
-			sb.append(BaseballConst.STRIKE);
+		if (haveStrike(result)) {
+			addStrikeMessage(result, sb);
 		}
 
-		System.out.println(sb);
+		printMessage(sb);
 	}
 
 	public static void printGameEnd() {
@@ -34,5 +31,35 @@ public class OutputView {
 
 	public static void printRetryOrExit() {
 		System.out.println(BaseballConst.RETRY_OR_EXIT);
+	}
+
+	private static void printMessage(StringBuilder sb) {
+		System.out.println(sb);
+	}
+
+	private static void addStrikeMessage(Result result, StringBuilder sb) {
+		sb.append(result.getStrikeCount());
+		sb.append(BaseballConst.STRIKE);
+	}
+
+	private static void addBallMessage(Result result, StringBuilder sb) {
+		sb.append(result.getBallCount());
+		sb.append(BaseballConst.BALL + " ");
+	}
+
+	private static void printNothingMessage() {
+		System.out.println(BaseballConst.NOTHING);
+	}
+
+	private static boolean haveStrike(Result result) {
+		return result.getStrikeCount() > 0;
+	}
+
+	private static boolean haveBall(Result result) {
+		return result.getBallCount() > 0;
+	}
+
+	private static boolean isNothing(Result result) {
+		return result.getStrikeCount() == 0 && result.getBallCount() == 0;
 	}
 }
