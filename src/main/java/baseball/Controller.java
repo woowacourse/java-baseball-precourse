@@ -13,6 +13,8 @@ public class Controller {
     final int SIZE = 3;
     final int START_INCLUSIVE = 1;
     final int END_INCLUSIVE = 9;
+    final int RETRY = 1;
+    final int GAME_OVER = 2;
 
     Parser parser = new Parser();
     Compute compute = new Compute();
@@ -67,10 +69,10 @@ public class Controller {
     private void askRetry() throws IllegalArgumentException{
         String input = Console.readLine();
         int inputNum = Integer.parseInt(input);
-        if (inputNum == 0 || inputNum > 2) {
+        if (inputNum == 0 || inputNum > GAME_OVER) {
             throw new IllegalArgumentException();
         }
-        if (inputNum == 1) {
+        if (inputNum == RETRY) {
             run();
         }
     }
