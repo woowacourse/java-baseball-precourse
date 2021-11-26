@@ -116,14 +116,35 @@ public class User {
     }
 
     public String inputPlayerNumber() {
-        return Console.readLine();
+        String inputNumbers = Console.readLine();
+
+        if (!checkInputPlayerNumber(inputNumbers)) {
+            throw new IllegalArgumentException();
+        }
+
+        return inputNumbers;
+    }
+
+    public boolean checkInputPlayerNumber(final String inputNumber) {
+        boolean checkNumber = false;
+        String regex = "^[1-9]{3}$";
+
+        if (inputNumber.matches(regex)) {
+            checkNumber = true;
+        }
+
+        return checkNumber;
     }
 
     public String connectEachAnswerNumbers() {
         final StringBuilder stringBuilder = new StringBuilder();
 
         while (checkAnswerNumberLength(stringBuilder)) {
-            inputAnswerNumber(stringBuilder);
+            int number = inputAnswerNumber();
+
+            if (!checkDuplicateNumber(stringBuilder, number)) {
+                stringBuilder.append(number);
+            }
         }
 
         return stringBuilder.toString();
@@ -137,12 +158,8 @@ public class User {
         return stringBuilder.length() < 3;
     }
 
-    private void inputAnswerNumber(final StringBuilder stringBuilder) {
-        int number = Randoms.pickNumberInRange(RANDOM_START_INCLUSIVE, RANDOM_END_INCLUSIVE);
-
-        if (!checkDuplicateNumber(stringBuilder, number)) {
-            stringBuilder.append(number);
-        }
+    private int inputAnswerNumber() {
+        return Randoms.pickNumberInRange(RANDOM_START_INCLUSIVE, RANDOM_END_INCLUSIVE);
     }
 
 }
