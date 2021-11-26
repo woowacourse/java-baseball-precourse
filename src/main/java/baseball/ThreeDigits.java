@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class ThreeDigits {
     public String threeDigits = "123";
@@ -11,13 +11,13 @@ public class ThreeDigits {
     }
 
     public void genThreeRandomDigits() {
-        Random random = new Random();
         boolean [] IsChecked = new boolean[10];
 
         StringBuilder ThreeRandomDigits = new StringBuilder();
         int count = 0;
         while (count != 3) {
-            int rand = random.nextInt(8) + 1;  // generate 1 ~ 9
+
+            int rand = Randoms.pickNumberInRange(1, 9);  // generate 1 ~ 9
             if (!IsChecked[rand]) {
                 count++;
                 IsChecked[rand] = true;
