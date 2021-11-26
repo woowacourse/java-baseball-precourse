@@ -1,6 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -8,13 +10,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Game {
 
 	public static void play() {
-		int[] answerNumber = generateAnswer();
+		List<Integer> answerNumber = generateAnswer();
 		//System.out.println(Arrays.toString(answerNumber)); // 생성된 난수 확인 위한 코드 추후 제거
 
 		boolean running = true;
 		do {
 			System.out.print(Const.INPUT_MESSAGE);
-			int[] inputNumber = getInputNumber();
+			List<Integer> inputNumber = getInputNumber();
 
 			Hint hint = new Hint(answerNumber, inputNumber);
 			System.out.println(hint.getHintMessage());
@@ -29,32 +31,30 @@ public class Game {
 		System.out.println(Const.NEW_GAME_OR_EXIT);
 		String userSelect = Console.readLine();
 
-		if("1".equals(userSelect))
+		if(Const.SELECT_NEW_GAME.equals(userSelect))
 			return true;
 
-		if("2".equals(userSelect))
+		if(Const.SELECT_EXIT.equals(userSelect))
 			return false;
 
 		throw new IllegalArgumentException();
 	}
 
-	private static int[] generateAnswer() {
-		int[] answer = new int[Const.ANSWER_SIZE];
-		for (int i = 0; i < answer.length; i++) {
-			insertUniqueNumber(answer, i);
+	private static List<Integer> generateAnswer() {
+		List<Integer> answer = new ArrayList<>();
+		for (int i = 0; i < Const.ANSWER_SIZE; i++) {
+			insertUniqueNumber(answer);
 		}
 
 		return answer;
 	}
 
-	private static void insertUniqueNumber(int[] arr, int index) {
+	private static void insertUniqueNumber(List<Integer> answer) {
 		while (true) {
 			int r = Randoms.pickNumberInRange(Const.MIN_ANSWER_VALUE, Const.MAX_ANSWER_VALUE);
 
-			if (contains(arr, index, r))
-				continue;
-			else {
-				arr[index] = r;
+			if (!answer.contains(r)) {
+				answer.add(r);
 				break;
 			}
 		}
@@ -76,7 +76,7 @@ public class Game {
 
 		// 1~9 숫자가 아님
 		for (int i = 0; i < inputText.length(); i++) {
-			int n = inputText.charAt(i) - '0';
+			int n = Character.getNumericValue(inputText.charAt(i));
 			boolean isSingleDigit = n <= Const.MAX_ANSWER_VALUE && n >= Const.MIN_ANSWER_VALUE;
 			if (!isSingleDigit)
 				return false;
@@ -93,8 +93,8 @@ public class Game {
 		return true;
 	}
 
-	private static int[] getInputNumber() {
-		int[] result = new int[Const.ANSWER_SIZE];
+	private static List<Integer> getInputNumber() {
+		List<Integer> result = new ArrayList<>();
 
 		String inputNumber = Console.readLine();
 
@@ -102,7 +102,7 @@ public class Game {
 			throw new IllegalArgumentException();
 
 		for (int i = 0; i < inputNumber.length(); i++)
-			result[i] = Character.getNumericValue(inputNumber.charAt(i));
+			result.add(Character.getNumericValue(inputNumber.charAt(i)));
 
 		return result;
 	}
