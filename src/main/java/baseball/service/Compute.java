@@ -5,7 +5,6 @@ import baseball.repository.BaseBall;
 public class Compute {
 
     public BaseBall computeScore(int[] gameNumber, int[] userNumber, int size) {
-        int[] score = {0, 0};
         BaseBall baseBall = new BaseBall();
 
         for (int i = 0; i < size; i++) {
@@ -22,6 +21,10 @@ public class Compute {
                 break;
             }
         }
+        incCount(baseBall, index, temp);
+    }
+
+    private void incCount(BaseBall baseBall, int index, int temp) {
         if (temp != index && temp != -1) {
             baseBall.incBallCount();
         }
