@@ -12,13 +12,13 @@ public class BaseballGame {
     public BaseballGame() {
         enemyNum = new int[3];
         playerNum = new int[3];
-        setEnemyNum();
     }
 
     public void gameStart() {
+        setEnemyNum();
         while (true) {
             takePlayerNum();
-            if (checkResult() && !decideToRestart()) {
+            if (checkResult()) {
                 return;
             }
         }
@@ -57,7 +57,7 @@ public class BaseballGame {
         return printResult(strike, ball);
     }
 
-    private boolean decideToRestart() {
+    public boolean decideToRestart() {
         String stringRestartValue;
         char charRestartValue;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
