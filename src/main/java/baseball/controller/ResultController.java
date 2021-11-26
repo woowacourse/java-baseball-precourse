@@ -37,6 +37,6 @@ public class ResultController {
 	}
 
 	public boolean isGameCompleted() {
-		return strike == AnswerNumber.ANSWER_LENGTH)
+		return strike == AnswerNumber.ANSWER_LENGTH;
 	}
 }
