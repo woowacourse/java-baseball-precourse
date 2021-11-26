@@ -1,7 +1,8 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import static constant.Constant.*;
+
+import camp.nextstep.edu.missionutils.Console;
 import random.Random;
 
 public class Application {
@@ -12,33 +13,10 @@ public class Application {
 
 			String answer = Random.createAnswer();
 
-			proceed(answer);
-
-			System.out.println(CLEAR);
-
-			System.out.println(RESTART_OR_EXIT);
+			Controller controller = new Controller(answer);
+			controller.start();
 
 		} while (selectRestartOrExit());
-
-	}
-
-	private static void proceed(String answer) {
-
-		String resultMessage;
-
-		do {
-
-			System.out.print(QUESTION);
-
-			String input = Console.readLine();
-
-			Verification.ofInput(input);
-
-			resultMessage = Game.play(answer, input);
-
-			System.out.println(resultMessage);
-
-		} while (!resultMessage.equals(INPUT_LENGTH + STRIKE));
 	}
 
 	private static boolean selectRestartOrExit() {
