@@ -28,6 +28,9 @@ public class User {
             checkNumeric(input.charAt(i));
         }
 
+        // 유저 입력에 같은 수가 중복되는 경우
+        checkDuplicate(input);
+
         userNumber = stringToInt(input);
 
         return userNumber;
@@ -48,6 +51,21 @@ public class User {
         }
 
         return number;
+    }
+
+    // 유저 입력에 같은 수가 중복되는 경우
+    public static void checkDuplicate(String input) {
+        if(input.charAt(0) == input.charAt(1)){
+            throw new IllegalArgumentException("잘못 입력하셨습니다.");
+        }
+
+        if(input.charAt(0) == input.charAt(2)){
+            throw new IllegalArgumentException("잘못 입력하셨습니다.");
+        }
+
+        if(input.charAt(1) == input.charAt(2)){
+            throw new IllegalArgumentException("잘못 입력하셨습니다.");
+        }
     }
 
     public static int choiceNextRound() {
