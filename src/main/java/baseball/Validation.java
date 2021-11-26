@@ -3,8 +3,6 @@ package baseball;
 import static constant.Message.*;
 import static constant.Rules.*;
 
-import constant.Message;
-
 public class Validation {
 
 	public static boolean checkInput(String numbers) {

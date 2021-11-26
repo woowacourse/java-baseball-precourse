@@ -27,7 +27,7 @@ public class BaseballGame {
 		System.out.println(REQUEST_RESTART_NUMBER);
 		String requestInput = Console.readLine();
 		Validation.checkRestartInput(requestInput);
-		if (requestInput.equals("1")) {
+		if (requestInput.equals(REQUEST_RESTART)) {
 			running = true;
 			return true;
 		}
