@@ -11,19 +11,19 @@ public class User {
 
     Output output=new Output();
 
-    public String userInput() {
-        output.pleaseInput();
+    public static String userInput() {
+        Output.pleaseInput();
         String userInput=Console.readLine();
         checkException(userInput);
         return userInput;
     }
 
-    public void checkException(String userInput) {
+    public static void checkException(String userInput) {
         if (!checkSize(userInput)||!checkRange(userInput.toCharArray()))
             throw new IllegalArgumentException();
     }
 
-    private boolean checkRange(char[] toCharArray) {
+    private static boolean checkRange(char[] toCharArray) {
         for(char c:toCharArray){
             if (c>UPPER_BOUND||c<LOWER_BOUND)
                 return false;
@@ -32,7 +32,7 @@ public class User {
     }
 
 
-    private boolean checkSize(String userInput) {
+    private static boolean checkSize(String userInput) {
         if (userInput.length()==BALL_SIZE)
             return true;
         return false;
