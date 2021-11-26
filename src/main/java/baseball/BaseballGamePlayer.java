@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 /**
  * 난수를 생성 및 저장, 스트라이크 볼 판별, 결과 출력, 게임 재시작
  * 야구 게임 관련 책임을 가진 클래스
@@ -41,5 +43,19 @@ public class BaseballGamePlayer {
         } else if (ballCount != 0 && strikeCount != 0) {
             System.out.println(ballCount+"볼 "+strikeCount+"스트라이크");
         }
+    }
+
+    /**
+     * 스트라이크 3개를 달성하기 전까지 계속 세자리 숫자를 입력받아 게임을 진행하는 메서드
+     */
+    public void playBaseballGame() {
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputString = Console.readLine();
+            InputStringChecker.checkStringIsNumbers(inputString);
+            compareString(inputString);
+            printResult();
+        } while (strikeCount != 3);
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
