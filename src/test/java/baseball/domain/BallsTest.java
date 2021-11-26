@@ -12,15 +12,15 @@ public class BallsTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"", "12", "1234", "999", "113"})
 	void checkValid(String value) {
-		assertThatThrownBy(() -> Balls.of(value)).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Balls.from(value)).isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@DisplayName("3스트라이크")
 	@ParameterizedTest
 	@ValueSource(strings = {"123", "789", "321", "987"})
 	void threeStrike(String value) {
-		Balls myBalls = Balls.of(value);
-		Balls comBalls = Balls.of(value);
+		Balls myBalls = Balls.from(value);
+		Balls comBalls = Balls.from(value);
 		Result result = myBalls.compare(comBalls);
 		assertThat(result.getStrikeCount()).isEqualTo(3);
 	}
@@ -29,8 +29,8 @@ public class BallsTest {
 	@ParameterizedTest
 	@CsvSource(value = {"123:124", "789:781"}, delimiter = ':')
 	void twoStrike(String myValue, String comValue) {
-		Balls myBalls = Balls.of(myValue);
-		Balls comBalls = Balls.of(comValue);
+		Balls myBalls = Balls.from(myValue);
+		Balls comBalls = Balls.from(comValue);
 		Result result = myBalls.compare(comBalls);
 		assertThat(result.getStrikeCount()).isEqualTo(2);
 	}
@@ -39,8 +39,8 @@ public class BallsTest {
 	@ParameterizedTest
 	@CsvSource(value = {"123:145", "789:712"}, delimiter = ':')
 	void oneStrike(String myValue, String comValue) {
-		Balls myBalls = Balls.of(myValue);
-		Balls comBalls = Balls.of(comValue);
+		Balls myBalls = Balls.from(myValue);
+		Balls comBalls = Balls.from(comValue);
 		Result result = myBalls.compare(comBalls);
 		assertThat(result.getStrikeCount()).isEqualTo(1);
 	}
@@ -49,8 +49,8 @@ public class BallsTest {
 	@ParameterizedTest
 	@CsvSource(value = {"123:231", "789:978", "456:645"}, delimiter = ':')
 	void threeBall(String myValue, String comValue) {
-		Balls myBalls = Balls.of(myValue);
-		Balls comBalls = Balls.of(comValue);
+		Balls myBalls = Balls.from(myValue);
+		Balls comBalls = Balls.from(comValue);
 		Result result = myBalls.compare(comBalls);
 		assertThat(result.getBallCount()).isEqualTo(3);
 	}
@@ -59,8 +59,8 @@ public class BallsTest {
 	@ParameterizedTest
 	@CsvSource(value = {"123:319", "789:971"}, delimiter = ':')
 	void twoBall(String myValue, String comValue) {
-		Balls myBalls = Balls.of(myValue);
-		Balls comBalls = Balls.of(comValue);
+		Balls myBalls = Balls.from(myValue);
+		Balls comBalls = Balls.from(comValue);
 		Result result = myBalls.compare(comBalls);
 		assertThat(result.getBallCount()).isEqualTo(2);
 	}
@@ -69,8 +69,8 @@ public class BallsTest {
 	@ParameterizedTest
 	@CsvSource(value = {"123:981", "789:912"}, delimiter = ':')
 	void oneBall(String myValue, String comValue) {
-		Balls myBalls = Balls.of(myValue);
-		Balls comBalls = Balls.of(comValue);
+		Balls myBalls = Balls.from(myValue);
+		Balls comBalls = Balls.from(comValue);
 		Result result = myBalls.compare(comBalls);
 		assertThat(result.getBallCount()).isEqualTo(1);
 	}
@@ -79,8 +79,8 @@ public class BallsTest {
 	@ParameterizedTest
 	@CsvSource(value = {"123:456", "789:345"}, delimiter = ':')
 	void nothing(String myValue, String comValue) {
-		Balls myBalls = Balls.of(myValue);
-		Balls comBalls = Balls.of(comValue);
+		Balls myBalls = Balls.from(myValue);
+		Balls comBalls = Balls.from(comValue);
 		Result result = myBalls.compare(comBalls);
 		assertThat(result.getStrikeCount()).isEqualTo(0);
 		assertThat(result.getBallCount()).isEqualTo(0);
@@ -90,8 +90,8 @@ public class BallsTest {
 	@ParameterizedTest
 	@CsvSource(value = {"123:136", "789:791"}, delimiter = ':')
 	void oneStrikeOneBall(String myValue, String comValue) {
-		Balls myBalls = Balls.of(myValue);
-		Balls comBalls = Balls.of(comValue);
+		Balls myBalls = Balls.from(myValue);
+		Balls comBalls = Balls.from(comValue);
 		Result result = myBalls.compare(comBalls);
 		assertThat(result.getStrikeCount()).isEqualTo(1);
 		assertThat(result.getBallCount()).isEqualTo(1);
@@ -101,8 +101,8 @@ public class BallsTest {
 	@ParameterizedTest
 	@CsvSource(value = {"123:132", "789:798"}, delimiter = ':')
 	void oneStrikeTwoBall(String myValue, String comValue) {
-		Balls myBalls = Balls.of(myValue);
-		Balls comBalls = Balls.of(comValue);
+		Balls myBalls = Balls.from(myValue);
+		Balls comBalls = Balls.from(comValue);
 		Result result = myBalls.compare(comBalls);
 		assertThat(result.getStrikeCount()).isEqualTo(1);
 		assertThat(result.getBallCount()).isEqualTo(2);

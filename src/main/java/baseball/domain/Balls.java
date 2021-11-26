@@ -19,7 +19,7 @@ public class Balls {
 		this.balls = IntStream.range(ZERO, LIMITED_LENGTH).mapToObj(i -> Ball.of(i, nos.get(i))).collect(Collectors.toList());
 	}
 
-	public static Balls of(String value) {
+	public static Balls from(String value) {
 		checkValidation(value);
 		return new Balls(value);
 	}
@@ -54,10 +54,10 @@ public class Balls {
 	}
 
 	public Result compare(Balls comBalls) {
-		return Result.of(balls.stream().map(comBalls::compare).collect(Collectors.toList()));
+		return Result.from(balls.stream().map(comBalls::compare).collect(Collectors.toList()));
 	}
 
 	private Scores compare(Ball comBall) {
-		return Scores.of(balls.stream().map(comBall::compare).collect(Collectors.toList()));
+		return Scores.from(balls.stream().map(comBall::compare).collect(Collectors.toList()));
 	}
 }
