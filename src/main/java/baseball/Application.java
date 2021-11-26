@@ -5,7 +5,7 @@ public class Application {
         //TODO: 숫자 야구 게임 구현
         BaseballGame baseballGame = new BaseballGame();
         do {
-            baseballGame.gameStart();
+            baseballGame.startGame();
         } while (baseballGame.decideToRestart());
     }
 }

@@ -30,7 +30,7 @@ public class BaseballGame {
         }
     }
 
-    public void gameStart() {
+    public void startGame() {
         initializeNums();
         setEnemyNum();
         do {
