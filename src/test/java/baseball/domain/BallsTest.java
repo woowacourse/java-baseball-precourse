@@ -8,6 +8,13 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class BallsTest {
+	@DisplayName("유효성검사 테스트")
+	@ParameterizedTest
+	@ValueSource(strings = {"", "12", "1234", "999", "113"})
+	void checkValid(String value) {
+		assertThatThrownBy(() -> Balls.of(value)).isInstanceOf(IllegalArgumentException.class);
+	}
+
 	@DisplayName("3스트라이크")
 	@ParameterizedTest
 	@ValueSource(strings = {"123", "789", "321", "987"})
