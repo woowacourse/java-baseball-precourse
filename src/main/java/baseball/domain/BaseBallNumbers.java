@@ -31,7 +31,7 @@ public class BaseBallNumbers {
     }
 
     public int calculateBallCount(List<BaseBallNumber> randomNumbers) {
-        return (int) IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE).filter(i -> isBall(i, randomNumbers)).count();
+        return (int)IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE).filter(i -> isBall(i, randomNumbers)).count();
     }
 
     private boolean isBall(int targetIndex, List<BaseBallNumber> randomNumbers) {
