@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
@@ -8,10 +8,9 @@ public class Application {
         //TODO: 숫자 야구 게임 구현
         boolean replayFlag = true;
         while (replayFlag) {
-            // 난수 생성
             ThreeDigits threeDigitObject = new ThreeDigits();
             threeDigitObject.genThreeRandomDigits();
-            //System.out.println(threeDigitObject.getThreeDigits());
+            System.out.println(threeDigitObject.getThreeDigits());
 
             replayFlag = execute(threeDigitObject);
         }
@@ -26,10 +25,9 @@ public class Application {
             boolean isStriked = false;
             boolean isBalled = false;
 
+            // 사용자 입력 받은 뒤, 유효성 검사
             System.out.printf("%s ", "숫자를 입력해주세요 :");
-            Scanner scanner = new Scanner(System.in);
-
-            String numberInputStr = scanner.nextLine();
+            String numberInputStr = Console.readLine();
             Validator validator = new Validator();
             validator.validateNumberInput(numberInputStr);
             int inputNumber = Integer.parseInt(numberInputStr);
@@ -46,6 +44,7 @@ public class Application {
                 isBalled = true;
             }
 
+            // print result
             printResult(isStriked, isBalled, strikeNum, ballNum);
             if (strikeNum == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -69,10 +68,9 @@ public class Application {
     }
 
     public static boolean wannaReplay () {
+        // 사용자 입력 받은 뒤, 유효성 검사
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        Scanner scanner = new Scanner(System.in);
-        String replayDecisionInputStr = scanner.nextLine();
+        String replayDecisionInputStr = Console.readLine();
         Validator validator = new Validator();
         validator.validateReplayInput(replayDecisionInputStr);
 
