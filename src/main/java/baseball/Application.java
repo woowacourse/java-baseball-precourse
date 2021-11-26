@@ -8,7 +8,8 @@ public class Application {
 			Game.play();
 
 			// 재시작 여부
-			break;
+			if(!Game.askNewGameOrExit())
+				break;
 		}
 	}
 }

@@ -9,7 +9,7 @@ public class Game {
 
 	public static void play() {
 		int[] answerNumber = generateAnswer();
-		System.out.println(Arrays.toString(answerNumber)); // 생성된 난수 확인 위한 코드 추후 제거
+		//System.out.println(Arrays.toString(answerNumber)); // 생성된 난수 확인 위한 코드 추후 제거
 
 		while(true) {
 			System.out.print(Const.INPUT_MESSAGE);
@@ -24,9 +24,19 @@ public class Game {
 				break;
 			}
 		}
+	}
 
+	public static boolean askNewGameOrExit() {
+		System.out.println(Const.NEW_GAME_OR_EXIT);
+		String userSelect = Console.readLine();
 
+		if("1".equals(userSelect))
+			return true;
 
+		if("2".equals(userSelect))
+			return false;
+
+		throw new IllegalArgumentException();
 	}
 
 	private static int[] generateAnswer() {
