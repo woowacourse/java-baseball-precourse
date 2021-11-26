@@ -13,10 +13,10 @@ public class BaseBallNumbers {
 
     public BaseBallNumbers(String userNumbers) {
         validateUserNumbers(userNumbers);
-        this.userBaseballNumbers = converUserNumberFroamt(userNumbers);
+        this.userBaseballNumbers = convertBaseBallNumberFormat(userNumbers);
     }
 
-    private List<BaseBallNumber> converUserNumberFroamt(String userNumbers) {
+    private List<BaseBallNumber> convertBaseBallNumberFormat(String userNumbers) {
         List<BaseBallNumber> userNumbersList = new ArrayList<>();
         for (int i = 0; i < userNumbers.length(); i++) {
             userNumbersList.add(new BaseBallNumber(userNumbers.charAt(i)));
