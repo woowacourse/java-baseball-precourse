@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Computer {
+public class RandomNumbers {
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
     private static final int COUNT = 3;
 
     private static List<BaseBallNumber> randomNumbers;
 
-    public Computer() {
+    public RandomNumbers() {
         this.randomNumbers = extractRandomNumbers();
     }
 
@@ -21,11 +21,9 @@ public class Computer {
 
         while (randomNumbers.size() != COUNT) {
             BaseBallNumber randomNumber = new BaseBallNumber(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
-            if (randomNumbers.contains(randomNumber)) {
-                continue;
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
             }
-            randomNumbers.add(randomNumber);
-
         }
         return randomNumbers;
     }
