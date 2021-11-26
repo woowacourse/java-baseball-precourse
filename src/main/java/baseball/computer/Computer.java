@@ -1,5 +1,11 @@
 package baseball.computer;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
+
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Computer {
@@ -8,16 +14,15 @@ public class Computer {
 
     //Computer 인스턴스 생성시 target 만들어짐
     public Computer(){
-        target[0]=pickNumberInRange(1,9);
+        LinkedHashSet<Integer> targetSet = new LinkedHashSet<>();
 
-        for (int i=1;i<3;i++){
-            //주어진 메소드를 활용하여 1~9사이의 수를 랜덤으로 불러온다
-            int number=pickNumberInRange(1,9);
-            if (target[i-1]==number){
-                i--;
-                continue;
-            }
-            target[i]=number;
+        while(targetSet.size()<3){
+            targetSet.add(pickNumberInRange(1,9));
+        }
+        Iterator iter = targetSet.iterator();
+        int i=0;
+        while(iter.hasNext()){
+            target[i++]= (int) iter.next();
         }
 
     }
