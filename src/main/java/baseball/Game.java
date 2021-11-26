@@ -69,28 +69,29 @@ public class Game {
 	}
 
 	private static boolean isCorrectInput(String inputText) {
-
-		// 길이가 3이 아님
-		if (inputText.length() != Const.ANSWER_SIZE)
+		if (inputText.length() != Const.ANSWER_SIZE) // 길이가 3이 아님
 			return false;
 
-		// 1~9 숫자가 아님
 		for (int i = 0; i < inputText.length(); i++) {
-			int n = Character.getNumericValue(inputText.charAt(i));
-			boolean isSingleDigit = n <= Const.MAX_ANSWER_VALUE && n >= Const.MIN_ANSWER_VALUE;
-			if (!isSingleDigit)
+			if (!isSingleDigit(inputText, i)) // 1~9 숫자가 아님
 				return false;
-		}
 
-		// 숫자 중복
-		for (int i = 0; i < inputText.length(); i++) {
-			String prevNums = inputText.substring(0, i);
-			String nowNum = Character.toString(inputText.charAt(i));
-			if (prevNums.contains(nowNum))
+			if (isDuplicateNumber(inputText, i)) // 숫자 중복
 				return false;
 		}
 
 		return true;
+	}
+
+	private static boolean isSingleDigit(String inputText, int index) {
+		int n = Character.getNumericValue(inputText.charAt(index));
+		return n <= Const.MAX_ANSWER_VALUE && n >= Const.MIN_ANSWER_VALUE;
+	}
+
+	private static boolean isDuplicateNumber(String inputText, int index) {
+		String prevNums = inputText.substring(0, index);
+		String nowNum = Character.toString(inputText.charAt(index));
+		return prevNums.contains(nowNum);
 	}
 
 	private static List<Integer> getInputNumber() {
