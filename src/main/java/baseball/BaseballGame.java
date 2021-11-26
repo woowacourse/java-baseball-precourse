@@ -27,6 +27,7 @@ public class BaseballGame {
         String answer = user.connectEachAnswerNumbers();
         System.out.println("answer: " + answer);
         user.printInputMessage();
+
         String guessAnswer = user.inputPlayerNumber();
 
         while (!user.checkAnswer(answer, guessAnswer)) {
@@ -42,7 +43,7 @@ public class BaseballGame {
             guessAnswer = user.inputPlayerNumber();
         }
 
-        printCorrectAnswer();
+        printCorrectAnswerMessage();
     }
 
     public String inputRestartOrNotNumber() {
@@ -65,7 +66,7 @@ public class BaseballGame {
         System.out.println(RESTART_OR_NOT_MESSAGE);
     }
 
-    private void printCorrectAnswer() {
+    private void printCorrectAnswerMessage() {
         System.out.println(COLLECT_ANSWER_MESSAGE);
     }
 

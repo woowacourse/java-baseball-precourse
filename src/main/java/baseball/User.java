@@ -123,26 +123,26 @@ public class User {
         final StringBuilder stringBuilder = new StringBuilder();
 
         while (checkAnswerNumberLength(stringBuilder)) {
-            int number = inputAnswerNumber();
-
-            if (checkDuplicateNumber(stringBuilder, number)) {
-                stringBuilder.append(number);
-            }
+            inputAnswerNumber(stringBuilder);
         }
 
         return stringBuilder.toString();
     }
 
     private boolean checkDuplicateNumber(final StringBuilder stringBuilder, final int number) {
-        return !stringBuilder.toString().contains(String.valueOf(number));
+        return stringBuilder.toString().contains(String.valueOf(number));
     }
 
     private boolean checkAnswerNumberLength(final StringBuilder stringBuilder) {
         return stringBuilder.length() < 3;
     }
 
-    private int inputAnswerNumber() {
-        return Randoms.pickNumberInRange(RANDOM_START_INCLUSIVE, RANDOM_END_INCLUSIVE);
+    private void inputAnswerNumber(final StringBuilder stringBuilder) {
+        int number = Randoms.pickNumberInRange(RANDOM_START_INCLUSIVE, RANDOM_END_INCLUSIVE);
+
+        if (!checkDuplicateNumber(stringBuilder, number)) {
+            stringBuilder.append(number);
+        }
     }
 
 }
