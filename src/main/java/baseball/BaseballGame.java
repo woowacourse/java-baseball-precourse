@@ -97,24 +97,15 @@ public class BaseballGame {
     }
 
     private void setEnemyNum() {
-        int smallNumberIndex = 1;
-        for (int i = 0; i < 3; i++) {
-            enemyNum[i] = Randoms.pickNumberInRange(1, 9 - i);
-        }
-        if (enemyNum[0] <= enemyNum[1]) {
-            enemyNum[1] += 1;
-            smallNumberIndex = 0;
-        }
-        if (enemyNum[smallNumberIndex] <= enemyNum[2]) {
-            enemyNum[2] += 1;
-            if (smallNumberIndex == 1) {
-                smallNumberIndex = 0;
-            } else {
-                smallNumberIndex = 1;
+        int i = 0;
+        int temp;
+        while (i < 3) {
+            temp = Randoms.pickNumberInRange(1, 9);
+            int finalTemp = temp;
+            if (!IntStream.of(enemyNum).anyMatch(x -> finalTemp == x)) {
+                enemyNum[i] = temp;
+                i++;
             }
-        }
-        if (enemyNum[smallNumberIndex] <= enemyNum[2]) {
-            enemyNum[2] += 1;
         }
     }
 }
