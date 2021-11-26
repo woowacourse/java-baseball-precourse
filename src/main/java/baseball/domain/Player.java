@@ -21,9 +21,4 @@ public class Player {
 	public Boolean getSelectPlayMoreGame() {
 		return selectPlayMoreGame;
 	}
-
-	public void doNotPlayMoreGame() {
-		this.selectPlayMoreGame = Boolean.FALSE;
-	}
-
 }
