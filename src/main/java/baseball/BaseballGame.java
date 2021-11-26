@@ -6,11 +6,13 @@ public class BaseballGame {
 
     private final BaseballRandomNumberGenerator randomNumberGenerator;
     private final BaseballGameInput input;
+    private final BaseballGameHint gameHint;
     private final BaseballGameResult result;
 
     public BaseballGame() {
         this.randomNumberGenerator = new BaseballRandomNumberGenerator();
         this.input = new BaseballGameInput();
+        this.gameHint = new BaseballGameHint();
         this.result = new BaseballGameResult();
     }
 
@@ -27,7 +29,7 @@ public class BaseballGame {
         do {
             List<Integer> player = input.inputNumber();
 
-            hint = new BaseballGameHint().generateHint(computer, player);
+            hint = gameHint.generateHint(computer, player);
             System.out.println(hint);
         } while (!result.checkRightAnswer(hint));
     }

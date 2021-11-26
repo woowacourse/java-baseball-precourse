@@ -14,14 +14,11 @@ public class BaseballGameHint {
     private int ball;
     private int strike;
 
-    public BaseballGameHint() {
-        this.ball = 0;
-        this.strike = 0;
-    }
-
     public String generateHint(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         computer = computerNumbers;
         player = playerNumbers;
+        ball = 0;
+        strike = 0;
 
         for (int i = 0; i < BASEBALL_GAME_NUMBER_LENGTH; i++) {
             checkBall(i);
@@ -49,7 +46,7 @@ public class BaseballGameHint {
         return false;
     }
 
-    public String printHint() {
+    private String printHint() {
         StringBuilder hint = new StringBuilder();
 
         if (ball == 0 && strike == 0) {
