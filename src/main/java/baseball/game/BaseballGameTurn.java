@@ -52,7 +52,7 @@ public class BaseballGameTurn {
 
         for (int i = 0; i < NumbersConstraints.NUMBER_LENGTH.value(); i++) {
             number = userExpectation.getNumberInPosition(i);
-            if (!targetNumber.isStrike(i, number) && targetNumber.isBall(number)) {
+            if (targetNumber.isBall(i, number)) {
                 balls++;
             }
         }

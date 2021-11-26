@@ -27,4 +27,11 @@ public class TargetNumber {
         }
     }
 
+    public boolean isStrike(int position, int number) {
+        return this.numbers.get(position) == number;
+    }
+
+    public boolean isBall(int position, int number) {
+        return this.numbers.contains(number) && !isStrike(position, number);
+    }
 }
