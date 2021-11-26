@@ -21,11 +21,11 @@ test {
     useJUnitPlatform()
 }
 
-compileJava.options.encoding = 'UTF-8' // UTF-8 설정
+compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
 
 checkstyle {
-    maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail을 내고 싶다면 이 선언을 추가한다.
-    configFile = file("${rootDir}/naver-chestyle-rules.xml") // XML 파일 경로
-    toolVersion = '8.27'  // checkstyle 버전 8.24 이상 선언
+    maxWarnings = 0
+    configFile = file("${rootDir}/naver-chestyle-rules.xml")
+    toolVersion = '9.0'
 }
