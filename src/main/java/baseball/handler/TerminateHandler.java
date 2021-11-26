@@ -29,6 +29,7 @@ public class TerminateHandler {
 	 */
 	public static boolean decideReplay() {
 		String number = InputView.writeReplayOrNot();
+		InputExceptionHandler.checkReplayValidation(number);
 		return (Objects.equals(number, "1"));
 	}
 

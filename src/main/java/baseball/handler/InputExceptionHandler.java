@@ -1,6 +1,7 @@
 package baseball.handler;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * 유저의 입력에 대한 예외를 처리하는 클래스
@@ -15,13 +16,14 @@ public class InputExceptionHandler {
 	private static final String INVALID_LENGTH_MESSAGE = "잘못된 숫자의 길이가 입력되었습니다.";
 	private static final String INVALID_RANGE_MESSAGE = "잘못된 범위의 문자가 입력되었습니다.";
 	private static final String INVALID_DUPLICATE_MESSAGE = "중복된 숫자가 입력되었습니다.";
+	private static final String INVALID_NUMBER_MESSAGE = "1 또는 2만 입력해주세요.";
+
 
 	/**
 	 * 비정상적인 입력이라면 예외처리를 하는 함수
 	 *
 	 * @param playerNumber: String
 	 */
-
 	public static void checkValidation(String playerNumber) {
 
 		if (!checkLength(playerNumber, VALID_NUMBER_LENGTH)) {
@@ -72,5 +74,16 @@ public class InputExceptionHandler {
 	 */
 	public static boolean checkDuplicate(String playerNumber) {
 		return (Arrays.stream(playerNumber.split("")).distinct().count() == playerNumber.length());
+	}
+
+	/**
+	 * 게임 재시작을 위한 번호 입력에 대한 예외처리를 하는 함수
+	 *
+	 * @param number: String
+	 */
+	public static void checkReplayValidation(String number) {
+		if (!(Objects.equals(number, "1") || Objects.equals(number, "2"))) {
+			throw new IllegalArgumentException(INVALID_NUMBER_MESSAGE);
+		}
 	}
 }
