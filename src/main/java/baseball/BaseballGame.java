@@ -104,7 +104,6 @@ public class BaseballGame {
         if (charRestartValue == '1') {
             return true;
         } else if (charRestartValue == '2') {
-            System.out.println("게임 종료");
             return false;
         } else {
             throw new IllegalArgumentException();
