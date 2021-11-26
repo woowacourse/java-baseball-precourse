@@ -19,7 +19,18 @@ public class BaseballGame {
 		// 초기값 세팅 : 중복되지 않는 1~9로 구성된 세 자리 수 생성
 		chooseRandomAnswer();
 		// 레프리 생성 : answer 값을 저장해둔다.
-		referee = new Referee(answer);
+		refereeInit();
+	}
+
+	public int[] checkValid(String input) {
+		Validator.checkNumeric(input);
+		int[] playerNum = Converter.convertToIntArr(input);
+		Validator.valid(playerNum);
+		return playerNum;
+	}
+
+	public Result offer(int[] playerNum) {
+		return referee.check(playerNum);
 	}
 
 	private void chooseRandomAnswer() {
@@ -35,15 +46,7 @@ public class BaseballGame {
 		}
 	}
 
-	public int[] checkValid(String input) {
-		// input에 대한 유효성을 검사한다
-		Validator.checkNumeric(input);
-		int[] playerNum = Converter.convertToIntArr(input);
-		Validator.valid(playerNum);
-		return playerNum;
-	}
-
-	public Result offer(int[] playerNum) {
-		return referee.check(playerNum);
+	private void refereeInit() {
+		referee = new Referee(answer);
 	}
 }
