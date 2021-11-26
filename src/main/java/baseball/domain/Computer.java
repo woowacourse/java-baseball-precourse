@@ -11,6 +11,8 @@ public class Computer {
 	private static final Integer EMPTY_NUMBER = -1;
 
 	private int[] randomNumbers;
+	private int strikeCounts;
+	private int ballCounts;
 
 	public void createRandomNumbers() {
 		initiateEmptyRandomNumbers();
@@ -44,5 +46,27 @@ public class Computer {
 
 	private Boolean isNewNumber(int number) {
 		return !Arrays.stream(randomNumbers).anyMatch(randomNumber -> randomNumber == number);
+	}
+	
+	public int getStrikeCounts(int[] answer) {
+		strikeCounts = 0;
+		for (int i = 0; i < BASEBALL_GAME_BALL_COUNT; i++) {
+			if (answer[i] == this.randomNumbers[i]) {
+				strikeCounts++;
+			}
+		}
+		return strikeCounts;
+	}
+
+	public int getBallCounts(int[] answer) {
+		ballCounts = 0;
+		for (int i = 0; i < BASEBALL_GAME_BALL_COUNT; i++) {
+			int number = answer[i];
+			if (Arrays.stream(randomNumbers).anyMatch(randomNumber -> randomNumber == number)
+				&& randomNumbers[i] != number) {
+				ballCounts++;
+			}
+		}
+		return ballCounts;
 	}
 }
