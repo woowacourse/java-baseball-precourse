@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.stream.IntStream;
 
 public class BaseballGame {
@@ -13,20 +12,30 @@ public class BaseballGame {
         initializeNums();
     }
 
-    public void gameStart() {
-        initializeNums();
-        setEnemyNum();
-        while (true) {
-            takePlayerNum();
-            if (checkResult()) {
-                return;
+    private void initializeNums() {
+        enemyNum = new int[3];
+        playerNum = new int[3];
+    }
+
+    private void setEnemyNum() {
+        int i = 0;
+        int temp;
+        while (i < 3) {
+            temp = Randoms.pickNumberInRange(1, 9);
+            int finalTemp = temp;
+            if (!IntStream.of(enemyNum).anyMatch(x -> finalTemp == x)) {
+                enemyNum[i] = temp;
+                i++;
             }
         }
     }
 
-    private void initializeNums(){
-        enemyNum = new int[3];
-        playerNum = new int[3];
+    public void gameStart() {
+        initializeNums();
+        setEnemyNum();
+        do {
+            takePlayerNum();
+        } while (!checkResult());
     }
 
     private void takePlayerNum() {
@@ -62,25 +71,6 @@ public class BaseballGame {
         return printResult(strike, ball);
     }
 
-    public boolean decideToRestart() {
-        String stringRestartValue;
-        char charRestartValue;
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        stringRestartValue = Console.readLine();
-        if (stringRestartValue.length() != 1) {
-            throw new IllegalArgumentException();
-        }
-        charRestartValue = stringRestartValue.charAt(0);
-        if (charRestartValue == '1') {
-            return true;
-        } else if (charRestartValue == '2') {
-            System.out.println("게임 종료");
-            return false;
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
-
     private boolean printResult(int strike, int ball) {
         if (ball != 0) {
             System.out.print(String.format("%d볼", ball));
@@ -102,16 +92,22 @@ public class BaseballGame {
         return false;
     }
 
-    private void setEnemyNum() {
-        int i = 0;
-        int temp;
-        while (i < 3) {
-            temp = Randoms.pickNumberInRange(1, 9);
-            int finalTemp = temp;
-            if (!IntStream.of(enemyNum).anyMatch(x -> finalTemp == x)) {
-                enemyNum[i] = temp;
-                i++;
-            }
+    public boolean decideToRestart() {
+        String stringRestartValue;
+        char charRestartValue;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        stringRestartValue = Console.readLine();
+        if (stringRestartValue.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+        charRestartValue = stringRestartValue.charAt(0);
+        if (charRestartValue == '1') {
+            return true;
+        } else if (charRestartValue == '2') {
+            System.out.println("게임 종료");
+            return false;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }
