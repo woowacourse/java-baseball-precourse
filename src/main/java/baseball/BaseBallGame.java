@@ -38,8 +38,7 @@ public class BaseBallGame {
             inputNumStrArr = makeStringArrayFromInt(inputNum);
 
             initializeScore();
-            calculateBall();
-            calculateStrike();
+            calculateScore();
             printScore();
             if(isAnswer()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -91,19 +90,16 @@ public class BaseBallGame {
         return Integer.toString(num).split("");
     }
 
-    private void calculateBall() {
-        for(String s : inputNumStrArr) {
-            if(isContainedInAnswer(s)) {
-                ball++;
-            }
-        }
-    }
-
-    private void calculateStrike() {
-        int i = 0;
+    private void calculateScore() {
+        int i = -1;
         for(Integer num : answerNumSet) {
-            if(num.toString().equals(inputNumStrArr[i++])) {
+            i++;
+            if(num.toString().equals(inputNumStrArr[i])) {
                 strike++;
+                continue;
+            }
+            if(isContainedInAnswer(inputNumStrArr[i])) {
+                ball++;
             }
         }
     }
