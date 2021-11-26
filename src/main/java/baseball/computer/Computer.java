@@ -13,17 +13,29 @@ public class Computer {
     public int[] target = new int[3];
 
     //Computer 인스턴스 생성시 target 만들어짐
-    public Computer(){
+    public Computer() {
+
+        LinkedHashSet<Integer> targetSet = makeTargetSet();
+        target = setToIntArray(targetSet);
+
+    }
+
+    private LinkedHashSet<Integer> makeTargetSet() {
         LinkedHashSet<Integer> targetSet = new LinkedHashSet<>();
-
-        while(targetSet.size()<3){
-            targetSet.add(pickNumberInRange(1,9));
+        while (targetSet.size() < 3) {
+            targetSet.add(pickNumberInRange(1, 9));
         }
-        Iterator iter = targetSet.iterator();
-        int i=0;
-        while(iter.hasNext()){
-            target[i++]= (int) iter.next();
+        return targetSet;
+    }
+
+    private int[] setToIntArray(LinkedHashSet<Integer> targetSet) {
+        int[] array = new int[3];
+        Object[] objects = targetSet.toArray();
+
+        for (int i = 0; i < 3; i++) {
+            array[i] = (int) objects[i];
         }
 
+        return array;
     }
 }
