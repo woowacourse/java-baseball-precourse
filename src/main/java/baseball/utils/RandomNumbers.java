@@ -1,4 +1,4 @@
-package baseball;
+package baseball.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class RandomNumbers {
 		return numbers;
 	}
 
-	public static Integer getNotDuplicateNum(List<Integer> numbers) {
+	private static Integer getNotDuplicateNum(List<Integer> numbers) {
 		Integer number;
 		do {
 			number = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
