@@ -44,6 +44,45 @@ class InputViewTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("입력한 값이 숫자가 아니면 IllegalArgumentException을 던진다.")
+    @Test
+    void noneIntegerThenThrowIllegalArgumentException() {
+        // given
+        System.setIn(generateStream("12a"));
+        InputView inputView = new InputView();
+
+        // when & then
+        assertThatThrownBy(() -> {
+            inputView.getInputNumbers();
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력한 숫자 중 중복된 값을 포함하면 IllegalArgumentException을 던진다.")
+    @Test
+    void duplicateNumberThenThrowIllegalArgumentException() {
+        // given
+        System.setIn(generateStream("111"));
+        InputView inputView = new InputView();
+
+        // when & then
+        assertThatThrownBy(() -> {
+            inputView.getInputNumbers();
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력한 숫자가 0인 경우 IllegalArgumentException을 던진다.")
+    @Test
+    void overRangeThenThrowIllegalArgumentException() {
+        // given
+        System.setIn(generateStream("012"));
+        InputView inputView = new InputView();
+
+        // when & then
+        assertThatThrownBy(() -> {
+            inputView.getInputNumbers();
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("command 1은 게임 재시작을 의미하며 true를 반환한다.")
     @Test
     void isStartThenTrue() {
