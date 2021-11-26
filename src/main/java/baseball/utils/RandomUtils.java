@@ -3,8 +3,6 @@ package baseball.utils;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomUtils {
-    public RandomUtils() {
-    }
 
     public static int[] getRandomNumbers(int size, int start, int end) {
         int[] numbers = new int[3];

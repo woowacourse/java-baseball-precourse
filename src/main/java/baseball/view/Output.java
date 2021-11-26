@@ -1,8 +1,6 @@
 package baseball.view;
 
 public class Output {
-    public Output() {
-    }
 
     public void outputScore(int ball, int strike) {
         if (ball == 0 && strike == 0) {

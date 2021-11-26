@@ -2,9 +2,6 @@ package baseball.utils;
 
 public class Parser {
 
-    public Parser() {
-    }
-
     public int[] userInputParser(String input) {
         checkSize(input, 3);
         int parseInt[] = getParseInt(input);

@@ -1,8 +1,6 @@
 package baseball.service;
 
 public class Compute {
-    public Compute() {
-    }
 
     public int[] computeScore(int[] gameNumber, int[] userNumber, int size) {
         int[] score = {0, 0};
