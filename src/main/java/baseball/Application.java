@@ -9,10 +9,8 @@ public class Application {
 		BaseballGame baseballGame = new BaseballGame();
 		BaseballGameController gameController = new BaseballGameController(baseballGame);
 
-		int select = 0;
 		do {
 			gameController.gameStart();
-			select = gameController.selectAfterEnd();
-		} while (select == BaseballConst.RETRY);
+		} while (gameController.selectAfterEnd() == BaseballConst.RETRY);
 	}
 }
