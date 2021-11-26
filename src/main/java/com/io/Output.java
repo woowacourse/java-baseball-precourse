@@ -24,7 +24,6 @@ public class Output {
 
 	public static void printBaseballGameResult(String result) {
 		System.out.println(result);
-
 	}
 
 	public static void printExceptionMessage(String exceptionMessage) {
