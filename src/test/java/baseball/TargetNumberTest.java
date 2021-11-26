@@ -18,11 +18,11 @@ public class TargetNumberTest {
     @Test
     void targetNumberValidationTest() {
         List<Integer> numbers = NumberListGenerator.generateNonDuplicateNumbers(
-            NumbersConstraints.NUMBER_LENGTH.number,
-            NumbersConstraints.MIN_NUMBER.number,
-            NumbersConstraints.MAX_NUMBER.number
+            NumbersConstraints.NUMBER_LENGTH.value(),
+            NumbersConstraints.MIN_NUMBER.value(),
+            NumbersConstraints.MAX_NUMBER.value()
         );
-        assertEquals(numbers.size(), NumbersConstraints.NUMBER_LENGTH.number);
+        assertEquals(numbers.size(), NumbersConstraints.NUMBER_LENGTH.value());
         Set<Integer> set = new HashSet<>(numbers);
         assertEquals(numbers.size(), set.size());
     }
