@@ -5,9 +5,13 @@ import java.util.List;
 import java.util.Set;
 
 import baseball.domain.AnswerNumber;
+import baseball.view.InputView;
 
 public class InputValidator {
 	private List<Integer> inputNumberList;
+
+	public InputValidator() {
+	}
 
 	public InputValidator(List<Integer> inputNumberList) {
 		this.inputNumberList = inputNumberList;
@@ -32,5 +36,9 @@ public class InputValidator {
 		return inputNumberList
 			.stream()
 			.allMatch(characterSet::add);
+	}
+
+	public boolean validatePlayerInput(String playerInput) {
+		return playerInput.equals(InputView.GAME_RESTART_INPUT) || playerInput.equals(InputView.GAME_EXIT_INPUT);
 	}
 }

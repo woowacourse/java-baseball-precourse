@@ -13,5 +13,4 @@ public class OutputView {
 	public static void printGameComplete() {
 		System.out.println(GAME_COMPLETE_MSG);
 	}
-
 }

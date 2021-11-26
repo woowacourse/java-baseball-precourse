@@ -37,13 +37,36 @@ public class GameController {
 			resultController.setResult(inputPlayerNumber());
 			OutputView.printGameResult();
 			if (resultController.isGameCompleted()) {
-				endGame();
+				OutputView.printGameComplete();
+				gameComplete();
 			}
 		} while (gameState == GameState.PLAY);
 	}
 
-	public void endGame() {
+	public void gameComplete() {
 		gameState = GameState.COMPLETE;
+		askRestart();
 	}
+
+	public void askRestart() {
+		String playerInput = InputView.inputRestart();
+		InputValidator inputValidator = new InputValidator();
+		if (!inputValidator.validatePlayerInput(playerInput)) {
+			throw new IllegalArgumentException();
+		}
+
+		if (playerInput.equals(InputView.GAME_RESTART_INPUT)) {
+			restartGame();
+		} else if (playerInput.equals(InputView.GAME_EXIT_INPUT)) {
+			exitGame();
+		}
+	}
+
+	private void restartGame() {
+		init();
+	}
+
+	private void exitGame() {
+		gameState = GameState.EXIT;
 	}
 }
