@@ -19,10 +19,12 @@
 
 #### NumberBaseballGame
 
-- 숫자의 유효성 검사 기능 (사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료)
+- 숫자의 유효성 검사 기능 (IllegalArgumentException을 발생시킨 후 애플리케이션은 종료)
     - [예외] 3자리 숫자가 아닌 경우
     - [예외] 각 자리의 숫자가 1~9 사이가 아닌 경우
     - [예외] 각 자리의 숫자가 중복되었을 경우
+- 게임 재시작 요청 유효성 검사 기능 (IllegalArgumentException을 발생시킨 후 애플리케이션은 종료)
+    - [예외] 1, 2가 아닌 경우
 - 게임의 진행 상태 관리 기능
 
 ### ✔️ View
