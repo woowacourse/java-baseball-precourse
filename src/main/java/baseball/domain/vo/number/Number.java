@@ -9,12 +9,18 @@ import baseball.domain.vo.BallStrikeCount;
 
 public class Number {
 
+    private static final int FIRST = 0;
+    private static final int SECOND = 1;
+    private static final int THIRD = 2;
+
     private static final int NOTHING = 0;
     private static final int THREE_STRIKE = 3;
 
-    private int first;
-    private int second;
-    private int third;
+    private static final char ZERO_CHARACTER = '0';
+
+    private final int first;
+    private final int second;
+    private final int third;
 
     private Number(int first, int second, int third) {
         this.first = first;
@@ -23,7 +29,11 @@ public class Number {
     }
 
     public Number(String numberString) {
-        this(charToInt(numberString.charAt(0)), charToInt(numberString.charAt(1)), charToInt(numberString.charAt(2)));
+        this(
+            charToInt(numberString.charAt(FIRST)),
+            charToInt(numberString.charAt(SECOND)),
+            charToInt(numberString.charAt(THIRD))
+        );
     }
 
     public Number(Set<Integer> numberSet) {
@@ -31,13 +41,12 @@ public class Number {
     }
 
     private Number(List<Integer> numberList) {
-        this(numberList.get(0), numberList.get(1), numberList.get(2));
+        this(numberList.get(FIRST), numberList.get(SECOND), numberList.get(THIRD));
     }
 
     private static int charToInt(char c) {
-        return c - '0';
+        return c - ZERO_CHARACTER;
     }
-
 
     public boolean isUnique() {
         return !equal(first, second) && !equal(first, third) && !equal(second, third);

@@ -6,9 +6,14 @@ public class BallStrikeCount {
 
     private static final int NOTHING = 0;
     private static final int THREE_STRIKE = 3;
+    public static final char WHITE_SPACE = ' ';
 
-    private int ball;
-    private int strike;
+    public static final String NOTHING_STRING = "낫싱";
+    public static final String STRIKE_COUNT_FORMAT = "%d스트라이크";
+    public static final String BALL_COUNT_FORMAT = "%d볼";
+
+    private final int ball;
+    private final int strike;
 
     private BallStrikeCount(int ball, int strike) {
         this.ball = ball;
@@ -44,12 +49,12 @@ public class BallStrikeCount {
         StringBuilder sb = new StringBuilder();
 
         if (isNothing()) {
-            return sb.append("낫싱").toString();
+            return sb.append(NOTHING_STRING).toString();
         }
 
         if (!equal(ball, NOTHING)) {
             String ballCount = getBallCountToString();
-            sb.append(ballCount).append(' ');
+            sb.append(ballCount).append(WHITE_SPACE);
         }
 
         if (!equal(strike, NOTHING)) {
@@ -61,11 +66,11 @@ public class BallStrikeCount {
     }
 
     private String getStrikeCountToString() {
-        return countToStringFormat("%d스트라이크", strike);
+        return countToStringFormat(STRIKE_COUNT_FORMAT, strike);
     }
 
     private String getBallCountToString() {
-        return countToStringFormat("%d볼",ball);
+        return countToStringFormat(BALL_COUNT_FORMAT, ball);
     }
 
     private String countToStringFormat(String format, int count) {

@@ -5,7 +5,7 @@ import baseball.domain.vo.number.Number;
 
 public class Computer {
 
-    private Number number;
+    private final Number number;
 
     public Computer(Number number) {
         this.number = number;
