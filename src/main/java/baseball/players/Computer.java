@@ -36,4 +36,8 @@ public class Computer implements Player {
 	public int getNumber(int index) {
 		return numbers.get(index);
 	}
+
+	public int getIndex(int number) {
+		return numbers.indexOf(number);
+	}
 }
