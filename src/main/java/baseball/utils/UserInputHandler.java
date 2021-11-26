@@ -20,4 +20,9 @@ public class UserInputHandler {
         return Console.readLine();
     }
 
+    public static int getNumber(String promptMessage) {
+        String input = getUserInput(promptMessage);
+        GameValidator.validateNumber(input);
+        return Integer.parseInt(input);
+    }
 }
