@@ -3,14 +3,12 @@ package baseball.exception;
 import java.util.HashSet;
 import java.util.Set;
 
-import baseball.view.InputView;
-
 public class InputException {
 	private static final String INVALID_INPUT_ERROR = "[ERROR] 잘못된 값을 입력했습니다. 게임을 종료하겠습니다.";
 	private static final int NUMBER_LENGTH = 3;
 
 	public static String validationCheck(String input) {
-		if (isThreeLength(input) && isInteger(input) && haveNotDuplicatedNumber(input)) {
+		if (isThreeLength(input) && isInteger(input) && haveNotDuplicatedNumber(input) && haveNotZero(input)) {
 			return input;
 		}
 		throw new IllegalArgumentException(INVALID_INPUT_ERROR);
@@ -43,9 +41,14 @@ public class InputException {
 		return false;
 	}
 
-	/**
-	 * 유저의 입력값에 0 이 들어있으면 예외처리(1~9까지만 받는다.)
-	 */
+	private static boolean haveNotZero(String input) {
+		for (int i = 0; i < NUMBER_LENGTH; i++) {
+			if ('0' == input.charAt(i)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 	/**
 	 * 게임 재시작 여부를 묻는 입력이 범위를 넘어갈때 예외 처리 (ex) 1, 2가 아닐떄)
