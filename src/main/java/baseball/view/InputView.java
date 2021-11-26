@@ -9,11 +9,9 @@ import static java.lang.System.out;
 
 public class InputView {
 
-    private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
     private static final int BALL_SIZE = 3;
 
     public static Balls inputNumber(InputStrategy inputStrategy) {
-        out.print(INPUT_NUMBER);
         String input = inputStrategy.getInput();
         validateInput(input);
         Balls balls = convertBalls(input);

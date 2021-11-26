@@ -2,14 +2,14 @@ package baseball.view;
 
 public class FixedInputStrategy implements InputStrategy {
 
-    private String ballNubmer;
+    private final String ballNumber;
 
-    public FixedInputStrategy(String ballNubmer) {
-        this.ballNubmer = ballNubmer;
+    public FixedInputStrategy(String ballNumber) {
+        this.ballNumber = ballNumber;
     }
 
     @Override
     public String getInput() {
-        return null;
+        return ballNumber;
     }
 }

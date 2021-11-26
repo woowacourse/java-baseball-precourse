@@ -3,6 +3,7 @@ package baseball.model;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Balls {
@@ -52,5 +53,25 @@ public class Balls {
     public PlayTypes play(Balls computerBalls) {
         List<PlayType> playTypeList = balls.stream().map(computerBalls::play).collect(Collectors.toList());
         return new PlayTypes(playTypeList);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Balls)) return false;
+        Balls balls1 = (Balls) o;
+        return Objects.equals(balls, balls1.balls);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(balls);
+    }
+
+    @Override
+    public String toString() {
+        return "Balls{" +
+                "balls=" + balls +
+                '}';
     }
 }

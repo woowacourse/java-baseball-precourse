@@ -42,4 +42,12 @@ public class Ball {
     public int hashCode() {
         return Objects.hash(getValue(), index);
     }
+
+    @Override
+    public String toString() {
+        return "Ball{" +
+                "value=" + value +
+                ", index=" + index +
+                '}';
+    }
 }
