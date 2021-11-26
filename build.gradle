@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'checkstyle'
 
 version = '1.0.0'
 sourceCompatibility = 1.8
@@ -15,4 +16,13 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+compileJava.options.encoding = 'UTF-8' // UTF-8 설정
+compileTestJava.options.encoding = 'UTF-8'
+
+checkstyle {
+    maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail을 내고 싶다면 이 선언을 추가한다.
+    configFile = file("${rootDir}/naver-chestyle-rules.xml") // XML 파일 경로
+    toolVersion = '8.27'  // checkstyle 버전 8.24 이상 선언
 }
