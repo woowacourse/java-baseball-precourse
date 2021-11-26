@@ -1,7 +1,22 @@
 package baseball;
 
+
 public class Application {
-    public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
-    }
+	public static void main(String[] args) {
+		//TODO: 숫자 야구 게임 구현
+
+		Game game = new Game();
+		AfterGameReply afterGameReply = new AfterGameReply();
+
+		boolean continueGame = true;
+		while (continueGame) {
+			game.start();
+
+			continueGame = game.afterGame();
+			if (!continueGame && afterGameReply.askAfterGameReply()) {
+				continueGame = true;
+				game.setNewGame();
+			}
+		}
+	}
 }
