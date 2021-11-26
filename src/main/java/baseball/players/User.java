@@ -18,16 +18,16 @@ public class User implements Player {
 	 */
 	public void inputNumbers() throws IllegalArgumentException {
 		numbers.clear();
-		System.out.print("숫자를 입력해주세요 : ");
+		System.out.print(INPUT_MSG);
 		String[] input = readLine().split("");
 		if (input.length != LENGTH_OF_NUMBERS) {
-			throw new IllegalArgumentException("올바르지 않은 입력입니다.");
+			throw new IllegalArgumentException(ERR_INPUT_MSG);
 		}
 		for (String ch : input) {
 			numbers.add(convertToInteger(ch));
 		}
 		if (isOverlapped(numbers)) {
-			throw new IllegalArgumentException("올바르지 않은 입력입니다.");
+			throw new IllegalArgumentException(ERR_INPUT_MSG);
 		}
 	}
 
@@ -39,7 +39,7 @@ public class User implements Player {
 		try {
 			return Integer.parseInt(ch);
 		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException("올바르지 않은 입력입니다.");
+			throw new IllegalArgumentException(ERR_INPUT_MSG);
 		}
 	}
 
