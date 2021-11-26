@@ -20,9 +20,7 @@ public class Controller {
 
 			System.out.print(QUESTION);
 
-			String input = Console.readLine();
-
-			Verification.ofInput(input);
+			String input = Verification.ofInput(Console.readLine());
 
 			resultMessage = Game.play(answer, input);
 
@@ -37,11 +35,9 @@ public class Controller {
 
 		System.out.println(RESTART_OR_EXIT);
 
-		String reStartOrExitInput = Console.readLine();
+		String input = Verification.ofReStartOrExitInput(Console.readLine());
 
-		Verification.ofReStartOrExitInput(reStartOrExitInput);
-
-		if (reStartOrExitInput.equals(RE_START)) {
+		if (input.equals(RE_START)) {
 			return true;
 		}
 
