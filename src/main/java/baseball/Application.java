@@ -11,11 +11,14 @@ public class Application {
 	static char GAME_INPUT_END = '9';
 	static int GAME_INPUT_SIZE = 3;
 	static int TOTAL_NUM = 10;
+	static int bit = 0;
 
 	public static void main(String[] args) {
+		String randomNumber = generateNumber();
 		System.out.print("숫자를 입력해주세요 : ");
 		String userInput = camp.nextstep.edu.missionutils.Console.readLine();
 		checkInput(userInput, GAME_INPUT_START, GAME_INPUT_END, GAME_INPUT_SIZE);
+		int strike = calculateStrike(userInput, randomNumber);
 	}
 
 	public static String generateNumber() {
@@ -45,5 +48,18 @@ public class Application {
 		if (input.length() != size || !numberCondition) {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	public static int calculateStrike(String input, String target) {
+		int strike = 0;
+		for (int index = 0; index < input.length(); index++) {
+			int nowInput = input.charAt(index) - '0';
+			int nowTarget = target.charAt(index) - '0';
+			if (nowInput == nowTarget) {
+				bit |= (1 << index);
+				strike += 1;
+			}
+		}
+		return strike;
 	}
 }
