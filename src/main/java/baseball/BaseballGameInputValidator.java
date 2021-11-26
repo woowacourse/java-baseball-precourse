@@ -2,7 +2,7 @@ package baseball;
 
 public class BaseballGameInputValidator {
 
-    private static final int BASEBALL_NUMBER_LENGTH = 3;
+    private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
 
     public void validateNumber(String numbers) {
         if (!validateLength(numbers)) {
@@ -13,11 +13,11 @@ public class BaseballGameInputValidator {
         }
     }
 
-    private static boolean validateLength(String numbers) {
-        return numbers.length() == BASEBALL_NUMBER_LENGTH;
+    private boolean validateLength(String numbers) {
+        return numbers.length() == BASEBALL_GAME_NUMBER_LENGTH;
     }
 
-    private static boolean validateDigit(String numbers) {
+    private boolean validateDigit(String numbers) {
         for (char number : numbers.toCharArray()) {
             if (number < '1' || number > '9') {
                 return false;

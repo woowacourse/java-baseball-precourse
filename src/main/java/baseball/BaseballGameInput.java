@@ -7,8 +7,8 @@ import java.util.List;
 
 public class BaseballGameInput {
 
-    private static final String BASEBALL_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String BASEBALL_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String BASEBALL_GAME_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String BASEBALL_GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final int RESTART_CODE = 1;
 
     private final BaseballGameInputValidator inputValidator;
@@ -18,8 +18,7 @@ public class BaseballGameInput {
     }
 
     public List<Integer> inputNumber() {
-        System.out.print(BASEBALL_INPUT_MESSAGE);
-
+        System.out.print(BASEBALL_GAME_INPUT_MESSAGE);
         String numbers = Console.readLine();
 
         inputValidator.validateNumber(numbers);
@@ -37,8 +36,7 @@ public class BaseballGameInput {
     }
 
     public boolean isContinue() {
-        System.out.println(BASEBALL_RESTART_MESSAGE);
-
+        System.out.println(BASEBALL_GAME_RESTART_MESSAGE);
         int code = Integer.parseInt(Console.readLine());
 
         return code == RESTART_CODE;
