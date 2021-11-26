@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Message.*;
 import static baseball.Rules.*;
 
 public class Hint {
@@ -18,13 +19,13 @@ public class Hint {
 	public void printResult() {
 		StringBuilder stringBuilder = new StringBuilder();
 		if (ball > 0) {
-			stringBuilder.append(ball).append("볼 ");
+			stringBuilder.append(ball).append(BALL);
 		}
 		if (strike > 0) {
-			stringBuilder.append(strike).append("스트라이크");
+			stringBuilder.append(strike).append(STRIKE);
 		}
 		if (strike == 0 && ball == 0) {
-			stringBuilder.append("낫싱");
+			stringBuilder.append(NOTHING);
 		}
 		System.out.println(stringBuilder);
 	}
