@@ -14,7 +14,7 @@ public class Game {
             OutputView.numberInputMessageShow();
             List<Ball> userBalls = player.selectBalls(InputView.StringChangeList());
             calculate(userBalls);
-            if (referee.allStrikeCheck() && replay() == 2) {
+            if (referee.allStrikeCheck()) {
                 break;
             }
         }
@@ -30,7 +30,6 @@ public class Game {
     public int replay() {
         OutputView.gameEndMessageShow();
         String input = InputView.trimInput();
-        computer.selectBalls();
         return Integer.parseInt(input);
     }
 }
