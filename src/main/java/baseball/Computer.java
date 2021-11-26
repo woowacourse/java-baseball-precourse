@@ -26,7 +26,7 @@ public class Computer {
 
 	public void checkBallAndStrike(List<Integer> playerNumber) {
 		int strikes = countStrike(playerNumber);
-		int balls = countBall(playerNumber, strikes);
+		int balls = countBall(playerNumber);
 		System.out.println(getBallAndStrikeMessage(balls, strikes));
 	}
 
@@ -36,10 +36,11 @@ public class Computer {
 			.count();
 	}
 
-	private int countBall(List<Integer> playerNumber, int strikes) {
+	private int countBall(List<Integer> playerNumber) {
 		return (int)playerNumber.stream()
 			.filter(targetNumber::contains)
-			.count() - strikes;
+			.filter(number -> targetNumber.indexOf(number) != playerNumber.indexOf(number))
+			.count();
 	}
 
 	private String getBallAndStrikeMessage(int balls, int strikes) {
