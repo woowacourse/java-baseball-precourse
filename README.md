@@ -10,10 +10,14 @@
 # 구현할 클래스 정리
 - BaseballGame
   - 전체 게임 클래스
+- Player(11.26. 추가)
+  - 게임 참가자(상대방과 유저)들의 인터페이스
+  - Computer와 User 모두 Player의 구현체
 - Computer
   - 컴퓨터(상대방) 클래스
-- Player
-  - 플레이어 클래스
+- ~~Player~~ User(11.26. 변경)
+  - 유저(플레이어 본인) 클래스
+  - 기존에는 Player였지만 Player를 인터페이스로 분리하고 구현체 User 생성
 - Constant(11.25. 추가)
   - 숫자를 하드코딩하지 않고 상수 변수들을 활용하기 위한 클래스
 - ~~Console(11.26. 삭제)~~
