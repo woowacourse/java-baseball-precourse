@@ -43,7 +43,7 @@ public class Validator {
 
     public void initNumberChecked() {
         for (int i = 1; i <= 9; i++) {
-            numberChecked[i] = false;
+            this.numberChecked[i] = false;
         }
     }
 }
