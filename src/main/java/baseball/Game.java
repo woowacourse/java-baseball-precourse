@@ -11,7 +11,6 @@ public class Game {
 
     public void gameStart() {
         List<Integer> randomNum = RandomUtil.generateRandomNum();
-        for (int i : randomNum) System.out.print(i);
         List<Integer> input;
         Hint hint = new Hint();
         boolean isCorrect;

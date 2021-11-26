@@ -31,6 +31,7 @@ public class Hint {
 
     public void printHintMessage() {
         if (this.strikeCount == 3) {
+            System.out.println(this.strikeCount + STRIKE);
             return;
         }
         if (this.ballCount == INITIAL_VALUE && this.strikeCount == INITIAL_VALUE) {
