@@ -27,7 +27,6 @@ public class BaseballGame {
         User user = new User();
 
         String answer = user.connectEachAnswerNumbers();
-        System.out.println("answer: " + answer);
         user.printInputMessage();
 
         String guessAnswer = user.inputPlayerNumber();
