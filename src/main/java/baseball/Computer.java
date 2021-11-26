@@ -8,9 +8,9 @@ public class Computer {
 
     // 정답으로 쓰일 임의의 수 3개를 target array에 저장한다.
     public static void makeTarget() {
-        target[0] = Randoms.pickNumberInRange(1, 9);
-        target[1] = Randoms.pickNumberInRange(1, 9);
-        target[2] = Randoms.pickNumberInRange(1, 9);
+        for(int i=0; i<3; i++) {
+            target[i] = Randoms.pickNumberInRange(1, 9);
+        }
     }
 }
 
