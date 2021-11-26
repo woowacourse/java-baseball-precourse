@@ -4,10 +4,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 public class HintGiver {
-	final String ball = "볼";
-	final String strike = "스트라이크";
-	int ballCount = 0;
-	int strikeCount = 0;
+	private static final String ball = "볼";
+	private static final String strike = "스트라이크";
+	private int ballCount = 0;
+	private int strikeCount = 0;
 	String hint = "";
 
 	public void initHint() {
@@ -61,7 +61,7 @@ public class HintGiver {
 		System.out.println(hint);
 	}
 
-	public int[] splitInt(int input) {
+	public static int[] splitInt(int input) {
 		return new int[] {input / 100, input % 100 / 10, input % 10};
 	}
 }

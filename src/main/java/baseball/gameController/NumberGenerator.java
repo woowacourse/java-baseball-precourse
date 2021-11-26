@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberGenerator {
 
-	public LinkedHashSet<Integer> generateNumSet() {
+	public static LinkedHashSet<Integer> generateNumSet() {
 		LinkedHashSet<Integer> selectedNum = new LinkedHashSet<>();
 
 		while (selectedNum.size() < 3) {
