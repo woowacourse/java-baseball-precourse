@@ -12,6 +12,10 @@ public class Game {
         return answer.getAnswer();
     }
 
+    public void setNewGame() {
+        this.answer.makeAnswer();
+    }
+
     public void start() {
         gameReply.askReply();
         result.matchAnswer(this.getAnswer(), gameReply.getGameReply());

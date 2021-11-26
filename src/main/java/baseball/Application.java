@@ -12,6 +12,10 @@ public class Application {
 			game.start();
 
 			continueGame = game.afterGame();
+			if (!continueGame) {
+				continueGame = true;
+				game.setNewGame();
+			}
 		}
 	}
 }
