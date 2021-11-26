@@ -157,32 +157,55 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 
 ### 🎮 Game Controller
 
+#### NumberGenerator
+
 - [X] 1부터 9까지의 서로 다른 수로 이루어진 3자리 수 생성
-    + ~~idea1 : 1~9 고르고 해당 수 빼고 고르기 2번 반복  
-      -> Java 는 배열 크기 변경이 자유롭지 않음~~
-    + idea2 : 중복을 허용하지 않음 -> 집합을 사용해 길이가 3이 될때까지 랜덤하게 숫자 뽑기
-- [ ] 게임에서 생성된 ```real answer```과 플레이어가 입력한 ```player answer``` 비교
-    + idea : 먼저 각 자리 숫자가 동일한지 비교 후 각 숫자의 조합이 같은지 비교(set?)
-- [ ] 스트라이크, 볼, 낫싱 3개의 힌트를 제공
-    + idea : 스트라이크, 볼 개수 > 0 이면 출력 else 낫싱
-    + if - else 문으로 구현 / 문자열 * 숫자 구현 방법 생각해보기
-- [ ] Error Handler 에서 재시작에 대한 입력값이 유효한 경우 처리
-    + 1이면 재시작
-    + 2이면 종료
-    + idea : do - while 로 구현
-- [ ] 숫자를 모두 맞힌 경우 게임 종료 메세지 띄우기
-    + idea : 3스트라이크 조건에 적합하면 출력
+    + ~~1~9 고르고 해당 수 빼고 고르기 2번 반복 but, Java 는 배열 크기 변경이 자유롭지 않음~~
+    + 중복을 허용하지 않음 => 집합을 사용해 길이가 3이 될때까지 랜덤하게 숫자 뽑기
+        1. ```HashSet``` 사용 (실패)  
+           중복 처리는 해결했지만 숫자가 오름차순으로 정렬되어 나오는 문제 발생
+        2. ```LinkedHashSet``` 사용 (성공)  
+           저장된 순서대로 나와 정렬되지 않은 랜덤한 숫자 반환
 
-### 👾 Input Validator
+#### HintGiver
 
-- [ ] 게임 진행 중 입력값이 3자리의 수가 아닌 경우 처리
-    + idea : 오류 발생 범위 나누기
-    + 자료형이 int 가 아닌 경우 (String, Bool, ...)
-    + 자연수가 아닌 경우 (음수, 0)
-    + 자릿수가 3자리 수가 아닌 경우
-    + 예외 처리 순서는 효율적인 방향으로 다시 생각해보기
+- [x] 게임에서 생성된 ```real answer```과 플레이어가 입력한 ```player answer``` 비교
+    1. Check Strike  
+       각 자리 숫자가 동일한지 비교 => 스트라이크 개수 계산
+    2. Check Ball  
+       각 숫자에 겹치는 수가 몇 개 있는지 확인 후 스트라이크 개수 빼기 => 볼 개수 계산
+- [x] 스트라이크, 볼, 낫싱 3 종류의 힌트를 제공
+    + 스트라이크와 볼이 없는 경우 낫싱을 반환
+    + 볼이 있는 경우 n 볼 반환
+    + 스트라이크가 있는 경우 n 스트라이크 추가
+    + 새로운 입력을 받기 전에 기존 힌트 정보 초기화
+
+#### GameDriver
+
+- [X] 게임 시작
+    + 기본적으로 프로그램 실행 시 게임 시작
+- [X] 게임 중
+    + Input Validator 를 통해 확인된 유효한 값으로 진행
+    + Hint Giver 를 통해 만들어진 힌트를 제공
+- [x] 게임 종료
+    + 힌트로 ```3스트라이크``` 가 제공되면 종료
+    + 종료 메세지 출력
+- [x] 게임 재시작
+    + Input Validator 를 통해 확인된 유효한 값으로 처리
+    + 1이면 재시작, 2이면 종료
 
 ### 🛠 Error Handler
 
-- [ ] Input Validator 에서 처리한 플레이어 정답이 유효하지 않으면 IllegalArgumentException 발생
-- [ ] 재시작 메시지에 대한 입력이 1 또는 2가 아니라면 IllegalArgumentException 발생
+#### Input Validator
+
+- [x] 게임 진행 중 player 의 유추 값 처리
+    + 오류 발생 범위 나누기
+        1. null 값인지 확인
+        2. int 형인지 확인 => Integer.parseInt() try-catch 사용
+        3. 3자리 수인지 확인
+        4. 각 자리 숫자가 모두 다른지 확인 => 각 자리 set 에 넣어 set.size() 가 3인지 확인
+    + 유효하지 않으면 IllegalArgumentException 처리
+
+    - [X] 게임 종료 후 player 의 재시작 의사 처리
+        + 입력값이 "1" 또는 "2" 인지 확인
+        + 아니라면 IllegalArgumentException 처리
