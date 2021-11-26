@@ -19,18 +19,23 @@ public class Referee {
 
 		for (int i = 0; i < userExpectedAnswer.length; i++) {
 			int findIndex = Arrays.asList(answer).indexOf(userExpectedAnswer[i]);
-			if (i == findIndex) {
-				strike++;
-			} else if (findIndex > -1) {
-				ball++;
-			}
+			ballAndStrikeCount(i, findIndex);
 		}
+
 		if (strike == NUMBER_LENGTH) {
 			OutputView.printGameEnd();
 			return false;
 		}
 		printResult(ball, strike);
 		return true;
+	}
+
+	private void ballAndStrikeCount(int i, int findIndex) {
+		if (i == findIndex) {
+			strike++;
+		} else if (findIndex > -1) {
+			ball++;
+		}
 	}
 
 	private void initBallAndStrike() {
