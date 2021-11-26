@@ -15,14 +15,14 @@ public class BaseBallGame {
         String inputNumber = "";
 
         while (!inputNumber.equals(targetNumber)) {
-            inputNumber = getConsoleInput();
+            inputNumber = getBaseBallInput();
             printHint(targetNumber, inputNumber);
         }
     }
 
     private void configureRestartGame() {
         String restart = getRestartInput();
-        validateRestart(restart);
+        BaseBallValidator.validateRestart(restart);
 
         if (restart.equals("1")) {
             start();
@@ -52,36 +52,10 @@ public class BaseBallGame {
         return result;
     }
 
-    private String getConsoleInput() {
+    private String getBaseBallInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        validateInput(input);
+        BaseBallValidator.validateBaseBallInput(input);
         return input;
-    }
-
-    private void validateInput(String input) throws IllegalArgumentException {
-        if (input.length() != 3 || !isNumeric(input)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private boolean isNumeric(String input) {
-        try {
-            Integer.parseInt(input);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    private void validateRestart(String input) throws IllegalArgumentException {
-        if (!isNumeric(input)) {
-            throw new IllegalArgumentException();
-        }
-
-        int i = Integer.parseInt(input);
-        if (i != 1 && i != 2) {
-            throw new IllegalArgumentException();
-        }
     }
 }
