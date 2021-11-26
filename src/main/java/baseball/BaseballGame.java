@@ -5,32 +5,32 @@ import java.util.List;
 public class BaseballGame {
 
     private final BaseballRandomNumberGenerator randomNumberGenerator;
-    private final BaseballGameInput input;
+    private final BaseballGameInput gameInput;
     private final BaseballGameHint gameHint;
-    private final BaseballGameResult result;
+    private final BaseballGameResult gameResult;
 
     public BaseballGame() {
         this.randomNumberGenerator = new BaseballRandomNumberGenerator();
-        this.input = new BaseballGameInput();
+        this.gameInput = new BaseballGameInput();
         this.gameHint = new BaseballGameHint();
-        this.result = new BaseballGameResult();
+        this.gameResult = new BaseballGameResult();
     }
 
     public void run() {
         do {
             play();
-        } while (input.isContinue());
+        } while (gameInput.isContinue());
     }
 
-    public void play() {
+    private void play() {
         List<Integer> computer = randomNumberGenerator.generateRandomNumber();
         String hint;
 
         do {
-            List<Integer> player = input.inputNumber();
+            List<Integer> player = gameInput.inputNumber();
 
             hint = gameHint.generateHint(computer, player);
             System.out.println(hint);
-        } while (!result.checkRightAnswer(hint));
+        } while (!gameResult.checkRightAnswer(hint));
     }
 }
