@@ -1,5 +1,9 @@
 package baseball.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import baseball.GameState;
 import baseball.domain.AnswerNumber;
 import baseball.util.RandomNumberGenerator;
@@ -14,19 +18,20 @@ public class GameController {
 		AnswerNumber.setAnswer(RandomNumberGenerator.generate());
 	}
 
-	public String inputPlayerNumber() {
-		String number = InputView.inputNumber();
-		InputValidator inputValidator = new InputValidator(number);
+	public List<Integer> inputPlayerNumber() {
+		List<Integer> inputNumberList = Stream.of(InputView.inputNumber().split(""))
+			.map(Integer::parseInt)
+			.collect(Collectors.toList());
+		InputValidator inputValidator = new InputValidator(inputNumberList);
 		if (!inputValidator.validateNumber()) {
 			throw new IllegalArgumentException("유효하지 않은 데이터입니다.");
 		}
-		return number;
+		return inputNumberList;
 	}
 
 	public void startGame() {
 		init();
 		do {
-			String playerNumber = inputPlayerNumber();
 		} while (gameState == GameState.PLAY);
 	}
 	}
