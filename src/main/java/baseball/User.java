@@ -124,10 +124,17 @@ public class User {
 
         while (checkAnswerNumberLength(stringBuilder)) {
             int number = inputAnswerNumber();
-            stringBuilder.append(number);
+
+            if (checkDuplicateNumber(stringBuilder, number)) {
+                stringBuilder.append(number);
+            }
         }
 
         return stringBuilder.toString();
+    }
+
+    private boolean checkDuplicateNumber(final StringBuilder stringBuilder, final int number) {
+        return !stringBuilder.toString().contains(String.valueOf(number));
     }
 
     private boolean checkAnswerNumberLength(final StringBuilder stringBuilder) {
