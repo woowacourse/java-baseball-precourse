@@ -2,7 +2,7 @@ package constant;
 
 public class Constant {
     public static final String INPUT_ERROR_LENGTH = "3자리 이상의 수를 입력하셨습니다.";
-    public static final String INPUT_ERROR_DUPLICATE ="중복된 수가 있습니다";
+    public static final String INPUT_ERROR_DUPLICATE = "중복된 수가 있습니다";
     public static final String INPUT_ERROR_INVALID_INPUT = "옳바르지 않은 입력값입니다.";
 
     public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";

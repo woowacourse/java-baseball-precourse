@@ -41,7 +41,7 @@ public class InputUtil {
 
     private static void checkDuplicate(List<Integer> inputList) {
         boolean[] check = new boolean[DECIMAL_DIGIT];
-        for (int digit: inputList) {
+        for (int digit : inputList) {
             if (check[digit]) {
                 throw new IllegalArgumentException(Constant.INPUT_ERROR_DUPLICATE);
             }
