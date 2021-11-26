@@ -2,7 +2,7 @@ package baseball.service;
 
 import baseball.repository.BaseBall;
 
-public class Compute {
+public class Computer {
 
     public BaseBall computeScore(int[] gameNumber, int[] userNumber, int size) {
         BaseBall baseBall = new BaseBall();

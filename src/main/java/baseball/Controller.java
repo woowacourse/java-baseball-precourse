@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.repository.BaseBall;
 import baseball.repository.Number;
-import baseball.service.Compute;
+import baseball.service.Computer;
 import baseball.utils.Parser;
 import baseball.utils.RandomUtils;
 import baseball.view.RequestInput;
@@ -18,7 +18,7 @@ public class Controller {
     final int GAME_OVER = 2;
 
     Parser parser = new Parser();
-    Compute compute = new Compute();
+    Computer computer = new Computer();
     SystemMessage systemMessage = new SystemMessage();
     Number number = new Number(SIZE);
 
@@ -42,7 +42,7 @@ public class Controller {
         int strike = 0;
         while (strike != 3) {
             number.setUserNumbers(getUserNumber());
-            BaseBall baseBall = compute.computeScore(number.getGameNumbers(), number.getUserNumbers(), SIZE);
+            BaseBall baseBall = computer.computeScore(number.getGameNumbers(), number.getUserNumbers(), SIZE);
             systemMessage.outputScoreMessage(baseBall.getBallCount(), baseBall.getStrikeCount());
             strike = baseBall.getStrikeCount();
         }
