@@ -29,13 +29,13 @@ public class Validator {
         }
     }
 
-    public void validateDecisionInput(String decisionInputStr) {
-        int length = decisionInputStr.length();
+    public void validateReplayInput(String ReplayInputStr) {
+        int length = ReplayInputStr.length();
         if (length != 1) {
             throw new IllegalArgumentException();
         }
 
-        char ch = decisionInputStr.charAt(0);
+        char ch = ReplayInputStr.charAt(0);
         if (!(ch == '1' || ch == '2')) {
             throw new IllegalArgumentException();
         }

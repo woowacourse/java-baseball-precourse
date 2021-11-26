@@ -72,12 +72,12 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         Scanner scanner = new Scanner(System.in);
-        String decisionInputStr = scanner.nextLine();
+        String replayDecisionInputStr = scanner.nextLine();
         Validator validator = new Validator();
-        validator.validateDecisionInput(decisionInputStr);
+        validator.validateReplayInput(replayDecisionInputStr);
 
-        int inputDecision = Integer.parseInt(decisionInputStr);
+        int replayInputDecision = Integer.parseInt(replayDecisionInputStr);
 
-        return inputDecision == 1;
+        return replayInputDecision == 1;
     }
 }
