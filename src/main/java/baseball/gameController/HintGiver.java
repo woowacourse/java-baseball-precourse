@@ -26,7 +26,6 @@ public class HintGiver {
 	}
 
 	private void checkBall(HashSet<Integer> realAnswer, int[] playerAnswer) {
-		Iterator<Integer> iterator = realAnswer.iterator();
 		for (int p : playerAnswer) {
 			if (realAnswer.contains(p)) {
 				this.ballCount++;
@@ -48,16 +47,13 @@ public class HintGiver {
 	public void setHint() {
 		if (this.ballCount + this.strikeCount == 0) {
 			hint += "낫싱";
-			// System.out.println("낫싱");
 			return;
 		}
 		if (this.ballCount > 0) {
-			hint += ballCount + ball;
-			// System.out.print(ballCount + ball + " ");
+			hint += ballCount + ball + " ";
 		}
 		if (this.strikeCount > 0) {
 			hint += strikeCount + strike;
-			// System.out.println(strikeCount + strike);
 		}
 	}
 
