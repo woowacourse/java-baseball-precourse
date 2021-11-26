@@ -14,7 +14,7 @@ public class Referee {
 		initBallAndStrike();
 	}
 
-	public void getJudgment(Integer[] userExpectedAnswer, Integer[] answer) {
+	public boolean isWrongAnswer(Integer[] userExpectedAnswer, Integer[] answer) {
 		initBallAndStrike();
 
 		for (int i = 0; i < userExpectedAnswer.length; i++) {
@@ -25,7 +25,12 @@ public class Referee {
 				ball++;
 			}
 		}
-		getResult(ball, strike);
+		if (strike == NUMBER_LENGTH) {
+			OutputView.printGameEnd();
+			return false;
+		}
+		printResult(ball, strike);
+		return true;
 	}
 
 	private void initBallAndStrike() {
@@ -33,7 +38,7 @@ public class Referee {
 		this.strike = RESET_TO_ZERO;
 	}
 
-	private static void getResult(int ball, int strike) {
+	private static void printResult(int ball, int strike) {
 		if (ball == 0 && strike == 0) {
 			OutputView.printNothingMessage();
 		}
