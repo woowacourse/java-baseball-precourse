@@ -1,15 +1,15 @@
 package baseball;
 
 public class Application {
-    public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
-        Game game = new Game();
+	public static void main(String[] args) {
+		//TODO: 숫자 야구 게임 구현
 
-        boolean continueGame = true;
-        while (continueGame) {
-            game.start();
+		Game game = new Game();
 
-            continueGame = game.afterGame();
-        }
-    }
+		boolean continueGame = true;
+		while (continueGame) {
+			game.start();
+			continueGame = game.afterGame();
+		}
+	}
 }
