@@ -1,15 +1,36 @@
 package baseball;
+import camp.nextstep.edu.missionutils.*;
+import java.util.ArrayList;
 
 public class Baseball {
-	/*
-	private static final int 자릿수 DIGIT = 3;
-	private String 유저가 맞춰야하는 랜덤숫자 ranNum
-	private String 유저가 입력한 숫자 userNum
+	private static final int DIGIT = 3;
+	private String ranNum;
+	private String userNum;
 	
-	public void 랜덤 숫자 저장 initialize () {
-		ranNum = generateRanNum으로 생성된 랜덤수 저장
+	public Baseball () {
+		ranNum = "";
+		userNum = "";
 	}
-	
+	public void initialize () {
+		ranNum = generateRanNum(DIGIT);
+	}
+	private String generateRanNum(int digit) {
+		ArrayList <Character> list = new ArrayList<>();
+		String res = "";
+		while(list.size()<digit) {
+			char tmp = Character.forDigit(Randoms.pickNumberInRange(1, 9), 10);
+			
+			if(list.contains(tmp)) {
+				continue;
+			}
+			list.add(tmp);
+		}
+		for(char c : list) {
+			res += c;
+		}
+		return res;
+	}
+	/*
 	public void 게임 플레이 playGame () {
 		String 출력할 메시지 result = "";
 		
@@ -53,25 +74,6 @@ public class Baseball {
 		res = res.trim() 메소드로 앞뒤 공백 제거
 		
 		return res
-	}
-	
-	private String 랜덤 넘버 생성 generateRanNum(자리수) {
-		//1-9안의 3자리 숫자를 임의 생성
-		
-		ArrayList <Character> 임시저장용 arraylist
-		String result = ""
-		while(arraylist 사이즈가 digit와 같아질 때 까지) {
-		 	char 임시변수 tmp = 1-9 사이의 랜덤 숫자 생성 메소드 호출한 뒤 char로 변경 return 랜덤한 1자리 문자
-		 	
-		 	if(arraylist에 임시변수가 이미 있다면) {
-		 		continue
-		 	}
-		 	arraylist.add(임시변수)
-		}
-		for(arraylist 사이즈) {
-			 result += arraylist 요소;
-		}
-		return result
 	}
 	
 	private String 유저가 숫자를 입력하는 메소드 next () {
