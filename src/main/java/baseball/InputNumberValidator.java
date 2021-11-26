@@ -11,27 +11,23 @@ public class InputNumberValidator {
     static final int RANGE_START = 1;
     static final int RANGE_END = 9;
 
-    private List<Integer> inputNumberList;
-
-    public InputNumberValidator(List<Integer> inputNumberList) {
-        this.inputNumberList = inputNumberList;
+    public static boolean inputNumberExceptionCheck(List<Integer> inputNumberList) {
+        return lengthCheck(inputNumberList)
+                && rightRangeCheck(inputNumberList)
+                && distinctCheck(inputNumberList);
     }
 
-    public boolean inputNumberExceptionCheck() {
-        return lengthCheck() && rightRangeCheck() && distinctCheck();
-    }
-
-    public boolean lengthCheck() {
+    public static boolean lengthCheck(List<Integer> inputNumberList) {
         return inputNumberList.size() == NUMBER_LENGTH;
     }
 
-    public boolean rightRangeCheck() {
+    public static boolean rightRangeCheck(List<Integer> inputNumberList) {
         return inputNumberList.stream()
                 .filter(number -> RANGE_START <= number && number <= RANGE_END)
                 .count() == NUMBER_LENGTH;
     }
 
-    public boolean distinctCheck() {
+    public static boolean distinctCheck(List<Integer> inputNumberList) {
         return inputNumberList.stream()
                 .distinct()
                 .count() == NUMBER_LENGTH;

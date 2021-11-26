@@ -7,11 +7,7 @@ package baseball;
 public class RestartNumberValidator {
     private String isRestart;
 
-    public RestartNumberValidator(String isRestart) {
-        this.isRestart=isRestart;
-    }
-
-    public boolean rightInputRestartCheck(){
+    public static boolean rightInputRestartCheck(String isRestart){
         return isRestart.equals(Game.RESTART) || isRestart.equals(Game.EXIT);
     }
 }
