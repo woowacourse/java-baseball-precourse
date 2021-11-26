@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.repository.BaseBall;
+import baseball.repository.Number;
 import baseball.service.Compute;
 import baseball.utils.Parser;
 import baseball.utils.RandomUtils;
@@ -16,7 +17,7 @@ public class Controller {
     Parser parser = new Parser();
     Compute compute = new Compute();
     Output output = new Output();
-    public int[] gameNumber;
+    Number number = new Number(SIZE);
 
     public void run() throws IllegalArgumentException{
         gameSet();
@@ -24,11 +25,11 @@ public class Controller {
     }
 
     private void gameSet() {
-        gameNumber = RandomUtils.getRandomNumbers(SIZE, START_INCLUSIVE, END_INCLUSIVE);
+        number.setGameNumbers(RandomUtils.getRandomNumbers(SIZE, START_INCLUSIVE, END_INCLUSIVE));
     }
 
     private void gameStart() throws IllegalArgumentException{
-        System.out.println(gameNumber[0]+""+gameNumber[1]+""+gameNumber[2]);
+        System.out.println(number.getGameNumbers()[0]+""+number.getGameNumbers()[1]+""+number.getGameNumbers()[2]);
         play();
         gameOver();
     }
@@ -36,8 +37,8 @@ public class Controller {
     private void play() throws IllegalArgumentException{
         int strike = 0;
         while (strike != 3) {
-            int userNumber[] = getUserNumber();
-            BaseBall baseBall = compute.computeScore(gameNumber, userNumber, SIZE);
+            number.setUserNumbers(getUserNumber());
+            BaseBall baseBall = compute.computeScore(number.getGameNumbers(), number.getUserNumbers(), SIZE);
             output.outputScore(baseBall.getBallCount(), baseBall.getStrikeCount());
             strike = baseBall.getStrikeCount();
         }
