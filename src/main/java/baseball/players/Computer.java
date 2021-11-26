@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Computer {
+public class Computer implements Player {
 	private final ArrayList<Integer> numbers;
 
 	/**
@@ -32,7 +32,8 @@ public class Computer {
 		} while (numbers.size() < LENGTH_OF_NUMBERS);
 	}
 
-	public ArrayList<Integer> getNumbers() {
-		return numbers;
+	@Override
+	public int getNumber(int index) {
+		return numbers.get(index);
 	}
 }
