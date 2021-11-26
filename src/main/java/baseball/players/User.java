@@ -17,6 +17,7 @@ public class User implements Player {
 	 * @throws IllegalArgumentException 잘못된 입력이 들어오면 발생시킨다.
 	 */
 	public void inputNumbers() throws IllegalArgumentException {
+		numbers.clear();
 		System.out.print("숫자를 입력해주세요 : ");
 		String[] input = readLine().split("");
 		if (input.length != LENGTH_OF_NUMBERS) {
