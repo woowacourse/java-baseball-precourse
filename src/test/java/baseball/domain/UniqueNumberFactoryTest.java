@@ -17,22 +17,10 @@ class UniqueNumberFactoryTest {
         // HashSet은 솔직히 믿고 써도 되는거 아닐까?
         // 그런데 누군가가 HashSet을 바꿔버릴 수도 있으니까 유지해야되나?
         for (int i = 0; i < 100; i++) {
-            List<Integer> uniqueNumber = UniqueNumberFactory.create();
-            boolean actual = isDuplicated(uniqueNumber);
-            assertFalse(actual);
+            Number uniqueNumber = UniqueNumberFactory.create();
+            boolean actual = uniqueNumber.isUnique();
+            assertTrue(actual);
         }
-    }
-
-    private boolean isDuplicated(List<Integer> uniqueNumber) {
-        int i = uniqueNumber.get(0);
-        int j = uniqueNumber.get(1);
-        int k = uniqueNumber.get(2);
-
-        return equal(i, j) || equal(i, k) || equal(j, k);
-    }
-
-    private boolean equal(int i, int j) {
-        return Objects.equals(i, j);
     }
 
 }

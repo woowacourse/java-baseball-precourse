@@ -13,7 +13,7 @@ public class UniqueNumberFactory {
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
 
-    public static List<Integer> create() {
+    public static Number create() {
         final Set<Integer> hashSet = new HashSet<>();
 
         while (hashSet.size() < NUMBER_SIZE) {
@@ -21,6 +21,6 @@ public class UniqueNumberFactory {
             hashSet.add(number);
         }
 
-        return new ArrayList<>(hashSet);
+        return new Number(hashSet);
     }
 }

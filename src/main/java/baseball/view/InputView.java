@@ -2,6 +2,7 @@ package baseball.view;
 
 import java.util.Objects;
 
+import baseball.domain.Number;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -10,11 +11,11 @@ public class InputView {
 
     private static final String NUMERIC_FILTER = "[1-9]+";
 
-    public String guessNumber() {
+    public Number guessNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         final String input = readLine();
         validateAttackInput(input);
-        return input;
+        return new Number(input);
     }
 
     private String readLine() {
