@@ -53,6 +53,8 @@ public class ThreeDigits {
                 ballCount++;
             }
         }
+        this.initIsJudged();
+
         return ballCount;
     }
 

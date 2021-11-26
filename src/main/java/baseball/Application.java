@@ -42,7 +42,6 @@ public class Application {
             if (ballNum > 0) {
                 isBalled = true;
             }
-            threeDigitObject.initIsJudged();
 
             printResult(isStriked, isBalled, strikeNum, ballNum);
             if (strikeNum == 3) {
