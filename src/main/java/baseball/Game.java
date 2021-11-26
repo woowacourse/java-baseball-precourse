@@ -57,20 +57,13 @@ public class Game {
         }
 
         for (int i = 0; i < DIGIT; i++) {
-            isNumber(i);
-            noZeros(i);
+            inRange(i);
             noOverlap(i);
         }
     }
 
-    private void isNumber(int i) {
-        if (!Character.isDigit(userNum.charAt(i))) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void noZeros(int i) {
-        if (Character.toString(userNum.charAt(i)).equals("0")) {
+    private void inRange(int i) {
+        if (userNum.charAt(i) < '1' || userNum.charAt(i) > '9') {
             throw new IllegalArgumentException();
         }
     }
