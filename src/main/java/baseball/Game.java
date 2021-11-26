@@ -11,19 +11,18 @@ public class Game {
 		int[] answerNumber = generateAnswer();
 		//System.out.println(Arrays.toString(answerNumber)); // 생성된 난수 확인 위한 코드 추후 제거
 
-		while(true) {
+		boolean running = true;
+		do {
 			System.out.print(Const.INPUT_MESSAGE);
 			int[] inputNumber = getInputNumber();
 
 			Hint hint = new Hint(answerNumber, inputNumber);
-
 			System.out.println(hint.getHintMessage());
 
-			if(hint.getStrike() == Const.ANSWER_SIZE){
-				System.out.println(Const.GAME_CLEAR_MESSAGE);
-				break;
-			}
-		}
+			if(hint.isAllStrike())
+				running = false;
+
+		} while (running);
 	}
 
 	public static boolean askNewGameOrExit() {

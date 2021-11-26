@@ -36,6 +36,15 @@ public class Hint {
 		return String.join(" ", sList);
 	}
 
+	public boolean isAllStrike() {
+		if(this.strike == Const.ANSWER_SIZE){
+			System.out.println(Const.GAME_CLEAR_MESSAGE);
+			return true;
+		}
+
+		return false;
+	}
+
 	private boolean isBall(int[] answerNumber, int index, int num) {
 		for (int i = 0; i < answerNumber.length; i++) {
 			if (answerNumber[i] == num && i != index)
