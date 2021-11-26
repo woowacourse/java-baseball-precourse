@@ -9,9 +9,9 @@ import baseball.view.OutputView;
 public class Application {
     public static void main(String[] args) {
         // //TODO: 숫자 야구 게임 구현
-        boolean token = false;
+        Computer com = Computer.getInstance();
+        boolean token = true;
         while (token) {
-            Computer com = Computer.getInstance();
             com.init();
             boolean flag = true;
             while (flag) {
