@@ -10,6 +10,8 @@
 
 4. 볼 계산 : calculateBall
 
+5. 게임 결과 출력 : printResult
+
 
 ## 📝 License
 
