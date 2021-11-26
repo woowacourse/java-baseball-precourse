@@ -29,6 +29,7 @@ public class NumberBaseballGameController {
 			OutputView.hintMessage(ballCounts, strikeCounts);
 			changeGameState(numberBaseballGame, computer);
 		} catch (IllegalArgumentException e) {
+			numberBaseballGame.closeGame();
 			System.out.println(e);
 		}
 	}
