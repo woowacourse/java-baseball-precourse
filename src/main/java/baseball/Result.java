@@ -7,6 +7,10 @@ public class Result {
 	int strike;
 	int ball;
 
+	public int getStrike() {
+		return strike;
+	}
+
 	public void matchAnswer(List<Integer> answer, List<Integer> gameReply) {
 		strike = 0;
 		ball = 0;
@@ -30,7 +34,11 @@ public class Result {
 		if (ball != 0) {
 			System.out.print(ball + "볼 ");
 		}
-		System.out.print(strike + "스트라이크");
+		if (strike == 0) {
+			System.out.println();
+			return;
+		}
+		System.out.println(strike + "스트라이크");
 		if (strike == 3) {
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		}

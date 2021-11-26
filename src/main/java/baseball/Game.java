@@ -5,17 +5,20 @@ import java.util.List;
 public class Game {
 
     Answer answer = new Answer();
+    GameReply gameReply = new GameReply();
+    Result result = new Result();
 
     public List<Integer> getAnswer() {
-        return answer.answer;
+        return answer.getAnswer();
     }
 
     public void start() {
-        System.out.println("게임이 시작됐습니다. / test");
-        System.out.println(answer.answer);
+        gameReply.askReply();
+        result.matchAnswer(this.getAnswer(), gameReply.getGameReply());
+        result.printResult();
     }
 
     public boolean afterGame() {
-        return false;
+        return result.getStrike()!=3;
     }
 }

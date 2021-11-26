@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +11,10 @@ public class Answer {
 
 	public Answer() {
 		this.makeAnswer();
+	}
+
+	public List<Integer> getAnswer() {
+		return answer;
 	}
 
 	public void makeAnswer() {
