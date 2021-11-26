@@ -1,35 +1,16 @@
 package baseball;
+import java.util.HashSet;
+
 import camp.nextstep.edu.missionutils.*;
-import java.util.ArrayList;
 
 public class Baseball {
 	private static final int DIGIT = 3;
-	private String ranNum;
 	private String userNum;
 	
 	public Baseball () {
-		ranNum = "";
 		userNum = "";
 	}
-	public void initialize () {
-		ranNum = generateRanNum(DIGIT);
-	}
-	private String generateRanNum(int digit) {
-		ArrayList <Character> list = new ArrayList<>();
-		String res = "";
-		while(list.size()<digit) {
-			char tmp = Character.forDigit(Randoms.pickNumberInRange(1, 9), 10);
-			
-			if(list.contains(tmp)) {
-				continue;
-			}
-			list.add(tmp);
-		}
-		for(char c : list) {
-			res += c;
-		}
-		return res;
-	}
+	
 	/*
 	public void 게임 플레이 playGame () {
 		String 출력할 메시지 result = "";
@@ -76,20 +57,6 @@ public class Baseball {
 		return res
 	}
 	
-	private String 유저가 숫자를 입력하는 메소드 next () {
-		//임의의 문자열을 유저에게 넘겨받은 후 legit한 값인지 검사
-		String 유저입력숫자 num = Console.readLine()으로 입력받기
-		String 입력숫자범위 numRegex = 숫자 1-9로 이루어진 3글자(정규표현식)
-		
-		if(num이 numRegex과 match하지 않거나) {
-			throw new IllegalArgumentException()
-		}
-		if(hasSame(num)이 false라면) {
-			throw new IllegalArgumentException()
-		}
-		return num
-	}
-	
 	private int 스트라이크 갯수 countStrike(String 유저입력수) {
 		//넘겨받은 랜덤수와 유저입력수를 비교하여 같은 자릿수에 있는 수가 같은 경우를 카운트
 		int s = 스트라이크 수
@@ -113,18 +80,6 @@ public class Baseball {
 		return b
 	}
 	
-	private boolean 중복 수 확인 hasSame (String target) {
-		//유저가 같은 수를 입력했는지 확인
-		HashSet <Character> 중복 확인용 set
-		char [] charArr = target.toCharArray();
-		for(charArr 길이 만큼) {
-			set.add(charArr 요소들)
-		}
-		if(set 사이즈 == DIGIT) {
-			return true
-		}
-		return false
-	}
 	*/
 
 }
