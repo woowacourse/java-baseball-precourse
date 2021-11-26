@@ -10,21 +10,32 @@ public class Application {
 	static char GAME_INPUT_START = '1';
 	static char GAME_INPUT_END = '9';
 	static int GAME_INPUT_SIZE = 3;
+	static char RE_GAME_INPUT_START = '1';
+	static char RE_GAME_INPUT_END = '2';
+	static int RE_GAME_INPUT_SIZE = 1;
 	static int TOTAL_NUM = 10;
 	static int bit = 0;
+	static int token = 1;
+	static int STOP_VALUE = 2;
 
 	public static void main(String[] args) {
-		int strike = 0;
-		int ball = 0;
-		String randomNumber = generateNumber();
-		while (!terminateGame(strike)) {
-			System.out.print("숫자를 입력해주세요 : ");
-			String userInput = camp.nextstep.edu.missionutils.Console.readLine();
-			checkInput(userInput, GAME_INPUT_START, GAME_INPUT_END, GAME_INPUT_SIZE);
-			strike = calculateStrike(userInput, randomNumber);
-			ball = calculateBall(userInput, randomNumber);
-			bit = 0;
-			printResult(strike, ball);
+		while (token != STOP_VALUE) {
+			int strike = 0;
+			int ball = 0;
+			String randomNumber = generateNumber();
+			while (!terminateGame(strike)) {
+				System.out.print("숫자를 입력해주세요 : ");
+				String userInput = camp.nextstep.edu.missionutils.Console.readLine();
+				checkInput(userInput, GAME_INPUT_START, GAME_INPUT_END, GAME_INPUT_SIZE);
+				strike = calculateStrike(userInput, randomNumber);
+				ball = calculateBall(userInput, randomNumber);
+				bit = 0;
+				printResult(strike, ball);
+			}
+			System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+			String userReGameInput = camp.nextstep.edu.missionutils.Console.readLine();
+			checkInput(userReGameInput, RE_GAME_INPUT_START, RE_GAME_INPUT_END, RE_GAME_INPUT_SIZE);
+			token = userReGameInput.charAt(0) - '0';
 		}
 	}
 
