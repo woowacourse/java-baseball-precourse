@@ -6,7 +6,7 @@ import baseball.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        getGameRunner().run();
+         getGameRunner().run();
     }
 
     public static GameRunner getGameRunner() {

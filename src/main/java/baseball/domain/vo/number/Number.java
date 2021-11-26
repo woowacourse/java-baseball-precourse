@@ -100,15 +100,15 @@ public class Number {
     private int countBall(Number other) {
         int count = 0;
 
-        if (equal(first, other.second) || Objects.equals(first, other.third)) {
+        if (equal(first, other.second) || equal(first, other.third)) {
             count++;
         }
 
-        if (equal(second, other.first) || Objects.equals(second, other.third)) {
+        if (equal(second, other.first) || equal(second, other.third)) {
             count++;
         }
 
-        if (equal(third, other.first) || Objects.equals(third, other.second)) {
+        if (equal(third, other.first) || equal(third, other.second)) {
             count++;
         }
 

@@ -37,11 +37,6 @@ public class GameRunner {
     }
 
     private void newGame() {
-        // Computer 클래스가 꼭 필요할까?
-        // Computer 없이 그냥 Number 타입을 여러개 쓰니까
-        // Number 타입이 여러개라서 헷갈린다.
-        // Number를 상속해서 PlayerNumber, ComputerNumber 처럼 여러 클래스를 만들까?
-        // Computer가 하는 일이 전혀 없지는 않을 것 같기도?
         Number computerNumber = UniqueNumberFactory.create();
         computer = new Computer(computerNumber);
     }

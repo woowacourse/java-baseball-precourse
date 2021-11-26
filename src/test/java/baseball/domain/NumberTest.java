@@ -9,10 +9,6 @@ import baseball.domain.vo.number.Number;
 
 class NumberTest {
 
-    // 이건 Number 테스트?
-    // BallStrikeCount 테스트??
-    // 하드 코딩을 해야 할까?
-
     @Test
     void 공격숫자와_컴퓨터숫자가_일치하지않으면_낫싱_인스턴스를_리턴한다() {
         // given
