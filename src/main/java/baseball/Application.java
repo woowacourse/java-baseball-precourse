@@ -103,13 +103,13 @@ class Number {
 	}
 
 	private static boolean checkInputNumber(String str) {
-		int numberValue;
 		try {
-			numberValue = Integer.parseInt(str);
-			return true;
+			int numberValue = Integer.parseInt(str);
 		} catch (NumberFormatException e) {
 			return false;
 		}
+		char[] numberArray = getCharArrayFromString(str);
+		return !Number.checkArrayContains(numberArray, '0');
 	}
 
 	private static boolean checkEqualNumber(String str) {
