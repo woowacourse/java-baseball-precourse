@@ -1,6 +1,7 @@
 package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.*;
+import static util.GameConstant.*;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -9,10 +10,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Player {
-	private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-	private static final String PLAYER_NUMBER_REGEX = "^[1-9]{3}$";
-	private static final String REPLAYING_OR_END_NUMBER_REGEX = "^[1-2]$";
-
 	public List<Integer> getPlayerNumber() throws IllegalArgumentException {
 		System.out.print(INPUT_MESSAGE);
 		String inputNumber = readLine();
@@ -48,7 +45,7 @@ public class Player {
 		HashSet<String> numbers = new HashSet<>(
 			Arrays.asList(inputNumber.split(""))
 		);
-		if (numbers.size() != BaseBallGame.NUMBER_LENGTH) {
+		if (numbers.size() != NUMBER_LENGTH) {
 			throw new IllegalArgumentException();
 		}
 	}

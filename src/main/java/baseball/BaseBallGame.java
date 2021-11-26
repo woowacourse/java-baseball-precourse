@@ -1,6 +1,7 @@
 package baseball;
 
 import static camp.nextstep.edu.missionutils.Randoms.*;
+import static util.GameConstant.*;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -9,16 +10,6 @@ import java.util.Set;
 import java.util.stream.IntStream;
 
 public class BaseBallGame {
-	public static final int NUMBER_LENGTH = 3;
-	private static final int START_INCLUSIVE = 1;
-	private static final int END_INCLUSIVE = 9;
-	private static final int REPLAYING_NUMBER = 1;
-	private static final int MIN_COUNT = 0;
-	private static final String STRIKE_MESSAGE = "스트라이크";
-	private static final String BALL_MESSAGE = "볼";
-	private static final String NOTHING_MESSAGE = "낫싱";
-	private static final String GAME_CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-	private static final String REPLAYING_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	private final Player player;
 	private List<Integer> targetNumber;
 
