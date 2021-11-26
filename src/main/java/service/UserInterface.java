@@ -23,7 +23,6 @@ public class UserInterface {
 			CompareResult result = computer.compareNumbers(givenNumbers);
 			notifyResultOfComparing(result);
 
-			// 다 맞추었으면 게임 재시작 여부 물어봄
 			if(checkAllCorrect(result)) {
 				notifyCorrectAll();
 				resume = getResumeIntention();
@@ -35,6 +34,7 @@ public class UserInterface {
 
 	private List<Integer> getUserGivenNumbers() {
 		String givenString = readLineFromUser();
+		converter.checkGivenNumbersAvailable(givenString);
 		return converter.convertStringToIntegerList(givenString);
 	}
 
@@ -74,6 +74,7 @@ public class UserInterface {
 
 	private int getResumeIntention() {
 		String restart = Console.readLine();
+		converter.checkRestartNumberAvailable(restart);
 		return converter.convertStringToInt(restart);
 	}
 

@@ -9,11 +9,28 @@ import constants.Constants;
 import dto.CompareResult;
 
 public class Converter {
-	public List<Integer> convertStringToIntegerList(String givenString) throws IllegalArgumentException{
-		if(!checkContainAllNumber(givenString) || !checkSizeCorrect(givenString)) {
+
+	public void checkGivenNumbersAvailable(String givenString) {
+		if(!checkContainAllNumber(givenString) || !checkSizeCorrect(givenString, Constants.RANDOM_NUMBER_SIZE)) {
 			throw new IllegalArgumentException();
 		}
+	}
 
+	public void checkRestartNumberAvailable(String givenString) {
+		if(!checkContainAllNumber(givenString)) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	private boolean checkContainAllNumber (String givenString) {
+		return givenString.chars().allMatch( Character::isDigit );
+	}
+
+	private boolean checkSizeCorrect(String givenString, int correctSize) {
+		return givenString.length() == correctSize;
+	}
+
+	public List<Integer> convertStringToIntegerList(String givenString) throws IllegalArgumentException{
 		int [] digits = Stream.of(givenString.split("")).mapToInt(Integer::parseInt).toArray();
 
 		return Arrays.stream(digits)
@@ -21,21 +38,9 @@ public class Converter {
 			.collect(Collectors.toList());
 	}
 
-	private boolean checkContainAllNumber (String givenString) {
-		return givenString.chars().allMatch( Character::isDigit );
-	}
-
-	private boolean checkSizeCorrect(String givenString) {
-		return givenString.length() == Constants.RANDOM_NUMBER_SIZE;
-	}
-
 	public int convertStringToInt(String givenString) {
-		int converted = 0;
-		try {
-			converted = Integer.parseInt(givenString);
-		}catch (Exception e) {
-			throw new IllegalArgumentException();
-		}
-		return converted;
+		return Integer.parseInt(givenString);
 	}
+
+
 }

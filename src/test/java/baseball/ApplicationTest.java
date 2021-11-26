@@ -34,18 +34,6 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
-    // @Test
-    void 랜덤_난수생성_비교_테스트() {
-        Computer computer = new Computer();
-        ArrayList<Integer> givenNumbers = getGivenNumber();
-        CompareResult result = computer.compareNumbers(givenNumbers);
-
-        computer.printRandomNumberList_test();
-        System.out.println("strike : " + result.getStrike());
-        System.out.println("ball : " + result.getBall());
-    }
-
     // @Test
     void 컨버터_입력값_테스트() {
         Converter converter = new Converter();
