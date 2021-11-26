@@ -19,6 +19,7 @@ public class Application {
 		String userInput = camp.nextstep.edu.missionutils.Console.readLine();
 		checkInput(userInput, GAME_INPUT_START, GAME_INPUT_END, GAME_INPUT_SIZE);
 		int strike = calculateStrike(userInput, randomNumber);
+		int ball = calculateBall(userInput, randomNumber);
 	}
 
 	public static String generateNumber() {
@@ -61,5 +62,24 @@ public class Application {
 			}
 		}
 		return strike;
+	}
+
+	public static int calculateBall(String input, String target) {
+		int ball = 0;
+		int[] numberCnt = new int[TOTAL_NUM];
+		for (int index = 0; index < input.length(); index++) {
+			int nowInput = input.charAt(index) - '0';
+			if ((bit & (1 << index)) == 0) {
+				numberCnt[nowInput] += 1;
+			}
+		}
+		for (int index = 0; index < input.length(); index++) {
+			int nowTarget = target.charAt(index) - '0';
+			if ((bit & (1 << index)) == 0 && numberCnt[nowTarget] > 0) {
+				numberCnt[nowTarget] -= 1;
+				ball += 1;
+			}
+		}
+		return ball;
 	}
 }
