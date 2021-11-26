@@ -3,12 +3,33 @@ package baseball;
 import java.util.Objects;
 
 public class GameResult {
+	private static final int MAX_STRIKE = 3;
+
 	private int strike;
 	private int ball;
 
 	public GameResult(Balls computer, Balls user) {
-		computer.getBalls().stream()
-			.forEach(computerBall -> compare(computerBall, user));
+		computer.getBalls().stream().forEach(computerBall -> compare(computerBall, user));
+	}
+
+	public int getStrike() {
+		return strike;
+	}
+
+	public int getBall() {
+		return ball;
+	}
+
+	public boolean hasStrike() {
+		return strike > 0;
+	}
+
+	public boolean hasBall() {
+		return ball > 0;
+	}
+
+	public boolean isEnd() {
+		return strike == MAX_STRIKE;
 	}
 
 	protected GameResult(int strike, int ball) {
