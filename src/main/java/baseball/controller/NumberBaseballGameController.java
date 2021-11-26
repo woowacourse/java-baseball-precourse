@@ -14,11 +14,14 @@ public class NumberBaseballGameController {
 		Computer computer = new Computer();
 		Player player = new Player();
 		NumberBaseballGame numberBaseballGame = new NumberBaseballGame();
+		repeatGame(numberBaseballGame, player, computer);
+	}
+
+	private static void repeatGame(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
 		do {
 			startGameOnce(numberBaseballGame, player, computer);
 			morePlayGame(numberBaseballGame, player);
 		} while (player.getSelectPlayMoreGame());
-
 	}
 
 	private static void startGameOnce(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
@@ -34,16 +37,11 @@ public class NumberBaseballGameController {
 	}
 
 	private static void play(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
-		try {
-			int[] answer = input(numberBaseballGame, player);
-			int strikeCounts = computer.getStrikeCounts(answer);
-			int ballCounts = computer.getBallCounts(answer);
-			OutputView.hintMessage(ballCounts, strikeCounts);
-			changeGameState(numberBaseballGame, computer);
-		} catch (IllegalArgumentException e) {
-			numberBaseballGame.closeGame();
-			System.out.println(e);
-		}
+		int[] answer = input(numberBaseballGame, player);
+		int strikeCounts = computer.getStrikeCounts(answer);
+		int ballCounts = computer.getBallCounts(answer);
+		OutputView.hintMessage(ballCounts, strikeCounts);
+		changeGameState(numberBaseballGame, computer);
 	}
 
 	private static int[] input(NumberBaseballGame numberBaseballGame, Player player) {
@@ -60,13 +58,8 @@ public class NumberBaseballGameController {
 	}
 
 	private static void morePlayGame(NumberBaseballGame numberBaseballGame, Player player) {
-		try {
-			String inputResultOfSelectPlayMoreGame = InputView.requestSelectPlayMoreGame();
-			Boolean selectPlayMoreGame = numberBaseballGame.validateSelectPlayMoreGame(inputResultOfSelectPlayMoreGame);
-			player.receiveSelectPlayMoreGame(selectPlayMoreGame);
-		} catch (IllegalArgumentException e) {
-			player.doNotPlayMoreGame();
-			System.out.println(e);
-		}
+		String inputResultOfSelectPlayMoreGame = InputView.requestSelectPlayMoreGame();
+		Boolean selectPlayMoreGame = numberBaseballGame.validateSelectPlayMoreGame(inputResultOfSelectPlayMoreGame);
+		player.receiveSelectPlayMoreGame(selectPlayMoreGame);
 	}
 }
