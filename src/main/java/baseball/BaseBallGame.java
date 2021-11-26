@@ -4,27 +4,24 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class BaseBallGame {
-    private int answerNum;
+
     private int inputNum;
-    private String[] answerNumStrArr;
+    private LinkedHashSet<Integer> answerNumSet;
     private String[] inputNumStrArr;
     private int ball;
     private int strike;
 
     public BaseBallGame() {
-        answerNum = 0;
-        inputNum = 0;
+        answerNumSet = new LinkedHashSet<>();
     }
 
     public void start() {
         while(true) {
             makeAnswerNum();
-            System.out.println(answerNum);
-            answerNumStrArr = makeStringArrayFromInt(answerNum);
-
             play();
             if(isFinishedGame()) {
                 break;
@@ -38,16 +35,16 @@ public class BaseBallGame {
             if(!checkRangeOfGameNum(inputNum)) {
                 throw new IllegalArgumentException();
             }
-            if(isAnswer()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                return;
-            }
             inputNumStrArr = makeStringArrayFromInt(inputNum);
 
             initializeScore();
             calculateBall();
             calculateStrike();
             printScore();
+            if(isAnswer()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }
         }
     }
 
@@ -57,15 +54,11 @@ public class BaseBallGame {
     }
 
     private void makeAnswerNum() {
-        int randomNum;
-        while (true) {
-            randomNum = Randoms.pickNumberInRange(123, 987);
-            System.out.println("random " + randomNum);
-            if(checkRangeOfGameNum(randomNum)) {
-                break;
-            }
+        answerNumSet.clear();
+        while (answerNumSet.size() < 3) {
+            int randomNum = Randoms.pickNumberInRange(1, 9);
+            answerNumSet.add(randomNum);
         }
-        answerNum = randomNum;
     }
 
     private boolean checkRangeOfGameNum(int num) {
@@ -107,16 +100,17 @@ public class BaseBallGame {
     }
 
     private void calculateStrike() {
-        for(int i = 0; i < answerNumStrArr.length; i++) {
-            if(answerNumStrArr[i].equals(inputNumStrArr[i])) {
+        int i = 0;
+        for(Integer num : answerNumSet) {
+            if(num.toString().equals(inputNumStrArr[i++])) {
                 strike++;
             }
         }
     }
 
     private boolean isContainedInAnswer(String s) {
-        for(String answerStr : answerNumStrArr) {
-            if(s.equals(answerStr)) {
+        for(Integer num : answerNumSet) {
+            if(s.equals(num.toString())) {
                 return true;
             }
         }
@@ -124,7 +118,13 @@ public class BaseBallGame {
     }
 
     private boolean isAnswer() {
-        return answerNum == inputNum;
+        int i = 0;
+        for(Integer num : answerNumSet) {
+            if(!num.toString().equals(inputNumStrArr[i++])) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void printScore() {
