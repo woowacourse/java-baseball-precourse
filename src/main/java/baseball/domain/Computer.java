@@ -8,10 +8,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
-	private static List<Integer> numbers;
+	private static List<Integer>computerNumbers;
 
 	public Computer() {
-		this.numbers = new ArrayList<>(NumberRangeType.ANSWER_SIZE.getNumberRange());
+		this.computerNumbers = new ArrayList<>(NumberRangeType.ANSWER_SIZE.getNumberRange());
 	}
 
 	public void generateAnswerNumbers() {
@@ -20,13 +20,13 @@ public class Computer {
 			int pickedNumber = Randoms.pickNumberInRange(NumberRangeType.MIN_NUMBER.getNumberRange(),
 				NumberRangeType.MAX_NUMBER.getNumberRange());
 			if (!isDuplicate(pickedNumber)) {
-				numbers.add(pickedNumber);
+				computerNumbers.add(pickedNumber);
 				pickCount++;
 			}
 		}
 	}
 
 	private boolean isDuplicate(int pickedNumber) {
-		return numbers.contains(pickedNumber);
+		return computerNumbers.contains(pickedNumber);
 	}
 }
