@@ -10,6 +10,11 @@ public class Game {
 
     private static final int NUMBER_LENGTH = 3;
     private static final String INPUT_CHECK_REGEX = "[1-9][1-9][1-9]";
+    private static final String RESTART_CHECK_REGEX = "[1-2]";
+    private static final String WANT_RESTART = "1";
+    public static final String ENTER_NUMBER = "숫자를 입력해주세요 : ";
+    public static final String ASK_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String FINISH_GAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private String randomNumber;
     private String userNumber;
     private boolean isFinish;
@@ -49,14 +54,14 @@ public class Game {
     }
 
     public boolean askRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(ASK_RESTART);
 
         String input = Console.readLine();
-        if (!input.matches("[1-2]")) {
+        if (!input.matches(RESTART_CHECK_REGEX)) {
             throw new IllegalArgumentException();
         }
 
-        if (input.equals("1")) {
+        if (input.equals(WANT_RESTART)) {
             return true;
         }
 
@@ -64,7 +69,7 @@ public class Game {
     }
 
     private void takeInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(ENTER_NUMBER);
 
         String input = Console.readLine();
         if (!isValid(input)) {
@@ -118,6 +123,6 @@ public class Game {
     }
 
     public void printEndMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(FINISH_GAME);
     }
 }
