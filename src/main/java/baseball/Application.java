@@ -47,6 +47,10 @@ public class Application {
         };
     }
 
+    public boolean check_answer(int[] inputNumber) {
+        return (inputNumber[0] == answer1) && (inputNumber[1] == answer2) && (inputNumber[2] == answer3);
+    }
+
     public static void main(String[] args) {
 
     }
