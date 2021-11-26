@@ -10,7 +10,7 @@ import java.util.List;
  * 같은 숫자가 있거나, 올바르지 않은 숫자의 경우 예외를 발생시킴.
  */
 public class BallInputNumber {
-    static final String INPUT_MESSAGE="숫자를 입력해주세요 : ";
+    static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
     private List<Integer> clientNumber;
 
