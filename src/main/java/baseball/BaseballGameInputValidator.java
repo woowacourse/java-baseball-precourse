@@ -1,10 +1,14 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BaseballGameInputValidator {
 
     private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
     private static final String BASEBALL_GAME_LENGTH_EXCEPTION_MESSAGE = "3자리 수를 입력해주세요.";
     private static final String BASEBALL_GAME_DIGIT_EXCEPTION_MESSAGE = "1부터 9사이의 수를 입력해주세요.";
+    private static final String BASEBALL_GAME_DUPLICATE_EXCEPTION_MESSAGE = "중복되지 않은 수를 입력해주세요.";
     private static final String BASEBALL_GAME_CODE_EXCEPTION_MESSAGE = "1과 2 중 하나의 수를 입력해주세요.";
 
     public void validateNumber(String numbers) {
@@ -13,6 +17,9 @@ public class BaseballGameInputValidator {
         }
         if (!validateDigit(numbers)) {
             throw new IllegalArgumentException(BASEBALL_GAME_DIGIT_EXCEPTION_MESSAGE);
+        }
+        if (!validateDuplicate(numbers)) {
+            throw new IllegalArgumentException(BASEBALL_GAME_DUPLICATE_EXCEPTION_MESSAGE);
         }
     }
 
@@ -25,6 +32,18 @@ public class BaseballGameInputValidator {
             if (number < '1' || number > '9') {
                 return false;
             }
+        }
+        return true;
+    }
+
+    private boolean validateDuplicate(String numbers) {
+        List<Character> checkDuplicate = new ArrayList<>();
+
+        for (char number : numbers.toCharArray()) {
+            if (checkDuplicate.contains(number)) {
+                return false;
+            }
+            checkDuplicate.add(number);
         }
         return true;
     }
