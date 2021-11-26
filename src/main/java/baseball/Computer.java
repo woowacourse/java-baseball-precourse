@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import constant.SystemMessage;
-
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
@@ -19,7 +18,7 @@ public class Computer {
         return false;
     }
 
-    private LinkedHashSet<Integer> makeRandomNumber(){
+    private LinkedHashSet<Integer> makeRandomNumber() {
         LinkedHashSet<Integer> randomNumberSet = new LinkedHashSet<>();
         while (randomNumberSet.size() < 3) {
             randomNumberSet.add(Randoms.pickNumberInRange(1, 9));
@@ -27,7 +26,7 @@ public class Computer {
         return randomNumberSet;
     }
 
-    private void makeRandomNumberList(LinkedHashSet<Integer> randomNumberSet){
+    private void makeRandomNumberList(LinkedHashSet<Integer> randomNumberSet) {
         for (int num : randomNumberSet) {
             randomNumberList.add(num);
         }
