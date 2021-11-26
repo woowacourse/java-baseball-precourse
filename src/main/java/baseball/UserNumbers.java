@@ -19,21 +19,6 @@ public class UserNumbers {
         for (int i = 0; i < 3; i++) {
             userNumbers.add(tmpUserNumbers.charAt(i) - '0');
         }
-
-
-
-        // String 쪼개서 ArrayList에 넣기
-//        List<String> userNumbersString = Arrays.asList(tmpUserNumbers.split(""));
-
-        //String -> int 변환
-//        for (int i = 0; i < userNumbersString.size(); i++){
-//            userNumbers.add(Integer.parseInt(userNumbersString.get(i)));
-//        }
-
-        // int test
-//        for (int i = 0; i < userNumbers.size(); i++)
-//            System.out.print((userNumbers.get(i)));
-
         return userNumbers;
     }
 }

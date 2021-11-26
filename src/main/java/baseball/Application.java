@@ -15,11 +15,6 @@ public class Application {
 
         computerNumbers = ComputerNumbers.ComputerNumbers();
 
-        //Random test
-//        for (int i = 0; i < computerNumbers.size(); i++)
-//            System.out.println(computerNumbers.get(i));
-
-        Judgement judgement = new Judgement();
         while (true) {
             if (retryOrExitFlag == 2)
                 return;
