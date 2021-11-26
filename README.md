@@ -2,19 +2,19 @@
 
 
 ### 기능목록
-0. 게임 시작
-    1. 랜덤한 숫자 3개 받기 - 정답 값
-    2. 사용자 응답 받기
-        1. 올바른 입력인지 확인
-        2. 잘못된 입력에 따른 exception 발생
-    3. 응답에 따른 결과 받기
-       1. 응답 결과 만들기
-       2. 결과 프린팅
-    4. 정답 시, 게임 종료
-1. 정답 후, 진행 여부 선택
-    1. 올바른 입력인지 확인
-    2. 잘못된 입력에 따른 exception 발생
-    3. 입력에 따른 진행 여부 결정
+0. 게임 시작 - game class / start method
+    1. 랜덤한 숫자 3개 받기 - 정답 값 / answer class - constructor
+    2. 사용자 응답 받기 / gameReply class - constructor
+        1. 올바른 입력인지 확인 / gameReply class - constructor
+        2. 잘못된 입력에 따른 exception 발생 / gameReply class - constructor
+    3. 응답에 따른 결과 받기 / result class
+       1. 응답 결과 만들기 / result class - match method
+       2. 결과 프린팅 / result class - print method
+    4. 정답 시, 게임 종료 / result class - match method
+1. 정답 후, 진행 여부 선택 / game class 
+    1. 올바른 입력인지 확인 / afterGameReply class - constructor
+    2. 잘못된 입력에 따른 exception 발생 / afterGameReply class - constructor
+    3. 입력에 따른 진행 여부 결정 / game class - afterGame method
 
 ### 매 커밋 전, 셀프 체크 리스트
 1. 모든 indent depth는 3미만인가?
