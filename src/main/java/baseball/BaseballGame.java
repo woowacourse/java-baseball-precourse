@@ -1,6 +1,7 @@
 package baseball;
 
-import java.util.Arrays;
+import static baseball.Message.*;
+import static baseball.Rules.*;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -23,27 +24,27 @@ public class BaseballGame {
 	}
 
 	private boolean restartGame() {
-		System.out.println(Message.REQUEST_RESTART_NUMBER);
+		System.out.println(REQUEST_RESTART_NUMBER);
 		String requestInput = Console.readLine();
 		Validation.checkRestartInput(requestInput);
 		if (requestInput.equals("1")) {
 			running = true;
 			return true;
 		}
-		System.out.println(Message.EXIT_GAME);
+		System.out.println(EXIT_GAME);
 		return false;
 	}
 
 	private void playGame() {
 		while (running) {
-			System.out.print(Message.REQUEST_ENTER_NUMBER);
+			System.out.print(REQUEST_ENTER_NUMBER);
 			String userInput = Console.readLine();
 			Validation.checkInput(userInput);
 			hint.countHint(randomNumberGenerator.getAnswer(), userInput);
 			hint.printResult();
 
-			if (hint.getStrike() == Rules.NUMBER_LENGTH) {
-				System.out.println(Message.GAME_CLEAR);
+			if (hint.getStrike() == NUMBER_LENGTH) {
+				System.out.println(GAME_CLEAR);
 				running = false;
 			}
 		}

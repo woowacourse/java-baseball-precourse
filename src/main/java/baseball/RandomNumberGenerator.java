@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Rules.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumberGenerator {
@@ -8,20 +10,20 @@ public class RandomNumberGenerator {
 
 	public void makeRandomNumber() {
 		initAnswer();
-		for (int i = 0; i < Rules.NUMBER_LENGTH; i++) {
+		for (int i = 0; i < NUMBER_LENGTH; i++) {
 			answer[i] = makeUniqueNumber();
 		}
 	}
 
 	private void initAnswer() {
-		answer = new int[Rules.NUMBER_LENGTH];
-		usedNumber = new boolean[Rules.END_NUMBER + 1];
+		answer = new int[NUMBER_LENGTH];
+		usedNumber = new boolean[END_NUMBER + 1];
 	}
 
 	private int makeUniqueNumber() {
 		int randomNumber;
 		do {
-			randomNumber = Randoms.pickNumberInRange(Rules.START_NUMBER, Rules.END_NUMBER);
+			randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
 		} while (usedNumber[randomNumber]);
 		usedNumber[randomNumber] = true;
 		return randomNumber;

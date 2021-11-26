@@ -1,12 +1,14 @@
 package baseball;
 
+import static baseball.Rules.*;
+
 public class Hint {
 	private int strike;
 	private int ball;
 
 	public void countHint(int[] answer, String userInput) {
 		initCount();
-		for (int i = 0; i < Rules.NUMBER_LENGTH; i++) {
+		for (int i = 0; i < NUMBER_LENGTH; i++) {
 			int userNumber = Character.getNumericValue(userInput.charAt(i));
 			countStrike(userNumber, answer[i]);
 			countBall(i, userNumber, answer);
@@ -39,7 +41,7 @@ public class Hint {
 	}
 
 	private void countBall(int currentIdx, int userNumber, int[] answer) {
-		for (int i = 0; i < Rules.NUMBER_LENGTH; i++) {
+		for (int i = 0; i < NUMBER_LENGTH; i++) {
 			if (i != currentIdx && userNumber == answer[i]) {
 				this.ball++;
 			}
