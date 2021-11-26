@@ -16,7 +16,7 @@ public class Game {
 	public void start() {
 		computer.generateAnswer();
 		user.setNumberOfUser(InputView.getInput());
-		referee.getJudgment(user, computer);
+		referee.getJudgment(user.getExpectedAnswer(), computer.getAnswer());
 
 	}
 }

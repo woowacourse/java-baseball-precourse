@@ -14,11 +14,8 @@ public class Referee {
 		initBallAndStrike();
 	}
 
-	public void getJudgment(User user, Computer computer) {
+	public void getJudgment(Integer[] userExpectedAnswer, Integer[] answer) {
 		initBallAndStrike();
-
-		Integer[] answer = computer.getAnswer();
-		Integer[] userExpectedAnswer = user.getExpectedAnswer();
 
 		for (int i = 0; i < userExpectedAnswer.length; i++) {
 			int findIndex = Arrays.asList(answer).indexOf(userExpectedAnswer[i]);
@@ -29,7 +26,6 @@ public class Referee {
 			}
 		}
 		getResult(ball, strike);
-
 	}
 
 	private void initBallAndStrike() {
@@ -37,7 +33,7 @@ public class Referee {
 		this.strike = RESET_TO_ZERO;
 	}
 
-	public static void getResult(int ball, int strike) {
+	private static void getResult(int ball, int strike) {
 		if (ball == 0 && strike == 0) {
 			OutputView.printNothingMessage();
 		}
