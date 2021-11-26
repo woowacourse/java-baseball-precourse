@@ -4,6 +4,7 @@
 !gradle/wrapper/gradle-wrapper.jar
 /out/
 /target/
+README2.md
 
 ### STS ###
 .apt_generated
