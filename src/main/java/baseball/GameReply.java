@@ -6,7 +6,9 @@ import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Console;
 
+// 정답을 맞히는 사용자의 응답을 다루는 클래스
 public class GameReply {
+
 	List<Integer> gameReply;
 
 	public List<Integer> getGameReply() {

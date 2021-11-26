@@ -5,6 +5,7 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+// 숫자 야구의 정답 클래스
 public class Answer {
 
 	List<Integer> answer;

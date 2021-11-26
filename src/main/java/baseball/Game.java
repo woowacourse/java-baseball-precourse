@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.List;
 
+// 숫자야구의 전반적인 운영을 담당하는 클래스
 public class Game {
 
     Answer answer = new Answer();
@@ -17,7 +18,6 @@ public class Game {
     }
 
     public void start() {
-        System.out.println(this.getAnswer());
         gameReply.askReply();
         result.matchAnswer(this.getAnswer(), gameReply.getGameReply());
         result.printResult();

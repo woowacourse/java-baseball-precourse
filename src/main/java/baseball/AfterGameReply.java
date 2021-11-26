@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+// 게임 종료 시, 재시작 여부 결정하는 클래스
 public class AfterGameReply {
 
 	int response;

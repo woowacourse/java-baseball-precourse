@@ -3,6 +3,7 @@ package baseball;
 import java.util.List;
 import java.util.Objects;
 
+// 응답과 정답을 통해 결과를 도출하는 클래스
 public class Result {
 	int strike;
 	int ball;
