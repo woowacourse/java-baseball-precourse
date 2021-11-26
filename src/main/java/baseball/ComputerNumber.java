@@ -27,7 +27,8 @@ public class ComputerNumber {
         HashSet<Integer> numbers = new LinkedHashSet<>();
         while (numbers.size() < 3) {
             int number =
-                    Randoms.pickNumberInRange(InputNumberValidator.RANGE_START, InputNumberValidator.RANGE_END);
+                    Randoms.pickNumberInRange(InputNumberValidator.RANGE_START,
+                            InputNumberValidator.RANGE_END);
             numbers.add(number);
         }
         return new ArrayList<>(numbers);

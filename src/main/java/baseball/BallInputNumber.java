@@ -10,6 +10,8 @@ import java.util.List;
  * 같은 숫자가 있거나, 올바르지 않은 숫자의 경우 예외를 발생시킴.
  */
 public class BallInputNumber {
+    static final String INPUT_MESSAGE="숫자를 입력해주세요 : ";
+
     private List<Integer> clientNumber;
 
     public BallInputNumber() {
@@ -17,7 +19,7 @@ public class BallInputNumber {
     }
 
     public List<Integer> makeInputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_MESSAGE);
         String inputNumber = Console.readLine();
         List<Integer> inputNumberList = new ArrayList<>();
         for (int i = 0; i < inputNumber.length(); i++) {

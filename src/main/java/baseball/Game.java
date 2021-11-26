@@ -19,6 +19,12 @@ public class Game {
     static final String EXIT = "2";
     static final int BALL_SIZE = 3;
 
+    static final String BALL_HINT_MESSAGE = "볼 ";
+    static final String STRIKE_HINT_MESSAGE = "스트라이크";
+    static final String NOTHING_HINT_MESSAGE = "낫싱";
+    static final String VICTORY_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     private BallInputNumber ballInputNumber;
     private ComputerNumber computerNumber;
 
@@ -49,16 +55,16 @@ public class Game {
 
     public void getHint() {
         if (ball > 0) {
-            System.out.print(ball + "볼 ");
+            System.out.print(ball + BALL_HINT_MESSAGE);
         }
         if (strike > 0) {
-            System.out.println(strike + "스트라이크");
+            System.out.println(strike + STRIKE_HINT_MESSAGE);
         }
         if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(VICTORY_MESSAGE);
         }
         if (ball + strike == 0) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING_HINT_MESSAGE);
         }
     }
 
@@ -85,7 +91,7 @@ public class Game {
     }
 
     public boolean askRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(RESTART_MESSAGE);
         String isRestart = Console.readLine();
 
         if (!RestartNumberValidator.rightInputRestartCheck(isRestart)) {
