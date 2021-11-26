@@ -14,9 +14,13 @@ public class User {
 
     public static List<Integer> readUserInput() {
         Output.pleaseInput();
-        String userInput = Console.readLine();
+        String userInput = readConsole();
         checkException(userInput);
         return convertStringToList(userInput);
+    }
+
+    private static String readConsole() {
+        return Console.readLine();
     }
 
     private static List<Integer> convertStringToList(String userInput) {
