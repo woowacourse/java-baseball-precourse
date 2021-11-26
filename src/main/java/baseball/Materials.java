@@ -1,6 +1,6 @@
 package baseball;
 
-public final class Constants {
+public final class Materials {
 
     public static final int DIGIT = 3;
 

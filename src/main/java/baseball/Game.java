@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Constants.*;
+import static baseball.Materials.*;
 
 import camp.nextstep.edu.missionutils.Console;
 
