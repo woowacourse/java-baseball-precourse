@@ -15,10 +15,10 @@ public class Application {
 	static int RE_GAME_INPUT_SIZE = 1;
 	static int TOTAL_NUM = 10;
 	static int bit = 0;
-	static int token = 1;
 	static int STOP_VALUE = 2;
 
 	public static void main(String[] args) {
+		int token = 1;
 		while (token != STOP_VALUE) {
 			int strike = 0;
 			int ball = 0;
