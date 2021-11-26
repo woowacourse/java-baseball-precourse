@@ -5,7 +5,7 @@ import baseball.view.InputView;
 public class Game {
 	private final User user;
 	private final Computer computer;
-	private Referee referee;
+	private final Referee referee;
 
 	public Game() {
 		user = new User();

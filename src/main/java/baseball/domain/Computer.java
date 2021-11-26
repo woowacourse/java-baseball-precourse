@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
@@ -13,9 +16,18 @@ public class Computer {
 	}
 
 	public void generateAnswer() {
-		for (int i = 0; i < NUMBER_LENGTH; i++) {
-			answer[i] = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+		Set<Integer> tmpSet = new HashSet<>();
+
+		while (tmpSet.size() != NUMBER_LENGTH) {
+			tmpSet.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
 		}
+
+		int index = 0;
+		for (Integer integer : tmpSet) {
+			answer[index] = integer;
+			index++;
+		}
+
 	}
 
 	public Integer[] getAnswer() {
