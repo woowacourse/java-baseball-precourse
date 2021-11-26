@@ -8,10 +8,12 @@ public class Umpire {
     public int ball;
 
     public Umpire(){
+        init();
+    }
+    public void init(){
         strike=0;
         ball=0;
     }
-
     public void checkResult(int[] target,int[] input){
         isStrike(target,input);
         isBall(target,input);
@@ -21,7 +23,6 @@ public class Umpire {
         }
         System.out.println(strike+"스트라이크");
         System.out.println(ball+"볼");
-
     }
 
     public boolean isEnd(){

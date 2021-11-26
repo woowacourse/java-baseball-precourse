@@ -5,30 +5,32 @@ import baseball.computer.Computer;
 import baseball.umpire.Umpire;
 import baseball.user.User;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
     public static void main(String[] args) {
         //computer 클래스 생성
         Computer computer = new Computer();
-
         User user = new User();
-        user.getInput();
-//        System.out.println(user.input[0]);
-//        System.out.println(user.input[1]);
-//        System.out.println(user.input[2]);
-
         Umpire umpire = new Umpire();
-        umpire.checkResult(computer.target, user.input);
-//        umpire.isEnd();
-//        System.out.println("target");
-        for (int i : computer.target) {
+        boolean finish = false;
 
-            System.out.print(i);
+        while (!finish) {
+            umpire.init();
+            user.getInput();
+            umpire.checkResult(computer.target, user.input);
+
+            for (int i : computer.target) {
+                System.out.print(i);
+            }
+            System.out.println();
+
         }
+        if (umpire.isEnd()) {
+            System.out.println("모두 맞힘! 게임종료");
+            System.out.println("게임 새로 시작 1 2");
+            int end = Integer.valueOf(readLine());
 
-//        System.out.println("\nst");
-//        System.out.println(umpire.strike);
-//        System.out.println("ball");
-//        System.out.println(umpire.ball);
-//
+        }
     }
 }

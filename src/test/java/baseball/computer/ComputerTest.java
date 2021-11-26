@@ -32,7 +32,5 @@ public class ComputerTest {
                     .isGreaterThanOrEqualTo(1)
                     .isLessThanOrEqualTo(9);
         });
-
-
     }
 }
