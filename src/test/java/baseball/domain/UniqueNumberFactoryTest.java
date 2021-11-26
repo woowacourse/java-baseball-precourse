@@ -10,7 +10,7 @@ import baseball.domain.vo.number.UniqueNumberFactory;
 class UniqueNumberFactoryTest {
 
     @Test
-    public void 중복_없는_숫자를_생성할_수_있다() {
+    void 중복_없는_숫자를_생성할_수_있다() {
         // 9개 중에서 중복 없이 3개 뽑기 테스트
         // 몇번을 반복 검증해야 검증 되었다고 할 수 있을까?
         // 테스트 코드를 실행할 때 마다 반복할 텐데 좋은걸까?

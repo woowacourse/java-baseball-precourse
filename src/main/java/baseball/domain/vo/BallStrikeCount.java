@@ -7,8 +7,8 @@ public class BallStrikeCount {
     private static final int NOTHING = 0;
     private static final int THREE_STRIKE = 3;
 
-    int ball;
-    int strike;
+    private int ball;
+    private int strike;
 
     private BallStrikeCount(int ball, int strike) {
         this.ball = ball;

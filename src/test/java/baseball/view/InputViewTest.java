@@ -21,7 +21,7 @@ class InputViewTest {
     }
 
     @Test
-    public void 숫자_중_0을_포함하면_예외를_발생시킨다() {
+    void 숫자_중_0을_포함하면_예외를_발생시킨다() {
         // given
         InputStream given = new ByteArrayInputStream("012".getBytes());
         System.setIn(given);
@@ -71,7 +71,7 @@ class InputViewTest {
     }
 
     @Test
-    public void 세자리_숫자를_입력할_수_있다() {
+    void 세자리_숫자를_입력할_수_있다() {
         // given
         InputStream given = new ByteArrayInputStream("123".getBytes());
         System.setIn(given);

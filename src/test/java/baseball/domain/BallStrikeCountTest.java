@@ -13,7 +13,7 @@ public class BallStrikeCountTest {
     @CsvSource(
         {"123,456,낫싱", "123,123,3스트라이크", "123,312,3볼", "123,132,2볼 1스트라이크"}
     )
-    public void test(String number1, String number2, String expected) {
+    void test(String number1, String number2, String expected) {
         // given
         Number given1 = new Number(number1);
         Number given2 = new Number(number2);
