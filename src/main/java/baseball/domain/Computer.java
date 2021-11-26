@@ -9,15 +9,15 @@ public class Computer {
 	public static final int LIMITED_LENGTH = 3;
 	public static final int MIN_NO = 1;
 	public static final int MAX_NO = 9;
+	private static final Computer com = new Computer();
 
-	private static Computer com = new Computer();
 	private Balls balls;
 
 	private Computer() {
 
 	}
 
-	static Computer getInstance() {
+	public static Computer getInstance() {
 		return com;
 	}
 
@@ -37,7 +37,7 @@ public class Computer {
 		return nos.stream().map(Object::toString).reduce((a, b) -> a + b).get();
 	}
 
-	public Result matchBalls(Balls inputBalls) {
-		return balls.compare(inputBalls);
+	public Result matchBalls(String inputValue) {
+		return balls.compare(Balls.from(inputValue));
 	}
 }

@@ -1,9 +1,10 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class BaseballGame {
-	static void init() {
-		// Randoms.pickNumberInRange()
-	}
+
+	// static String round(String inputValue) {
+	//
+	// 	Result result = com.matchBalls(inputValue);
+	// 	return result.report();
+	// }
 }
