@@ -1,17 +1,16 @@
 package baseball;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class GamePlay {
 
-	public static void playGame() {
-		int[] randomNumbers = RandomNumber.getRandomNumbers();
+	public static void runGame() {
+		ArrayList<Integer> randomNumbers = RandomNumber.getRandomNumbers();
 		while (true) {
-			View.printNumberInputMessage();
-			int[] userInputNumbers = View.inputUserNumbers();
-			HashMap<String, Integer> hintMap = Hint.getHint(randomNumbers, userInputNumbers);
-			View.printHint(hintMap);
-			if (hintMap.get("strike") == 3) {
+			UserInterfaceView.printNumberInputMessage();
+			ArrayList<Integer> userInputNumbers = UserInterfaceView.inputUserNumbers();
+			Hint.getHint(randomNumbers, userInputNumbers);
+			if (Hint.strike == RandomNumber.PICK_NUMBER) {
 				gameRestartOrNot();
 				break;
 			}
@@ -19,9 +18,9 @@ public class GamePlay {
 	}
 
 	public static void gameRestartOrNot() {
-		View.printGameRestartMessage();
-		if (View.inputGameRestartOrNot() == 1) {
-			playGame();
+		UserInterfaceView.printGameRestartMessage();
+		if (UserInterfaceView.inputGameRestartOrNot() == 1) {
+			runGame();
 		}
 	}
 }
