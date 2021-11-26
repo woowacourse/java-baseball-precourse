@@ -25,4 +25,10 @@ public class BaseballGameInputValidator {
         }
         return true;
     }
+
+    public void validateCode(int code) {
+        if (code != 1 && code != 2) {
+            throw new IllegalArgumentException("1과 2 중 하나의 수를 입력해주세요.");
+        }
+    }
 }

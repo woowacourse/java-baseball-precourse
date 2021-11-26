@@ -39,6 +39,8 @@ public class BaseballGameInput {
         System.out.println(BASEBALL_GAME_RESTART_MESSAGE);
         int code = Integer.parseInt(Console.readLine());
 
+        inputValidator.validateCode(code);
+
         return code == RESTART_CODE;
     }
 }
