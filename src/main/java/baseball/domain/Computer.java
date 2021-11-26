@@ -43,6 +43,6 @@ public class Computer {
 	}
 
 	private Boolean isNewNumber(int number) {
-		return !Arrays.asList(this.randomNumbers).contains(number);
+		return !Arrays.stream(randomNumbers).anyMatch(randomNumber -> randomNumber == number);
 	}
 }
