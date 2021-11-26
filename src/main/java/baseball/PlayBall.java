@@ -23,7 +23,7 @@ public class PlayBall {
         createComputerNumber();
     }
 
-    //컴퓨터 숫자 생성 후 저장
+    //컴퓨터 숫자 생성
     private void createComputerNumber() {
         numberService.createComputerNumber(computerNumber);
 
@@ -44,12 +44,12 @@ public class PlayBall {
             numberService.checkUserInput(userInput, userNumber);
 
             getGameResult();
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    //게임 실행 후 결과 저장
+    //입력에 대한 결과 저장
     private void getGameResult() {
         gameResult = new GameResult();
         gameResultService = new GameResultService(gameResult);
@@ -74,7 +74,7 @@ public class PlayBall {
         checkGameOver();
     }
 
-    //3스트라이크인지 확인 후 진행사항 결정
+    //3스트라이크인지 확인
     private void checkGameOver() {
         if (gameResult.getStrikeCount() == 3) {
             BaseballView.printGameOverView();
@@ -83,10 +83,11 @@ public class PlayBall {
             return;
         }
 
+        //3스트라이크가 아니면 재입력 받기
         getUserInput();
     }
 
-    //게임종료 후 새로 시작
+    //재시작 유무 입력 받기
     private void getRepeatInput() {
         String userRestartInput = BaseballView.getUserRestartInput();
 

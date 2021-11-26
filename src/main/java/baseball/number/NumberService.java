@@ -62,7 +62,9 @@ public class NumberService {
     예외시 IllegalArgumentException 발생시키기
      */
 
-    public void checkUserInput(String userInput, BaseballNumber userNumber) throws IllegalArgumentException {
+    public void checkUserInput(String userInput, BaseballNumber userNumber) throws
+            IllegalArgumentException {
+
         int[] tmpUserNumber = toBaseballNumber(userInput);
         userNumber.setNumber(tmpUserNumber);
         if (!checkNumber(userNumber)) {
@@ -75,7 +77,7 @@ public class NumberService {
     사용자 숫자를
     int[]로 변경
      */
-    private int[] toBaseballNumber(String userInput){
+    private int[] toBaseballNumber(String userInput) {
         if (!checkLength(userInput)) {
             throw new IllegalArgumentException();
         }
@@ -96,7 +98,7 @@ public class NumberService {
     }
 
     //숫자인지
-    private boolean isNumber(String userInput){
+    private boolean isNumber(String userInput) {
         try {
             Integer.parseInt(userInput);
         } catch(NumberFormatException e) {
