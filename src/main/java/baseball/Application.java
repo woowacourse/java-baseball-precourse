@@ -2,9 +2,11 @@ package baseball;
 
 import baseball.domain.Computer;
 import baseball.domain.Result;
+import baseball.domain.Token;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
+import jdk.internal.util.xml.impl.Input;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,5 +20,6 @@ public class Application {
             flag = !result.is3Strike();
         }
         OutputView.print();
+        Token.from(InputView.chooseReplay()).isReplay();
     }
 }
