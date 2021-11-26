@@ -11,7 +11,6 @@ public class BaseballGame {
 
 	public static boolean play() {
 		String answer = makeAnswer();
-		boolean isFinish = true;
 		while (true) {
 			System.out.print("숫자를 입력해주세요 : ");
 			String input = readLine();
@@ -26,7 +25,8 @@ public class BaseballGame {
 				break;
 			}
 		}
-		return isFinish;
+		boolean finishBaseballGame = askFinishBaseballGame();
+		return finishBaseballGame;
 	}
 
 	public static String makeAnswer() {
@@ -48,9 +48,7 @@ public class BaseballGame {
 		}
 		for (int i = 0; i < ANSWER_LENGTH; i++) {
 			int number = input.charAt(i) - '0';
-			if (number >= START_NUMBER && number <= END_NUMBER) {
-				continue;
-			} else {
+			if (!(number >= START_NUMBER && number <= END_NUMBER)) {
 				throw new IllegalArgumentException();
 			}
 		}
@@ -86,12 +84,33 @@ public class BaseballGame {
 		if (strikeCount == ANSWER_LENGTH) {
 			System.out.println(ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임종료");
 			isAnswer = true;
-		} else if (ballCount == 0 && strikeCount == 0) {
-			System.out.println("낫싱");
-		} else {
+		} else if (ballCount > 0 && strikeCount > 0) {
 			System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+		} else if (ballCount > 0) {
+			System.out.println(ballCount + "볼");
+		} else if (strikeCount > 0) {
+			System.out.println(strikeCount + "스트라이크");
+		} else {
+			System.out.println("낫싱");
 		}
 		return isAnswer;
+	}
+
+	public static boolean askFinishBaseballGame() {
+		boolean finishBaseballGame = true;
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		String input = readLine();
+		try {
+			if (!(input.equals("1") || input.equals("2"))) {
+				throw new IllegalArgumentException();
+			}
+		} catch (Exception exception) {
+			System.exit(0);
+		}
+		if (input.equals("1")) {
+			finishBaseballGame = false;
+		}
+		return finishBaseballGame;
 	}
 }
 
