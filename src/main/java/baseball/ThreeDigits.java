@@ -60,7 +60,7 @@ public class ThreeDigits {
 
     public void initIsJudged() {
         for (int i = 0; i < 3; i++) {
-            IsJudged[i] = false;
+            this.IsJudged[i] = false;
         }
     }
 }
