@@ -9,19 +9,13 @@ public class GameStatus {
         this.ball_num=ball_num;
     }
 
-    public int getBall_num() {
-        return this.ball_num;
-    }
+    public String toString(){
+        String gameResult="";
 
-    public void setBall_num(int ball_num){
-        this.ball_num=ball_num;
-    }
+        if(strike_num == 0 && ball_num == 0) gameResult+="낫싱";
+        if(ball_num > 0) gameResult=gameResult+ball_num+"볼 ";
+        if(strike_num > 0) gameResult=gameResult+strike_num+"스트라이크";
 
-    public int getStrike_num(){
-        return this.strike_num;
-    }
-
-    public void setStrike_num(){
-        this.strike_num=strike_num;
+        return gameResult;
     }
 }
