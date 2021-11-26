@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.stream.Stream;
 
@@ -35,6 +36,22 @@ public class UserInterfaceView {
 		}
 		return userInputNumbers;
 
+	}
+
+	public static boolean isValidNumberOverlap(ArrayList<Integer> userInputNumbers) {
+		for (Integer i : userInputNumbers) {
+			if (Collections.frequency(userInputNumbers, i) > 1) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static boolean isValidNumberLength(int[] tempInput) {
+		if (tempInput.length != RandomNumber.PICK_NUMBER) {
+			return false;
+		}
+		return true;
 	}
 
 	public static void printHint(HashMap<String, Integer> hintMap) {
