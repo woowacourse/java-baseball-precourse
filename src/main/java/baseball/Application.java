@@ -7,7 +7,7 @@ public class Application {
 	public static void main(String[] args) {
 
 		Number answer = new Number();
-		System.out.println(answer);
+		// System.out.println(answer);
 
 		String userInput;
 		Number userAnswer;
@@ -16,14 +16,13 @@ public class Application {
 			System.out.print("숫자를 입력해주세요 : ");
 			userInput = readLine();
 
-			System.out.println(userInput);
+			if (!Number.checkInputValue(userInput)) {
+				throw new IllegalArgumentException();
+			}
 
-			// if (!Number.checkInputValue(userInput)) {
-			// 	// 에러 발생으로 수정
-			// 	break;
-			// }
+			userAnswer = new Number(userInput);
+			// System.out.println(userAnswer);
 		}
-		// 입력받은 숫자 입력값 확인 -> ex) 3자리, 숫자 등
 
 		// 입력한 값 정답과 대조
 
@@ -35,9 +34,9 @@ public class Application {
 }
 
 class Number {
-	private final int startRange = 1;
-	private final int endRange = 9;
-	private final int numberCount = 3;
+	private static final int startRange = 1;
+	private static final int endRange = 9;
+	private static final int numberCount = 3;
 
 	int[] number = new int[numberCount];
 
@@ -48,19 +47,32 @@ class Number {
 		while (nowNumberIndex < numberCount) {
 			nowRandomNum = this.getRandomNumber();
 
-			if (!this.checkArrayContains(number, nowRandomNum)) {
+			if (!Number.checkArrayContains(number, nowRandomNum)) {
 				number[nowNumberIndex++] = nowRandomNum;
 			}
 		}
 	}
 
-	// 생성자: 입력값이 있을 경우 문자열 잘라 인스턴스 생성
+	Number(String str) {
+		for (int i = 0; i < Number.numberCount; i++) {
+			number[i] = Integer.parseInt(str.charAt(i) + "");
+		}
+	}
 
 	public String toString() {
 		return "number: " + this.number[0] + this.number[1] + this.number[2];
 	}
 
-	private boolean checkArrayContains(final int[] arr, final int number) {
+	private static boolean checkArrayContains(final int[] arr, final int number) {
+		for (int value : arr) {
+			if (value == number) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private static boolean checkArrayContains(final char[] arr, final char number) {
 		for (int value : arr) {
 			if (value == number) {
 				return true;
@@ -70,12 +82,58 @@ class Number {
 	}
 
 	private int getRandomNumber() {
-		return pickNumberInRange(this.startRange, this.endRange);
+		return pickNumberInRange(Number.startRange, Number.endRange);
 	}
 
 	static boolean checkInputValue(final String str) {
+		if (!Number.checkInputLength(str)) {
+			return false;
+		}
+		if (!Number.checkInputNumber(str)) {
+			return false;
+		}
+		if (!Number.checkEqualNumber(str)) {
+			return false;
+		}
+		return true;
+	}
 
-		return false;
+	private static boolean checkInputLength(final String str) {
+		return str.length() == Number.numberCount;
+	}
+
+	private static boolean checkInputNumber(String str) {
+		int numberValue;
+		try {
+			numberValue = Integer.parseInt(str);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+
+	private static boolean checkEqualNumber(String str) {
+		char[] checkEqual = new char[str.length()];
+		char[] word = getCharArrayFromString(str);
+
+		for (int i = 0; i < str.length(); i++) {
+			if (Number.checkArrayContains(checkEqual, word[i])) {
+				return false;
+			}
+			checkEqual[i] = word[i];
+		}
+
+		return true;
+	}
+
+	private static char[] getCharArrayFromString(String str) {
+		char[] charArray = new char[str.length()];
+
+		for (int i = 0; i < str.length(); i++) {
+			charArray[i] = str.charAt(i);
+		}
+
+		return charArray;
 	}
 }
 
