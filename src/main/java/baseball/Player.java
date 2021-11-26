@@ -9,6 +9,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Player {
     public int[] getInput(){
+        System.out.println("숫자를 입력해주세요 : ");
         String input = readLine();
 
         Validation.validate(input);
