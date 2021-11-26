@@ -2,7 +2,6 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -10,7 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class UserInterfaceView {
 	private static final String NUMBER_INPUT = "숫자를 입력해주세요 : ";
 	private static final String THREE_STRIKE_GAME_OVER = "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-	private static final String IS_BALL = "볼";
+	private static final String IS_BALL = "볼 ";
 	private static final String IS_STRIKE = "스트라이크";
 	private static final String IS_NOTHING = "낫싱";
 	private static final String GAME_RESTART_OR_NOT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
@@ -54,26 +53,22 @@ public class UserInterfaceView {
 		return true;
 	}
 
-	public static void printHint(HashMap<String, Integer> hintMap) {
-		int ball = hintMap.get("ball");
-		int strike = hintMap.get("strike");
-		if (strike == 3) {
-			System.out.println(String.valueOf(strike) + "스트라이크" + THREE_STRIKE_GAME_OVER);
-			return;
-		}
-		if (strike == 0 && ball == 0) {
+	public static void printBallAndStrikeCount(int ball, int strike) {
+		String hint = "";
+		if (ball == 0 && strike == 0) {
 			System.out.println(IS_NOTHING);
 			return;
 		}
-		if (strike == 0) {
-			System.out.println(String.valueOf(ball) + IS_BALL);
-			return;
+		if (ball != 0) {
+			hint += (ball + IS_BALL);
 		}
-		if (ball == 0) {
-			System.out.println(String.valueOf(strike) + IS_STRIKE);
-			return;
+		if (strike != 0) {
+			hint += (strike + IS_STRIKE);
 		}
-		System.out.println(String.valueOf(ball) + IS_BALL + " " + String.valueOf(strike) + IS_STRIKE);
+		if (strike == RandomNumber.PICK_NUMBER) {
+			hint += THREE_STRIKE_GAME_OVER;
+		}
+		System.out.println(hint);
 	}
 
 	public static void printGameRestartMessage() {
