@@ -15,18 +15,13 @@ public class UserInterface {
 		converter = new Converter();
 	}
 
-	public void startUserInterface() {
+	public void start() {
 		int resume = Constants.RESUME;
 		do {
-			// 사용자로 부터 문자열 받기
-			String givenString = readLineFromUser();
+			List<Integer> givenNumbers = getUserGivenNumbers();
 
-			// 숫자 리스트로 변환
-			List<Integer> givenNumbers = converter.convertStringToIntegerList(givenString);
-
-			// 비교 값 반환
 			CompareResult result = computer.compareNumbers(givenNumbers);
-			System.out.println(converter.convertResultToString(result));
+			notifyResultOfComparing(result);
 
 			// 다 맞추었으면 게임 재시작 여부 물어봄
 			if(checkAllCorrect(result)) {
@@ -38,16 +33,38 @@ public class UserInterface {
 		} while(resume == Constants.RESUME);
 	}
 
+	private List<Integer> getUserGivenNumbers() {
+		String givenString = readLineFromUser();
+		return converter.convertStringToIntegerList(givenString);
+	}
+
 	private String readLineFromUser() {
 		System.out.print("숫자를 입력해주세요 : ");
 		return Console.readLine();
+	}
+
+	private void notifyResultOfComparing(CompareResult result) {
+		System.out.println(resultOfComparing(result));
+	}
+
+	private String resultOfComparing(CompareResult result) {
+		int strike = result.getStrike();
+		int ball = result.getBall();
+
+		if(strike == 0 && ball == 0) {
+			return "낫싱";
+		} else if(strike != 0 && ball == 0) {
+			return strike + "스트라이크";
+		} else if(strike == 0 && ball != 0) {
+			return ball + "볼";
+		}
+		return ball + "볼 " + strike + "스트라이크";
 	}
 
 	private boolean checkAllCorrect(CompareResult result) {
 		if(result.getStrike() != Constants.RANDOM_NUMBER_SIZE) {
 			return false;
 		}
-
 		return true;
 	}
 	private void notifyCorrectAll() {

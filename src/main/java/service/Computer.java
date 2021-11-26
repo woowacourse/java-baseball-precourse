@@ -27,37 +27,40 @@ public class Computer {
 			int random = Randoms.pickNumberInRange(Constants.START_NUMBER, Constants.END_NUMBER);
 			randomNumberList.add(random);
 		}
-		System.out.println("Computer Generated : " + randomNumberList.toString());
 	}
 
 	private void generateRandomNumber_test() {
-		randomNumberList.add(7);
-		randomNumberList.add(1);
 		randomNumberList.add(3);
+		randomNumberList.add(4);
+		randomNumberList.add(2);
 	}
 
 	public CompareResult compareNumbers(List<Integer> givenNumbers) {
 		int strike = 0;
 		int ball = 0;
 		for(int i = 0 ; i < Constants.RANDOM_NUMBER_SIZE; i++) {
-			if(Objects.equals(givenNumbers.get(i), randomNumberList.get(i))) {
+			if(checkStrike(givenNumbers.get(i), randomNumberList.get(i))) {
 				strike++;
-			}else if(randomNumberList.contains(givenNumbers.get(i))) {
+			} else if(checkBall(givenNumbers.get(i))){
 				ball++;
 			}
 		}
 		return new CompareResult(strike, ball);
 	}
 
+	private boolean checkStrike(int givenNumber, int randomNumber) {
+		if(givenNumber == randomNumber) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean checkBall(int givenNumber) {
+		return randomNumberList.contains(givenNumber);
+	}
+
 	public void refresh() {
 		randomNumberList.clear();
 		generateRandomNumber();
-	}
-
-	public void printRandomNumberList_test() {
-		for(int randomNumber : randomNumberList) {
-			System.out.print(randomNumber + " ");
-		}
-		System.out.println();
 	}
 }
