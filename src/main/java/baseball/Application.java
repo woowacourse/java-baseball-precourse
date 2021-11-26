@@ -4,8 +4,8 @@ public class Application {
 
 	public static void main(String[] args) {
 		while (true) {
-			boolean reStartBaseballGame = BaseballGame.play();
-			if (!reStartBaseballGame) {
+			boolean finishBaseballGame = BaseballGame.play();
+			if (finishBaseballGame) {
 				break;
 			}
 		}

@@ -3,8 +3,6 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.*;
 import static camp.nextstep.edu.missionutils.Randoms.*;
 
-import java.util.ArrayList;
-
 public class BaseballGame {
 
 	static final int START_NUMBER = 1;
@@ -13,29 +11,22 @@ public class BaseballGame {
 
 	public static boolean play() {
 		String answer = makeAnswer();
-		// log
-		System.out.println(answer);
+		boolean isFinish = true;
 		while (true) {
 			System.out.print("숫자를 입력해주세요 : ");
 			String input = readLine();
 			try {
 				checkInput(input);
-			} catch (Exception execption) {
+			} catch (Exception exception) {
 				System.exit(0);
 			}
-			ArrayList<Integer> ballAndStrikeCount = new ArrayList<Integer>(countBallAndStrike(answer, input));
-			int ballCount = ballAndStrikeCount.get(0);
-			int strikeCount = ballAndStrikeCount.get(1);
-			if (strikeCount == ANSWER_LENGTH) {
-				System.out.println(ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임종료");
+			int[] ballAndStrikeCount = countBallAndStrike(answer, input);
+			boolean isAnswer = printBaseballGameResult(ballAndStrikeCount);
+			if (isAnswer) {
 				break;
-			} else if (ballCount == 0 && strikeCount == 0) {
-				System.out.println("낫싱");
-			} else {
-				System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
 			}
 		}
-		return false;
+		return isFinish;
 	}
 
 	public static String makeAnswer() {
@@ -65,8 +56,8 @@ public class BaseballGame {
 		}
 	}
 
-	public static ArrayList<Integer> countBallAndStrike(String answer, String input) {
-		ArrayList<Integer> ballAndStrikeCount = new ArrayList<Integer>();
+	public static int[] countBallAndStrike(String answer, String input) {
+		int[] ballAndStrikeCount = new int[2];
 		int ballCount = 0;
 		int strikeCount = 0;
 		int[] answerNumberCount = new int[END_NUMBER - START_NUMBER + 1];
@@ -83,9 +74,24 @@ public class BaseballGame {
 				ballCount++;
 			}
 		}
-		ballAndStrikeCount.add(ballCount);
-		ballAndStrikeCount.add(strikeCount);
+		ballAndStrikeCount[0] = ballCount;
+		ballAndStrikeCount[1] = strikeCount;
 		return ballAndStrikeCount;
 	}
 
+	public static boolean printBaseballGameResult(int[] ballAndStrikeCount) {
+		boolean isAnswer = false;
+		int ballCount = ballAndStrikeCount[0];
+		int strikeCount = ballAndStrikeCount[1];
+		if (strikeCount == ANSWER_LENGTH) {
+			System.out.println(ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임종료");
+			isAnswer = true;
+		} else if (ballCount == 0 && strikeCount == 0) {
+			System.out.println("낫싱");
+		} else {
+			System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+		}
+		return isAnswer;
+	}
 }
+
