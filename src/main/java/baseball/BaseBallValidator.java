@@ -8,14 +8,7 @@ public class BaseBallValidator {
     }
 
     public static void validateRestart(String input) throws IllegalArgumentException {
-        if (!isNumeric(input)) {
-            throw new IllegalArgumentException();
-        }
-
-        int i = Integer.parseInt(input);
-        if (i != 1 && i != 2) {
-            throw new IllegalArgumentException();
-        }
+        RestartInput.byNumber(input);
     }
 
     private static boolean isNumeric(String input) {

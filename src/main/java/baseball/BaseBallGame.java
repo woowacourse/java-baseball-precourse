@@ -28,7 +28,7 @@ public class BaseBallGame {
         String restart = getRestartInput();
         BaseBallValidator.validateRestart(restart);
 
-        if (restart.equals("1")) {
+        if (RestartInput.byNumber(restart) == RestartInput.RESTART) {
             start();
         }
     }
