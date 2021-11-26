@@ -17,14 +17,14 @@ public class Application {
 //        System.out.println(user.input[2]);
 
         Umpire umpire = new Umpire();
-        umpire.isStrike(computer.target, user.input);
-        umpire.isBall(computer.target, user.input);
+        umpire.checkResult(computer.target, user.input);
+//        umpire.isEnd();
 //        System.out.println("target");
-//        for (int i : computer.target) {
-//
-//            System.out.print(i);
-//        }
-//
+        for (int i : computer.target) {
+
+            System.out.print(i);
+        }
+
 //        System.out.println("\nst");
 //        System.out.println(umpire.strike);
 //        System.out.println("ball");

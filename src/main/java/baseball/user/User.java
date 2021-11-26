@@ -1,6 +1,9 @@
 package baseball.user;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static java.lang.Character.getNumericValue;
 import static java.lang.Character.getType;
@@ -23,6 +26,21 @@ public class User {
         int Num = toInt(inputs);
         //숫자를 배열로 변환
         input = intToArray(Num);
+
+        isSame(input);
+
+    }
+
+    //입력값 내에 중복값이 있으면 오류 발생
+    private void isSame(int[] array) {
+        Set<Integer> set = new HashSet<>();
+        //타켓 넘버들을 set에 넣는다
+        for (int number : array) {
+            set.add(number);
+        }
+        if (set.size() != array.length) {
+            throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다");
+        }
 
     }
 

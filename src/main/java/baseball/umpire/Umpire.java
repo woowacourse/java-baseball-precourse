@@ -12,6 +12,24 @@ public class Umpire {
         ball=0;
     }
 
+    public void checkResult(int[] target,int[] input){
+        isStrike(target,input);
+        isBall(target,input);
+        if (strike==0 && ball==0){
+            System.out.println("nothing");
+            return ;
+        }
+        System.out.println(strike+"스트라이크");
+        System.out.println(ball+"볼");
+
+    }
+
+    public boolean isEnd(){
+        if (strike==3){
+            return true;
+        }
+        return false;
+    }
 
     public void isStrike(int[] target,int[] input){
         for(int i=0; i<3;i++){
@@ -28,6 +46,8 @@ public class Umpire {
             }
         }
     }
+
+
     public boolean contains(int[] array, int key,int index) {
         for(int i=0;i<array.length;i++){
             if(i!=index && key==array[i]){
