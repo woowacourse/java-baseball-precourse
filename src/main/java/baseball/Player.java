@@ -11,13 +11,30 @@ public class Player {
         return decodeUserInput(userInput);
     }
 
+    public boolean decideGoOrStop() {
+        System.out.println(SystemMessage.ENTER_NEXT_GAME_MESSAGE);
+        String userInput = Console.readLine();
+        isValidInput(userInput);
+        if (decodeUserInput(userInput) == SystemMessage.REPEAT) {
+            return true;
+        }
+        return false;
+    }
+
     private void isValidNumber(String input) {
-        int value = getNumber(input);
+        int value = isRightDigit(input);
         isValidRange(value);
         containZero(value);
     }
 
-    private int getNumber(String input) {
+    private void isValidInput(String input) {
+        int value = isRightDigit(input);
+        if (value != SystemMessage.REPEAT && value != SystemMessage.STOP) {
+            throw new IllegalArgumentException(SystemMessage.INVALID_NUMBER);
+        }
+    }
+
+    private int isRightDigit(String input) {
         for (char ch : input.toCharArray()) {
             if (!Character.isDigit(ch)) {
                 throw new IllegalArgumentException(SystemMessage.NO_NUMBER_ERROR);

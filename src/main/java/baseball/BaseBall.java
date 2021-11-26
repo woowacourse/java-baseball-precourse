@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import constant.SystemMessage;
 
 
@@ -20,4 +21,12 @@ public class BaseBall {
         } while (!computer.canFinish(predict));
         System.out.printf("%s\n", SystemMessage.END_GAME_MESSAGE);
     }
+
+    public boolean decideNextGame() {
+        return player.decideGoOrStop();
+
+    }
+
+
+
 }
