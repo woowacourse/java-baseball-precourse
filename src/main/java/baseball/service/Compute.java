@@ -1,17 +1,20 @@
 package baseball.service;
 
+import baseball.repository.BaseBall;
+
 public class Compute {
 
-    public int[] computeScore(int[] gameNumber, int[] userNumber, int size) {
+    public BaseBall computeScore(int[] gameNumber, int[] userNumber, int size) {
         int[] score = {0, 0};
+        BaseBall baseBall = new BaseBall();
 
         for (int i = 0; i < size; i++) {
-            compute(score, gameNumber, userNumber, i);
+            compute(baseBall, gameNumber, userNumber, i);
         }
-        return score;
+        return baseBall;
     }
 
-    private void compute(int[] score, int[] gameNumber, int[] userNumber, int index) {
+    private void compute(BaseBall baseBall, int[] gameNumber, int[] userNumber, int index) {
         int temp = -1;
         for (int i = 0; i < gameNumber.length; i++) {
             if (gameNumber[i] == userNumber[index]) {
@@ -20,10 +23,10 @@ public class Compute {
             }
         }
         if (temp != index && temp != -1) {
-            score[0]++;
+            baseBall.incBallCount();
         }
         if (temp == index) {
-            score[1]++;
+            baseBall.incStrikeCount();
         }
     }
 }

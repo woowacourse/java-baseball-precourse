@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.repository.BaseBall;
 import baseball.service.Compute;
 import baseball.utils.Parser;
 import baseball.utils.RandomUtils;
@@ -40,9 +41,9 @@ public class Controller {
         int strike = 0;
         while (strike != 3) {
             int userNumber[] = getUserNumber();
-            int[] score = compute.computeScore(gameNumber, userNumber, SIZE);
-            output.outputScore(score[0], score[1]);
-            strike = score[1];
+            BaseBall baseBall = compute.computeScore(gameNumber, userNumber, SIZE);
+            output.outputScore(baseBall.getBallCount(), baseBall.getStrikeCount());
+            strike = baseBall.getStrikeCount();
         }
     }
 
