@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 숫자 야구 게임을 진행하는 클래스
@@ -23,6 +24,8 @@ public class Game {
 
     private List<Integer> inputNumberList;
     private List<Integer> answerNumberList;
+    private int strike;
+    private int ball;
 
     public Game() {
         computerNumber = new ComputerNumber();
@@ -30,66 +33,54 @@ public class Game {
 
         inputNumberList = new ArrayList<>();
         answerNumberList = computerNumber.getComputerNumber();
+        strike = 0;
+        ball = 0;
     }
 
     public void playBaseball() {
-        int ball = 0;
-        int strike = 0;
         do {
             inputNumberList = ballInputNumber.inputNumberByClient();
-            ball = getBall();
-            strike = getStrike();
-            getHint(ball, strike);
-        } while (!isFinish(strike));
+            strike = 0;
+            ball = 0;
+            getScore();
+            getHint();
+        } while (!isFinish());
     }
 
-    public void getHint(int ball, int strike) {
-        boolean finish = false;
+    public void getHint() {
         if (ball > 0) {
-            System.out.print(getBall() + "볼 ");
+            System.out.print(ball + "볼 ");
         }
         if (strike > 0) {
-            System.out.println(getStrike() + "스트라이크");
+            System.out.println(strike + "스트라이크");
         }
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            finish = true;
         }
         if (ball + strike == 0) {
             System.out.println("낫싱");
         }
     }
 
-    public int getStrike() {
-        int strike = 0;
-        for (int i = 0; i < BALL_SIZE; i++) {
-            if (inputNumberList.get(i) == answerNumberList.get(i)) {
-                strike++;
-            }
-        }
-        return strike;
-    }
+    public void getScore() {
+        String inputString = inputNumberList.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+        String answerString = answerNumberList.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
 
-    public int getBall() {
-        String inputString = "";
-        String answerString = "";
-        int ball = 0;
-        for (Integer number : inputNumberList) {
-            inputString += number.toString();
-        }
-        for (Integer number : answerNumberList) {
-            answerString += number.toString();
-        }
         for (int i = 0; i < BALL_SIZE; i++) {
             int index = inputString.indexOf(answerString.charAt(i));
-            if (index != i && index != -1) {
+            if (index == i) {
+                strike++;
+            } else if (index != -1) {
                 ball++;
             }
         }
-        return ball;
     }
 
-    public boolean isFinish(int strike) {
+    public boolean isFinish() {
         return strike == 3;
     }
 
