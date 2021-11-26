@@ -33,10 +33,6 @@ public class Controller {
         gameOver();
     }
 
-    /**
-     * score[0] : ball 개수
-     * score[1] : strike 개수
-     */
     private void play() throws IllegalArgumentException{
         int strike = 0;
         while (strike != 3) {
