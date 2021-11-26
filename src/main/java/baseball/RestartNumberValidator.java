@@ -5,8 +5,6 @@ package baseball;
  * 올바르지 않을 경우 예외를 발생시키고 종료시킨다.
  */
 public class RestartNumberValidator {
-    private String isRestart;
-
     public static boolean rightInputRestartCheck(String isRestart){
         return isRestart.equals(Game.RESTART) || isRestart.equals(Game.EXIT);
     }
