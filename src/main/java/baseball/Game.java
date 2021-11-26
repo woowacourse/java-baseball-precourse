@@ -11,7 +11,6 @@ public class Game {
 
 	public static void play() {
 		List<Integer> answerNumber = generateAnswer();
-		//System.out.println(Arrays.toString(answerNumber)); // 생성된 난수 확인 위한 코드 추후 제거
 
 		boolean running = true;
 		do {
@@ -21,7 +20,7 @@ public class Game {
 			Hint hint = new Hint(answerNumber, inputNumber);
 			System.out.println(hint.getHintMessage());
 
-			if(hint.isAllStrike())
+			if (hint.isAllStrike())
 				running = false;
 
 		} while (running);
@@ -31,10 +30,10 @@ public class Game {
 		System.out.println(Const.NEW_GAME_OR_EXIT);
 		String userSelect = Console.readLine();
 
-		if(Const.SELECT_NEW_GAME.equals(userSelect))
+		if (Const.SELECT_NEW_GAME.equals(userSelect))
 			return true;
 
-		if(Const.SELECT_EXIT.equals(userSelect))
+		if (Const.SELECT_EXIT.equals(userSelect))
 			return false;
 
 		throw new IllegalArgumentException();
@@ -58,14 +57,6 @@ public class Game {
 				break;
 			}
 		}
-	}
-
-	private static boolean contains(int[] arr, int index, int num) {
-		for (int i = 0; i < index; i++)
-			if (arr[i] == num)
-				return true;
-
-		return false;
 	}
 
 	private static boolean isCorrectInput(String inputText) {
@@ -107,5 +98,4 @@ public class Game {
 
 		return result;
 	}
-
 }

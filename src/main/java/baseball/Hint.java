@@ -29,7 +29,7 @@ public class Hint {
 	}
 
 	public boolean isAllStrike() {
-		if(this.strike == Const.ANSWER_SIZE){
+		if (this.strike == Const.ANSWER_SIZE) {
 			System.out.println(Const.GAME_CLEAR_MESSAGE);
 			return true;
 		}
