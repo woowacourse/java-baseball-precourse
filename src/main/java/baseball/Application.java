@@ -1,12 +1,28 @@
 package baseball;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 	public static void main(String[] args) {
 
 		Number answer = new Number();
+		System.out.println(answer);
 
+		String userInput;
+		Number userAnswer;
+
+		while (true) {
+			System.out.print("숫자를 입력해주세요 : ");
+			userInput = readLine();
+
+			System.out.println(userInput);
+
+			// if (!Number.checkInputValue(userInput)) {
+			// 	// 에러 발생으로 수정
+			// 	break;
+			// }
+		}
 		// 입력받은 숫자 입력값 확인 -> ex) 3자리, 숫자 등
 
 		// 입력한 값 정답과 대조
@@ -54,10 +70,13 @@ class Number {
 	}
 
 	private int getRandomNumber() {
-		return pickNumberInRange(startRange, endRange);
+		return pickNumberInRange(this.startRange, this.endRange);
 	}
 
-	// 입력값 확인 함수
+	static boolean checkInputValue(final String str) {
+
+		return false;
+	}
 }
 
 class Hint extends Number {
