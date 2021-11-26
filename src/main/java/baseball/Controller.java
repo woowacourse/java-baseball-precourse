@@ -32,4 +32,19 @@ public class Controller {
 
 		System.out.println(CLEAR);
 	}
+
+	public boolean selectRestartOrExit() {
+
+		System.out.println(RESTART_OR_EXIT);
+
+		String reStartOrExitInput = Console.readLine();
+
+		Verification.ofReStartOrExitInput(reStartOrExitInput);
+
+		if (reStartOrExitInput.equals(RE_START)) {
+			return true;
+		}
+
+		return false;
+	}
 }
