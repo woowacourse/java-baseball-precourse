@@ -33,11 +33,7 @@ public class BaseBallGame {
 	private void play() {
 		while (true) {
 			initializeRound();
-			String inputNumberString = getInputNumberByConsole();
-			if (!isValidInputNumber(inputNumberString)) {
-				throw new IllegalArgumentException();
-			}
-			inputNumberArrayList = makeIntegerArrayListFromString(inputNumberString);
+			makeInputNumber();
 			calculateScore();
 			printScore();
 			if (isAnswer()) {
@@ -51,6 +47,14 @@ public class BaseBallGame {
 		inputNumberArrayList.clear();
 		ball = 0;
 		strike = 0;
+	}
+
+	private void makeInputNumber() {
+		String inputNumberString = getInputNumberByConsole();
+		if (!isValidInputNumber(inputNumberString)) {
+			throw new IllegalArgumentException();
+		}
+		inputNumberArrayList = getIntegerArrayListFromString(inputNumberString);
 	}
 
 	private void makeAnswerNumber() {
@@ -91,7 +95,7 @@ public class BaseBallGame {
 		return input;
 	}
 
-	private ArrayList<Integer> makeIntegerArrayListFromString(String str) {
+	private ArrayList<Integer> getIntegerArrayListFromString(String str) {
 		ArrayList<Integer> tmp = new ArrayList<>();
 		for (int i = 0; i < str.length(); i++) {
 			int num = Character.getNumericValue(str.charAt(i));
