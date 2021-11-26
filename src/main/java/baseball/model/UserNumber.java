@@ -1,39 +1,42 @@
 package baseball.model;
 
-import baseball.view.InputView;
+import baseball.constant.Constant;
 
 import java.util.HashSet;
 import java.util.Set;
-import static baseball.constant.ConstantNumber.*;
 
 public class UserNumber {
     private String userNumber;
+
+    public UserNumber(String userNumber) {
+        setUserNumber(userNumber);
+    }
 
     public String getUserNumber() {
         return userNumber;
     }
 
-    public UserNumber(String userNumber) {
-        if (isStringLengthThree(userNumber) && isUserNumberDigit(userNumber) && isSameAllNumber(userNumber)) {
+    public void setUserNumber(String userNumber) {
+        if (isStringLengthThree(userNumber) && isDigitUserNumber(userNumber) && isSameAllUserNumber(userNumber)) {
             this.userNumber = userNumber;
         }
     }
 
-    public boolean isStringLengthThree(String word) throws IllegalArgumentException {
-        if (word.length() != USER_NUMBER_LENGTH) {
+    public static boolean isStringLengthThree(String word) throws IllegalArgumentException {
+        if (word.length() != Constant.USER_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
         return true;
     }
 
-    public boolean isUserNumberDigit(String word) {
+    public boolean isDigitUserNumber(String word) {
         for (int i = 0; i < word.length(); i++) {
-            isStringCharAtDigit(word, i);
+            isDigitCharInString(word, i);
         }
         return true;
     }
 
-    public boolean isSameAllNumber(String word) throws IllegalArgumentException {
+    public static boolean isSameAllUserNumber(String word) throws IllegalArgumentException {
         Set<Character> set = new HashSet<>();
 
         for (int i = 0; i < word.length(); i++) {
@@ -45,12 +48,10 @@ public class UserNumber {
         return true;
     }
 
-    public boolean isStringCharAtDigit(String word, int index) throws IllegalArgumentException {
+    public static boolean isDigitCharInString(String word, int index) throws IllegalArgumentException {
         if (!Character.isDigit(word.charAt(index))) {
             throw new IllegalArgumentException();
         }
         return true;
     }
-
-
 }
