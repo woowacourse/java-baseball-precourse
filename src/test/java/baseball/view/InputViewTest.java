@@ -45,17 +45,41 @@ public class InputViewTest {
 
     @DisplayName("숫자 배열 입력 시 정상 작동 여부 확인")
     @Test
-    void inputNumbersTest() {
-        int[] realNumber = {1,2,3,4};
-        String inputData = "1234";
+    void inputPlayerNumbersTest() {
+        int[] realNumber = {1,2,3};
+        String inputData = "123";
         reassignOutputStream(inputData);
 
-        List<Integer> numberList = InputView.inputNumbers();
+        List<Integer> numberList = InputView.inputPlayerNumbers();
         assertThat(numberList.size()).isEqualTo(realNumber.length);
 
         for (int i = 0; i < realNumber.length; i++) {
             assertThat(numberList.get(i)).isEqualTo(realNumber[i]);
         }
+    }
+
+    @DisplayName("숫자 배열 입력 시, 자릿수가 불일치하면 에러 발생")
+    @Test
+    void inputPlayerNumbersDigitTest() {
+        int[] realNumber = {1,2,3,4};
+        String inputData = "1234";
+        reassignOutputStream(inputData);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            List<Integer> numberList = InputView.inputPlayerNumbers();
+        });
+    }
+
+    @DisplayName("숫자 배열 입력 시, 숫자 범위를 벗어나면 에러 발생")
+    @Test
+    void inputPlayerNumbersOutOfRangeTest() {
+        int[] realNumber = {1,2,0};
+        String inputData = "120";
+        reassignOutputStream(inputData);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            List<Integer> numberList = InputView.inputPlayerNumbers();
+        });
     }
 
     @DisplayName("숫자 배열 입력 시, 숫자가 아닌 값이 포함되면 에러 발생")
@@ -65,7 +89,7 @@ public class InputViewTest {
         reassignOutputStream(inputData);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            List<Integer> numberList = InputView.inputNumbers();
+            List<Integer> numberList = InputView.inputPlayerNumbers();
         });
     }
 
