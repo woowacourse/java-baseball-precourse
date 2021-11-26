@@ -1,11 +1,11 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
+import static baseball.Message.INPUT_REQUEST_MESSAGE;
+import static baseball.Message.NOT_THREE_DIGIT_INTEGER_MESSAGE;
 
 import java.util.regex.Pattern;
 
-import static baseball.Message.INPUT_REQUEST_MESSAGE;
-import static baseball.Message.NOT_THREE_DIGIT_INTEGER_MESSAGE;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
     static final String INPUT_VALUE_REGEX = "^[1-9]{3}$";

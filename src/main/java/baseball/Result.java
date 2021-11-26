@@ -10,18 +10,11 @@ public class Result {
     }
 
     public boolean isAnswer() {
-        if (getStrikeCnt() == 3) {
-            return true;
-        }
-        return false;
+        return getStrikeCnt() == 3;
     }
 
     public int getStrikeCnt() {
         return strikeCnt;
-    }
-
-    public int getBallCnt() {
-        return ballCnt;
     }
 
     public String makeResultSentence() {
@@ -32,10 +25,10 @@ public class Result {
         }
         String resultSentence = "";
         if (ballCnt != 0) {
-            resultSentence += Integer.toString(ballCnt)+"볼 ";
+            resultSentence += ballCnt + "볼 ";
         }
         if (strikeCnt != 0) {
-            resultSentence += Integer.toString(strikeCnt) + "스트라이크";
+            resultSentence += strikeCnt + "스트라이크";
         }
         return resultSentence;
     }

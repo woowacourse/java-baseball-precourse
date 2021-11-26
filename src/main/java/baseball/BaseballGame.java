@@ -1,9 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import static baseball.Message.ASK_GAME_RESTART_MESSAGE;
 import static baseball.Message.NOT_RELATED_ABOUT_RESTART_MESSAGE;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
 

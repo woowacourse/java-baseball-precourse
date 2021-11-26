@@ -13,7 +13,7 @@ public class Computer {
 
     public void makeThreeDigitNumber() {
         makeEachDigitUsingRandom();
-//        System.out.println("정답 : "+ Integer.toString(answerMadeByComputer[0]) + Integer.toString(answerMadeByComputer[1]) + Integer.toString(answerMadeByComputer[2])); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
+       System.out.println("정답 : "+ answerMadeByComputer[0] + answerMadeByComputer[1] + answerMadeByComputer[2]); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
     }
 
     private void makeEachDigitUsingRandom() {
@@ -43,7 +43,6 @@ public class Computer {
 
             if (isStrike(digitOfGuessNumber)) {
                 strikeCnt += 1;
-                continue;
             } else if (isBall(digitOfGuessNumber)) {
                 ballCnt += 1;
             }
