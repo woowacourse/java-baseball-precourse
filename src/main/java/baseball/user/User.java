@@ -15,20 +15,22 @@ public class User {
     //입력 받아 input에 저장
     public void getInput() {
         //입력
+        System.out.print("숫자를 입력해주세요 : ");
         String inputs = readLine();
-
-        //3자리 이상을 입력받으면 오류반환
-        if (inputs.length() != 3) {
-            throw new IllegalArgumentException("3자리 수를 입력하세요");
-        }
-
+        //3자리수가 아니면 오류 발생
+        isThree(inputs);
         //숫자 변환
         int Num = toInt(inputs);
         //숫자를 배열로 변환
         input = intToArray(Num);
-
+        //중복 값 오류 발생
         isSame(input);
 
+    }
+    private void isThree(String inputs){
+        if (inputs.length() != 3) {
+            throw new IllegalArgumentException("3자리 수를 입력하세요");
+        }
     }
 
     //입력값 내에 중복값이 있으면 오류 발생

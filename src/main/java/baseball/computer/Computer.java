@@ -19,5 +19,6 @@ public class Computer {
             }
             target[i]=number;
         }
+
     }
 }
