@@ -31,6 +31,7 @@ public class Controller {
         number.setGameNumbers(RandomUtils.getRandomNumbers(SIZE, START_INCLUSIVE, END_INCLUSIVE));
     }
 
+    // TODO: 제출전에 println 제거하기
     private void gameStart() throws IllegalArgumentException{
         System.out.println(number.getGameNumbers()[0]+""+number.getGameNumbers()[1]+""+number.getGameNumbers()[2]);
         play();
@@ -70,9 +71,11 @@ public class Controller {
     private void askRetry() throws IllegalArgumentException{
         String input = Console.readLine();
         int inputNum = Integer.parseInt(input);
+
         if (inputNum == 0 || inputNum > GAME_OVER) {
             throw new IllegalArgumentException();
         }
+
         if (inputNum == RETRY) {
             run();
         }
