@@ -10,7 +10,6 @@ public class AnswerNumber {
 
 	public static void setAnswer(List<Integer> numberList) {
 		answer = numberList;
-		System.out.println(answer);
 	}
 
 	public static List<Integer> getAnswer() {
