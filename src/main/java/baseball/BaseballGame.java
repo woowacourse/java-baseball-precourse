@@ -10,11 +10,11 @@ public class BaseballGame {
     private int[] playerNum;
 
     public BaseballGame() {
-        enemyNum = new int[3];
-        playerNum = new int[3];
+        initializeNums();
     }
 
     public void gameStart() {
+        initializeNums();
         setEnemyNum();
         while (true) {
             takePlayerNum();
@@ -22,6 +22,11 @@ public class BaseballGame {
                 return;
             }
         }
+    }
+
+    private void initializeNums(){
+        enemyNum = new int[3];
+        playerNum = new int[3];
     }
 
     private void takePlayerNum() {
