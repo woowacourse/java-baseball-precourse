@@ -6,6 +6,7 @@ import baseball.domain.Computer;
 import baseball.domain.NumberBaseballGame;
 import baseball.domain.Player;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class NumberBaseballGameController {
 
@@ -15,12 +16,15 @@ public class NumberBaseballGameController {
 		NumberBaseballGame numberBaseballGame = new NumberBaseballGame();
 
 		computer.createRandomNumbers();
-		play(numberBaseballGame, player);
+		play(numberBaseballGame, player, computer);
 	}
 
-	private static void play(NumberBaseballGame numberBaseballGame, Player player) {
+	private static void play(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
 		try {
-			input(numberBaseballGame, player);
+			int[] answer = input(numberBaseballGame, player);
+			int strikeCounts = computer.getStrikeCounts(answer);
+			int ballCounts = computer.getBallCounts(answer);
+			OutputView.hintMessage(ballCounts, strikeCounts);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e);
 		}
