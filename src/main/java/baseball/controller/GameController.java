@@ -9,6 +9,7 @@ import baseball.domain.AnswerNumber;
 import baseball.util.RandomNumberGenerator;
 import baseball.validator.InputValidator;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class GameController {
 	private static GameState gameState;
@@ -34,6 +35,7 @@ public class GameController {
 		do {
 			ResultController resultController = new ResultController();
 			resultController.setResult(inputPlayerNumber());
+			OutputView.printGameResult();
 			if (resultController.isGameCompleted()) {
 			}
 		} while (gameState == GameState.PLAY);
