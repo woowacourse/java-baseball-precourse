@@ -20,6 +20,8 @@ public class Application {
 		checkInput(userInput, GAME_INPUT_START, GAME_INPUT_END, GAME_INPUT_SIZE);
 		int strike = calculateStrike(userInput, randomNumber);
 		int ball = calculateBall(userInput, randomNumber);
+		bit = 0;
+		printResult(strike, ball);
 	}
 
 	public static String generateNumber() {
@@ -81,5 +83,24 @@ public class Application {
 			}
 		}
 		return ball;
+	}
+
+	public static void printResult(int strike, int ball) {
+		if (strike == 0 && ball == 0) {
+			System.out.print("낫싱\n");
+		}
+		if (strike != 0 && ball == 0) {
+			if (strike == RANDOM_NUMBER_SIZE) {
+				System.out.print("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+			} else {
+				System.out.print(strike + "스트라이크\n");
+			}
+		}
+		if (strike == 0 && ball != 0) {
+			System.out.print(ball + "볼\n");
+		}
+		if (strike != 0 && ball != 0) {
+			System.out.print(ball + "볼 " + strike + "스트라이크\n");
+		}
 	}
 }
