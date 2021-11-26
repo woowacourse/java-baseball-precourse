@@ -14,7 +14,6 @@ public class Compute {
     private void compute(int[] score, int[] gameNumber, int[] userNumber, int index) {
         int temp = -1;
         for (int i = 0; i < gameNumber.length; i++) {
-//            System.out.println(gameNumber[i] + " " + userNumber[index]);
             if (gameNumber[i] == userNumber[index]) {
                 temp = i;
                 break;
