@@ -15,7 +15,7 @@ class ComputerTest {
     }
 
     @Test
-    void 출력_테스트() {
+    void 컴퓨터_입력_테스트() {
         //given
         Computer computer = new Computer();
         Set<Integer> randomNumbers;
