@@ -15,6 +15,8 @@ public class InputView {
 
 	public static String restartOrStop() {
 		System.out.println(INPUT_RESTART_OR_STOP);
-		return Console.readLine();
+		String restartInput = Console.readLine();
+		InputException.restartInputValidationCheck(restartInput);
+		return restartInput;
 	}
 }

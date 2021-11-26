@@ -53,5 +53,10 @@ public class InputException {
 	/**
 	 * 게임 재시작 여부를 묻는 입력이 범위를 넘어갈때 예외 처리 (ex) 1, 2가 아닐떄)
 	 */
-
+	public static void restartInputValidationCheck(String input) {
+		if ("1".equals(input) || "2".equals(input)) {
+			return;
+		}
+		throw new IllegalArgumentException(INVALID_INPUT_ERROR);
+	}
 }
