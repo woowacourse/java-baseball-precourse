@@ -37,8 +37,13 @@ public class GameController {
 			resultController.setResult(inputPlayerNumber());
 			OutputView.printGameResult();
 			if (resultController.isGameCompleted()) {
+				endGame();
 			}
 		} while (gameState == GameState.PLAY);
+	}
+
+	public void endGame() {
+		gameState = GameState.COMPLETE;
 	}
 	}
 }

@@ -9,4 +9,9 @@ public class OutputView {
 	public static void printGameResult() {
 		System.out.println(GameResult.getResultMsg());
 	}
+
+	public static void printGameComplete() {
+		System.out.println(GAME_COMPLETE_MSG);
+	}
+
 }
