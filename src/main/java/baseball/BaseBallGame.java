@@ -12,12 +12,12 @@ public class BaseBallGame {
 	private final int GAME_NUMBER_LENGTH = 3;
 	private LinkedHashSet<Integer> answerNumberSet;
 	private ArrayList<Integer> inputNumberArrayList;
-	private int ball;
-	private int strike;
+	private Score score;
 
 	public BaseBallGame() {
 		answerNumberSet = new LinkedHashSet<>();
 		inputNumberArrayList = new ArrayList<>();
+		score = new Score();
 	}
 
 	public void start() {
@@ -45,8 +45,7 @@ public class BaseBallGame {
 
 	private void initializeRound() {
 		inputNumberArrayList.clear();
-		ball = 0;
-		strike = 0;
+		score.initializeScore();
 	}
 
 	private void makeInputNumber() {
@@ -108,12 +107,12 @@ public class BaseBallGame {
 		int i = 0;
 		for (Integer num : answerNumberSet) {
 			if (num.equals(inputNumberArrayList.get(i))) {
-				strike++;
+				score.addStrike();
 				i++;
 				continue;
 			}
 			if (answerNumberSet.contains(inputNumberArrayList.get(i))) {
-				ball++;
+				score.addBall();
 			}
 			i++;
 		}
@@ -131,21 +130,8 @@ public class BaseBallGame {
 	}
 
 	private void printScore() {
-		if (ball == 0 && strike == 0) {
-			System.out.println("낫싱");
-			return;
-		}
-		if (ball > 0 && strike > 0) {
-			System.out.println(ball + "볼 " + strike + "스트라이크");
-			return;
-		}
-		if (ball > 0) {
-			System.out.println(ball + "볼");
-			return;
-		}
-		if (strike > 0) {
-			System.out.println(strike + "스트라이크");
-		}
+		String scoreStr = score.getScoreToString();
+		System.out.println(scoreStr);
 	}
 
 	private boolean isFinishedGame() {
