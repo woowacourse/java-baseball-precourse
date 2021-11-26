@@ -7,6 +7,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
+    private static final String NEW_GAME = "1";
+    private static final String EXIT = "2";
+
     private static final int CORRECT_NUMBER_LENGTH = 3;
 
     private static final String NUMERIC_FILTER = "[1-9]+";
@@ -46,5 +49,21 @@ public class InputView {
 
     private boolean isNumeric(String input) {
         return input.matches(NUMERIC_FILTER);
+    }
+
+    public boolean wantNewGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return isNewGame(readLine());
+    }
+
+    public boolean isNewGame(String input) {
+        validateNewGameInput(input);
+        return input.equals(NEW_GAME);
+    }
+
+    private void validateNewGameInput(String input) {
+        if (!input.equals(NEW_GAME) && !input.equals(EXIT)) {
+            throw new IllegalArgumentException("1 혹은 2만 입력할 수 있습니다 ! 게임 종료");
+        }
     }
 }
