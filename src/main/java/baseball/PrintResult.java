@@ -2,19 +2,14 @@ package baseball;
 
 public class PrintResult {
 
-    public static int countStrike(int[] target, int[] userNum) {
-        int strike = 0;
-
-        for(int i=0; i<3; i++) {
-            if (target[i] == userNum[i]) {
-                strike++;
-            }
+    public static boolean strike(int target, int userNum) {
+        if(target == userNum) {
+            return true;
         }
-
-        return strike;
+        return false;
     }
 
-    public static boolean countBall(int[] target, int userNum, int userIndex) {
+    public static boolean ball(int[] target, int userNum, int userIndex) {
         for(int i=0; i<3; i++) {
             if(i != userIndex && target[i] == userNum) {
                 return true;
@@ -22,6 +17,5 @@ public class PrintResult {
         }
         return false;
     }
-
 
 }
