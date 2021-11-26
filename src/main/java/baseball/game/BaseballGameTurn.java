@@ -59,4 +59,7 @@ public class BaseballGameTurn {
         return balls;
     }
 
+    public boolean isGameEnded() {
+        return this.strikes == NumbersConstraints.NUMBER_LENGTH.value();
+    }
 }
