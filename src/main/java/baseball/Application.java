@@ -15,17 +15,16 @@ public class Application {
 		while (true) {
 			System.out.print("숫자를 입력해주세요 : ");
 			userInput = readLine();
-
 			if (!Answer.checkInputValue(userInput)) {
 				throw new IllegalArgumentException();
 			}
 
 			answer = new Answer(userInput);
 
-			// hint = new Hint();
+			hint = new Hint();
+			hint.compareAnswer(answer, rightAnswer);
+			System.out.println(hint);
 		}
-
-		// 입력한 값 정답과 대조
 
 		// 힌트에 따라 결과 출력
 
@@ -62,12 +61,21 @@ class Array {
 
 		return charArray;
 	}
+
+	static int getIndexFromValue(final int[] arr, final int value) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == value) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }
 
 class Answer {
 	private static final int startRange = 1;
 	private static final int endRange = 9;
-	private static final int numberCount = 3;
+	static final int numberCount = 3;
 
 	int[] number = new int[numberCount];
 
@@ -143,6 +151,10 @@ class Answer {
 class Hint extends Answer {
 	int ball, strike;
 
+	public String toString() {
+		return "ball: " + this.ball + ", strike: " + this.strike;
+	}
+
 	private void addBallCount() {
 		this.ball++;
 	}
@@ -151,14 +163,21 @@ class Hint extends Answer {
 		this.strike++;
 	}
 
-	// 입력값과 정답 대조 함수
 	void compareAnswer(Answer answer, Answer rightAnswer) {
 		int nowNumber;
 
-		for (int i = 0; i < answer.number.length; i++) {
+		for (int i = 0; i < Answer.numberCount; i++) {
 			nowNumber = answer.number[i];
 
-			// if (Number.checkArrayC)
+			if (!Array.checkArrayContains(rightAnswer.number, nowNumber)) {
+				continue;
+			}
+			if (i == Array.getIndexFromValue(rightAnswer.number, nowNumber)) {
+				addStrikeCount();
+				continue;
+			}
+
+			addBallCount();
 		}
 	}
 
