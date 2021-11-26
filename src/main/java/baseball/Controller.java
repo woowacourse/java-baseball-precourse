@@ -60,9 +60,9 @@ public class Controller {
     }
 
     /**
-     * 유저입력이 (문자 or 0 or 3 이상) : Exception
-     * 유저입력이 (1) : 재시작
-     * 유저입력이 (2) : 종료
+     * 유저입력이 (문자 or 0 or 3 이상)  : Exception
+     * 유저입력이 (1)                  : 재시작
+     * 유저입력이 (2)                  : 종료
      */
     private void askRetry() throws IllegalArgumentException{
         String input = Console.readLine();
