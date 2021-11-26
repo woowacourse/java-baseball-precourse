@@ -6,13 +6,17 @@ import java.util.List;
 public class BallRepository {
 	List<Ball> balls = new ArrayList<>();
 
-	public BallRepository(List<Integer> input) {
+	public void insertNumbers(List<Integer> input) {
 		validateNumbers(input);
 		for (int i = 0; i < input.size(); i++) {
 			if (validateNumber(input.get(i))) {
 				balls.add(new Ball(i, input.get(i)));
 			}
 		}
+	}
+
+	public void clearNumbers() {
+		balls.clear();
 	}
 
 	private boolean validateNumber(int number) {

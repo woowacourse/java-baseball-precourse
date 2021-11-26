@@ -7,8 +7,8 @@ public class Referee {
 	private int strikeCount = 0;
 	private int ballCount = 0;
 
-	public Referee(BallRepository ballRepository) {
-		this.computerBalls = ballRepository.getBalls();
+	public Referee(List<Ball> balls) {
+		this.computerBalls = balls;
 	}
 
 	public void judge(List<Ball> balls) {
@@ -38,8 +38,12 @@ public class Referee {
 		return strikeCount;
 	}
 
-	public void clear() {
+	public void clearScore() {
 		ballCount = 0;
 		strikeCount = 0;
+	}
+
+	public void setBalls(List<Ball> balls) {
+		this.computerBalls = balls;
 	}
 }

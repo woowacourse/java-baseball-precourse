@@ -1,14 +1,22 @@
 package baseball;
 
+import java.util.List;
+
 public class Computer {
-	private final BallRepository balls;
+	private final BallRepository ballRepository = new BallRepository();
 
 	public Computer() {
 		RandomNumbers randomNumbers = new RandomNumbers();
-		balls = new BallRepository(randomNumbers.getNumberList());
+		ballRepository.insertNumbers(randomNumbers.getNumberList());
 	}
 
-	public BallRepository getBalls() {
-		return balls;
+	public void createNewNumbers() {
+		RandomNumbers randomNumbers = new RandomNumbers();
+		ballRepository.clearNumbers();
+		ballRepository.insertNumbers(randomNumbers.getNumberList());
+	}
+
+	public List<Ball> getBalls() {
+		return ballRepository.getBalls();
 	}
 }

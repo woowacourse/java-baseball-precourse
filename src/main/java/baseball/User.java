@@ -6,10 +6,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
-	private final BallRepository balls;
+	private final BallRepository ballRepository = new BallRepository();
 
-	public User(String input) {
-		balls = new BallRepository(createNumbers(input));
+	public void insertNumbers(String input) {
+		ballRepository.clearNumbers();
+		ballRepository.insertNumbers(createNumbers(input));
 	}
 
 	private boolean validationNumber(int number) {
@@ -37,7 +38,7 @@ public class User {
 		}
 	}
 
-	public BallRepository getBalls() {
-		return balls;
+	public List<Ball> getBalls() {
+		return ballRepository.getBalls();
 	}
 }
