@@ -17,6 +17,7 @@
 # 🛠 구현할 기능 목록
 * Game 시작 메서드 생성
 * 랜덤 값으로 상대방(컴퓨터) 수 생성해주는 메서드 생성
+   * 랜덤 값에 중복된 수가 포함되어 나오는지 체크
 * 사용자로부터 입력 받는 함수 생성
 * 입력 값이 잘못된 값인지 체크하는 함수 생성 (잘못된 값을 입력할 경우 **IllegalArgumentException**을 발생)
    * 서로다른 수인지 체크 함수
@@ -38,6 +39,7 @@
 * [X] 랜덤 값으로 상대방(컴퓨터) 수 생성해주는 메서드 생성
    * [X] `camp.nextstep.edu.missionutils`에서 제공하는 Randoms API를 활용해 구현해야 한다.
    * [X] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용해야한다.
+   * [X] 랜덤 값에 중복된 수가 포함되어 나오는지 체크
 * [X] 사용자로부터 입력 받는 함수 생성
    * [X] `camp.nextstep.edu.missionutils`에서 제공하는 Console API를 활용해야한다.
    * [X] 입력 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해야한다.
@@ -52,11 +54,12 @@
    * [X] 사용자 입력에 대한 힌트 탐색 함수 생성
    * [X] 힌트 출력 함수 생성
 * [X] 게임 restart를 할지 여부를 묻는 함수 호출
+   * [X] 게임 restart여부에 대한 응답의 입력 값이 잘못된 값인지 체크 (잘못된 값을 입력할 경우 **IllegalArgumentException**을 발생)
 
 <br>
 
-* [ ] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현하였는가?
-* [ ] 3항 연산자를 사용하지 않고 구현하였는가?
+* [X] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현하였는가?
+* [X] 3항 연산자를 사용하지 않고 구현하였는가?
 * [ ] 모든 테스트케이스가 성공하는가?
 
 
