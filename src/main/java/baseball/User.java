@@ -10,7 +10,7 @@ public class User {
 
     private static final int RANDOM_START_INCLUSIVE = 1;
     private static final int RANDOM_END_INCLUSIVE = 9;
-    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해 주세요 : ";
+    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String STRIKE_KOREAN = "스트라이크";
     private static final String BALL_KOREAN = "볼";
     private static final String NOTHING = "낫싱";
