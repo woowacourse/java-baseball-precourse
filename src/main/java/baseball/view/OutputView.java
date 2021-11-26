@@ -5,6 +5,7 @@ public class OutputView {
 	private static final String BALL_MESSAGE = "%d볼";
 	private static final String STRIKE_MESSAGE = "%d스트라이크";
 	private static final String NOTHING_MESSAGE = "낫싱";
+	private static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 	private static final int ZERO_COUNT = 0;
 
 	public static void hintMessage(int ballCounts, int strikeCounts) {
@@ -21,5 +22,9 @@ public class OutputView {
 			return;
 		}
 		System.out.printf(BALL_AND_STRIKE_MESSAGE, ballCounts, strikeCounts);
+	}
+
+	public static void successMessage() {
+		System.out.println(SUCCESS_MESSAGE);
 	}
 }
