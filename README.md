@@ -124,6 +124,52 @@
 <br>
 
 ---
+## 💡 구현할 기능 목록
+먼저 들어가기에 앞서 Target클래스는 컴퓨터가 랜덤하게 생성한 수와 관련 함수들을 포함하는 클래스이다.
+그리고 컴퓨터가 생성한 타겟값은 항상 감춰져 있어야함을 반영해야함을 고려해야한다.
+
+- 💡  gradlew.bat clean test 진행
+  
+
+- 💡 **task1. illegalexception 처리**
+  - readline()함수 사용
+  
+  
+- 💡 **task2. 게임진행 및 종료 과정 구현**
+  - 게임진행과 종료 로직 구현
+  - baseball클래스에 Target을 멤버변수로 준비해둔다.
+  - 게임진행은 gameStart()함수로 분리한다.
+  
+
+- 💡 **task3. Target클래스 구현**
+  - 필요한 멤버 변수들 생성
+    - int from=1, begin=9, targetLength=3 와 각각에 대한 getter setter 구현
+    - targetNumber는 string타입으로 관리한다..
+    - string타입인 이유는 추후에 알파벳 등 으로 확장할 때를 위해.
+    - targetNumber는 private이고 오로지 target생성함수에 의해서만 생성된다.
+  - 생성자에서는 생성되자마자 기본 멤버변수들을 사용해 targetNumber를 생성한다.
+  - generateTargetNumber() 구현
+    - public void 이고 메게변수는 없다.
+    - 멤버변수를 사용하여 적절한 targetNumber를 생성하는 역할을 한다.
+    - 구현후 테스트를 거친다. 멤버변수의 조건에 맞게 생성되는지와 항상 바뀌는지 확인한다.
+  - compareWith(String) 구현
+    - public void 이고 매게변수로 사용자 입력값을 받는다.
+    - 입력값과 타겟값을 비교하여 한번에 ball과 strike를 계산한다.
+    - 계산후에는 배열의 형태로 반환한다.
+
+
+- 💡 **printResult(int[]) 게임 결과 출력 함수 구현**
+  - 크기가 2인 배열을 받고 이를 토대로 ball과 strike를 출력한다.
+  - 크기가 2인지 확인해야한다.
+
+
+- 💡 **gameStart() 게임진행함수의 내부 로직 구현**
+  - void 함수이고 게임진행의 전반을 담당한다.
+  - Target멤버변수의 타겟값을 생성한다.
+  - 반복하여 사용자의 입력을 받고 확인한다.
+    - target멤버변수의 targetLength만큼 strike가 나오면 게임을 종료한다.
+
+---
 
 ## 📝 License
 
