@@ -1,6 +1,9 @@
 package baseball;
 
-import static baseball.Rules.*;
+import static constant.Message.*;
+import static constant.Rules.*;
+
+import constant.Message;
 
 public class Validation {
 
@@ -10,13 +13,13 @@ public class Validation {
 
 	public static void checkRestartInput(String request) {
 		if (!request.equals("1") && !request.equals("2")) {
-			throw new IllegalArgumentException(Message.ERROR_REQUEST_INPUT);
+			throw new IllegalArgumentException(ERROR_REQUEST_INPUT);
 		}
 	}
 
 	private static boolean isLengthOk(String numbers) {
 		if (numbers.length() != NUMBER_LENGTH) {
-			throw new IllegalArgumentException(Message.ERROR_INPUT_LENGTH);
+			throw new IllegalArgumentException(ERROR_INPUT_LENGTH);
 		}
 		return true;
 	}
@@ -25,7 +28,7 @@ public class Validation {
 		for (int i = 0; i < NUMBER_LENGTH; i++) {
 			char eachDigit = numbers.charAt(i);
 			if (!Character.isDigit(eachDigit) || eachDigit == 0) {
-				throw new IllegalArgumentException(Message.ERROR_INPUT_TYPE);
+				throw new IllegalArgumentException(ERROR_INPUT_TYPE);
 			}
 		}
 		return true;
@@ -36,7 +39,7 @@ public class Validation {
 		for (int i = 0; i < NUMBER_LENGTH; i++) {
 			int eachDigit = Character.getNumericValue(numbers.charAt(i));
 			if (usedNumber[eachDigit]) {
-				throw new IllegalArgumentException(Message.ERROR_INPUT_DUPLICATE);
+				throw new IllegalArgumentException(ERROR_INPUT_DUPLICATE);
 			}
 			usedNumber[eachDigit] = true;
 		}

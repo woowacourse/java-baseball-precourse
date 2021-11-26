@@ -1,7 +1,7 @@
 package baseball;
 
-import static baseball.Message.*;
-import static baseball.Rules.*;
+import static constant.Message.*;
+import static constant.Rules.*;
 
 import camp.nextstep.edu.missionutils.Console;
 

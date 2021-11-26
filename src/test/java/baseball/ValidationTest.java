@@ -1,9 +1,10 @@
 package baseball;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import constant.Message;
 
 class ValidationTest {
 
