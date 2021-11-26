@@ -34,7 +34,7 @@ public class User {
     }
 
     public static void checkNumeric(char c) {
-        if(Character.isDigit(c)) {
+        if(!Character.isDigit(c)) {
             throw new IllegalArgumentException("잘못 입력하셨습니다.");
         }
     }
