@@ -43,7 +43,7 @@ public class Controller {
         while (strike != 3) {
             number.setUserNumbers(getUserNumber());
             BaseBall baseBall = computer.computeScore(number.getGameNumbers(), number.getUserNumbers(), SIZE);
-            systemMessage.outputScoreMessage(baseBall.getBallCount(), baseBall.getStrikeCount());
+            systemMessage.printScoreMessage(baseBall.getBallCount(), baseBall.getStrikeCount());
             strike = baseBall.getStrikeCount();
         }
     }
@@ -58,8 +58,8 @@ public class Controller {
     }
 
     private void gameOver() throws IllegalArgumentException{
-        systemMessage.outputGameOverMessage();
-        RequestInput.outputRetryMessage();
+        systemMessage.printGameOverMessage();
+        RequestInput.printRetryMessage();
         askRetry();
     }
 
