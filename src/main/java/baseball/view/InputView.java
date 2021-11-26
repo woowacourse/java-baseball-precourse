@@ -10,8 +10,7 @@ public class InputView {
 
 	public static String getInput() {
 		System.out.print(INPUT_NUMBER_MESSAGE);
-
-		return InputException.validationCheck(Console.readLine());
+		return InputException.userInputValidationCheck(Console.readLine());
 	}
 
 	public static String restartOrStop() {
