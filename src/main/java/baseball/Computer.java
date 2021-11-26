@@ -9,49 +9,22 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
 
-public class BaseBallGame {
-	private final Player player;
+public class Computer {
 	private List<Integer> targetNumber;
 
-	public BaseBallGame() {
-		player = new Player();
-		startGame();
-	}
-
-	private void startGame() {
-		targetNumber = getTargetNumber();
-		playGame();
-		checkReplaying();
-	}
-
-	private List<Integer> getTargetNumber() {
-		Set<Integer> result = new LinkedHashSet<>();
-		while (result.size() < NUMBER_LENGTH) {
-			result.add(pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
+	public void makeTargetNumber() {
+		Set<Integer> numbers = new LinkedHashSet<>();
+		while (numbers.size() < NUMBER_LENGTH) {
+			numbers.add(pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
 		}
-		return new ArrayList<>(result);
+		targetNumber = new ArrayList<>(numbers);
 	}
 
-	private void playGame() {
-		List<Integer> playerNumber = player.getPlayerNumber();
-		while (!isThreeStrike(playerNumber)) {
-			checkBallAndStrike(playerNumber);
-			playerNumber = player.getPlayerNumber();
-		}
-		printClearMessage();
+	public boolean isNotThreeStrike(List<Integer> playerNumber) {
+		return !targetNumber.equals(playerNumber);
 	}
 
-	private boolean isThreeStrike(List<Integer> playerNumber) {
-		return targetNumber.equals(playerNumber);
-	}
-
-	private void printClearMessage() {
-		System.out.println(NUMBER_LENGTH + STRIKE_MESSAGE);
-		System.out.println(GAME_CLEAR_MESSAGE);
-		System.out.println(REPLAYING_OR_END_MESSAGE);
-	}
-
-	private void checkBallAndStrike(List<Integer> playerNumber) {
+	public void checkBallAndStrike(List<Integer> playerNumber) {
 		int strikes = countStrike(playerNumber);
 		int balls = countBall(playerNumber, strikes);
 		System.out.println(getBallAndStrikeMessage(balls, strikes));
@@ -72,11 +45,11 @@ public class BaseBallGame {
 	private String getBallAndStrikeMessage(int balls, int strikes) {
 		String ballMessage = getBallMessage(balls);
 		String strikeMessage = getStrikeMessage(strikes);
-		String result = ballMessage + strikeMessage;
-		if (result.equals("")) {
+		String ballAndStrikeMessage = ballMessage + strikeMessage;
+		if (ballAndStrikeMessage.equals("")) {
 			return NOTHING_MESSAGE;
 		}
-		return result;
+		return ballAndStrikeMessage;
 	}
 
 	private String getBallMessage(int balls) {
@@ -91,12 +64,5 @@ public class BaseBallGame {
 			return String.format("%d%s", strikes, STRIKE_MESSAGE);
 		}
 		return "";
-	}
-
-	private void checkReplaying() {
-		int replayingOrEndNumber = player.getReplayingOrEndNumber();
-		if (replayingOrEndNumber == REPLAYING_NUMBER) {
-			startGame();
-		}
 	}
 }
