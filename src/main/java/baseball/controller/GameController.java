@@ -32,6 +32,10 @@ public class GameController {
 	public void startGame() {
 		init();
 		do {
+			ResultController resultController = new ResultController();
+			resultController.setResult(inputPlayerNumber());
+			if (resultController.isGameCompleted()) {
+			}
 		} while (gameState == GameState.PLAY);
 	}
 	}
