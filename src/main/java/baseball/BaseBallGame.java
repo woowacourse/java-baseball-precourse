@@ -29,10 +29,22 @@ public class BaseBallGame {
 				baseBallScore.countScore(baseBallProvider.getAnswer(), baseBallPlayer);
 				System.out.println(baseBallScore.scoreString());
 			}
-			System.out.println(SUCCESS_MESSAGE);
-			System.out.println(RESTART_OR_END_MESSAGE);
-			gameStatus = Integer.valueOf(Console.readLine());
+			getGameStatus();
 		}
+	}
+
+	private void getGameStatus() {
+		System.out.println(SUCCESS_MESSAGE);
+		System.out.println(RESTART_OR_END_MESSAGE);
+		Integer userInputStatus = Integer.valueOf(Console.readLine());
+		if (!isRightStatus(userInputStatus)) {
+			throw new IllegalArgumentException();
+		}
+		gameStatus = userInputStatus;
+	}
+
+	private boolean isRightStatus(Integer userInputStatus) {
+		return userInputStatus == GOING || userInputStatus == STOP;
 	}
 
 }
