@@ -3,25 +3,26 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class BaseBallGame {
-
-    private int inputNum;
-    private LinkedHashSet<Integer> answerNumSet;
-    private String[] inputNumStrArr;
+    private final int GAME_NUMBER_LENGTH = 3;
+    private LinkedHashSet<Integer> answerNumberSet;
+    private ArrayList<Integer> inputNumberArrayList;
     private int ball;
     private int strike;
 
     public BaseBallGame() {
-        answerNumSet = new LinkedHashSet<>();
+        answerNumberSet = new LinkedHashSet<>();
+        inputNumberArrayList = new ArrayList<>();
     }
 
     public void start() {
         while(true) {
-            makeAnswerNum();
+            makeAnswerNumber();
             play();
             if(isFinishedGame()) {
                 break;
@@ -31,13 +32,12 @@ public class BaseBallGame {
 
     private void play() {
         while(true) {
-            getInputNumByConsole();
-            if(!checkRangeOfGameNum(inputNum)) {
+            initializeRound();
+            String inputNumberString = getInputNumberByConsole();
+            if(!isValidInputNumber(inputNumberString)) {
                 throw new IllegalArgumentException();
             }
-            inputNumStrArr = makeStringArrayFromInt(inputNum);
-
-            initializeScore();
+            inputNumberArrayList = makeIntegerArrayListFromString(inputNumberString);
             calculateScore();
             printScore();
             if(isAnswer()) {
@@ -47,78 +47,81 @@ public class BaseBallGame {
         }
     }
 
-    private void initializeScore() {
+    private void initializeRound() {
+        inputNumberArrayList.clear();
         ball = 0;
         strike = 0;
     }
 
-    private void makeAnswerNum() {
-        answerNumSet.clear();
-        while (answerNumSet.size() < 3) {
+    private void makeAnswerNumber() {
+        answerNumberSet.clear();
+        while (answerNumberSet.size() < GAME_NUMBER_LENGTH) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
-            answerNumSet.add(randomNum);
+            answerNumberSet.add(randomNum);
         }
     }
 
-    private boolean checkRangeOfGameNum(int num) {
-        String str = Integer.toString(num);
-        if(str.length() != 3) {
+    private boolean isValidInputNumber(String str) {
+        if(str.length() != GAME_NUMBER_LENGTH) {
             return false;
         }
         if(str.contains("0")) {
             return false;
+        }
+        for(int i = 0; i < str.length(); i++) {
+            if(!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
         }
 
         Set<Character> s = new HashSet<>();
         for(int i = 0; i < str.length(); i++) {
             s.add(str.charAt(i));
         }
-        if(s.size() != 3) {
+        if(s.size() != GAME_NUMBER_LENGTH) {
             return false;
         }
 
         return true;
     }
 
-    private void getInputNumByConsole() {
+    private String getInputNumberByConsole() {
         System.out.print("숫자를 입력해주세요 : ");
-        String strNum = Console.readLine();
-        inputNum = Integer.parseInt(strNum);
+        String input = Console.readLine();
+        return input;
     }
 
-    private String[] makeStringArrayFromInt(int num) {
-        return Integer.toString(num).split("");
+    private ArrayList<Integer> makeIntegerArrayListFromString(String str) {
+        ArrayList<Integer> tmp = new ArrayList<>();
+        for(int i = 0; i < str.length(); i++) {
+            int num = Character.getNumericValue(str.charAt(i));
+            tmp.add(num);
+        }
+        return tmp;
     }
 
     private void calculateScore() {
-        int i = -1;
-        for(Integer num : answerNumSet) {
-            i++;
-            if(num.toString().equals(inputNumStrArr[i])) {
+        int i = 0;
+        for(Integer num : answerNumberSet) {
+            if(num.equals(inputNumberArrayList.get(i))) {
                 strike++;
+                i++;
                 continue;
             }
-            if(isContainedInAnswer(inputNumStrArr[i])) {
+            if(answerNumberSet.contains(inputNumberArrayList.get(i))) {
                 ball++;
             }
+            i++;
         }
-    }
-
-    private boolean isContainedInAnswer(String s) {
-        for(Integer num : answerNumSet) {
-            if(s.equals(num.toString())) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private boolean isAnswer() {
         int i = 0;
-        for(Integer num : answerNumSet) {
-            if(!num.toString().equals(inputNumStrArr[i++])) {
+        for(Integer num : answerNumberSet) {
+            if(!num.equals(inputNumberArrayList.get(i))) {
                 return false;
             }
+            i++;
         }
         return true;
     }
