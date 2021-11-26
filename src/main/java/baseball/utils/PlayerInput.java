@@ -3,6 +3,7 @@ package baseball.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.messages.GameMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 public class PlayerInput {
@@ -11,6 +12,8 @@ public class PlayerInput {
 
 	private final char START_CHAR = '1';
 	private final char END_CHAR = '9';
+	private static final String GAME_CONTINUE = "1";
+	private static final String GAME_FINISH = "2";
 
 	public PlayerInput(int numOfDigit){
 		NUM_OF_DIGIT = numOfDigit;
@@ -27,6 +30,16 @@ public class PlayerInput {
 			inputNumbers.add(num);
 		}
 		return inputNumbers;
+	}
+
+	public String getIsContinue(){
+		System.out.println(GameMessage.CONTINUE_OR_FINISH);
+		String readLine = Console.readLine();
+		if(!readLine.equals(GAME_CONTINUE) && !readLine.equals(GAME_FINISH)){
+			throw new IllegalArgumentException();
+		}
+
+		return readLine;
 	}
 
 	private boolean isValidInput(String readLine) {
