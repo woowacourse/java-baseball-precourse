@@ -10,6 +10,10 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 숫자 야구 게임 구현
         Computer com = Computer.getInstance();
+        init(com);
+    }
+
+    private static void init(Computer com) {
         boolean token = true;
         while (token) {
             com.init();

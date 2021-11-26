@@ -19,7 +19,7 @@
     - 길이는 세자리만 허용
 - (baseball.domain.Result) 결과를 문자열로 반환하기
 - (baseball.domain.Result) 3스트라이크 확인하기
-- (baseball.domain.BaseballGame) 입력값(Token) 받아서 게임을 종료 또는 재시작 하기
+- (baseball.Application) 입력값(Token) 받아서 게임을 종료 또는 재시작 하기
 - (baseball.domain.Token)
   - 유효성 검사
     - 숫자 1또는 2만 가능함
