@@ -6,7 +6,7 @@ public class Validator {
 
 	public static void valid(int[] input) {
 		// 1.3자리 수인지 확인
-		if (!checkRange(input, BaseballConst.NUM_LEN_LIMIT)) {
+		if (!checkLength(input)) {
 			throw new IllegalArgumentException("지정된 수의 크기에서 벗어났습니다.");
 		}
 		// 2.각 자리의 숫자가 범위가 넘어갔는지 확인 ( 0이 포함되어있는지 )
@@ -28,7 +28,7 @@ public class Validator {
 	public static void checkSelectValid(String select) {
 		checkNumeric(select);
 		int selectNum = Integer.parseInt(select);
-		if (selectNum != 1 && selectNum != 2) {
+		if (selectNum != BaseballConst.RETRY && selectNum != BaseballConst.EXIT) {
 			throw new IllegalArgumentException("지정된 번호만 입력 가능합니다.");
 		}
 	}
@@ -37,8 +37,8 @@ public class Validator {
 		return str.chars().allMatch(Character::isDigit);
 	}
 
-	private static boolean checkRange(int[] numArr, int len) {
-		return numArr.length == len;
+	private static boolean checkLength(int[] numArr) {
+		return numArr.length == BaseballConst.NUM_LEN_LIMIT;
 	}
 
 	private static boolean checkContainZero(int[] numArr) {

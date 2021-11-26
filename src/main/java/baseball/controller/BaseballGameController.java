@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 import baseball.domain.BaseballGame;
 import baseball.domain.Result;
@@ -7,7 +7,7 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
-	BaseballGame baseballGame;
+	private final BaseballGame baseballGame;
 
 	public BaseballGameController(BaseballGame baseballGame) {
 		this.baseballGame = baseballGame;

@@ -16,6 +16,12 @@ public class BaseballGame {
 
 	public void init() {
 		// 초기값 세팅 : 중복되지 않는 1~9로 구성된 세 자리 수 생성
+		chooseRandomAnswer();
+		// 레프리 생성 : answer 값을 저장해둔다.
+		referee = new Referee(answer);
+	}
+
+	private void chooseRandomAnswer() {
 		answer = new int[3];
 		int cnt = 0;
 		DupChecker dupChecker = new DupChecker();
@@ -26,8 +32,6 @@ public class BaseballGame {
 				answer[cnt++] = nowNum;
 			}
 		}
-		// 레프리 생성 : answer 값을 저장해둔다.
-		referee = new Referee(answer);
 	}
 
 	public int[] validCheck(String input) {

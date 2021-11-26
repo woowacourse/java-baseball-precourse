@@ -25,7 +25,7 @@ public class OutputView {
 			sb.append(BaseballConst.STRIKE);
 		}
 
-		System.out.println(sb.toString());
+		System.out.println(sb);
 	}
 
 	public static void printGameEnd() {
