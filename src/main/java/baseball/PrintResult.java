@@ -14,9 +14,9 @@ public class PrintResult {
         return strike;
     }
 
-    public static boolean countBall(int[] target, int userNum) {
+    public static boolean countBall(int[] target, int userNum, int userIndex) {
         for(int i=0; i<3; i++) {
-            if(validateSameNumber(target[i], userNum)) {
+            if(i != userIndex && target[i] == userNum) {
                 return true;
             }
         }
