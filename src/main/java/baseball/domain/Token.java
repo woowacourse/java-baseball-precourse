@@ -46,7 +46,7 @@ public class Token {
 	}
 
 	private static boolean isValidElement(String value) {
-		return value.equals(REPLAY) || value.equals(END);
+		return Integer.parseInt(value) == REPLAY || Integer.parseInt(value) == END;
 	}
 
 	public boolean isReplay() {
