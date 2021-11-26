@@ -46,9 +46,8 @@ public class PrintResult {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         } else {
-            if (Arrays.stream(result).sum() == 0) {
+            if (result[0] == 0 && result[1] == 0) {
                 System.out.println("낫싱");
-
             } else if (result[0] == 0 && result[1] != 0) {
                 System.out.println(result[1] + "볼");
             } else if (result[0] != 0 && result[1] == 0) {
