@@ -3,13 +3,16 @@ package baseball;
 public class BaseballGameInputValidator {
 
     private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
+    private static final String BASEBALL_GAME_LENGTH_EXCEPTION_MESSAGE = "3자리 수를 입력해주세요.";
+    private static final String BASEBALL_GAME_DIGIT_EXCEPTION_MESSAGE = "1부터 9사이의 수를 입력해주세요.";
+    private static final String BASEBALL_GAME_CODE_EXCEPTION_MESSAGE = "1과 2 중 하나의 수를 입력해주세요.";
 
     public void validateNumber(String numbers) {
         if (!validateLength(numbers)) {
-            throw new IllegalArgumentException("3자리 수를 입력해주세요.");
+            throw new IllegalArgumentException(BASEBALL_GAME_LENGTH_EXCEPTION_MESSAGE);
         }
         if (!validateDigit(numbers)) {
-            throw new IllegalArgumentException("1부터 9사이의 수를 입력해주세요.");
+            throw new IllegalArgumentException(BASEBALL_GAME_DIGIT_EXCEPTION_MESSAGE);
         }
     }
 
@@ -28,7 +31,7 @@ public class BaseballGameInputValidator {
 
     public void validateCode(int code) {
         if (code != 1 && code != 2) {
-            throw new IllegalArgumentException("1과 2 중 하나의 수를 입력해주세요.");
+            throw new IllegalArgumentException(BASEBALL_GAME_CODE_EXCEPTION_MESSAGE);
         }
     }
 }
