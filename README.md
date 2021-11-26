@@ -12,6 +12,8 @@
 
 5. 게임 결과 출력 : printResult
 
+6. 게임 종료 조건 계산 : terminateGame
+
 
 ## 📝 License
 
