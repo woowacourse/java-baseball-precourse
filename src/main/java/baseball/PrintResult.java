@@ -18,4 +18,21 @@ public class PrintResult {
         return false;
     }
 
+    public static int[] countResult(int[] target, int[] userNum) {
+        int strike = 0;
+        int ball = 0;
+
+        for(int i=0; i<3; i++) {
+            if(strike(target[i], userNum[i])) {
+                strike++;
+            } else if(ball(target, userNum[i], i)) {
+                ball++;
+            }
+        }
+
+        int[] result = {strike, ball};
+
+        return result;
+    }
+
 }
