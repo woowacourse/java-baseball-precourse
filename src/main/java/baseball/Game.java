@@ -12,8 +12,10 @@ public class Game {
     private static final String INPUT_CHECK_REGEX = "[1-9][1-9][1-9]";
     private String randomNumber;
     private String userNumber;
+    private boolean isFinish;
 
     public void init() {
+        isFinish = false;
         LinkedHashSet<Integer> hashSet = new LinkedHashSet<>();
 
         while (hashSet.size() < NUMBER_LENGTH) {
@@ -29,13 +31,21 @@ public class Game {
         randomNumber = stringBuilder.toString();
     }
 
-    public boolean play() {
-        takeInput();
-        Result result = compareNumber();
-        result.createMessage();
-        result.printMessage();
+    public void play() {
+        while (!isFinish) {
+            takeInput();
+            Result result = compareNumber();
+            result.createMessage();
+            result.printMessage();
+            isFinish = result.isFinish(NUMBER_LENGTH);
+        }
 
-        return result.isFinish(NUMBER_LENGTH);
+        printEndMessage();
+        boolean isContinue = askRestart();
+        if (isContinue) {
+            init();
+            play();
+        }
     }
 
     public boolean askRestart() {
@@ -47,7 +57,6 @@ public class Game {
         }
 
         if (input.equals("1")) {
-            init();
             return true;
         }
 
