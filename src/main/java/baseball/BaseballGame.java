@@ -29,6 +29,7 @@ public class BaseballGame {
 				break;
 			}
 			countResult();
+			printHint();
 			isGameContinued = checkResult();
 		} while (isGameContinued);
 		System.out.println();
@@ -80,5 +81,21 @@ public class BaseballGame {
 	private boolean isBall(int userIndex) {
 		int comIndex = computer.getIndex(user.getNumber(userIndex));
 		return comIndex != userIndex && comIndex != -1;
+	}
+
+	/**
+	 * 스트라이크 / 볼 결과를 바탕으로 힌트를 출력한다.
+	 */
+	private void printHint() {
+		String resultString = "";
+		if (ballCount != 0) {
+			resultString += ballCount + BALL;
+		} else if (ballCount == strikeCount) {
+			resultString = NOTHING;
+		}
+		if (strikeCount != 0) {
+			resultString += strikeCount + STRIKE;
+		}
+		System.out.println(resultString);
 	}
 }
