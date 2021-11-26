@@ -11,6 +11,14 @@ public class Judge {
         ball = 0;
     }
 
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
     private void setRightAnswer(final String threeDigitNum) {
         rightAnswer = threeDigitNum;
     }
@@ -35,10 +43,5 @@ public class Judge {
             }
         }
     }
-
-    //TODO getGameResult()
-    //TODO getHint()
-    //TODO update implementation list
-
 }
 
