@@ -17,6 +17,7 @@ public class Game {
     }
 
     public void start() {
+        System.out.println(this.getAnswer());
         gameReply.askReply();
         result.matchAnswer(this.getAnswer(), gameReply.getGameReply());
         result.printResult();
