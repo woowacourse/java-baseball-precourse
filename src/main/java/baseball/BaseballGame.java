@@ -14,11 +14,7 @@ public class BaseballGame {
 		while (true) {
 			System.out.print("숫자를 입력해주세요 : ");
 			String input = readLine();
-			try {
-				checkInput(input);
-			} catch (Exception exception) {
-				System.exit(0);
-			}
+			checkInput(input);
 			int[] ballAndStrikeCount = countBallAndStrike(answer, input);
 			boolean isAnswer = printBaseballGameResult(ballAndStrikeCount);
 			if (isAnswer) {
@@ -82,7 +78,8 @@ public class BaseballGame {
 		int ballCount = ballAndStrikeCount[0];
 		int strikeCount = ballAndStrikeCount[1];
 		if (strikeCount == ANSWER_LENGTH) {
-			System.out.println(ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임종료");
+			System.out.println(ANSWER_LENGTH + "스트라이크");
+			System.out.println(ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			isAnswer = true;
 		} else if (ballCount > 0 && strikeCount > 0) {
 			System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
@@ -100,12 +97,8 @@ public class BaseballGame {
 		boolean finishBaseballGame = true;
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		String input = readLine();
-		try {
-			if (!(input.equals("1") || input.equals("2"))) {
-				throw new IllegalArgumentException();
-			}
-		} catch (Exception exception) {
-			System.exit(0);
+		if (!(input.equals("1") || input.equals("2"))) {
+			throw new IllegalArgumentException();
 		}
 		if (input.equals("1")) {
 			finishBaseballGame = false;
