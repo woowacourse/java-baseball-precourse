@@ -15,22 +15,22 @@ class UserTest {
         // then
         user.checkException(userInput);
     }
-    @Test
-    void 사용자_입력_테스트_크기(){
-        // given
-        User user=new User();
-        // when
-        String userInput="1";
-        // then
-        user.checkException(userInput);
-    }
-    @Test
-    void 사용자_입력_테스트_범위(){
-        // given
-        User user=new User();
-        // when
-        String userInput="1a0";
-        // then
-        user.checkException(userInput);
-    }
+//    @Test
+//    void 사용자_입력_테스트_크기(){
+//        // given
+//        User user=new User();
+//        // when
+//        String userInput="1";
+//        // then
+//        user.checkException(userInput);
+//    }
+//    @Test
+//    void 사용자_입력_테스트_범위(){
+//        // given
+//        User user=new User();
+//        // when
+//        String userInput="1a0";
+//        // then
+//        user.checkException(userInput);
+//    }
 }
