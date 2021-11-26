@@ -26,4 +26,13 @@ public class ResultTest {
 		result = myBalls.compare(comBalls);
 		assertThat(result.report()).isEqualTo(expected);
 	}
+
+	@DisplayName("3스트라이크 체크 테스트")
+	@ParameterizedTest
+	@CsvSource(value = {"123:true", "129:false", "132:false"}, delimiter = ':')
+	void is3Strike(String comValue, boolean expected) {
+		comBalls = Balls.from(comValue);
+		result = myBalls.compare(comBalls);
+		assertThat(result.is3Strike()).isEqualTo(expected);
+	}
 }

@@ -7,6 +7,7 @@ public class Result {
 	public static final String STRIKE_STRING = "스트라이크";
 	public static final String NOTHING_STRING = "낫싱";
 	public static final char SPACE = 32;
+	public static final int MAX_COUNT = 3;
 
 	private final List<Scores> result;
 
@@ -50,5 +51,9 @@ public class Result {
 
 	private boolean isNothing() {
 		return !hasBall() && !hasStrike();
+	}
+
+	public boolean is3Strike() {
+		return getStrikeCount() == MAX_COUNT;
 	}
 }
