@@ -38,4 +38,37 @@ public class BallStrikeCount {
     private boolean equal(int count, int otherCount) {
         return Objects.equals(count, otherCount);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        if (isNothing()) {
+            return sb.append("낫싱").toString();
+        }
+
+        if (!equal(ball, NOTHING)) {
+            String ballCount = getBallCountToString();
+            sb.append(ballCount).append(' ');
+        }
+
+        if (!equal(strike, NOTHING)) {
+            String strikeCount = getStrikeCountToString();
+            sb.append(strikeCount);
+        }
+
+        return sb.toString().trim();
+    }
+
+    private String getStrikeCountToString() {
+        return countToStringFormat("%d스트라이크", strike);
+    }
+
+    private String getBallCountToString() {
+        return countToStringFormat("%d볼",ball);
+    }
+
+    private String countToStringFormat(String format, int count) {
+        return String.format(format, count);
+    }
 }
