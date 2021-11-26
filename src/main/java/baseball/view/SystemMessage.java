@@ -1,8 +1,8 @@
 package baseball.view;
 
-public class Output {
+public class SystemMessage {
 
-    public void outputScore(int ball, int strike) {
+    public void scoreMessage(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         }

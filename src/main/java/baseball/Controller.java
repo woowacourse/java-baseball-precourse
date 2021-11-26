@@ -5,8 +5,8 @@ import baseball.repository.Number;
 import baseball.service.Compute;
 import baseball.utils.Parser;
 import baseball.utils.RandomUtils;
-import baseball.view.UserInput;
-import baseball.view.Output;
+import baseball.view.RequestInput;
+import baseball.view.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Controller {
@@ -16,7 +16,7 @@ public class Controller {
 
     Parser parser = new Parser();
     Compute compute = new Compute();
-    Output output = new Output();
+    SystemMessage systemMessage = new SystemMessage();
     Number number = new Number(SIZE);
 
     public void run() throws IllegalArgumentException{
@@ -39,13 +39,13 @@ public class Controller {
         while (strike != 3) {
             number.setUserNumbers(getUserNumber());
             BaseBall baseBall = compute.computeScore(number.getGameNumbers(), number.getUserNumbers(), SIZE);
-            output.outputScore(baseBall.getBallCount(), baseBall.getStrikeCount());
+            systemMessage.scoreMessage(baseBall.getBallCount(), baseBall.getStrikeCount());
             strike = baseBall.getStrikeCount();
         }
     }
 
     private int[] getUserNumber() throws IllegalArgumentException{
-        UserInput.UserInputData();
+        RequestInput.requestInputData();
 
         String input = Console.readLine();
         int inputNum[] = parser.userInputParser(input);
@@ -54,8 +54,8 @@ public class Controller {
     }
 
     private void gameOver() throws IllegalArgumentException{
-        output.gameSetMessage();
-        UserInput.retryMessage();
+        systemMessage.gameSetMessage();
+        RequestInput.retryMessage();
         askRetry();
     }
 
