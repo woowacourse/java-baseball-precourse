@@ -19,6 +19,7 @@ public class Game {
 			user.setNumberOfUser(InputView.getInput());
 
 		} while (referee.isWrongAnswer(user.getExpectedAnswer(), computer.getAnswer()));
+		InputView.restartOrStop();
 
 	}
 }
