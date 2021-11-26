@@ -1,7 +1,5 @@
 package baseball.model;
 
-import baseball.model.Ball;
-import baseball.model.PlayType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

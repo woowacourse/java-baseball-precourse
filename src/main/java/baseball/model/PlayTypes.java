@@ -1,7 +1,5 @@
 package baseball.model;
 
-import baseball.model.PlayType;
-
 import java.util.List;
 
 public class PlayTypes {
