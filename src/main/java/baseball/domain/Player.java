@@ -18,9 +18,13 @@ public class Player {
 	}
 
 	public void generatePlayerNumber() {
-		String enterPlayerNumber = Console.readLine();
+		String enterPlayerNumber = enterNumber();
 		validatePlayerNumber(enterPlayerNumber);
 		setPlayerNumber(enterPlayerNumber);
+	}
+
+	public String enterNumber() {
+		return Console.readLine();
 	}
 
 	private void setPlayerNumber(String enterPlayerNumber) {
