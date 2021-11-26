@@ -11,8 +11,13 @@ public class RandomUtil {
 
     static public List<Integer> generateRandomNum() {
         List<Integer> randomNumList = new ArrayList<>();
-        for (int i = INITIAL_VALUE; i < NUM_LENGTH; i++) {
-            randomNumList.add(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM));
+        boolean[] check = new boolean[DECIMAL_DIGIT];
+        while (randomNumList.size() < NUM_LENGTH) {
+            int randomNum = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
+            if (!check[randomNum]) {
+                randomNumList.add(randomNum);
+                check[randomNum] = true;
+            }
         }
         return randomNumList;
     }
