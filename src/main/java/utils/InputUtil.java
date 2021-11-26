@@ -1,12 +1,12 @@
 package utils;
 
-import baseball.Constant;
+import constant.Constant;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Constant.*;
+import static constant.Constant.*;
 
 public class InputUtil {
 

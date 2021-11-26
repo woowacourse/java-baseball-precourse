@@ -1,8 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import constant.Constant;
 
-import static baseball.Constant.*;
+import static constant.Constant.*;
 
 public class Application {
     public static void main(String[] args) {

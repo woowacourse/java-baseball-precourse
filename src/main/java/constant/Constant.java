@@ -1,4 +1,4 @@
-package baseball;
+package constant;
 
 public class Constant {
     public static final String INPUT_ERROR_LENGTH = "3자리 이상의 수를 입력하셨습니다.";
