@@ -10,19 +10,19 @@ import java.util.Set;
  */
 public class RandomNumberStringMaker {
 
-    /**
-     * 서로 다른 세개의 난수로 이뤄진 문자열 만드는 메서드
-     *
-     * @return
-     */
-    public static String getRandomNumberString() {
-        Set<Integer> randomNumberSet = new LinkedHashSet<>();
-        StringBuilder stringBuilder = new StringBuilder();
+	/**
+	 * 서로 다른 세개의 난수로 이뤄진 문자열 만드는 메서드
+	 *
+	 * @return
+	 */
+	public static String getRandomNumberString() {
+		Set<Integer> randomNumberSet = new LinkedHashSet<>();
+		StringBuilder stringBuilder = new StringBuilder();
 
-        while (randomNumberSet.size() != 3) {
-            randomNumberSet.add(Randoms.pickNumberInRange(1, 9));
-        }
-        randomNumberSet.stream().forEach(number -> stringBuilder.append(number));
-        return stringBuilder.toString();
-    }
+		while (randomNumberSet.size() != 3) {
+			randomNumberSet.add(Randoms.pickNumberInRange(1, 9));
+		}
+		randomNumberSet.stream().forEach(number -> stringBuilder.append(number));
+		return stringBuilder.toString();
+	}
 }
