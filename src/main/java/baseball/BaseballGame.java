@@ -26,7 +26,7 @@ public class BaseballGame {
             userNumberList.clear();
         }
     }
-    
+
     private boolean playBaseBallGame() {
         computerNumberList = computer.createComputerNumber();
         userNumberList = user.inputUserNumber();
@@ -47,9 +47,9 @@ public class BaseballGame {
     }
 
     /* 입력값 검증 함수 */
-    private boolean validateUserSelection(String userSelection) {
-        if (userSelection.equals(RESTART) && userSelection.equals(QUIT)) {
-            return false;
+    private boolean validateUserSelection(String userSelection) throws IllegalArgumentException {
+        if (!userSelection.equals(RESTART) && !userSelection.equals(QUIT)) {
+            throw new IllegalArgumentException("오류 : 잘못된 값 입력 (1과 2만 입력 가능)");
         }
         if (userSelection.equals(QUIT)) {
             return false;

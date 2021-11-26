@@ -31,18 +31,16 @@ public class User {
         }
     }
 
-    private boolean validateInputNumber(String[] inputNumberList) {
-        /* Case 1. 입력한 문자열이 3자리가 아닐 경우 */
-        if (!this.validateNumberLength(inputNumberList)) {
-            return false;
-        }
-        /* Case 2. 1~9가 아닌 값이 들어간 경우 */
-        if (!this.validateOnlyNumberInString(inputNumberList)) {
-            return false;
-        }
-        /* Case 3. 중복되는 숫자가 존재할 경우 */
-        if (!this.checkDuplicateNumberInString(inputNumberList)) {
-            return false;
+    private boolean validateInputNumber(String[] inputNumberList) throws IllegalArgumentException {
+        /*
+         * Case 1. 입력한 문자열이 3자리가 아닐 경우
+         * Case 2. 1~9가 아닌 값이 들어간 경우
+         * Case 3. 중복되는 숫자가 존재할 경우
+         */
+        if (!this.validateNumberLength(inputNumberList)
+                || !this.validateOnlyNumberInString(inputNumberList)
+                || !this.checkDuplicateNumberInString(inputNumberList)) {
+            throw new IllegalArgumentException("오류 : 잘못된 값 입력 (중복되지 않는 3자리의 정수만 입력)");
         }
 
         return true;
