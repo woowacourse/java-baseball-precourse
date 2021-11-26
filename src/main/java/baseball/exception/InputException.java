@@ -3,19 +3,25 @@ package baseball.exception;
 import baseball.view.InputView;
 
 public class InputException {
-	private static final String INVALID_INPUT_ERROR = "입력값 오류입니다. 게임 종료";
+	private static final String INVALID_INPUT_ERROR = "[ERROR] 잘못된 값을 입력했습니다. 게임을 종료하겠습니다.";
 	private static final int NUMBER_LENGTH = 3;
 
 	public static String validationCheck(String input) {
-
+		if (isThreeLength(input) && isInteger(input)) {
+			return input;
+		}
+		throw new IllegalArgumentException(INVALID_INPUT_ERROR);
 	}
-	/**
-	 * 	유저의 입력값이 정수가 아닌 다른 값을 입력받았을 때 예외 처리
-	 */
 
-	/**
-	 * 유저의 입력값이 3자리가 아닌 숫자가 들어왔을 때 예외 처리
-	 */
+	private static boolean isInteger(String input) {
+		for (int i = 0; i < NUMBER_LENGTH; i++) {
+			if (!Character.isDigit(input.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	private static boolean isThreeLength(String input) {
 		if (input.length() == NUMBER_LENGTH) {
 			return true;
