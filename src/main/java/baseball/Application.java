@@ -3,11 +3,16 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class Application {
-
 	public static void main(String[] args) {
+		int isGameEnd;
+		do {
+			gameStart();
+			isGameEnd = Integer.parseInt(readLine());
+		} while (isGameEnd == 1);
+	}
+
+	static void gameStart() {
 		//TODO: 숫자 야구 게임 구현
-		String userInput = readLine();
-		checkUserInput(userInput);
 	}
 
 	//TODO: Target클래스에 맞춰서 범위와 길이를 맞춰야함.
