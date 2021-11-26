@@ -16,14 +16,14 @@ public class ComputerNumber {
     private List<Integer> computerNumber;
 
     public ComputerNumber() {
-        computerNumber = generateNumber();
+        computerNumber = new ArrayList<>();
     }
 
     public List<Integer> getComputerNumber() {
         return computerNumber;
     }
 
-    public List<Integer> generateNumber() {
+    public void generateNumber() {
         HashSet<Integer> numbers = new LinkedHashSet<>();
         while (numbers.size() < 3) {
             int number =
@@ -31,6 +31,6 @@ public class ComputerNumber {
                             InputNumberValidator.RANGE_END);
             numbers.add(number);
         }
-        return new ArrayList<>(numbers);
+        computerNumber = new ArrayList<>(numbers);
     }
 }

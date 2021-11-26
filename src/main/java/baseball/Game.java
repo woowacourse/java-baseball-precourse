@@ -38,12 +38,14 @@ public class Game {
         ballInputNumber = new BallInputNumber();
 
         inputNumberList = new ArrayList<>();
-        answerNumberList = computerNumber.getComputerNumber();
+        answerNumberList = new ArrayList<>();
         strike = 0;
         ball = 0;
     }
 
     public void playBaseball() {
+        computerNumber.generateNumber();
+        answerNumberList = computerNumber.getComputerNumber();
         do {
             inputNumberList = ballInputNumber.inputNumberByClient();
             strike = 0;
