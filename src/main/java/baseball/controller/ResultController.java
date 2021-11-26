@@ -25,8 +25,8 @@ public class ResultController {
 
 	private void compareAnswerWithInput() {
 		for (int i = 0; i < AnswerNumber.ANSWER_LENGTH; i++) {
-			int answerDigit = answerNumberList.indexOf(i);
-			int inputDigit = inputNumberList.indexOf(i);
+			int answerDigit = answerNumberList.get(i);
+			int inputDigit = inputNumberList.get(i);
 
 			if (answerDigit == inputDigit) {
 				strike++;
