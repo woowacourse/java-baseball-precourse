@@ -20,11 +20,11 @@ public class InputExceptionHandler {
 
 
 	/**
-	 * 비정상적인 입력이라면 예외처리를 하는 함수
+	 * playerNumber에 대한 비정상적인 입력이라면 예외처리를 하는 함수
 	 *
 	 * @param playerNumber: String
 	 */
-	public static void checkValidation(String playerNumber) {
+	public static void validatePlayerNumber(String playerNumber) {
 
 		if (!checkLength(playerNumber, VALID_NUMBER_LENGTH)) {
 			throw new IllegalArgumentException(INVALID_LENGTH_MESSAGE);
@@ -34,6 +34,17 @@ public class InputExceptionHandler {
 		}
 		if (!checkDuplicate(playerNumber)) {
 			throw new IllegalArgumentException(INVALID_DUPLICATE_MESSAGE);
+		}
+	}
+
+	/**
+	 * 게임 재시작을 위한 번호 입력에 대한 예외처리를 하는 함수
+	 *
+	 * @param number: String
+	 */
+	public static void validateReplay(String number) {
+		if (!(Objects.equals(number, "1") || Objects.equals(number, "2"))) {
+			throw new IllegalArgumentException(INVALID_NUMBER_MESSAGE);
 		}
 	}
 
@@ -74,16 +85,5 @@ public class InputExceptionHandler {
 	 */
 	public static boolean checkDuplicate(String playerNumber) {
 		return (Arrays.stream(playerNumber.split("")).distinct().count() == playerNumber.length());
-	}
-
-	/**
-	 * 게임 재시작을 위한 번호 입력에 대한 예외처리를 하는 함수
-	 *
-	 * @param number: String
-	 */
-	public static void checkReplayValidation(String number) {
-		if (!(Objects.equals(number, "1") || Objects.equals(number, "2"))) {
-			throw new IllegalArgumentException(INVALID_NUMBER_MESSAGE);
-		}
 	}
 }

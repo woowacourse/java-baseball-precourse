@@ -43,8 +43,8 @@ public class GameController {
 	public static void startGame() {
 		OutputView.askNumber();
 		String inputNumber = InputView.writeInputNumber();
-		InputExceptionHandler.checkValidation(inputNumber);
-		PLAYER_NUMBER = stringToArrayList(inputNumber);
+		InputExceptionHandler.validatePlayerNumber(inputNumber);
+		PLAYER_NUMBER = convertStringToArray(inputNumber);
 	}
 
 	/**
@@ -54,8 +54,8 @@ public class GameController {
 	 * @param playerNumber: ArrayList<Integer>
 	 */
 	public static void giveHint(ArrayList<Integer> answerNumber, ArrayList<Integer> playerNumber) {
-		int ballCount = HintGenerator.ballCounter(answerNumber, playerNumber);
-		int strikeCount = HintGenerator.strikeCounter(answerNumber, playerNumber);
+		int ballCount = HintGenerator.countBall(answerNumber, playerNumber);
+		int strikeCount = HintGenerator.countStrike(answerNumber, playerNumber);
 
 		HintGenerator.controlHint(ballCount, strikeCount);
 	}
@@ -66,7 +66,7 @@ public class GameController {
 	 * @param str: String
 	 * @return arr
 	 */
-	public static ArrayList<Integer> stringToArrayList(String str) {
+	public static ArrayList<Integer> convertStringToArray(String str) {
 		ArrayList<Integer> arr = new ArrayList<>(str.length());
 
 		while (arr.size() != str.length()) {

@@ -38,7 +38,7 @@ public class RandomNumberGenerator {
 
 		while (answerNumber.size() < RANDOM_NUMBER_SIZE) {
 			int randomNumber = Randoms.pickNumberInRange(START_RANDOM_VALUE, END_RANDOM_VALUE);
-			duplicateNumberCheck(randomNumber);
+			checkDuplicateNumber(randomNumber);
 		}
 		return answerNumber;
 	}
@@ -48,7 +48,7 @@ public class RandomNumberGenerator {
 	 *
 	 * @param randomNumber: int
 	 */
-	public static void duplicateNumberCheck(int randomNumber) {
+	public static void checkDuplicateNumber(int randomNumber) {
 		int index = randomNumber - 1;
 		if (duplicateNumberFlag[index] == INITIAL_VALUE) {
 			duplicateNumberFlag[index] = USED_VALUE_CHECK;
