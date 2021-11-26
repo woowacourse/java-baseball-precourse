@@ -5,5 +5,5 @@ public class Application {
 		BaseballGameManager baseballGameManager = new BaseballGameManager();
 		baseballGameManager.run();
 	}
-	
+
 }
