@@ -27,11 +27,9 @@ public class BaseballGame {
 
 	private void setEnemyNum() {
 		int index = 0;
-		int temp;
 		while (index < 3) {
-			temp = Randoms.pickNumberInRange(1, 9);
-			int finalTemp = temp;
-			if (!IntStream.of(enemyNum).anyMatch(x -> finalTemp == x)) {
+			int temp = Randoms.pickNumberInRange(1, 9);
+			if (!IntStream.of(enemyNum).anyMatch(x -> temp == x)) {
 				enemyNum[index] = temp;
 				index++;
 			}
