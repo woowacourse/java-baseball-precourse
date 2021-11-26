@@ -11,7 +11,7 @@ public class Application {
             // 난수 생성
             ThreeDigits threeDigitObject = new ThreeDigits();
             threeDigitObject.genThreeRandomDigits();
-            System.out.println(threeDigitObject.getThreeDigits());
+            //System.out.println(threeDigitObject.getThreeDigits());
 
             replayFlag = execute(threeDigitObject);
         }
@@ -29,7 +29,10 @@ public class Application {
             System.out.printf("%s ", "숫자를 입력해주세요 :");
             Scanner scanner = new Scanner(System.in);
 
-            int inputNumber = scanner.nextInt();
+            String numberInputStr = scanner.nextLine();
+            Validator validator = new Validator();
+            validator.validateNumberInput(numberInputStr);
+            int inputNumber = Integer.parseInt(numberInputStr);
 
             // strike?
             strikeNum = threeDigitObject.checkStrike(inputNumber);
@@ -60,7 +63,7 @@ public class Application {
             System.out.printf("%d스트라이크\n", strikeNum);
         } else if (isBalled) {
             System.out.printf("%d볼\n", ballNum);
-        } else { // (!isBalled && !isStriked)
+        } else { // ('볼'도 아니고, '스트라이크'도 아닌 경우)
             System.out.println("낫싱");
         }
     }
@@ -69,8 +72,12 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         Scanner scanner = new Scanner(System.in);
-        int inputNumber = scanner.nextInt();
+        String decisionInputStr = scanner.nextLine();
+        Validator validator = new Validator();
+        validator.validateDecisionInput(decisionInputStr);
 
-        return inputNumber == 1;
+        int inputDecision = Integer.parseInt(decisionInputStr);
+
+        return inputDecision == 1;
     }
 }
