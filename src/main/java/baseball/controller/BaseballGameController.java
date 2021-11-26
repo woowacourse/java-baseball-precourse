@@ -6,7 +6,7 @@ import baseball.exception.InvalidContinueMessageFormatException;
 import baseball.view.InputView;
 import baseball.view.ResultView;
 
-public class baseballGameController {
+public class BaseballGameController {
 
     private static final String isContinue = "1";
     private static final String isGameEnd = "2";
@@ -23,7 +23,8 @@ public class baseballGameController {
 
         RandomNumbers randomNumbers = new RandomNumbers();
         while (strikeCount != threeStrike) {
-            BaseBallNumbers baseBallNumbers = new BaseBallNumbers(InputView.requireBaseBallNumber());
+            BaseBallNumbers baseBallNumbers = new BaseBallNumbers(
+                InputView.requireBaseBallNumber());
             ballCount = baseBallNumbers.calculateBallCount(randomNumbers.randomNumbers());
             strikeCount = baseBallNumbers.calculateStrikeCount(randomNumbers.randomNumbers());
             ResultView.printResult(ballCount, strikeCount);
