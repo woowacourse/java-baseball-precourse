@@ -14,14 +14,18 @@ public class Application {
 	static int bit = 0;
 
 	public static void main(String[] args) {
+		int strike = 0;
+		int ball = 0;
 		String randomNumber = generateNumber();
-		System.out.print("숫자를 입력해주세요 : ");
-		String userInput = camp.nextstep.edu.missionutils.Console.readLine();
-		checkInput(userInput, GAME_INPUT_START, GAME_INPUT_END, GAME_INPUT_SIZE);
-		int strike = calculateStrike(userInput, randomNumber);
-		int ball = calculateBall(userInput, randomNumber);
-		bit = 0;
-		printResult(strike, ball);
+		while (!terminateGame(strike)) {
+			System.out.print("숫자를 입력해주세요 : ");
+			String userInput = camp.nextstep.edu.missionutils.Console.readLine();
+			checkInput(userInput, GAME_INPUT_START, GAME_INPUT_END, GAME_INPUT_SIZE);
+			strike = calculateStrike(userInput, randomNumber);
+			ball = calculateBall(userInput, randomNumber);
+			bit = 0;
+			printResult(strike, ball);
+		}
 	}
 
 	public static String generateNumber() {
@@ -101,6 +105,14 @@ public class Application {
 		}
 		if (strike != 0 && ball != 0) {
 			System.out.print(ball + "볼 " + strike + "스트라이크\n");
+		}
+	}
+
+	public static boolean terminateGame(int strike) {
+		if (strike == RANDOM_NUMBER_SIZE) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 }
