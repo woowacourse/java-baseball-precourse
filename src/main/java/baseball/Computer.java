@@ -5,7 +5,6 @@ import static util.GameConstant.*;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
-
     private final int[] eachDigitOfGuessNumber = new int[NUMBER_LENGTH];
     private final int[] answerMadeByComputer = new int[NUMBER_LENGTH];
 
@@ -16,7 +15,6 @@ public class Computer {
     private void makeEachDigitUsingRandom() {
         boolean[] alreadyUse = new boolean[MAX_RANGE + 1];
         int randomNumber;
-
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
             while (alreadyUse[randomNumber]) {
@@ -35,9 +33,7 @@ public class Computer {
     private Result makeResult() {
         int strikeCnt = 0;
         int ballCnt = 0;
-
         for (int digitOfGuessNumber = 0; digitOfGuessNumber < NUMBER_LENGTH; digitOfGuessNumber++) {
-
             if (isStrike(digitOfGuessNumber)) {
                 strikeCnt += 1;
             } else if (isBall(digitOfGuessNumber)) {
@@ -53,7 +49,6 @@ public class Computer {
 
     private boolean isBall(int digitOfGuessNumber) {
         for (int digitOfAnswer = 0; digitOfAnswer < NUMBER_LENGTH; digitOfAnswer++) {
-
             if (eachDigitOfGuessNumber[digitOfGuessNumber] == answerMadeByComputer[digitOfAnswer]) {
                 return true;
             }

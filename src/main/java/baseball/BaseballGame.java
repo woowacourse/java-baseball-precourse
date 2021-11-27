@@ -5,7 +5,6 @@ import static util.GameConstant.*;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
-
     Computer computer = new Computer();
     Player player = new Player();
 

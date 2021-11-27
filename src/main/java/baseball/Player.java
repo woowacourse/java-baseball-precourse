@@ -17,7 +17,6 @@ public class Player {
 
     private void verifyGuessNumberIsThreeDigitInteger(String guessedNumber) {
         boolean isThreeDigitsInteger = Pattern.matches(INPUT_VALUE_REGEX, guessedNumber);
-
         if (!isThreeDigitsInteger) {
             throw new IllegalArgumentException(NOT_THREE_DIGIT_INTEGER_MESSAGE);
         }

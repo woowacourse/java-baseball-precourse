@@ -25,12 +25,13 @@ public class Result {
         } else if (strikeCnt == 0 & ballCnt == 0) {
             return NOTHING_MESSAGE;
         }
+
         String resultSentence = "";
         if (ballCnt != 0) {
-            resultSentence += ballCnt + BALL;
+            resultSentence += (ballCnt + BALL);
         }
         if (strikeCnt != 0) {
-            resultSentence += strikeCnt + STRIKE;
+            resultSentence += (strikeCnt + STRIKE);
         }
         return resultSentence;
     }
