@@ -7,8 +7,7 @@ import java.util.List;
 public class Game {
 
     private List<Integer> answerList;
-    private boolean isOver;
-    private final Judge judge = new Judge();
+    private boolean isOver = false;
 
     public Game() {
         reset();
@@ -34,8 +33,8 @@ public class Game {
     private boolean play() {
         List<Integer> input = Player.getAnswerInput();
 
-        String hint = judge.checkAnswerInput(input, this.answerList);
+        String hint = Judge.checkAnswerInput(input, this.answerList);
 
-        return judge.checkGameOver(hint);
+        return Judge.checkGameOver(hint);
     }
 }

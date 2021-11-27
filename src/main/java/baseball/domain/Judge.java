@@ -12,9 +12,7 @@ import static baseball.constants.OutputMessage.STRIKE;
 
 public class Judge {
 
-    public Judge() {}
-
-    public String checkAnswerInput(List<Integer> input, List<Integer> answerList) {
+    public static String checkAnswerInput(List<Integer> input, List<Integer> answerList) {
         int strikeCount = 0;
         int ballCount = 0;
         int curInputIdx;
@@ -28,22 +26,20 @@ public class Judge {
                 continue;
             }
 
-            if (this.checkIfBall(curInput, answerList)) {
-                ballCount++;
-            }
+            if (checkIfBall(curInput, answerList)) ballCount++;
         }
 
-        return this.giveHint(strikeCount, ballCount);
+        return giveHint(strikeCount, ballCount);
     }
 
-    private boolean checkIfBall(int curInput, List<Integer> answerList) {
+    private static boolean checkIfBall(int curInput, List<Integer> answerList) {
         for (int answerNum : answerList) {
             if (Objects.equals(curInput, answerNum)) return true;
         }
         return false;
     }
 
-    private String giveHint(int strikeCount, int ballCount) {
+    private static String giveHint(int strikeCount, int ballCount) {
         if (strikeCount == 0 && ballCount == 0) return NO_MATCH;
 
         String hint = "";
@@ -58,7 +54,7 @@ public class Judge {
         return hint;
     }
 
-    public boolean checkGameOver(String hint) {
+    public static boolean checkGameOver(String hint) {
         System.out.println(hint);
 
         if (Objects.equals(hint, FINISH_GAME_CONDITION)) {
