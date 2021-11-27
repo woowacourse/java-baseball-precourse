@@ -1,10 +1,14 @@
-package baseball.utils;
+package baseball.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomUtils {
+public class RandomUtil {
 
-    public int[] createComputerNumbers() {
+    private RandomUtil() {
+
+    }
+
+    public static int[] createComputerNumbers() {
         int[] computerNumbers = new int[3];
 
         for (int i =0; i < 3; i++) {
@@ -14,7 +18,7 @@ public class RandomUtils {
         return computerNumbers;
     }
 
-    private int getRandomNumber() {
+    private static int getRandomNumber() {
         return Randoms.pickNumberInRange(1, 9);
     }
 }
