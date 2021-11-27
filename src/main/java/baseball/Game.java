@@ -60,4 +60,10 @@ public class Game {
         }
         return strikeCount;
     }
+
+    public int countBall(String opponentNumber, String userNumber) {
+        int ballCount = 0;
+
+        return ballCount;
+    }
 }
