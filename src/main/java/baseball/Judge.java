@@ -19,6 +19,11 @@ public class Judge {
         return ball;
     }
 
+    public void initialize() {
+        ball = 0;
+        strike = 0;
+    }
+
     private void setRightAnswer(final String threeDigitNum) {
         rightAnswer = threeDigitNum;
     }
