@@ -13,9 +13,6 @@ public class Number {
     private static final int SECOND = 1;
     private static final int THIRD = 2;
 
-    private static final int NOTHING = 0;
-    private static final int THREE_STRIKE = 3;
-
     private static final char ZERO_CHARACTER = '0';
 
     private final int first;
@@ -60,23 +57,7 @@ public class Number {
         int ballCount = countBall(other);
         int strikeCount = countStrike(other);
 
-        if (isThreeStrike(strikeCount)) {
-            return BallStrikeCount.threeStrike();
-        }
-
-        if (isNothing(ballCount, strikeCount)) {
-            return BallStrikeCount.nothing();
-        }
-
-        return BallStrikeCount.newInstance(ballCount, strikeCount);
-    }
-
-    private boolean isNothing(int ballCount, int strikeCount) {
-        return equal(ballCount, NOTHING) && equal(strikeCount, NOTHING);
-    }
-
-    private boolean isThreeStrike(int count) {
-        return equal(count, THREE_STRIKE);
+        return new BallStrikeCount(ballCount, strikeCount);
     }
 
     private int countStrike(Number other) {

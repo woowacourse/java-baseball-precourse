@@ -15,21 +15,9 @@ public class BallStrikeCount {
     private final int ball;
     private final int strike;
 
-    private BallStrikeCount(int ball, int strike) {
+    public BallStrikeCount(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
-    }
-
-    public static BallStrikeCount threeStrike() {
-        return new BallStrikeCount(NOTHING, THREE_STRIKE);
-    }
-
-    public static BallStrikeCount nothing() {
-        return new BallStrikeCount(NOTHING, NOTHING);
-    }
-
-    public static BallStrikeCount newInstance(int ballCount, int strikeCount) {
-        return new BallStrikeCount(ballCount, strikeCount);
     }
 
     public boolean isThreeStrike() {
