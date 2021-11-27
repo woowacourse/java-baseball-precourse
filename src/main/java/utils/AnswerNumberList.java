@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameUtils {
-    public static List<Integer> generateAnswerNumberList() {
+public class AnswerNumberList {
+    public static List<Integer> generate() {
         List<Integer> newList = new ArrayList<>();
         boolean[] visited = new boolean[10];
 

@@ -1,6 +1,6 @@
 package domain;
 
-import utils.GameUtils;
+import utils.AnswerNumberList;
 
 import java.util.List;
 import java.util.Objects;
@@ -8,12 +8,14 @@ import java.util.Objects;
 public class Game {
 
     private List<Integer> answerNumbers;
+    private boolean isOver;
 
     public Game() {
     }
 
     private void reset() {
-        this.answerNumbers = GameUtils.generateAnswerNumberList();
+        this.answerNumbers = AnswerNumberList.generate();
+        this.isOver = false;
     }
 
     public void start() {
@@ -22,10 +24,8 @@ public class Game {
         //TODO: should be removed
         System.out.println("answer : " + this.answerNumbers);
 
-        boolean isGameOver = false;
-
-        while (!isGameOver) {
-            isGameOver = this.play();
+        while (!this.isOver) {
+            isOver = this.play();
         }
 
         boolean shouldRestart = Player.getGameRestartInput();
