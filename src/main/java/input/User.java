@@ -31,8 +31,12 @@ public class User {
     }
 
     public static void checkException(String userInput) {
-        if (!checkSize(userInput) || !checkRange(userInput.toCharArray()))
-            throw new IllegalArgumentException();
+        if (!checkSize(userInput)) {
+            throw new IllegalArgumentException("entered more "+(userInput.length()-BALL_MAX_SIZE)+" digit input values than the original input value.");
+        }
+        if (!checkRange(userInput.toCharArray())){
+            throw new IllegalArgumentException("exceeded the range of the input.");
+        }
     }
 
     private static boolean checkRange(char[] toCharArray) {
