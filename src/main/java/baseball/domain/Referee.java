@@ -1,10 +1,11 @@
 package baseball.domain;
 
-import baseball.resource.GameRule;
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
+import baseball.resource.GameRule;
 
 public class Referee {
     List<Integer> targetNumbers;
@@ -19,9 +20,8 @@ public class Referee {
         targetNumbers = new ArrayList<>();
         booleanBits = new boolean[10];
 
-        int number;
         while (targetNumbers.size() < GameRule.NUMBERS_DIGITS) {
-            number = Randoms.pickNumberInRange(GameRule.NUMBERS_START_INCLUSION, GameRule.NUMBERS_END_INCLUSION);
+            int number = Randoms.pickNumberInRange(GameRule.NUMBERS_START_INCLUSION, GameRule.NUMBERS_END_INCLUSION);
             if (booleanBits[number]) {
                 continue;
             }
@@ -51,5 +51,13 @@ public class Referee {
     // TODO: 추후 삭제 필요 (테스트코드를 위한 Getter 메소드)
     public List<Integer> getTargetNumbers() {
         return this.targetNumbers;
+    }
+
+    public void setTargetNumbers(List<Integer> numbers) {
+        this.targetNumbers = numbers;
+    }
+
+    public void setBooleanBits(boolean[] booleanBits) {
+        this.booleanBits = booleanBits;
     }
 }

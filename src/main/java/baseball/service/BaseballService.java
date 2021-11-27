@@ -1,9 +1,9 @@
 package baseball.service;
 
+import java.util.List;
+
 import baseball.domain.Player;
 import baseball.domain.Referee;
-
-import java.util.List;
 
 public class BaseballService {
     private final Referee referee;

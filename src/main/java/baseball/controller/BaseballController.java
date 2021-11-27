@@ -1,12 +1,12 @@
 package baseball.controller;
 
+import java.util.List;
+
 import baseball.resource.GameMessage;
 import baseball.resource.GameRule;
 import baseball.service.BaseballService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.List;
 
 public class BaseballController {
     private static final InputView inputView = InputView.getInstance();
@@ -26,9 +26,8 @@ public class BaseballController {
 
     public void playGame() {
         baseballService.pickRefereeNumbers();
-        List<Integer> playerNumbers;
         do {
-            playerNumbers = inputView.inputPlayerNumbers();
+            List<Integer> playerNumbers = inputView.inputPlayerNumbers();
             String result = baseballService.evaluate(playerNumbers);
             outputView.printMessageWithLine(result);
         } while (checkGameNotOver());

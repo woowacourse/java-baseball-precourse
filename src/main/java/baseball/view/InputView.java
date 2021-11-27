@@ -10,11 +10,11 @@ import baseball.resource.GameRule;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    private static final InputView INSTACNE = new InputView();
+    private static final InputView instance = new InputView();
     private static final OutputView outputView = OutputView.getInstance();
 
     public static InputView getInstance() {
-        return INSTACNE;
+        return instance;
     }
 
     public int inputPlayOrStop() {
@@ -51,9 +51,8 @@ public class InputView {
         try {
             String userInputData = Console.readLine();
             List<Integer> numbers = new ArrayList<>();
-            int number;
             for (char item : userInputData.toCharArray()) {
-                number = Integer.parseInt(String.valueOf(item));
+                int number = Integer.parseInt(String.valueOf(item));
                 numbers.add(number);
             }
             return numbers;

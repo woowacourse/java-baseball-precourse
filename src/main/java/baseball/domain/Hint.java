@@ -1,10 +1,10 @@
 package baseball.domain;
 
-import baseball.resource.GameMessage;
-import baseball.resource.GameRule;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import baseball.resource.GameMessage;
+import baseball.resource.GameRule;
 
 public class Hint {
     private int balls;
@@ -38,17 +38,14 @@ public class Hint {
             resultDatas.add(strikes + GameMessage.STRIKE);
         }
 
-        String result = GameMessage.NOTHING;
         int resultDataSize = resultDatas.size();
 
         if (resultDataSize == 2) {
-            result = String.join(" ", resultDatas);
-
+            return String.join(" ", resultDatas);
         } else if (resultDataSize == 1) {
-            result = resultDatas.get(0);
+            return resultDatas.get(0);
         }
-
-        return result;
+        return GameMessage.NOTHING;
     }
 
 }

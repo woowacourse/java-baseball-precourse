@@ -1,10 +1,10 @@
 package baseball.view;
 
 public class OutputView {
-    private static final OutputView INSTANCE = new OutputView();
+    private static final OutputView instance = new OutputView();
 
     public static OutputView getInstance() {
-        return INSTANCE;
+        return instance;
     }
 
     public void printMessage(String message) {
