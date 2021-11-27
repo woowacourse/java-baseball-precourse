@@ -8,13 +8,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     public static void main(String[] args) {
         List<Integer> answerNumbersList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        String input = Console.readLine();
-        validateType(input);
-        validateRange(input);
-        validateNumber(input);
-        List<Integer> inputNumbersList = makeInputToList(input);
-        int[] compareResult = compareNumbersList(answerNumbersList, inputNumbersList);
-        printHintMessage(compareResult);
+        while (true) {
+            String input = Console.readLine();
+            validateType(input);
+            validateRange(input);
+            validateNumber(input);
+            List<Integer> inputNumbersList = makeInputToList(input);
+            int[] compareResult = compareNumbersList(answerNumbersList, inputNumbersList);
+            printHintMessage(compareResult);
+            boolean finishGame = isAllNumbersCorrect(compareResult[2]);
+            if (finishGame) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
     // 인풋에 문자가 포함되어 있는지 확인한다.
@@ -79,5 +86,13 @@ public class Application {
             }
         }
         System.out.print(stringBuilder);
+    }
+
+    // 3스트라이크인지 검사한다.
+    private static boolean isAllNumbersCorrect(int strikeCount){
+        if(strikeCount == 3){
+            return true;
+        }
+        return false;
     }
 }
