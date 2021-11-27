@@ -30,4 +30,12 @@ public class GameResult {
     private boolean isValidateDifferentIdx(int idx, BaseballNums answerBaseballNums, BaseballNums playerBaseballNums) {
         return answerBaseballNums.getBaseballNums().indexOf(idx) != playerBaseballNums.getBaseballNums().indexOf(idx);
     }
+
+    public long getStrikeCount() {
+        return strikeCount;
+    }
+
+    public long getBallCount() {
+        return ballCount;
+    }
 }
