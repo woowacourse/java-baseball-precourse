@@ -8,6 +8,8 @@ public class BaseballGame {
 	static final int START_NUMBER = 1;
 	static final int END_NUMBER = 9;
 	static final int ANSWER_LENGTH = 3; // 1 <= ANSWER_LENGTH <= END_NUMBER - START_NUMBER + 1
+	static final int RESTART_NUMBER = 1;
+	static final int FINISH_NUMBER = 2;
 
 	public static boolean play() {
 		String answer = makeAnswer();
@@ -105,10 +107,10 @@ public class BaseballGame {
 		boolean finishBaseballGame = true;
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		String input = readLine();
-		if (!(input.equals("1") || input.equals("2"))) {
+		if (!(input.equals(RESTART_NUMBER) || input.equals(FINISH_NUMBER))) {
 			throw new IllegalArgumentException();
 		}
-		if (input.equals("1")) {
+		if (input.equals(RESTART_NUMBER)) {
 			finishBaseballGame = false;
 		}
 		return finishBaseballGame;
