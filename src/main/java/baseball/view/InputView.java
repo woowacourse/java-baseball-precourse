@@ -23,11 +23,7 @@ public class InputView {
     }
 
     private static Balls convertBalls(String input) {
-        int[] ballNumbers = Arrays.stream(input.split("")).mapToInt(Integer::parseInt).toArray();
-        int firstBall = ballNumbers[0];
-        int secondBall = ballNumbers[1];
-        int thirdBall = ballNumbers[2];
-        return new Balls(firstBall, secondBall, thirdBall);
+        return new Balls(Integer.parseInt(input));
     }
 
     private static void validateInput(String input) {
