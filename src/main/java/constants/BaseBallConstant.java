@@ -18,4 +18,7 @@ public class BaseBallConstant {
 
 	public static final int GOING = 1;
 	public static final int STOP = 2;
+
+	public static final String INVALID_BASEBALL_INPUT_ERROR = "숫자야구는 세자리의 각각 다른 수를 입력하여야 합니다. 게임이 종료됩니다.";
+	public static final String INVALID_RESTART_OR_END_INPUT_ERROR = "게임 재시작시에는 1, 종료시에는 2를 입력하여야 합니다. 게임이 종료됩니다.";
 }

@@ -34,7 +34,7 @@ public class BaseBallGame {
 		System.out.println(RESTART_OR_END_MESSAGE);
 		Integer userInputStatus = Integer.valueOf(Console.readLine());
 		if (!isRightStatus(userInputStatus)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(INVALID_RESTART_OR_END_INPUT_ERROR);
 		}
 		gameStatus = userInputStatus;
 	}

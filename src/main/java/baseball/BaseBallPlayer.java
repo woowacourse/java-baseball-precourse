@@ -20,7 +20,7 @@ public class BaseBallPlayer {
 		System.out.println(INPUT_MESSAGE);
 		String userInput = Console.readLine();
 		if (!checkUserInput(userInput)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(INVALID_BASEBALL_INPUT_ERROR);
 		}
 		userInputToUserNumber(userInput);
 	}
