@@ -6,6 +6,9 @@ import output.Output;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static output.Output.pleaseInput;
+
 public class User {
 
     private static final int BALL_MAX_SIZE = 3;
@@ -13,14 +16,10 @@ public class User {
     private static final char BALL_LOWER_BOUND = '1';
 
     public static List<Integer> readUserInput() {
-        Output.pleaseInput();
-        String userInput = readConsole();
+        pleaseInput();
+        String userInput = readLine();
         checkException(userInput);
         return convertStringToList(userInput);
-    }
-
-    private static String readConsole() {
-        return Console.readLine();
     }
 
     private static List<Integer> convertStringToList(String userInput) {
