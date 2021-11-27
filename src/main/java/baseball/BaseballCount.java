@@ -27,3 +27,4 @@ public class BaseballCount {
 			.anyMatch(arrayNum -> arrayNum == num);
 	}
 }
+

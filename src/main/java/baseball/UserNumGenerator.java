@@ -30,3 +30,4 @@ public class UserNumGenerator extends NumGenerator {
 			.allMatch(num -> 1 <= num && num <= 9);
 	}
 }
+

@@ -9,3 +9,4 @@ public class NumGenerator {
 		return nums.length == Arrays.stream(nums).distinct().count();
 	}
 }
+
