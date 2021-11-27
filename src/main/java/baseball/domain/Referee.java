@@ -10,6 +10,11 @@ public class Referee {
     List<Integer> targetNumbers;
     boolean[] booleanBits;
 
+    public Referee() {
+        this.targetNumbers = null;
+        this.booleanBits = null;
+    }
+
     public void pickRandomNumbers() {
         targetNumbers = new ArrayList<>();
         booleanBits = new boolean[10];
@@ -25,14 +30,13 @@ public class Referee {
         }
     }
 
-    public Hint calculateHint(List<Integer> playerNumbers) {
+    public Hint evaluateNumbers(Player player) {
+        List<Integer> playerNumbers = player.getPlayerNumbers();
         Hint hint = new Hint();
-        int targetNumber;
-        int playerNumber;
 
         for (int i = 0; i < targetNumbers.size(); i++) {
-            targetNumber = targetNumbers.get(i);
-            playerNumber = playerNumbers.get(i);
+            int targetNumber = targetNumbers.get(i);
+            int playerNumber = playerNumbers.get(i);
 
             if (playerNumber == targetNumber) {
                 hint.increaseStrike();
