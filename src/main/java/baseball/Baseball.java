@@ -12,6 +12,7 @@ public class Baseball {
 		this.computer = new Computer();
 		this.user = new User();
 	}
+	
 	public void playGame() {
 		String result = "";
 		String ranNum = computer.generateRanNum(DIGIT);
@@ -27,6 +28,17 @@ public class Baseball {
 				break;
 			}
 		}
+	}
+	public boolean restart() {
+		String select = Console.readLine();
+		
+		if(select == "1") {
+			return true;
+		}
+		if(select == "2") {
+			return false;
+		}
+		throw new IllegalArgumentException();
 	}
 	
 	private int countStrike(String ranNum, String userNum) {
