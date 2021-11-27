@@ -10,9 +10,11 @@ public class Application {
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
         Game game = new Game();
-        while(game.strike < 3) {
-            game.play();
-        }
-        // System.out.println("종료");
+        do {
+            game.startGame();
+            while(game.strike < 3) {
+                game.play();
+            }
+        } while(!game.endsGame());
     }
 }

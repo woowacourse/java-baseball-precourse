@@ -7,10 +7,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
 	private ArrayList<Integer> answer;
-	public int strike = 0;
-	public int ball = 0;
+	public int strike;
+	public int ball;
 
-	public Game() {
+	public void startGame() {
+		this.strike = 0;
+		this.ball = 0;
 		this.answer = new ArrayList<>();
 		while (this.answer.size() < 3) {
 			int number = Randoms.pickNumberInRange(1, 9);
@@ -27,6 +29,19 @@ public class Game {
 		ArrayList<Integer> input = inputToArrayList(strInput);
 		countScore(input);
 		printScore();
+	}
+
+	public boolean endsGame() {
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		String input = Console.readLine();
+		if(input.equals("1")) {
+			return false;
+		}
+		if(input.equals("2")) {
+			return true;
+		}
+		throw new IllegalArgumentException("1 또는 2를 입력하세요.");
 	}
 
 	private ArrayList<Integer> inputToArrayList(String strInput) {

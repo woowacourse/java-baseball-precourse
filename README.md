@@ -50,6 +50,6 @@
         - String -> ArrayList 변환
     - strike, ball count ✔game.countScore()
     - 결과 출력 ✔game.printScore()
-4. 종료
+4. 종료 ✔game.endsGame()
     - 재시작 여부 검사
         - 입력값 유효성 검사
