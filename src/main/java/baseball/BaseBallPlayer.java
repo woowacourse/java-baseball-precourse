@@ -36,7 +36,7 @@ public class BaseBallPlayer {
 	}
 
 	private boolean checkUserInput(String userInput) {
-		return isAllDigit(userInput) && isRightLength(userInput) && isRightNumberRange(userInput) && isNotDuplicate(
+		return isRightLength(userInput) && isAllDigit(userInput) && isRightNumberRange(userInput) && isNotDuplicate(
 			userInput);
 	}
 
