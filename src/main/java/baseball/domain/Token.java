@@ -31,13 +31,13 @@ public class Token {
 
 	private static void checkIsDigit(String value) {
 		if (!Character.isDigit(value.charAt(FIRST_INDEX))) {
-			throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+			throw new IllegalArgumentException("숫자를 입력해주세요.");
 		}
 	}
 
 	private static void checkLength(String value) {
 		if (!isValidLength(value)) {
-			throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+			throw new IllegalArgumentException("한자리 숫자를 입력해주세요.");
 		}
 	}
 
