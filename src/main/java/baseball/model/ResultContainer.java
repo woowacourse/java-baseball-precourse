@@ -1,6 +1,6 @@
-package com.model;
+package baseball.model;
 
-import com.io.Output;
+import baseball.input.Output;
 
 public class Result {
 	private static final int COUNT_ZERO = 0;
@@ -25,7 +25,7 @@ public class Result {
 
 		if (ballCount == COUNT_ZERO && strikeCount != COUNT_ZERO) {
 			sb.append(strikeCount).append(Output.RESULT_STRIKE_MESSAGE);
-		} else {
+		} else if (strikeCount != COUNT_ZERO) {
 			sb.append(" ").append(strikeCount).append(Output.RESULT_STRIKE_MESSAGE);
 		}
 
