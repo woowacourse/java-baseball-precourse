@@ -25,6 +25,7 @@ public class BaseballGame {
             userInput.setInput();
         } while (!score.is_success(computer.getAnswer(), userInput.getInput()));
 
+        printSuccess();
     }
 
     private boolean is_restart() {
@@ -39,4 +40,9 @@ public class BaseballGame {
         }
         throw new IllegalArgumentException();
     }
+
+    private void printSuccess() {
+        System.out.println(Constant.SUCCESS);
+    }
+
 }
