@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.exception.BaseballException;
+import baseball.resource.GameMessage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,8 @@ public class Referee {
         List<Integer> playerNumbers = player.getPlayerNumbers();
         Hint hint = new Hint();
 
+        validateRefereeNumbersPicked();
+
         for (int i = 0; i < targetNumbers.size(); i++) {
             int targetNumber = targetNumbers.get(i);
             int playerNumber = playerNumbers.get(i);
@@ -45,6 +49,12 @@ public class Referee {
             }
         }
         return hint;
+    }
+
+    private void validateRefereeNumbersPicked() {
+        if (targetNumbers == null) {
+            throw new BaseballException(GameMessage.NOT_PICKED_REFEREE_NUMBERS);
+        }
     }
 
 
