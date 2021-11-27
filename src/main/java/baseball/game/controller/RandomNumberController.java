@@ -1,6 +1,5 @@
-package baseball.game.utils;
+package baseball.game.controller;
 
-import baseball.game.constants.BaseballGameConst;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import static baseball.game.constants.BaseballGameConst.*;
@@ -10,16 +9,16 @@ public class RandomNumberController {
     private boolean[] flag;
 
 
-    public RandomNumberController(){
+    public RandomNumberController() {
         for (boolean b : flag = new boolean[NINE + 1]) {
             b = false;
         }
     }
 
-    public int[] getThreeRandomNumbers(){
+    public int[] getThreeRandomNumbers() {
         int[] returnValue = new int[RANDOM_NUMBER_COUNTS];
 
-        for(int i=0;i<RANDOM_NUMBER_COUNTS;i++){
+        for (int i = 0; i < RANDOM_NUMBER_COUNTS; i++) {
             returnValue[i] = getDistinctRandomNumber();
         }
 
@@ -29,7 +28,7 @@ public class RandomNumberController {
     private int getDistinctRandomNumber() {
         int ret = Randoms.pickNumberInRange(ONE, NINE);
 
-        while(isExist(ret)){
+        while (isExist(ret)) {
             ret = Randoms.pickNumberInRange(ONE, NINE);
         }
         flag[ret] = true;
