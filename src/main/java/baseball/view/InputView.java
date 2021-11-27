@@ -30,9 +30,9 @@ public class InputView {
         outputView.printMessage(GameMessage.REQUEST_NUMBERS_MESSAGE);
         List<Integer> numbers = inputNumbers();
 
-        validateNumbersDigit(numbers);
-        validateNumbersRange(numbers);
-        validateNumbersDuplication(numbers);
+        validateNumbersDigitMatch(numbers);
+        validateNumbersInRange(numbers);
+        validateNumbersIsNotDuplicated(numbers);
 
         return numbers;
     }
@@ -61,19 +61,23 @@ public class InputView {
         }
     }
 
+    private boolean isNotInRange(int number) {
+        return (number < GameRule.NUMBERS_START_INCLUSION || GameRule.NUMBERS_END_INCLUSION < number);
+    }
+
     private void validateNumberIsPlayOrStop(int number) {
         if (number != GameRule.NUMBER_GAME_PLAY && number != GameRule.NUMBER_GAME_STOP) {
             throw new BaseballException(GameMessage.NUMBER_NOT_IN_RANGE_MESSAGE);
         }
     }
 
-    private void validateNumbersDigit(List<Integer> numbers) {
+    private void validateNumbersDigitMatch(List<Integer> numbers) {
         if (numbers.size() != GameRule.NUMBERS_DIGITS) {
             throw new BaseballException(GameMessage.NUMBERS_NOT_MATCH_DIGITS_MESSAGE);
         }
     }
 
-    private void validateNumbersRange(List<Integer> numbers) {
+    private void validateNumbersInRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (isNotInRange(number)) {
                 throw new BaseballException(GameMessage.NUMBER_NOT_IN_RANGE_MESSAGE);
@@ -81,7 +85,7 @@ public class InputView {
         }
     }
 
-    private void validateNumbersDuplication(List<Integer> numbers) {
+    private void validateNumbersIsNotDuplicated(List<Integer> numbers) {
         boolean[] bits = new boolean[10];
         for (int number : numbers) {
             if (bits[number]) {
@@ -89,9 +93,5 @@ public class InputView {
             }
             bits[number] = true;
         }
-    }
-
-    private boolean isNotInRange(int number) {
-        return (number < GameRule.NUMBERS_START_INCLUSION || GameRule.NUMBERS_END_INCLUSION < number);
     }
 }

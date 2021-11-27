@@ -13,11 +13,6 @@ public class Referee {
     List<Integer> targetNumbers;
     boolean[] booleanBits;
 
-    public Referee() {
-        this.targetNumbers = null;
-        this.booleanBits = null;
-    }
-
     public void pickRandomNumbers() {
         targetNumbers = new ArrayList<>();
         booleanBits = new boolean[10];
@@ -32,8 +27,7 @@ public class Referee {
         }
     }
 
-    public Hint evaluateNumbers(Player player) {
-        List<Integer> playerNumbers = player.getPlayerNumbers();
+    public Hint evaluateNumbers(List<Integer> playerNumbers) {
         Hint hint = new Hint();
 
         validateRefereeNumbersPicked();

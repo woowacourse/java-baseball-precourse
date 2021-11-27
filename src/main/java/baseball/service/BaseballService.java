@@ -14,17 +14,17 @@ public class BaseballService {
         this.player = new Player(referee);
     }
 
-    public void pickRefereeNumbers() {
+    public void init() {
         referee.pickRandomNumbers();
     }
 
-    public String evaluate(List<Integer> playerNumbers) {
+    public String playGame(List<Integer> playerNumbers) {
         player.pickPlayerNumbers(playerNumbers);
         player.evaluateNumbers();
-        return player.getHint().toString();
+        return player.getHintAsString();
     }
 
     public boolean isGameCleared() {
-        return player.getHint().isAllStrikes();
+        return player.isAllStrikes();
     }
 }

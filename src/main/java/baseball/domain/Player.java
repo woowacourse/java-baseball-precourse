@@ -16,14 +16,14 @@ public class Player {
     }
 
     public void evaluateNumbers() {
-        this.hint = referee.evaluateNumbers(this);
+        this.hint = referee.evaluateNumbers(this.playerNumbers);
     }
 
-    public List<Integer> getPlayerNumbers() {
-        return playerNumbers;
+    public String getHintAsString() {
+        return hint.toString();
     }
 
-    public Hint getHint() {
-        return hint;
+    public boolean isAllStrikes() {
+        return hint.isAllStrikes();
     }
 }

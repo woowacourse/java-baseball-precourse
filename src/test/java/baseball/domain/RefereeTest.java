@@ -73,7 +73,7 @@ public class RefereeTest {
     private String getEvaluatedResult(List<Integer> playerNumbers) {
         player.pickPlayerNumbers(playerNumbers);
         player.evaluateNumbers();
-        return player.getHint().toString();
+        return player.getHintAsString();
     }
 
     private void setRefereeNumbers(List<Integer> targetNumbers) {

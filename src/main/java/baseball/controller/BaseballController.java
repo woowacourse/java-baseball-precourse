@@ -20,15 +20,15 @@ public class BaseballController {
 
     public void run() {
         do {
+            baseballService.init();
             this.playGame();
         } while (decidePlayOrStop());
     }
 
     public void playGame() {
-        baseballService.pickRefereeNumbers();
         do {
             List<Integer> playerNumbers = inputView.inputPlayerNumbers();
-            String result = baseballService.evaluate(playerNumbers);
+            String result = baseballService.playGame(playerNumbers);
             outputView.printMessageWithLine(result);
         } while (checkGameIsNotCleared());
     }
