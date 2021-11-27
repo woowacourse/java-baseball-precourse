@@ -1,23 +1,28 @@
 package baseball.game;
 
-import baseball.game.utils.RandomNumberController;
-
-import static baseball.game.constants.BaseballGameConst.RANDOM_NUMBER_COUNTS;
+import baseball.game.controller.RandomNumberController;
+import baseball.game.controller.UserInputController;
 
 public class BaseballGame {
 
     private int[] randomNumbers;
+    private int[] inputNumbers;
+    private boolean incorrectAnswer;
+
     private RandomNumberController randomNumberController;
 
-    public BaseballGame(){
+    public BaseballGame() {
+        incorrectAnswer = true;
         randomNumberController = new RandomNumberController();
     }
 
-    public void start(){
+    public void start() {
         //랜덤 숫자 생성
         randomNumbers = randomNumberController.getThreeRandomNumbers();
-        for(int i=0;i<3;i++){
-            System.out.println(randomNumbers[i]);
+
+        while (incorrectAnswer) {
+
+            inputNumbers = UserInputController.getUserInput();
         }
 
     }
