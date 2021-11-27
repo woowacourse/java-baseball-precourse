@@ -11,16 +11,10 @@ public class BaseballGame {
     public static Player player = new Player();
 
     public static void startGame() {
-        boolean continueGame = true;
-        while (continueGame) {
-            continueGame = playGameUntilGetAnswer();
-        }
-    }
-
-    private static Boolean playGameUntilGetAnswer() {
-        computer.makeThreeDigitNumber();
-        guessUntilGetAnswer();
-        return decideToContinueGame();
+        do {
+            computer.makeThreeDigitNumber();
+            guessUntilGetAnswer();
+        } while (restartGame());
     }
 
     private static void guessUntilGetAnswer() {
@@ -33,7 +27,7 @@ public class BaseballGame {
         }
     }
 
-    private static Boolean decideToContinueGame() {
+    private static Boolean restartGame() {
         System.out.println(ASK_GAME_RESTART_MESSAGE);
         String continueGame = Console.readLine();
         if (continueGame.equals("1")) {
