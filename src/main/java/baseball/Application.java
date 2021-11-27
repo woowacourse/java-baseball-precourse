@@ -1,7 +1,14 @@
 package baseball;
 
 public class Application {
+    private static final String START = "1";
+
     public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
+        String playContinue = START;
+
+        while (playContinue.equals(START)) {
+            GameController controller = new GameController();
+            playContinue = controller.play();
+        }
     }
 }
