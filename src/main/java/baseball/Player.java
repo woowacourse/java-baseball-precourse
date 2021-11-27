@@ -8,7 +8,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 
 public class Player {
-    public int[] getInput(){
+    public int[] getInput() {
         System.out.println("숫자를 입력해주세요 : ");
         String input = readLine();
 
@@ -21,7 +21,7 @@ public class Player {
         return inputNum;
     }
 
-    public int getQuitOrNewGameInput(){
+    public int getQuitOrNewGameInput() {
         String input = readLine();
         return Integer.parseInt(input);
     }

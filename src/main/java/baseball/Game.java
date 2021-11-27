@@ -16,35 +16,35 @@ public class Game {
     int[] input;
     boolean end = false;
 
-    public Game(){
+    public Game() {
         this.computer = new Computer();
         this.player = new Player();
         this.result = new Result();
     }
 
     // TODO: set과 start를 분리하는게 정말 좋은가? 생각 좀 해보기
-    public void setAnswer(){
+    public void setAnswer() {
         answer = computer.generateAnswer();
     }
 
-    public void input(){
+    public void input() {
         input = player.getInput();
     }
 
-    public boolean QuitOrNewGame(){
+    public boolean QuitOrNewGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int response = player.getQuitOrNewGameInput();
-        if(response == 1){
+        if (response == 1) {
             return true;
         }
         return false;
     }
 
-    public void start(){
-        while(!end){
+    public void start() {
+        while (!end) {
             input();
             Judge judge = new Judge();
-            judge.judge(answer,input);
+            judge.judge(answer, input);
             end = result.printResult(judge.getStrike(), judge.getBall());
         }
     }

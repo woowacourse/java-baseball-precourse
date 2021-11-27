@@ -5,9 +5,9 @@ public class Application {
         startGame();
     }
 
-    public static void startGame(){
+    public static void startGame() {
         boolean quitOrnewGame = true;
-        while(quitOrnewGame){
+        while (quitOrnewGame) {
             Game game = new Game();
             game.setAnswer();
             game.start();
