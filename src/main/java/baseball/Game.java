@@ -63,7 +63,13 @@ public class Game {
 
     public int countBall(String opponentNumber, String userNumber) {
         int ballCount = 0;
-
+        for (int i = 0; i < DIGIT_NUM; i++){
+            for (int j = 0; j < DIGIT_NUM; j++){
+                if (i != j && opponentNumber.charAt(i) == userNumber.charAt(j)){
+                    ballCount ++;
+                }
+            }
+        }
         return ballCount;
     }
 }
