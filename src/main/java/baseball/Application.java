@@ -1,7 +1,10 @@
 package baseball;
 
+import baseball.game.BaseballGame;
+import baseball.game.ComputerBaseballGenerator;
+
 public class Application {
     public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
+        new BaseballGame(new ComputerBaseballGenerator()).run();
     }
 }
