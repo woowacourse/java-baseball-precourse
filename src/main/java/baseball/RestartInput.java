@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.Arrays;
-
 public enum RestartInput {
     RESTART("1"),
     FINISH("2");
