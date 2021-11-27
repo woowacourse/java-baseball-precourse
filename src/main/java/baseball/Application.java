@@ -15,10 +15,12 @@ public class Application {
 	private static final String RESTART = "1";
 	private static final String END = "2";
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IllegalArgumentException {
 		//TODO: 숫자 야구 게임 구현
-		randomNumber = createRandomNumber();
+		isFinished = false;
 		while (!isFinished) {
+			randomNumber = createRandomNumber();
+			isThreeStrike = false;
 			while (!isThreeStrike) {
 				System.out.println("숫자를 입력해주세요 : ");
 				inputNumber = Console.readLine();
