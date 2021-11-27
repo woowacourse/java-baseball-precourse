@@ -21,11 +21,11 @@
 ### 게임 진행하기
 
 - 승리
-    * 사용자의 입력과 컴퓨터가 생성한 난수가 동일한 경우 승리로 간주한다.
+    * 사용자의 입력과 컴퓨터가 생성한 난수가 동일한 경우 승리로 간주한다. ✅
     * 승리했을 경우 이를 출력한다.
-    * 새로운 게임을 시작하거나 게임을 종료할 수 있다.
-    * 새로운 게임 시작 혹은 종료를 위한 입력값( 0 또는 1 )이 아닌 입력은 허용되지 않는다.
-    * 허용되지 않은 입력의 경우 IllegalArgumentException 이 발생한다.
+    * 새로운 게임을 시작하거나 게임을 종료할 수 있다. ✅
+    * 새로운 게임 시작 혹은 종료를 위한 입력값( 0 또는 1 )이 아닌 입력은 허용되지 않는다. ✅
+    * 허용되지 않은 입력의 경우 IllegalArgumentException 이 발생한다. ✅
 
 - 진행
     * 사용자의 입력과 정답이 동일하지 않은 경우 스트라이크, 볼, 낫싱 결과를 계산한다.
@@ -38,32 +38,32 @@
 
 ### Application
 
-- public static void main(String[] args)
+- public static void main(String[] args) ✅
     * BaseballGame 선언, 호출
 
 ### BaseballGame
 
-- private final Computer computer
-- private final UserInput userInput
-- private final Score score
+- private final Computer computer ✅
+- private final UserInput userInput ✅
+- private final Score score ✅
 
-- BaseballGame()
+- BaseballGame() ✅
     * 생성자
 
-- public void start()
+- public void start() ✅
     * 난수 생성, 게임 시작
     * 종료될 때 까지 반복
 
 - private void play()
-    * 사용자 입력 받기
+    * 사용자 입력 받기 ✅
     * 결과 계산
     * 힌트 출력
-    * 정답 맞출 때 까지 반복
+    * 정답 맞출 때 까지 반복 ✅
 
 - private void printSuccess()
     * 성공 출력
 
-- private boolean is_restart()
+- private boolean is_restart() ✅
     * 새로운 게임 시작 or 종료 선택
 
 ### Computer
@@ -96,21 +96,21 @@
     * camp.nextstep.edu.missionutils.Console의 readLine()을 활용하여 숫자 입력받기
     * 잘못된 입력은 아닌지 검증
 
-- public int[] getInput()
+- public int[] getInput() ✅
     * 사용자 입력 반환
 
 ### Score
 
-- private final int strike
+- private final int strike ✅
     * 스트라이크 개수
-- private final int ball
+- private final int ball ✅
     * 볼 개수
 
-- public Score()
+- public Score() ✅
     * 생성자
     * strike=0 , ball=0 초기화
 
-- public boolean is_success(int[] answer, int[] input)
+- public boolean is_success(int[] answer, int[] input) ✅
     * 성공여부 확인
 
 - public void grade(int[] answer, int[] input)
@@ -125,7 +125,7 @@
     * 야구게임을 위한 숫자를 입력했는지 확인
     * 잘못입력했다면 IllegalArgumentException 발생
 
-- public static void isValidRestart(String input)
+- public static void isValidRestart(String input) ✅
     * 재시작 혹은 종료를 위한 숫자를 입력했는지 확인
     * 잘못입력했다면 IllegalArgumentException 발생
 
