@@ -49,9 +49,9 @@ public class BaseBallGame {
         BaseBallHint result = new BaseBallHint();
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == targetNumber.charAt(i)) {
-                result.strikeCount++;
+                result.countUpStrikeCount();
             } else if (targetNumber.contains(String.valueOf(input.charAt(i)))) {
-                result.ballCount++;
+                result.countUpBallCount();
             }
         }
         return result;

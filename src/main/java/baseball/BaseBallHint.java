@@ -1,8 +1,16 @@
 package baseball;
 
 public class BaseBallHint {
-    int ballCount = 0;
-    int strikeCount = 0;
+    private int ballCount = 0;
+    private int strikeCount = 0;
+
+    public void countUpBallCount() {
+        ballCount++;
+    }
+
+    public void countUpStrikeCount() {
+        strikeCount++;
+    }
 
     @Override
     public String toString() {
