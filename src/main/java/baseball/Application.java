@@ -42,11 +42,15 @@ public class Application {
         }
         if(strikeCount == 0 && ballCount == 0){
             resultMessage = "낫싱";
-        } else if (ballCount != 0) {
-            resultMessage += ballCount + "볼";
-        } else if (strikeCount != 0){
-            resultMessage += strikeCount + "스트라이크";
+        } else {
+            if (ballCount != 0) {
+                resultMessage += ballCount + "볼 ";
+            }
+            if (strikeCount != 0){
+                resultMessage += strikeCount + "스트라이크";
+            }
         }
+
         return resultMessage;
     }
 
