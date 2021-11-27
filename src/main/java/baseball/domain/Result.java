@@ -8,6 +8,7 @@ public class Result {
 	public static final String NOTHING_STRING = "낫싱";
 	public static final char SPACE = 32;
 	public static final int MAX_COUNT = 3;
+	public static final String EMPTY_STRING = "";
 
 	private final List<Scores> result;
 
@@ -19,26 +20,41 @@ public class Result {
 		return new Result(result);
 	}
 
-	public int getStrikeCount() {
+	int getStrikeCount() {
 		return result.stream().mapToInt(Scores::getStrikeCount).sum();
 	}
 
-	public int getBallCount() {
+	int getBallCount() {
 		return result.stream().mapToInt(Scores::getBallCount).sum();
 	}
 
 	public String report() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder report = new StringBuilder();
+		report.append(reportBall());
+		report.append(reportStrike());
+		report.append(reportNothing());
+		return report.toString().trim();
+	}
+
+	private String reportBall() {
 		if (hasBall()) {
-			sb.append(getBallCount() + BALL_STRING + SPACE);
+			return getBallCount() + BALL_STRING + SPACE;
 		}
+		return EMPTY_STRING;
+	}
+
+	private String reportStrike() {
 		if (hasStrike()) {
-			sb.append(getStrikeCount() + STRIKE_STRING);
+			return getStrikeCount() + STRIKE_STRING;
 		}
+		return EMPTY_STRING;
+	}
+
+	private String reportNothing() {
 		if (isNothing()) {
-			sb.append(NOTHING_STRING);
+			return NOTHING_STRING;
 		}
-		return sb.toString().trim();
+		return EMPTY_STRING;
 	}
 
 	private boolean hasBall() {
