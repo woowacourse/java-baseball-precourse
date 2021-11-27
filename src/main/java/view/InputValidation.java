@@ -43,19 +43,19 @@ public class InputValidation {
 
     private void validateRange(char inputChar) {
         if (inputChar < START_NUMBER || inputChar > END_NUMBER) {
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
     }
 
     private void validateLen(List<Integer> inputNumberList) {
         if (inputNumberList.size() != INPUT_SIZE) {
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
     }
 
     private void validateDuplication(List<Integer> inputNumberList) {
         if (inputNumberList.stream().distinct().count() != INPUT_SIZE) {
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
     }
 
@@ -73,7 +73,7 @@ public class InputValidation {
 
     private void validateRestartInput(String restartInput) {
         if (!restartInput.equals(RESTART) && !restartInput.equals(OVER)) {
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
     }
 }

@@ -6,6 +6,7 @@ public class OutputDisplay {
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
+    private static final String THREE_STRIKE = "3스트라이크";
     private static final String END_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public void displayResult(GameResultObject gameResult) {
@@ -29,6 +30,7 @@ public class OutputDisplay {
     }
 
     public void displayEndMsg() {
+        System.out.println(THREE_STRIKE);
         System.out.println(END_MSG);
     }
 }
