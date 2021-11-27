@@ -2,15 +2,18 @@ package baseball;
 
 public class Judge {
 	private static final Judge INSTANCE = new Judge();
-	private static char[] defendNumber;
-	public static boolean flag;
+	private char[] defendNumber;
+	public boolean flag = false;
 
 	private Judge() {}
 
-	public static Judge initDefendNumber(int number) {
-		defendNumber = ("" + number).toCharArray();
-		flag = false;
+	public static Judge getInstance() {
 		return INSTANCE;
+	}
+
+	public void setDefendNumber(int number) {
+		defendNumber = getToCharArray("" + number);
+		flag = false;
 	}
 
 	public String judging(String attackNumber) {
@@ -18,7 +21,7 @@ public class Judge {
 			throw new IllegalArgumentException();
 		}
 
-		char[] charArray = attackNumber.toCharArray();
+		char[] charArray = getToCharArray(attackNumber);
 		int strike = 0;
 		int ball = 0;
 		for (int i = 0; i < 3; i++) {
@@ -30,6 +33,10 @@ public class Judge {
 		}
 
 		return printResult(strike, ball);
+	}
+
+	private static char[] getToCharArray(String s) {
+		return (s).toCharArray();
 	}
 
 	private String printResult(int strike, int ball) {

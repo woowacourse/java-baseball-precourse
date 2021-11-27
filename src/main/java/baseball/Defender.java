@@ -6,25 +6,21 @@ import java.util.Set;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Defender {
+	private static final Defender INSTANCE = new Defender();
 	private static final int NUM_MIN = 1;
 	private static final int NUM_MAX = 9;
 	private static final int NUM_SIZE = 3;
 	private int number;
 
-	private Defender(int number) {
-		this.number = number;
-	}
+	private Defender() {}
 
 	public static Defender getInstance() {
-		return new Defender(shuffle());
+		return INSTANCE;
 	}
 
-	public int getNumber() {
-		return number;
-	}
-
-	public void changeNumber() {
+	public int getShuffleNumber() {
 		number = shuffle();
+		return number;
 	}
 
 	private static int shuffle() {
