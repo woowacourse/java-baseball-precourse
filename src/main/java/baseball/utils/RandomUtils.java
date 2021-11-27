@@ -8,13 +8,12 @@ public class RandomUtils {
         int[] numbers = new int[3];
 
         for (int i = 0; i < size; i++) {
-            numbers[i] = getUniqueRandomNumber(start, end, numbers, i);
+            numbers[i] = getUniqueRandomNumber(numbers, start, end, i);
         }
-
         return numbers;
     }
 
-    private static int getUniqueRandomNumber(int start, int end, int[] numbers, int i) {
+    private static int getUniqueRandomNumber(int[] numbers, int start, int end, int i) {
         int randomNumber = Randoms.pickNumberInRange(start, end);
         while (!isUnique(numbers, i, randomNumber)) {
             randomNumber = Randoms.pickNumberInRange(start, end);
