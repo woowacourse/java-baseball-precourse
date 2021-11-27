@@ -25,6 +25,24 @@ public class Referee {
         }
     }
 
+    public Hint calculateHint(List<Integer> playerNumbers) {
+        Hint hint = new Hint();
+        int targetNumber;
+        int playerNumber;
+
+        for (int i = 0; i < targetNumbers.size(); i++) {
+            targetNumber = targetNumbers.get(i);
+            playerNumber = playerNumbers.get(i);
+
+            if (playerNumber == targetNumber) {
+                hint.increaseStrike();
+            } else if (booleanBits[playerNumber]) {
+                hint.increaseBall();
+            }
+        }
+        return hint;
+    }
+
 
     // TODO: 추후 삭제 필요 (테스트코드를 위한 Getter 메소드)
     public List<Integer> getTargetNumbers() {
