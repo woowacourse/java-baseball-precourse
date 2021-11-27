@@ -1,6 +1,6 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class PlayBall {
     private static final int DIGIT_NUM=3;
@@ -23,6 +23,7 @@ public class PlayBall {
 
     private static int[] getUserInput(){
 
+        System.out.print("숫자를 입력해주세요: ");
         String input=Console.readLine();
 
         if(BaseBallUtil.isValidateGuess(input)) return parseStringToIntegerArray(input);
@@ -35,7 +36,6 @@ public class PlayBall {
         int strike_num=getStrikeCount(generateNumbers, guessNumbers);
         int ball_num=getBallCount(generateNumbers, guessNumbers);
         GameStatus gameStatus=new GameStatus(strike_num, ball_num);
-
         return gameStatus.toString();
     }
 
@@ -57,7 +57,9 @@ public class PlayBall {
     }
 
     public static boolean isBall(int[] generateNumbers, int[] guessNumbers, int index){
-        return (Arrays.asList(generateNumbers).contains(guessNumbers[index]) && generateNumbers[index]!=guessNumbers[index]);
+
+        return (IntStream.of(generateNumbers).anyMatch(x -> x == guessNumbers[index]) && generateNumbers[index]!=guessNumbers[index]);
+
     }
 
     private static int[] parseStringToIntegerArray(String input){
@@ -65,7 +67,7 @@ public class PlayBall {
 
         for(int i=0; i<DIGIT_NUM; i++)
         {
-            guessNumber[i]=input.charAt(i);
+            guessNumber[i]= Integer.parseInt(input.substring(i,i+1));
         }
         return guessNumber;
     }
