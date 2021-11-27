@@ -3,7 +3,12 @@ package baseball.domain;
 import java.util.List;
 import java.util.Objects;
 
-import static baseball.Constants.ANSWER_LIST_LENGTH;
+import static baseball.constants.NumberConstant.ANSWER_LIST_LENGTH;
+import static baseball.constants.OutputMessage.BALL;
+import static baseball.constants.OutputMessage.CONGRATULATION_MESSAGE;
+import static baseball.constants.OutputMessage.FINISH_GAME_CONDITION;
+import static baseball.constants.OutputMessage.NO_MATCH;
+import static baseball.constants.OutputMessage.STRIKE;
 
 public class Judge {
 
@@ -39,15 +44,15 @@ public class Judge {
     }
 
     private String giveHint(int strikeCount, int ballCount) {
-        if (strikeCount == 0 && ballCount == 0) return "낫싱";
+        if (strikeCount == 0 && ballCount == 0) return NO_MATCH;
 
         String hint = "";
 
         if (ballCount > 0) {
-            hint += ballCount + "볼 ";
+            hint += ballCount + BALL;
         }
         if (strikeCount > 0) {
-            hint += strikeCount + "스트라이크";
+            hint += strikeCount + STRIKE;
         }
 
         return hint;
@@ -56,8 +61,8 @@ public class Judge {
     public boolean checkGameOver(String hint) {
         System.out.println(hint);
 
-        if (Objects.equals(hint, "3스트라이크")) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if (Objects.equals(hint, FINISH_GAME_CONDITION)) {
+            System.out.println(CONGRATULATION_MESSAGE);
             return true;
         }
 

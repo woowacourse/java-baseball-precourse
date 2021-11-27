@@ -1,13 +1,13 @@
 package baseball.utils;
 
-import static baseball.Constants.ANSWER_LIST_LENGTH;
-import static baseball.Constants.END_GAME_NUM;
-import static baseball.Constants.NOT_NUMBER_TYPE_ERROR;
-import static baseball.Constants.OUT_OF_VALID_NUM_RANGE_ERROR;
-import static baseball.Constants.RANGE_END_NUM;
-import static baseball.Constants.RANGE_START_NUM;
-import static baseball.Constants.RESTART_NUM;
-import static baseball.Constants.SAME_NUMBER_ERROR;
+import static baseball.constants.NumberConstant.ANSWER_LIST_LENGTH;
+import static baseball.constants.NumberConstant.END_GAME_NUM;
+import static baseball.constants.NumberConstant.RANGE_END_NUM;
+import static baseball.constants.NumberConstant.RANGE_START_NUM;
+import static baseball.constants.NumberConstant.RESTART_NUM;
+import static baseball.constants.OutputMessage.NOT_NUMBER_TYPE_ERROR;
+import static baseball.constants.OutputMessage.OUT_OF_VALID_NUM_RANGE_ERROR;
+import static baseball.constants.OutputMessage.SAME_NUMBER_ERROR;
 
 public class Validator {
 

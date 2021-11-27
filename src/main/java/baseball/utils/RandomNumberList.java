@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Constants.ANSWER_LIST_LENGTH;
-import static baseball.Constants.RANGE_END_NUM;
-import static baseball.Constants.RANGE_START_NUM;
+import static baseball.constants.NumberConstant.ANSWER_LIST_LENGTH;
+import static baseball.constants.NumberConstant.RANGE_END_NUM;
+import static baseball.constants.NumberConstant.RANGE_START_NUM;
 
 public class RandomNumberList {
 
