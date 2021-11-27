@@ -45,10 +45,6 @@ public class Number {
         return c - ZERO_CHARACTER;
     }
 
-    public boolean isUnique() {
-        return !equal(first, second) && !equal(first, third) && !equal(second, third);
-    }
-
     private boolean equal(int i, int j) {
         return Objects.equals(i, j);
     }
