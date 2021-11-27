@@ -1,5 +1,7 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 public class Target {
 	private String targetNumber;
 
@@ -8,7 +10,10 @@ public class Target {
 	private int length = 3;
 
 	public void generateTargetNumber() {
-		//TODO: target
+		targetNumber = "";
+		for (int i = 0; i < length; i++) {
+			targetNumber += pickNumberInRange(rangeBegin, rangeEnd);
+		}
 	}
 
 	public int[] compareWith(int userNumber) {
