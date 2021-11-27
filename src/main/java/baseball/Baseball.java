@@ -1,7 +1,6 @@
 package baseball;
 import java.util.HashSet;
-
-import camp.nextstep.edu.missionutils.*;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Baseball {
 	private static final int DIGIT = 3;
@@ -16,6 +15,7 @@ public class Baseball {
 	public void playGame() {
 		String result = "";
 		String ranNum = computer.generateRanNum(DIGIT);
+		System.out.println(ranNum);
 		
 		while(true) {
 			System.out.print("숫자를 입력해주세요 : ");
@@ -32,10 +32,10 @@ public class Baseball {
 	public boolean restart() {
 		String select = Console.readLine();
 		
-		if(select == "1") {
+		if(select.equals("1")) {
 			return true;
 		}
-		if(select == "2") {
+		if(select.equals("2")) {
 			return false;
 		}
 		throw new IllegalArgumentException();
@@ -78,20 +78,4 @@ public class Baseball {
 		}
 		return res;
 	}
-	
-	/*
-	
-	public boolean 재시작할지 Restart () {
-		String 재시작 할지 선택 select = 유저에게 입력받음
-		if(select가 "1"이라면) {
-			return true
-		}
-		if(select가 "2"라면) {
-			return false
-		}
-		return IllegalArgumentException
-	}
-	
-	*/
-
 }
