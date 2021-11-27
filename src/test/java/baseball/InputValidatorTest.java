@@ -10,23 +10,23 @@ import utils.InputValidator;
 
 public class InputValidatorTest {
 
-    public static final HashMap<String, Boolean> testCase = new HashMap<String, Boolean>() {{//초기값 지정
-
-        put("123", true);
-        put("987", true);
-        put("999", true);
-
-        put("1234", false);
-        put("780", false);
-        put("a91", false);
-        put("d", false);
-        put("55", false);
-        put("", false);
-
-    }};
-
     @Test
     public void checkUserInput() {
+
+        final HashMap<String, Boolean> testCase = new HashMap<String, Boolean>() {{//초기값 지정
+
+            put("123", true);
+            put("987", true);
+            put("999", true);
+
+            put("1234", false);
+            put("780", false);
+            put("a91", false);
+            put("d", false);
+            put("55", false);
+            put("", false);
+
+        }};
 
         for (Map.Entry<String, Boolean> entry : testCase.entrySet()) {
 
