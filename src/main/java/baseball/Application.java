@@ -9,6 +9,11 @@ public class Application {
 	private static int strike;
 	private static int ball;
 	private static boolean isThreeStrike;
+	private static boolean isFinished;
+	private static String checkRestartOrFinished;
+
+	private static final String RESTART = "1";
+	private static final String END = "2";
 
 	public static void main(String[] args) {
 		//TODO: 숫자 야구 게임 구현
@@ -63,6 +68,12 @@ public class Application {
 	public static void isThreeStrike() {
 		if (strike == 3) {
 			isThreeStrike = true;
+		}
+	}
+
+	public static void isFinished() {
+		if (checkRestartOrFinished.equals(END)) {
+			isFinished = true;
 		}
 	}
 }
