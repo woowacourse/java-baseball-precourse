@@ -8,13 +8,13 @@ import baseball.application.view.OutputView;
 
 public class Application {
 
-    public static void main(String[] args) {
-        InputValidation inputValidator = new InputValidation();
-        InputView inputView = new InputView(inputValidator);
-        OutputView outputView = new OutputView();
-        Referee referee = new Referee();
-        BaseBallGame game = new BaseBallGame(inputView, outputView, referee);
-        game.start();
-    }
+	public static void main(String[] args) {
+		InputValidation inputValidator = new InputValidation();
+		InputView inputView = new InputView(inputValidator);
+		OutputView outputView = new OutputView();
+		Referee referee = new Referee();
+		BaseBallGame game = new BaseBallGame(inputView, outputView, referee);
+		game.start();
+	}
 
 }
