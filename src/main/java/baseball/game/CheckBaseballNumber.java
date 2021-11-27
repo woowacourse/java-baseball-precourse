@@ -1,16 +1,16 @@
-package baseball;
+package baseball.game;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class CheckBaseballNumbers {
+public class CheckBaseballNumber {
 	private static final int VALID_BASEBALL_NUMBER_SIZE = 3;
 	private static final int START_INDEX = 0;
 	private static final int EXIST_NUMBER = 1;
 	private final List<Integer> userBaseballNumbers;
 	private final List<Integer> computerBaseballNumbers;
 
-	public CheckBaseballNumbers(List<Integer> userBaseballNumbers, List<Integer> computerBaseballNumbers) {
+	public CheckBaseballNumber(List<Integer> userBaseballNumbers, List<Integer> computerBaseballNumbers) {
 		this.userBaseballNumbers = userBaseballNumbers;
 		this.computerBaseballNumbers = computerBaseballNumbers;
 	}
