@@ -6,7 +6,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class GameSimulation {
 
@@ -15,21 +14,26 @@ public class GameSimulation {
 	private List<Integer> comNum;
 	private List<Integer> userNum;
 
-	private String message;
 
 	public GameSimulation() {
 		init();
 	}
 
 	public void init() {
-		comNum = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+		comNum = new ArrayList<>();
+		for (int i = 0; i < 3;) {
+			int num = Randoms.pickNumberInRange(1,9);
+			if (!comNum.contains(num)) {
+				comNum.add(num);
+				i++;
+			}
+		}
 	}
 
 	public void playGame() {
 		System.out.println("숫자를 입력해주세요 : ");
 		String userInput = Console.readLine();
 		this.userNum = makeList(userInput);
-		System.out.println(userNum);
 		validateUserNum();
 		compareNumbers();
 		System.out.println(compareResultReturn());

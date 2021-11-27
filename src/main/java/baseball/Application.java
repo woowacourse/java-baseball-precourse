@@ -8,8 +8,4 @@ public class Application {
             gameSimulation.playGame();
         }
     }
-
-
-
-
 }
