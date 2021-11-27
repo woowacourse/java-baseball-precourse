@@ -19,8 +19,11 @@ public class BoundaryChecker {
         }
     }
 
-    public static void checkLength(String inputNumbers) {
-        if (inputNumbers.length() != MessageList.SIZE_RANGE) {
+    public static void validateNumbers(String targetNumber) {
+        if (targetNumber.length() != MessageList.SIZE_RANGE) {
+            throw new IllegalArgumentException();
+        }
+        if (targetNumber.contains(MessageList.FIND_ZERO)) {
             throw new IllegalArgumentException();
         }
     }
@@ -32,10 +35,7 @@ public class BoundaryChecker {
         }
     }
 
-    public static void checkRange(Integer targetNumber) {
-        if (targetNumber.toString().contains(MessageList.FIND_ZERO)) {
-            throw new IllegalArgumentException();
-        }
+    public static void validateRange(Integer targetNumber) {
         if (!(targetNumber >= MessageList.MIN_NUMBER) && (targetNumber <= MessageList.MAX_NUMBER)) {
             throw new IllegalArgumentException();
         }

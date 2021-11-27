@@ -14,7 +14,6 @@ public class AnswerChecker {
         this.ballCount = 0;
         this.visit = new boolean[10];
         this.computer = new ArrayList<>(computer);
-        setVisit();
     }
 
     public void calculateBallOrStrike(ArrayList<Integer> user) {
@@ -42,6 +41,11 @@ public class AnswerChecker {
         while (iterator.hasNext()) {
             visit[iterator.next()] = true;
         }
+    }
+
+    public void clear() {
+        this.strikeCount = 0;
+        this.ballCount = 0;
     }
 
     public int getBallCount() {

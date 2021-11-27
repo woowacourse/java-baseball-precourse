@@ -13,15 +13,14 @@ public class Computer {
 
     public Computer() {
         this.randomNumbers = new LinkedHashSet<>();
-        this.setRandomNumbers();
     }
 
-    public void setRandomNumbers() {
+    public void pickUniqueThreeNumbersInRange() {
         while (randomNumbers.size() < MessageList.SIZE_RANGE) {
             int choice = Randoms.pickNumberInRange(MessageList.START_RANGE, MessageList.END_RANGE);
             randomNumbers.add(choice);
         }
-        BoundaryChecker.checkRange(Integer.parseInt(toString()));
+        BoundaryChecker.validateNumbers(toString());
     }
 
     public ArrayList<Integer> convertToList() {

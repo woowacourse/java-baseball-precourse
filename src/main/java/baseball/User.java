@@ -17,7 +17,7 @@ public class User {
         clear();
         System.out.print(MessageList.INPUT_MESSAGE);
         inputNumbers = Console.readLine();
-        checkList(inputNumbers);
+        checkExceptionList(inputNumbers);
         userNumbers.addAll(convertStringToList());
     }
 
@@ -33,11 +33,11 @@ public class User {
         throw new IllegalArgumentException();
     }
 
-    public void checkList(String inputNumbers) {
+    public void checkExceptionList(String inputNumbers) {
         BoundaryChecker.convertInt(inputNumbers);
-        BoundaryChecker.checkLength(inputNumbers);
+        BoundaryChecker.validateNumbers(inputNumbers);
         BoundaryChecker.checkDuplicate(convertStringToList());
-        BoundaryChecker.checkRange(Integer.parseInt(inputNumbers));
+        BoundaryChecker.validateRange(Integer.parseInt(inputNumbers));
     }
 
     public ArrayList<Integer> convertStringToList() {
