@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
 	private static String randomNumber;
 	private static String inputNumber;
+	private static int strike;
+	private static int ball;
 
 	public static void main(String[] args) {
 		//TODO: 숫자 야구 게임 구현
@@ -43,8 +45,8 @@ public class Application {
 	}
 
 	public static void printBallAndStrikeCount() {
-		int ball = countBall();
-		int strike = countStrike();
+		ball = countBall();
+		strike = countStrike();
 		if (ball > 0) {
 			System.out.print(ball + "볼 ");
 		}
