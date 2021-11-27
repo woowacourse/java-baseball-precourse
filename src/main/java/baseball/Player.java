@@ -57,5 +57,5 @@ public interface Player {
 	 * @param selectedNumber 플레이어가 입력 숫자
 	 * @throws IllegalArgumentException selectedNumber 파라미터가 3자리 자연수 형태의 스트링이 아닐 경우
 	 */
-	default void setSelectedNumber(String selectedNumber) throws IllegalArgumentException {}
+	default void setSelectedNumber(final String selectedNumber) throws IllegalArgumentException {}
 }

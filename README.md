@@ -138,4 +138,6 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - 사람 플레이어 정보에 대한 클래스 구현(class name: HumanPlayer, branch: feature/human-player)
 - 실제 숫자야구개임 로직이 수행되는 클래스 구현(class name: BaseballGame, branch: feature/baseball-game)
 - 컴퓨터가 사용할 랜덤한 3자리 수를 구할때 3자리가 각자 다른 수가 나오게 수정(class name: RandomNumber, branch: fix/random-number)
-- ApplicationTest.java에 게임종료_후_재시작() 통과되도록 로직 수정
+- ApplicationTest.java에 게임종료_후_재시작() 통과되도록 로직 수정(class name RandomNumber, branch: fix/pass-ApplicationTest)
+- 리팩토링(branch: refactoring)
+  - 변경이 일어나야 하지 않는 변수에 final 추가

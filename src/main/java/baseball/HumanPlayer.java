@@ -27,7 +27,7 @@ public class HumanPlayer implements Player {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setSelectedNumber(String selectedNumber) throws IllegalArgumentException{
+	public void setSelectedNumber(final String selectedNumber) throws IllegalArgumentException{
 		if(!Player.validateSelectedNumber(selectedNumber)) {
 			throw new IllegalArgumentException("유효하지 않은 숫자형식입니다.");
 		}

@@ -27,7 +27,7 @@ public class ComputerPlayer implements Player{
 	 *
 	 * @param randomNumber 3자리 난수를 스트리으로 만들어 저장하는 인스턴스
 	 */
-	public ComputerPlayer(RandomNumber randomNumber) {
+	public ComputerPlayer(final RandomNumber randomNumber) {
 		this.computerSelectedNumber = randomNumber;
 	}
 

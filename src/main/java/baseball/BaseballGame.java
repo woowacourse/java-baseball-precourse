@@ -56,7 +56,7 @@ public class BaseballGame {
 	 */
 	private void humanSelectNumber() {
 		System.out.print("숫자를 입력해주세요 : ");
-		String selectedNumber = Console.readLine();
+		final String selectedNumber = Console.readLine();
 		try {
 			humanPlayer.setSelectedNumber(selectedNumber);
 		} catch(IllegalArgumentException wrongNumberFormat) {
