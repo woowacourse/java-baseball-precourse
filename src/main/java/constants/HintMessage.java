@@ -1,4 +1,4 @@
-package baseball.constants;
+package constants;
 
 public enum HintMessage {
     BALL("볼"),
@@ -10,7 +10,7 @@ public enum HintMessage {
         this.message = message;
     }
 
-    public String hint(){
+    public String message(){
         return message;
     }
 }
