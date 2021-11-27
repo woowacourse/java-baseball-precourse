@@ -1,5 +1,7 @@
 package baseball;
 
+import constants.ExitOption;
+
 public class InputValidator {
     private static final int DIGIT_NUMBER = 3;
 
@@ -22,5 +24,9 @@ public class InputValidator {
             }
         }
         return true;
+    }
+
+    public static boolean checkExitCommandIsValid(final String userInput){
+        return false;
     }
 }

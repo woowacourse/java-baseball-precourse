@@ -38,4 +38,19 @@ public class InputValidatorTest {
         }
     }
 
+    @Test
+    public void checkExitCommandIsValidTest() {
+        String[] arrTrue = new String[] {"1", "2"};
+        String[] arrFalse = new String[] {"0", "3", "A"};
+
+        for (String element : arrTrue){
+            Assertions.assertTrue(InputValidator.checkExitCommandIsValid(element),
+                    "유효하지 않은 잘못된 커맨드입니다");
+        }
+        for (String element : arrFalse){
+            Assertions.assertTrue(InputValidator.checkExitCommandIsValid(element),
+                    "유효하지 않은 잘못된 커맨드입니다");
+        }
+    }
+
 }
