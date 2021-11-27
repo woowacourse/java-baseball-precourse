@@ -48,6 +48,14 @@ public class BaseballGame {
 				throw new IllegalArgumentException();
 			}
 		}
+		int[] duplicationCheckArray = new int[END_NUMBER - START_NUMBER + 1];
+		for (int i = 0; i < ANSWER_LENGTH; i++) {
+			int number = input.charAt(i) - '0';
+			duplicationCheckArray[number]++;
+			if (duplicationCheckArray[number] != 1) {
+				throw new IllegalArgumentException();
+			}
+		}
 	}
 
 	public static int[] countBallAndStrike(String answer, String input) {
@@ -106,4 +114,3 @@ public class BaseballGame {
 		return finishBaseballGame;
 	}
 }
-
