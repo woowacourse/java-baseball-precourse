@@ -4,6 +4,9 @@ import baseball.exception.number.BaseBallNumberRangeException;
 
 public class BaseBallNumber {
 
+    private final static int MIN_NUMBER = 0;
+    private final static int MAX_NUMBER = 9;
+
     private final int number;
 
     private BaseBallNumber(int number) {
@@ -16,7 +19,7 @@ public class BaseBallNumber {
     }
 
     private static void checkNumberRange(int number) {
-        if (number < 0 || number > 9) {
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new BaseBallNumberRangeException();
         }
     }
