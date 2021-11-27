@@ -11,15 +11,11 @@ public class GameReply {
 
 	List<Integer> gameReply;
 
-	public List<Integer> getGameReply() {
-		return gameReply;
-	}
-
-	public void askReply() {
+	public List<Integer> askReply() {
 		System.out.print("숫자를 입력해주세요 : ");
 		String input = Console.readLine();
 		this.gameReply = Arrays.asList(makeIntArray(input));
-		validation();
+		return this.gameReply;
 	}
 
 	public Integer[] makeIntArray(String input) {

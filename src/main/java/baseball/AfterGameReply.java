@@ -15,10 +15,10 @@ public class AfterGameReply {
 			throw new IllegalArgumentException();
 		}
 		if (response == 1) {
-			return true;
+			return false;
 		}
 		if (response == 2) {
-			return false;
+			return true;
 		}
 		throw new IllegalArgumentException();
 	}

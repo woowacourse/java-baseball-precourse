@@ -8,11 +8,7 @@ public class Result {
 	int strike;
 	int ball;
 
-	public int getStrike() {
-		return strike;
-	}
-
-	public void matchAnswer(List<Integer> answer, List<Integer> gameReply) {
+	public boolean matchAnswer(List<Integer> answer, List<Integer> gameReply) {
 		strike = 0;
 		ball = 0;
 
@@ -25,6 +21,8 @@ public class Result {
 				ball += 1;
 			}
 		}
+
+		return strike == 3;
 	}
 
 	public void printResult() {
@@ -44,4 +42,5 @@ public class Result {
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		}
 	}
+
 }

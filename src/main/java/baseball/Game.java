@@ -5,25 +5,27 @@ import java.util.List;
 // 숫자야구의 전반적인 운영을 담당하는 클래스
 public class Game {
 
-    Answer answer = new Answer();
-    GameReply gameReply = new GameReply();
-    Result result = new Result();
+    Computer computer;
+    User user;
 
-    public List<Integer> getAnswer() {
-        return answer.getAnswer();
-    }
-
-    public void setNewGame() {
-        this.answer.makeAnswer();
+    public Game(Computer computer, User user) {
+        this.computer = computer;
+        this.user = user;
     }
 
     public void start() {
-        gameReply.askReply();
-        result.matchAnswer(this.getAnswer(), gameReply.getGameReply());
-        result.printResult();
-    }
+        while (true) {
+            List<Integer> gameReply = user.askReply();
+            user.replyValidation();
+            boolean isCorrect = computer.matchAnswer(gameReply);
+            computer.printResult();
 
-    public boolean afterGame() {
-        return result.getStrike()!=3;
+            if (isCorrect && user.askExit()) {
+                break;
+            }
+            if (isCorrect) {
+                computer.setNewGame();
+            }
+        }
     }
 }
