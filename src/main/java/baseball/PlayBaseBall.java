@@ -4,7 +4,6 @@ public class PlayBaseBall {
     private Computer computer;
     private User user;
     private AnswerChecker answerChecker;
-    private HintMaker hintMaker;
 
     public PlayBaseBall() {
         this.user = new User();
@@ -13,17 +12,20 @@ public class PlayBaseBall {
     public void start() {
         do {
             this.computer = new Computer();
+            computer.pickUniqueThreeNumbersInRange();
+            this.answerChecker = new AnswerChecker(computer.convertToList());
+            answerChecker.setVisit();
             play();
+            computer.clear();
         } while (user.isContinue());
     }
 
     public void play() {
         do {
             user.inputNumbers();
-            answerChecker = new AnswerChecker(computer.convertToList());
+            answerChecker.clear();
             answerChecker.calculateBallOrStrike(user.convertStringToList());
-            hintMaker = new HintMaker(answerChecker.getStrikeCount(), answerChecker.getBallCount());
-            hintMaker.makePrintMessage();
-        } while (!hintMaker.isAnswer());
+            HintMaker.makePrintMessage(answerChecker.getStrikeCount(), answerChecker.getBallCount());
+        } while (!HintMaker.isAnswer(answerChecker.getStrikeCount()));
     }
 }

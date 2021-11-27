@@ -8,7 +8,10 @@ import constant.MessageList;
 
 public class BoundaryChecker {
 
-    public void convertInt(String inputNumbers) {
+    private BoundaryChecker() {
+    }
+
+    public static void convertInt(String inputNumbers) {
         try {
             Integer.parseInt(inputNumbers);
         } catch (Exception e) {
@@ -16,20 +19,20 @@ public class BoundaryChecker {
         }
     }
 
-    public void checkLength(String inputNumbers) {
+    public static void checkLength(String inputNumbers) {
         if (inputNumbers.length() != MessageList.SIZE_RANGE) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void checkDuplicate(ArrayList<Integer> targetList) {
+    public static void checkDuplicate(ArrayList<Integer> targetList) {
         Set<Integer> checkList = new HashSet<>(targetList);
         if (checkList.size() != MessageList.SIZE_RANGE) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void checkRange(Integer targetNumber) {
+    public static void checkRange(Integer targetNumber) {
         if (targetNumber.toString().contains(MessageList.FIND_ZERO)) {
             throw new IllegalArgumentException();
         }

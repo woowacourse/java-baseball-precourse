@@ -3,16 +3,11 @@ package baseball;
 import constant.MessageList;
 
 public class HintMaker {
-    private int strikeCount;
-    private int ballCount;
 
-    public HintMaker(int strikeCount, int ballCount) {
-        clear();
-        this.strikeCount = strikeCount;
-        this.ballCount = ballCount;
+    private HintMaker() {
     }
 
-    public boolean isAnswer() {
+    public static boolean isAnswer(int strikeCount) {
         if (strikeCount == MessageList.SIZE_RANGE) {
             System.out.println(MessageList.ANSWER_MESSAGE);
             return true;
@@ -20,7 +15,7 @@ public class HintMaker {
         return false;
     }
 
-    public void makePrintMessage() {
+    public static void makePrintMessage(int strikeCount, int ballCount) {
         StringBuilder sb = new StringBuilder();
         if (ballCount > MessageList.MIN_RANGE_ZERO) {
             sb.append(ballCount + MessageList.BALL_MESSAGE);
@@ -32,10 +27,5 @@ public class HintMaker {
             sb.append(MessageList.NOTHING_MESSAGE);
         }
         System.out.println(sb);
-    }
-
-    public void clear() {
-        strikeCount = 0;
-        ballCount = 0;
     }
 }

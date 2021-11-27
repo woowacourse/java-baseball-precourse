@@ -10,11 +10,9 @@ import constant.MessageList;
 
 public class Computer {
     private static Set<Integer> randomNumbers;
-    private static BoundaryChecker boundaryChecker;
 
     public Computer() {
         this.randomNumbers = new LinkedHashSet<>();
-        this.boundaryChecker = new BoundaryChecker();
         this.setRandomNumbers();
     }
 
@@ -23,7 +21,7 @@ public class Computer {
             int choice = Randoms.pickNumberInRange(MessageList.START_RANGE, MessageList.END_RANGE);
             randomNumbers.add(choice);
         }
-        boundaryChecker.checkRange(Integer.parseInt(toString()));
+        BoundaryChecker.checkRange(Integer.parseInt(toString()));
     }
 
     public ArrayList<Integer> convertToList() {

@@ -26,4 +26,7 @@ public class MessageList {
     public static final int END_RANGE = 9;
     public static final int MIN_NUMBER = 123;
     public static final int MAX_NUMBER = 987;
+
+    private MessageList() {
+    }
 }

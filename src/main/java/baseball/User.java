@@ -7,11 +7,9 @@ import java.util.ArrayList;
 
 public class User {
     private static ArrayList<Integer> userNumbers;
-    private BoundaryChecker boundaryChecker;
     private static String inputNumbers;
 
     public User() {
-        boundaryChecker = new BoundaryChecker();
         userNumbers = new ArrayList<>();
     }
 
@@ -36,10 +34,10 @@ public class User {
     }
 
     public void checkList(String inputNumbers) {
-        boundaryChecker.convertInt(inputNumbers);
-        boundaryChecker.checkLength(inputNumbers);
-        boundaryChecker.checkDuplicate(convertStringToList());
-        boundaryChecker.checkRange(Integer.parseInt(inputNumbers));
+        BoundaryChecker.convertInt(inputNumbers);
+        BoundaryChecker.checkLength(inputNumbers);
+        BoundaryChecker.checkDuplicate(convertStringToList());
+        BoundaryChecker.checkRange(Integer.parseInt(inputNumbers));
     }
 
     public ArrayList<Integer> convertStringToList() {
