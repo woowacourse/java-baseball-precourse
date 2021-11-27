@@ -1,9 +1,12 @@
-package utils;
+package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static baseball.Constants.RANGE_END_NUM;
+import static baseball.Constants.RANGE_START_NUM;
 
 public class AnswerNumberList {
     public static List<Integer> generate() {
@@ -11,7 +14,7 @@ public class AnswerNumberList {
         boolean[] visited = new boolean[10];
 
         while (newList.size() < 3) {
-            Integer newNum = Randoms.pickNumberInRange(1, 9);
+            Integer newNum = Randoms.pickNumberInRange(RANGE_START_NUM, RANGE_END_NUM);
 
             if (visited[newNum]) continue;
 

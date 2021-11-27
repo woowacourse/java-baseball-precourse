@@ -1,9 +1,11 @@
-package domain;
+package baseball.domain;
 
-import utils.AnswerNumberList;
+import baseball.utils.AnswerNumberList;
 
 import java.util.List;
 import java.util.Objects;
+
+import static baseball.Constants.ANSWER_LIST_LENGTH;
 
 public class Game {
 
@@ -20,9 +22,6 @@ public class Game {
 
     public void start() {
         reset();
-
-        //TODO: should be removed
-        System.out.println("answer : " + this.answerNumbers);
 
         while (!this.isOver) {
             isOver = this.play();
@@ -47,7 +46,7 @@ public class Game {
         int ballCount = 0;
         int curIdx;
         for (curIdx = 0; ; curIdx++) {
-            if (curIdx >= 3) break;
+            if (curIdx >= ANSWER_LIST_LENGTH) break;
 
             int curInput = this.answerNumbers.get(curIdx);
 
@@ -57,7 +56,7 @@ public class Game {
             }
 
             int ballIdx;
-            for (ballIdx = 0; ballIdx < 3; ballIdx++) {
+            for (ballIdx = 0; ballIdx < ANSWER_LIST_LENGTH; ballIdx++) {
                 if (Objects.equals(input.get(ballIdx), curInput)) {
                     ballCount++;
                     break;

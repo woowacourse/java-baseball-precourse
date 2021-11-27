@@ -1,10 +1,12 @@
-package domain;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
-import utils.Validator;
+import baseball.utils.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static baseball.Constants.RESTART_NUM;
 
 public class Player {
     public static List<Integer> getAnswerInput() {
@@ -29,6 +31,6 @@ public class Player {
         String input = Console.readLine();
         Validator.validateRestartInput(input);
 
-        return Integer.parseInt(input) == 1;
+        return Integer.parseInt(input) == RESTART_NUM;
     }
 }
