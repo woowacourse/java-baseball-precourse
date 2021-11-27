@@ -61,20 +61,28 @@ public class BaseballGame {
 	}
 
 	private boolean checkResult() {
-		int strike = 0;
+		return printResult(getStrike(), getBall());
+	}
+
+	private int getBall() {
 		int ball = 0;
+		for (Integer num : playerNum) {
+			if (IntStream.of(enemyNum).anyMatch(x -> x == num)) {
+				ball++;
+			}
+		}
+		return ball;
+	}
+
+	private int getStrike() {
+		int strike = 0;
 		for (int i = 0; i < 3; i++) {
 			if (playerNum[i] == enemyNum[i]) {
 				strike++;
 				playerNum[i] = -1;
 			}
 		}
-		for (Integer num : playerNum) {
-			if (IntStream.of(enemyNum).anyMatch(x -> x == num)) {
-				ball++;
-			}
-		}
-		return printResult(strike, ball);
+		return strike;
 	}
 
 	private String makeHintSentence(int strike, int ball) {
