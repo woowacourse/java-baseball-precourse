@@ -8,6 +8,7 @@ public class Application {
 	private static String inputNumber;
 	private static int strike;
 	private static int ball;
+	private static boolean isThreeStrike;
 
 	public static void main(String[] args) {
 		//TODO: 숫자 야구 게임 구현
@@ -57,5 +58,11 @@ public class Application {
 			System.out.print("낫싱");
 		}
 		System.out.println();
+	}
+
+	public static void isThreeStrike() {
+		if (strike == 3) {
+			isThreeStrike = true;
+		}
 	}
 }
