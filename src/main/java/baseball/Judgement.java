@@ -13,8 +13,8 @@ public class Judgement {
         }
 
         if (strikeCount == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(Message.THREE_STRIKE);
+            System.out.println(Message.GAME_QUIT);
             return 3;
         }
 
@@ -26,11 +26,11 @@ public class Judgement {
         ballCount = ballCount - strikeCount;
 
         if (ballCount == 0 && strikeCount ==0)
-            System.out.print("낫싱");
+            System.out.print(Message.NOTHING);
         if (ballCount > 0)
-            System.out.printf("%d볼 ", ballCount);
+            System.out.printf("%d" + Message.BALL, ballCount);
         if (strikeCount > 0)
-            System.out.printf("%d스트라이크", strikeCount);
+            System.out.printf("%d" + Message.STRIKE, strikeCount);
         System.out.println();
 
         return strikeCount;

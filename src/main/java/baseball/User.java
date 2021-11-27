@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class User {
     public static ArrayList<Integer> numberGenerator() {
         ArrayList<Integer> userNumbers = new ArrayList<Integer>();
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Message.PLEASE_INPUT);
         String tmpUserNumbers = Console.readLine();
 
         // 예외처리
