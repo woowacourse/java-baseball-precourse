@@ -1,12 +1,12 @@
 package game;
 
-import camp.nextstep.edu.missionutils.Console;
-import input.Computer;
-import input.User;
-import output.Output;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static input.Computer.extractRandomNumbers;
+import static input.User.readUserInput;
+import static output.Output.printResult;
 
 public class Game {
 
@@ -17,13 +17,13 @@ public class Game {
 
 
     public void startGame() {
-        this.randomNumbers = new ArrayList<>(Computer.extractRandomNumbers());
+        this.randomNumbers = new ArrayList<>(extractRandomNumbers());
         runGame();
-        isRestart();
+        askRestart();
     }
 
-    private void isRestart() {
-        int checkNumber = Integer.parseInt(Console.readLine());
+    private void askRestart() {
+        int checkNumber = Integer.parseInt(readLine());
         if (checkNumber == RESTART_NUMBER)
             startGame();
     }
@@ -31,22 +31,22 @@ public class Game {
     public void runGame() {
         int strike, ball;
         do {
-            this.userInput = User.readUserInput();
+            this.userInput = readUserInput();
             ball = countBall();
             strike = countStrike();
-            Output.printResult(ball - strike, strike);
+            printResult(ball - strike, strike);
         } while (isTerminate(strike));
     }
 
     private int countStrike() {
         int count = 0;
         for (int i = 0; i < BASEBALL_SIZE; i++) {
-            count += isMatchStrike(i);
+            count += matchStrike(i);
         }
         return count;
     }
 
-    private int isMatchStrike(int i) {
+    private int matchStrike(int i) {
         if (randomNumbers.get(i) == userInput.get(i))
             return 1;
         return 0;
@@ -55,12 +55,12 @@ public class Game {
     private int countBall() {
         int count = 0;
         for (int i = 0; i < BASEBALL_SIZE; i++) {
-            count += isMatchBall(i);
+            count += matchBall(i);
         }
         return count;
     }
 
-    private int isMatchBall(int i) {
+    private int matchBall(int i) {
         if (randomNumbers.contains(userInput.get(i)))
             return 1;
         return 0;
