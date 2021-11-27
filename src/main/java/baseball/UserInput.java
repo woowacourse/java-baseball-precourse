@@ -21,4 +21,8 @@ public class UserInput {
         }
     }
 
+    public int[] getInput() {
+        return this.input;
+    }
+
 }

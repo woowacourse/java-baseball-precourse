@@ -40,4 +40,12 @@ public class Validation {
         return true;
     }
 
+    public static void isValidRestart(String input) {
+        if (input.charAt(0) - '0' == Constant.RESTART_VALUE || input.charAt(0) - '0' == Constant.EXIT_VALUE) {
+            return;
+        }
+
+        throw new IllegalArgumentException();
+    }
+
 }
