@@ -136,41 +136,47 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 
 # 📈 기능 목록
 
+## ✅상수 저장
+### - Constant : 상수 저장 클래스
+1. `String RESTART` : 게임 재시작 문자열 ("1")
+2. `String QUIT` : 게임 종료 문자열 ("2")
+3. `int NUMS_LENGTH` : 게임 한 세트당 라운드 개수 (3)
+
 ## ✅게임 단위 실행
 ### - Application : 메인 클래스
 1. `main()` : 메인함수
     + 새 BaseballSystem() 생성, 게임시작
     + exit() 시 종료
 2. `boolean exit()` : 인풋 받아 최종 종료여부 리턴
+
 ### - BaseballSystem : 시스템 클래스
-1. `int[] computerNums` : 컴퓨터 숫자 배열
-2. `BaseballSystem()` : 생성자, 컴퓨터 숫자배열 가져오기
-3. `void gameStart()` : 게임(1세트)시작 함수
-4. `void printGameResult(BaseballCount set)` : 게임 결과 프린트
-5. `boolean isThreeStrike(BaseballCount set)` : 3스트라이크인지 리턴
-6. `void print...()` : 각각 볼, 스트라이크, 볼&스트라이크, 낫싱 여부 프린트
+1. `void startOneGameSet()` : 게임(1세트)시작 함수
+2. `void printGameResult(BaseballCount set)` : 게임 결과 프린트
+3. `boolean isMaxStrike(BaseballCount set)` : 3스트라이크인지 리턴
+4. `void print...()` : 각각 볼, 스트라이크, 볼&스트라이크, 낫싱이면 결과 프린트
 
 ## ✅숫자 생성
-### - ComputerNumGenerator : 컴퓨터 숫자 생성 클래스
+### - NumGenerator : 숫자 생성 클래스
 1. `int[] nums` : 숫자 담을 정수 배열
+2. `boolean isNotDuplicate(int[] nums)` : nums 안 숫자 중복여부 리턴
+
+### - ComputerNumGenerator : 컴퓨터 숫자 생성 클래스
+1. NumGenerator 클래스 상속
 2. `ComputerNumGenerator()` : 생성자, 1-9 서로 다른 세 수를 nums에 저장
-3. `int[] pickThreeNum()` : 랜덤하게 세 숫자를 뽑아 배열로 리턴
-4. `boolean isNotSame(int[] nums)` : nums 안 숫자 중복여부 리턴
+3. `int[] pickComputerNums()` : 랜덤하게 세 숫자를 뽑아 배열로 리턴
 
 ### - UserNumGenerator : 유저 숫자 생성 클래스
-1. `int[] nums` : 숫자 담을 정수 배열
+1. NumGenerator 클래스 상속
 2. `UserNumGenerator()` : 생성자, pickThreeNum()을 nums에 저장
-3. `int[] pickThreeNum()` : 유저 인풋을 받고 예외처리, 정수 배열로 리턴
+3. `int[] pickUserNums()` : 유저 인풋을 받고 예외처리, 정수 배열로 리턴
 4. `int[] stringToIntArray(String str)` : 문자열을 정수 배열로 리턴
 5. `boolean isOneNineInt(int[] nums)` : nums 안 숫자가 1-9 사이인지 리턴
-6. `boolean isNotSame(int[] nums)` : nums 안 숫자 중복여부 리턴
 
 ## ✅게임 결과 계산
 ### - BaseballCount : 볼,스트라이크 개수 세는 클래스
 1. `int ballCount, strikeCount` : 볼/스트라이크 개수
-2. `BaseballCount(int[] userNums, int[] computerNums)` : 생성자, 파라미터 저장 후 count() 실행
-3. `void count()` : 스트라이크, 볼 개수 저장
-4. `boolean isInArray(int num, int[] numArray)` : numArray 안에 num 있는지 리턴
+2. `BaseballCount(int[] userNums, int[] computerNums)` : 생성자, count() 실행
+3. `boolean isInArray(int num, int[] nums)` : numArray 안에 num 있는지 리턴
 
 ---
 ## 🔍구현 로직
