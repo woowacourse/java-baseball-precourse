@@ -4,6 +4,8 @@ import java.util.Set;
 import java.util.HashSet;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
 
 public class Game {
     private final int MIN_RANGE = 1;
@@ -33,6 +35,19 @@ public class Game {
         }
 
         return result;
+
+    }
+
+    public boolean playGame(){
+        // n자리 임의의 난수 생성
+        String randomNumber = generateRandomNumber();
+        
+        // 사용자 입력이 잘못된 값이면 IllegalArgumentException 발생 뒤 종료
+        String userNumber = Console.readLine();
+        boolean isValid = InputValidator.checkUserInput(userNumber);
+        if (!isValid){
+            throw new IllegalArgumentException("사용자 입력이 잘못된 값이므로 게임을 종료합니다");
+        }
 
     }
 
