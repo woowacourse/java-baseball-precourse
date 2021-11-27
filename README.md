@@ -7,8 +7,8 @@
 ### 난수 생성하기
 
 - 컴퓨터는 임의의 3자리 수를 랜덤으로 생성한다.
-    * 각 자릿수는 1~9까지의 정수이다.
-    * 각 자릿수는 중복되지 않는다.
+    * 각 자릿수는 1~9까지의 정수이다. ✅
+    * 각 자릿수는 중복되지 않는다. ✅
 
 ### 사용자 입력받기
 
@@ -68,20 +68,20 @@
 
 ### Computer
 
-- private int[] answer
+- private int[] answer ✅
 
-- public Computer()
+- public Computer() ✅
     * 생성자
     * 사전에 지정된 개수만큼의 길이로 answer 초기화
 
-- public void setAnswer()
+- public void setAnswer() ✅
     * 숫자 중복 확인을 위해 사전에 지정된 개수만큼 boolean[] user 생성, false 초기화
     * 사전에 지정된 개수만큼 generateRandomNumber()를 통해 난수 생성하여 answer에 입력
 
-- private int generateRandomNumber(boolean[] used)
+- private int generateRandomNumber(boolean[] used) ✅
     * camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용하여 난수 생성, used 이용하여 숫자 중복 확인
 
-- public int[] getAnswer()
+- public int[] getAnswer() ✅
     * answer 반환
 
 ### UserInput
