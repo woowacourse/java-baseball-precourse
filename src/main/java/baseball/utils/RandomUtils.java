@@ -1,8 +1,8 @@
-package baseball.random;
+package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Random {
+public class RandomUtils {
 
     public int[] createComputerNumbers() {
         int[] computerNumbers = new int[3];
