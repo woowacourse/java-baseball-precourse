@@ -47,6 +47,17 @@ public class Application {
         };
     }
 
+    public static boolean checkNextGame() {
+        String inputString = Console.readLine();
+        if (inputString.contentEquals("1")) {
+            return True;
+        } else if (inputString.contentEquals("2")) {
+            return False;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static boolean checkAnswer(int[] inputNumber) {
         return (inputNumber[0] == answer1) && (inputNumber[1] == answer2) && (inputNumber[2] == answer3);
     }
