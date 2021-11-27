@@ -82,19 +82,15 @@ public class Game {
         return userInputNumArr;
     }
 
-
     private boolean compareToRandomAns(int[] userInputNumArr){
-        player.init();
-        player.setPlayerInput(userInputNumArr);
+        player.init(userInputNumArr);
 
         for(int i=0; i<3; i++){
-            player.checkBallOrStrike(randomAns[i],i);
+            player.compareNum(randomAns[i],i);
         }
 
         return notifyBallAndStrike(player.getStrike(), player.getBall());
     }
-
-
 
     private boolean notifyBallAndStrike(int strike, int ball){
         if(strike==3){

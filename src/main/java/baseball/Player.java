@@ -6,10 +6,10 @@ public class Player {
     private int ball;
     private int[] playerInput;
 
-    public void init(){
+    public void init(int[] playerInput){
         this.strike = 0;
         this.ball = 0;
-        this.playerInput = new int[3];
+        setPlayerInput(playerInput);
     }
 
     private void addStrike(){
@@ -20,31 +20,32 @@ public class Player {
         ball++;
     }
 
-    public void checkBallOrStrike(int ansNum, int ansNumIdx){
+    public void compareNum(int ansNum, int ansNumIdx){
         for(int i=0; i< playerInput.length; i++){
             if(ansNum==playerInput[i]){
-                if(ansNumIdx==i){
-                    addStrike();
-                    return;
-                }
-                addBall();
+                checkStrikeOrBall(ansNumIdx,i);
                 return;
             }
         }
     }
 
+    private void checkStrikeOrBall(int ansNumIdx, int playerNumIdx){
+        if(ansNumIdx==playerNumIdx){
+            addStrike();
+            return;
+        }
+        addBall();
+    }
 
     public void setPlayerInput(int[] playerInput) {
         this.playerInput = playerInput;
     }
 
     public int getStrike() {
-
         return strike;
     }
 
     public int getBall() {
-
         return ball;
     }
 }
