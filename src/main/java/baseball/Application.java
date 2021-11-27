@@ -50,9 +50,9 @@ public class Application {
     public static boolean checkNextGame() {
         String inputString = Console.readLine();
         if (inputString.contentEquals("1")) {
-            return True;
+            return true;
         } else if (inputString.contentEquals("2")) {
-            return False;
+            return false;
         } else {
             throw new IllegalArgumentException();
         }
@@ -100,8 +100,23 @@ public class Application {
         System.out.println(printString);
     }
 
+    public static boolean play() throws IllegalArgumentException {
+        generateNumber();
+        while (true) {
+            int[] userData = getUserInput();
+            boolean finish = checkAnswer(userData);
+            printStrikeBall(userData);
+            if (finish) {
+                return checkNextGame();
+            }
+        }
+    }
 
     public static void main(String[] args) {
-
+        try {
+            while (play()) {}
+        } catch (IllegalArgumentException e) {
+            System.exit(0);
+        }
     }
 }
