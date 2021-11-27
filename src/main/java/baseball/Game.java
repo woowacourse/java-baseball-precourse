@@ -8,6 +8,9 @@ public class Game {
     private static final String ENTER_NUMBER = "숫자를 입력해주세요 : ";
     public static final String End_GAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String ASK_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
+    private static final  String NOTHING = "낫싱";
 
     public void play() {
         boolean start = true;
@@ -33,6 +36,7 @@ public class Game {
     private int[] createTargetNum(){
         int[] randomAns = new int[3];
         boolean[] check = new boolean[10];
+
         for(int i=0; i<3; i++){
             int num = Randoms.pickNumberInRange(1,9);
 
@@ -60,6 +64,7 @@ public class Game {
 
     private int[] checkUserInputNum(String inputStr){
         int[] userInputNumArr = new int[3];
+        boolean[] checkInputNum = new boolean[10];
 
         // 길이가 3미만 3초과일 경우
         if(inputStr.length()<3 || inputStr.length()>3) throw new IllegalArgumentException();
@@ -67,9 +72,16 @@ public class Game {
         // 숫자로 이루어지지 않았을 경우, 0이 포함 되어 있을 경우
         // TODO: 같은 숫자가 있는 경우
         for(int i=0; i<3; i++){
+            int inputNum = inputStr.charAt(i)-'0';
             if(inputStr.charAt(i)=='0' || !Character.isDigit(inputStr.charAt(i))){
                 throw new IllegalArgumentException();
             }
+
+            if(checkInputNum[inputNum]){
+                throw new IllegalArgumentException();
+            }
+
+            checkInputNum[inputNum] = true;
             userInputNumArr[i] = inputStr.charAt(i)-'0';
         }
 
@@ -106,28 +118,28 @@ public class Game {
 
     private boolean notifyBallAndStrike(int strike, int ball){
         if(strike==3){
-            System.out.println("3스트라이크");
+            System.out.println("3"+STRIKE);
             System.out.println(End_GAME);
             return true;
         }
 
         if(strike>0 && ball>0){
-            System.out.println(ball+"볼"+" "+strike+"스트라이크");
+            System.out.println(ball+BALL+" "+strike+STRIKE);
             return false;
         }
 
         if(strike==0 && ball==0){
-            System.out.println("낫싱");
+            System.out.println(NOTHING);
             return false;
         }
 
         if(ball==0){
-            System.out.println(strike+"스트라이크");
+            System.out.println(strike+STRIKE);
             return false;
         }
 
         if(strike==0){
-            System.out.println(ball+"볼");
+            System.out.println(ball+BALL);
             return false;
         }
 
