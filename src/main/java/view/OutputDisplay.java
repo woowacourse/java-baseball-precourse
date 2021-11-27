@@ -7,8 +7,6 @@ public class OutputDisplay {
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
     private static final String END_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String RESTART_PROMPT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
 
     public void displayResult(GameResultObject gameResult) {
         System.out.println(getOutputMsg(gameResult));
@@ -32,6 +30,5 @@ public class OutputDisplay {
 
     public void displayEndMsg() {
         System.out.println(END_MSG);
-        System.out.println(RESTART_PROMPT);
     }
 }

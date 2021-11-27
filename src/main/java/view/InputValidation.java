@@ -10,12 +10,16 @@ public class InputValidation {
     private static final char START_NUMBER = '1';
     private static final char END_NUMBER = '9';
     private static final int INPUT_SIZE = 3;
+    private static final String RESTART_PROMPT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String RESTART = "1";
+    private static final String OVER = "2";
 
     public void displayPrompt() {
         System.out.print(INPUT_PROMPT);
     }
 
     public List<Integer> inputNumberFromUser() {
+        displayPrompt();
         String inputNumber = Console.readLine();
 
         List<Integer> inputNumberList = inputToIntegerList(inputNumber);
@@ -51,6 +55,24 @@ public class InputValidation {
 
     private void validateDuplication(List<Integer> inputNumberList) {
         if (inputNumberList.stream().distinct().count() != INPUT_SIZE) {
+            throw new IllegalStateException();
+        }
+    }
+
+    public void displayRestartPrompt() {
+        System.out.println(RESTART_PROMPT);
+    }
+
+    public String inputRestartFromUser() {
+        displayRestartPrompt();
+        String restartInput = Console.readLine();
+        validateRestartInput(restartInput);
+
+        return restartInput;
+    }
+
+    private void validateRestartInput(String restartInput) {
+        if (!restartInput.equals(RESTART) && !restartInput.equals(OVER)) {
             throw new IllegalStateException();
         }
     }
