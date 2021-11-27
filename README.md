@@ -14,5 +14,5 @@
 5. 다음 게임 진행 여부 확인
    - 정답을 맞춘 경우 호출
    - 1을 입력받으면 True, 2를 입력받으면 False
-   - 잘못 입력받은 경우 IllegalArgumentException -> False 리턴
+   - 잘못 입력받은 경우 IllegalArgumentException
 6. 전체 게임 구현
