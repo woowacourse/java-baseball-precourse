@@ -4,11 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
-
-    static  int[] randomAns;
+    private static int[] randomAns;
+    private static final String ENTER_NUMBER = "숫자를 입력해주세요 : ";
+    public static final String End_GAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String ASK_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public void play() {
-        //TODO: BaseBall class 로 빼기
         boolean start = true;
         // 재실행 여부
         while(start){
@@ -47,7 +48,7 @@ public class Game {
 
 
     private int[] userInputNum(){
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(ENTER_NUMBER);
         String inputStr = Console.readLine();
 
         // 2-1. 올바른 input 인지 확인하고 int 배열에 숫자 각각 담기
@@ -102,26 +103,32 @@ public class Game {
     }
 
 
+
     private boolean notifyBallAndStrike(int strike, int ball){
         if(strike==3){
             System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(End_GAME);
             return true;
         }
 
         if(strike>0 && ball>0){
             System.out.println(ball+"볼"+" "+strike+"스트라이크");
+            return false;
         }
-        else{
-            if(strike==0 && ball==0){
-                System.out.println("낫싱");
-            }
-            else if(ball==0){
-                System.out.println(strike+"스트라이크");
-            }
-            else{
-                System.out.println(ball+"볼");
-            }
+
+        if(strike==0 && ball==0){
+            System.out.println("낫싱");
+            return false;
+        }
+
+        if(ball==0){
+            System.out.println(strike+"스트라이크");
+            return false;
+        }
+
+        if(strike==0){
+            System.out.println(ball+"볼");
+            return false;
         }
 
         return false;
@@ -129,16 +136,16 @@ public class Game {
 
 
     private boolean checkRestart(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(ASK_RESTART);
         String userRestartInput = Console.readLine();
         if(userRestartInput.equals("1")){
             return true;
         }
-        else if(userRestartInput.equals("2")){
+
+        if(userRestartInput.equals("2")){
             return false;
         }
-        else{
-            throw new IllegalArgumentException();
-        }
+
+        throw new IllegalArgumentException();
     }
 }
