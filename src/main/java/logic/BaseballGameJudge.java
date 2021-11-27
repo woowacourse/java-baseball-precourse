@@ -6,9 +6,9 @@ public class BaseballGameJudge {
     private static final int NUMBER_COUNT = 3;
     private static final int INIT_COUNT = 0;
 
-    private static Boolean isEnd;
-    private static int ballCount;
-    private static int strikeCount;
+    private boolean isEnd;
+    private int ballCount;
+    private int strikeCount;
 
     public GameResultObject judgeGameResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
         init();
