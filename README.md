@@ -129,9 +129,11 @@
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
 <br>
+
 ---
 
 ## 📄 기능 목록
 - 컴퓨터 랜덤 숫자 생성
 - 입력 받은 숫자와 랜덤 숫자 비교
 - 사용자 인터페이스 (콘솔)
+- 예외 처리
