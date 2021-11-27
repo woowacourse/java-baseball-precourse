@@ -16,7 +16,8 @@ public class Balls {
 
 	private Balls(String value) {
 		List<Integer> nos = FormatUtil.convert(value);
-		this.balls = IntStream.range(ZERO, LIMITED_LENGTH).mapToObj(i -> Ball.of(i, nos.get(i))).collect(Collectors.toList());
+		this.balls = IntStream.range(ZERO, LIMITED_LENGTH)
+			.mapToObj(i -> Ball.of(i, nos.get(i))).collect(Collectors.toList());
 	}
 
 	public static Balls from(String value) {
