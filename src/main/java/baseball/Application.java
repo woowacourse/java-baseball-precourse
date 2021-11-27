@@ -13,7 +13,8 @@ public class Application {
         validateRange(input);
         validateNumber(input);
         List<Integer> inputNumbersList = makeInputToList(input);
-        compareNumbersList(answerNumbersList, inputNumbersList);
+        int[] compareResult = compareNumbersList(answerNumbersList, inputNumbersList);
+        printHintMessage(compareResult);
     }
 
     // 인풋에 문자가 포함되어 있는지 확인한다.
@@ -49,17 +50,34 @@ public class Application {
     }
 
     // list1(정답 리스트)을 기준으로 두 리스트를 비교한다.
-    private static void compareNumbersList(List<Integer> list1, List<Integer> list2){
+    private static int[] compareNumbersList(List<Integer> list1, List<Integer> list2){
+        int[] result = new int[3];
         for(int i = 0; i < 3; i++) {
             int num = list1.get(i);
-
-            if (num == list2.get(i)){
-                // strike ++
+            if (num == list2.get(i)) {
+                result[2] ++; // strike 1개를 추가한다.
             }else if (list2.contains(num)) {
-                // ball ++
+                result[1] ++; // ball 1개를 추가한다.
             }else {
-                // 꽝
+                result[0] ++; // nothing 1개를 추가한다.
             }
         }
+        return result;
+    }
+
+    // 비교 결과를 바탕으로 힌트를 출력한다.
+    private static void printHintMessage(int[] array){
+        StringBuilder stringBuilder = new StringBuilder();
+        if (array[0] == 3) {
+            stringBuilder.append("낫싱");
+        } else {
+            if (array[1] != 0) {
+                stringBuilder.append(array[1]+"볼 ");
+            }
+            if (array[2] != 0) {
+                stringBuilder.append(array[2]+"스트라이크 ");
+            }
+        }
+        System.out.print(stringBuilder);
     }
 }
