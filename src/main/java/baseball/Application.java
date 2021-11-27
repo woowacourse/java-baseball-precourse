@@ -7,6 +7,7 @@ public class Application {
         do {
             game.init();
             game.playGame();
+
         } while (game.checkUserWantRestart());
     }
 }
