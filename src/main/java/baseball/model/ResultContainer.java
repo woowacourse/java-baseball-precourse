@@ -1,13 +1,13 @@
 package baseball.model;
 
-import baseball.input.Output;
+import baseball.output.PrintMessage;
 
-public class Result {
+public class ResultContainer {
 	private static final int COUNT_ZERO = 0;
 	private int strikeCount;
 	private int ballCount;
 
-	public Result(int strikeCount, int ballCount) {
+	public ResultContainer(int strikeCount, int ballCount) {
 		this.strikeCount = strikeCount;
 		this.ballCount = ballCount;
 	}
@@ -16,17 +16,17 @@ public class Result {
 		StringBuilder sb = new StringBuilder();
 
 		if (strikeCount == COUNT_ZERO && ballCount == COUNT_ZERO) {
-			sb.append(Output.RESULT_NOTHING_MESSAGE);
+			sb.append(PrintMessage.RESULT_NOTHING_MESSAGE.getMessage());
 		}
 
 		if (ballCount != COUNT_ZERO) {
-			sb.append(ballCount).append(Output.RESULT_BALL_MESSAGE);
+			sb.append(ballCount).append(PrintMessage.RESULT_BALL_MESSAGE.getMessage());
 		}
 
 		if (ballCount == COUNT_ZERO && strikeCount != COUNT_ZERO) {
-			sb.append(strikeCount).append(Output.RESULT_STRIKE_MESSAGE);
+			sb.append(strikeCount).append(PrintMessage.RESULT_STRIKE_MESSAGE.getMessage());
 		} else if (strikeCount != COUNT_ZERO) {
-			sb.append(" ").append(strikeCount).append(Output.RESULT_STRIKE_MESSAGE);
+			sb.append(" ").append(strikeCount).append(PrintMessage.RESULT_STRIKE_MESSAGE.getMessage());
 		}
 
 		return sb.toString();
