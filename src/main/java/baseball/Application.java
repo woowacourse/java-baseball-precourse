@@ -51,6 +51,45 @@ public class Application {
         return (inputNumber[0] == answer1) && (inputNumber[1] == answer2) && (inputNumber[2] == answer3);
     }
 
+    public static void printStrikeBall(int[] inputNumber) {
+        int strikeCount = 0;
+        int ballCount = 0;
+        StringBuilder printString = new StringBuilder();
+
+        if (answer1 == inputNumber[0]) {
+            strikeCount++;
+        } else if (answer2 == inputNumber[0] || answer3 == inputNumber[0]) {
+            ballCount++;
+        }
+
+        if (answer2 == inputNumber[1]) {
+            strikeCount++;
+        } else if (answer1 == inputNumber[1] || answer3 == inputNumber[1]) {
+            ballCount++;
+        }
+
+        if (answer3 == inputNumber[2]) {
+            strikeCount++;
+        } else if (answer1 == inputNumber[2] || answer2 == inputNumber[2]) {
+            ballCount++;
+        }
+
+        if (ballCount > 0) {
+            printString.append(ballCount + "볼 ");
+        }
+
+        if (strikeCount > 0) {
+            printString.append(strikeCount + "스트라이크");
+        }
+
+        if (ballCount == 0 && strikeCount == 0) {
+            printString.append("낫싱");
+        }
+
+        System.out.println(printString);
+    }
+
+
     public static void main(String[] args) {
 
     }
