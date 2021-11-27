@@ -135,48 +135,83 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 ---
 
 # 📈 기능 목록
+## 구현 기능 목록
 
-## ✅상수 저장
-### - Constant : 상수 저장 클래스
+### ✅컴퓨터 숫자 생성 기능
++ 랜덤하게 1~9 숫자 세개를 뽑아 배열에 저장하기
++ 배열에 중복된 수가 있는지 확인하기
+
+### ✅유저 숫자 생성 기능
++ 유저에게 인풋 받기
+  + [예외] 인풋 길이가 3이 아닌 경우
+  + [예외] 인풋 속 문자 중 숫자가 아닌 게 있는 경우
+  + [예외] 인풋 속 문자 중 0이 있는 경우
+  + [예외] 인풋 속 문자 중 중복된 문자가 있는 경우
+
+### ✅볼/스트라이크 결과 생성 기능
++ 볼 개수를 계산해 변수에 저장하기
++ 스트라이크 개수를 계산해 변수에 저장하기
+
+### ✅게임 실행 기능
++ 입력하세요 메세지 출력하기
++ 볼/스트라이크/낫싱 여부 출력하기
++ 3스트라이크 일 시 종료하기
+
+### ✅게임 반복 기능
++ 재시작 여부 메세지 출력하기
++ 유저에게 인풋 받기
+  + [예외] "1","2" 외의 문자열이 들어온 경우
++ 게임 재시작/ 종료하기
+
+## Features
+### ✅상수 저장
+#### - Constant : 상수 저장 클래스
 1. `String RESTART` : 게임 재시작 문자열 ("1")
 2. `String QUIT` : 게임 종료 문자열 ("2")
 3. `int NUMS_LENGTH` : 게임 한 세트당 라운드 개수 (3)
 
-## ✅게임 단위 실행
-### - Application : 메인 클래스
+### ✅게임 단위 실행
+#### - Application : 메인 클래스
 1. `main()` : 메인함수
     + 새 BaseballSystem() 생성, 게임시작
     + exit() 시 종료
 2. `boolean exit()` : 인풋 받아 최종 종료여부 리턴
+    + [예외] "1","2" 외의 문자열이 들어온 경우
 
-### - BaseballSystem : 시스템 클래스
+#### - BaseballSystem : 시스템 클래스
 1. `void startOneGameSet()` : 게임(1세트)시작 함수
 2. `void printGameResult(BaseballCount set)` : 게임 결과 프린트
-3. `boolean isMaxStrike(BaseballCount set)` : 3스트라이크인지 리턴
+3. `boolean isMaxStrike(BaseballCount set)` : 3스트라이크 인지 리턴
 4. `void print...()` : 각각 볼, 스트라이크, 볼&스트라이크, 낫싱이면 결과 프린트
 
-## ✅숫자 생성
-### - NumGenerator : 숫자 생성 클래스
+### ✅숫자 생성
+#### - NumGenerator : 숫자 생성 클래스
 1. `int[] nums` : 숫자 담을 정수 배열
 2. `boolean isNotDuplicate(int[] nums)` : nums 안 숫자 중복여부 리턴
 
-### - ComputerNumGenerator : 컴퓨터 숫자 생성 클래스
+#### - ComputerNumGenerator : 컴퓨터 숫자 생성 클래스
 1. NumGenerator 클래스 상속
 2. `ComputerNumGenerator()` : 생성자, 1-9 서로 다른 세 수를 nums에 저장
 3. `int[] pickComputerNums()` : 랜덤하게 세 숫자를 뽑아 배열로 리턴
 
-### - UserNumGenerator : 유저 숫자 생성 클래스
+#### - UserNumGenerator : 유저 숫자 생성 클래스
 1. NumGenerator 클래스 상속
-2. `UserNumGenerator()` : 생성자, pickThreeNum()을 nums에 저장
-3. `int[] pickUserNums()` : 유저 인풋을 받고 예외처리, 정수 배열로 리턴
+2. `UserNumGenerator()` : 생성자, pickUserNums()을 nums에 저장
+3. `int[] pickUserNums()` : 유저 인풋을 받고 정수 배열로 리턴
+   + [예외] 인풋 길이가 3이 아닌 경우
+   + [예외] 인풋 속 문자 중 숫자가 아닌 게 있는 경우
+   + [예외] 인풋 속 문자 중 0이 있는 경우
+   + [예외] 인풋 속 문자 중 중복된 문자가 있는 경우
 4. `int[] stringToIntArray(String str)` : 문자열을 정수 배열로 리턴
 5. `boolean isOneNineInt(int[] nums)` : nums 안 숫자가 1-9 사이인지 리턴
 
-## ✅게임 결과 계산
-### - BaseballCount : 볼,스트라이크 개수 세는 클래스
+### ✅게임 결과 계산
+#### - BaseballCount : 볼,스트라이크 개수 세는 클래스
 1. `int ballCount, strikeCount` : 볼/스트라이크 개수
-2. `BaseballCount(int[] userNums, int[] computerNums)` : 생성자, count() 실행
-3. `boolean isInArray(int num, int[] nums)` : numArray 안에 num 있는지 리턴
+2. `BaseballCount(int[] userNums, int[] computerNums)` : 생성자, set...Count() 실행
+3. `setBallCount(int[] userNums, int[] computerNums)` : BallCount 생성
+4. `setStrikeCount(int[] userNums, int[] computerNums)` : StrikeCount 생성
+5. `boolean isInArray(int num, int[] nums)` : numArray 안에 num 있는지 리턴
 
 ---
 ## 🔍구현 로직
