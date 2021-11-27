@@ -32,18 +32,21 @@ public class Output {
     }
 
     public static void printBall(int ball) {
-        if (ball != LOWER_BOUND)
+        if (ball != LOWER_BOUND) {
             printMessage(ball + BALL_STRING + " ");
+        }
     }
 
     public static void printStrike(int strike) {
-        if (strike != LOWER_BOUND)
+        if (strike != LOWER_BOUND) {
             printMessage(strike + STRIKE_STRING);
+        }
     }
 
     public static void printNothing(int ball, int strike) {
-        if (ball == LOWER_BOUND && strike == LOWER_BOUND)
+        if (ball == LOWER_BOUND && strike == LOWER_BOUND) {
             printMessage(NOTHTING_STRING);
+        }
     }
 
     public static void isFinish(int strike) {

@@ -1,7 +1,6 @@
 package input;
 
 
-
 import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -23,8 +22,9 @@ public class Computer {
     }
 
     private static boolean checkSize() {
-        if (randomNumbers.size() == BASEBALL_MAX_SIZE)
+        if (randomNumbers.size() == BASEBALL_MAX_SIZE) {
             return true;
+        }
         return false;
     }
 

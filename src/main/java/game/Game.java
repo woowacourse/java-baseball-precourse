@@ -24,8 +24,9 @@ public class Game {
 
     private void askRestart() {
         int checkNumber = Integer.parseInt(readLine());
-        if (checkNumber == RESTART_NUMBER)
+        if (checkNumber == RESTART_NUMBER) {
             startGame();
+        }
     }
 
     public void runGame() {
@@ -47,8 +48,9 @@ public class Game {
     }
 
     private int matchStrike(int i) {
-        if (randomNumbers.get(i) == userInput.get(i))
+        if (randomNumbers.get(i) == userInput.get(i)) {
             return 1;
+        }
         return 0;
     }
 
@@ -61,8 +63,9 @@ public class Game {
     }
 
     private int matchBall(int i) {
-        if (randomNumbers.contains(userInput.get(i)))
+        if (randomNumbers.contains(userInput.get(i))) {
             return 1;
+        }
         return 0;
     }
 
