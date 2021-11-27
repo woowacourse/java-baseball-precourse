@@ -3,9 +3,9 @@ package baseball.gameController;
 import java.util.HashSet;
 import java.util.Iterator;
 
+import baseball.constantStorage.Constant;
+
 public class HintGiver {
-	private static final String ball = "볼";
-	private static final String strike = "스트라이크";
 	private int ballCount = 0;
 	private int strikeCount = 0;
 	String hint = "";
@@ -46,14 +46,14 @@ public class HintGiver {
 
 	public void setHint() {
 		if (this.ballCount + this.strikeCount == 0) {
-			hint += "낫싱";
+			hint += Constant.NOTHING;
 			return;
 		}
 		if (this.ballCount > 0) {
-			hint += ballCount + ball + " ";
+			hint += ballCount + Constant.BALL + " ";
 		}
 		if (this.strikeCount > 0) {
-			hint += strikeCount + strike;
+			hint += strikeCount + Constant.STRIKE;
 		}
 	}
 
