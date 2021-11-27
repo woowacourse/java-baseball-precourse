@@ -7,8 +7,11 @@ public class Application {
 
         // 기능 1: 랜덤 값 생성
         String targetNumber = randomNumber();
-        System.out.println(targetNumber);
+        String result = "";
         while(true){
+            boolean restartFlag = false;
+            String restartOrder = "";
+
             //  기능 2: 사용자로부터 값 입력받기
             System.out.print("숫자를 입력해주세요: ");
             String inputNumber = Console.readLine();
@@ -17,9 +20,17 @@ public class Application {
             inputException(inputNumber);
 
             //  기능 3: 사용자 입력값과 상대(컴퓨터)값 비교
-            System.out.println(validation(inputNumber, targetNumber));
+            result = validation(inputNumber, targetNumber);
+            System.out.println(result);
 
-            break;
+            //  기능 5: 게임 재시작 또는 종료
+            if(result.equals("3스트라이크")){
+                restartOrder = restartOrStop();
+                restartFlag = true;
+            }
+            if(restartFlag && restartOrder.equals("stop")){
+                break;
+            }
         }
     }
     public static String randomNumber(){
@@ -59,5 +70,16 @@ public class Application {
         if(!number.matches(regExp)){
             throw new IllegalArgumentException();
         }
+    }
+
+    public static String restartOrStop(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String value = Console.readLine();
+
+        if(value.equals("2")){
+            return "stop";
+        }
+        return "restart";
     }
 }
