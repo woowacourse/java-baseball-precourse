@@ -5,10 +5,32 @@ import camp.nextstep.edu.missionutils.*;
 
 public class Baseball {
 	private static final int DIGIT = 3;
-	private String userNum;
+	private Computer computer;
+	private User user;
 	
 	public Baseball () {
-		userNum = "";
+		this.computer = new Computer();
+		this.user = new User();
+	}
+	public void playGame() {
+		String result = "";
+		String ranNum = computer.generateRanNum(DIGIT);
+		
+		/*while(true) {
+			System.out.print("숫자를 입력해주세요 : ");
+			String userNum = user.userNumber();
+			int strike = countStrike(ranNum, userNum);
+		}*/
+	}
+	
+	private int countStrike(String ranNum, String userNum) {
+		int s = 0;
+		for(int i=0;i<DIGIT;i++) {
+			if(ranNum.charAt(i) == userNum.charAt(i)) {
+				s++;
+			}
+		}
+		return s;
 	}
 	
 	/*
@@ -57,16 +79,6 @@ public class Baseball {
 		return res
 	}
 	
-	private int 스트라이크 갯수 countStrike(String 유저입력수) {
-		//넘겨받은 랜덤수와 유저입력수를 비교하여 같은 자릿수에 있는 수가 같은 경우를 카운트
-		int s = 스트라이크 수
-		for(digit 수 만큼) {
-			if(ranNum.charAt(po) == userNum.charAt(po)) {
-				s++
-			}
-		}
-		return s
-	}
 	
 	private int 볼 갯수 countBall(String 유저입력수) {
 		//랜덤수와 유저입력수를 비교하여 다른 자릿수에 있는 수가 같은 경우를 카운트

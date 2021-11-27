@@ -1,20 +1,18 @@
 package baseball;
 
 import java.util.HashSet;
-
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
 	private static final int DIGIT = 3;
-	private String userNum;
+	private static final String numRegex = "^[1-9]{3}$";
 	
 	public User () {
-		userNum = "";
+		
 	}
 	
 	public String userNumber() {
 		String num = Console.readLine();
-		String numRegex = "^[1-9]{3}$";
 		
 		if(!num.matches(numRegex)) {
 			throw new IllegalArgumentException();
