@@ -2,9 +2,7 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class BaseballNumsGenerator {
     public static BaseballNums generateRandomBaseballNums() {
@@ -14,8 +12,6 @@ public class BaseballNumsGenerator {
                     BaseballNums.MIN_BASEBALL_NUMBER,
                     BaseballNums.MAX_BASEBALL_NUMBER));
         }
-        return new BaseballNums(randomBaseballNums.stream()
-                .map(Integer::new)
-                .collect(Collectors.toList()));
+        return new BaseballNums(new ArrayList<>(randomBaseballNums));
     }
 }
