@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.utils.AnswerNumberList;
+import baseball.utils.RandomNumberList;
 
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +16,7 @@ public class Game {
     }
 
     private void reset() {
-        this.answerNumbers = AnswerNumberList.generate();
+        this.answerNumbers = RandomNumberList.generate();
         this.isOver = false;
     }
 
