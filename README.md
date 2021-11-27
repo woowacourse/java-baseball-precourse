@@ -60,7 +60,7 @@
     * 힌트 출력
     * 정답 맞출 때 까지 반복 ✅
 
-- private void printSuccess()
+- private void printSuccess() ✅
     * 성공 출력
 
 - private boolean is_restart() ✅
