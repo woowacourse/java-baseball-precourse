@@ -9,7 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 // 정답을 맞히는 사용자의 응답을 다루는 클래스
 public class GameReply {
 
-	List<Integer> gameReply;
+	private List<Integer> gameReply;
 
 	public List<Integer> askReply() {
 		System.out.print("숫자를 입력해주세요 : ");

@@ -5,8 +5,8 @@ import java.util.Objects;
 
 // 응답과 정답을 통해 결과를 도출하는 클래스
 public class Result {
-	int strike;
-	int ball;
+	private int strike;
+	private int ball;
 
 	public boolean matchAnswer(List<Integer> answer, List<Integer> gameReply) {
 		strike = 0;
@@ -21,7 +21,6 @@ public class Result {
 				ball += 1;
 			}
 		}
-
 		return strike == 3;
 	}
 

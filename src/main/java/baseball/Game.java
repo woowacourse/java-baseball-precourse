@@ -5,8 +5,8 @@ import java.util.List;
 // 숫자야구의 전반적인 운영을 담당하는 클래스
 public class Game {
 
-    Computer computer;
-    User user;
+    private final Computer computer;
+    private final User user;
 
     public Game(Computer computer, User user) {
         this.computer = computer;
