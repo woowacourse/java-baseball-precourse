@@ -11,11 +11,13 @@ class InputValidatorTest {
 
         String positiveNumber = "123";
         String negativeNumber = "-758";
-        String inclusionChar = "a12";
+        String includeZero = "905";
+        String includeChar = "a12";
 
-        assertDoesNotThrow(() -> InputValidator.validateInteger(positiveNumber));
-        assertDoesNotThrow(() -> InputValidator.validateInteger(negativeNumber));
-        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateInteger(inclusionChar));
+        assertDoesNotThrow(() -> InputValidator.validateDigit(positiveNumber));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateDigit(negativeNumber));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateDigit(includeZero));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateDigit(includeChar));
     }
 
     @Test
@@ -25,10 +27,10 @@ class InputValidatorTest {
         String lessThanThreeDigits = "23";
         String moreThanThreeDigits = "3657";
 
-        assertDoesNotThrow(() -> InputValidator.validateInRange(threeDigits));
-        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateInRange(negativeThreeDigits));
-        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateInRange(lessThanThreeDigits));
-        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateInRange(moreThanThreeDigits));
+        assertDoesNotThrow(() -> InputValidator.validateLength(threeDigits));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateLength(negativeThreeDigits));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateLength(lessThanThreeDigits));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateLength(moreThanThreeDigits));
     }
 
     @Test
@@ -45,7 +47,7 @@ class InputValidatorTest {
         String properInput = "457";
         String improperInput = "161r";
 
-        assertDoesNotThrow(() -> InputValidator.validateAll(properInput));
-        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateAll(improperInput));
+        assertDoesNotThrow(() -> InputValidator.validateGameDigits(properInput));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateGameDigits(improperInput));
     }
 }
