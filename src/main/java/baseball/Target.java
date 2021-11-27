@@ -21,9 +21,30 @@ public class Target {
 	}
 
 	public int[] compareWith(String userNumber) {
-		int[] ballsAndStrikes = new int[2];
-		// TODO: 비교기능
-		return ballsAndStrikes;
+		int ball = 0;
+		int strike = 0;
+
+		for (int u = 0; u < length; u++) {
+			int index = isContained(userNumber.charAt(u));
+
+			if (index < 0) {
+
+			} else if (index == u) {
+				strike++;
+			} else if (index != u) {
+				ball++;
+			}
+		}
+		return new int[] {ball, strike};
+	}
+
+	public int isContained(char ch) {
+		for (int i = 0; i < length; i++) {
+			if (targetNumber.charAt(i) == ch) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	public int getRangeBegin() {
