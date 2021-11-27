@@ -1,47 +1,42 @@
 package baseball.utils;
 
+import java.util.HashSet;
+import java.util.List;
+
 public class InputValidator {
 
-    public static final int INPUT_NUMBER_MIN = 111;
-    public static final int INPUT_NUMBER_MAX = 999;
-
-    private InputValidator() {}
-
-    public static void validateInteger(String input) {
-        try{
-            Integer.parseInt(input);
-        }catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static void validateInRange(String input) {
-        try{
-            int integerInput = Integer.parseInt(input);
-            if(integerInput < INPUT_NUMBER_MIN || integerInput > INPUT_NUMBER_MAX) {
+    public static void validateDigit(String input) {
+        for(int i = 0; i < RandomDigitsGenerator.RANDOM_DIGIT_COUNT; ++i) {
+            int inputDigit = Character.getNumericValue(input.charAt(i));
+            if(isOutOfRange(inputDigit)) {
                 throw new IllegalArgumentException();
             }
-        }catch(NumberFormatException e) {
+         }
+    }
+
+    public static boolean isOutOfRange(int digit) {
+        return digit < RandomDigitsGenerator.RANDOM_DIGIT_MIN || digit > RandomDigitsGenerator.RANDOM_DIGIT_MAX;
+    }
+
+    public static void validateLength(String input) {
+        int inputLength = input.length();
+        if(inputLength != RandomDigitsGenerator.RANDOM_DIGIT_COUNT) {
             throw new IllegalArgumentException();
         }
     }
 
     public static void validateUniqueDigits(String input) {
-        try{
-            Integer.parseInt(input);
+        List<Integer> inputDigits = InputUtils.convertStringToIntegerList(input);
+        HashSet<Integer> hashSet = new HashSet<>(inputDigits);
 
-            int uniqueDigitCount = Long.valueOf(input.chars().distinct().count()).intValue();
-            if(uniqueDigitCount != RandomDigitsGenerator.RANDOM_DIGIT_COUNT) {
-                throw new IllegalArgumentException();
-            }
-        }catch(NumberFormatException e) {
+        if(hashSet.size() != RandomDigitsGenerator.RANDOM_DIGIT_COUNT) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void validateAll(String input) {
-        validateInteger(input);
-        validateInRange(input);
+    public static void validateGameDigits(String input) {
+        validateDigit(input);
+        validateLength(input);
         validateUniqueDigits(input);
     }
 }
