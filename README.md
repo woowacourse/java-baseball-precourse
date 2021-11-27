@@ -9,7 +9,7 @@
 - 🔍 [문제 분석](https://github.com/maprk/java-baseball-precourse/wiki/Problem-Analysis)
 - 📎 [참고 자료](https://github.com/maprk/java-baseball-precourse/wiki/Reference)
 - 📚 [공부한 내용](https://github.com/maprk/java-baseball-precourse/wiki/Study)
-- 🗒 [개발 일지](https://github.com/maprk/java-baseball-precourse/progress)
+- 🗒 [개발 일지](https://github.com/maprk/java-baseball-precourse/wiki/Progress)
 - ✔️ [Notion Link](https://tricolor-silk-b6e.notion.site/woowacourse-cd272b35cbfc448d88a47d1a338fee14)
 
 ## 구현할 기능 목록
