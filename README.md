@@ -141,3 +141,4 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - ApplicationTest.java에 게임종료_후_재시작() 통과되도록 로직 수정(class name RandomNumber, branch: fix/pass-ApplicationTest)
 - 리팩토링(branch: refactoring)
   - 변경이 일어나야 하지 않는 변수에 final 추가
+  - 필요 없는 코드 삭제

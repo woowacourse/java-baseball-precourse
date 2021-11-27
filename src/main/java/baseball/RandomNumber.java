@@ -3,10 +3,6 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Randoms.*;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import camp.nextstep.edu.missionutils.Randoms;
 
 /**
  * <h1>야구게임에서 컴퓨터가 사용할 3자리 난수를 생성한다</h1>

@@ -21,9 +21,6 @@ public class BaseballGame {
 	/** 정답을 맞춘 후 게임 재시작함을 의미하는 사람플레이어의 입력 */
 	public static final String RESTART_GAME = "1";
 
-	/** 정답을 맞춘 후 게임 종료를 의미하는 사람플레이어의 입력 */
-	public static final String TERMINATE_GAME = "2";
-
 	/** 사람 플레이어 */
 	private Player humanPlayer;
 
@@ -161,7 +158,6 @@ public class BaseballGame {
 	 * 이 메서드를 호출하면 숫자야구게임이 시작된다
 	 */
 	public void StartBaseballGame() {
-		System.out.println(computerPlayer.getSelectedNumber());
 		boolean restartGame = true;
 		while(restartGame) {
 			humanSelectNumber();
