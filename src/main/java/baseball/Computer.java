@@ -47,8 +47,8 @@ public class Computer {
 		if (isZeroScore(balls, strikes)) {
 			return NOTHING_MESSAGE;
 		}
-		String ballMessage = getBallMessage(balls);
-		String strikeMessage = getStrikeMessage(strikes);
+		String ballMessage = getBallOrStrikeMessage(balls, BALL_MESSAGE);
+		String strikeMessage = getBallOrStrikeMessage(strikes, STRIKE_MESSAGE);
 		String scoreMessage = ballMessage + strikeMessage;
 		return scoreMessage;
 	}
@@ -57,16 +57,9 @@ public class Computer {
 		return balls + strikes == MIN_COUNT;
 	}
 
-	private String getBallMessage(int balls) {
-		if (balls > MIN_COUNT) {
-			return String.format("%d%s ", balls, BALL_MESSAGE);
-		}
-		return "";
-	}
-
-	private String getStrikeMessage(int strikes) {
-		if (strikes > MIN_COUNT) {
-			return String.format("%d%s", strikes, STRIKE_MESSAGE);
+	private String getBallOrStrikeMessage(int ballOrStrike, String ballOrStrikeMessage) {
+		if (ballOrStrike > MIN_COUNT) {
+			return String.format("%d%s ", ballOrStrike, ballOrStrikeMessage);
 		}
 		return "";
 	}
