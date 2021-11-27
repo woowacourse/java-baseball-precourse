@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
-	private static List<Integer>computerNumbers;
+	private static List<Integer> computerNumbers;
 
 	public Computer() {
 		this.computerNumbers = new ArrayList<>(NumberRangeType.ANSWER_SIZE.getNumberRange());
