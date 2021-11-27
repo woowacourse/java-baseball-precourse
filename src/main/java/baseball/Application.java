@@ -11,7 +11,7 @@ public class Application {
             Game game = new Game();
             game.setAnswer();
             game.start();
-            quitOrnewGame = game.QuitOrNewGame();
+            quitOrnewGame = game.quitOrNewGame();
         }
     }
 }

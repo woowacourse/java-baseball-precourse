@@ -5,7 +5,7 @@ public class Judge {
     private int strike = 0;
     private int ball = 0;
 
-    public void judge(int[] answer, int[] input) {
+    public void checkNum(int[] answer, int[] input) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 judgeStrike(answer, input, i, j);

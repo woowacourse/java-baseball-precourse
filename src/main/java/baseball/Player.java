@@ -14,11 +14,11 @@ public class Player {
 
         Validation.validate(input);
 
-        int[] inputNum = Stream.of(input.split(""))
+        int[] inputNumToDigitList = Stream.of(input.split(""))
                 .mapToInt(Integer::parseInt)
                 .toArray();
 
-        return inputNum;
+        return inputNumToDigitList;
     }
 
     public int getQuitOrNewGameInput() {

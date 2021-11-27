@@ -3,18 +3,14 @@ package baseball;
 import utils.Judge;
 import utils.Result;
 
-import java.util.Arrays;
-
 
 public class Game {
 
-    // TODO: 변수 선언 위치 여기가 제일 효율적인지 따져보기 특히 answer,input
     private Computer computer;
     private Player player;
     private Result result;
-    int[] answer;
-    int[] input;
-    boolean end = false;
+    private int[] answer;
+    private int[] input;
 
     public Game() {
         this.computer = new Computer();
@@ -22,7 +18,6 @@ public class Game {
         this.result = new Result();
     }
 
-    // TODO: set과 start를 분리하는게 정말 좋은가? 생각 좀 해보기
     public void setAnswer() {
         answer = computer.generateAnswer();
     }
@@ -31,7 +26,17 @@ public class Game {
         input = player.getInput();
     }
 
-    public boolean QuitOrNewGame() {
+    public void start() {
+        boolean end = false;
+        while (!end) {
+            input();
+            Judge judge = new Judge();
+            judge.checkNum(answer, input);
+            end = result.printResult(judge.getStrike(), judge.getBall());
+        }
+    }
+
+    public boolean quitOrNewGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int response = player.getQuitOrNewGameInput();
         if (response == 1) {
@@ -39,15 +44,5 @@ public class Game {
         }
         return false;
     }
-
-    public void start() {
-        while (!end) {
-            input();
-            Judge judge = new Judge();
-            judge.judge(answer, input);
-            end = result.printResult(judge.getStrike(), judge.getBall());
-        }
-    }
-
 }
 
