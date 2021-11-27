@@ -12,8 +12,9 @@ public class ComputerNumGenerator extends NumGenerator {
 	}
 
 	public static int[] pickThreeNum() {
-		return Arrays.stream(new int[3])
+		return Arrays.stream(new int[Constant.NUMS_LENGTH])
 			.map(num -> Randoms.pickNumberInRange(1, 9))
 			.toArray();
 	}
 }
+

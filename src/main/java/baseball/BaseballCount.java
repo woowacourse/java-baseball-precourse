@@ -11,7 +11,7 @@ public class BaseballCount {
 	}
 
 	public void count(int[] userNums, int[] computerNums) {
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < Constant.NUMS_LENGTH; i++) {
 			if (userNums[i] == computerNums[i]) {
 				strikeCount++;
 				continue;

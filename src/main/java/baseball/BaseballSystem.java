@@ -24,7 +24,7 @@ public class BaseballSystem {
 	}
 
 	public boolean isThreeStrike(BaseballCount set) {
-		if (set.strikeCount == 3) {
+		if (set.strikeCount == Constant.NUMS_LENGTH) {
 			System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			return true;
 		}
@@ -55,3 +55,4 @@ public class BaseballSystem {
 		}
 	}
 }
+
