@@ -86,7 +86,7 @@
 
 ### UserInput
 
-- private int[] input
+- private final int[] input
 
 - public UserInput()
     * 생성자
@@ -101,9 +101,9 @@
 
 ### Score
 
-- private int strike
+- private final int strike
     * 스트라이크 개수
-- private int ball
+- private final int ball
     * 볼 개수
 
 - public Score()
