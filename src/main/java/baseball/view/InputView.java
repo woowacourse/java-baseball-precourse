@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import static baseball.constant.BallConstant.BALLS_LENGTH;
 
@@ -31,7 +32,10 @@ public class InputView {
         } catch (Exception exception) {
             throw new IllegalArgumentException(ERROR_WRONG_INPUT);
         }
-        if (number < 100 || number > 999) {
+
+        String regExp = "[1-9]{3}";
+        boolean matches = Pattern.matches(regExp, input);
+        if (!matches) {
             throw new IllegalArgumentException(ERROR_WRONG_INPUT);
         }
     }
