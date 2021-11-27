@@ -23,11 +23,15 @@ public class Answer {
 	public void makeAnswer() {
 		List<Integer> answer = new LinkedList<>();
 		while (answer.size() < ANSWER_SIZE) {
-			int number = Randoms.pickNumberInRange(ANSWER_MIN, ANSWER_MAX);
+			int number = getRandomNumber();
 			if (!answer.contains(number)) {
 				answer.add(number);
 			}
 		}
 		this.answer = answer;
+	}
+
+	public int getRandomNumber() {
+		return Randoms.pickNumberInRange(ANSWER_MIN, ANSWER_MAX);
 	}
 }

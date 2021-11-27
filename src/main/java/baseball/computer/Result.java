@@ -11,8 +11,7 @@ public class Result {
 	private int ball;
 
 	public boolean matchAnswer(List<Integer> answer, List<Integer> gameReply) {
-		strike = 0;
-		ball = 0;
+		resetCount();
 
 		for (int idx = 0; idx < ANSWER_SIZE; idx++) {
 			if (Objects.equals(answer.get(idx), gameReply.get(idx))) {
@@ -26,11 +25,16 @@ public class Result {
 		return strike == ANSWER_SIZE;
 	}
 
-	void addStrike() {
+	private void resetCount() {
+		this.strike = 0;
+		this.ball = 0;
+	}
+
+	private void addStrike() {
 		this.strike++;
 	}
 
-	void addBall() {
+	private void addBall() {
 		this.ball++;
 	}
 
