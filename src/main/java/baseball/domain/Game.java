@@ -9,14 +9,14 @@ import static baseball.Constants.ANSWER_LIST_LENGTH;
 
 public class Game {
 
-    private List<Integer> answerNumbers;
+    private List<Integer> answerList;
     private boolean isOver;
 
     public Game() {
     }
 
     private void reset() {
-        this.answerNumbers = RandomNumberList.generate();
+        this.answerList = RandomNumberList.generate();
         this.isOver = false;
     }
 
@@ -44,38 +44,39 @@ public class Game {
     private String checkAnswerInput(List<Integer> input) {
         int strikeCount = 0;
         int ballCount = 0;
-        int curIdx;
-        for (curIdx = 0; ; curIdx++) {
-            if (curIdx >= ANSWER_LIST_LENGTH) break;
+        int curInputIdx;
+        for (curInputIdx = 0; ; curInputIdx++) {
+            if (curInputIdx >= ANSWER_LIST_LENGTH) break;
 
-            int curInput = this.answerNumbers.get(curIdx);
+            int curInput = input.get(curInputIdx);
 
-            if (Objects.equals(input.get(curIdx), curInput)) {
+            if (Objects.equals(curInput, this.answerList.get(curInputIdx))) {
                 strikeCount++;
                 continue;
             }
 
-            int ballIdx;
-            for (ballIdx = 0; ballIdx < ANSWER_LIST_LENGTH; ballIdx++) {
-                if (Objects.equals(input.get(ballIdx), curInput)) {
-                    ballCount++;
-                    break;
-                }
+            if (this.checkIfBall(curInput)) {
+                ballCount++;
             }
         }
 
         return this.giveHint(strikeCount, ballCount);
     }
 
-    private String giveHint(int strikeCount, int ballCount) {
-        if (strikeCount == 0 && ballCount == 0) {
-            return "낫싱";
+    private boolean checkIfBall(int curInput) {
+        for (int answerNum : this.answerList) {
+            if (Objects.equals(curInput, answerNum)) return true;
         }
+        return false;
+    }
+
+    private String giveHint(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount == 0) return "낫싱";
 
         String hint = "";
 
         if (ballCount > 0) {
-            hint = ballCount + "볼 ";
+            hint += ballCount + "볼 ";
         }
         if (strikeCount > 0) {
             hint += strikeCount + "스트라이크";
