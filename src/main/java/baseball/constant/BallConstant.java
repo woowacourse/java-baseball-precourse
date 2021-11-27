@@ -1,5 +1,5 @@
 package baseball.constant;
 
 public class BallConstant {
-    public static final int BALL_SIZE = 3;
+    public static final int BALLS_LENGTH = 3;
 }

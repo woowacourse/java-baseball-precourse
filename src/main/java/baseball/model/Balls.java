@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static baseball.constant.BallConstant.BALL_SIZE;
+import static baseball.constant.BallConstant.BALLS_LENGTH;
 
 public class Balls {
 
@@ -26,8 +26,8 @@ public class Balls {
 
     public Balls(Set<Integer> set) {
         Iterator<Integer> iterator = set.iterator();
-        int[] ballNumbers = new int[BALL_SIZE];
-        for (int i = 0; i < BALL_SIZE; i++) {
+        int[] ballNumbers = new int[BALLS_LENGTH];
+        for (int i = 0; i < BALLS_LENGTH; i++) {
             ballNumbers[i] = iterator.next();
         }
         int firstBall = ballNumbers[0];

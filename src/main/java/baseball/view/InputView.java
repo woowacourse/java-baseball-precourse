@@ -1,16 +1,13 @@
 package baseball.view;
 
-import baseball.constant.BallConstant;
 import baseball.model.Balls;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static baseball.constant.BallConstant.BALL_SIZE;
+import static baseball.constant.BallConstant.BALLS_LENGTH;
 
 public class InputView {
 
@@ -58,7 +55,7 @@ public class InputView {
 
     public static Balls getRandomBalls() {
         Set<Integer> set = new LinkedHashSet<>();
-        for (int i = 0; i < BALL_SIZE; i++) {
+        for (int i = 0; i < BALLS_LENGTH; i++) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             set.add(randomNumber);
         }
