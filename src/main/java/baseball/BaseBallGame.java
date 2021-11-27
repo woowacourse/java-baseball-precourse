@@ -32,15 +32,27 @@ public class BaseBallGame {
 	private void getGameStatus() {
 		System.out.println(SUCCESS_MESSAGE);
 		System.out.println(RESTART_OR_END_MESSAGE);
-		Integer userInputStatus = Integer.valueOf(Console.readLine());
-		if (!isRightStatus(userInputStatus)) {
+		String userInputStatus = Console.readLine();
+		if (!checkUserInputStatus(userInputStatus)) {
 			throw new IllegalArgumentException(INVALID_RESTART_OR_END_INPUT_ERROR);
 		}
-		gameStatus = userInputStatus;
+		gameStatus = Integer.parseInt(userInputStatus);
 	}
 
-	private boolean isRightStatus(Integer userInputStatus) {
-		return userInputStatus == GOING || userInputStatus == STOP;
+	private boolean checkUserInputStatus(String userInputStatus) {
+		return isRightLength(userInputStatus) && isDigit(userInputStatus) && isRightStatus(userInputStatus);
+	}
+
+	private boolean isRightLength(String userInputStatus) {
+		return userInputStatus.length() == 1;
+	}
+
+	private boolean isDigit(String userInputStatus) {
+		return Character.isDigit(userInputStatus.charAt(0));
+	}
+
+	private boolean isRightStatus(String userInputStatus) {
+		return Integer.parseInt(userInputStatus) == GOING || Integer.parseInt(userInputStatus) == STOP;
 	}
 
 }
