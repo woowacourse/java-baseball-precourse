@@ -33,6 +33,17 @@ public class Baseball {
 		return s;
 	}
 	
+	private int countBall(String ranNum, String userNum) {
+		int b = 0;
+		for(int i=0;i<DIGIT;i++) {
+			int idx = ranNum.indexOf(userNum.charAt(i));
+			if(idx > -1 && idx != i) {
+				b++;
+			}
+		}
+		return b;
+	}
+	
 	/*
 	public void 게임 플레이 playGame () {
 		String 출력할 메시지 result = "";
@@ -77,19 +88,6 @@ public class Baseball {
 		res = res.trim() 메소드로 앞뒤 공백 제거
 		
 		return res
-	}
-	
-	
-	private int 볼 갯수 countBall(String 유저입력수) {
-		//랜덤수와 유저입력수를 비교하여 다른 자릿수에 있는 수가 같은 경우를 카운트
-		int b = 볼 수
-		for(digit 수 만큼) {
-			int 인덱스 idx = 랜덤수가 유저입력수 각 자리수의 값을 포함하고 있는지 확인 후 index 추출
-			if(idx가 -1 이상이고 유저입력수의 자릿수와 다르다면) {
-				b++
-			}  
-		}
-		return b
 	}
 	
 	*/
