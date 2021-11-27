@@ -30,20 +30,20 @@ public class BaseballController {
             List<Integer> playerNumbers = inputView.inputPlayerNumbers();
             String result = baseballService.evaluate(playerNumbers);
             outputView.printMessageWithLine(result);
-        } while (checkGameNotOver());
+        } while (checkGameIsNotCleared());
+    }
+
+    private boolean checkGameIsNotCleared() {
+        if (baseballService.isGameCleared()) {
+            outputView.printMessage(GameMessage.GAME_CLEAR_MESSAGE);
+            return false;
+        }
+        return true;
     }
 
     private boolean decidePlayOrStop() {
         int number = inputView.inputPlayOrStop();
         return (number == GameRule.NUMBER_GAME_PLAY);
-    }
-
-    private boolean checkGameNotOver() {
-        if (baseballService.isGameOver()) {
-            outputView.printMessage(GameMessage.GAME_CLEAR_MESSAGE);
-            return false;
-        }
-        return true;
     }
 
 }

@@ -24,7 +24,7 @@ public class BaseballService {
         return player.getHint().toString();
     }
 
-    public boolean isGameOver() {
+    public boolean isGameCleared() {
         return player.getHint().isAllStrikes();
     }
 }
