@@ -55,6 +55,7 @@ public class GameSystem {
     }
 
     private String getUser3DigitNum() {
+        System.out.print("숫자를 입력해주세요 : ");
         String input3DigitNum = Console.readLine();
         if (Pattern.matches(THREE_DIGIT_PATTERN, input3DigitNum)) {
             throw new IllegalArgumentException();
@@ -63,6 +64,7 @@ public class GameSystem {
     }
 
     private void determineContinueGame() {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. : ");
         String users_signal = Console.readLine();
         if (users_signal.equals("2")) {
             signal = 2;
