@@ -11,4 +11,8 @@ public class BaseballNums {
     public BaseballNums(List<Integer> baseballNums) {
         this.baseballNums = baseballNums;
     }
+
+    public List<Integer> getBaseballNums() {
+        return baseballNums;
+    }
 }
