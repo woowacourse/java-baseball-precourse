@@ -36,7 +36,7 @@ public class Judge {
         return false;
     }
 
-    private void makeJudgement(final String target) {
+    public void makeJudgement(final String target) {
         for (int i = 0; i < 3; i++) {
             char cur_digit = target.charAt(i);
             if (cur_digit == rightAnswer.charAt(i)) {
