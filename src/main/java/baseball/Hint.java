@@ -29,8 +29,8 @@ public class Hint {
         printHintMessage();
     }
 
-    public void printHintMessage() {
-        if (this.strikeCount == 3) {
+    private void printHintMessage() {
+        if (this.strikeCount == NUM_LENGTH) {
             System.out.println(this.strikeCount + STRIKE);
             return;
         }
