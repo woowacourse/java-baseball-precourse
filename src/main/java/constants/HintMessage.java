@@ -5,12 +5,12 @@ public enum HintMessage {
     STRIKE("스트라이크"),
     NOTHING("낫싱");
 
-    private final String message;
-    HintMessage(String message){
-        this.message = message;
+    private final String hint;
+    HintMessage(String hint){
+        this.hint = hint;
     }
 
-    public String message(){
-        return message;
+    public String getHint(){
+        return hint;
     }
 }

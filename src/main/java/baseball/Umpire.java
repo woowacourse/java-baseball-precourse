@@ -46,13 +46,13 @@ public class Umpire {
     public String getHint(final int ballCount, final int strikeCount) {
 
         if (ballCount == 0 && strikeCount == 0) {
-            return HintMessage.NOTHING.message();
+            return HintMessage.NOTHING.getHint();
         } else if (ballCount == 0) {
-            return strikeCount + HintMessage.STRIKE.message();
+            return strikeCount + HintMessage.STRIKE.getHint();
         } else if (strikeCount == 0) {
-            return ballCount + HintMessage.BALL.message();
+            return ballCount + HintMessage.BALL.getHint();
         }
-        return ballCount + HintMessage.BALL.message() + " " + strikeCount + HintMessage.STRIKE.message();
+        return ballCount + HintMessage.BALL.getHint() + " " + strikeCount + HintMessage.STRIKE.getHint();
     }
 
 }
