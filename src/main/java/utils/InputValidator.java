@@ -1,4 +1,4 @@
-package baseball;
+package utils;
 
 import constants.ExitOption;
 

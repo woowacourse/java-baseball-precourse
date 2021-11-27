@@ -6,9 +6,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 import constants.HintMessage;
 import constants.SystemMessage;
+import utils.InputValidator;
 import utils.NumberGenerator;
 
-import static baseball.InputValidator.checkExitCommandIsValid;
+import static utils.InputValidator.checkExitCommandIsValid;
 
 public class Game {
     private static String CLEAR_CONDITION_MESSAGE;
