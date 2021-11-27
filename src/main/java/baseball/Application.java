@@ -4,7 +4,31 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        boolean flag = true;
+
+        while (flag) {
+            // TODO: 랜덤 수 생성
+
+            // TODO: 생성 된 값 배열로 변환
+
+            boolean correct = false;
+            while (!correct) {
+                // TODO: 사용자 입력 받기
+
+                // TODO: 사용자 입력 값 배열로 변환
+
+                // TODO: 랜덤 값과 사용자 입력 값 비교
+
+                // TODO: 비교 결과에 따른 correct 변수 수정
+
+            }
+
+            // TODO: 사용자로부터 게임 재게 여부 확인 (1 or 2)
+
+            // TODO: 재게 여부에 따른 flag 변수 수정
+        }
+
 
     }
     public static int[] convertNumberToArray(int number) {
