@@ -10,7 +10,7 @@ public enum ExitOption {
         this.command = command;
     }
 
-    public String command() {
+    public String getCommand() {
         return command;
     }
 }

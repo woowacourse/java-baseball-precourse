@@ -28,7 +28,7 @@ public class InputValidator {
 
     public static boolean checkExitCommandIsValid(final String userInput){
         for (ExitOption option : ExitOption.values()) {
-            if (userInput.equals(option.command())) {
+            if (userInput.equals(option.getCommand())) {
                 return true;
             }
         }

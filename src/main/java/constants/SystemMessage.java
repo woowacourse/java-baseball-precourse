@@ -10,7 +10,7 @@ public enum SystemMessage {
         this.message = message;
     }
 
-    public String message(){
+    public String getMessage(){
         return message;
     }
 }

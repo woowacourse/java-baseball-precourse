@@ -16,7 +16,7 @@ public class Game {
     Umpire umpire;
 
     Game() {
-        CLEAR_CONDITION_MESSAGE = NumberAttribute.DIGIT_NUMBER.getValue() + HintMessage.STRIKE.message();
+        CLEAR_CONDITION_MESSAGE = NumberAttribute.DIGIT_NUMBER.getValue() + HintMessage.STRIKE.getHint();
     }
 
     public void init() {
@@ -26,7 +26,7 @@ public class Game {
     public void playGame() {
         boolean isGameContinue = true;
         do {
-            System.out.println(SystemMessage.INPUT_REQUEST.message());
+            System.out.println(SystemMessage.INPUT_REQUEST.getMessage());
             String userNumber = Console.readLine();
             if (!InputValidator.checkUserInputIsValid(userNumber)) {
                 throw new IllegalArgumentException("사용자 입력이 잘못된 값이므로 게임을 종료합니다");
@@ -37,17 +37,17 @@ public class Game {
             isGameContinue = !result.equals(CLEAR_CONDITION_MESSAGE);
 
         } while (isGameContinue);
-        System.out.println(SystemMessage.GAME_CLEAR.message());
+        System.out.println(SystemMessage.GAME_CLEAR.getMessage());
 
     }
 
     public boolean checkUserWantRestart() {
-        System.out.println(SystemMessage.RESTART_OR_END_REQUEST.message());
+        System.out.println(SystemMessage.RESTART_OR_END_REQUEST.getMessage());
         String userInput = Console.readLine();
         if (!checkExitCommandIsValid(userInput)) {
             throw new IllegalArgumentException("게임 종료 옵션 커맨드가 잘못된 값이므로 게임을 종료합니다");
         }
-        return userInput.equals(ExitOption.RESTART.command());
+        return userInput.equals(ExitOption.RESTART.getCommand());
     }
 }
 
