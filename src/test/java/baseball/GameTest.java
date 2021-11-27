@@ -52,7 +52,7 @@ public class GameTest {
             put("111", 0);
             put("589", 1);
             put("254", 3);
-            put("842", 1);
+            put("842", 2);
         }};
 
         final String opponentNumber = "425";
