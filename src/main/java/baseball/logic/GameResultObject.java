@@ -1,4 +1,4 @@
-package logic;
+package baseball.logic;
 
 public class GameResultObject {
     private Boolean isEnd;

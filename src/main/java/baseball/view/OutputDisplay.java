@@ -1,6 +1,6 @@
-package view;
+package baseball.view;
 
-import logic.GameResultObject;
+import baseball.logic.GameResultObject;
 
 public class OutputDisplay {
     private static final String BALL = "볼";

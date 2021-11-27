@@ -1,4 +1,4 @@
-package logic;
+package baseball.logic;
 
 import java.util.List;
 

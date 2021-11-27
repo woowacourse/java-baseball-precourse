@@ -1,10 +1,10 @@
 package baseball;
 
-import logic.BaseballGameJudge;
-import logic.GameResultObject;
-import utill.RandomNumberGenerator;
-import view.InputValidation;
-import view.OutputDisplay;
+import baseball.logic.BaseballGameJudge;
+import baseball.logic.GameResultObject;
+import baseball.utill.RandomNumberGenerator;
+import baseball.view.InputValidation;
+import baseball.view.OutputDisplay;
 
 import java.util.List;
 
