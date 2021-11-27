@@ -57,6 +57,7 @@ public class Game {
             int strikeCount = countStrike(randomNumber, userNumber);
             printHint(ballCount, strikeCount);
 
+            Assertions.assertTrue(ballCount <= DIGIT_NUM && strikeCount <= DIGIT_NUM);
             if (ballCount == 0 && strikeCount == DIGIT_NUM) {
                 isGameContinue = false;
             }
@@ -89,7 +90,6 @@ public class Game {
 
     public void printHint(final int ballCount, final int strikeCount) {
 
-        Assertions.assertTrue(ballCount <= DIGIT_NUM && strikeCount <= DIGIT_NUM);
         String hint = ballCount + HintMessage.BALL.message() + " " + strikeCount + HintMessage.STRIKE.message();
         if (ballCount == 0 && strikeCount == 0) {
             hint = HintMessage.NOTHING.message();
