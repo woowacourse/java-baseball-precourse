@@ -1,10 +1,11 @@
-package baseball.runner;
+package baseball.application.runner;
 
-import baseball.domain.vo.JudgementResult;
-import baseball.domain.vo.number.Number;
-import baseball.domain.vo.number.UniqueNumberFactory;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.application.domain.JudgementResult;
+import baseball.application.domain.number.Number;
+import baseball.application.domain.number.UniqueNumberFactory;
+import baseball.application.service.Referee;
+import baseball.application.view.InputView;
+import baseball.application.view.OutputView;
 
 public class BaseBallGame {
 

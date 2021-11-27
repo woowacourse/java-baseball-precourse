@@ -1,4 +1,4 @@
-package baseball.domain.vo.number;
+package baseball.application.domain.number;
 
 import java.util.ArrayList;
 import java.util.List;

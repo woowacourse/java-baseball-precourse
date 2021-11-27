@@ -1,6 +1,6 @@
-package baseball.view;
+package baseball.application.view;
 
-import baseball.domain.vo.JudgementResult;
+import baseball.application.domain.JudgementResult;
 
 public class OutputView {
 

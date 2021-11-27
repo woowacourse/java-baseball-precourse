@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import baseball.domain.vo.JudgementResult;
+import baseball.application.domain.JudgementResult;
 
 public class JudgementResultTest {
 

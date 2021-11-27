@@ -1,8 +1,9 @@
-package baseball.domain.vo.number;
+package baseball.application.domain.number;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import baseball.application.domain.number.Number;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class UniqueNumberFactory {

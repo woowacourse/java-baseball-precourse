@@ -1,4 +1,4 @@
-package baseball.domain.vo;
+package baseball.application.domain;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.application.view;
 
 import java.util.Objects;
 

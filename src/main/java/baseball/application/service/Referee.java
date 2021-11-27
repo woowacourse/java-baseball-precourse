@@ -1,7 +1,7 @@
-package baseball.runner;
+package baseball.application.service;
 
-import baseball.domain.vo.JudgementResult;
-import baseball.domain.vo.number.Number;
+import baseball.application.domain.JudgementResult;
+import baseball.application.domain.number.Number;
 
 public class Referee {
 

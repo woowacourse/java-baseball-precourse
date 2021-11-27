@@ -1,7 +1,6 @@
-package baseball.view;
+package baseball.application.view;
 
-import baseball.InputValidation;
-import baseball.domain.vo.number.Number;
+import baseball.application.domain.number.Number;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {

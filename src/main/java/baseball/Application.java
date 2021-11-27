@@ -1,9 +1,10 @@
 package baseball;
 
-import baseball.runner.BaseBallGame;
-import baseball.runner.Referee;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.application.runner.BaseBallGame;
+import baseball.application.service.Referee;
+import baseball.application.view.InputValidation;
+import baseball.application.view.InputView;
+import baseball.application.view.OutputView;
 
 public class Application {
 
