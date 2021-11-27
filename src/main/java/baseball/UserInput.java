@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
-    private final int[] input;
+    private int[] input;
 
     public UserInput() {
         this.input = new int[Constant.NUMBER_OF_NUMBERS];

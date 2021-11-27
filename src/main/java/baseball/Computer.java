@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 
 public class Computer {
-    private final int answer[];
+    private int answer[];
 
     public Computer() {
         this.answer = new int[Constant.NUMBER_OF_NUMBERS];

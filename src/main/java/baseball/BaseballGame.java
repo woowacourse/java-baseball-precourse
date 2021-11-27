@@ -3,9 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
-    private final Computer computer;
-    private final UserInput userInput;
-    private final Score score;
+    private Computer computer;
+    private UserInput userInput;
+    private Score score;
 
     public BaseballGame() {
         this.computer = new Computer();
