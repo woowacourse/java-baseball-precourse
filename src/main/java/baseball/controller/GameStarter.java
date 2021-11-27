@@ -26,14 +26,14 @@ public class GameStarter {
 		do {
 			List<Integer> inputNumbers = getUserInputNumbers();
 
-			CompareResult result = computer.compareNumbers(inputNumbers);
-			notifyResultOfComparing(result);
+			CompareResult result = compareWithRandomNumbers(inputNumbers);
 
 			if(checkAllCorrect(result)) {
 				notifyCorrectAll();
 				resume = getResumeIntention();
 				checkResume(resume);
 			}
+
 		} while(resume == NumberConstants.RESUME);
 	}
 
@@ -48,6 +48,12 @@ public class GameStarter {
 	private String readLineFromUser() {
 		System.out.print(StringConstants.ASK_NUMBER);
 		return Console.readLine();
+	}
+
+	private CompareResult compareWithRandomNumbers(List<Integer> inputNumbers) {
+		CompareResult result = computer.compareNumbers(inputNumbers);
+		notifyResultOfComparing(result);
+		return result;
 	}
 
 	private void notifyResultOfComparing(CompareResult result) {

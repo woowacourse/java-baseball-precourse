@@ -13,19 +13,23 @@ public class Computer {
 
 	public Computer() {
 		init();
-		generateRandomNumber();
+		generateRandomNumbers();
 	}
 
 	private void init() {
 		randomNumberList = new ArrayList<>();
 	}
 
-	private void generateRandomNumber() {
+	private void generateRandomNumbers() {
 		while(randomNumberList.size() < NumberConstants.RANDOM_NUMBER_SIZE) {
 			int randomNumber = Randoms.pickNumberInRange(NumberConstants.MINIMUM_NUMBER, NumberConstants.MAXIMUM_NUMBER);
-			if(checkUnique(randomNumber)) {
-				randomNumberList.add(randomNumber);
-			}
+			addRandomNumber(randomNumber);
+		}
+	}
+
+	private void addRandomNumber(int randomNumber) {
+		if(checkUnique(randomNumber)) {
+			randomNumberList.add(randomNumber);
 		}
 	}
 
@@ -56,6 +60,6 @@ public class Computer {
 
 	public void refresh() {
 		randomNumberList.clear();
-		generateRandomNumber();
+		generateRandomNumbers();
 	}
 }
