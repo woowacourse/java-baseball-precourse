@@ -38,6 +38,18 @@ class ApplicationTest extends NsTest {
 		);
 	}
 
+	@Test
+	void 타겟넘버_생성_테스트() {
+		Target target = new Target();
+		Target compare = new Target();
+		target.generateTargetNumber();
+
+		for (int i = 0; i < 10; i++) {
+			compare.generateTargetNumber();
+			assertThat(target.isEqual(compare));
+		}
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});

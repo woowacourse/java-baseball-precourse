@@ -37,4 +37,8 @@ public class Target {
 	public void setRangeEnd(int rangeEnd) {
 		this.rangeEnd = rangeEnd;
 	}
+
+	public boolean isEqual(Target compare) {
+		return this.targetNumber.equals(compare.targetNumber);
+	}
 }
