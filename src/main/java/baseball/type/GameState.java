@@ -1,4 +1,4 @@
-package baseball;
+package baseball.type;
 
 public enum GameState {
 	PLAY,

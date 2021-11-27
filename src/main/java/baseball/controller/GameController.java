@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import baseball.GameState;
+import baseball.type.GameState;
 import baseball.domain.AnswerNumber;
-import baseball.util.RandomNumberGenerator;
+import util.RandomNumberGenerator;
 import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
