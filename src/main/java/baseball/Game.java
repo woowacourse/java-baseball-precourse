@@ -23,9 +23,7 @@ public class Game {
 			}
 		}
 
-		String message = makeMessage(strike, ball, "");
-
-		return message;
+		return makeMessage(strike, ball);
 	}
 
 	private static String checkOneNumber(String[] answerArray, String number, int index) {
@@ -42,11 +40,13 @@ public class Game {
 		return NOTHING;
 	}
 
-	private static String makeMessage(int strike, int ball, String message) {
+	private static String makeMessage(int strike, int ball) {
 
 		if (ball == 0 && strike == 0) {
 			return NOTHING;
 		}
+
+		String message = "";
 
 		if (ball > 0) {
 			message += ball + BALL + " ";
