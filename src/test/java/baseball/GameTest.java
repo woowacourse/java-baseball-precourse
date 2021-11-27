@@ -8,9 +8,11 @@ import org.junit.jupiter.api.Test;
 
 public class GameTest {
 
+    final String opponentNumber = "425";
+    Umpire umpire = new Umpire(opponentNumber);
+
     @Test
     public void countStrikeTest() {
-        Game game = new Game();
         final HashMap<String, Integer> testCase = new HashMap<String, Integer>() {{//초기값 지정
             put("123", 1);
             put("897", 0);
@@ -19,14 +21,14 @@ public class GameTest {
             put("425", 3);
         }};
 
-        final String opponentNumber = "425";
+
 
         for (Map.Entry<String, Integer> entry : testCase.entrySet()) {
 
             String key = entry.getKey();
             Integer result = entry.getValue();
 
-            Assertions.assertEquals(result, game.countStrike(opponentNumber, key), "카운팅이 룰을 따르지 않음");
+            Assertions.assertEquals(result, umpire.countStrike(opponentNumber, key), "카운팅이 룰을 따르지 않음");
 
         }
 
@@ -34,22 +36,20 @@ public class GameTest {
 
     @Test
     public void countBallTest() {
-        Game game = new Game();
-        final HashMap<String, Integer> testCase = new HashMap<String, Integer>() {{//초기값 지정
+
+        final HashMap<String, Integer> testCase = new HashMap<String, Integer>() {{
             put("111", 0);
             put("589", 1);
             put("254", 3);
             put("842", 2);
         }};
 
-        final String opponentNumber = "425";
-
         for (Map.Entry<String, Integer> entry : testCase.entrySet()) {
 
             String key = entry.getKey();
             Integer result = entry.getValue();
 
-            Assertions.assertEquals(result, game.countBall(opponentNumber, key), "카운팅이 룰을 따르지 않음");
+            Assertions.assertEquals(result, umpire.countBall(opponentNumber, key), "카운팅이 룰을 따르지 않음");
 
         }
     }
