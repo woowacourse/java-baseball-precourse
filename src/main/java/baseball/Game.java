@@ -3,9 +3,12 @@ package baseball;
 import java.util.Set;
 import java.util.HashSet;
 
+import org.junit.jupiter.api.Assertions;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import constants.HintMessage;
 
 public class Game {
     private final int MIN_RANGE = 1;
@@ -48,6 +51,11 @@ public class Game {
         if (!isValid) {
             throw new IllegalArgumentException("사용자 입력이 잘못된 값이므로 게임을 종료합니다");
         }
+
+        int ballCount = countBall(randomNumber, userNumber);
+        int strikeCount = countStrike(randomNumber, userNumber);
+
+        printHint(ballCount, strikeCount);
         return true;
     }
 
@@ -63,13 +71,27 @@ public class Game {
 
     public int countBall(String opponentNumber, String userNumber) {
         int ballCount = 0;
-        for (int i = 0; i < DIGIT_NUM; i++){
-            for (int j = 0; j < DIGIT_NUM; j++){
-                if (i != j && opponentNumber.charAt(i) == userNumber.charAt(j)){
-                    ballCount ++;
+        for (int i = 0; i < DIGIT_NUM; i++) {
+            for (int j = 0; j < DIGIT_NUM; j++) {
+                if (i != j && opponentNumber.charAt(i) == userNumber.charAt(j)) {
+                    ballCount++;
                 }
             }
         }
         return ballCount;
+    }
+
+    public void printHint(final int ballCount, final int strikeCount) {
+
+        Assertions.assertTrue(ballCount <= DIGIT_NUM && strikeCount <= DIGIT_NUM);
+        String hint = ballCount + HintMessage.BALL.message() + " " + strikeCount + HintMessage.STRIKE.message();
+        if (ballCount == 0 && strikeCount == 0) {
+            hint = HintMessage.NOTHING.message();
+        } else if (ballCount == 0) {
+            hint = strikeCount + HintMessage.STRIKE.message();
+        } else if (strikeCount == 0) {
+            hint = ballCount + HintMessage.BALL.message();
+        }
+        System.out.println(hint);
     }
 }
