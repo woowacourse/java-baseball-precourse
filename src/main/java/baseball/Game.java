@@ -3,6 +3,8 @@ package baseball;
 import utils.Judge;
 import utils.Result;
 
+import java.util.Arrays;
+
 
 public class Game {
 
@@ -27,7 +29,15 @@ public class Game {
 
     public void input(){
         input = player.getInput();
-//        input =new int[] {1,2,3};
+    }
+
+    public boolean QuitOrNewGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int response = player.getQuitOrNewGameInput();
+        if(response == 1){
+            return true;
+        }
+        return false;
     }
 
     public void start(){
@@ -37,10 +47,7 @@ public class Game {
             judge.judge(answer,input);
             end = result.printResult(judge.getStrike(), judge.getBall());
         }
-
     }
 
-
-    // TODO: Result Utils에 분리 및 구현
 }
 

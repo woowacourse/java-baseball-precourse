@@ -20,4 +20,9 @@ public class Player {
 
         return inputNum;
     }
+
+    public int getQuitOrNewGameInput(){
+        String input = readLine();
+        return Integer.parseInt(input);
+    }
 }
