@@ -9,16 +9,30 @@ public class Controller {
     private String randomNumber;
     private String userNumber;
     private ArrayList<Character> ballNumbers;
+    private boolean endFlag = false;
+    private boolean numberSameFlag;
+
+    public Controller() {
+    }
 
     private String createRandomNumber() {
         return String.valueOf(Randoms.pickNumberInRange(100, 1000));
     }
 
-    private String getUserNumber() {
-        return Console.readLine();
+    public void getUserNumber() {
+        Viewer.inputNumber();
+        userNumber = Console.readLine();
+    }
+
+    private void getEndByUser(){
+        String userInput = Console.readLine();
+        if (userInput.equals("2")) {
+            endFlag = true;
+        }
     }
 
     private void setBallNumbers() {
+        ballNumbers = new ArrayList<>();
         for (char number : randomNumber.toCharArray()) {
             ballNumbers.add(number);
         }
@@ -26,8 +40,9 @@ public class Controller {
 
     public void initGame() {
         randomNumber = createRandomNumber();
-        userNumber = getUserNumber();
+        System.out.println(randomNumber);
         setBallNumbers();
+        numberSameFlag = false;
     }
 
     public void compareNumbers() {
@@ -42,6 +57,23 @@ public class Controller {
                 ball++;
             }
         }
+        Viewer.printStrikeBall(strike, ball);
+        if (checkAnswer(strike)) {
+            Viewer.printEndMessage();
+            numberSameFlag = true;
+            getEndByUser();
+        }
     }
 
+    private boolean checkAnswer(int strike){
+        return strike == 3;
+    }
+
+    public boolean isEnd() {
+        return endFlag;
+    }
+
+    public boolean isSameNumber() {
+        return numberSameFlag;
+    }
 }
