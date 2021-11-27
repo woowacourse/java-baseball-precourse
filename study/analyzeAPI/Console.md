@@ -1,6 +1,6 @@
 # 전역 변수
 
-```
+```java
 private static Scanner scanner;
 ```
 
@@ -8,7 +8,7 @@ private static Scanner scanner;
 
 ### readLine()
 
-```
+```java
 public static String readLine() {
 	return getInstance().nextLine();
 }
@@ -28,7 +28,7 @@ private static Scanner getInstance() {
 
 ### isClosed()
 
-```
+```java
 private static boolean isClosed() {
     try {
         final Field sourceClosedField = Scanner.class.getDeclaredField("sourceClosed");

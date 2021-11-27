@@ -1,6 +1,6 @@
 # 전역 변수
 
-```
+```java
 private static final Random defaultRandom = ThreadLocalRandom.current();
 ```
 
@@ -13,7 +13,7 @@ private static final Random defaultRandom = ThreadLocalRandom.current();
 
 ### pickNumberInList(List<Integer> numbers)
 
-```
+```java
 public static int pickNumberInList(final List<Integer> numbers) {
     validateNumbers(numbers);
     return numbers.get(pickNumberInRange(0, numbers.size() - 1));
@@ -27,7 +27,7 @@ public static int pickNumberInList(final List<Integer> numbers) {
 
 ### pickNumberInRange(int startInclusive, int endInclusive)
 
-```
+```java
 public static int pickNumberInRange(final int startInclusive, final int endInclusive) {
     validateRange(startInclusive, endInclusive);
     return startInclusive + defaultRandom.nextInt(endInclusive - startInclusive + 1);
@@ -41,7 +41,7 @@ public static int pickNumberInRange(final int startInclusive, final int endInclu
 
 ### pickUniqueNumbersInRange(int startInclusive, int endInclusive, int count)
 
-```
+```java
 public static List<Integer> pickUniqueNumbersInRange(
     final int startInclusive,
     final int endInclusive,
