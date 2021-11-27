@@ -11,7 +11,7 @@ public class OutputView {
     private static final String CHOICE_CONTINUE_OR_EXIT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static void printResult(Balls computerBalls, Balls balls) {
-        PlayTypes playTypes = computerBalls.play(balls);
+        PlayTypes playTypes = computerBalls.compare(balls);
         String playResult = playTypes.getPlayResult();
         System.out.println(playResult);
     }

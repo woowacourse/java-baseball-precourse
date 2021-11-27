@@ -19,28 +19,28 @@ public class BallsTest {
     @Test
     void 결과_1스트라이크() {
         Ball myBall = new Ball(4, 1);
-        PlayType playType = computerBalls.play(myBall);
+        PlayType playType = computerBalls.compare(myBall);
         assertThat(playType).isEqualTo(PlayType.STRIKE);
     }
 
     @Test
     void 결과_1볼() {
         Ball myBall = new Ball(4, 2);
-        PlayType playType = computerBalls.play(myBall);
+        PlayType playType = computerBalls.compare(myBall);
         assertThat(playType).isEqualTo(PlayType.BALL);
     }
 
     @Test
     void 결과_낫싱() {
         Ball myBall = new Ball(5, 3);
-        PlayType playType = computerBalls.play(myBall);
+        PlayType playType = computerBalls.compare(myBall);
         assertThat(playType).isEqualTo(PlayType.NOTHING);
     }
 
     @Test
     void 결과_3스트라이크() {
         Balls myBall = new Balls(4, 6, 8);
-        PlayTypes playTypes = myBall.play(computerBalls);
+        PlayTypes playTypes = myBall.compare(computerBalls);
         List<PlayType> playTypeList = playTypes.getPlayType();
         assertThat(playTypeList).contains(PlayType.STRIKE, PlayType.STRIKE, PlayType.STRIKE);
     }
@@ -48,7 +48,7 @@ public class BallsTest {
     @Test
     void 결과_1볼_1스트라이크() {
         Balls myBall = new Balls(4, 3, 6);
-        PlayTypes playTypes = myBall.play(computerBalls);
+        PlayTypes playTypes = myBall.compare(computerBalls);
         List<PlayType> playTypeList = playTypes.getPlayType();
         assertThat(playTypeList).contains(PlayType.STRIKE, PlayType.NOTHING, PlayType.BALL);
     }
@@ -56,7 +56,7 @@ public class BallsTest {
     @Test
     void 결과_2스트라이크() {
         Balls myBall = new Balls(1, 6, 8);
-        PlayTypes playTypes = myBall.play(computerBalls);
+        PlayTypes playTypes = myBall.compare(computerBalls);
         List<PlayType> playTypeList = playTypes.getPlayType();
         assertThat(playTypeList).contains(PlayType.STRIKE, PlayType.STRIKE, PlayType.NOTHING);
     }
@@ -64,7 +64,7 @@ public class BallsTest {
     @Test
     void 결과_2볼() {
         Balls myBall = new Balls(6, 4, 1);
-        PlayTypes playTypes = myBall.play(computerBalls);
+        PlayTypes playTypes = myBall.compare(computerBalls);
         List<PlayType> playTypeList = playTypes.getPlayType();
         assertThat(playTypeList).contains(PlayType.BALL, PlayType.BALL, PlayType.NOTHING);
     }

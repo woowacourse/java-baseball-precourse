@@ -1,7 +1,5 @@
 package baseball.model;
 
-import baseball.constant.BallConstant;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -58,12 +56,12 @@ public class Balls {
 
     private List<PlayType> getPlayTypes(Ball opponentBall) {
         return balls.stream()
-                .map(opponentBall::play)
+                .map(opponentBall::compare)
                 .collect(Collectors.toList());
     }
 
     // N:1 관계: 하나의 볼과 게임을 한다
-    public PlayType play(Ball opponentBall) {
+    public PlayType compare(Ball opponentBall) {
         List<PlayType> playTypes = getPlayTypes(opponentBall);
         if (hasStrike(playTypes)) {
             return PlayType.STRIKE;
@@ -75,9 +73,9 @@ public class Balls {
     }
 
     // N:M 관계: 여러개의 볼과 게임을 한다
-    public PlayTypes play(Balls computerBalls) {
+    public PlayTypes compare(Balls computerBalls) {
         List<PlayType> playTypeList = balls.stream()
-                .map(computerBalls::play)
+                .map(computerBalls::compare)
                 .collect(Collectors.toList());
         return new PlayTypes(playTypeList);
     }
