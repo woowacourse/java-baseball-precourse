@@ -38,5 +38,4 @@ public class Game {
 
         return judge.checkGameOver(hint);
     }
-
 }

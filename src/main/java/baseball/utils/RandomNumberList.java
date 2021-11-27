@@ -10,6 +10,7 @@ import static baseball.Constants.RANGE_END_NUM;
 import static baseball.Constants.RANGE_START_NUM;
 
 public class RandomNumberList {
+
     public static List<Integer> generate() {
         List<Integer> newList = new ArrayList<>();
         boolean[] visited = new boolean[RANGE_END_NUM + 1];

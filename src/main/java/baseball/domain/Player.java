@@ -9,6 +9,7 @@ import java.util.List;
 import static baseball.Constants.RESTART_NUM;
 
 public class Player {
+
     public static List<Integer> getAnswerInput() {
         System.out.print("숫자를 입력해주세요 : ");
 
