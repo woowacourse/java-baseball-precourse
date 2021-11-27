@@ -11,16 +11,12 @@ public class UserNumGenerator extends NumGenerator {
 
 	private static int[] pickUserNums() throws IllegalArgumentException {
 		System.out.print("숫자를 입력해주세요 : ");
-		try {
-			String numString = Console.readLine();
-			int[] nums = stringToIntArray(numString);
-			if (nums.length == 3 && isOneNineInt(nums) && isNotDuplicate(nums)) {
-				return nums;
-			}
-			throw new IllegalArgumentException();
-		} catch (Exception e) {
-			throw new IllegalArgumentException("중복되지 않는 1-9 숫자 3개를 입력하세요!");
+		String numString = Console.readLine();
+		int[] nums = stringToIntArray(numString);
+		if (nums.length == 3 && isOneNineInt(nums) && isNotDuplicate(nums)) {
+			return nums;
 		}
+		throw new IllegalArgumentException("중복되지 않는 1-9 숫자 3개를 입력하세요!");
 	}
 
 	private static int[] stringToIntArray(String str) {
