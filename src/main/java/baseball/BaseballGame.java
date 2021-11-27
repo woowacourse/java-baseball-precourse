@@ -53,15 +53,27 @@ public class BaseballGame {
 	}
 
 	private void checkInput() {
+		checkInputLength();
+		checkInputContents();
+		checkInputDuplication();
+	}
+
+	private void checkInputLength() {
 		if (userInput.length() != ANSWER_LENGTH) {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	private void checkInputContents() {
 		for (int i = 0; i < ANSWER_LENGTH; i++) {
 			int number = userInput.charAt(i) - '0';
 			if (!(number >= START_NUMBER && number <= END_NUMBER)) {
 				throw new IllegalArgumentException();
 			}
 		}
+	}
+
+	private void checkInputDuplication() {
 		int[] duplicationCheckArray = new int[END_NUMBER - START_NUMBER + 1];
 		for (int i = 0; i < ANSWER_LENGTH; i++) {
 			int number = userInput.charAt(i) - '0';
