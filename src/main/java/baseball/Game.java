@@ -53,7 +53,11 @@ public class Game {
 
     public int countStrike(String opponentNumber, String userNumber) {
         int strikeCount = 0;
-
+        for (int i = 0; i < DIGIT_NUM; i++) {
+            if (opponentNumber.charAt(i) == userNumber.charAt(i)) {
+                strikeCount++;
+            }
+        }
         return strikeCount;
     }
 }
