@@ -40,6 +40,18 @@ public class GameSystem {
     }
 
     private void playGame() {
+        OpponentPlayer opponentPlayer = new OpponentPlayer();
+        Judge judge = new Judge();
+        String user3DigitNum;
+        judge.setRightAnswer(opponentPlayer.pickRandom3DigitNum());
+        while (true) {
+            user3DigitNum = getUser3DigitNum();
+            judge.makeJudgement(user3DigitNum);
+            printResult(judge.getStrike(), judge.getBall());
+            if (judge.getGameSuccess()) {
+                break;
+            }
+        }
     }
 
     private String getUser3DigitNum() {
