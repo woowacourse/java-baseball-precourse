@@ -1,9 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import dto.CompareResult;
-import service.Computer;
-import service.Converter;
+import baseball.service.Converter;
 
 import org.junit.jupiter.api.Test;
 

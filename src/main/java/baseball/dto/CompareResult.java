@@ -1,4 +1,4 @@
-package dto;
+package baseball.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

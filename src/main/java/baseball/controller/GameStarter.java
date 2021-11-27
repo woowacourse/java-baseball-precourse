@@ -1,14 +1,14 @@
-package controller;
+package baseball.controller;
 
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
-import constants.NumberConstants;
-import constants.StringConstants;
-import dto.CompareResult;
-import service.Computer;
-import service.Converter;
-import service.Validator;
+import baseball.constants.NumberConstants;
+import baseball.constants.StringConstants;
+import baseball.dto.CompareResult;
+import baseball.service.Computer;
+import baseball.service.Converter;
+import baseball.service.Validator;
 
 public class GameStarter {
 	private Computer computer;
@@ -39,8 +39,10 @@ public class GameStarter {
 
 	private List<Integer> getUserInputNumbers() {
 		String inputString = readLineFromUser();
-		validator.validateInputString(inputString, NumberConstants.RANDOM_NUMBER_SIZE);
-		return converter.convertStringToIntegerList(inputString);
+		validator.validateInputString(inputString);
+		List<Integer> inputNumbers = converter.convertStringToIntegerList(inputString);
+		validator.validateInputNumbers(inputNumbers);
+		return inputNumbers;
 	}
 
 	private String readLineFromUser() {
@@ -57,13 +59,13 @@ public class GameStarter {
 		int ball = result.getBall();
 
 		if(strike == 0 && ball == 0) {
-			return StringConstants.NOTHING;
-		} else if(strike != 0 && ball == 0) {
-			return strike + StringConstants.STRIKE;
-		} else if(strike == 0 && ball != 0) {
-			return ball + StringConstants.BALL;
+			return String.format(StringConstants.NOTHING);
+		} else if(ball == 0) {
+			return String.format(StringConstants.STRIKE, strike);
+		} else if(strike == 0) {
+			return String.format(StringConstants.BALL, ball);
 		}
-		return ball + StringConstants.BALL + " " + strike + StringConstants.STRIKE;
+		return String.format(StringConstants.BALL_AND_STRIKE, ball, strike);
 	}
 
 	private boolean checkAllCorrect(CompareResult result) {
@@ -78,7 +80,9 @@ public class GameStarter {
 	private int getResumeIntention() {
 		String restartString = Console.readLine();
 		validator.validateRestartString(restartString);
-		return converter.convertStringToInt(restartString);
+		int restartNumber = converter.convertStringToInt(restartString);
+		validator.validateRestartNumber(restartNumber);
+		return restartNumber;
 	}
 
 	private void checkResume(int resume) {

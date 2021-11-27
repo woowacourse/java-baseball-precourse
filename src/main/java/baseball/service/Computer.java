@@ -1,11 +1,11 @@
-package service;
+package baseball.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import constants.NumberConstants;
-import dto.CompareResult;
+import baseball.constants.NumberConstants;
+import baseball.dto.CompareResult;
 
 public class Computer {
 
@@ -14,7 +14,6 @@ public class Computer {
 	public Computer() {
 		init();
 		generateRandomNumber();
-		// generateRandomNumber_test();
 	}
 
 	private void init() {
@@ -22,22 +21,16 @@ public class Computer {
 	}
 
 	private void generateRandomNumber() {
-		while(randomNumberList.size() < 3) {
+		while(randomNumberList.size() < NumberConstants.RANDOM_NUMBER_SIZE) {
 			int randomNumber = Randoms.pickNumberInRange(NumberConstants.MINIMUM_NUMBER, NumberConstants.MAXIMUM_NUMBER);
-			if(!checkRedundant(randomNumber)) {
+			if(checkUnique(randomNumber)) {
 				randomNumberList.add(randomNumber);
 			}
 		}
 	}
 
-	private void generateRandomNumber_test() {
-		randomNumberList.add(1);
-		randomNumberList.add(3);
-		randomNumberList.add(5);
-	}
-
-	private boolean checkRedundant(int generatedNumber) {
-		return randomNumberList.contains(generatedNumber);
+	private boolean checkUnique(int generatedNumber) {
+		return !randomNumberList.contains(generatedNumber);
 	}
 
 	public CompareResult compareNumbers(List<Integer> givenNumbers) {

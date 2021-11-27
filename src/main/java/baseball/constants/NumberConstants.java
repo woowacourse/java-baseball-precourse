@@ -1,8 +1,7 @@
-package constants;
+package baseball.constants;
 
 public class NumberConstants {
 	public static final int RANDOM_NUMBER_SIZE = 3;
-	public static final int RESTART_NUMBER_SIZE = 1;
 
 	public static final int MINIMUM_NUMBER = 1;
 	public static final int MAXIMUM_NUMBER = 9;
