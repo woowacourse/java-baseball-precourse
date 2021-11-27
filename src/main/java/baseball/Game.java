@@ -6,6 +6,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Game {
     private static Player player = new Player();
     private static int[] randomAns;
+    private static final int BEGIN_NUM = 1;
+    private static final int END_NUM = 9;
+    private static final int NUM_LENGTH = 3;
     private static final String ENTER_NUMBER = "숫자를 입력해주세요 : ";
     public static final String End_GAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String ASK_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
@@ -33,13 +36,13 @@ public class Game {
 
     private int[] createTargetNum(){
         int[] randomAns = new int[3];
-        boolean[] check = new boolean[10];
+        boolean[] check = new boolean[END_NUM+1];
 
-        for(int i=0; i<3; i++){
-            int num = Randoms.pickNumberInRange(1,9);
+        for(int i=0; i<NUM_LENGTH; i++){
+            int num = Randoms.pickNumberInRange(BEGIN_NUM,END_NUM);
 
             while(check[num]){
-                num = Randoms.pickNumberInRange(1,9);
+                num = Randoms.pickNumberInRange(BEGIN_NUM,END_NUM);
             }
 
             check[num] = true;
@@ -58,14 +61,14 @@ public class Game {
 
 
     private int[] checkUserInputNum(String inputStr){
-        int[] userInputNumArr = new int[3];
-        boolean[] checkInputNum = new boolean[10];
+        int[] userInputNumArr = new int[NUM_LENGTH];
+        boolean[] checkInputNum = new boolean[END_NUM+1];
 
         // 입력 값이 길이가 3미만 3초과일 경우
-        if(inputStr.length()<3 || inputStr.length()>3) throw new IllegalArgumentException();
+        if(inputStr.length()<NUM_LENGTH || inputStr.length()>NUM_LENGTH) throw new IllegalArgumentException();
 
         // 숫자로 이루어지지 않았을 경우, 0이 포함 되어 있을 경우, 반복된 숫자를 입력하였을 경우
-        for(int i=0; i<3; i++){
+        for(int i=0; i<NUM_LENGTH; i++){
             int inputNum = inputStr.charAt(i)-'0';
             if(inputStr.charAt(i)=='0' || !Character.isDigit(inputStr.charAt(i))){
                 throw new IllegalArgumentException();
@@ -85,7 +88,7 @@ public class Game {
     private boolean compareToRandomAns(int[] userInputNumArr){
         player.init(userInputNumArr);
 
-        for(int i=0; i<3; i++){
+        for(int i=0; i<NUM_LENGTH; i++){
             player.compareNum(randomAns[i],i);
         }
 
@@ -94,7 +97,7 @@ public class Game {
 
     private boolean notifyBallAndStrike(int strike, int ball){
         if(strike==3){
-            System.out.println("3"+STRIKE);
+            System.out.println(NUM_LENGTH+STRIKE);
             System.out.println(End_GAME);
             return true;
         }
