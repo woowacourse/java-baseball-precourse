@@ -1,5 +1,7 @@
 package baseball.domain.number;
 
+import baseball.exception.number.BaseBallNumberRangeException;
+
 public class BaseBallNumber {
 
     private final int number;
@@ -15,8 +17,7 @@ public class BaseBallNumber {
 
     private static void checkNumberRange(int number) {
         if (number < 0 || number > 9) {
-            throw new IllegalArgumentException("0~9 사이의 값만 입력하여야 합니다.");
+            throw new BaseBallNumberRangeException();
         }
     }
-
 }

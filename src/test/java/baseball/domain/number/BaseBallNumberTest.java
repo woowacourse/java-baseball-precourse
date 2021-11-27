@@ -17,5 +17,4 @@ class BaseBallNumberTest {
             .isThrownBy(() -> BaseBallNumber.from(input))
             .withMessageMatching("0~9 사이의 값만 입력하여야 합니다.");
     }
-
 }
