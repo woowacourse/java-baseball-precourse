@@ -52,15 +52,18 @@ public class Application {
                         correct = true;
                     }
                 }
-                    System.out.println(stringBuffer);
+                System.out.println(stringBuffer);
 
             }
 
         }
 
-            // TODO: 사용자로부터 게임 재게 여부 확인 (1 or 2)
+        // TODO: 사용자로부터 게임 재게 여부 확인 (1 or 2)
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int restart = Integer.parseInt(Console.readLine());
 
-            // TODO: 재게 여부에 따른 flag 변수 수정
+        // TODO: 재게 여부에 따른 flag 변수 수정
+        if(restart == 2) flag = false;
     }
 
     public static int[] convertNumberToArray(int number) {
