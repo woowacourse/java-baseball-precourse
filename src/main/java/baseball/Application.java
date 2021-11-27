@@ -28,8 +28,8 @@ public class Application {
     }
 
     public static int[] getUserInput() {
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
-
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException();
         }
@@ -48,6 +48,7 @@ public class Application {
     }
 
     public static boolean checkNextGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputString = Console.readLine();
         if (inputString.contentEquals("1")) {
             return true;
@@ -107,6 +108,7 @@ public class Application {
             boolean finish = checkAnswer(userData);
             printStrikeBall(userData);
             if (finish) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return checkNextGame();
             }
         }
