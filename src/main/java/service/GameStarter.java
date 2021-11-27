@@ -6,12 +6,12 @@ import camp.nextstep.edu.missionutils.Console;
 import constants.Constants;
 import dto.CompareResult;
 
-public class UserInterface {
+public class GameStarter {
 	private Computer computer;
 	private Converter converter;
 	private Validator validator;
 
-	public UserInterface() {
+	public GameStarter() {
 		computer = new Computer();
 		converter = new Converter();
 		validator = new Validator();
@@ -36,7 +36,7 @@ public class UserInterface {
 
 	private List<Integer> getUserGivenNumbers() {
 		String givenString = readLineFromUser();
-		validator.validateInputString(givenString, Constants.RANDOM_NUMBER_SIZE);
+		validator.validateGivenString(givenString, Constants.RANDOM_NUMBER_SIZE);
 		return converter.convertStringToIntegerList(givenString);
 	}
 
@@ -64,11 +64,9 @@ public class UserInterface {
 	}
 
 	private boolean checkAllCorrect(CompareResult result) {
-		if(result.getStrike() != Constants.RANDOM_NUMBER_SIZE) {
-			return false;
-		}
-		return true;
+		return result.getStrike() == Constants.RANDOM_NUMBER_SIZE;
 	}
+
 	private void notifyCorrectAll() {
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -76,7 +74,7 @@ public class UserInterface {
 
 	private int getResumeIntention() {
 		String restart = Console.readLine();
-		validator.validateInputString(restart, Constants.RESTART_NUMBER_SIZE);
+		validator.validateRestartString(restart);
 		return converter.convertStringToInt(restart);
 	}
 

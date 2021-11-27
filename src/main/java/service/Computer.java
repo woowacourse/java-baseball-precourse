@@ -15,6 +15,7 @@ public class Computer {
 	public Computer() {
 		init();
 		generateRandomNumber();
+		// generateRandomNumber_test();
 	}
 
 	private void init() {
@@ -22,10 +23,22 @@ public class Computer {
 	}
 
 	private void generateRandomNumber() {
-		for(int i = 0; i < Constants.RANDOM_NUMBER_SIZE; i++) {
-			int random = Randoms.pickNumberInRange(Constants.START_NUMBER, Constants.END_NUMBER);
-			randomNumberList.add(random);
+		while(randomNumberList.size() < 3) {
+			int randomNumber = Randoms.pickNumberInRange(Constants.START_NUMBER, Constants.END_NUMBER);
+			if(!checkRedundant(randomNumber)) {
+				randomNumberList.add(randomNumber);
+			}
 		}
+	}
+
+	private void generateRandomNumber_test() {
+		randomNumberList.add(1);
+		randomNumberList.add(3);
+		randomNumberList.add(5);
+	}
+
+	private boolean checkRedundant(int generatedNumber) {
+		return randomNumberList.contains(generatedNumber);
 	}
 
 	public CompareResult compareNumbers(List<Integer> givenNumbers) {
@@ -42,10 +55,7 @@ public class Computer {
 	}
 
 	private boolean checkStrike(int givenNumber, int randomNumber) {
-		if(givenNumber == randomNumber) {
-			return true;
-		}
-		return false;
+		return givenNumber == randomNumber;
 	}
 
 	private boolean checkBall(int givenNumber) {

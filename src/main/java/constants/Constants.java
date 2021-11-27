@@ -8,4 +8,5 @@ public class Constants {
 	public static final int END_NUMBER = 9;
 
 	public static final int RESUME = 1;
+	public static final int STOP = 2;
 }
