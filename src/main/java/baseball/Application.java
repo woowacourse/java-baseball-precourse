@@ -1,6 +1,6 @@
 package baseball;
 
-import service.GameStarter;
+import controller.GameStarter;
 
 public class Application {
 

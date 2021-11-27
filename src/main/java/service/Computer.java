@@ -2,10 +2,9 @@ package service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import constants.Constants;
+import constants.NumberConstants;
 import dto.CompareResult;
 
 public class Computer {
@@ -24,7 +23,7 @@ public class Computer {
 
 	private void generateRandomNumber() {
 		while(randomNumberList.size() < 3) {
-			int randomNumber = Randoms.pickNumberInRange(Constants.START_NUMBER, Constants.END_NUMBER);
+			int randomNumber = Randoms.pickNumberInRange(NumberConstants.MINIMUM_NUMBER, NumberConstants.MAXIMUM_NUMBER);
 			if(!checkRedundant(randomNumber)) {
 				randomNumberList.add(randomNumber);
 			}
@@ -44,7 +43,7 @@ public class Computer {
 	public CompareResult compareNumbers(List<Integer> givenNumbers) {
 		int strike = 0;
 		int ball = 0;
-		for(int i = 0 ; i < Constants.RANDOM_NUMBER_SIZE; i++) {
+		for(int i = 0; i < NumberConstants.RANDOM_NUMBER_SIZE; i++) {
 			if(checkStrike(givenNumbers.get(i), randomNumberList.get(i))) {
 				strike++;
 			} else if (checkBall(givenNumbers.get(i))){

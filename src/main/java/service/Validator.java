@@ -1,13 +1,11 @@
 package service;
 
-import java.util.List;
-
-import constants.Constants;
+import constants.NumberConstants;
 
 public class Validator {
 
-	public void validateGivenString(String givenString, int correctSize) {
-		if(!checkContainAllNumber(givenString) || !checkCorrectSize(givenString, correctSize)) {
+	public void validateInputString(String inputString, int correctSize) {
+		if(!checkContainAllNumber(inputString) || !checkCorrectSize(inputString, correctSize)) {
 			throw new IllegalArgumentException();
 		}
 	}
@@ -18,16 +16,16 @@ public class Validator {
 		}
 	}
 
-	private boolean checkContainAllNumber (String givenString) {
-		return givenString.chars().allMatch( Character::isDigit );
+	private boolean checkContainAllNumber (String inputString) {
+		return inputString.chars().allMatch( Character::isDigit );
 	}
 
-	private boolean checkCorrectSize(String givenString, int correctSize) {
-		return givenString.length() == correctSize;
+	private boolean checkCorrectSize(String inputString, int correctSize) {
+		return inputString.length() == correctSize;
 	}
 
 	private boolean checkCorrectRestartNumber(String restartString) {
-		return restartString.equals(String.valueOf(Constants.RESUME)) || restartString.equals(
-			String.valueOf(Constants.STOP));
+		return restartString.equals(String.valueOf(NumberConstants.RESUME)) || restartString.equals(
+			String.valueOf(NumberConstants.STOP));
 	}
 }
