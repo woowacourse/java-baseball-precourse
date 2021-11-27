@@ -28,7 +28,7 @@ public class InputUtil {
     }
 
     private static void checkInputLength(String answerStr) {
-        if (answerStr.length() > NUM_LENGTH) {
+        if (answerStr.length() != NUM_LENGTH) {
             throw new IllegalArgumentException(Constant.INPUT_ERROR_LENGTH);
         }
     }
