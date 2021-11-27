@@ -20,7 +20,7 @@ public class BaseballSystem {
 
 	public boolean isMaxStrike(BaseballCount set) {
 		if (set.strikeCount == Constant.NUMS_LENGTH) {
-			System.out.println("\n" + Constant.NUMS_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			System.out.println(Constant.NUMS_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			return true;
 		}
 		return false;
