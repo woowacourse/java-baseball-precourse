@@ -9,5 +9,8 @@ public class Game {
   Game () {
   }
 
+  public String generateRandomNumber(){
+    return "test";
+  }
 
 }
