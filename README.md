@@ -130,10 +130,18 @@
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
 
 ## 기능 목록
-- 상대방 수 생성
-- 입력
-- 스트라이크 카운트
-- 볼 카운트
-- 작동
-- 재시작/종료
-- 출력
+1. 상대방 수 생성
+   - Randoms.pickNumberInRange 사용하여 컴퓨터 랜덤 수 생성 메서드 구현
+2. 입력
+   - BufferedReader 로 입력
+3. 스트라이크 카운트
+   - 자릿수별 비교(상대방 수와 입력값이 같은 경우 count++)
+4. 볼 카운트
+   - 다른 자릿수에 같은 값 있을 경우 count++
+5. 게임 시작
+   - 조건에 안맞는 값 입력시 앱 종료
+6. 재시작/종료
+   - 정답 입력시 재시작 또는 종료 확인 후 동작
+7. 출력
+   - 입력 값의 볼, 스트라이크 여부 등 출력
+   - 조건 분기

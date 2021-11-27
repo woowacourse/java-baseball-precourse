@@ -24,7 +24,7 @@ public class Application {
     }
 
     public static void startGame() throws IOException {
-        makeRandomNum();
+        makeComputerNumbers();
         System.out.println("숫자를 입력하세요.");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -45,7 +45,7 @@ public class Application {
         }
     }
 
-    public static void makeRandomNum() {
+    public static void makeComputerNumbers() {
         for (int i = 0; i < 3; i++) {
             computerNumbers[i] = Randoms.pickNumberInRange(1, 9);
         }
