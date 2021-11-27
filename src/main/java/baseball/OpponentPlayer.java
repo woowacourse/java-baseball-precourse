@@ -10,12 +10,12 @@ public class OpponentPlayer {
     }
 
     public String pickRandom3DigitNum() {
+        StringBuilder stringBuilder = new StringBuilder();
         List<Integer> random3NumsList = Randoms.pickUniqueNumbersInRange(0, 9, 3);
-        String random3DigitNum = "";
         for (int i = 0; i < 3; i++) {
-            random3DigitNum += Integer.toString(random3NumsList.get(i));
+             stringBuilder.append(Integer.toString(random3NumsList.get(i)));
         }
-        return random3DigitNum;
+        return stringBuilder.toString();
     }
 
 }
