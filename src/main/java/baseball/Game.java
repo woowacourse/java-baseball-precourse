@@ -44,18 +44,24 @@ public class Game {
     public boolean playGame() {
         // n자리 임의의 난수 생성
         String randomNumber = generateRandomNumber();
+        boolean isGameContinue = true;
+        do {
+            // 사용자 입력이 잘못된 값이면 IllegalArgumentException 발생 뒤 종료
+            String userNumber = Console.readLine();
+            boolean isValid = InputValidator.checkUserInput(userNumber);
+            if (!isValid) {
+                throw new IllegalArgumentException("사용자 입력이 잘못된 값이므로 게임을 종료합니다");
+            }
 
-        // 사용자 입력이 잘못된 값이면 IllegalArgumentException 발생 뒤 종료
-        String userNumber = Console.readLine();
-        boolean isValid = InputValidator.checkUserInput(userNumber);
-        if (!isValid) {
-            throw new IllegalArgumentException("사용자 입력이 잘못된 값이므로 게임을 종료합니다");
-        }
+            int ballCount = countBall(randomNumber, userNumber);
+            int strikeCount = countStrike(randomNumber, userNumber);
+            printHint(ballCount, strikeCount);
 
-        int ballCount = countBall(randomNumber, userNumber);
-        int strikeCount = countStrike(randomNumber, userNumber);
+            if (ballCount == 0 && strikeCount == DIGIT_NUM) {
+                isGameContinue = false;
+            }
 
-        printHint(ballCount, strikeCount);
+        } while (isGameContinue);
         return true;
     }
 
