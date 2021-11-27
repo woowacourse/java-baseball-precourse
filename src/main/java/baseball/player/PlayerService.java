@@ -33,4 +33,12 @@ public class PlayerService {
         strikeScore = 0;
         ballScore = 0;
     }
+
+    public int getStrikeScore() {
+        return strikeScore;
+    }
+
+    public int getBallScore() {
+        return ballScore;
+    }
 }
