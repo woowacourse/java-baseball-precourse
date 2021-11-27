@@ -1,15 +1,15 @@
 package baseball;
 
-import baseball.inputchecking.GameInputChecking;
-import baseball.inputchecking.PlayOrStopInputChecking;
+import baseball.validator.GameInputValidator;
+import baseball.validator.PlayOrStopInputValidator;
 
 public class Config {
 
-	GameInputChecking gameInputChecking = new GameInputChecking();
+	GameInputValidator gameInputChecking = new GameInputValidator();
 
-	PlayOrStopInputChecking playOrStopInputChecking = new PlayOrStopInputChecking();
+	PlayOrStopInputValidator playOrStopInputChecking = new PlayOrStopInputValidator();
 
-	RandomNumber randomNumber = new RandomNumber();
+	RandomNumberGenerator randomNumber = new RandomNumberGenerator();
 
 	BallStrikeCalculator ballStrikeCalculator = new BallStrikeCalculator();
 }

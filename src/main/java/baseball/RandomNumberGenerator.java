@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomNumber {
+public class RandomNumberGenerator {
 
 	public String makeRandomNumber() {
 		String answer = "";

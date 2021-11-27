@@ -1,6 +1,6 @@
-package baseball.inputchecking;
+package baseball.validator;
 
-public class PlayOrStopInputChecking implements InputChecking {
+public class PlayOrStopInputValidator implements InputValidator {
 
 	@Override
 	public void inputCheck(String input) throws IllegalArgumentException {

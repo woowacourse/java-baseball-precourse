@@ -1,10 +1,10 @@
-package baseball.inputchecking;
+package baseball.validator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GameInputChecking implements InputChecking {
+public class GameInputValidator implements InputValidator {
 
 	@Override
 	public void inputCheck(String input) throws IllegalArgumentException {
