@@ -1,8 +1,14 @@
-# 미션 - 숫자 야구 게임
+# 1주차 미션 - 숫자 야구 게임
+
+## 📚 사전 학습
+> 사전 학습한 내용들 및 미션 진행 과정을 블로그에 정리하였습니다. 
+- [Commit Message Conventions - AngularJS](https://programmer-ririhan.tistory.com/335)
+- [Java Code Conventions - NAVER CAMPUS HACKDAY](https://programmer-ririhan.tistory.com/337)
+- [IntelliJ Code Format Setting](https://programmer-ririhan.tistory.com/338)
 
 ## 🔨 기능 목록
 
-### 👩🏻 사용자
+### 😺 사용자
 - 1~9 숫자 3개를 입력한다.
   - 예외 : 1~9 숫자 이외의 문자를 입력한 경우 (공백, 줄바꿈, 숫자 0 주의)
   - 예외 : 숫자가 세 자리가 아닌 경우
