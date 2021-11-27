@@ -8,11 +8,11 @@ public class PlayBall {
     public static void play(int[] generatedNumbers){
         while(true){
             int[] guessNumbers=getUserInput();
-            String guessResult=guessNumber(generatedNumbers,getUserInput());
+            String guessResult=guessNumber(generatedNumbers,guessNumbers);
             System.out.println(guessResult);
 
             if(isFinished(guessResult)){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("3개의 숫자를 모두 맞추면 게임 종료");
                 return;
             }
         }
@@ -25,33 +25,11 @@ public class PlayBall {
 
         String input=Console.readLine();
 
-        if(isValidate(input)) return parseStringToIntegerArray(input);
+        if(BaseBallUtil.isValidateGuess(input)) return parseStringToIntegerArray(input);
         else throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
-    private static boolean isValidate(String input){
-        if(input.length()!=DIGIT_NUM) return false;
-        if(!isNumberFormat(input)) return false;
-        if(!isZeroInNumber(input)) return false;
 
-        return true;
-    }
-
-    private static boolean isZeroInNumber(String input){
-        for(int i=0; i<input.length(); i++){
-            if(input.charAt(i)=='0') return false;
-        }
-        return true;
-    }
-
-    private static boolean isNumberFormat(String input){
-        try{
-            Integer.parseInt(input);
-        }catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
 
     private static String guessNumber(int[] generateNumbers, int[] guessNumbers){
         int strike_num=getStrikeCount(generateNumbers, guessNumbers);
@@ -79,10 +57,7 @@ public class PlayBall {
     }
 
     public static boolean isBall(int[] generateNumbers, int[] guessNumbers, int index){
-        if(Arrays.asList(generateNumbers).contains(guessNumbers[index]) && generateNumbers[index]!=guessNumbers[index]){
-            return true;
-        }
-        return false;
+        return (Arrays.asList(generateNumbers).contains(guessNumbers[index]) && generateNumbers[index]!=guessNumbers[index]);
     }
 
     private static int[] parseStringToIntegerArray(String input){
