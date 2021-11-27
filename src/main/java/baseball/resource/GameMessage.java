@@ -1,6 +1,11 @@
 package baseball.resource;
 
 public class GameMessage {
+    // 게임 데이터
+    public static final String BALL = "볼";
+    public static final String STRIKE = "스트라이크";
+    public static final String NOTHING = "낫싱";
+
     // 출력 메세지
     public static final String REQUEST_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
     public static final String REQUEST_PLAY_OR_STOP_MESSAGE =
