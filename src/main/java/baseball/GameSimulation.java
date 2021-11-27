@@ -15,12 +15,17 @@ public class GameSimulation {
 	private List<Integer> comNum;
 	private List<Integer> userNum;
 
+	private String message;
+
+	public GameSimulation() {
+		init();
+	}
+
 	public void init() {
 		this.comNum = Randoms.pickUniqueNumbersInRange(1, 9, 3);
 	}
 
 	public void playGame() {
-		init();
 		System.out.println(comNum);
 		System.out.println("숫자를 입력해주세요 : ");
 		String userInput = Console.readLine();
@@ -30,6 +35,8 @@ public class GameSimulation {
 		compareNumbers();
 		System.out.println(strike);
 		System.out.println(ball);
+		message = compareResultReturn();
+		System.out.println(message);
 
 	}
 
@@ -68,6 +75,19 @@ public class GameSimulation {
 				ball++;
 			}
 		}
+	}
+
+	public String compareResultReturn() {
+		if (ball != 0 && strike != 0) {
+			return(ball+"볼"+" "+strike+"스트라이크");
+		}
+		if (ball == 0 && strike != 0) {
+			return(strike+"스트라이크");
+		}
+		if (ball != 0 && strike == 0) {
+			return(ball+"볼");
+		}
+		return("낫싱");
 	}
 
 }
