@@ -43,9 +43,9 @@
 
 ### BaseballGame
 
-- private final Computer computer ✅
-- private final UserInput userInput ✅
-- private final Score score ✅
+- private Computer computer ✅
+- private UserInput userInput ✅
+- private Score score ✅
 
 - BaseballGame() ✅
     * 생성자
@@ -68,7 +68,7 @@
 
 ### Computer
 
-- private final int[] answer ✅
+- private int[] answer ✅
 
 - public Computer() ✅
     * 생성자
@@ -86,7 +86,7 @@
 
 ### UserInput
 
-- private final int[] input ✅
+- private int[] input ✅
 
 - public UserInput() ✅
     * 생성자
