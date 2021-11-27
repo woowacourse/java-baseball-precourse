@@ -44,7 +44,7 @@
 ### BaseballGame
 
 - private final Computer computer
-- private final User_Input user_input
+- private final UserInput userInput
 - private final Score score
 
 - BaseballGame()
