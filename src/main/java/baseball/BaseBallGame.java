@@ -10,24 +10,23 @@ import java.util.Set;
 
 public class BaseBallGame {
 	private final int GAME_NUMBER_LENGTH = 3;
-	private LinkedHashSet<Integer> answerNumberSet;
-	private ArrayList<Integer> inputNumberArrayList;
+	private final String FINISH_COMMAND = "2";
+
+	private ArrayList<Integer> answerNumberList;
+	private ArrayList<Integer> inputNumberList;
 	private Score score;
 
 	public BaseBallGame() {
-		answerNumberSet = new LinkedHashSet<>();
-		inputNumberArrayList = new ArrayList<>();
+		answerNumberList = new ArrayList<>();
+		inputNumberList = new ArrayList<>();
 		score = new Score();
 	}
 
 	public void start() {
-		while (true) {
+		do {
 			makeAnswerNumber();
 			play();
-			if (isFinishedGame()) {
-				break;
-			}
-		}
+		} while (!isFinishedGame());
 	}
 
 	private void play() {
@@ -44,7 +43,7 @@ public class BaseBallGame {
 	}
 
 	private void initializeRound() {
-		inputNumberArrayList.clear();
+		inputNumberList.clear();
 		score.initializeScore();
 	}
 
@@ -53,14 +52,19 @@ public class BaseBallGame {
 		if (!isValidInputNumber(inputNumberString)) {
 			throw new IllegalArgumentException();
 		}
-		inputNumberArrayList = getIntegerArrayListFromString(inputNumberString);
+		inputNumberList = getIntegerArrayListFromString(inputNumberString);
 	}
 
 	private void makeAnswerNumber() {
-		answerNumberSet.clear();
-		while (answerNumberSet.size() < GAME_NUMBER_LENGTH) {
+		answerNumberList.clear();
+		LinkedHashSet<Integer> tmp = new LinkedHashSet<>();
+		while (tmp.size() < GAME_NUMBER_LENGTH) {
 			int randomNum = Randoms.pickNumberInRange(1, 9);
-			answerNumberSet.add(randomNum);
+			tmp.add(randomNum);
+		}
+
+		for (int num : tmp) {
+			answerNumberList.add(num);
 		}
 	}
 
@@ -104,27 +108,22 @@ public class BaseBallGame {
 	}
 
 	private void calculateScore() {
-		int i = 0;
-		for (Integer num : answerNumberSet) {
-			if (num.equals(inputNumberArrayList.get(i))) {
+		for (int i = 0; i < GAME_NUMBER_LENGTH; i++) {
+			if (answerNumberList.get(i).equals(inputNumberList.get(i))) {
 				score.addStrike();
-				i++;
 				continue;
 			}
-			if (answerNumberSet.contains(inputNumberArrayList.get(i))) {
+			if (answerNumberList.contains(inputNumberList.get(i))) {
 				score.addBall();
 			}
-			i++;
 		}
 	}
 
 	private boolean isAnswer() {
-		int i = 0;
-		for (Integer num : answerNumberSet) {
-			if (!num.equals(inputNumberArrayList.get(i))) {
+		for (int i = 0; i < GAME_NUMBER_LENGTH; i++) {
+			if (!answerNumberList.get(i).equals(inputNumberList.get(i))) {
 				return false;
 			}
-			i++;
 		}
 		return true;
 	}
@@ -137,7 +136,7 @@ public class BaseBallGame {
 	private boolean isFinishedGame() {
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		String str = Console.readLine();
-		if (str.equals("2")) {
+		if (str.equals(FINISH_COMMAND)) {
 			return true;
 		}
 		return false;
