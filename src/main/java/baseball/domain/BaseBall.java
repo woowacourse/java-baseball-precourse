@@ -9,6 +9,11 @@ public class BaseBall {
         ballCount = 0;
     }
 
+    public void initBaseBall() {
+        strikeCount = 0;
+        ballCount = 0;
+    }
+
     public int getStrikeCount() {
         return strikeCount;
     }

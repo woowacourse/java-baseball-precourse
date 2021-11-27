@@ -1,9 +1,7 @@
 package baseball;
 
-import baseball.domain.BaseBall;
 import baseball.domain.Number;
-import baseball.service.Computer;
-import baseball.utils.Parser;
+import baseball.service.BaseBallService;
 import baseball.utils.RandomUtils;
 import baseball.view.RequestInput;
 import baseball.view.SystemMessage;
@@ -17,14 +15,14 @@ public class Controller {
     final int RETRY = 1;
     final int GAME_OVER = 2;
 
-    Parser parser = new Parser();
-    Computer computer = new Computer();
-    SystemMessage systemMessage = new SystemMessage();
+    BaseBallService baseBallService = new BaseBallService();
     Number number = new Number(SIZE);
 
     public void run() throws IllegalArgumentException{
         gameSet();
         gameStart();
+        gameOver();
+        askRetry();
     }
 
     private void gameSet() {
@@ -34,30 +32,12 @@ public class Controller {
     // TODO: 제출전에 println 제거하기
     private void gameStart() throws IllegalArgumentException{
         System.out.println(number.getGameNumbers()[0]+""+number.getGameNumbers()[1]+""+number.getGameNumbers()[2]);
-        play();
-        gameOver();
-    }
-
-    private void play() throws IllegalArgumentException{
-        int strike = 0;
-        while (strike != 3) {
-            number.setUserNumbers(getUserNumber());
-            BaseBall baseBall = computer.computeScore(number.getGameNumbers(), number.getUserNumbers(), SIZE);
-            systemMessage.printScoreMessage(baseBall.getBallCount(), baseBall.getStrikeCount());
-            strike = baseBall.getStrikeCount();
-        }
-    }
-
-    private int[] getUserNumber() throws IllegalArgumentException{
-        RequestInput.requestInputData();
-        String input = Console.readLine();
-        return parser.parseUserInput(input, SIZE);
+        baseBallService.playGame(number, SIZE);
     }
 
     private void gameOver() throws IllegalArgumentException{
-        systemMessage.printGameOverMessage();
+        SystemMessage.printGameOverMessage();
         RequestInput.printRetryMessage();
-        askRetry();
     }
 
     /**
