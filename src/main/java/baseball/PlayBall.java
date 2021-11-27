@@ -26,11 +26,10 @@ public class PlayBall {
         System.out.print("숫자를 입력해주세요: ");
         String input=Console.readLine();
 
-        if(BaseBallUtil.isValidateGuess(input)) return parseStringToIntegerArray(input);
-        else throw new IllegalArgumentException("잘못된 입력입니다.");
+        if(!BaseBallUtil.isValidateGuess(input)) {throw new IllegalArgumentException("잘못된 입력입니다.");}
+        return parseStringToIntegerArray(input);
+
     }
-
-
 
     private static String guessNumber(int[] generateNumbers, int[] guessNumbers){
         int strike_num=getStrikeCount(generateNumbers, guessNumbers);
