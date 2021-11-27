@@ -10,8 +10,10 @@ public class Application {
 
         while (flag) {
             // TODO: 랜덤 수 생성
+            int randomValue = Randoms.pickNumberInRange(111, 999);
 
             // TODO: 생성 된 값 배열로 변환
+            int[] randomValueArray = convertNumberToArray(randomValue);
 
             boolean correct = false;
             while (!correct) {
