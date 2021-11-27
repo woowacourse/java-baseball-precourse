@@ -1,19 +1,14 @@
 package baseball;
 
 public class BaseballSystem {
-	public int[] computerNums;
-
-	public BaseballSystem() {
-		computerNums = new ComputerNumGenerator().nums;
-	}
-
-	public void gameStart() {
-		boolean threeStrike;
+	public void startOneGameSet() {
+		int[] computerNums = new ComputerNumGenerator().nums;
+		boolean gameClear;
 		do {
 			BaseballCount set = new BaseballCount(new UserNumGenerator().nums, computerNums);
 			printGameResult(set);
-			threeStrike = isThreeStrike(set);
-		} while (!threeStrike);
+			gameClear = isMaxStrike(set);
+		} while (!gameClear);
 	}
 
 	public static void printGameResult(BaseballCount set) {
@@ -23,9 +18,9 @@ public class BaseballSystem {
 		printNoting(set);
 	}
 
-	public boolean isThreeStrike(BaseballCount set) {
+	public boolean isMaxStrike(BaseballCount set) {
 		if (set.strikeCount == Constant.NUMS_LENGTH) {
-			System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			System.out.println("\n" + Constant.NUMS_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			return true;
 		}
 		return false;
@@ -55,4 +50,3 @@ public class BaseballSystem {
 		}
 	}
 }
-

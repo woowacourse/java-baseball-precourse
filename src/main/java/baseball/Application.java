@@ -6,7 +6,7 @@ public class Application {
 	public static void main(String[] args) {
 		do {
 			BaseballSystem system = new BaseballSystem();
-			system.gameStart();
+			system.startOneGameSet();
 		} while (!exit());
 	}
 
