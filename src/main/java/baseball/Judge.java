@@ -5,10 +5,12 @@ public class Judge {
     private String rightAnswer;
     private int strike;
     private int ball;
+    private boolean gameSuccess;
 
     Judge() {
         strike = 0;
         ball = 0;
+        gameSuccess = false;
     }
 
     public int getStrike() {
@@ -17,6 +19,10 @@ public class Judge {
 
     public int getBall() {
         return ball;
+    }
+
+    public boolean getGameSuccess() {
+        return gameSuccess;
     }
 
     public void initialize() {
@@ -45,6 +51,9 @@ public class Judge {
             }
             if (isBall(i, target)) {
                 ball++;
+            }
+            if (strike == 3) {
+                gameSuccess = true;
             }
         }
     }
