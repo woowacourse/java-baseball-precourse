@@ -2,50 +2,51 @@ package baseball;
 
 public class Player {
 
-    private int strike;
-    private int ball;
-    private int[] playerInput;
+	private int strike;
+	private int ball;
+	private int[] playerInput;
 
-    public void init(int[] playerInput){
-        this.strike = 0;
-        this.ball = 0;
-        setPlayerInput(playerInput);
-    }
+	public void init(int[] playerInput) {
+		this.strike = 0;
+		this.ball = 0;
 
-    private void addStrike(){
-        strike++;
-    }
+		setPlayerInput(playerInput);
+	}
 
-    private void addBall(){
-        ball++;
-    }
+	private void addStrike() {
+		strike++;
+	}
 
-    public void compareNum(int ansNum, int ansNumIdx){
-        for(int i=0; i< playerInput.length; i++){
-            if(ansNum==playerInput[i]){
-                checkStrikeOrBall(ansNumIdx,i);
-                return;
-            }
-        }
-    }
+	private void addBall() {
+		ball++;
+	}
 
-    private void checkStrikeOrBall(int ansNumIdx, int playerNumIdx){
-        if(ansNumIdx==playerNumIdx){
-            addStrike();
-            return;
-        }
-        addBall();
-    }
+	public void compareNum(int ansNum, int ansNumIdx) {
+		for (int i = 0; i < playerInput.length; i++) {
+			if (ansNum == playerInput[i]) {
+				checkStrikeOrBall(ansNumIdx, i);
+				return;
+			}
+		}
+	}
 
-    public void setPlayerInput(int[] playerInput) {
-        this.playerInput = playerInput;
-    }
+	private void checkStrikeOrBall(int ansNumIdx, int playerNumIdx) {
+		if (ansNumIdx == playerNumIdx) {
+			addStrike();
+			return;
+		}
+		addBall();
+	}
 
-    public int getStrike() {
-        return strike;
-    }
+	public void setPlayerInput(int[] playerInput) {
+		this.playerInput = playerInput;
+	}
 
-    public int getBall() {
-        return ball;
-    }
+	public int getStrike() {
+		return strike;
+	}
+
+	public int getBall() {
+		return ball;
+	}
 }
