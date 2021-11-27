@@ -24,7 +24,7 @@ public class Judge {
         strike = 0;
     }
 
-    private void setRightAnswer(final String threeDigitNum) {
+    public void setRightAnswer(final String threeDigitNum) {
         rightAnswer = threeDigitNum;
     }
 
