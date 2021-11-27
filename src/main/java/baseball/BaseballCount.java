@@ -7,10 +7,6 @@ public class BaseballCount {
 	public int strikeCount = 0;
 
 	public BaseballCount(int[] userNums, int[] computerNums) {
-		this.count(userNums, computerNums);
-	}
-
-	public void count(int[] userNums, int[] computerNums) {
 		for (int i = 0; i < Constant.NUMS_LENGTH; i++) {
 			if (userNums[i] == computerNums[i]) {
 				strikeCount++;
@@ -22,9 +18,8 @@ public class BaseballCount {
 		}
 	}
 
-	public static boolean isInArray(int num, int[] nums) {
+	private static boolean isInArray(int num, int[] nums) {
 		return Arrays.stream(nums)
 			.anyMatch(arrayNum -> arrayNum == num);
 	}
 }
-

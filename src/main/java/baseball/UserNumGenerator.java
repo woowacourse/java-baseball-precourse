@@ -9,25 +9,28 @@ public class UserNumGenerator extends NumGenerator {
 		this.nums = pickUserNums();
 	}
 
-	public static int[] pickUserNums() throws IllegalArgumentException {
+	private static int[] pickUserNums() throws IllegalArgumentException {
 		System.out.print("숫자를 입력해주세요 : ");
-		String numString = Console.readLine();
-		int[] nums = stringToIntArray(numString);
-		if (nums.length == 3 && isOneNineInt(nums) && isNotDuplicate(nums)) {
-			return nums;
+		try {
+			String numString = Console.readLine();
+			int[] nums = stringToIntArray(numString);
+			if (nums.length == 3 && isOneNineInt(nums) && isNotDuplicate(nums)) {
+				return nums;
+			}
+			throw new IllegalArgumentException();
+		} catch (Exception e) {
+			throw new IllegalArgumentException("중복되지 않는 1-9 숫자 3개를 입력하세요!");
 		}
-		throw new IllegalArgumentException("IllegalArgumentException!");
 	}
 
-	public static int[] stringToIntArray(String str) {
+	private static int[] stringToIntArray(String str) {
 		return str.chars()
 			.map(num -> num - '0')
 			.toArray();
 	}
 
-	public static boolean isOneNineInt(int[] nums) {
+	private static boolean isOneNineInt(int[] nums) {
 		return Arrays.stream(nums)
 			.allMatch(num -> 1 <= num && num <= 9);
 	}
 }
-

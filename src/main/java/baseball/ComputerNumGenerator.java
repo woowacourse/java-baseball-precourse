@@ -11,10 +11,9 @@ public class ComputerNumGenerator extends NumGenerator {
 		} while (!isNotDuplicate(nums));
 	}
 
-	public static int[] pickComputerNums() {
+	private static int[] pickComputerNums() {
 		return Arrays.stream(new int[Constant.NUMS_LENGTH])
 			.map(num -> Randoms.pickNumberInRange(1, 9))
 			.toArray();
 	}
 }
-
