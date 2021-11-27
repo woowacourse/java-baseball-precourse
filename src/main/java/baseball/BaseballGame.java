@@ -23,6 +23,9 @@ public class BaseballGame {
     private void play() {
         do {
             userInput.setInput();
+            score.grade(computer.getAnswer(), userInput.getInput());
+            score.printResult();
+            score.setZero();
         } while (!score.is_success(computer.getAnswer(), userInput.getInput()));
 
         printSuccess();
