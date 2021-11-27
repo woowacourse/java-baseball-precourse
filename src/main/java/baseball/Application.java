@@ -24,11 +24,11 @@ public class Application {
     }
 
     private static void play(Computer com) {
-        boolean flag = true;
-        while (flag) {
+        boolean is3Strike = false;
+        while (!is3Strike) {
             Result result = com.matchBalls(InputView.readLine());
             OutputView.print(result.report());
-            flag = !result.is3Strike();
+            is3Strike = result.is3Strike();
         }
     }
 }
