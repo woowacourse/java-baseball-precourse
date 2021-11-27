@@ -48,7 +48,7 @@ public class Game {
         if (!isValid){
             throw new IllegalArgumentException("사용자 입력이 잘못된 값이므로 게임을 종료합니다");
         }
-
+        return true;
     }
 
 }
