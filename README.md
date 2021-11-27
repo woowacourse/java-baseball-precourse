@@ -14,102 +14,62 @@
 
 ## 구현할 기능 목록
 
-<details>
-<summary>입출력 기능</summary>
+### game domain
 
-```
-사용자 숫자 및 재시작 여부 숫자들을 입력하거나, Exception 메시지 혹은 Notification 메시지를 담고 있는 클래스이다.
-```
+- 숫자 야구 게임 관리
+    - 숫자 야구 게임을 시작하고, 재시작하는 관리자 역할을 수행한다.
+    - [BaseballGameManager](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/game/BaseballGameManager)
+- 숫자 야구 게임 진행
+    - 게임이 시작되고 게임을 진행하는 역할을 수행한다.
+    - [BaseballGame](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/game/BaseballGame)
+- 볼/스트라이크 개수 체크
+    - 게임 진행중 사용자 숫자와 컴퓨터 숫자를 비교하는 역할을 수행한다.
+    - [CheckBaseballNumber](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/game/CheckBaseballNumber)
+- 재시작 옵션
+    - 게임이 종료되고, 재시작 여부를 판단하는 역할을 수행한다.
+    - [RestartOption](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/game/RestartOption)
 
-- [Input Class](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/com/io/Input)
-- [Output Class](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/com/io/Output)
+### input domain 
 
-</div>
-</details>
+- 사용자 야구 숫자 입력
+    - 사용자 야구 숫자 입력이 이루어지는 곳이다.
+    - [BaseballNumberInput](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/input/BaseballNumberInput)
+- 재시작 숫자 입력
+    - 야구 게임이 종료되고, 재시작 숫자 입력에 이루어지는 곳이다.
+    - [RestartNumberInput](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/input/RestartNumberInput)
 
-<details>
-<summary>컴퓨터 숫자 및 사용자 숫자 생성</summary>
+### model domain 
 
-```
-컴퓨터 숫자(랜덤)를 생성 하고, 사용자 숫자에 대한 검증 및 타입 변환이 이루어지는 클래스이다.
-```
+- 숫자 생성을 위한 인터페이스
+    - 추상 팩토리 패턴을 적용해 사용자 숫자, 컴퓨터 숫자를 위한 인터페이스다.
+    - [BaseballFactory](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/model/BaseballFactory)
+- 입력을 위한 인터페이스
+    - 추상 팩토리 패턴을 적용해 사용자 야구 숫자 입력, 재시작 숫자 입력을 위한 인터페이스다.
+    - [InputFactory](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/model/InputFactory)
+- 최종 게임 결과 컨테이너
+    - 최종 결과를 만들어내는 역할을 수행한다. -> 볼 개수, 스트라이크 개수
+    - [ResultContainer](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/model/ResultContainer)
 
-- [BaseballFactory](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/com/model/BaseballFactory)
+### number domain
 
-</div>
-</details>
+- 컴퓨터 랜덤 숫자 생성
+    - 컴퓨터 숫자를 생성하는 역할을 수행한다.
+    - [ComputerNumber](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/number/ComputerNumber)
+- 사용자 숫자 생성
+    - 사용자 숫자를 배열로 변환하고 검증하는 역할을 수행한다.
+    - [UserNumber](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/number/UserNumber)
 
-<details>
-<summary>결과 생성</summary>
+### output domain 
 
-```
-최종적으로 볼 개수, 스트라이크 개수 등 원래의 값에 요구사항에 맞는 값으로 변환이 이루어지는 클래스이다.
-```
+- 출력할 메서드 모음
+    - 출력을 담당하는 클래스다.
+    - [Output](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/output/Output)
+- 출력 메시지
+    - 열거형으로, 출력 메시지를 담고있다.
+    - [PrintMessage](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/output/PrintMessage)
 
-- [Result](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/com/model/Result)
+## 설계 방향
 
-</div>
-</details>
-
-<details>
-<summary>숫자 야구 게임 관리</summary>
-
-```
-최초로 게임이 시작되는 곳, 그리고 재시작 여부를 판단하는 클래스이다.
-```
-
-- [BaseballGameManager](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/BaseballGameManager)
-
-</div>
-</details>
-
-<details>
-<summary>숫자 야구 게임 시작</summary>
-
-```
-BaseballGameManager에서 게임이 시작되면 게임의 Service는 이곳에서 이루어진다.
-```
-
-- [BaseballGame](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/BaseballGame)
-
-</div>
-</details>
-
-
-<details>
-<summary>볼 / 스트라이크 카운트 체크</summary>
-
-```
-볼 / 카운트 개수를 체크하는 클래스다.
-```
-
-- [CheckBaseballNumbers](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/CheckBaseballNumbers)
-
-</div>
-</details>
-
-
-<details>
-<summary>컴퓨터 숫자 생성</summary>
-
-```
-Factory에는 사용자 숫자 및 컴퓨터 숫자를 생성하는 곳이 같이 있기때문에 컴퓨터 숫자만 만드는 클래스이다.
-```
-
-- [Computer](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/Computer)
-
-</div>
-</details>
-
-
-<details>
-<summary>재시작 여부</summary>
-
-```
-재시작 여부를 판단하는 클래스이다. (입력 값에 대한 검증)
-```
-
-- [RestartFlag](https://github.com/maprk/java-baseball-precourse/tree/main/src/main/java/baseball/RestartFlag)
-
-</div>
-</details>
+- 다양한 디자인 패턴 적용
+- SRP 원칙 준수
+- 컨벤션 규칙 준수 
