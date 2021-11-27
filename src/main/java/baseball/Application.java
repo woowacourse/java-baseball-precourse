@@ -47,7 +47,7 @@ public class Application {
         };
     }
 
-    public boolean check_answer(int[] inputNumber) {
+    public static boolean check_answer(int[] inputNumber) {
         return (inputNumber[0] == answer1) && (inputNumber[1] == answer2) && (inputNumber[2] == answer3);
     }
 
