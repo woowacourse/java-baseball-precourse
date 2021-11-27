@@ -38,17 +38,22 @@ public class Game {
 
     }
 
-    public boolean playGame(){
+    public boolean playGame() {
         // n자리 임의의 난수 생성
         String randomNumber = generateRandomNumber();
-        
+
         // 사용자 입력이 잘못된 값이면 IllegalArgumentException 발생 뒤 종료
         String userNumber = Console.readLine();
         boolean isValid = InputValidator.checkUserInput(userNumber);
-        if (!isValid){
+        if (!isValid) {
             throw new IllegalArgumentException("사용자 입력이 잘못된 값이므로 게임을 종료합니다");
         }
         return true;
     }
 
+    public int countStrike(String opponentNumber, String userNumber) {
+        int strikeCount = 0;
+
+        return strikeCount;
+    }
 }
