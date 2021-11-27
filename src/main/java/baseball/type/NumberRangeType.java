@@ -6,6 +6,7 @@ public enum NumberRangeType {
 	ANSWER_SIZE(3),
 	MIN_NUMBER_ASCII(49),
 	MAX_NUMBER_ASCII(57),
+	ZERO(0),
 	;
 
 	private int numberRange;
