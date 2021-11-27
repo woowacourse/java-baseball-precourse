@@ -17,7 +17,7 @@ public class SystemMessage {
         }
     }
 
-    public void printGameOverMessage() {
+    public static void printGameOverMessage() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
