@@ -2,37 +2,39 @@ package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import baseball.domain.vo.BallStrikeCount;
 import baseball.domain.vo.number.Number;
 
 class NumberTest {
 
-    @Test
-    void 공격숫자와_컴퓨터숫자가_일치하지않으면_낫싱_인스턴스를_리턴한다() {
+    @ParameterizedTest
+    @CsvSource({"123,456,0","321,132,3","123,345,1"})
+    void 두_숫자의_볼_카운트를_셀_수_있다(String given1, String given2, int expected) {
         // given
-        Number givenNumber1 = new Number("123");
-        Number givenNumber2 = new Number("456");
+        Number givenNumber1 = new Number(given1);
+        Number givenNumber2 = new Number(given2);
 
         // when
-        BallStrikeCount actual = givenNumber1.compare(givenNumber2);
+        int countBall = givenNumber1.countBall(givenNumber2);
 
         // then
-        assertTrue(actual.isNothing());
+        assertEquals(expected, countBall);
     }
 
-    @Test
-    void 공격숫자와_컴퓨터숫자가_자릿_수_까지_일치하면_3Strike_인스턴스를_리턴한다() {
+    @ParameterizedTest
+    @CsvSource({"123,123,3", "123,132,1","123,456,0"})
+    void 두_숫자의_스트라이크_카운트를_셀_수_있다(String given1, String given2, int expected) {
         // given
-        Number givenNumber1 = new Number("123");
-        Number givenNumber2 = new Number("123");
+        Number givenNumber1 = new Number(given1);
+        Number givenNumber2 = new Number(given2);
 
         // when
-        BallStrikeCount actual = givenNumber1.compare(givenNumber2);
+        int countStrike = givenNumber1.countStrike(givenNumber2);
 
         // then
-        assertTrue(actual.isThreeStrike());
+        assertEquals(expected, countStrike);
     }
 
 }

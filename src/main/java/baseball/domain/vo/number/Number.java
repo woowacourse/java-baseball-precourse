@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import baseball.domain.vo.BallStrikeCount;
-
 public class Number {
 
     private static final int FIRST = 0;
@@ -39,22 +37,7 @@ public class Number {
         this(numberList.get(FIRST), numberList.get(SECOND), numberList.get(THIRD));
     }
 
-    private static int charToInt(char c) {
-        return c - ZERO_CHARACTER;
-    }
-
-    private boolean equal(int i, int j) {
-        return Objects.equals(i, j);
-    }
-
-    public BallStrikeCount compare(Number other) {
-        int ballCount = countBall(other);
-        int strikeCount = countStrike(other);
-
-        return new BallStrikeCount(ballCount, strikeCount);
-    }
-
-    private int countStrike(Number other) {
+    public int countStrike(Number other) {
         int count = 0;
 
         if (equal(first, other.first)) {
@@ -72,7 +55,7 @@ public class Number {
         return count;
     }
 
-    private int countBall(Number other) {
+    public int countBall(Number other) {
         int count = 0;
 
         if (equal(first, other.second) || equal(first, other.third)) {
@@ -88,6 +71,14 @@ public class Number {
         }
 
         return count;
+    }
+
+    private static int charToInt(char c) {
+        return c - ZERO_CHARACTER;
+    }
+
+    private boolean equal(int i, int j) {
+        return Objects.equals(i, j);
     }
 
 }

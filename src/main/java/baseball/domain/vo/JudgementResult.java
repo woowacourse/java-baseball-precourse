@@ -2,7 +2,7 @@ package baseball.domain.vo;
 
 import java.util.Objects;
 
-public class BallStrikeCount {
+public class JudgementResult {
 
     private static final int NOTHING = 0;
     private static final int THREE_STRIKE = 3;
@@ -15,7 +15,7 @@ public class BallStrikeCount {
     private final int ball;
     private final int strike;
 
-    public BallStrikeCount(int ball, int strike) {
+    public JudgementResult(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
     }
