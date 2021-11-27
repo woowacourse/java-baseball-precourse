@@ -15,8 +15,11 @@ public class Application {
             boolean correct = false;
             while (!correct) {
                 // TODO: 사용자 입력 받기
+                System.out.print("숫자를 입력해주세요 : ");
+                int userInput = Integer.parseInt(Console.readLine());
 
                 // TODO: 사용자 입력 값 배열로 변환
+                int[] userInputArray = convertNumberToArray(userInput);
 
                 // TODO: 랜덤 값과 사용자 입력 값 비교
 
