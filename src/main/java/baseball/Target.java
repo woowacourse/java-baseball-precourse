@@ -16,7 +16,7 @@ public class Target {
 		}
 	}
 
-	public int[] compareWith(int userNumber) {
+	public int[] compareWith(String userNumber) {
 		int[] ballsAndStrikes = new int[2];
 		// TODO: 비교기능
 		return ballsAndStrikes;
