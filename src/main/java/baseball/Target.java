@@ -15,8 +15,15 @@ public class Target {
 
 	public void generateTargetNumber() {
 		targetNumber = "";
+		boolean[] visited = new boolean[rangeEnd - rangeBegin + 1];
 		for (int i = 0; i < length; i++) {
-			targetNumber += pickNumberInRange(rangeBegin, rangeEnd);
+			int num;
+			num = pickNumberInRange(rangeBegin, rangeEnd - i);
+			while (visited[num - rangeBegin]) {
+				num++;
+			}
+			visited[num - rangeBegin] = true;
+			targetNumber += num;
 		}
 	}
 
@@ -63,7 +70,19 @@ public class Target {
 		this.rangeEnd = rangeEnd;
 	}
 
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+
 	public boolean isEqual(Target compare) {
 		return this.targetNumber.equals(compare.targetNumber);
+	}
+
+	public void printTargetNumber() {
+		System.out.println("target is :" + targetNumber);
 	}
 }
