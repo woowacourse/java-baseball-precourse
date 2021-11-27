@@ -128,3 +128,12 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+## 기능 목록
+- 상대방 수 생성
+- 입력
+- 스트라이크 카운트
+- 볼 카운트
+- 작동
+- 재시작/종료
+- 출력
