@@ -6,23 +6,23 @@
 - (baseball.view.InputView) 입력값 받기
   - (missionutils.Console) readLine() 사용
 - (baseball.view.OutputView) 결과 출력
-- (baseball.domain.Ball) 한자리 숫자 비교하기 반환 값 문자열
-  - (baseball.domain.Index) 인덱스값 비교하기 반환 값 boolean
+- (baseball.domain.Ball) 한자리 숫자 비교하기
+  - (baseball.domain.Index) 인덱스값 비교하기
     - 유효성 검사
       - 0부터 2까지의 숫자만 허용
-  - (baseball.domain.No) 숫자 비교하기 반환 값 boolean
+  - (baseball.domain.No) 숫자 비교하기
     - 유효성 검사
       - 1~9까지의 숫자만 허용
-- (baseball.domain.Balls) 세자리 숫자 비교하기 반환 값 문자열
+- (baseball.domain.Balls) 세자리 숫자 비교하기
   - 유효성 검사
     - 중복된 숫자도 안됨
     - 길이는 세자리만 허용
 - (baseball.domain.Result) 결과를 문자열로 반환하기
 - (baseball.domain.Result) 3스트라이크 확인하기
 - (baseball.Application) 입력값(Token) 받아서 게임을 종료 또는 재시작 하기
-- (baseball.domain.Token)
-  - 유효성 검사
-    - 숫자 1또는 2만 가능함
+  - (baseball.domain.Token)
+    - 유효성 검사
+      - 숫자 1또는 2만 가능함
 
 ## 🔍 진행방식
 
