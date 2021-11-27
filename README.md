@@ -12,5 +12,6 @@
    - 결과 출력 ✔BaseballUtil.printScore()
 3. 종료
    - 재시작 여부 검사 ✔Application에서 status 변수 활용
+     - 입력값 유효성 검사
 4. 해결할 문제
    - ApplicationTest time out
