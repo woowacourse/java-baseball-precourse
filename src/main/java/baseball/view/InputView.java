@@ -20,7 +20,7 @@ public class InputView {
         outputView.printMessageWithLine(GameMessage.REQUEST_PLAY_OR_STOP_MESSAGE);
         int number = inputNumber();
 
-        checkNumberIsPlayOrStop(number);
+        validateNumberIsPlayOrStop(number);
 
         return number;
     }
@@ -29,9 +29,9 @@ public class InputView {
         outputView.printMessage(GameMessage.REQUEST_NUMBERS_MESSAGE);
         List<Integer> numbers = inputNumbers();
 
-        checkNumbersDigit(numbers);
-        checkNumbersRange(numbers);
-        checkNumbersDuplication(numbers);
+        validateNumbersDigit(numbers);
+        validateNumbersRange(numbers);
+        validateNumbersDuplication(numbers);
 
         return numbers;
     }
@@ -61,19 +61,19 @@ public class InputView {
         }
     }
 
-    private void checkNumberIsPlayOrStop(int number) {
+    private void validateNumberIsPlayOrStop(int number) {
         if (number != GameRule.NUMBER_GAME_PLAY && number != GameRule.NUMBER_GAME_STOP) {
             throw new BaseballException(GameMessage.NUMBER_NOT_IN_RANGE_MESSAGE);
         }
     }
 
-    private void checkNumbersDigit(List<Integer> numbers) {
+    private void validateNumbersDigit(List<Integer> numbers) {
         if (numbers.size() != GameRule.NUMBERS_DIGITS) {
             throw new BaseballException(GameMessage.NUMBERS_NOT_MATCH_DIGITS_MESSAGE);
         }
     }
 
-    private void checkNumbersRange(List<Integer> numbers) {
+    private void validateNumbersRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (isNotInRange(number)) {
                 throw new BaseballException(GameMessage.NUMBER_NOT_IN_RANGE_MESSAGE);
@@ -81,7 +81,7 @@ public class InputView {
         }
     }
 
-    private void checkNumbersDuplication(List<Integer> numbers) {
+    private void validateNumbersDuplication(List<Integer> numbers) {
         boolean[] bits = new boolean[10];
         for (int number : numbers) {
             if (bits[number]) {
