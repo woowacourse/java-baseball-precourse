@@ -10,6 +10,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Balls {
 	private static final int MAX_LENGTH = 3;
+	private static final int MIN_NUMBER = 1;
+	private static final int MAX_NUMBER = 9;
+	private static final int INIT_POSITION = 1;
 
 	private List<Ball> balls = new ArrayList<>();
 
@@ -22,8 +25,9 @@ public class Balls {
 			throw new IllegalArgumentException();
 		}
 
+		AtomicInteger index = new AtomicInteger(INIT_POSITION);
 		for (char number : input.toCharArray()) {
-			balls.add(new Ball(Character.getNumericValue(number), balls.size() + 1));
+			balls.add(new Ball(Character.getNumericValue(number), index.getAndIncrement()));
 		}
 	}
 
@@ -32,7 +36,7 @@ public class Balls {
 	}
 
 	private List<Ball> getRandomBalls() {
-		AtomicInteger index = new AtomicInteger(1);
+		AtomicInteger index = new AtomicInteger(INIT_POSITION);
 		return getUniqueNumberList().stream()
 			.map(ballNumber -> new Ball(ballNumber, index.getAndIncrement()))
 			.collect(Collectors.toList());
@@ -47,7 +51,7 @@ public class Balls {
 	}
 
 	private void addUniqueNumberToList(List<Integer> uniqueNumbers) {
-		int randomNumber = Randoms.pickNumberInRange(1, 9);
+		int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 		if (!uniqueNumbers.contains(randomNumber)) {
 			uniqueNumbers.add(randomNumber);
 		}
