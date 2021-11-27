@@ -48,7 +48,7 @@ public class InputValidatorTest {
                     "유효하지 않은 잘못된 커맨드입니다");
         }
         for (String element : arrFalse){
-            Assertions.assertTrue(InputValidator.checkExitCommandIsValid(element),
+            Assertions.assertFalse(InputValidator.checkExitCommandIsValid(element),
                     "유효하지 않은 잘못된 커맨드입니다");
         }
     }
