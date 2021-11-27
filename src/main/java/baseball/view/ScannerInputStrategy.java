@@ -1,10 +1,8 @@
 package baseball.view;
 
+import static java.lang.System.*;
+
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.Scanner;
-
-import static java.lang.System.out;
 
 public class ScannerInputStrategy implements InputStrategy {
 
