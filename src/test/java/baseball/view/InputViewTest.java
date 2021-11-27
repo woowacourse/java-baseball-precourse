@@ -11,7 +11,7 @@ import org.junit.jupiter.api.*;
 public class InputViewTest {
 
     private static OutputView outputView = new OutputView();
-    private static InputView inputView = new InputView(outputView);
+    private static InputView inputView = new InputView();
 
     @Test
     void 게임진행여부입력시_정상작동확인() {

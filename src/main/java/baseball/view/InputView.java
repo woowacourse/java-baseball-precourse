@@ -10,12 +10,13 @@ import baseball.resource.GameRule;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    private OutputView outputView;
-    
-    public InputView(OutputView outputView) {
-        this.outputView = outputView;
+    private static final InputView INSTACNE = new InputView();
+    private static final OutputView outputView = OutputView.getInstance();
+
+    public static InputView getInstance() {
+        return INSTACNE;
     }
-    
+
     public int inputPlayOrStop() {
         outputView.printMessageWithLine(GameMessage.REQUEST_PLAY_OR_STOP_MESSAGE);
         int number = inputNumber();
