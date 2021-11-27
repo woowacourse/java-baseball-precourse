@@ -41,4 +41,19 @@ public class Application {
 		}
 		return count;
 	}
+
+	public static void printBallAndStrikeCount() {
+		int ball = countBall();
+		int strike = countStrike();
+		if (ball > 0) {
+			System.out.print(ball + "볼 ");
+		}
+		if (strike > 0) {
+			System.out.print(strike + "스트라이크 ");
+		}
+		if (ball == 0 && strike == 0) {
+			System.out.print("낫싱");
+		}
+		System.out.println();
+	}
 }
