@@ -1,8 +1,10 @@
 package input;
 
-import camp.nextstep.edu.missionutils.Randoms;
+
 
 import java.util.*;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Computer {
 
@@ -27,11 +29,11 @@ public class Computer {
     }
 
     static void extractRandomNumber() {
-        randomNumbers.add(Randoms.pickNumberInRange(BASEBALL_LOWER_BOUND, BASEBALL_UPPER_BOUND));
+        randomNumbers.add(pickNumberInRange(BASEBALL_LOWER_BOUND, BASEBALL_UPPER_BOUND));
     }
 
     public static void resetRandomNumbers() {
-        randomNumbers = new HashSet<>();
+        randomNumbers = new LinkedHashSet<>();
     }
 
 }
