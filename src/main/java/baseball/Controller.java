@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.repository.BaseBall;
-import baseball.repository.Number;
+import baseball.domain.BaseBall;
+import baseball.domain.Number;
 import baseball.service.Computer;
 import baseball.utils.Parser;
 import baseball.utils.RandomUtils;

@@ -1,4 +1,4 @@
-package baseball.repository;
+package baseball.domain;
 
 public class BaseBall {
     int strikeCount;

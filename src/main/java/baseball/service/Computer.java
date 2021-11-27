@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.repository.BaseBall;
+import baseball.domain.BaseBall;
 
 public class Computer {
 
