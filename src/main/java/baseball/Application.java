@@ -22,12 +22,14 @@ public class Application {
 			while (!isThreeStrike) {
 				System.out.println("숫자를 입력해주세요 : ");
 				inputNumber = Console.readLine();
+				isRightThreeDigitsNumber();
 				printBallAndStrikeCount();
 				isThreeStrike();
 			}
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 			checkRestartOrFinished = Console.readLine();
+			isRightRestartOrFinishedNumber();
 			isFinished();
 		}
 	}
@@ -87,6 +89,18 @@ public class Application {
 	public static void isFinished() {
 		if (checkRestartOrFinished.equals(END)) {
 			isFinished = true;
+		}
+	}
+
+	public static void isRightThreeDigitsNumber() {
+		if (inputNumber.length() != 3) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	public static void isRightRestartOrFinishedNumber() {
+		if (!(checkRestartOrFinished.equals(RESTART) || checkRestartOrFinished.equals(END))) {
+			throw new IllegalArgumentException();
 		}
 	}
 }
