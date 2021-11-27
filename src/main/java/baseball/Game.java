@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import constants.HintMessage;
+import utils.NumberGenerator;
 
 public class Game {
     private final int MIN_RANGE = 1;
@@ -19,31 +20,9 @@ public class Game {
     Game() {
     }
 
-    public String generateRandomNumber() {
-        String result = "";
-        Set<Character> randomNumberSet = new HashSet<>();
-
-        int numberLength = 0;
-        while (numberLength < DIGIT_NUM) {
-            int randomDigit = Randoms.pickNumberInRange(MIN_RANGE,
-                    MAX_RANGE);
-            char number = Character.forDigit(randomDigit, RADIX);
-
-            if (randomNumberSet.contains(number)) {
-                continue;
-            }
-            numberLength++;
-            result += number;
-            randomNumberSet.add(number);
-        }
-
-        return result;
-
-    }
-
     public boolean playGame() {
         // n자리 임의의 난수 생성
-        String randomNumber = generateRandomNumber();
+        String randomNumber = NumberGenerator.generateRandomNumber();
         boolean isGameContinue = true;
         do {
             // 사용자 입력이 잘못된 값이면 IllegalArgumentException 발생 뒤 종료
