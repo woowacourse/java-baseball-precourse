@@ -5,17 +5,12 @@ import java.util.ArrayList;
 
 public class Computer {
 	private static final int DIGIT = 3;
-	private String ranNum;
 	
 	public Computer () {
-		ranNum = "";
+		
 	}
 	
-	public void initialize () {
-		ranNum = generateRanNum(DIGIT);
-	}
-	
-	private String generateRanNum(int digit) {
+	public String generateRanNum(int digit) {
 		ArrayList <Character> list = new ArrayList<>();
 		String res = "";
 		while(list.size()<digit) {
