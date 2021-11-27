@@ -142,4 +142,5 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
   - [x] 같은 수가 전혀 없을 경우 ‘낫싱’ 출력
   - [] 숫자를 모두 맞출 경우 메시지를 출력한 뒤 게임을 종료
 - [] 잘못된 값을 입력받을 경우 `IllegalArgumentException` 예외를 발생하는 기능
-- [] 스트라이크 수가 3개인지 판별하는 기능 구현
+- [x] 스트라이크 수가 3개인지 판별하는 기능 구현
+- [] 게임을 그만하고 프로그램을 종료할지 판별하는 기능 구현
