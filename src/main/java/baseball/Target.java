@@ -9,6 +9,10 @@ public class Target {
 	private int rangeEnd = 9;
 	private int length = 3;
 
+	public Target() {
+		generateTargetNumber();
+	}
+
 	public void generateTargetNumber() {
 		targetNumber = "";
 		for (int i = 0; i < length; i++) {
