@@ -9,29 +9,31 @@ import java.io.InputStreamReader;
 public class Application {
     private static int ballCount;
     private static int strikeCount;
-    private static int X;
-    private static int Y;
-    private static int Z;
+    private static final int[] computerNumbers = new int[3];
     private static int N;
-    private static int x;
-    private static int y;
-    private static int z;
+    private static final int[] inputNumbers = new int[3];
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
+        try {
+            startGame();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        X = Randoms.pickNumberInRange(1, 9);
-        Y = Randoms.pickNumberInRange(1, 9);
-        Z = Randoms.pickNumberInRange(1, 9);
+    }
 
+    public static void startGame() throws IOException {
+        makeRandomNum();
+        System.out.println("숫자를 입력하세요.");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         while (strikeCount != 3) {
             N = Integer.parseInt(bufferedReader.readLine());
 
-            x = N / 100;
-            y = (N / 10) % 10;
-            z = N % 10;
+            inputNumbers[0] = N / 100;
+            inputNumbers[1] = (N / 10) % 10;
+            inputNumbers[2] = N % 10;
 
             ballCount = 0;
             strikeCount = 0;
@@ -43,8 +45,14 @@ public class Application {
         }
     }
 
+    public static void makeRandomNum() {
+        for (int i = 0; i < 3; i++) {
+            computerNumbers[i] = Randoms.pickNumberInRange(1, 9);
+        }
+    }
+
     public static void input() {
-        if (x == y || y == z || x == z) {
+        if (computerNumbers[0] == computerNumbers[1] || computerNumbers[0] == computerNumbers[2] || computerNumbers[1] == computerNumbers[2]) {
             throw new IllegalArgumentException("조건에 맞는 수를 입력해주세요.");
         }
 
@@ -63,6 +71,7 @@ public class Application {
 
             if (reGameQuestion == 1) {
                 System.out.println("게임을 재시작합니다.");
+
             }
 
             if (reGameQuestion == 2) {
@@ -72,27 +81,28 @@ public class Application {
     }
 
     public static void strikeCheck() {
-        if (X == x) strikeCount++;
-        if (Y == y) strikeCount++;
-        if (Z == z) strikeCount++;
+        for (int i = 0; i < 3; i++) {
+            if (computerNumbers[i] == inputNumbers[i]) strikeCount++;
+         }
     }
 
     public static void ballCheck() {
-        if (X == y) ballCount++;
-        if (X == z) ballCount++;
-        if (Y == x) ballCount++;
-        if (Y == z) ballCount++;
-        if (Z == x) ballCount++;
-        if (Z == y) ballCount++;
+        if (computerNumbers[0] == inputNumbers[1]) ballCount++;
+        if (computerNumbers[0] == inputNumbers[2]) ballCount++;
+        if (computerNumbers[1] == inputNumbers[0]) ballCount++;
+        if (computerNumbers[1] == inputNumbers[2]) ballCount++;
+        if (computerNumbers[2] == inputNumbers[0]) ballCount++;
+        if (computerNumbers[2] == inputNumbers[1]) ballCount++;
     }
 
-    public static void print() {
-        if (ballCount != 0 && strikeCount == 0) {
+    public static void print() throws IOException {
+        if (ballCount < 3 && ballCount !=0 && strikeCount == 0) {
             System.out.println(ballCount + "볼");
-        } else if (strikeCount != 0 && ballCount == 0) {
+        } else if (strikeCount < 3 && strikeCount != 0 && ballCount == 0) {
             System.out.println(strikeCount + "스트라이크");
         } else if (strikeCount == 3) {
             System.out.println("3스트라이크" + '\n' + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            restart();
         }
 
         if (ballCount != 0 && strikeCount != 0) {
