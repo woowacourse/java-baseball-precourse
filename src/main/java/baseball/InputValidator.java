@@ -6,7 +6,7 @@ public class InputValidator {
     InputValidator() {
     }
 
-    public static boolean checkUserInput(final String userInput) {
+    public static boolean checkUserInputIsValid(final String userInput) {
 
         // 제한된 자리수를 초과할 경우 false 리턴
         if (DIGIT_NUMBER != userInput.length()) {
