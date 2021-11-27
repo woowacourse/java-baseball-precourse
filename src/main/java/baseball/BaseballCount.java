@@ -22,7 +22,7 @@ public class BaseballCount {
 		}
 	}
 
-	public boolean isInArray(int num, int[] nums) {
+	public static boolean isInArray(int num, int[] nums) {
 		return Arrays.stream(nums)
 			.anyMatch(arrayNum -> arrayNum == num);
 	}

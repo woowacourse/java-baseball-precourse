@@ -16,7 +16,7 @@ public class BaseballSystem {
 		} while (!threeStrike);
 	}
 
-	public void printGameResult(BaseballCount set) {
+	public static void printGameResult(BaseballCount set) {
 		printOnlyBall(set);
 		printOnlyStrike(set);
 		printBallAndStrike(set);
@@ -31,25 +31,25 @@ public class BaseballSystem {
 		return false;
 	}
 
-	public void printOnlyBall(BaseballCount set) {
+	public static void printOnlyBall(BaseballCount set) {
 		if (set.ballCount != 0 && set.strikeCount == 0) {
 			System.out.println(set.ballCount + "볼");
 		}
 	}
 
-	public void printOnlyStrike(BaseballCount set) {
+	public static void printOnlyStrike(BaseballCount set) {
 		if (set.ballCount == 0 && set.strikeCount != 0) {
 			System.out.println(set.strikeCount + "스트라이크");
 		}
 	}
 
-	public void printBallAndStrike(BaseballCount set) {
+	public static void printBallAndStrike(BaseballCount set) {
 		if (set.ballCount != 0 && set.strikeCount != 0) {
 			System.out.print(set.ballCount + "볼 " + set.strikeCount + "스트라이크");
 		}
 	}
 
-	public void printNoting(BaseballCount set) {
+	public static void printNoting(BaseballCount set) {
 		if (set.ballCount == 0 && set.strikeCount == 0) {
 			System.out.println("낫싱");
 		}
