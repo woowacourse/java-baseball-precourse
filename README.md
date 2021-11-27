@@ -33,8 +33,8 @@
   - 난수 생성 클래스 생성
   - 큰 틀에서 main 함수의 flow 구현
 - **남은 작업**
-  - 사용자의 잘못된 입력에 대한 예외 처리
-  - 문제의 제약사항 지키지 않는 부분 수정 (ex Scanner 사용하면 안됨 등)
+  - ~~사용자의 잘못된 입력에 대한 예외 처리~~ **(해결 O)**
+  - ~~문제의 제약사항 지키지 않는 부분 수정 (ex Scanner 사용하면 안됨 등)~~ **(해결 O)**
 
 
 
@@ -49,6 +49,7 @@
     - 사용자 입력 관련
       - `java.util.Scanner` -> `camp.nextstep.edu.missionutils.Console`
 - **남은 작업**
-  - 인코딩 관련 문제 해결 ('UTF-8')
-    - 터미널에서 test 작동하지 않는 문제 해결해야 함 (`./gradlew clean test`)
-  - java 코딩 컨벤션 - 새줄문자 lf 관련 : `.gitattribute` 작성
+  - ~~인코딩 관련 문제 해결 ('UTF-8')~~ **(해결 O)**
+    - ~~터미널에서 test 작동하지 않는 문제 해결해야 함~~ (`./gradlew clean test`)
+  - ~~java 코딩 컨벤션 - 새줄문자 lf 관련 : .gitattribute 작성~~ **(해결 O)**
+
