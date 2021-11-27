@@ -1,30 +1,37 @@
-package baseball;
+package baseball.computer;
+
+import static baseball.util.ConstantUtil.*;
 
 import java.util.List;
 import java.util.Objects;
 
 // 응답과 정답을 통해 결과를 도출하는 클래스
 public class Result {
-	int strike;
-	int ball;
+	private int strike;
+	private int ball;
 
-	public int getStrike() {
-		return strike;
-	}
-
-	public void matchAnswer(List<Integer> answer, List<Integer> gameReply) {
+	public boolean matchAnswer(List<Integer> answer, List<Integer> gameReply) {
 		strike = 0;
 		ball = 0;
 
-		for (int idx = 0; idx < 3; idx++) {
+		for (int idx = 0; idx < ANSWER_SIZE; idx++) {
 			if (Objects.equals(answer.get(idx), gameReply.get(idx))) {
-				strike += 1;
+				addStrike();
 				continue;
 			}
 			if (answer.contains(gameReply.get(idx))) {
-				ball += 1;
+				addBall();
 			}
 		}
+		return strike == ANSWER_SIZE;
+	}
+
+	void addStrike() {
+		this.strike++;
+	}
+
+	void addBall() {
+		this.ball++;
 	}
 
 	public void printResult() {
@@ -44,4 +51,5 @@ public class Result {
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		}
 	}
+
 }

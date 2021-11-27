@@ -1,25 +1,23 @@
-package baseball;
+package baseball.user;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
+
+import static baseball.util.ConstantUtil.*;
 
 import camp.nextstep.edu.missionutils.Console;
 
 // 정답을 맞히는 사용자의 응답을 다루는 클래스
 public class GameReply {
 
-	List<Integer> gameReply;
+	private List<Integer> gameReply;
 
-	public List<Integer> getGameReply() {
-		return gameReply;
-	}
-
-	public void askReply() {
+	public List<Integer> askReply() {
 		System.out.print("숫자를 입력해주세요 : ");
 		String input = Console.readLine();
 		this.gameReply = Arrays.asList(makeIntArray(input));
-		validation();
+		return this.gameReply;
 	}
 
 	public Integer[] makeIntArray(String input) {
@@ -31,7 +29,7 @@ public class GameReply {
 	}
 
 	public void validation() {
-		if (this.gameReply.size() > 3) {
+		if (this.gameReply.size() > ANSWER_SIZE) {
 			throw (new IllegalArgumentException());
 		}
 		for (Integer cur :
