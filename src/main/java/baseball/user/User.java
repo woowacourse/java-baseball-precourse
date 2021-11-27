@@ -4,6 +4,7 @@ package baseball.user;
 import java.util.HashSet;
 import java.util.Set;
 
+import static baseball.Constants.maxNumberLen;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static java.lang.Character.getNumericValue;
 import static java.lang.Character.getType;
@@ -28,8 +29,8 @@ public class User {
 
     }
     private void isThree(String inputs){
-        if (inputs.length() != 3) {
-            throw new IllegalArgumentException("3자리 수를 입력하세요");
+        if (inputs.length() != maxNumberLen) {
+            throw new IllegalArgumentException(maxNumberLen+"자리 수를 입력하세요");
         }
     }
 
@@ -63,10 +64,10 @@ public class User {
 
     //3자리 수를 배열로 만드는 함수
     private int[] intToArray(int Num) {
-        int[] intArray = new int[3];
+        int[] intArray = new int[maxNumberLen];
         int n;
         //3자리 수를 10으로 나누면서 그 나머지를 배열의 뒤에서부터 할당
-        for (int i = 2; i >= 0; i--) {
+        for (int i = maxNumberLen-1; i >= 0; i--) {
             n = Num % 10;
             //0이면 오류 반환
             if (n == 0) {

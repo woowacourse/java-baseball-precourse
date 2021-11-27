@@ -3,6 +3,8 @@ package baseball.umpire;
 
 import java.util.Arrays;
 
+import static baseball.Constants.maxNumberLen;
+
 public class Umpire {
     public int strike;
     public int ball;
@@ -24,7 +26,7 @@ public class Umpire {
     }
 
     public boolean isEnd() {
-        if (strike == 3) {
+        if (strike == maxNumberLen) {
             return true;
         }
         return false;
@@ -37,7 +39,7 @@ public class Umpire {
     }
 
     private void isStrike(int[] target, int[] input) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < maxNumberLen; i++) {
             if (target[i] == input[i]) {
                 strike += 1;
             }
@@ -48,7 +50,7 @@ public class Umpire {
     }
 
     private void isBall(int[] target, int[] input) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < maxNumberLen; i++) {
             if (contains(target, input[i], i)) {
                 ball += 1;
             }
