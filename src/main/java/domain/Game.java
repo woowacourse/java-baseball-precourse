@@ -56,9 +56,9 @@ public class Game {
                 continue;
             }
 
-            int idx;
-            for (idx = curIdx; idx < 3; idx++) {
-                if (Objects.equals(input.get(idx), curInput)) {
+            int ballIdx;
+            for (ballIdx = 0; ballIdx < 3; ballIdx++) {
+                if (Objects.equals(input.get(ballIdx), curInput)) {
                     ballCount++;
                     break;
                 }
@@ -76,7 +76,7 @@ public class Game {
         String hint = "";
 
         if (ballCount > 0) {
-            hint += ballCount + "볼 ";
+            hint = ballCount + "볼 ";
         }
         if (strikeCount > 0) {
             hint += strikeCount + "스트라이크";
