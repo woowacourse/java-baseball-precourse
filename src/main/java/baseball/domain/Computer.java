@@ -10,7 +10,7 @@ public class Computer {
 	public static final int MIN_NO = 1;
 	public static final int MAX_NO = 9;
 
-	private static final Computer com = new Computer();
+	private static final Computer computer = new Computer();
 
 	private Balls balls;
 
@@ -19,7 +19,7 @@ public class Computer {
 	}
 
 	public static Computer getInstance() {
-		return com;
+		return computer;
 	}
 
 	public void init() {
