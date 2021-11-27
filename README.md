@@ -42,14 +42,14 @@
     실행할 기능의 순서대로만 짰던 것에 문제가 있다고 판단
     Game을 Class로 개념화하여 생각해보자
 
-1. 시작 (Game 객체 instance화)
-    - 3자리 난수 생성: 생성자 호출 시 answer 초기화
-2. 게임 진행 (game.play())
-    - 3자리 숫자 입력
+1. 시작 (Game 객체 instance화) ✔Game.java Class 추가
+    - 3자리 난수 생성: 생성자 호출 시 answer 초기화 ✔
+2. 게임 진행 (game.play()) ✔game.play() 추가
+    - 3자리 숫자 입력 ✔game.inputToArrayList()
         - 입력값 유효성 검사
         - String -> ArrayList 변환
-    - strike, ball count
-    - 결과 출력
+    - strike, ball count ✔game.countScore()
+    - 결과 출력 ✔game.printScore()
 4. 종료
     - 재시작 여부 검사
         - 입력값 유효성 검사
