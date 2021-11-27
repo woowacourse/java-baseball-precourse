@@ -7,13 +7,13 @@ public class Validation {
     public static void isRightDigit(String tmpUserNumbers){
         for(int i = 0; i < tmpUserNumbers.length(); i++){
             if(!(tmpUserNumbers.charAt(i) >= '1' && tmpUserNumbers.charAt(i) <= '9'))
-                throw new IllegalArgumentException("숫자 1~9 이외의 문자는 입력할 수 없습니다.");
+                throw new IllegalArgumentException(Message.INPUT_ERROR);
         }
     }
 
     public static void isThreeDigit(String tmpUserNumbers){
         if(tmpUserNumbers.length() != 3) {
-            throw new IllegalArgumentException("입력 숫자는 3자리여야 합니다.");
+            throw new IllegalArgumentException(Message.INPUT_ERROR);
         }
     }
 
@@ -24,7 +24,13 @@ public class Validation {
             tmpInputSet.add(tmpUserNumbers.charAt(i) - '0');
         }
         if(tmpInputSet.size() != 3){
-            throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
+            throw new IllegalArgumentException(Message.INPUT_ERROR);
+        }
+    }
+
+    public static void isRightChoose(Integer UserChoose){
+        if(!(UserChoose == 1 || UserChoose == 2)){
+            throw new IllegalArgumentException(Message.INPUT_ERROR);
         }
     }
 }
