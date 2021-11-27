@@ -1,7 +1,24 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static void main(String[] args) {
-        //TODO: 숫자야구 게임 구현
+        System.out.println("start game");
+        boolean isContinue;
+        do{
+            PlayBall.play(BaseBallUtil.generateThreeRandomDigits());
+
+            System.out.println("end game");
+            String input = Console.readLine();
+
+            if(BaseBallUtil.isValidateChoice(input)) isContinue=setIsContinue(input);
+            else throw new IllegalArgumentException();
+
+        }while(isContinue);
+
+    }
+    private static boolean setIsContinue(String input){
+        return input.equals("1");
     }
 }

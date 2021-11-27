@@ -1,8 +1,8 @@
-package baseball;
 
+package baseball;
 public class GameStatus {
-    private int strike_num;
-    private int ball_num;
+    private final int strike_num;
+    private final int ball_num;
 
     public GameStatus(int strike_num, int ball_num){
         this.strike_num=strike_num;
