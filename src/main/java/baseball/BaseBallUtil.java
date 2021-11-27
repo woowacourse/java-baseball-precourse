@@ -13,13 +13,27 @@ public class BaseBallUtil {
     private static final String CHOICE_TWO="2";
 
     public static int[] generateThreeRandomDigits(){
-        List<Integer> pickedNumbers=Randoms.pickUniqueNumbersInRange(START_NUM, END_NUM, DIGIT_NUM);
+
         int[] threeRandomDigits=new int[DIGIT_NUM];
-        for(int i=0; i<DIGIT_NUM; i++)
-        {
-            threeRandomDigits[i]= pickedNumbers.get(i);
-        }
+
+        threeRandomDigits[0]= Randoms.pickNumberInRange(START_NUM, END_NUM);
+
+        for(int i=1; i<DIGIT_NUM; i++){
+            int newPick=Randoms.pickNumberInRange(START_NUM, END_NUM);
+            while(isDuplicated(threeRandomDigits, i, newPick)){
+                newPick=Randoms.pickNumberInRange(START_NUM, END_NUM);
+            }
+            threeRandomDigits[i]=newPick;
+            }
+
         return threeRandomDigits;
+    }
+
+    private static boolean isDuplicated(int[] pickedNumbers, int index, int newPick){
+        for(int i=0; i<index; i++){
+            if(pickedNumbers[i]==newPick) return true;
+        }
+        return false;
     }
 
     public static boolean isValidateGuess(String input){
