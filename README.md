@@ -68,7 +68,7 @@
 
 ### Computer
 
-- private int[] answer ✅
+- private final int[] answer ✅
 
 - public Computer() ✅
     * 생성자
