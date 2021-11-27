@@ -13,10 +13,10 @@
 ### 사용자 입력받기
 
 - 사용자에게 정답으로 예상되는 3자리의 수를 입력받는다.
-    * 숫자의 개수가 3개가 아닌 입력은 허용되지 않는다.
-    * 1~9까지의 정수가 아닌 입력은 허용되지 않는다.
-    * 중복되는 숫자는 허용되지 않는다.
-    * 허용되지 않은 입력의 경우 IllegalArgumentException 이 발생한다.
+    * 숫자의 개수가 3개가 아닌 입력은 허용되지 않는다. ✅
+    * 1~9까지의 정수가 아닌 입력은 허용되지 않는다. ✅
+    * 중복되는 숫자는 허용되지 않는다. ✅
+    * 허용되지 않은 입력의 경우 IllegalArgumentException 이 발생한다. ✅
 
 ### 게임 진행하기
 
@@ -86,13 +86,13 @@
 
 ### UserInput
 
-- private final int[] input
+- private final int[] input ✅
 
-- public UserInput()
+- public UserInput() ✅
     * 생성자
     * 사전에 지정된 개수만큼 배열 초기화
 
-- public void setInput()
+- public void setInput() ✅
     * camp.nextstep.edu.missionutils.Console의 readLine()을 활용하여 숫자 입력받기
     * 잘못된 입력은 아닌지 검증
 
@@ -121,7 +121,7 @@
 
 ### Validation
 
-- public static void isValidInput(String input)
+- public static void isValidInput(String input) ✅
     * 야구게임을 위한 숫자를 입력했는지 확인
     * 잘못입력했다면 IllegalArgumentException 발생
 
@@ -129,13 +129,13 @@
     * 재시작 혹은 종료를 위한 숫자를 입력했는지 확인
     * 잘못입력했다면 IllegalArgumentException 발생
 
-- private static boolean isValidNumber(String input)
+- private static boolean isValidNumber(String input) ✅
     * MIN_VALUE~MAX_VALUE 숫자 중 하나인지 확인
 
-- private static boolean isValidLength(String input)
+- private static boolean isValidLength(String input) ✅
     * NUMBER_OF_NUMBERS 개수만큼 입력했는지 확인
 
-- private static boolean isDuplicated(String input)
+- private static boolean isDuplicated(String input) ✅
     * 중복값이 있는지 확인
 
 ### Constant
