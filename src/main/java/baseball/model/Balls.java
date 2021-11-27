@@ -1,10 +1,11 @@
 package baseball.model;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import baseball.constant.BallConstant;
+
+import java.util.*;
 import java.util.stream.Collectors;
+
+import static baseball.constant.BallConstant.BALL_SIZE;
 
 public class Balls {
 
@@ -22,6 +23,18 @@ public class Balls {
      * 초기 index는 1부터 시작합니다
      */
     public Balls(int firstBall, int secondBall, int thirdBall) {
+        balls = createBalls(firstBall, secondBall, thirdBall);
+    }
+
+    public Balls(Set<Integer> set) {
+        Iterator<Integer> iterator = set.iterator();
+        int[] ballNumbers = new int[BALL_SIZE];
+        for (int i = 0; i < BALL_SIZE; i++) {
+            ballNumbers[i] = iterator.next();
+        }
+        int firstBall = ballNumbers[0];
+        int secondBall = ballNumbers[1];
+        int thirdBall = ballNumbers[2];
         balls = createBalls(firstBall, secondBall, thirdBall);
     }
 

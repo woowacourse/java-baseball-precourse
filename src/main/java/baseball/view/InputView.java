@@ -1,13 +1,19 @@
 package baseball.view;
 
+import baseball.constant.BallConstant;
 import baseball.model.Balls;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import static baseball.constant.BallConstant.BALL_SIZE;
 
 public class InputView {
 
-    private static final int BALL_SIZE = 3;
     private static final String ERROR_WRONG_INPUT = "잘못된 값을 입력하였습니다.";
 
     public static Balls inputNumber(InputStrategy inputStrategy) {
@@ -52,5 +58,14 @@ public class InputView {
         }
 
         return inputInteger;
+    }
+
+    public static Balls getRandomBalls() {
+        Set<Integer> set = new LinkedHashSet<>();
+        for (int i = 0; i < BALL_SIZE; i++) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            set.add(randomNumber);
+        }
+        return new Balls(set);
     }
 }

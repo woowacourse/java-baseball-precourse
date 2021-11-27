@@ -19,10 +19,13 @@ public class PlayTypes {
         long strikeCount = playTypes.stream().filter(PlayType.STRIKE::equals).count();
         StringBuilder stringBuilder = new StringBuilder();
         if (ballCount != 0) {
-            stringBuilder.append(ballCount).append(PlayType.BALL.getName()).append(" ");
+            stringBuilder.append(ballCount).append(PlayType.BALL.getName());
+        }
+        if (ballCount != 0 && strikeCount != 0) {
+            stringBuilder.append(" ");
         }
         if (strikeCount != 0) {
-            stringBuilder.append(strikeCount).append(PlayType.STRIKE.getName()).append(" ");
+            stringBuilder.append(strikeCount).append(PlayType.STRIKE.getName());
         }
         if (ballCount == 0 && strikeCount == 0) {
             stringBuilder.append(PlayType.NOTHING.getName());
