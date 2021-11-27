@@ -28,9 +28,9 @@
     * 허용되지 않은 입력의 경우 IllegalArgumentException 이 발생한다. ✅
 
 - 진행
-    * 사용자의 입력과 정답이 동일하지 않은 경우 스트라이크, 볼, 낫싱 결과를 계산한다.
-    * 계산된 결과를 출력한다.
-    * 입력으로 되돌아간다.
+    * 사용자의 입력과 정답이 동일하지 않은 경우 스트라이크, 볼, 낫싱 결과를 계산한다. ✅
+    * 계산된 결과를 출력한다. ✅
+    * 입력으로 되돌아간다. ✅
 
 ---
 
@@ -54,10 +54,10 @@
     * 난수 생성, 게임 시작
     * 종료될 때 까지 반복
 
-- private void play()
+- private void play() ✅
     * 사용자 입력 받기 ✅
-    * 결과 계산
-    * 힌트 출력
+    * 결과 계산 ✅
+    * 힌트 출력 ✅
     * 정답 맞출 때 까지 반복 ✅
 
 - private void printSuccess() ✅
@@ -113,10 +113,10 @@
 - public boolean is_success(int[] answer, int[] input) ✅
     * 성공여부 확인
 
-- public void grade(int[] answer, int[] input)
+- public void grade(int[] answer, int[] input) ✅
     * 점수 계산
 
-- public void printResult()
+- public void printResult() ✅
     * 결과 출력
 
 ### Validation
