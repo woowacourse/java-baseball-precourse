@@ -10,15 +10,12 @@ public class Computer {
 
 	private static List<Integer> computerNumbers;
 
-	public Computer() {
-		this.computerNumbers = new ArrayList<>(NumberRangeType.ANSWER_SIZE.getNumberRange());
-	}
-
 	public static List<Integer> getComputerNumbers() {
 		return computerNumbers;
 	}
 
 	public void generateAnswerNumbers() {
+		computerNumbers = new ArrayList<>(NumberRangeType.ANSWER_SIZE.getNumberRange());
 		int pickCount = 0;
 		while (pickCount < NumberRangeType.ANSWER_SIZE.getNumberRange()) {
 			int pickedNumber = Randoms.pickNumberInRange(NumberRangeType.MIN_NUMBER.getNumberRange(),
