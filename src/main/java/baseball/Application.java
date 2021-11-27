@@ -9,9 +9,9 @@ import java.io.InputStreamReader;
 public class Application {
     private static int ballCount;
     private static int strikeCount;
-    private static final int[] computerNumbers = new int[3];
+    private static int[] computerNumbers;
     private static int N;
-    private static final int[] inputNumbers = new int[3];
+    private static int[] inputNumbers;
 
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
@@ -36,6 +36,9 @@ public class Application {
             inputNumbers[1] = (N / 10) % 10;
             inputNumbers[2] = N % 10;
 
+            ballCount = 0;
+            strikeCount = 0;
+
             input();
             ballCheck();
             strikeCheck();
@@ -44,7 +47,9 @@ public class Application {
     }
 
     public static void makeComputerNumbers() {
-        while (computerNumbers[0] == computerNumbers[1] && computerNumbers[1] == computerNumbers[2]) {
+        computerNumbers = new int[3];
+        inputNumbers = new int[3];
+        while (computerNumbers[0] == computerNumbers[1] || computerNumbers[1] == computerNumbers[2] || computerNumbers[0] == computerNumbers[2]) {
             computerNumbers[0] = Randoms.pickNumberInRange(1, 9);
             computerNumbers[1] = Randoms.pickNumberInRange(1, 9);
             computerNumbers[2] = Randoms.pickNumberInRange(1, 9);
@@ -101,20 +106,20 @@ public class Application {
 
     public static void print() throws IOException {
         if (ballCount < 3 && ballCount != 0 && strikeCount == 0) {
-            System.out.println(ballCount + "볼");
+            System.out.print(ballCount + "볼" + '\n' + "숫자를 입력하세요 : ");
         } else if (strikeCount < 3 && strikeCount != 0 && ballCount == 0) {
-            System.out.println(strikeCount + "스트라이크");
+            System.out.print(strikeCount + "스트라이크" + '\n' + "숫자를 입력하세요 : ");
         } else if (strikeCount == 3) {
             System.out.println("3스트라이크" + '\n' + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             restart();
         }
 
         if (ballCount != 0 && strikeCount != 0) {
-            System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
+            System.out.print(ballCount + "볼" + " " + strikeCount + "스트라이크" + '\n' + "숫자를 입력하세요 : ");
         }
 
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.println("낫싱");
+            System.out.print("낫싱" + '\n' + "숫자를 입력하세요 : ");
         }
     }
 }
