@@ -48,14 +48,14 @@ public class Game {
 	}
 
 	private static void insertUniqueNumber(List<Integer> answer) {
-		while (true) {
-			int r = Randoms.pickNumberInRange(Const.MIN_ANSWER_VALUE, Const.MAX_ANSWER_VALUE);
+		int r = Randoms.pickNumberInRange(Const.MIN_ANSWER_VALUE, Const.MAX_ANSWER_VALUE);
 
-			if (!answer.contains(r)) {
-				answer.add(r);
-				break;
-			}
+		if (!answer.contains(r)) {
+			answer.add(r);
+			return;
 		}
+
+		insertUniqueNumber(answer);
 	}
 
 	private static boolean isCorrectInput(String inputText) {
