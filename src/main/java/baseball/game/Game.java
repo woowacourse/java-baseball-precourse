@@ -1,6 +1,9 @@
-package baseball;
+package baseball.game;
 
 import java.util.List;
+
+import baseball.computer.Computer;
+import baseball.user.User;
 
 // 숫자야구의 전반적인 운영을 담당하는 클래스
 public class Game {

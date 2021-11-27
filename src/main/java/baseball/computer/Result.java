@@ -1,4 +1,6 @@
-package baseball;
+package baseball.computer;
+
+import static baseball.util.ConstantUtil.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -12,16 +14,24 @@ public class Result {
 		strike = 0;
 		ball = 0;
 
-		for (int idx = 0; idx < 3; idx++) {
+		for (int idx = 0; idx < ANSWER_SIZE; idx++) {
 			if (Objects.equals(answer.get(idx), gameReply.get(idx))) {
-				strike += 1;
+				addStrike();
 				continue;
 			}
 			if (answer.contains(gameReply.get(idx))) {
-				ball += 1;
+				addBall();
 			}
 		}
-		return strike == 3;
+		return strike == ANSWER_SIZE;
+	}
+
+	void addStrike() {
+		this.strike++;
+	}
+
+	void addBall() {
+		this.ball++;
 	}
 
 	public void printResult() {

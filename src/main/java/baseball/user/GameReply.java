@@ -1,8 +1,10 @@
-package baseball;
+package baseball.user;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
+
+import static baseball.util.ConstantUtil.*;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -27,7 +29,7 @@ public class GameReply {
 	}
 
 	public void validation() {
-		if (this.gameReply.size() > 3) {
+		if (this.gameReply.size() > ANSWER_SIZE) {
 			throw (new IllegalArgumentException());
 		}
 		for (Integer cur :

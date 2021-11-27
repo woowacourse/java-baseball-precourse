@@ -1,4 +1,6 @@
-package baseball;
+package baseball.user;
+
+import static baseball.util.ConstantUtil.*;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -13,10 +15,10 @@ public class AfterGameReply {
 		} catch (NumberFormatException numberFormatException) {
 			throw new IllegalArgumentException();
 		}
-		if (response == 1) {
+		if (response == RESTART) {
 			return false;
 		}
-		if (response == 2) {
+		if (response == STOP) {
 			return true;
 		}
 		throw new IllegalArgumentException();
