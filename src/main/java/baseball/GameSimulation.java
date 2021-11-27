@@ -20,11 +20,16 @@ public class GameSimulation {
 	}
 
 	public void playGame() {
+		init();
+		System.out.println(comNum);
 		System.out.println("숫자를 입력해주세요 : ");
 		String userInput = Console.readLine();
 		this.userNum = makeList(userInput);
 		System.out.println(userNum);
 		validateUserNum();
+		compareNumbers();
+		System.out.println(strike);
+		System.out.println(ball);
 
 	}
 
@@ -47,6 +52,20 @@ public class GameSimulation {
 		for (int i = 0; i < userNum.size(); i++) {
 			if (Collections.frequency(userNum, userNum.get(i)) != 1) {
 				throw new IllegalArgumentException("올바른 숫자가 아닙니다. 서로 다른 숫자로 이루어져야 합니다.");
+			}
+		}
+	}
+
+	public void compareNumbers() {
+		this.strike = 0;
+		this.ball = 0;
+		for (int i = 0; i < userNum.size(); i++) {
+			if (comNum.indexOf(userNum.get(i)) == i) {
+				strike++;
+				continue;
+			}
+			if (comNum.contains(userNum.get(i))) {
+				ball++;
 			}
 		}
 	}
