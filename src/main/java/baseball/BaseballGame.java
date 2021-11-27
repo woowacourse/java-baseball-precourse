@@ -7,17 +7,17 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
 
-    public static Computer computer = new Computer();
-    public static Player player = new Player();
+    Computer computer = new Computer();
+    Player player = new Player();
 
-    public static void startGame() {
+    public void startGame() {
         do {
             computer.makeThreeDigitNumber();
             guessUntilGetAnswer();
         } while (restartGame());
     }
 
-    private static void guessUntilGetAnswer() {
+    private void guessUntilGetAnswer() {
         while (true) {
             Result resultOfGuess = computer.compareGuessNumberAndAnswer(player.guessNumber());
             System.out.println(resultOfGuess.makeResultSentence());
@@ -27,7 +27,7 @@ public class BaseballGame {
         }
     }
 
-    private static Boolean restartGame() {
+    private Boolean restartGame() {
         System.out.println(ASK_GAME_RESTART_MESSAGE);
         String continueGame = Console.readLine();
         if (continueGame.equals("1")) {

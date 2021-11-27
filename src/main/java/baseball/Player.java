@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
-    static final String INPUT_VALUE_REGEX = "^[1-9]{3}$";
+    private static final String INPUT_VALUE_REGEX = "^[1-9]{3}$";
     private String guessNumber;
 
     public int guessNumber() {
