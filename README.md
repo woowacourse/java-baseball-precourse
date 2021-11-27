@@ -101,9 +101,9 @@
 
 ### Score
 
-- private final int strike ✅
+- private int strike ✅
     * 스트라이크 개수
-- private final int ball ✅
+- private int ball ✅
     * 볼 개수
 
 - public Score() ✅
