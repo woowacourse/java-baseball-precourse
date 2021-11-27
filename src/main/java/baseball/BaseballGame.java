@@ -1,7 +1,6 @@
 package baseball;
 
-import static baseball.Message.ASK_GAME_RESTART_MESSAGE;
-import static baseball.Message.NOT_RELATED_ABOUT_RESTART_MESSAGE;
+import static util.GameConstant.*;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -30,9 +29,9 @@ public class BaseballGame {
     private Boolean restartGame() {
         System.out.println(ASK_GAME_RESTART_MESSAGE);
         String continueGame = Console.readLine();
-        if (continueGame.equals("1")) {
+        if (continueGame.equals(RESTART)) {
             return true;
-        } else if (continueGame.equals("2")) {
+        } else if (continueGame.equals(STOP)) {
             return false;
         }
         throw new IllegalArgumentException(NOT_RELATED_ABOUT_RESTART_MESSAGE);

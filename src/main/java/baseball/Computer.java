@@ -1,27 +1,23 @@
 package baseball;
 
+import static util.GameConstant.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
-    private static final int NUMBER_LEN = 3;
-    private static final int MAX_RANGE = 9;
-    private static final int MIN_RANGE = 1;
-
-    private final int[] eachDigitOfGuessNumber = new int[NUMBER_LEN];
-    private final int[] answerMadeByComputer = new int[NUMBER_LEN];
+    private final int[] eachDigitOfGuessNumber = new int[NUMBER_LENGTH];
+    private final int[] answerMadeByComputer = new int[NUMBER_LENGTH];
 
     public void makeThreeDigitNumber() {
         makeEachDigitUsingRandom();
-        // System.out.println("정답 : " + answerMadeByComputer[0]
-        //     + answerMadeByComputer[1] + answerMadeByComputer[2]); // 정답을 가르쳐주는 코드. 테스트를 편하게 하기 위해서
     }
 
     private void makeEachDigitUsingRandom() {
         boolean[] alreadyUse = new boolean[MAX_RANGE + 1];
         int randomNumber;
 
-        for (int i = 0; i < NUMBER_LEN; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
             while (alreadyUse[randomNumber]) {
                 randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
@@ -40,7 +36,7 @@ public class Computer {
         int strikeCnt = 0;
         int ballCnt = 0;
 
-        for (int digitOfGuessNumber = 0; digitOfGuessNumber < NUMBER_LEN; digitOfGuessNumber++) {
+        for (int digitOfGuessNumber = 0; digitOfGuessNumber < NUMBER_LENGTH; digitOfGuessNumber++) {
 
             if (isStrike(digitOfGuessNumber)) {
                 strikeCnt += 1;
@@ -56,7 +52,7 @@ public class Computer {
     }
 
     private boolean isBall(int digitOfGuessNumber) {
-        for (int digitOfAnswer = 0; digitOfAnswer < NUMBER_LEN; digitOfAnswer++) {
+        for (int digitOfAnswer = 0; digitOfAnswer < NUMBER_LENGTH; digitOfAnswer++) {
 
             if (eachDigitOfGuessNumber[digitOfGuessNumber] == answerMadeByComputer[digitOfAnswer]) {
                 return true;

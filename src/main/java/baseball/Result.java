@@ -1,5 +1,7 @@
 package baseball;
 
+import static util.GameConstant.*;
+
 public class Result {
     private final int strikeCnt;
     private final int ballCnt;
@@ -19,16 +21,16 @@ public class Result {
 
     public String makeResultSentence() {
         if (strikeCnt == 3) {
-            return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            return THREE_STRIKE_MESSAGE;
         } else if (strikeCnt == 0 & ballCnt == 0) {
-            return "낫싱";
+            return NOTHING_MESSAGE;
         }
         String resultSentence = "";
         if (ballCnt != 0) {
-            resultSentence += ballCnt + "볼 ";
+            resultSentence += ballCnt + BALL;
         }
         if (strikeCnt != 0) {
-            resultSentence += strikeCnt + "스트라이크";
+            resultSentence += strikeCnt + STRIKE;
         }
         return resultSentence;
     }

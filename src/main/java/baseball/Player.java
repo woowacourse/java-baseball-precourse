@@ -1,14 +1,12 @@
 package baseball;
 
-import static baseball.Message.INPUT_REQUEST_MESSAGE;
-import static baseball.Message.NOT_THREE_DIGIT_INTEGER_MESSAGE;
+import static util.GameConstant.*;
 
 import java.util.regex.Pattern;
 
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
-    private static final String INPUT_VALUE_REGEX = "^[1-9]{3}$";
     private String guessNumber;
 
     public int guessNumber() {
