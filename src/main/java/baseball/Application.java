@@ -1,7 +1,6 @@
 package baseball;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -13,6 +12,8 @@ public class Application {
         validateType(input);
         validateRange(input);
         validateNumber(input);
+        List<Integer> inputNumbersList = makeInputToList(input);
+        compareNumbersList(answerNumbersList, inputNumbersList);
     }
 
     // 인풋에 문자가 포함되어 있는지 확인한다.
@@ -35,6 +36,30 @@ public class Application {
     private static void validateNumber(String inputString){
         if(inputString.length() != 3 || Arrays.stream(inputString.split("")).distinct().count() != 3){
             throw new IllegalArgumentException();
+        }
+    }
+
+    // 인풋을 잘라 3사이즈의 리스트에 넣는다.
+    private static List<Integer> makeInputToList(String inputString){
+        List<Integer> result = new ArrayList<>();
+        for(String s : inputString.split("")){
+            result.add(Integer.parseInt(s));
+        }
+        return result;
+    }
+
+    // list1(정답 리스트)을 기준으로 두 리스트를 비교한다.
+    private static void compareNumbersList(List<Integer> list1, List<Integer> list2){
+        for(int i = 0; i < 3; i++) {
+            int num = list1.get(i);
+
+            if (num == list2.get(i)){
+                // strike ++
+            }else if (list2.contains(num)) {
+                // ball ++
+            }else {
+                // 꽝
+            }
         }
     }
 }
