@@ -1,10 +1,8 @@
 package baseball;
 
+import static util.Constants.*;
+
 class HintSentenceGenerator {
-	private static final String BALL_HINT_MESSAGE = "%d볼";
-	private static final String STRIKE_HINT_MESSAGE = "%d스트라이크";
-	private static final String OUT_HINT_MESSAGE = "낫싱";
-	private static final String GAME_CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 	private static final HintSentenceGenerator hintSentenceGenerator = new HintSentenceGenerator();
 
 	private HintSentenceGenerator() {
@@ -25,7 +23,7 @@ class HintSentenceGenerator {
 		if (strikeCount != 0) {
 			hintSentence += String.format(STRIKE_HINT_MESSAGE, strikeCount);
 		}
-		if (strikeCount == 3) {
+		if (strikeCount == GAME_NUMBER_LENGTH) {
 			hintSentence += ("\n" + GAME_CLEAR_MESSAGE);
 		}
 		if (ballCount + strikeCount == 0) {

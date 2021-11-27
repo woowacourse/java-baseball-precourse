@@ -1,5 +1,7 @@
 package baseball;
 
+import static util.Constants.*;
+
 import java.util.stream.IntStream;
 
 class BaseballGameModel {
@@ -20,24 +22,24 @@ class BaseballGameModel {
 	}
 
 	public int getBall(int[] playerNum, int[] enemyNum) {
-		int ball = 0;
+		int ballCount = 0;
 		for (Integer num : playerNum) {
 			if (IntStream.of(enemyNum).anyMatch(x -> x == num)) {
-				ball++;
+				ballCount++;
 			}
 		}
-		return ball;
+		return ballCount;
 	}
 
 	public int getStrike(int[] playerNum, int[] enemyNum) {
-		int strike = 0;
-		for (int i = 0; i < 3; i++) {
+		int strikeCount = 0;
+		for (int i = 0; i < GAME_NUMBER_LENGTH; i++) {
 			if (playerNum[i] == enemyNum[i]) {
-				strike++;
+				strikeCount++;
 				playerNum[i] = -1;
 			}
 		}
-		return strike;
+		return strikeCount;
 	}
 
 }

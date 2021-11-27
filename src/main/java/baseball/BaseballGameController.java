@@ -1,9 +1,10 @@
 package baseball;
 
+import static util.Constants.*;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameController {
-	private static final String DECIDING_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	private final Enemy enemy;
 	private final Player player;
 	private final BaseballGameModel baseballGameModel;
@@ -16,15 +17,15 @@ public class BaseballGameController {
 
 	public BaseballGameController() {
 		initializeNums();
-		enemy = new Enemy();
-		player = new Player();
+		enemy = Enemy.getEnemy();
+		player = Player.getPlayer();
 		baseballGameModel = BaseballGameModel.getBaseballGameModel();
 		hintSentenceGenerator = HintSentenceGenerator.getHintSentenceGenerator();
 	}
 
 	private void initializeNums() {
-		enemyNum = new int[3];
-		playerNum = new int[3];
+		enemyNum = new int[GAME_NUMBER_LENGTH];
+		playerNum = new int[GAME_NUMBER_LENGTH];
 	}
 
 	public void startGame() {
@@ -41,7 +42,7 @@ public class BaseballGameController {
 	private boolean printResult(int strikeCount, int ballCount) {
 		String hintSentence = hintSentenceGenerator.makeHintSentence(strikeCount, ballCount);
 		System.out.println(hintSentence);
-		if (strikeCount == 3) {
+		if (strikeCount == GAME_NUMBER_LENGTH) {
 			return true;
 		}
 		return false;
@@ -56,9 +57,9 @@ public class BaseballGameController {
 			throw new IllegalArgumentException();
 		}
 		charRestartValue = stringRestartValue.charAt(0);
-		if (charRestartValue == '1') {
+		if (charRestartValue == GAME_RESUME) {
 			return true;
-		} else if (charRestartValue == '2') {
+		} else if (charRestartValue == GAME_OVER) {
 			return false;
 		} else {
 			throw new IllegalArgumentException();
