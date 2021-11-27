@@ -32,7 +32,7 @@ public class InputValidatorTest {
             String key = entry.getKey();
             Boolean result = entry.getValue();
 
-            Assertions.assertEquals(result, InputValidator.checkUserInput(key), "요구조건을 충족하지 않음");
+            Assertions.assertEquals(result, InputValidator.checkUserInput(key), "입력 요구조건을 충족하지 않음");
 
         }
     }
