@@ -12,6 +12,11 @@ repositories {
 dependencies {
     implementation('com.github.woowacourse-projects:mission-utils:1.0.0')
 }
+//clean test시 발생하는 한글 깨짐 현상 해결
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 
 test {
     useJUnitPlatform()
