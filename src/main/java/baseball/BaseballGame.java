@@ -16,13 +16,13 @@ public class BaseballGame {
 	public void startGame() {
 		computer.makeTargetNumber();
 		playGame();
-		checkReplaying();
+		checkRestart();
 	}
 
 	private void playGame() {
 		List<Integer> playerNumber = player.getPlayerNumber();
 		while (computer.isNotThreeStrike(playerNumber)) {
-			computer.checkBallAndStrike(playerNumber);
+			computer.checkScore(playerNumber);
 			playerNumber = player.getPlayerNumber();
 		}
 		printClearMessage();
@@ -31,13 +31,17 @@ public class BaseballGame {
 	private void printClearMessage() {
 		System.out.println(NUMBER_LENGTH + STRIKE_MESSAGE);
 		System.out.println(GAME_CLEAR_MESSAGE);
-		System.out.println(REPLAYING_OR_END_MESSAGE);
+		System.out.println(RESTART_OR_END_MESSAGE);
 	}
 
-	private void checkReplaying() {
-		int replayingOrEndNumber = player.getReplayingOrEndNumber();
-		if (replayingOrEndNumber == REPLAYING_NUMBER) {
+	private void checkRestart() {
+		int restartOrEndNumber = player.getRestartOrEndNumber();
+		if (isRestartNumber(restartOrEndNumber)) {
 			startGame();
 		}
+	}
+
+	private boolean isRestartNumber(int restartOrEndNumber) {
+		return restartOrEndNumber == RESTART_NUMBER;
 	}
 }

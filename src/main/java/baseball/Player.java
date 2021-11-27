@@ -16,9 +16,9 @@ public class Player {
 		return toIntegerList(inputNumber);
 	}
 
-	public int getReplayingOrEndNumber() throws IllegalArgumentException {
+	public int getRestartOrEndNumber() throws IllegalArgumentException {
 		String inputNumber = readLine();
-		validateNumberRange(REPLAYING_OR_END_NUMBER_REGEX, inputNumber);
+		validateNumberRange(RESTART_OR_END_NUMBER_REGEX, inputNumber);
 		return Integer.parseInt(inputNumber);
 	}
 

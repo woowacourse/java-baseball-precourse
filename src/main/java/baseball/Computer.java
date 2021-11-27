@@ -24,10 +24,10 @@ public class Computer {
 		return !targetNumber.equals(playerNumber);
 	}
 
-	public void checkBallAndStrike(List<Integer> playerNumber) {
+	public void checkScore(List<Integer> playerNumber) {
 		int strikes = countStrike(playerNumber);
 		int balls = countBall(playerNumber);
-		System.out.println(getBallAndStrikeMessage(balls, strikes));
+		System.out.println(getScoreMessage(balls, strikes));
 	}
 
 	private int countStrike(List<Integer> playerNumber) {
@@ -43,14 +43,18 @@ public class Computer {
 			.count();
 	}
 
-	private String getBallAndStrikeMessage(int balls, int strikes) {
-		String ballMessage = getBallMessage(balls);
-		String strikeMessage = getStrikeMessage(strikes);
-		String ballAndStrikeMessage = ballMessage + strikeMessage;
-		if (ballAndStrikeMessage.equals("")) {
+	private String getScoreMessage(int balls, int strikes) {
+		if (isZeroScore(balls, strikes)) {
 			return NOTHING_MESSAGE;
 		}
-		return ballAndStrikeMessage;
+		String ballMessage = getBallMessage(balls);
+		String strikeMessage = getStrikeMessage(strikes);
+		String scoreMessage = ballMessage + strikeMessage;
+		return scoreMessage;
+	}
+
+	private Boolean isZeroScore(int balls, int strikes) {
+		return balls + strikes == MIN_COUNT;
 	}
 
 	private String getBallMessage(int balls) {
