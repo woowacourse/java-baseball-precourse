@@ -14,6 +14,10 @@ public class Computer {
 		this.computerNumbers = new ArrayList<>(NumberRangeType.ANSWER_SIZE.getNumberRange());
 	}
 
+	public static List<Integer> getComputerNumbers() {
+		return computerNumbers;
+	}
+
 	public void generateAnswerNumbers() {
 		int pickCount = 0;
 		while (pickCount < NumberRangeType.ANSWER_SIZE.getNumberRange()) {

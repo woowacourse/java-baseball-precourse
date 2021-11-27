@@ -17,13 +17,17 @@ public class Player {
 		playerNumbers = new ArrayList<>(NumberRangeType.ANSWER_SIZE.getNumberRange());
 	}
 
+	public static List<Integer> getPlayerNumbers() {
+		return playerNumbers;
+	}
+
 	public void generatePlayerNumber() {
-		String enterPlayerNumber = enterNumber();
+		String enterPlayerNumber = enterInput();
 		validatePlayerNumber(enterPlayerNumber);
 		setPlayerNumber(enterPlayerNumber);
 	}
 
-	public String enterNumber() {
+	public String enterInput() {
 		return Console.readLine();
 	}
 
