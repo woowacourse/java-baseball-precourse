@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class RandomUtil {
 
     private RandomUtil() {
-
     }
 
     public static int[] createComputerNumbers() {
