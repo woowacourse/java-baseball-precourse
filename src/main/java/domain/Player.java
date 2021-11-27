@@ -1,6 +1,7 @@
 package domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import utils.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +22,9 @@ public class Player {
     public static boolean getGameRestartInput() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        int input = Integer.parseInt(Console.readLine());
-        if (input == 1) {
-            return true;
-        }
-        return false;
+        String input = Console.readLine();
+        Validator.validateRestartInput(input);
+
+        return Integer.parseInt(input) == 1;
     }
 }
