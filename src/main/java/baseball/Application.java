@@ -4,8 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+    static final int STRIKE = 0;
+    static final int BALL = 1;
+    static final int NOTHING = 2;
+
     public static void main(String[] args){
         boolean flag = true;
+        String[] resultType = new String[] {"스크라이크", "볼", "낫싱"};
 
         while (flag) {
             // TODO: 랜덤 수 생성
@@ -24,18 +29,40 @@ public class Application {
                 int[] userInputArray = convertNumberToArray(userInput);
 
                 // TODO: 랜덤 값과 사용자 입력 값 비교
+                int[] result = compareRandomValueAndInputValue(randomValueArray, userInputArray);
 
-                // TODO: 비교 결과에 따른 correct 변수 수정
+                // TODO: 비교 결과에 대한 값 출력
+                StringBuffer stringBuffer = new StringBuffer();
+                // strike = 0, ball = 0
+                if((result[STRIKE]|result[BALL]) == 0) System.out.println(resultType[NOTHING]);
+                else {
+                    for (int index = 0; index < result.length; index++) {
+                        if (result[index]==0) continue;
+                        if (index > 0) stringBuffer.append(" ");
+                        stringBuffer.append(result[index]);
+                        stringBuffer.append(resultType[index]);
+                    }
+
+                    // strike = 3, ball = 0
+                    if((result[STRIKE]^randomValueArray.length) == 0) {
+                        stringBuffer.append('\n');
+                        stringBuffer.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+                        // TODO: 비교 결과에 따른 correct 변수 수정
+                        correct = true;
+                    }
+                }
+                    System.out.println(stringBuffer);
 
             }
+
+        }
 
             // TODO: 사용자로부터 게임 재게 여부 확인 (1 or 2)
 
             // TODO: 재게 여부에 따른 flag 변수 수정
-        }
-
-
     }
+
     public static int[] convertNumberToArray(int number) {
         /*
             [definition]
