@@ -77,20 +77,26 @@ public class BaseballGame {
 		return printResult(strike, ball);
 	}
 
-	private boolean printResult(int strike, int ball) {
+	private String makeHintSentence(int strike, int ball) {
+		String hintSentence = "";
 		if (ball != 0) {
-			System.out.print(String.format(BALL_HINT_MESSAGE, ball));
+			hintSentence += String.format(BALL_HINT_MESSAGE, ball);
 		}
 		if (ball != 0 && strike != 0) {
-			System.out.print(" ");
+			hintSentence += " ";
 		}
 		if (strike != 0) {
-			System.out.print(String.format(STRIKE_HINT_MESSAGE, strike));
+			hintSentence += String.format(STRIKE_HINT_MESSAGE, strike);
 		}
 		if (ball + strike == 0) {
-			System.out.print(OUT_HINT_MESSAGE);
+			hintSentence += OUT_HINT_MESSAGE;
 		}
-		System.out.println("");
+		return hintSentence;
+	}
+
+	private boolean printResult(int strike, int ball) {
+		String hintSentence = makeHintSentence(strike, ball);
+		System.out.println(hintSentence);
 		if (strike == 3) {
 			System.out.println(GAME_CLEAR_MESSAGE);
 			return true;
