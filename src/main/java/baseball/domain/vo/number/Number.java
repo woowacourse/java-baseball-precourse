@@ -26,11 +26,9 @@ public class Number {
     }
 
     public Number(String numberString) {
-        this(
-            charToInt(numberString.charAt(FIRST)),
+        this(charToInt(numberString.charAt(FIRST)),
             charToInt(numberString.charAt(SECOND)),
-            charToInt(numberString.charAt(THIRD))
-        );
+            charToInt(numberString.charAt(THIRD)));
     }
 
     public Number(Set<Integer> numberSet) {
