@@ -10,13 +10,17 @@ public class Player {
     public static List<Integer> getAnswerInput() {
         System.out.print("숫자를 입력해주세요 : ");
 
-        List<Integer> input = new ArrayList<>();
-        for (String s : Console.readLine().split("")) {
+        List<Integer> answer = new ArrayList<>();
+
+        String input = Console.readLine();
+        Validator.validateAnswerInput(input);
+
+        for (String s : input.split("")) {
             Integer parseInt = Integer.parseInt(s);
-            input.add(parseInt);
+            answer.add(parseInt);
         }
 
-        return input;
+        return answer;
     }
 
     public static boolean getGameRestartInput() {
