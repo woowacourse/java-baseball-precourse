@@ -114,11 +114,7 @@ public class Application {
         }
     }
 
-    public static void main(String[] args) {
-        try {
-            while (play()) {}
-        } catch (IllegalArgumentException e) {
-            System.exit(0);
-        }
+    public static void main(String[] args) throws IllegalArgumentException {
+        while (play()) {}
     }
 }
