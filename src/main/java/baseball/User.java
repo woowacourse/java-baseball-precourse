@@ -30,7 +30,7 @@ public class User {
         if (userInput.equals(MessageList.STOP)) {
             return false;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("A number other than 1 or 2 was entered.");
     }
 
     public void checkExceptionList(String inputNumbers) {
