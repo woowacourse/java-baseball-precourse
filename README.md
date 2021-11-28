@@ -39,10 +39,10 @@
   - [x] Ball 리스트 반환
   - [x] [예외] 숫자 리스트에 중복된 수가 있는지 검사
 - [ ] Hint
-  - [ ] 기준이 되는 Balls를 저장
-  - [ ] Balls가 들어오면 Map 자료구조로 STRIKE, BALL, NOTHING의 개수 초기화
-  - [ ] Ball과 위치값을 받아 STRIKE, BALL, NOTHING 인지 비교하여 개수 초기화
+  - [ ] 2개의 Balls를 비교해 Map 자료구조로 STRIKE, BALL, NOTHING의 몇개인지 저장
+  - [ ] Ball과 위치값을 받아 STRIKE, BALL, NOTHING 인지 비교하여 맞는 타입 반환
   - [ ] Map 자료구조를 반환
+  - [ ] STRIKE, BALL, NOTHING 의 개수를 각각 반환
 
 
 
