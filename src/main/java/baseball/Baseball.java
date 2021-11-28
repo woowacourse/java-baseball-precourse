@@ -1,13 +1,15 @@
 package baseball;
-import java.util.HashSet;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Baseball {
 	private static final int DIGIT = 3;
+	private static final String RESTART = "1";
+	private static final String EXIT = "2";
 	private Computer computer;
 	private User user;
 	
-	public Baseball () {
+	public Baseball() {
 		this.computer = new Computer();
 		this.user = new User();
 	}
@@ -15,27 +17,27 @@ public class Baseball {
 	public void playGame() {
 		String result = "";
 		String ranNum = computer.generateRanNum(DIGIT);
-		System.out.println(ranNum);
 		
 		while(true) {
 			System.out.print("숫자를 입력해주세요 : ");
-			String userNum = user.userNumber();
+			String userNum = user.toUserNumber();
 			int strike = countStrike(ranNum, userNum);
 			int ball = countBall(ranNum, userNum);
-			result = printResult(ball,strike);
+			result = printResult(ball, strike);
 			System.out.println(result);
 			if(strike == DIGIT) {
 				break;
 			}
 		}
 	}
-	public boolean restart() {
+	
+	public boolean isUserWantRestart() {
 		String select = Console.readLine();
 		
-		if(select.equals("1")) {
+		if(select.equals(RESTART)) {
 			return true;
 		}
-		if(select.equals("2")) {
+		if(select.equals(EXIT)) {
 			return false;
 		}
 		throw new IllegalArgumentException();
@@ -43,7 +45,7 @@ public class Baseball {
 	
 	private int countStrike(String ranNum, String userNum) {
 		int s = 0;
-		for(int i=0;i<DIGIT;i++) {
+		for(int i = 0 ;i < DIGIT; i++) {
 			if(ranNum.charAt(i) == userNum.charAt(i)) {
 				s++;
 			}
@@ -53,7 +55,7 @@ public class Baseball {
 	
 	private int countBall(String ranNum, String userNum) {
 		int b = 0;
-		for(int i=0;i<DIGIT;i++) {
+		for(int i = 0; i < DIGIT; i++) {
 			int idx = ranNum.indexOf(userNum.charAt(i));
 			if(idx > -1 && idx != i) {
 				b++;

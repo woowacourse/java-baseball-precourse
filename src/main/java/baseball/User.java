@@ -1,20 +1,19 @@
 package baseball;
 
 import java.util.HashSet;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
 	private static final int DIGIT = 3;
-	private static final String numRegex = "^[1-9]{3}$";
+	private static final String NUMBER_REGEX = "^[1-9]{3}$";
 	
-	public User () {
-		
-	}
+	public User() {}
 	
-	public String userNumber() {
+	public String toUserNumber() {
 		String num = Console.readLine();
 		
-		if(!num.matches(numRegex)) {
+		if(!num.matches(NUMBER_REGEX)) {
 			throw new IllegalArgumentException();
 		}
 		if(!hasSame(num)) {
@@ -26,10 +25,10 @@ public class User {
 	private boolean hasSame(String tar) {
 		HashSet<Character> set = new HashSet<>();
 		char [] charArr = tar.toCharArray();
-		for(int i=0;i<DIGIT;i++) {
+		for(int i = 0; i < DIGIT ; i++) {
 			set.add(charArr[i]);
 		}
-		if(set.size()==DIGIT) {
+		if(set.size() == DIGIT) {
 			return true;
 		}
 		return false;

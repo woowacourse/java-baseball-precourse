@@ -5,7 +5,7 @@ public class Application {
         Baseball baseball = new Baseball();
         while(true) {
         	baseball.playGame();
-        	if(!baseball.restart()) {
+        	if(!baseball.isUserWantRestart()) {
         		break;
         	}
         }
