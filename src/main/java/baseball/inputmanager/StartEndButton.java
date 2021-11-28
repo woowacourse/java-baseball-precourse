@@ -1,9 +1,9 @@
 package baseball.inputmanager;
 
-public class StartEndButton extends InputManger<Integer>{
+public class StartEndButton extends InputManger<Integer> {
     private static final int NUMBER_OF_DIGITS_OF_INPUT_NUMBERS = 1;
-    private static final int ASCII_VALUE_OF_START_NUMBER = '1';
-    private static final int ASCII_VALUE_OF_END_NUMBER = '2';
+    private static final int START = 1;
+    private static final int END = 2;
 
     @Override
     boolean meetNumberOfDigitsLimit(String input) {
@@ -12,12 +12,8 @@ public class StartEndButton extends InputManger<Integer>{
 
     @Override
     boolean meetRangeOfCharacterLimit(String input) {
-        for (Character c : input.toCharArray()) {
-            if (ASCII_VALUE_OF_END_NUMBER < c || c < ASCII_VALUE_OF_START_NUMBER) {
-                return false;
-            }
-        }
-        return true;
+        int integerInput = Integer.parseInt(input);
+        return (integerInput == START) || (integerInput == END);
     }
 
     @Override
