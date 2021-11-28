@@ -6,15 +6,20 @@ public class BaseballGame {
 	
 	private static final int BALL_CHECK_NUMBER = 3;
 	private static final int STRIKE_CHECK_NUMBER = 3;
-	boolean gameEnd = false;
+	boolean threeStrike = false;
+	boolean gameRetry = false;
 	
 	public BaseballGame(){
-		String computerNumber = BaseballGameUtils.makeThreeLengthRandomNumber();
-		System.out.println("컴퓨터넘버 : "+computerNumber);
-		while (!gameEnd) {
-			String userNumber = BaseballGameUtils.getNumberFromUser();
-			checkScore(computerNumber, userNumber);
+		while (!gameRetry) {
+			String computerNumber = BaseballGameUtils.makeThreeLengthRandomNumber();
+			System.out.println("컴퓨터넘버 : "+computerNumber);
+			threeStrike = false;
+			while (!threeStrike) {
+				String userNumber = BaseballGameUtils.getNumberFromUser();
+				checkScore(computerNumber, userNumber);
+			}
 		}
+		
 		
 	}
 	
@@ -27,16 +32,19 @@ public class BaseballGame {
 		if (countBalls + countStrikes == 0) {
 			System.out.println("낫싱");
 		}
-		if (countBalls != 0) {
-			System.out.print(countBalls+"볼");
+		if (countBalls != 0 && countStrikes != 0) {
+			System.out.print(countBalls+"볼 ");
+		}
+		if (countBalls != 0 && countStrikes == 0) {
+			System.out.println(countBalls+"볼");
 		}
 		if (countStrikes > 0 && countStrikes <= STRIKE_CHECK_NUMBER) {
 			System.out.println(countStrikes+"스트라이크");
 		}
 		if (countStrikes == STRIKE_CHECK_NUMBER) {
 			System.out.println(STRIKE_CHECK_NUMBER+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
-			gameEnd = true;
-			checkRetryGame();
+			threeStrike = true;
+			gameRetry = checkRetryGame();
 		}
 	}
 	
@@ -68,8 +76,8 @@ public class BaseballGame {
 	}
 	
 	private boolean checkRetryGame() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2룰 입력하세요.");
-		return BaseballGameUtils.getRetryOrNot(); //true 재시작 false 종료
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		return BaseballGameUtils.getGameEnd(); //false 재시작 true 종료
 	}
 
 }

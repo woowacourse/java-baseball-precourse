@@ -23,19 +23,19 @@ public class BaseballGameUtils {
 		return number;
 	}
 	
-	public static boolean getRetryOrNot() {
+	public static boolean getGameEnd() {
 		String number = Console.readLine();
 		if (!number.equals("1") && !number.equals("2")) {
 			throw new IllegalArgumentException("1 혹은 2 외의 숫자를 입력하였습니다.");
 		}
 		if (number.equals("1")) {
-			return true;
-		}
-		if (number.equals("2")) {
 			return false;
 		}
+		if (number.equals("2")) {
+			return true;
+		}
 		
-		return false;
+		return true;
 	}
 	
 	private static void validateUserNumber(String number) {
