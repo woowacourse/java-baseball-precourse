@@ -18,33 +18,37 @@
 ### 클래스 및 퍼블릭 인터페이스 설명
 1. Application : 어플리케이션 실행
 2. BaseBall
-  - 아는 것
-    - Computer : randomNumber 생성 및 볼 카운트 판단
-    - Player : 값을 입력하는 게임 참여자
-  - 하는것
-    - playGame() : 게임 시작
-    - decideNextGame() : 게임을 한판 더 할지 안할지 결정
+  - playGame() : 게임 시작(전체적 흐름)
+  - decideNextGame() : 게임을 한판 더 할지 안할지 결정
     
-4. Computer
-  - 아는 것
-    -randomNumberList : randomNumber를 저장하는 list
-  - 하는 것
-    - decideRandomNumber() : 1~9로 이루어진 3자리 수 생성
-    - canFinish(int predict) : 사용자가 예측한 수를 입력받아 Ballcount를 출력하고 끝낼수 있는지 없는지 판단  
+3. RandomNumberGenerator 
+  - generateRandomNumber() : 3자리 난수 생성 
+  
+4. Referee
+  - canFinish(int predict) : 사용자가 숫자를 모두 맞추었는지 판단  
+  - calculateBallCount(int randomNumber, int predict) : 난수와 예측값을 비교해서 Ballcount를 계산하는 메서드
     
-4. Player
-  - 하는 것 
-    - predictNumber() : 사용자가 예측한 입력값을 받고 validation을 거친 뒤 반환
-    - decideGoOrStop() : 사용자의 입력값을 받아 validation을 거친 뒤 REPEAT = 1 or STOP = 2 를 반환
+5. BallCount
+  - plusStrike, plusBall() 
+  - isStrikeOut() : 사용자가 3자리 숫자를 모두 맞추었는지 확인 메서드
+  - printCurrentBallCount() : 사용자에게 Ballcount를 출력하느 메서드
+ 
+6. PlayerInput : 사용자 입력 추상화
+  - PredictInput, DecideNextInput : PlayerInput 구체화 클래스 
+     - getPlayerInput() : 사용자가 예측한 입력값을 받고 validation을 거친 뒤 정수 값 반환
+     - abstract boolean isSatisfiedBy(CurrentState state) : 어플 상태에 따라 다른 입력값 받음
+     - abstract void printInputMessage() : 어플 상태에 따라 다른 메세지
+     - abstract void isValidInput(String userInput) : 사용자 입력에 따라 다른 validation 절차
 
-5. Validation - 예외발생 시 IllegalArgumentException 반환
-  - 하는 것
-    - isRightDigit(String input) : 입력값이 숫자인지 아닌지 판단
-    - isValidRange(int value) : 사용자가 3자리 숫자를 입력했는지 아닌지 판단
-    - containZero(int value) : 입력된 수에 0이 포함되어 있는지 아닌지 판단
-    - isPermittedInput(int value) : REPEAT = 1 or STOP = 2 로만 입력 되었는지 아닌지 판단
 
-6. SystemMessage : constant를 모아놓은 클래스
+
+7. Validation - 예외발생 시 IllegalArgumentException 반환
+  - isRightDigit(String input) : 입력값이 숫자인지 아닌지 판단
+  - isValidRange(int value) : 사용자가 3자리 숫자를 입력했는지 아닌지 판단
+  - containZero(int value) : 입력된 수에 0이 포함되어 있는지 아닌지 판단
+  - isPermittedInput(int value) : REPEAT = 1 or STOP = 2 로만 입력 되었는지 아닌지 판단
+
+6. SystemMessage : constant를 모아놓은 클래스 , Enum CurrentState : 어플 현재 상태
 
 ### 클래스 다이어그램
-<img width="519" alt="스크린샷 2021-11-26 오후 1 40 00" src="https://user-images.githubusercontent.com/68465557/143534159-4d23d428-ac43-429c-8a74-c16b6fc94020.png">
+<img width="1077" alt="스크린샷 2021-11-28 오후 10 17 19" src="https://user-images.githubusercontent.com/68465557/143770417-4b489fd5-ea30-4fb8-8b65-ecd56fe01e0f.png">
