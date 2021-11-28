@@ -2,12 +2,12 @@ package baseball;
 
 import java.util.List;
 
-public class Ball {
+public class Computer {
     private final NumberGenerator numberGenerator;
     private final NumberValidator numberValidator;
     private List<Integer> number;
 
-    public Ball(NumberGenerator numberGenerator, NumberValidator numberValidator) {
+    public Computer(NumberGenerator numberGenerator, NumberValidator numberValidator) {
         this.numberGenerator = numberGenerator;
         this.numberValidator = numberValidator;
     }

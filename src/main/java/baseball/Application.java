@@ -9,13 +9,13 @@ public class Application {
     public static void main(String[] args) throws IllegalArgumentException {
         //TODO: 숫자 야구 게임 구현
         NumberValidator validator = new ThreeDigitValidator();
-        Ball ball = new Ball(new ThreeDigitGenerator(), validator);
+        Computer computer = new Computer(new ThreeDigitGenerator(), validator);
         User user = new User();
         Checker checker = new GameChecker();
         int restart;
 
         do {
-            processGame(ball, user, checker, validator);
+            processGame(computer, user, checker, validator);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             String input = Console.readLine();
@@ -28,8 +28,8 @@ public class Application {
         } while(restart != 2);
     }
 
-    public static void processGame(Ball ball, User user, Checker checker, NumberValidator validator) {
-        ball.generateNumber();
+    public static void processGame(Computer computer, User user, Checker checker, NumberValidator validator) {
+        computer.generateNumber();
         do {
             System.out.print("숫자를 입력해주세요 : ");
             String inputString = Console.readLine();
@@ -38,8 +38,8 @@ public class Application {
             validateInput(validator, inputNumbers);
             user.setNumbers(inputNumbers);
 
-            int strikes = checker.checkStrike(ball.getNumber(), user.getNumbers());
-            int balls = checker.checkBall(ball.getNumber(), user.getNumbers());
+            int strikes = checker.checkStrike(computer.getNumber(), user.getNumbers());
+            int balls = checker.checkBall(computer.getNumber(), user.getNumbers());
             printResult(strikes, balls);
             if(strikes == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
