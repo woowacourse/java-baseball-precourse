@@ -39,7 +39,14 @@ public class GameManager {
     }
 
     public void run() {
+        initNumbers();
 
+        while(true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String line = Console.readLine();
+            ArrayList<Integer> numbersArray = parseToIntegerArray(line);
+
+        }
     }
 
     private void initNumbers() {
@@ -66,4 +73,6 @@ public class GameManager {
 
         return ret;
     }
+
+
 }
