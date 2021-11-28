@@ -10,13 +10,6 @@ public class Ball {
         this.numberValidator = numberValidator;
     }
 
-    public void generateNumber() {
-        number = numberGenerator.generateNumber();
-        while (!numberValidator.validateNumber(number)) {
-            number = numberGenerator.generateNumber();
-        }
-    }
-
     public NumberGenerator getNumberGenerator() {
         return numberGenerator;
     }
@@ -27,5 +20,12 @@ public class Ball {
 
     public int getNumber() {
         return number;
+    }
+
+    public void generateNumber() {
+        number = numberGenerator.generateNumber();
+        while (!numberValidator.validateNumber(number)) {
+            number = numberGenerator.generateNumber();
+        }
     }
 }
