@@ -1,9 +1,11 @@
 package baseball;
 
+import java.util.List;
+
 public class Ball {
     private final NumberGenerator numberGenerator;
     private final NumberValidator numberValidator;
-    private int number;
+    private List<Integer> number;
 
     public Ball(NumberGenerator numberGenerator, NumberValidator numberValidator) {
         this.numberGenerator = numberGenerator;
@@ -18,7 +20,7 @@ public class Ball {
         return numberValidator;
     }
 
-    public int getNumber() {
+    public List<Integer> getNumber() {
         return number;
     }
 
