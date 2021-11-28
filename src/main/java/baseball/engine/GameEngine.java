@@ -53,4 +53,26 @@ public class GameEngine {
         return results;
     }
 
+    private int[] judge(List<Integer> answer, List<Integer> userNumber) {
+        int[] result = new int[2];
+        for(int i = 0; i < GameData.NUM_OF_ANSWER; i++) {
+            if(checkStrike(answer.get(i), userNumber.get(i))) {
+                result[0]++;
+                continue;
+            } else if(checkBall(answer, userNumber.get(i))) {
+                result[1]++;
+            }
+        }
+
+        return result;
+    }
+
+    private boolean checkStrike(Integer answer, Integer userNumber) {
+        return answer == userNumber;
+    }
+
+    private boolean checkBall(List<Integer> answer, Integer userNumber) {
+        return answer.contains(userNumber);
+    }
+
 }
