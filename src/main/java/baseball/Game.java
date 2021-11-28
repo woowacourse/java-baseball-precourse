@@ -33,6 +33,14 @@ public class Game {
 	public Boolean decideWhetherRestart() {
 		Output.printRequestRestartOrFinish();
 		int input = Integer.parseInt(Console.readLine());
+		validateInputWhetherRestart(input);
 		return input == 1;
+	}
+
+	public void validateInputWhetherRestart(int input) {
+		if (input == 1 || input == 2) {
+			return;
+		}
+		throw new IllegalArgumentException();
 	}
 }
