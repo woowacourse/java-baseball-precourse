@@ -60,8 +60,13 @@ public class User {
 	}
 
 	public boolean checkSize(String numberStr) {
+		if (numberStr.length() != ANSWER_SIZE) {
+			return false;
+		} else {
+			return true;
+		}
 	}
-	
+
 	public boolean checkNumber(char charIdxNum) {
 	}
 
