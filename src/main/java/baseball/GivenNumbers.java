@@ -5,22 +5,23 @@ import java.util.Map;
 import java.util.Set;
 
 public class GivenNumbers {
-    private final String SAME_POSITION_SAME_NUMBER = "STRIKE";
-    private final String DIFFERENT_POSITION_SAME_NUMBER = "BALL";
+    private static final String SAME_POSITION_SAME_NUMBER = "STRIKE";
+    private static final String DIFFERENT_POSITION_SAME_NUMBER = "BALL";
+    private static final int NUMBER_OF_DIGITS = 3;
     public final Set<Integer> givenNumbersSet;
-    public final int[] givenNumbersArray;
+    public final Integer[] givenNumbersArray;
 
     public GivenNumbers(Set<Integer> givenNumbersSet) {
         this.givenNumbersSet = givenNumbersSet;
-        givenNumbersArray = toArray();
+        givenNumbersArray = givenNumbersSet.toArray(new Integer[NUMBER_OF_DIGITS]);
     }
 
-    public Map<String, Integer> operate(int[] inputNumber) {
-        int strike = 0;
-        int ball = 0;
+    public Map<String, Integer> operate(Integer[] inputNumber) {
+        Integer strike = 0;
+        Integer ball = 0;
         for (int i = 0; i < inputNumber.length; i++) {
-            int number = inputNumber[i];
-            if (number == givenNumbersArray[i]) {
+            Integer number = inputNumber[i];
+            if (number.equals(givenNumbersArray[i])) {
                 strike++;
                 continue;
             }
@@ -32,9 +33,5 @@ public class GivenNumbers {
         result.put(SAME_POSITION_SAME_NUMBER, strike);
         result.put(DIFFERENT_POSITION_SAME_NUMBER, ball);
         return result;
-    }
-
-    private int[] toArray() {
-        return givenNumbersSet.stream().mapToInt(Integer::intValue).toArray();
     }
 }

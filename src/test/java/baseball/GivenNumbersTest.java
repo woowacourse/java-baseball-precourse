@@ -18,7 +18,7 @@ class GivenNumbersTest {
     @Test
     void 정해진_수와_입력값을_비교해서_결과를_출력한다() {
         Set<Integer> generatedNumbers = Stream.of(1, 2, 3).collect(Collectors.toCollection(LinkedHashSet::new));
-        int[] inputNumber = {1, 3, 5};
+        Integer[] inputNumber = {1, 3, 5};
 
         Map<String, Integer> result = new HashMap<>();
         result.put(SAME_POSITION_SAME_NUMBER, 1);

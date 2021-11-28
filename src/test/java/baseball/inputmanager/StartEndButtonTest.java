@@ -1,4 +1,4 @@
-package baseball;
+package baseball.inputmanager;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -34,4 +34,5 @@ class StartEndButtonTest {
     private void setInput(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
     }
+
 }
