@@ -3,7 +3,7 @@
 
 ##baseball 패키지 클래스 계층
 
-```aidl
+```
 Application
 
 constants
