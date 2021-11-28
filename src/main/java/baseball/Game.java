@@ -44,8 +44,7 @@ public class Game {
 		if (playerInput.equals("2")) {
 			return false;
 		}
-		//need: 사용자 입력 예외처리 작업
-		return false;
+		throw new IllegalArgumentException();
 
 	}
 

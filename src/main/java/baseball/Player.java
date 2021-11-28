@@ -25,6 +25,22 @@ public class Player {
 
 	//need: 사용자 입력 예외 처리
 	public void checkException(int[] playerNumber) {
+		if (playerNumber.length != 3) {
+			throw new IllegalArgumentException();
+		}
+
+		if (isStartWithZero(playerNumber)) {
+			throw new IllegalArgumentException();
+		}
 
 	}
+
+
+	public boolean isStartWithZero(int[] number) {
+		if (number[0] == 0) {
+			return true;
+		}
+		return false;
+	}
+
 }
