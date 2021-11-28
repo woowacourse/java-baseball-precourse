@@ -5,9 +5,8 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import baseball.exception.BaseballException;
+import baseball.exception.NotPickedRefereeNumbers;
 import baseball.resource.GameRule;
-import baseball.resource.message.ErrorMessage;
 
 public class Referee {
 
@@ -48,7 +47,7 @@ public class Referee {
 
     private void validateRefereeNumbersPicked() {
         if (targetNumbers == null) {
-            throw new BaseballException(ErrorMessage.NOT_PICKED_REFEREE_NUMBERS);
+            throw new NotPickedRefereeNumbers();
         }
     }
 
