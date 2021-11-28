@@ -1,7 +1,7 @@
-#구현 기능 목록
+# 구현 기능 목록
 <br>
 
-##baseball 패키지 클래스 계층
+## baseball 패키지 클래스 계층
 
 ```
 Application
