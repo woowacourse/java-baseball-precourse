@@ -18,6 +18,14 @@ public class Game {
 	}
 
 	public int countStrike() {
+		int cnt_strike = 0;
+
+		for (int i = 0; i < 3; i++) {
+			if (com.answer[i] == user.number[i]) {
+				cnt_strike++;
+			}
+		}
+		return cnt_strike;
 	}
 
 	public int countBall() {
