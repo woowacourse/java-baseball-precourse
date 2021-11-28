@@ -14,4 +14,13 @@ public class Ball {
 			throw new IllegalArgumentException("Ball 은 0일 수 없습니다");
 		}
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == null || !o.getClass().equals(Ball.class)) {
+			return false;
+		}
+		Ball other = (Ball)o;
+		return this.number == other.number;
+	}
 }
