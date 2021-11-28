@@ -40,7 +40,7 @@
   - [x] [예외] 숫자 리스트에 중복된 수가 있는지 검사
 - [ ] Hint
   - [ ] 2개의 Balls를 비교해 Map 자료구조로 STRIKE, BALL, NOTHING의 몇개인지 저장
-  - [ ] Ball과 위치값을 받아 STRIKE, BALL, NOTHING 인지 비교하여 맞는 타입 반환
+  - [x] Ball, 위치 값을 받아 볼의 상태 반환
   - [ ] Map 자료구조를 반환
   - [ ] STRIKE, BALL, NOTHING 의 개수를 각각 반환
 
