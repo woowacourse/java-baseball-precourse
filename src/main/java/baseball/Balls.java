@@ -43,13 +43,6 @@ public class Balls {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Balls{" +
-            "balls=" + balls +
-            '}';
-    }
-
     public CompareResult compare(Balls playerBalls) {
         CompareResult compareResult = new CompareResult();
 

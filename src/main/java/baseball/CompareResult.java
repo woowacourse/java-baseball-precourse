@@ -21,8 +21,8 @@ public class CompareResult {
         return strike == 0 && ball > 0;
     }
 
-    public boolean onlyStrikesNotFinished() {
-        return strike > 0 && strike < 3 && ball == 0;
+    public boolean onlyStrikes() {
+        return strike > 0 && ball == 0;
     }
 
     public int getBall() {

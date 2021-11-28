@@ -18,7 +18,6 @@ public class Computer {
                 balls.add(newBall);
             }
         }
-        System.out.println(balls.toString());
         return balls;
     }
 
@@ -37,7 +36,7 @@ public class Computer {
             System.out.printf("%d볼\n", compareResult.getBall());
             return;
         }
-        if (compareResult.onlyStrikesNotFinished()) {
+        if (compareResult.onlyStrikes()) {
             System.out.printf("%d스트라이크\n", compareResult.getStrike());
             return;
         }

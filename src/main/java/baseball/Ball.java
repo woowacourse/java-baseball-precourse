@@ -41,11 +41,4 @@ public class Ball {
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "Ball{" +
-            "number=" + number +
-            '}';
-    }
 }

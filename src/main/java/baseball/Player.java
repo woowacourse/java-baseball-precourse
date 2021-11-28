@@ -11,7 +11,6 @@ public class Player {
     public Balls makeBalls() {
         String input = getInput();
         balls.createBalls(input);
-        System.out.println(balls);
         return balls;
     }
 
