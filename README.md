@@ -144,6 +144,6 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - [x] 잘못된 값을 입력받을 경우 `IllegalArgumentException` 예외를 발생하는 기능
   - [x] 게임 진행 중 사용자로부터 입력받은 수가 3자리가 아닐 경우
   - [x] 게임을 종료 후 계속할지 물었을 때 1이나 2가 아닌 다른 문자를 입력받았을 경우
-  - [] 입력된 값이 숫자가 아닌 경우
+  - [x] 입력된 값이 숫자가 아닌 경우
 - [x] 스트라이크 수가 3개인지 판별하는 기능 구현
 - [x] 게임을 그만하고 프로그램을 종료할지 판별하는 기능 구현
