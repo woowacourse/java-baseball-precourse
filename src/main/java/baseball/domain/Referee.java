@@ -51,18 +51,4 @@ public class Referee {
         }
     }
 
-
-    // TODO: 추후 삭제 필요 (테스트코드를 위한 Getter 메소드)
-    public List<Integer> getTargetNumbers() {
-        return this.targetNumbers;
-    }
-
-    public void setTargetNumbers(List<Integer> numbers) {
-        this.targetNumbers = numbers;
-    }
-
-    public void setBooleanBits(boolean[] booleanBits) {
-        this.booleanBits = booleanBits;
-    }
-
 }
