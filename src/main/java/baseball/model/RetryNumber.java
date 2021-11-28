@@ -16,10 +16,6 @@ public class RetryNumber {
         return retryNumber;
     }
 
-    public void setRetryNumber(char retryNumber) {
-        this.retryNumber = retryNumber;
-    }
-
     public static void isCorrectRetryNumber(char retryNumber) throws IllegalArgumentException {
         if (retryNumber != Constant.GAME_RETRY_NUMBER && retryNumber != Constant.PROGRAM_END_NUMBER) {
             throw new IllegalArgumentException();
