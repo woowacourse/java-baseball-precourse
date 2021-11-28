@@ -53,15 +53,15 @@ public class UserInputController {
     // check each number 1~9
     private static void validateNumbers(String input) {
         for (int i = 0; i < RANDOM_NUMBER_LENGTHS; i++) {
-            int ascii = input.charAt(i);
-            if (ascii < ASCII_ONE || ascii > ASCII_NINE) {
+            int asciiCodeOfChar = input.charAt(i);
+            if (asciiCodeOfChar < ASCII_ONE || asciiCodeOfChar > ASCII_NINE) {
                 throw new IllegalArgumentException("input should be integers in range (1~9)");
             }
         }
     }
 
     private static void validateDuplicate(String input) {
-        boolean duplicated = input.charAt(0) == input.charAt(1);
+        boolean duplicated = (input.charAt(0) == input.charAt(1));
         if (input.charAt(1) == input.charAt(2)) {
             duplicated = true;
         }
