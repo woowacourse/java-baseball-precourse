@@ -36,19 +36,11 @@ public class BaseballGame {
             throw new IllegalArgumentException(NEW_GAME_INPUT_ERR_MSG);
         }
 
-        if (input == 1) {
-            return true;
-        }
-
-        return false;
+        return input == 1;
     }
 
     private boolean shouldContinueGame() {
-        if (computerNumber.getGameNumber().equals(playerNumber.getGameNumber())) {
-            return false;
-        }
-
-        return true;
+        return !computerNumber.getGameNumber().equals(playerNumber.getGameNumber());
     }
 
     private void createPlayerNumber() {
