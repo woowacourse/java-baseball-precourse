@@ -1,6 +1,7 @@
-package baseball;
+package config;
 
 public class Config {
+
 	private final int BEGIN_NUM = 1;
 	private final int END_NUM = 9;
 	private final int NUM_LENGTH = 3;

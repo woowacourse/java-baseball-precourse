@@ -2,10 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import config.Config;
 
 public class Game {
-	private static Player player = new Player();
+
 	private static int[] randomAns;
+	private Player player = new Player();
 	private Config config = new Config();
 
 	public void play() {
@@ -13,9 +15,6 @@ public class Game {
 
 		while (start) {
 			randomAns = createTargetNum();
-
-			//TODO: 최종 제출 때 빼기
-			System.out.println(randomAns[0] + "" + randomAns[1] + "" + randomAns[2]);
 
 			boolean ansCheck = false;
 			while (!ansCheck) {

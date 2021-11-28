@@ -9,7 +9,6 @@ public class Player {
 	public void init(int[] playerInput) {
 		this.strike = 0;
 		this.ball = 0;
-
 		setPlayerInput(playerInput);
 	}
 
