@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.HashSet;
+
 public class InputValidator {
 
     public boolean isNumber(String number) {
@@ -18,6 +20,17 @@ public class InputValidator {
             if('0' == number.charAt(i)) {
                 return false;
             }
+        }
+        return true;
+    }
+
+    public boolean checkDistinct(String number) {
+        HashSet<Character> hashSet = new HashSet<>();
+        for(int i=0; i<number.length(); i++) {
+            hashSet.add(number.charAt(i));
+        }
+        if(hashSet.size()!=3) {
+            return false;
         }
         return true;
     }

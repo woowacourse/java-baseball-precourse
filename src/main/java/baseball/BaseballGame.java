@@ -49,7 +49,7 @@ public class BaseballGame {
     public void checkNumberException(String number) {
         InputValidator inputValidator=new InputValidator();
         if(!inputValidator.isNumber(number) || !inputValidator.checkLength(number,computerNumber.length())
-                || !inputValidator.checkNumberScope(number)) {
+                || !inputValidator.checkNumberScope(number) || !inputValidator.checkDistinct(number)) {
             throw new IllegalArgumentException();
         }
     }
