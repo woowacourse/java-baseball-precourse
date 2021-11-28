@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import baseball.domain.number.BaseBallNumbers;
+import baseball.exception.computer.ComputerEndStateRefreshException;
 import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -49,9 +50,9 @@ class ComputerTest {
             Computer computer = Computer.from(BaseBallNumbers.createByIntegerNumbers(Arrays.asList(1, 2, 3)), GameState.END);
 
             // when & then
-            assertThatExceptionOfType(RuntimeException.class)
+            assertThatExceptionOfType(ComputerEndStateRefreshException.class)
                 .isThrownBy(() -> computer.refresh())
-                .withMessageMatching("종료된 게임은 리프레시할 수 없다.");
+                .withMessageMatching("종료된 게임은 리프레시할 수 없습니다.");
         }
 
         @Test

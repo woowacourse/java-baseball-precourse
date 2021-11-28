@@ -4,6 +4,7 @@ import static baseball.domain.number.BaseBallNumbers.BASEBALL_NUMBERS_LIMIT_SIZE
 
 import baseball.domain.number.BaseBallNumber;
 import baseball.domain.number.BaseBallNumbers;
+import baseball.exception.computer.ComputerEndStateRefreshException;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -49,7 +50,7 @@ public class Computer {
 
     public Computer refresh() {
         if (gameState.isEndGame()) {
-            throw new RuntimeException("종료된 게임은 리프레시할 수 없다.");
+            throw new ComputerEndStateRefreshException();
         }
         if (gameState.isRestartGame()) {
             return init();
