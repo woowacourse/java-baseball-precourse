@@ -25,8 +25,8 @@ public class Game {
     static final String VICTORY_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    private BallInputNumber ballInputNumber;
-    private ComputerNumber computerNumber;
+    private final BallInputNumber ballInputNumber;
+    private final ComputerNumber computerNumber;
 
     private List<Integer> inputNumberList;
     private List<Integer> answerNumberList;
