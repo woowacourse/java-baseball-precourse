@@ -79,7 +79,7 @@ public class Baseball {
         }
 
         if (strike > 0) {
-            message = strike + "스트라이크";
+            message = message + strike + "스트라이크";
         }
 
         return message;
