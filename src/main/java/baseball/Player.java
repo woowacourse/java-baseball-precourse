@@ -28,11 +28,6 @@ public class Player {
 				throw new IllegalArgumentException("입력은 반드시 숫자여야 합니다.");
 			}
 		}
-		for (int i = 0; i < input.length(); i++) {
-			if (input.charAt(i) == '0') {
-				throw new IllegalArgumentException("숫자는 0일 수 없습니다.");
-			}
-		}
 		Set<Character> set = new HashSet<>();
 		for (int i = 0; i < input.length(); i++) {
 			set.add(input.charAt(i));

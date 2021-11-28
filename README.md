@@ -8,8 +8,7 @@ Computer, Player, BaseballGame
 
 > BaseballGame
 
-- [x] 게임 흐름 관리
-   - 게임 시작
+- [x] 게임 시작 : powerOn()
    - 사용자 입력받기
    - 컴퓨터에게 입력 전달 및 결과받아서
    - 게임이 끝나지 않았다면 반복 끝났다면 사용자에게 재시작 여부 반환받음
