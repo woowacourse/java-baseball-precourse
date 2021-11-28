@@ -4,7 +4,6 @@ public class GuideMessage {
 
 	public static final String ENTER_NUM_MESSAGE = "숫자를 입력해주세요 : ";
 	public static final String NOTHING_MESSAGE = "낫싱";
-	public static final String ERR_NOTHING_METHOD_PARAM = "낫싱 출력에 잘못된 인수가 전달되었습니다";
 	public static final String BALL_MESSAGE = "볼";
 	public static final String ERR_BALL_ONLY_METHOD_PARAM = "볼만 출력에 잘못된 인수가 전달되었습니다";
 	public static final String STRIKE_MESSAGE = "스트라이크";
@@ -15,21 +14,13 @@ public class GuideMessage {
 
 	public static String wrongNumberMessage(int ball, int strike) {
 		if (ball == 0 && strike == 0) {
-			return nothingMessage(ball, strike);
+			return NOTHING_MESSAGE;
 		} else if (strike == 0) {
 			return ballOnlyMessage(ball, strike);
 		} else if (ball == 0) {
 			return strikeOnlyMessage(ball, strike);
 		} else {
 			return ballAndStrikeMessage(ball, strike);
-		}
-	}
-
-	public static String nothingMessage(int ball, int strike) {
-		if (ball == 0 && strike == 0) {
-			return NOTHING_MESSAGE;
-		} else {
-			throw new IllegalArgumentException(ERR_NOTHING_METHOD_PARAM);
 		}
 	}
 

@@ -14,15 +14,6 @@ public class GuideMessageTest {
 	}
 
 	@Test
-	public void 낫싱_예외메세지() {
-		Exception ex1 = assertThrows(IllegalArgumentException.class, () -> nothingMessage(1, 0));
-		Exception ex2 = assertThrows(IllegalArgumentException.class, () -> nothingMessage(0, 2));
-
-		assertThat(ERR_NOTHING_METHOD_PARAM).isEqualTo(ex1.getMessage());
-		assertThat(ERR_NOTHING_METHOD_PARAM).isEqualTo(ex2.getMessage());
-	}
-
-	@Test
 	public void 볼_메세지() {
 		assertThat("1" + BALL_MESSAGE).isEqualTo(wrongNumberMessage(1, 0));
 		assertThat("2" + BALL_MESSAGE).isEqualTo(wrongNumberMessage(2, 0));

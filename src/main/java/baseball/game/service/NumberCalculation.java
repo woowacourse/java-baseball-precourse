@@ -23,7 +23,7 @@ public class NumberCalculation {
 		countStrikeAndBall(answerArr, inputNumberArr, numSet);
 
 		if (strike.get() == 3) {
-			return GuideMessage.WIN_GAME_MESSAGE;
+			return GuideMessage.correctNumberMessage(ball.get(), strike.get());
 		}
 		return GuideMessage.wrongNumberMessage(ball.get(), strike.get());
 	}
