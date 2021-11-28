@@ -57,4 +57,8 @@ public class Computer {
         }
         return this;
     }
+
+    public boolean isFinishedGame() {
+        return gameState.isEndGame();
+    }
 }
