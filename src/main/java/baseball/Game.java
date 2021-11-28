@@ -23,7 +23,7 @@ public class Game {
             userNumbers = User.numberGenerator();
             strikeCount = Judgement.Judgement(computerNumbers, userNumbers);
             if (strikeCount == 3){
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                System.out.println(Message.CHOICE_QUIT_RESTART);
                 retryOrExitFlag = Integer.parseInt(Console.readLine());
             }
         }
