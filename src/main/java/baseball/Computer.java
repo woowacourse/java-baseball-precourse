@@ -10,6 +10,21 @@ public class Computer {
 	public static final int RESTART_YES = 1;
 	public static final int RESTART_NO = 2;
 
+	private BaseballGame baseballGame = new BaseballGame();
+
+	public void startNewGame() {
+		baseballGame.setNewTarget();
+
+		while (!baseballGame.isGuessEqualTarget()) {
+			String playerGuessInput = Player.getPlayerInput();
+			validateGuessInput(playerGuessInput);
+			List<Integer> guessNums = parseGuessInput(playerGuessInput);
+			baseballGame.judgeAndShowHint(guessNums);
+		}
+
+		notifyGameEnd();
+	}
+
 	private void validateGuessInput(String input) {
 		if (!InputValidator.isRightGuessInput(input)) {
 			throw new IllegalArgumentException();
@@ -28,5 +43,9 @@ public class Computer {
 			guessNums.add(new Integer(guessInput.substring(i, i+1)));
 		}
 		return guessNums;
+	}
+
+	private void notifyGameEnd() {
+		System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", TARGET_SIZE);
 	}
 }
