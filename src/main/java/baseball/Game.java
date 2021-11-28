@@ -25,6 +25,7 @@ public class Game {
             if (strikeCount == 3){
                 System.out.println(Message.CHOICE_QUIT_RESTART);
                 retryOrExitFlag = Integer.parseInt(Console.readLine());
+                Validation.isRightChoose(retryOrExitFlag);
             }
         }
     }
