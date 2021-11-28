@@ -10,7 +10,8 @@ public class RandomNumbers {
 	private static final int END_INCLUSIVE = 9;
 	private static final int NUM_OF_DIGIT = 3;
 
-	public RandomNumbers(){};
+	public RandomNumbers() {
+	}
 
 	public static List<Integer> getRandomNumbers() {
 		List<Integer> numbers = new ArrayList<>();
@@ -24,7 +25,7 @@ public class RandomNumbers {
 		Integer number;
 		do {
 			number = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
-		}while(numbers.contains(number));
+		} while (numbers.contains(number));
 
 		return number;
 	}

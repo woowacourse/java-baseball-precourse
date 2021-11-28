@@ -29,7 +29,7 @@ public class BaseBallGame {
 		printResult = new PrintResult();
 	}
 
-	public static boolean playGame(){
+	public static boolean playGame() {
 		int strikeCount = 0;
 		int ballCount = 0;
 		do {
@@ -37,10 +37,10 @@ public class BaseBallGame {
 			playerNumbers = playerInput.getInput();
 			strikeCount = baseBallReferee.getStrikeCount(randomNumbers, playerNumbers);
 			ballCount = baseBallReferee.getBallCount(randomNumbers, playerNumbers);
-		} while(resultOfGame(strikeCount, ballCount));
+		} while (resultOfGame(strikeCount, ballCount));
 
 		String decisionOfPlayer = playerInput.getIsContinue();
-		if(decisionOfPlayer.equals(GAME_FINISH)){
+		if (decisionOfPlayer.equals(GAME_FINISH)) {
 			return false;
 		}
 
@@ -68,16 +68,5 @@ public class BaseBallGame {
 		printResult.printBallAndStrike(strikeCount, ballCount);
 		return true;
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 }

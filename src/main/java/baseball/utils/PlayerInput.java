@@ -15,7 +15,7 @@ public class PlayerInput {
 	private final String GAME_CONTINUE = "1";
 	private final String GAME_FINISH = "2";
 
-	public PlayerInput(int numOfDigit){
+	public PlayerInput(int numOfDigit) {
 		NUM_OF_DIGIT = numOfDigit;
 	}
 
@@ -32,10 +32,10 @@ public class PlayerInput {
 		return inputNumbers;
 	}
 
-	public String getIsContinue(){
+	public String getIsContinue() {
 		System.out.println(GameMessage.CONTINUE_OR_FINISH);
 		String readLine = Console.readLine();
-		if(!readLine.equals(GAME_CONTINUE) && !readLine.equals(GAME_FINISH)){
+		if (!readLine.equals(GAME_CONTINUE) && !readLine.equals(GAME_FINISH)) {
 			throw new IllegalArgumentException();
 		}
 
@@ -44,7 +44,7 @@ public class PlayerInput {
 
 	private boolean isValidInput(String readLine) {
 		int readLineLength = readLine.length();
-		if(readLineLength != NUM_OF_DIGIT){
+		if (readLineLength != NUM_OF_DIGIT) {
 			return false;
 		}
 		for (int i = 0; i < NUM_OF_DIGIT; i++) {

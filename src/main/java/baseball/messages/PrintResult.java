@@ -2,7 +2,7 @@ package baseball.messages;
 
 public class PrintResult {
 
-	public void printEndGame(){
+	public void printEndGame() {
 		System.out.println(GameMessage.THREE_STRIKE);
 		System.out.println(GameMessage.FINISH_GAME);
 	}
@@ -21,7 +21,7 @@ public class PrintResult {
 		System.out.println(strikeCntStr + GameMessage.STRIKE);
 	}
 
-	public void printBallAndStrike(int strikeCount, int ballCount){
+	public void printBallAndStrike(int strikeCount, int ballCount) {
 		String strikeCntStr = Integer.toString(strikeCount);
 		String ballCntStr = Integer.toString(ballCount);
 		System.out.println(ballCntStr + GameMessage.BALL + " " +

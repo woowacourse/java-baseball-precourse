@@ -6,7 +6,7 @@ public class BaseBallReferee {
 
 	private final int NUM_OF_DIGIT;
 
-	public BaseBallReferee(int numOfDigit){
+	public BaseBallReferee(int numOfDigit) {
 		NUM_OF_DIGIT = numOfDigit;
 	}
 
