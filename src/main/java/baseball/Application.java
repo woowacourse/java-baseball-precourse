@@ -4,26 +4,26 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-    static int EXIT = 2;
-    static int REPLAY = 1;
+    static int ANSWER_EXIT = 2;
+    static int ANSWER_REPLAY = 1;
     static int ANSWER_ERROR = 0;
 
     public static void main(String[] args) {
         while (true) {
             boolean gameResult = PlayGame();
-            OccurError(gameResult==GAME_ERROR);
+            OccurError(gameResult == GAME_ERROR);
 
             int replayOrExit = DecideReplayOrExit();
-            OccurError(replayOrExit==ANSWER_ERROR);
+            OccurError(replayOrExit == ANSWER_ERROR);
 
-            if(replayOrExit==EXIT){
+            if (replayOrExit == ANSWER_EXIT) {
                 break;
             }
         }
     }
 
-    static void OccurError(boolean IsError){
-        if(IsError){
+    static void OccurError(boolean isError) {
+        if (isError) {
             throw new IllegalArgumentException();
         }
     }
@@ -58,10 +58,10 @@ public class Application {
     static String SelectRandomNumbers() {
         boolean[] existence = new boolean[NUMBER_COUNT];
         int[] randomNumber = new int[NUMBER_SIZE];
-        int randomNumberInt = 0;
 
         for (int i = 0; i < NUMBER_SIZE; ++i) {
             randomNumber[i] = pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+
             if (existence[randomNumber[i] - MIN_NUMBER]) {
                 i--;
             } else {
@@ -69,12 +69,16 @@ public class Application {
             }
         }
 
-        for (int i = 0; i < NUMBER_SIZE; ++i) {
-            randomNumberInt *= 10;
-            randomNumberInt += randomNumber[i];
+        return ToKeyNumbers(randomNumber);
+    }
+
+    static String ToKeyNumbers(int[] randomNumber){
+        String keyNumbers="";
+
+        for(int i=0;i<NUMBER_SIZE;++i){
+            keyNumbers+=Integer.toString(randomNumber[i]);
         }
 
-        String keyNumbers = Integer.toString(randomNumberInt);
         return keyNumbers;
     }
 
@@ -152,16 +156,16 @@ public class Application {
         return WRONG_INPUT;
     }
 
-    static String ANSWER_REPLAY = "1";
-    static String ANSWER_EXIT = "2";
+    static String REPLAY = "1";
+    static String EXIT = "2";
 
     static int DecideReplayOrExit() {
         String replayAnswer = GetReplayAnswer();
 
-        if (replayAnswer.equals(ANSWER_REPLAY)) {
-            return REPLAY;
-        } else if (replayAnswer.equals(ANSWER_EXIT)) {
-            return EXIT;
+        if (replayAnswer.equals(REPLAY)) {
+            return ANSWER_REPLAY;
+        } else if (replayAnswer.equals(EXIT)) {
+            return ANSWER_EXIT;
         }
         return ANSWER_ERROR;
     }
