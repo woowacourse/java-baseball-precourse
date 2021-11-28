@@ -1,9 +1,9 @@
 package constant;
 
 public class SystemMessage {
+    public static final int STRIKE_VALUE = 3;
     public static final int REPEAT = 1;
     public static final int STOP = 2;
-    public static final int FIRST_VALUE = 0;
 
     public static final int ZERO = 0;
     public static final int START_INCLUSIVE = 100;

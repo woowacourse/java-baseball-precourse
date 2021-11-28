@@ -6,7 +6,11 @@ public class Application {
         //TODO: 숫자 야구 게임 구현
         BaseBall baseBall;
         do {
-            baseBall = new BaseBall();
+            baseBall = new BaseBall(
+                    new Referee(),
+                    new Player(),
+                    new RandomNumberGenerator()
+            );
             baseBall.playGame();
         } while (baseBall.decideNextGame());
     }

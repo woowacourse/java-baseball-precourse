@@ -4,20 +4,23 @@ import constant.SystemMessage;
 
 
 public class BaseBall {
-    private Computer computer;
+    private Referee referee;
     private Player player;
+    private RandomNumberGenerator randomNumberGenerator;
 
-    public BaseBall() {
-        computer = new Computer();
-        player = new Player();
+    public BaseBall(Referee computer, Player player, RandomNumberGenerator randomNumberGenerator) {
+        this.referee = computer;
+        this.player = player;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     public void playGame() {
-        computer.decideRandomNumber();
-        int predict = SystemMessage.FIRST_VALUE;
+        int randomNumber = randomNumberGenerator.generateRandomNumber();
+        int predict = SystemMessage.ZERO;
         do {
             predict = player.predictNumber();
-        } while (!computer.canFinish(predict));
+            referee.calculateBallCount(randomNumber, predict);
+        } while (!referee.canFinish());
         System.out.printf("%s\n", SystemMessage.END_GAME_MESSAGE);
     }
 
