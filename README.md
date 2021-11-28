@@ -37,7 +37,7 @@ Computer, Player, BaseballGame
 
 > GameOutput
 
-- [ ] 게임 힌트 출력 : printHint(hint)
+- [x] 게임 힌트 출력 : printHint(hint)
    - 볼 -> 스트라이크 순서
    - 없는 경우 낫싱 출력
    - 3스트라이크시 게임 종료 출력

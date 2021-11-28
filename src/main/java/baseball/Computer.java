@@ -26,7 +26,6 @@ public class Computer {
 			answerBalls += random;
 		}
 
-		System.out.println("answerBalls = " + answerBalls);
 		this.answerBalls = answerBalls;
 	}
 
