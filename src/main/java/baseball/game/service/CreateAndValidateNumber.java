@@ -1,17 +1,18 @@
 package baseball.game.service;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class CreateAndValidateNumber {
 
 	private static boolean validateCreateNumber(int number) {
 		String entireNumber = String.valueOf(number);
-		char firstNumber = entireNumber.charAt(0);
-		char secondNumber = entireNumber.charAt(1);
-		char thirdNumber = entireNumber.charAt(2);
-		if (firstNumber == '0' || secondNumber == '0' || thirdNumber == '0') {
-			return false;
-		} else if (firstNumber == secondNumber || secondNumber == thirdNumber || thirdNumber == firstNumber) {
+		Set<String> entireSet = new HashSet<>(Arrays.asList(entireNumber.split("")));
+
+		if (entireNumber.length() != 3 || entireSet.size() != 3) {
 			return false;
 		}
 		return true;
