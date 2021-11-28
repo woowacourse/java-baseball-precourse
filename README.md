@@ -3,7 +3,7 @@
 ## 📃 To do
 
 - [ ] GameManager
-  - [ ] init GameManager
+  - [x] init GameManager
   - [ ] GameManager.run
 - [x] Result
   - [x] Result enum
