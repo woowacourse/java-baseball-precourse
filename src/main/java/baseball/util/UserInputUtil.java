@@ -36,6 +36,12 @@ public class UserInputUtil {
             userNumber[i] = toInteger(stringArray[i]);
         }
 
+        for(int i = 0; i < 3; i++) {
+            if(userNumber[i] == 0) {
+                throw new IllegalArgumentException();
+            }
+        }
+
         return userNumber;
     }
 
