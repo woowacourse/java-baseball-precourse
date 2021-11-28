@@ -1,18 +1,35 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Random;
 
 public class Application {
     public static void main(String[] args) {
-        int flag = 1;
+        boolean flag = true;
 //        flag 가 2가 되면 while 문이 종료되면서 게임 종료
-        while (flag == 1) {
+        while (flag) {
             int[] randomNum = randomNum();
+
+            flag = getFlag();
         }
     }
-//    랜덤으로 숫자 3개를 생성하는 매소드
+
+    private static boolean getFlag() {
+        boolean flag;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String reStart = Console.readLine();
+        if (reStart.equals("1")) {
+            flag = true;
+        }
+        else {
+            flag = false;
+        }
+        return flag;
+    }
+
+    //    랜덤으로 숫자 3개를 생성하는 매소드
     private static int[] randomNum() {
         int first = Randoms.pickNumberInRange(1, 9);
         int second;
