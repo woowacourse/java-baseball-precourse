@@ -12,6 +12,18 @@ public class Application {
         int ball = 0;
         int strike = 0;
 
+        for (int i = 0; i < 3; i++) {
+
+            int inputNumber = inputNumbers.charAt(i) - '0';
+
+            if (numbers[i] == inputNumber) {
+                strike++;
+            } else if (Arrays.stream(numbers).anyMatch(x -> x == inputNumber)) {
+                ball++;
+            }
+
+        }
+
         return new int[] {ball, strike};
     }
 
