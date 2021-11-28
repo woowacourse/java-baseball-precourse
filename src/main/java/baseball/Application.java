@@ -17,6 +17,45 @@ public class Application {
 
     public static void playBall(int[] numbers){
 
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputNumbers = Console.readLine();
+
+            if (inputNumbers.length() != 3)
+                throw new IllegalArgumentException("the number of input numbers is not 3");
+
+            String patternNumberOnly = "^[0-9]*$";
+            boolean regex = Pattern.matches(patternNumberOnly, inputNumbers);
+
+            if (!regex) throw new IllegalArgumentException("only numbers are allowed to the input value");
+
+            int result[] = countBall(numbers, inputNumbers);
+            int ball = result[0];
+            int strike = result[1];
+
+//                System.out.println("ball is");
+//                System.out.println(ball);
+//                System.out.println("strike is");
+//                System.out.println(strike);
+
+            StringBuilder sb = new StringBuilder();
+
+            if (strike == 3) {
+                sb.append("3스트라이크\n").append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(sb);
+                break;
+            } else if (strike == 0 && ball == 0) {
+                sb.append("낫싱");
+            } else if (strike != 0 && ball == 0) {
+                sb.append(String.valueOf(strike)).append("스트라이크");
+            } else if (strike == 0 && ball != 0) {
+                sb.append(String.valueOf(ball)).append("볼");
+            } else {
+                sb.append(String.valueOf(ball)).append("볼 ").append(String.valueOf(strike)).append("스트라이크");
+            }
+
+            System.out.println(sb);
+        }
     }
 
     public static void playGame(){
