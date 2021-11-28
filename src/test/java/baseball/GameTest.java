@@ -11,46 +11,23 @@ public class GameTest {
     final String opponentNumber = "425";
     Umpire umpire = new Umpire(opponentNumber);
 
-    @Test
-    public void countStrikeTest() {
-        final HashMap<String, Integer> testCase = new HashMap<String, Integer>() {{//초기값 지정
-            put("123", 1);
-            put("897", 0);
-            put("495", 2);
-            put("444", 1);
-            put("425", 3);
-        }};
-
-
-
-        for (Map.Entry<String, Integer> entry : testCase.entrySet()) {
-
-            String key = entry.getKey();
-            Integer result = entry.getValue();
-
-            Assertions.assertEquals(result, umpire.countStrike(opponentNumber, key), "카운팅이 룰을 따르지 않음");
-
-        }
-
-    }
+    final HashMap<String, String> testCase = new HashMap<String, String>() {{//초기값 지정
+        put("513", "1볼");
+        put("426", "2스트라이크");
+        put("542", "3볼");
+        put("425", "3스트라이크");
+        put("917", "낫싱");
+    }};
 
     @Test
-    public void countBallTest() {
+    public void judgeRoundTest() {
 
-        final HashMap<String, Integer> testCase = new HashMap<String, Integer>() {{
-            put("111", 0);
-            put("589", 1);
-            put("254", 3);
-            put("842", 2);
-        }};
+        for (Map.Entry<String, String> entry : testCase.entrySet()) {
 
-        for (Map.Entry<String, Integer> entry : testCase.entrySet()) {
+            String userNumber = entry.getKey();
+            String result = entry.getValue();
 
-            String key = entry.getKey();
-            Integer result = entry.getValue();
-
-            Assertions.assertEquals(result, umpire.countBall(opponentNumber, key), "카운팅이 룰을 따르지 않음");
-
+            Assertions.assertEquals(result, umpire.judgeRound(userNumber), "카운팅이 룰을 따르지 않음");
         }
     }
 }
