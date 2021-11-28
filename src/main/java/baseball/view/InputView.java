@@ -59,10 +59,11 @@ public class InputView {
 
     public static Balls getRandomBalls() {
         Set<Integer> set = new LinkedHashSet<>();
-        for (int i = 0; i < BALLS_LENGTH; i++) {
+        do {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             set.add(randomNumber);
-        }
+        } while (set.size() < BALLS_LENGTH); // 중복을 제외한 BallNumber 가 3개이어야 한다
+
         return new Balls(set);
     }
 }
