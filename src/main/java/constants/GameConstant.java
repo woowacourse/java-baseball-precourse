@@ -1,4 +1,4 @@
-package util;
+package constants;
 
 public class GameConstant {
 	public static final int NUMBER_LENGTH = 3;

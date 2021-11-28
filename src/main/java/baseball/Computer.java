@@ -1,7 +1,7 @@
 package baseball;
 
 import static camp.nextstep.edu.missionutils.Randoms.*;
-import static util.GameConstant.*;
+import static constants.GameConstant.*;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;

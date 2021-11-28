@@ -1,6 +1,6 @@
 package baseball;
 
-import static util.GameConstant.*;
+import static constants.GameConstant.*;
 
 import java.util.List;
 
