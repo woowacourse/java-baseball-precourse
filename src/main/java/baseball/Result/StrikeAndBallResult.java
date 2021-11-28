@@ -2,7 +2,7 @@ package baseball.Result;
 
 public class StrikeAndBallResult extends ResultBase {
     public StrikeAndBallResult() {
-        super("%d볼 %d스트라이크" + System.lineSeparator());
+        super("%d볼 %d스트라이크");
     }
 
     @Override
