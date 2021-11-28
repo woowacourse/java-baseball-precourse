@@ -1,6 +1,7 @@
 package baseball.domain;
 
 public class GameResult {
+    private static final int GAME_WINNER_VALUE = 3;
     private long strikeCount;
     private long ballCount;
 
@@ -37,5 +38,13 @@ public class GameResult {
 
     public long getBallCount() {
         return ballCount;
+    }
+
+    public boolean isValidateWinner() {
+        if (strikeCount == GAME_WINNER_VALUE) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
