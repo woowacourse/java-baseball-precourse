@@ -16,7 +16,7 @@ public class Computer {
 		baseballGame.setNewTarget();
 
 		while (!baseballGame.isGuessEqualTarget()) {
-			String playerGuessInput = Player.getPlayerInput();
+			String playerGuessInput = Player.getGuessInput();
 			validateGuessInput(playerGuessInput);
 			List<Integer> guessNums = parseGuessInput(playerGuessInput);
 			baseballGame.judgeAndShowHint(guessNums);
