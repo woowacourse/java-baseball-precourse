@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.regex.Pattern;
 
 /**
@@ -29,24 +28,11 @@ public interface Player {
 	 * @return Boolean 플레이어가 입력한 수가 조건에 만족하면 true, 아니면 false
 	 */
 	static Boolean validateSelectedNumber(final String selectedNumber) {
-		final String numberPattern = "^[1-9]*$";
-		Boolean[] usedNumber = new Boolean[11];
-		Arrays.fill(usedNumber, false);
+		final String numberPattern = "^[0-9]*$";
 		if(selectedNumber.length() != 3) {
 			return false;
 		}
-		if(!Pattern.matches(numberPattern, selectedNumber)) {
-			return false;
-		}
-		for(int idx = 0; idx < selectedNumber.length(); idx++) {
-			int number = Character.getNumericValue(
-				selectedNumber.charAt(idx));
-			if(usedNumber[number]) {
-				return false;
-			}
-			usedNumber[number] = true;
-		}
-		return true;
+		return Pattern.matches(numberPattern, selectedNumber);
 	}
 
 	/**
