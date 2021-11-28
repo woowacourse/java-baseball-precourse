@@ -4,6 +4,8 @@ import baseball.model.Balls;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -25,17 +27,16 @@ public class InputView {
     }
 
     private static void validateInput(String input) {
-        int number;
-        // 숫자로 변환하지 못한 것도 예외이다
-        try {
-            number = Integer.parseInt(input);
-        } catch (Exception exception) {
-            throw new IllegalArgumentException(ERROR_WRONG_INPUT);
-        }
 
         String regExp = "[1-9]{3}";
         boolean matches = Pattern.matches(regExp, input);
         if (!matches) {
+            throw new IllegalArgumentException(ERROR_WRONG_INPUT);
+        }
+
+        // 중복된 숫자가 있을 경우 예외를 던진다
+        HashSet<String> inputSet = new HashSet<>(Arrays.asList(input.split("")));
+        if (inputSet.size() < BALLS_LENGTH) {
             throw new IllegalArgumentException(ERROR_WRONG_INPUT);
         }
     }
