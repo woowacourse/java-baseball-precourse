@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-public class GameTest {
+public class UmpireTest {
 
     final String opponentNumber = "425";
     Umpire umpire = new Umpire(opponentNumber);
