@@ -7,22 +7,22 @@ import camp.nextstep.edu.missionutils.Console;
 /** 야구 게임의 전체적인 흐름을 구성 */
 public class BaseBallGame {
 	private final BaseBallPlayer baseBallPlayer;
-	private final BaseBallProvider baseBallProvider;
+	private final BaseBallAnswerProvider baseBallAnswerProvider;
 	private Integer gameStatus;
 
-	public BaseBallGame(BaseBallPlayer baseBallPlayer, BaseBallProvider baseBallProvider) {
+	public BaseBallGame(BaseBallPlayer baseBallPlayer, BaseBallAnswerProvider baseBallAnswerProvider) {
 		this.baseBallPlayer = baseBallPlayer;
-		this.baseBallProvider = baseBallProvider;
+		this.baseBallAnswerProvider = baseBallAnswerProvider;
 		this.gameStatus = GOING;
 	}
 
 	public void start() {
 		BaseBallScore baseBallScore = new BaseBallScore();
 		while (gameStatus == GOING) {
-			baseBallProvider.makeAnswer();
+			baseBallAnswerProvider.makeAnswer();
 			while (!baseBallScore.isAllStrike()) {
 				baseBallPlayer.getUserNumber();
-				baseBallScore.countScore(baseBallProvider.getAnswer(), baseBallPlayer);
+				baseBallScore.countScore(baseBallAnswerProvider.getAnswer(), baseBallPlayer);
 				System.out.println(baseBallScore.scoreString());
 			}
 			getGameStatus();

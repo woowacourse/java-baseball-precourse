@@ -9,10 +9,10 @@ import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class BaseBallProvider {
+public class BaseBallAnswerProvider {
 	private List<Integer> answer;
 
-	public BaseBallProvider() {
+	public BaseBallAnswerProvider() {
 		this.answer = new ArrayList<>(NUMBER_LENGTH);
 	}
 
