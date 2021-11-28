@@ -4,33 +4,33 @@ import java.util.HashSet;
 
 public class InputValidator {
 
-    public boolean isNumber(String number) {
-        return number.chars().allMatch(Character::isDigit);
-    }
+	public boolean isNumber(String number) {
+		return number.chars().allMatch(Character::isDigit);
+	}
 
-    public boolean checkLength(String number,int length) {
-        return number.length() == length;
-    }
+	public boolean checkLength(String number, int length) {
+		return number.length() == length;
+	}
 
-    public boolean checkNumberScope(String number) {
-        for(int i=0; i<number.length(); i++) {
-            if('0' == number.charAt(i)) {
-                return false;
-            }
-        }
-        return true;
-    }
+	public boolean checkNumberScope(String number) {
+		for (int i = 0; i < number.length(); i++) {
+			if ('0' == number.charAt(i)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
-    public boolean checkDistinct(String number) {
-        HashSet<Character> hashSet = new HashSet<>();
-        for(int i=0; i<number.length(); i++) {
-            hashSet.add(number.charAt(i));
-        }
-        return hashSet.size()==number.length();
-    }
+	public boolean checkDistinct(String number) {
+		HashSet<Character> hashSet = new HashSet<>();
+		for (int i = 0; i < number.length(); i++) {
+			hashSet.add(number.charAt(i));
+		}
+		return hashSet.size() == number.length();
+	}
 
-    public boolean checkSelectScope(String number) {
-        int numberInt = Integer.parseInt(number);
-        return numberInt == 1 || numberInt == 2;
-    }
+	public boolean checkSelectScope(String number) {
+		int numberInt = Integer.parseInt(number);
+		return numberInt == 1 || numberInt == 2;
+	}
 }
