@@ -18,6 +18,11 @@ public class Computer {
 	}
 
 	public boolean checkReduplication(int num) {
+		for (int i = 0; i < 3; i++) {
+			if (answer[i] == num) {
+				return false;
+			}
+		}
 		return true;
 	}
 
