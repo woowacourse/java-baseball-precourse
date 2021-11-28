@@ -35,12 +35,11 @@ public class GameManager {
             GameManager.instance = new GameManager();
         }
 
+        GameManager.instance.initNumbers();
         return GameManager.instance;
     }
 
     public void run() {
-        initNumbers();
-
         try {
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
@@ -48,7 +47,7 @@ public class GameManager {
                 ArrayList<Integer> numbersArray = parseToIntegerArray(line);
                 Score score = getScore(numbersArray);
                 printResult(score);
-
+                checkResultStatus(score);
             }
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
@@ -114,5 +113,17 @@ public class GameManager {
 
     private void printResult(Score score) {
         this.result.getMessage(score.getStrike(), score.getBall());
+    }
+
+    private void checkResultStatus(Score score) throws IllegalArgumentException {
+        try {
+            if (score.getStrike() == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                askPlayerToContinue();
+            }
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
     }
 }
