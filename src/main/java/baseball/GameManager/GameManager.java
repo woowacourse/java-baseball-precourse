@@ -5,6 +5,7 @@ import baseball.Result.NothingResult;
 import baseball.Result.ResultBase;
 import baseball.Result.StrikeAndBallResult;
 import baseball.Result.StrikeResult;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameManager {
     private static GameManager instance = null;
@@ -12,18 +13,20 @@ public class GameManager {
     public ResultBase result;
 
     private GameManager() {
-        result = new StrikeResult();
-        result.appendNext(
-                new StrikeAndBallResult().appendNext(
-                        new BallResult().appendNext(
-                                new NothingResult()
-                        )
-                )
-        );
+        ResultBase strikeResult = new StrikeResult();
+        ResultBase strikeAndBallResult = new StrikeAndBallResult();
+        ResultBase ballResult = new BallResult();
+        ResultBase nothingResult = new NothingResult();
+
+        strikeResult.appendNext(strikeAndBallResult);
+        strikeAndBallResult.appendNext(ballResult);
+        ballResult.appendNext(nothingResult);
+
+        this.result = strikeResult;
     }
 
     public static GameManager getInstance() {
-        if(GameManager.instance == null) {
+        if (GameManager.instance == null) {
             GameManager.instance = new GameManager();
         }
 
