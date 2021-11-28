@@ -1,27 +1,28 @@
 package baseball.domain;
 
 public class Computer {
-    private static final RandomGenerator randomGenerator = RandomGenerator.getInstance();
-    private static Computer instance;
+    private static RandomGenerator randomGenerator;
+    private static Computer instance = new Computer();
+    private static int[] answer;
     private final int BALL = 0;
     private final int STRIKE = 1;
-    private int[] answer;
 
     private Computer() {
-        this.answer = randomGenerator.getAnswer();
+        randomGenerator = RandomGenerator.getInstance();
+        answer = randomGenerator.getAnswer();
     }
 
     public static Computer getInstance() {
         if (instance == null) {
-            randomGenerator.reGenerate();
             return new Computer();
         }
-        randomGenerator.reGenerate();
+        getNewAnswer();
         return instance;
     }
 
-    public int[] getAnswer() {
-        return answer;
+    private static void getNewAnswer() {
+        randomGenerator.reGenerate();
+        answer = randomGenerator.getAnswer();
     }
 
     public int[] generateHint(int[] playerNumber) {
