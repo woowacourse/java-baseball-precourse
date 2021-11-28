@@ -33,7 +33,6 @@ public class Game {
 
 	public void processResume() {
 		String inputMessage = InputView.inputResumeOrEnd();
-
 		if (inputMessage.equals(RESTART_GAME)) {
 			processRun();
 			return;

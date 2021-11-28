@@ -12,7 +12,6 @@ class BaseballNumsGeneratorTest {
 	public void 랜덤한_3자리_숫자_생성() {
 		// given // when
 		BaseballNums randomBaseballNums = BaseballNumsGenerator.generateRandomBaseballNums();
-
 		// then
 		assertEquals(3, randomBaseballNums.getBaseballNums().size());
 	}
