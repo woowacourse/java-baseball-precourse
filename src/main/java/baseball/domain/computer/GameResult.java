@@ -2,6 +2,8 @@ package baseball.domain.computer;
 
 import static baseball.domain.number.BaseBallNumbers.BASEBALL_NUMBERS_LIMIT_SIZE;
 
+import baseball.exception.computer.GameResultTotalCountException;
+
 public class GameResult {
 
     private final int strikeCount;
@@ -19,7 +21,7 @@ public class GameResult {
 
     private static void checkStrikeAndBallTotalCount(int strikeCount, int ballCount) {
         if (Math.addExact(strikeCount, ballCount) > BASEBALL_NUMBERS_LIMIT_SIZE) {
-            throw new IllegalArgumentException("Strike와 Ball의 갯수는 3개를 넘을 수 없습니다.");
+            throw new GameResultTotalCountException();
         }
     }
 }
