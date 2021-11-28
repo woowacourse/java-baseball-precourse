@@ -18,7 +18,9 @@ public class RandomNumberList {
         while (newList.size() < ANSWER_LIST_LENGTH) {
             Integer newNum = Randoms.pickNumberInRange(RANGE_START_NUM, RANGE_END_NUM);
 
-            if (visited[newNum]) continue;
+            if (visited[newNum]) {
+                continue;
+            }
 
             visited[newNum] = true;
             newList.add(newNum);

@@ -29,7 +29,7 @@ public class Validator {
         validateUniqueNumber(inputIntNums);
     }
 
-    public static void validateRestartInput(String input){
+    public static void validateRestartInput(String input) {
         int intInput = validateAndParseToIntType(input);
         validateIntRange(intInput, RESTART_NUM, END_GAME_NUM);
     }

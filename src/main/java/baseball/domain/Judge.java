@@ -17,7 +17,9 @@ public class Judge {
         int ballCount = 0;
         int curInputIdx;
         for (curInputIdx = 0; ; curInputIdx++) {
-            if (curInputIdx >= ANSWER_LIST_LENGTH) break;
+            if (curInputIdx >= ANSWER_LIST_LENGTH) {
+                break;
+            }
 
             int curInput = input.get(curInputIdx);
 
@@ -44,7 +46,9 @@ public class Judge {
     }
 
     private static String giveHint(int strikeCount, int ballCount) {
-        if (strikeCount == 0 && ballCount == 0) return NO_MATCH;
+        if (strikeCount == 0 && ballCount == 0) {
+            return NO_MATCH;
+        }
 
         String hint = "";
 
