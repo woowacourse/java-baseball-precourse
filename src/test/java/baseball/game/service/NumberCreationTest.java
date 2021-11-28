@@ -13,8 +13,7 @@ public class NumberCreationTest {
 		for (int i = 0; i < 10000; i++) {
 			int randomNumber = NumberCreation.createRandomNumber();
 			assertThat(String.valueOf(randomNumber)).doesNotContain("0");
-			assertThat(Arrays.stream(String.valueOf(randomNumber)
-					.split(""))
+			assertThat(Arrays.stream(String.valueOf(randomNumber).split(""))
 				.distinct()
 				.count())
 				.isEqualTo(3);
