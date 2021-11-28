@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public class BaseballNumsGenerator {
+    private static final int ZERO = '0';
     private final static String NOT_NUMBER_RANGE_ONE_TO_NINE = "1에서 9사이의 숫자가 아닙니다.";
 
     public static BaseballNums generateRandomBaseballNums() {
@@ -23,8 +24,8 @@ public class BaseballNumsGenerator {
     public static BaseballNums generateInputBaseballNums(String inputNum) {
         List<Integer> inputBaseBallNums = new ArrayList<>();
         for (int i = 0; i < inputNum.length(); i++) {
-            isValidateRangeNumOneToNine(inputNum.charAt(i) - '0');
-            inputBaseBallNums.add(inputNum.charAt(i) - '0');
+            isValidateRangeNumOneToNine(inputNum.charAt(i) - ZERO);
+            inputBaseBallNums.add(inputNum.charAt(i) - ZERO);
         }
         return new BaseballNums(inputBaseBallNums);
     }
