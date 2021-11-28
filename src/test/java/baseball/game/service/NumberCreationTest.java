@@ -11,9 +11,12 @@ public class NumberCreationTest {
 	@Test
 	public void 난수_검증() {
 		for (int i = 0; i < 10000; i++) {
-			int randomNumber = NumberCreation.createRandomNumber();
-			assertThat(String.valueOf(randomNumber)).doesNotContain("0");
-			assertThat(Arrays.stream(String.valueOf(randomNumber).split(""))
+			int[] randomNumbers = NumberCreation.createRandomNumber();
+			assertThat(Arrays.stream(randomNumbers)
+				.filter(n -> n == 0)
+				.count())
+				.isEqualTo(0);
+			assertThat(Arrays.stream(randomNumbers)
 				.distinct()
 				.count())
 				.isEqualTo(3);

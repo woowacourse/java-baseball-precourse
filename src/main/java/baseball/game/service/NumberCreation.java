@@ -1,37 +1,25 @@
 package baseball.game.service;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberCreation {
 
-	public static int createRandomNumber() {
+	public static int[] createRandomNumber() {
 
-		int number = Randoms.pickNumberInRange(100, 999);
+		int[] answer = new int[3];
+		boolean[] selected = new boolean[9];
 
-		while (validateCreateNumber(String.valueOf(number))) {
-			number = Randoms.pickNumberInRange(100, 999);
+		for (int index = 0; index < 3; index++) {
+			int number = Randoms.pickNumberInRange(1, 9);
+
+			if (!selected[number - 1]) {
+				selected[number - 1] = true;
+				answer[index] = number;
+				continue;
+			}
+			index--;
 		}
 
-		return number;
-	}
-
-	private static boolean validateCreateNumber(String inputString) {
-
-		final String regex = "[1-9]+";
-
-		if (!inputString.matches(regex)) {
-			return true;
-		}
-
-		Set<String> inputSet = new HashSet<>(Arrays.asList(inputString.split("")));
-		if (inputSet.size() != 3) {
-			return true;
-		}
-
-		return false;
+		return answer;
 	}
 }

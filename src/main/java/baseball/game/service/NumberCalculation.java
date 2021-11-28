@@ -11,29 +11,25 @@ public class NumberCalculation {
 	private static AtomicInteger strike;
 	private static AtomicInteger ball;
 
-	public static String checkInputNumber(int answer, int inputNumber) {
+	public static String checkInputNumber(int[] answerArr, int inputNumber) {
 
 		strike = new AtomicInteger(0);
 		ball = new AtomicInteger(0);
 
-		int[] answerArr = new int[3];
 		int[] inputNumberArr = new int[3];
-		splitNumbers(answer, inputNumber, answerArr, inputNumberArr);
+		splitNumbers(inputNumber, inputNumberArr);
 
 		Set<Integer> numSet = new HashSet<>();
 		countStrikeAndBall(answerArr, inputNumberArr, numSet);
 
 		if (strike.get() == 3) {
-			return GuideMessage.correctNumberMessage(ball.get(), strike.get());
+			return GuideMessage.WIN_GAME_MESSAGE;
 		}
 		return GuideMessage.wrongNumberMessage(ball.get(), strike.get());
 	}
 
-	private static void splitNumbers(int answer, int inputNumber, int[] answerArr, int[] inputNumberArr) {
+	private static void splitNumbers(int inputNumber, int[] inputNumberArr) {
 		for (int i = 2; i >= 0; i--) {
-			answerArr[i] = answer % 10;
-			answer /= 10;
-
 			inputNumberArr[i] = inputNumber % 10;
 			inputNumber /= 10;
 		}
