@@ -14,15 +14,14 @@ public class GameSimulation {
 	private List<Integer> comNum;
 	private List<Integer> userNum;
 
-
 	public GameSimulation() {
 		init();
 	}
 
 	public void init() {
 		comNum = new ArrayList<>();
-		for (int i = 0; i < 3;) {
-			int num = Randoms.pickNumberInRange(1,9);
+		for (int i = 0; i < 3; ) {
+			int num = Randoms.pickNumberInRange(1, 9);
 			if (!comNum.contains(num)) {
 				comNum.add(num);
 				i++;
