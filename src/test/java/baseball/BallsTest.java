@@ -33,4 +33,12 @@ public class BallsTest {
         assertThatThrownBy(() -> new Balls(numbers))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("리스트의 크기가 사이즈에 맞는지 검사")
+    @Test
+    void validateListSize() {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
+        assertThatThrownBy(() -> new Balls(numbers))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }

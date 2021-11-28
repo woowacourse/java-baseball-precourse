@@ -12,16 +12,11 @@ public class Balls {
     private List<Ball> list;
 
     public Balls(List<Integer> list) {
+        validateSize(list);
         validateDuplication(list);
         this.list = convertNumbersToBalls(list);
     }
 
-    private void validateDuplication(List<Integer> list) {
-        Set<Integer> set = new HashSet<>(list);
-        if (set.size() != list.size()) {
-            throw new IllegalArgumentException();
-        }
-    }
     public List<Ball> getList() {
         return list;
     }
@@ -32,5 +27,18 @@ public class Balls {
             result.add(new Ball(number));
         }
         return result;
+    }
+
+    private void validateDuplication(List<Integer> list) {
+        Set<Integer> set = new HashSet<>(list);
+        if (set.size() != list.size()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateSize(List<Integer> list) {
+        if (list.size() != SIZE) {
+            throw new IllegalArgumentException();
+        }
     }
 }
