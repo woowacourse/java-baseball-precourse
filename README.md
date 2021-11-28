@@ -12,11 +12,11 @@
 
 2. 입력
   - 3자리 수 입력
-  - [x] camp.nextstep.edu.missionutils.Console의 readLine() 활용
   - 잘못된 숫자일 경우 IllegalArgumentException 및 종료
     + [예외] 맨 앞자리가 0일때
     + [예외] 3자리 숫자가 아닐때
-    
+  - [x] camp.nextstep.edu.missionutils.Console의 readLine() 활용
+
 3. 대조 및 판정
 - 같은 자리 같은 숫자면 스트라이크
 - 다른 자리 같은 숫자면 볼
@@ -28,7 +28,7 @@
   - 1 입력시 새로운 게임 시작
   - 2 입력시 프로그램 완전 종료
 
-##📍 유의사항
+## 📍 유의사항
 
 - 자바 코드 컨벤션을 지키면서 프로그래밍한다.
   - https://naver.github.io/hackday-conventions-java
