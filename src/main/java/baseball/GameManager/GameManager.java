@@ -99,12 +99,16 @@ public class GameManager {
         int strike = 0;
         int ball = 0;
 
-        for (int number : numbersArray) {
-            if (!numbers.containsKey(number)) {
+        for (int i = 0; i<numbersArray.size(); i++) {
+            if (!numbers.containsKey(numbersArray.get(i))) {
                 continue;
             }
 
-            if (numbersArray.indexOf(number) == numbers.get(number)) {
+            //debug
+            System.out.println("indexOf number " + numbersArray.get(i) + ": " + i);
+            System.out.println("hashmap: " + numbers.get(numbersArray.get(i)));
+
+            if (i == numbers.get(numbersArray.get(i))) {
                 strike++;
                 continue;
             }
@@ -116,6 +120,8 @@ public class GameManager {
     }
 
     private void printResult(Score score) {
+        //debug
+        System.out.println("strike: " + score.getStrike() + " ball:" + score.getBall());
         String message = this.result.getMessage(score.getStrike(), score.getBall());
         System.out.println(message);
     }

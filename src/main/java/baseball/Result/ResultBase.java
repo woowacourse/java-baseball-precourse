@@ -10,7 +10,7 @@ public abstract class ResultBase {
 
     public final ResultBase appendNext(ResultBase next) {
         this.next = next;
-        return this;
+        return this.next;
     }
 
     public abstract String getMessage(int strikeCount, int ballCount);
