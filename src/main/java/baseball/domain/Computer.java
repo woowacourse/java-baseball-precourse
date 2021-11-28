@@ -13,6 +13,7 @@ public class Computer {
 
     public static Computer getInstance() {
         if (instance == null) {
+            randomGenerator.reGenerate();
             return new Computer();
         }
         randomGenerator.reGenerate();
