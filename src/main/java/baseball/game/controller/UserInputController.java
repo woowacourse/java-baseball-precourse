@@ -30,11 +30,11 @@ public class UserInputController {
     }
 
     private static int[] stringToIntArray(String input) {
-        int[] ret = new int[RANDOM_NUMBER_LENGTHS];
+        int[] array = new int[RANDOM_NUMBER_LENGTHS];
         for (int i = 0; i < RANDOM_NUMBER_LENGTHS; i++) {
-            ret[i] = Character.getNumericValue(input.charAt(i));
+            array[i] = Character.getNumericValue(input.charAt(i));
         }
-        return ret;
+        return array;
     }
 
     private static void validateInput(String input) {
