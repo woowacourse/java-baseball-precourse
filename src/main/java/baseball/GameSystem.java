@@ -46,6 +46,7 @@ public class GameSystem {
         judge.setRightAnswer(opponentPlayer.pickRandom3DigitNum());
         while (true) {
             user3DigitNum = getUser3DigitNum();
+            judge.initialize();
             judge.makeJudgement(user3DigitNum);
             printResult(judge.getStrike(), judge.getBall());
             if (judge.getGameSuccess()) {
