@@ -33,8 +33,8 @@
 
 ### ✅ 확인할 목록
 
-- [ ] 코드 컨벤션을 지키면서 프로그램한다.
-- [ ] indent(인덴트, 들여쓰기) depth 3이 넘지 않도록 구현한다.
-- [ ] 3항 연산자를 쓰지 않는다.
-- [ ] 함수(메소드)가 한 가지 일만 하도록 최대한 작게 만든다.
-- [ ] `camp.nextstep.edu.missionutils` 에서 제공하는 `Randoms`, `Console` API 를 활용한다.
+- [x] 코드 컨벤션을 지키면서 프로그램한다.
+- [x] indent(인덴트, 들여쓰기) depth 3이 넘지 않도록 구현한다.
+- [x] 3항 연산자를 쓰지 않는다.
+- [x] 함수(메소드)가 한 가지 일만 하도록 최대한 작게 만든다.
+- [x] `camp.nextstep.edu.missionutils` 에서 제공하는 `Randoms`, `Console` API 를 활용한다.
