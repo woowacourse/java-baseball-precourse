@@ -50,6 +50,24 @@ class ApplicationTest extends NsTest {
 		}
 	}
 
+	@Test
+	void 타겟넘버_서로다른수_테스트() {
+		Target target = new Target();
+		boolean[] visited = new boolean[target.getRangeEnd() - target.getRangeBegin() + 1];
+
+		int count = 0;
+		for (int i = 0; i < visited.length; i++) {
+			if (visited[i] = true) {
+				continue;
+			}
+			if (target.isContained((char)(i + target.getRangeBegin()+ '0')) > -1) {
+				visited[i + target.getRangeBegin()] = true;
+				count++;
+			}
+		}
+		assertThat(count == target.getLength());
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
