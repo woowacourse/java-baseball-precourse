@@ -11,15 +11,19 @@ public class Computer {
 	public Computer() {
 	}
 	
+	public void init() {
+		genRandomNumber();
+	}
+	
 	//generate random numbers > ranNumList
 	private void genRandomNumber() {
 		ArrayList<Integer> ranNumList= new ArrayList<>();
-		while(ranNumList.size()<NUMBER_DIGIT) {
+		while(ranNumList.size()<=NUMBER_DIGIT) {
 			int num= (pickNumberInRange(1, 9));
 			if(!ranNumList.contains(num)) {
 				ranNumList.add(num);
 			}
 		}
-	}	
+	}
 
 }
