@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.List;
 
+import static baseball.InitialSetting.*;
+
 public class NumberComparator {
     private static int strike;
     private static int ball;
@@ -20,17 +22,17 @@ public class NumberComparator {
     private static void checkStrikeOrBall(int computerIndex, int indexVal, List<Integer> playerNumberGameNumber) {
         int playerIndex = playerNumberGameNumber.indexOf(indexVal);
 
-        if(playerIndex != -1 && playerIndex == computerIndex) {
+        if(playerIndex != INVALID_INDEX && playerIndex == computerIndex) {
             strike++;
         }
 
-        if(playerIndex != -1 && playerIndex != computerIndex) {
+        if(playerIndex != INVALID_INDEX && playerIndex != computerIndex) {
             ball++;
         }
     }
 
     public static void clearStrikeAndBall() {
-        strike = 0;
-        ball = 0;
+        strike = NONE;
+        ball = NONE;
     }
 }

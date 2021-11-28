@@ -17,4 +17,5 @@ public class InitialSetting {
     public static final int NONE = 0;
     public static final int RESTART_GAME = 1;
     public static final int END_GAME = 2;
+    public static final int INVALID_INDEX = -1;
 }

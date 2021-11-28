@@ -36,7 +36,7 @@ public class BaseballGame {
             throw new IllegalArgumentException(NEW_GAME_INPUT_ERR_MSG);
         }
 
-        return input == 1;
+        return input == RESTART_GAME;
     }
 
     private boolean shouldContinueGame() {
