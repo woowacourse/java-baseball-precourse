@@ -10,33 +10,33 @@ import baseball.view.OutputView;
 
 public class NumberBaseballGameController {
 
-	public static void run() {
+	public void run() {
 		Computer computer = new Computer();
 		Player player = new Player();
 		NumberBaseballGame numberBaseballGame = new NumberBaseballGame();
 		repeatGame(numberBaseballGame, player, computer);
 	}
 
-	private static void repeatGame(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
+	private void repeatGame(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
 		do {
 			startGameOnce(numberBaseballGame, player, computer);
 			morePlayGame(numberBaseballGame, player);
 		} while (player.getSelectPlayMoreGame());
 	}
 
-	private static void startGameOnce(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
+	private void startGameOnce(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
 		settingGame(numberBaseballGame, computer);
 		do {
 			play(numberBaseballGame, player, computer);
 		} while (numberBaseballGame.getGameState());
 	}
 
-	private static void settingGame(NumberBaseballGame numberBaseballGame, Computer computer) {
+	private void settingGame(NumberBaseballGame numberBaseballGame, Computer computer) {
 		numberBaseballGame.startGame();
 		computer.createRandomNumbers();
 	}
 
-	private static void play(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
+	private void play(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
 		int[] answer = input(numberBaseballGame, player);
 		int strikeCounts = computer.getStrikeCounts(answer);
 		int ballCounts = computer.getBallCounts(answer);
@@ -44,20 +44,20 @@ public class NumberBaseballGameController {
 		changeGameState(numberBaseballGame, computer);
 	}
 
-	private static int[] input(NumberBaseballGame numberBaseballGame, Player player) {
+	private int[] input(NumberBaseballGame numberBaseballGame, Player player) {
 		List<Integer> inputResult = InputView.getAnswerNumbers();
 		numberBaseballGame.validateInputNumber(inputResult);
 		return player.receiveAnswerNumbers(inputResult);
 	}
 
-	private static void changeGameState(NumberBaseballGame numberBaseballGame, Computer computer) {
+	private void changeGameState(NumberBaseballGame numberBaseballGame, Computer computer) {
 		if (computer.isCorrect() == Boolean.TRUE) {
 			numberBaseballGame.closeGame();
 			OutputView.successMessage();
 		}
 	}
 
-	private static void morePlayGame(NumberBaseballGame numberBaseballGame, Player player) {
+	private void morePlayGame(NumberBaseballGame numberBaseballGame, Player player) {
 		String inputResultOfSelectPlayMoreGame = InputView.requestSelectPlayMoreGame();
 		Boolean selectPlayMoreGame = numberBaseballGame.validateSelectPlayMoreGame(inputResultOfSelectPlayMoreGame);
 		player.receiveSelectPlayMoreGame(selectPlayMoreGame);
