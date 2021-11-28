@@ -29,6 +29,16 @@ public class NumberCalculation {
 		return GuideMessage.wrongNumberMessage(ball.get(), strike.get());
 	}
 
+	private static void splitNumbers(int answer, int inputNumber, int[] answerArr, int[] inputNumberArr) {
+		for (int i = 2; i >= 0; i--) {
+			answerArr[i] = answer % 10;
+			answer /= 10;
+
+			inputNumberArr[i] = inputNumber % 10;
+			inputNumber /= 10;
+		}
+	}
+
 	private static void countStrikeAndBall(int[] answerArr, int[] inputNumberArr, Set<Integer> numSet) {
 		for (int i = 0; i < answerArr.length; i++) {
 			countStrike(answerArr, inputNumberArr, i);
@@ -38,24 +48,14 @@ public class NumberCalculation {
 		ball.set(answerArr.length + inputNumberArr.length - numSet.size() - strike.get());
 	}
 
-	private static void addNumSet(int answerNum, int inputNum, Set<Integer> numSet) {
-		numSet.add(answerNum);
-		numSet.add(inputNum);
-	}
-
 	private static void countStrike(int[] answerArr, int[] inputNumberArr, int index) {
 		if (answerArr[index] == inputNumberArr[index]) {
 			strike.incrementAndGet();
 		}
 	}
 
-	private static void splitNumbers(int answer, int inputNumber, int[] answerArr, int[] inputNumberArr) {
-		for (int i = 2; i >= 0; i--) {
-			answerArr[i] = answer % 10;
-			answer /= 10;
-
-			inputNumberArr[i] = inputNumber % 10;
-			inputNumber /= 10;
-		}
+	private static void addNumSet(int answerNum, int inputNum, Set<Integer> numSet) {
+		numSet.add(answerNum);
+		numSet.add(inputNum);
 	}
 }
