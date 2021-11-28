@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.Objects;
-
 public class Ball {
 
     public static final int MIN_VALUE = 1;
