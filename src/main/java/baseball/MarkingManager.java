@@ -59,18 +59,18 @@ public class MarkingManager {
     }
 
     public void guessRight() {
-        System.out.print("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public void guessWrong() {
         if (strike == 0 && ball == 0) {
-            System.out.print("낫싱");
+            System.out.println("낫싱");
         } else if (strike != 0 && ball == 0) {
-            System.out.print(String.format("%d스트라이크", strike));
+            System.out.println(String.format("%d스트라이크", strike));
         } else if (strike == 0 && ball != 0) {
-            System.out.print(String.format("%d볼", ball));
+            System.out.println(String.format("%d볼", ball));
         } else {
-            System.out.print(String.format("%d볼 %d스트라이크", ball, strike));
+            System.out.println(String.format("%d볼 %d스트라이크", ball, strike));
         }
     }
 

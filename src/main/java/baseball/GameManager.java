@@ -18,7 +18,7 @@ public class GameManager {
     public void start() {
         while(true) {
             guess();
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int restartNum = inputManager.inputRestartNum();
             if (restartNum == 1) {
                 restart();
