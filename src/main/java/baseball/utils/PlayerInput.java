@@ -12,8 +12,8 @@ public class PlayerInput {
 
 	private final char START_CHAR = '1';
 	private final char END_CHAR = '9';
-	private static final String GAME_CONTINUE = "1";
-	private static final String GAME_FINISH = "2";
+	private final String GAME_CONTINUE = "1";
+	private final String GAME_FINISH = "2";
 
 	public PlayerInput(int numOfDigit){
 		NUM_OF_DIGIT = numOfDigit;
