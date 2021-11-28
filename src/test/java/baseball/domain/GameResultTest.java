@@ -67,6 +67,24 @@ class GameResultTest {
         });
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"123", "234", "789"})
+    void 스트라이크_3인경우_승리_검증(String value) {
+        BaseballNums answerBaseballNums = new BaseballNums(makeConvertStringToInt(value));
+        BaseballNums playerBaseballNums = new BaseballNums(makeConvertStringToInt(value));
+        gameResult.checkResult(answerBaseballNums, playerBaseballNums);
+        assertEquals(gameResult.isValidateWinner(), false);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"123:456", "357:468"}, delimiter = ':')
+    void 스트라이크_3이_아닌경우_패배_검증(String answerValue, String playerValue) {
+        BaseballNums answerBaseballNums = new BaseballNums(makeConvertStringToInt(answerValue));
+        BaseballNums playerBaseballNums = new BaseballNums(makeConvertStringToInt(playerValue));
+        gameResult.checkResult(answerBaseballNums, playerBaseballNums);
+        assertEquals(gameResult.isValidateWinner(), true);
+    }
+
     private List<Integer> makeConvertStringToInt(String value) {
         return Arrays.asList(value.split("")).stream()
                 .map(Integer::valueOf).collect(Collectors.toList());
