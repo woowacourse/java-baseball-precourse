@@ -16,7 +16,7 @@ public class GameHost {
 	private static final String GAME_PLAY_OR_STOP_ASKING_MASSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 	// 게임 진행 여부를 체크 하는 변수
-	int gameSwitch = 1;
+	private int gameSwitch = 1;
 
 	public void gameStart() {
 		while (gameSwitch == 1) {
