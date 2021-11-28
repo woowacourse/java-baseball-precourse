@@ -19,9 +19,7 @@ public class ThreeDigitGenerator implements NumberGenerator {
     }
 
     @Override
-    public void validateNumber(int number) {
-        if (number >= 1000 || number < 100) {
-            throw new IllegalArgumentException();
-        }
+    public boolean validateNumber(int number) {
+        return number < 1000 && number >= 100;
     }
 }

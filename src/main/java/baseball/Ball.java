@@ -18,5 +18,8 @@ public class Ball {
 
     public void generateNumber() {
         number = numberGenerator.generateNumber();
+        while (!numberGenerator.validateNumber(number)) {
+            number = numberGenerator.generateNumber();
+        }
     }
 }

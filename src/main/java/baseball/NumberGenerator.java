@@ -2,5 +2,5 @@ package baseball;
 
 public interface NumberGenerator {
     int generateNumber();
-    void validateNumber(int number);
+    boolean validateNumber(int number);
 }
