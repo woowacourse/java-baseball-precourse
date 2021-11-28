@@ -20,10 +20,35 @@ public class Computer {
     }
 
     public boolean compare(char[] userNumber, char[] comNumber) {
-
-        if(userNumber[0] == comNumber[0])
+        int ballCount = 0;
+        int strikeCount = 0;
+        for (int i = 0; i < 3; i++) {
+            if (userNumber[i] == comNumber[0]) {
+                ballCount += 1;
+            }
+            if (userNumber[i] == comNumber[1]) {
+                ballCount += 1;
+            }
+            if (userNumber[i] == comNumber[2]) {
+                ballCount += 1;
+            }
+            if (userNumber[i] == comNumber[i]) {
+                strikeCount += 1;
+            }
+        }
+        ballCount = ballCount - strikeCount;
+        if (ballCount != 0) {
+            System.out.print(ballCount+"볼 ");
+        }
+        if (strikeCount != 0) {
+            System.out.print(strikeCount+"스트라이크");
+        }
+        System.out.println();
+        if (strikeCount == 3) {
+            return true;
+        }
+        return false;
     }
-
 
 
 }
