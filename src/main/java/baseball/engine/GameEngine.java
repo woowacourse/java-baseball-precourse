@@ -12,9 +12,9 @@ public class GameEngine {
 
     public void start() {
         int[] judge;
+        List<Integer> answer = generateAnswer();
 
         do {
-            List<Integer> answer = generateAnswer();
             System.out.print(GameData.INPUT_NUMBER_MESSAGE);
             List<Integer> userNumber = parseUserNumber(inputUserNumber());
             judge = judge(answer, userNumber);
@@ -97,7 +97,7 @@ public class GameEngine {
     }
 
     private boolean checkGameEnd(int[] judge) {
-        return judge[0] == GameData.NUM_OF_ANSWER;
+        return judge[0] != GameData.NUM_OF_ANSWER;
     }
 
     private boolean checkStrike(Integer answer, Integer userNumber) {
