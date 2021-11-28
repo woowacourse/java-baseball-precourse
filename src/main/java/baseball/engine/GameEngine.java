@@ -92,6 +92,9 @@ public class GameEngine {
             }
             stringBuilder.append(String.format("%d%s", judge[0], GameData.STRIKE_MESSAGE));
         }
+        if(stringBuilder.length() == 0) {
+            stringBuilder.append(GameData.NOTHING_MESSAGE);
+        }
 
         return stringBuilder.toString();
     }
