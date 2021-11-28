@@ -4,7 +4,8 @@ package baseball;
 public class BaseballGame {
 	
 	public BaseballGame(){
-		BaseballGameUtils.makeThreeLengthRandomNumber();
+		//BaseballGameUtils.makeThreeLengthRandomNumber();
+		//BaseballGameUtils.getNumberFromUser();
 	}
 	
 

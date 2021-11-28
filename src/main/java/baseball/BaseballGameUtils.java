@@ -15,4 +15,8 @@ public class BaseballGameUtils {
 				+ Randoms.pickNumberInRange(1, 9);
 		return number;
 	}
+	
+	public static void getNumberFromUser() {
+		Console.readLine();
+	}
 }
