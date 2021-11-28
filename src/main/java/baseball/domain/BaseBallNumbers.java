@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class BaseBallNumbers {
+
     private static final int START_INCLUSIVE = 0;
     private static final int END_INCLUSIVE = 2;
     private static final int BASEBALL_NUMBERS_LENGTH = 3;
+
     private static List<BaseBallNumber> userBaseballNumbers;
 
     public BaseBallNumbers(String userNumbers) {
@@ -31,7 +33,8 @@ public class BaseBallNumbers {
     }
 
     public int calculateBallCount(List<BaseBallNumber> randomNumbers) {
-        return (int)IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE).filter(i -> isBall(i, randomNumbers)).count();
+        return (int) IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE)
+            .filter(i -> isBall(i, randomNumbers)).count();
     }
 
     private boolean isBall(int targetIndex, List<BaseBallNumber> randomNumbers) {
@@ -41,7 +44,8 @@ public class BaseBallNumbers {
     }
 
     public int calculateStrikeCount(List<BaseBallNumber> randomNumbers) {
-        return (int)IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE).filter(i -> isStrike(i, randomNumbers)).count();
+        return (int) IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE)
+            .filter(i -> isStrike(i, randomNumbers)).count();
     }
 
     private boolean isStrike(int targetIndex, List<BaseBallNumber> randomNumbers) {
