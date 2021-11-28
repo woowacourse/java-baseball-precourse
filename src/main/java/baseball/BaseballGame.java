@@ -3,6 +3,7 @@ package baseball;
 import baseball.BaseballSystem.BaseballRule;
 import baseball.BaseballSystem.BaseballValidationImpl;
 import baseball.BaseballSystem.Validation;
+import baseball.domain.Computer;
 import baseball.domain.Player;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -28,6 +29,7 @@ public class BaseballGame {
             System.out.print("숫자를 입력해주세요 : ");
             String validPlayerInput = validation.isValidInput(Console.readLine());
             Player player=new Player(validPlayerInput);
+            Computer computer = new Computer();
             System.out.print("Business Logic 처리 완료됨 가정");
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
