@@ -24,5 +24,9 @@ public class GameResult {
             throw new GameResultTotalCountException();
         }
     }
+
+    public boolean isFinished() {
+        return strikeCount == BASEBALL_NUMBERS_LIMIT_SIZE;
+    }
 }
 
