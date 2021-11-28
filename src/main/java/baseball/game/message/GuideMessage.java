@@ -1,4 +1,4 @@
-package baseball.game.service;
+package baseball.game.message;
 
 public class GuideMessage {
 
