@@ -2,62 +2,46 @@ package baseball.controller;
 
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.ConsoleView;
 import baseball.constants.NumberConstants;
 import baseball.constants.StringConstants;
 import baseball.dto.CompareResult;
 import baseball.service.Computer;
-import baseball.service.Converter;
-import baseball.service.Validator;
 
 public class GameStarter {
 	private Computer computer;
-	private Converter converter;
-	private Validator validator;
+	private ConsoleView view;
 
 	public GameStarter() {
 		computer = new Computer();
-		converter = new Converter();
-		validator = new Validator();
+		view = new ConsoleView();
 	}
 
 	public void start() {
 		int resume = NumberConstants.RESUME;
 		do {
-			List<Integer> inputNumbers = getUserInputNumbers();
+			List<Integer> inputNumbers = view.getUserInputNumbers();
 
 			CompareResult result = compareWithRandomNumbers(inputNumbers);
 
 			if(checkAllCorrect(result)) {
-				notifyCorrectAll();
-				resume = getResumeIntention();
-				checkResume(resume);
+				view.notifyCorrectAll();
+				resume = view.getRestartIntention();
+				checkRestart(resume);
 			}
 
 		} while(resume == NumberConstants.RESUME);
 	}
 
-	private List<Integer> getUserInputNumbers() {
-		String inputString = readLineFromUser();
-		validator.validateInputString(inputString);
-		List<Integer> inputNumbers = converter.convertStringToIntegerList(inputString);
-		validator.validateInputNumbers(inputNumbers);
-		return inputNumbers;
-	}
-
-	private String readLineFromUser() {
-		System.out.print(StringConstants.ASK_NUMBER);
-		return Console.readLine();
-	}
-
 	private CompareResult compareWithRandomNumbers(List<Integer> inputNumbers) {
 		CompareResult result = computer.compareNumbers(inputNumbers);
-		notifyResultOfComparing(result);
+		String resultOfComparing = resultOfComparing(result);
+		view.notifyResultOfComparing(resultOfComparing);
 		return result;
 	}
 
-	private void notifyResultOfComparing(CompareResult result) {
-		System.out.println(resultOfComparing(result));
+	private boolean checkAllCorrect(CompareResult result) {
+		return result.getStrike() == NumberConstants.RANDOM_NUMBER_SIZE;
 	}
 
 	private String resultOfComparing(CompareResult result) {
@@ -74,24 +58,7 @@ public class GameStarter {
 		return String.format(StringConstants.BALL_AND_STRIKE, ball, strike);
 	}
 
-	private boolean checkAllCorrect(CompareResult result) {
-		return result.getStrike() == NumberConstants.RANDOM_NUMBER_SIZE;
-	}
-
-	private void notifyCorrectAll() {
-		System.out.println(StringConstants.NOTIFY_CORRECT_ALL);
-		System.out.println(StringConstants.NOTIFY_RESTART);
-	}
-
-	private int getResumeIntention() {
-		String restartString = Console.readLine();
-		validator.validateRestartString(restartString);
-		int restartNumber = converter.convertStringToInt(restartString);
-		validator.validateRestartNumber(restartNumber);
-		return restartNumber;
-	}
-
-	private void checkResume(int resume) {
+	private void checkRestart(int resume) {
 		if(resume == NumberConstants.RESUME) {
 			computer.refresh();
 		}
