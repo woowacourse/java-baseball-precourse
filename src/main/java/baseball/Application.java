@@ -18,4 +18,30 @@ public class Application {
         }
     }
 
+    static boolean GAME_ERROR=false;
+    static boolean GAME_NORMAL=true;
+
+    static boolean CORRECT_INPUT=true;
+    static boolean WRONG_INPUT=false;
+
+    static boolean PlayGame(){
+        String keyNumbers = SelectRandomNumbers();
+        while(true){
+            String inputNumbers = GetInputNumbers();
+
+            if(IsInputError(inputNumbers)){
+                return GAME_ERROR;
+            }
+
+            boolean inputResult = CheckInputNumbers(keyNumbers,inputNumbers);
+            if(inputResult==CORRECT_INPUT){
+                return GAME_NORMAL;
+            }
+        }
+    }
+
+    static boolean DecideReplayOrExit(String gameResult){
+
+    }
+
 }
