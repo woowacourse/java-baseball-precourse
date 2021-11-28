@@ -32,17 +32,22 @@ public class User {
 
 	public void chooseNumber() {
 		reset();
+
 		System.out.print("숫자를 입력해주세요 : ");
 		String numberStr = Console.readLine();
 
-		if (numberStr.length() != ANSWER_SIZE) {
+		checkException(numberStr);
+	}
+
+	public void checkException(String numberStr) {
+		if (!checkSize(numberStr)) {
 			throw new IllegalArgumentException();
 		}
 
 		for (int i = 0; i < ANSWER_SIZE; i++) {
 			char charIdxNum = numberStr.charAt(i);
 
-			if (!(charIdxNum - '0' >= MIN_NUM && charIdxNum - '0' <= MAX_NUM)) {
+			if (!checkNumber(charIdxNum)) {
 				throw new IllegalArgumentException();
 			}
 
@@ -52,6 +57,12 @@ public class User {
 
 			number[i] = charIdxNum - '0';
 		}
+	}
+
+	public boolean checkSize(String numberStr) {
+	}
+	
+	public boolean checkNumber(char charIdxNum) {
 	}
 
 	public boolean checkReduplication(int num) {
