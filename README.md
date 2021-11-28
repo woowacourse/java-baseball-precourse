@@ -2,10 +2,10 @@
 
 ## 기능 구현 목록
 
-- [ ] 3스트라이크가 나올때까지 반복해서 입력받기 - Controller#runGame()
-    - [ ] 3스트라이크 나올시 안내멘트 및 새로 시작여부 입력받기 - InputView#getInput()
-        - [ ] 새로 시작시 서로 다른 임의의 수 3개 새로 생성하기
-- [ ] 1에서 9까지 서로 다른 임의의 수 3개(컴퓨터 수)를 생성하기 - Computer#createRandomNumbers()
+- [x] 3스트라이크가 나올때까지 반복해서 입력받기 - Controller#runGame()
+    - [x] 3스트라이크 나올시 안내멘트 및 새로 시작여부 입력받기 - InputView#getInput()
+        - [x] 새로 시작시 서로 다른 임의의 수 3개 새로 생성하기
+- [x] 1에서 9까지 서로 다른 임의의 수 3개(컴퓨터 수)를 생성하기 - Computer#createRandomNumbers()
 - [ ] 1에서 9까지 서로 다른 임의의 수 3개(플레이어 수)를 입력받기 - Refree#askNumbers()
     - [ ] 플레이어 수를 검증하고 변환하는 기능 - Refree#validAndConvertIntegerNumbers()
         - [ ] 물어본 숫자 검증해서 유효하지 않으면 에러 내기, 그렇지 않으면 숫자로 변환하기
@@ -26,7 +26,7 @@
 - [ ] **indent depth가 2이하인가**
 - [ ] **하나의 함수가 한 가지 일만 하도록 하였는가**
 - [ ] **(추가) 하드코딩 하진 않았는가**
-- [ ] `Random`의 `pickNumberInRange()`를 사용했는가
+- [ ] `Randoms`의 `pickNumberInRange()`를 사용했는가
 - [ ] `Console`의 `readLine()`을 사용했는가
 - [ ] `gradlew.bat clean test`의 모든 테스트가 통과하는가
 
