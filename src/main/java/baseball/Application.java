@@ -43,7 +43,17 @@ public class Application {
         String input = Console.readLine();
         String[] splitInput = input.split("");
 
+        validatePlayerInput(splitInput);
+
         return Arrays.stream(splitInput).map(Integer::parseInt).collect(Collectors.toList());
+    }
+
+    private static void validatePlayerInput(String[] inputs) {
+        if (inputs.length != 3) throw new IllegalArgumentException();
+
+        for (String input : inputs) {
+            if (Character.isDigit(input.charAt(0))) throw new IllegalArgumentException();
+        }
     }
 }
 
