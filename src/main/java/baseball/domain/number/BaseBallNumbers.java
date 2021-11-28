@@ -30,9 +30,15 @@ public class BaseBallNumbers {
     }
 
     private static void checkDuplicatedNumbers(List<Integer> inputNumbers) {
-        if (inputNumbers.stream().distinct().count() != BASEBALL_NUMBERS_LIMIT_SIZE) {
+        if (calculateDistinctCount(inputNumbers) != BASEBALL_NUMBERS_LIMIT_SIZE) {
             throw new BaseBallNumbersDuplicateException();
         }
+    }
+
+    private static long calculateDistinctCount(List<Integer> inputNumbers) {
+        return inputNumbers.stream()
+            .distinct()
+            .count();
     }
 
     private static List<BaseBallNumber> integerToBaseBallNumber(List<Integer> inputNumbers) {
