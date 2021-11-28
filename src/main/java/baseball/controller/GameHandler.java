@@ -69,7 +69,7 @@ public class GameHandler {
                 return GAME_EXIT;
             }
         } catch (Exception e) {
-            System.exit(1);
+            System.exit(0);
         }
 
         return KEEP_GOING;
