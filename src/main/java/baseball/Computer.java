@@ -10,12 +10,14 @@ public class Computer {
     public char[] pickNumber() {
         char[] number = new char[3];
         boolean trying = false;
-            while(!trying) {
-                number = String.valueOf(Randoms.pickNumberInRange(100, 999)).toCharArray();
-                if(number[0] == number[1] || number[1] == number[2] || number[2] == number[0]) {
-                    trying = true;
-                }
+        while(!trying) {
+            number[0] = String.valueOf(Randoms.pickNumberInRange(1, 9)).charAt(0);
+            number[1] = String.valueOf(Randoms.pickNumberInRange(1, 9)).charAt(0);
+            number[2] = String.valueOf(Randoms.pickNumberInRange(1, 9)).charAt(0);
+            if(!(number[0] == number[1] || number[1] == number[2] || number[2] == number[0])) {
+                trying = true;
             }
+        }
         return number;
     }
 
@@ -42,6 +44,9 @@ public class Computer {
         }
         if (strikeCount != 0) {
             System.out.print(strikeCount+"스트라이크");
+        }
+        if (ballCount == 0) {
+            System.out.print("낫싱");
         }
         System.out.println();
         if (strikeCount == 3) {
