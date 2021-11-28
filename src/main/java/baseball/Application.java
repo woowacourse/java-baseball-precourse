@@ -7,21 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> answerNumbersList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        System.out.println(answerNumbersList);
-        while (true) {
-            String input = readUserInput();
-            validateType(input);
-            validateRange(input);
-            validateNumber(input);
-            List<Integer> inputNumbersList = makeInputToList(input);
-            int[] compareResult = compareNumbersList(answerNumbersList, inputNumbersList);
-            printHintMessage(compareResult);
-            boolean finishGame = isAllNumbersCorrect(compareResult[2]);
-            if(finishGame && finishOrNot()){
-                break;
-            }
-        }
+        while (!processGame());
     }
 
     // 사용자로부터 값을 입력받는다.
@@ -113,5 +99,27 @@ public class Application {
         } else {
             throw new IllegalArgumentException();
         }
+    }
+
+    // 게임을 진행한다.
+    private static boolean processGame(){
+        List<Integer> answerNumbersList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        System.out.println(answerNumbersList);
+
+        while (true) {
+            String input = readUserInput();
+            validateType(input);
+            validateRange(input);
+            validateNumber(input);
+            List<Integer> inputNumbersList = makeInputToList(input);
+            int[] compareResult = compareNumbersList(answerNumbersList, inputNumbersList);
+            printHintMessage(compareResult);
+            boolean finishGame = isAllNumbersCorrect(compareResult[2]);
+            if(finishGame){
+                break;
+            }
+        }
+
+        return finishOrNot();
     }
 }
