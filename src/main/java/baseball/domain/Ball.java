@@ -2,7 +2,7 @@ package baseball.domain;
 
 public class Ball {
 
-    int number;
+    private int number;
 
     public Ball(int number) throws IllegalArgumentException{
         if (number < 1 || number > 9) {
