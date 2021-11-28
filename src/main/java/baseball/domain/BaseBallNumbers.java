@@ -41,7 +41,7 @@ public class BaseBallNumbers {
     }
 
     public int calculateStrikeCount(List<BaseBallNumber> randomNumbers) {
-        return (int) IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE).filter(i -> isStrike(i, randomNumbers)).count();
+        return (int)IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE).filter(i -> isStrike(i, randomNumbers)).count();
     }
 
     private boolean isStrike(int targetIndex, List<BaseBallNumber> randomNumbers) {
