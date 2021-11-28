@@ -6,8 +6,13 @@ public class Game {
 	private final int ANSWER_SIZE = 3;
 	private int strike = 0;
 	private int ball = 0;
-	public Computer com = new Computer();
-	public User user = new User();
+	public Computer com;
+	public User user;
+
+	public Game() {
+		com = new Computer(ANSWER_SIZE);
+		user = new User(ANSWER_SIZE);
+	}
 
 	public boolean playGame() {
 		com.makeAnswer();

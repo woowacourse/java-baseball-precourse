@@ -5,9 +5,22 @@ import camp.nextstep.edu.missionutils.Console;
 public class User {
 	private final int MIN_NUM = 1;
 	private final int MAX_NUM = 9;
-	private final int ANSWER_SIZE = 3;
-	public int[] number = {0, 0, 0};
+	private final int ANSWER_SIZE;
+	private boolean[] flag;
+	public int[] number;
 
+	public User(int answerSize) {
+		ANSWER_SIZE = answerSize;
+		number = new int[answerSize];
+		flag = new boolean[MAX_NUM + 1];
+		for (int i = 0; i < answerSize; i++) {
+			number[i] = 0;
+		}
+		for (int i = 0; i < MAX_NUM + 1; i++) {
+			flag[i] = false;
+		}
+	}
+	
 	public void reset() {
 		for (int i = 0; i < ANSWER_SIZE; i++) {
 			number[i] = 0;
