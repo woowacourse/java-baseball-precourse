@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -32,5 +33,18 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+//    - [예외] 입력한 길이가 3인지 검사
+//  - [예외] 입력한 문자가 숫자인지 검사
+//  - 사용자 입력을 3개의 숫자 리스트로 변환
+
+    @DisplayName("입력한 길이가 3인지 검사")
+    @Test
+    void string_length_is_3() {
+        Application application = new Application();
+        application.validateLength("123");
+        assertThatThrownBy(() -> application.validateLength("1234"))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }
