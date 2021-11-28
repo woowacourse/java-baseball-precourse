@@ -1,9 +1,25 @@
 package baseball.game;
 
 import static baseball.util.RandomUtil.createComputerNumbers;
+import static baseball.util.UserInputUtil.checkProgress;
 import static baseball.util.UserInputUtil.getThreeDigitInput;
 
 public class Baseball {
+
+    public void startGame() {
+
+        while(true) {
+            progressGame();
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            boolean check = checkProgress();
+
+            if (check == false) {
+                break;
+            }
+        }
+    }
 
     private void progressGame() {
 
