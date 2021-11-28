@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import static baseball.util.RandomUtil.createComputerNumbers;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -36,7 +37,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    public void pickNumberInRange테스트() throws Exception {
+    public void pickNumberInRange_테스트() throws Exception {
         //given
         int num1 = 1;
         int num2 = 9;
@@ -46,5 +47,16 @@ class ApplicationTest extends NsTest {
 
         //then
         assertThat(result).isGreaterThanOrEqualTo(num1).isLessThanOrEqualTo(num2);
+    }
+
+    @Test
+    public void 컴퓨터난수_다른지_테스트() throws Exception {
+        //given
+
+        //when
+        int[] computerNumbers = createComputerNumbers();
+
+        //then
+        assertThat(computerNumbers).doesNotHaveDuplicates();
     }
 }
