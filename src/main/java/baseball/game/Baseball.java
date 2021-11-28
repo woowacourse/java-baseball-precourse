@@ -29,7 +29,7 @@ public class Baseball {
         int ball = 0;
 
         while (true) {
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
 
             int[] userInput = getThreeDigitInput();
 
