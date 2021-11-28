@@ -11,9 +11,12 @@ public class Application {
     private static final int START_GAME_VALUE = 1;
     private static final int END_GAME_VALUE = 2;
 
+    private static final String GAME_ENDING_OUTPUT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
+    private static final Game game = new Game();
+
     public static void main(String[] args) {
         int gameStatus = START_GAME_VALUE;
-        Game game = new Game();
 
         while (gameStatus != END_GAME_VALUE) {
             game.start();
@@ -23,12 +26,17 @@ public class Application {
 
     private static void playGame() {
         List<Integer> playerInput;
+        Result result;
 
-        while(true) {
+        do {
             playerInput = getPlayerInput();
 
-            // TODO : userInput을 검증하고, 결과를 찾는다.
-        }
+            result = game.tryBaseball(playerInput);
+            System.out.println(result.toString());
+
+        } while (!result.isStrikeOut());
+
+        System.out.println(GAME_ENDING_OUTPUT);
     }
 
     private static List<Integer> getPlayerInput() {
@@ -48,6 +56,10 @@ class Game {
 
     public void start() {
         this.answer = new Answer();
+    }
+
+    public Result tryBaseball(List<Integer> playerNumbers) {
+        return new Result(1, 1);
     }
 }
 
@@ -72,5 +84,19 @@ class Answer {
 
             if (!numbers.contains(number)) return number;
         }
+    }
+}
+
+class Result {
+    int strike;
+    int ball;
+
+    public Result(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
+
+    public boolean isStrikeOut() {
+        return strike == 3;
     }
 }
