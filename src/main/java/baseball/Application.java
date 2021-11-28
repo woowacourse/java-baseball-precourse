@@ -118,7 +118,12 @@ public class Application {
     }
 
     static boolean IsBall(String keyNumbers, char inputNumbersChar) {
-        
+        for(int i=0;i<NUMBER_SIZE;++i){
+            if(keyNumbers.charAt(i)==inputNumbersChar){
+                return true;
+            }
+        }
+        return false;
     }
 
     static boolean ReturnInputResult(int strikeCount, int ballCount) {
