@@ -1,6 +1,7 @@
 package baseball.constants;
 
 public class NumberConstant {
+
     public final static int ANSWER_LIST_LENGTH = 3;
     public final static int RANGE_START_NUM = 1;
     public final static int RANGE_END_NUM = 9;

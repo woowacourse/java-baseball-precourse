@@ -1,6 +1,7 @@
 package baseball.constants;
 
 public class OutputMessage {
+
     public final static String OUT_OF_VALID_NUM_RANGE_ERROR = "잘못된 숫자를 입력하셨습니다.";
     public final static String NOT_NUMBER_TYPE_ERROR = "잘못된 값을 입력하셨습니다.";
     public final static String SAME_NUMBER_ERROR = "동일한 숫자를 중복 입력하셨습니다.";
