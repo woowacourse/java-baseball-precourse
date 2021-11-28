@@ -46,4 +46,11 @@ public class Computer {
         int ballCount = answerNumbers.calculateBallCounts(baseBallNumbers);
         return GameResult.from(strikeCount, ballCount);
     }
+
+    public Computer refresh() {
+        if (gameState.isEndGame()) {
+            throw new RuntimeException("종료된 게임은 리프레시할 수 없다.");
+        }
+        return this;
+    }
 }

@@ -1,10 +1,12 @@
 package baseball.domain.computer;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import baseball.domain.number.BaseBallNumbers;
 import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
@@ -33,5 +35,22 @@ class ComputerTest {
 
         // then
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Nested
+    @DisplayName("[Computer refresh 테스트]")
+    class RefreshComputerTest {
+
+        @Test
+        @DisplayName("이미 종료된 Computer가 Refresh할 경우 Exception이 발생해야 한다.")
+        void refreshExceptionByEndState() {
+            // given
+            Computer computer = Computer.from(BaseBallNumbers.createByIntegerNumbers(Arrays.asList(1, 2, 3)), GameState.END);
+
+            // when & then
+            assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> computer.refresh())
+                .withMessageMatching("종료된 게임은 리프레시할 수 없다.");
+        }
     }
 }
