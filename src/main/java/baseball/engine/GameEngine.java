@@ -10,6 +10,20 @@ import java.util.List;
 
 public class GameEngine {
 
+    public void start() {
+        int[] judge;
+
+        do {
+            List<Integer> answer = generateAnswer();
+            System.out.print(GameData.INPUT_NUMBER_MESSAGE);
+            List<Integer> userNumber = parseUserNumber(inputUserNumber());
+            judge = judge(answer, userNumber);
+            System.out.println(getGameResult(judge));
+        } while (checkGameEnd(judge));
+
+        System.out.println(GameData.GAME_END_MESSAGE);
+    }
+
     private List<Integer> generateAnswer() {
         List<Integer> results = new ArrayList<Integer>();
 
