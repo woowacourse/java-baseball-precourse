@@ -1,5 +1,8 @@
 package baseball.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static baseball.constants.NumberConstant.ANSWER_LIST_LENGTH;
 import static baseball.constants.NumberConstant.END_GAME_NUM;
 import static baseball.constants.NumberConstant.RANGE_END_NUM;
@@ -11,50 +14,50 @@ import static baseball.constants.OutputMessage.SAME_NUMBER_ERROR;
 
 public class Validator {
 
-    public static void validateIntRange(int input, int min, int max) {
-        if (input < min || input > max) throw new IllegalArgumentException(OUT_OF_VALID_NUM_RANGE_ERROR);
-    }
-
-    public static void validateUniqueNumberInput(int[] counter) {
-        for (int i : counter) {
-            if (i >= 2) throw new IllegalArgumentException(SAME_NUMBER_ERROR);
-        }
-    }
-
     public static void validateAnswerInput(String input) {
-        String[] inputNums = input.split("");
-        int[] counter = new int[RANGE_END_NUM + 1];
+        String[] inputStringNums = input.split("");
+        validateAnswerInputLength(inputStringNums);
 
-        validateAnswerInputLength(inputNums);
+        List<Integer> inputIntNums = new ArrayList<>();
 
-        int inputNum;
-        for (String s : inputNums) {
-            try {
-                inputNum = Integer.parseInt(s);
-                validateIntRange(inputNum, RANGE_START_NUM, RANGE_END_NUM);
-                counter[inputNum] += 1;
-            } catch (Exception e) {
-                throw new IllegalArgumentException(NOT_NUMBER_TYPE_ERROR);
-            }
+        for (String s : inputStringNums) {
+            int intInput = validateAndParseToIntType(s);
+            validateIntRange(intInput, RANGE_START_NUM, RANGE_END_NUM);
+            inputIntNums.add(intInput);
         }
 
-        validateUniqueNumberInput(counter);
-    }
-
-    public static void validateAnswerInputLength(String[] inputNums) {
-        if (inputNums.length != ANSWER_LIST_LENGTH) {
-            throw new IllegalArgumentException(NOT_NUMBER_TYPE_ERROR);
-        }
+        validateUniqueNumber(inputIntNums);
     }
 
     public static void validateRestartInput(String input){
-        int intInput;
+        int intInput = validateAndParseToIntType(input);
+        validateIntRange(intInput, RESTART_NUM, END_GAME_NUM);
+    }
+
+    private static int validateAndParseToIntType(String string) {
         try {
-            intInput = Integer.parseInt(input);
+            return Integer.parseInt(string);
         } catch (Exception e) {
             throw new IllegalArgumentException(NOT_NUMBER_TYPE_ERROR);
         }
+    }
 
-        validateIntRange(intInput, RESTART_NUM, END_GAME_NUM);
+    private static void validateIntRange(int input, int min, int max) {
+        if (input < min || input > max) throw new IllegalArgumentException(OUT_OF_VALID_NUM_RANGE_ERROR);
+    }
+
+    private static void validateUniqueNumber(List<Integer> intList) {
+        boolean[] visited = new boolean[RANGE_END_NUM + 1];
+
+        for (int value : intList) {
+            if (visited[value]) throw new IllegalArgumentException(SAME_NUMBER_ERROR);
+            visited[value] = true;
+        }
+    }
+
+    private static void validateAnswerInputLength(String[] inputStringNums) {
+        if (inputStringNums.length != ANSWER_LIST_LENGTH) {
+            throw new IllegalArgumentException(NOT_NUMBER_TYPE_ERROR);
+        }
     }
 }

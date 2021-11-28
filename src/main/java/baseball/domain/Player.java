@@ -21,8 +21,7 @@ public class Player {
         Validator.validateAnswerInput(input);
 
         for (String s : input.split("")) {
-            Integer parseInt = Integer.parseInt(s);
-            answer.add(parseInt);
+            answer.add(Integer.parseInt(s));
         }
 
         return answer;
