@@ -3,10 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashMap;
 
-public class Player {
+import static baseball.Message.ERR_MSG;
+import static baseball.Message.INPUT;
 
-    private static final String INPUT = "숫자를 입력해주세요: ";
-    private static final String ERR_MSG = "올바르지 않은 형식의 숫자를 입력하셨습니다. (1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 입력하세요.)";
+public class Player {
 
     public String scanNumber() {
         System.out.print(INPUT);

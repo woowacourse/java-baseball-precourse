@@ -1,8 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 

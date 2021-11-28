@@ -1,10 +1,8 @@
 package baseball;
 
+import static baseball.Message.*;
+
 public class PrintResult {
-    private static final String ALL_STRIKE_MSG = "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String STRIKE_MSG = "스트라이크";
-    private static final String BALL_MSG = "볼";
-    private static final String NOTHING_MSG = "낫싱";
     private int ballCnt;
     private int strikeCnt;
 
