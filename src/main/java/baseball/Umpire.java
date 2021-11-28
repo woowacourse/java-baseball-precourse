@@ -35,12 +35,12 @@ public class Umpire {
     }
 
 
-    public boolean isStrike(final char digit, final int pos) {
+    private boolean isStrike(final char digit, final int pos) {
 
         return randomNumber.charAt(pos) == digit;
     }
 
-    public boolean isBall(final char digit) {
+    private boolean isBall(final char digit) {
 
         for (int i = 0; i < NumberAttribute.DIGIT_NUMBER.getValue(); i++) {
             if (randomNumber.charAt(i) == digit) {
@@ -50,7 +50,7 @@ public class Umpire {
         return false;
     }
 
-    public String getHint(final int ballCount, final int strikeCount) {
+    private String getHint(final int ballCount, final int strikeCount) {
 
         if (ballCount == 0 && strikeCount == 0) {
             return HintMessage.NOTHING.getHint();
