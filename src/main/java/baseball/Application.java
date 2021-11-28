@@ -10,4 +10,16 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validateNumbers(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            validateNumber(input.charAt(i));
+        }
+    }
+
+    public void validateNumber(char c) {
+        if (!(Character.isDigit(c))) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

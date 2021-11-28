@@ -35,7 +35,6 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-//    - [예외] 입력한 길이가 3인지 검사
 //  - [예외] 입력한 문자가 숫자인지 검사
 //  - 사용자 입력을 3개의 숫자 리스트로 변환
 
@@ -45,6 +44,24 @@ class ApplicationTest extends NsTest {
         Application application = new Application();
         application.validateLength("123");
         assertThatThrownBy(() -> application.validateLength("1234"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력한 문자열이 숫자인지 검사")
+    @Test
+    void stringIsNumber() {
+        Application application = new Application();
+        application.validateNumbers("123");
+        assertThatThrownBy(() -> application.validateNumbers("a23"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("문자가 숫자인지 검사")
+    @Test
+    void charIsNumber() {
+        Application application = new Application();
+        application.validateNumber('1');
+        assertThatThrownBy(() -> application.validateNumber('a'))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }
