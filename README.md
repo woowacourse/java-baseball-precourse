@@ -11,7 +11,7 @@
   - [x] Strike Result
   - [x] Strike & Ball Result
   - [x] Ball Result
-  - [ ] Nothing REsult
+  - [x] Nothing REsult
 
 ---
 
