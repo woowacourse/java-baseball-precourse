@@ -69,6 +69,13 @@ public class Application {
         return keyNumbers;
     }
 
+    static String GetInputNumbers(){
+        System.out.print("숫자를 입력해주세요 : ");
+
+        String inputNumbers = readLine();
+        return inputNumbers;
+    }
+
     static boolean DecideReplayOrExit(String gameResult){
 
     }
