@@ -1,20 +1,22 @@
 package baseball;
 
+import static baseball.Constant.*;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-	Computer computer = new Computer();
-	Referee referee = new Referee(computer.getBalls());
-	User user = new User();
-	boolean game = true;
+	private final Computer computer = new Computer();
+	private final Referee referee = new Referee(computer.getBalls());
+	private final User user = new User();
+	private boolean status = true;
 
 	public void run() {
-		while (game) {
+		while (status) {
 			Output.printInputView();
 			user.insertNumbers(Console.readLine());
 			referee.judge(user.getBalls());
 			Output.printResult(referee.getStrikeCount(), referee.getBallCount());
-			if (referee.getStrikeCount() == 3) {
+			if (referee.getStrikeCount() == MAX_STRIKE_COUNT) {
 				setForRestarting();
 			}
 			referee.clearScore();
@@ -23,8 +25,8 @@ public class Game {
 
 	public void setForRestarting() {
 		Output.printFinishView();
-		game = decideWhetherRestart();
-		if (game) {
+		status = decideWhetherRestart();
+		if (status) {
 			computer.createNewNumbers();
 			referee.setBalls(computer.getBalls());
 		}
@@ -34,11 +36,11 @@ public class Game {
 		Output.printRequestRestartOrFinish();
 		int input = Integer.parseInt(Console.readLine());
 		validateInputWhetherRestart(input);
-		return input == 1;
+		return input == INPUT_RESTART;
 	}
 
 	public void validateInputWhetherRestart(int input) {
-		if (input == 1 || input == 2) {
+		if (input == INPUT_RESTART || input == INPUT_FISH) {
 			return;
 		}
 		throw new IllegalArgumentException();

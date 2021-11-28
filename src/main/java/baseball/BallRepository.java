@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,14 +22,14 @@ public class BallRepository {
 	}
 
 	private boolean validateNumber(int number) {
-		if (number >= 1 && number <= 9) {
+		if (number >= MIN_NUMBER && number <= MAX_NUMBER) {
 			return true;
 		}
 		throw new IllegalArgumentException();
 	}
 
 	private void validateNumbers(List<Integer> numbers) {
-		if (numbers.size() != 3) {
+		if (numbers.size() != MAX_BALL_SIZE) {
 			throw new IllegalArgumentException();
 		}
 	}
