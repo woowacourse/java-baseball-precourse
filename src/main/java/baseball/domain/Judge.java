@@ -12,33 +12,46 @@ import java.util.Objects;
 
 public class Judge {
 
-    public static String checkAnswerInput(List<Integer> input, List<Integer> answerList) {
-        int strikeCount = 0;
-        int ballCount = 0;
-        int curInputIdx;
-        for (curInputIdx = 0; ; curInputIdx++) {
-            if (curInputIdx >= ANSWER_LIST_LENGTH) {
-                break;
-            }
-
-            int curInput = input.get(curInputIdx);
-
-            if (Objects.equals(curInput, answerList.get(curInputIdx))) {
-                strikeCount++;
-                continue;
-            }
-
-            if (checkIfBall(curInput, answerList)) {
-                ballCount++;
-            }
-        }
-
+    public static String checkAnswerInput(List<Integer> playerInput, List<Integer> answerList) {
+        int strikeCount = countStrikes(playerInput, answerList);
+        int ballCount = countBalls(playerInput, answerList);
         return giveHint(strikeCount, ballCount);
     }
 
-    private static boolean checkIfBall(int curInput, List<Integer> answerList) {
+    public static boolean checkGameOver(String hint) {
+        System.out.println(hint);
+
+        if (Objects.equals(hint, FINISH_GAME_CONDITION)) {
+            System.out.println(CONGRATULATION_MESSAGE);
+            return true;
+        }
+
+        return false;
+    }
+
+    private static int countStrikes(List<Integer> playerInput, List<Integer> answerList) {
+        int strikeCount = 0;
+        for (int idx = 0; idx < ANSWER_LIST_LENGTH; idx++) {
+            if (Objects.equals(playerInput.get(idx), answerList.get(idx))) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
+    private static int countBalls(List<Integer> playerInput, List<Integer> answerList) {
+        int ballCount = 0;
+        for (int playerInputIdx = 0; playerInputIdx < ANSWER_LIST_LENGTH; playerInputIdx++) {
+            if (checkIfBall(playerInput.get(playerInputIdx), answerList)) {
+               ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
+    private static boolean checkIfBall(int curPlayerInput, List<Integer> answerList) {
         for (int answerNum : answerList) {
-            if (Objects.equals(curInput, answerNum)) {
+            if (Objects.equals(curPlayerInput, answerNum)) {
                 return true;
             }
         }
@@ -61,16 +74,5 @@ public class Judge {
         }
 
         return hint;
-    }
-
-    public static boolean checkGameOver(String hint) {
-        System.out.println(hint);
-
-        if (Objects.equals(hint, FINISH_GAME_CONDITION)) {
-            System.out.println(CONGRATULATION_MESSAGE);
-            return true;
-        }
-
-        return false;
     }
 }
