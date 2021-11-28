@@ -50,10 +50,14 @@ public class BaseBallNumbers {
     public int calculateStrikeCounts(BaseBallNumbers baseBallNumbers) {
         int result = 0;
         for (int i = 0; i < 3; i++) {
-            if (baseBallNumbers.numbers.get(i).equals(this.numbers.get(i))) {
+            if (isStrike(i, baseBallNumbers)) {
                 result++;
             }
         }
         return result;
+    }
+
+    private boolean isStrike(int index, BaseBallNumbers baseBallNumbers) {
+        return this.numbers.get(index).equals(baseBallNumbers.numbers.get(index));
     }
 }
