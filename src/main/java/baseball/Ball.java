@@ -5,13 +5,13 @@ public class Ball {
 	private int number;
 
 	public Ball(int number) {
-		checkNotZero(number);
+		checkRange(number);
 		this.number = number;
 	}
 
-	private void checkNotZero(int number) {
-		if (number == 0) {
-			throw new IllegalArgumentException("Ball 은 0일 수 없습니다");
+	private void checkRange(int number) {
+		if (number < 1 || number > 9) {
+			throw new IllegalArgumentException("Ball 은 1 이상 9 이하여야 합니다.");
 		}
 	}
 

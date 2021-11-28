@@ -18,8 +18,8 @@ public class BaseballGame {
 		Hint hint;
 		computer.determineAnswerBalls();
 		do {
-			String prediction = Player.predictBalls();
-			hint = computer.compareBalls(prediction);
+			String predictionBalls = Player.predictBalls();
+			hint = computer.compareBalls(predictionBalls);
 			GameOutput.printHint(hint);
 		} while (!isGameEnd(hint));
 	}
