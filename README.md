@@ -1,15 +1,23 @@
 # 미션 - 숫자 야구 게임
 
-## 구현할 기능 목록 
-- [v]  1 ~ 9 까지의 서로 다른 임의의 수 3개를 생성한다. (Computer)
-- [v]  사용자의 input을 받는다.(User)
-- [v]  컴퓨터의 Number와 유저의 Number를 비교한다.(Judgement)
-- [v]  Ball 판단 (Judgement)
-- [v]  Strike 판단 (Judgement)
-- [v]  Nothing 판단 (Judgement)
-- [v]  output 출력 (Judgement)
+## 구현할 기능 목록
+### Game
 - [v]  게임 새 시작, 종료 로직 (Game)
-- [v]  input 예외 처리 (Validation)
+### Computer
+  - [v]  1 ~ 9 까지의 서로 다른 임의의 수 3개를 생성 (Computer)
+### User
+  - [v]  사용자의 input을 받는다.(User)
+### Judgement
+  - [v]  컴퓨터의 Number와 유저의 Number를 비교 (Judgement)
+  - [v]  Ball 판단 (Judgement)
+  - [v]  Strike 판단 (Judgement)
+  - [v]  Nothing 판단 (Judgement)
+  - [v]  output 출력 (Judgement)
+### Validation
+  - [v]  input 예외 처리 (Validation)
+
+---
+  
 ## 🔍 진행방식
 
 - 미션은 **기능 요구사항, 프로그래밍 요구사항, 과제 진행 요구사항** 세 가지로 구성되어 있다.
