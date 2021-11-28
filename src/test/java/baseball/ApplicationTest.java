@@ -1,10 +1,12 @@
 package baseball;
 
 import org.junit.jupiter.api.Test;
+
 import camp.nextstep.edu.missionutils.test.NsTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 
