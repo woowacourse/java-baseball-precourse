@@ -1,8 +1,7 @@
 package baseball;
 
-//    - [ ] [예외] 중복된 값을 가진 Ball이 있는지 검사
-
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,4 +26,11 @@ public class BallsTest {
             )).isTrue();
     }
 
+    @DisplayName("중복된 수를 가진 Ball이 있는지 검사")
+    @Test
+    void validateDuplication() {
+        List<Integer> numbers = Arrays.asList(1, 2, 2);
+        assertThatThrownBy(() -> new Balls(numbers))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }
