@@ -8,6 +8,7 @@ public class Game {
 
 	public void gameStart() {
 
+
 		boolean gameContinueFlag;
 
 		do {
@@ -34,24 +35,35 @@ public class Game {
 
 	}
 
-	public boolean judgeResult() {
-		return true;
+
+	public boolean judgeResult(int[] computerNumber, int[] playerNumber) {
+		int[] numStrikeAndBall;
+		boolean endFlag;
+
+		numStrikeAndBall = countStrikeAndBall(computerNumber, playerNumber);
+		endFlag = printBallandStrikeResult(numStrikeAndBall);
+
+		return endFlag;
 	}
 
-	public int countStrikeAndBall(int[] computerNumber, int[] playerNumber) {
+	public int[] countStrikeAndBall(int[] computerNumber, int[] playerNumber) {
 		int numStrike = 0;
 		int numBall = 0;
+		int[] numStrikeAndBall = new int[2];
 
 		for (int i = 0; i < 3; i++) {
 			if (computerNumber[i] == playerNumber[i]) {
 				numStrike += 1;
 				continue;
 			}
-			if (haveValue(computerNumber, playerNumber[i])){
+			if (haveValue(computerNumber, playerNumber[i])) {
 				numBall += 1;
 			}
 		}
-		return numStrike;
+		numStrikeAndBall[0] = numStrike;
+		numStrikeAndBall[1] = numBall;
+
+		return numStrikeAndBall;
 	}
 
 	public boolean haveValue(int[] computerNumber, int value) {
@@ -65,5 +77,33 @@ public class Game {
 
 	}
 
+	public boolean printBallandStrikeResult(int[] numStrikeAndBall){
+		int numStrike = numStrikeAndBall[0];
+		int numBall = numStrikeAndBall[1];
+
+		if (numStrike == 3) {
+			System.out.println("3스트라이크");
+			return true;
+		}
+
+		if (numStrike == 0 && numBall == 0) {
+			System.out.println("낫싱");
+			return false;
+		}
+
+		if (numBall == 0) {
+			System.out.println(numStrike + "스트라이크");
+			return false;
+		}
+
+		if (numStrike == 0) {
+			System.out.println(numBall + "볼");
+			return false;
+		}
+
+		System.out.println(numBall + "볼 " + numStrike + "스트라이크");
+		return false;
+
+	}
 
 }
