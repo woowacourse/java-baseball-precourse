@@ -46,4 +46,14 @@ public class BaseBallNumbers {
             .map(BaseBallNumber::from)
             .collect(Collectors.toList());
     }
+
+    public int calculateStrikeCounts(BaseBallNumbers baseBallNumbers) {
+        int result = 0;
+        for (int i = 0; i < 3; i++) {
+            if (baseBallNumbers.numbers.get(i).equals(this.numbers.get(i))) {
+                result++;
+            }
+        }
+        return result;
+    }
 }
