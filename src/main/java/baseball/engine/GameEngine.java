@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GameEngine {
@@ -33,6 +34,23 @@ public class GameEngine {
         }
 
         return result;
+    }
+
+    private List<Integer> parseUserNumber(int userNumber) {
+        List<Integer> results = new ArrayList<Integer>();
+
+        do {
+            results.add(Integer.valueOf(userNumber % 10));
+            userNumber /= 10;
+        } while (userNumber != 0);
+
+        if(results.size() != GameData.NUM_OF_ANSWER) {
+            throw new IllegalArgumentException(Integer.toString(userNumber));
+        }
+
+        Collections.reverse(results);
+
+        return results;
     }
 
 }
