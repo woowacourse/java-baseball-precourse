@@ -52,4 +52,25 @@ public class InputNumber {
         inputNum();
         return inputArray;
     }
+
+    /**
+     * 1, 2가 아닌 그 외의 수를 입력받으면 예외 발생
+     */
+    private void restartException(int num){
+        if(!(num == 1 || num == 2)){
+            throw new IllegalArgumentException("1또는 2만 입력할 수 있습니다.");
+        }
+    }
+
+    /**
+     * 게임 재시작 혹은 종료를 위한 값 입력받기
+     * 1, 2만 입력가능
+     * 그 외, restartException 예외처리
+     * 반환값은 입력받은 값
+     * */
+    public int restart(){
+        int regame = Integer.parseInt(Console.readLine());
+        restartException(regame);
+        return regame;
+    }
 }

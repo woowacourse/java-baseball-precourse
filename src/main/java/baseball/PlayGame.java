@@ -98,17 +98,30 @@ public class PlayGame {
         }
     }
 
+    private int restartOrStop(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return inputNumber.restart();
+    }
+
     /**
      * 주 게임 진행 함수
      * 새로운 게임 마다 랜덤 수를 출력하고
      * 게임을 진행
      * 게임이 다 진행되면 게임 재시작, 종료 판단하기
+     *
+     * do~while문을 이용해서 2번을 입력받기 전까지 계속 진행하기
      * */
     public void baseballGame(){
-        // 새로운 게임이 시작될 때마다 랜덤한 숫자를 받아야합니다.
-        randomArray = randomNumber.getRandom();
+        do {
+            // 새로운 게임이 시작될 때마다 랜덤한 숫자를 받아야합니다.
+            randomArray = randomNumber.getRandom();
 
-        // 게임을 시작합니다.
-        playUnitGame();
+            // 게임을 시작합니다.
+            playUnitGame();
+
+            if(restartOrStop() == 2){
+                break;
+            }
+        }while (true);
     }
 }
