@@ -10,7 +10,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberGenerator {
 
-    /* 1에서 9까지의 서로 다른 임의의 세 자리 난수를 생성함 */
+    /* 1에서 9까지의 서로 다른 임의의 n 자리 난수를 생성함 */
     public static String generateRandomNumber() {
 
         Set<Character> randNumSet = new HashSet<>();
