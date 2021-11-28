@@ -67,6 +67,21 @@ public class GameEngine {
         return result;
     }
 
+    private String getGameResult(int[] judge) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if(judge[1] != 0) {
+            stringBuilder.append(String.format("%d%s", judge[1], GameData.BALL_MESSAGE));
+        }
+        if(judge[0] != 0) {
+            if(stringBuilder.length() != 0) {
+                stringBuilder.append(" ");
+            }
+            stringBuilder.append(String.format("%d%s", judge[0], GameData.STRIKE_MESSAGE));
+        }
+
+        return stringBuilder.toString();
+    }
+
     private boolean checkStrike(Integer answer, Integer userNumber) {
         return answer == userNumber;
     }
