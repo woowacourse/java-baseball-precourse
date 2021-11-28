@@ -82,6 +82,10 @@ public class GameManager {
     }
 
     private ArrayList<Integer> parseToIntegerArray(String line) throws IllegalArgumentException {
+        if(line.length() != 3) {
+            throw new IllegalArgumentException(String.format("Invalid input length: %d, Length if input must be 3", line.length()));
+        }
+
         ArrayList<Integer> ret = new ArrayList<>();
 
         for (char c : line.toCharArray()) {
