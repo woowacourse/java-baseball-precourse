@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Arrays;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
@@ -31,4 +33,37 @@ public class Game {
 		return false;
 
 	}
+
+	public boolean judgeResult() {
+		return true;
+	}
+
+	public int countStrikeAndBall(int[] computerNumber, int[] playerNumber) {
+		int numStrike = 0;
+		int numBall = 0;
+
+		for (int i = 0; i < 3; i++) {
+			if (computerNumber[i] == playerNumber[i]) {
+				numStrike += 1;
+				continue;
+			}
+			if (haveValue(computerNumber, playerNumber[i])){
+				numBall += 1;
+			}
+		}
+		return numStrike;
+	}
+
+	public boolean haveValue(int[] computerNumber, int value) {
+
+		for (int i = 0; i < 3; i++) {
+			if (computerNumber[i] == value) {
+				return true;
+			}
+		}
+		return false;
+
+	}
+
+
 }
