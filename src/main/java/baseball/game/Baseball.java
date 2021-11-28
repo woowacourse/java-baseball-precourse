@@ -25,10 +25,10 @@ public class Baseball {
 
         int[] computerNumbers = createComputerNumbers();
 
-        int strike = 0;
-        int ball = 0;
-
         while (true) {
+            int strike = 0;
+            int ball = 0;
+
             System.out.print("숫자를 입력해주세요 : ");
 
             int[] userInput = getThreeDigitInput();
