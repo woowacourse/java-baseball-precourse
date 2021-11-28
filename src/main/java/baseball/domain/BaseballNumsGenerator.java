@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class BaseballNumsGenerator {
     private static final int ZERO = '0';
-    private final static String NOT_NUMBER_RANGE_ONE_TO_NINE = "1에서 9사이의 숫자가 아닙니다.";
+    private static final String NOT_NUMBER_RANGE_ONE_TO_NINE = "1에서 9사이의 숫자가 아닙니다.";
 
     public static BaseballNums generateRandomBaseballNums() {
         Set<Integer> randomBaseballNums = new HashSet<>();
