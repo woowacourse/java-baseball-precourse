@@ -23,9 +23,9 @@ public class GameManager {
         ResultBase ballResult = new BallResult();
         ResultBase nothingResult = new NothingResult();
 
-        strikeResult.appendNext(strikeAndBallResult);
-        strikeAndBallResult.appendNext(ballResult);
-        ballResult.appendNext(nothingResult);
+        strikeResult.appendNext(strikeAndBallResult)
+                .appendNext(ballResult)
+                .appendNext(nothingResult);
 
         this.result = strikeResult;
     }
@@ -60,7 +60,11 @@ public class GameManager {
         for (int i = 0; i < 3; i++) {
             int number = Randoms.pickNumberInRange(0, 9);
             this.numbers.put(number, i);
+
+            // debug
+            System.out.print(number);
         }
+        System.out.println();
     }
 
     private void askPlayerToContinue() throws IllegalArgumentException {
@@ -112,7 +116,8 @@ public class GameManager {
     }
 
     private void printResult(Score score) {
-        this.result.getMessage(score.getStrike(), score.getBall());
+        String message = this.result.getMessage(score.getStrike(), score.getBall());
+
     }
 
     private void checkResultStatus(Score score) throws IllegalArgumentException {
