@@ -40,6 +40,35 @@ public class Application {
         }
     }
 
+
+    static int MAX_NUMBER=9;
+    static int MIN_NUMBER=1;
+    static int NUMBER_COUNT=MAX_NUMBER-MIN_NUMBER+1;
+    static int NUMBER_SIZE=3;
+
+    static String SelectRandomNumbers(){
+        boolean[] existence = new boolean[NUMBER_COUNT];
+        int[] randomNumber = new int[NUMBER_SIZE];
+        int randomNumberInt=0;
+
+        for(int i=0;i<NUMBER_SIZE;++i){
+            randomNumber[i]=pickNumberInRange(MIN_NUMBER,MAX_NUMBER);
+            if(existence[randomNumber[i]-MIN_NUMBER]){
+                i--;
+            } else{
+                existence[randomNumber[i]-MIN_NUMBER]=true;
+            }
+        }
+
+        for(int i=0;i<NUMBER_SIZE;++i){
+            randomNumberInt*=10;
+            randomNumberInt+=randomNumber[i];
+        }
+
+        String keyNumbers=Integer.toString(randomNumberInt);
+        return keyNumbers;
+    }
+
     static boolean DecideReplayOrExit(String gameResult){
 
     }
