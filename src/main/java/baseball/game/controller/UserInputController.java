@@ -13,14 +13,20 @@ public class UserInputController {
 
 
     public static int[] getUserInput() {
-        int[] ret = new int[3];
         String input = Console.readLine();
         validateInput(input);
+        return stringToIntArray(input);
+    }
+
+    private static int[] stringToIntArray(String input) {
+        int[] ret = new int[3];
+        for (int i = 0; i < 3; i++) {
+            ret[i] = Character.getNumericValue(input.charAt(i));
+        }
         return ret;
     }
 
     private static void validateInput(String input) {
-
         validateLength(input);
         validateNumbers(input);
         validateDuplicate(input);
@@ -29,7 +35,7 @@ public class UserInputController {
 
     private static void validateLength(String input) {
         if (input.length() != RANDOM_NUMBER_COUNTS) {
-            throw new IllegalArgumentException("input should be three numbers");
+            throw new IllegalArgumentException("input should be three numbers with no spaces");
         }
     }
 
