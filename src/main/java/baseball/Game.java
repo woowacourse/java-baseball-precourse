@@ -53,6 +53,7 @@ public class Game {
             getScore();
             getHint();
         } while (!isFinish());
+        System.out.println(VICTORY_MESSAGE);
     }
 
     public void getHint() {
@@ -60,14 +61,12 @@ public class Game {
             System.out.print(ball + BALL_HINT_MESSAGE);
         }
         if (strike > 0) {
-            System.out.println(strike + STRIKE_HINT_MESSAGE);
-        }
-        if (strike == 3) {
-            System.out.println(VICTORY_MESSAGE);
+            System.out.print(strike + STRIKE_HINT_MESSAGE);
         }
         if (ball + strike == 0) {
-            System.out.println(NOTHING_HINT_MESSAGE);
+            System.out.print(NOTHING_HINT_MESSAGE);
         }
+        System.out.println();
     }
 
     public void getScore() {
