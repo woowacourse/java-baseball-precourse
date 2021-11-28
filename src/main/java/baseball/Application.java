@@ -7,7 +7,9 @@ public class Application {
 
         // 기능 1: 랜덤 값 생성
         String targetNumber = randomNumber();
-        String result = "";
+        String validationResult;
+
+
         while(true){
             boolean restartFlag = false;
             String restartOrder = "";
@@ -20,24 +22,30 @@ public class Application {
             inputException(inputNumber);
 
             //  기능 3: 사용자 입력값과 상대(컴퓨터)값 비교
-            result = validation(inputNumber, targetNumber);
-            System.out.println(result);
+            validationResult = validation(inputNumber, targetNumber);
+            System.out.println(validationResult);
 
             //  기능 5: 게임 재시작 또는 종료
-            if(result.equals("3스트라이크")){
+            if(validationResult.equals("3스트라이크")){
                 restartOrder = restartOrStop();
                 restartFlag = true;
             }
             if(restartFlag && restartOrder.equals("stop")){
                 break;
+            } else if(restartFlag && restartOrder.equals("restart")){
+                targetNumber = randomNumber();
             }
         }
     }
     public static String randomNumber(){
-        String firstNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
-        String secondNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
-        String thirdNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
-        return firstNumber + secondNumber + thirdNumber;
+        StringBuilder resultNumber = new StringBuilder();
+        while(resultNumber.length() < 3){
+            String tempNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
+            if(!resultNumber.toString().contains(tempNumber)){
+                resultNumber.append(tempNumber);
+            }
+        }
+        return resultNumber.toString();
     }
 
     public static String validation(String number, String target){
@@ -66,8 +74,11 @@ public class Application {
     }
 
     public static void inputException(String number){
-        String regExp = "^[0-9]+$";
+        String regExp = "^[0-9][0-9][0-9]$";
         if(!number.matches(regExp)){
+            throw new IllegalArgumentException();
+        }
+        if(number.charAt(0) == number.charAt(1) || number.charAt(1) == number.charAt(2) || number.charAt(0) == number.charAt(2)){
             throw new IllegalArgumentException();
         }
     }
@@ -79,7 +90,9 @@ public class Application {
 
         if(value.equals("2")){
             return "stop";
+        } else if(value.equals("1")){
+            return "restart";
         }
-        return "restart";
+        throw new IllegalArgumentException();
     }
 }
