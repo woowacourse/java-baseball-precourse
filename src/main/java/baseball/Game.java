@@ -37,7 +37,7 @@ public class Game {
         } else if (selection == 2) {
             wantReply = false;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력값이 1 또는 2가 아닙니다.");
         }
     }
 }
