@@ -8,6 +8,7 @@ import baseball.Result.StrikeResult;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GameManager {
@@ -54,5 +55,15 @@ public class GameManager {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String line = Console.readLine();
         return Integer.parseInt(line);
+    }
+
+    private ArrayList<Integer> parseToIntegerArray(String line) {
+        ArrayList<Integer> ret = new ArrayList<>();
+
+        for(char c : line.toCharArray()) {
+            ret.add(c - '0');
+        }
+
+        return ret;
     }
 }
