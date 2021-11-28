@@ -24,6 +24,7 @@ public class Application {
 			while (!isThreeStrike) {
 				System.out.println("숫자를 입력해주세요 : ");
 				inputNumber = Console.readLine();
+				isNumber();
 				isRightThreeDigitsNumber();
 				printBallAndStrikeCount();
 				isThreeStrike();
@@ -103,6 +104,15 @@ public class Application {
 	public static void isRightRestartOrFinishedNumber() {
 		if (!(checkRestartOrFinished.equals(RESTART) || checkRestartOrFinished.equals(END))) {
 			throw new IllegalArgumentException();
+		}
+	}
+
+	public static void isNumber() {
+		for (int i = 0; i < inputNumber.length(); i++) {
+			char ch = inputNumber.charAt(i);
+			if (!Character.isDigit(ch)) {
+				throw new IllegalArgumentException();
+			}
 		}
 	}
 }
