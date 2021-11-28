@@ -96,8 +96,31 @@ public class Application {
     }
 
     static boolean CheckInputNumbers(String keyNumbers,String inputNumbers){
+        int strikeCount = 0;
+        int ballCount=0;
+
+        for(int i=0;i<NUMBER_SIZE;++i){
+            if(IsStrike(keyNumbers.charAt(i),inputNumbers.charAt(i))){
+                strikeCount++;
+            } else if(IsBall(keyNumbers,inputNumbers.charAt(i))){
+                ballCount++;
+            }
+        }
+
+        return ReturnInputResult(strikeCount,ballCount);
+    }
+
+    static boolean IsStrike(char keyNumbersChar, char inputNumbersChar){
 
     }
+    static boolean IsBall(String keyNumbers, char inputNumbersChar){
+
+    }
+
+    static boolean ReturnInputResult(int strikeCount,int ballCount){
+
+    }
+
 
     static boolean DecideReplayOrExit(String gameResult){
 
