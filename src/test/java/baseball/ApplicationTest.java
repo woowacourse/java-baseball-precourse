@@ -51,8 +51,18 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
-	void 타겟넘버_서로다른수_테스트() {
+	void 타켓넘버_종합_테스트(){
 		Target target = new Target();
+
+		for (int i = 0; i < 10; i++){
+			target.printTargetNumber();
+			targetNumber_generation_test(target);
+			targetNumber_compare_test(target);
+			target.generateTargetNumber();
+		}
+	}
+
+	void targetNumber_generation_test(Target target) {
 		boolean[] visited = new boolean[target.getRangeEnd() - target.getRangeBegin() + 1];
 
 		int count = 0;
@@ -60,12 +70,29 @@ class ApplicationTest extends NsTest {
 			if (visited[i] = true) {
 				continue;
 			}
-			if (target.isContained((char)(i + target.getRangeBegin()+ '0')) > -1) {
+			if (target.isContained((char)(i + target.getRangeBegin() + '0')) > -1) {
 				visited[i + target.getRangeBegin()] = true;
 				count++;
 			}
 		}
 		assertThat(count == target.getLength());
+	}
+
+	void targetNumber_compare_test(Target target) {
+		int countBallAndStrike = 0;
+
+		for (int i = target.getRangeBegin(); i < target.getRangeEnd(); i++) {
+			String compare = "";
+			for (int j = 0; j < target.getLength(); j++) {
+				compare += (char)(1 + '0');
+			}
+
+			int[] ballsAndStrikes = target.compareWith(compare);
+			if (ballsAndStrikes[0] != 0 || ballsAndStrikes[1] != 0) {
+				countBallAndStrike++;
+			}
+		}
+		assertThat(countBallAndStrike == target.getLength());
 	}
 
 	@Override
