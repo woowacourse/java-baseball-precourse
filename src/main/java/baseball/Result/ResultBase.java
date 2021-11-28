@@ -1,12 +1,10 @@
 package baseball.Result;
 
 public abstract class ResultBase {
-    protected ResultType resultType;
     protected String message;
     protected ResultBase next;
 
-    protected ResultBase(ResultType resultType, String message) {
-        this.resultType = resultType;
+    protected ResultBase(String message) {
         this.message = message;
     }
 
@@ -15,5 +13,5 @@ public abstract class ResultBase {
         return this;
     }
 
-    public abstract String getMessage(int strikeCount, int ballCount, ResultType resultType);
+    public abstract String getMessage(int strikeCount, int ballCount);
 }
