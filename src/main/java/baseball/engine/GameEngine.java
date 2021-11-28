@@ -1,6 +1,7 @@
 package baseball.engine;
 
 import baseball.data.GameData;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -19,6 +20,19 @@ public class GameEngine {
         }
 
         return results;
+    }
+
+    private int inputUserNumber() {
+        String text = Console.readLine();
+        int result = 0;
+
+        try {
+            result = Integer.parseInt(text);
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException(text, nfe);
+        }
+
+        return result;
     }
 
 }
