@@ -4,13 +4,14 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-    static boolean EXIT = false;
-    static boolean REPLAY = true;
+    static int EXIT = 2;
+    static int REPLAY = 1;
+    static int DECISION_ERROR = 0;
 
     public static void main(String[] args) {
         while (true) {
             boolean gameResult = PlayGame();
-            boolean replayOrExit = DecideReplayOrExit(gameResult);
+            int replayOrExit = DecideReplayOrExit();
 
             if (replayOrExit == EXIT) {
                 break;
@@ -143,8 +144,20 @@ public class Application {
         return WRONG_INPUT;
     }
 
-    static boolean DecideReplayOrExit(String gameResult) {
+    static String ANSWER_REPLAY="1";
+    static String ANSWER_EXIT="2";
 
+    static int DecideReplayOrExit() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String replayAnswer = readLine();
+
+        if(replayAnswer.equals(ANSWER_REPLAY)){
+            return REPLAY;
+        } else if(replayAnswer.equals(ANSWER_EXIT)){
+            return EXIT;
+        }
+        return DECISION_ERROR;
     }
-
 }
