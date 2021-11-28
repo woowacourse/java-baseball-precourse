@@ -8,7 +8,7 @@ Computer, Player, BaseballGame
 
 > BaseballGame
 
-- [ ] 게임 흐름 관리
+- [x] 게임 흐름 관리
    - 게임 시작
    - 사용자 입력받기
    - 컴퓨터에게 입력 전달 및 결과받아서

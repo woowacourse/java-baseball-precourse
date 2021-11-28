@@ -14,13 +14,14 @@ public class BaseballGame {
 		} while (Player.wantRestart());
 	}
 
-	public void playGame() {
+	private void playGame() {
 		Hint hint;
 		computer.determineAnswerBalls();
 		do {
 			String prediction = Player.predictBalls();
 			hint = computer.compareBalls(prediction);
-		} while (isGameEnd(hint));
+			GameOutput.printHint(hint);
+		} while (!isGameEnd(hint));
 	}
 
 	private boolean isGameEnd(Hint hint) {
