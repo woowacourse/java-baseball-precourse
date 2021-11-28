@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 
-import static baseball.InitialSetting.*;
+import static baseball.config.Message.*;
 
 public class Player {
     public static GameNumber scanNumber() {

@@ -1,8 +1,11 @@
 package baseball;
 
+import baseball.util.NumberComparator;
+import baseball.util.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.InitialSetting.*;
+import static baseball.config.Constant.*;
+import static baseball.config.Message.*;
 
 public class BaseballGame {
     private GameNumber computerNumber;

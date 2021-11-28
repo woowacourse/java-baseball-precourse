@@ -1,6 +1,6 @@
-package baseball;
+package baseball.config;
 
-public class InitialSetting {
+public class Message {
     public static final String NEW_GAME_MSG = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String NEW_GAME_INPUT_ERR_MSG = "잘못된 입력입니다. 1 또는 2로 입력하세요. 게임 종료";
     public static final String INPUT = "숫자를 입력해주세요: ";
@@ -9,13 +9,4 @@ public class InitialSetting {
     public static final String STRIKE_MSG = "스트라이크";
     public static final String BALL_MSG = "볼";
     public static final String NOTHING_MSG = "낫싱";
-
-    public static final int NUM_SIZE = 3;
-    public static final int MIN_NUM_VALUE = 1;
-    public static final int MAX_NUM_VALUE = 9;
-    public static final int MAX_STRIKES = 3;
-    public static final int NONE = 0;
-    public static final int RESTART_GAME = 1;
-    public static final int END_GAME = 2;
-    public static final int INVALID_INDEX = -1;
 }

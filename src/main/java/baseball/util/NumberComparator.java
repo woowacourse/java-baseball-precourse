@@ -1,8 +1,11 @@
-package baseball;
+package baseball.util;
+
+import baseball.GameNumber;
+import baseball.PrintResult;
 
 import java.util.List;
 
-import static baseball.InitialSetting.*;
+import static baseball.config.Constant.*;
 
 public class NumberComparator {
     private static int strike;

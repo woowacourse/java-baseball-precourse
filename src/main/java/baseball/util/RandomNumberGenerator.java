@@ -1,12 +1,13 @@
-package baseball;
+package baseball.util;
+
+import baseball.GameNumber;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-import static baseball.InitialSetting.*;
+import static baseball.config.Constant.*;
 
 public class RandomNumberGenerator {
     public static GameNumber generateNumber() {

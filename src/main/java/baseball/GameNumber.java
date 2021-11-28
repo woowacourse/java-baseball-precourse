@@ -3,8 +3,8 @@ package baseball;
 import java.util.HashSet;
 import java.util.List;
 
-import static baseball.InitialSetting.ERR_MSG;
-import static baseball.InitialSetting.NUM_SIZE;
+import static baseball.config.Message.*;
+import static baseball.config.Constant.*;
 
 public class GameNumber {
     private final List<Integer> gameNumber;

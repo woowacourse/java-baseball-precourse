@@ -1,6 +1,7 @@
 package baseball;
 
-import static baseball.InitialSetting.*;
+import static baseball.config.Constant.*;
+import static baseball.config.Message.*;
 
 public class PrintResult {
     private final int ballCnt;
@@ -36,7 +37,6 @@ public class PrintResult {
         }
 
         stringBuilder.append("\n");
-
         return stringBuilder.toString();
     }
 }
