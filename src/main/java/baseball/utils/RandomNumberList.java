@@ -1,13 +1,13 @@
 package baseball.utils;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import static baseball.constants.NumberConstant.ANSWER_LIST_LENGTH;
+import static baseball.constants.NumberConstant.RANGE_END_NUM;
+import static baseball.constants.NumberConstant.RANGE_START_NUM;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.constants.NumberConstant.ANSWER_LIST_LENGTH;
-import static baseball.constants.NumberConstant.RANGE_END_NUM;
-import static baseball.constants.NumberConstant.RANGE_START_NUM;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumberList {
 

@@ -1,8 +1,8 @@
 package baseball.domain;
 
-import baseball.utils.RandomNumberList;
-
 import java.util.List;
+
+import baseball.utils.RandomNumberList;
 
 public class GameManager {
 

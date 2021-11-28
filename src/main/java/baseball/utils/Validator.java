@@ -1,8 +1,5 @@
 package baseball.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static baseball.constants.NumberConstant.ANSWER_LIST_LENGTH;
 import static baseball.constants.NumberConstant.END_GAME_NUM;
 import static baseball.constants.NumberConstant.RANGE_END_NUM;
@@ -11,6 +8,9 @@ import static baseball.constants.NumberConstant.RESTART_NUM;
 import static baseball.constants.OutputMessage.NOT_NUMBER_TYPE_ERROR;
 import static baseball.constants.OutputMessage.OUT_OF_VALID_NUM_RANGE_ERROR;
 import static baseball.constants.OutputMessage.SAME_NUMBER_ERROR;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Validator {
 
@@ -43,7 +43,9 @@ public class Validator {
     }
 
     private static void validateIntRange(int input, int min, int max) {
-        if (input < min || input > max) throw new IllegalArgumentException(OUT_OF_VALID_NUM_RANGE_ERROR);
+        if (input < min || input > max) {
+            throw new IllegalArgumentException(OUT_OF_VALID_NUM_RANGE_ERROR);
+        }
     }
 
     private static void validateUniqueNumber(List<Integer> intList) {

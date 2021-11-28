@@ -1,14 +1,14 @@
 package baseball.domain;
 
-import java.util.List;
-import java.util.Objects;
-
 import static baseball.constants.NumberConstant.ANSWER_LIST_LENGTH;
 import static baseball.constants.OutputMessage.BALL;
 import static baseball.constants.OutputMessage.CONGRATULATION_MESSAGE;
 import static baseball.constants.OutputMessage.FINISH_GAME_CONDITION;
 import static baseball.constants.OutputMessage.NO_MATCH;
 import static baseball.constants.OutputMessage.STRIKE;
+
+import java.util.List;
+import java.util.Objects;
 
 public class Judge {
 
@@ -26,7 +26,9 @@ public class Judge {
                 continue;
             }
 
-            if (checkIfBall(curInput, answerList)) ballCount++;
+            if (checkIfBall(curInput, answerList)) {
+                ballCount++;
+            }
         }
 
         return giveHint(strikeCount, ballCount);
@@ -34,7 +36,9 @@ public class Judge {
 
     private static boolean checkIfBall(int curInput, List<Integer> answerList) {
         for (int answerNum : answerList) {
-            if (Objects.equals(curInput, answerNum)) return true;
+            if (Objects.equals(curInput, answerNum)) {
+                return true;
+            }
         }
         return false;
     }
@@ -47,6 +51,7 @@ public class Judge {
         if (ballCount > 0) {
             hint += ballCount + BALL;
         }
+
         if (strikeCount > 0) {
             hint += strikeCount + STRIKE;
         }
