@@ -2,7 +2,7 @@ package baseball.game.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class CheckAndValidateNumber {
+public class CreateAndValidateNumber {
 
 	private static boolean validateCreateNumber(int number) {
 		String entireNumber = String.valueOf(number);
