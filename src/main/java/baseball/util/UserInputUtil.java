@@ -26,7 +26,7 @@ public class UserInputUtil {
 
         String input = Console.readLine();
 
-        if (input.length() == 3) {
+        if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
 
