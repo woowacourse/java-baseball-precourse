@@ -7,6 +7,8 @@ import java.util.Set;
 
 public class Balls {
 
+    public static final int BALLS_SIZE = 3;
+
     private List<Ball> list = new ArrayList<>();
 
     public Balls(List<Integer> list) {

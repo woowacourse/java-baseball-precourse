@@ -41,4 +41,10 @@ public class GameTest {
         assertThat(game.isPlay()).isFalse();
     }
 
+    @DisplayName("임의의 수 3개인 숫자 리스트 생성")
+    @Test
+    void createRandomNumberList() {
+        Game game = new Game();
+        assertThat(game.createRandomNumberList().size()).isEqualTo(3);
+    }
 }

@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Ball {
 
+    public static final int MIN_VALUE = 1;
+    public static final int MAX_VALUE = 9;
     private int number;
 
     public Ball(int number) {
