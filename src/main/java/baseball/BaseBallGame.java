@@ -41,7 +41,7 @@ public class BaseBallGame {
 			calculateScore();
 			printScore();
 			if (isAnswer()) {
-				System.out.println(ANSWER_MESSAGE);
+				OutputView.printAnswerMessage();
 				return;
 			}
 		}
@@ -132,8 +132,8 @@ public class BaseBallGame {
 	}
 
 	private void printScore() {
-		String scoreStr = score.getScoreToString();
-		System.out.println(scoreStr);
+		String scoreString = score.getScoreToString();
+		OutputView.printGameScore(scoreString);
 	}
 
 	private void requestRestartOrFinishInput() {
