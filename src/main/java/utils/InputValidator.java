@@ -9,12 +9,12 @@ public class InputValidator {
 
     public static boolean checkUserInputIsValid(final String userInput) {
 
-        /* 제한된 자리수를 초과할 경우 false 리턴 */
+        /* 자리수가 일치하는지 검사함 */
         if (DIGIT_NUMBER != userInput.length()) {
             return false;
         }
 
-        /* 정수가 아니거나 0인 경우 false 리턴 */
+        /* 정수인지 아닌지, 0이 들어있는지 아닌지 검사함 */
         for (int i = 0; i < DIGIT_NUMBER; i++) {
             char temp = userInput.charAt(i);
 
@@ -27,6 +27,7 @@ public class InputValidator {
 
     public static boolean checkExitCommandIsValid(final String userInput){
 
+        /* 재시작 또는 종료 커맨드가 종료옵션 목록에 있는지 검사함 */
         for (ExitOption option : ExitOption.values()) {
             if (userInput.equals(option.getCommand())) {
                 return true;

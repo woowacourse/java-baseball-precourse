@@ -23,6 +23,7 @@ public class Game {
         umpire = new Umpire(NumberGenerator.generateRandomNumber());
     }
 
+    /* 난수와 유저가 입력한 수가 같을 때까지 반복함 */
     public void playGame() {
 
         boolean isGameContinue = true;
@@ -36,6 +37,7 @@ public class Game {
         System.out.println(SystemMessage.GAME_CLEAR.getMessage());
     }
 
+    /* 재시작 또는 종료 여부를 판별함 */
     public boolean checkUserWantRestart() {
 
         System.out.println(SystemMessage.RESTART_OR_END_REQUEST.getMessage());
@@ -47,6 +49,7 @@ public class Game {
         return userInput.equals(ExitOption.RESTART.getCommand());
     }
 
+    /* 유저로부터 숫자를 입력받음 */
     private String swingBat() {
 
         System.out.println(SystemMessage.INPUT_REQUEST.getMessage());

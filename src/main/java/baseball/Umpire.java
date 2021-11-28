@@ -13,7 +13,8 @@ public class Umpire {
 
         randomNumber = number;
     }
-
+    
+    /* 유저가 입력한 수에 따라 볼과 스트라이크를 판단하고 힌트를 제공함 */
     public String judgeRound(final String userNumber){
 
         int strikeCount = 0;
@@ -50,6 +51,7 @@ public class Umpire {
         return false;
     }
 
+    /* judgeRound 에서 구한 볼과 스트라이크 횟수에 따라 구체적인 힌트를 제공함 */
     private String getHint(final int ballCount, final int strikeCount) {
 
         if (ballCount == 0 && strikeCount == 0) {
