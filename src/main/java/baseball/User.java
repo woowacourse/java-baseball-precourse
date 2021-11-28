@@ -17,18 +17,18 @@ public class User {
 		String numberStr = Console.readLine();
 
 		if (numberStr.length() != 3) {
-			throw new IllegalStateException();
+			throw new IllegalArgumentException();
 		}
 
 		for (int i = 0; i < 3; i++) {
 			char charIdxNum = numberStr.charAt(i);
 
 			if (!(charIdxNum - '0' >= 1 && charIdxNum - '0' <= 9)) {
-				throw new IllegalStateException();
+				throw new IllegalArgumentException();
 			}
 
 			if (!checkReduplication(charIdxNum - '0', i)) {
-				throw new IllegalStateException();
+				throw new IllegalArgumentException();
 			}
 
 			number[i] = charIdxNum - '0';
