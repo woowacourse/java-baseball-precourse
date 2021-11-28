@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constant.*;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +16,7 @@ public class User {
 	}
 
 	private boolean validationNumber(int number) {
-		if (number >= 1 && number <= 9) {
+		if (number >= MIN_NUMBER && number <= MAX_NUMBER) {
 			return true;
 		}
 		throw new IllegalArgumentException();
@@ -30,10 +32,10 @@ public class User {
 
 	private void validateDuplicate(String input) {
 		HashSet<Character> tempSet = new HashSet<>();
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < MAX_BALL_SIZE; i++) {
 			tempSet.add(input.charAt(i));
 		}
-		if (tempSet.size() != 3) {
+		if (tempSet.size() != MAX_BALL_SIZE) {
 			throw new IllegalArgumentException();
 		}
 	}
