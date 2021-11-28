@@ -18,7 +18,7 @@ public class GameHost {
 	// 게임 진행 여부를 체크 하는 변수
 	private int gameSwitch = 1;
 
-	public void gameStart() {
+	public void runGame() {
 		while (gameSwitch == 1) {
 			// 콘솔로 숫자를 입력 받는다.
 			System.out.print(INPUT_NUMBER_ASKING_MASSAGE);
