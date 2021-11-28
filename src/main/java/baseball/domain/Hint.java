@@ -3,8 +3,8 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import baseball.resource.GameMessage;
 import baseball.resource.GameRule;
+import baseball.resource.text.HintText;
 
 public class Hint {
 
@@ -32,11 +32,11 @@ public class Hint {
         List<String> resultDatas = new ArrayList<>();
 
         if (balls != 0) {
-            resultDatas.add(balls + GameMessage.BALL);
+            resultDatas.add(balls + HintText.BALL);
         }
 
         if (strikes != 0) {
-            resultDatas.add(strikes + GameMessage.STRIKE);
+            resultDatas.add(strikes + HintText.STRIKE);
         }
 
         int resultDataSize = resultDatas.size();
@@ -46,7 +46,7 @@ public class Hint {
         } else if (resultDataSize == 1) {
             return resultDatas.get(0);
         }
-        return GameMessage.NOTHING;
+        return HintText.NOTHING;
     }
 
 }

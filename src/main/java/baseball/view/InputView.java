@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import baseball.exception.BaseballException;
-import baseball.resource.GameMessage;
 import baseball.resource.GameRule;
+import baseball.resource.message.ErrorMessage;
+import baseball.resource.message.OutputMessage;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -19,7 +20,7 @@ public class InputView {
     }
 
     public int inputPlayOrStop() {
-        outputView.printMessageWithLine(GameMessage.REQUEST_PLAY_OR_STOP_MESSAGE);
+        outputView.printMessageWithLine(OutputMessage.REQUEST_PLAY_OR_STOP_MESSAGE);
         int number = inputNumber();
 
         validateNumberIsPlayOrStop(number);
@@ -28,7 +29,7 @@ public class InputView {
     }
 
     public List<Integer> inputPlayerNumbers() {
-        outputView.printMessage(GameMessage.REQUEST_NUMBERS_MESSAGE);
+        outputView.printMessage(OutputMessage.REQUEST_NUMBERS_MESSAGE);
         List<Integer> numbers = inputNumbers();
 
         validateNumbersDigitMatch(numbers);
@@ -44,7 +45,7 @@ public class InputView {
             String userInputData = Console.readLine();
             return Integer.parseInt(userInputData);
         } catch (NumberFormatException ex) {
-            throw new BaseballException(GameMessage.NOT_NUMBER_MESSAGE);
+            throw new BaseballException(ErrorMessage.NOT_NUMBER_MESSAGE);
         }
     }
 
@@ -58,7 +59,7 @@ public class InputView {
             }
             return numbers;
         } catch (NumberFormatException ex) {
-            throw new BaseballException(GameMessage.NOT_NUMBER_MESSAGE);
+            throw new BaseballException(ErrorMessage.NOT_NUMBER_MESSAGE);
         }
     }
 
@@ -68,20 +69,20 @@ public class InputView {
 
     private void validateNumberIsPlayOrStop(int number) {
         if (number != GameRule.NUMBER_GAME_PLAY && number != GameRule.NUMBER_GAME_STOP) {
-            throw new BaseballException(GameMessage.NUMBER_NOT_IN_RANGE_MESSAGE);
+            throw new BaseballException(ErrorMessage.NUMBER_NOT_IN_RANGE_MESSAGE);
         }
     }
 
     private void validateNumbersDigitMatch(List<Integer> numbers) {
         if (numbers.size() != GameRule.NUMBERS_DIGITS) {
-            throw new BaseballException(GameMessage.NUMBERS_NOT_MATCH_DIGITS_MESSAGE);
+            throw new BaseballException(ErrorMessage.NUMBERS_NOT_MATCH_DIGITS_MESSAGE);
         }
     }
 
     private void validateNumbersInRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (isNotInRange(number)) {
-                throw new BaseballException(GameMessage.NUMBER_NOT_IN_RANGE_MESSAGE);
+                throw new BaseballException(ErrorMessage.NUMBER_NOT_IN_RANGE_MESSAGE);
             }
         }
     }
@@ -90,7 +91,7 @@ public class InputView {
         boolean[] bits = new boolean[10];
         for (int number : numbers) {
             if (bits[number]) {
-                throw new BaseballException(GameMessage.NUMBERS_DUPLICATED_MESSAGE);
+                throw new BaseballException(ErrorMessage.NUMBERS_DUPLICATED_MESSAGE);
             }
             bits[number] = true;
         }

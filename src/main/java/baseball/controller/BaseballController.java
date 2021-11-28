@@ -2,8 +2,8 @@ package baseball.controller;
 
 import java.util.List;
 
-import baseball.resource.GameMessage;
 import baseball.resource.GameRule;
+import baseball.resource.message.OutputMessage;
 import baseball.service.BaseballService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -36,7 +36,7 @@ public class BaseballController {
 
     private boolean checkGameIsNotCleared() {
         if (baseballService.isGameCleared()) {
-            outputView.printMessage(GameMessage.GAME_CLEAR_MESSAGE);
+            outputView.printMessage(OutputMessage.GAME_CLEAR_MESSAGE);
             return false;
         }
         return true;
