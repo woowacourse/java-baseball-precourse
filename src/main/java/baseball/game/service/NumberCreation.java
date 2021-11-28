@@ -12,8 +12,8 @@ public class NumberCreation {
 
 		int number = Randoms.pickNumberInRange(100, 999);
 
-		if (!validateCreateNumber(String.valueOf(number))) {
-			return createRandomNumber();
+		while (validateCreateNumber(String.valueOf(number))) {
+			number = Randoms.pickNumberInRange(100, 999);
 		}
 
 		return number;
@@ -24,14 +24,14 @@ public class NumberCreation {
 		final String regex = "[1-9]+";
 
 		if (!inputString.matches(regex)) {
-			return false;
+			return true;
 		}
 
 		Set<String> inputSet = new HashSet<>(Arrays.asList(inputString.split("")));
 		if (inputSet.size() != 3) {
-			return false;
+			return true;
 		}
 
-		return true;
+		return false;
 	}
 }
