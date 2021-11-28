@@ -21,10 +21,7 @@ public class Computer {
 	}
 
 	private static boolean checkSize() {
-		if (randomNumbers.size() == BASEBALL_MAX_SIZE) {
-			return true;
-		}
-		return false;
+		return randomNumbers.size() == BASEBALL_MAX_SIZE;
 	}
 
 	static void extractRandomNumber() {

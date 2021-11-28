@@ -17,18 +17,17 @@ class ComputerTest {
 	@Test
 	void 컴퓨터_입력_테스트() {
 		//given
-		Computer computer = new Computer();
 		Set<Integer> randomNumbers;
 
 		//when
-		randomNumbers = computer.extractRandomNumbers();
+		randomNumbers = Computer.extractRandomNumbers();
 
 		//then
 		//서로 다른 수로 이루어져야 하므로 집합의 크기가 3이여야 한다.
 		assertEquals(randomNumbers.size(), 3);
 
 		//랜덤으로 추출된 값이 숫자여야한다.
-		randomNumbers.stream().forEach(
+		randomNumbers.forEach(
 			n -> assertTrue(n >= 1 && n <= 9)
 		);
 

@@ -50,9 +50,6 @@ public class User {
 	}
 
 	private static boolean checkSize(String userInput) {
-		if (userInput.length() == BALL_MAX_SIZE) {
-			return true;
-		}
-		return false;
+		return userInput.length() == BALL_MAX_SIZE;
 	}
 }

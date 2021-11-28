@@ -29,7 +29,8 @@ public class Game {
 	}
 
 	public void runGame() {
-		int strike, ball;
+		int strike;
+		int ball;
 		do {
 			this.userInput = readUserInput();
 			ball = countBall();
@@ -40,14 +41,14 @@ public class Game {
 
 	private int countStrike() {
 		int count = 0;
-		for (int i = 0; i < BASEBALL_SIZE; i++) {
-			count += matchStrike(i);
+		for (int index = 0; index < BASEBALL_SIZE; index++) {
+			count += matchStrike(index);
 		}
 		return count;
 	}
 
-	private int matchStrike(int i) {
-		if (randomNumbers.get(i) == userInput.get(i)) {
+	private int matchStrike(int index) {
+		if (randomNumbers.get(index).equals(userInput.get(index))) {
 			return 1;
 		}
 		return 0;
@@ -55,14 +56,14 @@ public class Game {
 
 	private int countBall() {
 		int count = 0;
-		for (int i = 0; i < BASEBALL_SIZE; i++) {
-			count += matchBall(i);
+		for (int index = 0; index < BASEBALL_SIZE; index++) {
+			count += matchBall(index);
 		}
 		return count;
 	}
 
-	private int matchBall(int i) {
-		if (randomNumbers.contains(userInput.get(i))) {
+	private int matchBall(int index) {
+		if (randomNumbers.contains(userInput.get(index))) {
 			return 1;
 		}
 		return 0;
