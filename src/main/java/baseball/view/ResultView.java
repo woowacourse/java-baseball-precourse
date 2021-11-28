@@ -7,15 +7,17 @@ public class ResultView {
 	}
 
 	public void printResult(int ball, int strike) {
+		StringBuilder stringBuilder = new StringBuilder();
+
 		if (ball > 0) {
-			System.out.print(ball + "볼 ");
+			stringBuilder.append(ball + "볼 ");
 		}
 		if (strike > 0) {
-			System.out.print(strike + "스트라이크");
+			stringBuilder.append(strike + "스트라이크");
 		}
 		if (ball == 0 && strike == 0) {
-			System.out.print("낫싱");
+			stringBuilder.append("낫싱");
 		}
-		System.out.println("");
+		System.out.println(stringBuilder.toString().trim());
 	}
 }
