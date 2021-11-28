@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.Referee;
 
 public class Referee {
     private final Hint hint;

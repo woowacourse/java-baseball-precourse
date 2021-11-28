@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.model.Player.PlayerNumber;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -13,7 +14,7 @@ class UserNumberTest {
     @ValueSource(strings = {"31","311","3io","i",""," "})
     public void ExceptionTest(String input) {
         assertThatThrownBy(() -> {
-            userNumber = new PlayerNumber();
+            userNumber = new PlayerNumber(input);
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }

@@ -1,6 +1,4 @@
-package baseball.model;
-
-import baseball.constant.Constant;
+package baseball.model.Computer;
 
 public class Computer {
     private AnswerNumber answerNumber;

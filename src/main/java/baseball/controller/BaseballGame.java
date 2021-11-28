@@ -1,12 +1,10 @@
 package baseball.controller;
 
-import baseball.model.Computer;
-import baseball.model.Player;
-import baseball.model.Referee;
+import baseball.model.Computer.Computer;
+import baseball.model.Player.Player;
+import baseball.model.Referee.Referee;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.ArrayList;
 
 public class BaseballGame {
     private final Computer computer;

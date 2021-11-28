@@ -1,4 +1,4 @@
-package baseball.model.Number;
+package baseball.model.Player;
 
 import baseball.constant.Constant;
 import baseball.constant.SystemMessage;
@@ -10,13 +10,11 @@ public class PlayerNumber {
     private String playerNumber;
 
     public PlayerNumber(String playerNumber) {
-
         isStringLengthCorrect(playerNumber);
         isDigitPlayerNumber(playerNumber);
         isDifferentPlayerNumber(playerNumber);
 
         this.playerNumber = playerNumber;
-
     }
 
     public String getPlayerNumber() {

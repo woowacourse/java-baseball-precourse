@@ -1,12 +1,9 @@
 package baseball.model;
 
+import baseball.model.Computer.Computer;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ComputerTest {
 
@@ -23,13 +20,4 @@ class ComputerTest {
 //        assertThat(computer.getHint(input).isEqualTo(output));
 //    }
 
-    @Test
-    public void isBallTest(){
-        assertThat(computer.CountingBall("123","341")).isEqualTo(2);
-    }
-
-    @Test
-    public void isStrikeTest(){
-        assertThat(computer.CountingStrike("123","123")).isEqualTo(3);
-    }
 }
