@@ -23,6 +23,21 @@ public class BaseballGameUtils {
 		return number;
 	}
 	
+	public static boolean getRetryOrNot() {
+		String number = Console.readLine();
+		if (!number.equals("1") && !number.equals("2")) {
+			throw new IllegalArgumentException("1 혹은 2 외의 숫자를 입력하였습니다.");
+		}
+		if (number.equals("1")) {
+			return true;
+		}
+		if (number.equals("2")) {
+			return false;
+		}
+		
+		return false;
+	}
+	
 	private static void validateUserNumber(String number) {
 		if (number.length()!=3) {
 			throw new IllegalArgumentException("세자리 숫자가 아닙니다.");

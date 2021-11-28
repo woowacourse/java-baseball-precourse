@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
 	
@@ -35,6 +36,7 @@ public class BaseballGame {
 		if (countStrikes == STRIKE_CHECK_NUMBER) {
 			System.out.println(STRIKE_CHECK_NUMBER+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			gameEnd = true;
+			checkRetryGame();
 		}
 	}
 	
@@ -63,6 +65,11 @@ public class BaseballGame {
 			}
 		}
 		return strikeCount;
+	}
+	
+	private boolean checkRetryGame() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2룰 입력하세요.");
+		return BaseballGameUtils.getRetryOrNot(); //true 재시작 false 종료
 	}
 
 }
