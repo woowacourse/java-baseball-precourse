@@ -8,22 +8,30 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class CreateAndValidateNumber {
 
-	private static boolean validateCreateNumber(int number) {
-		String entireNumber = String.valueOf(number);
-		Set<String> entireSet = new HashSet<>(Arrays.asList(entireNumber.split("")));
-
-		if (entireNumber.length() != 3 || entireSet.size() != 3) {
-			return false;
-		}
-		return true;
-	}
-
 	public static int createRandomNumber() {
+
 		int number = Randoms.pickNumberInRange(100, 999);
-		if (validateCreateNumber(number)) {
-			return number;
-		} else {
+
+		if (!validateCreateNumber(String.valueOf(number))) {
 			return createRandomNumber();
 		}
+
+		return number;
+	}
+
+	private static boolean validateCreateNumber(String inputString) {
+
+		final String regex = "[1-9]+";
+
+		if (!inputString.matches(regex)) {
+			return false;
+		}
+
+		Set<String> inputSet = new HashSet<>(Arrays.asList(inputString.split("")));
+		if (inputSet.size() != 3) {
+			return false;
+		}
+
+		return true;
 	}
 }
