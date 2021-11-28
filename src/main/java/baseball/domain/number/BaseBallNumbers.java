@@ -1,5 +1,6 @@
 package baseball.domain.number;
 
+import baseball.exception.number.BaseBallNumbersDuplicateException;
 import baseball.exception.number.BaseBallNumbersInputSizeException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,7 +32,7 @@ public class BaseBallNumbers {
 
     private static void checkDuplicatedNumbers(List<Integer> inputNumbers) {
         if (inputNumbers.stream().distinct().count() != BASEBALL_NUMBERS_LIMIT_SIZE) {
-            throw new IllegalArgumentException("중복된 공이 입력될 수 없습니다.");
+            throw new BaseBallNumbersDuplicateException();
         }
     }
 }
