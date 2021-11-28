@@ -57,4 +57,21 @@ public class BaseBallNumbers {
     private boolean isStrike(int index, BaseBallNumbers baseBallNumbers) {
         return this.numbers.get(index).equals(baseBallNumbers.numbers.get(index));
     }
+
+    public int calculateBallCounts(BaseBallNumbers baseBallNumbers) {
+        int result = 0;
+        for (int i = 0; i < 3; i++) {
+            if (isBall(i, baseBallNumbers)) {
+                result++;
+            }
+        }
+        return result;
+    }
+
+    private boolean isBall(int index, BaseBallNumbers baseBallNumbers) {
+        if (isStrike(index, baseBallNumbers)) {
+            return false;
+        }
+        return this.numbers.contains(baseBallNumbers.numbers.get(index));
+    }
 }
