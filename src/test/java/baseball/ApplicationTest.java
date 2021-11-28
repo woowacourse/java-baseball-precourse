@@ -15,19 +15,19 @@ class ApplicationTest extends NsTest {
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
-                () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-                },
-                1, 3, 5, 5, 8, 9
+            () -> {
+                run("246", "135", "1", "597", "589", "2");
+                assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+            },
+            1, 3, 5, 5, 8, 9
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> runException("1234"))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -39,28 +39,25 @@ class ApplicationTest extends NsTest {
     @DisplayName("입력한 문자열이 숫자인지 검사")
     @Test
     void stringIsNumber() {
-        Application application = new Application();
-        application.validateNumbers("123");
-        assertThatThrownBy(() -> application.validateNumbers("a23"))
+        Application.validateNumbers("123");
+        assertThatThrownBy(() -> Application.validateNumbers("a23"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("문자가 숫자인지 검사")
     @Test
     void charIsNumber() {
-        Application application = new Application();
-        application.validateNumber('1');
-        assertThatThrownBy(() -> application.validateNumber('a'))
+        Application.validateNumber('1');
+        assertThatThrownBy(() -> Application.validateNumber('a'))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("문자열을 숫자 리스트로 변환")
     @Test
     void convertStringToNumberList() {
-        Application application = new Application();
         assertThat(
-            application.convertStringToNumberList("123")
-            .containsAll(Arrays.asList(1, 2, 3))
+            Application.convertStringToNumberList("123")
+                .containsAll(Arrays.asList(1, 2, 3))
         ).isTrue();
     }
 }

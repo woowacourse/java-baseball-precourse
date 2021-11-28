@@ -23,7 +23,7 @@ public class BallsTest {
         assertThat(Arrays.equals(
             actual.getList().toArray(),
             expected.toArray()
-            )).isTrue();
+        )).isTrue();
     }
 
     @DisplayName("중복된 수를 가진 Ball이 있는지 검사")

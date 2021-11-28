@@ -1,8 +1,5 @@
 package baseball;
 
-// - [ ] 게임이 생성되면 임의의 수를 가진 Balls 생성
-//     - [ ] 사용자 입력으로 게임 진행 결정
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
