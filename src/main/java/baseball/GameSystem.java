@@ -8,7 +8,7 @@ public class GameSystem {
 
     private static final int SIG_GAME_CONTINUE = 1;
     private static final int SIG_GAME_END = 2;
-    private static final String THREE_DIGIT_PATTERN = "^ddd$";
+    private static final String THREE_DIGIT_PATTERN = "^[0-9]{3}+$";
 
     private int signal;
 
@@ -58,7 +58,7 @@ public class GameSystem {
     private String getUser3DigitNum() {
         System.out.print("숫자를 입력해주세요 : ");
         String input3DigitNum = Console.readLine();
-        if (Pattern.matches(THREE_DIGIT_PATTERN, input3DigitNum)) {
+        if (!Pattern.matches(THREE_DIGIT_PATTERN, input3DigitNum)) {
             throw new IllegalArgumentException();
         }
         return input3DigitNum;
