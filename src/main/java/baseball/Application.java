@@ -28,10 +28,13 @@ public class Application {
         }
     }
 
-    public static void validateLength(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException();
+    public static List<Integer> convertStringToNumberList(String input) {
+        validateNumbers(input);
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < input.length(); i++) {
+            result.add(input.charAt(i) - '0');
         }
+        return result;
     }
 
     public static void validateNumbers(String input) {
@@ -44,15 +47,5 @@ public class Application {
         if (!(Character.isDigit(c))) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public static List<Integer> convertStringToNumberList(String input) {
-        validateLength(input);
-        validateNumbers(input);
-        List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            result.add(input.charAt(i) - '0');
-        }
-        return result;
     }
 }
