@@ -6,8 +6,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 /** 야구 게임의 전체적인 흐름을 구성 */
 public class BaseBallGame {
-	private BaseBallPlayer baseBallPlayer;
-	private BaseBallProvider baseBallProvider;
+	private final BaseBallPlayer baseBallPlayer;
+	private final BaseBallProvider baseBallProvider;
 	private Integer gameStatus;
 
 	public BaseBallGame(BaseBallPlayer baseBallPlayer, BaseBallProvider baseBallProvider) {
