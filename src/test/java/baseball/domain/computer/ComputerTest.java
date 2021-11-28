@@ -69,5 +69,18 @@ class ComputerTest {
                 () -> assertThat(result).isNotEqualTo(input)
             );
         }
+
+        @Test
+        @DisplayName("RUNNING 상태라면 그대로 현재 주소를 반환해야 한다.")
+        void refreshByRunningState() {
+            // given
+            Computer input = Computer.from(BaseBallNumbers.createByIntegerNumbers(Arrays.asList(1, 2, 3)), GameState.RUNNING);
+
+            // when
+            Computer result = input.refresh();
+
+            // then
+            assertThat(result).isSameAs(input);
+        }
     }
 }
