@@ -13,8 +13,6 @@ public class GameService {
     int size;
     Game game;
     User user = new User();
-    Parser parser = new Parser();
-    SystemMessage systemMessage = new SystemMessage();
 
     //TODO: 제출전 sout 제거하기
     public void setGame(int size, int start, int end) {
@@ -27,6 +25,7 @@ public class GameService {
         int strike = 0;
         while (strike != 3) {
             play();
+            SystemMessage systemMessage = new SystemMessage();
             systemMessage.printScoreMessage(game.getBallCount(), game.getStrikeCount());
             strike = game.getStrikeCount();
         }
@@ -41,6 +40,7 @@ public class GameService {
     private int[] getUserNumber() throws IllegalArgumentException{
         RequestInput.requestInputData();
         String input = Console.readLine();
+        Parser parser = new Parser();
         return parser.parseUserInput(input, size);
     }
 
