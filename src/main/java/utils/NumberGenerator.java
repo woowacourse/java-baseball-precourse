@@ -11,6 +11,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class NumberGenerator {
 
     public static String generateRandomNumber() {
+
         Set<Character> randNumSet = new HashSet<>();
         String result = "";
         int numLength = 0;
@@ -32,3 +33,4 @@ public class NumberGenerator {
         return result;
     }
 }
+

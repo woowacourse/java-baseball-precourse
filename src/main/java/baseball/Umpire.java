@@ -6,10 +6,12 @@ import constants.HintMessage;
 import constants.NumberAttribute;
 
 public class Umpire {
+
     private static String randomNumber;
     private static int DIGIT_NUMBER;
 
     Umpire (String number){
+
         randomNumber = number;
         DIGIT_NUMBER = NumberAttribute.DIGIT_NUMBER.getValue();
     }
@@ -27,16 +29,19 @@ public class Umpire {
                 ballCount++;
             }
         }
+
         Assertions.assertTrue(ballCount <= DIGIT_NUMBER && strikeCount <= DIGIT_NUMBER);
         return getHint(ballCount, strikeCount);
     }
 
 
     public boolean isStrike(final char digit, final int pos) {
+
         return randomNumber.charAt(pos) == digit;
     }
 
     public boolean isBall(final char digit) {
+
         for (int i = 0; i < NumberAttribute.DIGIT_NUMBER.getValue(); i++) {
             if (randomNumber.charAt(i) == digit) {
                 return true;
@@ -56,5 +61,4 @@ public class Umpire {
         }
         return ballCount + HintMessage.BALL.getHint() + " " + strikeCount + HintMessage.STRIKE.getHint();
     }
-
 }

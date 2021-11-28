@@ -1,14 +1,18 @@
 package baseball;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import utils.NumberGenerator;
-
 import java.util.regex.Pattern;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import utils.NumberGenerator;
+
+
 public class NumberGeneratorTest {
+
     @Test
     public void generateRandomNumber() {
+
         String randomNumber = NumberGenerator.generateRandomNumber();
         Assertions.assertEquals(3, randomNumber.length(),
                 "길이가 3인 숫자가 아님");

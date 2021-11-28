@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import utils.InputValidator;
 
 
@@ -41,6 +42,7 @@ public class InputValidatorTest {
 
     @Test
     public void checkExitCommandIsValidTest() {
+
         String[] arrTrue = new String[] {"1", "2"};
         String[] arrFalse = new String[] {"0", "3", "A"};
 
@@ -48,6 +50,7 @@ public class InputValidatorTest {
             Assertions.assertTrue(InputValidator.checkExitCommandIsValid(element),
                     "유효하지 않은 잘못된 커맨드입니다");
         }
+
         for (String element : arrFalse){
             Assertions.assertFalse(InputValidator.checkExitCommandIsValid(element),
                     "유효하지 않은 잘못된 커맨드입니다");
