@@ -10,6 +10,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import baseball.resource.GameRule;
 
 public class Referee {
+
     List<Integer> targetNumbers;
     boolean[] booleanBits;
 
@@ -64,4 +65,5 @@ public class Referee {
     public void setBooleanBits(boolean[] booleanBits) {
         this.booleanBits = booleanBits;
     }
+
 }

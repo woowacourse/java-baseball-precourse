@@ -1,6 +1,7 @@
 package baseball.resource;
 
 public class GameMessage {
+
     // 게임 데이터
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
@@ -18,4 +19,5 @@ public class GameMessage {
     public static final String NUMBERS_NOT_MATCH_DIGITS_MESSAGE = GameRule.NUMBERS_DIGITS + "자리의 숫자가 아닙니다.";
     public static final String NUMBERS_DUPLICATED_MESSAGE = "중복된 숫자가 있습니다.";
     public static final String NOT_PICKED_REFEREE_NUMBERS = "게임에 사용될 숫자가 준비되어 있지 않습니다.";
+
 }

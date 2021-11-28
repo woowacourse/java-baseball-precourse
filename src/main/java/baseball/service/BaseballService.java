@@ -6,6 +6,7 @@ import baseball.domain.Player;
 import baseball.domain.Referee;
 
 public class BaseballService {
+
     private final Referee referee;
     private final Player player;
 
@@ -27,4 +28,5 @@ public class BaseballService {
     public boolean isGameCleared() {
         return player.isAllStrikes();
     }
+
 }

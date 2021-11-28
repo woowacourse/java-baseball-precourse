@@ -9,6 +9,7 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballController {
+
     private static final InputView inputView = InputView.getInstance();
     private static final OutputView outputView = OutputView.getInstance();
 

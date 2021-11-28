@@ -3,6 +3,7 @@ package baseball.domain;
 import java.util.List;
 
 public class Player {
+
     private Referee referee;
     private List<Integer> playerNumbers;
     private Hint hint;
@@ -26,4 +27,5 @@ public class Player {
     public boolean isAllStrikes() {
         return hint.isAllStrikes();
     }
+
 }

@@ -7,6 +7,7 @@ import baseball.resource.GameMessage;
 import baseball.resource.GameRule;
 
 public class Hint {
+
     private int balls;
     private int strikes;
 

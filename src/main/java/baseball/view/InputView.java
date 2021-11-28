@@ -10,6 +10,7 @@ import baseball.resource.GameRule;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
+
     private static final InputView instance = new InputView();
     private static final OutputView outputView = OutputView.getInstance();
 
@@ -94,4 +95,5 @@ public class InputView {
             bits[number] = true;
         }
     }
+
 }

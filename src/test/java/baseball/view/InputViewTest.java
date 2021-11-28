@@ -95,4 +95,5 @@ public class InputViewTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
     }
+
 }
