@@ -32,7 +32,7 @@ public class Judge {
     private static int countStrikes(List<Integer> playerInput, List<Integer> answerList) {
         int strikeCount = 0;
         for (int idx = 0; idx < ANSWER_LIST_LENGTH; idx++) {
-            if (Objects.equals(playerInput.get(idx), answerList.get(idx))) {
+            if (checkIfStrike(playerInput.get(idx), answerList.get(idx))) {
                 strikeCount++;
             }
         }
@@ -41,12 +41,20 @@ public class Judge {
 
     private static int countBalls(List<Integer> playerInput, List<Integer> answerList) {
         int ballCount = 0;
-        for (int playerInputIdx = 0; playerInputIdx < ANSWER_LIST_LENGTH; playerInputIdx++) {
-            if (checkIfBall(playerInput.get(playerInputIdx), answerList)) {
+        for (int idx = 0; idx < ANSWER_LIST_LENGTH; idx++) {
+            if (checkIfStrike(playerInput.get(idx), answerList.get(idx))) {
+                continue;
+            }
+
+            if (checkIfBall(playerInput.get(idx), answerList)) {
                ballCount++;
             }
         }
         return ballCount;
+    }
+
+    private static boolean checkIfStrike(int curPlayerInput, int answer) {
+        return Objects.equals(curPlayerInput, answer);
     }
 
     private static boolean checkIfBall(int curPlayerInput, List<Integer> answerList) {
