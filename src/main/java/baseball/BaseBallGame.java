@@ -2,7 +2,6 @@ package baseball;
 
 import static utils.Constant.*;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import utils.GameStatus;
 
@@ -58,7 +57,7 @@ public class BaseBallGame {
 	}
 
 	private void makeInputNumber() {
-		String inputNumberString = getInputNumberByConsole();
+		String inputNumberString = InputView.getInputNumber();
 		if (!isValidInputNumber(inputNumberString)) {
 			throw new IllegalArgumentException();
 		}
@@ -102,12 +101,6 @@ public class BaseBallGame {
 		return true;
 	}
 
-	private String getInputNumberByConsole() {
-		System.out.print(INPUT_REQUEST);
-		String input = Console.readLine();
-		return input;
-	}
-
 	private ArrayList<Integer> getIntegerArrayListFromString(String str) {
 		ArrayList<Integer> tmp = new ArrayList<>();
 		for (int i = 0; i < str.length(); i++) {
@@ -144,8 +137,7 @@ public class BaseBallGame {
 	}
 
 	private void requestRestartOrFinishInput() {
-		System.out.println(RESTART_OR_FINISH_REQUEST);
-		String str = Console.readLine();
+		String str = InputView.getRestartOrFinishCommand();
 
 		if (str.equals(FINISH_COMMAND)) {
 			gameStatus = GameStatus.FINISHED;
