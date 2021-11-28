@@ -71,5 +71,4 @@ public class BaseballGame {
         }
         return false;
     }
-
 }

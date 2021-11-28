@@ -18,12 +18,12 @@ public class AnswerNumber {
     }
 
     public void getNewAnswerNumber() {
-        LinkedHashSet<String> answerNumberList = new LinkedHashSet<String>();
+        LinkedHashSet<String> numberList = new LinkedHashSet<String>();
 
-        while (answerNumberList.size() < Constant.USER_NUMBER_LENGTH) {
-            answerNumberList.add(getStringRandomNumber());
+        while (numberList.size() < Constant.USER_NUMBER_LENGTH) {
+            numberList.add(getStringRandomNumber());
         }
-        this.answerNumber = String.join("", answerNumberList);
+        this.answerNumber = String.join("", numberList);
     }
 
     public static String getStringRandomNumber() {
