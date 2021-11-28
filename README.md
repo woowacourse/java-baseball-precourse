@@ -15,6 +15,7 @@
   - 잘못된 숫자일 경우 IllegalArgumentException 및 종료
     + [예외] 맨 앞자리가 0일때
     + [예외] 3자리 숫자가 아닐때
+    + [예외] 중복된 숫자가 있을때
   - [x] camp.nextstep.edu.missionutils.Console의 readLine() 활용
 
 3. 대조 및 판정
