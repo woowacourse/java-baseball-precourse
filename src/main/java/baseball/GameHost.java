@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameHost {
 
-	// Application 실행시 필요한 인스턴스들을 주입해주기 위한 설정 객체
+	// 게임 과정 진행시 필요한 객체의 인스턴스를 주입해주기 위한 설정 객체
 	private Config config = new Config();
 
 	// 3자리 무작위 숫자조합 생성, 저장
