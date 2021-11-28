@@ -9,7 +9,7 @@
   - [x] Result enum
   - [x] ResultBase abstract class
   - [x] Strike Result
-  - [ ] Strike & Ball Result
+  - [x] Strike & Ball Result
   - [ ] Ball Result
   - [ ] Nothing REsult
 
