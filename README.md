@@ -142,3 +142,4 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - 리팩토링(branch: refactoring)
   - 변경이 일어나야 하지 않는 변수에 final 추가
   - 필요 없는 코드 삭제
+  - 사람 플레이어가 입력한 잘못된 숫자 형식에 대한 예외처리 방식 변경

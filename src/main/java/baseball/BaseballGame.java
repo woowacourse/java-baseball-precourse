@@ -51,15 +51,10 @@ public class BaseballGame {
 	 *
 	 * @throws IllegalArgumentException 사용자가 3자리 자연수형태의 스트링을 입력하지 않으면 발생 후 종료
 	 */
-	private void humanSelectNumber() {
+	private void humanSelectNumber() throws IllegalArgumentException {
 		System.out.print("숫자를 입력해주세요 : ");
 		final String selectedNumber = Console.readLine();
-		try {
-			humanPlayer.setSelectedNumber(selectedNumber);
-		} catch(IllegalArgumentException wrongNumberFormat) {
-			System.out.println(wrongNumberFormat);
-			System.exit(0);
-		}
+		humanPlayer.setSelectedNumber(selectedNumber);
 	}
 
 	/**
