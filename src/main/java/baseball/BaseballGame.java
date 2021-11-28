@@ -10,7 +10,12 @@ public class BaseballGame {
         boolean games = false;
         Computer computer = new Computer();
         User user = new User();
-        String number = computer.pickNumber();
+        char[] number = computer.pickNumber();
+        while (!games) {
+            System.out.print("숫자를 입력해주세요 : ");
+            char[] users = user.userInput();
+            games = computer.compare(users, number);
+        }
     }
     private boolean checkRestart() {
 

@@ -18,4 +18,12 @@ public class Computer {
             }
         return number;
     }
+
+    public boolean compare(char[] userNumber, char[] comNumber) {
+
+        if(userNumber[0] == comNumber[0])
+    }
+
+
+
 }
