@@ -6,17 +6,24 @@ public class Computer {
 
     public static final String RESULT_NOTHING = "낫싱";
 
-    private final Balls balls = new Balls();
+    private Balls balls = new Balls();
     private CompareResult compareResult = new CompareResult();
 
     public Balls createRandomBalls() {
+        initBalls();
+
         while (!balls.isFull()) {
-            Ball newBall = new Ball(Randoms.pickNumberInRange(0, 9));
+            Ball newBall = new Ball(Randoms.pickNumberInRange(1, 9));
             if (!balls.contains(newBall)) {
                 balls.add(newBall);
             }
         }
+        System.out.println(balls.toString());
         return balls;
+    }
+
+    private void initBalls() {
+        balls = new Balls();
     }
 
     public void makeJudge(Balls playerBalls) {
@@ -24,14 +31,17 @@ public class Computer {
 
         if (compareResult.isNothing()) {
             System.out.println(RESULT_NOTHING);
+            return;
         }
         if (compareResult.onlyBalls()) {
-            System.out.printf("%d 볼", compareResult.getBall());
+            System.out.printf("%d 볼\n", compareResult.getBall());
+            return;
         }
         if (compareResult.onlyStrikes()) {
-            System.out.printf("%d 스트라이크", compareResult.getStrike());
+            System.out.printf("%d 스트라이크\n", compareResult.getStrike());
+            return;
         }
-        System.out.printf("%d 스트라이크 %d 볼", compareResult.getStrike(), compareResult.getBall());
+        System.out.printf("%d 스트라이크 %d 볼\n", compareResult.getStrike(), compareResult.getBall());
     }
 
     public boolean gameFinished(Balls playerBalls) {

@@ -1,6 +1,7 @@
 package baseball;
 
 public class CompareResult {
+
     private int strike = 0;
     private int ball = 0;
 

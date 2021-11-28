@@ -6,7 +6,7 @@ import java.util.List;
 public class Balls {
 
     public static final int MAX_LENGTH = 3;
-    private final List<Ball> balls = new ArrayList<>();
+    private List<Ball> balls = new ArrayList<>();
 
     public boolean isFull() {
         return balls.size() == MAX_LENGTH;
@@ -23,11 +23,17 @@ public class Balls {
     }
 
     public void createBalls(String input) {
+        initBalls();
+
         for (int i = 0; i < input.length(); i++) {
             Ball ball = new Ball(input.substring(i, i + 1));
             validateNewBall(ball);
             balls.add(ball);
         }
+    }
+
+    private void initBalls() {
+        balls = new ArrayList<>();
     }
 
     private void validateNewBall(Ball ball) {

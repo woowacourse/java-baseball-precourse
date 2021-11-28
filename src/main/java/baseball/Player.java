@@ -5,11 +5,13 @@ import camp.nextstep.edu.missionutils.Console;
 public class Player {
 
     public static final String ASK_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+
     private final Balls balls = new Balls();
 
     public Balls makeBalls() {
         String input = getInput();
         balls.createBalls(input);
+        System.out.println(balls);
         return balls;
     }
 
