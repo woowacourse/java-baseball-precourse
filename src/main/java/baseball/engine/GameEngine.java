@@ -29,7 +29,7 @@ public class GameEngine {
 
         while(results.size() < GameData.NUM_OF_ANSWER) {
             Integer number = Integer.valueOf(Randoms.pickNumberInRange(0, 9));
-            if(!results.contains(number)) {
+            if (!results.contains(number)) {
                 results.add(number);
             }
         }
@@ -69,11 +69,11 @@ public class GameEngine {
 
     private int[] judge(List<Integer> answer, List<Integer> userNumber) {
         int[] result = new int[2];
-        for(int i = 0; i < GameData.NUM_OF_ANSWER; i++) {
-            if(checkStrike(answer.get(i), userNumber.get(i))) {
+        for (int i = 0; i < GameData.NUM_OF_ANSWER; i++) {
+            if (checkStrike(answer.get(i), userNumber.get(i))) {
                 result[0]++;
                 continue;
-            } else if(checkBall(answer, userNumber.get(i))) {
+            } else if (checkBall(answer, userNumber.get(i))) {
                 result[1]++;
             }
         }
@@ -83,16 +83,16 @@ public class GameEngine {
 
     private String getGameResult(int[] judge) {
         StringBuilder stringBuilder = new StringBuilder();
-        if(judge[1] != 0) {
+        if (judge[1] != 0) {
             stringBuilder.append(String.format("%d%s", judge[1], GameData.BALL_MESSAGE));
         }
-        if(judge[0] != 0) {
+        if (judge[0] != 0) {
             if(stringBuilder.length() != 0) {
                 stringBuilder.append(" ");
             }
             stringBuilder.append(String.format("%d%s", judge[0], GameData.STRIKE_MESSAGE));
         }
-        if(stringBuilder.length() == 0) {
+        if (stringBuilder.length() == 0) {
             stringBuilder.append(GameData.NOTHING_MESSAGE);
         }
 
@@ -110,5 +110,4 @@ public class GameEngine {
     private boolean checkBall(List<Integer> answer, Integer userNumber) {
         return answer.contains(userNumber);
     }
-
 }

@@ -22,9 +22,9 @@ public class Application {
         System.out.println(GameData.GAME_RESTART_MESSAGE);
         String userInput = Console.readLine();
 
-        if(userInput.equals("1")) {
+        if (userInput.equals("1")) {
             return true;
-        } else if(userInput.equals("2")) {
+        } else if (userInput.equals("2")) {
             return false;
         } else {
             throw new IllegalArgumentException(userInput);
