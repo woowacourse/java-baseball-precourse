@@ -1,21 +1,11 @@
 package baseball;
 
+import static baseball.BaseballGameSetting.*;
 import static camp.nextstep.edu.missionutils.Console.*;
 import static camp.nextstep.edu.missionutils.Randoms.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class BaseballGame {
 
-	private final int START_NUMBER = 1; // 1 <= START_NUMBER <= 9
-	private final int END_NUMBER = 9; // START_NUMBER <= END_NUMBER <= 9
-	private final int ANSWER_LENGTH = 3; // 1 <= ANSWER_LENGTH <= END_NUMBER - START_NUMBER + 1
-	private final String RESTART_OPTION = "1";
-	private final String FINISH_OPTION = "2";
-	private final ArrayList<String> START_OPTIONS = new ArrayList<>(Arrays.asList(RESTART_OPTION, FINISH_OPTION));
-	private final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-	private final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	private String answer;
 	private String userInput;
 	private int ball;
@@ -106,7 +96,7 @@ public class BaseballGame {
 	private void printBaseballGameResult() {
 		if (strike == ANSWER_LENGTH) {
 			System.out.println(ANSWER_LENGTH + "스트라이크");
-			System.out.println(ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			System.out.println(END_MESSAGE);
 		} else if (ball > 0 && strike > 0) {
 			System.out.println(ball + "볼 " + strike + "스트라이크");
 		} else if (ball > 0) {
