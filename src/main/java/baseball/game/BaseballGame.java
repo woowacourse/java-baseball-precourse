@@ -23,10 +23,13 @@ public class BaseballGame {
         //랜덤 숫자 생성
         randomNumbers = randomNumberController.getThreeRandomNumbers();
 
+        //사용자 입력 및 힌트 출력
         while (!correctAnswer) {
             inputNumbers = getUserInput();
             correctAnswer = checkAnswer(randomNumbers, inputNumbers);
         }
+
+        //재시작 여부 반환
         return askRestart();
     }
 
