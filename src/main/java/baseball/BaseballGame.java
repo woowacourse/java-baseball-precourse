@@ -4,22 +4,22 @@ import static util.GameConstant.*;
 
 public class BaseballGame {
     private GamePlayer gamePlayer;
-    private GameProvider gameProvider;
+    private GameComputer gameComputer;
 
-    public BaseballGame(GamePlayer gamePlayer, GameProvider gameProvider) {
+    public BaseballGame(GamePlayer gamePlayer, GameComputer gameComputer) {
         this.gamePlayer = gamePlayer;
-        this.gameProvider = gameProvider;
+        this.gameComputer = gameComputer;
     }
 
     public void run() {
-        while (gameProvider.getGameStatus().equals(ON_GOING)) {
+        while (gameComputer.getGameStatus().equals(ON_GOING)) {
             gamePlayer.insertAnswer();
-            GameScore gameScore = gameProvider.checkAnswer(gamePlayer.getPlayerAnswer());
+            GameScore gameScore = gameComputer.checkAnswer(gamePlayer.getPlayerAnswer());
             gameScore.printResult();
 
-            if (gameProvider.getGameStatus().equals(CORRECT)) {
+            if (gameComputer.getGameStatus().equals(CORRECT)) {
                 System.out.println(THREE_STRIKE);
-                gameProvider.checkRestartOrStop(gamePlayer.insertRestartOrStop());
+                gameComputer.checkRestartOrStop(gamePlayer.insertRestartOrStop());
             }
         }
     }

@@ -8,7 +8,7 @@ import java.util.Set;
 
 import static util.GameConstant.*;
 
-class GameProvider {
+class GameComputer {
     private int[] systemAnswer = new int[NUMBER_LENGTH];
     private String gameStatus;
     private GameScore gameScore;
@@ -16,7 +16,7 @@ class GameProvider {
     /**
      * 최초 정답 생성
      */
-    public GameProvider(){
+    public GameComputer(){
         gameStatus = ON_GOING;
         gameScore = new GameScore();
         generateAnswer();

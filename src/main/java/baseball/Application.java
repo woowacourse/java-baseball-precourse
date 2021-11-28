@@ -3,7 +3,7 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        BaseballGame baseballGame = new BaseballGame(new GamePlayer(), new GameProvider());
+        BaseballGame baseballGame = new BaseballGame(new GamePlayer(), new GameComputer());
         baseballGame.run();
     }
 
