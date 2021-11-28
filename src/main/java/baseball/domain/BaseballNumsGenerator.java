@@ -2,7 +2,10 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class BaseballNumsGenerator {
     private final static String NOT_NUMBER_RANGE_ONE_TO_NINE = "1에서 9사이의 숫자가 아닙니다.";
