@@ -1,9 +1,10 @@
 package baseball.inputmanager;
 
+import static baseball.StringUtil.START;
+import static baseball.StringUtil.END;
+
 public class StartEndButton extends InputManger<Integer> {
     private static final int NUMBER_OF_DIGITS_OF_INPUT_NUMBERS = 1;
-    private static final int START = 1;
-    private static final int END = 2;
 
     @Override
     boolean meetNumberOfDigitsLimit(String input) {

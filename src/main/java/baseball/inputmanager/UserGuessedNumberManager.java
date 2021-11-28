@@ -2,14 +2,17 @@ package baseball.inputmanager;
 
 import java.util.Arrays;
 
+import static baseball.StringUtil.END_NUMBER;
+import static baseball.StringUtil.NUMBER_OF_DIGITS_OF_NUMBER;
+import static baseball.StringUtil.START_NUMBER;
+
 public class UserGuessedNumberManager extends InputManger<Integer[]> {
-    private static final int NUMBER_OF_DIGITS_OF_INPUT_NUMBERS = 3;
-    private static final int ASCII_VALUE_OF_START_NUMBER = '1';
-    private static final int ASCII_VALUE_OF_END_NUMBER = '9';
+    private static final int ASCII_VALUE_OF_START_NUMBER = START_NUMBER + '0';
+    private static final int ASCII_VALUE_OF_END_NUMBER = END_NUMBER + '0';
 
     @Override
     boolean meetNumberOfDigitsLimit(String input) {
-        return input.length() == NUMBER_OF_DIGITS_OF_INPUT_NUMBERS;
+        return input.length() == NUMBER_OF_DIGITS_OF_NUMBER;
     }
 
     @Override

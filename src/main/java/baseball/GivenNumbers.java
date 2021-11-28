@@ -4,16 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import static baseball.StringUtil.*;
+
 public class GivenNumbers {
-    private static final String SAME_POSITION_SAME_NUMBER = "STRIKE";
-    private static final String DIFFERENT_POSITION_SAME_NUMBER = "BALL";
-    private static final int NUMBER_OF_DIGITS = 3;
     public final Set<Integer> givenNumbersSet;
     public final Integer[] givenNumbersArray;
 
     public GivenNumbers(Set<Integer> givenNumbersSet) {
         this.givenNumbersSet = givenNumbersSet;
-        givenNumbersArray = givenNumbersSet.toArray(new Integer[NUMBER_OF_DIGITS]);
+        givenNumbersArray = givenNumbersSet.toArray(new Integer[NUMBER_OF_DIGITS_OF_NUMBER]);
     }
 
     public Map<String, Integer> operate(Integer[] inputNumber) {
@@ -30,8 +29,8 @@ public class GivenNumbers {
             }
         }
         HashMap<String, Integer> result = new HashMap<>();
-        result.put(SAME_POSITION_SAME_NUMBER, strike);
-        result.put(DIFFERENT_POSITION_SAME_NUMBER, ball);
+        result.put(STRIKE, strike);
+        result.put(BALL, ball);
         return result;
     }
 }
