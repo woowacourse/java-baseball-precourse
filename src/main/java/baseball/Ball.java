@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Objects;
+
 public class Ball {
 
     private int number;
@@ -13,5 +15,17 @@ public class Ball {
         if (1 > number || 9 < number) {
             throw new IllegalArgumentException();
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Ball)) {
+            return false;
+        }
+        Ball ball = (Ball) o;
+        return number == ball.number;
     }
 }
