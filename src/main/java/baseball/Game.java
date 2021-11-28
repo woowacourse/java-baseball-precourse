@@ -17,9 +17,7 @@ public class Game {
 	public boolean isEndGame() {
 
 		String playerInput;
-
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
 		playerInput = Console.readLine();
 
 		if (playerInput.equals("1")) {
