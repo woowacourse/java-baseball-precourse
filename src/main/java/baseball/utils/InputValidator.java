@@ -1,26 +1,37 @@
 package baseball.utils;
 
+import baseball.BaseballGameSystem;
+
 import java.util.HashSet;
 import java.util.List;
 
 public class InputValidator {
 
-    public static void validateDigit(String input) {
-        for(int i = 0; i < RandomDigitsGenerator.RANDOM_DIGIT_COUNT; ++i) {
+    public static void validateGameDigitInRange(String input, int length) {
+        for(int i = 0; i < length; ++i) {
             int inputDigit = Character.getNumericValue(input.charAt(i));
-            if(isOutOfRange(inputDigit)) {
+            if(isOutOfRange(inputDigit, RandomDigitsGenerator.RANDOM_DIGIT_MIN, RandomDigitsGenerator.RANDOM_DIGIT_MAX)) {
                 throw new IllegalArgumentException();
             }
-         }
+        }
     }
 
-    public static boolean isOutOfRange(int digit) {
-        return digit < RandomDigitsGenerator.RANDOM_DIGIT_MIN || digit > RandomDigitsGenerator.RANDOM_DIGIT_MAX;
+    public static void validateGameMenuDigitInRange(String input, int length) {
+        for(int i = 0; i < length; ++i) {
+            int inputDigit = Character.getNumericValue(input.charAt(i));
+            if(isOutOfRange(inputDigit, BaseballGameSystem.GAME_RE_START, BaseballGameSystem.GAME_EXIT)) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
-    public static void validateLength(String input) {
+    public static boolean isOutOfRange(int digit, int min, int max) {
+        return digit < min || digit > max;
+    }
+
+    public static void validateLength(String input, int length) {
         int inputLength = input.length();
-        if(inputLength != RandomDigitsGenerator.RANDOM_DIGIT_COUNT) {
+        if(inputLength != length) {
             throw new IllegalArgumentException();
         }
     }
@@ -35,8 +46,13 @@ public class InputValidator {
     }
 
     public static void validateGameDigits(String input) {
-        validateDigit(input);
-        validateLength(input);
+        validateLength(input, RandomDigitsGenerator.RANDOM_DIGIT_COUNT);
+        validateGameDigitInRange(input, RandomDigitsGenerator.RANDOM_DIGIT_COUNT);
         validateUniqueDigits(input);
+    }
+
+    public static void validateGameMenu(String input) {
+        validateLength(input, BaseballGameSystem.GAME_MENU_LENGTH);
+        validateGameMenuDigitInRange(input, BaseballGameSystem.GAME_MENU_LENGTH);
     }
 }

@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.game.GameService;
 import baseball.utils.InputUtils;
+import baseball.utils.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class BaseballGameSystem {
     private List<Integer> getInputDigits() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputDigits = Console.readLine();
-        //TODO: 3자리 입력에 대한 검증 구현
+        InputValidator.validateGameDigits(inputDigits);
         return InputUtils.convertStringToIntegerList(inputDigits);
     }
 
@@ -60,7 +61,7 @@ public class BaseballGameSystem {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         try {
             String input = Console.readLine();
-            //TODO: 1자리 입력에 대한 검증 구현
+            InputValidator.validateGameMenu(input);
             int nextStep = Character.getNumericValue(input.charAt(0));
             return nextStep == GAME_EXIT;
        }catch (StringIndexOutOfBoundsException e) {
