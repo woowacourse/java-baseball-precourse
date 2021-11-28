@@ -2,7 +2,7 @@ package baseball.game.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import static baseball.game.constants.BaseballGameConst.*;
+import static baseball.game.constants.BaseballGameConstants.*;
 
 public class RandomNumberController {
 
@@ -33,7 +33,6 @@ public class RandomNumberController {
     }
 
     private boolean isExist(int ret) {
-
         return flag[ret];
     }
 }

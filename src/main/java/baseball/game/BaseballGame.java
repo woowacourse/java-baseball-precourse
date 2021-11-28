@@ -8,11 +8,10 @@ import static baseball.game.controller.UserInputController.getUserInput;
 
 public class BaseballGame {
 
+    private final RandomNumberController randomNumberController;
     private int[] randomNumbers;
     private int[] inputNumbers;
     private boolean correctAnswer;
-
-    private final RandomNumberController randomNumberController;
 
     public BaseballGame() {
         correctAnswer = false;

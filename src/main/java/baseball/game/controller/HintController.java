@@ -1,6 +1,6 @@
 package baseball.game.controller;
 
-import static baseball.game.constants.BaseballGameConst.RANDOM_NUMBER_LENGTHS;
+import static baseball.game.constants.BaseballGameConstants.RANDOM_NUMBER_LENGTHS;
 
 public class HintController {
 

@@ -2,7 +2,7 @@ package baseball.game.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.game.constants.BaseballGameConst.*;
+import static baseball.game.constants.BaseballGameConstants.*;
 
 public class UserInputController {
 
