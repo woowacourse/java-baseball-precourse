@@ -25,21 +25,21 @@ public class Computer {
 		for (int i = 0; i < ANSWER_SIZE; i++) {
 			int num = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
 
-			if (checkReduplication(num, i)) {
+			if (checkReduplication(num)) {
 				answer[i] = num;
 			} else {
 				i--;
 			}
+
 		}
 	}
 
-	public boolean checkReduplication(int num, int idx) {
-		for (int i = 0; i < idx; i++) {
-			if (answer[i] == num) {
-				return false;
-			}
+	public boolean checkReduplication(int num) {
+		if (flag[num]) {
+			return false;
+		} else {
+			flag[num] = true;
+			return true;
 		}
-		return true;
 	}
-
 }
