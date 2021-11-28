@@ -2,7 +2,7 @@ package baseball.domain.computer;
 
 public enum GameState {
 
-    START(0),
+    RUNNING(0),
     RESTART(1),
     END(2),
     ;
@@ -14,7 +14,7 @@ public enum GameState {
     }
 
     public static GameState init() {
-        return GameState.START;
+        return GameState.RUNNING;
     }
 
     public boolean isEndGame() {
