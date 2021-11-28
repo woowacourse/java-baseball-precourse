@@ -20,10 +20,13 @@ public class User {
 			flag[i] = false;
 		}
 	}
-	
+
 	public void reset() {
 		for (int i = 0; i < ANSWER_SIZE; i++) {
 			number[i] = 0;
+		}
+		for (int i = 0; i < MAX_NUM + 1; i++) {
+			flag[i] = false;
 		}
 	}
 
@@ -43,7 +46,7 @@ public class User {
 				throw new IllegalArgumentException();
 			}
 
-			if (!checkReduplication(charIdxNum - '0', i)) {
+			if (!checkReduplication(charIdxNum - '0')) {
 				throw new IllegalArgumentException();
 			}
 
@@ -51,12 +54,12 @@ public class User {
 		}
 	}
 
-	public boolean checkReduplication(int num, int idx) {
-		for (int i = 0; i < idx; i++) {
-			if (number[i] == num) {
-				return false;
-			}
+	public boolean checkReduplication(int num) {
+		if (flag[num]) {
+			return false;
+		} else {
+			flag[num] = true;
+			return true;
 		}
-		return true;
 	}
 }
