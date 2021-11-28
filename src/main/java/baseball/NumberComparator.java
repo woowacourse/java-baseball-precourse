@@ -29,7 +29,7 @@ public class NumberComparator {
         compareNumber();
 
     }
-    public void compareNumber() {
+    private void compareNumber() {
         for(int i = 0; i < computerNumber.length(); i++) {
             checkStrikeOrBall(i);
         }
@@ -48,7 +48,7 @@ public class NumberComparator {
         }
     }
 
-    public void clear() {
+    private void clear() {
         strike = 0;
         ball = 0;
     }

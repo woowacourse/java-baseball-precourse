@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Message.*;
+import static baseball.InitialSetting.*;
 
 public class PrintResult {
     private int ballCnt;
@@ -20,23 +20,23 @@ public class PrintResult {
     }
 
     private void printMsg() {
-        if (ballCnt > 0) {
+        if (ballCnt > NONE) {
             System.out.print(ballCnt + BALL_MSG);
         }
 
-        if (ballCnt > 0 && strikeCnt > 0) {
+        if (ballCnt > NONE && strikeCnt > NONE) {
             System.out.print(" ");
         }
 
-        if (strikeCnt > 0) {
+        if (strikeCnt > NONE) {
             System.out.print(strikeCnt + STRIKE_MSG);
         }
 
-        if (strikeCnt == 3) {
+        if (strikeCnt == MAX_STRIKES) {
             System.out.print(ALL_STRIKE_MSG);
         }
 
-        if (ballCnt == 0 && strikeCnt == 0) {
+        if (ballCnt == NONE && strikeCnt == NONE) {
             System.out.println(NOTHING_MSG);
         }
 

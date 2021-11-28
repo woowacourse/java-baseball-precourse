@@ -4,13 +4,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
+import static baseball.InitialSetting.*;
+
 public class RandomNumberGenerator {
 
     public String generateNumber() {
         LinkedHashSet<Integer> linkedHashSet = new LinkedHashSet<>();
 
-        while(linkedHashSet.size() < 3) {
-            linkedHashSet.add(Randoms.pickNumberInRange(1, 9));
+        while(linkedHashSet.size() < NUM_SIZE) {
+            linkedHashSet.add(Randoms.pickNumberInRange(MIN_NUM_VALUE, MAX_NUM_VALUE));
         }
 
         return hashSetToString(linkedHashSet);

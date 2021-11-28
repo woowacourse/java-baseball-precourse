@@ -3,8 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashMap;
 
-import static baseball.Message.ERR_MSG;
-import static baseball.Message.INPUT;
+import static baseball.InitialSetting.*;
 
 public class Player {
 
@@ -15,20 +14,23 @@ public class Player {
         if(checkNumber(number)) {
             return number;
         } else {
-            System.out.println(ERR_MSG);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERR_MSG);
         }
     }
 
     private boolean checkNumber(String number) {
         HashMap<Character, Integer> hashMap = new HashMap<>();
 
-        if(number.length() != 3) {
+        if(number.length() != NUM_SIZE) {
             return false;
         }
 
         for(int i = 0; i < number.length(); i++) {
-            if(number.charAt(i) < '0' || number.charAt(i) > '9') {
+            if(Character.getNumericValue(number.charAt(i)) < MIN_NUM_VALUE) {
+                return false;
+            }
+
+            if(Character.getNumericValue(number.charAt(i)) > MAX_NUM_VALUE) {
                 return false;
             }
 
