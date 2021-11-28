@@ -27,10 +27,9 @@ public class BaseballGame {
 			answer = makeAnswer();
 			userInput = "";
 			while (!answer.equals(userInput)) {
-				initializeBallAndStrike();
 				System.out.print(INPUT_MESSAGE);
 				userInput = readLine();
-				checkInput();
+				checkUserInput();
 				countBallAndStrike();
 				printBaseballGameResult();
 			}
@@ -51,33 +50,28 @@ public class BaseballGame {
 		return answer;
 	}
 
-	private void initializeBallAndStrike() {
-		ball = 0;
-		strike = 0;
+	private void checkUserInput() {
+		checkUserInputLength();
+		checkUserInputContents();
+		checkUserInputDuplication();
 	}
 
-	private void checkInput() {
-		checkInputLength();
-		checkInputContents();
-		checkInputDuplication();
-	}
-
-	private void checkInputLength() {
+	private void checkUserInputLength() {
 		if (userInput.length() != ANSWER_LENGTH) {
 			throw new IllegalArgumentException();
 		}
 	}
 
-	private void checkInputContents() {
+	private void checkUserInputContents() {
 		for (int i = 0; i < ANSWER_LENGTH; i++) {
-			int number = userInput.charAt(i) - '0';
-			if (!(number >= START_NUMBER && number <= END_NUMBER)) {
+			int content = userInput.charAt(i) - '0';
+			if (!(content >= START_NUMBER && content <= END_NUMBER)) {
 				throw new IllegalArgumentException();
 			}
 		}
 	}
 
-	private void checkInputDuplication() {
+	private void checkUserInputDuplication() {
 		int[] duplicationCheckArray = new int[END_NUMBER - START_NUMBER + 1];
 		for (int i = 0; i < ANSWER_LENGTH; i++) {
 			int number = userInput.charAt(i) - '0';
@@ -89,6 +83,8 @@ public class BaseballGame {
 	}
 
 	private void countBallAndStrike() {
+		int ballCount = 0;
+		int strikeCount = 0;
 		int[] answerNumberCount = new int[END_NUMBER - START_NUMBER + 1];
 		for (int i = 0; i < ANSWER_LENGTH; i++) {
 			int answerNumber = answer.charAt(i) - '0';
@@ -98,11 +94,13 @@ public class BaseballGame {
 			int answerNumber = answer.charAt(i) - '0';
 			int inputNumber = userInput.charAt(i) - '0';
 			if (answerNumber == inputNumber) {
-				strike++;
+				strikeCount++;
 			} else if (answerNumberCount[inputNumber - START_NUMBER] > 0) {
-				ball++;
+				ballCount++;
 			}
 		}
+		ball = ballCount;
+		strike = strikeCount;
 	}
 
 	private void printBaseballGameResult() {
