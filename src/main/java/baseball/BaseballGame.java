@@ -7,14 +7,22 @@ import java.util.List;
 
 public class BaseballGame {
 	public static final int TARGET_SIZE = 3;
-	private List<Integer> target = new ArrayList<>(TARGET_SIZE);
+	private List<Integer> target;
 
 	private int ballScore;
 	private int strikeScore;
 	private boolean isScoreNothing;
 
 	protected void setNewTarget() {
-		target = Randoms.pickUniqueNumbersInRange(1, 9, TARGET_SIZE);
+		List<Integer> randomPicks = new ArrayList<>();
+		while (randomPicks.size() < TARGET_SIZE) {
+			int pick = Randoms.pickNumberInRange(1, 9);
+			if (!randomPicks.contains(pick)) {
+				randomPicks.add(pick);
+			}
+		}
+		target = randomPicks;
+		resetScore();
 	}
 
 	private void resetScore() {
