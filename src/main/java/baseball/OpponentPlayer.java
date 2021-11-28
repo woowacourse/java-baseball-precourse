@@ -23,18 +23,23 @@ public class OpponentPlayer {
         return true;
     }
 
-    public String pickRandom3DigitNum() {
+    private String convert3DigitString(List<Integer> threeNumsList) {
         StringBuilder stringBuilder = new StringBuilder();
-        List<Integer> random3NumsList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        while (true)
-        {
-            for (int i = 0; i < 3; i++) {
-                stringBuilder.append(Integer.toString(random3NumsList.get(i)));
-            }
-            if (isUnique(random3NumsList))
-                break;
+        for (int i = 0; i < 3; i++) {
+            stringBuilder.append(Integer.toString(threeNumsList.get(i)));
         }
-        String random3DigitNum = stringBuilder.toString();
+        return stringBuilder.toString();
+    }
+
+    public String pickRandom3DigitNum() {
+        String random3DigitNum;
+        while (true) {
+            List<Integer> random3NumsList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+            if (isUnique(random3NumsList)) {
+                random3DigitNum = convert3DigitString(random3NumsList);
+                break;
+            }
+        }
         return random3DigitNum;
     }
 
