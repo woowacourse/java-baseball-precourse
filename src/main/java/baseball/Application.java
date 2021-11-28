@@ -93,6 +93,7 @@ public class Application {
 
     public static void checkBall() {
         ballCount = 0;
+        strikeCount = 0;
         if (computerNumbers[0] == inputNumbers[1]) ballCount++;
         if (computerNumbers[0] == inputNumbers[2]) ballCount++;
         if (computerNumbers[1] == inputNumbers[0]) ballCount++;
@@ -104,9 +105,13 @@ public class Application {
     public static void print() throws IOException {
         if (ballCount < 3 && ballCount != 0 && strikeCount == 0) {
             System.out.print(ballCount + "볼" + '\n' + "숫자를 입력하세요 : ");
-        } else if (strikeCount < 3 && strikeCount != 0 && ballCount == 0) {
+        }
+
+        if (strikeCount < 3 && strikeCount != 0 && ballCount == 0) {
             System.out.print(strikeCount + "스트라이크" + '\n' + "숫자를 입력하세요 : ");
-        } else if (strikeCount == 3) {
+        }
+
+        if (strikeCount == 3) {
             System.out.println("3스트라이크" + '\n' + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             restart();
         }
