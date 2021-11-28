@@ -31,6 +31,14 @@ public class BaseballGame {
 		System.out.println(buildHintString());
 	}
 
+	protected boolean isGuessEqualTarget() {
+		if (strikeScore == TARGET_SIZE) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	private void countStrikeScore(List<Integer> guess) {
 		for (int i = 0; i < TARGET_SIZE; i++) {
 			if (guess.get(i) == target.get(i).intValue()) {
