@@ -4,6 +4,7 @@ import baseball.constant.Constant;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 public class AnswerNumber {
     private String answerNumber;
@@ -17,19 +18,12 @@ public class AnswerNumber {
     }
 
     public void getNewAnswerNumber() {
-        ArrayList<String> answerNumberList = new ArrayList<String>();
+        LinkedHashSet<String> answerNumberList = new LinkedHashSet<String>();
 
         while (answerNumberList.size() < Constant.USER_NUMBER_LENGTH) {
-            isNumberInList(getStringRandomNumber(), answerNumberList);
+            answerNumberList.add(getStringRandomNumber());
         }
         this.answerNumber = String.join("", answerNumberList);
-    }
-
-    public static void isNumberInList(String number, ArrayList<String> list) {
-        if (!list.contains(number)) {
-            list.add(number);
-        }
-
     }
 
     public static String getStringRandomNumber() {
