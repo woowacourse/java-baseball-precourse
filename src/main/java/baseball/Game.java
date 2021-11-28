@@ -88,7 +88,7 @@ public class Game {
     }
 
     public boolean isFinish() {
-        return strike == 3;
+        return strike == BALL_SIZE;
     }
 
     public boolean askRestart() {
