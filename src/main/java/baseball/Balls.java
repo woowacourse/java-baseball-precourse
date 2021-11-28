@@ -21,4 +21,25 @@ public class Balls {
     public boolean contains(Ball newBall) {
         return balls.contains(newBall);
     }
+
+    public void createBalls(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            Ball ball = new Ball(input.substring(i, i + 1));
+            validateNewBall(ball);
+            balls.add(ball);
+        }
+    }
+
+    private void validateNewBall(Ball ball) {
+        if (balls.contains(ball)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Balls{" +
+            "balls=" + balls +
+            '}';
+    }
 }

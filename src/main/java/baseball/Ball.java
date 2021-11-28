@@ -1,10 +1,18 @@
 package baseball;
 
+import static baseball.Validator.*;
+
 import java.util.Objects;
 
 public class Ball {
 
     private final Integer number;
+
+    public Ball(String input) {
+        validateBall(input);
+
+        this.number = Integer.parseInt(input);
+    }
 
     public Ball(Integer number) {
         this.number = number;
@@ -25,5 +33,19 @@ public class Ball {
     @Override
     public int hashCode() {
         return Objects.hash(number);
+    }
+
+    public static boolean validateBall(String input) {
+        if (!isNumeric(input)) {
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Ball{" +
+            "number=" + number +
+            '}';
     }
 }
