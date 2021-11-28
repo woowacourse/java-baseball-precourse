@@ -9,10 +9,7 @@ public class InputValidator {
     }
 
     public boolean checkLength(String number,int length) {
-        if(number.length() == length) {
-            return true;
-        }
-        return false;
+        return number.length() == length;
     }
 
     public boolean checkNumberScope(String number) {
@@ -29,17 +26,11 @@ public class InputValidator {
         for(int i=0; i<number.length(); i++) {
             hashSet.add(number.charAt(i));
         }
-        if(hashSet.size()!=3) {
-            return false;
-        }
-        return true;
+        return hashSet.size()==number.length();
     }
 
     public boolean checkSelectScope(String number) {
         int numberInt = Integer.parseInt(number);
-        if(numberInt != 1 && numberInt != 2) {
-            return false;
-        }
-        return true;
+        return numberInt == 1 || numberInt == 2;
     }
 }
