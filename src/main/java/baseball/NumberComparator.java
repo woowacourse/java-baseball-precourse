@@ -10,8 +10,6 @@ public class NumberComparator {
         List<Integer> computerNumberGameNumber = computerNumber.getGameNumber();
         List<Integer> playerNumberGameNumber = playerNumber.getGameNumber();
 
-        clearStrikeAndCount();
-        
         for(int i = 0; i < computerNumberGameNumber.size(); i++) {
             checkStrikeOrBall(i, computerNumberGameNumber.get(i), playerNumberGameNumber);
         }
@@ -31,16 +29,8 @@ public class NumberComparator {
         }
     }
 
-    public static void clearStrikeAndCount() {
+    public static void clearStrikeAndBall() {
         strike = 0;
         ball = 0;
-    }
-
-    public int getBall() {
-        return ball;
-    }
-
-    public int getStrike() {
-        return strike;
     }
 }

@@ -23,6 +23,7 @@ public class BaseballGame {
         do {
             createPlayerNumber();
             PrintResult printResult = NumberComparator.compare(computerNumber, playerNumber);
+            NumberComparator.clearStrikeAndBall();
             System.out.println(printResult.toString());
         } while (shouldContinueGame());
     }
