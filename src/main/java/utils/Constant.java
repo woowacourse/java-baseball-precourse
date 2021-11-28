@@ -8,9 +8,13 @@ public class Constant {
 	public static final String STRIKE = "스트라이크";
 	public static final String SPACE = " ";
 
+	public static final String ZERO_STRING = "0";
 
+	public static final int MIN_GAME_NUMBER = 1;
+	public static final int MAX_GAME_NUMBER = 9;
 	public static final int GAME_NUMBER_LENGTH = 3;
 
+	public static final String PLAY_COMMAND = "-1";
 	public static final String FINISH_COMMAND = "2";
 	public static final String RESTART_COMMAND = "1";
 

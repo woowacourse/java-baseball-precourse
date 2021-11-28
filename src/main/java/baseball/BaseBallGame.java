@@ -6,9 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import utils.GameStatus;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.Set;
 
 public class BaseBallGame {
 
@@ -25,12 +23,16 @@ public class BaseBallGame {
 	}
 
 	public void start() {
-		setGameStatusToPlaying();
+		setGameStatus(PLAY_COMMAND);
 
 		while (gameStatus == GameStatus.PALYING) {
 			makeAnswerNumber();
 			play();
-			requestRestartOrFinishInput();
+			String command = InputView.getRestartOrFinishCommand();
+			if(!Validator.checkRestartOrFinishCommand(command)) {
+				throw new IllegalArgumentException();
+			}
+			setGameStatus(command);
 		}
 	}
 
@@ -47,8 +49,16 @@ public class BaseBallGame {
 		}
 	}
 
-	private void setGameStatusToPlaying() {
-		gameStatus = GameStatus.PALYING;
+	private void setGameStatus(String command) {
+		if (command.equals(PLAY_COMMAND)) {
+			gameStatus = GameStatus.PALYING;
+		}
+		if (command.equals(FINISH_COMMAND)) {
+			gameStatus = GameStatus.FINISHED;
+		}
+		if (command.equals(RESTART_COMMAND)) {
+			gameStatus = GameStatus.PALYING;
+		}
 	}
 
 	private void initializeRound() {
@@ -58,7 +68,7 @@ public class BaseBallGame {
 
 	private void makeInputNumber() {
 		String inputNumberString = InputView.getInputNumber();
-		if (!isValidInputNumber(inputNumberString)) {
+		if (!Validator.checkInputNumber(inputNumberString)) {
 			throw new IllegalArgumentException();
 		}
 		inputNumberList = getIntegerArrayListFromString(inputNumberString);
@@ -68,37 +78,11 @@ public class BaseBallGame {
 		answerNumberList.clear();
 		LinkedHashSet<Integer> tmp = new LinkedHashSet<>();
 		while (tmp.size() < GAME_NUMBER_LENGTH) {
-			int randomNum = Randoms.pickNumberInRange(1, 9);
+			int randomNum = Randoms.pickNumberInRange(MIN_GAME_NUMBER, MAX_GAME_NUMBER);
 			tmp.add(randomNum);
 		}
 
-		for (int num : tmp) {
-			answerNumberList.add(num);
-		}
-	}
-
-	private boolean isValidInputNumber(String str) {
-		if (str.length() != GAME_NUMBER_LENGTH) {
-			return false;
-		}
-		if (str.contains("0")) {
-			return false;
-		}
-		for (int i = 0; i < str.length(); i++) {
-			if (!Character.isDigit(str.charAt(i))) {
-				return false;
-			}
-		}
-
-		Set<Character> s = new HashSet<>();
-		for (int i = 0; i < str.length(); i++) {
-			s.add(str.charAt(i));
-		}
-		if (s.size() != GAME_NUMBER_LENGTH) {
-			return false;
-		}
-
-		return true;
+		answerNumberList.addAll(tmp);
 	}
 
 	private ArrayList<Integer> getIntegerArrayListFromString(String str) {
@@ -134,16 +118,5 @@ public class BaseBallGame {
 	private void printScore() {
 		String scoreString = score.getScoreToString();
 		OutputView.printGameScore(scoreString);
-	}
-
-	private void requestRestartOrFinishInput() {
-		String str = InputView.getRestartOrFinishCommand();
-
-		if (str.equals(FINISH_COMMAND)) {
-			gameStatus = GameStatus.FINISHED;
-		}
-		if (str.equals(RESTART_COMMAND)) {
-			gameStatus = GameStatus.PALYING;
-		}
 	}
 }
