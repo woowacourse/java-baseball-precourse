@@ -5,6 +5,7 @@ import baseball.Result.NothingResult;
 import baseball.Result.ResultBase;
 import baseball.Result.StrikeAndBallResult;
 import baseball.Result.StrikeResult;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashMap;
@@ -36,6 +37,10 @@ public class GameManager {
         return GameManager.instance;
     }
 
+    public void run() {
+
+    }
+
     private void initNumbers() {
         this.numbers.clear();
 
@@ -43,5 +48,11 @@ public class GameManager {
             int number = Randoms.pickNumberInRange(0, 9);
             this.numbers.put(number, i);
         }
+    }
+
+    private int askPlayerToContinue() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String line = Console.readLine();
+        return Integer.parseInt(line);
     }
 }
