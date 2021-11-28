@@ -2,6 +2,7 @@ package baseball.domain;
 
 public class GameResult {
 	private static final int GAME_WINNER_VALUE = 3;
+
 	private long strikeCount;
 	private long ballCount;
 

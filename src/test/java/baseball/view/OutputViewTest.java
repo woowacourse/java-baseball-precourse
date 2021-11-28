@@ -13,6 +13,7 @@ import baseball.domain.GameBoard;
 
 class OutputViewTest {
 	private final ByteArrayOutputStream output = new ByteArrayOutputStream();
+
 	private static final String SPACE = " ";
 	private static final String NEW_LINE = "\n";
 

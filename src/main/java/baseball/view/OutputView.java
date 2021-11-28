@@ -4,6 +4,7 @@ import baseball.domain.GameBoard;
 
 public class OutputView {
 	private static final int ZERO = 0;
+
 	private static final String BALL_COUNT_MESSAGE = "%d볼 ";
 	private static final String STRIKE_COUNT_MESSAGE = "%d스트라이크";
 	private static final String NOTHING_COUNT_MESSAGE = "낫싱";

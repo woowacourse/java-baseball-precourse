@@ -9,6 +9,7 @@ import java.util.Set;
 
 public class BaseballNumsGenerator {
 	private static final int ZERO_CHAR = '0';
+
 	private static final String INPUT_VALID_BETWEEN_ONE_AND_NINE_ERROR_MESSAGE = "1에서 9사이의 숫자가 아닙니다.";
 
 	public static BaseballNums generateRandomBaseballNums() {

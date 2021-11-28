@@ -8,8 +8,10 @@ public class BaseballNums {
 	public static final int MIN_BASEBALL_NUMBER = 1;
 	public static final int MAX_BASEBALL_NUMBER = 9;
 	public static final int BASEBALL_NUMBERS_LENGTH = 3;
+
 	private static final String INPUT_DIGIT_NUMBER_ERROR_MESSAGE = "숫자의 자릿수가 올바르지 않은 입력입니다.";
 	private static final String INPUT_SAME_NUMBER_ERROR_MESSAGE = "동일한 숫자가 중복 입력되었습니다.";
+
 	private final List<Integer> baseballNums;
 
 	public BaseballNums(List<Integer> baseballNums) {

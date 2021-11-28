@@ -7,6 +7,7 @@ public class Game {
 	private static final String RESTART_GAME = "1";
 	private static final String END_GAME = "2";
 	private static final String INPUT_VALID_ONE_OR_TWO_ERROR_MESSAGE = "1 혹은 2의 입력이 아닌 올바르지 않은 입력입니다.";
+
 	private BaseballNums answerBaseballNums;
 	private BaseballNums playerBaseballNums;
 	private GameResult gameResult;
