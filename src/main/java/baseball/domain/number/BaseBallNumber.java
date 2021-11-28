@@ -4,8 +4,8 @@ import baseball.exception.number.BaseBallNumberRangeException;
 
 public class BaseBallNumber {
 
-    private final static int MIN_NUMBER = 0;
-    private final static int MAX_NUMBER = 9;
+    public final static int MIN_NUMBER = 0;
+    public final static int MAX_NUMBER = 9;
 
     private final int number;
 

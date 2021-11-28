@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class BaseBallNumbers {
 
-    private static final int BASEBALL_NUMBERS_LIMIT_SIZE = 3;
+    public static final int BASEBALL_NUMBERS_LIMIT_SIZE = 3;
 
     private final List<BaseBallNumber> numbers;
 
