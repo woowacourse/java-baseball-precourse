@@ -5,16 +5,30 @@ import java.util.Arrays;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
+	Computer computer = new Computer();
+	Player player = new Player();
 
 	public void gameStart() {
-
 
 		boolean gameContinueFlag;
 
 		do {
+			goGame();
 			gameContinueFlag = isEndGame();
 		} while (gameContinueFlag);
 
+	}
+
+	public void goGame() {
+
+		int[] computerNumber = computer.generateRandomNumber();
+		boolean isEnd;
+
+		do {
+			int[] playerNumber = player.getNumberFromPlayer();
+			isEnd = judgeResult(computerNumber, playerNumber);
+
+		} while (isEnd == false);
 	}
 
 	public boolean isEndGame() {
@@ -34,7 +48,6 @@ public class Game {
 		return false;
 
 	}
-
 
 	public boolean judgeResult(int[] computerNumber, int[] playerNumber) {
 		int[] numStrikeAndBall;
@@ -77,7 +90,7 @@ public class Game {
 
 	}
 
-	public boolean printBallandStrikeResult(int[] numStrikeAndBall){
+	public boolean printBallandStrikeResult(int[] numStrikeAndBall) {
 		int numStrike = numStrikeAndBall[0];
 		int numBall = numStrikeAndBall[1];
 
