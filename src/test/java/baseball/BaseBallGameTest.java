@@ -2,6 +2,8 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
+import baseball.domain.BaseBallGame;
+
 class BaseBallGameTest {
 
     //사용자 입력 예외 처리 확인

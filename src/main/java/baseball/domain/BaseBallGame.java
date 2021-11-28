@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -40,3 +40,4 @@ public class BaseBallGame {
         validate(input);
     }
 }
+
