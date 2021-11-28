@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.constant.SystemMessage;
 import baseball.model.Computer.Computer;
 import baseball.model.Player.Player;
 import baseball.model.Referee.Referee;
@@ -26,7 +25,7 @@ public class BaseballGame {
     }
 
     public void getNumberFromPlayer() {
-        player.setPlayerNumber(InputView.getNumber());
+        player.setPlayerNumber(InputView.getPlayerNumber());
     }
 
     public void printHint(int[] hint) {
@@ -56,16 +55,17 @@ public class BaseballGame {
         }
     }
 
-    public int[] getHint() {
-        return referee.getHint(player.getPlayerNumber(), computer.getAnswerNumber());
-    }
-
     public static void printEnter() {
         System.out.println();
     }
 
+    public int[] getHint() {
+        return referee.getHint(player.getPlayerNumber(), computer.getAnswerNumber());
+    }
+
     public boolean isGameSet() {
         if (referee.isThreeStrike()) {
+            OutputView.printSuccessMessage();
             OutputView.printGameSetMessage();
             return true;
         }

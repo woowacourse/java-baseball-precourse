@@ -6,7 +6,9 @@ public class SystemMessage {
     public final static String STRING_IS_NOT_NUMBER = "숫자가 아닌 문자가 포함되어 있습니다.";
 
     public final static String SET_PLAYER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    public final static String GAME_SET_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임종료";
+    public final static String SUCCESS_FIND_ALL_NUMBER = "3개의 숫자를 모두 맞히셨습니다! ";
+    public final static String GAME_SET_MESSAGE = "게임 종료";
+    public final static String ASK_RETRY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public final static String BALL_MESSAGE = "볼 ";
     public final static String STRIKE_MESSAGE = "스트라이크";

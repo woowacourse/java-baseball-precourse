@@ -39,6 +39,7 @@ public class PlayerNumber {
         for (int i = 0; i < word.length(); i++) {
             set.add(word.charAt(i));
         }
+
         if (set.size() != word.length()) {
             throw new IllegalArgumentException(SystemMessage.HAS_SAME_NUMBER);
         }

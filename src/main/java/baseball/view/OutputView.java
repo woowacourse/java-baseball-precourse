@@ -19,6 +19,10 @@ public class OutputView {
         System.out.print(count);
     }
 
+    public static void printSuccessMessage(){
+        System.out.printf(SystemMessage.SUCCESS_FIND_ALL_NUMBER);
+    }
+
     public static void printGameSetMessage(){
         System.out.println(SystemMessage.GAME_SET_MESSAGE);
     }
