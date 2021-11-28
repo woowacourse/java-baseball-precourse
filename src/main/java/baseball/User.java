@@ -10,14 +10,9 @@ public class User {
 
     private static final int RANDOM_START_INCLUSIVE = 1;
     private static final int RANDOM_END_INCLUSIVE = 9;
-    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String STRIKE_KOREAN = "스트라이크";
-    private static final String BALL_KOREAN = "볼";
-    private static final String NOTHING = "낫싱";
-    public static final int ZERO = 0;
-    public static final String STRIKE_ENGLISH = "strike";
-    public static final String BALL_ENGLISH = "ball";
     public static final String SPACE = " ";
+    public static final String REGEX = "^[1-9]{3}$";
+    public static final int NO_BALL_NO_STRIKE = 0;
 
     public Map<String, Integer> countStrikeBallNumber(final String answer, final String guessNumber) {
         final Map<String, Integer> strikeBallCount = new HashMap<>();
@@ -37,8 +32,8 @@ public class User {
             }
         }
 
-        strikeBallCount.put(STRIKE_ENGLISH, strike);
-        strikeBallCount.put(BALL_ENGLISH, ball);
+        strikeBallCount.put(String.valueOf(DeterminationPitching.STRIKE_ENGLISH), strike);
+        strikeBallCount.put(String.valueOf(DeterminationPitching.BALL_ENGLISH), ball);
 
         return strikeBallCount;
     }
@@ -54,7 +49,7 @@ public class User {
             return ball;
         }
 
-        return ZERO;
+        return NO_BALL_NO_STRIKE;
     }
 
     private int decideStrikeBall(final String answer, final int i, final String guessNumber) {
@@ -96,15 +91,15 @@ public class User {
     }
 
     public String appendNothingHintMessage() {
-        return NOTHING;
+        return String.valueOf(DeterminationPitching.NOTHING);
     }
 
     public String appendStrikeHintMessage(final int strike) {
-        return strike + STRIKE_KOREAN;
+        return strike + String.valueOf(DeterminationPitching.STRIKE_KOREAN);
     }
 
     public String appendBallHintMessage(final int ball) {
-        return ball + BALL_KOREAN;
+        return ball + String.valueOf(DeterminationPitching.BALL_KOREAN);
     }
 
     public boolean checkAnswer(final String answer, final String guessAnswer) {
@@ -112,7 +107,7 @@ public class User {
     }
 
     public void printInputMessage() {
-        System.out.print(INPUT_NUMBER_MESSAGE);
+        System.out.print(Messages.INPUT_NUMBER_MESSAGE);
     }
 
     public String inputPlayerNumber() {
@@ -126,14 +121,7 @@ public class User {
     }
 
     public boolean checkInputPlayerNumber(final String inputNumber) {
-        boolean checkNumber = false;
-        String regex = "^[1-9]{3}$";
-
-        if (inputNumber.matches(regex)) {
-            checkNumber = true;
-        }
-
-        return checkNumber;
+        return inputNumber.matches(REGEX);
     }
 
     public String connectEachAnswerNumbers() {
