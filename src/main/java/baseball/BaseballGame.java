@@ -3,6 +3,9 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.*;
 import static camp.nextstep.edu.missionutils.Randoms.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class BaseballGame {
 
 	private final int START_NUMBER = 1; // 1 <= START_NUMBER <= 9
@@ -10,6 +13,7 @@ public class BaseballGame {
 	private final int ANSWER_LENGTH = 3; // 1 <= ANSWER_LENGTH <= END_NUMBER - START_NUMBER + 1
 	private final String RESTART_OPTION = "1";
 	private final String FINISH_OPTION = "2";
+	private final ArrayList<String> START_OPTIONS = new ArrayList<>(Arrays.asList(RESTART_OPTION, FINISH_OPTION));
 	private final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 	private final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	private String answer;
@@ -30,7 +34,7 @@ public class BaseballGame {
 				countBallAndStrike();
 				printBaseballGameResult();
 			}
-			askRestartBaseballGame();
+			startBaseballGame = askRestartBaseballGame();
 		}
 	}
 
@@ -116,17 +120,19 @@ public class BaseballGame {
 		}
 	}
 
-	private void askRestartBaseballGame() {
+	private boolean askRestartBaseballGame() {
+		boolean restartBaseballGame = true;
 		System.out.println(RESTART_MESSAGE);
 		String userChoice = readLine();
-		if (!(userChoice.equals(RESTART_OPTION) || userChoice.equals(FINISH_OPTION))) {
+		if (!START_OPTIONS.contains(userChoice)) {
 			throw new IllegalArgumentException();
 		}
 		if (userChoice.equals(RESTART_OPTION)) {
-			startBaseballGame = true;
+			restartBaseballGame = true;
 		}
 		if (userChoice.equals(FINISH_OPTION)) {
-			startBaseballGame = false;
+			restartBaseballGame = false;
 		}
+		return restartBaseballGame;
 	}
 }
