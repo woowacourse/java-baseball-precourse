@@ -6,13 +6,17 @@ public class NumberComparator {
     private static int strike;
     private static int ball;
 
-    public static void compare(GameNumber computerNumber, GameNumber playerNumber) {
+    public static PrintResult compare(GameNumber computerNumber, GameNumber playerNumber) {
         List<Integer> computerNumberGameNumber = computerNumber.getGameNumber();
         List<Integer> playerNumberGameNumber = playerNumber.getGameNumber();
 
+        clearStrikeAndCount();
+        
         for(int i = 0; i < computerNumberGameNumber.size(); i++) {
             checkStrikeOrBall(i, computerNumberGameNumber.get(i), playerNumberGameNumber);
         }
+
+        return new PrintResult(strike, ball);
     }
 
     private static void checkStrikeOrBall(int computerIndex, int indexVal, List<Integer> playerNumberGameNumber) {
