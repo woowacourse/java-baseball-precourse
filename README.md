@@ -42,10 +42,10 @@
   - [x] 2개의 Balls를 비교해 Map 자료구조로 STRIKE, BALL, NOTHING의 몇개인지 저장
   - [x] Ball, 위치 값을 받아 볼의 상태 반환
   - [x] STRIKE, BALL, NOTHING 의 개수를 각각 반환
-- [ ] View
-  - [ ] 입력 UI
-  - [ ] 힌트 UI
-  - [ ] 정답을 맞췄을 때 UI
+- [x] View
+  - [x] 입력 UI
+  - [x] 힌트 UI
+  - [x] 정답을 맞췄을 때 UI
 
 
 

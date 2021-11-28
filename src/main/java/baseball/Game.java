@@ -34,7 +34,9 @@ public class Game {
         validateInput(input);
         if (input.equals(END)) {
             play = false;
+            return;
         }
+        computer = new Balls(createRandomNumberList());
     }
 
     public boolean isPlay() {
