@@ -67,15 +67,13 @@ public class GameSystem {
     private void determineContinueGame() {
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. : ");
         String users_signal = Console.readLine();
+        if (users_signal.equals("1")) {
+            return;
+        }
         if (users_signal.equals("2")) {
-            signal = 2;
+            signal = SIG_GAME_END;
+            return;
         }
-        try {
-            if (!users_signal.equals("1")) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            signal = 2;
-        }
+        throw new IllegalArgumentException();
     }
 }
