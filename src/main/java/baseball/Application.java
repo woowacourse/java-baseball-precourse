@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.controller.BaseballController;
+
 import baseball.service.BaseballService;
 
 public class Application {

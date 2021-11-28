@@ -4,7 +4,9 @@ import java.util.List;
 
 import baseball.resource.GameRule;
 import baseball.resource.message.OutputMessage;
+
 import baseball.service.BaseballService;
+
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
