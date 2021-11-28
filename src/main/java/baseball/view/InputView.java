@@ -1,5 +1,7 @@
 package baseball.view;
 
+import static baseball.error.ErrorMessage.*;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -42,7 +44,7 @@ public class InputView {
 
     private void validateSize(int size) {
         if (size != INPUT_NUMBERS_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_SIZE.getMessage());
         }
     }
 
@@ -50,7 +52,7 @@ public class InputView {
         try {
             Integer.parseInt(inputNumbers);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_NUMBER.getMessage());
         }
     }
 
@@ -63,7 +65,7 @@ public class InputView {
     private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> noneDuplicatedNumbers = new HashSet<>(numbers);
         if (noneDuplicatedNumbers.size() != INPUT_NUMBERS_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
         }
     }
 
@@ -73,7 +75,7 @@ public class InputView {
             .count();
 
         if (size != INPUT_NUMBERS_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_NUMBER_RANGE.getMessage());
         }
     }
 
@@ -84,7 +86,7 @@ public class InputView {
 
     private void validateCommand(String command) {
         if (!command.equals(INPUT_RESTART_COMMAND) && !command.equals(INPUT_END_COMMAND)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_INPUT_COMMAND.getMessage());
         }
     }
 }
