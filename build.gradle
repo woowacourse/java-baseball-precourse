@@ -16,3 +16,9 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+/* 한글 인코딩 에러 */
+compileJava.options.encoding='UTF-8'
+tasks.withType(JavaCompile){
+    options.encoding='UTF-8'
+}
