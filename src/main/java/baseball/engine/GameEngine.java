@@ -82,6 +82,10 @@ public class GameEngine {
         return stringBuilder.toString();
     }
 
+    private boolean checkGameEnd(int[] judge) {
+        return judge[0] == GameData.NUM_OF_ANSWER;
+    }
+
     private boolean checkStrike(Integer answer, Integer userNumber) {
         return answer == userNumber;
     }
