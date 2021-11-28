@@ -17,12 +17,12 @@ public class BaseballGame {
     private void startGame() {
         generateComputerNumber();
         NumberComparator numberComparator = new NumberComparator();
+        PrintResult printResult = new PrintResult();
         numberComparator.setComputerNumber(computerNumber);
 
         do {
             createPlayerNumber();
             numberComparator.run(playerNumber);
-            PrintResult printResult = new PrintResult();
             printResult.setNumberComparator(numberComparator);
             printResult.result();
         } while (shouldContinueGame());
