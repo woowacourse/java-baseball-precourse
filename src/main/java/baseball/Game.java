@@ -24,7 +24,7 @@ public class Game {
     }
 
     public boolean checkhint(Hint hint) {
-        if (hint.strike() == 3) {
+        if (hint.strike() == Balls.SIZE) {
             return true;
         }
         return false;
@@ -49,7 +49,7 @@ public class Game {
 
     public List<Integer> createRandomNumberList() {
         LinkedHashSet<Integer> numberSet = new LinkedHashSet<>();
-        while (numberSet.size() < Balls.BALLS_SIZE) {
+        while (numberSet.size() < Balls.SIZE) {
             numberSet.add(Randoms.pickNumberInRange(Ball.MIN_VALUE, Ball.MAX_VALUE));
         }
         return new ArrayList<>(numberSet);

@@ -12,7 +12,7 @@ public class Ball {
     }
 
     private void validateScope(int number) {
-        if (1 > number || 9 < number) {
+        if (MIN_VALUE > number || MAX_VALUE < number) {
             throw new IllegalArgumentException();
         }
     }

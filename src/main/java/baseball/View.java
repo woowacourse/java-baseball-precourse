@@ -11,7 +11,7 @@ public class View {
         int strike =  hint.strike();
         int ball = hint.ball();
         int nothing = hint.nothing();
-        if (nothing == 3) {
+        if (nothing == Balls.SIZE) {
             System.out.println("낫싱");
             return;
         }
