@@ -9,11 +9,11 @@ public class Balls {
 
     public static final int BALLS_SIZE = 3;
 
-    private List<Ball> list = new ArrayList<>();
+    private List<Ball> list;
 
     public Balls(List<Integer> list) {
         validateDuplication(list);
-        convertNumbersToBalls(list);
+        this.list = convertNumbersToBalls(list);
     }
 
     private void validateDuplication(List<Integer> list) {
@@ -22,14 +22,15 @@ public class Balls {
             throw new IllegalArgumentException();
         }
     }
-
-    public void convertNumbersToBalls(List<Integer> numbers) {
-        for (int number : numbers) {
-            list.add(new Ball(number));
-        }
-    }
-
     public List<Ball> getList() {
         return list;
+    }
+
+    public static List<Ball> convertNumbersToBalls(List<Integer> numbers) {
+        List<Ball> result = new ArrayList<>();
+        for (int number : numbers) {
+            result.add(new Ball(number));
+        }
+        return result;
     }
 }
