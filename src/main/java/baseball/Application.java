@@ -61,7 +61,8 @@ public class Application {
 	public static int countBall() {
 		int count = 0;
 		for (int i = 0; i < 3; i++) {
-			if (randomNumber.contains(inputNumber.substring(i, i+1)) && randomNumber.charAt(i) != inputNumber.charAt(i)) {
+			if (randomNumber.contains(inputNumber.substring(i, i + 1))
+				&& randomNumber.charAt(i) != inputNumber.charAt(i)) {
 				count++;
 			}
 		}
