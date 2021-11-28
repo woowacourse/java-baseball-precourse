@@ -15,6 +15,7 @@ public class BaseBallNumbers {
 
     public static BaseBallNumbers createByIntegerNumbers(List<Integer> inputNumbers) {
         checkInputSize(inputNumbers.size());
+        checkDuplicatedNumbers(inputNumbers);
         List<BaseBallNumber> baseBallNumbers = inputNumbers.stream()
             .map(BaseBallNumber::from)
             .collect(Collectors.toList());
@@ -24,6 +25,12 @@ public class BaseBallNumbers {
     private static void checkInputSize(int size) {
         if (size > BASEBALL_NUMBERS_LIMIT_SIZE) {
             throw new IllegalArgumentException("3개 이상의 공이 입력될 수 없습니다.");
+        }
+    }
+
+    private static void checkDuplicatedNumbers(List<Integer> inputNumbers) {
+        if (inputNumbers.stream().distinct().count() != BASEBALL_NUMBERS_LIMIT_SIZE) {
+            throw new IllegalArgumentException("중복된 공이 입력될 수 없습니다.");
         }
     }
 }

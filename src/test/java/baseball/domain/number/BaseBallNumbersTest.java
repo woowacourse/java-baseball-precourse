@@ -20,4 +20,16 @@ class BaseBallNumbersTest {
             .isThrownBy(() -> BaseBallNumbers.createByIntegerNumbers(input))
             .withMessageMatching("3개 이상의 공이 입력될 수 없습니다.");
     }
+
+    @Test
+    @DisplayName("중복된 수가 입력될 경우 Exception이 발생해야 한다.")
+    void createExceptionByDuplicatedNumbers() {
+        // given
+        List<Integer> input = Arrays.asList(1, 1, 2);
+
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> BaseBallNumbers.createByIntegerNumbers(input))
+            .withMessageMatching("중복된 공이 입력될 수 없습니다.");
+    }
 }
