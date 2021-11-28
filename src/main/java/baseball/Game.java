@@ -13,4 +13,11 @@ public class Game {
             throw new IllegalArgumentException();
         }
     }
+
+    public boolean checkhint(Hint hint) {
+        if (hint.strike() == 3) {
+            return true;
+        }
+        return false;
+    }
 }
