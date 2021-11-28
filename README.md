@@ -24,9 +24,10 @@
 - `Randoms` API에서 이전에 입력한 숫자를 입력할 경우 다시 입력하도록 요청한다.
 - 입력된 Numbers를 가지고 Answer와 매칭하여 GameResult를 반환할 수 있다.
 - GameResult는 3 스트라이크일 경우 게임이 종료됨을 판단한다.
+- [예외] GameResult의 strike count와 ball count의 합이 3을 넘는다면 IllegalArgumentException이 발생해야 한다.
 - GameResult가 종료되었다면 게임 재시작에 대한 명령을 시작해야 한다.
-    - 게임을 종료하였을 때 1을 누르면 게임이 재시작되어야 한다.
-    - 게임을 종료하였을 때 2를 누르면 Application이 종료되어야 한다.
+  - 게임을 종료하였을 때 1을 누르면 게임이 재시작되어야 한다.
+  - 게임을 종료하였을 때 2를 누르면 Application이 종료되어야 한다.
 
 <br>
 
