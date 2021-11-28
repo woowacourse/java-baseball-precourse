@@ -5,8 +5,8 @@ public class Game {
     int ballCount;
     int[] gameNumbers;
 
-    public Game(int size) {
-        gameNumbers = new int[size];
+    public Game(int[] numbers) {
+        gameNumbers = numbers;
     }
 
     public void initBaseBall() {
@@ -24,10 +24,6 @@ public class Game {
 
     public int[] getGameNumbers() {
         return gameNumbers;
-    }
-
-    public void setGameNumbers(int[] gameNumbers) {
-        this.gameNumbers = gameNumbers;
     }
 
     public void incStrikeCount() {
