@@ -16,17 +16,17 @@ public class User {
 		System.out.print("숫자를 입력해주세요 : ");
 		String inputs = readLine();
 		// 3자리수가 아니면 오류 발생
-		isThree(inputs);
+		checkLen(inputs);
 		// 숫자 변환
 		int Num = toInt(inputs);
 		// 숫자를 배열로 변환
-		input = intToArray(Num);
+		input = toArray(Num);
 		// 중복 값 오류 발생
 		isSame(input);
 
 	}
 
-	private void isThree(String inputs) {
+	private void checkLen(String inputs) {
 		if (inputs.length() != maxNumberLen) {
 			throw new IllegalArgumentException(maxNumberLen + "자리 수를 입력하세요");
 		}
@@ -61,7 +61,7 @@ public class User {
 	}
 
 	// 3자리 수를 배열로 만드는 함수
-	private int[] intToArray(int Num) {
+	private int[] toArray(int Num) {
 		int[] intArray = new int[maxNumberLen];
 		int n;
 		// 3자리 수를 10으로 나누면서 그 나머지를 배열의 뒤에서부터 할당

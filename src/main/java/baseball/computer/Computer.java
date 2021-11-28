@@ -13,7 +13,7 @@ public class Computer {
 	public Computer() {
 
 		LinkedHashSet<Integer> targetSet = makeTargetSet();
-		target = setToIntArray(targetSet);
+		target = toIntArray(targetSet);
 
 	}
 
@@ -25,7 +25,7 @@ public class Computer {
 		return targetSet;
 	}
 
-	private int[] setToIntArray(LinkedHashSet<Integer> targetSet) {
+	private int[] toIntArray(LinkedHashSet<Integer> targetSet) {
 		int[] array = new int[maxNumberLen];
 		Object[] objects = targetSet.toArray();
 
