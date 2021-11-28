@@ -11,7 +11,7 @@ public class BaseballGame {
     public void run() {
         do {
             initGame();
-            startGame();
+            playGame();
         } while (shouldRestartGame());
     }
 
@@ -19,15 +19,13 @@ public class BaseballGame {
         computerNumber = RandomNumberGenerator.generateNumber();
     }
 
-    private void startGame() {
-        generateComputerNumber();
+    private void playGame() {
         NumberComparator numberComparator = new NumberComparator();
         PrintResult printResult = new PrintResult();
-        numberComparator.setComputerNumber(computerNumber);
 
         do {
             createPlayerNumber();
-            numberComparator.run(playerNumber);
+            NumberComparator.compare(computerNumber, playerNumber);
             printResult.setNumberComparator(numberComparator);
             printResult.result();
         } while (shouldContinueGame());
@@ -57,12 +55,6 @@ public class BaseballGame {
     }
 
     private void createPlayerNumber() {
-        Player player = new Player();
-        playerNumber = player.scanNumber();
-    }
-
-    private void generateComputerNumber() {
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        computerNumber = randomNumberGenerator.generateNumber();
+        playerNumber = Player.scanNumber();
     }
 }

@@ -1,17 +1,35 @@
 package baseball;
 
-public class NumberComparator {
-    private String playerNumber;
-    private String computerNumber;
-    private int strike;
-    private int ball;
+import java.util.List;
 
-    public void setComputerNumber(String computerNumber) {
-        this.computerNumber = computerNumber;
+public class NumberComparator {
+    private static int strike;
+    private static int ball;
+
+    public static void compare(GameNumber computerNumber, GameNumber playerNumber) {
+        List<Integer> computerNumberGameNumber = computerNumber.getGameNumber();
+        List<Integer> playerNumberGameNumber = playerNumber.getGameNumber();
+
+        for(int i = 0; i < computerNumberGameNumber.size(); i++) {
+            checkStrikeOrBall(i, computerNumberGameNumber.get(i), playerNumberGameNumber);
+        }
     }
 
-    public void setPlayerNumber(String playerNumber) {
-        this.playerNumber = playerNumber;
+    private static void checkStrikeOrBall(int computerIndex, int indexVal, List<Integer> playerNumberGameNumber) {
+        int playerIndex = playerNumberGameNumber.indexOf(indexVal);
+
+        if(playerIndex != -1 && playerIndex == computerIndex) {
+            strike++;
+        }
+
+        if(playerIndex != -1 && playerIndex != computerIndex) {
+            ball++;
+        }
+    }
+
+    public static void clearStrikeAndCount() {
+        strike = 0;
+        ball = 0;
     }
 
     public int getBall() {
@@ -20,36 +38,5 @@ public class NumberComparator {
 
     public int getStrike() {
         return strike;
-    }
-
-    public void run(String playerNumber) {
-        clear();
-        setPlayerNumber(playerNumber);
-        compareNumber();
-
-    }
-
-    private void compareNumber() {
-        for (int i = 0; i < computerNumber.length(); i++) {
-            checkStrikeOrBall(i);
-        }
-    }
-
-    private void checkStrikeOrBall(int computerIndex) {
-
-        int playerIndex = playerNumber.indexOf(computerNumber.charAt(computerIndex));
-
-        if (playerIndex != -1 && playerIndex == computerIndex) {
-            strike++;
-        }
-
-        if (playerIndex != -1 && playerIndex != computerIndex) {
-            ball++;
-        }
-    }
-
-    private void clear() {
-        strike = 0;
-        ball = 0;
     }
 }
