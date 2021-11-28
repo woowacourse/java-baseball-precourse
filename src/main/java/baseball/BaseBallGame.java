@@ -4,6 +4,7 @@ import static utils.Constant.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import utils.GameStatus;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,18 +16,23 @@ public class BaseBallGame {
 	private ArrayList<Integer> answerNumberList;
 	private ArrayList<Integer> inputNumberList;
 	private Score score;
+	private GameStatus gameStatus;
 
 	public BaseBallGame() {
 		answerNumberList = new ArrayList<>();
 		inputNumberList = new ArrayList<>();
 		score = new Score();
+		gameStatus = GameStatus.READY;
 	}
 
 	public void start() {
-		do {
+		setGameStatusToPlaying();
+
+		while (gameStatus == GameStatus.PALYING) {
 			makeAnswerNumber();
 			play();
-		} while (!isFinishedGame());
+			requestRestartOrFinishInput();
+		}
 	}
 
 	private void play() {
@@ -40,6 +46,10 @@ public class BaseBallGame {
 				return;
 			}
 		}
+	}
+
+	private void setGameStatusToPlaying() {
+		gameStatus = GameStatus.PALYING;
 	}
 
 	private void initializeRound() {
@@ -133,16 +143,15 @@ public class BaseBallGame {
 		System.out.println(scoreStr);
 	}
 
-	private boolean isFinishedGame() {
+	private void requestRestartOrFinishInput() {
 		System.out.println(RESTART_OR_FINISH_REQUEST);
 		String str = Console.readLine();
 
 		if (str.equals(FINISH_COMMAND)) {
-			return true;
+			gameStatus = GameStatus.FINISHED;
 		}
 		if (str.equals(RESTART_COMMAND)) {
-			return false;
+			gameStatus = GameStatus.PALYING;
 		}
-		return false;
 	}
 }
