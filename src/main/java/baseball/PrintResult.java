@@ -3,43 +3,40 @@ package baseball;
 import static baseball.InitialSetting.*;
 
 public class PrintResult {
-    private int ballCnt;
-    private int strikeCnt;
+    private final int ballCnt;
+    private final int strikeCnt;
 
-    NumberComparator numberComparator;
-
-    public void setNumberComparator(NumberComparator numberComparator) {
-        this.numberComparator = numberComparator;
+    public PrintResult(int strike, int ball) {
+        this.strikeCnt = strike;
+        this.ballCnt = ball;
     }
 
-    public void result() {
-        ballCnt = numberComparator.getBall();
-        strikeCnt = numberComparator.getStrike();
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
 
-        printMsg();
-    }
-
-    private void printMsg() {
         if (ballCnt > NONE) {
-            System.out.print(ballCnt + BALL_MSG);
+            stringBuilder.append(ballCnt).append(BALL_MSG);
         }
 
         if (ballCnt > NONE && strikeCnt > NONE) {
-            System.out.print(" ");
+            stringBuilder.append(" ");
         }
 
         if (strikeCnt > NONE) {
-            System.out.print(strikeCnt + STRIKE_MSG);
+            stringBuilder.append(strikeCnt).append(STRIKE_MSG);
         }
 
         if (strikeCnt == MAX_STRIKES) {
-            System.out.print(ALL_STRIKE_MSG);
+            stringBuilder.append(ALL_STRIKE_MSG);
         }
 
         if (ballCnt == NONE && strikeCnt == NONE) {
-            System.out.println(NOTHING_MSG);
+            stringBuilder.append(NOTHING_MSG);
         }
 
-        System.out.println();
+        stringBuilder.append("\n");
+
+        return stringBuilder.toString();
     }
 }

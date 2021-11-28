@@ -20,14 +20,10 @@ public class BaseballGame {
     }
 
     private void playGame() {
-        NumberComparator numberComparator = new NumberComparator();
-        PrintResult printResult = new PrintResult();
-
         do {
             createPlayerNumber();
-            NumberComparator.compare(computerNumber, playerNumber);
-            printResult.setNumberComparator(numberComparator);
-            printResult.result();
+            PrintResult printResult = NumberComparator.compare(computerNumber, playerNumber);
+            System.out.println(printResult.toString());
         } while (shouldContinueGame());
     }
 
@@ -47,7 +43,7 @@ public class BaseballGame {
     }
 
     private boolean shouldContinueGame() {
-        if (computerNumber.equals(playerNumber)) {
+        if (computerNumber.getGameNumber().equals(playerNumber.getGameNumber())) {
             return false;
         }
 
