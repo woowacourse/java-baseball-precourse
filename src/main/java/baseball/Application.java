@@ -76,6 +76,29 @@ public class Application {
         return inputNumbers;
     }
 
+    static boolean INPUT_ERROR=true;
+    static boolean NON_INPUT_ERROR=false;
+
+    static boolean IsInputError(String inputNumbers){
+        if(inputNumbers.length()!=NUMBER_SIZE){
+            return INPUT_ERROR;
+        }
+
+        boolean[] existence=new boolean[NUMBER_COUNT];
+
+        for(int i=0;i<NUMBER_SIZE;++i){
+            if(inputNumbers.charAt(i)<'1' || '9'<inputNumbers.charAt(i)){
+                return INPUT_ERROR;
+            }
+        }
+
+        return NON_INPUT_ERROR;
+    }
+
+    static boolean CheckInputNumbers(String keyNumbers,String inputNumbers){
+
+    }
+
     static boolean DecideReplayOrExit(String gameResult){
 
     }
