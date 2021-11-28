@@ -36,12 +36,9 @@ public class Application {
             inputNumbers[1] = (N / 10) % 10;
             inputNumbers[2] = N % 10;
 
-            ballCount = 0;
-            strikeCount = 0;
-
-            input();
-            ballCheck();
-            strikeCheck();
+            inputNumbers();
+            checkBall();
+            checkStrike();
             print();
         }
     }
@@ -54,11 +51,9 @@ public class Application {
             computerNumbers[1] = Randoms.pickNumberInRange(1, 9);
             computerNumbers[2] = Randoms.pickNumberInRange(1, 9);
         }
-
-        System.out.println("answer: " + computerNumbers[0] + computerNumbers[1] + computerNumbers[2]);
     }
 
-    public static void input() {
+    public static void inputNumbers() {
         if (computerNumbers[0] == computerNumbers[1] || computerNumbers[0] == computerNumbers[2] || computerNumbers[1] == computerNumbers[2]) {
             throw new IllegalArgumentException("조건에 맞는 수를 입력해주세요.");
         }
@@ -89,13 +84,15 @@ public class Application {
         }
     }
 
-    public static void strikeCheck() {
+    public static void checkStrike() {
+        strikeCount = 0;
         for (int i = 0; i < 3; i++) {
             if (computerNumbers[i] == inputNumbers[i]) strikeCount++;
         }
     }
 
-    public static void ballCheck() {
+    public static void checkBall() {
+        ballCount = 0;
         if (computerNumbers[0] == inputNumbers[1]) ballCount++;
         if (computerNumbers[0] == inputNumbers[2]) ballCount++;
         if (computerNumbers[1] == inputNumbers[0]) ballCount++;
