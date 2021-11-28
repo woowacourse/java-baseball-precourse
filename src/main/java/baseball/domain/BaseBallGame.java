@@ -3,6 +3,7 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import baseball.vo.Point;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
@@ -38,6 +39,20 @@ public class BaseBallGame {
         input = Console.readLine();
 
         validate(input);
+        Point point = compare(randomNumber, input);
+    }
+
+    public Point compare(ArrayList<String> randomNumber, String input){
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for(int i = 0; i < input.length(); i++) {
+            if (randomNumber.get(i).equals(String.valueOf(input.charAt(i)))){
+                strikeCount ++;
+            } else if(randomNumber.contains(String.valueOf(input.charAt(i)))){
+                ballCount ++;
+            }
+        }
+        return new Point(strikeCount, ballCount);
     }
 }
-

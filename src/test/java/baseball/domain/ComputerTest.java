@@ -1,12 +1,10 @@
-package baseball;
+package baseball.domain;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
-import baseball.domain.Computer;
 
 class ComputerTest {
 
