@@ -59,13 +59,9 @@ public class BaseBallNumbers {
     }
 
     public int calculateBallCounts(BaseBallNumbers baseBallNumbers) {
-        int result = 0;
-        for (int i = 0; i < 3; i++) {
-            if (isBall(i, baseBallNumbers)) {
-                result++;
-            }
-        }
-        return result;
+        return (int) IntStream.rangeClosed(0, 2)
+            .filter(index -> isBall(index, baseBallNumbers))
+            .count();
     }
 
     private boolean isBall(int index, BaseBallNumbers baseBallNumbers) {
