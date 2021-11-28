@@ -12,9 +12,24 @@ public class Application {
         Ball ball = new Ball(new ThreeDigitGenerator(), validator);
         User user = new User();
         Checker checker = new GameChecker();
+        int restart;
 
+        do {
+            processGame(ball, user, checker, validator);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            String input = Console.readLine();
+            List<Integer> parsedInput = parseInput(input);
+            if(parsedInput.size() != 1) {
+                throw new IllegalArgumentException();
+            }
+            restart = parsedInput.get(0);
+
+        } while(restart != 2);
+    }
+
+    public static void processGame(Ball ball, User user, Checker checker, NumberValidator validator) {
         ball.generateNumber();
-
         do {
             System.out.print("숫자를 입력해주세요 : ");
             String inputString = Console.readLine();
