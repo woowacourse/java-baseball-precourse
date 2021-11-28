@@ -7,10 +7,13 @@ import baseball.Result.StrikeAndBallResult;
 import baseball.Result.StrikeResult;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.HashMap;
+
 public class GameManager {
     private static GameManager instance = null;
 
-    public ResultBase result;
+    private ResultBase result;
+    private HashMap<Integer, Integer> numbers = new HashMap<>();
 
     private GameManager() {
         ResultBase strikeResult = new StrikeResult();
@@ -31,5 +34,14 @@ public class GameManager {
         }
 
         return GameManager.instance;
+    }
+
+    private void initNumbers() {
+        this.numbers.clear();
+
+        for (int i = 0; i < 3; i++) {
+            int number = Randoms.pickNumberInRange(0, 9);
+            this.numbers.put(number, i);
+        }
     }
 }
