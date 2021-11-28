@@ -4,26 +4,38 @@ import baseball.view.InputView;
 import baseball.view.ResultView;
 
 public class Computer {
+
+	private RandomNumberPicker randomNumberPicker;
+	private String randomBallNumbers;
+	private InputView inputView;
+	private String inputBallNumbers;
+	private ResultCalculator resultCalculator;
+	private ResultView resultView;
+
 	public void playGames() {
-		RandomNumberPicker randomNumberPicker = new RandomNumberPicker();
+		while (true) {
+			if(!playGame()) {
+				break;
+			}
+		}
+	}
+
+	public boolean playGame() {
+		randomNumberPicker = new RandomNumberPicker();
 		randomNumberPicker.setRandomBallNumbers();
-		String randomBallNumbers = randomNumberPicker.getRandomBallNumbers();
+		randomBallNumbers = randomNumberPicker.getRandomBallNumbers();
 
 		while (true) {
-			InputView inputView = new InputView();
+			inputView = new InputView();
 			inputView.printStartMessage();
 			inputView.setInputBallNumbers();
-			String inputBallNumbers = inputView.getInputBallNumbers();
+			inputBallNumbers = inputView.getInputBallNumbers();
 
 			new InputBallNumberValidator(inputBallNumbers);
 
-			if (inputBallNumbers.equals("q")) {
-				break;
-			}
+			resultCalculator = new ResultCalculator(inputBallNumbers, randomBallNumbers);
 
-			ResultCalculator resultCalculator = new ResultCalculator(inputBallNumbers, randomBallNumbers);
-
-			ResultView resultView = new ResultView();
+			resultView = new ResultView();
 			resultView.printResult(resultCalculator.getBall(), resultCalculator.getStrike());
 
 			if (resultCalculator.getStrike() == 3) {
@@ -32,10 +44,13 @@ public class Computer {
 				inputView.printExitOrRestartMessage();
 				inputView.setInputExitOrRestart();
 				String inputExitOrRestart = inputView.getInputExitOrRestart();
+
 				new InputExitOrRestartValidator(inputExitOrRestart);
 
 				if (inputExitOrRestart.equals("2")) { // indent 초과
-					break;
+					return false;
+				} else {
+					return true;
 				}
 			}
 		}
