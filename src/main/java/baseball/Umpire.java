@@ -21,26 +21,24 @@ public class Umpire {
         return getHint(ballCount, strikeCount);
     }
 
-    public int isStrike(String opponentNumber, String userNumber) {
-        int strikeCount = 0;
+    public boolean isStrike(String opponentNumber, String userNumber) {
         for (int i = 0; i < DIGIT_NUMBER; i++) {
             if (opponentNumber.charAt(i) == userNumber.charAt(i)) {
-                strikeCount++;
+                return true;
             }
         }
-        return strikeCount;
+        return false;
     }
 
-    public int isBall(String opponentNumber, String userNumber) {
-        int ballCount = 0;
+    public boolean isBall(String opponentNumber, String userNumber) {
         for (int i = 0; i < DIGIT_NUMBER; i++) {
             for (int j = 0; j < DIGIT_NUMBER; j++) {
                 if (i != j && opponentNumber.charAt(i) == userNumber.charAt(j)) {
-                    ballCount++;
+                    return true;
                 }
             }
         }
-        return ballCount;
+        return false;
     }
 
     public String getHint(final int ballCount, final int strikeCount) {
