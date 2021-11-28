@@ -29,6 +29,22 @@ public class Game {
 	}
 
 	public int countBall() {
+		int cnt_ball = 0;
+		for (int i = 0; i < 3; i++) {
+			if (checkBall(i)) {
+				cnt_ball++;
+			}
+		}
+		return cnt_ball;
+	}
+
+	public boolean checkBall(int idx) {
+		for (int i = 0; i < 3; i++) {
+			if (i != idx && user.number[idx] == com.answer[i]) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void printResult() {
