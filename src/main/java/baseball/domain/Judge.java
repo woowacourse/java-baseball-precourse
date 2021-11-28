@@ -19,14 +19,14 @@ public class Judge {
     }
 
     public static boolean checkGameOver(String hint) {
-        System.out.println(hint);
+        boolean isGameOver = false;
 
         if (Objects.equals(hint, FINISH_GAME_CONDITION)) {
             System.out.println(CONGRATULATION_MESSAGE);
-            return true;
+            isGameOver = true;
         }
 
-        return false;
+        return isGameOver;
     }
 
     private static int countStrikes(List<Integer> playerInput, List<Integer> answerList) {

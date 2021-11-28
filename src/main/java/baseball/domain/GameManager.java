@@ -34,8 +34,9 @@ public class GameManager {
 
     private boolean checkAnswerInput() {
         List<Integer> input = Player.getAnswerInput();
-
         String hint = Judge.checkAnswerInput(input, this.answerList);
+
+        System.out.println(hint);
 
         return Judge.checkGameOver(hint);
     }
