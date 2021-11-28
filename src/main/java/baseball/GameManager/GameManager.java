@@ -41,12 +41,17 @@ public class GameManager {
     public void run() {
         initNumbers();
 
-        while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String line = Console.readLine();
-            ArrayList<Integer> numbersArray = parseToIntegerArray(line);
-            Score score = getScore(numbersArray);
+        try {
+            while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String line = Console.readLine();
+                ArrayList<Integer> numbersArray = parseToIntegerArray(line);
+                Score score = getScore(numbersArray);
+                printResult(score);
 
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
     }
 
@@ -59,16 +64,28 @@ public class GameManager {
         }
     }
 
-    private int askPlayerToContinue() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    private void askPlayerToContinue() throws IllegalArgumentException {
         String line = Console.readLine();
-        return Integer.parseInt(line);
+        int input = Integer.parseInt(line);
+        switch (input) {
+            case 1:
+                this.initNumbers();
+                break;
+            case 2:
+                System.exit(0);
+            default:
+                throw new IllegalArgumentException(String.format("Invalid input %s. Input must be either 1 or 2", input));
+        }
     }
 
-    private ArrayList<Integer> parseToIntegerArray(String line) {
+    private ArrayList<Integer> parseToIntegerArray(String line) throws IllegalArgumentException {
         ArrayList<Integer> ret = new ArrayList<>();
 
         for (char c : line.toCharArray()) {
+            int num = c - '0';
+            if (num < 0 || num > 9) {
+                throw new IllegalArgumentException(String.format("Invalid Input [%d]. Input must be in range [0,9]", num));
+            }
             ret.add(c - '0');
         }
 
@@ -93,5 +110,9 @@ public class GameManager {
         }
 
         return new Score(strike, ball);
+    }
+
+    private void printResult(Score score) {
+        this.result.getMessage(score.getStrike(), score.getBall());
     }
 }
