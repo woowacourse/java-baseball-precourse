@@ -6,8 +6,8 @@
   - [ ] init GameManager
   - [ ] GameManager.run
 - [ ] Result
-  - [ ] Result enum
-  - [ ] ResultBase interface
+  - [x] Result enum
+  - [x] ResultBase abstract class
   - [ ] 3 Strike Result
   - [ ] Strike & Ball Result
   - [ ] Ball Result
