@@ -18,6 +18,7 @@ public class BaseballGame {
         generateComputerNumber();
         NumberComparator numberComparator = new NumberComparator();
         numberComparator.setComputerNumber(computerNumber);
+
         do {
             createPlayerNumber();
             numberComparator.run(playerNumber);

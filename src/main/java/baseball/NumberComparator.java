@@ -1,7 +1,6 @@
 package baseball;
 
 public class NumberComparator {
-
     private String playerNumber;
     private String computerNumber;
     private int strike;
@@ -29,8 +28,9 @@ public class NumberComparator {
         compareNumber();
 
     }
+
     private void compareNumber() {
-        for(int i = 0; i < computerNumber.length(); i++) {
+        for (int i = 0; i < computerNumber.length(); i++) {
             checkStrikeOrBall(i);
         }
     }

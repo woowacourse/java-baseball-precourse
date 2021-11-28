@@ -10,7 +10,7 @@ public class InitialSetting {
     public static final String BALL_MSG = "볼";
     public static final String NOTHING_MSG = "낫싱";
 
-    public static final int NUM_SIZE  = 3;
+    public static final int NUM_SIZE = 3;
     public static final int MIN_NUM_VALUE = 1;
     public static final int MAX_NUM_VALUE = 9;
     public static final int MAX_STRIKES = 3;
