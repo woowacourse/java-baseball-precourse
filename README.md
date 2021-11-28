@@ -16,22 +16,22 @@ Computer, Player, BaseballGame
 
 > Computer
 
-- [ ] 정답을 결정 : determineAnswerBalls()
+- [x] 정답을 결정 : determineAnswerBalls()
     - Randoms.pickNumberInRange() 사용
-- [ ] 결과 산출 : compareBalls(palyerInput) : Hint 반환
+- [x] 결과 산출 : compareBalls(palyerInput) : Hint 반환
    - 스트라이크 : 자리와 숫자 모두 일치
    - 볼 : 자리 말고 숫자만 일치
    - 낫싱 : 0볼 0스트라이크의 경우
 
 > Player
 
-- [ ] 컴퓨터의 숫자 예측 : predictBalls()
+- [x] 컴퓨터의 숫자 예측 : predictBalls()
     - Console.readLine() 사용
     - 예외 : 입력 숫자가 3자리가 아닌 경우
     - 예외 : 입력이 숫자가 아닌 경우
     - 예외 : 입력 숫자에 0이 포함되는 경우
     - 예외 : 입력 숫자가 중복되는 경우
-- [ ] 재시작할지 종료할지 결정 : wantRestart()
+- [x] 재시작할지 종료할지 결정 : wantRestart()
     - Console.readLine() 사용
     - 예외 : 입력 숫자가 1이나 2가 아닌 경우
 

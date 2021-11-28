@@ -17,4 +17,8 @@ public class Hint {
 	public int getStrikeCount() {
 		return strikeCount;
 	}
+
+	public boolean isPlayerWin() {
+		return strikeCount == 3;
+	}
 }
