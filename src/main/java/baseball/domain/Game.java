@@ -1,12 +1,12 @@
 package baseball.domain;
 
-public class BaseBall {
+public class Game {
     int strikeCount;
     int ballCount;
+    int[] gameNumbers;
 
-    public BaseBall() {
-        strikeCount = 0;
-        ballCount = 0;
+    public Game(int size) {
+        gameNumbers = new int[size];
     }
 
     public void initBaseBall() {
@@ -20,6 +20,14 @@ public class BaseBall {
 
     public int getBallCount() {
         return ballCount;
+    }
+
+    public int[] getGameNumbers() {
+        return gameNumbers;
+    }
+
+    public void setGameNumbers(int[] gameNumbers) {
+        this.gameNumbers = gameNumbers;
     }
 
     public void incStrikeCount() {

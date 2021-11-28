@@ -1,8 +1,6 @@
 package baseball;
 
-import baseball.domain.Number;
-import baseball.service.BaseBallService;
-import baseball.utils.RandomUtils;
+import baseball.service.GameService;
 import baseball.view.RequestInput;
 import baseball.view.SystemMessage;
 
@@ -15,8 +13,7 @@ public class Controller {
     final int RETRY = 1;
     final int GAME_OVER = 2;
 
-    BaseBallService baseBallService = new BaseBallService();
-    Number number = new Number(SIZE);
+    GameService gameService = new GameService();
 
     public void run() throws IllegalArgumentException{
         gameSet();
@@ -26,13 +23,11 @@ public class Controller {
     }
 
     private void gameSet() {
-        number.setGameNumbers(RandomUtils.getRandomNumbers(SIZE, START_INCLUSIVE, END_INCLUSIVE));
+        gameService.setGame(SIZE, START_INCLUSIVE, END_INCLUSIVE);
     }
 
-    // TODO: 제출전에 println 제거하기
     private void gameStart() throws IllegalArgumentException{
-        System.out.println(number.getGameNumbers()[0]+""+number.getGameNumbers()[1]+""+number.getGameNumbers()[2]);
-        baseBallService.playGame(number, SIZE);
+        gameService.playGame();
     }
 
     private void gameOver() throws IllegalArgumentException{
