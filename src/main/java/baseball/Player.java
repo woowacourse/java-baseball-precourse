@@ -20,4 +20,8 @@ public class Player {
         Validator.validInputLength(input);
         return input;
     }
+
+    public Balls getBalls() {
+        return balls;
+    }
 }
