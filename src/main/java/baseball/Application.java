@@ -6,16 +6,25 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     static int EXIT = 2;
     static int REPLAY = 1;
-    static int DECISION_ERROR = 0;
+    static int ANSWER_ERROR = 0;
 
     public static void main(String[] args) {
         while (true) {
             boolean gameResult = PlayGame();
-            int replayOrExit = DecideReplayOrExit();
+            OccurError(gameResult==GAME_ERROR);
 
-            if (replayOrExit == EXIT) {
+            int replayOrExit = DecideReplayOrExit();
+            OccurError(replayOrExit==ANSWER_ERROR);
+
+            if(replayOrExit==EXIT){
                 break;
             }
+        }
+    }
+
+    static void OccurError(boolean IsError){
+        if(IsError){
+            throw new IllegalArgumentException();
         }
     }
 
@@ -40,7 +49,6 @@ public class Application {
             }
         }
     }
-
 
     static int MAX_NUMBER = 9;
     static int MIN_NUMBER = 1;
@@ -112,15 +120,15 @@ public class Application {
     }
 
     static boolean IsStrike(char keyNumbersChar, char inputNumbersChar) {
-        if(keyNumbersChar==inputNumbersChar){
+        if (keyNumbersChar == inputNumbersChar) {
             return true;
         }
         return false;
     }
 
     static boolean IsBall(String keyNumbers, char inputNumbersChar) {
-        for(int i=0;i<NUMBER_SIZE;++i){
-            if(keyNumbers.charAt(i)==inputNumbersChar){
+        for (int i = 0; i < NUMBER_SIZE; ++i) {
+            if (keyNumbers.charAt(i) == inputNumbersChar) {
                 return true;
             }
         }
@@ -144,21 +152,21 @@ public class Application {
         return WRONG_INPUT;
     }
 
-    static String ANSWER_REPLAY="1";
-    static String ANSWER_EXIT="2";
+    static String ANSWER_REPLAY = "1";
+    static String ANSWER_EXIT = "2";
 
     static int DecideReplayOrExit() {
-        String replayAnswer=GetReplayAnswer();
+        String replayAnswer = GetReplayAnswer();
 
-        if(replayAnswer.equals(ANSWER_REPLAY)){
+        if (replayAnswer.equals(ANSWER_REPLAY)) {
             return REPLAY;
-        } else if(replayAnswer.equals(ANSWER_EXIT)){
+        } else if (replayAnswer.equals(ANSWER_EXIT)) {
             return EXIT;
         }
-        return DECISION_ERROR;
+        return ANSWER_ERROR;
     }
 
-    static String GetReplayAnswer(){
+    static String GetReplayAnswer() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
