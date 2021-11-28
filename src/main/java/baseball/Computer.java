@@ -9,8 +9,16 @@ public class Computer {
 	public static final int RESTART_OPTION_SIZE = 1;
 	public static final int RESTART_YES = 1;
 	public static final int RESTART_NO = 2;
+	private boolean start = true;
 
 	private BaseballGame baseballGame = new BaseballGame();
+
+	public void runGame() {
+		while (start) {
+			startNewGame();
+			start = askRestart();
+		}
+	}
 
 	public void startNewGame() {
 		baseballGame.setNewTarget();
@@ -43,6 +51,22 @@ public class Computer {
 			guessNums.add(new Integer(guessInput.substring(i, i+1)));
 		}
 		return guessNums;
+	}
+
+	private boolean parseRestartInput(String restartInput) {
+		if (Integer.parseInt(restartInput) == RESTART_YES) {
+			return true;
+		} else if (Integer.parseInt(restartInput) == RESTART_NO) {
+			return false;
+		} else {
+			return false;
+		}
+	}
+
+	private boolean askRestart() {
+		String playerRestartInput = Player.getRestartInput();
+		validateRestartInput(playerRestartInput);
+		return parseRestartInput(playerRestartInput);
 	}
 
 	private void notifyGameEnd() {
