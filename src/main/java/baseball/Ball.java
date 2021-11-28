@@ -2,24 +2,30 @@ package baseball;
 
 public class Ball {
     private final NumberGenerator numberGenerator;
+    private final NumberValidator numberValidator;
     private int number;
 
-    public Ball(NumberGenerator numberGenerator) {
+    public Ball(NumberGenerator numberGenerator, NumberValidator numberValidator) {
         this.numberGenerator = numberGenerator;
+        this.numberValidator = numberValidator;
+    }
+
+    public void generateNumber() {
+        number = numberGenerator.generateNumber();
+        while (!numberValidator.validateNumber(number)) {
+            number = numberGenerator.generateNumber();
+        }
     }
 
     public NumberGenerator getNumberGenerator() {
         return numberGenerator;
     }
 
-    public int getNumber() {
-        return number;
+    public NumberValidator getNumberValidator() {
+        return numberValidator;
     }
 
-    public void generateNumber() {
-        number = numberGenerator.generateNumber();
-        while (!numberGenerator.validateNumber(number)) {
-            number = numberGenerator.generateNumber();
-        }
+    public int getNumber() {
+        return number;
     }
 }

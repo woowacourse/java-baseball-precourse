@@ -17,9 +17,4 @@ public class ThreeDigitGenerator implements NumberGenerator {
         }
         return firstDigit * 100 + secondDigit * 10 + thirdDigit;
     }
-
-    @Override
-    public boolean validateNumber(int number) {
-        return number < 1000 && number >= 100;
-    }
 }
