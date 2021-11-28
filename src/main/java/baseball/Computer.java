@@ -32,7 +32,7 @@ public class Computer {
 	}
 
 	private void validateRestartInput(String input) {
-		if (!InputValidator.isRightGuessInput(input)) {
+		if (!InputValidator.isRightRestartInput(input)) {
 			throw new IllegalArgumentException();
 		}
 	}
