@@ -29,4 +29,19 @@ public class Computer {
 		System.out.println("answerBalls = " + answerBalls);
 		this.answerBalls = answerBalls;
 	}
+
+	public Hint compareBalls(String prediction) {
+		int strike = 0;
+		int ball = 0;
+		for (int i = 0; i < prediction.length(); i++) {
+			int result = answerBalls.indexOf(prediction.charAt(i));
+			if (result == i) {
+				strike++;
+			}
+			if (result != -1) {
+				ball++;
+			}
+		}
+		return new Hint(strike, ball - strike);
+	}
 }
