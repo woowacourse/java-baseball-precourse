@@ -17,6 +17,6 @@ public class GameConstant {
 	public static final String RESTART_OR_END_MESSAGE = String.format("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.",
 		RESTART_NUMBER, END_NUMBER);
 
-	public static final String PLAYER_NUMBER_REGEX = "^[1-9]{3}$";
-	public static final String RESTART_OR_END_NUMBER_REGEX = "^[1-2]$";
+	public static final String PLAYER_NUMBER_REGEX = String.format("^[%d-%d]{3}$", START_INCLUSIVE, END_INCLUSIVE);
+	public static final String RESTART_OR_END_NUMBER_REGEX = String.format("^[%d%d]$", RESTART_NUMBER, END_NUMBER);
 }
