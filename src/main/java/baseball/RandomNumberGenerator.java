@@ -18,7 +18,7 @@ public class RandomNumberGenerator {
 
 	private void addNotDuplicatedNumber(List<Integer> answer) {
 		int number = Randoms.pickNumberInRange(1, 9);
-		if (answer.contains(number)) {
+		if (!answer.contains(number)) {
 			answer.add(number);
 		}
 		return;
