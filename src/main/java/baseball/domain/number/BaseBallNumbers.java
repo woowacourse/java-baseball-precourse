@@ -4,6 +4,7 @@ import baseball.exception.number.BaseBallNumbersDuplicateException;
 import baseball.exception.number.BaseBallNumbersInputSizeException;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BaseBallNumbers {
 
@@ -48,13 +49,9 @@ public class BaseBallNumbers {
     }
 
     public int calculateStrikeCounts(BaseBallNumbers baseBallNumbers) {
-        int result = 0;
-        for (int i = 0; i < 3; i++) {
-            if (isStrike(i, baseBallNumbers)) {
-                result++;
-            }
-        }
-        return result;
+        return (int) IntStream.rangeClosed(0, 2)
+            .filter(index -> isStrike(index, baseBallNumbers))
+            .count();
     }
 
     private boolean isStrike(int index, BaseBallNumbers baseBallNumbers) {
