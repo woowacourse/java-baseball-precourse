@@ -13,7 +13,7 @@ public class BaseballGame {
 	private int strikeScore;
 	private boolean isScoreNothing;
 
-	private void setNewTarget() {
+	protected void setNewTarget() {
 		target = Randoms.pickUniqueNumbersInRange(1, 9, TARGET_SIZE);
 	}
 
@@ -23,11 +23,12 @@ public class BaseballGame {
 		isScoreNothing = false;
 	}
 
-	public void judge(List<Integer> guess) {
+	protected void judgeAndShowHint(List<Integer> guess) {
 		resetScore();
 		countBallScore(guess);
 		countStrikeScore(guess);
 		checkScoreNothing();
+		System.out.println(buildHintString());
 	}
 
 	private void countStrikeScore(List<Integer> guess) {
@@ -52,15 +53,25 @@ public class BaseballGame {
 		}
 	}
 
-	protected int getBallScore() {
-		return ballScore;
-	}
+	private String buildHintString() {
+		StringBuilder stringBuilder = new StringBuilder();
 
-	protected int getStrikeScore() {
-		return strikeScore;
-	}
+		if (ballScore != 0) {
+			stringBuilder.append(ballScore).append("볼");
+		}
 
-	protected boolean getIsScoreNothing() {
-		return isScoreNothing;
+		if (ballScore != 0 && strikeScore != 0) {
+			stringBuilder.append(" ");
+		}
+
+		if (strikeScore != 0) {
+			stringBuilder.append(strikeScore).append("스트라이크");
+		}
+
+		if (isScoreNothing) {
+			stringBuilder.append("낫싱");
+		}
+
+		return stringBuilder.toString();
 	}
 }
