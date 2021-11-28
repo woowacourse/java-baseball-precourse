@@ -36,7 +36,6 @@ public class InputBallNumberValidator {
 
 	public void checkBallNumbersDuplicate() {
 		for (char number : inputBallNumbers.toCharArray()) {
-			System.out.println(number);
 			if (inputBallNumbersSet.contains(number)) {
 				throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
 			}
