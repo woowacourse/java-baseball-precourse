@@ -5,7 +5,7 @@ public enum StatusType {
 	FINISH("2"),
 	;
 
-	private String status;
+	private final String status;
 
 	StatusType(String status) {
 		this.status = status;

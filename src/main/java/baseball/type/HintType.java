@@ -7,7 +7,7 @@ public enum HintType {
 	NOTHING("낫싱"),
 	;
 
-	private String hint;
+	private final String hint;
 
 	HintType(String hint) {
 		this.hint = hint;
