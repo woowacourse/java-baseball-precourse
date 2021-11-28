@@ -5,11 +5,11 @@
 ### ✅ BaseballGame
 #### package java.baseball
 1. 게임 실행 클래스
-   - ```GameProvider```, ```GamePlayer``` 의존성 주입
+   - ```GameComputer```, ```GamePlayer``` 의존성 주입
    - ```run``` 메서드를 통한 실행
 
 
-### ✅ GameProvider
+### ✅ GameComputer
 #### package java.baseball
 1. 서로 다른 세자리 수를 가진 ```Random Answer``` 생성
    - 서로 다른 세자리 수 검증
