@@ -26,15 +26,19 @@ public class GameHandler {
     }
 
     public int start() {
-        mode = KEEP_GOING;
-        player = Player.getInstance();
-        computer = Computer.getInstance();
+        init();
 
         while (mode == KEEP_GOING) {
             mode = playing();
         }
 
         return isRestart();
+    }
+
+    private void init() {
+        mode = KEEP_GOING;
+        player = Player.getInstance();
+        computer = Computer.getInstance();
     }
 
     private int isRestart() {
