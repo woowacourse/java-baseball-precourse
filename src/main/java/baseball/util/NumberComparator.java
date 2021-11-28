@@ -1,7 +1,7 @@
 package baseball.util;
 
 import baseball.GameNumber;
-import baseball.PrintResult;
+import baseball.Result;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class NumberComparator {
     private static int strike;
     private static int ball;
 
-    public static PrintResult compare(GameNumber computerNumber, GameNumber playerNumber) {
+    public static Result compare(GameNumber computerNumber, GameNumber playerNumber) {
         List<Integer> computerNumberGameNumber = computerNumber.getGameNumber();
         List<Integer> playerNumberGameNumber = playerNumber.getGameNumber();
 
@@ -19,7 +19,7 @@ public class NumberComparator {
             checkStrikeOrBall(i, computerNumberGameNumber.get(i), playerNumberGameNumber);
         }
 
-        return new PrintResult(strike, ball);
+        return new Result(strike, ball);
     }
 
     private static void checkStrikeOrBall(int computerIndex, int indexVal, List<Integer> playerNumberGameNumber) {

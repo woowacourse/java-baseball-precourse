@@ -3,11 +3,11 @@ package baseball;
 import static baseball.config.Constant.*;
 import static baseball.config.Message.*;
 
-public class PrintResult {
+public class Result {
     private final int ballCnt;
     private final int strikeCnt;
 
-    public PrintResult(int strike, int ball) {
+    public Result(int strike, int ball) {
         this.strikeCnt = strike;
         this.ballCnt = ball;
     }

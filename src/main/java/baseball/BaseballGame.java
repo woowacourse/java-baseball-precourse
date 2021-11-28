@@ -25,7 +25,7 @@ public class BaseballGame {
     private void playGame() {
         do {
             createPlayerNumber();
-            PrintResult printResult = NumberComparator.compare(computerNumber, playerNumber);
+            Result printResult = NumberComparator.compare(computerNumber, playerNumber);
             NumberComparator.clearStrikeAndBall();
             System.out.println(printResult.toString());
         } while (shouldContinueGame());
