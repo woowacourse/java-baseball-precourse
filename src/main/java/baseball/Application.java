@@ -9,9 +9,10 @@ public class Application {
     static final int BALL = 1;
     static final int NOTHING = 2;
 
+    static String[] resultType = new String[] {"스크라이크", "볼", "낫싱"};
+
     public static void main(String[] args){
         boolean flag = true;
-        String[] resultType = new String[] {"스크라이크", "볼", "낫싱"};
 
         while (flag) {
             // TODO: 랜덤 수 생성
@@ -32,28 +33,7 @@ public class Application {
                 // TODO: 랜덤 값과 사용자 입력 값 비교
                 int[] result = compareRandomValueAndInputValue(randomValueArray, userInputArray);
 
-                // TODO: 비교 결과에 대한 값 출력
-                StringBuffer stringBuffer = new StringBuffer();
-                // strike = 0, ball = 0
-                if((result[STRIKE]|result[BALL]) == 0) System.out.println(resultType[NOTHING]);
-                else {
-                    for (int index = 0; index < result.length; index++) {
-                        if (result[index]==0) continue;
-                        if (index > 0) stringBuffer.append(" ");
-                        stringBuffer.append(result[index]);
-                        stringBuffer.append(resultType[index]);
-                    }
-
-                    // strike = 3, ball = 0
-                    if((result[STRIKE]^randomValueArray.length) == 0) {
-                        stringBuffer.append('\n');
-                        stringBuffer.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
-                        // TODO: 비교 결과에 따른 correct 변수 수정
-                        correct = true;
-                    }
-                }
-                    System.out.println(stringBuffer);
+                correct = printResult(result, randomValueArray.length);
 
             }
 
@@ -146,6 +126,50 @@ public class Application {
         }
         return answer;
 
+    }
+
+    public static boolean printResult(int[] result, int randomValueSize) {
+         /*
+            [definition]
+            비교 결과에 대한 내용을 출력합니다.
+
+            [parameters]
+            result: 비교한 결과
+            randomValueSize: 콤퓨터가 게임의 시작과 동시에 생성한 랜덤 값이 담긴 배열의 사이즈
+
+            [return]
+            3스트라이크의 경우, true
+            그 외, false
+        **/
+        boolean correct = false;
+        StringBuilder stringBuilder = new StringBuilder();
+
+        // strike = 0, ball = 0
+        if((result[STRIKE]|result[BALL]) == 0) {
+            System.out.println(resultType[NOTHING]);
+            return correct;
+        }
+
+        for (int index = 0; index < result.length; index++) {
+            if (result[index]==0) continue;
+            stringBuilder.append(result[index]);
+            stringBuilder.append(resultType[index]);
+            stringBuilder.append(" ");
+        }
+        // 마지막 띄어쓰기 제거
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
+        // strike = 3, ball = 0
+        if((result[STRIKE]^randomValueSize) == 0) {
+            stringBuilder.append('\n');
+            stringBuilder.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+            // 비교 결과에 따른 correct 변수 수정
+            correct = true;
+        }
+
+        System.out.println(stringBuilder);
+        return correct;
     }
 
 }
