@@ -51,6 +51,9 @@ public class Computer {
         if (gameState.isEndGame()) {
             throw new RuntimeException("종료된 게임은 리프레시할 수 없다.");
         }
+        if (gameState.isRestartGame()) {
+            return init();
+        }
         return this;
     }
 }

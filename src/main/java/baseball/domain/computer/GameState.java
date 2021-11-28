@@ -20,4 +20,8 @@ public enum GameState {
     public boolean isEndGame() {
         return this == END;
     }
+
+    public boolean isRestartGame() {
+        return this == RESTART;
+    }
 }

@@ -2,6 +2,7 @@ package baseball.domain.computer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import baseball.domain.number.BaseBallNumbers;
 import java.util.Arrays;
@@ -51,6 +52,22 @@ class ComputerTest {
             assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> computer.refresh())
                 .withMessageMatching("종료된 게임은 리프레시할 수 없다.");
+        }
+
+        @Test
+        @DisplayName("Restart 상태라면 새로운 Computer를 반환해야 한다.")
+        void refreshByRestartState() {
+            // given
+            Computer input = Computer.from(BaseBallNumbers.createByIntegerNumbers(Arrays.asList(1, 2, 3)), GameState.RESTART);
+
+            // when
+            Computer result = input.refresh();
+
+            // then
+            assertAll(
+                () -> assertThat(result).isInstanceOf(Computer.class),
+                () -> assertThat(result).isNotEqualTo(input)
+            );
         }
     }
 }
