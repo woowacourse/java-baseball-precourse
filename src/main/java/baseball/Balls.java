@@ -6,6 +6,7 @@ import java.util.List;
 public class Balls {
 
     public static final int MAX_LENGTH = 3;
+
     private List<Ball> balls = new ArrayList<>();
 
     public boolean isFull() {

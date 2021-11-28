@@ -34,14 +34,14 @@ public class Computer {
             return;
         }
         if (compareResult.onlyBalls()) {
-            System.out.printf("%d 볼\n", compareResult.getBall());
+            System.out.printf("%d볼\n", compareResult.getBall());
             return;
         }
-        if (compareResult.onlyStrikes()) {
-            System.out.printf("%d 스트라이크\n", compareResult.getStrike());
+        if (compareResult.onlyStrikesNotFinished()) {
+            System.out.printf("%d스트라이크\n", compareResult.getStrike());
             return;
         }
-        System.out.printf("%d 스트라이크 %d 볼\n", compareResult.getStrike(), compareResult.getBall());
+        System.out.printf("%d볼 %d스트라이크\n", compareResult.getBall(), compareResult.getStrike());
     }
 
     public boolean gameFinished(Balls playerBalls) {

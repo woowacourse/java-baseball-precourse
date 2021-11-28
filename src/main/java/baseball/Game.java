@@ -31,9 +31,8 @@ public class Game {
     }
 
     private void playGame() {
-        while (!computer.gameFinished(player.getBalls())) {
+        while (true) {
             computer.makeJudge(player.getBalls());
-
             if (computer.gameFinished(player.getBalls())) {
                 break;
             }
