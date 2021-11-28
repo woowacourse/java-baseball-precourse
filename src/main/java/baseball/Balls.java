@@ -42,4 +42,25 @@ public class Balls {
             "balls=" + balls +
             '}';
     }
+
+    public CompareResult compare(Balls playerBalls) {
+        CompareResult compareResult = new CompareResult();
+
+        for (int i = 0; i < balls.size(); i++) {
+            if (balls.get(i).equals(playerBalls.get(i))) {
+                compareResult.increaseStrike();
+                continue;
+            }
+
+            if (balls.contains(playerBalls.get(i))) {
+                compareResult.increaseBall();
+            }
+        }
+
+        return compareResult;
+    }
+
+    private Ball get(int i) {
+        return balls.get(i);
+    }
 }
