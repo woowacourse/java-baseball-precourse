@@ -3,6 +3,7 @@ package baseball.domain.computer;
 import static baseball.domain.number.BaseBallNumbers.BASEBALL_NUMBERS_LIMIT_SIZE;
 
 import baseball.exception.computer.GameResultTotalCountException;
+import java.util.Objects;
 
 public class GameResult {
 
@@ -27,6 +28,23 @@ public class GameResult {
 
     public boolean isFinished() {
         return strikeCount == BASEBALL_NUMBERS_LIMIT_SIZE;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GameResult that = (GameResult) o;
+        return strikeCount == that.strikeCount && ballCount == that.ballCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(strikeCount, ballCount);
     }
 }
 

@@ -18,6 +18,10 @@ public class Computer {
         this.answerNumbers = answerNumbers;
     }
 
+    static Computer from(BaseBallNumbers answerNumbers) {
+        return new Computer(answerNumbers);
+    }
+
     public static Computer createWithAnswerNumbersByRandomGenerator() {
         BaseBallNumbers answerNumbers = BaseBallNumbers.createByIntegerNumbers(generateNumbers());
         return new Computer(answerNumbers);
@@ -29,5 +33,11 @@ public class Computer {
             numbers.add(Randoms.pickNumberInRange(BaseBallNumber.MIN_NUMBER, BaseBallNumber.MAX_NUMBER));
         }
         return new ArrayList<>(numbers);
+    }
+
+    public GameResult calculateBaseBallGame(BaseBallNumbers baseBallNumbers) {
+        int strikeCount = answerNumbers.calculateStrikeCounts(baseBallNumbers);
+        int ballCount = answerNumbers.calculateBallCounts(baseBallNumbers);
+        return GameResult.from(strikeCount, ballCount);
     }
 }
