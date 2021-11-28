@@ -32,6 +32,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     // @Test
     void 컨버터_입력값_테스트() {
         Converter converter = new Converter();

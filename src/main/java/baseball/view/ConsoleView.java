@@ -2,7 +2,7 @@ package baseball.view;
 
 import java.util.List;
 
-import baseball.constants.StringConstants;
+import baseball.constants.ConsoleViewConstant;
 import baseball.service.Converter;
 import baseball.service.Validator;
 import camp.nextstep.edu.missionutils.Console;
@@ -25,7 +25,7 @@ public class ConsoleView {
 	}
 
 	private String readLineFromUser() {
-		System.out.print(StringConstants.ASK_NUMBER);
+		System.out.print(ConsoleViewConstant.ASK_NUMBER);
 		return Console.readLine();
 	}
 
@@ -34,8 +34,8 @@ public class ConsoleView {
 	}
 
 	public void notifyCorrectAll() {
-		System.out.println(StringConstants.NOTIFY_CORRECT_ALL);
-		System.out.println(StringConstants.NOTIFY_RESTART);
+		System.out.println(ConsoleViewConstant.NOTIFY_CORRECT_ALL);
+		System.out.println(ConsoleViewConstant.NOTIFY_RESTART);
 	}
 
 	public int getRestartIntention() {

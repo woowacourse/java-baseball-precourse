@@ -3,8 +3,8 @@ package baseball.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.constants.RandomNumberConstant;
 import camp.nextstep.edu.missionutils.Randoms;
-import baseball.constants.NumberConstants;
 import baseball.dto.CompareResult;
 
 public class Computer {
@@ -21,8 +21,8 @@ public class Computer {
 	}
 
 	private void generateRandomNumbers() {
-		while(randomNumberList.size() < NumberConstants.RANDOM_NUMBER_SIZE) {
-			int randomNumber = Randoms.pickNumberInRange(NumberConstants.MINIMUM_NUMBER, NumberConstants.MAXIMUM_NUMBER);
+		while(randomNumberList.size() < RandomNumberConstant.RANDOM_NUMBER_SIZE) {
+			int randomNumber = Randoms.pickNumberInRange(RandomNumberConstant.MINIMUM_RANDOM_NUMBER, RandomNumberConstant.MAXIMUM_RANDOM_NUMBER);
 			addRandomNumber(randomNumber);
 		}
 	}
@@ -40,7 +40,7 @@ public class Computer {
 	public CompareResult compareNumbers(List<Integer> givenNumbers) {
 		int strike = 0;
 		int ball = 0;
-		for(int i = 0; i < NumberConstants.RANDOM_NUMBER_SIZE; i++) {
+		for(int i = 0; i < RandomNumberConstant.RANDOM_NUMBER_SIZE; i++) {
 			if(checkStrike(givenNumbers.get(i), randomNumberList.get(i))) {
 				strike++;
 			} else if (checkBall(givenNumbers.get(i))){

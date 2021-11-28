@@ -2,9 +2,10 @@ package baseball.controller;
 
 import java.util.List;
 
+import baseball.constants.ComparingResultConstant;
+import baseball.constants.RandomNumberConstant;
 import baseball.view.ConsoleView;
-import baseball.constants.NumberConstants;
-import baseball.constants.StringConstants;
+import baseball.constants.StatementConstant;
 import baseball.dto.CompareResult;
 import baseball.service.Computer;
 
@@ -18,7 +19,7 @@ public class GameStarter {
 	}
 
 	public void start() {
-		int resume = NumberConstants.RESUME;
+		int resume = StatementConstant.RESUME;
 		do {
 			List<Integer> inputNumbers = view.getUserInputNumbers();
 
@@ -30,7 +31,7 @@ public class GameStarter {
 				checkRestart(resume);
 			}
 
-		} while(resume == NumberConstants.RESUME);
+		} while(resume == StatementConstant.RESUME);
 	}
 
 	private CompareResult compareWithRandomNumbers(List<Integer> inputNumbers) {
@@ -41,7 +42,7 @@ public class GameStarter {
 	}
 
 	private boolean checkAllCorrect(CompareResult result) {
-		return result.getStrike() == NumberConstants.RANDOM_NUMBER_SIZE;
+		return result.getStrike() == RandomNumberConstant.RANDOM_NUMBER_SIZE;
 	}
 
 	private String resultOfComparing(CompareResult result) {
@@ -49,17 +50,17 @@ public class GameStarter {
 		int ball = result.getBall();
 
 		if(strike == 0 && ball == 0) {
-			return String.format(StringConstants.NOTHING);
+			return String.format(ComparingResultConstant.NOTHING);
 		} else if(ball == 0) {
-			return String.format(StringConstants.STRIKE, strike);
+			return String.format(ComparingResultConstant.STRIKE, strike);
 		} else if(strike == 0) {
-			return String.format(StringConstants.BALL, ball);
+			return String.format(ComparingResultConstant.BALL, ball);
 		}
-		return String.format(StringConstants.BALL_AND_STRIKE, ball, strike);
+		return String.format(ComparingResultConstant.BALL_AND_STRIKE, ball, strike);
 	}
 
 	private void checkRestart(int resume) {
-		if(resume == NumberConstants.RESUME) {
+		if(resume == StatementConstant.RESUME) {
 			computer.refresh();
 		}
 	}

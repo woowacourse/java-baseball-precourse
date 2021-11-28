@@ -2,13 +2,14 @@ package baseball.service;
 
 import java.util.List;
 
-import baseball.constants.NumberConstants;
+import baseball.constants.RandomNumberConstant;
+import baseball.constants.StatementConstant;
 
 public class Validator {
 
 	public void validateInputString(String inputString) {
 		if(!checkAllNumber(inputString)
-			|| !checkSize(inputString, NumberConstants.RANDOM_NUMBER_SIZE)) {
+			|| !checkSize(inputString, RandomNumberConstant.RANDOM_NUMBER_SIZE)) {
 			throw new IllegalArgumentException();
 		}
 	}
@@ -32,7 +33,7 @@ public class Validator {
 	}
 
 	private boolean checkInputNumbersUnique(List<Integer> inputNumbers) {
-		return inputNumbers.stream().distinct().count() == NumberConstants.RANDOM_NUMBER_SIZE;
+		return inputNumbers.stream().distinct().count() == RandomNumberConstant.RANDOM_NUMBER_SIZE;
 	}
 
 	public void validateRestartString(String restartString) {
@@ -48,6 +49,6 @@ public class Validator {
 	}
 
 	private boolean checkCorrectRestartInteger(int restartInteger) {
-		return restartInteger == NumberConstants.RESUME || restartInteger == NumberConstants.STOP;
+		return restartInteger == StatementConstant.RESUME || restartInteger == StatementConstant.STOP;
 	}
 }
