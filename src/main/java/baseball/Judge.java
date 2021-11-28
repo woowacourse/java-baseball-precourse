@@ -47,7 +47,6 @@ public class Judge {
             char cur_digit = target.charAt(i);
             if (cur_digit == rightAnswer.charAt(i)) {
                 strike++;
-                continue;
             }
             if (isBall(i, target)) {
                 ball++;
