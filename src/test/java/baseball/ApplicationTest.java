@@ -37,9 +37,6 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-//  - [예외] 입력한 문자가 숫자인지 검사
-//  - 사용자 입력을 3개의 숫자 리스트로 변환
-
     @DisplayName("입력한 길이가 3인지 검사")
     @Test
     void string_length_is_3() {
