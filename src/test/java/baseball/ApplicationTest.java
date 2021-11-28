@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -63,5 +65,15 @@ class ApplicationTest extends NsTest {
         application.validateNumber('1');
         assertThatThrownBy(() -> application.validateNumber('a'))
             .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("문자열을 숫자 리스트로 변환")
+    @Test
+    void convertStringToNumberList() {
+        Application application = new Application();
+        assertThat(
+            application.convertStringToNumberList("123")
+            .containsAll(Arrays.asList(1, 2, 3))
+        ).isTrue();
     }
 }
