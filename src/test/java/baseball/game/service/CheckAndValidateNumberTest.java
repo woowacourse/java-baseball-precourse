@@ -1,4 +1,4 @@
-package baseball.game.number;
+package baseball.game.service;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -6,12 +6,12 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-public class NumberTest {
+public class CheckAndValidateNumberTest {
 
 	@Test
-	public void 난수_검증() throws Exception {
+	public void 난수_검증() {
 		for (int i = 0; i < 10000; i++) {
-			int randomNumber = Number.createRandomNumber();
+			int randomNumber = CheckAndValidateNumber.createRandomNumber();
 			assertThat(String.valueOf(randomNumber)).doesNotContain("0");
 			assertThat(Arrays.stream(String.valueOf(randomNumber)
 					.split(""))

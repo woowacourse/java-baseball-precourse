@@ -1,8 +1,8 @@
-package baseball.game.number;
+package baseball.game.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Number {
+public class CheckAndValidateNumber {
 
 	private static boolean validateCreateNumber(int number) {
 		String entireNumber = String.valueOf(number);
