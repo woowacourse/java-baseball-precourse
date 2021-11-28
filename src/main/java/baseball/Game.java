@@ -6,15 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Game {
 	private static Player player = new Player();
 	private static int[] randomAns;
-	private static final int BEGIN_NUM = 1;
-	private static final int END_NUM = 9;
-	private static final int NUM_LENGTH = 3;
-	private static final String ENTER_NUMBER = "숫자를 입력해주세요 : ";
-	public static final String End_GAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-	private static final String ASK_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-	private static final String BALL = "볼";
-	private static final String STRIKE = "스트라이크";
-	private static final String NOTHING = "낫싱";
+	private Config config = new Config();
 
 	public void play() {
 		boolean start = true;
@@ -35,13 +27,13 @@ public class Game {
 
 	private int[] createTargetNum() {
 		int[] randomAns = new int[3];
-		boolean[] check = new boolean[END_NUM + 1];
+		boolean[] check = new boolean[config.getEndNum() + 1];
 
-		for (int i = 0; i < NUM_LENGTH; i++) {
-			int num = Randoms.pickNumberInRange(BEGIN_NUM, END_NUM);
+		for (int i = 0; i < config.getNumLength(); i++) {
+			int num = Randoms.pickNumberInRange(config.getBeginNum(), config.getEndNum());
 
 			while (check[num]) {
-				num = Randoms.pickNumberInRange(BEGIN_NUM, END_NUM);
+				num = Randoms.pickNumberInRange(config.getBeginNum(), config.getEndNum());
 			}
 
 			check[num] = true;
@@ -51,23 +43,23 @@ public class Game {
 	}
 
 	private int[] userInputNum() {
-		System.out.print(ENTER_NUMBER);
+		System.out.print(config.getEnterNumber());
 		String inputStr = Console.readLine();
 
 		return checkUserInputNum(inputStr);
 	}
 
 	private int[] checkUserInputNum(String inputStr) {
-		int[] userInputNumArr = new int[NUM_LENGTH];
-		boolean[] checkInputNum = new boolean[END_NUM + 1];
+		int[] userInputNumArr = new int[config.getNumLength()];
+		boolean[] checkInputNum = new boolean[config.getEndNum() + 1];
 
 		// 입력 값이 길이가 3미만 3초과일 경우
-		if (inputStr.length() < NUM_LENGTH || inputStr.length() > NUM_LENGTH) {
+		if (inputStr.length() < config.getNumLength() || inputStr.length() > config.getNumLength()) {
 			throw new IllegalArgumentException();
 		}
 
 		// 숫자로 이루어지지 않았을 경우, 0이 포함 되어 있을 경우, 반복된 숫자를 입력하였을 경우
-		for (int i = 0; i < NUM_LENGTH; i++) {
+		for (int i = 0; i < config.getNumLength(); i++) {
 			int inputNum = inputStr.charAt(i) - '0';
 
 			if (inputStr.charAt(i) == '0' || !Character.isDigit(inputStr.charAt(i))) {
@@ -88,7 +80,7 @@ public class Game {
 	private boolean compareToRandomAns(int[] userInputNumArr) {
 		player.init(userInputNumArr);
 
-		for (int i = 0; i < NUM_LENGTH; i++) {
+		for (int i = 0; i < config.getNumLength(); i++) {
 			player.compareNum(randomAns[i], i);
 		}
 
@@ -97,28 +89,28 @@ public class Game {
 
 	private boolean notifyBallAndStrike(int strike, int ball) {
 		if (strike == 3) {
-			System.out.println(NUM_LENGTH + STRIKE);
-			System.out.println(End_GAME);
+			System.out.println(config.getNumLength() + config.getSTRIKE());
+			System.out.println(config.getEnd_GAME());
 			return true;
 		}
 
 		if (strike > 0 && ball > 0) {
-			System.out.println(ball + BALL + " " + strike + STRIKE);
+			System.out.println(ball + config.getBALL() + " " + strike + config.getSTRIKE());
 			return false;
 		}
 
 		if (strike == 0 && ball == 0) {
-			System.out.println(NOTHING);
+			System.out.println(config.getNOTHING());
 			return false;
 		}
 
 		if (ball == 0) {
-			System.out.println(strike + STRIKE);
+			System.out.println(strike + config.getSTRIKE());
 			return false;
 		}
 
 		if (strike == 0) {
-			System.out.println(ball + BALL);
+			System.out.println(ball + config.getBALL());
 			return false;
 		}
 
@@ -126,7 +118,7 @@ public class Game {
 	}
 
 	private boolean checkRestart() {
-		System.out.println(ASK_RESTART);
+		System.out.println(config.getAskRestart());
 		String userRestartInput = Console.readLine();
 
 		if (userRestartInput.equals("1")) {
