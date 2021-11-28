@@ -14,7 +14,7 @@ class PlayerTest {
     @Test
     @DisplayName("플레이어 생성 및 tryNumber 사용자에게 입력받아서 Computer에게 건네주기")
     void test() {
-        int[] answer = computer.getAnswer();
+        int[] answer = randomGenerator.getAnswer();
 
         // given
         player.playerInput("143");

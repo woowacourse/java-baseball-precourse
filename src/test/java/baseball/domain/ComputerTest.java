@@ -9,11 +9,12 @@ class ComputerTest {
     private final int BALL = 0;
     private final int STRIKE = 1;
     Computer computer = Computer.getInstance();
+    RandomGenerator randomGenerator = RandomGenerator.getInstance();
 
     @Test
     @DisplayName("정답 생성하기")
     void generateAnswer() {
-        int[] answer = computer.getAnswer();
+        int[] answer = randomGenerator.getAnswer();
 //        showArray(answer);
     }
 
@@ -28,7 +29,7 @@ class ComputerTest {
     @DisplayName("힌트 생성 맞는지 확인")
     void checkHint() {
         // given
-        int[] answer = computer.getAnswer();
+        int[] answer = randomGenerator.getAnswer();
         showArray(answer);
 
         // when
