@@ -28,7 +28,7 @@ public class GameEngine {
         List<Integer> results = new ArrayList<Integer>();
 
         while(results.size() < GameData.NUM_OF_ANSWER) {
-            Integer number = Integer.valueOf(Randoms.pickNumberInRange(0, 9));
+            Integer number = Randoms.pickNumberInRange(0, 9);
             if (!results.contains(number)) {
                 results.add(number);
             }
@@ -39,7 +39,7 @@ public class GameEngine {
 
     private int inputUserNumber() {
         String text = Console.readLine();
-        int result = 0;
+        int result;
 
         try {
             result = Integer.parseInt(text);
@@ -54,7 +54,7 @@ public class GameEngine {
         List<Integer> results = new ArrayList<Integer>();
 
         do {
-            results.add(Integer.valueOf(userNumber % 10));
+            results.add(userNumber % 10);
             userNumber /= 10;
         } while (userNumber != 0);
 
@@ -72,7 +72,6 @@ public class GameEngine {
         for (int i = 0; i < GameData.NUM_OF_ANSWER; i++) {
             if (checkStrike(answer.get(i), userNumber.get(i))) {
                 result[0]++;
-                continue;
             } else if (checkBall(answer, userNumber.get(i))) {
                 result[1]++;
             }
