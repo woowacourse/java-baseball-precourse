@@ -10,12 +10,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class GameManager {
     private static GameManager instance = null;
 
     private ResultBase result;
-    private HashMap<Integer, Integer> numbers = new HashMap<>();
+    private ArrayList<Integer> numbers = new ArrayList<>();
 
     private GameManager() {
         ResultBase strikeResult = new StrikeResult();
@@ -40,34 +41,27 @@ public class GameManager {
     }
 
     public void run() {
-        try {
-            while (true) {
-                System.out.print("숫자를 입력해주세요 : ");
-                String line = Console.readLine();
-                ArrayList<Integer> numbersArray = parseToIntegerArray(line);
-                Score score = getScore(numbersArray);
-                printResult(score);
-                checkResultStatus(score);
-            }
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String line = Console.readLine();
+            ArrayList<Integer> numbersArray = parseToIntegerArray(line);
+            Score score = getScore(numbersArray);
+            printResult(score);
+            checkResultStatus(score);
         }
+
     }
 
     private void initNumbers() {
         this.numbers.clear();
 
         for (int i = 0; i < 3; i++) {
-            int number = Randoms.pickNumberInRange(0, 9);
-            this.numbers.put(number, i);
-
-            // debug
-            System.out.print(number);
+            Integer number = Randoms.pickNumberInRange(0, 9);
+            this.numbers.add(number);
         }
-        System.out.println();
     }
 
-    private void askPlayerToContinue() throws IllegalArgumentException {
+    private void askPlayerToContinue() {
         String line = Console.readLine();
         int input = Integer.parseInt(line);
         switch (input) {
@@ -81,8 +75,8 @@ public class GameManager {
         }
     }
 
-    private ArrayList<Integer> parseToIntegerArray(String line) throws IllegalArgumentException {
-        if(line.length() != 3) {
+    private ArrayList<Integer> parseToIntegerArray(String line) {
+        if (line.length() != 3) {
             throw new IllegalArgumentException(String.format("Invalid input length: %d, Length if input must be 3", line.length()));
         }
 
@@ -103,16 +97,12 @@ public class GameManager {
         int strike = 0;
         int ball = 0;
 
-        for (int i = 0; i<numbersArray.size(); i++) {
-            if (!numbers.containsKey(numbersArray.get(i))) {
+        for (int i = 0; i < numbersArray.size(); i++) {
+            if (!numbers.contains(numbersArray.get(i))) {
                 continue;
             }
 
-            //debug
-            System.out.println("indexOf number " + numbersArray.get(i) + ": " + i);
-            System.out.println("hashmap: " + numbers.get(numbersArray.get(i)));
-
-            if (i == numbers.get(numbersArray.get(i))) {
+            if (numbersArray.get(i).equals(numbers.get(i))) {
                 strike++;
                 continue;
             }
@@ -124,21 +114,15 @@ public class GameManager {
     }
 
     private void printResult(Score score) {
-        //debug
-        System.out.println("strike: " + score.getStrike() + " ball:" + score.getBall());
         String message = this.result.getMessage(score.getStrike(), score.getBall());
         System.out.println(message);
     }
 
-    private void checkResultStatus(Score score) throws IllegalArgumentException {
-        try {
-            if (score.getStrike() == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                askPlayerToContinue();
-            }
-        } catch (IllegalArgumentException e) {
-            throw e;
+    private void checkResultStatus(Score score) {
+        if (score.getStrike() == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            askPlayerToContinue();
         }
     }
 }
