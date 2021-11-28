@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Player {
 
 	public int[] getNumberFromPlayer() {
-		String tempInput = Console.readLine();
+		String tempInput;
 		int[] playerNumber;
 
 		System.out.print("숫자를 입력해 주세요 : ");
