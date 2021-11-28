@@ -17,6 +17,22 @@ public class BaseballGameUtils {
 	}
 	
 	public static void getNumberFromUser() {
-		Console.readLine();
+		validateUserNumber(Console.readLine());
+	}
+	
+	private static void validateUserNumber(String number) {
+		if (number.length()!=3) {
+			throw new IllegalArgumentException("세자리 숫자가 아닙니다.");
+		}
+		
+		for (int i = 0; i < number.length(); i++) {
+			char compareChar = number.charAt(i);
+			if (!Character.isDigit(compareChar)) {
+				throw new IllegalArgumentException("숫자가 아닙니다. 숫자외 문자가 포함되어있습니다.");
+			}
+			if (compareChar == '0') {
+				throw new IllegalArgumentException("1~9사이의 숫자가 아닌 값이 표함되어 있습니다.");
+			}
+		}
 	}
 }
