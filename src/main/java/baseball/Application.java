@@ -8,8 +8,9 @@ public class Application {
         do {
             baseBall = new BaseBall(
                     new Referee(),
-                    new Player(),
-                    new RandomNumberGenerator()
+                    new RandomNumberGenerator(),
+                    new PredictInput(),
+                    new DecideNextInput()
             );
             baseBall.playGame();
         } while (baseBall.decideNextGame());
