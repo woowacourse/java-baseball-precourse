@@ -1,8 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     private static final int START_GAME_VALUE = 1;
@@ -14,7 +17,25 @@ public class Application {
 
         while (gameStatus != END_GAME_VALUE) {
             game.start();
+            playGame();
         }
+    }
+
+    private static void playGame() {
+        List<Integer> playerInput;
+
+        while(true) {
+            playerInput = getPlayerInput();
+
+            // TODO : userInput을 검증하고, 결과를 찾는다.
+        }
+    }
+
+    private static List<Integer> getPlayerInput() {
+        String input = Console.readLine();
+        String[] splitInput = input.split("");
+
+        return Arrays.stream(splitInput).map(Integer::parseInt).collect(Collectors.toList());
     }
 }
 
