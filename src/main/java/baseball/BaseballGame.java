@@ -2,9 +2,12 @@ package baseball;
 
 import baseball.BaseballSystem.BaseballRule;
 import baseball.BaseballSystem.BaseballValidationImpl;
+import baseball.BaseballSystem.JudgementService;
+import baseball.BaseballSystem.JudgementServiceImpl;
 import baseball.BaseballSystem.Validation;
 import baseball.domain.Computer;
 import baseball.domain.Player;
+import baseball.dto.response.JudgementResultDto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
@@ -13,9 +16,11 @@ public class BaseballGame {
     private static final boolean NO = false;
 
     private final Validation validation;
+    private final JudgementService judgementService;
 
     public BaseballGame() {
         validation = BaseballValidationImpl.getInstance();
+        judgementService = JudgementServiceImpl.getInstance();
     }
 
     public void play() {
@@ -25,12 +30,17 @@ public class BaseballGame {
     }
 
     private void start() {
+        boolean isCorrect = true;
         try {
-            System.out.print("숫자를 입력해주세요 : ");
-            String validPlayerInput = validation.isValidInput(Console.readLine());
-            Player player=new Player(validPlayerInput);
             Computer computer = new Computer();
-            System.out.print("Business Logic 처리 완료됨 가정");
+            do {
+                System.out.print("숫자를 입력해주세요 : ");
+                String validPlayerInput = validation.isValidInput(Console.readLine());
+                Player player = new Player(validPlayerInput);
+                JudgementResultDto resultDto = judgementService.matchTheNumbers(player, computer);
+                isCorrect = resultDto.isCorrectAnswer();
+                System.out.println(resultDto.getResultMessage());
+            } while (!isCorrect);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }
