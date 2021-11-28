@@ -8,12 +8,10 @@ import constants.NumberAttribute;
 public class Umpire {
 
     private static String randomNumber;
-    private static int DIGIT_NUMBER;
 
     Umpire (String number){
 
         randomNumber = number;
-        DIGIT_NUMBER = NumberAttribute.DIGIT_NUMBER.getValue();
     }
 
     public String judgeRound(final String userNumber){
@@ -30,7 +28,9 @@ public class Umpire {
             }
         }
 
-        Assertions.assertTrue(ballCount <= DIGIT_NUMBER && strikeCount <= DIGIT_NUMBER);
+        Assertions.assertTrue(ballCount <= NumberAttribute.DIGIT_NUMBER.getValue()
+                && strikeCount <= NumberAttribute.DIGIT_NUMBER.getValue());
+
         return getHint(ballCount, strikeCount);
     }
 

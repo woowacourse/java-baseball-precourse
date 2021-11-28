@@ -14,13 +14,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
-    private static String CLEAR_CONDITION_MESSAGE;
+    private static final String CLEAR_CONDITION_MESSAGE =
+            NumberAttribute.DIGIT_NUMBER.getValue() + HintMessage.STRIKE.getHint();
     Umpire umpire;
-
-    Game() {
-
-        CLEAR_CONDITION_MESSAGE = NumberAttribute.DIGIT_NUMBER.getValue() + HintMessage.STRIKE.getHint();
-    }
 
     public void init() {
 
@@ -31,15 +27,10 @@ public class Game {
 
         boolean isGameContinue = true;
         do {
-            System.out.println(SystemMessage.INPUT_REQUEST.getMessage());
-            String userNumber = Console.readLine();
-            if (!InputValidator.checkUserInputIsValid(userNumber)) {
-                throw new IllegalArgumentException("사용자 입력이 잘못된 값이므로 게임을 종료합니다");
-            }
 
-            String result = umpire.judgeRound(userNumber);
-            System.out.println(result);
+            String result = umpire.judgeRound(swingBat());
             isGameContinue = !result.equals(CLEAR_CONDITION_MESSAGE);
+            System.out.println(result);
 
         } while (isGameContinue);
         System.out.println(SystemMessage.GAME_CLEAR.getMessage());
@@ -55,5 +46,15 @@ public class Game {
 
         return userInput.equals(ExitOption.RESTART.getCommand());
     }
-}
 
+    private String swingBat() {
+
+        System.out.println(SystemMessage.INPUT_REQUEST.getMessage());
+        String userNumber = Console.readLine();
+
+        if (!InputValidator.checkUserInputIsValid(userNumber)) {
+            throw new IllegalArgumentException("사용자 입력이 잘못된 값이므로 게임을 종료합니다");
+        }
+        return userNumber;
+    }
+}
