@@ -68,6 +68,11 @@ public class User {
 	}
 
 	public boolean checkNumber(char charIdxNum) {
+		if (!(charIdxNum - '0' >= MIN_NUM && charIdxNum - '0' <= MAX_NUM)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	public boolean checkReduplication(int num) {
