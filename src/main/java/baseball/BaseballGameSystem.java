@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.game.GameService;
+import baseball.player.PlayerService;
 import baseball.utils.InputUtils;
 import baseball.utils.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
@@ -14,7 +15,12 @@ public class BaseballGameSystem {
     public static final int GAME_MENU_LENGTH = 1;
     public static final String USER_WIN = "3스트라이크";
 
+    private PlayerService playerService;
+    private GameService gameService;
+
     public void play() {
+        playerService = PlayerService.getInstance();
+        gameService = GameService.getInstance();
 
         while(true) {
             playPhase();
@@ -26,14 +32,17 @@ public class BaseballGameSystem {
     }
 
     private void playPhase() {
-        GameService gameService = new GameService();
-        //TODO: computer player 난수 설정 구현
+        playerService.setComputerGameRandomDigits();
 
         while(true) {
             List<Integer> userGameDigits = getInputDigits();
-            //TODO: 사용자 입력 데이터 설정 구현
+            playerService.setUserGameInputDigits(userGameDigits);
 
-            String gameResult = gameService.getGameResult();
+            playerService.computeGameScore();
+
+            int strikeScore = playerService.getStrikeScore();
+            int ballScore = playerService.getBallScore();
+            String gameResult = gameService.getGameResult(strikeScore, ballScore);
             System.out.println(gameResult);
 
             if(isUserWin(gameResult)){

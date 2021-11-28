@@ -1,24 +1,22 @@
 package baseball.game;
 
-import baseball.player.PlayerService;
-
 public class GameService {
 
-    private PlayerService playerService;
+    private GameService() {}
 
-    public GameService(){
-        this.playerService = new PlayerService();
+    private static class InnerInstanceClazz {
+        private static final GameService instance = new GameService();
     }
 
-    public String getGameResult() {
-        return createGameResult();
+    public static GameService getInstance() {
+        return InnerInstanceClazz.instance;
     }
 
-    public String createGameResult() {
-        playerService.computeGameScore();
+    public String getGameResult(int strikeScore, int ballScore) {
+        return createGameResult(strikeScore, ballScore);
+    }
 
-        int strikeScore = playerService.getStrikeScore();
-        int ballScore = playerService.getBallScore();
+    public String createGameResult(int strikeScore, int ballScore) {
 
         StringBuilder result = new StringBuilder();
         if(ballScore == 0 && strikeScore == 0) {

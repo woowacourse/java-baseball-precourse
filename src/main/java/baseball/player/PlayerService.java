@@ -2,6 +2,8 @@ package baseball.player;
 
 import baseball.utils.RandomDigitsGenerator;
 
+import java.util.List;
+
 public class PlayerService {
 
     private Computer computer;
@@ -9,9 +11,17 @@ public class PlayerService {
     private int strikeScore = 0;
     private int ballScore = 0;
 
-    public PlayerService () {
+    private PlayerService () {
         computer = new Computer();
         user = new User();
+    }
+
+    private static class InnerInstanceClazz {
+        private static final PlayerService instance = new PlayerService();
+    }
+
+    public static PlayerService getInstance() {
+        return InnerInstanceClazz.instance;
     }
 
     public void computeGameScore() {
@@ -33,6 +43,15 @@ public class PlayerService {
         strikeScore = 0;
         ballScore = 0;
     }
+
+    public void setUserGameInputDigits(List<Integer> digits) {
+        user.setGameDigits(digits);
+    }
+
+    public void setComputerGameRandomDigits() {
+        computer.setGameDigits();
+    }
+
 
     public int getStrikeScore() {
         return strikeScore;
