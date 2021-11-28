@@ -15,6 +15,10 @@ public class Hint {
         return new int[]{ball, strike};
     }
 
+    public int getStrike() {
+        return strike;
+    }
+
     public void resetCount() {
         ball = Constant.BALL_INITIAL_VALUE;
         strike = Constant.STRIKE_INITIAL_VALUE;

@@ -18,16 +18,26 @@ public class BaseballGame {
     }
 
     public void start() {
-        getNumberFromPlayer();
-        printHint();
+        do {
+            getNumberFromPlayer();
+            printHint();
+        } while (!isGameSet());
     }
-
+    
     public void getNumberFromPlayer() {
         player.setPlayerNumber(InputView.getNumber());
     }
 
     public void printHint() {
         OutputView.printHintMessage(referee.getHint(player.getPlayerNumber(), computer.getAnswerNumber()));
+    }
+
+    public boolean isGameSet() {
+        if (referee.isThreeStrike()) {
+            OutputView.printGameSetMessage();
+            return true;
+        }
+        return false;
     }
 
 }

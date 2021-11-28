@@ -2,10 +2,6 @@ package baseball.view;
 
 import baseball.constant.SystemMessage;
 
-import java.util.ArrayList;
-
-import static baseball.constant.SystemMessage.SET_USER_NUMBER_MESSAGE;
-
 public class OutputView {
     public static void printHintMessage(int[] computerHint) {
         if (computerHint[0] != 0) {
@@ -20,5 +16,9 @@ public class OutputView {
             System.out.print(SystemMessage.NOTHING_MESSAGE + " ");
         }
         System.out.println();
+    }
+
+    public static void printGameSetMessage(){
+        System.out.println(SystemMessage.GAME_SET_MESSAGE);
     }
 }

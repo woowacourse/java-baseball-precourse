@@ -7,4 +7,5 @@ public class Constant {
 
     public final static int BALL_INITIAL_VALUE = 0;
     public final static int STRIKE_INITIAL_VALUE = 0;
+    public final static int GAME_SET_STRIKE_VALUE = 3;
 }
