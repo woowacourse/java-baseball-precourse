@@ -5,7 +5,7 @@ import baseball.domain.Player;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameHandler {
-    private static GameHandler instance;
+    private static GameHandler instance = new GameHandler();
     private final int KEEP_GOING = 0;
     private final int RESTART = 1;
     private final int PROGRAM_EXIT = 2;

@@ -1,7 +1,7 @@
 package baseball.domain;
 
 public class Player {
-    private static Player instance;
+    private static Player instance = new Player();
     private int[] tryNumber = new int[3];
 
     private Player() {

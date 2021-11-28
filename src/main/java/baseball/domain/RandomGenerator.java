@@ -3,7 +3,7 @@ package baseball.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomGenerator {
-    private static RandomGenerator instance;
+    private static RandomGenerator instance = new RandomGenerator();
     private int[] answer;
 
     private RandomGenerator() {
