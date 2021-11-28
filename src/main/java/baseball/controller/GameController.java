@@ -22,8 +22,6 @@ public class GameController {
 	 */
 	public static void controlGame() {
 		RandomNumberGenerator.initProgramNumber(ANSWER_NUMBER);
-		ANSWER_NUMBER = RandomNumberGenerator.generateRandomNumber();
-
 		while (true) {
 			startGame();
 			giveHint(ANSWER_NUMBER, PLAYER_NUMBER);
@@ -41,6 +39,7 @@ public class GameController {
 	 * 게임을 시작하는 함수
 	 */
 	public static void startGame() {
+		ANSWER_NUMBER = RandomNumberGenerator.generateRandomNumber();
 		OutputView.askNumber();
 		String inputNumber = InputView.writeInputNumber();
 		InputExceptionHandler.validatePlayerNumber(inputNumber);
