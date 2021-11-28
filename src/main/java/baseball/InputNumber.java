@@ -16,7 +16,7 @@ public class InputNumber {
      * 숫자 입력 받는 함수
      * 그 후 각 자리에 맞게 배열에 저장합니다.
      * */
-    public int inputNum(){
+    private int inputNum(){
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         exception(input); // 예외 처리
@@ -46,8 +46,10 @@ public class InputNumber {
 
     /**
      * inputArray 받아오기
+     * RandomNumber 클래스와 마찬가지로 배열값만 외부 클래스에서 접근가능하도록 제한
      * */
     public int[] getInputArray() {
+        inputNum();
         return inputArray;
     }
 }
