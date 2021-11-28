@@ -3,19 +3,20 @@ package baseball.view;
 import baseball.constant.SystemMessage;
 
 public class OutputView {
-    public static void printHintMessage(int[] computerHint) {
-        if (computerHint[0] != 0) {
-            System.out.print(computerHint[0] + SystemMessage.BALL_MESSAGE + " ");
-        }
+    public static void printBallMessage(){
+        System.out.printf(SystemMessage.BALL_MESSAGE);
+    }
 
-        if (computerHint[1] != 0) {
-            System.out.print(computerHint[1] + SystemMessage.STRIKE_MESSAGE + " ");
-        }
+    public static void printStrikeMessage(){
+        System.out.printf(SystemMessage.STRIKE_MESSAGE);
+    }
 
-        if (computerHint[0] == 0 && computerHint[1] == 0) {
-            System.out.print(SystemMessage.NOTHING_MESSAGE + " ");
-        }
-        System.out.println();
+    public static void printNothingMessage(){
+        System.out.printf(SystemMessage.NOTHING_MESSAGE);
+    }
+
+    public static void printCount(int count){
+        System.out.print(count);
     }
 
     public static void printGameSetMessage(){

@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constant.SystemMessage;
 import baseball.model.Computer.Computer;
 import baseball.model.Player.Player;
 import baseball.model.Referee.Referee;
@@ -20,16 +21,47 @@ public class BaseballGame {
     public void start() {
         do {
             getNumberFromPlayer();
-            printHint();
+            printHint(getHint());
         } while (!isGameSet());
     }
-    
+
     public void getNumberFromPlayer() {
         player.setPlayerNumber(InputView.getNumber());
     }
 
-    public void printHint() {
-        OutputView.printHintMessage(referee.getHint(player.getPlayerNumber(), computer.getAnswerNumber()));
+    public void printHint(int[] hint) {
+        printBallHint(hint);
+        printStrikeHint(hint);
+        printNothingHint(hint);
+        printEnter();
+    }
+
+    public static void printBallHint(int[] hint) {
+        if (hint[0] != 0) {
+            OutputView.printCount(hint[0]);
+            OutputView.printBallMessage();
+        }
+    }
+
+    public static void printStrikeHint(int[] hint) {
+        if (hint[1] != 0) {
+            OutputView.printCount(hint[1]);
+            OutputView.printStrikeMessage();
+        }
+    }
+
+    public static void printNothingHint(int[] hint) {
+        if (hint[0] == 0 && hint[1] == 0) {
+            OutputView.printNothingMessage();
+        }
+    }
+
+    public int[] getHint() {
+        return referee.getHint(player.getPlayerNumber(), computer.getAnswerNumber());
+    }
+
+    public static void printEnter() {
+        System.out.println();
     }
 
     public boolean isGameSet() {
