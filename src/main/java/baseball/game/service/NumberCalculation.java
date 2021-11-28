@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import baseball.game.message.GuideMessage;
 
-public class CheckNumber {
+public class NumberCalculation {
 
 	private static AtomicInteger strike;
 	private static AtomicInteger ball;

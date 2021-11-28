@@ -1,12 +1,12 @@
 package baseball.game.service;
 
 import static baseball.game.message.GuideMessage.*;
-import static baseball.game.service.CheckNumber.*;
+import static baseball.game.service.NumberCalculation.*;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class CheckNumberTest {
+class NumberCalculationTest {
 
 	@Test
 	public void 숫자비교_정답테스트() throws Exception {

@@ -6,7 +6,7 @@ import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class CreateAndValidateNumber {
+public class NumberCreation {
 
 	public static int createRandomNumber() {
 
