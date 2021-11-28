@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
+	private final int ANSWER_SIZE = 3;
 	private int strike = 0;
 	private int ball = 0;
 	public Computer com = new Computer();
@@ -10,7 +11,7 @@ public class Game {
 
 	public boolean playGame() {
 		com.makeAnswer();
-		while (strike != 3) {
+		while (strike != ANSWER_SIZE) {
 			user.chooseNumber();
 			strike = countStrike();
 			ball = countBall();
@@ -22,7 +23,7 @@ public class Game {
 	public int countStrike() {
 		int cnt_strike = 0;
 
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < ANSWER_SIZE; i++) {
 			if (checkStrike(i)) {
 				cnt_strike++;
 			}
@@ -40,7 +41,7 @@ public class Game {
 
 	public int countBall() {
 		int cnt_ball = 0;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < ANSWER_SIZE; i++) {
 			if (checkBall(i)) {
 				cnt_ball++;
 			}
@@ -49,7 +50,7 @@ public class Game {
 	}
 
 	public boolean checkBall(int idx) {
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < ANSWER_SIZE; i++) {
 			if (i != idx && user.number[idx] == com.answer[i]) {
 				return true;
 			}
@@ -60,7 +61,7 @@ public class Game {
 	public void printResult() {
 		if (strike == 0 && ball == 0) {
 			System.out.println("낫싱");
-		} else if (strike == 3) {
+		} else if (strike == ANSWER_SIZE) {
 			System.out.println(strike + "스트라이크");
 			System.out.println("3개의 숫자를 모두 맞히셧습니다! 게임 종료");
 		} else if (strike == 0) {

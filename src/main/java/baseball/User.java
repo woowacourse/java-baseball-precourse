@@ -3,10 +3,13 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
+	private final int MIN_NUM = 1;
+	private final int MAX_NUM = 9;
+	private final int ANSWER_SIZE = 3;
 	public int[] number = {0, 0, 0};
 
 	public void reset() {
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < ANSWER_SIZE; i++) {
 			number[i] = 0;
 		}
 	}
@@ -16,14 +19,14 @@ public class User {
 		System.out.print("숫자를 입력해주세요 : ");
 		String numberStr = Console.readLine();
 
-		if (numberStr.length() != 3) {
+		if (numberStr.length() != ANSWER_SIZE) {
 			throw new IllegalArgumentException();
 		}
 
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < ANSWER_SIZE; i++) {
 			char charIdxNum = numberStr.charAt(i);
 
-			if (!(charIdxNum - '0' >= 1 && charIdxNum - '0' <= 9)) {
+			if (!(charIdxNum - '0' >= MIN_NUM && charIdxNum - '0' <= MAX_NUM)) {
 				throw new IllegalArgumentException();
 			}
 
