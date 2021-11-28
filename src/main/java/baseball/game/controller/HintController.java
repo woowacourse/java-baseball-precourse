@@ -1,8 +1,6 @@
 package baseball.game.controller;
 
-import baseball.game.constants.BaseballGameConst;
-
-import static baseball.game.constants.BaseballGameConst.RANDOM_NUMBER_COUNTS;
+import static baseball.game.constants.BaseballGameConst.RANDOM_NUMBER_LENGTHS;
 
 public class HintController {
 
@@ -27,16 +25,16 @@ public class HintController {
         } else if (ball > 0 && strike == 0) {
             System.out.println(ball + "볼");
         } else if (ball == 0 && strike > 0) {
-            System.out.println(strike+"스트라이크");
-        } else{
-            System.out.println(ball+"볼 "+strike+"스트라이크");
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
 
     private static int getBallCount(int[] randomNumber, int[] userInput) {
         int count = 0;
-        for (int i = 0; i < RANDOM_NUMBER_COUNTS; i++) {
-            for (int j = 0; j < RANDOM_NUMBER_COUNTS; j++) {
+        for (int i = 0; i < RANDOM_NUMBER_LENGTHS; i++) {
+            for (int j = 0; j < RANDOM_NUMBER_LENGTHS; j++) {
                 if (i != j && randomNumber[i] == userInput[j])
                     count++;
             }
@@ -46,7 +44,7 @@ public class HintController {
 
     private static int getStrikeCount(int[] randomNumber, int[] userInput) {
         int count = 0;
-        for (int i = 0; i < RANDOM_NUMBER_COUNTS; i++) {
+        for (int i = 0; i < RANDOM_NUMBER_LENGTHS; i++) {
             if (randomNumber[i] == userInput[i])
                 count++;
         }

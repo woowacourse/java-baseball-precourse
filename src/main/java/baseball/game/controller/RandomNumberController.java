@@ -6,7 +6,7 @@ import static baseball.game.constants.BaseballGameConst.*;
 
 public class RandomNumberController {
 
-    private boolean[] flag;
+    private final boolean[] flag;
 
 
     public RandomNumberController() {
@@ -16,18 +16,15 @@ public class RandomNumberController {
     }
 
     public int[] getThreeRandomNumbers() {
-        int[] returnValue = new int[RANDOM_NUMBER_COUNTS];
-
-        for (int i = 0; i < RANDOM_NUMBER_COUNTS; i++) {
+        int[] returnValue = new int[RANDOM_NUMBER_LENGTHS];
+        for (int i = 0; i < RANDOM_NUMBER_LENGTHS; i++) {
             returnValue[i] = getDistinctRandomNumber();
         }
-
         return returnValue;
     }
 
     private int getDistinctRandomNumber() {
         int ret = Randoms.pickNumberInRange(ONE, NINE);
-
         while (isExist(ret)) {
             ret = Randoms.pickNumberInRange(ONE, NINE);
         }

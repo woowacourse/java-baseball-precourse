@@ -2,9 +2,9 @@ package baseball.game;
 
 import baseball.game.controller.RandomNumberController;
 
-import static baseball.game.constants.BaseballGameConst.RESTART;
-import static baseball.game.controller.HintController.*;
-import static baseball.game.controller.UserInputController.*;
+import static baseball.game.controller.HintController.checkAnswer;
+import static baseball.game.controller.UserInputController.getRestartInput;
+import static baseball.game.controller.UserInputController.getUserInput;
 
 public class BaseballGame {
 
@@ -12,7 +12,7 @@ public class BaseballGame {
     private int[] inputNumbers;
     private boolean correctAnswer;
 
-    private RandomNumberController randomNumberController;
+    private final RandomNumberController randomNumberController;
 
     public BaseballGame() {
         correctAnswer = false;
@@ -22,8 +22,6 @@ public class BaseballGame {
     public int start() {
         //랜덤 숫자 생성
         randomNumbers = randomNumberController.getThreeRandomNumbers();
-
-        for(int i:randomNumbers) System.out.println(i);
 
         while (!correctAnswer) {
             inputNumbers = getUserInput();
