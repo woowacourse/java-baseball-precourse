@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import java.util.List;
-
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -17,10 +15,7 @@ public class GameMachine {
     }
 
     public void run() {
-        start(new BaseballNumbers());
-    }
-
-    private void start(BaseballNumbers baseballNumbers) {
+        BaseballNumbers baseballNumbers = new BaseballNumbers();
         while (true) {
             BaseballState state = baseballReferee.referee(baseballNumbers.getNumbers(), inputView.getInputNumbers());
             outputView.outputRefereeResult(state.getMessage());
