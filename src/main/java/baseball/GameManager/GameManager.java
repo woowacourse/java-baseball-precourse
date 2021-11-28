@@ -41,10 +41,11 @@ public class GameManager {
     public void run() {
         initNumbers();
 
-        while(true) {
+        while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String line = Console.readLine();
             ArrayList<Integer> numbersArray = parseToIntegerArray(line);
+            Score score = getScore(numbersArray);
 
         }
     }
@@ -67,12 +68,30 @@ public class GameManager {
     private ArrayList<Integer> parseToIntegerArray(String line) {
         ArrayList<Integer> ret = new ArrayList<>();
 
-        for(char c : line.toCharArray()) {
+        for (char c : line.toCharArray()) {
             ret.add(c - '0');
         }
 
         return ret;
     }
 
+    private Score getScore(ArrayList<Integer> numbersArray) {
+        int strike = 0;
+        int ball = 0;
 
+        for (int number : numbersArray) {
+            if (!numbers.containsKey(number)) {
+                continue;
+            }
+
+            if (numbersArray.indexOf(number) == numbers.get(number)) {
+                strike++;
+                continue;
+            }
+
+            ball++;
+        }
+
+        return new Score(strike, ball);
+    }
 }
