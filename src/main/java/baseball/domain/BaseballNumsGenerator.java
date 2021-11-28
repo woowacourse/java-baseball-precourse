@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class BaseballNumsGenerator {
 	private static final int ZERO = '0';
-	private static final String NOT_NUMBER_RANGE_ONE_TO_NINE = "1에서 9사이의 숫자가 아닙니다.";
+	private static final String INPUT_VALID_BETWEEN_ONE_AND_NINE_ERROR_MESSAGE = "1에서 9사이의 숫자가 아닙니다.";
 
 	public static BaseballNums generateRandomBaseballNums() {
 		Set<Integer> randomBaseballNums = new HashSet<>();
@@ -32,7 +32,7 @@ public class BaseballNumsGenerator {
 
 	private static void isValidateRangeNumOneToNine(int number) {
 		if (BaseballNums.MIN_BASEBALL_NUMBER > number || number > BaseballNums.MAX_BASEBALL_NUMBER) {
-			throw new IllegalArgumentException(NOT_NUMBER_RANGE_ONE_TO_NINE);
+			throw new IllegalArgumentException(INPUT_VALID_BETWEEN_ONE_AND_NINE_ERROR_MESSAGE);
 		}
 	}
 }
