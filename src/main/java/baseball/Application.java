@@ -66,6 +66,28 @@ public class Application {
         }
 
     }
+    public static Boolean checkDuplicatedNumbers(int[] numbers) {
+        /*
+            [definition]
+            수를 각각의 자릿수 별로 배열에 담아 반환하는 함수입니다.
+
+            [parameters]
+            numbers: 판별할 대상
+            - 1 ~ 9 사이의 값이 배열에 저장돼 있음을 보장합니다.
+
+            [return]
+            배열 안에 중복된 값이 있으면, false
+            중복된 값이 없으면, true
+
+        **/
+        short[] checkArray = new short[10];
+
+        for(int number = 0; number < numbers.length; number++) {
+            if((checkArray[number]&1) == 1) return false;
+            checkArray[number] += 1;
+        }
+        return true;
+    }
 
     public static int[] convertNumberToArray(int number) {
         /*
