@@ -18,9 +18,8 @@ public class BaseBallNumbers {
     public static BaseBallNumbers createByIntegerNumbers(List<Integer> inputNumbers) {
         checkInputSize(inputNumbers.size());
         checkDuplicatedNumbers(inputNumbers);
-        List<BaseBallNumber> baseBallNumbers = inputNumbers.stream()
-            .map(BaseBallNumber::from)
-            .collect(Collectors.toList());
+
+        List<BaseBallNumber> baseBallNumbers = integerToBaseBallNumber(inputNumbers);
         return new BaseBallNumbers(baseBallNumbers);
     }
 
@@ -34,5 +33,11 @@ public class BaseBallNumbers {
         if (inputNumbers.stream().distinct().count() != BASEBALL_NUMBERS_LIMIT_SIZE) {
             throw new BaseBallNumbersDuplicateException();
         }
+    }
+
+    private static List<BaseBallNumber> integerToBaseBallNumber(List<Integer> inputNumbers) {
+        return inputNumbers.stream()
+            .map(BaseBallNumber::from)
+            .collect(Collectors.toList());
     }
 }
