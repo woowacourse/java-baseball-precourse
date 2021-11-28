@@ -15,27 +15,31 @@ public class Umpire {
     }
 
     public String judgeRound(final String userNumber){
-        int ballCount = isBall(randomNumber, userNumber);
-        int strikeCount = isStrike(randomNumber, userNumber);
+
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int i = 0; i < NumberAttribute.DIGIT_NUMBER.getValue(); i++) {
+            char digit = userNumber.charAt(i);
+            if (isStrike(digit, i)) {
+                strikeCount++;
+            } else if (isBall(digit)) {
+                ballCount++;
+            }
+        }
         Assertions.assertTrue(ballCount <= DIGIT_NUMBER && strikeCount <= DIGIT_NUMBER);
         return getHint(ballCount, strikeCount);
     }
 
-    public boolean isStrike(String opponentNumber, String userNumber) {
-        for (int i = 0; i < DIGIT_NUMBER; i++) {
-            if (opponentNumber.charAt(i) == userNumber.charAt(i)) {
-                return true;
-            }
-        }
-        return false;
+
+    public boolean isStrike(final char digit, final int pos) {
+        return randomNumber.charAt(pos) == digit;
     }
 
-    public boolean isBall(String opponentNumber, String userNumber) {
-        for (int i = 0; i < DIGIT_NUMBER; i++) {
-            for (int j = 0; j < DIGIT_NUMBER; j++) {
-                if (i != j && opponentNumber.charAt(i) == userNumber.charAt(j)) {
-                    return true;
-                }
+    public boolean isBall(final char digit) {
+        for (int i = 0; i < NumberAttribute.DIGIT_NUMBER.getValue(); i++) {
+            if (randomNumber.charAt(i) == digit) {
+                return true;
             }
         }
         return false;
