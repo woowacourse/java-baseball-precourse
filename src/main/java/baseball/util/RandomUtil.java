@@ -34,7 +34,6 @@ public class RandomUtil {
     }
 
     private static boolean checkContains(int[] computerNumbers, int randomNumber) {
-
         for (int i = 0; i < 3; i++) {
             if (computerNumbers[i] == 0) {
                 break;

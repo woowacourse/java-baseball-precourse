@@ -22,7 +22,6 @@ public class Baseball {
     }
 
     private void progressGame() {
-
         int[] computerNumbers = createComputerNumbers();
 
         while (true) {
@@ -54,7 +53,6 @@ public class Baseball {
     }
 
     private String checkNumber(int[] computerNumbers, int userInput, int index) {
-
         for (int i = 0; i < 3; i++) {
             if (computerNumbers[i] == userInput && i == index) {
                 return "스트라이크";
@@ -67,7 +65,6 @@ public class Baseball {
     }
 
     private String makeMessage(int strike, int ball) {
-
         String message = "";
 
         if (strike == 0 && ball == 0) {
