@@ -1,11 +1,11 @@
 package baseball;
 
-import baseball.domain.Game;
+import baseball.domain.GameManager;
 
 public class Application {
 
     public static void main(String[] args) {
-        Game newGame = new Game();
-        newGame.start();
+        GameManager gameManager = new GameManager();
+        gameManager.run();
     }
 }
