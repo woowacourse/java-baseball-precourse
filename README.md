@@ -8,7 +8,7 @@
 - [ ] Result
   - [x] Result enum
   - [x] ResultBase abstract class
-  - [ ] 3 Strike Result
+  - [x] Strike Result
   - [ ] Strike & Ball Result
   - [ ] Ball Result
   - [ ] Nothing REsult
