@@ -21,11 +21,19 @@ public class Game {
 		int cnt_strike = 0;
 
 		for (int i = 0; i < 3; i++) {
-			if (com.answer[i] == user.number[i]) {
+			if (checkStrike(i)) {
 				cnt_strike++;
 			}
 		}
 		return cnt_strike;
+	}
+
+	public boolean checkStrike(int idx) {
+		if (com.answer[idx] == user.number[idx]) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public int countBall() {
@@ -48,6 +56,18 @@ public class Game {
 	}
 
 	public void printResult() {
+		if (strike == 0 && ball == 0) {
+			System.out.println("낫싱");
+		} else if (strike == 3) {
+			System.out.println(strike + "스트라이크");
+			System.out.println("3개의 숫자를 모두 맞히셧습니다! 게임 종료");
+		} else if (strike == 0) {
+			System.out.println(ball + "볼");
+		} else if (ball == 0) {
+			System.out.println(strike + "스트라이크");
+		} else {
+			System.out.println(ball + "볼 " + strike + "스트라이크");
+		}
 	}
 
 	public boolean restart() {
