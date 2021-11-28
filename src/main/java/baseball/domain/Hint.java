@@ -3,7 +3,7 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import baseball.resource.GameRule;
+import baseball.resource.rule.NumberDigit;
 import baseball.resource.text.HintText;
 
 public class Hint {
@@ -25,7 +25,7 @@ public class Hint {
     }
 
     public boolean isAllStrikes() {
-        return (this.strikes == GameRule.NUMBERS_DIGITS);
+        return (this.strikes == NumberDigit.COUNT.getCount());
     }
 
     public String toString() {

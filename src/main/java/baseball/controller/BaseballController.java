@@ -2,7 +2,6 @@ package baseball.controller;
 
 import java.util.List;
 
-import baseball.resource.GameRule;
 import baseball.resource.message.OutputMessage;
 
 import baseball.service.BaseballService;
@@ -45,8 +44,7 @@ public class BaseballController {
     }
 
     private boolean decidePlayOrStop() {
-        int number = inputView.inputPlayOrStop();
-        return (number == GameRule.NUMBER_GAME_PLAY);
+        return inputView.inputPlayOrStop();
     }
 
 }

@@ -3,6 +3,9 @@ package baseball.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.resource.rule.NumberDigit;
+import baseball.resource.rule.NumberRange;
+import baseball.resource.rule.PlayOption;
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.exception.InputNotIntegerMessageException;
@@ -11,7 +14,6 @@ import baseball.exception.InputNumbersNotMatchDigitsMessageException;
 import baseball.exception.InputOutOfOptionsMessageException;
 import baseball.exception.NumberOutOfRangeMessageException;
 
-import baseball.resource.GameRule;
 import baseball.resource.message.OutputMessage;
 
 public class InputView {
@@ -23,13 +25,11 @@ public class InputView {
         return instance;
     }
 
-    public int inputPlayOrStop() {
+    public boolean inputPlayOrStop() {
         outputView.printMessageWithLine(OutputMessage.REQUEST_PLAY_OR_STOP_MESSAGE);
         int number = inputNumber();
-
-        validateNumberIsPlayOption(number);
-
-        return number;
+        PlayOption playOption = PlayOption.of(number);
+        return playOption.isPlayable();
     }
 
     public List<Integer> inputPlayerNumbers() {
@@ -68,19 +68,11 @@ public class InputView {
     }
 
     private boolean isNotInRange(int number) {
-        return (number < GameRule.NUMBERS_START_INCLUSION || GameRule.NUMBERS_END_INCLUSION < number);
-    }
-
-    private void validateNumberIsPlayOption(int number) {
-        if (number != GameRule.NUMBER_GAME_PLAY && number != GameRule.NUMBER_GAME_STOP) {
-            throw new InputOutOfOptionsMessageException();
-        }
+        return (number < NumberRange.START.getNumber() || NumberRange.END.getNumber() < number);
     }
 
     private void validateNumbersDigitMatch(List<Integer> numbers) {
-        if (numbers.size() != GameRule.NUMBERS_DIGITS) {
-            throw new InputNumbersNotMatchDigitsMessageException();
-        }
+        NumberDigit.COUNT.isMatch(numbers.size());
     }
 
     private void validateNumbersInRange(List<Integer> numbers) {

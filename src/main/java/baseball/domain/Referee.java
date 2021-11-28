@@ -3,10 +3,11 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.resource.rule.NumberDigit;
+import baseball.resource.rule.NumberRange;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import baseball.exception.NotPickedRefereeNumbers;
-import baseball.resource.GameRule;
 
 public class Referee {
 
@@ -17,8 +18,8 @@ public class Referee {
         targetNumbers = new ArrayList<>();
         booleanBits = new boolean[10];
 
-        while (targetNumbers.size() < GameRule.NUMBERS_DIGITS) {
-            int number = Randoms.pickNumberInRange(GameRule.NUMBERS_START_INCLUSION, GameRule.NUMBERS_END_INCLUSION);
+        while (targetNumbers.size() < NumberDigit.COUNT.getCount()) {
+            int number = Randoms.pickNumberInRange(NumberRange.START.getNumber(), NumberRange.END.getNumber());
             if (booleanBits[number]) {
                 continue;
             }
