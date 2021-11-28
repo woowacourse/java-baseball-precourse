@@ -14,6 +14,7 @@ public class Game {
     private Balls computer;
 
     public Game() {
+        computer = new Balls(createRandomNumberList());
     }
 
     public void validateInput(String input) {
@@ -42,10 +43,6 @@ public class Game {
 
     public Balls getComputer() {
         return computer;
-    }
-
-    public void createRandomBalls() {
-
     }
 
     public List<Integer> createRandomNumberList() {

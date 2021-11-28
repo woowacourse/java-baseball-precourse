@@ -47,4 +47,11 @@ public class GameTest {
         Game game = new Game();
         assertThat(game.createRandomNumberList().size()).isEqualTo(3);
     }
+
+    @DisplayName("게임이 생성되면 임의의 수를 가진 컴퓨터 생성")
+    @Test
+    void gameConstructor() {
+        Game game = new Game();
+        assertThat(game.getComputer().getList().size()).isEqualTo(3);
+    }
 }
