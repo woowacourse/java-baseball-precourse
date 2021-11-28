@@ -7,7 +7,6 @@ import static baseball.util.UserInputUtil.getThreeDigitInput;
 public class Baseball {
 
     public void startGame() {
-
         while(true) {
             progressGame();
 
