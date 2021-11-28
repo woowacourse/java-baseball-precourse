@@ -11,20 +11,22 @@
 - [예외] 4개이상의 수가 입력될 경우 IllegalArgumentException이 발생해야 한다.
 - [예외] 입력된 숫자 중 중복된 숫자가 존재할 경우 IllegalArgumentException이 발생해야 한다.
 
+#### 2-1. Numbers Matching
+
+- 숫자가 위치한 곳에 해당 수가 존재하는 만큼 더해서 Strike수를 반환할 수 있다.
+- 숫자가 위치한 곳에는 없지만 다른 곳에 해당 수가 존재하는 만큼 더해서 Ball수를 반환할 수 있다.
+
+<br>
+
 #### 3. Computer
 
 - `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms`API를 사용해 값을 저장한다.
 - `Randoms` API에서 이전에 입력한 숫자를 입력할 경우 다시 입력하도록 요청한다.
-
-- 숫자가 위치한 곳에 해당 수가 존재한다면 1 Strike가 올라간다.
-- 숫자가 위치한 곳에는 없지만 어딘가에 존재한다면 1 Ball이 올라간다.
-- 숫자가 존재하지 않으면 1 Nothing이 올라간다.
-
-#### 4. Game
-
-- 3 스트라이크일 경우 게임이 종료된다.
-- 게임을 종료하였을 때 1을 누르면 게임이 재시작되어야 한다.
-- 게임을 종료하였을 때 2를 누르면 Application이 종료되어야 한다.
+- 입력된 Numbers를 가지고 Answer와 매칭하여 GameResult를 반환할 수 있다.
+- GameResult는 3 스트라이크일 경우 게임이 종료됨을 판단한다.
+- GameResult가 종료되었다면 게임 재시작에 대한 명령을 시작해야 한다.
+    - 게임을 종료하였을 때 1을 누르면 게임이 재시작되어야 한다.
+    - 게임을 종료하였을 때 2를 누르면 Application이 종료되어야 한다.
 
 <br>
 
