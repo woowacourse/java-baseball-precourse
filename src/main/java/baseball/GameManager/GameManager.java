@@ -117,7 +117,7 @@ public class GameManager {
 
     private void printResult(Score score) {
         String message = this.result.getMessage(score.getStrike(), score.getBall());
-
+        System.out.println(message);
     }
 
     private void checkResultStatus(Score score) throws IllegalArgumentException {
