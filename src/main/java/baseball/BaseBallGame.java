@@ -8,11 +8,13 @@ import camp.nextstep.edu.missionutils.Console;
 public class BaseBallGame {
 	private final BaseBallPlayer baseBallPlayer;
 	private final BaseBallAnswerProvider baseBallAnswerProvider;
+	private final BaseBallInputValidator validator;
 	private Integer gameStatus;
 
 	public BaseBallGame(BaseBallPlayer baseBallPlayer, BaseBallAnswerProvider baseBallAnswerProvider) {
 		this.baseBallPlayer = baseBallPlayer;
 		this.baseBallAnswerProvider = baseBallAnswerProvider;
+		this.validator = new BaseBallInputValidator();
 		this.gameStatus = GOING;
 	}
 
@@ -33,26 +35,10 @@ public class BaseBallGame {
 		System.out.println(SUCCESS_MESSAGE);
 		System.out.println(RESTART_OR_END_MESSAGE);
 		String userInputStatus = Console.readLine();
-		if (!checkUserInputStatus(userInputStatus)) {
+		if (!validator.checkUserInputStatus(userInputStatus)) {
 			throw new IllegalArgumentException(INVALID_RESTART_OR_END_INPUT_ERROR);
 		}
 		gameStatus = Integer.parseInt(userInputStatus);
-	}
-
-	private boolean checkUserInputStatus(String userInputStatus) {
-		return isRightLength(userInputStatus) && isDigit(userInputStatus) && isRightStatus(userInputStatus);
-	}
-
-	private boolean isRightLength(String userInputStatus) {
-		return userInputStatus.length() == 1;
-	}
-
-	private boolean isDigit(String userInputStatus) {
-		return Character.isDigit(userInputStatus.charAt(0));
-	}
-
-	private boolean isRightStatus(String userInputStatus) {
-		return Integer.parseInt(userInputStatus) == GOING || Integer.parseInt(userInputStatus) == STOP;
 	}
 
 }
