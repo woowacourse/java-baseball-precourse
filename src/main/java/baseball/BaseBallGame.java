@@ -1,5 +1,7 @@
 package baseball;
 
+import static utils.Constant.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -9,8 +11,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class BaseBallGame {
-	private final int GAME_NUMBER_LENGTH = 3;
-	private final String FINISH_COMMAND = "2";
 
 	private ArrayList<Integer> answerNumberList;
 	private ArrayList<Integer> inputNumberList;
@@ -36,7 +36,7 @@ public class BaseBallGame {
 			calculateScore();
 			printScore();
 			if (isAnswer()) {
-				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+				System.out.println(ANSWER_MESSAGE);
 				return;
 			}
 		}
@@ -93,7 +93,7 @@ public class BaseBallGame {
 	}
 
 	private String getInputNumberByConsole() {
-		System.out.print("숫자를 입력해주세요 : ");
+		System.out.print(INPUT_REQUEST);
 		String input = Console.readLine();
 		return input;
 	}
@@ -134,10 +134,14 @@ public class BaseBallGame {
 	}
 
 	private boolean isFinishedGame() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		System.out.println(RESTART_OR_FINISH_REQUEST);
 		String str = Console.readLine();
+
 		if (str.equals(FINISH_COMMAND)) {
 			return true;
+		}
+		if (str.equals(RESTART_COMMAND)) {
+			return false;
 		}
 		return false;
 	}
