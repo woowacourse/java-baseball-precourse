@@ -5,13 +5,18 @@ import camp.nextstep.edu.missionutils.Console;
 import static baseball.InitialSetting.*;
 
 public class BaseballGame {
-    private String playerNumber;
-    private String computerNumber;
+    private GameNumber computerNumber;
+    private GameNumber playerNumber;
 
     public void run() {
         do {
+            initGame();
             startGame();
         } while (shouldRestartGame());
+    }
+
+    private void initGame() {
+        computerNumber = RandomNumberGenerator.generateNumber();
     }
 
     private void startGame() {
