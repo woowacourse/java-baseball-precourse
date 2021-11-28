@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.view.InputView;
+import baseball.view.ResultView;
 
 public class Computer {
 	public void playGames() {
@@ -22,14 +23,20 @@ public class Computer {
 
 			ResultCalculator resultCalculator = new ResultCalculator(inputBallNumbers, randomBallNumbers);
 
-			System.out.println(randomBallNumbers);
-			System.out.println(resultCalculator.getBall() + "볼");
-			System.out.println(resultCalculator.getStrike() + "스트라이크");
+			ResultView resultView = new ResultView();
+			resultView.printResult(resultCalculator.getBall(), resultCalculator.getStrike());
 
 			if (resultCalculator.getStrike() == 3) {
+				resultView.printEndMessage();
+
 				inputView.printExitOrRestartMessage();
 				inputView.setInputExitOrRestart();
-				System.out.println(inputView.getInputExitOrRestart());
+				String inputExitOrRestart = inputView.getInputExitOrRestart();
+				new InputExitOrRestartValidator(inputExitOrRestart);
+
+				if (inputExitOrRestart.equals("2")) { // indent 초과
+					break;
+				}
 			}
 		}
 	}
