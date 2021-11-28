@@ -15,6 +15,8 @@ public class GameService {
     }
 
     public String createGameResult() {
+        playerService.computeGameScore();
+
         int strikeScore = playerService.getStrikeScore();
         int ballScore = playerService.getBallScore();
 
