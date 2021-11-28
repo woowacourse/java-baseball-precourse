@@ -3,11 +3,11 @@
 ## 기능 구현 목록
 
 - [ ] 3스트라이크가 나올때까지 반복해서 입력받기 - Controller#runGame()
-    - [ ] 3스트라이크 나올시 안내멘트 및 새로 시작여부 입력받기
+    - [ ] 3스트라이크 나올시 안내멘트 및 새로 시작여부 입력받기 - InputView#getInput()
         - [ ] 새로 시작시 서로 다른 임의의 수 3개 새로 생성하기
 - [ ] 1에서 9까지 서로 다른 임의의 수 3개(컴퓨터 수)를 생성하기 - Computer#createRandomNumbers()
 - [ ] 1에서 9까지 서로 다른 임의의 수 3개(플레이어 수)를 입력받기 - Refree#askNumbers()
-    - [ ] 플레이어 수를 검증하고 변환하는 기능 - Refree#validAndConvertNumbers()
+    - [ ] 플레이어 수를 검증하고 변환하는 기능 - Refree#validAndConvertIntegerNumbers()
         - [ ] 물어본 숫자 검증해서 유효하지 않으면 에러 내기, 그렇지 않으면 숫자로 변환하기
             - 검증내역: 3글자 입력인지 -> 숫자 입력인지 -> 서로 다른수 맞는지
 - [ ] 컴퓨터수 와 플레이어 수 비교하기 - Refree#compare()
