@@ -1,9 +1,9 @@
 package baseball;
 
-import constants.HintMessage;
-
-import constants.NumberAttribute;
 import org.junit.jupiter.api.Assertions;
+
+import constants.HintMessage;
+import constants.NumberAttribute;
 
 public class Umpire {
     private static String randomNumber;
@@ -15,13 +15,13 @@ public class Umpire {
     }
 
     public String judgeRound(final String userNumber){
-        int ballCount = countBall(randomNumber, userNumber);
-        int strikeCount = countStrike(randomNumber, userNumber);
+        int ballCount = isBall(randomNumber, userNumber);
+        int strikeCount = isStrike(randomNumber, userNumber);
         Assertions.assertTrue(ballCount <= DIGIT_NUMBER && strikeCount <= DIGIT_NUMBER);
         return getHint(ballCount, strikeCount);
     }
 
-    public int countStrike(String opponentNumber, String userNumber) {
+    public int isStrike(String opponentNumber, String userNumber) {
         int strikeCount = 0;
         for (int i = 0; i < DIGIT_NUMBER; i++) {
             if (opponentNumber.charAt(i) == userNumber.charAt(i)) {
@@ -31,7 +31,7 @@ public class Umpire {
         return strikeCount;
     }
 
-    public int countBall(String opponentNumber, String userNumber) {
+    public int isBall(String opponentNumber, String userNumber) {
         int ballCount = 0;
         for (int i = 0; i < DIGIT_NUMBER; i++) {
             for (int j = 0; j < DIGIT_NUMBER; j++) {
