@@ -1,15 +1,16 @@
 package baseball;
 
-import static baseball.BaseballGameSetting.*;
 import static camp.nextstep.edu.missionutils.Console.*;
 import static camp.nextstep.edu.missionutils.Randoms.*;
+import static constants.BaseBallGameMessage.*;
+import static constants.BaseballGameSetting.*;
 
 public class BaseballGame {
 
 	private String answer;
 	private String userInput;
-	private int ball;
-	private int strike;
+	private int ballCount;
+	private int strikeCount;
 	private boolean startBaseballGame = true;
 
 	public void play() {
@@ -73,8 +74,8 @@ public class BaseballGame {
 	}
 
 	private void countBallAndStrike() {
-		int ballCount = 0;
-		int strikeCount = 0;
+		int ball = 0;
+		int strike = 0;
 		int[] answerNumberCount = new int[END_NUMBER - START_NUMBER + 1];
 		for (int i = 0; i < ANSWER_LENGTH; i++) {
 			int answerNumber = answer.charAt(i) - '0';
@@ -84,27 +85,27 @@ public class BaseballGame {
 			int answerNumber = answer.charAt(i) - '0';
 			int inputNumber = userInput.charAt(i) - '0';
 			if (answerNumber == inputNumber) {
-				strikeCount++;
+				strike++;
 			} else if (answerNumberCount[inputNumber - START_NUMBER] > 0) {
-				ballCount++;
+				ball++;
 			}
 		}
-		ball = ballCount;
-		strike = strikeCount;
+		ballCount = ball;
+		strikeCount = strike;
 	}
 
 	private void printBaseballGameResult() {
-		if (strike == ANSWER_LENGTH) {
-			System.out.println(ANSWER_LENGTH + "스트라이크");
+		if (strikeCount == ANSWER_LENGTH) {
+			System.out.println(ANSWER_LENGTH + STRIKE);
 			System.out.println(END_MESSAGE);
-		} else if (ball > 0 && strike > 0) {
-			System.out.println(ball + "볼 " + strike + "스트라이크");
-		} else if (ball > 0) {
-			System.out.println(ball + "볼");
-		} else if (strike > 0) {
-			System.out.println(strike + "스트라이크");
+		} else if (ballCount > 0 && strikeCount > 0) {
+			System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
+		} else if (ballCount > 0) {
+			System.out.println(ballCount + BALL);
+		} else if (strikeCount > 0) {
+			System.out.println(strikeCount + STRIKE);
 		} else {
-			System.out.println("낫싱");
+			System.out.println(NOTHING);
 		}
 	}
 
