@@ -10,7 +10,7 @@
   - [x] ResultBase abstract class
   - [x] Strike Result
   - [x] Strike & Ball Result
-  - [ ] Ball Result
+  - [x] Ball Result
   - [ ] Nothing REsult
 
 ---
