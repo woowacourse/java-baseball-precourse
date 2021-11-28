@@ -2,10 +2,14 @@ package baseball;
 
 import baseball.exception.WrongGuessException;
 
-import java.util.Arrays;
 
 public class MarkingManager {
     private int[] answerArray;
+
+    public void setAnswerArray(int[] answerArray) {
+        this.answerArray = answerArray;
+    }
+
     private int strike;
     private int ball;
 
