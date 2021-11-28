@@ -28,7 +28,7 @@ public class Game {
 	public void processPlay() {
 		playerBaseballNums = BaseballNumsGenerator.generateInputBaseballNums(InputView.inputBaseballNumbers());
 		gameResult.checkResult(answerBaseballNums, playerBaseballNums);
-		OutputView.showHintMessage(gameResult);
+		OutputView.showHintMessage(gameResult.receiveGameResult());
 	}
 
 	public void processResume() {

@@ -40,6 +40,10 @@ public class GameResult {
 		return ballCount;
 	}
 
+	public GameBoard receiveGameResult() {
+		return new GameBoard(strikeCount, ballCount);
+	}
+
 	public boolean isValidateWinner() {
 		if (strikeCount == GAME_WINNER_VALUE) {
 			return false;

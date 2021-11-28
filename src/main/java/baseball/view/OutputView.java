@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.GameResult;
+import baseball.domain.GameBoard;
 
 public class OutputView {
 	private static final String BALL_COUNT_MESSAGE = "%d볼 ";
@@ -8,14 +8,14 @@ public class OutputView {
 	private static final String NOTHING_COUNT_MESSAGE = "낫싱";
 	private static final String GAME_RESULT_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-	public static void showHintMessage(GameResult result) {
-		if (result.getBallCount() > 0) {
-			System.out.printf(BALL_COUNT_MESSAGE, result.getBallCount());
+	public static void showHintMessage(GameBoard gameBoard) {
+		if (gameBoard.getBallCount() > 0) {
+			System.out.printf(BALL_COUNT_MESSAGE, gameBoard.getBallCount());
 		}
-		if (result.getStrikeCount() > 0) {
-			System.out.printf(STRIKE_COUNT_MESSAGE, result.getStrikeCount());
+		if (gameBoard.getStrikeCount() > 0) {
+			System.out.printf(STRIKE_COUNT_MESSAGE, gameBoard.getStrikeCount());
 		}
-		if (result.getBallCount() == 0 && result.getStrikeCount() == 0) {
+		if (gameBoard.getBallCount() == 0 && gameBoard.getStrikeCount() == 0) {
 			System.out.print(NOTHING_COUNT_MESSAGE);
 		}
 		System.out.println();
