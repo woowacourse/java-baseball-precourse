@@ -13,18 +13,24 @@ import java.util.Set;
 public class Computer {
 
     private final BaseBallNumbers answerNumbers;
+    private GameState gameState;
 
-    private Computer(BaseBallNumbers answerNumbers) {
+    private Computer(BaseBallNumbers answerNumbers, GameState gameState) {
         this.answerNumbers = answerNumbers;
+        this.gameState = gameState;
     }
 
-    static Computer from(BaseBallNumbers answerNumbers) {
-        return new Computer(answerNumbers);
+    static Computer from(BaseBallNumbers answerNumbers, GameState gameState) {
+        return new Computer(answerNumbers, gameState);
     }
 
-    public static Computer createWithAnswerNumbersByRandomGenerator() {
+    public static Computer init() {
+        return createWithAnswerNumbersByRandomGenerator(GameState.init());
+    }
+
+    private static Computer createWithAnswerNumbersByRandomGenerator(GameState gameState) {
         BaseBallNumbers answerNumbers = BaseBallNumbers.createByIntegerNumbers(generateNumbers());
-        return new Computer(answerNumbers);
+        return new Computer(answerNumbers, gameState);
     }
 
     private static List<Integer> generateNumbers() {
