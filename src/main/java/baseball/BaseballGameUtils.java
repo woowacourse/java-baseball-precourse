@@ -8,16 +8,19 @@ public class BaseballGameUtils {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static int makeThreeLengthRandomNumber() {
+	public static String makeThreeLengthRandomNumber() {
 		int number = 0;
 		number = Randoms.pickNumberInRange(1, 9) * 100
 				+ Randoms.pickNumberInRange(1, 9) * 10
 				+ Randoms.pickNumberInRange(1, 9);
-		return number;
+		return Integer.toString(number);
 	}
 	
-	public static void getNumberFromUser() {
-		validateUserNumber(Console.readLine());
+	public static String getNumberFromUser() {
+		System.out.print("숫자를 입력해주세요 : "); //수정
+		String number = Console.readLine();
+		validateUserNumber(number);
+		return number;
 	}
 	
 	private static void validateUserNumber(String number) {

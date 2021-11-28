@@ -1,0 +1,29 @@
+[33mcommit d54c01091967460e1c1c9334c43a7af4e1cf46b1[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m)[m
+Author: Leeyerimearth <50127628+Leeyerimearth@users.noreply.github.com>
+Date:   Sun Nov 28 22:16:16 2021 +0900
+
+    feat: 5. 입력받은 숫자에 대한 결과를 출력하는 기능 \n\n 볼/스트라이크 개수 판단 기능 개발이전, 출력에 대한 기능 선개발
+
+[33mcommit 6a917be8f48e6a8da6222ee3d482a63967da538e[m
+Author: Leeyerimearth <50127628+Leeyerimearth@users.noreply.github.com>
+Date:   Sun Nov 28 21:32:30 2021 +0900
+
+    feat: 사용자에게 입력받은 값에 대한 정합성 체크
+
+[33mcommit 1fac038714521f00fc5929ed696479b2511639d0[m
+Author: Leeyerimearth <50127628+Leeyerimearth@users.noreply.github.com>
+Date:   Sun Nov 28 20:51:33 2021 +0900
+
+    feat: 2. 사용자로부터 숫자를 입력받는 기능 추가
+
+[33mcommit 0fdca927594046f45479295e141d7540e308620b[m
+Author: Leeyerimearth <50127628+Leeyerimearth@users.noreply.github.com>
+Date:   Sun Nov 28 20:38:17 2021 +0900
+
+    feat: 컴퓨터가 랜덤한 세자리 숫자 생성하는 기능 추가
+
+[33mcommit 94764a7ab44346cc5ffa910e8ee544f0030238f1[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: LeeDongGyu <brainbackdoor@gmail.com>
+Date:   Wed Nov 24 11:00:28 2021 +0900
+
+    feat: setup baseball game project
