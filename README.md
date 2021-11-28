@@ -1,5 +1,20 @@
 # 미션 - 숫자 야구 게임
 
+## 💻 구현한 기능 목록
+
+- `BaseballGame.java` : 야구게임 class 구현
+  - `playgame()` : 게임 종료까지 게임 실행
+  - `judgeBallsAndStrikes(String userInput)` : 볼 / 스트라이크 심판 후 결과 메시지 반환
+  - `restartOrExit()` : 게임 재시작 / 종료 판단
+
+- `RandomAnswer.java` : `camp.nextstep.edu.missionutils.Randoms`를 사용해 야구게임 정답 생성 class 구현.
+
+- `UserInputValidator.java` : 정규표현식을 이용해 사용자 입력의 오류 판단
+
+- `Constants.java` : 상수 및 출력 메시지 관리
+
+
+
 ## 🔍 진행방식
 
 - 미션은 **기능 요구사항, 프로그래밍 요구사항, 과제 진행 요구사항** 세 가지로 구성되어 있다.
