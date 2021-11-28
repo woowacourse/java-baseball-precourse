@@ -5,7 +5,7 @@
 - [ ] GameManager
   - [ ] init GameManager
   - [ ] GameManager.run
-- [ ] Result
+- [x] Result
   - [x] Result enum
   - [x] ResultBase abstract class
   - [x] Strike Result
