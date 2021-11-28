@@ -1,5 +1,7 @@
 package baseball;
 
+import static utils.Constant.*;
+
 public class Score {
 	private int strike;
 	private int ball;
@@ -24,15 +26,15 @@ public class Score {
 
 	public String getScoreToString() {
 		if (ball == 0 && strike == 0) {
-			return "낫싱";
+			return NOTHING;
 		}
 
-		String scoreStr = "";
+		String scoreStr = EMPTY_STRING;
 		if (ball > 0) {
-			scoreStr = scoreStr + ball + "볼 ";
+			scoreStr = scoreStr + ball + BALL + SPACE;
 		}
 		if (strike > 0) {
-			scoreStr = scoreStr + strike + "스트라이크";
+			scoreStr = scoreStr + strike + STRIKE;
 		}
 		return scoreStr;
 	}

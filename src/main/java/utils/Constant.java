@@ -1,6 +1,14 @@
 package utils;
 
 public class Constant {
+	public static final String EMPTY_STRING = "";
+
+	public static final String NOTHING = "낫싱";
+	public static final String BALL = "볼";
+	public static final String STRIKE = "스트라이크";
+	public static final String SPACE = " ";
+
+
 	public static final int GAME_NUMBER_LENGTH = 3;
 
 	public static final String FINISH_COMMAND = "2";
