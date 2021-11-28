@@ -2,6 +2,11 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
+        boolean program = false;
+
+        while (!program) {
+            BaseballGame game = new BaseballGame();
+            program = game.start();
+        }
     }
 }
