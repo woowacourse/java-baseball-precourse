@@ -8,6 +8,9 @@ public class GamePlay {
 
 	public static void runGame() {
 		ArrayList<Integer> randomNumbers = RandomNumber.getRandomNumbers();
+		for (Integer i : randomNumbers) {
+			System.out.println(i);
+		}
 		while (true) {
 			InputView.printNumberInputMessage();
 			ArrayList<Integer> userInputNumbers = InputView.inputUserNumbers();
@@ -21,7 +24,7 @@ public class GamePlay {
 
 	public static void gameRestartOrNot() {
 		InputView.printGameRestartMessage();
-		if (InputView.inputGameRestartOrNot() == 1) {
+		if (InputView.inputGameRestartOrNot()) {
 			runGame();
 		}
 	}
