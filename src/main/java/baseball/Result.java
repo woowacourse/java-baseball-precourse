@@ -15,6 +15,8 @@ public class Result {
 
     public void makeResult(String input) {
         this.inputNumber = input;
+        this.ball = 0;
+        this.strike = 0;
         countBall();
         countStrike();
     }
