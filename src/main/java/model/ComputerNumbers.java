@@ -25,14 +25,21 @@ public class ComputerNumbers {
 
 	public int findNumberOfStrikes(PlayerNumbers playerNumbers) {
 		return (int)IntStream.range(MIN_POSITION, MAX_POSITION)
-			.filter(index -> numbers.get(index).equals(playerNumbers.getNumbers().get(index)))
+			.filter(index -> isStrike(index, playerNumbers))
 			.count();
+	}
+
+	private boolean isStrike(int index, PlayerNumbers playerNumbers) {
+		if (numbers.get(index).equals(playerNumbers.getNumbers().get(index))) {
+			return true;
+		}
+		return false;
 	}
 
 	public int findNumberOfBalls(PlayerNumbers playerNumbers) {
 		return (int)IntStream.range(MIN_POSITION, MAX_POSITION)
 			.filter(index -> playerNumbers.getNumbers().contains(numbers.get(index)))
-			.filter(index -> !numbers.get(index).equals(playerNumbers.getNumbers().get(index)))
+			.filter(index -> !isStrike(index, playerNumbers))
 			.count();
 	}
 }
