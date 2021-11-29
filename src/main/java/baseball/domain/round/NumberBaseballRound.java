@@ -1,7 +1,7 @@
 package baseball.domain.round;
 
 import baseball.domain.ball.NumberBallSet;
-import baseball.domain.hint.NumberBallHint;
+import baseball.domain.hint.Hint;
 import baseball.view.View;
 
 public class NumberBaseballRound {
@@ -18,7 +18,7 @@ public class NumberBaseballRound {
 	public void start() {
 		NumberBallSet randomNumbers = generateRandomNumbers();
 		while (true) {
-			NumberBallHint hint = predictByUserInput(randomNumbers);
+			Hint hint = predictByUserInput(randomNumbers);
 			showHint(hint);
 			if (isUserCorrect(hint)) {
 				break;
@@ -31,19 +31,19 @@ public class NumberBaseballRound {
 		return NumberBallSet.generateRandom();
 	}
 
-	private NumberBallHint predictByUserInput(NumberBallSet randomNumbers) {
-		return NumberBallHint.compareNumberBallSets(randomNumbers, generateUserNumbers());
+	private Hint predictByUserInput(NumberBallSet randomNumbers) {
+		return Hint.compareNumberBallSets(randomNumbers, generateUserNumbers());
 	}
 
 	private NumberBallSet generateUserNumbers() {
 		return NumberBallSet.generateFromInput(view.request(PREDICT_MSG));
 	}
 
-	private void showHint(NumberBallHint hint) {
-		hint.giveHint();
+	private void showHint(Hint hint) {
+		view.print(hint.giveHint());
 	}
 
-	private boolean isUserCorrect(NumberBallHint hint) {
+	private boolean isUserCorrect(Hint hint) {
 		return hint.isAnswer();
 	}
 

@@ -1,6 +1,6 @@
-package baseball.game;
+package baseball.domain.game;
 
-import baseball.domain.Game;
+import baseball.domain.round.NumberBaseballRound;
 import baseball.view.View;
 
 public class NumberBaseballGame implements Game {
