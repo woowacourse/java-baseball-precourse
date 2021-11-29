@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation('com.github.woowacourse-projects:mission-utils:1.0.0')
+    implementation 'org.jetbrains:annotations:20.1.0'
 }
 
 test {

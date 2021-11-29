@@ -15,7 +15,7 @@ class BaseballGameModel {
 	}
 
 	public boolean checkResult(int strikeCount) {
-		return strikeCount == 3;
+		return strikeCount == GAME_NUMBER_LENGTH;
 	}
 
 	public int getBall(int[] playerNum, int[] enemyNum) {
@@ -38,5 +38,4 @@ class BaseballGameModel {
 		}
 		return strikeCount;
 	}
-
 }
