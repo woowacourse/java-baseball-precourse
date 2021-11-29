@@ -2,8 +2,8 @@ package baseball.dto.response;
 
 public class JudgementResultDto {
 
-    private boolean isCorrectAnswer;
-    private String resultMessage;
+    private final boolean isCorrectAnswer;
+    private final String resultMessage;
 
     public JudgementResultDto(boolean isCorrectAnswer, String resultMessage) {
         this.resultMessage = resultMessage;
