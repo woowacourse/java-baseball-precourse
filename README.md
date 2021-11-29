@@ -27,9 +27,9 @@
 |---|---|:---:|
 |1.|미션은 java-baseball-precourse 저장소를 Fork/Clone해 시작|👌|
 |2.|기능을 구현하기 전에 java-baseball-precourse/README.md 파일에 구현할 기능 목록을 정리|👌|
-|3.|Git의 커밋 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가|🤔|
+|3.|Git의 커밋 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가|👌|
 |4.| [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.|👌|
-|5.|과제 진행 및 제출 방법은 프리코스 과제 제출 문서를 참고👌|
+|5.|과제 진행 및 제출 방법은 프리코스 과제 제출 문서를 참고|👌|
 
 ---
 
