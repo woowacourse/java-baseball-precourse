@@ -12,6 +12,21 @@ public class Game {
     static final int MAX_NUM = 9;
     static final int INPUT_LEN = 3;
 
+    public static boolean oneRound() {
+        String rightAnswer = randomNumberGenerator(MIN_NUM, MAX_NUM, INPUT_LEN);
+        boolean isCorrect = false;
+
+        while (isCorrect == false) {
+            isCorrect = oneTry(rightAnswer);
+        }
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if (isContinue()) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean oneTry(String rightAnswer) {
         String userInput = Input.getNumber(
                 "숫자를 입력해주세요 : ",
@@ -36,5 +51,15 @@ public class Game {
         }
 
         return resultRandomNumber;
+    }
+
+    private static boolean isContinue() {
+        String input = Input.getNumber(
+                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n",
+                1, 2, 1);
+        if (input == "1") {
+            return true;
+        }
+        return false;
     }
 }
