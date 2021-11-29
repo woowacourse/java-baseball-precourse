@@ -16,4 +16,8 @@ public class PredictionResult {
 	public int getStrike() {
 		return this.strike;
 	}
+
+	public boolean isWin() {
+		return this.strike == 3;
+	}
 }

@@ -17,6 +17,7 @@ public class Game {
 	public void startGame() {
 		while (true) {
 			createNewTargetNumbers();
+
 			startRound();
 
 			RestartOrQuitSelection selection = InputView.inputRestart();
@@ -34,7 +35,7 @@ public class Game {
 
 			OutputView.printHint(predictionResult);
 
-			if (predictionResult.getStrike() == 3) {
+			if (predictionResult.isWin()) {
 				break;
 			}
 		}
