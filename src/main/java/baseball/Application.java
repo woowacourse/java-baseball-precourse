@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 	public static class Game {
-		public List<Integer> answer;
+		private List<Integer> answer;
 
 		Game() {
 			startGame();
@@ -54,11 +54,15 @@ public class Application {
 			}
 		}
 
-		public void getInputFromUser() {
+		private List<Integer> getInputFromUser() {
 			String inputString = Console.readLine();
-			List<Integer> inputNumbers = stringToIntList(inputString);
+			return stringToIntList(inputString);
+		}
+
+		public void playGame() {
+			List<Integer> userInput = getInputFromUser();
 			try {
-				validateInput(inputNumbers);
+				validateInput(userInput);
 			} catch (IllegalArgumentException e) {
 				System.out.println("Illegal Input");
 			}
