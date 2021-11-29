@@ -6,9 +6,9 @@
     - [x] 3스트라이크 나올시 안내멘트 및 새로 시작여부 입력받기 - InputView#getInput()
         - [x] 새로 시작시 서로 다른 임의의 수 3개 새로 생성하기
 - [x] 1에서 9까지 서로 다른 임의의 수 3개(컴퓨터 수)를 생성하기 - Computer#createRandomNumbers()
-- [ ] 1에서 9까지 서로 다른 임의의 수 3개(플레이어 수)를 입력받기 - Refree#askNumbers()
-    - [ ] 플레이어 수를 검증하고 변환하는 기능 - Refree#checkValidationAndConvertType()
-        - [ ] 물어본 숫자 검증해서 유효하지 않으면 에러 내기, 그렇지 않으면 숫자로 변환하기
+- [x] 1에서 9까지 서로 다른 임의의 수 3개(플레이어 수)를 입력받기 - Refree#askNumbers()
+    - [x] 플레이어 수를 검증하고 변환하는 기능 - Refree#checkValidationAndConvertType()
+        - [x] 물어본 숫자 검증해서 유효하지 않으면 에러 내기, 그렇지 않으면 숫자로 변환하기
             - 검증내역: 3글자 입력인지 -> 숫자 입력인지 -> 서로 다른수 맞는지 -> 1~9사이 범위인지
 - [ ] 컴퓨터수 와 플레이어 수 비교하기 - Refree#compare()
     - [ ] 같은 수 있는지 파악하기 - Refree#countSameNumber()
