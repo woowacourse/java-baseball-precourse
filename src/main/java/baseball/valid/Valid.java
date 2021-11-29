@@ -20,4 +20,11 @@ public interface Valid {
             return true;
         return false;
     }
+
+    // 입력된 숫자가 3자리 수 범위 내에 있는지 확인한다.
+    default boolean inRange(int i) {
+        if(i < 100 || i > 999)
+            return false;
+        return true;
+    }
 }

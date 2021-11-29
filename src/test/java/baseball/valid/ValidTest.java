@@ -19,4 +19,20 @@ public class ValidTest {
         result = valid.duplicate(111);
         assertThat(result).isTrue();
     }
+
+    @Test
+    @DisplayName("숫자의_범위를_확인한다")
+    void 숫자는_3자리수() {
+        // 123은 3자리 수 범위 내에 있다.
+        boolean result = valid.inRange(123);
+        assertThat(result).isTrue();
+
+        // 99은 3자리 수 범위 밖에 있다.
+        result = valid.inRange(99);
+        assertThat(result).isFalse();
+
+        // 1000은 3자리 수 범위 밖에 있다.
+        result = valid.inRange(1000);
+        assertThat(result).isFalse();
+    }
 }
