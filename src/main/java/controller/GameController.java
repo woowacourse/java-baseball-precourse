@@ -28,6 +28,8 @@ public class GameController {
 			OutputDisplay.pleaseInputNumbers();
 			baseballGame.passPlayerNumbers(InputController.inputNumbers());
 		}
+
+		OutputDisplay.playNextGame(baseballGame.giveStrikeCount());
 	}
 
 	private static void showGameHints(BaseballGame baseballGame) {
