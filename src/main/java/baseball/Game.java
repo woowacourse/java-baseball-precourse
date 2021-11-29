@@ -47,7 +47,15 @@ public class Game {
 	 * @param result
 	 */
 	public void printResult(int[] result) {
-		// TODO: 카운트한 결과를 출력하는 메서드
+		if (result[0] == 0 && result[1] == 0) {
+			System.out.println("낫싱");
+		} else if (result[0] == 0) {
+			System.out.println(result[1] + "스트라이크");
+		} else if (result[1] == 0) {
+			System.out.println(result[0] + "볼");
+		} else {
+			System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
+		}
 	}
 
 	/**
