@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import static org.assertj.core.api.AssertionsForClassTypes.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
