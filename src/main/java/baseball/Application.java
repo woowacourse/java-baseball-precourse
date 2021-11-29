@@ -19,8 +19,8 @@ public class Application {
             // 랜덤 수 생성, 유효한 값이 아닐 경우 반복 생성.
             Numbers randomValueArray;
             do {
-                 randomValueArray = new Numbers(Randoms.pickNumberInRange(111, 999));
-            } while(randomValueArray.isValidNumber());
+                randomValueArray = new Numbers(createRandom(3));
+            } while(!randomValueArray.isValidNumber());
 
             boolean correct = false;
             while (!correct) {
@@ -50,6 +50,25 @@ public class Application {
             // 재게 여부에 따른 flag 변수 수정
             if(restart == 2) flag = false;
         }
+
+    }
+    public static int createRandom(int count){
+         /*
+            [definition]
+            게임 시작 시, 랜덤값을 생성해 반환합니다.
+
+            [parameters]
+            count: 생성할 랜덤값 자릿수
+
+            [return]
+            생성된 랜덤 수
+        **/
+        int randomNumber = 0;
+        randomNumber += Randoms.pickNumberInRange(1, 9) * 100;
+        randomNumber += Randoms.pickNumberInRange(1, 9) * 10;
+        randomNumber += Randoms.pickNumberInRange(1, 9);
+
+        return randomNumber;
 
     }
 
