@@ -16,6 +16,8 @@ public class Hint {
             countStrike(input.get(i), answer.get(i));
             countball(input.get(i), i, answer);
         }
+
+        printResult();
     }
 
     private void countStrike(int userNum, int answerNum) {
