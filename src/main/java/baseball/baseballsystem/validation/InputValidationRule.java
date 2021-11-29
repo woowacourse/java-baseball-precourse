@@ -1,4 +1,4 @@
-package baseball.BaseballSystem.validation;
+package baseball.baseballsystem.validation;
 
 public enum InputValidationRule {
     CONTINUE_GAME("1"),

@@ -1,4 +1,4 @@
-package baseball.BaseballSystem.validation;
+package baseball.baseballsystem.validation;
 
 import java.util.regex.Pattern;
 

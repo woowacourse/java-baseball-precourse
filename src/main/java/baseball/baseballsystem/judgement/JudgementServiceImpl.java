@@ -1,4 +1,4 @@
-package baseball.BaseballSystem.judgement;
+package baseball.baseballsystem.judgement;
 
 import java.util.HashSet;
 import java.util.Set;

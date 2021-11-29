@@ -1,4 +1,4 @@
-package baseball.BaseballSystem.judgement;
+package baseball.baseballsystem.judgement;
 
 import baseball.domain.Computer;
 import baseball.domain.Player;

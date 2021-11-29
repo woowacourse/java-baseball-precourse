@@ -1,13 +1,14 @@
 package baseball;
 
-import baseball.BaseballSystem.validation.InputValidationRule;
-import baseball.BaseballSystem.validation.BaseballValidationImpl;
-import baseball.BaseballSystem.judgement.JudgementService;
-import baseball.BaseballSystem.judgement.JudgementServiceImpl;
-import baseball.BaseballSystem.validation.Validation;
+import baseball.baseballsystem.validation.InputValidationRule;
+import baseball.baseballsystem.validation.BaseballValidationImpl;
+import baseball.baseballsystem.judgement.JudgementService;
+import baseball.baseballsystem.judgement.JudgementServiceImpl;
+import baseball.baseballsystem.validation.Validation;
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.dto.response.JudgementResultDto;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {

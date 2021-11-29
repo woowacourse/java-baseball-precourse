@@ -1,4 +1,4 @@
-package baseball.BaseballSystem.judgement;
+package baseball.baseballsystem.judgement;
 
 public enum JudgementMessage {
 
