@@ -12,6 +12,5 @@ public class StringUtil {
     public static final int END_NUMBER = 9;
 
     private StringUtil() {
-
     }
 }

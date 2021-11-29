@@ -1,10 +1,12 @@
 package baseball;
 
+import static baseball.StringUtil.BALL;
+import static baseball.StringUtil.NUMBER_OF_DIGITS_OF_NUMBER;
+import static baseball.StringUtil.STRIKE;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-import static baseball.StringUtil.*;
 
 public class GivenNumbers {
     public final Set<Integer> givenNumbersSet;

@@ -3,7 +3,6 @@ package baseball.inputmanager;
 import camp.nextstep.edu.missionutils.Console;
 
 public abstract class InputManger<T> {
-
     public T getInput() {
         String input = Console.readLine();
         validateInput(input);

@@ -1,14 +1,14 @@
 package baseball;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static baseball.StringUtil.NUMBER_OF_DIGITS_OF_NUMBER;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class RandomNumberFactoryTest {
-    private final int NUMBER_OF_DIGITS = 3;
     private final int NUMBER_NOT_TO_INCLUDE = 0;
     private Set<Integer> numbers;
 
@@ -19,7 +19,7 @@ class RandomNumberFactoryTest {
 
     @Test
     void 생성된_난수는_3자리() {
-        assertThat(numbers).hasSize(NUMBER_OF_DIGITS);
+        assertThat(numbers).hasSize(NUMBER_OF_DIGITS_OF_NUMBER);
     }
 
     @Test

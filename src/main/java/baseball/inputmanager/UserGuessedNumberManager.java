@@ -1,10 +1,10 @@
 package baseball.inputmanager;
 
-import java.util.Arrays;
-
 import static baseball.StringUtil.END_NUMBER;
 import static baseball.StringUtil.NUMBER_OF_DIGITS_OF_NUMBER;
 import static baseball.StringUtil.START_NUMBER;
+
+import java.util.Arrays;
 
 public class UserGuessedNumberManager extends InputManger<Integer[]> {
     private static final int ASCII_VALUE_OF_START_NUMBER = START_NUMBER + '0';

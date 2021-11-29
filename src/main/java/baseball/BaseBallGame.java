@@ -1,12 +1,15 @@
 package baseball;
 
-import baseball.inputmanager.InputManger;
-import baseball.inputmanager.StartEndButton;
-import baseball.inputmanager.UserGuessedNumberManager;
+import static baseball.StringUtil.BALL;
+import static baseball.StringUtil.END;
+import static baseball.StringUtil.NUMBER_OF_DIGITS_OF_NUMBER;
+import static baseball.StringUtil.STRIKE;
 
 import java.util.Map;
 
-import static baseball.StringUtil.*;
+import baseball.inputmanager.InputManger;
+import baseball.inputmanager.StartEndButton;
+import baseball.inputmanager.UserGuessedNumberManager;
 
 public class BaseBallGame {
     private static final String STRIKE_TO_PRINT = "스트라이크";
@@ -34,7 +37,7 @@ public class BaseBallGame {
             printNumberRequestMessage();
             result = givenNumbers.operate((Integer[]) userGuessedNumberManager.getInput());
             printGameResult();
-        } while (!allNumbersMatches());
+        } while (!checkAllNumbersMatch());
     }
 
     private boolean checkUserWantToEnd() {
@@ -46,12 +49,12 @@ public class BaseBallGame {
         return false;
     }
 
-    private boolean allNumbersMatches() {
+    private boolean checkAllNumbersMatch() {
         return result.get(STRIKE) == NUMBER_OF_DIGITS_OF_NUMBER;
     }
 
     private void printGameResult() {
-        StringBuilder resultStringBuilder = resultToStringBuilder();
+        StringBuilder resultStringBuilder = makeResultToStringBuilder();
         if (resultStringBuilder.length() == 0) {
             System.out.println(NOTHING);
             return;
@@ -59,7 +62,7 @@ public class BaseBallGame {
         System.out.println(resultStringBuilder.toString());
     }
 
-    private StringBuilder resultToStringBuilder() {
+    private StringBuilder makeResultToStringBuilder() {
         StringBuilder stringBuilder = new StringBuilder();
         int strike = result.get(STRIKE);
         int ball = result.get(BALL);

@@ -1,13 +1,13 @@
 package baseball.inputmanager;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 
 class UserGuessedNumberTest {
     private final InputStream standardIn = System.in;
@@ -18,7 +18,7 @@ class UserGuessedNumberTest {
         String input = "465";
         setInput(input);
         Integer[] result = userGuessedNumberManager.getInput();
-        assertThat(result).isEqualTo(new Integer[]{4, 6, 5});
+        assertThat(result).isEqualTo(new Integer[] {4, 6, 5});
     }
 
     @Test
