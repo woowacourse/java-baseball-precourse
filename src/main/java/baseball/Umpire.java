@@ -6,7 +6,7 @@ import communication.Text;
 
 public class Umpire {
     private final int ESSENTIAL_NUMBER_LENGTH = 3;
-    private final int RESET = 0;
+    private final int ZERO = 0;
     private String computersNumber;
     private String usersNumber;
     private HashMap<String, Integer> hintStorage;
@@ -18,8 +18,8 @@ public class Umpire {
     }
 
     private void resetHintStorage() {
-        hintStorage.put(Text.STRIKE, RESET);
-        hintStorage.put(Text.BALL, RESET);
+        hintStorage.put(Text.STRIKE, ZERO);
+        hintStorage.put(Text.BALL, ZERO);
     }
 
     private boolean isNothing() {
@@ -77,5 +77,23 @@ public class Umpire {
             hint = "";
         }
 
+    }
+
+    public void reportHint() {
+
+        if (hint.equals(Text.NOTHING)) {
+            System.out.println(Text.NOTHING);
+            return;
+        }
+
+        if (hintStorage.get(Text.BALL) != ZERO) {
+            hint += hintStorage.get(Text.BALL) + Text.BALL + " ";
+        }
+
+        if (hintStorage.get(Text.STRIKE) != ZERO) {
+            hint += hintStorage.get(Text.STRIKE) + Text.STRIKE;
+        }
+
+        System.out.println(hint);
     }
 }

@@ -46,5 +46,6 @@ public class PlayGame {
     private void playOneSet() {
         assignUserNumber();
         umpire.compareNumbers(usersNumber);
+        umpire.reportHint();
     }
 }
