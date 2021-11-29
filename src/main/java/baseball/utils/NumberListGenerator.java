@@ -13,13 +13,13 @@ public class NumberListGenerator {
         List<Integer> pickedList = new ArrayList<>();
 
         while (pickedList.size() < size) {
-            int number = pickUniqueNumber(pickedList, lowInclusive, highInclusive);
+            int number = pickUniqueNumberInRange(pickedList, lowInclusive, highInclusive);
             pickedList.add(number);
         }
         return pickedList;
     }
 
-    private static int pickUniqueNumber(
+    private static int pickUniqueNumberInRange(
         List<Integer> pickedList,
         int lowInclusive,
         int highInclusive) {
@@ -27,7 +27,7 @@ public class NumberListGenerator {
 
         number = Randoms.pickNumberInRange(lowInclusive, highInclusive);
         if (pickedList.contains(number)) {
-            return pickUniqueNumber(pickedList, lowInclusive, highInclusive);
+            return pickUniqueNumberInRange(pickedList, lowInclusive, highInclusive);
         }
         return number;
     }
