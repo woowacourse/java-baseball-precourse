@@ -7,6 +7,7 @@ import communication.Text;
 public class Umpire {
     private final int ESSENTIAL_NUMBER_LENGTH = 3;
     private final int ZERO = 0;
+    private final int MAX_HINT = 3;
     private String computersNumber;
     private String usersNumber;
     private HashMap<String, Integer> hintStorage;
@@ -95,5 +96,14 @@ public class Umpire {
         }
 
         System.out.println(hint);
+    }
+
+    public boolean isWin() {
+
+        if (hintStorage.get(Text.STRIKE) == MAX_HINT) {
+            return true;
+        }
+
+        return false;
     }
 }
