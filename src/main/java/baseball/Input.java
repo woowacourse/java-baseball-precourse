@@ -15,15 +15,15 @@ public class Input {
 
 	private static void validateLength(String number, int length) {
 		if (number.length() != length) {
-			throw new IllegalArgumentException(length + "자리로 입력해주세요.");
+			throw new IllegalArgumentException();
 		}
 	}
 
 	private static void validateNumberRange(String number, int min, int max, int length) {
 		for (int i = 0; i < length; i++) {
 			char num = number.charAt(i);
-			if ((min <= (num - '0') && (num - '0') <= max) == false) {
-				throw new IllegalArgumentException("범위에 맞는 숫자만 입력해주세요.");
+			if (!(min <= (num - '0') && (num - '0') <= max)) {
+				throw new IllegalArgumentException();
 			}
 		}
 	}
