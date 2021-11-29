@@ -14,7 +14,7 @@ class NumberBallSetTest {
 	@Test
 	@DisplayName("일치하는 것이 없으면 스트라이크 0, 볼 0, 미스 3 이다.")
 	public void testCompareNothing() throws Exception {
-	    // given
+		// given
 		NumberBallSet aNumberBallSet = NumberBallSet.generateFromInput("123");
 		NumberBallSet bNumberBallSet = NumberBallSet.generateFromInput("456");
 
@@ -50,5 +50,4 @@ class NumberBallSetTest {
 		// then
 		assertEquals(compareMap.get(HintType.STRIKE), 3);
 	}
-
 }

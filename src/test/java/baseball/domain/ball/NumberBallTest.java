@@ -2,7 +2,6 @@ package baseball.domain.ball;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,12 +12,12 @@ class NumberBallTest {
 	@Test
 	@DisplayName("숫자 0 은 실패해야 한다.")
 	public void testNumberBallZeroFail() throws Exception {
-	    // given
+		// given
 		int index = 0;
-	    int number = 0;
-	    // when
+		int number = 0;
+		// when
 		assertThrows(IllegalArgumentException.class, () -> new NumberBall(index, number));
-	    // then
+		// then
 	}
 
 	@Test
@@ -44,10 +43,10 @@ class NumberBallTest {
 	@Test
 	@DisplayName("같은 인덱스와 숫자는 스트라이크를 반환해야 한다.")
 	public void testCompareStrike() throws Exception {
-	    // given
-	    NumberBall aNumberBall = new NumberBall(0, 3);
+		// given
+		NumberBall aNumberBall = new NumberBall(0, 3);
 		NumberBall bNumberBall = new NumberBall(0, 3);
-	    // when
+		// when
 		HintType hintType = aNumberBall.compare(bNumberBall);
 		// then
 		assertEquals(hintType, HintType.STRIKE);
@@ -76,5 +75,4 @@ class NumberBallTest {
 		// then
 		assertEquals(hintType, HintType.MISS);
 	}
-
 }
