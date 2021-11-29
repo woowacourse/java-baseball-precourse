@@ -53,3 +53,16 @@
     - ~~터미널에서 test 작동하지 않는 문제 해결해야 함~~ (`./gradlew clean test`)
   - ~~java 코딩 컨벤션 - 새줄문자 lf 관련 : .gitattribute 작성~~ **(해결 O)**
 
+
+
+### DAY03
+
+- 구현
+
+  - 클래스명 수정
+
+    | 수정 전                            | 수정 후                                      |
+    | ---------------------------------- | -------------------------------------------- |
+    | **ThreeDigits**<br />**Validator** | **numberGenerator**<br />**numberValidator** |
+
+  - Application이 generator와 validator 2가지 기능을 사용하고 있음을 선명히 드러내도록 클래스명을 수정
