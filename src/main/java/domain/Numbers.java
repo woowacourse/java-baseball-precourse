@@ -26,8 +26,8 @@ public class Numbers {
 		this.numbers = distinctNumbers;
 	}
 
-	public int find(int number) {
-		return this.numbers.indexOf(new Number(number));
+	public int find(Number number) {
+		return this.numbers.indexOf(number);
 	}
 
 	private int convertLetterToInt(String letter) {

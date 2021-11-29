@@ -28,7 +28,7 @@ public class TargetNumbers extends Numbers {
 		int strikeCount = 0;
 
 		for (int i = 0; i < NUMBERS_SIZE; i++) {
-			int currentNumber = this.numbers.get(i).getNumber();
+			Number currentNumber = this.numbers.get(i);
 			int numberIndex = numbers.find(currentNumber);
 
 			if (numberIndex < 0) {
