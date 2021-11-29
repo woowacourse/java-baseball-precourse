@@ -3,6 +3,7 @@ package controller;
 import domain.Hint;
 import domain.Numbers;
 import domain.TargetNumbers;
+
 import view.InputView;
 import view.OutputView;
 
