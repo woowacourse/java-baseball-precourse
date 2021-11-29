@@ -12,7 +12,7 @@ public class Player {
 	public String inputBallNumber() {
 		System.out.print(INPUT_NUMBER_MESSAGE);
 		String ballNumber = Console.readLine();
-		if (InputValidationUtils.isCheckValid(ballNumber)) {
+		if (!InputValidationUtils.isCheckValid(ballNumber)) {
 			throw new IllegalArgumentException(ERROR_INPUT_NUMBER);
 		}
 		return ballNumber;
