@@ -11,12 +11,32 @@ public class BaseballController {
 
 	public static void readyPlay() {
 		do {
-			Computer computer = new Computer();
-			play(computer);
+			play();
 		} while (proceedGame());
 	}
 
-	public static void play(Computer computer) {
+	public static void play() {
+		Computer computer = new Computer();
+		boolean gameFlag = true;
+
+		while (gameFlag) {
+			gameFlag = compareNumber(computer, getUserInput());
+		}
+	}
+
+	public static boolean compareNumber(Computer computer, UserInput userInput) {
+		GameResult gameResult = new GameResult(computer, userInput);
+		OutputView.printHint(gameResult.getHint());
+
+		if (!gameResult.endGame()) {
+			return true;
+		}
+
+		OutputView.printGameEnd();
+		return false;
+	}
+
+	public static UserInput getUserInput() {
 		UserInput userInput;
 
 		try {
@@ -26,16 +46,7 @@ public class BaseballController {
 			throw e;
 		}
 
-		compareNumber(computer, userInput);
-	}
-
-	public static void compareNumber(Computer computer, UserInput userInput) {
-		GameResult gameResult = new GameResult(computer, userInput);
-		OutputView.printHint(gameResult.getHint());
-		
-		if (!gameResult.endGame()) {
-			play(computer);
-		}
+		return userInput;
 	}
 
 	public static boolean proceedGame() {

@@ -11,4 +11,8 @@ public class OutputView {
 	public static void printHint(String hintMessage) {
 		System.out.println(hintMessage);
 	}
+
+	public static void printGameEnd() {
+		System.out.println(END_GAME);
+	}
 }
