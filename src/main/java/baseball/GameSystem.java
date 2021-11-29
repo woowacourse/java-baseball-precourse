@@ -43,7 +43,7 @@ public class GameSystem {
         OpponentPlayer opponentPlayer = new OpponentPlayer();
         Judge judge = new Judge();
         String user3DigitNum;
-        judge.setRightAnswer(opponentPlayer.pickRandom3DigitNum());
+        judge.setRightAnswer(opponentPlayer.pickUnique3DigitNum());
         while (true) {
             user3DigitNum = getUser3DigitNum();
             judge.initialize();
