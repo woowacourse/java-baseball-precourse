@@ -16,7 +16,6 @@ public class numberGenerator {
         StringBuilder threeRandomDigits = new StringBuilder();
         int count = 0;
         while (count != 3) {
-
             int rand = Randoms.pickNumberInRange(1, 9);  // generate 1 ~ 9
             if (!isChecked[rand]) {
                 count++;
