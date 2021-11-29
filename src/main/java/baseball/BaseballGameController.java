@@ -12,8 +12,6 @@ public class BaseballGameController {
 
 	private int[] enemyNum;
 	private int[] playerNum;
-	private int strikeCount;
-	private int ballCount;
 
 	public BaseballGameController() {
 		initializeNums();
@@ -29,6 +27,8 @@ public class BaseballGameController {
 	}
 
 	public void startGame() {
+		int strikeCount;
+		int ballCount;
 		initializeNums();
 		enemy.setEnemyNum(enemyNum);
 		do {
