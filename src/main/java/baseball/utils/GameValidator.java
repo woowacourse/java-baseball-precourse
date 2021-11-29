@@ -4,7 +4,7 @@ import static baseball.constants.GameMessages.ERR_MESSAGE_DUPLICATE;
 import static baseball.constants.GameMessages.ERR_MESSAGE_NON_NUMBER;
 import static baseball.constants.GameMessages.ERR_MESSAGE_OUT_OF_RANGE;
 import static baseball.constants.GameMessages.ERR_MESSAGE_WRONG_SIZE;
-import static baseball.constants.GameMessages.RESTART_FLAG_ERR_MESSAGE;
+import static baseball.constants.GameMessages.ERR_MESSAGE_NON_RESTART_FLAG;
 
 import baseball.constants.NumberListConstraints;
 import java.util.List;
@@ -45,7 +45,7 @@ public class GameValidator {
     public static void validateRestartFlag(int flag) throws IllegalArgumentException {
         if (flag != NumberListConstraints.RESTART_FLAG_TRUE.value()
             && flag != NumberListConstraints.RESTART_FLAG_FALSE.value()) {
-            throw new IllegalArgumentException(RESTART_FLAG_ERR_MESSAGE);
+            throw new IllegalArgumentException(ERR_MESSAGE_NON_RESTART_FLAG);
         }
     }
 }
