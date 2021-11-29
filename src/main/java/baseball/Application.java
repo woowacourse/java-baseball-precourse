@@ -16,10 +16,15 @@ public class Application {
 		Player player = new Player();
 		Application application = new Application(computer, player);
 		application.computer.makeRandomNumber();
+		System.out.print(application.computer.randomNumber[0]);
+		System.out.print(application.computer.randomNumber[1]);
+		System.out.println(application.computer.randomNumber[2]);
 		while (application.continueGame) {
 			application.player.scanInputNumber();
 			application.countBall();
 			application.countStrike();
+			application.printHint();
+			application.computer.setInitial();
 		}
 	}
 
@@ -48,5 +53,18 @@ public class Application {
 				computer.addStrike();
 			}
 		}
+	}
+
+	public void printHint() {
+		if (computer.ball != 0) {
+			System.out.print(computer.getBall() + "볼 ");
+		}
+		if (computer.strike != 0) {
+			System.out.print(computer.getStrike() + "스트라이크");
+		}
+		if (computer.getBall() == 0 && computer.getStrike() == 0) {
+			System.out.print("낫싱");
+		}
+		System.out.println();
 	}
 }

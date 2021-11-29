@@ -18,6 +18,19 @@ public class Computer {
 		setRandomNumber();
 	}
 
+	public int getStrike() {
+		return strike;
+	}
+
+	public int getBall() {
+		return ball;
+	}
+
+	public void setInitial() {
+		strike = 0;
+		ball = 0;
+	}
+
 	public void setRandomNumber() {
 		for (int i = 0; i < NUMBER_SIZE; i++) {
 			randomNumber[i] = 0;
