@@ -2,12 +2,14 @@ package baseball;
 
 import java.util.Map;
 
+import baseball.domain.DeterminationPitching;
+import baseball.view.Input;
+import baseball.view.Output;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
 
     private static final String RESTART_SIGNAL = "1";
-    private static final String NEW_LINE = "\n";
 
     protected void startGame() {
         progressGame();
@@ -18,8 +20,11 @@ public class BaseballGame {
         String answer = user.makeAnswerNumber();
         System.out.println("answer:" + answer);
 
-        user.printInputMessage();
-        String guessNumber = user.inputGuessNumber();
+        Output output = new Output();
+        output.printInputMessage();
+
+        Input input = new Input();
+        String guessNumber = input.inputGuessNumber();
         user.validateGuessNumber(guessNumber);
 
         while (!user.checkCorrect(answer, guessNumber)) {
@@ -29,15 +34,15 @@ public class BaseballGame {
             int ballCount = strikeBallCount.get(String.valueOf(DeterminationPitching.BALL));
 
             String hitMessage = user.writeHintMessage(strikeCount, ballCount);
-            user.printHintMessage(hitMessage);
+            output.printHintMessage(hitMessage);
 
-            user.printInputMessage();
-            guessNumber = user.inputGuessNumber();
+            output.printInputMessage();
+            guessNumber = input.inputGuessNumber();
             user.validateGuessNumber(guessNumber);
         }
 
-        printCorrectAnswerMessage();
-        printRestartOrNotMessage();
+        output.printCorrectAnswerMessage();
+        output.printRestartOrNotMessage();
 
         if (decideRestartGame()) {
             progressGame();
@@ -59,14 +64,6 @@ public class BaseballGame {
         }
 
         return decide;
-    }
-
-    private void printRestartOrNotMessage() {
-        System.out.println(Messages.RESTART_OR_NOT_MESSAGE.printMessages());
-    }
-
-    private void printCorrectAnswerMessage() {
-        System.out.println(Messages.THREE_STRIKE_MESSAGE.printMessages() + NEW_LINE + Messages.COLLECT_ANSWER_MESSAGE.printMessages());
     }
 
 }
