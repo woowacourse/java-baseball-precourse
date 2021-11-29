@@ -19,16 +19,33 @@ class BaseBallNumbersTest {
         answerNumbers = BaseBallNumbers.createByIntegerNumbers(Arrays.asList(1, 2, 3));
     }
 
-    @Test
-    @DisplayName("4개 이상의 수가 입력될 경우 Exception이 발생해야 한다.")
-    void createExceptionByOutOfInputSize() {
-        // given
-        List<Integer> input = Arrays.asList(1, 2, 3, 4);
+    @Nested
+    @DisplayName("3개의 수가 입력되지 않을 경우 Exception이 발생해야 한다.")
+    class CreateExcetpionByOutOfInputSize {
 
-        // when & then
-        assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> BaseBallNumbers.createByIntegerNumbers(input))
-            .withMessageMatching("3개 이상의 공이 입력될 수 없습니다.");
+        @Test
+        @DisplayName("3개 초과 입력")
+        void createExceptionByOutOfInputSizeOver() {
+            // given
+            List<Integer> input = Arrays.asList(1, 2, 3, 4);
+
+            // when & then
+            assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> BaseBallNumbers.createByIntegerNumbers(input))
+                .withMessageMatching("3개의 수가 입력되어야 합니다.");
+        }
+
+        @Test
+        @DisplayName("3개 미만 입력")
+        void createExceptionByOutOfInputSizeUnder() {
+            // given
+            List<Integer> input = Arrays.asList(1, 2);
+
+            // when & then
+            assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> BaseBallNumbers.createByIntegerNumbers(input))
+                .withMessageMatching("3개의 수가 입력되어야 합니다.");
+        }
     }
 
     @Test

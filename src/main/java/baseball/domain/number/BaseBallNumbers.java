@@ -25,7 +25,7 @@ public class BaseBallNumbers {
     }
 
     private static void checkInputSize(int size) {
-        if (size > BASEBALL_NUMBERS_LIMIT_SIZE) {
+        if (size != BASEBALL_NUMBERS_LIMIT_SIZE) {
             throw new BaseBallNumbersInputSizeException();
         }
     }
