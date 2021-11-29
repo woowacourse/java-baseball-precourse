@@ -12,7 +12,7 @@ enum Messages {
         this.messages = messages;
     }
 
-    private String printMessages() {
-        return messages;
+    String printMessages() {
+        return this.messages;
     }
 }

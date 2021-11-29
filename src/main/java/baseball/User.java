@@ -1,44 +1,44 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class User {
 
     private static final int RANDOM_START_INCLUSIVE = 1;
     private static final int RANDOM_END_INCLUSIVE = 9;
-    public static final String SPACE = " ";
-    public static final String REGEX = "^[1-9]{3}$";
-    public static final int NO_BALL_NO_STRIKE = 0;
+    private static final String SPACE = " ";
+    private static final String REGEX = "^[1-9]{3}$";
+    private static final int FOUL = 0;
 
-    public Map<String, Integer> countStrikeBallNumber(final String answer, final String guessNumber) {
+    protected Map<String, Integer> countStrikeBall(final String answer, final String guessNumber) {
         final Map<String, Integer> strikeBallCount = new HashMap<>();
 
         int strike = 0;
         int ball = 0;
 
         for (int i = 0; i < answer.length(); i++) {
-            int strikeBall = decideStrikeBall(answer, i, guessNumber);
+            int strikeBall = determineStrikeBall(answer, i, guessNumber);
 
             if (strikeBall == 1) {
-                strike = addStrikeBallCount(strike, ball, strikeBall);
+                strike = addStrikeBall(strike, ball, strikeBall);
             }
 
             if (strikeBall == 2) {
-                ball = addStrikeBallCount(strike, ball, strikeBall);
+                ball = addStrikeBall(strike, ball, strikeBall);
             }
         }
 
-        strikeBallCount.put(String.valueOf(DeterminationPitching.STRIKE_ENGLISH), strike);
-        strikeBallCount.put(String.valueOf(DeterminationPitching.BALL_ENGLISH), ball);
+        strikeBallCount.put(String.valueOf(DeterminationPitching.STRIKE), strike);
+        strikeBallCount.put(String.valueOf(DeterminationPitching.BALL), ball);
 
         return strikeBallCount;
     }
 
-    private int addStrikeBallCount(int strike, int ball, final int strikeBall) {
+    private int addStrikeBall(int strike, int ball, final int strikeBall) {
         if (strikeBall == 1) {
             strike++;
             return strike;
@@ -49,10 +49,10 @@ public class User {
             return ball;
         }
 
-        return NO_BALL_NO_STRIKE;
+        return FOUL;
     }
 
-    private int decideStrikeBall(final String answer, final int i, final String guessNumber) {
+    private int determineStrikeBall(final String answer, final int i, final String guessNumber) {
         int decide = 0;
 
         char answerCharacter = answer.charAt(i);
@@ -69,11 +69,11 @@ public class User {
         return decide;
     }
 
-    public void printHintMessage(final String hintMessage) {
+    protected void printHintMessage(final String hintMessage) {
         System.out.println(hintMessage);
     }
 
-    public String writeHintMessage(final int strike, final int ball) {
+    protected String writeHintMessage(final int strike, final int ball) {
 
         if ((strike == 0) && (ball > 0)) {
             return appendBallHintMessage(ball);
@@ -90,59 +90,63 @@ public class User {
         return appendBallHintMessage(ball) + SPACE + appendStrikeHintMessage(strike);
     }
 
-    public String appendNothingHintMessage() {
-        return String.valueOf(DeterminationPitching.NOTHING);
+    private String appendNothingHintMessage() {
+        return String.valueOf(DeterminationPitching.NOTHING.determinePitching());
     }
 
-    public String appendStrikeHintMessage(final int strike) {
-        return strike + String.valueOf(DeterminationPitching.STRIKE_KOREAN);
+    private String appendStrikeHintMessage(final int strike) {
+        return strike + String.valueOf(DeterminationPitching.STRIKE.determinePitching());
     }
 
-    public String appendBallHintMessage(final int ball) {
-        return ball + String.valueOf(DeterminationPitching.BALL_KOREAN);
+    private String appendBallHintMessage(final int ball) {
+        return ball + String.valueOf(DeterminationPitching.BALL.determinePitching());
     }
 
-    public boolean checkAnswer(final String answer, final String guessAnswer) {
+    protected boolean checkCorrect(final String answer, final String guessAnswer) {
         return answer.equals(guessAnswer);
     }
 
-    public void printInputMessage() {
-        System.out.print(Messages.INPUT_NUMBER_MESSAGE);
+    protected void printInputMessage() {
+        System.out.print(Messages.INPUT_NUMBER_MESSAGE.printMessages());
     }
 
-    public String inputPlayerNumber() {
-        String inputNumbers = Console.readLine();
+    protected String inputGuessNumber() {
+        return Console.readLine();
+    }
 
-        if (!checkInputPlayerNumber(inputNumbers)) {
+    protected void validateGuessNumber(final String inputGuessNumber) {
+        if (!inputGuessNumber.matches(REGEX)) {
             throw new IllegalArgumentException();
         }
-
-        return inputNumbers;
     }
 
-    public boolean checkInputPlayerNumber(final String inputNumber) {
-        return inputNumber.matches(REGEX);
-    }
-
-    public String connectEachAnswerNumbers() {
+    protected String makeAnswerNumber() {
         final StringBuilder stringBuilder = new StringBuilder();
 
-        while (checkAnswerNumberLength(stringBuilder)) {
+        while (checkLength(stringBuilder)) {
             int number = inputAnswerNumber();
 
-            if (!checkDuplicateNumber(stringBuilder, number)) {
-                stringBuilder.append(number);
+            if (validateAnswerNumber(stringBuilder, number)) {
+                connectAnswerNumbers(stringBuilder, number);
             }
         }
 
         return stringBuilder.toString();
     }
 
-    private boolean checkDuplicateNumber(final StringBuilder stringBuilder, final int number) {
+    private void connectAnswerNumbers(final StringBuilder stringBuilder, final int number) {
+        stringBuilder.append(number);
+    }
+
+    private boolean validateAnswerNumber(final StringBuilder stringBuilder, final int number) {
+        return !checkDuplicate(stringBuilder, number);
+    }
+
+    private boolean checkDuplicate(final StringBuilder stringBuilder, final int number) {
         return stringBuilder.toString().contains(String.valueOf(number));
     }
 
-    private boolean checkAnswerNumberLength(final StringBuilder stringBuilder) {
+    private boolean checkLength(final StringBuilder stringBuilder) {
         return stringBuilder.length() < 3;
     }
 

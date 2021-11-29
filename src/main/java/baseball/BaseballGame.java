@@ -1,48 +1,51 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Map;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
 
-    public static final String RESTART_SIGNAL = "1";
-    public static final String NEW_LINE = "\n";
+    private static final String RESTART_SIGNAL = "1";
+    private static final String NEW_LINE = "\n";
 
-    public void startGame() {
-
-        do {
-            progressGame();
-            printRestartOrNotMessage();
-        } while (decideRestartGame());
-
+    protected void startGame() {
+        progressGame();
     }
 
-    public void progressGame() {
+    private void progressGame() {
         User user = new User();
+        String answer = user.makeAnswerNumber();
+        System.out.println("answer:" + answer);
 
-        String answer = user.connectEachAnswerNumbers();
         user.printInputMessage();
+        String guessNumber = user.inputGuessNumber();
+        user.validateGuessNumber(guessNumber);
 
-        String guessAnswer = user.inputPlayerNumber();
+        while (!user.checkCorrect(answer, guessNumber)) {
+            final Map<String, Integer> strikeBallCount = user.countStrikeBall(answer, guessNumber);
 
-        while (!user.checkAnswer(answer, guessAnswer)) {
-            final Map<String, Integer> strikeBallCount = user.countStrikeBallNumber(answer, guessAnswer);
-
-            int strikeCount = strikeBallCount.get(String.valueOf(DeterminationPitching.STRIKE_ENGLISH));
-            int ballCount = strikeBallCount.get(String.valueOf(DeterminationPitching.BALL_ENGLISH));
+            int strikeCount = strikeBallCount.get(String.valueOf(DeterminationPitching.STRIKE));
+            int ballCount = strikeBallCount.get(String.valueOf(DeterminationPitching.BALL));
 
             String hitMessage = user.writeHintMessage(strikeCount, ballCount);
             user.printHintMessage(hitMessage);
 
             user.printInputMessage();
-            guessAnswer = user.inputPlayerNumber();
+            guessNumber = user.inputGuessNumber();
+            user.validateGuessNumber(guessNumber);
         }
 
         printCorrectAnswerMessage();
+        printRestartOrNotMessage();
+
+        if (decideRestartGame()) {
+            progressGame();
+        }
+
     }
 
-    public String inputRestartOrNotNumber() {
+    private String inputRestartOrNotNumber() {
         return Console.readLine();
     }
 
@@ -59,11 +62,11 @@ public class BaseballGame {
     }
 
     private void printRestartOrNotMessage() {
-        System.out.println(Messages.RESTART_OR_NOT_MESSAGE);
+        System.out.println(Messages.RESTART_OR_NOT_MESSAGE.printMessages());
     }
 
     private void printCorrectAnswerMessage() {
-        System.out.println(Messages.THREE_STRIKE_MESSAGE + NEW_LINE + Messages.COLLECT_ANSWER_MESSAGE);
+        System.out.println(Messages.THREE_STRIKE_MESSAGE.printMessages() + NEW_LINE + Messages.COLLECT_ANSWER_MESSAGE.printMessages());
     }
 
 }

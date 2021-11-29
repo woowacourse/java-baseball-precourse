@@ -1,10 +1,8 @@
 package baseball;
 
 enum DeterminationPitching {
-    STRIKE_ENGLISH("strike"),
-    BALL_ENGLISH("ball"),
-    STRIKE_KOREAN("스트라이크"),
-    BALL_KOREAN("볼"),
+    STRIKE("스트라이크"),
+    BALL("볼"),
     NOTHING("낫싱");
 
     private final String determinationPitching;
@@ -13,7 +11,7 @@ enum DeterminationPitching {
         this.determinationPitching = determinationPitching;
     }
 
-    private String determinePitching() {
-        return determinationPitching;
+    String determinePitching() {
+        return this.determinationPitching;
     }
 }
