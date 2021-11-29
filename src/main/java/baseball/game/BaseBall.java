@@ -1,5 +1,6 @@
 package baseball.game;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class Baseball implements NumberMatcher<Baseball, BaseballCount> {
@@ -24,7 +25,8 @@ public class Baseball implements NumberMatcher<Baseball, BaseballCount> {
     @Override
     public BaseballCount match(Baseball target) {
         int strike = countStrike(target);
-        return new BaseballCount(strike);
+        int ball = countBall(target);
+        return new BaseballCount(BaseballCount.Strike.of(strike), BaseballCount.Ball.of(ball - strike));
     }
 
     private int countStrike(Baseball target) {
@@ -36,6 +38,14 @@ public class Baseball implements NumberMatcher<Baseball, BaseballCount> {
 
     private boolean isEqualsIndexOfNumber(Baseball baseballNumber, int index) {
         return baseballNumber.baseballNumbers[index].equals(baseballNumbers[index]);
+    }
+
+    private int countBall(Baseball target) {
+        return Arrays.stream(baseballNumbers)
+            .mapToInt(baseballNumber -> (int)Arrays.stream(target.baseballNumbers)
+                .filter(baseballNumber::equals)
+                .count())
+            .sum();
     }
 
 }
