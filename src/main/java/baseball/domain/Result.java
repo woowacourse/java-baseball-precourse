@@ -17,8 +17,8 @@ public class Result {
 	public void checkStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
 		for (int index = 0; index < NumberRangeType.ANSWER_SIZE.getNumberRange(); index++) {
 			if (computerNumbers.get(index) == playerNumbers.get(index)) {
-				strike++;
-				ball--;
+				increaseStrike();
+				decreaseBall();
 			}
 		}
 	}
@@ -26,7 +26,7 @@ public class Result {
 	public void checkBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
 		for (Integer playerNumber : playerNumbers) {
 			if (computerNumbers.contains(playerNumber))
-				ball++;
+				increaseBall();
 		}
 	}
 
@@ -36,5 +36,17 @@ public class Result {
 
 	public int getBall() {
 		return ball;
+	}
+
+	private void increaseStrike() {
+		strike++;
+	}
+
+	private void increaseBall() {
+		ball++;
+	}
+
+	private void decreaseBall() {
+		ball--;
 	}
 }
