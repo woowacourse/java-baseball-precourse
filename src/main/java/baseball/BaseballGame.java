@@ -28,6 +28,7 @@ public class BaseballGame {
 			boolean isGameContinued = true;
 			System.out.println(START_GAME_MSG);
 			do {
+				computer.createNumbers();
 				playGame();
 				isGameContinued = checkRetry();
 			} while (isGameContinued);
