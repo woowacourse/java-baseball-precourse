@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.PromptMessage;
+import baseball.constants.GameMessages;
 import baseball.utils.UserInputHandler;
 
 public class BaseballGameRunner {
@@ -18,7 +18,7 @@ public class BaseballGameRunner {
 
     private static boolean isRestart() {
         int input = UserInputHandler.getNumber(
-            PromptMessage.RESTART_GAME_PROMPT.message()
+            GameMessages.RESTART_GAME_PROMPT.message()
         );
         return input == GAME_RESTART_FlAG;
     }

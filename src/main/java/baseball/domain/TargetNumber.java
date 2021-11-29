@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.domain;
 
 import baseball.utils.GameValidator;
 import java.util.List;

@@ -3,7 +3,8 @@ package baseball;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import baseball.game.TargetNumber;
+import baseball.constants.NumbersConstraints;
+import baseball.domain.TargetNumber;
 import baseball.utils.NumberListGenerator;
 import java.util.Arrays;
 import java.util.HashSet;

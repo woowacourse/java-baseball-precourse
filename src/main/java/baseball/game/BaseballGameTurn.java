@@ -1,6 +1,8 @@
 package baseball.game;
 
-import baseball.NumbersConstraints;
+import baseball.constants.NumbersConstraints;
+import baseball.domain.TargetNumber;
+import baseball.domain.UserExpectation;
 
 public class BaseballGameTurn {
 

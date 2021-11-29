@@ -1,5 +1,5 @@
 package baseball.utils;
-import baseball.NumbersConstraints;
+import baseball.constants.NumbersConstraints;
 import java.util.HashSet;
 import java.util.List;
 
@@ -41,4 +41,3 @@ public class GameValidator {
         }
     }
 }
-

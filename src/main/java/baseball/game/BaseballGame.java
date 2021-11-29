@@ -1,7 +1,9 @@
 package baseball.game;
 
-import baseball.NumbersConstraints;
-import baseball.PromptMessage;
+import baseball.constants.NumbersConstraints;
+import baseball.constants.GameMessages;
+import baseball.domain.TargetNumber;
+import baseball.domain.UserExpectation;
 import baseball.utils.NumberListGenerator;
 import baseball.utils.UserInputHandler;
 
@@ -24,7 +26,7 @@ public class BaseballGame {
         while (isRunning) {
             proceedTurn();
         }
-        System.out.println(PromptMessage.GAME_OVER_MESSAGE.message());
+        System.out.println(GameMessages.GAME_OVER_MESSAGE.message());
     }
 
     private void proceedTurn() {
@@ -35,7 +37,7 @@ public class BaseballGame {
 
     private UserExpectation getUserExpectation() {
         return new UserExpectation(
-            UserInputHandler.getNumbersList(PromptMessage.USER_EXPECTATION_PROMPT.message())
+            UserInputHandler.getNumbersList(GameMessages.USER_EXPECTATION_PROMPT.message())
         );
     }
 

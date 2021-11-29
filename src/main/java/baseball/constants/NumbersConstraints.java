@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constants;
 
 public enum NumbersConstraints {
     MIN_NUMBER(1),
