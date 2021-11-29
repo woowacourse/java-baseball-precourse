@@ -21,5 +21,16 @@ public class User {
         }
         return UserNumber;
     }
+
+    public static boolean isGameRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String readLine = Console.readLine();
+
+        if (Integer.parseInt(readLine) == 1) {
+            return true;
+        }
+        return false;
+    }
 }
 
