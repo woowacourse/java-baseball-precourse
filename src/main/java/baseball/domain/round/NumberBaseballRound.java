@@ -1,5 +1,6 @@
-package baseball.game;
+package baseball.domain.round;
 
+import baseball.domain.ball.NumberBallSet;
 import baseball.view.View;
 
 public class NumberBaseballRound {
@@ -14,7 +15,12 @@ public class NumberBaseballRound {
 	}
 
 	public void start() {
-		// todo : play actual game
-		return;
+		NumberBallSet randomNumbers = generateRandomNumbers();
 	}
+
+	private NumberBallSet generateRandomNumbers() {
+		return NumberBallSet.generateRandom();
+	}
+
+
 }
