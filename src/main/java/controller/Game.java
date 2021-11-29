@@ -53,7 +53,7 @@ public class Game {
 			String userInput = getNumberInput();
 			Numbers numbers = new Numbers(userInput);
 
-			Hint hint = targetNumbers.compare(numbers);
+			Hint hint = targetNumbers.compareTo(numbers);
 
 			OutputView.printHint(hint);
 

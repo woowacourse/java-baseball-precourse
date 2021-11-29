@@ -23,7 +23,7 @@ public class TargetNumbers extends Numbers {
 		return generatedNumbers;
 	}
 
-	public Hint compare(Numbers numbers) {
+	public Hint compareTo(Numbers numbers) {
 		int ballCount = 0;
 		int strikeCount = 0;
 
