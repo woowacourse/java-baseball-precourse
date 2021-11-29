@@ -1,7 +1,27 @@
 package baseball;
 
+import baseball.Output;
+
 public class Judge {
-    public static boolean IsBall(String rightAnswer, char num, int idx){
+    public static boolean isCorrect(String rightAnswer, String userInput, int length) {
+        int ball = 0, strike = 0;
+        for (int i=0; i<length; i++) {
+            if (Judge.isBall(rightAnswer, userInput.charAt(i), i)) {
+                ball += 1;
+            }
+            else if (Judge.isStrike(rightAnswer, userInput.charAt(i), i)) {
+                strike += 1;
+            }
+        }
+
+        Output.printResult(ball, strike);
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isBall(String rightAnswer, char num, int idx){
         for (int i=0; i<rightAnswer.length(); i++) {
             if (i == idx) {
                 continue;
@@ -12,7 +32,8 @@ public class Judge {
         }
         return false;
     }
-    public static boolean IsStrike(String rightAnswer, char num, int idx){
+
+    private static boolean isStrike(String rightAnswer, char num, int idx){
         if (rightAnswer.charAt(idx) == num) {
             return true;
         }
