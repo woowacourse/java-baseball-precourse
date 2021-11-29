@@ -45,7 +45,7 @@
     - 사용자의 잘못된 입력에 대한 예외 처리
   - 문제에서 요구하는 API로 수정
     - 랜덤 관련
-      - `java.util.Random` -> ``camp.nextstep.edu.missionutils.Randoms`
+      - `java.util.Random` -> `camp.nextstep.edu.missionutils.Randoms`
     - 사용자 입력 관련
       - `java.util.Scanner` -> `camp.nextstep.edu.missionutils.Console`
 - **남은 작업**
@@ -66,3 +66,24 @@
     | **ThreeDigits**<br />**Validator** | **numberGenerator**<br />**numberValidator** |
 
   - Application이 generator와 validator 2가지 기능을 사용하고 있음을 선명히 드러내도록 클래스명을 수정
+
+
+
+### 느낀점
+
+- 처음으로 자바언어를 사용하여 프로그래밍 해 보았습니다.
+  - `python`과 `cpp`에 있는 다양한 장점들이 조화롭게 녹아있다고 느꼈습니다.
+  - `python`과 달리 `cpp`처럼 변수의 type을 미리 선언하는 방식이 가독성도 좋고, 프로그램의 안정성 측면에서도 긍정적으로 기여할 것이라고 생각해 보았습니다.
+- 요구사항에서 지시한 컨벤션을 지키면서 코딩하는 것이 얼마나 가독성을 올려주는지 통감하였습니다.
+  - 특히, indent를 2 정도로 제한하면서, 이 부분을 function call로 대체하니 코드가 어떤 작업을 수행하는지 훨씬 선명히 드러났습니다.
+- git commit 메세지를 남기는 컨벤션도 인상깊었습니다.
+  - 남겨진 커밋 메세지를 읽는 것만으로도 그 동안의 작업의 내용을 한 눈에 돌아볼 수 있었습니다.
+- 기능이 잘 드러나도록, 클래스명, 함수명, 변수명을 지을 수 있도록 마지막까지 고민하였습니다.
+
+
+
+### 작업 방식
+
+- 해당 프로젝트의 경우, 모든 요구사항들을 받아들이고 작업을 시작하기 보다, 적당히 심중에 염두하고 작업을 시작하였습니다. 
+- 일단 빠르게 작동하는 코드를 만들고, 후에 요구사항들을 더욱 꼼꼼히 살피면서, refactoring하는 작업 방식이 잘 맞았다고 진단합니다.
+
