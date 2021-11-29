@@ -25,7 +25,7 @@ public class Hint {
     }
 
     public boolean isAllStrikes() {
-        return (this.strikes == NumberDigit.COUNT.getCount());
+        return NumberDigit.isMatch(this.strikes);
     }
 
     public String toString() {

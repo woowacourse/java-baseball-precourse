@@ -1,7 +1,5 @@
 package baseball.resource.rule;
 
-import baseball.exception.InputNumbersNotMatchDigitsMessageException;
-
 public enum NumberDigit {
 
     COUNT(3);
@@ -12,15 +10,16 @@ public enum NumberDigit {
         this.count = length;
     }
 
-    public int getCount() {
-        return this.count;
+    public static int getCount() {
+        return COUNT.count;
     }
 
-    public boolean isMatch(int count) {
-        if (this.count != count) {
-            throw new InputNumbersNotMatchDigitsMessageException();
-        }
-        return true;
+    public static boolean isMatch(int count) {
+        return (COUNT.count == count);
+    }
+
+    public static boolean isNotMatch(int count) {
+        return !(NumberDigit.isMatch(count));
     }
 
 }

@@ -20,7 +20,7 @@ public class Referee {
         targetNumbers = new ArrayList<>();
         duplicationCheckBits = new boolean[CHECK_BITS_LENGTH];
 
-        while (isCountLessThen(NumberDigit.COUNT.getCount())) {
+        while (isCountLessThen(NumberDigit.getCount())) {
             int number = Randoms.pickNumberInRange(NumberRange.START.getNumber(), NumberRange.END.getNumber());
             if (checkDuplicated(number)) {
                 continue;

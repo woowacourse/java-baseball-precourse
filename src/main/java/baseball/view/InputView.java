@@ -3,14 +3,16 @@ package baseball.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import baseball.resource.rule.NumberDigit;
-import baseball.resource.rule.NumberRange;
-import baseball.resource.rule.PlayOption;
 import camp.nextstep.edu.missionutils.Console;
 
+import baseball.exception.InputNumbersNotMatchDigitsMessageException;
 import baseball.exception.InputNotIntegerMessageException;
 import baseball.exception.InputNumbersDuplicatedMessageException;
 import baseball.exception.NumberOutOfRangeMessageException;
+
+import baseball.resource.rule.NumberDigit;
+import baseball.resource.rule.NumberRange;
+import baseball.resource.rule.PlayOption;
 
 import baseball.resource.message.OutputMessage;
 
@@ -70,7 +72,9 @@ public class InputView {
     }
 
     private void validateNumbersDigitMatch(List<Integer> numbers) {
-        NumberDigit.COUNT.isMatch(numbers.size());
+        if (NumberDigit.isNotMatch(numbers.size())) {
+            throw new InputNumbersNotMatchDigitsMessageException();
+        }
     }
 
     private void validateNumbersInRange(List<Integer> numbers) {
