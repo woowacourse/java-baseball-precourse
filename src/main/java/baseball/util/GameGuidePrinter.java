@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.util;
 
 public class GameGuidePrinter {
     public static void inputUserNumber() {

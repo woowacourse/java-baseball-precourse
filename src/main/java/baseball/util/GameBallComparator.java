@@ -1,4 +1,7 @@
-package baseball.domain;
+package baseball.util;
+
+import baseball.domain.Ball;
+import baseball.domain.GameBalls;
 
 public class GameBallComparator {
     private final int NUMBEROFBALL;

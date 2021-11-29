@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.util;
 
 public class MatchStatus {
     int numOfBall;
