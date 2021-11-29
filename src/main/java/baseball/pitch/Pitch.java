@@ -12,4 +12,13 @@ public class Pitch {
     public boolean isValid() {
         return !(value == 0);
     }
+
+    @Override
+    public boolean equals(Object target) {
+        return isSame((Pitch)target);
+    }
+
+    public boolean isSame(Pitch pitch) {
+        return (this.index == pitch.index) && (this.value == pitch.value);
+    }
 }
