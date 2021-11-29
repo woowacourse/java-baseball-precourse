@@ -9,6 +9,7 @@ import model.constants.GameMode;
 public class GameData implements GameDataInterface {
 	private String answerOfUserInput;
 	private GameMode gameMode = GameMode.progressing;
+	private String answerOfComputer;
 
 	@Override
 	public void inputUserAnswer() {
@@ -23,6 +24,11 @@ public class GameData implements GameDataInterface {
 		String userInput = readLine();
 		int userInputGameMode = Integer.parseInt(userInput);
 		gameMode = defineGameModeFromInteger(userInputGameMode);
+	}
+
+	@Override
+	public void setAnswerOfComputer(String answer) {
+		answerOfComputer = answer;
 	}
 
 	private GameMode defineGameModeFromInteger(int integer) {

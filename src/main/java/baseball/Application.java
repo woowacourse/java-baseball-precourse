@@ -1,8 +1,8 @@
 package baseball;
 
-import model.GameDataInterface;
-import model.classes.CountingStatus;
-import model.classes.GameData;
+import static camp.nextstep.edu.missionutils.Randoms.*;
+
+import controller.classes.BaseBallGame;
 
 public class Application {
 	public static void main(String[] args) {
@@ -10,7 +10,10 @@ public class Application {
 		//GameDataInterface m = new GameData();
 		//m.inputUserAnswer();
 		//m.setGameMode();
-		CountingStatus countingStatus = new CountingStatus();
-		System.out.println(countingStatus.toString());
+		//BaseBallGame baseBallGame = new BaseBallGame();
+		//baseBallGame.startGame();
+		// System.out.println(pickUniqueNumbersInRange(1,9,3));
+		// System.out.println(pickUniqueNumbersInRange(1,9,3));
+		// System.out.println(pickUniqueNumbersInRange(1,9,3));
 	}
 }

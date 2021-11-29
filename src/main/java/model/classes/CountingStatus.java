@@ -35,9 +35,6 @@ public class CountingStatus {
 		if (ballStatus == BallStatus.zero && strikeStatus == StrikeStatus.zero) {
 			return NOTHING_STATMENT;
 		}
-		if (strikeStatus == StrikeStatus.three) {
-			return ENDING_STATEMENT;
-		}
 		return "" +
 			toIntByBallStatus() +
 			BALL_STATEMENT +

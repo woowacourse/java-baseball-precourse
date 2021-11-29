@@ -7,4 +7,5 @@ public final class ConstantsForGame {
 	public static final String BALL_STATEMENT = 			"볼";
 	public static final String STRIKE_STATEMENT = 			"스트라이크";
 	public static final String NOTHING_STATMENT = 			"낫싱";
+	public static final int MAX_LENGTH_OF_ARRAY = 			10;
 }
