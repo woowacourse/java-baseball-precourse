@@ -49,13 +49,14 @@ public class GameHandler {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if (!checkIsNumbers(input) || input.length() != 1) {
-            throw new IllegalArgumentException();
-        }
-        if (input.charAt(0) == 49) {
+
+        if (input.equals("1")) {
             return RESTART;
+        } else if (input.equals("2")) {
+            return PROGRAM_EXIT;
         }
-        return PROGRAM_EXIT;
+
+        throw new IllegalArgumentException();
     }
 
     private boolean isAnswer(int[] hint) {
@@ -109,6 +110,9 @@ public class GameHandler {
     }
 
     private boolean checkIsNumbers(String playerInput) {
+        if (playerInput.length() == 0) {
+            return false;
+        }
         for (String input : playerInput.split("")) {
             if (!(48 < input.charAt(0) && input.charAt(0) < 58)) {
                 return false;
@@ -118,6 +122,9 @@ public class GameHandler {
     }
 
     private boolean checkDuplicated(String playerInput) {
+        if (playerInput.length() == 0) {
+            return true;
+        }
         Set<Character> set = new HashSet<>();
         for (String input : playerInput.split("")) {
             if (!set.add(input.charAt(0))) {
