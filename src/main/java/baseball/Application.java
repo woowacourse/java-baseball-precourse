@@ -9,7 +9,7 @@ public class Application {
     static final int BALL = 1;
     static final int NOTHING = 2;
 
-    static String[] resultType = new String[] {"스크라이크", "볼", "낫싱"};
+    static String[] resultType = new String[] {"스트라이크", "볼", "낫싱"};
 
     public static void main(String[] args){
         boolean flag = true;
@@ -33,7 +33,7 @@ public class Application {
 
                 // 사용자 입력 값 배열로 변환
                 Numbers userInputArray = new Numbers(userInput);
-                if(!userInputArray.isValidNumber()) throw new IllegalArgumentException("유효하지 않은 입력값");
+                if(!userInputArray.isValidNumber()) throw new IllegalArgumentException("유효하지 않은 입력값(중복값 존제, 0의 값 존재)");
 
                 // 랜덤 값과 사용자 입력 값 비교
                 int[] result = randomValueArray.compareNumberWithInputNumber(userInputArray);
@@ -45,7 +45,7 @@ public class Application {
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int restart = Integer.parseInt(Console.readLine());
 
-            if(!(restart == 1 || restart == 2)) throw new IllegalArgumentException("유효하지 않은 입력값");
+            if(!(restart == 1 || restart == 2)) throw new IllegalArgumentException("유효하지 않은 입력값(1 or 2가 아닌 수)");
 
             // 재게 여부에 따른 flag 변수 수정
             if(restart == 2) flag = false;
@@ -94,7 +94,7 @@ public class Application {
             return correct;
         }
 
-        for (int index = 0; index < result.length; index++) {
+        for (int index = result.length-1; index >= 0; index--) {
             if (result[index]==0) continue;
             stringBuilder.append(result[index]);
             stringBuilder.append(resultType[index]);
