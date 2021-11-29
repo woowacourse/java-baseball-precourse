@@ -1,11 +1,13 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class UserInput {
 
 	private static final String USER_INPUT_ERROR = "1에서 9까지의 임의의 수 3개의 숫자를 입력해주세요.";
+	private static final String USER_OVERLAP_ERROR = "서로 다른 임의의 수 3개를 입력해주세요.";
 	private static final int SIZE = 3;
 	private BaseballNumber baseballNumber;
 
@@ -13,6 +15,22 @@ public class UserInput {
 
 		if (gameUserInput.length() != SIZE) {
 			throw new IllegalArgumentException(USER_INPUT_ERROR);
+		}
+
+		Set<Integer> userInput;
+
+		try {
+			userInput = gameUserInput
+				.chars()
+				.mapToObj(Character::getNumericValue)
+				.collect(Collectors.toSet());
+
+		} catch (IllegalArgumentException e) {
+			throw new IllegalArgumentException(USER_INPUT_ERROR);
+		}
+
+		if (userInput.size() != SIZE) {
+			throw new IllegalArgumentException(USER_OVERLAP_ERROR);
 		}
 
 		try {
@@ -36,5 +54,5 @@ public class UserInput {
 	public long containsNumber(Computer computer) {
 		return computer.containsNumber(baseballNumber);
 	}
-	
+
 }
