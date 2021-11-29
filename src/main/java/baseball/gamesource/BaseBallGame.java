@@ -9,7 +9,7 @@ import baseball.constants.MessageConstants;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
-    private Opponent opponent = new Opponent();
+    private final Opponent opponent = new Opponent();
 
     public void gameStart(){
         List<Integer> userNumbers =new ArrayList<>();
@@ -32,7 +32,6 @@ public class BaseBallGame {
 
         }while(!numberCheck(opponent.getNumbers(), userNumbers));
 
-        System.out.println(MessageConstants.GAME_END_MESSAGE);
     }
 
     //두 수를 비교해 두 수가 같을 때만 true 반환
