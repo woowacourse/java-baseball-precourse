@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import com.sun.deploy.util.ArrayUtil;
 
 public class Application {
     public static void main(String[] args) {
@@ -22,7 +23,7 @@ public class Application {
             int[] arrayNum = inputNum();
             arrayNumFlag(arrayNum);
             int strike = strikeCount(arrayNum,randomNum);
-            int ball = ballCount(arrayNum,randomNum);
+            int ball = ballCount(strike,arrayNum,randomNum);
             countJudge(strike, ball);
             if (strike == 3) {
                 break;
@@ -100,14 +101,22 @@ public class Application {
     /*
      * 볼의 개수를 알려주는 매소드
      */
-    private  static  int ballCount(int[] arrayNum, int[] randomNum) {
+    private  static  int ballCount(int strike, int[] arrayNum, int[] randomNum) {
         int ball = 0;
         for (int i = 0;  i < 3; i++) {
-            if (arrayNum[i] != randomNum[i] && Arrays.asList(randomNum).contains(arrayNum[i])) {
-                ball ++;
+            ball += judgeBall(arrayNum[i],randomNum);
+        }
+        ball -= strike;
+        return ball;
+    }
+
+    private static int judgeBall(int i, int[] randomNum) {
+        for (int x = 0; x < 3 ; x++) {
+            if (randomNum[x] == i) {
+                return 1;
             }
         }
-        return ball;
+        return 0;
     }
 
     /*
