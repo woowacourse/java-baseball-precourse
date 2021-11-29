@@ -5,8 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-import baseball.Input;
-
 public class Game {
     static final int MIN_NUM = 1;
     static final int MAX_NUM = 9;

@@ -1,7 +1,5 @@
 package baseball;
 
-import baseball.Output;
-
 public class Judge {
     public static boolean isCorrect(String rightAnswer, String userInput, int length) {
         int ball = 0, strike = 0;
