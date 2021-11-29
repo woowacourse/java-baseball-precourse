@@ -48,8 +48,7 @@ public class GameResult {
 	public boolean isValidateWinner() {
 		if (strikeCount == GAME_WINNER_VALUE) {
 			return false;
-		} else {
-			return true;
 		}
+		return true;
 	}
 }
