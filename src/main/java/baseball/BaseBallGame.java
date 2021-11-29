@@ -12,7 +12,6 @@ public class BaseBallGame {
 
 	private ArrayList<Integer> answerNumberList;
 	private ArrayList<Integer> inputNumberList;
-	private User user;
 	private Score score;
 	private GameStatus gameStatus;
 
@@ -20,7 +19,6 @@ public class BaseBallGame {
 		answerNumberList = new ArrayList<>();
 		inputNumberList = new ArrayList<>();
 		score = new Score();
-		user = new User();
 		gameStatus = GameStatus.READY;
 	}
 
@@ -31,7 +29,7 @@ public class BaseBallGame {
 			makeAnswerNumber();
 			play();
 			String command = InputView.getRestartOrFinishCommand();
-			if(!Validator.checkRestartOrFinishCommand(command)) {
+			if (!Validator.checkRestartOrFinishCommand(command)) {
 				throw new IllegalArgumentException();
 			}
 			setGameStatus(command);
@@ -41,7 +39,13 @@ public class BaseBallGame {
 	private void play() {
 		while (true) {
 			initializeRound();
-			inputNumberList = user.getInputNumber();
+
+			String inputNumberString = InputView.getInputNumber();
+			if (!Validator.checkInputNumber(inputNumberString)) {
+				throw new IllegalArgumentException();
+			}
+			inputNumberList = getIntegerArrayListFromString(inputNumberString);
+
 			String scoreString = score.getScoreOfNumbers(answerNumberList, inputNumberList);
 			OutputView.printGameScore(scoreString);
 			if (scoreString.equals(THREE_STRIKE)) {
@@ -49,6 +53,15 @@ public class BaseBallGame {
 				return;
 			}
 		}
+	}
+
+	private ArrayList<Integer> getIntegerArrayListFromString(String str) {
+		ArrayList<Integer> tmp = new ArrayList<>();
+		for (int i = 0; i < str.length(); i++) {
+			int num = Character.getNumericValue(str.charAt(i));
+			tmp.add(num);
+		}
+		return tmp;
 	}
 
 	private void setGameStatus(String command) {
@@ -75,7 +88,6 @@ public class BaseBallGame {
 			int randomNum = Randoms.pickNumberInRange(MIN_GAME_NUMBER, MAX_GAME_NUMBER);
 			tmp.add(randomNum);
 		}
-
 		answerNumberList.addAll(tmp);
 	}
 
