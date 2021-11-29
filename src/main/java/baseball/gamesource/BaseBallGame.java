@@ -13,12 +13,11 @@ public class BaseBallGame {
 
     public void gameStart(){
         List<Integer> userNumbers =new ArrayList<>();
-
         //디버깅용 정답 출력 코드
         //System.out.println(opponent.getNumbers().toString());
 
         do{
-            //연관배열 초기화
+            //배열리스트 초기화
             userNumbers.clear();
 
             System.out.print(MessageConstants.NUMBER_INPUT_REQUEST_MESSAGE);
@@ -64,16 +63,17 @@ public class BaseBallGame {
 
         if(ballCnt != 0)
             System.out.print(ballCnt + MessageConstants.BALL_MESSAGE);
-
         if(strikeCnt != 0)
-            System.out.println(strikeCnt + MessageConstants.STRIKE_MESSAGE);
+            System.out.print(strikeCnt + MessageConstants.STRIKE_MESSAGE);
 
         if(strikeCnt == 3){
-            System.out.print(MessageConstants.CORRECT_NUMBER_MESSAGE);
+            System.out.print(MessageConstants.CORRECT_NUMBER_MESSAGE + MessageConstants.GAME_END_MESSAGE);
         }else if(strikeCnt ==0 && ballCnt ==0){
-            System.out.println(MessageConstants.MISS_ALL_NUMBER_MESSAGE);
+            System.out.print(MessageConstants.MISS_ALL_NUMBER_MESSAGE);
         }
 
+        //줄바꿈
+        System.out.print('\n');
     }
 
     int ballCheck(List<Integer> oppo, int num, int idx){
