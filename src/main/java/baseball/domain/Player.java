@@ -30,7 +30,7 @@ public class Player {
 	private void setPlayerNumber(String enterPlayerNumber) {
 		playerNumbers = new ArrayList<>(NumberRangeType.ANSWER_SIZE.getNumberRange());
 		for (char number : enterPlayerNumber.toCharArray()) {
-			playerNumbers.add(number - '0');
+			playerNumbers.add(Character.getNumericValue(number));
 		}
 	}
 
