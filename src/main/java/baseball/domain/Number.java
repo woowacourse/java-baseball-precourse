@@ -4,7 +4,7 @@ public class Number {
 
 	private static final int MIN = 1;
 	private static final int MAX = 9;
-	private final int no;
+	private int no;
 
 	public Number(int no) {
 		if (no < MIN || MAX < no) {
@@ -13,4 +13,11 @@ public class Number {
 		this.no = no;
 	}
 
+	public int getNo() {
+		return no;
+	}
+
+	public boolean sameNumber(int no) {
+		return this.no == no;
+	}
 }

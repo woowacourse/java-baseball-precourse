@@ -28,4 +28,13 @@ public class UserInput {
 		}
 
 	}
+
+	public long sameNumberLocation(Computer computer) {
+		return computer.sameNumberLocation(baseballNumber);
+	}
+
+	public long containsNumber(Computer computer) {
+		return computer.containsNumber(baseballNumber);
+	}
+	
 }

@@ -19,13 +19,15 @@ public class Computer {
 			numbers.add(makeRandomNumber(numbers));
 		}
 
+		numbers.forEach(System.out::println);
+
 		this.baseballNumber = new BaseballNumber(
 			new ArrayList<>(numbers
 				.stream()
 				.map(Number::new)
 				.collect(Collectors.toList()))
 		);
-		
+
 	}
 
 	private int makeRandomNumber(ArrayList<Integer> numbers) {
@@ -36,5 +38,13 @@ public class Computer {
 		}
 
 		return makeRandomNumber(numbers);
+	}
+
+	public long sameNumberLocation(BaseballNumber compareBaseBallNumber) {
+		return baseballNumber.sameNumberLocation(compareBaseBallNumber);
+	}
+
+	public long containsNumber(BaseballNumber compareBaseballNumber) {
+		return baseballNumber.containsNumber(compareBaseballNumber);
 	}
 }
