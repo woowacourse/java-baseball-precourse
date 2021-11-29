@@ -1,6 +1,7 @@
 package baseball.domain.round;
 
 import baseball.domain.ball.NumberBallSet;
+import baseball.domain.hint.NumberBallHint;
 import baseball.view.View;
 
 public class NumberBaseballRound {
@@ -16,11 +17,37 @@ public class NumberBaseballRound {
 
 	public void start() {
 		NumberBallSet randomNumbers = generateRandomNumbers();
+		while (true) {
+			NumberBallHint hint = predictByUserInput(randomNumbers);
+			showHint(hint);
+			if (isUserCorrect(hint)) {
+				break;
+			}
+		}
+		endRound();
 	}
 
 	private NumberBallSet generateRandomNumbers() {
 		return NumberBallSet.generateRandom();
 	}
 
+	private NumberBallHint predictByUserInput(NumberBallSet randomNumbers) {
+		return NumberBallHint.compareNumberBallSets(randomNumbers, generateUserNumbers());
+	}
 
+	private NumberBallSet generateUserNumbers() {
+		return NumberBallSet.generateFromInput(view.request(PREDICT_MSG));
+	}
+
+	private void showHint(NumberBallHint hint) {
+		hint.giveHint();
+	}
+
+	private boolean isUserCorrect(NumberBallHint hint) {
+		return hint.isAnswer();
+	}
+
+	private void endRound() {
+		view.print(END_MSG);
+	}
 }
