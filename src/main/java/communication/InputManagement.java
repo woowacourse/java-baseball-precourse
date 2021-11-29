@@ -26,13 +26,13 @@ public class InputManagement {
             throw new IllegalArgumentException();
         }
 
-        if (usersNumber.matches(REGEX_NUMBER)) {
+        if (!usersNumber.matches(REGEX_NUMBER)) {
             throw new IllegalArgumentException();
         }
 
         for (int i = ESSENTIAL_NUMBER_LENGTH - 1; i >= 0; i--) {
 
-            if (usersNumber.indexOf(usersNumber.charAt(i)) != 1) {
+            if (usersNumber.indexOf(usersNumber.charAt(i)) != i) {
                 throw new IllegalArgumentException();
             }
 
