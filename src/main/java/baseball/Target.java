@@ -12,7 +12,6 @@ public class Target {
     private int rangeEnd = 9;
     private int length = 3;
 
-
     public void generateTargetNumber() {
         StringBuilder builder = new StringBuilder();
         boolean[] visited = new boolean[rangeEnd - rangeBegin + 1];
@@ -60,7 +59,11 @@ public class Target {
     }
 
     public void setRangeBegin(int rangeBegin) {
-        this.rangeBegin = rangeBegin;
+        if (this.rangeEnd - rangeBegin + 1 >= length) {
+            this.rangeBegin = rangeBegin;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getRangeEnd() {
@@ -68,7 +71,11 @@ public class Target {
     }
 
     public void setRangeEnd(int rangeEnd) {
-        this.rangeEnd = rangeEnd;
+        if (rangeEnd - this.rangeBegin + 1 >= length) {
+            this.rangeEnd = rangeEnd;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getLength() {
@@ -76,14 +83,14 @@ public class Target {
     }
 
     public void setLength(int length) {
-        this.length = length;
+        if (this.rangeEnd - this.rangeBegin + 1 >= length) {
+            this.length = length;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public boolean isEqual(Target compare) {
         return this.targetNumber.equals(compare.targetNumber);
-    }
-
-    public void printTargetNumber() {
-        System.out.println("target is :" + targetNumber);
     }
 }
