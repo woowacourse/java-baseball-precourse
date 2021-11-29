@@ -4,6 +4,10 @@ import baseball.domain.Computer;
 import baseball.domain.Player;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class GameHandler {
     private static GameHandler instance = new GameHandler();
     private final int KEEP_GOING = 0;
@@ -59,17 +63,13 @@ public class GameHandler {
     }
 
     private int playing() {
-        try {
-            String playerInput = getPlayerInput();
-            checkValidInput(playerInput);
-            player.playerInput(playerInput);
-            int[] hint = computer.generateHint(player.submitTryNumber());
-            showHint(hint);
-            if (isAnswer(hint)) {
-                return GAME_EXIT;
-            }
-        } catch (Exception e) {
-            System.exit(0);
+        String playerInput = getPlayerInput();
+        checkValidInput(playerInput);
+        player.playerInput(playerInput);
+        int[] hint = computer.generateHint(player.submitTryNumber());
+        showHint(hint);
+        if (isAnswer(hint)) {
+            return GAME_EXIT;
         }
 
         return KEEP_GOING;
@@ -118,6 +118,12 @@ public class GameHandler {
     }
 
     private boolean checkDuplicated(String playerInput) {
-        return playerInput.charAt(0) == playerInput.charAt(1) || playerInput.charAt(0) == playerInput.charAt(2) || playerInput.charAt(1) == playerInput.charAt(2);
+        Set<Character> set = new HashSet<>();
+        for (String input : playerInput.split("")) {
+            if (!set.add(input.charAt(0))) {
+                return true;
+            }
+        }
+        return false;
     }
 }
