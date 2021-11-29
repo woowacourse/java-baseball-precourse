@@ -20,6 +20,7 @@ public class BaseBallController {
 				if (player.isRestart()) {
 					start();
 				}
+				break;
 			}
 		}
 	}
