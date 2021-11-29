@@ -2,6 +2,8 @@ package baseball;
 
 import static utils.Constant.*;
 
+import java.util.ArrayList;
+
 public class Score {
 	private int strike;
 	private int ball;
@@ -16,15 +18,20 @@ public class Score {
 		ball = 0;
 	}
 
-	public void addStrike() {
-		strike++;
+	public String getScoreOfNumbers(ArrayList<Integer> answerNumberList, ArrayList<Integer> targetNumberList) {
+		for (int i = 0; i < GAME_NUMBER_LENGTH; i++) {
+			if (answerNumberList.get(i).equals(targetNumberList.get(i))) {
+				strike++;
+				continue;
+			}
+			if (answerNumberList.contains(targetNumberList.get(i))) {
+				ball++;
+			}
+		}
+		return getScoreToString();
 	}
 
-	public void addBall() {
-		ball++;
-	}
-
-	public String getScoreToString() {
+	private String getScoreToString() {
 		if (ball == 0 && strike == 0) {
 			return NOTHING;
 		}

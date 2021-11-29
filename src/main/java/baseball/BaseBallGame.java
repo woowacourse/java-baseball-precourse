@@ -42,9 +42,9 @@ public class BaseBallGame {
 		while (true) {
 			initializeRound();
 			inputNumberList = user.getInputNumber();
-			calculateScore();
-			printScore();
-			if (isAnswer()) {
+			String scoreString = score.getScoreOfNumbers(answerNumberList, inputNumberList);
+			OutputView.printGameScore(scoreString);
+			if (scoreString.equals(THREE_STRIKE)) {
 				OutputView.printAnswerMessage();
 				return;
 			}
@@ -79,30 +79,4 @@ public class BaseBallGame {
 		answerNumberList.addAll(tmp);
 	}
 
-
-	private void calculateScore() {
-		for (int i = 0; i < GAME_NUMBER_LENGTH; i++) {
-			if (answerNumberList.get(i).equals(inputNumberList.get(i))) {
-				score.addStrike();
-				continue;
-			}
-			if (answerNumberList.contains(inputNumberList.get(i))) {
-				score.addBall();
-			}
-		}
-	}
-
-	private boolean isAnswer() {
-		for (int i = 0; i < GAME_NUMBER_LENGTH; i++) {
-			if (!answerNumberList.get(i).equals(inputNumberList.get(i))) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	private void printScore() {
-		String scoreString = score.getScoreToString();
-		OutputView.printGameScore(scoreString);
-	}
 }

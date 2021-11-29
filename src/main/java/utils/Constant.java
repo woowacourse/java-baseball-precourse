@@ -6,6 +6,7 @@ public class Constant {
 	public static final String NOTHING = "낫싱";
 	public static final String BALL = "볼";
 	public static final String STRIKE = "스트라이크";
+	public static final String THREE_STRIKE = "3스트라이크";
 	public static final String SPACE = " ";
 
 	public static final String ZERO_STRING = "0";
