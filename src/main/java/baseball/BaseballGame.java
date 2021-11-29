@@ -24,24 +24,18 @@ public class BaseballGame {
 	 * 재시작 또는 종료를 한다.
 	 */
 	public void run() {
-		try {
-			System.out.println(START_GAME_MSG);
-			do {
-				computer.createNumbers();
-				playGame();
-			} while (checkRetry());
-			System.out.println(END_MSG);
-		} catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage());
-		}
+		System.out.println(START_GAME_MSG);
+		do {
+			computer.createNumbers();
+			playGame();
+		} while (checkRetry());
+		System.out.println(END_MSG);
 	}
 
 	/**
 	 * 한 회차의 게임 플레이를 하는 메소드.
-	 * @throws IllegalArgumentException User에서 input 도중 IllegalArgumentException이 발생할 경우
-	 * 그대로 예외를 던져서 상위 메소드에서 처리한다.
 	 */
-	public void playGame() throws IllegalArgumentException {
+	public void playGame() {
 		do {
 			user.inputNumbers();
 			countResult();
