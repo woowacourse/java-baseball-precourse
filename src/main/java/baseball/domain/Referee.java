@@ -11,14 +11,16 @@ import baseball.exception.NotPickedRefereeNumbers;
 
 public class Referee {
 
+    private static final int CHECK_BITS_LENGTH = 10;
+
     List<Integer> targetNumbers;
     boolean[] duplicationCheckBits;
 
     public void pickRandomNumbers() {
         targetNumbers = new ArrayList<>();
-        duplicationCheckBits = new boolean[10];
+        duplicationCheckBits = new boolean[CHECK_BITS_LENGTH];
 
-        while (targetNumbers.size() < NumberDigit.COUNT.getCount()) {
+        while (isCountLessThen(NumberDigit.COUNT.getCount())) {
             int number = Randoms.pickNumberInRange(NumberRange.START.getNumber(), NumberRange.END.getNumber());
             if (checkDuplicated(number)) {
                 continue;
@@ -44,6 +46,10 @@ public class Referee {
             }
         }
         return hint;
+    }
+
+    private boolean isCountLessThen(int count) {
+        return (targetNumbers.size() < count);
     }
 
     private boolean checkDuplicated(int number) {
