@@ -128,3 +128,10 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+## 기능 목록
+- 게임 초기 상태 설정
+- 상대 숫자 랜덤 배정
+- 유저 입력을 받고, 스트라이크/볼 개수 세기
+- 스트라이크/볼 개수에 따른 메세지 출력
+- 게임 재개 혹은 새로운 게임 시작 여부 결정
