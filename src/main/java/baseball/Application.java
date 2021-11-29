@@ -12,21 +12,6 @@ public class Application {
 		Game rightAnswer = new Game();
 		Game.init(rightAnswer);
 	}
-
-	static int getNewGameAnswerNumber(String str) {
-		int intValue;
-		try {
-			intValue = Integer.parseInt(str);
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException();
-		}
-
-		if (intValue != 1 && intValue != 2) {
-			throw new IllegalArgumentException();
-		}
-
-		return intValue;
-	}
 }
 
 class Array {
@@ -131,7 +116,22 @@ class Game {
 		System.out.println("게임을 새로 시작하려면 " + Application.NEW_GAME + ", 종료하려면 " + Application.QUIT_GAME + "를 입력하세요.");
 
 		String newGameAnswer = readLine();
-		return Application.getNewGameAnswerNumber(newGameAnswer);
+		return Game.getNewGameAnswerNumber(newGameAnswer);
+	}
+
+	private static int getNewGameAnswerNumber(String str) {
+		int intValue;
+		try {
+			intValue = Integer.parseInt(str);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException();
+		}
+
+		if (intValue != 1 && intValue != 2) {
+			throw new IllegalArgumentException();
+		}
+
+		return intValue;
 	}
 
 	public String toString() {
