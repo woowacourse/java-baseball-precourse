@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -115,9 +117,26 @@ public class User {
     }
 
     protected void validateGuessNumber(final String inputGuessNumber) {
-        if (!inputGuessNumber.matches(REGEX)) {
+        if (!inputGuessNumber.matches(REGEX) || checkDuplicateGuessNumber(inputGuessNumber)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private boolean checkDuplicateGuessNumber(final String inputGuessNumber) {
+        boolean checkDuplicate = false;
+
+        final Set<Character> guessNumbers = new HashSet<>();
+        char[] guessNumberCharacters = inputGuessNumber.toCharArray();
+
+        for (final char guessNumberCharacter : guessNumberCharacters) {
+            guessNumbers.add(guessNumberCharacter);
+        }
+
+        if (guessNumbers.size() < 3) {
+            checkDuplicate = true;
+        }
+
+        return checkDuplicate;
     }
 
     protected String makeAnswerNumber() {
@@ -126,7 +145,7 @@ public class User {
         while (checkLength(stringBuilder)) {
             int number = inputAnswerNumber();
 
-            if (validateAnswerNumber(stringBuilder, number)) {
+            if (!checkDuplicateAnswerNumber(stringBuilder, number)) {
                 connectAnswerNumbers(stringBuilder, number);
             }
         }
@@ -138,11 +157,7 @@ public class User {
         stringBuilder.append(number);
     }
 
-    private boolean validateAnswerNumber(final StringBuilder stringBuilder, final int number) {
-        return !checkDuplicate(stringBuilder, number);
-    }
-
-    private boolean checkDuplicate(final StringBuilder stringBuilder, final int number) {
+    private boolean checkDuplicateAnswerNumber(final StringBuilder stringBuilder, final int number) {
         return stringBuilder.toString().contains(String.valueOf(number));
     }
 
