@@ -4,15 +4,14 @@ public class Number {
 	private final int number;
 
 	public Number(int number) {
-		if (validateRange(number)) {
-			this.number = number;
-		} else {
-			throw new IllegalArgumentException("숫자는 1과 9 사이어야합니다.");
-		}
+		validateRange(number);
+		this.number = number;
 	}
 
-	private boolean validateRange(int number) {
-		return number >= 1 && number <= 9;
+	private void validateRange(int number) {
+		if (number < 1 || number > 9) {
+			throw new IllegalArgumentException("숫자는 1과 9 사이어야합니다.");
+		}
 	}
 
 	public int getNumber() {
