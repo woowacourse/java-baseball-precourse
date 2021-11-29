@@ -4,21 +4,23 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Computer {
-    public static ArrayList<Integer> numberGenerator(){
+    public ArrayList<Integer> numberGenerator(){
         ArrayList<Integer> computerNumbers = new ArrayList<Integer>();
         computerNumbers = RandomGenerator();
         return computerNumbers;
     }
 
-    public static ArrayList<Integer> RandomGenerator() {
+    public ArrayList<Integer> RandomGenerator() {
         ArrayList<Integer> numbers = new ArrayList<Integer>();
 
         while(numbers.size() < 3){
             int tmpRandomNumber = Randoms.pickNumberInRange(1, 9);
-            if (numbers.contains(tmpRandomNumber))
+            if (numbers.contains(tmpRandomNumber)) {
                 continue;
-            else
+            }
+            else {
                 numbers.add(tmpRandomNumber);
+            }
         }
         return numbers;
     }

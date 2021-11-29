@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class User {
-    public static ArrayList<Integer> numberGenerator() {
+    public ArrayList<Integer> numberGenerator() {
         ArrayList<Integer> userNumbers = new ArrayList<Integer>();
         System.out.print(Message.PLEASE_INPUT);
         String tmpUserNumbers = Console.readLine();

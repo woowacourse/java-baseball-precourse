@@ -3,7 +3,7 @@ package baseball;
 import java.util.ArrayList;
 
 public class Judgement {
-    public static int Judgement(ArrayList<Integer> computerNumbers, ArrayList<Integer> userNumbers){
+    public int Judgement(ArrayList<Integer> computerNumbers, ArrayList<Integer> userNumbers){
         int strikeCount = 0;
         int ballCount = 0;
 
