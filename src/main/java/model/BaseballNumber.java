@@ -1,10 +1,11 @@
 package model;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class BaseballNumber {
 	private int number;
-	private static final String NUMBER_PATTERN = "^[1-9]*$";
+	private static final String NUMBER_PATTERN = "^[1-9]";
 
 	public BaseballNumber(int number) {
 		this.number = number;
@@ -23,10 +24,16 @@ public class BaseballNumber {
 
 	@Override
 	public boolean equals(Object o) {
-		BaseballNumber that = (BaseballNumber)o;
-		if (this.number == that.number) {
+		if (this == o)
 			return true;
-		}
-		return false;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		BaseballNumber that = (BaseballNumber)o;
+		return number == that.number;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(number);
 	}
 }

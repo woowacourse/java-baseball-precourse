@@ -1,6 +1,7 @@
 package controller;
 
 import model.BaseballGame;
+import model.BaseballGameFlag;
 import view.Display;
 
 public class GameController {
@@ -9,11 +10,11 @@ public class GameController {
 	}
 
 	public static void runGame() {
-		int gameFlag = 1;
+		BaseballGameFlag baseballGameFlag = new BaseballGameFlag();
 
-		while (gameFlag == 1) {
+		while (baseballGameFlag.isStartGameFlag()) {
 			playGame();
-			gameFlag = InputController.chooseGameFlag();
+			baseballGameFlag.chooseGameFlag(InputController.inputNumber());
 		}
 	}
 
