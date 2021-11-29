@@ -20,6 +20,7 @@ public class BaseballGame implements Runnable {
         while (true) {
             Output.print(INPUT_NUMBER);
             BaseballCount result = baseballMatcher.match(new Baseball(Console.readLine()));
+            Output.print(result.toString());
             break;
         }
 

@@ -1,5 +1,7 @@
 package baseball.game;
 
+import org.mockito.internal.util.StringUtil;
+
 public class BaseballCount {
 
     private final Strike strike;
@@ -10,11 +12,31 @@ public class BaseballCount {
         this.ball = ball;
     }
 
-    public static class Strike {
-        private final int strike;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        isExistBallCount(sb);
+        isExistStrikeCount(sb);
+        return sb.toString();
+    }
 
-        public Strike(int strike) {
-            this.strike = strike;
+    private void isExistBallCount(StringBuilder sb) {
+        if (ball.count > 0) {
+            sb.append(ball.count).append("볼").append(" ");
+        }
+    }
+
+    private void isExistStrikeCount(StringBuilder sb) {
+        if (strike.count > 0) {
+            sb.append(strike.count).append("스트라이크");
+        }
+    }
+
+    public static class Strike {
+        private final int count;
+
+        public Strike(int count) {
+            this.count = count;
         }
 
         public static Strike of(int strike) {
@@ -24,10 +46,10 @@ public class BaseballCount {
     }
 
     public static class Ball {
-        private final int ball;
+        private final int count;
 
-        public Ball(int ball) {
-            this.ball = ball;
+        public Ball(int count) {
+            this.count = count;
         }
 
         public static Ball of(int ball) {
