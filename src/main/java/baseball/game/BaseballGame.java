@@ -1,7 +1,7 @@
 package baseball.game;
 
 import baseball.constants.GameMessages;
-import baseball.constants.NumbersConstraints;
+import baseball.constants.NumberListConstraints;
 import baseball.domain.TargetNumber;
 import baseball.domain.UserExpectation;
 import baseball.utils.NumberListGenerator;
@@ -15,9 +15,9 @@ public class BaseballGame {
     public BaseballGame() {
         this.targetNumber = new TargetNumber(
             NumberListGenerator.generateNonDuplicateNumbers(
-                NumbersConstraints.NUMBER_LENGTH.value(),
-                NumbersConstraints.MIN_NUMBER.value(),
-                NumbersConstraints.MAX_NUMBER.value()
+                NumberListConstraints.LIST_LENGTH.value(),
+                NumberListConstraints.MIN_NUMBER.value(),
+                NumberListConstraints.MAX_NUMBER.value()
             ));
         this.isRunning = true;
     }

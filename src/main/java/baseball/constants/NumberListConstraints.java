@@ -1,12 +1,12 @@
 package baseball.constants;
 
-public enum NumbersConstraints {
+public enum NumberListConstraints {
     MIN_NUMBER(1),
     MAX_NUMBER(9),
-    NUMBER_LENGTH(3);
+    LIST_LENGTH(3);
     private final int number;
 
-    NumbersConstraints(int number) {
+    NumberListConstraints(int number) {
         this.number = number;
     }
 

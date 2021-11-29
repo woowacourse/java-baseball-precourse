@@ -3,7 +3,7 @@ package baseball;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import baseball.constants.NumbersConstraints;
+import baseball.constants.NumberListConstraints;
 import baseball.domain.TargetNumber;
 import baseball.utils.NumberListGenerator;
 import java.util.Arrays;
@@ -19,11 +19,11 @@ public class TargetNumberTest {
     @Test
     void targetNumberValidationTest() {
         List<Integer> numbers = NumberListGenerator.generateNonDuplicateNumbers(
-            NumbersConstraints.NUMBER_LENGTH.value(),
-            NumbersConstraints.MIN_NUMBER.value(),
-            NumbersConstraints.MAX_NUMBER.value()
+            NumberListConstraints.LIST_LENGTH.value(),
+            NumberListConstraints.MIN_NUMBER.value(),
+            NumberListConstraints.MAX_NUMBER.value()
         );
-        assertEquals(numbers.size(), NumbersConstraints.NUMBER_LENGTH.value());
+        assertEquals(numbers.size(), NumberListConstraints.LIST_LENGTH.value());
         Set<Integer> set = new HashSet<>(numbers);
         assertEquals(numbers.size(), set.size());
     }

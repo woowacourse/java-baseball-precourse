@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.constants.NumbersConstraints;
+import baseball.constants.NumberListConstraints;
 import baseball.domain.TargetNumber;
 import baseball.domain.UserExpectation;
 
@@ -39,7 +39,7 @@ public class BaseballGameTurn {
         int strikes = 0;
         int number;
 
-        for (int i = 0; i < NumbersConstraints.NUMBER_LENGTH.value(); i++) {
+        for (int i = 0; i < NumberListConstraints.LIST_LENGTH.value(); i++) {
             number = userExpectation.getNumberInPosition(i);
             if (targetNumber.isStrike(i, number)) {
                 strikes++;
@@ -52,7 +52,7 @@ public class BaseballGameTurn {
         int balls = 0;
         int number;
 
-        for (int i = 0; i < NumbersConstraints.NUMBER_LENGTH.value(); i++) {
+        for (int i = 0; i < NumberListConstraints.LIST_LENGTH.value(); i++) {
             number = userExpectation.getNumberInPosition(i);
             if (targetNumber.isBall(i, number)) {
                 balls++;
@@ -62,6 +62,6 @@ public class BaseballGameTurn {
     }
 
     public boolean isNumberEqual() {
-        return this.strikes == NumbersConstraints.NUMBER_LENGTH.value();
+        return this.strikes == NumberListConstraints.LIST_LENGTH.value();
     }
 }

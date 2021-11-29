@@ -1,6 +1,6 @@
 package baseball.utils;
 
-import baseball.constants.NumbersConstraints;
+import baseball.constants.NumberListConstraints;
 import java.util.HashSet;
 import java.util.List;
 
@@ -22,15 +22,15 @@ public class GameValidator {
     public static void validateRange(List<Integer> numbers) throws IllegalArgumentException {
         boolean isInRange = numbers.stream()
             .allMatch(n ->
-                n >= NumbersConstraints.MIN_NUMBER.value()
-                    && n <= NumbersConstraints.MAX_NUMBER.value());
+                n >= NumberListConstraints.MIN_NUMBER.value()
+                    && n <= NumberListConstraints.MAX_NUMBER.value());
         if (!isInRange) {
             throw new IllegalArgumentException(OUT_OF_RANGE_MESSAGE);
         }
     }
 
     public static void validateSize(List<Integer> numbers) throws IllegalArgumentException {
-        if (numbers.size() != NumbersConstraints.NUMBER_LENGTH.value()) {
+        if (numbers.size() != NumberListConstraints.LIST_LENGTH.value()) {
             throw new IllegalArgumentException(WRONG_SIZE_MESSAGE);
         }
     }
