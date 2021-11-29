@@ -7,6 +7,7 @@ public class BaseballCount {
     private static final String NOTHING = "낫싱";
     private static final String BLANK = " ";
     private static final int EMPTY = 0;
+    private static final int WIN = 3;
 
     private final Strike strike;
     private final Ball ball;
@@ -41,6 +42,10 @@ public class BaseballCount {
         if (sb.length() == EMPTY) {
             sb.append(NOTHING);
         }
+    }
+
+    public boolean isWin() {
+        return strike.count == WIN;
     }
 
     public static class Strike {
