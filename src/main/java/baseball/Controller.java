@@ -30,9 +30,8 @@ public class Controller {
         gameService.playGame();
     }
 
-    private void gameOver() throws IllegalArgumentException{
+    private void gameOver(){
         SystemMessage.printGameOverMessage();
-        RequestInput.printRetryMessage();
     }
 
     /**
@@ -41,15 +40,18 @@ public class Controller {
      * 유저입력이 (2)                  : 종료
      */
     private void askRetry() throws IllegalArgumentException{
-        String input = Console.readLine();
-        int inputNum = Integer.parseInt(input);
+        RequestInput.printRetryMessage();
+        if (getInputNum() == RETRY) {
+            run();
+        }
+    }
+
+    private int getInputNum() throws IllegalArgumentException{
+        int inputNum = Integer.parseInt(Console.readLine());
 
         if (inputNum == 0 || inputNum > GAME_OVER) {
             throw new IllegalArgumentException();
         }
-
-        if (inputNum == RETRY) {
-            run();
-        }
+        return inputNum;
     }
 }
