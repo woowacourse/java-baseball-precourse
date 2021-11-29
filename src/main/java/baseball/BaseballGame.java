@@ -12,15 +12,12 @@ public class BaseballGame {
 	public BaseballGame(){
 		while (!gameRetry) {
 			String computerNumber = BaseballGameUtils.makeThreeLengthRandomNumber();
-			System.out.println("컴퓨터넘버 : "+computerNumber);
 			threeStrike = false;
 			while (!threeStrike) {
 				String userNumber = BaseballGameUtils.getNumberFromUser();
 				checkScore(computerNumber, userNumber);
 			}
 		}
-		
-		
 	}
 	
 	public void checkScore(String computerNumber, String userNumber) { 
@@ -28,7 +25,6 @@ public class BaseballGame {
 		int countStrikes = 0;
 		countBalls = checkBall(computerNumber, userNumber);
 		countStrikes = checkStrike(computerNumber, userNumber);
-		
 		if (countBalls + countStrikes == 0) {
 			System.out.println("낫싱");
 		}

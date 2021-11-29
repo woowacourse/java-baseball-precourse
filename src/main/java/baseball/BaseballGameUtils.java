@@ -17,7 +17,7 @@ public class BaseballGameUtils {
 	}
 	
 	public static String getNumberFromUser() {
-		System.out.print("숫자를 입력해주세요 : "); //수정
+		System.out.print("숫자를 입력해주세요  : "); //수정
 		String number = Console.readLine();
 		validateUserNumber(number);
 		return number;
@@ -34,7 +34,6 @@ public class BaseballGameUtils {
 		if (number.equals("2")) {
 			return true;
 		}
-		
 		return true;
 	}
 	
@@ -42,7 +41,6 @@ public class BaseballGameUtils {
 		if (number.length()!=3) {
 			throw new IllegalArgumentException("세자리 숫자가 아닙니다.");
 		}
-		
 		for (int i = 0; i < number.length(); i++) {
 			char compareChar = number.charAt(i);
 			if (!Character.isDigit(compareChar)) {
