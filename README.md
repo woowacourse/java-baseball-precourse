@@ -153,8 +153,8 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
         - 입력한 숫자가 서로 다른 숫자인가?
         - 입력한 숫자의 길이가 3인가?
         - 예외 발생시 IllegalArgumentException 발생 후 프로그램 종료
+    - 게임 결과가 정답이면 게임을 계속할지 종료시킬지를 입력(재시작 1/ 종료 2)
     - 게임 결과를 출력
 
 - 정답 시 게임 재시작 or 종료 결정
-    - 게임 결과가 정답이면 게임을 계속할지 종료시킬지를 입력(재시작 1/ 종료 2)
     - 재시작일 경우 다시 게임을 진행/ 종료일 경우 프로그램 종료
