@@ -7,9 +7,6 @@ public class Player {
     protected List<Integer> digits;
 
     protected Player(){}
-    protected Player(List<Integer> digits) {
-        this.digits = digits;
-    }
 
     public boolean hasDigit(Integer digit) {
         return digits.contains(digit);
@@ -21,5 +18,9 @@ public class Player {
 
     public Integer getDigit(int index) {
         return digits.get(index);
+    }
+
+    public void setDigits(List<Integer> digits) {
+        this.digits = digits;
     }
 }

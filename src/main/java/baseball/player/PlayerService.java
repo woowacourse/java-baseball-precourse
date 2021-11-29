@@ -6,14 +6,14 @@ import java.util.List;
 
 public class PlayerService {
 
-    private Computer computer;
-    private User user;
+    private Player computer;
+    private Player user;
     private int strikeScore = 0;
     private int ballScore = 0;
 
     private PlayerService () {
-        computer = new Computer();
-        user = new User();
+        computer = new Player();
+        user = new Player();
     }
 
     private static class InnerInstanceClazz {
@@ -45,13 +45,12 @@ public class PlayerService {
     }
 
     public void setUserGameInputDigits(List<Integer> digits) {
-        user.setGameDigits(digits);
+        user.setDigits(digits);
     }
 
     public void setComputerGameRandomDigits() {
-        computer.setGameDigits();
+        computer.setDigits(RandomDigitsGenerator.createRandomDigits());
     }
-
 
     public int getStrikeScore() {
         return strikeScore;
