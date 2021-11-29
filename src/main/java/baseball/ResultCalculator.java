@@ -14,17 +14,20 @@ public class ResultCalculator {
 	ResultCalculator(String inputBallNumbers, String randomBallNumbers) {
 		this.inputBallNumbers = inputBallNumbers.toCharArray();
 		this.randomBallNumbers = randomBallNumbers.toCharArray();
+
 		ball = 0;
 		strike = 0;
 
 		setNumberSet();
+	}
 
+	public void calculateResults() {
 		for (int i = 0; i < BALL_NUMBERS_LENGTH; i++) {
 			calculateResult(this.inputBallNumbers[i], this.randomBallNumbers[i]);
 		}
 	}
 
-	public void calculateResult(char inputNumber, char randomNumber) {
+	private void calculateResult(char inputNumber, char randomNumber) {
 		if (isInNumberSet(inputNumber)) {
 			if (isSamePlace(inputNumber, randomNumber)) {
 				strike++;
@@ -34,15 +37,15 @@ public class ResultCalculator {
 		}
 	}
 
-	public boolean isInNumberSet(char inputNumber) {
+	private boolean isInNumberSet(char inputNumber) {
 		return numberSet.contains(inputNumber);
 	}
 
-	public boolean isSamePlace(char inputNumber, char randomNumber) {
+	private boolean isSamePlace(char inputNumber, char randomNumber) {
 		return inputNumber == randomNumber;
 	}
 
-	public void setNumberSet() {
+	private void setNumberSet() {
 		numberSet = new HashSet<>();
 		for (char number : randomBallNumbers) {
 			numberSet.add(number);
