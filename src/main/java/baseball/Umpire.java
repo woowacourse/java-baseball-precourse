@@ -6,13 +6,20 @@ import communication.Text;
 
 public class Umpire {
     private final int ESSENTIAL_NUMBER_LENGTH = 3;
+    private final int RESET = 0;
     private String computersNumber;
     private String usersNumber;
     private HashMap<String, Integer> hintStorage;
+    private String hint;
 
     public Umpire(String computersNumber) {
         this.computersNumber = computersNumber;
         this.hintStorage = new HashMap<>();
+    }
+
+    private void resetHintStorage() {
+        hintStorage.put(Text.STRIKE, RESET);
+        hintStorage.put(Text.BALL, RESET);
     }
 
     private boolean isNothing() {
@@ -56,5 +63,19 @@ public class Umpire {
         }
 
         hintStorage.put(Text.BALL, ballCount - hintStorage.get(Text.STRIKE));
+    }
+
+    public void compareNumbers(String usersNumber) {
+        resetHintStorage();
+        this.usersNumber = usersNumber;
+
+        if (isNothing()) {
+            hint = Text.NOTHING;
+        } else {
+            countStrike();
+            countBall();
+            hint = "";
+        }
+
     }
 }

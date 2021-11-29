@@ -13,9 +13,11 @@ public class PlayGame {
     private String computersNumber;
     private String usersNumber;
     private InputManagement inputManager = new InputManagement();
+    private Umpire umpire;
 
     public PlayGame() {
-
+        assignComputerNumber();
+        this.umpire = new Umpire(this.computersNumber);
     }
 
     private void assignComputerNumber() {
@@ -39,5 +41,10 @@ public class PlayGame {
     private void assignUserNumber() {
         inputManager.requestUserInput();
         this.usersNumber = inputManager.provideUserInput();
+    }
+
+    private void playOneSet() {
+        assignUserNumber();
+        umpire.compareNumbers(usersNumber);
     }
 }
