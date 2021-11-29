@@ -7,6 +7,7 @@ import java.util.Set;
 
 import baseball.type.ExceptionType;
 import baseball.type.NumberRangeType;
+import baseball.type.StatusType;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
@@ -66,6 +67,19 @@ public class Player {
 	private void validatePlayerNumberLength(int enterPlayerNumberLength) {
 		if (enterPlayerNumberLength != NumberRangeType.ANSWER_SIZE.getNumberRange()) {
 			throw new IllegalArgumentException(ExceptionType.OUT_OF_LENGTH.getMessage());
+		}
+	}
+
+	public boolean selectRestartOrFinish() {
+		String enterPlayerNumber = enterInput();
+		validateRestartOrFinishNumber(enterPlayerNumber);
+		return enterPlayerNumber.equals(StatusType.RESTART.getStatus());
+	}
+
+	private void validateRestartOrFinishNumber(String enterPlayerNumber) {
+		if (!enterPlayerNumber.equals(StatusType.RESTART.getStatus()) && !enterPlayerNumber.equals(
+			StatusType.FINISH.getStatus())) {
+			throw new IllegalArgumentException(ExceptionType.NOT_RESTART_AND_FINISH.getMessage());
 		}
 	}
 }

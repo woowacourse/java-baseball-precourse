@@ -1,8 +1,6 @@
 package baseball.domain;
 
-import baseball.type.ExceptionType;
 import baseball.type.NumberRangeType;
-import baseball.type.StatusType;
 import baseball.view.BaseballGameView;
 
 public class BaseballGame {
@@ -34,16 +32,7 @@ public class BaseballGame {
 
 	public boolean isRestart() {
 		BaseballGameView.printRestartOrFinishGameMessage();
-		String enterPlayerNumber = player.enterInput();
-		validateRestartOrFinishNumber(enterPlayerNumber);
-		return enterPlayerNumber.equals(StatusType.RESTART.getStatus());
-	}
-
-	private void validateRestartOrFinishNumber(String enterPlayerNumber) {
-		if (!enterPlayerNumber.equals(StatusType.RESTART.getStatus()) && !enterPlayerNumber.equals(
-			StatusType.FINISH.getStatus())) {
-			throw new IllegalArgumentException(ExceptionType.NOT_RESTART_AND_FINISH.getMessage());
-		}
+		return player.selectRestartOrFinish();
 	}
 
 	public void generateAnswerNumbers() {
