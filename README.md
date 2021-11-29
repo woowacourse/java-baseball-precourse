@@ -18,8 +18,8 @@
     * 사용자입력을 분석
     * 1부터 9까지 중복되지않는 3자리수가 아닐 시 IllegalArgumentException() 발생
 
-* **Constants.java**
-  * 프로그램에 전체적으로 사용되는 상수를 책임지는 Class
+* **Materials.java**
+  * 프로그램에 전체적으로 사용되는 상수와 변수를 책임지는 Class
 
 ## 프로그램 진행
 
