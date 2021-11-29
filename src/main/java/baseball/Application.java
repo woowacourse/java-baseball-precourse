@@ -1,7 +1,18 @@
 package baseball;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Application {
-    public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
-    }
+	private static final int NUMBER_LENGTH = 3;
+
+	public static void main(String[] args) {
+		Set<Integer> answer = new LinkedHashSet<>();
+		while (answer.size() < NUMBER_LENGTH) {
+			int randomNumber = Randoms.pickNumberInRange(1, 9);
+			answer.add(randomNumber);
+		}
+	}
 }
