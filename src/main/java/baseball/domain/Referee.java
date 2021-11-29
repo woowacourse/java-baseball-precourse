@@ -17,9 +17,9 @@ public class Referee {
 	public boolean isWrongAnswer(Integer[] userExpectedAnswer, Integer[] answer) {
 		initBallAndStrike();
 
-		for (int i = 0; i < userExpectedAnswer.length; i++) {
-			int findIndex = Arrays.asList(answer).indexOf(userExpectedAnswer[i]);
-			ballAndStrikeCount(i, findIndex);
+		for (int expectedAnswerIndex = 0; expectedAnswerIndex < userExpectedAnswer.length; expectedAnswerIndex++) {
+			int findIndex = Arrays.asList(answer).indexOf(userExpectedAnswer[expectedAnswerIndex]);
+			ballAndStrikeCount(expectedAnswerIndex, findIndex);
 		}
 
 		if (strike == NUMBER_LENGTH) {
@@ -30,8 +30,8 @@ public class Referee {
 		return true;
 	}
 
-	private void ballAndStrikeCount(int i, int findIndex) {
-		if (i == findIndex) {
+	private void ballAndStrikeCount(int expectedAnswerIndex, int findIndex) {
+		if (expectedAnswerIndex == findIndex) {
 			strike++;
 		} else if (findIndex > -1) {
 			ball++;
