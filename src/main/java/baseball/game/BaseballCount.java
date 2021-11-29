@@ -1,8 +1,12 @@
 package baseball.game;
 
-import org.mockito.internal.util.StringUtil;
-
 public class BaseballCount {
+
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
+    private static final String NOTHING = "낫싱";
+    private static final String BLANK = " ";
+    private static final int EMPTY = 0;
 
     private final Strike strike;
     private final Ball ball;
@@ -17,18 +21,25 @@ public class BaseballCount {
         StringBuilder sb = new StringBuilder();
         isExistBallCount(sb);
         isExistStrikeCount(sb);
+        isEmptyResult(sb);
         return sb.toString();
     }
 
     private void isExistBallCount(StringBuilder sb) {
         if (ball.count > 0) {
-            sb.append(ball.count).append("볼").append(" ");
+            sb.append(ball.count).append(BALL).append(BLANK);
         }
     }
 
     private void isExistStrikeCount(StringBuilder sb) {
         if (strike.count > 0) {
-            sb.append(strike.count).append("스트라이크");
+            sb.append(strike.count).append(STRIKE);
+        }
+    }
+
+    private void isEmptyResult(StringBuilder sb) {
+        if (sb.length() == EMPTY) {
+            sb.append(NOTHING);
         }
     }
 
