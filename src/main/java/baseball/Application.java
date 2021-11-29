@@ -1,51 +1,52 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
+	public static void main(String[] args) {
+		//TODO: 숫자 야구 게임 구현
 
-        // 게임 시작
-        Game game = new Game();
-        while (game.isPlay()) {
-            // 사용자 입력
-            View.input();
-            String input = Console.readLine();
-            Balls user = new Balls(convertStringToNumberList(input));
-            // 힌트 출력
-            Hint hint = new Hint(game.getComputer());
-            hint.setHint(user);
-            View.hint(hint);
-            // 힌트에 따라 게임 진행
-            if (!game.checkhint(hint)) {
-                continue;
-            }
-            View.success();
-            game.choicePlay(Console.readLine());
-        }
-    }
+		// 게임 시작
+		Game game = new Game();
+		while (game.isPlay()) {
+			// 사용자 입력
+			View.input();
+			String input = Console.readLine();
+			Balls user = new Balls(convertStringToNumberList(input));
+			// 힌트 출력
+			Hint hint = new Hint(game.getComputer());
+			hint.setHint(user);
+			View.hint(hint);
+			// 힌트에 따라 게임 진행
+			if (!game.checkhint(hint)) {
+				continue;
+			}
+			View.success();
+			game.choicePlay(Console.readLine());
+		}
+	}
 
-    public static List<Integer> convertStringToNumberList(String input) {
-        validateNumbers(input);
-        List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            result.add(input.charAt(i) - '0');
-        }
-        return result;
-    }
+	public static List<Integer> convertStringToNumberList(String input) {
+		validateNumbers(input);
+		List<Integer> result = new ArrayList<>();
+		for (int i = 0; i < input.length(); i++) {
+			result.add(input.charAt(i) - '0');
+		}
+		return result;
+	}
 
-    public static void validateNumbers(String input) {
-        for (int i = 0; i < input.length(); i++) {
-            validateNumber(input.charAt(i));
-        }
-    }
+	public static void validateNumbers(String input) {
+		for (int i = 0; i < input.length(); i++) {
+			validateNumber(input.charAt(i));
+		}
+	}
 
-    public static void validateNumber(char c) {
-        if (!(Character.isDigit(c))) {
-            throw new IllegalArgumentException();
-        }
-    }
+	public static void validateNumber(char c) {
+		if (!(Character.isDigit(c))) {
+			throw new IllegalArgumentException();
+		}
+	}
 }
