@@ -23,10 +23,7 @@ public class Game {
 
 	public void startRound() {
 		while (true) {
-			Numbers numbers = InputView.inputNumbers();
-
-			PredictionResult predictionResult = targetNumbers.compareTo(numbers);
-
+			PredictionResult predictionResult = getPrediction();
 			OutputView.printHint(predictionResult);
 
 			if (predictionResult.isWin()) {
@@ -38,6 +35,11 @@ public class Game {
 	private boolean checkRestart() {
 		RestartOrQuitSelection selection = InputView.inputRestart();
 		return selection.isRestart();
+	}
+
+	private PredictionResult getPrediction() {
+		Numbers numbers = InputView.inputNumbers();
+		return this.targetNumbers.compareTo(numbers);
 	}
 
 }
