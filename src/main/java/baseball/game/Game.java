@@ -17,7 +17,6 @@ public class Game {
     }
 
     public void start() {
-        System.out.println(answerList);
         while (!this.correctAnswer) {
             this.correctAnswer = this.playGame();
         }
