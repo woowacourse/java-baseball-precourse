@@ -11,17 +11,17 @@ import utils.NumberGenerator;
 
 public class NumberGeneratorTest {
 
-    @Test
-    public void generateRandomNumber() {
+	@Test
+	public void generateRandomNumber() {
 
-        int n = NumberAttribute.DIGIT_NUMBER.getValue();
+		int n = NumberAttribute.DIGIT_NUMBER.getValue();
 
-        String randomNumber = NumberGenerator.generateRandomNumber();
-        Assertions.assertEquals(n, randomNumber.length(),
-                String.format("길이가 %d인 숫자가 아님", n));
+		String randomNumber = NumberGenerator.generateRandomNumber();
+		Assertions.assertEquals(n, randomNumber.length(),
+			String.format("길이가 %d인 숫자가 아님", n));
 
-        String pattern = "^[0-9]*$";
-        Assertions.assertTrue(Pattern.matches(pattern, randomNumber),
-                "1에서 9사이의 정수에 해당하지 않는 수가 포함됨");
-    }
+		String pattern = "^[0-9]*$";
+		Assertions.assertTrue(Pattern.matches(pattern, randomNumber),
+			"1에서 9사이의 정수에 해당하지 않는 수가 포함됨");
+	}
 }

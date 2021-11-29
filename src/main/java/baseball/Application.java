@@ -3,15 +3,15 @@ package baseball;
 
 public class Application {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        //TODO: 숫자 야구 게임 구현
-        Game game = new Game();
+		//TODO: 숫자 야구 게임 구현
+		Game game = new Game();
 
-        do {
-            game.init();
-            game.playGame();
-        } while (game.checkUserWantRestart());
-    }
+		do {
+			game.init();
+			game.playGame();
+		} while (game.checkUserWantRestart());
+	}
 }
 
