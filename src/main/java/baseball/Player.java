@@ -28,8 +28,9 @@ public class Player {
 
 	public boolean isNumber() {
 		for (char eachNumber : inputNumber) {
-			if (!Character.isDigit(eachNumber))
+			if (!Character.isDigit(eachNumber)) {
 				return false;
+			}
 		}
 		return true;
 	}
