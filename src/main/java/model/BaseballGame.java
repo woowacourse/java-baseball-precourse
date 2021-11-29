@@ -4,8 +4,9 @@ public class BaseballGame {
 	ComputerNumbers computerNumbers;
 	PlayerNumbers playerNumbers;
 
-	public BaseballGame() {
+	public BaseballGame(String[] numbers) {
 		makeAnswerNumbers();
+		passPlayerNumbers(numbers);
 	}
 
 	private void makeAnswerNumbers() {

@@ -18,34 +18,33 @@ public class GameController {
 	}
 
 	private static void playGame() {
-		BaseballGame baseballGame = new BaseballGame();
 		OutputDisplay.pleaseInputNumbers();
-		baseballGame.passPlayerNumbers(InputController.inputNumbers());
+		BaseballGame baseballGame = new BaseballGame(InputController.inputNumbers());
 
 		while (baseballGame.isNotGameOver()) {
 			if (baseballGame.isNoHint()) {
 				OutputDisplay.showNothing();
-			} else {
+			} else if (!baseballGame.isNoHint()) {
 				showGameHints(baseballGame);
 			}
-
-			OutputDisplay.enterBlank();
 			OutputDisplay.pleaseInputNumbers();
 			baseballGame.passPlayerNumbers(InputController.inputNumbers());
 		}
 
-		OutputDisplay.playNextGame(baseballGame.giveStrikeCount());
+		OutputDisplay.chooseNextGame(baseballGame.giveStrikeCount());
 	}
 
 	private static void showGameHints(BaseballGame baseballGame) {
 		int ball = baseballGame.giveBallCount();
 		int stirke = baseballGame.giveStrikeCount();
 
-		if (ball != 0) {
+		if (ball > 0) {
 			OutputDisplay.showBallCount(ball);
 		}
-		if (stirke != 0) {
+		if (stirke > 0) {
 			OutputDisplay.showStrikeCount(stirke);
 		}
+
+		OutputDisplay.enterBlank();
 	}
 }
