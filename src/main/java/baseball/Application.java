@@ -9,28 +9,30 @@ public class Application {
 		int isGameEnd;
 		do {
 			gameStart();
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 			isGameEnd = Integer.parseInt(readLine());
 		} while (isGameEnd == 1);
 	}
 
 	static void gameStart() {
+		target.generateTargetNumber();
 		int[] ballsAndStrikes;
 		do {
 			System.out.print("숫자를 입력해주세요 : ");
-			String userInput =  readLine();
+			String userInput = readLine();
 
 			checkUserInput(userInput);
 			ballsAndStrikes = target.compareWith(userInput);
 			printResultOfInput(ballsAndStrikes);
-		} while(ballsAndStrikes[Target.STRIKE] != 3);
+		} while (ballsAndStrikes[Target.STRIKE] != 3);
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
 	}
 
 	static void checkUserInput(String userInput) {
-		if (userInput.length() > target.getLength()) {
+		if (userInput.length() != target.getLength()) {
 			throw new IllegalArgumentException();
 		}
 		for (int i = 0; i < userInput.length(); i++) {
-			System.out.println(userInput.charAt(i)-'0');
 			if (userInput.charAt(i) - '0' < target.getRangeBegin() ||
 				userInput.charAt(i) - '0' > target.getRangeEnd()) {
 				throw new IllegalArgumentException();
@@ -43,7 +45,10 @@ public class Application {
 			System.out.print(ballsAndStrikes[Target.BALL] + "볼 ");
 		}
 		if (ballsAndStrikes[Target.STRIKE] > 0) {
-			System.out.println(ballsAndStrikes[Target.STRIKE] + "스트라이크");
+			System.out.print(ballsAndStrikes[Target.STRIKE] + "스트라이크");
+		}
+		if (ballsAndStrikes[Target.BALL] == 0 && ballsAndStrikes[Target.STRIKE] == 0) {
+			System.out.print("낫싱");
 		}
 		System.out.println();
 	}

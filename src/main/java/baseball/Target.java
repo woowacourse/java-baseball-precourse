@@ -4,7 +4,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Target {
 	public static final int BALL = 0;
-	public static final int STRIKE = 0;
+	public static final int STRIKE = 1;
 
 	private String targetNumber;
 
