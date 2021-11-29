@@ -3,9 +3,9 @@ package baseball;
 import baseball.controller.GameHandler;
 
 public class Application {
-    public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
-        GameHandler game = GameHandler.getInstance();
-        game.run();
-    }
+	public static void main(String[] args) {
+		//TODO: 숫자 야구 게임 구현
+		GameHandler game = GameHandler.getInstance();
+		game.run();
+	}
 }
