@@ -2,8 +2,10 @@ package baseball;
 
 import java.util.HashSet;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import communication.InputManagement;
+import communication.Text;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class PlayGame {
     private final int ESSENTIAL_NUMBER_LENGTH = 3;
@@ -52,5 +54,32 @@ public class PlayGame {
         inputManager.requestUserChoice();
 
         return inputManager.provideUserChoice();
+    }
+
+    private void resetGame(String usersChoice) {
+
+        if (usersChoice.equals(Text.RESTART)) {
+            assignComputerNumber();
+            umpire = new Umpire(computersNumber);
+        } else if (usersChoice.equals(Text.END)) {
+            return;
+        }
+
+    }
+
+    public void play() {
+        String usersChoice = Text.RESTART;
+
+        while (usersChoice.equals(Text.RESTART)) {
+            playOneSet();
+
+            if (umpire.isWin()) {
+                System.out.println(Text.WIN);
+                usersChoice = restartOrEnd();
+                resetGame(usersChoice);
+            }
+
+        }
+
     }
 }
