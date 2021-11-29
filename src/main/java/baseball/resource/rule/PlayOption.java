@@ -2,6 +2,8 @@ package baseball.resource.rule;
 
 import baseball.exception.InputOutOfOptionsMessageException;
 
+import java.util.Arrays;
+
 public enum PlayOption {
 
     PLAY(1, true), STOP(2, false);
@@ -23,12 +25,10 @@ public enum PlayOption {
     }
 
     public static PlayOption of(int option) {
-        for (PlayOption playOption : PlayOption.values()) {
-            if (playOption.option == option) {
-                return playOption;
-            }
-        }
-        throw new InputOutOfOptionsMessageException();
+        return Arrays.stream(PlayOption.values())
+                .filter(playOption -> playOption.option == option)
+                .findAny()
+                .orElseThrow(InputOutOfOptionsMessageException::new);
     }
 
 }
