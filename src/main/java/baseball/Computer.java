@@ -20,4 +20,9 @@ public class Computer {
             }
         }
     }
+
+    //숫자 입력 메세지 함수
+    public void PrintNumMSG(){
+        System.out.print("숫자를 입력해주세요 : ");
+    }
 }
