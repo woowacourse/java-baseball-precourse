@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputManagement {
     private final int ESSENTIAL_NUMBER_LENGTH = 3;
+    private final int ESSENTIAL_CHOICE_LENGTH = 1;
     private final String REGEX_NUMBER = "^[1-9]*$";
+    private final String REGEX_CHOICE = "^[1-2]*$";
 
     public void requestUserInput() {
         System.out.println(Text.INPUT_REQUEST);
@@ -39,6 +41,19 @@ public class InputManagement {
         return true;
     }
 
+    private boolean isValidUsersChoice(String usersChoice) {
+
+        if (usersChoice.length() != ESSENTIAL_CHOICE_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+
+        if (!usersChoice.matches(REGEX_CHOICE)) {
+            throw new IllegalArgumentException();
+        }
+
+        return true;
+    }
+
     public String provideUserInput() {
         String usersNumber = receiveUserInput();
 
@@ -52,6 +67,10 @@ public class InputManagement {
     public String provideUserChoice() {
         String usersChoice = receiveUserInput();
 
-        return usersChoice;
+        if (isValidUsersChoice(usersChoice)) {
+            return usersChoice;
+        }
+
+        return null;
     }
 }
