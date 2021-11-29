@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import baseball.AppConfig;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberBallSetFactory {
-
 
 	private NumberBallSetFactory() {
 	}
@@ -19,5 +20,9 @@ public class NumberBallSetFactory {
 			set.add(Randoms.pickNumberInRange(NumberBall.MIN, NumberBall.MAX));
 		}
 		return new ArrayList<>(set);
+	}
+
+	protected static List<Integer> generateNumbersFromInput(String input) {
+		return input.chars().mapToObj(x -> Character.digit(x, AppConfig.RADIX)).collect(Collectors.toList());
 	}
 }

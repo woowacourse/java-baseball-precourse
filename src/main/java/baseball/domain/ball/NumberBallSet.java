@@ -1,13 +1,7 @@
 package baseball.domain.ball;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-import baseball._domain.HintType;
 
 public class NumberBallSet {
 
@@ -21,6 +15,10 @@ public class NumberBallSet {
 
 	public static NumberBallSet generateRandom() {
 		return from(NumberBallSetFactory.generateNumbersFromRandom());
+	}
+
+	public static NumberBallSet generateFromInput(String input) {
+		return from(NumberBallSetFactory.generateNumbersFromInput(input));
 	}
 
 	private static NumberBallSet from(List<Integer> ints) {
