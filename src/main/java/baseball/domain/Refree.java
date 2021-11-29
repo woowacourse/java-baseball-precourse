@@ -23,7 +23,7 @@ public class Refree {
 
 	private List<Integer> checkFormatAndConvert(String stringNumbers) {
 		List<Integer> integerNumbers = new ArrayList<>();
-		for (String stringNumber : stringNumbers.split(EMPTY_STRING)) {
+		for (String stringNumber : stringNumbers.split(NO_STRING)) {
 			try {
 				integerNumbers.add(Integer.valueOf(stringNumber));
 			} catch (NumberFormatException e) {
@@ -67,23 +67,21 @@ public class Refree {
 	}
 
 	public String compare(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-		StringBuilder result = new StringBuilder();
 		int sameNumberCount = countSameNumber(computerNumbers, playerNumbers);
 		if (sameNumberCount == 0) {
-			return result.append(RESULT_NOTHING).toString();
-		}
-		Integer strikeCount = countStrike(computerNumbers, playerNumbers);
-		Integer ballCount = countBall(sameNumberCount, strikeCount);
-		if (ballCount > 0) {
-			result.append(ballCount);
-			result.append(RESULT_BALL);
-			result.append(EMPTY_STRING);
-		}
-		if (strikeCount > 0) {
-			result.append(strikeCount);
-			result.append(RESULT_STRIKE);
+			// return result.append(RESULT_NOTHING).toString();
+			return RESULT_NOTHING;
 		}
 
+		StringBuilder result = new StringBuilder();
+		int strikeCount = countStrike(computerNumbers, playerNumbers);
+		int ballCount = countBall(sameNumberCount, strikeCount);
+		if (ballCount > 0) {
+			result.append(ballCount + RESULT_BALL + EMPTY_STRING);
+		}
+		if (strikeCount > 0) {
+			result.append(strikeCount + RESULT_STRIKE);
+		}
 		return result.toString();
 	}
 
