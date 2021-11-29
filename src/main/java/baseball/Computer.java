@@ -74,4 +74,8 @@ public class Computer {
             System.out.println(ballNum + "볼 " + strikeNum + "스트라이크");
     }
 
+    public void PrintRestartMSG(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
 }

@@ -56,5 +56,13 @@ public class Player {
         }
     }
 
+    //재시작 입력받는 함수
+    public int InputRestart() {
+        String restartNum = Console.readLine();
+        if(Integer.parseInt(restartNum) != 1 && Integer.parseInt(restartNum) != 2) {
+            throw new IllegalArgumentException("1 또는 2가 아님");
+        }
+        return Integer.parseInt(restartNum);
+    }
 
 }

@@ -22,8 +22,16 @@ public class Gameplay {
         while(true) {
             computer.PrintNumMSG();
             ArrayList<Integer> playerNum = player.InputNum();
-            if(computer.BallStrikeNum(playerNum) == true)
+            if(computer.BallStrikeNum(playerNum))
                 break;
+        }
+
+        computer.PrintRestartMSG();
+
+        if(player.InputRestart() == 1){
+            Play();
+        } else {
+            System.exit(0);
         }
 
     }
