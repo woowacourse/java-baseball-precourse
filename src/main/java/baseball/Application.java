@@ -16,9 +16,6 @@ public class Application {
 		Player player = new Player();
 		Application application = new Application(computer, player);
 		application.computer.makeRandomNumber();
-		System.out.print(application.computer.randomNumber[0]);
-		System.out.print(application.computer.randomNumber[1]);
-		System.out.println(application.computer.randomNumber[2]);
 		while (application.continueGame) {
 			application.player.scanInputNumber();
 			application.countBall();
@@ -26,6 +23,7 @@ public class Application {
 			application.printHint();
 			application.checkThreeStrike();
 			application.computer.setInitial();
+			application.restartGame();
 		}
 	}
 
@@ -78,6 +76,15 @@ public class Application {
 		if (computer.getStrike() == Computer.NUMBER_SIZE) {
 			continueGame = false;
 			printEndGame();
+		}
+	}
+
+	public void restartGame() {
+		if (!continueGame) {
+			if (player.scanRestartNumber()) {
+				continueGame = true;
+				computer.makeRandomNumber();
+			}
 		}
 	}
 }

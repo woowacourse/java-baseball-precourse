@@ -3,7 +3,20 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
+	public static final String RESTART_ONE = "1";
+	public static final String RESTART_TWO = "2";
+
 	public char[] inputNumber = new char[Computer.NUMBER_SIZE];
+
+	public boolean scanRestartNumber() {
+		String inputNumber = Console.readLine();
+		if (inputNumber.equals(RESTART_ONE)) {
+			return true;
+		} else if (inputNumber.equals(RESTART_TWO)) {
+			return false;
+		}
+		throw new IllegalArgumentException();
+	}
 
 	public char getInputNumber(int index) {
 		return inputNumber[index];
