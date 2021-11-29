@@ -10,7 +10,7 @@ public class Application {
         while (replayFlag) {
             numberGenerator threeDigitObject = new numberGenerator();
             threeDigitObject.genThreeRandomDigits();
-            System.out.println(threeDigitObject.getThreeDigits());
+            // System.out.println(threeDigitObject.getThreeDigits());
 
             replayFlag = execute(threeDigitObject);
         }
