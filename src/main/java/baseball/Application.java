@@ -8,11 +8,12 @@ import java.util.stream.Stream;
 public class Application {
     public static void main(String[] args) {
         boolean flag = true;
-//        flag 가 true(2)가 되면 while 문이 종료되면서 게임 종료
+//        flag 가 false(2)가 되면 while 문이 종료되면서 게임 종료
         while (flag) {
             int[] randomNum = randomNum();
             choiceNumPlay(randomNum);
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             flag = getFlag();
         }
     }
@@ -21,13 +22,20 @@ public class Application {
         while (true) {
             int[] arrayNum = inputNum();
             arrayNumFlag(arrayNum);
-            int strike = strikeCount(arrayNum,randomNum);
-            int ball = ballCount(strike,arrayNum,randomNum);
+            int strike = strikeCount(arrayNum, randomNum);
+            int ball = ballCount(strike,arrayNum, randomNum);
             countJudge(strike, ball);
             if (strike == 3) break;
         }
     }
 
+    //    숫자를 입력받을 때 사용하는 매소드
+    private static int[] inputNum() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputNum = Console.readLine();
+        int[] arrayNum = Stream.of(inputNum.split("")).mapToInt(Integer::parseInt).toArray();
+        return arrayNum;
+    }
 
     private static boolean getFlag() {
         boolean flag;
@@ -58,13 +66,7 @@ public class Application {
         int[] randomNum = {first,second,third};
         return  randomNum;
     }
-//    숫자를 입력받을 때 사용하는 매소드
-    private static int[] inputNum() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String inputNum = Console.readLine();
-        int[] arrayNum = Stream.of(inputNum.split("")).mapToInt(Integer::parseInt).toArray();
-        return arrayNum;
-    }
+
 //    숫자가 3개가 맞는지 확인하는 매소드
     private static void arrayNumFlag(int[] arrayNum) {
         if (arrayNum.length != 3) throw  new IllegalArgumentException();
