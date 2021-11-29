@@ -1,10 +1,11 @@
 package baseball.BaseballSystem.judgement;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.dto.response.JudgementResultDto;
-import java.util.HashSet;
-import java.util.Set;
 
 public class JudgementServiceImpl implements JudgementService {
 
@@ -23,12 +24,12 @@ public class JudgementServiceImpl implements JudgementService {
         int strike = strikeCount(playerNumber, computerNumber);
         int ball = ballCount(playerNumber, computerNumber, strike);
         boolean isCorrect = isFullStrike(strike);
-        String resultMessage = resultToString(strike, ball);
+        String resultMessage = showJudgementResult(strike, ball);
         return new JudgementResultDto(isCorrect, resultMessage);
     }
 
     @Override
-    public String resultToString(int strike, int ball) {
+    public String showJudgementResult(int strike, int ball) {
         if (isFullStrike(strike)) {
             return JudgementMessage.fullStrikeMessage(strike);
         } else if (isNothing(strike, ball - strike)) {

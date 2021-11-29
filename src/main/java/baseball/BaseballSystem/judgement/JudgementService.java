@@ -12,5 +12,5 @@ public interface JudgementService {
 
     public JudgementResultDto matchTheNumbers(Player player, Computer computer);
 
-    public String resultToString(int strike, int ball);
+    public String showJudgementResult(int strike, int ball);
 }
