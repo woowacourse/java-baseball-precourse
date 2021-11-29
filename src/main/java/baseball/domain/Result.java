@@ -49,4 +49,8 @@ public class Result {
 	private void decreaseBall() {
 		ball--;
 	}
+
+	public boolean isAnswer() {
+		return strike == NumberRangeType.ANSWER_SIZE.getNumberRange();
+	}
 }
