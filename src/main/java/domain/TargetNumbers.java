@@ -24,7 +24,8 @@ public class TargetNumbers extends Numbers {
 	}
 
 	public Hint compare(Numbers numbers) {
-		int ballCount = 0, strikeCount = 0;
+		int ballCount = 0;
+		int strikeCount = 0;
 
 		for (int i = 0; i < NUMBERS_SIZE; i++) {
 			int currentNumber = this.numbers.get(i).getNumber();
