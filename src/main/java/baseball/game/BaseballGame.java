@@ -21,18 +21,16 @@ public class BaseballGame {
     }
 
     public void play() {
-        BaseballGameTurn turn;
-
         while (isRunning) {
-            turn = proceedTurn();
-            System.out.println(turn.getResultMessage());
-            checkGameEnded(turn);
+            proceedTurn();
         }
         System.out.println(PromptMessage.GAME_OVER_MESSAGE.message());
     }
 
-    private BaseballGameTurn proceedTurn() {
-        return new BaseballGameTurn(getUserExpectation(), targetNumber);
+    private void proceedTurn() {
+        BaseballGameTurn turn = new BaseballGameTurn(getUserExpectation(), targetNumber);
+        System.out.println(turn.getResultMessage());
+        checkGameEnded(turn);
     }
 
     private UserExpectation getUserExpectation() {
