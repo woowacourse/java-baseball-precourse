@@ -1,5 +1,6 @@
 package baseball.pitch;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +8,13 @@ import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PitchTest {
+    private Pitch pitch = new Pitch(1, 1);
+    boolean result;
+    @BeforeEach
+    void init() {
+        result = false;
+    }
+
     @Test
     @DisplayName("각 자리수가 1~9의 값인지 검증")
     void 각_자리수_1부터9_검증하기() {
@@ -31,5 +39,51 @@ public class PitchTest {
         assertThat(pitch.isSame(new Pitch(2, 1))).isFalse();
         // index, value 모두 다름
         assertThat(pitch.isSame(new Pitch(2, 2))).isFalse();
+    }
+
+    @Test
+    @DisplayName("볼 판별")
+    void 볼_판별() {
+        // 같은 값 다른 인덱스는 볼이다.
+        result = pitch.isBall(new Pitch(2, 1));
+        assertThat(result).isTrue();
+
+        // 값과 인덱스가 모두 같으면 볼이 아니다.
+        result = pitch.isBall(new Pitch(1, 1));
+        assertThat(result).isFalse();
+
+        // 값이 다르면 인덱스가 아니다.
+        result = pitch.isBall(new Pitch(1, 3));
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    @DisplayName("스트라이크 판별")
+    void 스트라이크_판별() {
+        // 인덱스와 값이 모두 같으면 스트라이크이다.
+        result = pitch.isStrike(new Pitch(1, 1));
+        assertThat(result).isTrue();
+
+        // 그렇지 않으면 전부 스트라이크가 아니다.
+        result = pitch.isStrike(new Pitch(1, 2));
+        assertThat(result).isFalse();
+
+        result = pitch.isStrike(new Pitch(2, 1));
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    @DisplayName("낫싱 판별")
+    void 낫싱_판별() {
+        // 인덱스와 값 모두 다르면 낫싱이다.
+        result = pitch.isNothing(new Pitch(2, 2));
+        assertThat(result).isTrue();
+
+        // 그렇지 않으면 전부 낫싱이 아니다.
+        result = pitch.isNothing(new Pitch(1, 1));
+        assertThat(result).isFalse();
+
+        result = pitch.isNothing(new Pitch(2, 1));
+        assertThat(result).isFalse();
     }
 }
