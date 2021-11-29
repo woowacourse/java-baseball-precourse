@@ -18,9 +18,7 @@ public class Computer {
 		while (numbers.size() < MAX_NUMBER_SIZE) {
 			numbers.add(makeRandomNumber(numbers));
 		}
-
-		numbers.forEach(System.out::println);
-
+		
 		this.baseballNumber = new BaseballNumber(
 			new ArrayList<>(numbers
 				.stream()

@@ -12,7 +12,7 @@ public class InputView {
 	}
 
 	public static String getGameUserInput() {
-		System.out.println(GAME_USER_INPUT);
+		System.out.print(GAME_USER_INPUT);
 		return Console.readLine();
 	}
 }
