@@ -29,21 +29,14 @@ public class TargetNumbers extends Numbers {
 
 		for (int i = 0; i < NUMBERS_SIZE; i++) {
 			Number currentNumber = this.numbers.get(i);
-			int numberIndex = numbers.find(currentNumber);
 
-			if (numberIndex < 0) {
-				continue;
-			}
-
-			if (numberIndex == i) {
+			if (numbers.isSamePosition(currentNumber, i)) {
 				strikeCount++;
-				continue;
+			} else if (numbers.hasNumber(currentNumber)) {
+				ballCount++;
 			}
-
-			ballCount++;
 		}
 
 		return new PredictionResult(ballCount, strikeCount);
 	}
-
 }

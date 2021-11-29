@@ -25,8 +25,13 @@ public class Numbers {
 		this.numbers = distinctNumbers;
 	}
 
-	public int find(Number number) {
-		return this.numbers.indexOf(number);
+	public boolean hasNumber(Number number) {
+		return this.numbers.contains(number);
+	}
+
+	public boolean isSamePosition(Number number, int position) {
+		int numberIndex = this.numbers.indexOf(number);
+		return numberIndex == position;
 	}
 
 	private int convertLetterToInt(String letter) {
