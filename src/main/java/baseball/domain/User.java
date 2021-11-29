@@ -2,7 +2,7 @@ package baseball.domain;
 
 public class User {
 	private static final int NUMBER_LENGTH = 3;
-	private Integer[] expectedAnswer;
+	private final Integer[] expectedAnswer;
 
 	public User() {
 		this.expectedAnswer = new Integer[NUMBER_LENGTH];
