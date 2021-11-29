@@ -14,11 +14,9 @@ public class GameService {
     Game game;
     User user = new User();
 
-    //TODO: 제출전 sout 제거하기
     public void setGame(int size, int start, int end) {
         this.size = size;
         game = new Game(RandomUtils.getRandomNumbers(size, start, end));
-        System.out.println(game.getGameNumbers()[0]+""+ game.getGameNumbers()[1]+""+ game.getGameNumbers()[2]);
     }
 
     public void playGame() {
