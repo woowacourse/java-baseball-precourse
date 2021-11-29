@@ -1,6 +1,7 @@
 package controller;
 
 import model.BaseballGame;
+import view.OutputDisplay;
 
 public class GameController {
 
@@ -9,5 +10,6 @@ public class GameController {
 
 	public static void runGame() {
 		BaseballGame baseballGame = new BaseballGame();
+		OutputDisplay.pleaseInputNumbers();
 	}
 }
