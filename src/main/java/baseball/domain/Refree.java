@@ -76,10 +76,10 @@ public class Refree {
 		int strikeCount = countStrike(computerNumbers, playerNumbers);
 		int ballCount = countBall(sameNumberCount, strikeCount);
 		if (ballCount > 0) {
-			result.append(ballCount + RESULT_BALL + EMPTY_STRING);
+			result.append(ballCount).append(RESULT_BALL).append(EMPTY_STRING);
 		}
 		if (strikeCount > 0) {
-			result.append(strikeCount + RESULT_STRIKE);
+			result.append(strikeCount).append(RESULT_STRIKE);
 		}
 		return result.toString();
 	}
@@ -97,8 +97,9 @@ public class Refree {
 	public Integer countStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
 		int strikeCount = 0;
 		for (int index = 0; index < playerNumbers.size(); index++) {
-			if (computerNumbers.get(index) == playerNumbers.get(index))
+			if (computerNumbers.get(index).equals(playerNumbers.get(index))) {
 				strikeCount++;
+			}
 		}
 		return strikeCount;
 	}
