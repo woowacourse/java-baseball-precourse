@@ -69,7 +69,6 @@ public class Refree {
 	public String compare(List<Integer> computerNumbers, List<Integer> playerNumbers) {
 		int sameNumberCount = countSameNumber(computerNumbers, playerNumbers);
 		if (sameNumberCount == 0) {
-			// return result.append(RESULT_NOTHING).toString();
 			return RESULT_NOTHING;
 		}
 
