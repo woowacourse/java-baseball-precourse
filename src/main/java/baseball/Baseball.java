@@ -4,28 +4,21 @@ import java.util.ArrayList;
 
 import baseball.view.InputView;
 
-public class GamePlay {
-
-	public static void runGame() {
+public class Baseball {
+	public static boolean runGame() {
 		ArrayList<Integer> randomNumbers = RandomNumber.getRandomNumbers();
-		for (Integer i : randomNumbers) {
-			System.out.println(i);
-		}
 		while (true) {
 			InputView.printNumberInputMessage();
 			ArrayList<Integer> userInputNumbers = InputView.inputUserNumbers();
 			Hint.getHint(randomNumbers, userInputNumbers);
 			if (Hint.strike == RandomNumber.PICK_NUMBER) {
-				gameRestartOrNot();
-				break;
+				return gameRestartOrNot();
 			}
 		}
 	}
 
-	public static void gameRestartOrNot() {
+	public static boolean gameRestartOrNot() {
 		InputView.printGameRestartMessage();
-		if (InputView.inputGameRestartOrNot()) {
-			runGame();
-		}
+		return InputView.inputGameRestartOrNot();
 	}
 }

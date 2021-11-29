@@ -7,6 +7,7 @@ import baseball.view.OutputView;
 public class Hint {
 	public static int ball;
 	public static int strike;
+	private static final int RESET_TO_ZERO = 0;
 
 	public static void getHint(ArrayList<Integer> randomNumbers, ArrayList<Integer> userInputNumbers) {
 		initBallAndStrike();
@@ -15,8 +16,8 @@ public class Hint {
 	}
 
 	public static void initBallAndStrike() {
-		ball = 0;
-		strike = 0;
+		ball = RESET_TO_ZERO;
+		strike = RESET_TO_ZERO;
 	}
 
 	public static void countBallAndStrike(ArrayList<Integer> randomNumbers, ArrayList<Integer> userInputNumbers) {
