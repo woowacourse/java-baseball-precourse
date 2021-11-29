@@ -4,7 +4,7 @@
 
 1. 전체 계획 설정. <- 11/25 완성
 
-   1. 협력관계 구상하기
+   1. 협력관계 구상하기 
 
       ![wooteco1](https://github.com/xi-jjun/xi-jjun.github.io/blob/master/_posts/study/img/wooteco1.png?raw=True)
 
