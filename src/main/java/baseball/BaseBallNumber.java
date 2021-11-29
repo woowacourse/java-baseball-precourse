@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Constants.*;
+import static resource.MessageResource.*;
 
 import util.InputValidationUtils;
 
@@ -9,7 +10,7 @@ public class BaseBallNumber {
 
 	public BaseBallNumber(String ballNumber) {
 		if (!InputValidationUtils.isCheckValid(ballNumber)) {
-			throw new IllegalArgumentException("1~9까지 서로 다른 숫자 3자리만 입력 가능합니다.");
+			throw new IllegalArgumentException(ERROR_INPUT_NUMBER);
 		}
 		this.ballNumber = ballNumber;
 	}
