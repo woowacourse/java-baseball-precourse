@@ -9,7 +9,7 @@ public class InputManagement {
     private final String REGEX_CHOICE = "^[1-2]*$";
 
     public void requestUserInput() {
-        System.out.println(Text.INPUT_REQUEST);
+        System.out.print(Text.INPUT_REQUEST);
     }
 
     public void requestUserChoice() {
