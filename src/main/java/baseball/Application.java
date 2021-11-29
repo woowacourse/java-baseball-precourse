@@ -10,7 +10,9 @@ public class Application {
         Computer computer = new Computer(numberGenerator);
         InputValidator inputValidator = new InputValidator();
 
-        playGame(computer, inputValidator);
+        do {
+            playGame(computer, inputValidator);
+        } while (true);
     }
 
     public static void playGame(Computer computer, InputValidator inputValidator) {
@@ -20,6 +22,14 @@ public class Application {
             String inputString = Console.readLine();
 
             inputValidator.isValidInput(inputString);
+
+            BaseballGame game = new BaseballGame(answer, inputString);
+            game.printGameResult();
+
+            if (game.isGameOver()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+
         } while (true);
     }
 }
