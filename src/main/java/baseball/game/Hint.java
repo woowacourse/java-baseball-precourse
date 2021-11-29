@@ -47,7 +47,10 @@ public class Hint {
         System.out.println();
     }
 
-    public int getStrike() {
-        return this.strike;
+    public boolean isThreeStrike() {
+        if (strike==3){
+            return true;
+        }
+        return false;
     }
 }

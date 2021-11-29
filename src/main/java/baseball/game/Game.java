@@ -20,6 +20,9 @@ public class Game {
         while (!this.correctAnswer) {
             this.correctAnswer = this.playGame();
         }
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
     }
 
     public boolean playGame(){
@@ -27,7 +30,7 @@ public class Game {
 
         hint.countHint(input, answerList);
 
-        return false;
+        return hint.isThreeStrike();
     }
 
     private void reset(){
