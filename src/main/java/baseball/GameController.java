@@ -1,39 +1,39 @@
 package baseball;
 
+import java.util.List;
+
 import baseball.logic.BaseballGameJudge;
 import baseball.logic.GameResultObject;
 import baseball.utill.RandomNumberGenerator;
 import baseball.view.InputValidation;
 import baseball.view.OutputDisplay;
 
-import java.util.List;
-
 public class GameController {
-    private boolean isEnd = false;
+	private boolean isEnd = false;
 
-    public String play() {
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        InputValidation inputValidation = new InputValidation();
-        BaseballGameJudge baseballGameJudge = new BaseballGameJudge();
+	public String play() {
+		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+		InputValidation inputValidation = new InputValidation();
+		BaseballGameJudge baseballGameJudge = new BaseballGameJudge();
 
-        List<Integer> randomNumbers = randomNumberGenerator.generateRandomNumber();
+		List<Integer> randomNumbers = randomNumberGenerator.generateRandomNumber();
 
-        while (!isEnd) {
-            List<Integer> userNumbers = inputValidation.inputNumberFromUser();
-            isThreeStrike(baseballGameJudge.judgeGameResult(randomNumbers, userNumbers));
-        }
+		while (!isEnd) {
+			List<Integer> userNumbers = inputValidation.inputNumberFromUser();
+			isThreeStrike(baseballGameJudge.judgeGameResult(randomNumbers, userNumbers));
+		}
 
-        return inputValidation.inputRestartFromUser();
-    }
+		return inputValidation.inputRestartFromUser();
+	}
 
-    private void isThreeStrike(GameResultObject gameResultObject) {
-        OutputDisplay outputDisplay = new OutputDisplay();
-        isEnd = gameResultObject.getIsEnd();
+	private void isThreeStrike(GameResultObject gameResultObject) {
+		OutputDisplay outputDisplay = new OutputDisplay();
+		isEnd = gameResultObject.getIsEnd();
 
-        if (isEnd) {
-            outputDisplay.displayEndMsg();
-            return;
-        }
-        outputDisplay.displayResult(gameResultObject);
-    }
+		if (isEnd) {
+			outputDisplay.displayEndMsg();
+			return;
+		}
+		outputDisplay.displayResult(gameResultObject);
+	}
 }

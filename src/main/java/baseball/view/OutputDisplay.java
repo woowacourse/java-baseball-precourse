@@ -3,34 +3,34 @@ package baseball.view;
 import baseball.logic.GameResultObject;
 
 public class OutputDisplay {
-    private static final String BALL = "볼";
-    private static final String STRIKE = "스트라이크";
-    private static final String NOTHING = "낫싱";
-    private static final String THREE_STRIKE = "3스트라이크";
-    private static final String END_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+	private static final String BALL = "볼";
+	private static final String STRIKE = "스트라이크";
+	private static final String NOTHING = "낫싱";
+	private static final String THREE_STRIKE = "3스트라이크";
+	private static final String END_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    public void displayResult(GameResultObject gameResult) {
-        System.out.println(getOutputMsg(gameResult));
-    }
+	public void displayResult(GameResultObject gameResult) {
+		System.out.println(getOutputMsg(gameResult));
+	}
 
-    private String getOutputMsg(GameResultObject gameResult) {
-        int ballCount = gameResult.getBall();
-        int strikeCount = gameResult.getStrike();
+	private String getOutputMsg(GameResultObject gameResult) {
+		int ballCount = gameResult.getBall();
+		int strikeCount = gameResult.getStrike();
 
-        if (ballCount > 0 && strikeCount > 0) {
-            return ballCount + BALL + " " + strikeCount + STRIKE;
-        }
-        if (ballCount > 0) {
-            return ballCount + BALL;
-        }
-        if (strikeCount > 0) {
-            return strikeCount + STRIKE;
-        }
-        return NOTHING;
-    }
+		if (ballCount > 0 && strikeCount > 0) {
+			return ballCount + BALL + " " + strikeCount + STRIKE;
+		}
+		if (ballCount > 0) {
+			return ballCount + BALL;
+		}
+		if (strikeCount > 0) {
+			return strikeCount + STRIKE;
+		}
+		return NOTHING;
+	}
 
-    public void displayEndMsg() {
-        System.out.println(THREE_STRIKE);
-        System.out.println(END_MSG);
-    }
+	public void displayEndMsg() {
+		System.out.println(THREE_STRIKE);
+		System.out.println(END_MSG);
+	}
 }
