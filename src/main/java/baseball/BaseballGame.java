@@ -25,13 +25,11 @@ public class BaseballGame {
 	 */
 	public void run() {
 		try {
-			boolean isGameContinued = true;
 			System.out.println(START_GAME_MSG);
 			do {
 				computer.createNumbers();
 				playGame();
-				isGameContinued = checkRetry();
-			} while (isGameContinued);
+			} while (checkRetry());
 			System.out.println(END_MSG);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -44,13 +42,11 @@ public class BaseballGame {
 	 * 그대로 예외를 던져서 상위 메소드에서 처리한다.
 	 */
 	public void playGame() throws IllegalArgumentException {
-		boolean isEnd = false;
 		do {
 			user.inputNumbers();
 			countResult();
 			printHint();
-			isEnd = checkResult();
-		} while (!isEnd);
+		} while (!checkResult());
 	}
 
 	/**

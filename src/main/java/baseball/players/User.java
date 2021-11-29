@@ -4,6 +4,8 @@ import static baseball.utils.Constant.*;
 import static camp.nextstep.edu.missionutils.Console.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.Predicate;
 
 public class User implements Player {
 	private final ArrayList<Integer> numbers;
@@ -20,26 +22,37 @@ public class User implements Player {
 		numbers.clear();
 		System.out.print(INPUT_MSG);
 		String[] input = readLine().split("");
+		validateLength(input);
+		validateZero(input);
+		validateOverlapped(input);
+		parseInt(input);
+	}
+
+	private void validateZero(String[] input) {
+		if (Arrays.stream(input).anyMatch(Predicate.isEqual("0"))) {
+			throw new IllegalArgumentException(ERR_INPUT_MSG);
+		}
+	}
+
+	private void validateLength(String[] input) {
 		if (input.length != LENGTH_OF_NUMBERS) {
 			throw new IllegalArgumentException(ERR_INPUT_MSG);
 		}
-		for (String ch : input) {
-			numbers.add(convertToInteger(ch));
-		}
-		if (isOverlapped(numbers)) {
+	}
+
+	private void validateOverlapped(String[] input) {
+		if (input.length != Arrays.stream(input).distinct().count()) {
 			throw new IllegalArgumentException(ERR_INPUT_MSG);
 		}
 	}
 
-	private static boolean isOverlapped(ArrayList<Integer> numbers) {
-		return numbers.size() != numbers.stream().distinct().count();
-	}
-
-	private static int convertToInteger(String ch) {
-		try {
-			return Integer.parseInt(ch);
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException(ERR_INPUT_MSG);
+	private void parseInt(String[] input) {
+		for (String s : input) {
+			try {
+				numbers.add(Integer.parseInt(s));
+			} catch (NumberFormatException e) {
+				throw new IllegalArgumentException(ERR_INPUT_MSG);
+			}
 		}
 	}
 
