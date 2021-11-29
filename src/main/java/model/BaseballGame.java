@@ -15,4 +15,12 @@ public class BaseballGame {
 	public void passPlayerNumbers(String[] numbers) {
 		playerNumbers = new PlayerNumbers(numbers);
 	}
+
+	public int giveStrikeCount() {
+		return computerNumbers.findNumberOfStrikes(playerNumbers);
+	}
+
+	public int giveBallCount() {
+		return computerNumbers.findNumberOfBalls(playerNumbers);
+	}
 }

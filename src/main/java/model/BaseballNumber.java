@@ -20,4 +20,13 @@ public class BaseballNumber {
 			throw new IllegalArgumentException("입력한 숫자중 잘못된 숫자(문자, 음수 등)이 있습니다.");
 		}
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		BaseballNumber that = (BaseballNumber)o;
+		if (this.number == that.number) {
+			return true;
+		}
+		return false;
+	}
 }
