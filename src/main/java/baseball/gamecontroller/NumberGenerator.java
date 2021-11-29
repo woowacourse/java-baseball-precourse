@@ -1,8 +1,8 @@
-package baseball.gameController;
+package baseball.gamecontroller;
 
 import java.util.LinkedHashSet;
 
-import baseball.constantStorage.Constant;
+import baseball.constantstorage.Constant;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberGenerator {

@@ -1,4 +1,4 @@
-package baseball.constantStorage;
+package baseball.constantstorage;
 
 public class Constant {
 	public static final int NUMBER_LENGTH = 3;

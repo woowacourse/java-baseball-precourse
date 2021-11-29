@@ -1,9 +1,9 @@
-package baseball.gameController;
+package baseball.gamecontroller;
 
 import java.util.HashSet;
 import java.util.Iterator;
 
-import baseball.constantStorage.Constant;
+import baseball.constantstorage.Constant;
 
 public class HintGiver {
 	private int ballCount = 0;

@@ -1,9 +1,9 @@
-package baseball.gameController;
+package baseball.gamecontroller;
 
 import java.util.HashSet;
 
-import baseball.constantStorage.Constant;
-import baseball.errorHandler.InputValidator;
+import baseball.constantstorage.Constant;
+import baseball.errorhandler.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameDriver {
@@ -20,7 +20,7 @@ public class GameDriver {
 	private void play() {
 		hintGiver.initHint();
 		HashSet<Integer> realAnswer = NumberGenerator.generateNumSet();
-		while (!hintGiver.hint.equals("3스트라이크")) {
+		while (!hintGiver.hint.equals(Constant.NUMBER_LENGTH + Constant.STRIKE)) {
 			System.out.print(Constant.ASK_ANSWER);
 			this.answer = Console.readLine();
 			InputValidator.checkPlayerAnswer(this.answer);

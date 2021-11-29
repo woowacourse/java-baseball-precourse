@@ -1,8 +1,8 @@
-package baseball.errorHandler;
+package baseball.errorhandler;
 
 import java.util.HashSet;
 
-import baseball.constantStorage.Constant;
+import baseball.constantstorage.Constant;
 
 public class InputValidator {
 	public static void checkPlayerAnswer(String input) {
