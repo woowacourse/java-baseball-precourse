@@ -107,19 +107,39 @@ public class Application {
 			}
 		}
 
+		private void restartOrExit() throws IllegalArgumentException {
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			String reply = Console.readLine();
+			if (reply.equals("1")) {
+				isOver = false;
+				startGame();
+				playGame();
+			} else if (!reply.equals("2")) {
+				throw new IllegalArgumentException();
+			}
+		}
+
 		public void playGame() {
 			System.out.print("숫자를 입력해주세요 : ");
 			List<Integer> userInput = getInputFromUser();
 			try {
 				validateInput(userInput);
+				int[] scoreBoard = getNumOfStrikesAndBalls(userInput);
+				judge(scoreBoard);
+				if (isOver) {
+					restartOrExit();
+				} else {
+					playGame();
+				}
 			} catch (IllegalArgumentException e) {
 				System.out.println("Illegal Input");
 			}
-			int[] scoreBoard = getNumOfStrikesAndBalls(userInput);
-			judge(scoreBoard);
+
 		}
 	}
 
 	public static void main(String[] args) {
+		Game g = new Game();
+		g.playGame();
 	}
 }
