@@ -10,7 +10,7 @@ public class User {
     public static List<Integer> inputNumber() {
         List<Integer> UserNumber = new ArrayList<>();
 
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Constant.INPUT_MESSAGE);
         String readLine = Console.readLine();
 
         Validation.isValidInput(readLine);
@@ -23,13 +23,13 @@ public class User {
     }
 
     public static boolean isGameRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(Constant.INPUT_RESTART_MESSAGE);
 
         String readLine = Console.readLine();
 
         Validation.isValidRestartInput(readLine);
 
-        if (Integer.parseInt(readLine) == 1) {
+        if (Integer.parseInt(readLine) == Constant.GAME_RESTART) {
             return true;
         }
         return false;
