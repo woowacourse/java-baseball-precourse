@@ -1,5 +1,7 @@
 package baseball.domain.computer;
 
+import java.util.Arrays;
+
 public enum GameState {
 
     RUNNING(0),
@@ -15,6 +17,13 @@ public enum GameState {
 
     public static GameState init() {
         return GameState.RUNNING;
+    }
+
+    public static GameState createByCommand(int inputCommand) {
+        return Arrays.stream(values())
+            .filter(gameState -> gameState.command == inputCommand)
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 command 입니다."));
     }
 
     public boolean isEndGame() {
