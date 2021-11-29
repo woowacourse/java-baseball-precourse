@@ -5,16 +5,14 @@ import baseball.utils.UserInputHandler;
 
 public class BaseballGameRunner {
 
-    final private static int GAME_RESTART = 1;
+    final private static int GAME_RESTART_FlAG = 1;
 
-    public static void run() {
-        boolean running = true;
-        BaseballGame game;
+    public static void runGame() {
+        boolean isRunning = true;
 
-        while (running) {
-            game = new BaseballGame();
-            game.play();
-            running = isRestart();
+        while (isRunning) {
+            new BaseballGame().play();
+            isRunning = isRestart();
         }
     }
 
@@ -22,6 +20,6 @@ public class BaseballGameRunner {
         int input = UserInputHandler.getNumber(
             PromptMessage.RESTART_GAME_PROMPT.message()
         );
-        return input == GAME_RESTART;
+        return input == GAME_RESTART_FlAG;
     }
 }
