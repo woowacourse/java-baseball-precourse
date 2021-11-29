@@ -33,6 +33,7 @@ public class Referee {
 				ball++;
 			}
 		}
+		printBallCount(ball, strike);
 	}
 
 	private void printBallCount(int ball, int strike) {
