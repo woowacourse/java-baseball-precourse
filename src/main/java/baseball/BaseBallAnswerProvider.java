@@ -28,10 +28,6 @@ public class BaseBallAnswerProvider {
 		answer = new ArrayList<>(randomNumber);
 	}
 
-	public List<Integer> getAnswer() {
-		return answer;
-	}
-
 	private boolean isUnique(List<Integer> randomNumber) {
 		Set<Integer> randomDigits = new HashSet<>(randomNumber);
 		return randomDigits.size() == 3;
