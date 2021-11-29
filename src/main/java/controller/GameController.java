@@ -11,6 +11,6 @@ public class GameController {
 	public static void runGame() {
 		BaseballGame baseballGame = new BaseballGame();
 		OutputDisplay.pleaseInputNumbers();
-		InputController.inputNumbers();
+		baseballGame.passPlayerNumbers(InputController.inputNumbers());
 	}
 }

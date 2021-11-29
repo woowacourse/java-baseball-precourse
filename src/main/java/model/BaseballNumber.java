@@ -6,4 +6,8 @@ public class BaseballNumber {
 	public BaseballNumber(int number) {
 		this.number = number;
 	}
+
+	public BaseballNumber(String number) {
+		this.number = Integer.parseInt(number);
+	}
 }
