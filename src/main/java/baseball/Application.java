@@ -23,7 +23,7 @@ public class Application {
             //입력 확인
             InputCheck.checkOptionNumber(input);
 
-        }while(input.equals("1"));
+        }while(input.equals(MessageConstants.GAME_RESTART_NUM));
 
     }
 }
