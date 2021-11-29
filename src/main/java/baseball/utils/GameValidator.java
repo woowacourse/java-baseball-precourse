@@ -1,4 +1,5 @@
 package baseball.utils;
+
 import baseball.constants.NumbersConstraints;
 import java.util.HashSet;
 import java.util.List;
@@ -10,7 +11,7 @@ public class GameValidator {
     final private static String WRONG_SIZE_MESSAGE = "3 개의 숫자만 입력해주세요";
     final private static String DUPLICATE_MESSAGE = "중복된 숫자가 있습니다.";
 
-    public static void validateNumber(String userInput) throws IllegalArgumentException{
+    public static void validateNumber(String userInput) throws IllegalArgumentException {
         try {
             Integer.valueOf(userInput);
         } catch (NumberFormatException e) {
@@ -18,7 +19,7 @@ public class GameValidator {
         }
     }
 
-    public static void validateRange(List<Integer> numbers) throws IllegalArgumentException{
+    public static void validateRange(List<Integer> numbers) throws IllegalArgumentException {
         boolean isInRange = numbers.stream()
             .allMatch(n ->
                 n >= NumbersConstraints.MIN_NUMBER.value()
