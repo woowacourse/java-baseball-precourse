@@ -9,9 +9,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
 	public static class Game {
 		private List<Integer> answer;
+		private boolean isOver;
 
 		Game() {
 			startGame();
+			isOver = false;
 		}
 
 		private boolean checkIsDuplicated(int num) {
@@ -72,7 +74,7 @@ public class Application {
 		}
 
 		private int[] getNumOfStrikesAndBalls(List<Integer> inputNumbers) {
-			int[] output = new int[] {0, 0};
+			int[] output = new int[] {0, 0}; // 1은 strike 수, 0은 ball 수
 			for (int i = 0; i < 3; i++) {
 				int res = compareNumberWithAnswer(inputNumbers.get(i), i);
 				if (res > -1) {
@@ -80,6 +82,29 @@ public class Application {
 				}
 			}
 			return output;
+		}
+
+		private void judge(int[] scoreBoard) {
+			/* 1은 strike 수, 0은 ball 수 */
+			if (scoreBoard[1] == 3) {
+				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+				isOver = true;
+			} else if (scoreBoard[0] == 0 && scoreBoard[1] == 0) {
+				System.out.println("낫싱");
+			} else {
+				String ballMsg = "";
+				String strikeMsg = "";
+				if (scoreBoard[0] > 0) {
+					ballMsg += String.format("%d볼", scoreBoard[0]);
+				}
+				if (scoreBoard[1] > 0) {
+					strikeMsg += String.format("%d스트라이크", scoreBoard[1]);
+				}
+				if (!ballMsg.equals("")) {
+					ballMsg += " ";
+				}
+				System.out.println(ballMsg + strikeMsg);
+			}
 		}
 
 		public void playGame() {
@@ -90,6 +115,7 @@ public class Application {
 				System.out.println("Illegal Input");
 			}
 			int[] scoreBoard = getNumOfStrikesAndBalls(userInput);
+			judge(scoreBoard);
 		}
 	}
 
