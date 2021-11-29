@@ -5,6 +5,8 @@
 
 
 
+
+　  
 ## ⚾️ 요구조건
 
 + 프로그램은 1에서부터 9까지의 각각의 자릿수가 서로 다른 세 자리 난수를 생성해야 한다.
@@ -106,13 +108,13 @@
 
 ## ✔️ 실행 환경
 
-> JDK 8 (ver 1.8)
+> JDK 8 (ver 1.8)  　   
 > Gradle 5.4.1 +
 
 
-
+　  
 ## ✔️ 코딩컨벤션 검사 도구
-**This project follows [hackday-conventions-java](https://github.com/naver/hackday-conventions-java/blob/master/rule-config/naver-checkstyle-rules.xml)**
+This project follows [hackday-conventions-java](https://github.com/naver/hackday-conventions-java/blob/master/rule-config/naver-checkstyle-rules.xml)
 #### mac or linux
 
 > ./gradlew check
@@ -123,9 +125,7 @@
 
 
 
-
-
-
+　
 ## ✔️ 테스트 도구
 #### mac or linux
 
@@ -138,8 +138,7 @@
 
 
 
-
-
+　
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
