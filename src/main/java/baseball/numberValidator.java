@@ -1,11 +1,8 @@
 package baseball;
 
 public class numberValidator {
-    public boolean[] numberChecked = new boolean[10];
 
     public void validateNumberInput(String numberInputStr) {
-        this.initNumberChecked();
-
         int length = numberInputStr.length();
         if (length != 3) {
             throw new IllegalArgumentException();
@@ -19,13 +16,6 @@ public class numberValidator {
             if (!(1 <= digit && digit <= 9)) {
                 throw new IllegalArgumentException();
             }
-
-            // 중복된 digit의 등장 => 유효하지 않음
-            if (numberChecked[digit]) {
-                throw new IllegalArgumentException();
-            } else {
-                numberChecked[digit] = true;
-            }
         }
     }
 
@@ -38,12 +28,6 @@ public class numberValidator {
         char ch = ReplayInputStr.charAt(0);
         if (!(ch == '1' || ch == '2')) {
             throw new IllegalArgumentException();
-        }
-    }
-
-    public void initNumberChecked() {
-        for (int i = 1; i <= 9; i++) {
-            this.numberChecked[i] = false;
         }
     }
 }
