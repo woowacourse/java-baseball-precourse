@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.util.Assertion;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
@@ -8,10 +9,12 @@ public class Baseball implements NumberMatcher<Baseball, BaseballCount> {
     private Integer[] baseballNumbers;
 
     public Baseball(Integer[] baseballNumbers) {
+        Assertion.throwExceptionIfFalse(baseballNumbers.length == 3, "3자리의 숫자가 생성되지 않았습니다.");
         this.baseballNumbers = baseballNumbers;
     }
 
     public Baseball(String numbers) {
+        Assertion.throwExceptionIfFalse(numbers.length() == 3, "3자리의 숫자를 입력해주세요.");
         this.baseballNumbers = convertStringToArray(numbers);
     }
 
