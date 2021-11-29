@@ -17,7 +17,7 @@ public class Numbers {
 
 	public Numbers(String input) {
 		List<Number> generatedNumbers = generateNumbersFromInput(input);
-		List<Number> distinctNumbers = removeDuplicationFromNumbers(generatedNumbers);
+		List<Number> distinctNumbers = removeDuplicatedNumbers(generatedNumbers);
 
 		if (distinctNumbers.size() != NUMBERS_SIZE) {
 			throw new IllegalArgumentException("숫자는 3개의 서로 다른 숫자를 입력해야 합니다.");
@@ -44,7 +44,7 @@ public class Numbers {
 			.collect(Collectors.toList());
 	}
 
-	private List<Number> removeDuplicationFromNumbers(List<Number> numbers) {
+	private List<Number> removeDuplicatedNumbers(List<Number> numbers) {
 		return numbers.stream()
 			.distinct()
 			.collect(Collectors.toList());
