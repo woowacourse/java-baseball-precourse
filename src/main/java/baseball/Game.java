@@ -2,14 +2,13 @@ package baseball;
 
 import static utils.InputValidator.checkExitCommandIsValid;
 
+import camp.nextstep.edu.missionutils.Console;
 import constants.ExitOption;
-import constants.NumberAttribute;
 import constants.HintMessage;
+import constants.NumberAttribute;
 import constants.SystemMessage;
 import utils.InputValidator;
 import utils.NumberGenerator;
-
-import camp.nextstep.edu.missionutils.Console;
 
 
 public class Game {

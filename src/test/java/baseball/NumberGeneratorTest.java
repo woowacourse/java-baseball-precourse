@@ -14,7 +14,7 @@ public class NumberGeneratorTest {
 	@Test
 	public void generateRandomNumber() {
 
-		int n = NumberAttribute.DIGIT_NUMBER.getValue();
+		final int n = NumberAttribute.DIGIT_NUMBER.getValue();
 
 		String randomNumber = NumberGenerator.generateRandomNumber();
 		Assertions.assertEquals(n, randomNumber.length(),

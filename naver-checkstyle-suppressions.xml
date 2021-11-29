@@ -5,4 +5,5 @@
 
 <suppressions>
     <suppress files="ApplicationTest.java" checks=".*"/>
+    <suppress files="UserService.java" checks=".*"/>
 </suppressions>

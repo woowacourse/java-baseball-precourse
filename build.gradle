@@ -38,4 +38,3 @@ editorconfig {
 }
 
 check.dependsOn editorconfigCheck
-

@@ -1,11 +1,10 @@
 package utils;
 
-import java.util.Set;
 import java.util.HashSet;
-
-import constants.NumberAttribute;
+import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import constants.NumberAttribute;
 
 
 public class NumberGenerator {
