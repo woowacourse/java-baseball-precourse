@@ -7,75 +7,79 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Controller {
-    private String randomNumber;
-    private String userNumber;
-    private ArrayList<Character> ballNumbers;
+    private static final int NUMBER_SIZE = 3;
+    private static final String END_SIGN = "2";
+    private static final String REPLAY_SIGN = "1";
+    private static final char ASCII_ZERO = '0';
+    private ArrayList<Integer> randomNumber;
+    private ArrayList<Integer> userNumber;
     private boolean endFlag = false;
     private boolean numberSameFlag;
 
     public Controller() {
     }
 
-    private String createRandomNumber() {
-        ArrayList<Integer> randomNum = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-
-        while (randomNum.size() != 3) {
-            int num = Randoms.pickNumberInRange(1, 9);
-            if (!randomNum.contains(num)) {
-                randomNum.add(num);
-                sb.append(num);
+    public void run() {
+        while (!isEnd()) {
+            initGame();
+            while (!isSameNumber()) {
+                getUserNumber();
+                compareNumbers();
             }
         }
-        return sb.toString();
+    }
+
+    private void createRandomNumber() {
+        while (randomNumber.size() != NUMBER_SIZE) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (!randomNumber.contains(num)) {
+                randomNumber.add(num);
+            }
+        }
     }
 
     public void getUserNumber() {
         Viewer.inputNumber();
-        userNumber = Console.readLine();
-
-        if (userNumber.length() != 3) {
+        String userInput = Console.readLine();
+        if (userInput.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException("3자리의 숫자를 입력해주세요!");
         }
-        for (char num : userNumber.toCharArray()) {
+        for (char num : userInput.toCharArray()) {
             if (!Character.isDigit(num)) {
                 throw new IllegalArgumentException("숫자를 입력해주세요!");
+            } else if (userNumber.contains(num - ASCII_ZERO)) {
+                throw new IllegalArgumentException("중복되지 않게 숫자를 입력해주세요!");
             }
+            userNumber.add(num - ASCII_ZERO);
         }
     }
 
     private void getEndByUser(){
         String userInput = Console.readLine();
-        if (userInput.equals("2")) {
+        if (userInput.equals(END_SIGN)) {
             endFlag = true;
-        } else if (!userInput.equals("1")) {
+        } else if (!userInput.equals(REPLAY_SIGN)) {
             throw new IllegalArgumentException("재시작은 1, 종료는 2를 입력해주세요!");
         }
     }
 
-    private void setBallNumbers() {
-        ballNumbers = new ArrayList<>();
-        for (char number : randomNumber.toCharArray()) {
-            ballNumbers.add(number);
-        }
-    }
-
     public void initGame() {
-        randomNumber = createRandomNumber();
+        randomNumber = new ArrayList<>();
+        createRandomNumber();
+        userNumber = new ArrayList<>();
         System.out.println(randomNumber);
-        setBallNumbers();
         numberSameFlag = false;
     }
 
     public void compareNumbers() {
         int strike = 0;
         int ball = 0;
-        for (int i = 0; i < 3; i++) {
-            char randomNum = randomNumber.charAt(i);
-            char userNum = userNumber.charAt(i);
+        for (int i = 0; i < NUMBER_SIZE; i++) {
+            int randomNum = randomNumber.get(i);
+            int userNum = userNumber.get(i);
             if (randomNum == userNum) {
                 strike++;
-            } else if (ballNumbers.contains(userNum)) {
+            } else if (randomNumber.contains(userNum)) {
                 ball++;
             }
         }
@@ -88,7 +92,7 @@ public class Controller {
     }
 
     private boolean checkAnswer(int strike){
-        return strike == 3;
+        return strike == NUMBER_SIZE;
     }
 
     public boolean isEnd() {
