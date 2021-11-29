@@ -30,4 +30,11 @@ public class BaseballGame {
 		}
 		return false;
 	}
+
+	public boolean isNotGameOver() {
+		if (giveStrikeCount() != 3) {
+			return true;
+		}
+		return false;
+	}
 }

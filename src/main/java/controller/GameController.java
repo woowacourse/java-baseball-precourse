@@ -9,14 +9,24 @@ public class GameController {
 	}
 
 	public static void runGame() {
+		playGame();
+	}
+
+	private static void playGame() {
 		BaseballGame baseballGame = new BaseballGame();
 		OutputDisplay.pleaseInputNumbers();
 		baseballGame.passPlayerNumbers(InputController.inputNumbers());
 
-		if (baseballGame.isNoHint()) {
-			OutputDisplay.showNothing();
-		} else {
-			showGameHints(baseballGame);
+		while (baseballGame.isNotGameOver()) {
+			if (baseballGame.isNoHint()) {
+				OutputDisplay.showNothing();
+			} else {
+				showGameHints(baseballGame);
+			}
+
+			OutputDisplay.enterBlank();
+			OutputDisplay.pleaseInputNumbers();
+			baseballGame.passPlayerNumbers(InputController.inputNumbers());
 		}
 	}
 
