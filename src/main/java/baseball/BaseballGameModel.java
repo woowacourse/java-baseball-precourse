@@ -15,10 +15,7 @@ class BaseballGameModel {
 	}
 
 	public boolean checkResult(int strikeCount) {
-		if (strikeCount == 3) {
-			return true;
-		}
-		return false;
+		return strikeCount == 3;
 	}
 
 	public int getBall(int[] playerNum, int[] enemyNum) {
