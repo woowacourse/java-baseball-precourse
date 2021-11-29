@@ -27,6 +27,6 @@ public class NumberBaseballGame implements Game {
 	}
 
 	private boolean toBeContinued() {
-		return true; // todo : create continuation type (enum) and get from it
+		return ContinueType.toBeContinued(view.request(CONTINUE_MSG));
 	}
 }
