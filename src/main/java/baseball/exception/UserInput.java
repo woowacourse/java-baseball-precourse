@@ -1,13 +1,14 @@
-package baseball;
+package baseball.exception;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Exception {
+import baseball.domain.RandomNumber;
+
+public class UserInput {
 	private static final String NOT_NUMBER_ERROR_MESSAGE = "0 또는 숫자가 아닌 문자를 입력했습니다.";
 	private static final String NUMBER_LENGTH_ERROR_MESSAGE = "잘못된 길이의 숫자를 입력했습니다.";
 	private static final String NUMBER_OVERLAP_ERROR_MESSAGE = "동일한 숫자를 입력했습니다.";
-
 	private static final String RESTART_INPUT = "1";
 	private static final String GAME_OVER_INPUT = "2";
 	private static final String NOT_RESTART_INPUT_ERROR_MESSAGE = "1 또는 2를 입력하지 않았습니다.";
@@ -27,10 +28,7 @@ public class Exception {
 	}
 
 	public static boolean isValidNumberLength(String input) {
-		if (input.length() != RandomNumber.PICK_NUMBER) {
-			return false;
-		}
-		return true;
+		return input.length() == RandomNumber.PICK_NUMBER;
 	}
 
 	public static boolean isValidNumberRange(String input) {
@@ -48,10 +46,7 @@ public class Exception {
 		for (int i = 0; i < RandomNumber.PICK_NUMBER; i++) {
 			inputSet.add(input.charAt(i));
 		}
-		if (input.length() != inputSet.size()) {
-			return false;
-		}
-		return true;
+		return input.length() == inputSet.size();
 	}
 
 	public static boolean isValidRestartInput(String restartInput) {

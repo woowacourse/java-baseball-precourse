@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.RandomNumber;
+import baseball.domain.RandomNumber;
 
 public class OutputView {
 	private static final String IS_BALL = "볼 ";

@@ -1,11 +1,18 @@
-package baseball;
+package baseball.domain;
 
 import java.util.ArrayList;
 
 import baseball.view.InputView;
 
-public class Baseball {
-	public static boolean runGame() {
+public class Game {
+	public void run() {
+		boolean gameOnProgress;
+		do {
+			gameOnProgress = playGame();
+		} while (gameOnProgress);
+	}
+
+	public boolean playGame() {
 		ArrayList<Integer> randomNumbers = RandomNumber.getRandomNumbers();
 		while (true) {
 			InputView.printNumberInputMessage();
@@ -17,7 +24,7 @@ public class Baseball {
 		}
 	}
 
-	public static boolean gameRestartOrNot() {
+	public boolean gameRestartOrNot() {
 		InputView.printGameRestartMessage();
 		return InputView.inputGameRestartOrNot();
 	}

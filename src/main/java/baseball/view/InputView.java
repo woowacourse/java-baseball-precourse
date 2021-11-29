@@ -3,7 +3,7 @@ package baseball.view;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-import baseball.Exception;
+import baseball.exception.UserInput;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -16,12 +16,11 @@ public class InputView {
 
 	public static ArrayList<Integer> inputUserNumbers() {
 		String input = Console.readLine();
-		Exception.validateNumberInput(input);
-
+		UserInput.validateNumberInput(input);
 		int[] tempInput = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
 		ArrayList<Integer> userInputNumbers = new ArrayList<>();
 		for (int i : tempInput) {
-			Integer number = new Integer(i);
+			Integer number = i;
 			userInputNumbers.add(number);
 		}
 		return userInputNumbers;
@@ -32,6 +31,6 @@ public class InputView {
 	}
 
 	public static boolean inputGameRestartOrNot() {
-		return Exception.isValidRestartInput(Console.readLine());
+		return UserInput.isValidRestartInput(Console.readLine());
 	}
 }
