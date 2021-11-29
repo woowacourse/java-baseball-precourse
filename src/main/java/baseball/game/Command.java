@@ -16,7 +16,7 @@ public enum Command {
         return Arrays.stream(Command.values())
             .filter(command -> command.button.equals(input))
             .findAny()
-            .get();
+            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 명령입니다."));
     }
 
 }

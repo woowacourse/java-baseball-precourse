@@ -45,4 +45,5 @@ public class BaseballGame implements Runnable {
             new BaseballGame(new ComputerBaseballGenerator()).run();
         }
     }
+
 }
