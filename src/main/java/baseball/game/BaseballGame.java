@@ -8,6 +8,7 @@ import baseball.utils.UserInputHandler;
 public class BaseballGame {
 
     private final TargetNumber targetNumber;
+    private boolean isRunning;
 
     public BaseballGame() {
         this.targetNumber = new TargetNumber(
@@ -16,17 +17,18 @@ public class BaseballGame {
                 NumbersConstraints.MIN_NUMBER.value(),
                 NumbersConstraints.MAX_NUMBER.value()
             ));
+        this.isRunning = true;
     }
 
     public void play() {
-        boolean running = true;
         BaseballGameTurn turn;
 
-        while (running) {
+        while (isRunning) {
             turn = proceedTurn();
             System.out.println(turn.getResultMessage());
-            running = isGameStillRunning(turn);
+            checkGameEnded(turn);
         }
+        System.out.println(PromptMessage.GAME_OVER_MESSAGE.message());
     }
 
     private BaseballGameTurn proceedTurn() {
@@ -39,11 +41,9 @@ public class BaseballGame {
         );
     }
 
-    private boolean isGameStillRunning(BaseballGameTurn turn) {
-        if (turn.isGameEnded()) {
-            System.out.println(PromptMessage.GAME_OVER_MESSAGE.message());
-            return false;
+    private void checkGameEnded(BaseballGameTurn turn) {
+        if (turn.isNumberEqual()) {
+            this.isRunning = false;
         }
-        return true;
     }
 }
