@@ -6,4 +6,5 @@ public class Rules {
 	public static final int NUMBER_LENGTH = 3;
 
 	public static final String REQUEST_RESTART = "1";
+	public static final String REQUEST_EXIT = "2";
 }

@@ -10,7 +10,7 @@ public class Validation {
 	}
 
 	public static void checkRestartInput(String request) {
-		if (!request.equals("1") && !request.equals("2")) {
+		if (!request.equals(REQUEST_RESTART) && !request.equals(REQUEST_EXIT)) {
 			throw new IllegalArgumentException(ERROR_REQUEST_INPUT);
 		}
 	}
