@@ -6,11 +6,22 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomAnswer {
 
-    public List<Integer> generate() {
+    public int[] generate() {
         final int startInclusive = 1;
         final int endInclusive = 9;
-        final int count = 3;
-        List<Integer> answer = Randoms.pickUniqueNumbersInRange(startInclusive, endInclusive, count);
+        boolean[] checkUnique = new boolean[10];
+
+        int[] answer = new int[Constants.ANSWER_LENGTH];
+        for (int i=0; i<Constants.ANSWER_LENGTH; i++) {
+            while (true) {
+                int digit = Randoms.pickNumberInRange(startInclusive, endInclusive);
+                if (!checkUnique[digit]) {
+                    checkUnique[digit] = !checkUnique[digit];
+                    answer[i] = digit;
+                    break;
+                }
+            }
+        }
         return answer;
     }
 }

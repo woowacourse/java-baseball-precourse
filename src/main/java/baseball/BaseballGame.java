@@ -2,90 +2,90 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
+import java.util.Arrays;
 
 public class BaseballGame {
-    public static List<Integer> answer;
-    public static boolean isContinue = true;
-    
-    BaseballGame() {
-        BaseballGame.answer = new RandomAnswer().generate();
+    public static int[] answer = new RandomAnswer().generate();;
+
+    public void start() {
+        System.out.println(Constants.GAME_START_MSG);
+        while (true) {
+            playGame();
+
+            System.out.println(Constants.GAME_RESTART_MSG);
+            if (!restartOrStop()) {
+                break;
+            }
+        }
     }
-    
+
     public void playGame() {
-        while (isContinue) {
-            // System.out.println(BaseballGame.answer);
+        while (true) {
             System.out.print(Constants.INPUT_NUMBER_MSG);
-            String userInput = Console.readLine();
-            userInput = UserInputValidator.playGameInput(userInput);
-            System.out.println(judgeBallsAndStrikes(userInput));
-        }  
+            String userInput = UserInputValidator.check(Console.readLine());
+            int balls = countBalls(userInput);
+            int strikes = countStrikes(userInput);
+            System.out.println(resultMessage(balls, strikes));
+
+            if (stopGame(strikes)) {
+                System.out.println(Constants.GAME_END_MSG);
+                break;
+            }
+        }
     }
-    
-    public String judgeBallsAndStrikes(String userInput) {
+
+    public int countBalls(String userInput) {
         int balls = 0;
-        for (int i=0; i<Constants.ANSWER_LENGTH; i++) {
+        for (int i=0; i<answer.length; i++) {
             int target = Character.getNumericValue(userInput.charAt(i));
-            if (answer.get(i) != target && answer.contains(target)) {
+            if (answer[i] != target && Arrays.stream(answer).anyMatch(e -> e == target)) {
                 balls++;
             }
         }
-        
+        return balls;
+    }
+
+    public int countStrikes(String userInput) {
         int strikes = 0;
-        for (int i=0; i<Constants.ANSWER_LENGTH; i++) {
+        for (int i=0; i<answer.length; i++) {
             int target = Character.getNumericValue(userInput.charAt(i));
-            if (answer.get(i) == target) {
+            if (answer[i] == target) {
                 strikes++;
             }
         }
-        
-        if (strikes == 3) {
-            isContinue = false;
-        }
-        
-        String resultMessage = "";
+        return strikes;
+    }
+
+    public boolean stopGame(int strikes) {
+        return strikes == Constants.ANSWER_LENGTH;
+    }
+    
+    public String resultMessage(int balls, int strikes) {
+        String message = "";
         if (balls != 0) {
-            resultMessage += Integer.toString(balls) + Constants.BALL;
+           message += Integer.toString(balls) + Constants.BALL;
         }
-        
-        if (resultMessage != "") {
-            resultMessage += " ";
+        if (!message.equals("")) {
+            message += " ";
         }
-        
         if (strikes != 0) {
-            resultMessage += Integer.toString(strikes) + Constants.STRIKE;
+            message += Integer.toString(strikes) + Constants.STRIKE;
         }
-        
         if (balls == 0 && strikes == 0) {
-            resultMessage = Constants.NOTHING;
+            message = Constants.NOTHING;
         }
-        
-        return resultMessage;
+        return message;
     }
-    
-    public void restartOrExit() {
-        System.out.println(Constants.GAME_RESTART_MSG);
+
+    public boolean restartOrStop() {
         String userInput = Console.readLine();
-        userInput = UserInputValidator.restartOrExitInput(userInput);
-        
         if (userInput.equals(Constants.RESTART)) {
-            isContinue = true;
-            BaseballGame game = new BaseballGame();
-            game.start();
+            answer = new RandomAnswer().generate();
+            return true;
+        } else if (userInput.equals(Constants.EXIT)) {
+            return false;
+        } else {
+            throw new IllegalArgumentException(Constants.INPUT_ERROR_MSG);
         }
-        
-        if (userInput.equals(Constants.EXIT)) {
-            System.out.println(Constants.GAME_EXIT_MSG);
-        }
-    }
-    
-    public void start() {
-        System.out.println(Constants.GAME_START_MSG);
-        
-        playGame();
-        
-        System.out.println(Constants.GAME_END_MSG);
-      
-        restartOrExit();
     }
 }
