@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.gameController.GameDriver;
+import baseball.gamecontroller.GameDriver;
 
 public class Application {
 
