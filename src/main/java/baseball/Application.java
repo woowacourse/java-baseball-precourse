@@ -3,14 +3,16 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Random;
+import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
         boolean flag = true;
-//        flag 가 2가 되면 while 문이 종료되면서 게임 종료
+//        flag 가 true(2)가 되면 while 문이 종료되면서 게임 종료
         while (flag) {
             int[] randomNum = randomNum();
+
+            int[] arrayNum = inputNum();
 
             flag = getFlag();
         }
@@ -44,5 +46,11 @@ public class Application {
         }
         int[] randomNum = {first,second,third};
         return  randomNum;
+    }
+    private static int[] inputNum() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputNum = Console.readLine();
+        int[] arrayNum = Stream.of(inputNum.split("")).mapToInt(Integer::parseInt).toArray();
+        return arrayNum;
     }
 }
