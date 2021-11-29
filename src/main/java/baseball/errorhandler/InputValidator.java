@@ -26,7 +26,7 @@ public class InputValidator {
 
 	private static Boolean is3digits(String input) {
 		int intInput = Integer.parseInt(input);
-		return 99 < intInput && intInput < 1000;
+		return (int)(Math.log10(intInput) + 1) == Constant.NUMBER_LENGTH;
 	}
 
 	private static Boolean isDifferentNumbers(String input) {
