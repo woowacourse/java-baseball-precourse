@@ -46,7 +46,7 @@ public class Application {
 		}
 
 		private void validateInput(List<Integer> lst) throws IllegalArgumentException {
-			if (lst.size() < 3) {
+			if (lst.size() != 3) {
 				throw new IllegalArgumentException();
 			}
 			for (Integer i : lst) {
@@ -87,7 +87,7 @@ public class Application {
 		private void judge(int[] scoreBoard) {
 			/* 1은 strike 수, 0은 ball 수 */
 			if (scoreBoard[1] == 3) {
-				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+				System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 				isOver = true;
 			} else if (scoreBoard[0] == 0 && scoreBoard[1] == 0) {
 				System.out.println("낫싱");
@@ -134,7 +134,6 @@ public class Application {
 			} catch (IllegalArgumentException e) {
 				System.out.println("Illegal Input");
 			}
-
 		}
 	}
 
