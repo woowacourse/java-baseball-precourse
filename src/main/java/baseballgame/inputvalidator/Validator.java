@@ -29,7 +29,7 @@ public class Validator {
     private static boolean isDifferentAllNumber(String inputNumber){
         boolean test1 = inputNumber.charAt(0) != inputNumber.charAt(1);
         boolean test2 = inputNumber.charAt(0) != inputNumber.charAt(2);
-        boolean test3 = inputNumber.charAt(2) != inputNumber.charAt(3);
+        boolean test3 = inputNumber.charAt(1) != inputNumber.charAt(2);
 
         return test1 && test2 && test3;
     }
