@@ -18,12 +18,15 @@ public class Computer implements Player {
 	 * 각 자리수의 숫자는 서로 다른 수이며 각 자리수를 ArrayList 에 저장한다.
 	 */
 	public void createNumbers() {
-		Set<Integer> set = new HashSet<>();
-		while (set.size() < LENGTH_OF_NUMBERS) {
-			set.add(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM));
+		numbers = new ArrayList<>();
+		for (int i = 0; i < LENGTH_OF_NUMBERS; i++) {
+			int number = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
+			if (numbers.contains(number)) {
+				i--;
+			} else {
+				numbers.add(number);
+			}
 		}
-		numbers = new ArrayList<>(set);
-		Collections.shuffle(numbers);
 	}
 
 	@Override
