@@ -13,10 +13,11 @@ public class Application {
             int[] randomNum = randomNum();
 
             int[] arrayNum = inputNum();
-
+            arrayNumFlag(arrayNum);
             flag = getFlag();
         }
     }
+
 
     private static boolean getFlag() {
         boolean flag;
@@ -47,10 +48,15 @@ public class Application {
         int[] randomNum = {first,second,third};
         return  randomNum;
     }
+//    숫자를 입력받을 때 사용하는 매소드
     private static int[] inputNum() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNum = Console.readLine();
         int[] arrayNum = Stream.of(inputNum.split("")).mapToInt(Integer::parseInt).toArray();
         return arrayNum;
+    }
+//    숫자가 3개가 맞는지 확인하는 매소드
+    private static void arrayNumFlag(int[] arrayNum) {
+        if (arrayNum.length != 3) throw  new IllegalArgumentException();
     }
 }
