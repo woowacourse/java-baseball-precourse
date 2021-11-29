@@ -18,7 +18,7 @@ public class Application {
     public static void playGame(Computer computer, InputValidator inputValidator) {
         String answer = computer.generateAnswer();
         do {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(GameConstant.INPUT_MESSAGE);
             String input = readLine();
 
             inputValidator.validateGameNumberInput(input);
@@ -27,17 +27,17 @@ public class Application {
             game.printGameResult();
 
             if (game.isGameOver()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(GameConstant.GAME_OVER_MESSAGE);
                 break;
             }
         } while (true);
     }
 
     private static boolean checkRestartGame(InputValidator inputValidator) {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GameConstant.RESTART_MESSAGE);
         String input = readLine();
 
         inputValidator.validateRestartGameInput(input);
-        return input.equals(BaseballGame.RE_GAME);
+        return input.equals(GameConstant.RE_GAME);
     }
 }

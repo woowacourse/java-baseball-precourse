@@ -1,21 +1,11 @@
 package baseball;
 
 public class BaseballGame {
-
-    private static final String BALL_FORMAT = "%d볼 ";
-    private static final String STRIKE_FORMAT = "%d스트라이크";
-    private static final String NOTHING_STRING = "낫싱";
-
-    private static final int THREE_STRIKE = 3;
-
     private final String targetNumber;
     private final String inputNumber;
 
     private final int strikeCount;
     private final int ballCount;
-
-    public static final String RE_GAME = "1";
-    public static final String EXIT = "2";
 
     public BaseballGame(String targetNumber, String inputNumber) {
         this.targetNumber = targetNumber;
@@ -28,27 +18,27 @@ public class BaseballGame {
         StringBuilder sb = new StringBuilder();
 
         if (ballCount > 0) {
-            sb.append(formatToString(BALL_FORMAT, ballCount));
+            sb.append(formatToString(GameConstant.BALL_FORMAT, ballCount));
         }
 
         if (strikeCount > 0) {
-            sb.append(formatToString(STRIKE_FORMAT, strikeCount));
+            sb.append(formatToString(GameConstant.STRIKE_FORMAT, strikeCount));
         }
 
         if (ballCount == 0 && strikeCount == 0) {
-            sb.append(NOTHING_STRING);
+            sb.append(GameConstant.NOTHING_STRING);
         }
 
         System.out.println(sb.toString());
     }
 
     public boolean isGameOver() {
-        return strikeCount == THREE_STRIKE;
+        return strikeCount == GameConstant.THREE_STRIKE;
     }
 
     private int countStrike() {
         int count = 0;
-        for (int i = 0; i < Computer.NUMBER_LENGTH; i++) {
+        for (int i = 0; i < GameConstant.NUMBER_LENGTH; i++) {
             if (targetNumber.charAt(i) == inputNumber.charAt(i)) {
                 count++;
             }
@@ -58,7 +48,7 @@ public class BaseballGame {
 
     private int countBall() {
         int count = 0;
-        for (int i = 0; i < Computer.NUMBER_LENGTH; i++) {
+        for (int i = 0; i < GameConstant.NUMBER_LENGTH; i++) {
             if (targetNumber.contains(inputNumber.substring(i, i + 1))
                     && targetNumber.charAt(i) != inputNumber.charAt(i)) {
                 count++;

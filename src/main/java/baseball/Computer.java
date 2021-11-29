@@ -2,7 +2,6 @@ package baseball;
 
 public class Computer {
 
-    public static final int NUMBER_LENGTH = 3;
 
     private final NumberGenerator numberGenerator;
 
@@ -11,6 +10,6 @@ public class Computer {
     }
 
     public String generateAnswer() {
-        return numberGenerator.generateNumber(NUMBER_LENGTH);
+        return numberGenerator.generateNumber(GameConstant.NUMBER_LENGTH);
     }
 }

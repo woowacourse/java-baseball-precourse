@@ -4,8 +4,6 @@ import java.util.HashSet;
 
 public class InputValidator {
 
-    private static final String NUMERIC_REGEX = "[1-9]+";
-
     public void validateGameNumberInput(String input) {
         validateLength(input);
         validateStringIsNumeric(input);
@@ -20,39 +18,39 @@ public class InputValidator {
     }
 
     private void validateLength(String input) {
-        if (input.length() != Computer.NUMBER_LENGTH) {
+        if (input.length() != GameConstant.NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateStringIsNumeric(String input) {
-        if (!input.matches(NUMERIC_REGEX)) {
+        if (!input.matches(GameConstant.NUMERIC_REGEX)) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateStringContainsZero(String input) {
-        if (input.contains("0")) {
+        if (input.contains(GameConstant.ZERO)) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateStringHasDuplicatedChar(String input) {
         HashSet<Integer> hashSet = new HashSet<>();
-        for (int i = 0; i < Computer.NUMBER_LENGTH; i++) {
+        for (int i = 0; i < GameConstant.NUMBER_LENGTH; i++) {
             hashSet.add(input.charAt(i) - '0');
         }
 
-        if (hashSet.size() != Computer.NUMBER_LENGTH) {
+        if (hashSet.size() != GameConstant.NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
     private boolean isReGame(String input) {
-        return input.equals(BaseballGame.RE_GAME);
+        return input.equals(GameConstant.RE_GAME);
     }
 
     private boolean isExit(String input) {
-        return input.equals(BaseballGame.EXIT);
+        return input.equals(GameConstant.EXIT);
     }
 }
