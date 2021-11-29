@@ -37,7 +37,7 @@ public class Game {
 		return InputView.getInput();
 	}
 
-	public void start() {
+	public void startGame() {
 		while (true) {
 			createNewTargetNumbers();
 			startRound();
