@@ -14,6 +14,10 @@ public enum PlayOption {
         this.playable = playable;
     }
 
+    public int getOption() {
+        return this.option;
+    }
+
     public boolean isPlayable() {
         return this.playable;
     }
