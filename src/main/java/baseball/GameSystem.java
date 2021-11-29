@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.modules.ResultCalculator;
 import baseball.view.ResultView;
 
 public class GameSystem {

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.modules;
 
 import java.util.HashSet;
 
@@ -11,7 +11,7 @@ public class ResultCalculator {
 	private int ball;
 	private int strike;
 
-	ResultCalculator(String inputBallNumbers, String randomBallNumbers) {
+	public ResultCalculator(String inputBallNumbers, String randomBallNumbers) {
 		this.inputBallNumbers = inputBallNumbers.toCharArray();
 		this.randomBallNumbers = randomBallNumbers.toCharArray();
 

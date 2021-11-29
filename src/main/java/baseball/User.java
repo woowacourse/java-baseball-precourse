@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.modules.InputValidator;
 import baseball.view.InputView;
 
 public class User {
