@@ -26,7 +26,7 @@ public class Judge {
             if (i == idx) {
                 continue;
             }
-            if (rightAnswer.charAt(idx) == num) {
+            if (rightAnswer.charAt(i) == num) {
                 return true;
             }
         }
