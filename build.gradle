@@ -1,4 +1,4 @@
-pluygins {
+plugins {
     id 'java'
     id 'eclipse'
     id 'org.ec4j.editorconfig' version '0.0.3'
@@ -9,7 +9,7 @@ compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
 
 editorconfig {
-    exludes = ['build']
+    excludes = ['build']
 }
 check.dependsOn editorconfigCheck
 

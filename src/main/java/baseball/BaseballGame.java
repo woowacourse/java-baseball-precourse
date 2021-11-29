@@ -14,6 +14,59 @@ public class BaseballGame {
 		isGameOngoing = false;
 	}
 
+	public boolean playBaseballGameWithComputer(Player player) {
+		makeRandomBaseballGameAnswer();
+		isGameOngoing = true;
+		while (!getBaseballGameHint().equals(BaseballGameConstants.END_CONDITION)) {
+			askBaseballGameAnswerToPlayer(player);
+		}
+		isGameOngoing = false;
+		return askPlayerContinueGame(player);
+	}
+
+	private void makeRandomBaseballGameAnswer() {
+		if (isGameOngoing) {
+			return;
+		}
+		answer = "";
+		while (!checkBaseballGameAnswerFormatRules(answer)) {
+			answer = Integer.toString(camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(111, 999));
+		}
+	}
+
+	private String getBaseballGameHint() {
+		if (answer.isEmpty() || guessAnswer.isEmpty()) {
+			return "error";
+		}
+		int strikeNum = checkStrikeNum();
+		int ballNum = checkBallNum();
+		if (strikeNum == 0 && ballNum == 0) {
+			return "낫싱";
+		} else if (strikeNum == 0) {
+			return ballNum + "볼";
+		} else if (ballNum == 0) {
+			return strikeNum + "스트라이크";
+		}
+		return ballNum + "볼 " + strikeNum + "스트라이크";
+	}
+
+	private void askBaseballGameAnswerToPlayer(Player player) throws IllegalArgumentException {
+		guessAnswer = player.askQuestionAndGetAnswer(BaseballGameConstants.QUESTION_ASK_ANSWER);
+		if (!checkBaseballGameAnswerFormatRules(guessAnswer)) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	private boolean askPlayerContinueGame(Player player) throws IllegalArgumentException {
+		String reply = player.askQuestionAndGetAnswer(BaseballGameConstants.QUESTION_ASK_CONTINUE_GAME);
+		if (reply.equals("1")) {
+			return true;
+		} else if (reply.equals("2")) {
+			return false;
+		}
+		throw new IllegalArgumentException();
+	}
+
 	private boolean checkLengthIsThree(String answer) {
 		return answer.length() == BaseballGameConstants.LENGTH_RULE;
 	}
@@ -51,33 +104,6 @@ public class BaseballGame {
 			&& checkNoOverlapCharacter(answer);
 	}
 
-	private void makeRandomBaseballGameAnswer() {
-		if (isGameOngoing) {
-			return;
-		}
-		answer = "";
-		while (!checkBaseballGameAnswerFormatRules(answer)) {
-			answer = Integer.toString(camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(111, 999));
-		}
-	}
-
-	private void askBaseballGameAnswerToPlayer(Player player) throws IllegalArgumentException {
-		guessAnswer = player.askQuestionAndGetAnswer(BaseballGameConstants.QUESTION_ASK_ANSWER);
-		if (!checkBaseballGameAnswerFormatRules(guessAnswer)) {
-			throw new IllegalArgumentException();
-		}
-	}
-
-	private boolean askPlayerContinueGame(Player player) throws IllegalArgumentException {
-		String reply = player.askQuestionAndGetAnswer(BaseballGameConstants.QUESTION_ASK_CONTINUE_GAME);
-		if (reply.equals("1")) {
-			return true;
-		} else if (reply.equals("2")) {
-			return false;
-		}
-		throw new IllegalArgumentException();
-	}
-
 	private int checkStrikeNum() {
 		int strikeNum = 0;
 		for (int index = 0; index < BaseballGameConstants.LENGTH_RULE; ++index) {
@@ -106,21 +132,4 @@ public class BaseballGame {
 		}
 		return ballNum;
 	}
-
-	private String getBaseballGameHint() {
-		if (answer.isEmpty() || guessAnswer.isEmpty()) {
-			return "error";
-		}
-		int strikeNum = checkStrikeNum();
-		int ballNum = checkBallNum();
-		if (strikeNum == 0 && ballNum == 0) {
-			return "낫싱";
-		} else if (strikeNum == 0) {
-			return Integer.toString(ballNum) + "볼";
-		} else if (ballNum == 0) {
-			return Integer.toString(strikeNum) + "스트라이크";
-		}
-		return Integer.toString(ballNum) + "볼 " + Integer.toString(strikeNum) + "스트라이크";
-	}
-
 }
