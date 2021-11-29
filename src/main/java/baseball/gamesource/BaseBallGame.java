@@ -36,17 +36,17 @@ public class BaseBallGame {
     }
 
     //두 수를 비교해 두 수가 같을 때만 true 반환
-    boolean numberCheck(List<Integer> oppo, List<Integer> user){
+    boolean numberCheck(List<Integer> opponentNumbers, List<Integer> userNumbers){
         int strikeCnt=0;
         int ballCnt=0;
 
-        for(int i=0; i<oppo.size() ; ++i){
+        for(int i=0; i<opponentNumbers.size() ; ++i){
 
             //스트라이크 개수 구하기
-            if(oppo.get(i) == user.get(i))
+            if(opponentNumbers.get(i).equals(userNumbers.get(i)))
                 strikeCnt++;
 
-            ballCnt += ballCheck(oppo, user.get(i), i);
+            ballCnt += ballCheck(opponentNumbers, userNumbers.get(i), i);
         }
 
         //비교한 정보 출력
