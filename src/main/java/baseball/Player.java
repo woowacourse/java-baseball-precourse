@@ -40,15 +40,17 @@ public class Player {
 
     // 길이 판별 함수
     public void isValidLength(String s){
-        if(s.length() != 3)
+        if(s.length() != 3) {
             throw new IllegalArgumentException("세자리 수보다 크거나 작음");
+        }
     }
 
     // 올바른 수 확인 함수
     public void isValidNum(ArrayList<Integer> numList){
         Set<Integer> SetNum = new HashSet<>(numList); //순서 상관
-        if(SetNum.contains(0)) // 0존재할 때
+        if(SetNum.contains(0)) { // 0존재할 때
             throw new IllegalArgumentException("0이 존재");
+        }
         if(SetNum.size() != 3){
             throw new IllegalArgumentException("중복된 수 존재");
         }
