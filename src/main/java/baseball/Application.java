@@ -16,11 +16,10 @@ public class Application {
     }
 
     private static void gameStart(Computer computer) {
-        GameResult gameResult = GameResult.init();
         while (!computer.isFinishedGame()) {
             computer = computer.refresh();
             BaseBallNumbers userBaseBallNumbers = BaseBallNumbers.createByIntegerNumbers(inputNumbers());
-            gameResult = computer.calculateBaseBallGame(userBaseBallNumbers);
+            GameResult gameResult = computer.calculateBaseBallGame(userBaseBallNumbers);
             viewGameResult(gameResult);
             computer.changeGameState(inputGameStateCommand(gameResult));
         }
