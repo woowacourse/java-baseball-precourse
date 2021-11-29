@@ -22,7 +22,7 @@ public class Game {
 			System.out.print(Constant.INPUT_MESSAGE);
 			int[] playerNumber = player.getNumberFromPlayer();
 			isEnd = judgeResult(computerNumber, playerNumber);
-		} while (isEnd == false);
+		} while (!isEnd);
 	}
 
 	public boolean isEndGame() {
@@ -42,7 +42,7 @@ public class Game {
 		int[] numStrikeAndBall;
 		boolean endFlag;
 		numStrikeAndBall = countStrikeAndBall(computerNumber, playerNumber);
-		endFlag = printBallandStrikeResult(numStrikeAndBall);
+		endFlag = printBallAndStrikeResult(numStrikeAndBall);
 		return endFlag;
 	}
 
@@ -69,7 +69,7 @@ public class Game {
 		return false;
 	}
 
-	public boolean printBallandStrikeResult(int[] numStrikeAndBall) {
+	public boolean printBallAndStrikeResult(int[] numStrikeAndBall) {
 		int numStrike = numStrikeAndBall[0];
 		int numBall = numStrikeAndBall[1];
 		if (numStrike == 3) {
