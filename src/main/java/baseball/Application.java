@@ -6,7 +6,7 @@ public class Application {
 		boolean isContinue = true;
 
 		while (isContinue) {
-			isContinue = Game.oneRound();
+			isContinue = GameHandler.oneRound();
 		}
 	}
 }

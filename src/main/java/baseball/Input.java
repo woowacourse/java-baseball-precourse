@@ -8,7 +8,7 @@ public class Input {
 		String input = Console.readLine();
 
 		validateLength(input, length);
-		validateNumber(input, min, max, length);
+		validateNumberRange(input, min, max, length);
 
 		return input;
 	}
@@ -19,7 +19,7 @@ public class Input {
 		}
 	}
 
-	private static void validateNumber(String number, int min, int max, int length) {
+	private static void validateNumberRange(String number, int min, int max, int length) {
 		for (int i = 0; i < length; i++) {
 			char num = number.charAt(i);
 			if ((min <= (num - '0') && (num - '0') <= max) == false) {

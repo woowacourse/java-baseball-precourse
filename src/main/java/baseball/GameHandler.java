@@ -1,6 +1,6 @@
 package baseball;
 
-public class Game {
+public class GameHandler {
 	static final int MIN_NUM = 1;
 	static final int MAX_NUM = 9;
 	static final int INPUT_LEN = 3;
