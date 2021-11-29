@@ -14,6 +14,8 @@ public class Application {
 
             int[] arrayNum = inputNum();
             arrayNumFlag(arrayNum);
+            int strike = strikeCount(arrayNum,randomNum);
+            int ball = ballCount(strike,arrayNum,randomNum);
             flag = getFlag();
         }
     }
@@ -58,5 +60,19 @@ public class Application {
 //    숫자가 3개가 맞는지 확인하는 매소드
     private static void arrayNumFlag(int[] arrayNum) {
         if (arrayNum.length != 3) throw  new IllegalArgumentException();
+    }
+
+//    스트라이크의 개수를 알려주는 매소드
+    private static int strikeCount(int[] arrayNum, int[] randomNum) {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) if (arrayNum[i] == randomNum[i]) strike++;
+        return strike;
+    }
+//    볼의 개수를 알려주는 매소드
+    private  static  int ballCount(int strike, int[] arrayNum, int[] randomNum) {
+        int ball = 0;
+        for (int i = 0;  i < 3; i++) for (int j = 0; j < 3; j++) if (randomNum[i] == arrayNum[j]) ball++;
+        ball -= strike;
+        return ball;
     }
 }
