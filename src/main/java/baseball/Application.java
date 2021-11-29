@@ -4,44 +4,16 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-	private static final int NEW_GAME = 1;
-	private static final int QUIT_GAME = 2;
+	// TODO: test 파일 실행 및 터미널에서 실행 확인
+	static final int NEW_GAME = 1;
+	static final int QUIT_GAME = 2;
 
 	public static void main(String[] args) {
-		// TODO: 두번째 테스트 케이스 타임아웃 발생
-		Answer rightAnswer = new Answer();
-
-		// TODO: Game 클래스 만들어서 main 함수 내 실행하는 함수만 작성
-		while (true) {
-			System.out.print("숫자를 입력해주세요 : ");
-			String userInput = readLine();
-			Answer.checkInputValue(userInput);
-
-			Answer answer = new Answer(userInput);
-
-			Hint hint = new Hint();
-			hint.compareAnswer(answer, rightAnswer);
-			hint.showResult();
-
-			if (hint.strike != Answer.NUMBER_COUNT) {
-				continue;
-			}
-
-			System.out.println(Answer.NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-			System.out.println("게임을 새로 시작하려면 " + NEW_GAME + ", 종료하려면 " + QUIT_GAME + "를 입력하세요.");
-			String newGameAnswer = readLine();
-
-			int newGameAnswerNumber = Application.getNewGameAnswerNumber(newGameAnswer);
-
-			if (newGameAnswerNumber == NEW_GAME) {
-				rightAnswer = new Answer();
-			} else if (newGameAnswerNumber == QUIT_GAME) {
-				break;
-			}
-		}
+		Game rightAnswer = new Game();
+		Game.init(rightAnswer);
 	}
 
-	private static int getNewGameAnswerNumber(String str) {
+	static int getNewGameAnswerNumber(String str) {
 		int intValue;
 		try {
 			intValue = Integer.parseInt(str);
@@ -96,14 +68,14 @@ class Array {
 	}
 }
 
-class Answer {
+class Game {
 	private static final int START_RANGE = 1;
 	private static final int END_RANGE = 9;
 	static final int NUMBER_COUNT = 3;
 
 	int[] number = new int[NUMBER_COUNT];
 
-	Answer() {
+	Game() {
 		int nowRandomNum;
 		int nowNumberIndex = 0;
 
@@ -116,34 +88,70 @@ class Answer {
 		}
 	}
 
-	Answer(String str) {
-		for (int i = 0; i < Answer.NUMBER_COUNT; i++) {
+	Game(String str) {
+		for (int i = 0; i < Game.NUMBER_COUNT; i++) {
 			number[i] = Integer.parseInt(str.charAt(i) + "");
 		}
+	}
+
+	private int getRandomNumber() {
+		return pickNumberInRange(Game.START_RANGE, Game.END_RANGE);
+	}
+
+	public static void init(Game rightAnswer) {
+		Game answer = Game.getAnswer();
+
+		Hint hint = new Hint();
+		hint.compareAnswer(answer, rightAnswer);
+		hint.showResult();
+
+		if (hint.strike != Game.NUMBER_COUNT) {
+			Game.init(rightAnswer);
+			return;
+		}
+
+		int newGameAnswer = Game.checkNewGameStart();
+		if (newGameAnswer == Application.NEW_GAME) {
+			rightAnswer = new Game();
+			Game.init(rightAnswer);
+		}
+	}
+
+	private static Game getAnswer() {
+		// TODO: 모든 게임 안내 관련 문자열 별도 분리하여 관리
+		System.out.print("숫자를 입력해주세요 : ");
+		String userInput = readLine();
+		Game.checkInputValue(userInput);
+
+		return new Game(userInput);
+	}
+
+	private static int checkNewGameStart() {
+		System.out.println(Game.NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println("게임을 새로 시작하려면 " + Application.NEW_GAME + ", 종료하려면 " + Application.QUIT_GAME + "를 입력하세요.");
+
+		String newGameAnswer = readLine();
+		return Application.getNewGameAnswerNumber(newGameAnswer);
 	}
 
 	public String toString() {
 		return "number: " + this.number[0] + this.number[1] + this.number[2];
 	}
 
-	private int getRandomNumber() {
-		return pickNumberInRange(Answer.START_RANGE, Answer.END_RANGE);
-	}
-
 	static void checkInputValue(final String str) {
-		if (!Answer.checkInputLength(str)) {
+		if (!Game.checkInputLength(str)) {
 			throw new IllegalArgumentException();
 		}
-		if (!Answer.checkInputNumber(str)) {
+		if (!Game.checkInputNumber(str)) {
 			throw new IllegalArgumentException();
 		}
-		if (!Answer.checkEqualNumber(str)) {
+		if (!Game.checkEqualNumber(str)) {
 			throw new IllegalArgumentException();
 		}
 	}
 
 	static boolean checkInputLength(final String str) {
-		return str.length() == Answer.NUMBER_COUNT;
+		return str.length() == Game.NUMBER_COUNT;
 	}
 
 	static boolean checkInputNumber(String str) {
@@ -171,7 +179,7 @@ class Answer {
 	}
 }
 
-class Hint extends Answer {
+class Hint extends Game {
 	int ball, strike;
 
 	public String toString() {
@@ -186,10 +194,10 @@ class Hint extends Answer {
 		this.strike++;
 	}
 
-	void compareAnswer(Answer answer, Answer rightAnswer) {
+	void compareAnswer(Game answer, Game rightAnswer) {
 		int nowNumber;
 
-		for (int i = 0; i < Answer.NUMBER_COUNT; i++) {
+		for (int i = 0; i < Game.NUMBER_COUNT; i++) {
 			nowNumber = answer.number[i];
 
 			if (!Array.checkArrayContains(rightAnswer.number, nowNumber)) {
