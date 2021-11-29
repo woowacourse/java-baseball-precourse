@@ -18,7 +18,7 @@ public class BaseballGameRunner {
 
     private static boolean isRestart() {
         int input = UserInputHandler.getNumber(
-            GameMessages.RESTART_GAME_PROMPT.message()
+            GameMessages.PROMPT_GAME_RESTART
         );
         return input == GAME_RESTART_FlAG;
     }
