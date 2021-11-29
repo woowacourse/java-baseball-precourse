@@ -1,7 +1,8 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashSet;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
