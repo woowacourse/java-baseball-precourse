@@ -13,7 +13,11 @@ public class Baseballs {
     public Baseballs(final List<Integer> numbers) {
         validateCountOfBallNumbers(numbers.size());
         validateOverlap(numbers.size(), (int) numbers.stream().distinct().count());
-        values = IntStream.range(0, numbers.size())
+        values = initialize(numbers);
+    }
+
+    private List<Baseball> initialize(final List<Integer> numbers) {
+        return IntStream.range(0, numbers.size())
                 .mapToObj(index -> new Baseball(numbers.get(index), index))
                 .collect(Collectors.toList());
     }
