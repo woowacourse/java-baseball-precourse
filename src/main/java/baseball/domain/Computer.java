@@ -5,10 +5,10 @@ import java.util.Arrays;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
-	private static final Integer BASEBALL_GAME_BALL_COUNT = 3;
-	private static final Integer BASEBALL_GAME_NUMBER_RANGE_START = 1;
-	private static final Integer BASEBALL_GAME_NUMBER_RANGE_END = 9;
-	private static final Integer EMPTY_NUMBER = -1;
+	private final Integer BASEBALL_GAME_BALL_COUNT = 3;
+	private final Integer BASEBALL_GAME_NUMBER_RANGE_START = 1;
+	private final Integer BASEBALL_GAME_NUMBER_RANGE_END = 9;
+	private final Integer EMPTY_NUMBER = -1;
 
 	private int[] randomNumbers;
 	private int strikeCounts;
@@ -17,7 +17,8 @@ public class Computer {
 	public void createRandomNumbers() {
 		initiateEmptyRandomNumbers();
 		do {
-			int number = Randoms.pickNumberInRange(BASEBALL_GAME_NUMBER_RANGE_START, BASEBALL_GAME_NUMBER_RANGE_END);
+			int number = Randoms.pickNumberInRange(BASEBALL_GAME_NUMBER_RANGE_START,
+				BASEBALL_GAME_NUMBER_RANGE_END);
 			insertNumberToRandomNumbers(number, getNextIndexRandomNumbers());
 		} while (getNextIndexRandomNumbers() < BASEBALL_GAME_BALL_COUNT);
 	}
