@@ -2,6 +2,6 @@ package utils;
 
 public enum GameStatus {
 	READY,
-	PALYING,
+	PLAYING,
 	FINISHED
 }

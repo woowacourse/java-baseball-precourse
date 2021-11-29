@@ -25,7 +25,7 @@ public class BaseBallGame {
 	public void start() {
 		setGameStatus(PLAY_COMMAND);
 
-		while (gameStatus == GameStatus.PALYING) {
+		while (gameStatus == GameStatus.PLAYING) {
 			makeAnswerNumber();
 			play();
 			String command = InputView.getRestartOrFinishCommand();
@@ -66,13 +66,13 @@ public class BaseBallGame {
 
 	private void setGameStatus(String command) {
 		if (command.equals(PLAY_COMMAND)) {
-			gameStatus = GameStatus.PALYING;
+			gameStatus = GameStatus.PLAYING;
 		}
 		if (command.equals(FINISH_COMMAND)) {
 			gameStatus = GameStatus.FINISHED;
 		}
 		if (command.equals(RESTART_COMMAND)) {
-			gameStatus = GameStatus.PALYING;
+			gameStatus = GameStatus.PLAYING;
 		}
 	}
 

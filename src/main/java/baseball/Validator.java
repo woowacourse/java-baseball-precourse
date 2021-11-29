@@ -26,9 +26,9 @@ public class Validator {
 		if (s.size() != GAME_NUMBER_LENGTH) {
 			return false;
 		}
-
 		return true;
 	}
+
 	public static boolean checkRestartOrFinishCommand(String str) {
 		return str.equals(RESTART_COMMAND) || str.equals(FINISH_COMMAND);
 	}
