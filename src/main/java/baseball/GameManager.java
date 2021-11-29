@@ -67,7 +67,7 @@ public class GameManager {
 
     }
 
-    public void play() {
+    public void startGame() {
         String usersChoice = Text.RESTART;
 
         while (usersChoice.equals(Text.RESTART)) {
