@@ -30,8 +30,16 @@ public class Game {
 	 */
 	public int[] compareNumber(String inputNumber) {
 		// TODO: 컴퓨터가 입력한 수와 사용자가 입력한 수를 비교해서 볼, 스트라이크의 개수를 카운트하는 메서드
-		int[] tmp = {0, 3};
-		return tmp;
+		int[] result = {0, 0};
+
+		for (int i = 0; i < 3; i++) {
+			if (computerNumber.charAt(i) == inputNumber.charAt(i)) {
+				result[1]++;
+			} else if (inputNumber.indexOf(computerNumber.charAt(i)) != -1) {
+				result[0]++;
+			}
+		}
+		return result;
 	}
 
 	/**
