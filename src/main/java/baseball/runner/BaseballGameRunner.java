@@ -1,6 +1,7 @@
 package baseball.runner;
 
 import baseball.constants.GameMessages;
+import baseball.utils.GameValidator;
 import baseball.utils.UserInputHandler;
 
 public class BaseballGameRunner {
@@ -20,6 +21,7 @@ public class BaseballGameRunner {
         int input = UserInputHandler.getNumber(
             GameMessages.PROMPT_GAME_RESTART
         );
+        GameValidator.validateRestartFlag(input);
         return input == GAME_RESTART_FlAG;
     }
 }
