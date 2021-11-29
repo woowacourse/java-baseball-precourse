@@ -144,3 +144,4 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
   - 필요 없는 코드 삭제
   - 사람 플레이어가 입력한 잘못된 숫자 형식에 대한 예외처리 방식 변경
   - 사람 플레이어가 입력 수 유효여부 검증 로직 변경
+  - javadoc export(directory: javadoc)
