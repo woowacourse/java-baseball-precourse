@@ -25,7 +25,7 @@ public class GameHost {
 			String gameInputNumber = Console.readLine();
 
 			// 게임을 하기 위한 인풋이 적절한지 검사
-			config.gameInputChecking.inputCheck(gameInputNumber);
+			config.gameInputValidator.validateInput(gameInputNumber);
 
 			// gameInputNumber 의 볼, 스트라이크를 계산하고 문자열로 생성한다.
 			String calculateMassage = config.ballStrikeCalculator.calculate(gameInputNumber, targetNumber);
@@ -49,7 +49,7 @@ public class GameHost {
 			String playOrStopInputNumber = Console.readLine();
 
 			// 게임 진행 혹은 중단을 결정하는 값이 적절한 값인지 검사
-			config.playOrStopInputChecking.inputCheck(playOrStopInputNumber);
+			config.playOrStopInputValidator.validateInput(playOrStopInputNumber);
 
 			// 적절한 값일 경우 gameSwitch 변수에 대입
 			gameSwitch = Integer.parseInt(playOrStopInputNumber);

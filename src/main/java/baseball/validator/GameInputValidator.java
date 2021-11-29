@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class GameInputValidator implements InputValidator {
 
 	@Override
-	public void inputCheck(String input) throws IllegalArgumentException {
+	public void validateInput(String input) throws IllegalArgumentException {
 		int lengthRule = 3;
 
 		// input 의 길이가 3이 아닐때 예외 발생

@@ -5,9 +5,9 @@ import baseball.validator.PlayOrStopInputValidator;
 
 public class Config {
 
-	GameInputValidator gameInputChecking = new GameInputValidator();
+	GameInputValidator gameInputValidator = new GameInputValidator();
 
-	PlayOrStopInputValidator playOrStopInputChecking = new PlayOrStopInputValidator();
+	PlayOrStopInputValidator playOrStopInputValidator = new PlayOrStopInputValidator();
 
 	RandomNumberGenerator randomNumber = new RandomNumberGenerator();
 

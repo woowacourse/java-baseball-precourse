@@ -3,7 +3,7 @@ package baseball.validator;
 public class PlayOrStopInputValidator implements InputValidator {
 
 	@Override
-	public void inputCheck(String input) throws IllegalArgumentException {
+	public void validateInput(String input) throws IllegalArgumentException {
 		// input 값의 길이가 1이 아닐 경우 예외 발생
 		if (input.length() != 1) {
 			throw new IllegalArgumentException();
