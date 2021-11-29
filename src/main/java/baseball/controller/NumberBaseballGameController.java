@@ -37,20 +37,19 @@ public class NumberBaseballGameController {
 	}
 
 	private void play(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
-		int[] answer = input(numberBaseballGame, player);
-		int strikeCounts = computer.getStrikeCounts(answer);
-		int ballCounts = computer.getBallCounts(answer);
+		int[] answerNumbers = getAnswerNumbersFromPlayer(player);
+		int strikeCounts = computer.getStrikeCounts(answerNumbers);
+		int ballCounts = computer.getBallCounts(answerNumbers);
 		OutputView.hintMessage(ballCounts, strikeCounts);
-		changeGameState(numberBaseballGame, computer);
+		isSuccessGame(numberBaseballGame, computer);
 	}
 
-	private int[] input(NumberBaseballGame numberBaseballGame, Player player) {
-		List<Integer> inputResult = InputView.getAnswerNumbers();
-		numberBaseballGame.validateInputNumber(inputResult);
-		return player.receiveAnswerNumbers(inputResult);
+	private int[] getAnswerNumbersFromPlayer(Player player) {
+		List<Integer> responseAnswerNumbers = InputView.getAnswerNumbers();
+		return player.receiveAnswerNumbers(responseAnswerNumbers);
 	}
 
-	private void changeGameState(NumberBaseballGame numberBaseballGame, Computer computer) {
+	private void isSuccessGame(NumberBaseballGame numberBaseballGame, Computer computer) {
 		if (computer.isCorrect() == Boolean.TRUE) {
 			numberBaseballGame.closeGame();
 			OutputView.successMessage();
