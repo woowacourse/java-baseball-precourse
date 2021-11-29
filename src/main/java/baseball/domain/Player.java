@@ -70,7 +70,7 @@ public class Player {
 		throw new IllegalArgumentException(WRONG_INPUT_SELECT_PLAY_MORE_GAME);
 	}
 
-	public Boolean getPlayMoreGame() {
+	public Boolean isRestartGame() {
 		return playMoreGame;
 	}
 

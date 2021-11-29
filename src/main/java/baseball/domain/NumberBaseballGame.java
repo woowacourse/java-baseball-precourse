@@ -2,8 +2,8 @@ package baseball.domain;
 
 public class NumberBaseballGame {
 	private Boolean gameState;
-	
-	public Boolean getGameState() {
+
+	public Boolean stillPlayingGame() {
 		return this.gameState;
 	}
 
