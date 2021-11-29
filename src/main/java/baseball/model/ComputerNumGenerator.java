@@ -1,14 +1,18 @@
-package baseball;
+package baseball.model;
 
 import java.util.Arrays;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class ComputerNumGenerator extends NumGenerator {
+public class ComputerNumGenerator {
+	public final int[] NUMS;
+
 	public ComputerNumGenerator() {
+		int[] nums;
 		do {
-			this.nums = pickComputerNums();
-		} while (!isNotDuplicate(nums));
+			nums = pickComputerNums();
+		} while (!Util.isNotDuplicate(nums));
+		NUMS = nums;
 	}
 
 	private static int[] pickComputerNums() {
