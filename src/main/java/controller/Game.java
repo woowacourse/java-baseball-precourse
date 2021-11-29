@@ -21,7 +21,7 @@ public class Game {
 		} while (checkRestart());
 	}
 
-	public void startRound() {
+	private void startRound() {
 		while (true) {
 			PredictionResult predictionResult = getPrediction();
 			OutputView.printHint(predictionResult);
