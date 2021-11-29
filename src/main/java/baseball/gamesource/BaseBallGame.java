@@ -13,19 +13,20 @@ public class BaseBallGame {
     private Opponent opponent = new Opponent();
 
     public void gameStart(){
-        System.out.println(opponent.getNumbers().toString());
+        //디버깅용 정답 출력 코드
+        //System.out.println(opponent.getNumbers().toString());
         do{
+            //연관배열 초기화
+            userNumbers.clear();
+
             System.out.print(MessageConstants.NUMBER_INPUT_REQUEST_MESSAGE);
             String userInput = Console.readLine();
 
             //예외처리하기
             InputCheck.checkGameNumber(userInput);
 
-            userNumbers.clear();
-            char[] inputArr = userInput.toCharArray();
-
-            for(int i=0; i<inputArr.length ; ++i){
-                userNumbers.add((int)(inputArr[i]) - '0');
+            for(int i=0; i<userInput.length() ; ++i){
+                userNumbers.add((int)(userInput.charAt(i)) - '0');
             }
 
         }while(!numberCheck(opponent.getNumbers(), userNumbers));
