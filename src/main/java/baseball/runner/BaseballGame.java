@@ -1,7 +1,8 @@
-package baseball.game;
+package baseball.runner;
 
 import baseball.constants.GameMessages;
 import baseball.constants.NumberListConstraints;
+import baseball.domain.BaseballGameTurn;
 import baseball.domain.TargetNumber;
 import baseball.domain.UserExpectation;
 import baseball.utils.NumberListGenerator;
@@ -42,7 +43,7 @@ public class BaseballGame {
     }
 
     private void checkGameEnded(BaseballGameTurn turn) {
-        if (turn.isNumberEqual()) {
+        if (turn.isGameEnded()) {
             this.isRunning = false;
         }
     }

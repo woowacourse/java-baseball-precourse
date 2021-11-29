@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.game.BaseballGameRunner;
+import baseball.runner.BaseballGameRunner;
 
 public class Application {
 

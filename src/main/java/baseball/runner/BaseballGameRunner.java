@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.runner;
 
 import baseball.constants.GameMessages;
 import baseball.utils.UserInputHandler;

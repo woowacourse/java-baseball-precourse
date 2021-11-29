@@ -1,8 +1,6 @@
-package baseball.game;
+package baseball.domain;
 
 import baseball.constants.NumberListConstraints;
-import baseball.domain.TargetNumber;
-import baseball.domain.UserExpectation;
 
 public class BaseballGameTurn {
 
@@ -10,15 +8,21 @@ public class BaseballGameTurn {
     final private String BALL = "볼";
     final private String NOTHING = "낫싱";
 
-    final private Integer strikes;
-    final private Integer balls;
+    private final String resultMessage;
+    private final Boolean isGameEnded;
 
     public BaseballGameTurn(UserExpectation userExpectation, TargetNumber targetNumber) {
-        this.strikes = countStrikes(userExpectation, targetNumber);
-        this.balls = countBalls(userExpectation, targetNumber);
+        int strikes = countStrikes(userExpectation, targetNumber);
+        int balls = countBalls(userExpectation, targetNumber);
+        this.resultMessage = generateResultMessage(strikes, balls);
+        this.isGameEnded = strikes == NumberListConstraints.LIST_LENGTH.value();
     }
 
     public String getResultMessage() {
+        return this.resultMessage;
+    }
+
+    private String generateResultMessage(int strikes, int balls) {
         StringBuilder msg = new StringBuilder();
         if (strikes == 0 && balls == 0) {
             return NOTHING;
@@ -61,7 +65,7 @@ public class BaseballGameTurn {
         return balls;
     }
 
-    public boolean isNumberEqual() {
-        return this.strikes == NumberListConstraints.LIST_LENGTH.value();
+    public boolean isGameEnded() {
+        return this.isGameEnded;
     }
 }
