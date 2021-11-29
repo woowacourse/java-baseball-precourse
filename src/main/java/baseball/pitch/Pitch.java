@@ -18,6 +18,11 @@ public class Pitch {
         return isSame((Pitch)target);
     }
 
+    @Override
+    public int hashCode() {
+        return 31 * index * value;
+    }
+
     public boolean isSame(Pitch pitch) {
         return (this.index == pitch.index) && (this.value == pitch.value);
     }
