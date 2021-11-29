@@ -10,6 +10,7 @@ import static baseball.config.Message.*;
 public class BaseballGame {
     private GameNumber computerNumber;
     private GameNumber playerNumber;
+    private Result result;
 
     public void run() {
         do {
@@ -18,17 +19,29 @@ public class BaseballGame {
         } while (shouldRestartGame());
     }
 
+    private void playGame() {
+        do {
+            createPlayerNumber();
+            processGame();
+            printResult();
+        } while (shouldContinueGame());
+    }
+
     private void initGame() {
         computerNumber = RandomNumberGenerator.generateNumber();
     }
 
-    private void playGame() {
-        do {
-            createPlayerNumber();
-            Result printResult = NumberComparator.compare(computerNumber, playerNumber);
-            NumberComparator.clearStrikeAndBall();
-            System.out.println(printResult.toString());
-        } while (shouldContinueGame());
+    private void createPlayerNumber() {
+        playerNumber = Player.scanNumber();
+    }
+
+    private void processGame() {
+        result = NumberComparator.compare(computerNumber, playerNumber);
+        NumberComparator.clearStrikeAndBall();
+    }
+
+    private void printResult() {
+        System.out.println(result.toString());
     }
 
     private boolean shouldRestartGame() {
@@ -44,9 +57,5 @@ public class BaseballGame {
 
     private boolean shouldContinueGame() {
         return !computerNumber.getGameNumber().equals(playerNumber.getGameNumber());
-    }
-
-    private void createPlayerNumber() {
-        playerNumber = Player.scanNumber();
     }
 }
