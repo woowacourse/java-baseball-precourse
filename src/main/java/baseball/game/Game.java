@@ -21,7 +21,7 @@ public class Game {
             this.correctAnswer = this.playGame();
         }
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(Constant.WIN_MESSAGE);
 
         if (User.isGameRestart()) {
             reset();
