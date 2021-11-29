@@ -89,8 +89,10 @@ public class Application {
      */
     private static int strikeCount(int[] arrayNum, int[] randomNum) {
         int strike = 0;
-        for (int i = 0; i < 3; i++) if (arrayNum[i] == randomNum[i]) {
-            strike++;
+        for (int i = 0; i < 3; i++) {
+            if (arrayNum[i] == randomNum[i]) {
+                strike++;
+            }
         }
         return strike;
     }
