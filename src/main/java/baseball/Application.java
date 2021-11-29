@@ -16,9 +16,12 @@ public class Application {
             arrayNumFlag(arrayNum);
             int strike = strikeCount(arrayNum,randomNum);
             int ball = ballCount(strike,arrayNum,randomNum);
+            countJudge(strike, ball);
+
             flag = getFlag();
         }
     }
+
 
 
     private static boolean getFlag() {
@@ -74,5 +77,18 @@ public class Application {
         for (int i = 0;  i < 3; i++) for (int j = 0; j < 3; j++) if (randomNum[i] == arrayNum[j]) ball++;
         ball -= strike;
         return ball;
+    }
+//    심판이 스트라이크, 볼 판정을 하는 매소드
+    private static void countJudge(int strike, int ball) {
+        if (strike + ball == 0) {
+            System.out.println("낫싱");
+        }
+        else {
+            if (ball != 0) System.out.print(ball +"볼");
+            if (strike * ball != 0) System.out.print(" ");
+            if (strike != 0) System.out.print(strike + "스트라이크");
+            System.out.println();
+
+        }
     }
 }
