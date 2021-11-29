@@ -16,11 +16,18 @@ public class GameNumber {
 
     private void checkNumber(List<Integer> gameNumber) {
         isValidLength(gameNumber);
+        isBetweenOneAndNine(gameNumber);
         hasDuplicate(gameNumber);
     }
 
     private void isValidLength(List<Integer> gameNumber) {
         if(gameNumber.size() != NUM_SIZE) {
+            throw new IllegalArgumentException(ERR_MSG);
+        }
+    }
+
+    private void isBetweenOneAndNine(List<Integer> gameNumber) {
+        if(!gameNumber.stream().allMatch(num -> num >= MIN_NUM_VALUE && num <= MAX_NUM_VALUE)) {
             throw new IllegalArgumentException(ERR_MSG);
         }
     }
