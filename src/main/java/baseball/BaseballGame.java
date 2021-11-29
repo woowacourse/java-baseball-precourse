@@ -14,6 +14,9 @@ public class BaseballGame {
     private final int strikeCount;
     private final int ballCount;
 
+    public static final String RE_GAME = "1";
+    public static final String EXIT = "2";
+
     public BaseballGame(String targetNumber, String inputNumber) {
         this.targetNumber = targetNumber;
         this.inputNumber = inputNumber;
