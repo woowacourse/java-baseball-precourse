@@ -12,7 +12,6 @@ public class BaseballGameSystem {
 
     public static final int GAME_RE_START = 1;
     public static final int GAME_EXIT = 2;
-    public static final int GAME_MENU_LENGTH = 1;
     public static final String USER_WIN = "3스트라이크";
 
     private PlayerService playerService;
