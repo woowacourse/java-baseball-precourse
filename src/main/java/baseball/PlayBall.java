@@ -14,23 +14,23 @@ public class PlayBall {
             System.out.println(guessResult);
 
             if (isFinished(guessResult)) {
-                System.out.println("3개의 숫자를 모두 맞추면 게임 종료");
+                System.out.println(SystemMessage.END_CONDITION_MESSAGE);
                 return;
             }
         }
     }
 
     public static boolean isFinished(String guessResult) {
-        return guessResult.equals("3스트라이크");
+        return guessResult.equals(SystemMessage.THREE_STRIKE_MESSAGE);
     }
 
     private static int[] getUserInput() {
 
-        System.out.print("숫자를 입력해주세요: ");
+        System.out.print(SystemMessage.REQUEST_INPUT_MESSAGE);
         String input = Console.readLine();
 
         if (!BaseBallUtil.isValidateGuess(input)) {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+            throw new IllegalArgumentException(SystemMessage.WRONG_INPUT_MESSAGE);
         }
         return parseStringToIntegerArray(input);
 

@@ -9,12 +9,12 @@ public class Application {
         do {
             PlayBall.play(BaseBallUtil.generateThreeRandomDigits());
 
-            System.out.println("end game");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(SystemMessage.GAME_END_MESSAGE);
+            System.out.println(SystemMessage.RESTART_SELECT_MESSAGE);
             String input = Console.readLine();
 
             if (BaseBallUtil.isValidateChoice(input)) isContinue = setIsContinue(input);
-            else throw new IllegalArgumentException("잘못된 입력입니다.");
+            else throw new IllegalArgumentException(SystemMessage.WRONG_INPUT_MESSAGE);
 
         } while (isContinue);
 
