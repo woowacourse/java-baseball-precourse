@@ -1,12 +1,14 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+import domain.Numbers;
 import domain.RestartOrQuitSelection;
 
 public class InputView {
-	public static String inputNumbers() {
+	public static Numbers inputNumbers() {
 		OutputView.printInstruction();
-		return Console.readLine();
+		String input = Console.readLine();
+		return new Numbers(input);
 	}
 
 	public static RestartOrQuitSelection inputRestart() {

@@ -28,8 +28,7 @@ public class Game {
 
 	public void startRound() {
 		while (true) {
-			String userInput = InputView.inputNumbers();
-			Numbers numbers = new Numbers(userInput);
+			Numbers numbers = InputView.inputNumbers();
 
 			Hint hint = targetNumbers.compareTo(numbers);
 
