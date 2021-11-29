@@ -9,6 +9,8 @@ import utils.RandomNumbersGenerator;
 
 public class ComputerNumbers {
 	private List<BaseballNumber> numbers;
+	private static final int MIN_POSITION = 0;
+	private static final int MAX_POSITION = 3;
 
 	public ComputerNumbers() {
 		makeNumbers();
@@ -22,13 +24,13 @@ public class ComputerNumbers {
 	}
 
 	public int findNumberOfStrikes(PlayerNumbers playerNumbers) {
-		return (int)IntStream.range(0, 3)
+		return (int)IntStream.range(MIN_POSITION, MAX_POSITION)
 			.filter(index -> numbers.get(index).equals(playerNumbers.getNumbers().get(index)))
 			.count();
 	}
 
 	public int findNumberOfBalls(PlayerNumbers playerNumbers) {
-		return (int)IntStream.range(0, 3)
+		return (int)IntStream.range(MIN_POSITION, MAX_POSITION)
 			.filter(index -> playerNumbers.getNumbers().contains(numbers.get(index)))
 			.filter(index -> !numbers.get(index).equals(playerNumbers.getNumbers().get(index)))
 			.count();

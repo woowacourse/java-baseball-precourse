@@ -1,7 +1,7 @@
 package controller;
 
 import model.BaseballGame;
-import view.OutputDisplay;
+import view.Display;
 
 public class GameController {
 
@@ -18,20 +18,20 @@ public class GameController {
 	}
 
 	private static void playGame() {
-		OutputDisplay.pleaseInputNumbers();
+		Display.pleaseInputNumbers();
 		BaseballGame baseballGame = new BaseballGame(InputController.inputNumbers());
 
 		while (baseballGame.isNotGameOver()) {
 			if (baseballGame.isNoHint()) {
-				OutputDisplay.showNothing();
+				Display.showNothing();
 			} else if (!baseballGame.isNoHint()) {
 				showGameHints(baseballGame);
 			}
-			OutputDisplay.pleaseInputNumbers();
+			Display.pleaseInputNumbers();
 			baseballGame.passPlayerNumbers(InputController.inputNumbers());
 		}
 
-		OutputDisplay.chooseNextGame(baseballGame.giveStrikeCount());
+		Display.chooseNextGame(baseballGame.giveStrikeCount());
 	}
 
 	private static void showGameHints(BaseballGame baseballGame) {
@@ -39,12 +39,12 @@ public class GameController {
 		int stirke = baseballGame.giveStrikeCount();
 
 		if (ball > 0) {
-			OutputDisplay.showBallCount(ball);
+			Display.showBallCount(ball);
 		}
 		if (stirke > 0) {
-			OutputDisplay.showStrikeCount(stirke);
+			Display.showStrikeCount(stirke);
 		}
 
-		OutputDisplay.enterBlank();
+		Display.enterBlank();
 	}
 }

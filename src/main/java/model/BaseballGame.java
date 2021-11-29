@@ -6,7 +6,7 @@ public class BaseballGame {
 
 	public BaseballGame(String[] numbers) {
 		makeAnswerNumbers();
-		passPlayerNumbers(numbers);
+		playerNumbers = new PlayerNumbers(numbers);
 	}
 
 	private void makeAnswerNumbers() {
