@@ -8,10 +8,12 @@ public class Game {
 
     private boolean correctAnswer;
     private List<Integer> answerList;
+    private Hint hint;
 
     public Game() {
         this.correctAnswer = false;
         answerList = RandomUtils.RandomNumberList();
+        hint = new Hint();
     }
 
     public void start() {
@@ -23,6 +25,8 @@ public class Game {
     public boolean playGame(){
         List<Integer> input = User.inputNumber();
 
-        return true;
+        hint.countHint(input, answerList);
+
+        return false;
     }
 }
