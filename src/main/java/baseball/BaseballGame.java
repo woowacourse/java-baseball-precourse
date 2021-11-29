@@ -68,6 +68,16 @@ public class BaseballGame {
 		}
 	}
 
+	private boolean askPlayerContinueGame(Player player) throws IllegalArgumentException {
+		String reply = player.askQuestionAndGetAnswer(BaseballGameConstants.QUESTION_ASK_CONTINUE_GAME);
+		if (reply.equals("1")) {
+			return true;
+		} else if (reply.equals("2")) {
+			return false;
+		}
+		throw new IllegalArgumentException();
+	}
+
 	private int checkStrikeNum() {
 		int strikeNum = 0;
 		for (int index = 0; index < BaseballGameConstants.LENGTH_RULE; ++index) {
@@ -112,4 +122,5 @@ public class BaseballGame {
 		}
 		return Integer.toString(ballNum) + "볼 " + Integer.toString(strikeNum) + "스트라이크";
 	}
+
 }
