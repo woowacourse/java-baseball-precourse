@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class BaseballValidationImpl implements Validation {
 
-    public static final BaseballValidationImpl VALIDATION_IMPL = new BaseballValidationImpl();
+    private static final BaseballValidationImpl VALIDATION_IMPL = new BaseballValidationImpl();
 
     private static final Pattern isNumericPattern = Pattern.compile("^[1-9]*$");
 
@@ -45,6 +45,7 @@ public class BaseballValidationImpl implements Validation {
     }
 
     private boolean isLimitedLength(final String input) {
-        return input.length() == Integer.parseInt(InputValidationRule.INPUT_VALIDATION_LENGTH.getValue());
+        return input.length() == Integer
+            .parseInt(InputValidationRule.INPUT_VALIDATION_LENGTH.getValue());
     }
 }
