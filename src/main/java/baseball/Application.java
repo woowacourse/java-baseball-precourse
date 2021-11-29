@@ -5,27 +5,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 	// TODO: test 파일 실행 및 터미널에서 실행 확인
-	static final int NEW_GAME = 1;
-	static final int QUIT_GAME = 2;
-
 	public static void main(String[] args) {
 		Game rightAnswer = new Game();
 		Game.init(rightAnswer);
-	}
-
-	static int getNewGameAnswerNumber(String str) {
-		int intValue;
-		try {
-			intValue = Integer.parseInt(str);
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException();
-		}
-
-		if (intValue != 1 && intValue != 2) {
-			throw new IllegalArgumentException();
-		}
-
-		return intValue;
 	}
 }
 
@@ -72,6 +54,12 @@ class Game {
 	private static final int START_RANGE = 1;
 	private static final int END_RANGE = 9;
 	static final int NUMBER_COUNT = 3;
+	private static final int NEW_GAME = 1;
+	private static final int QUIT_GAME = 2;
+
+	private static final String GET_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
+	private static final String SUCCESS_MESSAGE = Game.NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+	private static final String NEW_GAME_CHECK_MESSAGE = "게임을 새로 시작하려면 " + Game.NEW_GAME + ", 종료하려면 " + Game.QUIT_GAME + "를 입력하세요.";
 
 	int[] number = new int[NUMBER_COUNT];
 
@@ -111,15 +99,14 @@ class Game {
 		}
 
 		int newGameAnswer = Game.checkNewGameStart();
-		if (newGameAnswer == Application.NEW_GAME) {
+		if (newGameAnswer == Game.NEW_GAME) {
 			rightAnswer = new Game();
 			Game.init(rightAnswer);
 		}
 	}
 
 	private static Game getAnswer() {
-		// TODO: 모든 게임 안내 관련 문자열 별도 분리하여 관리
-		System.out.print("숫자를 입력해주세요 : ");
+		System.out.print(GET_NUMBER_MESSAGE);
 		String userInput = readLine();
 		Game.checkInputValue(userInput);
 
@@ -127,11 +114,26 @@ class Game {
 	}
 
 	private static int checkNewGameStart() {
-		System.out.println(Game.NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-		System.out.println("게임을 새로 시작하려면 " + Application.NEW_GAME + ", 종료하려면 " + Application.QUIT_GAME + "를 입력하세요.");
+		System.out.println(SUCCESS_MESSAGE);
+		System.out.println(NEW_GAME_CHECK_MESSAGE);
 
 		String newGameAnswer = readLine();
-		return Application.getNewGameAnswerNumber(newGameAnswer);
+		return Game.getNewGameAnswerNumber(newGameAnswer);
+	}
+
+	private static int getNewGameAnswerNumber(String str) {
+		int intValue;
+		try {
+			intValue = Integer.parseInt(str);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException();
+		}
+
+		if (intValue != 1 && intValue != 2) {
+			throw new IllegalArgumentException();
+		}
+
+		return intValue;
 	}
 
 	public String toString() {
@@ -182,6 +184,10 @@ class Game {
 class Hint extends Game {
 	int ball, strike;
 
+	private static final String BALL_WORD = "볼";
+	private static final String STRIKE_WORD = "스트라이크";
+	private static final String NOT_MATCH_WORD = "낫싱";
+
 	public String toString() {
 		return "ball: " + this.ball + ", strike: " + this.strike;
 	}
@@ -215,18 +221,18 @@ class Hint extends Game {
 	void showResult() {
 		String result = "";
 		if (this.ball != 0) {
-			result += this.ball + "볼";
+			result += this.ball + BALL_WORD;
 		}
 
 		if (this.strike != 0) {
 			if (this.ball != 0) {
 				result += " ";
 			}
-			result += this.strike + "스트라이크";
+			result += this.strike + STRIKE_WORD;
 		}
 
 		if (result.equals("")) {
-			result = "낫싱";
+			result = NOT_MATCH_WORD;
 		}
 
 		System.out.println(result);
