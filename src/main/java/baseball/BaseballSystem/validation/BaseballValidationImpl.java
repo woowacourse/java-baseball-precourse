@@ -1,6 +1,5 @@
-package baseball.BaseballSystem;
+package baseball.BaseballSystem.validation;
 
-import baseball.BaseballGame;
 import java.util.regex.Pattern;
 
 public class BaseballValidationImpl implements Validation {
@@ -34,11 +33,11 @@ public class BaseballValidationImpl implements Validation {
     }
 
     private boolean endGame(final String input) {
-        return BaseballRule.END_GAME.getValue().equals(input);
+        return InputValidationRule.END_GAME.getValue().equals(input);
     }
 
     private boolean continueGame(final String input) {
-        return BaseballRule.CONTINUE_GAME.getValue().equals(input);
+        return InputValidationRule.CONTINUE_GAME.getValue().equals(input);
     }
 
     private boolean isNumeric(final String input) {
@@ -46,6 +45,6 @@ public class BaseballValidationImpl implements Validation {
     }
 
     private boolean isLimitedLength(final String input) {
-        return input.length() == Integer.parseInt(BaseballRule.INPUT_VALIDATION_LENGTH.getValue());
+        return input.length() == Integer.parseInt(InputValidationRule.INPUT_VALIDATION_LENGTH.getValue());
     }
 }

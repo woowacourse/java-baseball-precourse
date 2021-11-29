@@ -1,10 +1,10 @@
 package baseball;
 
-import baseball.BaseballSystem.BaseballRule;
-import baseball.BaseballSystem.BaseballValidationImpl;
-import baseball.BaseballSystem.JudgementService;
-import baseball.BaseballSystem.JudgementServiceImpl;
-import baseball.BaseballSystem.Validation;
+import baseball.BaseballSystem.validation.InputValidationRule;
+import baseball.BaseballSystem.validation.BaseballValidationImpl;
+import baseball.BaseballSystem.judgement.JudgementService;
+import baseball.BaseballSystem.judgement.JudgementServiceImpl;
+import baseball.BaseballSystem.validation.Validation;
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.dto.response.JudgementResultDto;
@@ -57,7 +57,7 @@ public class BaseballGame {
     }
 
     private boolean isContinue(String continuePlayerInput) {
-        if (BaseballRule.CONTINUE_GAME.getValue().equals(continuePlayerInput)) {
+        if (InputValidationRule.CONTINUE_GAME.getValue().equals(continuePlayerInput)) {
             return OK;
         } else {
             return NO;

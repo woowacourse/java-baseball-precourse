@@ -1,4 +1,4 @@
-package baseball.BaseballSystem;
+package baseball.BaseballSystem.judgement;
 
 import baseball.domain.Computer;
 import baseball.domain.Player;
@@ -10,8 +10,7 @@ public class JudgementServiceImpl implements JudgementService {
 
     static private final JudgementServiceImpl judgementServiceImpl = new JudgementServiceImpl();
 
-    private JudgementServiceImpl() {
-    }
+    private JudgementServiceImpl() {}
 
     public static JudgementServiceImpl getInstance() {
         return judgementServiceImpl;
@@ -24,8 +23,8 @@ public class JudgementServiceImpl implements JudgementService {
         int strike = strikeCount(playerNumber, computerNumber);
         int ball = ballCount(playerNumber, computerNumber, strike);
         boolean isCorrect = isFullStrike(strike);
-        String msg = resultToString(strike, ball);
-        return new JudgementResultDto(isCorrect, msg);
+        String resultMessage = resultToString(strike, ball);
+        return new JudgementResultDto(isCorrect, resultMessage);
     }
 
     @Override
@@ -57,8 +56,7 @@ public class JudgementServiceImpl implements JudgementService {
         return strike;
     }
 
-    private int ballCount(final String playerNumber, final String computerNumber,
-        final int strike) {
+    private int ballCount(final String playerNumber, final String computerNumber, final int strike) {
         int ball = 0;
         Set<Character> playerNumberBuckets = new HashSet<>();
         for (int index = 0; index < FIX_NUMBER_LENGTH; index++) {
