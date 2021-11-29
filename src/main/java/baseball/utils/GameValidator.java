@@ -36,8 +36,8 @@ public class GameValidator {
     }
 
     public static void validateDuplicate(List<Integer> numbers) throws IllegalArgumentException {
-        HashSet<Integer> set = new HashSet<>(numbers);
-        if (set.size() != numbers.size()) {
+        long uniqueElements = numbers.stream().distinct().count();
+        if (uniqueElements != NumberListConstraints.LIST_LENGTH.value()) {
             throw new IllegalArgumentException(DUPLICATE_MESSAGE);
         }
     }
