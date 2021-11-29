@@ -42,4 +42,19 @@ public class Umpire {
 
         hintStorage.put(Text.STRIKE, strikeCount);
     }
+
+    private void countBall() {
+        int ballCount = 0;
+
+        for (int i = 0; i < ESSENTIAL_NUMBER_LENGTH; i++) {
+            String compareNumber = String.valueOf(usersNumber.charAt(i));
+
+            if (computersNumber.contains(compareNumber)) {
+                ballCount++;
+            }
+
+        }
+
+        hintStorage.put(Text.BALL, ballCount - hintStorage.get(Text.STRIKE));
+    }
 }
