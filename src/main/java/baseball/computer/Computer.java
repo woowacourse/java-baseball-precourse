@@ -31,7 +31,7 @@ public class Computer {
 		String[] myAnswerArr = myAnswer.split("");
 
 		for (int i = 0; i < 3; i++) {
-			if (computerBall.charAt(i) != myAnswer.charAt(i)) {
+			if (computerBall.charAt(i) == myAnswer.charAt(i)) {
 				continue;
 			}
 			if (computerBall.contains(myAnswerArr[i])) {
