@@ -8,7 +8,7 @@ public class GameHandler {
 	static final int TERMINATE = 2;
 	static final int END_INPUT_LEN = 1;
 
-	public static void oneRound() {
+	public static void startRound() {
 		String rightAnswer = Util.randomNumberGenerator(MIN_NUM, MAX_NUM, INPUT_LEN);
 
 		while (true) {
@@ -24,7 +24,7 @@ public class GameHandler {
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 	}
 
-	public static boolean isRestart() {
+	public static boolean checkRestart() {
 		String input = Input.getNumber(
 			"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n",
 			RESTART, TERMINATE, END_INPUT_LEN);
