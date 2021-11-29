@@ -45,6 +45,7 @@ public class Hint {
         if (this.strike > 0) {
             System.out.print(this.strike + Constant.STRIKE);
         }
+
         System.out.println();
     }
 
@@ -52,6 +53,7 @@ public class Hint {
         if (strike == Constant.NUMBER_LENGTH) {
             return true;
         }
+
         return false;
     }
 }

@@ -19,12 +19,12 @@ public class User {
             int parseInt = Integer.parseInt(s);
             UserNumber.add(parseInt);
         }
+
         return UserNumber;
     }
 
     public static boolean isGameRestart() {
         System.out.println(Constant.INPUT_RESTART_MESSAGE);
-
         String readLine = Console.readLine();
 
         Validation.isValidRestartInput(readLine);
@@ -32,6 +32,7 @@ public class User {
         if (Integer.parseInt(readLine) == Constant.GAME_RESTART) {
             return true;
         }
+
         return false;
     }
 }
