@@ -8,7 +8,7 @@ public class Application {
         //TODO: 숫자 야구 게임 구현
         boolean replayFlag = true;
         while (replayFlag) {
-            ThreeDigits threeDigitObject = new ThreeDigits();
+            numberGenerator threeDigitObject = new numberGenerator();
             threeDigitObject.genThreeRandomDigits();
             System.out.println(threeDigitObject.getThreeDigits());
 
@@ -16,7 +16,7 @@ public class Application {
         }
     }
 
-    public static boolean execute(ThreeDigits threeDigitObject) {
+    public static boolean execute(numberGenerator threeDigitObject) {
         int strikeNum;
         int ballNum;
         boolean replayFlag;
@@ -28,8 +28,8 @@ public class Application {
             // 사용자 입력 받은 뒤, 유효성 검사
             System.out.printf("%s ", "숫자를 입력해주세요 :");
             String numberInputStr = Console.readLine();
-            Validator validator = new Validator();
-            validator.validateNumberInput(numberInputStr);
+            numberValidator inputNumberValidator = new numberValidator();
+            inputNumberValidator.validateNumberInput(numberInputStr);
             int inputNumber = Integer.parseInt(numberInputStr);
 
             // strike?
@@ -67,12 +67,12 @@ public class Application {
         }
     }
 
-    public static boolean wannaReplay () {
+    public static boolean wannaReplay() {
         // 사용자 입력 받은 뒤, 유효성 검사
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String replayDecisionInputStr = Console.readLine();
-        Validator validator = new Validator();
-        validator.validateReplayInput(replayDecisionInputStr);
+        numberValidator replayInputValidator = new numberValidator();
+        replayInputValidator.validateReplayInput(replayDecisionInputStr);
 
         int replayInputDecision = Integer.parseInt(replayDecisionInputStr);
 
