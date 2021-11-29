@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.view.InputView.inputGameStateCommand;
 import static baseball.view.InputView.inputNumbers;
 import static baseball.view.ResultView.viewGameResult;
 
@@ -8,15 +9,17 @@ import baseball.domain.computer.GameResult;
 import baseball.domain.number.BaseBallNumbers;
 
 public class Application {
+
     public static void main(String[] args) {
         Computer computer = Computer.init();
         GameResult gameResult = GameResult.init();
 
         while (!computer.isFinishedGame()) {
+            computer = computer.refresh();
             BaseBallNumbers userBaseBallNumbers = BaseBallNumbers.createByIntegerNumbers(inputNumbers());
             gameResult = computer.calculateBaseBallGame(userBaseBallNumbers);
             viewGameResult(gameResult);
-            computer.refresh();
+            computer.changeGameState(inputGameStateCommand(gameResult));
         }
     }
 }

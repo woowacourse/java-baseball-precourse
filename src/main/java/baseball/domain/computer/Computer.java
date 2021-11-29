@@ -61,4 +61,8 @@ public class Computer {
     public boolean isFinishedGame() {
         return gameState.isEndGame();
     }
+
+    public void changeGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
 }
