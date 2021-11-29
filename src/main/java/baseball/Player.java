@@ -6,6 +6,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
 	private static final Player player = new Player();
+	private int[] playerNum;
+
+	public int[] getPlayerNum() {
+		return playerNum;
+	}
 
 	private Player() {
 	}
@@ -14,8 +19,9 @@ public class Player {
 		return player;
 	}
 
-	public void takePlayerNum(int[] playerNum) {
+	public void takePlayerNum() {
 		char charPlayerNum;
+		playerNum = new int[GAME_NUMBER_LENGTH];
 		System.out.print(INPUT_MESSAGE);
 		String userInput = Console.readLine();
 		if (userInput.length() != GAME_NUMBER_LENGTH) {

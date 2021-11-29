@@ -10,31 +10,21 @@ public class BaseballGameController {
 	private final BaseballGameModel baseballGameModel;
 	private final HintSentenceGenerator hintSentenceGenerator;
 
-	private int[] enemyNum;
-	private int[] playerNum;
-
 	public BaseballGameController() {
-		initializeNums();
 		enemy = Enemy.getEnemy();
 		player = Player.getPlayer();
 		baseballGameModel = BaseballGameModel.getBaseballGameModel();
 		hintSentenceGenerator = HintSentenceGenerator.getHintSentenceGenerator();
 	}
 
-	private void initializeNums() {
-		enemyNum = new int[GAME_NUMBER_LENGTH];
-		playerNum = new int[GAME_NUMBER_LENGTH];
-	}
-
 	public void startGame() {
 		int strikeCount;
 		int ballCount;
-		initializeNums();
-		enemy.setEnemyNum(enemyNum);
+		enemy.setEnemyNum();
 		do {
-			player.takePlayerNum(playerNum);
-			strikeCount = baseballGameModel.getStrike(playerNum, enemyNum);
-			ballCount = baseballGameModel.getBall(playerNum, enemyNum);
+			player.takePlayerNum();
+			strikeCount = baseballGameModel.getStrike(player.getPlayerNum(), enemy.getEnemyNum());
+			ballCount = baseballGameModel.getBall(player.getPlayerNum(), enemy.getEnemyNum());
 			printResult(strikeCount, ballCount);
 		} while (!baseballGameModel.checkResult(strikeCount));
 	}
