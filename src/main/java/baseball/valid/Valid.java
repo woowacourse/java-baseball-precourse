@@ -27,4 +27,13 @@ public interface Valid {
             return false;
         return true;
     }
+
+    // 입력된 숫자에 0이 포함되어 있는지 확인한다.
+    default boolean hasZero(int i) {
+        String s = String.valueOf(i);
+        if(s.indexOf('0') != -1)
+            return true;
+        return false;
+    }
+
 }

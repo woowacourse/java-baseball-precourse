@@ -35,4 +35,16 @@ public class ValidTest {
         result = valid.inRange(1000);
         assertThat(result).isFalse();
     }
+
+    @Test
+    @DisplayName("숫자내에 0이 있는지 확인한다.")
+    void 숫자에_0이_있는가() {
+        // 123에는 0이 포함되어 있지 않다.
+        boolean result = valid.hasZero(123);
+        assertThat(result).isFalse();
+
+        // 103에는 0포함 되어있다.
+        result = valid.hasZero(103);
+        assertThat(result).isTrue();
+    }
 }
