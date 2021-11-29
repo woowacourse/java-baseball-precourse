@@ -6,6 +6,7 @@ import baseball.utils.Parser;
 import baseball.utils.RandomUtils;
 import baseball.view.RequestInput;
 import baseball.view.SystemMessage;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameService {
