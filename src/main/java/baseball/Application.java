@@ -114,17 +114,12 @@ public class Application {
     private static void countJudge(int strike, int ball) {
         if (strike + ball == 0) {
             System.out.println("낫싱");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0) {
+            System.out.println(strike + "스트라이크");
         } else {
-            if (ball != 0) {
-                System.out.print(ball +"볼");
-            }
-            if (strike * ball != 0) {
-                System.out.print(" ");
-            }
-            if (strike != 0) {
-                System.out.print(strike + "스트라이크");
-            }
-            System.out.println();
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
 }
