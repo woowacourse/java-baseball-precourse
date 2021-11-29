@@ -36,8 +36,9 @@ public class Computer {
                 strikeNum++;
                 continue;
             }
-            if(setNum.contains(playerNum.get(i)))
+            if(setNum.contains(playerNum.get(i))) {
                 ballNum++;
+            }
         }
 
         return isBallStrike(ballNum, strikeNum);
@@ -49,11 +50,11 @@ public class Computer {
         if(strikeNum == 3){
             Print3Strike();
             return true;
-        }
-        else if (strikeNum == 0 && ballNum == 0)
+        } else if (strikeNum == 0 && ballNum == 0) {
             PrintNothing();
-        else
+        } else {
             PrintBallStrike(ballNum, strikeNum);
+        }
 
         return false;
     }
@@ -66,12 +67,13 @@ public class Computer {
     public void PrintNothing(){ System.out.println("낫싱"); }
 
     public void PrintBallStrike(int ballNum, int strikeNum){
-        if(ballNum != 0 && strikeNum == 0)
+        if(ballNum != 0 && strikeNum == 0) {
             System.out.println(ballNum + "볼");
-        else if(ballNum == 0 && strikeNum != 0)
+        } else if(ballNum == 0 && strikeNum != 0) {
             System.out.println(strikeNum + "스트라이크");
-        else
+        } else {
             System.out.println(ballNum + "볼 " + strikeNum + "스트라이크");
+        }
     }
 
     public void PrintRestartMSG(){
