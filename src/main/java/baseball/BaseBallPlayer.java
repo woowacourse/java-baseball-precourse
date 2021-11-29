@@ -16,7 +16,7 @@ public class BaseBallPlayer {
 		this.validator = new BaseBallInputValidator();
 	}
 
-	public void getUserNumber() {
+	public void setUserNumber() {
 		System.out.println(INPUT_MESSAGE);
 		String userInput = Console.readLine();
 		if (!validator.checkUserInput(userInput)) {

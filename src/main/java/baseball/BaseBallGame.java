@@ -23,7 +23,7 @@ public class BaseBallGame {
 		while (gameStatus == GOING) {
 			baseBallAnswerProvider.makeAnswer();
 			while (!baseBallScore.isAllStrike()) {
-				baseBallPlayer.getUserNumber();
+				baseBallPlayer.setUserNumber();
 				baseBallScore.countScore(baseBallAnswerProvider.getAnswer(), baseBallPlayer);
 				System.out.println(baseBallScore.scoreString());
 			}
