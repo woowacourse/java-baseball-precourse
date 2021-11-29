@@ -62,6 +62,10 @@ public class GameBalls {
         return numbers;
     }
 
+    public Ball getBallByIndex(int index) {
+        return this.sequence[index];
+    }
+
     @Override
     public String toString() {
         return "GameBalls{" +
