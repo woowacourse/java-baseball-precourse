@@ -2,6 +2,7 @@ package baseball.domain.computer;
 
 import static baseball.domain.number.BaseBallNumbers.BASEBALL_NUMBERS_LIMIT_SIZE;
 
+import baseball.exception.computer.GameResultNegativeCountException;
 import baseball.exception.computer.GameResultTotalCountException;
 import java.util.Objects;
 
@@ -20,6 +21,7 @@ public class GameResult {
     }
 
     public static GameResult from(int strikeCount, int ballCount) {
+        checkNegativeCount(strikeCount, ballCount);
         checkStrikeAndBallTotalCount(strikeCount, ballCount);
         return new GameResult(strikeCount, ballCount);
     }
@@ -27,6 +29,12 @@ public class GameResult {
     private static void checkStrikeAndBallTotalCount(int strikeCount, int ballCount) {
         if (Math.addExact(strikeCount, ballCount) > BASEBALL_NUMBERS_LIMIT_SIZE) {
             throw new GameResultTotalCountException();
+        }
+    }
+
+    private static void checkNegativeCount(int strikeCount, int ballCount) {
+        if (strikeCount < 0 || ballCount < 0) {
+            throw new GameResultNegativeCountException();
         }
     }
 

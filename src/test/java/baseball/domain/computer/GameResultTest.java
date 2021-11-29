@@ -22,6 +22,32 @@ class GameResultTest {
     }
 
     @Test
+    @DisplayName("strikeCount가 음수일 경우 exception이 발생해야 한다.")
+    void createExceptionByNegativeStrikeCount() {
+        // given
+        int strikeCount = -1;
+        int ballCount = 2;
+
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> GameResult.from(strikeCount, ballCount))
+            .withMessageMatching("count는 음수가 입력될 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("ballCount가 음수일 경우 exception이 발생해야 한다.")
+    void createExceptionByNegativeBallCount() {
+        // given
+        int strikeCount = 2;
+        int ballCount = -1;
+
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> GameResult.from(strikeCount, ballCount))
+            .withMessageMatching("count는 음수가 입력될 수 없습니다.");
+    }
+
+    @Test
     @DisplayName("strike가 3개인 경우 종료됨을 확인할 수 있다.")
     void isFinishedTest() {
         // given
