@@ -67,6 +67,7 @@
   - [x] NumberDigit 클래스
   - [x] NumberRange 클래스
 - [x] InputView 클래스 유효성 검사 메소드에 stream 코드 적용
+- [x] Hint 클래스의 toString() 메소드 개선
 
 ---
 

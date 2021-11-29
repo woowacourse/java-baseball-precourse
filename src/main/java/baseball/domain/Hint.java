@@ -29,23 +29,22 @@ public class Hint {
     }
 
     public String toString() {
-        List<String> resultDatas = new ArrayList<>();
+        List<String> resultStrings = makeResultStrings();
+        if (resultStrings.size() == 0) {
+            return HintText.NOTHING;
+        }
+        return String.join(" ", resultStrings);
+    }
 
+    private List<String> makeResultStrings() {
+        List<String> resultStrings = new ArrayList<>();
         if (isBallExist()) {
-            resultDatas.add(getStringBalls());
+            resultStrings.add(getStringBalls());
         }
         if (isStrikeExist()) {
-            resultDatas.add(getStringStrikes());
+            resultStrings.add(getStringStrikes());
         }
-
-        int resultDataSize = resultDatas.size();
-
-        if (resultDataSize > 1) {
-            return String.join(" ", resultDatas);
-        } else if (resultDataSize == 1) {
-            return resultDatas.get(0);
-        }
-        return HintText.NOTHING;
+        return resultStrings;
     }
 
     private boolean isBallExist() {
