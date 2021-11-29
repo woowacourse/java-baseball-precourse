@@ -23,7 +23,7 @@ public class TargetNumbers extends Numbers {
 		return generatedNumbers;
 	}
 
-	public Hint compareTo(Numbers numbers) {
+	public PredictionResult compareTo(Numbers numbers) {
 		int ballCount = 0;
 		int strikeCount = 0;
 
@@ -43,7 +43,7 @@ public class TargetNumbers extends Numbers {
 			ballCount++;
 		}
 
-		return new Hint(ballCount, strikeCount);
+		return new PredictionResult(ballCount, strikeCount);
 	}
 
 }

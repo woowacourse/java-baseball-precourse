@@ -1,6 +1,6 @@
 package view;
 
-import domain.Hint;
+import domain.PredictionResult;
 
 public class OutputView {
 	private static final String INPUT_INSTRUCTION = "숫자를 입력해주세요 : ";
@@ -18,9 +18,9 @@ public class OutputView {
 		System.out.println(OutputView.QUIT_INPUT_INSTRUCTION);
 	}
 
-	public static void printHint(Hint hint) {
-		int ballCount = hint.getBall();
-		int strikeCount = hint.getStrike();
+	public static void printHint(PredictionResult predictionResult) {
+		int ballCount = predictionResult.getBall();
+		int strikeCount = predictionResult.getStrike();
 
 		if (ballCount > 0) {
 			System.out.print(ballCount + BALL + " ");

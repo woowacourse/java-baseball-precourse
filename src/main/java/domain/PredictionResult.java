@@ -1,10 +1,10 @@
 package domain;
 
-public class Hint {
+public class PredictionResult {
 	private final int ball;
 	private final int strike;
 
-	public Hint(int ball, int strike) {
+	public PredictionResult(int ball, int strike) {
 		this.ball = ball;
 		this.strike = strike;
 	}

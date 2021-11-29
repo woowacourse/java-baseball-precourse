@@ -1,7 +1,7 @@
 package controller;
 
-import domain.Hint;
 import domain.Numbers;
+import domain.PredictionResult;
 import domain.RestartOrQuitSelection;
 import domain.TargetNumbers;
 import view.InputView;
@@ -30,11 +30,11 @@ public class Game {
 		while (true) {
 			Numbers numbers = InputView.inputNumbers();
 
-			Hint hint = targetNumbers.compareTo(numbers);
+			PredictionResult predictionResult = targetNumbers.compareTo(numbers);
 
-			OutputView.printHint(hint);
+			OutputView.printHint(predictionResult);
 
-			if (hint.getStrike() == 3) {
+			if (predictionResult.getStrike() == 3) {
 				break;
 			}
 		}
