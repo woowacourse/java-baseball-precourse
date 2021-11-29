@@ -7,19 +7,19 @@ public class BaseballGame implements Runnable {
 
     private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
 
-    private final BaseBallGenerator baseBallGenerator;
+    private final BaseballGenerator baseBallGenerator;
 
-    public BaseballGame(BaseBallGenerator baseBallGenerator) {
+    public BaseballGame(BaseballGenerator baseBallGenerator) {
         this.baseBallGenerator = baseBallGenerator;
     }
 
     @Override
     public void run() {
-        BaseBall computerBaseball = this.baseBallGenerator.generateBaseBall();
+        BaseballMatcher baseballMatcher = new BaseballMatcher(this.baseBallGenerator.generateBaseBall());
 
         while (true) {
             Output.print(INPUT_NUMBER);
-            BaseBall baseBall = new BaseBall(Console.readLine());
+            BaseballCount result = baseballMatcher.match(new Baseball(Console.readLine()));
             break;
         }
 

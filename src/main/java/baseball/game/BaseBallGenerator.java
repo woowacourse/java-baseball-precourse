@@ -1,7 +1,7 @@
 package baseball.game;
 
-public interface BaseBallGenerator {
+public interface BaseballGenerator {
 
-    BaseBall generateBaseBall();
+    Baseball generateBaseBall();
 
 }

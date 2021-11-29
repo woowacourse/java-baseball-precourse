@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class ComputerBaseballGenerator implements BaseBallGenerator {
+public class ComputerBaseballGenerator implements BaseballGenerator {
 
     private static final int BALL_COUNT = 3;
 
@@ -12,8 +12,8 @@ public class ComputerBaseballGenerator implements BaseBallGenerator {
     private static final int MAX_NUMBER = 9;
 
     @Override
-    public BaseBall generateBaseBall() {
-        return new BaseBall(Stream
+    public Baseball generateBaseBall() {
+        return new Baseball(Stream
             .generate(() -> Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER))
             .distinct()
             .limit(BALL_COUNT)
