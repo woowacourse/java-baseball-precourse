@@ -2,30 +2,30 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class ThreeDigits {
+public class numberGenerator {
     public String threeDigits = "123";
-    public boolean [] IsJudged = new boolean[3];
+    public boolean[] isJudged = new boolean[3];
 
     public String getThreeDigits() {
         return threeDigits;
     }
 
     public void genThreeRandomDigits() {
-        boolean [] IsChecked = new boolean[10];
+        boolean[] isChecked = new boolean[10];
 
-        StringBuilder ThreeRandomDigits = new StringBuilder();
+        StringBuilder threeRandomDigits = new StringBuilder();
         int count = 0;
         while (count != 3) {
 
             int rand = Randoms.pickNumberInRange(1, 9);  // generate 1 ~ 9
-            if (!IsChecked[rand]) {
+            if (!isChecked[rand]) {
                 count++;
-                IsChecked[rand] = true;
-                ThreeRandomDigits.append(String.valueOf(rand));
+                isChecked[rand] = true;
+                threeRandomDigits.append(String.valueOf(rand));
             }
         }
 
-        this.threeDigits = ThreeRandomDigits.toString();
+        this.threeDigits = threeRandomDigits.toString();
     }
 
     public int checkStrike(int numberInt) {
@@ -34,7 +34,7 @@ public class ThreeDigits {
         for (int i = 0; i < this.threeDigits.length(); i++) {
             if (numberStr.charAt(i) == this.threeDigits.charAt(i)) {
                 strikeCount++;
-                this.IsJudged[i] = true;
+                this.isJudged[i] = true;
             }
         }
         return strikeCount;
@@ -44,7 +44,7 @@ public class ThreeDigits {
         String numberStr = String.valueOf(numberInt);
         int ballCount = 0;
         for (int i = 0; i < this.threeDigits.length(); i++) {
-            if (this.IsJudged[i]) { // 스트라이크로 판정 이미 끝난 자리는 skip
+            if (this.isJudged[i]) { // 스트라이크로 판정 이미 끝난 자리는 skip
                 continue;
             }
 
@@ -60,7 +60,7 @@ public class ThreeDigits {
 
     public void initIsJudged() {
         for (int i = 0; i < 3; i++) {
-            this.IsJudged[i] = false;
+            this.isJudged[i] = false;
         }
     }
 }
