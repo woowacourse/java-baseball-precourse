@@ -7,8 +7,8 @@ import baseball.players.User;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
-	private Computer computer;
-	private User user;
+	private final Computer computer;
+	private final User user;
 	private int ballCount;
 	private int strikeCount;
 

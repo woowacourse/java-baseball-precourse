@@ -28,24 +28,41 @@ public class User implements Player {
 		parseInt(input);
 	}
 
+	/**
+	 * 사용자의 입력으로 받은 숫자들에 0이 들어있는지 확인한다.
+	 * @param input 입력 받은 숫자 배열
+	 */
 	private void validateZero(String[] input) {
 		if (Arrays.stream(input).anyMatch(Predicate.isEqual("0"))) {
 			throw new IllegalArgumentException(ERR_INPUT_MSG);
 		}
 	}
 
+	/**
+	 * 사용자의 입력으로 받은 숫자의 길이가 맞는지 확인한다.
+	 * @param input 입력 받은 숫자 배열
+	 */
 	private void validateLength(String[] input) {
 		if (input.length != LENGTH_OF_NUMBERS) {
 			throw new IllegalArgumentException(ERR_INPUT_MSG);
 		}
 	}
 
+	/**
+	 * 사용자의 입력으로 받은 숫자에 중복이 있는지 확인한다.
+	 * @param input 입력 받은 숫자 배열
+	 */
 	private void validateOverlapped(String[] input) {
 		if (input.length != Arrays.stream(input).distinct().count()) {
 			throw new IllegalArgumentException(ERR_INPUT_MSG);
 		}
 	}
 
+	/**
+	 * 입력 받은 숫자를 int 형으로 변환한다.
+	 * 변환 시 숫자가 아닐 경우 IllegalArgumentException을 발생시킨다.
+	 * @param input 입력 받은 숫자 배열
+	 */
 	private void parseInt(String[] input) {
 		for (String s : input) {
 			try {

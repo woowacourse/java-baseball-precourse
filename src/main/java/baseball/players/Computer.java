@@ -31,6 +31,11 @@ public class Computer implements Player {
 		return numbers.get(index);
 	}
 
+	/**
+	 * 숫자를 입력받아 해당 숫자가 numbers 안의 어디에 있는지 인덱스를 구한다.
+	 * @param number 위치를 구할 숫자
+	 * @return 숫자가 numbers 안에 있으면 해당 위치를, 없으면 -1을 반환한다.
+	 */
 	public int getIndex(int number) {
 		return numbers.indexOf(number);
 	}

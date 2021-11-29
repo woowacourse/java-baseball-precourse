@@ -7,10 +7,12 @@ public class Constant {
 	public static final int MIN_NUM = 1;
 	public static final int MAX_NUM = 9;
 
+	/* 볼, 스트라이크, 낫싱 출력 메시지 */
 	public static final String BALL = "볼 ";
 	public static final String STRIKE = "스트라이크";
 	public static final String NOTHING = "낫싱";
 
+	/* 게임 진행에 필요한 출력 메시지 */
 	public static final String INPUT_MSG = "숫자를 입력해주세요 : ";
 	public static final String ERR_INPUT_MSG = "올바르지 않은 입력입니다. 게임을 종료합니다.";
 	public static final String START_GAME_MSG = "게임을 시작합니다.";
