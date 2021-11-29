@@ -44,7 +44,7 @@ public class NumberBaseballGameController {
 	}
 
 	private int[] getAnswerNumbersFromPlayer(Player player) {
-		List<Integer> responseAnswerNumbers = InputView.getAnswerNumbers();
+		List<Integer> responseAnswerNumbers = InputView.requestAnswerNumbers();
 		return player.receiveAnswerNumbers(responseAnswerNumbers);
 	}
 
