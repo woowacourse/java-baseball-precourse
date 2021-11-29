@@ -1,7 +1,7 @@
 package baseball;
 
-import java.util.HashSet;
 import java.lang.IllegalArgumentException;
+import java.util.HashSet;
 
 public class Application {
 	static int RANDOM_NUMBER_START = 1;
