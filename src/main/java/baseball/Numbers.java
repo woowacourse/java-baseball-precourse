@@ -119,7 +119,7 @@ public class Numbers {
         **/
         short[] checkArray = new short[10];
 
-        for(int number = 0; number < numbers.length; number++) {
+        for(int number: numbers) {
             if((checkArray[number]&1) == 1) return false;
             checkArray[number] += 1;
         }
