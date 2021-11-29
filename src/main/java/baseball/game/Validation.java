@@ -53,7 +53,7 @@ public class Validation {
         try {
             num = Integer.parseInt(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException("잘못된 숫자입니다.");
+            throw new IllegalArgumentException(Constant.NOT_NUM_ERROR);
         }
 
         if (!isRightRange(input, Constant.GAME_RESTART, Constant.GAME_END)) {
