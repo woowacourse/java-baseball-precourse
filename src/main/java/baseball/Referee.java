@@ -11,6 +11,15 @@ public class Referee {
 		this.computer = computer;
 	}
 
+	public boolean isAllStrike(String inputBallNumber) {
+		checkBallCount(inputBallNumber);
+		if (computer.equals(inputBallNumber)) {
+			System.out.println(ALL_STRIKE_MESSAGE);
+			return true;
+		}
+		return false;
+	}
+
 	private void checkBallCount(String inputBallNumber) {
 		int ball = 0;
 		int strike = 0;
