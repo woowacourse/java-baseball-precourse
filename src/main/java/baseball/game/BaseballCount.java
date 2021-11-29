@@ -1,5 +1,8 @@
 package baseball.game;
 
+import baseball.util.Assertion;
+import java.util.Objects;
+
 public class BaseballCount {
 
     private static final String BALL = "볼";
@@ -13,6 +16,8 @@ public class BaseballCount {
     private final Ball ball;
 
     public BaseballCount(Strike strike, Ball ball) {
+        Assertion.throwExceptionIsNull(Objects.isNull(strike));
+        Assertion.throwExceptionIsNull(Objects.isNull(ball));
         this.strike = strike;
         this.ball = ball;
     }

@@ -10,4 +10,9 @@ public class Assertion {
         }
     }
 
+    public static void throwExceptionIsNull(boolean condition) {
+        if (condition) {
+            throw new IllegalArgumentException("must not be null");
+        }
+    }
 }

@@ -2,13 +2,15 @@ package baseball.game;
 
 import baseball.util.Assertion;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Baseball implements NumberMatcher<Baseball, BaseballCount> {
 
-    private Integer[] baseballNumbers;
+    private final Integer[] baseballNumbers;
 
     public Baseball(Integer[] baseballNumbers) {
+        Assertion.throwExceptionIsNull(Objects.isNull(baseballNumbers));
         Assertion.throwExceptionIfFalse(baseballNumbers.length == 3, "3자리의 숫자가 생성되지 않았습니다.");
         this.baseballNumbers = baseballNumbers;
     }
