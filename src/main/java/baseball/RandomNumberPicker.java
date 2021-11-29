@@ -21,7 +21,7 @@ public class RandomNumberPicker {
 		randomBallNumbersSet = new HashSet<>();
 		while (stringBuilder.length() < BALL_NUMBERS_LENGTH) {
 			int number = pickOneRandomNumber();
-			if(checkRandomBallNumberDuplicate(number)) {
+			if (checkRandomBallNumberDuplicate(number)) {
 				stringBuilder.append(number);
 			}
 		}
