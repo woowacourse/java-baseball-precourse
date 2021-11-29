@@ -16,4 +16,5 @@ public class BaseballMatcher implements NumberMatcher<Baseball, BaseballCount> {
     public BaseballCount match(Baseball baseball) {
         return baseball.match(targetBaseball);
     }
+
 }

@@ -1,7 +1,5 @@
 package baseball.io;
 
-import java.util.function.Consumer;
-
 public class Output {
 
     private Output() {}
@@ -13,4 +11,5 @@ public class Output {
     public static void print(String line) {
         System.out.print(line);
     }
+
 }

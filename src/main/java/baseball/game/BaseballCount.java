@@ -54,6 +54,7 @@ public class BaseballCount {
     }
 
     public static class Strike {
+
         private final int count;
 
         public Strike(int count) {
@@ -67,6 +68,7 @@ public class BaseballCount {
     }
 
     public static class Ball {
+
         private final int count;
 
         public Ball(int count) {

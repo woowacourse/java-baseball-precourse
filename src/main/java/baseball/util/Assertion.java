@@ -15,4 +15,5 @@ public class Assertion {
             throw new IllegalArgumentException("must not be null");
         }
     }
+
 }
