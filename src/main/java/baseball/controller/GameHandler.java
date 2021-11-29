@@ -69,7 +69,9 @@ public class GameHandler {
 
     private int playing() {
         String playerInput = getPlayerInput();
-        checkValidInput(playerInput);
+        if (!checkValidInput(playerInput)) {
+            throw new IllegalArgumentException();
+        }
         player.playerInput(playerInput);
         Map<String, Integer> hint = computer.generateHint(player.submitTryNumber());
         showHint(hint);
@@ -99,14 +101,12 @@ public class GameHandler {
         }
     }
 
-    private void checkValidInput(String playerInput) {
+    private boolean checkValidInput(String playerInput) {
         if (playerInput.length() == 3) {
-            if (!checkDuplicated(playerInput) && checkIsNumbers(playerInput)) {
-                return;
-            }
+            return !checkDuplicated(playerInput) && checkIsNumbers(playerInput);
         }
 
-        throw new IllegalArgumentException();
+        return false;
     }
 
     private boolean checkIsNumbers(String playerInput) {
