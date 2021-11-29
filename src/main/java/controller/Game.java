@@ -2,39 +2,16 @@ package controller;
 
 import domain.Hint;
 import domain.Numbers;
+import domain.RestartOrQuitSelection;
 import domain.TargetNumbers;
-
 import view.InputView;
 import view.OutputView;
 
 public class Game {
-	private static final String RESTART_INPUT = "1";
-	private static final String QUIT_INPUT = "2";
-
 	private TargetNumbers targetNumbers;
 
 	private void createNewTargetNumbers() {
 		this.targetNumbers = new TargetNumbers();
-	}
-
-	private boolean selectQuit() {
-		OutputView.printQuitInstruction();
-		String input = InputView.getInput();
-
-		if (input.equals(QUIT_INPUT)) {
-			return true;
-		}
-
-		if (input.equals(RESTART_INPUT)) {
-			return false;
-		}
-
-		throw new IllegalArgumentException("1 또는 2 만 입력할 수 있습니다.");
-	}
-
-	private String getNumberInput() {
-		OutputView.printInstruction();
-		return InputView.getInput();
 	}
 
 	public void startGame() {
@@ -42,7 +19,8 @@ public class Game {
 			createNewTargetNumbers();
 			startRound();
 
-			if (selectQuit()) {
+			RestartOrQuitSelection selection = InputView.inputRestart();
+			if (selection.isQuit()) {
 				break;
 			}
 		}
@@ -50,7 +28,7 @@ public class Game {
 
 	public void startRound() {
 		while (true) {
-			String userInput = getNumberInput();
+			String userInput = InputView.inputNumbers();
 			Numbers numbers = new Numbers(userInput);
 
 			Hint hint = targetNumbers.compareTo(numbers);
