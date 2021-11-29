@@ -3,6 +3,8 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class Application {
+	private static Target target;
+
 	public static void main(String[] args) {
 		int isGameEnd;
 		do {
@@ -25,5 +27,15 @@ public class Application {
 				throw new IllegalArgumentException();
 			}
 		}
+	}
+
+	static void printResultOfInput(int[] ballsAndStrikes) {
+		if (ballsAndStrikes[Target.BALL] > 0) {
+			System.out.print(ballsAndStrikes[Target.BALL] + "볼 ");
+		}
+		if (ballsAndStrikes[Target.STRIKE] > 0) {
+			System.out.println(ballsAndStrikes[Target.STRIKE] + "스트라이크");
+		}
+		System.out.println();
 	}
 }

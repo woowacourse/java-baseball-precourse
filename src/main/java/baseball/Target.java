@@ -3,6 +3,9 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Target {
+	public static final int BALL = 0;
+	public static final int STRIKE = 0;
+
 	private String targetNumber;
 
 	private int rangeBegin = 1;
