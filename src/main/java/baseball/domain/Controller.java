@@ -23,7 +23,6 @@ public class Controller {
     public void run() {
         while (!isEnd()) {
             randomNumber.init();
-//            randomNumber.showRandomNumber();
             numberSameFlag = false;
             while (!isSameNumber()) {
                 userNumber.init();
