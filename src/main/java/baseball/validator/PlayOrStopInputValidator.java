@@ -5,17 +5,29 @@ public class PlayOrStopInputValidator implements InputValidator {
 	@Override
 	public void validateInput(String input) throws IllegalArgumentException {
 		// input 값의 길이가 1이 아닐 경우 예외 발생
+		keepLengthOne(input);
+
+		// input 의 값이 숫자가 아닌 다른 값이 들어올 경우 예외 발생
+		keepDigitValue(input);
+
+		// input 의 값이 1 또는 2가 아닌 다른 값일 경우 예외 발생
+		keepValueOneOrTwo(input);
+	}
+
+	private void keepLengthOne(String input) throws IllegalArgumentException {
 		if (input.length() != 1) {
 			throw new IllegalArgumentException();
 		}
+	}
 
-		// input 의 값이 숫자가 아닌 다른 값이 들어올 경우 예외 발생
+	private void keepDigitValue(String input) throws IllegalArgumentException {
 		char inputChar = input.charAt(0);
 		if (!Character.isDigit(inputChar)) {
 			throw new IllegalArgumentException();
 		}
+	}
 
-		// input 의 값이 1 또는 2가 아닌 다른 값일 경우 예외 발생
+	private void keepValueOneOrTwo(String input) throws IllegalArgumentException {
 		int number = Integer.parseInt(input);
 		if (number != 1 && number != 2) {
 			throw new IllegalArgumentException();
