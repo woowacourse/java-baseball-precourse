@@ -49,7 +49,9 @@ public class Player {
 	}
 
 	public boolean hasDuplicateNumber() {
-		if (inputNumber[Application.HUNDREDS_NUMBER] == inputNumber[Application.TENS_NUMBER] || inputNumber[Application.TENS_NUMBER] == inputNumber[Application.ONES_NUMBER] || inputNumber[Application.HUNDREDS_NUMBER] == inputNumber[Application.ONES_NUMBER]) {
+		if (getInputNumber(Application.HUNDREDS_NUMBER) == getInputNumber(Application.TENS_NUMBER)
+			|| getInputNumber(Application.TENS_NUMBER) == getInputNumber(Application.ONES_NUMBER)
+			|| getInputNumber(Application.HUNDREDS_NUMBER) == getInputNumber(Application.ONES_NUMBER)) {
 			return true;
 		}
 		return false;
@@ -57,7 +59,7 @@ public class Player {
 
 	public boolean hasZero() {
 		for (int i = 0; i < Computer.NUMBER_SIZE; i++) {
-			if (inputNumber[i] == '0') {
+			if (getInputNumber(i) == '0') {
 				return true;
 			}
 		}
