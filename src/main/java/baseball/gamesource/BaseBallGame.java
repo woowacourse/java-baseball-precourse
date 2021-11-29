@@ -9,12 +9,14 @@ import baseball.constants.MessageConstants;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
-    private List<Integer> userNumbers =new ArrayList<>();
     private Opponent opponent = new Opponent();
 
     public void gameStart(){
+        List<Integer> userNumbers =new ArrayList<>();
+
         //디버깅용 정답 출력 코드
         //System.out.println(opponent.getNumbers().toString());
+
         do{
             //연관배열 초기화
             userNumbers.clear();
