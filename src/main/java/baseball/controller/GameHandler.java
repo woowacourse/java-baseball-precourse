@@ -1,20 +1,17 @@
 package baseball.controller;
 
+import baseball.Constants.Constant;
+import baseball.Constants.Message;
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;
-import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class GameHandler {
     private static GameHandler instance = new GameHandler();
-    private final int KEEP_GOING = 0;
-    private final int RESTART = 1;
-    private final int PROGRAM_EXIT = 2;
-    private final int GAME_EXIT = 3;
-    private int mode;
     private Player player;
     private Computer computer;
 
@@ -29,90 +26,90 @@ public class GameHandler {
         return instance;
     }
 
-    public int start() {
-        init();
+    public void run() {
+        int game = Constant.START;
 
-        while (mode == KEEP_GOING) {
+        while (game != Constant.PROGRAM_EXIT) {
+            game = start();
+        }
+    }
+
+    private int start() {
+        int mode = init();
+        while (mode == Constant.KEEP_GOING) {
             mode = playing();
         }
 
-        return isRestart();
+        return restart();
     }
 
-    private void init() {
-        mode = KEEP_GOING;
+    private int init() {
         player = Player.getInstance();
         computer = Computer.getInstance();
+        return Constant.KEEP_GOING;
     }
 
-    private int isRestart() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    private int restart() {
+        System.out.println(Message.GAME_END);
+        System.out.println(Message.GAME_RESTART);
         String input = Console.readLine();
 
         if (input.equals("1")) {
-            return RESTART;
+            return Constant.RESTART;
         } else if (input.equals("2")) {
-            return PROGRAM_EXIT;
+            return Constant.PROGRAM_EXIT;
         }
 
         throw new IllegalArgumentException();
     }
 
-    private boolean isAnswer(int[] hint) {
-        return hint[1] == 3;
+    private boolean isAnswer(Map<String, Integer> hint) {
+        return hint.get(Constant.STRIKE) == 3;
     }
 
     private int playing() {
         String playerInput = getPlayerInput();
         checkValidInput(playerInput);
         player.playerInput(playerInput);
-        int[] hint = computer.generateHint(player.submitTryNumber());
+        Map<String, Integer> hint = computer.generateHint(player.submitTryNumber());
         showHint(hint);
         if (isAnswer(hint)) {
-            return GAME_EXIT;
+            return Constant.GAME_EXIT;
         }
 
-        return KEEP_GOING;
+        return Constant.KEEP_GOING;
     }
 
     private String getPlayerInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Message.INPUT);
         return Console.readLine();
     }
 
-    /**
-     * @param hint hint[0] : Ball 개수
-     *             hint[1] : Strike 개수
-     */
-    private void showHint(int[] hint) {
-        if (hint[0] + hint[1] == 0) {
-            System.out.println("낫싱");
-        }
-
-        if (hint[0] == 0 && hint[1] != 0) {
-            System.out.println(hint[1] + "스트라이크");
-        }
-
-        if (hint[0] != 0 && hint[1] == 0) {
-            System.out.println(hint[0] + "볼");
-        }
-
-        if (hint[0] != 0 && hint[1] != 0) {
-            System.out.println(hint[0] + "볼 " + hint[1] + "스트라이크");
+    private void showHint(Map<String, Integer> hint) {
+        int ball = hint.get(Constant.BALL);
+        int strike = hint.get(Constant.STRIKE);
+        if (ball + strike == 0) {
+            System.out.println(Message.NOTHING);
+        } else if (ball == 0 && strike != 0) {
+            System.out.println(strike + Message.STRIKE);
+        } else if (ball != 0 && strike == 0) {
+            System.out.println(ball + Message.BALL);
+        } else if (ball != 0 && strike != 0) {
+            System.out.println(ball + Message.BALL + strike + Message.STRIKE);
         }
     }
 
     private void checkValidInput(String playerInput) {
-        if (checkDuplicated(playerInput) || playerInput.length() != 3 || !checkIsNumbers(playerInput)) {
-            throw new IllegalArgumentException();
+        if (playerInput.length() == 3) {
+            if (!checkDuplicated(playerInput) && checkIsNumbers(playerInput)) {
+                return;
+            }
         }
+
+        throw new IllegalArgumentException();
     }
 
     private boolean checkIsNumbers(String playerInput) {
-        if (playerInput.length() == 0) {
-            return false;
-        }
         for (String input : playerInput.split("")) {
             if (!(48 < input.charAt(0) && input.charAt(0) < 58)) {
                 return false;
@@ -122,9 +119,6 @@ public class GameHandler {
     }
 
     private boolean checkDuplicated(String playerInput) {
-        if (playerInput.length() == 0) {
-            return true;
-        }
         Set<Character> set = new HashSet<>();
         for (String input : playerInput.split("")) {
             if (!set.add(input.charAt(0))) {

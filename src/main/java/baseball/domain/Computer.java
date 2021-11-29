@@ -1,18 +1,18 @@
 package baseball.domain;
 
+import baseball.Constants.Constant;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Computer {
-    private static Computer instance;
+    private static Computer instance = new Computer();
     private static List<Integer> answer = new ArrayList<>();
-    private final int BALL = 0;
-    private final int STRIKE = 1;
 
     private Computer() {
-        generateRandomAnswer();
     }
 
     public static Computer getInstance() {
@@ -35,37 +35,22 @@ public class Computer {
         }
     }
 
-    public int[] generateHint(int[] playerNumber) {
-        int[] hint = new int[2];
-        int strikeCount = countStrike(playerNumber);
-        int ballCount = countBall(playerNumber);
+    public Map<String, Integer> generateHint(int[] playerNumber) {
+        Map<String, Integer> hint = new HashMap<>();
+        int strikeCount = 0;
+        int ballCount = 0;
 
-        hint[STRIKE] = strikeCount;
-        hint[BALL] = ballCount;
-
-        return hint;
-    }
-
-    private int countBall(int[] playerNumber) {
-        int count = 0;
-        if (playerNumber[0] == answer.get(1) || playerNumber[0] == answer.get(2)) {
-            count++;
-        } else if (playerNumber[1] == answer.get(0) || playerNumber[1] == answer.get(2)) {
-            count++;
-        } else if (playerNumber[2] == answer.get(0) || playerNumber[2] == answer.get(1)) {
-            count++;
-        }
-
-        return count;
-    }
-
-    private int countStrike(int[] playerNumber) {
-        int count = 0;
         for (int i = 0; i < 3; i++) {
             if (playerNumber[i] == answer.get(i)) {
-                count++;
+                strikeCount++;
+            } else if (answer.contains(playerNumber[i])) {
+                ballCount++;
             }
         }
-        return count;
+
+        hint.put(Constant.BALL, ballCount);
+        hint.put(Constant.STRIKE, strikeCount);
+
+        return hint;
     }
 }

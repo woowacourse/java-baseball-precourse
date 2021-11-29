@@ -19,9 +19,9 @@ public class Player {
     }
 
     public void playerInput(String playerInput) {
-        int input = Integer.parseInt(playerInput);
-        tryNumber[0] = input / 100;
-        tryNumber[1] = (input % 100) / 10;
-        tryNumber[2] = input % 10;
+        String[] input = playerInput.split("");
+        for (int i = 0; i < input.length; i++) {
+            tryNumber[i] = Integer.parseInt(input[i]);
+        }
     }
 }
