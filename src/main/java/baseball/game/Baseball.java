@@ -14,6 +14,7 @@ public class Baseball implements NumberMatcher<Baseball, BaseballCount> {
     }
 
     public Baseball(String numbers) {
+        Assertion.throwExceptionIfFalse(numbers.chars().allMatch(Character::isDigit), "숫자가 아닙니다.");
         Assertion.throwExceptionIfFalse(numbers.length() == 3, "3자리의 숫자를 입력해주세요.");
         this.baseballNumbers = convertStringToArray(numbers);
     }
