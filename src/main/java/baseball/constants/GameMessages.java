@@ -9,5 +9,8 @@ public interface GameMessages {
     String ERR_MESSAGE_OUT_OF_RANGE = "1 ~ 9 까지 숫자만 입력해주세요.";
     String ERR_MESSAGE_WRONG_SIZE = "3 개의 숫자만 입력해주세요";
     String ERR_MESSAGE_DUPLICATE = "중복된 숫자가 있습니다.";
-    String RESTART_FLAG_ERR_MESSAGE= "1 또는 2 만 입력해주세요";
+    String RESTART_FLAG_ERR_MESSAGE = "1 또는 2 만 입력해주세요";
+    String OUT_STRIKE = "스트라이크";
+    String OUT_BALL = "볼";
+    String OUT_NOTHING = "낫싱";
 }

@@ -1,12 +1,12 @@
 package baseball.domain;
 
+import static baseball.constants.GameMessages.OUT_BALL;
+import static baseball.constants.GameMessages.OUT_NOTHING;
+import static baseball.constants.GameMessages.OUT_STRIKE;
+
 import baseball.constants.NumberListConstraints;
 
 public class BaseballGameTurn {
-
-    final private String STRIKE = "스트라이크";
-    final private String BALL = "볼";
-    final private String NOTHING = "낫싱";
 
     private final String resultMessage;
     private final Boolean isGameEnded;
@@ -25,16 +25,16 @@ public class BaseballGameTurn {
     private String generateResultMessage(int strikes, int balls) {
         StringBuilder msg = new StringBuilder();
         if (strikes == 0 && balls == 0) {
-            return NOTHING;
+            return OUT_NOTHING;
         }
         if (balls != 0) {
-            msg.append(balls).append(BALL);
+            msg.append(balls).append(OUT_BALL);
         }
         if (strikes != 0 && balls != 0) {
             msg.append(" ");
         }
         if (strikes != 0) {
-            msg.append(strikes).append(STRIKE);
+            msg.append(strikes).append(OUT_STRIKE);
         }
         return msg.toString();
     }
