@@ -9,7 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 	private static final String REQUEST_INPUT_NUMBERS = "숫자를 입력해주세요 : ";
 	private static final String DELIMITER = "";
-	private static final String REQUEST_SELECT_PLAY_MORE_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+	private static final String REQUEST_PLAY_MORE_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 	public static List<Integer> getAnswerNumbers() {
 		System.out.print(REQUEST_INPUT_NUMBERS);
@@ -19,10 +19,9 @@ public class InputView {
 			.collect(Collectors.toList());
 	}
 
-	public static String requestSelectPlayMoreGame() {
-		System.out.println(REQUEST_SELECT_PLAY_MORE_GAME);
-		String selectPlayMoreGame = Console.readLine();
-		System.out.println(selectPlayMoreGame);
-		return selectPlayMoreGame;
+	public static String requestPlayMoreGame() {
+		System.out.println(REQUEST_PLAY_MORE_GAME);
+		String playMoreGame = Console.readLine();
+		return playMoreGame;
 	}
 }

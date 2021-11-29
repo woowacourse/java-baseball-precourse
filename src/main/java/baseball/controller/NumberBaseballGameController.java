@@ -20,8 +20,8 @@ public class NumberBaseballGameController {
 	private void repeatGame(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
 		do {
 			startGameOnce(numberBaseballGame, player, computer);
-			morePlayGame(numberBaseballGame, player);
-		} while (player.getSelectPlayMoreGame());
+			playMoreGame(player);
+		} while (player.getPlayMoreGame());
 	}
 
 	private void startGameOnce(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
@@ -57,9 +57,8 @@ public class NumberBaseballGameController {
 		}
 	}
 
-	private void morePlayGame(NumberBaseballGame numberBaseballGame, Player player) {
-		String inputResultOfSelectPlayMoreGame = InputView.requestSelectPlayMoreGame();
-		Boolean selectPlayMoreGame = numberBaseballGame.validateSelectPlayMoreGame(inputResultOfSelectPlayMoreGame);
-		player.receiveSelectPlayMoreGame(selectPlayMoreGame);
+	private void playMoreGame(Player player) {
+		String responsePlayMoreGame = InputView.requestPlayMoreGame();
+		player.receivePlayMoreGame(responsePlayMoreGame);
 	}
 }
