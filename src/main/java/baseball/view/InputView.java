@@ -4,11 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
+	static final String START_MESSAGE = "숫자를 입력해주세요 : ";
+	static final String RESTART_OR_EXIT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	private String inputBallNumbers;
-	private String inputExitOrRestart;
+	private String inputRestartOrExit;
 
 	public void printStartMessage() {
-		System.out.print("숫자를 입력해주세요 : ");
+		System.out.print(START_MESSAGE);
 	}
 
 	public void setInputBallNumbers() {
@@ -19,15 +21,15 @@ public class InputView {
 		return inputBallNumbers;
 	}
 
-	public void printExitOrRestartMessage() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+	public void printRestartOrExitMessage() {
+		System.out.println(RESTART_OR_EXIT_MESSAGE);
 	}
 
-	public void setInputExitOrRestart() {
-		inputExitOrRestart = Console.readLine();
+	public void setInputRestartOrExit() {
+		inputRestartOrExit = Console.readLine();
 	}
 
-	public String getInputExitOrRestart() {
-		return inputExitOrRestart;
+	public String getInputRestartOrExit() {
+		return inputRestartOrExit;
 	}
 }
