@@ -3,7 +3,7 @@ package baseball;
 public class Application {
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
-        PlayGame player = new PlayGame();
-        player.play();
+        GameManager gameManager = new GameManager();
+        gameManager.play();
     }
 }

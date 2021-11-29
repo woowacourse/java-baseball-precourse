@@ -7,7 +7,7 @@ import communication.Text;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class PlayGame {
+public class GameManager {
     private final int ESSENTIAL_NUMBER_LENGTH = 3;
     private final int MIN_NUMBER = 1;
     private final int MAX_NUMBER = 9;
@@ -16,7 +16,7 @@ public class PlayGame {
     private InputManager inputManager = new InputManager();
     private Umpire umpire;
 
-    public PlayGame() {
+    public GameManager() {
         assignComputerNumber();
         this.umpire = new Umpire(this.computersNumber);
     }
