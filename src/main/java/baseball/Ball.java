@@ -5,10 +5,10 @@ public class Ball {
     private int value;
 
     public Ball(int position, int value) {
-        if (value < Constant.MIN_VALUE || value > Constant.MAX_VALUE) {
+        if (value < Constant.BALL_MIN_VALUE || value > Constant.BALL_MAX_VALUE) {
             throw new IllegalArgumentException(Constant.INVALID_NUMBER_VALUE_MESSAGE);
         }
-        if (position > Constant.MAX_SIZE) {
+        if (position > Constant.BALL_LIST_SIZE) {
             throw new IllegalArgumentException(Constant.INVALID_NUMBER_COUNT_MESSAGE);
         }
         this.position = position;

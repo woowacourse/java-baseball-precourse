@@ -14,10 +14,11 @@ public class Computer {
 
     public List<Integer> RandomNumberGenerate() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < Constant.MAX_SIZE) {
-            int number = Randoms.pickNumberInRange(Constant.MIN_VALUE, Constant.MAX_VALUE);
-            if (!randomNumbers.contains(number))
+        while (randomNumbers.size() < Constant.BALL_LIST_SIZE) {
+            int number = Randoms.pickNumberInRange(Constant.BALL_MIN_VALUE, Constant.BALL_MAX_VALUE);
+            if (!randomNumbers.contains(number)) {
                 randomNumbers.add(number);
+            }
         }
         return randomNumbers;
     }

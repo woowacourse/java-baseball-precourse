@@ -14,17 +14,18 @@ public class InputView {
     }
 
     public static List<Integer> StringChangeList() {
-        String[] split = trimInput().split("");
-        if (split.length != Constant.MAX_SIZE) {
+        String[] stringSplits = trimInput().split("");
+        if (stringSplits.length != Constant.BALL_LIST_SIZE) {
             throw new IllegalArgumentException(Constant.INVALID_NUMBER_COUNT_MESSAGE);
         }
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < split.length; i++) {
-            numbers.add(Integer.parseInt(split[i]));
+        List<Integer> inputStringToNumbers = new ArrayList<>();
+        for (int i = 0; i < stringSplits.length; i++) {
+            inputStringToNumbers.add(Integer.parseInt(stringSplits[i]));
         }
-        Set<Integer> validateNumberCheck = new HashSet<>(numbers);
-        if(validateNumberCheck.size() != Constant.MAX_SIZE)
+        Set<Integer> duplicateCheckSet = new HashSet<>(inputStringToNumbers);
+        if (duplicateCheckSet.size() != Constant.BALL_LIST_SIZE) {
             throw new IllegalArgumentException(Constant.DUPLICATE_NUMBER_ERROR_MESSAGE);
-        return numbers;
+        }
+        return inputStringToNumbers;
     }
 }

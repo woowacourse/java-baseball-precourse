@@ -22,8 +22,8 @@ public class Game {
 
     public void calculate(List<Ball> userBalls) {
         referee.totalUserBallsCompare(computer.getBalls(), userBalls);
-        Map<BallResult, Integer> totalResult = referee.getResult();
-        OutputView.gameResultShow(totalResult.get(BallResult.STRIKE), totalResult.get(BallResult.BALL));
+        Map<BallResult, Integer> strikeBallCountResult = referee.getStrikeBallCountRecords();
+        OutputView.gameResultShow(strikeBallCountResult.get(BallResult.STRIKE), strikeBallCountResult.get(BallResult.BALL));
     }
 
 

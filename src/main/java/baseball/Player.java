@@ -8,7 +8,7 @@ public class Player {
 
     public List<Ball> selectBalls(List<Integer> numbers) {
         balls = new ArrayList<>();
-        int position = Constant.MIN_VALUE;
+        int position = Constant.BALL_FIRST_POSITION;
         for (int number : numbers) {
             balls.add(new Ball(position++, number));
         }

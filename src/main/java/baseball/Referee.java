@@ -7,14 +7,14 @@ import java.util.Map;
 public class Referee {
     private int strikeCount;
     private int ballCount;
-    private Map<BallResult, Integer> result;
+    private Map<BallResult, Integer> strikeBallCountRecords;
 
-    public Map<BallResult, Integer> getResult() {
-        return result;
+    public Map<BallResult, Integer> getStrikeBallCountRecords() {
+        return strikeBallCountRecords;
     }
 
     public Referee() {
-        result = new HashMap<>();
+        strikeBallCountRecords = new HashMap<>();
     }
 
     public BallResult ballCompare(Ball ball1, Ball ball2) {
@@ -36,14 +36,14 @@ public class Referee {
                 ballCount++;
             }
         }
-        result.put(BallResult.STRIKE, strikeCount);
-        result.put(BallResult.BALL, ballCount);
-        return result;
+        strikeBallCountRecords.put(BallResult.STRIKE, strikeCount);
+        strikeBallCountRecords.put(BallResult.BALL, ballCount);
+        return strikeBallCountRecords;
     }
 
-    public void totalUserBallsCompare(List<Ball>computerBalls , List<Ball> userBalls) {
+    public void totalUserBallsCompare(List<Ball> computerBalls, List<Ball> userBalls) {
         resetCount();
-        for (int i = 0; i < Constant.MAX_SIZE; i++) {
+        for (int i = 0; i < Constant.BALL_LIST_SIZE; i++) {
             ballsCompare(computerBalls, userBalls.get(i));
         }
     }
@@ -54,6 +54,6 @@ public class Referee {
     }
 
     public boolean allStrikeCheck() {
-        return strikeCount == Constant.MAX_SIZE;
+        return strikeCount == Constant.BALL_LIST_SIZE;
     }
 }

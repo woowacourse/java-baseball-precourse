@@ -9,8 +9,8 @@ public class OutputView {
         System.out.println(Constant.GAME_RESTART_OR_EXIT_MESSAGE);
     }
 
-    public static void gameResultShow(int stikeCount, int ballCount){
-        if (stikeCount == Constant.MAX_SIZE) {
+    public static void gameResultShow(int stikeCount, int ballCount) {
+        if (stikeCount == Constant.BALL_LIST_SIZE) {
             System.out.println(stikeCount + Constant.OUTPUT_STRIKE_MESSAGE);
             System.out.println(Constant.GAME_WIN_MESSAGE);
         } else if (stikeCount > 0 && ballCount > 0) {
