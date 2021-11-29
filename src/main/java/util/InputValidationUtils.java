@@ -7,13 +7,7 @@ public class InputValidationUtils {
 	private static final char MAX_NO = '9';
 
 	public static boolean isCheckValid(String s) {
-		if (isNumeric(s)) {
-			return true;
-		}
-		if (!isDuplicate(s)) {
-			return true;
-		}
-		if (isMaxLength(s)) {
+		if (isNumeric(s) && !isDuplicate(s) && isMaxLength(s)) {
 			return true;
 		}
 		return false;
