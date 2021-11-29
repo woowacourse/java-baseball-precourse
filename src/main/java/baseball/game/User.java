@@ -27,6 +27,8 @@ public class User {
 
         String readLine = Console.readLine();
 
+        Validation.isValidRestartInput(readLine);
+
         if (Integer.parseInt(readLine) == 1) {
             return true;
         }

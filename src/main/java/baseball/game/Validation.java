@@ -6,7 +6,7 @@ public class Validation {
         if (!isRightLength(input)) {
             throw new IllegalArgumentException("잘못된 길이의 숫자입니다.");
         }
-        if (!isRightRange(input)) {
+        if (!isRightRange(input, 1, 9)) {
             throw new IllegalArgumentException("잘못된 숫자입니다.");
         }
         if (!isDuplicate(input)) {
@@ -18,12 +18,12 @@ public class Validation {
         return input.length() == 3;
     }
 
-    private static boolean isRightRange(String input) {
+    private static boolean isRightRange(String input, int min, int max) {
         int num;
 
         for (int i = 0; i < input.length(); i++) {
             num = Character.getNumericValue(input.charAt(i));
-            if (num < 1 || num > 9) {
+            if (num < min || num > max) {
                 return false;
             }
         }
@@ -46,5 +46,18 @@ public class Validation {
         }
 
         return true;
+    }
+
+    public static void isValidRestartInput(String input) {
+        int num;
+        try {
+            num = Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("잘못된 숫자입니다.");
+        }
+
+        if (!isRightRange(input, 1, 2)) {
+            throw new IllegalArgumentException("잘못된 숫자입니다.");
+        }
     }
 }
