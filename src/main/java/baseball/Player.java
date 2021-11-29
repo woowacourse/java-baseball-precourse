@@ -22,6 +22,10 @@ public class Player {
 		return inputNumber[index];
 	}
 
+	public void setInputNumber(int index, int eachNumber) {
+		this.inputNumber[index] = eachNumber;
+	}
+
 	public int toIntNumber(String inputNumber) {
 		if (inputNumber.length() != Computer.NUMBER_SIZE) {
 			throw new IllegalArgumentException();
@@ -43,9 +47,9 @@ public class Player {
 	}
 
 	public void saveInputNumber(int inputNumber) {
-		this.inputNumber[Application.HUNDREDS_NUMBER] = inputNumber / 100;
-		this.inputNumber[Application.TENS_NUMBER] = (inputNumber % 100) / 10;
-		this.inputNumber[Application.ONES_NUMBER] = inputNumber % 10;
+		setInputNumber(Application.HUNDREDS_NUMBER, inputNumber / 100);
+		setInputNumber(Application.TENS_NUMBER, (inputNumber % 100) / 10);
+		setInputNumber(Application.ONES_NUMBER, inputNumber % 10);
 	}
 
 	public void isValidInput() throws IllegalArgumentException {
