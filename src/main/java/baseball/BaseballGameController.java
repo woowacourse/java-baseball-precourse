@@ -39,13 +39,9 @@ public class BaseballGameController {
 		} while (!baseballGameModel.checkResult(strikeCount));
 	}
 
-	private boolean printResult(int strikeCount, int ballCount) {
+	private void printResult(int strikeCount, int ballCount) {
 		String hintSentence = hintSentenceGenerator.makeHintSentence(strikeCount, ballCount);
 		System.out.println(hintSentence);
-		if (strikeCount == GAME_NUMBER_LENGTH) {
-			return true;
-		}
-		return false;
 	}
 
 	public boolean decideToRestart() {
