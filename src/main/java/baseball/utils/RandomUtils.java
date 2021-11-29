@@ -9,7 +9,7 @@ import java.util.List;
 public class RandomUtils {
 
     public static List<Integer> RandomNumberList() {
-        boolean[] visited = new boolean[Constant.MAX_VALUE+1];
+        boolean[] visited = new boolean[Constant.MAX_VALUE + 1];
         List<Integer> RandomList = new ArrayList<>();
 
         while (RandomList.size() < Constant.NUMBER_LENGTH) {

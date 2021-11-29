@@ -33,7 +33,7 @@ public class Validation {
 
     private static boolean isDuplicate(String input) {
         int num;
-        boolean[] visited = new boolean[Constant.MAX_VALUE+1];
+        boolean[] visited = new boolean[Constant.MAX_VALUE + 1];
 
         for (int i = 0; i < input.length(); i++) {
             num = Character.getNumericValue(input.charAt(i));
