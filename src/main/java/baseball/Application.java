@@ -4,7 +4,6 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-	// TODO: test 파일 실행 및 터미널에서 실행 확인
 	public static void main(String[] args) {
 		Game rightAnswer = new Game();
 		Game.init(rightAnswer);
@@ -181,7 +180,7 @@ class Game {
 	}
 }
 
-class Hint extends Game {
+class Hint {
 	int ball, strike;
 
 	private static final String BALL_WORD = "볼";
