@@ -12,6 +12,15 @@ public class Refree {
 	public static final int MIN_NUMBER = 1;
 	public static final int MAX_NUMBER = 9;
 	public static final String EMPTY_STRING = "";
+	public static final int LIMITED_LENGTH = 3;
+	public static final String RESULT_NOTHING = "낫싱";
+	public static final String RESULT_BALL = "볼";
+	public static final String RESULT_STRIKE = "스크라이크";
+	public static final String REQUEST_RESTART_INPUT_LENGTH_MESSAGE = "1개만 입력해주세요";
+	public static final int LIMITED_RESTART_INPUT_LENGTH = 1;
+	public static final String REQUEST_RESTART_INPUT_RANGE_MESSSAGE = "1 혹은 2를 입력해주세요";
+	public static final String ON_GOING = "1";
+	public static final String STOP = "2";
 
 	public List<Integer> askNumbers(String stringNumbers) {
 		return checkValidationAndConvertType(stringNumbers);
@@ -46,7 +55,7 @@ public class Refree {
 	}
 
 	private boolean isValidLength(String stringNumbers) {
-		return stringNumbers.length() == 3;
+		return stringNumbers.length() == LIMITED_LENGTH;
 	}
 
 	private void checkRange(List<Integer> integerNumbers) {
@@ -76,18 +85,18 @@ public class Refree {
 		StringBuffer result = new StringBuffer();
 		int sameNumberCount = countSameNumber(computerNumbers, playerNumbers);
 		if (sameNumberCount == 0) {
-			return result.append("낫싱").toString();
+			return result.append(RESULT_NOTHING).toString();
 		}
 		Integer strikeCount = countStrike(computerNumbers, playerNumbers);
 		Integer ballCount = countBall(sameNumberCount, strikeCount);
 		if (ballCount > 0) {
 			result.append(ballCount);
-			result.append("볼");
-			result.append(" ");
+			result.append(RESULT_BALL);
+			result.append(EMPTY_STRING);
 		}
 		if (strikeCount > 0) {
 			result.append(strikeCount);
-			result.append("스크라이크");
+			result.append(RESULT_STRIKE);
 		}
 
 		return result.toString();
@@ -124,21 +133,21 @@ public class Refree {
 
 	private void checkRestartInputLength(String input) {
 		if (!isValidRestartInputLength(input)) {
-			throw new IllegalArgumentException("1개만 입력해주세요");
+			throw new IllegalArgumentException(REQUEST_RESTART_INPUT_LENGTH_MESSAGE);
 		}
 	}
 
 	private boolean isValidRestartInputLength(String input) {
-		return input.length() == 1;
+		return input.length() == LIMITED_RESTART_INPUT_LENGTH;
 	}
 
 	private void checkRestartInputRange(String input) {
 		if (!isValidRestartInputRange(input)) {
-			throw new IllegalArgumentException("1 혹은 2를 입력해주세요");
+			throw new IllegalArgumentException(REQUEST_RESTART_INPUT_RANGE_MESSSAGE);
 		}
 	}
 
 	private boolean isValidRestartInputRange(String input) {
-		return input.equals("1") || input.equals("2");
+		return input.equals(ON_GOING) || input.equals(STOP);
 	}
 }

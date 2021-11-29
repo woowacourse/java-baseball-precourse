@@ -12,6 +12,7 @@ public class Controller {
 
 	public static final String ON_GOING = "1";
 	public static final String STOP = "2";
+	public static final String THREE_STRIKE = "3스크라이크";
 	String status = ON_GOING;
 
 	public void runGame() {
@@ -21,7 +22,7 @@ public class Controller {
 		Refree refree = new Refree();
 		String result = "";
 
-		while (!status.equals(STOP)) {
+		while (isGameStatusOngoing()) {
 			OutputView.printInputInstruction();
 			List<Integer> playerNumbers = refree.askNumbers(InputView.getInput());
 
@@ -38,7 +39,11 @@ public class Controller {
 
 	}
 
+	private boolean isGameStatusOngoing() {
+		return !status.equals(STOP);
+	}
+
 	private boolean isThreeStrike(String result) {
-		return result.equals("3스크라이크");
+		return result.equals(THREE_STRIKE);
 	}
 }
