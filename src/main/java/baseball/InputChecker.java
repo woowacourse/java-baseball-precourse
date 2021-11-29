@@ -18,4 +18,18 @@ public class InputChecker {
 			}
 		}
 	}
+
+	/**
+	 * 특정 문자열이 1 또는 2인지 확인하는 메서드
+	 * @param inputNumber
+	 */
+	public static void checkStringIsOneOrTwo(String inputNumber) {
+		if (inputNumber.length() != 1) {
+			throw new IllegalArgumentException("1자리 수가 아닙니다.");
+		}
+
+		if (inputNumber != "1" && inputNumber != "2") {
+			throw new IllegalArgumentException("1또는 2가 아닙니다.");
+		}
+	}
 }
