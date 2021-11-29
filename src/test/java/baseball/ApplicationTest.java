@@ -39,7 +39,7 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
-	void 타겟넘버_생성_테스트() {
+	void 타겟넘버_랜덤성_테스트() {
 		Target target = new Target();
 		Target compare = new Target();
 		target.generateTargetNumber();
@@ -51,48 +51,24 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
-	void 타켓넘버_종합_테스트(){
+	void 타켓넘버_수의중복_테스트() {
 		Target target = new Target();
 
-		for (int i = 0; i < 10; i++){
-			target.printTargetNumber();
-			targetNumber_generation_test(target);
-			targetNumber_compare_test(target);
+		for (int i = 0; i < 100; i++) {
 			target.generateTargetNumber();
+			target_compare_and_redundancy_test(target);
 		}
 	}
 
-	void targetNumber_generation_test(Target target) {
-		boolean[] visited = new boolean[target.getRangeEnd() - target.getRangeBegin() + 1];
-
+	void target_compare_and_redundancy_test(Target target) {
 		int count = 0;
-		for (int i = 0; i < visited.length; i++) {
-			if (visited[i] = true) {
-				continue;
-			}
-			if (target.isContained((char)(i + target.getRangeBegin() + '0')) > -1) {
-				visited[i + target.getRangeBegin()] = true;
+
+		for (int i = target.getRangeBegin(); i <= target.getRangeEnd(); i++) {
+			if (target.isContained((char)(i + '0')) > -1) {
 				count++;
 			}
 		}
-		assertThat(count == target.getLength());
-	}
-
-	void targetNumber_compare_test(Target target) {
-		int countBallAndStrike = 0;
-
-		for (int i = target.getRangeBegin(); i < target.getRangeEnd(); i++) {
-			String compare = "";
-			for (int j = 0; j < target.getLength(); j++) {
-				compare += (char)(1 + '0');
-			}
-
-			int[] ballsAndStrikes = target.compareWith(compare);
-			if (ballsAndStrikes[0] != 0 || ballsAndStrikes[1] != 0) {
-				countBallAndStrike++;
-			}
-		}
-		assertThat(countBallAndStrike == target.getLength());
+		assertThat(count).isEqualTo(target.getLength());
 	}
 
 	@Override
