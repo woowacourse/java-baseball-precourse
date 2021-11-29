@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import baseball.domain.number.BaseBallNumbers;
 import baseball.exception.computer.ComputerEndStateRefreshException;
 import java.util.Arrays;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
@@ -43,11 +44,18 @@ class ComputerTest {
     @DisplayName("[Computer refresh 테스트]")
     class RefreshComputerTest {
 
+        private BaseBallNumbers baseBallNumbers;
+
+        @BeforeEach
+        void beforeEach() {
+            baseBallNumbers = BaseBallNumbers.createByIntegerNumbers(Arrays.asList(1, 2, 3));
+        }
+
         @Test
         @DisplayName("이미 종료된 Computer가 Refresh할 경우 Exception이 발생해야 한다.")
         void refreshExceptionByEndState() {
             // given
-            Computer computer = Computer.from(BaseBallNumbers.createByIntegerNumbers(Arrays.asList(1, 2, 3)), GameState.END);
+            Computer computer = Computer.from(baseBallNumbers, GameState.END);
 
             // when & then
             assertThatExceptionOfType(ComputerEndStateRefreshException.class)
@@ -59,7 +67,7 @@ class ComputerTest {
         @DisplayName("Restart 상태라면 새로운 Computer를 반환해야 한다.")
         void refreshByRestartState() {
             // given
-            Computer input = Computer.from(BaseBallNumbers.createByIntegerNumbers(Arrays.asList(1, 2, 3)), GameState.RESTART);
+            Computer input = Computer.from(baseBallNumbers, GameState.RESTART);
 
             // when
             Computer result = input.refresh();
@@ -75,7 +83,7 @@ class ComputerTest {
         @DisplayName("RUNNING 상태라면 그대로 현재 주소를 반환해야 한다.")
         void refreshByRunningState() {
             // given
-            Computer input = Computer.from(BaseBallNumbers.createByIntegerNumbers(Arrays.asList(1, 2, 3)), GameState.RUNNING);
+            Computer input = Computer.from(baseBallNumbers, GameState.RUNNING);
 
             // when
             Computer result = input.refresh();
