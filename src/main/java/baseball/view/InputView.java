@@ -10,8 +10,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import baseball.exception.InputNotIntegerMessageException;
 import baseball.exception.InputNumbersDuplicatedMessageException;
-import baseball.exception.InputNumbersNotMatchDigitsMessageException;
-import baseball.exception.InputOutOfOptionsMessageException;
 import baseball.exception.NumberOutOfRangeMessageException;
 
 import baseball.resource.message.OutputMessage;
