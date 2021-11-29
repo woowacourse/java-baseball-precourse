@@ -18,10 +18,10 @@ public class Validation {
 	}
 
 	public static void isContainSameDigit(String tmpUserNumbers) {
-		Set<Integer> tmpInputSet = new HashSet<Integer>();
+		Set<Character> tmpInputSet = new HashSet<Character>();
 
 		for (int i = 0; i < 3; i++) {
-			tmpInputSet.add(tmpUserNumbers.charAt(i) - '0');
+			tmpInputSet.add(tmpUserNumbers.charAt(i));
 		}
 		if (tmpInputSet.size() != 3) {
 			throw new IllegalArgumentException(Message.INPUT_ERROR);
