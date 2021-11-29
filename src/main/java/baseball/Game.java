@@ -63,8 +63,9 @@ public class Game {
 	 * @return int
 	 */
 	public int askToRestart() {
-		// TODO: 정답을 맞췄을 때 게임 종료여부를 묻는 입력을 받는 기능
-		return 2;
+		String inputNumber = camp.nextstep.edu.missionutils.Console.readLine();
+		InputChecker.checkStringIsOneOrTwo(inputNumber);
+		return Integer.parseInt(inputNumber);
 	}
 
 	/**
