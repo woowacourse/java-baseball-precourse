@@ -14,7 +14,7 @@ public class GameInputValidator implements InputValidator {
 		// input 에 숫자가 아닌 값 혹은 0이 있을 때 예외 발생
 		keepProperValue(input);
 
-		// input 에 중복되는 숫자가 입력될 때
+		// input 에 중복되는 숫자가 입력될 때 예외 발생
 		keepUniqueValue(input);
 	}
 
