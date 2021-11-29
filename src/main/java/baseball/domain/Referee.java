@@ -12,19 +12,19 @@ import baseball.exception.NotPickedRefereeNumbers;
 public class Referee {
 
     List<Integer> targetNumbers;
-    boolean[] booleanBits;
+    boolean[] duplicationCheckBits;
 
     public void pickRandomNumbers() {
         targetNumbers = new ArrayList<>();
-        booleanBits = new boolean[10];
+        duplicationCheckBits = new boolean[10];
 
         while (targetNumbers.size() < NumberDigit.COUNT.getCount()) {
             int number = Randoms.pickNumberInRange(NumberRange.START.getNumber(), NumberRange.END.getNumber());
-            if (booleanBits[number]) {
+            if (checkDuplicated(number)) {
                 continue;
             }
             targetNumbers.add(number);
-            booleanBits[number] = true;
+            duplicationCheckBits[number] = true;
         }
     }
 
@@ -37,13 +37,25 @@ public class Referee {
             int targetNumber = targetNumbers.get(i);
             int playerNumber = playerNumbers.get(i);
 
-            if (playerNumber == targetNumber) {
+            if (checkStrike(playerNumber, targetNumber)) {
                 hint.increaseStrike();
-            } else if (booleanBits[playerNumber]) {
+            } else if (checkBall(playerNumber)) {
                 hint.increaseBall();
             }
         }
         return hint;
+    }
+
+    private boolean checkDuplicated(int number) {
+        return duplicationCheckBits[number];
+    }
+
+    private boolean checkStrike(int playerNumber, int targetNumber) {
+        return (playerNumber == targetNumber);
+    }
+
+    private boolean checkBall(int playNumber) {
+        return duplicationCheckBits[playNumber];
     }
 
     private void validateRefereeNumbersPicked() {

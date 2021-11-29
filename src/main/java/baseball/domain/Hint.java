@@ -31,22 +31,37 @@ public class Hint {
     public String toString() {
         List<String> resultDatas = new ArrayList<>();
 
-        if (balls != 0) {
-            resultDatas.add(balls + HintText.BALL);
+        if (isBallExist()) {
+            resultDatas.add(getStringBalls());
         }
-
-        if (strikes != 0) {
-            resultDatas.add(strikes + HintText.STRIKE);
+        if (isStrikeExist()) {
+            resultDatas.add(getStringStrikes());
         }
 
         int resultDataSize = resultDatas.size();
 
-        if (resultDataSize == 2) {
+        if (resultDataSize > 1) {
             return String.join(" ", resultDatas);
         } else if (resultDataSize == 1) {
             return resultDatas.get(0);
         }
         return HintText.NOTHING;
+    }
+
+    private boolean isBallExist() {
+        return (balls != 0);
+    }
+
+    private boolean isStrikeExist() {
+        return (strikes != 0);
+    }
+
+    private String getStringBalls() {
+        return balls + HintText.BALL;
+    }
+
+    private String getStringStrikes() {
+        return strikes + HintText.STRIKE;
     }
 
 }
