@@ -2,14 +2,16 @@ package baseball;
 
 import java.util.ArrayList;
 
+import baseball.view.OutputView;
+
 public class Hint {
-	public static int ball = 0;
-	public static int strike = 0;
+	public static int ball;
+	public static int strike;
 
 	public static void getHint(ArrayList<Integer> randomNumbers, ArrayList<Integer> userInputNumbers) {
 		initBallAndStrike();
 		countBallAndStrike(randomNumbers, userInputNumbers);
-		UserInterfaceView.printBallAndStrikeCount(ball, strike);
+		OutputView.printBallAndStrikeCount(ball, strike);
 	}
 
 	public static void initBallAndStrike() {

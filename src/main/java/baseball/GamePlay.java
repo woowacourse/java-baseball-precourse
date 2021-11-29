@@ -2,13 +2,15 @@ package baseball;
 
 import java.util.ArrayList;
 
+import baseball.view.InputView;
+
 public class GamePlay {
 
 	public static void runGame() {
 		ArrayList<Integer> randomNumbers = RandomNumber.getRandomNumbers();
 		while (true) {
-			UserInterfaceView.printNumberInputMessage();
-			ArrayList<Integer> userInputNumbers = UserInterfaceView.inputUserNumbers();
+			InputView.printNumberInputMessage();
+			ArrayList<Integer> userInputNumbers = InputView.inputUserNumbers();
 			Hint.getHint(randomNumbers, userInputNumbers);
 			if (Hint.strike == RandomNumber.PICK_NUMBER) {
 				gameRestartOrNot();
@@ -18,8 +20,8 @@ public class GamePlay {
 	}
 
 	public static void gameRestartOrNot() {
-		UserInterfaceView.printGameRestartMessage();
-		if (UserInterfaceView.inputGameRestartOrNot() == 1) {
+		InputView.printGameRestartMessage();
+		if (InputView.inputGameRestartOrNot() == 1) {
 			runGame();
 		}
 	}
