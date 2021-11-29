@@ -3,7 +3,7 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class Application {
-	private static Target target;
+	private static Target target = new Target();
 
 	public static void main(String[] args) {
 		int isGameEnd;
@@ -17,13 +17,14 @@ public class Application {
 		//TODO: 숫자 야구 게임 구현
 	}
 
-	//TODO: Target클래스에 맞춰서 범위와 길이를 맞춰야함.
 	static void checkUserInput(String userInput) {
-		if (userInput.length() > 3) {
+		if (userInput.length() > target.getLength()) {
 			throw new IllegalArgumentException();
 		}
 		for (int i = 0; i < userInput.length(); i++) {
-			if (userInput.charAt(i) - '0' < 1 && userInput.charAt(i) - '0' > 9) {
+			System.out.println(userInput.charAt(i)-'0');
+			if (userInput.charAt(i) - '0' < target.getRangeBegin() ||
+				userInput.charAt(i) - '0' > target.getRangeEnd()) {
 				throw new IllegalArgumentException();
 			}
 		}
