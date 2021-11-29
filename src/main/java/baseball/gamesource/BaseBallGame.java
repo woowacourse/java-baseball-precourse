@@ -76,15 +76,15 @@ public class BaseBallGame {
         System.out.print('\n');
     }
 
-    int ballCheck(List<Integer> oppo, int num, int idx){
+    int ballCheck(List<Integer> opponentNumbers, int num, int idx){
         int ballCnt =0;
 
-        for(int i=0; i<oppo.size() ; ++i){
+        for(int i=0; i<opponentNumbers.size() ; ++i){
 
             if(i == idx)
                 continue;
 
-            if(oppo.get(i) == num)
+            if(opponentNumbers.get(i) == num)
                 ballCnt++;
         }
 
