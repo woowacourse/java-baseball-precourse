@@ -19,7 +19,7 @@ public class Numbers {
 	public static Numbers create(){
 		Set<Number> numbers = new LinkedHashSet<>();
 		while(numbers.size()<DIGIT) {
-			int num = Randoms.pickNumberInRange(1, 9);
+			int num = Randoms.pickNumberInRange(Number.MIN, Number.MAX);
 			Number number = Number.valueOf(num);
 			numbers.add(number);
 		}

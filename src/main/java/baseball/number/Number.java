@@ -3,8 +3,8 @@ package baseball.number;
 import java.util.Objects;
 
 public class Number {
-	private static final int MIN = 1;
-	private static final int MAX = 9;
+	public static final int MIN = 1;
+	public static final int MAX = 9;
 	private final int number;
 
 	private Number(int number) {
