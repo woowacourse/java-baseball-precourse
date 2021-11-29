@@ -49,7 +49,7 @@ public class Player {
 	}
 
 	public boolean hasDuplicateNumber() {
-		if (inputNumber[0] == inputNumber[1] || inputNumber[1] == inputNumber[2] || inputNumber[0] == inputNumber[2]) {
+		if (inputNumber[Application.HUNDREDS_NUMBER] == inputNumber[Application.TENS_NUMBER] || inputNumber[Application.TENS_NUMBER] == inputNumber[Application.ONES_NUMBER] || inputNumber[Application.HUNDREDS_NUMBER] == inputNumber[Application.ONES_NUMBER]) {
 			return true;
 		}
 		return false;

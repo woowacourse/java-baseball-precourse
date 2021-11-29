@@ -1,6 +1,10 @@
 package baseball;
 
 public class Application {
+	public static final int HUNDREDS_NUMBER = 0;
+	public static final int TENS_NUMBER = 1;
+	public static final int ONES_NUMBER = 2;
+
 	public Computer computer;
 	public Player player;
 	public boolean continueGame;
@@ -32,16 +36,16 @@ public class Application {
 	}
 
 	public void countBall() {
-		if (getIntNumber(player.getInputNumber(0)) == computer.getRandomNumber(1)
-			|| getIntNumber(player.getInputNumber(0)) == computer.getRandomNumber(2)) {
+		if (getIntNumber(player.getInputNumber(HUNDREDS_NUMBER)) == computer.getRandomNumber(ONES_NUMBER)
+			|| getIntNumber(player.getInputNumber(HUNDREDS_NUMBER)) == computer.getRandomNumber(ONES_NUMBER)) {
 			computer.addBall();
 		}
-		if (getIntNumber(player.getInputNumber(1)) == computer.getRandomNumber(0)
-			|| getIntNumber(player.getInputNumber(1)) == computer.getRandomNumber(2)) {
+		if (getIntNumber(player.getInputNumber(TENS_NUMBER)) == computer.getRandomNumber(HUNDREDS_NUMBER)
+			|| getIntNumber(player.getInputNumber(TENS_NUMBER)) == computer.getRandomNumber(ONES_NUMBER)) {
 			computer.addBall();
 		}
-		if (getIntNumber(player.getInputNumber(2)) == computer.getRandomNumber(0)
-			|| getIntNumber(player.getInputNumber(2)) == computer.getRandomNumber(1)) {
+		if (getIntNumber(player.getInputNumber(ONES_NUMBER)) == computer.getRandomNumber(HUNDREDS_NUMBER)
+			|| getIntNumber(player.getInputNumber(ONES_NUMBER)) == computer.getRandomNumber(TENS_NUMBER)) {
 			computer.addBall();
 		}
 	}
