@@ -47,12 +47,16 @@ public class Computer {
 
 				new InputExitOrRestartValidator(inputExitOrRestart);
 
-				if (inputExitOrRestart.equals("2")) { // indent 초과
-					return false;
-				} else {
-					return true;
-				}
+				return restartGame(inputExitOrRestart);
 			}
+		}
+	}
+
+	public boolean restartGame(String inputExitOrRestart) {
+		if (inputExitOrRestart.equals("2")) {
+			return false;
+		} else {
+			return true;
 		}
 	}
 }
