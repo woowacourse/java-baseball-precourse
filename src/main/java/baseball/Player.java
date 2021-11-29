@@ -3,6 +3,7 @@ package baseball;
 import static resource.MessageResource.*;
 
 import camp.nextstep.edu.missionutils.Console;
+import util.InputValidationUtils;
 
 public class Player {
 	private static final int RESTART = 1;
@@ -11,7 +12,7 @@ public class Player {
 	public String inputBallNumber() {
 		System.out.print(INPUT_NUMBER_MESSAGE);
 		String ballNumber = Console.readLine();
-		if (ballNumber.length() != 3) {
+		if (InputValidationUtils.isCheckValid(ballNumber)) {
 			throw new IllegalArgumentException(ERROR_INPUT_NUMBER);
 		}
 		return ballNumber;
