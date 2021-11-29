@@ -14,25 +14,43 @@ public class Round {
 	
 	public Round(Computer computer) {
 		this.computer= computer;
-		this.cnt_strike= 0;
 		this.cnt_ball= 0;
+		this.cnt_strike= 0;
 	}
 	
 	public void init() {
 		computer.init();
-		cnt_strike= 0;
 		cnt_ball= 0;
+		cnt_strike= 0;
 	}
 	
 	public void play() {
-		//숫자를 입력해주세요
-		
-		//유효성 검사
-		
-		//결과 출력
-		
+		ArrayList<Integer> userInputList;
+		while(true) {
+			//숫자를 입력해주세요
+			System.out.printf("숫자를 입력해주세요 : ");
+			String userInput= readLine();
+			//유효성 검사
+			validateInputType(userInput);
+			userInputList= toIntegerList(userInput);
+			validateInputLength(userInputList);
+			validateInputDistinct(userInputList);
+			validateInputRange(userInputList);
+		}
 	}
 	
+	//userInput str to Integer List
+	private ArrayList<Integer> toIntegerList(String str_input){
+		ArrayList<Integer> inputList= new ArrayList<>();
+		int num;
+		for(int i=0; i<NUMBER_DIGIT; i++) {
+			num= Integer.parseInt(str_input.split("")[i]);
+			inputList.add(num);
+		}
+		return inputList; 
+	}
+	
+	/******유효성 검사를 위한 코드******/
 	//유효성 검사: 숫자 외의 문자를 입력함
 	private void validateInputType(String input) {
 		try {
@@ -63,6 +81,4 @@ public class Round {
 			}
 		}
 	}
-	
-
 }
