@@ -5,10 +5,12 @@ import java.util.Arrays;
 public class BaseballGame {
 
 	private String answer;
+	private String guessAnswer;
 	private boolean isGameOngoing;
 
 	BaseballGame() {
 		answer = "";
+		guessAnswer = "";
 		isGameOngoing = false;
 	}
 
@@ -63,6 +65,14 @@ public class BaseballGame {
 		answer = "";
 		while (!checkBaseballGameAnswerFormatRules(answer)) {
 			answer = Integer.toString(camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(111, 999));
+		}
+	}
+
+	public void askBaseballGameAnswerToPlayer(Player player) throws IllegalArgumentException {
+
+		guessAnswer = player.askQuestionAndGetAnswer(BaseballGameConstants.QUESTION_ASK_ANSWER);
+		if (!checkBaseballGameAnswerFormatRules(guessAnswer)) {
+			throw new IllegalArgumentException();
 		}
 	}
 }
