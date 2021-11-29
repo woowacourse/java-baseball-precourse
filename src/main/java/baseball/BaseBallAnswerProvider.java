@@ -40,4 +40,14 @@ public class BaseBallAnswerProvider {
 	private boolean isRightLength(List<Integer> randomNumber) {
 		return randomNumber.size() == 3;
 	}
+
+	public int checkAnswer(BaseBallPlayer baseBallPlayer, Integer index) {
+		if (baseBallPlayer.checkUserNumberStrike(index, answer.get(index))) {
+			return STRIKE_RESULT;
+		}
+		if (baseBallPlayer.checkUserNumberBall(answer.get(index))) {
+			return BALL_RESULT;
+		}
+		return NOTHING_RESULT;
+	}
 }

@@ -13,9 +13,9 @@ public class BaseBallScore {
 		ball = 0;
 	}
 
-	public void countScore(List<Integer> randomNumber, BaseBallPlayer baseBallPlayer) {
+	public void countScore(BaseBallAnswerProvider baseBallAnswerProvider, BaseBallPlayer baseBallPlayer) {
 		for (int i = 0; i < NUMBER_LENGTH; i++) {
-			int result = baseBallPlayer.checkNumber(randomNumber.get(i), i);
+			int result = baseBallAnswerProvider.checkAnswer(baseBallPlayer, i);
 			if (result == STRIKE_RESULT) {
 				strike++;
 			}

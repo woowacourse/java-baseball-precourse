@@ -25,25 +25,19 @@ public class BaseBallPlayer {
 		userInputToUserNumber(userInput);
 	}
 
-	public boolean checkUserNumber(Integer idx, Integer number) {
-		return userNumber.get(idx).equals(number);
-	}
-
-	public int checkNumber(Integer providerNumber, Integer index) {
-		if (userNumber.get(index).equals(providerNumber)) {
-			return STRIKE_RESULT;
-		}
-		if (userNumber.contains(providerNumber)) {
-			return BALL_RESULT;
-		}
-		return NOTHING_RESULT;
-	}
-
 	private void userInputToUserNumber(String userInput) {
 		List<Integer> tmpUserNumber = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
 			tmpUserNumber.add(Character.getNumericValue(userInput.charAt(i)));
 		}
 		userNumber = tmpUserNumber;
+	}
+
+	public boolean checkUserNumberStrike(Integer idx, Integer answerNumber) {
+		return userNumber.get(idx).equals(answerNumber);
+	}
+
+	public boolean checkUserNumberBall(Integer answerNumber) {
+		return userNumber.contains(answerNumber);
 	}
 }
