@@ -13,7 +13,9 @@ public class Constant {
 
     public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     public static final String INPUT_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
     public final static String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String WRONG_INPUT = "잘못된 입력입니다.";
+
+    public static final String VALID_NUM_RANGE_ERROR = "잘못된 길이의 숫자입니다.";
+    public static final String NOT_NUM_ERROR = "잘못된 숫자입니다.";
+    public static final String DUPLICATE_NUM_ERROR = "중복된 숫자를 입력하였습니다.";
 }

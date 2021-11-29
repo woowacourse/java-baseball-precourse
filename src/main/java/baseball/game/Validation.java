@@ -4,18 +4,18 @@ public class Validation {
 
     public static void isValidInput(String input) {
         if (!isRightLength(input)) {
-            throw new IllegalArgumentException("잘못된 길이의 숫자입니다.");
+            throw new IllegalArgumentException(Constant.VALID_NUM_RANGE_ERROR);
         }
-        if (!isRightRange(input, 1, 9)) {
-            throw new IllegalArgumentException("잘못된 숫자입니다.");
+        if (!isRightRange(input, Constant.MIN_VALUE, Constant.MAX_VALUE)) {
+            throw new IllegalArgumentException(Constant.NOT_NUM_ERROR);
         }
         if (!isDuplicate(input)) {
-            throw new IllegalArgumentException("중복된 숫자를 입력하였습니다.");
+            throw new IllegalArgumentException(Constant.DUPLICATE_NUM_ERROR);
         }
     }
 
     private static boolean isRightLength(String input) {
-        return input.length() == 3;
+        return input.length() == Constant.NUMBER_LENGTH;
     }
 
     private static boolean isRightRange(String input, int min, int max) {
@@ -33,7 +33,7 @@ public class Validation {
 
     private static boolean isDuplicate(String input) {
         int num;
-        boolean[] visited = new boolean[10];
+        boolean[] visited = new boolean[Constant.MAX_VALUE+1];
 
         for (int i = 0; i < input.length(); i++) {
             num = Character.getNumericValue(input.charAt(i));
@@ -56,8 +56,8 @@ public class Validation {
             throw new IllegalArgumentException("잘못된 숫자입니다.");
         }
 
-        if (!isRightRange(input, 1, 2)) {
-            throw new IllegalArgumentException("잘못된 숫자입니다.");
+        if (!isRightRange(input, Constant.GAME_RESTART, Constant.GAME_END)) {
+            throw new IllegalArgumentException(Constant.NOT_NUM_ERROR);
         }
     }
 }
