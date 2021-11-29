@@ -2,6 +2,8 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Randoms.*;
 
+import java.util.Arrays;
+
 import controller.classes.BaseBallGame;
 
 public class Application {
@@ -10,8 +12,8 @@ public class Application {
 		//GameDataInterface m = new GameData();
 		//m.inputUserAnswer();
 		//m.setGameMode();
-		//BaseBallGame baseBallGame = new BaseBallGame();
-		//baseBallGame.startGame();
+		BaseBallGame baseBallGame = new BaseBallGame();
+		baseBallGame.startGame();
 		// System.out.println(pickUniqueNumbersInRange(1,9,3));
 		// System.out.println(pickUniqueNumbersInRange(1,9,3));
 		// System.out.println(pickUniqueNumbersInRange(1,9,3));

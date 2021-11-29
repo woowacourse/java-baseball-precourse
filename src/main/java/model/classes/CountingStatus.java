@@ -52,6 +52,8 @@ public class CountingStatus {
 			return 2;
 		} else if (ballStatus == BallStatus.three) {
 			return 3;
+		} else if (ballStatus == BallStatus.four) {
+			return 4;
 		}
 		return 0;
 	}

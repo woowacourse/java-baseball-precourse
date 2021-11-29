@@ -31,6 +31,11 @@ public class GameData implements GameDataInterface {
 		answerOfComputer = answer;
 	}
 
+	@Override
+	public String getAnswerOfUserInput() {
+		return answerOfUserInput;
+	}
+
 	private GameMode defineGameModeFromInteger(int integer) {
 		if (integer == 1) {
 			return GameMode.progressing;

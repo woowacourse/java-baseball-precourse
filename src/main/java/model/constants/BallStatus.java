@@ -4,5 +4,6 @@ public enum BallStatus {
 	zero,
 	one,
 	two,
-	three
+	three,
+	four
 }
