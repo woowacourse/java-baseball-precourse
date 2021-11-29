@@ -26,6 +26,7 @@ public class Game {
         List<Integer> input = User.inputNumber();
 
         hint.countHint(input, answerList);
+        hint.printResult();
 
         return false;
     }
