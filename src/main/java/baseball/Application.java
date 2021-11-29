@@ -11,7 +11,7 @@ public class Application {
         try {
             startGame();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();   
         }
     }
 
@@ -23,10 +23,9 @@ public class Application {
 
         makeComputerNumbers(computerNumbers);
         System.out.print("숫자를 입력하세요 : ");
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         while (strikeCount != 3) {
-            int N = Integer.parseInt(bufferedReader.readLine());
+            int N = View.input();
 
             ballCount = 0;
             strikeCount = 0;
@@ -38,7 +37,7 @@ public class Application {
             inputNumbers(computerNumbers, N);
             ballCount = checkBall(ballCount, computerNumbers, inputNumbers);
             strikeCount = checkStrike(strikeCount, computerNumbers, inputNumbers);
-            print(ballCount, strikeCount);
+            View.print(ballCount, strikeCount);
         }
     }
 
@@ -99,28 +98,5 @@ public class Application {
         if (computerNumbers[2] == inputNumbers[1]) ballCount++;
 
         return ballCount;
-    }
-
-    public static void print(int ballCount, int strikeCount) throws IOException {
-        if (ballCount < 3 && ballCount != 0 && strikeCount == 0) {
-            System.out.print(ballCount + "볼" + '\n' + "숫자를 입력하세요 : ");
-        }
-
-        if (strikeCount < 3 && strikeCount != 0 && ballCount == 0) {
-            System.out.print(strikeCount + "스트라이크" + '\n' + "숫자를 입력하세요 : ");
-        }
-
-        if (strikeCount == 3) {
-            System.out.println("3스트라이크" + '\n' + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            restart();
-        }
-
-        if (ballCount != 0 && strikeCount != 0) {
-            System.out.print(ballCount + "볼" + " " + strikeCount + "스트라이크" + '\n' + "숫자를 입력하세요 : ");
-        }
-
-        if (ballCount == 0 && strikeCount == 0) {
-            System.out.print("낫싱" + '\n' + "숫자를 입력하세요 : ");
-        }
     }
 }
