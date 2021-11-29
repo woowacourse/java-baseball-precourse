@@ -9,6 +9,32 @@ public class Computer {
 	public static final int MAX_NUMBER = 9;
 
 	public int[] randomNumber = new int[NUMBER_SIZE];
+	public int strike;
+	public int ball;
+
+	public Computer() {
+		strike = 0;
+		ball = 0;
+		setRandomNumber();
+	}
+
+	public void setRandomNumber() {
+		for (int i = 0; i < NUMBER_SIZE; i++) {
+			randomNumber[i] = 0;
+		}
+	}
+
+	public int getRandomNumber(int index) {
+		return randomNumber[index];
+	}
+
+	public void addStrike() {
+		strike++;
+	}
+
+	public void addBall() {
+		ball++;
+	}
 
 	public void makeRandomNumber() {
 		boolean[] isUsed = new boolean[DIGIT];
