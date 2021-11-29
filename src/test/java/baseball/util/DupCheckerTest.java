@@ -26,7 +26,7 @@ class DupCheckerTest {
 		int[] target = {1, 3, 3};
 		//then
 		for (int n : target) {
-			if(!dupChecker.check(n)){
+			if (!dupChecker.check(n)) {
 				return;
 			}
 		}

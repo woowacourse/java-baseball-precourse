@@ -11,7 +11,7 @@ public class Result {
 		this.ballCount = ballCount;
 	}
 
-	public boolean isCorrect(){
+	public boolean isCorrect() {
 		return strikeCount == BaseballConst.NUM_LEN_LIMIT;
 	}
 
