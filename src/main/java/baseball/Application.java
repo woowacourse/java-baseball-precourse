@@ -5,9 +5,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 	// TODO: test 파일 실행 및 터미널에서 실행 확인
-	static final int NEW_GAME = 1;
-	static final int QUIT_GAME = 2;
-
 	public static void main(String[] args) {
 		Game rightAnswer = new Game();
 		Game.init(rightAnswer);
@@ -58,6 +55,9 @@ class Game {
 	private static final int END_RANGE = 9;
 	static final int NUMBER_COUNT = 3;
 
+	private static final int NEW_GAME = 1;
+	private static final int QUIT_GAME = 2;
+
 	int[] number = new int[NUMBER_COUNT];
 
 	Game() {
@@ -96,7 +96,7 @@ class Game {
 		}
 
 		int newGameAnswer = Game.checkNewGameStart();
-		if (newGameAnswer == Application.NEW_GAME) {
+		if (newGameAnswer == Game.NEW_GAME) {
 			rightAnswer = new Game();
 			Game.init(rightAnswer);
 		}
@@ -113,7 +113,7 @@ class Game {
 
 	private static int checkNewGameStart() {
 		System.out.println(Game.NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-		System.out.println("게임을 새로 시작하려면 " + Application.NEW_GAME + ", 종료하려면 " + Application.QUIT_GAME + "를 입력하세요.");
+		System.out.println("게임을 새로 시작하려면 " + Game.NEW_GAME + ", 종료하려면 " + Game.QUIT_GAME + "를 입력하세요.");
 
 		String newGameAnswer = readLine();
 		return Game.getNewGameAnswerNumber(newGameAnswer);
