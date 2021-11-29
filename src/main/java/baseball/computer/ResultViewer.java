@@ -12,6 +12,6 @@ public class ResultViewer {
 		if (ballCnt == 0) {
 			return strikeCnt + "스트라이크";
 		}
-		return ballCnt + "볼" + strikeCnt + "스트라이크";
+		return ballCnt + "볼 " + strikeCnt + "스트라이크";
 	}
 }
