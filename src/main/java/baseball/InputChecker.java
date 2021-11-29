@@ -28,7 +28,7 @@ public class InputChecker {
 			throw new IllegalArgumentException("1자리 수가 아닙니다.");
 		}
 
-		if (inputNumber != "1" && inputNumber != "2") {
+		if (!inputNumber.equals("1") && !inputNumber.equals("2")) {
 			throw new IllegalArgumentException("1또는 2가 아닙니다.");
 		}
 	}
