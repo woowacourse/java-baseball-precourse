@@ -29,11 +29,11 @@ public class Application {
                 int userInput = Integer.parseInt(Console.readLine());
 
                 // 만약 1000이 넘어가는 값 입력 받았을 시, 종료
-                if(userInput / 100 >= 10) throw new IllegalArgumentException();
+                if(userInput / 100 >= 10) throw new IllegalArgumentException("유효하지 않은 입력값(1000 이상)");
 
                 // 사용자 입력 값 배열로 변환
                 Numbers userInputArray = new Numbers(userInput);
-                if(!userInputArray.isValidNumber()) throw new IllegalArgumentException();
+                if(!userInputArray.isValidNumber()) throw new IllegalArgumentException("유효하지 않은 입력값");
 
                 // 랜덤 값과 사용자 입력 값 비교
                 int[] result = randomValueArray.compareNumberWithInputNumber(userInputArray);
@@ -45,7 +45,7 @@ public class Application {
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int restart = Integer.parseInt(Console.readLine());
 
-            if(!(restart == 1 || restart == 2)) throw new IllegalArgumentException();
+            if(!(restart == 1 || restart == 2)) throw new IllegalArgumentException("유효하지 않은 입력값");
 
             // 재게 여부에 따른 flag 변수 수정
             if(restart == 2) flag = false;
