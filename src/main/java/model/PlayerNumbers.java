@@ -20,13 +20,13 @@ public class PlayerNumbers {
 	}
 
 	private void isValidationNumbers(String[] numbers) {
-		int numbersSize = numbers.length;
+		int numberCount = numbers.length;
 
 		if (numbers.length != MAX_SIZE) {
 			throw new IllegalArgumentException("입력한 숫자가 3자리가 아닙니다.");
 		}
 
-		if (Arrays.stream(numbers).distinct().count() != numbersSize) {
+		if (Arrays.stream(numbers).distinct().count() != numberCount) {
 			throw new IllegalArgumentException("입력한 숫자중 중복되는 숫자가 있습니다.");
 		}
 	}
