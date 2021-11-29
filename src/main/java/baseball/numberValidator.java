@@ -1,6 +1,6 @@
 package baseball;
 
-public class Validator {
+public class numberValidator {
     public boolean[] numberChecked = new boolean[10];
 
     public void validateNumberInput(String numberInputStr) {
