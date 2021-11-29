@@ -19,7 +19,8 @@ public class OutputView {
 	}
 
 	public static void printHint(Hint hint) {
-		int ballCount = hint.getBall(), strikeCount = hint.getStrike();
+		int ballCount = hint.getBall();
+		int strikeCount = hint.getStrike();
 
 		if (ballCount > 0)
 			System.out.print(ballCount + BALL + " ");
