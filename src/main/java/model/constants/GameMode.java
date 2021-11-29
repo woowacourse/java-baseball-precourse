@@ -1,6 +1,6 @@
 package model.constants;
 
 public enum GameMode {
-	progressing,
+	progressing ,
 	ending
 }
