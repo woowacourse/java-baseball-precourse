@@ -26,8 +26,8 @@
 - [ ] **indent depth가 2이하인가**
 - [ ] **하나의 함수가 한 가지 일만 하도록 하였는가**
 - [ ] **(추가) 하드코딩 하진 않았는가**
-- [ ] `Randoms`의 `pickNumberInRange()`를 사용했는가
-- [ ] `Console`의 `readLine()`을 사용했는가
+- [x] `Randoms`의 `pickNumberInRange()`를 사용했는가
+- [x] `Console`의 `readLine()`을 사용했는가
 - [ ] `gradlew.bat clean test`의 모든 테스트가 통과하는가
 
 ## 그외 학습 사항
