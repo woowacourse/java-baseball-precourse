@@ -48,7 +48,7 @@
 플레이어 클래스 구현 
 - 숫자 3개를 입력받는 기능 
   - 잘못된 값 입력시 illegalArgumentException throw할 수 있도록
-  - console 사용
+  - console 사용 (o)
   
 유효성 검사 
 - 입력 숫자가 1~9 이외의 숫자이거나 문자, 기호인지 확인
