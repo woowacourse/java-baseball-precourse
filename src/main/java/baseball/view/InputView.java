@@ -1,6 +1,7 @@
 package baseball.view;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -43,7 +44,6 @@ public class InputView {
         return numbers;
     }
 
-
     private int inputNumber() {
         try {
             String userInputData = Console.readLine();
@@ -74,20 +74,14 @@ public class InputView {
     }
 
     private void validateNumbersInRange(List<Integer> numbers) {
-        for (int number : numbers) {
-            if (NumberRange.isOutOfRange(number)) {
-                throw new NumberOutOfRangeMessageException();
-            }
+        if (numbers.stream().anyMatch(NumberRange::isOutOfRange)) {
+            throw new NumberOutOfRangeMessageException();
         }
     }
 
     private void validateNumbersIsNotDuplicated(List<Integer> numbers) {
-        boolean[] bits = new boolean[10];
-        for (int number : numbers) {
-            if (bits[number]) {
-                throw new InputNumbersDuplicatedMessageException();
-            }
-            bits[number] = true;
+        if (numbers.stream().anyMatch(number -> Collections.frequency(numbers, number) > 1)) {
+            throw new InputNumbersDuplicatedMessageException();
         }
     }
 

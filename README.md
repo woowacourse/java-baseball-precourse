@@ -66,6 +66,7 @@
 - [x] enum 클래스에 정적 메소드 추가
   - [x] NumberDigit 클래스
   - [x] NumberRange 클래스
+- [x] InputView 클래스 유효성 검사 메소드에 stream 코드 적용
 
 ---
 
