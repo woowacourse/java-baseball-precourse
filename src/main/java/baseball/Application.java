@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -11,7 +12,6 @@ public class Application {
         while (flag) {
             int[] randomNum = randomNum();
             choiceNumPlay(randomNum);
-
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             flag = getFlag();
         }
@@ -22,7 +22,7 @@ public class Application {
             int[] arrayNum = inputNum();
             arrayNumFlag(arrayNum);
             int strike = strikeCount(arrayNum,randomNum);
-            int ball = ballCount(strike,arrayNum,randomNum);
+            int ball = ballCount(arrayNum,randomNum);
             countJudge(strike, ball);
             if (strike == 3) {
                 break;
@@ -41,6 +41,7 @@ public class Application {
         }
         return flag;
     }
+
     /*
      * 랜덤으로 숫자 3개를 생성하는 매소드
      */
@@ -63,6 +64,7 @@ public class Application {
         int[] randomNum = {first,second,third};
         return  randomNum;
     }
+
     /*
      * 숫자를 입력받을 때 사용하는 매소드
      */
@@ -72,6 +74,7 @@ public class Application {
         int[] arrayNum = Stream.of(inputNum.split("")).mapToInt(Integer::parseInt).toArray();
         return arrayNum;
     }
+
     /*
      * 숫자의 개수가 3개가 맞는지 확인하는 매소드
      */
@@ -80,6 +83,7 @@ public class Application {
             throw  new IllegalArgumentException();
         }
     }
+
     /*
      * 스트라이크의 개수를 알려주는 매소드
      */
@@ -90,21 +94,20 @@ public class Application {
         }
         return strike;
     }
+
     /*
      * 볼의 개수를 알려주는 매소드
      */
-    private  static  int ballCount(int strike, int[] arrayNum, int[] randomNum) {
+    private  static  int ballCount(int[] arrayNum, int[] randomNum) {
         int ball = 0;
         for (int i = 0;  i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (randomNum[i] == arrayNum[j]) {
-                    ball++;
-                }
+            if (arrayNum[i] != randomNum[i] && Arrays.asList(randomNum).contains(arrayNum[i])) {
+                ball ++;
             }
         }
-        ball -= strike;
         return ball;
     }
+
     /*
      * 심판이 볼 판정을 하는 매소드
      */
@@ -122,7 +125,6 @@ public class Application {
                 System.out.print(strike + "스트라이크");
             }
             System.out.println();
-
         }
     }
 }
