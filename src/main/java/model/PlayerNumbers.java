@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlayerNumbers {
-	private List<BaseballNumber> numbers;
 	private static final int MAX_SIZE = 3;
+	private List<BaseballNumber> numbers;
 
 	public PlayerNumbers(String[] numbers) {
-		isValidationNumbers(numbers);
+		isValideNumbers(numbers);
 		inputPlayerNumbers(numbers);
 	}
 
@@ -19,7 +19,7 @@ public class PlayerNumbers {
 			.collect(Collectors.toList());
 	}
 
-	private void isValidationNumbers(String[] numbers) {
+	private void isValideNumbers(String[] numbers) {
 		int numberCount = numbers.length;
 
 		if (numbers.length != MAX_SIZE) {

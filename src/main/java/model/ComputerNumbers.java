@@ -8,9 +8,9 @@ import java.util.stream.IntStream;
 import utils.RandomNumbersGenerator;
 
 public class ComputerNumbers {
-	private List<BaseballNumber> numbers;
 	private static final int MIN_POSITION = 0;
 	private static final int MAX_POSITION = 3;
+	private List<BaseballNumber> numbers;
 
 	public ComputerNumbers() {
 		makeNumbers();
