@@ -42,11 +42,15 @@ public class Player {
 
 	private void validatePlayerNumberType(String enterPlayerNumber) {
 		for (char number : enterPlayerNumber.toCharArray()) {
-			if (number < NumberRangeType.MIN_NUMBER_ASCII.getNumberRange()
-				|| number > NumberRangeType.MAX_NUMBER_ASCII.getNumberRange()) {
+			if (!isNumberRange(number)) {
 				throw new IllegalArgumentException(ExceptionType.WRONG_TYPE_INPUT.getMessage());
 			}
 		}
+	}
+
+	private boolean isNumberRange(char number) {
+		return number >= NumberRangeType.MIN_NUMBER_ASCII.getNumberRange()
+			&& number <= NumberRangeType.MAX_NUMBER_ASCII.getNumberRange();
 	}
 
 	private void validatePlayerNumberDuplicate(String enterPlayerNumber) {
