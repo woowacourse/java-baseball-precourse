@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Numbers {
-
 	protected static final int NUMBERS_SIZE = 3;
 	protected static final int MIN_NUMBER = 1;
 	protected static final int MAX_NUMBER = 9;

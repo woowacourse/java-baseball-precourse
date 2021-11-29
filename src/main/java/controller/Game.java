@@ -8,7 +8,6 @@ import view.InputView;
 import view.OutputView;
 
 public class Game {
-
 	private static final String RESTART_INPUT = "1";
 	private static final String QUIT_INPUT = "2";
 
