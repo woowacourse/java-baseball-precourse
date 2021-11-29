@@ -22,14 +22,17 @@ public class OutputView {
 		int ballCount = hint.getBall();
 		int strikeCount = hint.getStrike();
 
-		if (ballCount > 0)
+		if (ballCount > 0) {
 			System.out.print(ballCount + BALL + " ");
+		}
 
-		if (strikeCount > 0)
+		if (strikeCount > 0) {
 			System.out.print(strikeCount + STRIKE);
+		}
 
-		if (ballCount + strikeCount == 0)
+		if (ballCount + strikeCount == 0) {
 			System.out.print(NOTHING);
+		}
 
 		System.out.println();
 

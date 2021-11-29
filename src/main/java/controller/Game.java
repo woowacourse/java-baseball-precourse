@@ -22,11 +22,13 @@ public class Game {
 		OutputView.printQuitInstruction();
 		String input = InputView.getInput();
 
-		if (input.equals(QUIT_INPUT))
+		if (input.equals(QUIT_INPUT)) {
 			return true;
+		}
 
-		if (input.equals(RESTART_INPUT))
+		if (input.equals(RESTART_INPUT)) {
 			return false;
+		}
 
 		throw new IllegalArgumentException("1 또는 2 만 입력할 수 있습니다.");
 	}
@@ -40,8 +42,10 @@ public class Game {
 		while (true) {
 			createNewTargetNumbers();
 			startRound();
-			if (selectQuit())
+
+			if (selectQuit()) {
 				break;
+			}
 		}
 	}
 
@@ -54,8 +58,9 @@ public class Game {
 
 			OutputView.printHint(hint);
 
-			if (hint.getStrike() == 3)
+			if (hint.getStrike() == 3) {
 				break;
+			}
 		}
 	}
 

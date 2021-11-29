@@ -31,8 +31,9 @@ public class TargetNumbers extends Numbers {
 			int currentNumber = this.numbers.get(i).getNumber();
 			int numberIndex = numbers.find(currentNumber);
 
-			if (numberIndex < 0)
+			if (numberIndex < 0) {
 				continue;
+			}
 
 			if (numberIndex == i) {
 				strikeCount++;
