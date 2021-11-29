@@ -2,5 +2,5 @@ package baseball;
 
 public class BaseballGameConstants {
 
-	final static int LENGTH_RULE = 3;
+	static final int LENGTH_RULE = 3;
 }
