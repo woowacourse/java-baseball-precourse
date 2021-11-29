@@ -1,10 +1,21 @@
-*.c text eol=lf
-*.cpp text eol=lf
-*.h text eol=lf
+# Auto detect text files and perform LF normalization
+*        text=auto
 
-# exception for visual studio project configuration
-*.sln text eol=crlf
-*.vs text eol=crlf
-*.csproj eol=crlf
-*.props eol=crlf
-*.filters eol=crlf
+*.cs     text diff=csharp
+*.java   text diff=java
+*.html   text diff=html
+*.css    text
+*.js     text
+*.sql    text
+
+*.csproj text merge=union
+*.sln    text merge=union eol=crlf
+
+*.docx   diff=astextplain
+*.DOCX   diff=astextplain
+
+# absolute paths are ok, as are globs
+/**/postinst* text eol-lf
+
+# paths that don't start with / are treated relative to the .gitattributes folder
+relative/path/*.txt text eol-lf
