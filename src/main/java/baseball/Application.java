@@ -11,17 +11,22 @@ public class Application {
 //        flag 가 true(2)가 되면 while 문이 종료되면서 게임 종료
         while (flag) {
             int[] randomNum = randomNum();
+            choiceNumPlay(randomNum);
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            flag = getFlag();
+        }
+    }
 
+    private static void choiceNumPlay(int[] randomNum) {
+        while (true) {
             int[] arrayNum = inputNum();
             arrayNumFlag(arrayNum);
             int strike = strikeCount(arrayNum,randomNum);
             int ball = ballCount(strike,arrayNum,randomNum);
             countJudge(strike, ball);
-
-            flag = getFlag();
+            if (strike == 3) break;
         }
     }
-
 
 
     private static boolean getFlag() {
