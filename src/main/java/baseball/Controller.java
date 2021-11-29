@@ -16,21 +16,21 @@ public class Controller {
     GameService gameService = new GameService();
 
     public void run() throws IllegalArgumentException{
-        gameSet();
-        gameStart();
-        gameOver();
+        setGame();
+        startGame();
+        endGame();
         askRetry();
     }
 
-    private void gameSet() {
+    private void setGame() {
         gameService.setGame(SIZE, START_INCLUSIVE, END_INCLUSIVE);
     }
 
-    private void gameStart() throws IllegalArgumentException{
+    private void startGame() throws IllegalArgumentException{
         gameService.playGame();
     }
 
-    private void gameOver(){
+    private void endGame(){
         SystemMessage.printGameOverMessage();
     }
 
