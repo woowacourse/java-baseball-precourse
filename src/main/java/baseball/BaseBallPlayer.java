@@ -25,6 +25,10 @@ public class BaseBallPlayer {
 		userInputToUserNumber(userInput);
 	}
 
+	public boolean checkUserNumber(Integer idx, Integer number) {
+		return userNumber.get(idx).equals(number);
+	}
+
 	public int checkNumber(Integer providerNumber, Integer index) {
 		if (userNumber.get(index).equals(providerNumber)) {
 			return STRIKE_RESULT;
