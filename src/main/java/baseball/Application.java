@@ -122,17 +122,13 @@ public class Application {
 		public void playGame() {
 			System.out.print("숫자를 입력해주세요 : ");
 			List<Integer> userInput = getInputFromUser();
-			try {
-				validateInput(userInput);
-				int[] scoreBoard = getNumOfStrikesAndBalls(userInput);
-				judge(scoreBoard);
-				if (isOver) {
-					restartOrExit();
-				} else {
-					playGame();
-				}
-			} catch (IllegalArgumentException e) {
-				System.out.println("Illegal Input");
+			validateInput(userInput);
+			int[] scoreBoard = getNumOfStrikesAndBalls(userInput);
+			judge(scoreBoard);
+			if (isOver) {
+				restartOrExit();
+			} else {
+				playGame();
 			}
 		}
 	}
