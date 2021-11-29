@@ -6,7 +6,7 @@ public class Application {
 
     public static void main(String[] args) {
 
-        new InputRole().getInputValue();
+        GameRole.startGame();
         //TODO: 숫자 야구 게임 구현
     }
 
