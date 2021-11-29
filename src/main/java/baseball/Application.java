@@ -1,11 +1,9 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import com.sun.deploy.util.ArrayUtil;
 
 public class Application {
     public static void main(String[] args) {
