@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.view.InputView.inputNumbers;
+import static baseball.view.ResultView.viewGameResult;
 
 import baseball.domain.computer.Computer;
 import baseball.domain.computer.GameResult;
@@ -13,6 +14,8 @@ public class Application {
 
         while (!computer.isFinishedGame()) {
             BaseBallNumbers userBaseBallNumbers = BaseBallNumbers.createByIntegerNumbers(inputNumbers());
+            gameResult = computer.calculateBaseBallGame(userBaseBallNumbers);
+            viewGameResult(gameResult);
             computer.refresh();
         }
     }
