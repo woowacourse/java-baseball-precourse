@@ -2,6 +2,7 @@ package model.classes;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 
+import exceptions.NumberInputExceptions;
 import model.GameDataInterface;
 import model.constants.GameMode;
 
@@ -12,6 +13,9 @@ public class GameData implements GameDataInterface {
 	@Override
 	public void inputUserAnswer() {
 		answerOfUserInput = readLine();
+		if (answerOfUserInput.length() != 3) {
+			throw new NumberInputExceptions();
+		}
 	}
 
 	@Override
@@ -22,17 +26,12 @@ public class GameData implements GameDataInterface {
 	}
 
 	private GameMode defineGameModeFromInteger(int integer) {
-		try {
-			if(integer == 1) {
-				return GameMode.progressing;
-			} else if(integer == 2) {
-				return GameMode.ending;
-			} else {
-				throw new IllegalArgumentException();
-			}
-		} catch (IllegalArgumentException error) {
-			System.out.println("예외가 발생했습니다.");
+		if (integer == 1) {
+			return GameMode.progressing;
+		} else if (integer == 2) {
 			return GameMode.ending;
+		} else {
+			throw new NumberInputExceptions();
 		}
 	}
 }
