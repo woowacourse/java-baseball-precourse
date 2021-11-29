@@ -15,7 +15,7 @@ public class NumberValidation {
 
 		validateNumber(inputString, regex, INVALID_THREE_DIGIT_NUMBER);
 		validateLength(inputString.length(), 3, INVALID_THREE_DIGIT_NUMBER);
-		validateDuplication(inputString, INVALID_THREE_DIGIT_NUMBER);
+		validateDuplication(inputString);
 	}
 
 	public static void validateSingleDigitNumber(String inputString) {
@@ -38,10 +38,10 @@ public class NumberValidation {
 		}
 	}
 
-	private static void validateDuplication(String inputString, String errorMessage) {
+	private static void validateDuplication(String inputString) {
 		Set<String> inputSet = new HashSet<>(Arrays.asList(inputString.split("")));
 		if (inputSet.size() != 3) {
-			throw new IllegalArgumentException(errorMessage);
+			throw new IllegalArgumentException(INVALID_THREE_DIGIT_NUMBER);
 		}
 	}
 }

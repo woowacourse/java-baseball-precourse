@@ -9,8 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameProgress {
 
 	public static boolean startGame(int[] answerArr) {
-		boolean notSolved = true;
-		while (notSolved) {
+		while (true) {
 			String inputString = enterNumber();
 			String message = calculateNumber(answerArr, Integer.parseInt(inputString));
 			System.out.print(message);
@@ -18,7 +17,6 @@ public class GameProgress {
 				return askRestartOrEnd();
 			}
 		}
-		return false;
 	}
 
 	public static String enterNumber() {
@@ -35,10 +33,7 @@ public class GameProgress {
 	public static boolean askRestartOrEnd() {
 		String inputString = Console.readLine();
 		validateSingleDigitNumber(inputString);
-		if (inputString.equals("1")) {
-			return true;
-		}
-		return false;
+		return inputString.equals("1");
 	}
 
 }
