@@ -21,7 +21,7 @@ public class Enemy {
 		int index = 0;
 		while (index < GAME_NUMBER_LENGTH) {
 			int temp = Randoms.pickNumberInRange(1, 9);
-			if (!IntStream.of(enemyNum).anyMatch(x -> temp == x)) {
+			if (IntStream.of(enemyNum).noneMatch(x -> temp == x)) {
 				enemyNum[index] = temp;
 				index++;
 			}
