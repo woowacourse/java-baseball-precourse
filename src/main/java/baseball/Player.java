@@ -1,5 +1,10 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
@@ -43,4 +48,17 @@ public class Player {
 		return false;
 	}
 
+	public boolean isDuplicate(int[] number) {
+		ArrayList<Integer> integerArray = (ArrayList<Integer>)Arrays.stream(number)
+			.boxed()
+			.collect(Collectors.toList());
+
+		LinkedHashSet<Integer> linkedHashSet =
+			new LinkedHashSet<>(integerArray);
+
+		if (number.length != linkedHashSet.size()) {
+			return true;
+		}
+		return false;
+	}
 }
