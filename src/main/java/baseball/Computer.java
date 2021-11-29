@@ -12,14 +12,6 @@ public class Computer {
         this.numberValidator = numberValidator;
     }
 
-    public NumberGenerator getNumberGenerator() {
-        return numberGenerator;
-    }
-
-    public NumberValidator getNumberValidator() {
-        return numberValidator;
-    }
-
     public List<Integer> getNumber() {
         return number;
     }
