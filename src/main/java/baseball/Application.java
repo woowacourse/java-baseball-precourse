@@ -1,9 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.LinkedHashSet;
 import java.util.Iterator;
+import camp.nextstep.edu.missionutils.Randoms;
+import baseball.Input;
 
 public class Application {
     static final int MIN_NUM = 1;
@@ -12,21 +12,20 @@ public class Application {
 
     public static void main(String[] args) {
         randomNumberGenerator(MIN_NUM, MAX_NUM, INPUT_LEN);
-
     }
 
     public static String randomNumberGenerator(int startInclusive, int endInclusive, int count) {
-        LinkedHashSet<Integer> randomNumberSet = new LinkedHashSet<>();
-        while (randomNumberSet.size() < count) {
-            randomNumberSet.add(Integer.valueOf(Randoms.pickNumberInRange(startInclusive, endInclusive)));
+        LinkedHashSet<Integer> randomNumber = new LinkedHashSet<>();
+        while (randomNumber.size() < count) {
+            randomNumber.add(Integer.valueOf(Randoms.pickNumberInRange(startInclusive, endInclusive)));
         }
 
-        Iterator<Integer> randomNumberIter = randomNumberSet.iterator();
-        String randomNumberStr = "";
+        Iterator<Integer> randomNumberIter = randomNumber.iterator();
+        String resultRandomNumber = "";
         while (randomNumberIter.hasNext()) {
-            randomNumberStr += randomNumberIter.next() + "";
+            resultRandomNumber += randomNumberIter.next() + "";
         }
 
-        return randomNumberStr;
+        return resultRandomNumber;
     }
 }
