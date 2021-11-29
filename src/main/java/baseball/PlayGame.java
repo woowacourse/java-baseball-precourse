@@ -4,7 +4,6 @@ import java.util.HashSet;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import communication.InputManagement;
-import jdk.internal.util.xml.impl.Input;
 
 public class PlayGame {
     private final int ESSENTIAL_NUMBER_LENGTH = 3;
@@ -47,5 +46,11 @@ public class PlayGame {
         assignUserNumber();
         umpire.compareNumbers(usersNumber);
         umpire.reportHint();
+    }
+
+    private String restartOrEnd() {
+        inputManager.requestUserChoice();
+
+        return inputManager.provideUserChoice();
     }
 }

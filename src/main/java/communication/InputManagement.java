@@ -10,6 +10,10 @@ public class InputManagement {
         System.out.println(Text.INPUT_REQUEST);
     }
 
+    public void requestUserChoice() {
+        System.out.println(Text.RESTART_OR_END);
+    }
+
     private String receiveUserInput() {
         return Console.readLine();
     }
@@ -43,5 +47,11 @@ public class InputManagement {
         }
 
         return null;
+    }
+
+    public String provideUserChoice() {
+        String usersChoice = receiveUserInput();
+
+        return usersChoice;
     }
 }
