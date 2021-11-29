@@ -1,5 +1,8 @@
 package baseball.computer;
 
+import java.util.Arrays;
+import java.util.List;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
@@ -21,5 +24,33 @@ public class Computer {
 		}
 
 		return threeBalls.toString();
+	}
+
+	public int checkBallCnt(String computerBall, String myAnswer) {
+		int ballCnt = 0;
+		String[] myAnswerArr = myAnswer.split("");
+
+		for (int i = 0; i < 3; i++) {
+			if (computerBall.charAt(i) != myAnswer.charAt(i)) {
+				continue;
+			}
+			if (computerBall.contains(myAnswerArr[i])) {
+				ballCnt++;
+			}
+		}
+
+		return ballCnt;
+	}
+
+	public int checkStrikeCnt(String computerBall, String myAnswer) {
+		int strikeCnt = 0;
+
+		for (int i = 0; i < 3; i++) {
+			if (computerBall.charAt(i) == myAnswer.charAt(i)) {
+				strikeCnt++;
+			}
+		}
+
+		return strikeCnt;
 	}
 }
