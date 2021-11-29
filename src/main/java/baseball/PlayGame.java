@@ -3,12 +3,16 @@ package baseball;
 import java.util.HashSet;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import communication.InputManagement;
+import jdk.internal.util.xml.impl.Input;
 
 public class PlayGame {
     private final int ESSENTIAL_NUMBER_LENGTH = 3;
     private final int MIN_NUMBER = 1;
     private final int MAX_NUMBER = 9;
     private String computersNumber;
+    private String usersNumber;
+    private InputManagement inputManager = new InputManagement();
 
     public PlayGame() {
 
@@ -30,5 +34,10 @@ public class PlayGame {
             computersNumber += number;
         }
 
+    }
+
+    private void assignUserNumber() {
+        inputManager.requestUserInput();
+        this.usersNumber = inputManager.provideUserInput();
     }
 }
