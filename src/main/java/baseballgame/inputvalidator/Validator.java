@@ -3,13 +3,14 @@ package baseballgame.inputvalidator;
 import baseballgame.CommonConstant;
 
 public class Validator {
-    Validator(){
+    public Validator(){
 
     }
     public static void validateUserInputOnGame(String inputNumber) {
         try {
             if(inputNumber.length()!=3) throw new Exception();
             if(inputNumber.contains("0")) throw new Exception();
+            if(!isDifferentAllNumber(inputNumber)) throw new Exception();
             Integer.parseInt(inputNumber);
         }catch (Exception e){
             throw new IllegalArgumentException();
@@ -24,5 +25,12 @@ public class Validator {
         }catch (Exception e){
             throw new IllegalArgumentException();
         }
+    }
+    private static boolean isDifferentAllNumber(String inputNumber){
+        boolean test1 = inputNumber.charAt(0) != inputNumber.charAt(1);
+        boolean test2 = inputNumber.charAt(0) != inputNumber.charAt(2);
+        boolean test3 = inputNumber.charAt(2) != inputNumber.charAt(3);
+
+        return test1 && test2 && test3;
     }
 }
