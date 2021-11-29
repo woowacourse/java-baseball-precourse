@@ -13,7 +13,7 @@ public class Judge {
         }
 
         Output.printResult(ball, strike);
-        if (strike == 3) {
+        if (strike == length) {
             return true;
         }
         return false;
