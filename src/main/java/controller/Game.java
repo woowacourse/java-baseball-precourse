@@ -15,16 +15,10 @@ public class Game {
 	}
 
 	public void startGame() {
-		while (true) {
+		do {
 			createNewTargetNumbers();
-
 			startRound();
-
-			RestartOrQuitSelection selection = InputView.inputRestart();
-			if (selection.isQuit()) {
-				break;
-			}
-		}
+		} while (checkRestart());
 	}
 
 	public void startRound() {
@@ -39,6 +33,11 @@ public class Game {
 				break;
 			}
 		}
+	}
+
+	private boolean checkRestart() {
+		RestartOrQuitSelection selection = InputView.inputRestart();
+		return selection.isRestart();
 	}
 
 }

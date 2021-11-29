@@ -23,7 +23,7 @@ public class RestartOrQuitSelection {
 		throw new IllegalArgumentException("1 또는 2 만 입력할 수 있습니다.");
 	}
 
-	public boolean isQuit() {
-		return this.selection.equals(QUIT_INPUT);
+	public boolean isRestart() {
+		return this.selection.equals(RESTART_INPUT);
 	}
 }
