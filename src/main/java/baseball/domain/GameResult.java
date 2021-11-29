@@ -41,7 +41,7 @@ public class GameResult {
 		return ballCount;
 	}
 
-	public GameBoard receiveGameResult() {
+	public GameBoard sendGameResult() {
 		return new GameBoard(strikeCount, ballCount);
 	}
 
