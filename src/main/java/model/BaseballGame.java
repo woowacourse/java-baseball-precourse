@@ -1,8 +1,8 @@
 package model;
 
 public class BaseballGame {
-	ComputerNumbers computerNumbers;
-	PlayerNumbers playerNumbers;
+	private ComputerNumbers computerNumbers;
+	private PlayerNumbers playerNumbers;
 
 	public BaseballGame(String[] numbers) {
 		makeAnswerNumbers();
