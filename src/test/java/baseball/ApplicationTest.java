@@ -33,21 +33,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    // @Test
-    void 컨버터_입력값_테스트() {
-        Converter converter = new Converter();
-        converter.convertStringToIntegerList("132");
-    }
-
-    private ArrayList<Integer> getGivenNumber() {
-        ArrayList<Integer> givenNumbers = new ArrayList<>();
-        givenNumbers.add(7);
-        givenNumbers.add(8);
-        givenNumbers.add(9);
-
-        return givenNumbers;
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
