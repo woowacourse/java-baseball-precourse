@@ -11,68 +11,68 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
-	@Test
-	void 게임종료_후_재시작() {
-		assertRandomNumberInRangeTest(
-			() -> {
-				run("246", "135", "1", "597", "589", "2");
-				assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-			},
-			1, 3, 5, 5, 8, 9
-		);
-	}
+    @Test
+    void 게임종료_후_재시작() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("246", "135", "1", "597", "589", "2");
+                assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+            },
+            1, 3, 5, 5, 8, 9
+        );
+    }
 
-	@Test
-	void 예외_테스트() {
-		assertSimpleTest(() ->
-			assertThatThrownBy(() -> runException("1234"))
-				.isInstanceOf(IllegalArgumentException.class)
-		);
-	}
+    @Test
+    void 예외_테스트() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("1234"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
-	@Test
-	void 예외_테스트_범위바깥() {
-		assertSimpleTest(() ->
-			assertThatThrownBy(() -> runException("000"))
-				.isInstanceOf(IllegalArgumentException.class)
-		);
-	}
+    @Test
+    void 예외_테스트_범위바깥() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("000"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
-	@Test
-	void 타겟넘버_랜덤성_테스트() {
-		Target target = new Target();
-		Target compare = new Target();
-		target.generateTargetNumber();
+    @Test
+    void 타겟넘버_랜덤성_테스트() {
+        Target target = new Target();
+        Target compare = new Target();
+        target.generateTargetNumber();
 
-		for (int i = 0; i < 10; i++) {
-			compare.generateTargetNumber();
-			assertThat(target.isEqual(compare));
-		}
-	}
+        for (int i = 0; i < 10; i++) {
+            compare.generateTargetNumber();
+            assertThat(target.isEqual(compare));
+        }
+    }
 
-	@Test
-	void 타켓넘버_수의중복_테스트() {
-		Target target = new Target();
+    @Test
+    void 타켓넘버_수의중복_테스트() {
+        Target target = new Target();
 
-		for (int i = 0; i < 100; i++) {
-			target.generateTargetNumber();
-			target_compare_and_redundancy_test(target);
-		}
-	}
+        for (int i = 0; i < 100; i++) {
+            target.generateTargetNumber();
+            target_compare_and_redundancy_test(target);
+        }
+    }
 
-	void target_compare_and_redundancy_test(Target target) {
-		int count = 0;
+    void target_compare_and_redundancy_test(Target target) {
+        int count = 0;
 
-		for (int i = target.getRangeBegin(); i <= target.getRangeEnd(); i++) {
-			if (target.isContained((char)(i + '0')) > -1) {
-				count++;
-			}
-		}
-		assertThat(count).isEqualTo(target.getLength());
-	}
+        for (int i = target.getRangeBegin(); i <= target.getRangeEnd(); i++) {
+            if (target.isContained((char)(i + '0')) > -1) {
+                count++;
+            }
+        }
+        assertThat(count).isEqualTo(target.getLength());
+    }
 
-	@Override
-	public void runMain() {
-		Application.main(new String[] {});
-	}
+    @Override
+    public void runMain() {
+        Application.main(new String[] {});
+    }
 }
