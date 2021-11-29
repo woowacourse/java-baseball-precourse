@@ -24,7 +24,8 @@ public class Numbers {
 
 	private void validateDigit(String input) {
 		try {
-			Integer.parseInt(input);
+			Arrays.stream(input.split(""))
+				.forEach(Integer::parseInt);
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
 		}
