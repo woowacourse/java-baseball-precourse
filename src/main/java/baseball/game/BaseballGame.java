@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.constant.Constant;
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.computer.Computer;
@@ -7,6 +8,8 @@ import baseball.computer.ResultViewer;
 import baseball.player.Player;
 
 public class BaseballGame {
+	private static final String RESTART = "1";
+	private static final String FINISH = "2";
 
 	Computer computer = new Computer();
 	ResultViewer resultViewer = new ResultViewer();
@@ -23,7 +26,7 @@ public class BaseballGame {
 			playGame(computerBall);
 
 			if (!restartGame()) {
-				System.out.println("게임 종료");
+				System.out.println(Constant.FINISH_GAME_MESSAGE);
 				break;
 			}
 
@@ -39,20 +42,20 @@ public class BaseballGame {
 			System.out.println(resultViewer.showResult(strikeCnt, ballCnt));
 
 			if (strikeCnt == 3) {
-				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+				System.out.println(Constant.CORRECT_ALL_AND_FINISH_GAME_MESSAGE);
 				break;
 			}
 		}
 	}
 
 	public boolean restartGame() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		System.out.println(Constant.RESTART_GAME_MESSAGE);
 		String restartFlag = Console.readLine();
 
-		if (!restartFlag.equals("1") && !restartFlag.equals("2")) {
-			throw new IllegalArgumentException("잘못된 사용자 입력입니다.");
+		if (!restartFlag.equals(RESTART) && !restartFlag.equals(FINISH)) {
+			throw new IllegalArgumentException(Constant.WRONG_INPUT_MESSAGE);
 		}
 
-		return restartFlag.equals("1");
+		return restartFlag.equals(RESTART);
 	}
 }

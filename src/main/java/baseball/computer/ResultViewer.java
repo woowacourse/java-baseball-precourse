@@ -1,17 +1,19 @@
 package baseball.computer;
 
+import baseball.constant.Constant;
+
 public class ResultViewer {
 
 	public String showResult(int strikeCnt, int ballCnt) {
 		if (ballCnt == 0 && strikeCnt == 0) {
-			return "낫싱";
+			return Constant.NOTHING_MESSAGE;
 		}
 		if (strikeCnt == 0) {
-			return ballCnt + "볼";
+			return String.format(Constant.BALL_MESSAGE, ballCnt);
 		}
 		if (ballCnt == 0) {
-			return strikeCnt + "스트라이크";
+			return String.format(Constant.STRIKE_MESSAGE, strikeCnt);
 		}
-		return ballCnt + "볼 " + strikeCnt + "스트라이크";
+		return String.format(Constant.BALL_AND_STRIKE_MESSAGE, ballCnt, strikeCnt);
 	}
 }

@@ -1,9 +1,10 @@
 package baseball.player;
 
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import baseball.constant.Constant;
 
 public class Validator {
 
@@ -12,11 +13,11 @@ public class Validator {
 		String removeDistinct = Arrays.stream(userAnswer.split("")).distinct().collect(Collectors.joining());
 
 		if (!Pattern.matches(regExp, userAnswer)) {
-			throw new IllegalArgumentException("잘못된 사용자 입력입니다!");
+			throw new IllegalArgumentException(Constant.WRONG_INPUT_MESSAGE);
 		}
 
 		if (removeDistinct.length() != userAnswer.length()) {
-			throw new IllegalArgumentException("잘못된 사용자 입력입니다!");
+			throw new IllegalArgumentException(Constant.WRONG_INPUT_MESSAGE);
 		}
 
 		return userAnswer;
