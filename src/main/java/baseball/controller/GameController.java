@@ -25,11 +25,8 @@ public class GameController {
 		while (true) {
 			startGame();
 			giveHint(ANSWER_NUMBER, PLAYER_NUMBER);
-			if (TerminateHandler.finishGame(ANSWER_NUMBER, PLAYER_NUMBER)) {
-				OutputView.askReplay();
-				if (TerminateHandler.decideReplay()) {
-					controlGame();
-				}
+			if (TerminateHandler.correctAnswer(ANSWER_NUMBER, PLAYER_NUMBER)) {
+				TerminateHandler.finishGame();
 				break;
 			}
 		}
