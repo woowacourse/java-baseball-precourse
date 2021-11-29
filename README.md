@@ -1,21 +1,21 @@
 # 구현 기능 목록
 <br>
 
-## baseball 패키지 클래스 계층
+## baseball 패키지 파일 계층
 
 ```
-Application
+Application.java
 
 constants
-    - MessageConstants
-    - ValueConstants
+    - MessageConstants.java
+    - ValueConstants.java
 
 gamesource
-    - BaseballGame
-    - Opponent
+    - BaseballGame.java
+    - Opponent.java
 
 util
-    - inputCheck
+    - inputCheck.java
 
 ```
 <br>
