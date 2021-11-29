@@ -85,8 +85,10 @@ public class Refree {
 			result.append("볼");
 			result.append(" ");
 		}
-		result.append(strikeCount);
-		result.append("스크라이크");
+		if (strikeCount > 0) {
+			result.append(strikeCount);
+			result.append("스크라이크");
+		}
 
 		return result.toString();
 	}
@@ -114,4 +116,29 @@ public class Refree {
 		return sameNumberCount - strikeCount;
 	}
 
+	public String askRestart(String input) {
+		checkRestartInputLength(input);
+		checkRestartInputRange(input);
+		return input;
+	}
+
+	private void checkRestartInputLength(String input) {
+		if (!isValidRestartInputLength(input)) {
+			throw new IllegalArgumentException("1개만 입력해주세요");
+		}
+	}
+
+	private boolean isValidRestartInputLength(String input) {
+		return input.length() == 1;
+	}
+
+	private void checkRestartInputRange(String input) {
+		if (!isValidRestartInputRange(input)) {
+			throw new IllegalArgumentException("1 혹은 2를 입력해주세요");
+		}
+	}
+
+	private boolean isValidRestartInputRange(String input) {
+		return input.equals("1") || input.equals("2");
+	}
 }

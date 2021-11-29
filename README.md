@@ -2,7 +2,7 @@
 
 ## 기능 구현 목록
 
-- [x] 3스트라이크가 나올때까지 반복해서 입력받기 - Controller#runGame()
+- [x] 3스트라이크가 나올때까지 게임 진행하다가 재시작 여부 물어보기 - refree#askRestart()
     - [x] 3스트라이크 나올시 안내멘트 및 새로 시작여부 입력받기 - InputView#getInput()
         - [x] 새로 시작시 서로 다른 임의의 수 3개 새로 생성하기
 - [x] 1에서 9까지 서로 다른 임의의 수 3개(컴퓨터 수)를 생성하기 - Computer#createRandomNumbers()
