@@ -38,7 +38,7 @@ public class RandomNumber {
         numbers.clear();
     }
 
-    public void showRandomNumber() {
-        System.out.println(numbers);
-    }
+//    public void showRandomNumber() {
+//        System.out.println(numbers);
+//    }
 }
