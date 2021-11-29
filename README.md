@@ -73,7 +73,7 @@
 
 <br>
 
-## GameHandler 개발
+## GameHandler 개발 ← 11/27 완성
 
 1. 게임을 진행시켜줘야 함 - `start()` : 안에 while loop로 게임을 지속시킴.
 2. 게임을 진행시킬 한 단위의 프로세스 - `playing()` 
@@ -84,13 +84,15 @@
 
 <br>
 
-## Application 개발
+## Application 개발 ← 11/27 완성
 
-`GameHandler` 의 `start()` method를 무한루프로 실행.
+~~`GameHandler` 의 `start()` method를 무한루프로 실행.~~
+
+`GameHandler`의 `run()` method를 실행 ← 11/29 완성
 
 <br>
 
-## 2021 11 29
+## 2021 11 28-29 개발 내용
 
 ### 버그 발견
 
@@ -100,11 +102,11 @@
 
 2. 위 현상을 제거한 후 테스트 진행하니 다른 에러 발생
 
-   1. `GameHandler` 의 `checkValidInput()` 에서 `outOfIndex` 부분 처리
+   1. `GameHandler` 의 `checkValidInput()`의 `checkDuplicate()`  에서 `outOfIndex` 부분 처리
 
 3. 그래도 테스트 에러
 
-   1. `Computer` class에서 게임 시작할 때 2번의 난수를 생성해버렸기에 `ApplicationTest` 의 테스트를 통과 못함. 수정 완료
+   1. `Computer` class에서 게임 시작할 때 **2번의 난수를 생성**해버렸기에 `ApplicationTest` 의 테스트를 통과 못함. 수정 완료
 
 `ApplicationTest.java`의 모든 테스트 통과 완료.
 
@@ -115,4 +117,10 @@
 1. `RandomGenerator` class의 용도가 너무 작아서 `Computer` class에서 정답을 생성해주는 method 만들어 대체. 그 후 `RandomGenerator` class는 제거
 2. 모든 상수나 메세지를 `baseball.constants` package 안에 `Constant.java`, `Message.java`에 선언
 3. 나머지 코드 리팩토링
+
+<br>
+
+### Style
+
+[해당 링크](https://naver.github.io/hackday-conventions-java/#newline-lf)에서 제시한 `CheckStyle` 를 사용하여 검사 후 모든 코드에 적용
 
