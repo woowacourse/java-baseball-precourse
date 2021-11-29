@@ -2,7 +2,7 @@ package communication;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputManagement {
+public class InputManager {
     private final int ESSENTIAL_NUMBER_LENGTH = 3;
     private final int ESSENTIAL_CHOICE_LENGTH = 1;
     private final String REGEX_NUMBER = "^[1-9]*$";

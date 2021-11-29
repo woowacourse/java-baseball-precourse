@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.HashSet;
 
-import communication.InputManagement;
+import communication.InputManager;
 import communication.Text;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -13,7 +13,7 @@ public class PlayGame {
     private final int MAX_NUMBER = 9;
     private String computersNumber;
     private String usersNumber;
-    private InputManagement inputManager = new InputManagement();
+    private InputManager inputManager = new InputManager();
     private Umpire umpire;
 
     public PlayGame() {
