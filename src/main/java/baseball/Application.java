@@ -6,12 +6,9 @@ public class Application {
 	private static Target target = new Target();
 
 	public static void main(String[] args) {
-		int isGameEnd;
 		do {
 			gameStart();
-			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-			isGameEnd = Integer.parseInt(readLine());
-		} while (isGameEnd == 1);
+		} while (checkRestart());
 	}
 
 	static void gameStart() {
@@ -51,5 +48,17 @@ public class Application {
 			System.out.print("낫싱");
 		}
 		System.out.println();
+	}
+
+	static boolean checkRestart() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		String userInput = readLine();
+		if (userInput.equals("1")) {
+			return true;
+		} else if (userInput.equals("2")) {
+			return false;
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 }
