@@ -108,6 +108,7 @@ public class Application {
 		}
 
 		public void playGame() {
+			System.out.print("숫자를 입력해주세요 : ");
 			List<Integer> userInput = getInputFromUser();
 			try {
 				validateInput(userInput);
