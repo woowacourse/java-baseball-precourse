@@ -14,13 +14,13 @@
 
 <br>
 
-1. 컴퓨터 수 결정
+1. 컴퓨터 3자리수 결정
 - 1~9 사이의 서로 다른 3자리 수를 선택하여 컴퓨터의 숫자를 결정한다.
 - camp.nextstep.edu.missionutils에서 제공하는 Randoms API를 활용한다.
 
 <br>
 
-2. 3자리 수 입력
+2. 사용자 3자리수 입력
 - 사용자에게 1~9 사이의 서로 다른 3자리 수를 입력받는다.
 - camp.nextstep.edu.missionutils에서 제공하는 Console API를 활용한다.
 - **예외**가 발생하면 IllegalArgumentException을 발생시킨다.
