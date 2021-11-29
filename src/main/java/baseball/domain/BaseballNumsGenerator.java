@@ -3,7 +3,7 @@ package baseball.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -13,7 +13,7 @@ public class BaseballNumsGenerator {
 	private static final String INPUT_VALID_BETWEEN_ONE_AND_NINE_ERROR_MESSAGE = "1에서 9사이의 숫자가 아닙니다.";
 
 	public static BaseballNums generateRandomBaseballNums() {
-		Set<Integer> randomBaseballNums = new HashSet<>();
+		Set<Integer> randomBaseballNums = new LinkedHashSet<>();
 		while (randomBaseballNums.size() != BaseballNums.BASEBALL_NUMBERS_LENGTH) {
 			randomBaseballNums.add(Randoms.pickNumberInRange(
 				BaseballNums.MIN_BASEBALL_NUMBER,
