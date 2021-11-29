@@ -12,8 +12,11 @@ public class Application {
 
     public static void main(String[] args) {
         Computer computer = Computer.init();
-        GameResult gameResult = GameResult.init();
+        gameStart(computer);
+    }
 
+    private static void gameStart(Computer computer) {
+        GameResult gameResult = GameResult.init();
         while (!computer.isFinishedGame()) {
             computer = computer.refresh();
             BaseBallNumbers userBaseBallNumbers = BaseBallNumbers.createByIntegerNumbers(inputNumbers());
