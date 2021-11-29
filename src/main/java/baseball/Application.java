@@ -14,7 +14,15 @@ public class Application {
 	}
 
 	static void gameStart() {
-		//TODO: 숫자 야구 게임 구현
+		int[] ballsAndStrikes;
+		do {
+			System.out.print("숫자를 입력해주세요 : ");
+			String userInput =  readLine();
+
+			checkUserInput(userInput);
+			ballsAndStrikes = target.compareWith(userInput);
+			printResultOfInput(ballsAndStrikes);
+		} while(ballsAndStrikes[Target.STRIKE] != 3);
 	}
 
 	static void checkUserInput(String userInput) {
