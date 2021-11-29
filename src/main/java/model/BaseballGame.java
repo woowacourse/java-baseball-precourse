@@ -23,4 +23,11 @@ public class BaseballGame {
 	public int giveBallCount() {
 		return computerNumbers.findNumberOfBalls(playerNumbers);
 	}
+
+	public boolean isNoHint() {
+		if (giveStrikeCount() == 0 && giveBallCount() == 0) {
+			return true;
+		}
+		return false;
+	}
 }
