@@ -3,8 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
-	public static String getNumber(String ment, int min, int max, int length) {
-		System.out.print(ment);
+	public static String getNumber(String message, int min, int max, int length) {
+		System.out.print(message);
 		String input = Console.readLine();
 
 		validateLength(input, length);

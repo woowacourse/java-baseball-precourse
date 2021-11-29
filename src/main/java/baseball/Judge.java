@@ -10,9 +10,9 @@ public class Judge {
 				strike += 1;
 			}
 		}
-
 		Output.printResult(ball, strike);
-		if (strike == length) {
+
+		if (strike == length) { // 정답을 맞힌 경우
 			return true;
 		}
 		return false;
