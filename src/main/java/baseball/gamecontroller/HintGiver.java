@@ -62,6 +62,11 @@ public class HintGiver {
 	}
 
 	public static int[] splitInt(int input) {
-		return new int[] {input / 100, input % 100 / 10, input % 10};
+		int[] nums = new int[Constant.NUMBER_LENGTH];
+		for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
+			nums[Constant.NUMBER_LENGTH - i - 1] = input % 10;
+			input /= 10;
+		}
+		return nums;
 	}
 }
