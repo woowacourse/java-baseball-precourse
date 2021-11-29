@@ -24,6 +24,7 @@ public class Application {
 			application.countBall();
 			application.countStrike();
 			application.printHint();
+			application.checkThreeStrike();
 			application.computer.setInitial();
 		}
 	}
@@ -66,5 +67,17 @@ public class Application {
 			System.out.print("낫싱");
 		}
 		System.out.println();
+	}
+
+	public void printEndGame() {
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+	}
+
+	public void checkThreeStrike() {
+		if (computer.getStrike() == Computer.NUMBER_SIZE) {
+			continueGame = false;
+			printEndGame();
+		}
 	}
 }
