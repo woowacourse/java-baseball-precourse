@@ -1,10 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-
 public class Game {
 	static final int MIN_NUM = 1;
 	static final int MAX_NUM = 9;
@@ -14,7 +9,7 @@ public class Game {
 	static final int END_INPUT_LEN = 1;
 
 	public static boolean oneRound() {
-		String rightAnswer = randomNumberGenerator(MIN_NUM, MAX_NUM, INPUT_LEN);
+		String rightAnswer = Util.randomNumberGenerator(MIN_NUM, MAX_NUM, INPUT_LEN);
 		boolean isCorrect = false;
 
 		while (isCorrect == false) {
@@ -37,21 +32,6 @@ public class Game {
 			return true;
 		}
 		return false;
-	}
-
-	public static String randomNumberGenerator(int startInclusive, int endInclusive, int count) {
-		LinkedHashSet<Integer> randomNumber = new LinkedHashSet<>();
-		while (randomNumber.size() < count) {
-			randomNumber.add(Integer.valueOf(Randoms.pickNumberInRange(startInclusive, endInclusive)));
-		}
-
-		Iterator<Integer> randomNumberIter = randomNumber.iterator();
-		String resultRandomNumber = "";
-		while (randomNumberIter.hasNext()) {
-			resultRandomNumber += randomNumberIter.next() + "";
-		}
-
-		return resultRandomNumber;
 	}
 
 	private static boolean isRestart() {
