@@ -16,10 +16,6 @@ public class GameResult {
         this.ballCount = ballCount;
     }
 
-    public static GameResult init() {
-        return new GameResult(0, 0);
-    }
-
     public static GameResult from(int strikeCount, int ballCount) {
         checkNegativeCount(strikeCount, ballCount);
         checkStrikeAndBallTotalCount(strikeCount, ballCount);
