@@ -13,6 +13,8 @@ public class User {
         System.out.print("숫자를 입력해주세요 : ");
         String readLine = Console.readLine();
 
+        Validation.isValidInput(readLine);
+
         for (String s : readLine.split("")) {
             int parseInt = Integer.parseInt(s);
             UserNumber.add(parseInt);
