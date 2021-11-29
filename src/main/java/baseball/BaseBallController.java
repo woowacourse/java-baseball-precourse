@@ -10,18 +10,30 @@ public class BaseBallController {
 	}
 
 	public void start() throws IllegalArgumentException {
+		init();
+		gameLogic();
+	}
+
+	private void init() {
 		ballGenerator = new BallGenerator();
-		String computer = ballGenerator.createRandomBalls();
+		BaseBallNumber computer = new BaseBallNumber(ballGenerator.createRandomBalls());
 		referee = new Referee(computer);
+	}
+
+	private void gameLogic() {
 		while (true) {
 			String inputBallNumber = player.inputBallNumber();
 			boolean isEnd = referee.isAllStrike(inputBallNumber);
 			if (isEnd) {
-				if (player.isRestart()) {
-					start();
-				}
+				checkRestart();
 				break;
 			}
+		}
+	}
+
+	private void checkRestart() {
+		if (player.isRestart()) {
+			start();
 		}
 	}
 }
