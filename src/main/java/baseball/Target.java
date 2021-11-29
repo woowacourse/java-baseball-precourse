@@ -17,7 +17,7 @@ public class Target {
 	}
 
 	public void generateTargetNumber() {
-		targetNumber = "";
+		StringBuilder builder = new StringBuilder();
 		boolean[] visited = new boolean[rangeEnd - rangeBegin + 1];
 		for (int i = 0; i < length; i++) {
 			int num;
@@ -26,8 +26,9 @@ public class Target {
 				num++;
 			}
 			visited[num - rangeBegin] = true;
-			targetNumber += num;
+			builder.append(num);
 		}
+		targetNumber = builder.toString();
 	}
 
 	public int[] compareWith(String userNumber) {
@@ -38,7 +39,7 @@ public class Target {
 			int index = isContained(userNumber.charAt(u));
 
 			if (index < 0) {
-
+				//index가 -1인 경우는 숫자가 없는 경우이다.
 			} else if (index == u) {
 				strike++;
 			} else if (index != u) {
