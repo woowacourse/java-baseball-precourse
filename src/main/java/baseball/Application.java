@@ -24,8 +24,10 @@ public class Application {
                 throw new IllegalArgumentException();
             }
             restart = parsedInput.get(0);
-
-        } while(restart != 2);
+            if (restart != 1 && restart != 2) {
+                throw new IllegalArgumentException();
+            }
+        } while(restart == 1);
     }
 
     public static void processGame(Computer computer, User user, Checker checker, NumberValidator validator) {
