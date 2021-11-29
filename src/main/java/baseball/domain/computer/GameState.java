@@ -1,5 +1,6 @@
 package baseball.domain.computer;
 
+import baseball.exception.computer.GameStateNotFoundException;
 import java.util.Arrays;
 
 public enum GameState {
@@ -23,7 +24,7 @@ public enum GameState {
         return Arrays.stream(values())
             .filter(gameState -> gameState.command == inputCommand)
             .findFirst()
-            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 command 입니다."));
+            .orElseThrow(GameStateNotFoundException::new);
     }
 
     public boolean isEndGame() {
