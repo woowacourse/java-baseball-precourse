@@ -5,15 +5,15 @@ import static resource.MessageResource.*;
 public class Referee {
 	private static final int ZERO_COUNT = 0;
 
-	private String computer;
+	private BaseBallNumber computer;
 
-	public Referee(String computer) {
+	public Referee(BaseBallNumber computer) {
 		this.computer = computer;
 	}
 
 	public boolean isAllStrike(String inputBallNumber) {
 		checkBallCount(inputBallNumber);
-		if (computer.equals(inputBallNumber)) {
+		if (computer.getBallNumber().equals(inputBallNumber)) {
 			System.out.println(ALL_STRIKE_MESSAGE);
 			return true;
 		}
@@ -24,12 +24,12 @@ public class Referee {
 		int ball = 0;
 		int strike = 0;
 		for (int i = 0; i < inputBallNumber.length(); i++) {
-			if (computer.charAt(i) == inputBallNumber.charAt(i)) {
+			if (computer.getBallNumber().charAt(i) == inputBallNumber.charAt(i)) {
 				strike++;
 				continue;
 			}
 
-			if (computer.contains(inputBallNumber.substring(i, i + 1))) {
+			if (computer.getBallNumber().contains(inputBallNumber.substring(i, i + 1))) {
 				ball++;
 			}
 		}
