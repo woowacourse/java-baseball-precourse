@@ -73,11 +73,22 @@ public class Refree {
 	}
 
 	public String compare(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-		if (countSameNumber(computerNumbers, playerNumbers) == 0) {
-			return "낫싱";
+		StringBuffer result = new StringBuffer();
+		int sameNumberCount = countSameNumber(computerNumbers, playerNumbers);
+		if (sameNumberCount == 0) {
+			return result.append("낫싱").toString();
 		}
+		Integer strikeCount = countStrike(computerNumbers, playerNumbers);
+		Integer ballCount = countBall(sameNumberCount, strikeCount);
+		if (ballCount > 0) {
+			result.append(ballCount);
+			result.append("볼");
+			result.append(" ");
+		}
+		result.append(strikeCount);
+		result.append("스크라이크");
 
-		return "";
+		return result.toString();
 	}
 
 	public Integer countSameNumber(List<Integer> computerNumbers, List<Integer> playerNumbers) {
@@ -91,6 +102,16 @@ public class Refree {
 	}
 
 	public Integer countStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-		return 0;
+		int strikeCount = 0;
+		for (int index = 0; index < playerNumbers.size(); index++) {
+			if (computerNumbers.get(index) == playerNumbers.get(index))
+				strikeCount++;
+		}
+		return strikeCount;
 	}
+
+	private int countBall(int sameNumberCount, Integer strikeCount) {
+		return sameNumberCount - strikeCount;
+	}
+
 }
