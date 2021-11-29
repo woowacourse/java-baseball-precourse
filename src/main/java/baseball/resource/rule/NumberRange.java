@@ -10,9 +10,16 @@ public enum NumberRange {
         this.number = number;
     }
 
-    public int getNumber() {
-        return this.number;
+    public static int getStart() {
+        return START.number;
     }
 
+    public static int getEnd() {
+        return END.number;
+    }
+
+    public static boolean isOutOfRange(int number) {
+        return (number < START.number || END.number < number);
+    }
 
 }

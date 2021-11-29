@@ -67,10 +67,6 @@ public class InputView {
         }
     }
 
-    private boolean isNotInRange(int number) {
-        return (number < NumberRange.START.getNumber() || NumberRange.END.getNumber() < number);
-    }
-
     private void validateNumbersDigitMatch(List<Integer> numbers) {
         if (NumberDigit.isNotMatch(numbers.size())) {
             throw new InputNumbersNotMatchDigitsMessageException();
@@ -79,7 +75,7 @@ public class InputView {
 
     private void validateNumbersInRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (isNotInRange(number)) {
+            if (NumberRange.isOutOfRange(number)) {
                 throw new NumberOutOfRangeMessageException();
             }
         }

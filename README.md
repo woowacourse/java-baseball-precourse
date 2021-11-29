@@ -63,9 +63,9 @@
 - [x] 문자열 상수 클래스를 목적에 따라 구분지어 분리한다. (GameMessage)
 - [x] 예외메세지에 따른 Exception 세분화
 - [x] enum 열거 타입으로 정수 열거 패턴을 대체한다. (GameRule)
-- [ ] enum 클래스에 정적 메소드 추가
+- [x] enum 클래스에 정적 메소드 추가
   - [x] NumberDigit 클래스
-  - [ ] NumberRange 클래스
+  - [x] NumberRange 클래스
 
 ---
 

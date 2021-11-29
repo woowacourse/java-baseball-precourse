@@ -3,11 +3,12 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import baseball.resource.rule.NumberDigit;
-import baseball.resource.rule.NumberRange;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import baseball.exception.NotPickedRefereeNumbers;
+
+import baseball.resource.rule.NumberDigit;
+import baseball.resource.rule.NumberRange;
 
 public class Referee {
 
@@ -21,7 +22,7 @@ public class Referee {
         duplicationCheckBits = new boolean[CHECK_BITS_LENGTH];
 
         while (isCountLessThen(NumberDigit.getCount())) {
-            int number = Randoms.pickNumberInRange(NumberRange.START.getNumber(), NumberRange.END.getNumber());
+            int number = Randoms.pickNumberInRange(NumberRange.getStart(), NumberRange.getEnd());
             if (checkDuplicated(number)) {
                 continue;
             }
