@@ -21,10 +21,10 @@ public class BaseballGame implements Runnable {
         while (true) {
             Output.print(INPUT_NUMBER);
             BaseballCount result = baseballMatcher.match(new Baseball(Console.readLine()));
-            Output.print(result.toString());
+            Output.println(result.toString());
 
             if (result.isWin()) {
-                Output.print(END_GAME);
+                Output.println(END_GAME);
                 break;
             }
         }
