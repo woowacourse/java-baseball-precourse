@@ -21,14 +21,14 @@ public class NumberBaseballGameController {
 		do {
 			startGameOnce(numberBaseballGame, player, computer);
 			playMoreGame(player);
-		} while (player.getPlayMoreGame());
+		} while (player.isRestartGame());
 	}
 
 	private void startGameOnce(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
 		settingGame(numberBaseballGame, computer);
 		do {
 			play(numberBaseballGame, player, computer);
-		} while (numberBaseballGame.getGameState());
+		} while (numberBaseballGame.stillPlayingGame());
 	}
 
 	private void settingGame(NumberBaseballGame numberBaseballGame, Computer computer) {
@@ -38,9 +38,8 @@ public class NumberBaseballGameController {
 
 	private void play(NumberBaseballGame numberBaseballGame, Player player, Computer computer) {
 		int[] answerNumbers = getAnswerNumbersFromPlayer(player);
-		int strikeCounts = computer.getStrikeCounts(answerNumbers);
-		int ballCounts = computer.getBallCounts(answerNumbers);
-		OutputView.hintMessage(ballCounts, strikeCounts);
+		String hintMessage = computer.hintAboutStrikeAndBall(answerNumbers);
+		OutputView.showHintMessage(hintMessage);
 		isSuccessGame(numberBaseballGame, computer);
 	}
 
@@ -50,9 +49,9 @@ public class NumberBaseballGameController {
 	}
 
 	private void isSuccessGame(NumberBaseballGame numberBaseballGame, Computer computer) {
-		if (computer.isCorrect() == Boolean.TRUE) {
+		if (computer.isSuccess() == Boolean.TRUE) {
 			numberBaseballGame.closeGame();
-			OutputView.successMessage();
+			OutputView.showSuccessMessage();
 		}
 	}
 
