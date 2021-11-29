@@ -4,12 +4,14 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-	private static final int newGame = 1;
-	private static final int quitGame = 2;
+	private static final int NEW_GAME = 1;
+	private static final int QUIT_GAME = 2;
 
 	public static void main(String[] args) {
+		// TODO: 두번째 테스트 케이스 타임아웃 발생
 		Answer rightAnswer = new Answer();
 
+		// TODO: Game 클래스 만들어서 main 함수 내 실행하는 함수만 작성
 		while (true) {
 			System.out.print("숫자를 입력해주세요 : ");
 			String userInput = readLine();
@@ -21,19 +23,19 @@ public class Application {
 			hint.compareAnswer(answer, rightAnswer);
 			hint.showResult();
 
-			if (hint.strike != Answer.numberCount) {
+			if (hint.strike != Answer.NUMBER_COUNT) {
 				continue;
 			}
 
-			System.out.println(Answer.numberCount + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-			System.out.println("게임을 새로 시작하려면 " + newGame + ", 종료하려면 " + quitGame + "를 입력하세요.");
+			System.out.println(Answer.NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			System.out.println("게임을 새로 시작하려면 " + NEW_GAME + ", 종료하려면 " + QUIT_GAME + "를 입력하세요.");
 			String newGameAnswer = readLine();
 
 			int newGameAnswerNumber = Application.getNewGameAnswerNumber(newGameAnswer);
 
-			if (newGameAnswerNumber == newGame) {
+			if (newGameAnswerNumber == NEW_GAME) {
 				rightAnswer = new Answer();
-			} else if (newGameAnswerNumber == quitGame) {
+			} else if (newGameAnswerNumber == QUIT_GAME) {
 				break;
 			}
 		}
@@ -95,17 +97,17 @@ class Array {
 }
 
 class Answer {
-	private static final int startRange = 1;
-	private static final int endRange = 9;
-	static final int numberCount = 3;
+	private static final int START_RANGE = 1;
+	private static final int END_RANGE = 9;
+	static final int NUMBER_COUNT = 3;
 
-	int[] number = new int[numberCount];
+	int[] number = new int[NUMBER_COUNT];
 
 	Answer() {
 		int nowRandomNum;
 		int nowNumberIndex = 0;
 
-		while (nowNumberIndex < numberCount) {
+		while (nowNumberIndex < NUMBER_COUNT) {
 			nowRandomNum = this.getRandomNumber();
 
 			if (!Array.checkArrayContains(number, nowRandomNum)) {
@@ -115,7 +117,7 @@ class Answer {
 	}
 
 	Answer(String str) {
-		for (int i = 0; i < Answer.numberCount; i++) {
+		for (int i = 0; i < Answer.NUMBER_COUNT; i++) {
 			number[i] = Integer.parseInt(str.charAt(i) + "");
 		}
 	}
@@ -125,7 +127,7 @@ class Answer {
 	}
 
 	private int getRandomNumber() {
-		return pickNumberInRange(Answer.startRange, Answer.endRange);
+		return pickNumberInRange(Answer.START_RANGE, Answer.END_RANGE);
 	}
 
 	static void checkInputValue(final String str) {
@@ -141,7 +143,7 @@ class Answer {
 	}
 
 	static boolean checkInputLength(final String str) {
-		return str.length() == Answer.numberCount;
+		return str.length() == Answer.NUMBER_COUNT;
 	}
 
 	static boolean checkInputNumber(String str) {
@@ -187,7 +189,7 @@ class Hint extends Answer {
 	void compareAnswer(Answer answer, Answer rightAnswer) {
 		int nowNumber;
 
-		for (int i = 0; i < Answer.numberCount; i++) {
+		for (int i = 0; i < Answer.NUMBER_COUNT; i++) {
 			nowNumber = answer.number[i];
 
 			if (!Array.checkArrayContains(rightAnswer.number, nowNumber)) {
