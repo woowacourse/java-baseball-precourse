@@ -21,7 +21,6 @@ public class InputView {
     public static List<Integer> inputNumbers() {
         System.out.print(INPUT_NUMBERS_MESSAGE);
         String inputBaseBallNumbers = Console.readLine();
-        System.out.println(inputBaseBallNumbers);
         return Arrays.stream(inputBaseBallNumbers.split(INPUT_NUMBERS_DELIMITER))
             .map(Integer::new)
             .collect(Collectors.toList());
