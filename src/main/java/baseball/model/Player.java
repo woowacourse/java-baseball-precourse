@@ -22,7 +22,7 @@ public class Player {
         // ToDo: 정답 추측
     }
 
-    public void selectGamePlayType() {
-        // ToDo: 게임 플레이 여부 선택
+    public void updateGamePlayType(GamePlayType gamePlayType) {
+        this.gamePlayType = gamePlayType;
     }
 }

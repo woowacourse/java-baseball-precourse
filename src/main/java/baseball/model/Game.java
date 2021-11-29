@@ -5,9 +5,21 @@ public class Game {
     private Player player;
     private Hint hint;
 
-    public Game(Computer computer, Player player, Hint hint) {
-        this.computer = computer;
-        this.player = player;
-        this.hint = hint;
+    public Game() {
+        this.computer = new Computer();
+        this.player = new Player();
+        this.hint = new Hint();
+    }
+
+    public Computer getComputer() {
+        return computer;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Hint getHint() {
+        return hint;
     }
 }

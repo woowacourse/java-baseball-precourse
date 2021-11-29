@@ -12,4 +12,8 @@ public enum GamePlayType {
         this.value = value;
         this.description = description;
     }
+
+    public int getValue() {
+        return value;
+    }
 }
