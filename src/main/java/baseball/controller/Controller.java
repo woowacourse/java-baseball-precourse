@@ -18,7 +18,9 @@ public class Controller {
 		while (!status.equals(STOP)) {
 			Refree refree = new Refree();
 			List<Integer> playerNumbers = refree.askNumbers(InputView.getInput());
-			System.out.println(playerNumbers);
+
+			String result = refree.compare(computerNumbers, playerNumbers);
+
 		}
 
 	}

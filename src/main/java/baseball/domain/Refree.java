@@ -73,11 +73,21 @@ public class Refree {
 	}
 
 	public String compare(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+		if (countSameNumber(computerNumbers, playerNumbers) == 0) {
+			return "낫싱";
+		}
+
 		return "";
 	}
 
 	public Integer countSameNumber(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-		return 0;
+		int sameNumberCount = 0;
+		for (Integer playerNumber : playerNumbers) {
+			if (computerNumbers.contains(playerNumber)) {
+				sameNumberCount++;
+			}
+		}
+		return sameNumberCount;
 	}
 
 	public Integer countStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
