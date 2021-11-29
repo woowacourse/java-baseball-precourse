@@ -9,7 +9,12 @@ public class GameController {
 	}
 
 	public static void runGame() {
-		playGame();
+		int gameFlag = 1;
+
+		while (gameFlag == 1) {
+			playGame();
+			gameFlag = InputController.chooseGameFlag();
+		}
 	}
 
 	private static void playGame() {
