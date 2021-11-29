@@ -1,4 +1,7 @@
-package baseball;
+package baseball.players;
+
+import baseball.Constant;
+import baseball.ball.Ball;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,6 @@
-package baseball;
+package baseball.utils;
+
+import baseball.Constant;
 
 public class OutputView {
     public static void numberInputMessageShow() {

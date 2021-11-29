@@ -1,4 +1,8 @@
-package baseball;
+package baseball.players;
+
+import baseball.Constant;
+import baseball.ball.Ball;
+import baseball.ball.BallResult;
 
 import java.util.HashMap;
 import java.util.List;

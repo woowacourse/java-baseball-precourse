@@ -1,5 +1,7 @@
-package baseball;
+package baseball.players;
 
+import baseball.Constant;
+import baseball.ball.Ball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;

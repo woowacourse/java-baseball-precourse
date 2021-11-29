@@ -1,4 +1,6 @@
-package baseball;
+package baseball.ball;
+
+import baseball.Constant;
 
 public class Ball {
     private int position;
