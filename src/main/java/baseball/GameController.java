@@ -20,8 +20,7 @@ public class GameController {
 
         while (!isEnd) {
             List<Integer> userNumbers = inputValidation.inputNumberFromUser();
-            GameResultObject gameResultObject = baseballGameJudge.judgeGameResult(randomNumbers, userNumbers);
-            isThreeStrike(gameResultObject);
+            isThreeStrike(baseballGameJudge.judgeGameResult(randomNumbers, userNumbers));
         }
 
         return inputValidation.inputRestartFromUser();

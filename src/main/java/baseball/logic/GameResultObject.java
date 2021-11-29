@@ -1,17 +1,17 @@
 package baseball.logic;
 
 public class GameResultObject {
-    private Boolean isEnd;
+    private boolean isEnd;
     private int ball;
     private int strike;
 
-    public GameResultObject(Boolean isEnd, int ball, int strike) {
+    public GameResultObject(boolean isEnd, int ball, int strike) {
         this.isEnd = isEnd;
         this.ball = ball;
         this.strike = strike;
     }
 
-    public Boolean getIsEnd() {
+    public boolean getIsEnd() {
         return this.isEnd;
     }
 

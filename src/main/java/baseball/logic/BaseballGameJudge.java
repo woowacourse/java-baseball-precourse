@@ -10,25 +10,31 @@ public class BaseballGameJudge {
     private int ballCount;
     private int strikeCount;
 
-    public GameResultObject judgeGameResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
-        init();
-        getCount(computerNumbers, userNumbers);
-        judgeGameOver();
-
-        return new GameResultObject(isEnd, ballCount, strikeCount);
-    }
-
     public void init() {
         isEnd = false;
         ballCount = INIT_COUNT;
         strikeCount = INIT_COUNT;
     }
 
-    private void getCount(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    public GameResultObject judgeGameResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        init();
+        getStrikeCount(computerNumbers, userNumbers);
+        getBallCount(computerNumbers, userNumbers);
+        judgeGameOver();
+
+        return new GameResultObject(isEnd, ballCount, strikeCount);
+    }
+
+    private void getStrikeCount(List<Integer> computerNumbers, List<Integer> userNumbers) {
         for (int i = 0; i < NUMBER_COUNT; i++) {
             if (computerNumbers.get(i).equals(userNumbers.get(i))) {
                 strikeCount++;
             }
+        }
+    }
+
+    private void getBallCount(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        for (int i = 0; i < NUMBER_COUNT; i++) {
             if (!computerNumbers.get(i).equals(userNumbers.get(i)) && computerNumbers.contains(userNumbers.get(i))) {
                 ballCount++;
             }
