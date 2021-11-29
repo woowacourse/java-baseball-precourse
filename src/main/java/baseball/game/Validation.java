@@ -35,10 +35,10 @@ public class Validation {
         int num;
         boolean[] visited = new boolean[10];
 
-        for(int i=0; i<input.length(); i++){
+        for (int i = 0; i < input.length(); i++) {
             num = Character.getNumericValue(input.charAt(i));
 
-            if (!visited[num]){
+            if (!visited[num]) {
                 visited[num] = true;
                 continue;
             }
@@ -47,6 +47,4 @@ public class Validation {
 
         return true;
     }
-
-
 }
