@@ -59,6 +59,29 @@ public class Application {
 			return stringToIntList(inputString);
 		}
 
+		private int compareNumberWithAnswer(int num, int pos) {
+			if (answer.get(pos).equals(num)) {
+				return 1;
+			}
+			for (int i = 0; i < 3; i++) {
+				if (answer.get(i).equals(num)) {
+					return 0;
+				}
+			}
+			return -1;
+		}
+
+		private int[] getNumOfStrikesAndBalls(List<Integer> inputNumbers) {
+			int[] output = new int[] {0, 0};
+			for (int i = 0; i < 3; i++) {
+				int res = compareNumberWithAnswer(inputNumbers.get(i), i);
+				if (res > -1) {
+					output[res] += 1;
+				}
+			}
+			return output;
+		}
+
 		public void playGame() {
 			List<Integer> userInput = getInputFromUser();
 			try {
@@ -66,6 +89,7 @@ public class Application {
 			} catch (IllegalArgumentException e) {
 				System.out.println("Illegal Input");
 			}
+			int[] scoreBoard = getNumOfStrikesAndBalls(userInput);
 		}
 	}
 
