@@ -6,7 +6,7 @@ public class Player {
 	public static final String RESTART_ONE = "1";
 	public static final String RESTART_TWO = "2";
 
-	public char[] inputNumber = new char[Computer.NUMBER_SIZE];
+	public int[] inputNumber = new int[Computer.NUMBER_SIZE];
 
 	public boolean scanRestartNumber() {
 		String inputNumber = Console.readLine();
@@ -18,34 +18,40 @@ public class Player {
 		throw new IllegalArgumentException();
 	}
 
-	public char getInputNumber(int index) {
+	public int getInputNumber(int index) {
 		return inputNumber[index];
+	}
+
+	public int toIntNumber(String inputNumber) {
+		if (inputNumber.length() != Computer.NUMBER_SIZE) {
+			throw new IllegalArgumentException();
+		}
+		try {
+			int number = Integer.parseInt(inputNumber);
+			return number;
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	public void scanInputNumber() {
 		System.out.print("숫자를 입력해주세요 : ");
 		String inputNumber = Console.readLine();
-		saveInputNumber(inputNumber);
+		int number = toIntNumber(inputNumber);
+		saveInputNumber(number);
 		isValidInput();
 	}
 
-	public void saveInputNumber(String inputNumber) {
-		this.inputNumber = inputNumber.toCharArray();
+	public void saveInputNumber(int inputNumber) {
+		this.inputNumber[Application.HUNDREDS_NUMBER] = inputNumber / 100;
+		this.inputNumber[Application.TENS_NUMBER] = (inputNumber % 100) / 10;
+		this.inputNumber[Application.ONES_NUMBER] = inputNumber % 10;
 	}
 
 	public void isValidInput() throws IllegalArgumentException {
-		if (inputNumber.length != Computer.NUMBER_SIZE || hasDuplicateNumber() || hasZero() || !isNumber()) {
+		if (hasDuplicateNumber() || hasZero()) {
 			throw new IllegalArgumentException();
 		}
-	}
-
-	public boolean isNumber() {
-		for (char eachNumber : inputNumber) {
-			if (!Character.isDigit(eachNumber)) {
-				return false;
-			}
-		}
-		return true;
 	}
 
 	public boolean hasDuplicateNumber() {
@@ -59,7 +65,7 @@ public class Player {
 
 	public boolean hasZero() {
 		for (int i = 0; i < Computer.NUMBER_SIZE; i++) {
-			if (getInputNumber(i) == '0') {
+			if (getInputNumber(i) == 0) {
 				return true;
 			}
 		}

@@ -20,6 +20,9 @@ public class Application {
 		Player player = new Player();
 		Application application = new Application(computer, player);
 		application.computer.makeRandomNumber();
+		System.out.print(application.computer.randomNumber[0]);
+		System.out.print(application.computer.randomNumber[1]);
+		System.out.println(application.computer.randomNumber[2]);
 		while (application.continueGame) {
 			application.player.scanInputNumber();
 			application.countBall();
@@ -31,28 +34,24 @@ public class Application {
 		}
 	}
 
-	public int getIntNumber(char eachNumber) {
-		return eachNumber - '0';
-	}
-
 	public void countBall() {
-		if (getIntNumber(player.getInputNumber(HUNDREDS_NUMBER)) == computer.getRandomNumber(ONES_NUMBER)
-			|| getIntNumber(player.getInputNumber(HUNDREDS_NUMBER)) == computer.getRandomNumber(ONES_NUMBER)) {
+		if (player.getInputNumber(HUNDREDS_NUMBER) == computer.getRandomNumber(ONES_NUMBER)
+			|| player.getInputNumber(HUNDREDS_NUMBER) == computer.getRandomNumber(ONES_NUMBER)) {
 			computer.addBall();
 		}
-		if (getIntNumber(player.getInputNumber(TENS_NUMBER)) == computer.getRandomNumber(HUNDREDS_NUMBER)
-			|| getIntNumber(player.getInputNumber(TENS_NUMBER)) == computer.getRandomNumber(ONES_NUMBER)) {
+		if (player.getInputNumber(TENS_NUMBER) == computer.getRandomNumber(HUNDREDS_NUMBER)
+			|| player.getInputNumber(TENS_NUMBER) == computer.getRandomNumber(ONES_NUMBER)) {
 			computer.addBall();
 		}
-		if (getIntNumber(player.getInputNumber(ONES_NUMBER)) == computer.getRandomNumber(HUNDREDS_NUMBER)
-			|| getIntNumber(player.getInputNumber(ONES_NUMBER)) == computer.getRandomNumber(TENS_NUMBER)) {
+		if (player.getInputNumber(ONES_NUMBER) == computer.getRandomNumber(HUNDREDS_NUMBER)
+			|| player.getInputNumber(ONES_NUMBER) == computer.getRandomNumber(TENS_NUMBER)) {
 			computer.addBall();
 		}
 	}
 
 	public void countStrike() {
 		for (int i = 0; i < Computer.NUMBER_SIZE; i++) {
-			if (computer.getRandomNumber(i) == getIntNumber(player.getInputNumber(i))) {
+			if (computer.getRandomNumber(i) == player.getInputNumber(i)) {
 				computer.addStrike();
 			}
 		}
