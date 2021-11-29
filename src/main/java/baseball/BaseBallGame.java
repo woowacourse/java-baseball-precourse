@@ -12,6 +12,7 @@ public class BaseBallGame {
 
 	private ArrayList<Integer> answerNumberList;
 	private ArrayList<Integer> inputNumberList;
+	private User user;
 	private Score score;
 	private GameStatus gameStatus;
 
@@ -19,6 +20,7 @@ public class BaseBallGame {
 		answerNumberList = new ArrayList<>();
 		inputNumberList = new ArrayList<>();
 		score = new Score();
+		user = new User();
 		gameStatus = GameStatus.READY;
 	}
 
@@ -39,7 +41,7 @@ public class BaseBallGame {
 	private void play() {
 		while (true) {
 			initializeRound();
-			makeInputNumber();
+			inputNumberList = user.getInputNumber();
 			calculateScore();
 			printScore();
 			if (isAnswer()) {
@@ -66,14 +68,6 @@ public class BaseBallGame {
 		score.initializeScore();
 	}
 
-	private void makeInputNumber() {
-		String inputNumberString = InputView.getInputNumber();
-		if (!Validator.checkInputNumber(inputNumberString)) {
-			throw new IllegalArgumentException();
-		}
-		inputNumberList = getIntegerArrayListFromString(inputNumberString);
-	}
-
 	private void makeAnswerNumber() {
 		answerNumberList.clear();
 		LinkedHashSet<Integer> tmp = new LinkedHashSet<>();
@@ -85,14 +79,6 @@ public class BaseBallGame {
 		answerNumberList.addAll(tmp);
 	}
 
-	private ArrayList<Integer> getIntegerArrayListFromString(String str) {
-		ArrayList<Integer> tmp = new ArrayList<>();
-		for (int i = 0; i < str.length(); i++) {
-			int num = Character.getNumericValue(str.charAt(i));
-			tmp.add(num);
-		}
-		return tmp;
-	}
 
 	private void calculateScore() {
 		for (int i = 0; i < GAME_NUMBER_LENGTH; i++) {
