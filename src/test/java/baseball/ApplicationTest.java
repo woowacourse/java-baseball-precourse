@@ -58,7 +58,7 @@ class ApplicationTest extends NsTest {
 	@Test
 	void convertStringToNumberList() {
 		assertThat(
-			Application.convertStringToNumberList("123")
+			Application.toNumberList("123")
 				.containsAll(Arrays.asList(1, 2, 3))
 		).isTrue();
 	}

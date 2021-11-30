@@ -16,9 +16,7 @@ public class Application {
 		while (game.isPlay()) {
 			// 사용자 입력
 			View.input();
-			Balls user = new Balls(convertStringToNumberList(
-				Console.readLine())
-			);
+			Balls user = new Balls(toNumberList(Console.readLine()));
 			// 힌트 출력
 			Hint hint = game.compare(user);
 			View.hint(hint);
@@ -44,7 +42,7 @@ public class Application {
 		return new ArrayList<>(numberSet);
 	}
 
-	public static List<Integer> convertStringToNumberList(String input) {
+	public static List<Integer> toNumberList(String input) {
 		validateNumbers(input);
 		List<Integer> result = new ArrayList<>();
 		for (int i = 0; i < input.length(); i++) {
