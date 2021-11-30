@@ -3,8 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
-	public static final String RESTART_ONE = "1";
-	public static final String RESTART_TWO = "2";
+	public static final String RESTART_COMMAND = "1";
+	public static final String EXIT_COMMAND = "2";
 
 	public int[] inputNumber = new int[Computer.NUMBER_SIZE];
 
@@ -42,9 +42,9 @@ public class Player {
 
 	public boolean scanRestartNumber() {
 		String inputNumber = Console.readLine();
-		if (inputNumber.equals(RESTART_ONE)) {
+		if (inputNumber.equals(RESTART_COMMAND)) {
 			return true;
-		} else if (inputNumber.equals(RESTART_TWO)) {
+		} else if (inputNumber.equals(EXIT_COMMAND)) {
 			return false;
 		}
 		throw new IllegalArgumentException();
@@ -74,7 +74,7 @@ public class Player {
 		return false;
 	}
 
-	public void isValidInput() throws IllegalArgumentException {
+	public void isValidInput() {
 		if (hasDuplicateNumber() || hasZero()) {
 			throw new IllegalArgumentException();
 		}
