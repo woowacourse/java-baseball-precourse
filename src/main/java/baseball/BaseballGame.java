@@ -3,6 +3,7 @@ package baseball;
 import baseball.io.InputProcessor;
 import baseball.io.OutputProcessor;
 import baseball.number.Numbers;
+import baseball.result.Results;
 import baseball.type.GameStatus;
 
 public class BaseballGame {

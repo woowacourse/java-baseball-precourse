@@ -1,6 +1,6 @@
 package baseball.io;
 
-import baseball.Results;
+import baseball.result.Results;
 
 public class OutputProcessor {
 	private OutputProcessor() {}
