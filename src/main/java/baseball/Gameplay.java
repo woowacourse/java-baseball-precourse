@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.ArrayList;
+
 public class Gameplay {
 
     Player player;
@@ -16,5 +18,9 @@ public class Gameplay {
         GameSetting();
 
         computer.RandomNum(); //랜덤 숫자 생성
+
+        computer.PrintNumMSG();
+        ArrayList<Integer> playerNum = player.InputNum();
+        
     }
 }
