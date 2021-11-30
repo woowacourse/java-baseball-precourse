@@ -3,12 +3,16 @@ package baseball;
 import static utils.Constant.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import utils.GameStatus;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
 public class BaseBallGame {
+	enum GameStatus {
+		READY,
+		PLAYING,
+		FINISHED
+	}
 
 	private ArrayList<Integer> answerNumberList;
 	private ArrayList<Integer> inputNumberList;
