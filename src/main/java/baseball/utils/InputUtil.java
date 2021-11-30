@@ -1,4 +1,4 @@
-package baseball;
+package baseball.utils;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 import static java.util.stream.Collectors.*;

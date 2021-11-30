@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import static java.lang.String.*;
 

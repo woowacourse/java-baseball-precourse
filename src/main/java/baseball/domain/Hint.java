@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 public enum Hint implements Comparable<Hint> {
 	BALL,

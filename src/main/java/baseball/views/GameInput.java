@@ -1,9 +1,13 @@
-package baseball;
+package baseball.views;
 
-import static baseball.InputUtil.*;
+import static baseball.utils.InputUtil.*;
 import static java.util.stream.Collectors.*;
 
 import java.util.List;
+
+import baseball.domain.Ball;
+import baseball.domain.Balls;
+import baseball.domain.RestartDecision;
 
 public class GameInput {
 

@@ -1,4 +1,6 @@
-package baseball;
+package baseball.domain;
+
+import baseball.views.GameInput;
 
 public class Player {
 

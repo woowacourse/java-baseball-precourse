@@ -1,6 +1,8 @@
-package baseball;
+package baseball.views;
 
 import static java.lang.String.*;
+
+import baseball.domain.GameResult;
 
 public class GameOutput {
 
