@@ -4,12 +4,12 @@ import baseball.domain.computer.GameResult;
 
 public class ResultView {
 
-    private static String LINE_BREAK = "%n";
-    private static String BLANK = " ";
+    private static final String LINE_BREAK = "%n";
+    private static final String BLANK = " ";
 
-    private static String GAME_RESULT_NOTHING_MESSAGE = "낫싱";
-    private static String GAME_RESULT_BALL_MESSAGE = "%d볼";
-    private static String GAME_RESULT_STRIKE_MESSAGE = "%d스트라이크";
+    private static final String GAME_RESULT_NOTHING_MESSAGE = "낫싱";
+    private static final String GAME_RESULT_BALL_MESSAGE = "%d볼";
+    private static final String GAME_RESULT_STRIKE_MESSAGE = "%d스트라이크";
 
     private ResultView() {
     }

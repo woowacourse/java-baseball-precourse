@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
-    private static String INPUT_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
-    private static String INPUT_NUMBERS_DELIMITER = "";
+    private static final String INPUT_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String INPUT_NUMBERS_DELIMITER = "";
 
-    private static String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static String INPUT_GAME_STATE_COMMAND_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String INPUT_GAME_STATE_COMMAND_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private InputView() {
     }
