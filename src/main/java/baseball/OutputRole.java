@@ -28,10 +28,7 @@ public class OutputRole {
     }
 
     public boolean isStrike(int strikeNumber) {
-        if (strikeNumber == 3) {
-            return true;
-        }
-        return false;
+        return strikeNumber == 3;
     }
 
     private boolean checkNothing(int strike, int ball) {
