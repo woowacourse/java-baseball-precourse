@@ -61,16 +61,15 @@ public class GameManager {
         if (usersChoice.equals(Text.RESTART)) {
             assignComputerNumber();
             umpire = new Umpire(computersNumber);
-        } else if (usersChoice.equals(Text.END)) {
-            return;
         }
 
+        return;
     }
 
     public void startGame() {
-        String usersChoice = Text.RESTART;
+        String usersChoice = "";
 
-        while (usersChoice.equals(Text.RESTART)) {
+        while (!usersChoice.equals(Text.END)) {
             playOneSet();
 
             if (umpire.isWin()) {
