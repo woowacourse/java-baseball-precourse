@@ -15,7 +15,11 @@ public class Judge {
 		this.strike = judgeStrike(randomNumber, userNumber);
 		this.ball = judgeBall(randomNumber, userNumber);
 
-		
+		if (this.strike == 3) {
+			System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			return true;
+		}
+
 		if (this.strike != 0 && this.ball != 0)
 			System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
 		else if (this.strike == 0 && this.ball != 0)
