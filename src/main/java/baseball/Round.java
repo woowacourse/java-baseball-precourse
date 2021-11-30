@@ -40,6 +40,7 @@ public class Round {
 			//볼 and 스트라이크 개수 확인
 			cnt_strike= computer.cntStrike(userInputList);
 			cnt_ball= computer.cntBall(userInputList);
+			
 			//결과 출력
 			prtHint();
 			//exit 조건: 3스트라이크일 경우
@@ -69,7 +70,7 @@ public class Round {
 	private ArrayList<Integer> toIntegerList(String str_input){
 		ArrayList<Integer> inputList= new ArrayList<>();
 		int num;
-		for(int i=0; i<NUMBER_DIGIT; i++) {
+		for(int i=0; i<str_input.length(); i++) {
 			num= Integer.parseInt(str_input.split("")[i]);
 			inputList.add(num);
 		}
