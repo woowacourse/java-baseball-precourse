@@ -45,4 +45,26 @@ public class Input {
         return true;
     }
 
+    private static boolean isSame(String userInput, boolean[] overlapCheck, int target) {
+        for (int k = 0; k < 3; k++) {
+            if (overlapCheck[k]) {
+                continue;
+            }
+            if (userInput.charAt(target) == userInput.charAt(k)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isValidateEndNumber(String value) {
+        if (value.equals("2")) {
+            return true;
+        }
+        if (value.equals("1")) {
+            return false;
+        }
+        throw new IllegalArgumentException("잘못된 입력입니다.");
+    }
+
 }
