@@ -27,7 +27,7 @@ public class Number {
 	}
 
 	private static void validateDigit(char ch){
-		if(Character.isDigit(ch)){
+		if(!Character.isDigit(ch)){
 			throw new IllegalArgumentException("숫자를 제외한 문자는 허용되지 않습니다.");
 		}
 	}

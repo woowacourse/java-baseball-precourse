@@ -43,7 +43,7 @@ public class Numbers {
 		if(findIdx==index){
 			return Hint.STRIKE;
 		} else if(findIdx==-1){
-			return Hint.BALL;
+			return Hint.NOTHING;
 		}
 		return Hint.BALL;
 	}
