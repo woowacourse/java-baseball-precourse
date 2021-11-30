@@ -14,7 +14,7 @@ public class NumberBallSet {
 
 	private final List<NumberBall> numberBalls;
 
-	public NumberBallSet(List<NumberBall> numberBalls) {
+	private NumberBallSet(List<NumberBall> numberBalls) {
 		this.numberBalls = numberBalls;
 	}
 
