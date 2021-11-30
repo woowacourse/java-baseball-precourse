@@ -26,5 +26,52 @@ public class Computer {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
+    //ball strike 개수
+    public boolean BallStrikeNum(ArrayList<Integer> playerNum){
+        int ballNum = 0;
+        int strikeNum = 0;
 
+        for(int i=0; i<3; i++){
+            if(playerNum.get(i).equals(randomNum.get(i))){
+                strikeNum++;
+                continue;
+            }
+            if(setNum.contains(playerNum.get(i))) {
+                ballNum++;
+            }
+        }
+
+        return isBallStrike(ballNum, strikeNum);
+    }
+
+    //ball strike 출력 함수
+    public boolean isBallStrike(int ballNum, int strikeNum){
+        if(strikeNum == 3){
+            Print3Strike();
+            return true;
+        } else if (strikeNum == 0 && ballNum == 0) {
+            PrintNothing();
+        } else {
+            PrintBallStrike(ballNum, strikeNum);
+        }
+
+        return false;
+    }
+
+    public void Print3Strike(){
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public void PrintNothing(){ System.out.println("낫싱"); }
+
+    public void PrintBallStrike(int ballNum, int strikeNum){
+        if(ballNum != 0 && strikeNum == 0) {
+            System.out.println(ballNum + "볼");
+        } else if(ballNum == 0 && strikeNum != 0) {
+            System.out.println(strikeNum + "스트라이크");
+        } else {
+            System.out.println(ballNum + "볼 " + strikeNum + "스트라이크");
+        }
+    }
 }
