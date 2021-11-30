@@ -34,8 +34,8 @@ public class BaseballGame {
     };
 
     public static int[] compare(List<Integer> inputString, List<Integer> generateNumber){
-        int[] inputArray = Utils.getArray(inputString);
-        int[] generateArray = Utils.getArray(generateNumber);
+        int[] inputArray = Utils.makeStringToArray(inputString);
+        int[] generateArray = Utils.makeStringToArray(generateNumber);
         return Utils.compareTwoArray(inputArray, generateArray);
     };
 

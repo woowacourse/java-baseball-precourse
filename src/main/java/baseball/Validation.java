@@ -10,7 +10,7 @@ public class Validation {
 
     public static void inputCheck(String inputString) {
         lengthCheck(inputString);
-        isValidNumberInput(inputString);
+        isNotZeroNumber(inputString);
         isUniqueNumber(inputString);
     };
 
@@ -21,7 +21,7 @@ public class Validation {
         return true;
     }
 
-    public static void isValidNumberInput(String inputString){
+    public static void isNotZeroNumber(String inputString){
         IntStream
             .range(0,SystemMessage.COMPARE_LENGTH)
             .forEach(index -> {

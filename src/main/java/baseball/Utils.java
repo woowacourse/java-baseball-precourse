@@ -16,7 +16,7 @@ public class Utils {
         return parsedIntList;
     };
 
-    public static int[] getArray(List<Integer> inputList) {
+    public static int[] makeStringToArray(List<Integer> inputList) {
         int resultArray[]=new int[10];
         Arrays.fill(resultArray, -1);
         IntStream.range(0,3).forEach(idx->resultArray[inputList.get(idx)] = idx);
