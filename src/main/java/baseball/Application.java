@@ -8,13 +8,14 @@ import baseball.user.User;
 
 public class Application {
 	public static void main(String[] args) {
-		//클래스 생성
+		// 컴퓨터, 유저, 심판 생성
 		Computer computer;
 		User user = new User();
 		Umpire umpire = new Umpire();
-
+		// 끝낼지 말지 정하는 변수 선언
 		int end = 1;
 
+		// 2를입력받을 때 까지 게임을 계속한다
 		while (end == 1) {
 			computer = new Computer();
 			game(computer, user, umpire);
@@ -25,6 +26,7 @@ public class Application {
 		}
 	}
 
+	// 게임을 하는 메소드
 	private static void game(Computer computer, User user, Umpire umpire) {
 		while (!umpire.isEnd()) {
 			umpire.init();

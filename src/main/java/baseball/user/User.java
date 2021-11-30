@@ -26,6 +26,7 @@ public class User {
 
 	}
 
+	// 3자리수 인지 확인하는 메소드
 	private void checkLen(String inputs) {
 		if (inputs.length() != maxNumberLen) {
 			throw new IllegalArgumentException(maxNumberLen + "자리 수를 입력하세요");
@@ -42,7 +43,6 @@ public class User {
 		if (set.size() != array.length) {
 			throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다");
 		}
-
 	}
 
 	// 문자열을 숫자로 바꾸는 함수
@@ -55,6 +55,7 @@ public class User {
 			return Num;
 		} catch (Exception e) {
 			// 숫자가 아닌 값이 들어있으면 오류 반환
+			// ArgumentException오류가 뜨지 않으므로 ArgumentException이 뜨도록 만들어준다
 			throw new IllegalArgumentException("숫자를 입력하세요");
 		}
 
@@ -64,6 +65,7 @@ public class User {
 	private int[] toArray(int Num) {
 		int[] intArray = new int[maxNumberLen];
 		int n;
+		
 		// 3자리 수를 10으로 나누면서 그 나머지를 배열의 뒤에서부터 할당
 		for (int i = maxNumberLen - 1; i >= 0; i--) {
 			n = Num % 10;
@@ -74,7 +76,6 @@ public class User {
 			intArray[i] = n;
 			Num /= 10;
 		}
-
 		return intArray;
 	}
 
