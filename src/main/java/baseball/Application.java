@@ -13,6 +13,7 @@ public class Application {
     private static final int START_GAME_VALUE = 1;
     private static final int END_GAME_VALUE = 2;
     private static final String PLAYER_INPUT_PATTERN = "^[0-9]{3}+$";
+    private static final String RESTART_INPUT_PATTERN = "^[1-2]$";
 
     private static final String GAME_ENDING_OUTPUT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
@@ -66,8 +67,15 @@ public class Application {
 
     private static int getRestartInput() {
         String input = Console.readLine();
+        validateRestartInput(input);
 
         return Integer.parseInt(input);
+    }
+
+    private static void validateRestartInput(String input) {
+        if (!Pattern.matches(RESTART_INPUT_PATTERN, input)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
 
