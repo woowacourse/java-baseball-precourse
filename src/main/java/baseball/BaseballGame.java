@@ -19,11 +19,11 @@ public class BaseballGame {
                 break;
             }
         }
-    }
+    };
 
     public static void play(Player player, List<Integer> generateNumbers){
-        String inputString = player.getUserInput();
-        String result = compare(inputString, generateNumbers);
+        List<Integer> inputList = player.getUserInput();
+        String result = compare(inputList, generateNumbers);
         System.out.println(result);
         if(result.equals(SystemMessage.THREE_STRIKE)){
             System.out.println(SystemMessage.ALL_STRIKE);
@@ -45,9 +45,8 @@ public class BaseballGame {
         throw new IllegalArgumentException(SystemMessage.CONTINUE_INPUT_ERROR);
     };
 
-    public static String compare(String inputString, List<Integer> generateNumber){
-        List<Integer> parsedInputList = Utils.parseStringToList(inputString);
-        int[] inputArray = Utils.getArray(parsedInputList);
+    public static String compare(List<Integer> inputString, List<Integer> generateNumber){
+        int[] inputArray = Utils.getArray(inputString);
         int[] generateArray = Utils.getArray(generateNumber);
         int[] compareResult = Utils.compareTwoArray(inputArray, generateArray);
         return getResult(compareResult[0], compareResult[1]);
