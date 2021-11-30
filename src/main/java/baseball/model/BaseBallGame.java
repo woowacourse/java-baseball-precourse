@@ -8,8 +8,8 @@ import java.util.List;
 import baseball.utils.AnswerGenerator;
 
 public class BaseBallGame {
-	Answer answer;
-	InputValidator inputValidator;
+	private Answer answer;
+	private InputValidator inputValidator;
 	private boolean running;
 
 	public BaseBallGame() {
@@ -22,39 +22,20 @@ public class BaseBallGame {
 		return running;
 	}
 
-	public String evaluate(String guess) {
+	public Evaluation evaluate(String guess) {
 		inputValidator.validateGuess(guess);
-		GuessNumbers guessNumbers = createGuessNumbers(guess, answer);
 
-		if (guessNumbers.countStrike() == MAX_STRIKE) {
-			endGame();
-		}
-
-		Report report = new Report(guessNumbers);
-		return report.getReport();
-
+		return createEvaluation(guess, answer);
 	}
 
-	private GuessNumbers createGuessNumbers(String guess, Answer answer) {
+	private Evaluation createEvaluation(String guess, Answer answer) {
 		List<GuessNumber> guessNumbers = new ArrayList<>();
 
 		for (int i = 0; i < guess.length(); i++) {
-			guessNumbers.add(createGuessNumber(i, guess.charAt(i) - '0'));
+			guessNumbers.add(new GuessNumber(i, guess.charAt(i) - '0'));
 		}
 
-		return new GuessNumbers(guessNumbers);
-	}
-
-	private GuessNumber createGuessNumber(int idx, int val) {
-		if (answer.contains(val) && answer.indexOf(val) == idx) {
-			return new GuessNumber(idx, val, "STRIKE");
-		}
-
-		if (answer.contains(val)) {
-			return new GuessNumber(idx, val, "BALL");
-		}
-
-		return new GuessNumber(idx, val, "WRONG");
+		return new Evaluation(guessNumbers, answer);
 	}
 
 	public void setRunning(String flag) {
@@ -78,7 +59,7 @@ public class BaseBallGame {
 		this.running = true;
 	}
 
-	private void endGame() {
+	public void endGame() {
 		this.running = false;
 	}
 

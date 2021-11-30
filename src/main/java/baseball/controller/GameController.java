@@ -1,6 +1,8 @@
 package baseball.controller;
 
 import baseball.model.BaseBallGame;
+import baseball.model.Evaluation;
+import baseball.model.Report;
 import baseball.view.GameView;
 
 public class GameController {
@@ -15,12 +17,15 @@ public class GameController {
 	public void start() {
 		while (baseBallGame.isRunning()) {
 			String guess = gameView.askGuess();
-			String report = baseBallGame.evaluate(guess);
-			gameView.printResult(report);
 
-			if (!baseBallGame.isRunning()) {
-				String input = gameView.askRestart();
-				baseBallGame.setRunning(input);
+			Evaluation evaluation = baseBallGame.evaluate(guess);
+			gameView.printReport(new Report(evaluation));
+
+			if (evaluation.isCorrect()) {
+				baseBallGame.endGame();
+
+				String flag = gameView.askRestart();
+				baseBallGame.setRunning(flag);
 			}
 		}
 	}
