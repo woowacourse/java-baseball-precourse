@@ -22,7 +22,7 @@ public class BaseBallGame {
     }
 
     private void play() {
-        GivenNumber givenNumber = new GivenNumber();
+        GivenNumber givenNumber = new GivenNumber(RandomNumberFactory.generate());
         do {
             printNumberRequestMessage();
             result = givenNumber.calculateGameResult((Integer[]) guessedNumberManager.getInput());

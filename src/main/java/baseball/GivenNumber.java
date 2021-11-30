@@ -5,11 +5,11 @@ import static baseball.StringUtil.NUMBER_OF_DIGITS_OF_GAME_NUMBER;
 import java.util.Set;
 
 public class GivenNumber {
-    public final Set<Integer> givenNumberSet;
-    public final Integer[] givenNumberArray;
+    private final Set<Integer> givenNumberSet;
+    private final Integer[] givenNumberArray;
 
-    public GivenNumber() {
-        this.givenNumberSet = RandomNumberFactory.generate();
+    public GivenNumber(Set<Integer> givenNumberSet) {
+        this.givenNumberSet = givenNumberSet;
         givenNumberArray = givenNumberSet.toArray(new Integer[NUMBER_OF_DIGITS_OF_GAME_NUMBER]);
     }
 
