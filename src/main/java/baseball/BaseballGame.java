@@ -15,16 +15,16 @@ public class BaseballGame {
 	}
 
 	private void playGame() {
-		Hint hint;
+		GameResult gameResult;
 		computer.determineAnswerBalls();
 		do {
 			Balls predictionBalls = Player.predictBalls();
-			hint = computer.compareBalls(predictionBalls);
-			GameOutput.printHint(hint);
-		} while (!isGameEnd(hint));
+			gameResult = computer.compareBalls(predictionBalls);
+			GameOutput.printHint(gameResult);
+		} while (!isGameEnd(gameResult));
 	}
 
-	private boolean isGameEnd(Hint hint) {
-		return hint.isPlayerWin();
+	private boolean isGameEnd(GameResult gameResult) {
+		return gameResult.isPlayerWin();
 	}
 }

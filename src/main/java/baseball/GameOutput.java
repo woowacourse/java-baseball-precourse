@@ -7,18 +7,18 @@ public class GameOutput {
 	private GameOutput() {
 	}
 
-	public static void printHint(Hint hint) {
+	public static void printHint(GameResult gameResult) {
 		StringBuilder sb = new StringBuilder();
-		if (hint.isNothing()) {
+		if (gameResult.isNothing()) {
 			sb.append("낫싱");
 		}
-		if (hint.hasBall()) {
-			sb.append(format("%d볼 ", hint.getBallCount()));
+		if (gameResult.hasBall()) {
+			sb.append(format("%d볼 ", gameResult.getBallCount()));
 		}
-		if (hint.hasStrike()) {
-			sb.append(format("%d스트라이크", hint.getStrikeCount()));
+		if (gameResult.hasStrike()) {
+			sb.append(format("%d스트라이크", gameResult.getStrikeCount()));
 		}
-		if (hint.isPlayerWin()) {
+		if (gameResult.isPlayerWin()) {
 			sb.append("\n3개의 숫자를 모두 맞히셨습니다 ! 게임 종료");
 		}
 		System.out.println(sb);

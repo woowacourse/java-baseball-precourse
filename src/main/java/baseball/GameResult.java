@@ -1,11 +1,11 @@
 package baseball;
 
-public class Hint {
+public class GameResult {
 
 	private int strikeCount;
 	private int ballCount;
 
-	public Hint(int strikeCount, int ballCount) {
+	public GameResult(int strikeCount, int ballCount) {
 		this.strikeCount = strikeCount;
 		this.ballCount = ballCount;
 	}

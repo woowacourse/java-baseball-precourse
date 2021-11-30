@@ -8,8 +8,8 @@ public class Computer {
 		this.answerBalls = Balls.generateRandomBalls();
 	}
 
-	public Hint compareBalls(Balls predictionBalls) {
-		
-		return new Hint(strike, ball - strike);
+	public GameResult compareBalls(Balls predictionBalls) {
+		predictionBalls.totalReward(predictionBalls);
+		return new GameResult(strike, ball - strike);
 	}
 }
