@@ -41,16 +41,16 @@ class ApplicationTest extends NsTest {
 	@DisplayName("입력한 문자열이 숫자인지 검사")
 	@Test
 	void stringIsNumber() {
-		Application.validateNumbers("123");
-		assertThatThrownBy(() -> Application.validateNumbers("a23"))
+		Application.validateIsNumbers("123");
+		assertThatThrownBy(() -> Application.validateIsNumbers("a23"))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@DisplayName("문자가 숫자인지 검사")
 	@Test
 	void charIsNumber() {
-		Application.validateNumber('1');
-		assertThatThrownBy(() -> Application.validateNumber('a'))
+		Application.validateIsNumber('1');
+		assertThatThrownBy(() -> Application.validateIsNumber('a'))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 

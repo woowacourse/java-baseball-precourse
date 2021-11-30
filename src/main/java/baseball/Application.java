@@ -43,7 +43,7 @@ public class Application {
 	}
 
 	public static List<Integer> toNumberList(String input) {
-		validateNumbers(input);
+		validateIsNumbers(input);
 		List<Integer> result = new ArrayList<>();
 		for (int i = 0; i < input.length(); i++) {
 			result.add(input.charAt(i) - '0');
@@ -51,13 +51,13 @@ public class Application {
 		return result;
 	}
 
-	public static void validateNumbers(String input) {
+	public static void validateIsNumbers(String input) {
 		for (int i = 0; i < input.length(); i++) {
-			validateNumber(input.charAt(i));
+			validateIsNumber(input.charAt(i));
 		}
 	}
 
-	public static void validateNumber(char c) {
+	public static void validateIsNumber(char c) {
 		if (!(Character.isDigit(c))) {
 			throw new IllegalArgumentException();
 		}
