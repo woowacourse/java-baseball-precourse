@@ -9,17 +9,9 @@ public class Game {
 
 	private boolean isPlay = true;
 	private Balls computer;
-	private Hint hint;
 
 	public Game(List<Integer> computer) {
 		this.computer = new Balls(computer);
-	}
-
-	public boolean checkhint(Hint hint) {
-		if (hint.strike() == Balls.SIZE) {
-			return true;
-		}
-		return false;
 	}
 
     public Hint compare(Balls user) {
@@ -38,10 +30,6 @@ public class Game {
 
 	public boolean isPlay() {
 		return isPlay;
-	}
-
-	public Balls getComputer() {
-		return computer;
 	}
 
 	public void validateInput(String input) {

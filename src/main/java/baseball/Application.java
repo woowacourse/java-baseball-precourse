@@ -12,22 +12,22 @@ public class Application {
 		//TODO: 숫자 야구 게임 구현
 
 		// 게임 시작
-		Game game = new Game(createRandomNumberList());
-		while (game.isPlay()) {
-			// 사용자 입력
-			View.input();
-			String input = Console.readLine();
-			Balls user = new Balls(convertStringToNumberList(input));
-			// 힌트 출력
-			Hint hint = new Hint(game.getComputer(), user);
-			View.hint(hint);
-			// 힌트에 따라 게임 진행
-			if (!game.checkhint(hint)) {
-				continue;
-			}
-			View.success();
-			game.choicePlay(Console.readLine());
-		}
+		// Game game = new Game(createRandomNumberList());
+		// while (game.isPlay()) {
+		// 	// 사용자 입력
+		// 	View.input();
+		// 	String input = Console.readLine();
+		// 	Balls user = new Balls(convertStringToNumberList(input));
+		// 	// 힌트 출력
+		// 	Hint hint = new Hint(game.getComputer(), user);
+		// 	View.hint(hint);
+		// 	// 힌트에 따라 게임 진행
+		// 	if (!game.checkhint(hint)) {
+		// 		continue;
+		// 	}
+		// 	View.success();
+		// 	game.choicePlay(Console.readLine());
+		// }
 	}
 
 	public static List<Integer> createRandomNumberList() {
