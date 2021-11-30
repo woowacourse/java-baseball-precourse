@@ -8,7 +8,7 @@ public class RandomNumGenerator {
 	private static final int MIN_NUMBER = 1;
 	private static final int MAX_NUMBER = 9;
 
-	private int[] randomNumber;
+	private int[] randomNumber = {0,};
 
 	public RandomNumGenerator() {}
 
