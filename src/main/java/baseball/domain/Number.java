@@ -9,10 +9,14 @@ public class Number {
 	private final int no;
 
 	public Number(int no) {
+		validate(no);
+		this.no = no;
+	}
+
+	public void validate(int no) {
 		if (no < MIN || MAX < no) {
 			throw new IllegalArgumentException(NUMBER_ERROR);
 		}
-		this.no = no;
 	}
 
 	public int getNo() {

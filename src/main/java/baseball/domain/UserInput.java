@@ -8,8 +8,12 @@ public class UserInput {
 	private final BaseballNumber baseballNumber;
 
 	public UserInput(String gameUserInput) {
+		this.baseballNumber = validate(gameUserInput);
+	}
+
+	public BaseballNumber validate(String gameUserInput) {
 		try {
-			this.baseballNumber = new BaseballNumber(
+			return new BaseballNumber(
 				new ArrayList<>(gameUserInput
 					.chars()
 					.mapToObj(Character::getNumericValue)

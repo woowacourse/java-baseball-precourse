@@ -2,13 +2,17 @@ package baseball.domain;
 
 public class Game {
 
-	private static final String EXCEPTION = "잘못된 값을 입력했습니다.";
+	private static final String EXCEPTION = "1또는 2를 입력해주세요.";
 	private static final int GAME_RUN = 1;
 	private static final int GAME_STOP = 2;
 
 	private final int gameProgress;
 
 	public Game(String gameProgress) {
+		this.gameProgress = validate(gameProgress);
+	}
+
+	public int validate(String gameProgress) {
 		int gameProgressParsed;
 
 		try {
@@ -20,10 +24,10 @@ public class Game {
 			throw new IllegalArgumentException(EXCEPTION);
 		}
 
-		this.gameProgress = gameProgressParsed;
+		return gameProgressParsed;
 	}
 
 	public boolean continueGame() {
-		return this.gameProgress == GAME_RUN;
+		return gameProgress == GAME_RUN;
 	}
 }

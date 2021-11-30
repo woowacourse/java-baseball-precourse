@@ -13,19 +13,24 @@ public class Computer {
 	private final BaseballNumber baseballNumber;
 
 	public Computer() {
+
+		this.baseballNumber = new BaseballNumber(
+			new ArrayList<>(makeRandomList()
+				.stream()
+				.map(Number::new)
+				.collect(Collectors.toList()))
+		);
+
+	}
+
+	public ArrayList<Integer> makeRandomList() {
 		ArrayList<Integer> numbers = new ArrayList<>();
 
 		while (numbers.size() < MAX_NUMBER_SIZE) {
 			numbers.add(makeRandomNumber(numbers));
 		}
 
-		this.baseballNumber = new BaseballNumber(
-			new ArrayList<>(numbers
-				.stream()
-				.map(Number::new)
-				.collect(Collectors.toList()))
-		);
-
+		return numbers;
 	}
 
 	private int makeRandomNumber(ArrayList<Integer> numbers) {
