@@ -42,7 +42,7 @@ public class GameController {
     }
 
     private void askGameReplay() {
-        // ToDo: 3. 여부에 따라 플레이 타입 변경
         int answer = gameInputView.inputAskReplay();
+        gameService.selectGamePlayType(answer);
     }
 }
