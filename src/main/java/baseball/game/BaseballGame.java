@@ -22,7 +22,6 @@ public class BaseballGame {
 	public void startGame() {
 		while (true) {
 			String computerBall = computer.createRandomBalls();
-			System.out.println(computerBall);
 			playGame(computerBall);
 
 			if (!restartGame()) {
