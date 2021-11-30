@@ -1,7 +1,5 @@
 package baseball.domain.ball;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
@@ -22,6 +20,4 @@ class NumberBallSetFactoryTest {
 		// then
 		Assertions.assertThat(numbers.size()).isEqualTo(count);
 	}
-
-
 }
