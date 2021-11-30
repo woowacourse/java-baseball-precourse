@@ -18,5 +18,4 @@ public enum Command {
             .findAny()
             .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 명령입니다."));
     }
-
 }

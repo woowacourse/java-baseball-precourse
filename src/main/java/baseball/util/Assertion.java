@@ -1,7 +1,6 @@
 package baseball.util;
 
 public class Assertion {
-
     private Assertion() {}
 
     public static void throwExceptionIfFalse(boolean condition, String message) {
@@ -15,5 +14,4 @@ public class Assertion {
             throw new IllegalArgumentException("must not be null");
         }
     }
-
 }

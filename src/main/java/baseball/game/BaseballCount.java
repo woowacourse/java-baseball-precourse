@@ -4,7 +4,6 @@ import baseball.util.Assertion;
 import java.util.Objects;
 
 public class BaseballCount {
-
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
@@ -54,7 +53,6 @@ public class BaseballCount {
     }
 
     public static class Strike {
-
         private final int count;
 
         public Strike(int count) {
@@ -64,11 +62,9 @@ public class BaseballCount {
         public static Strike of(int strike) {
             return new Strike(strike);
         }
-
     }
 
     public static class Ball {
-
         private final int count;
 
         public Ball(int count) {
@@ -78,7 +74,5 @@ public class BaseballCount {
         public static Ball of(int ball) {
             return new Ball(ball);
         }
-
     }
-
 }

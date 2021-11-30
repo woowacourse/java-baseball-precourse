@@ -1,7 +1,6 @@
 package baseball.io;
 
 public class Output {
-
     private Output() {}
 
     public static void println(String line) {
@@ -11,5 +10,4 @@ public class Output {
     public static void print(String line) {
         System.out.print(line);
     }
-
 }

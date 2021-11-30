@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Baseball implements NumberMatcher<Baseball, BaseballCount> {
-
     private final Integer[] baseballNumbers;
 
     public Baseball(Integer[] baseballNumbers) {
@@ -53,5 +52,4 @@ public class Baseball implements NumberMatcher<Baseball, BaseballCount> {
                 .count())
             .sum();
     }
-
 }
