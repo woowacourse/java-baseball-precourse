@@ -5,11 +5,28 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class GameRole {
+    private static int ball;
+    private static int strike;
+    private static String computerNumber;
 
     public static void startGame() {
+        InputRole inputRole = new InputRole();
+        OutputRole outputRole = new OutputRole();
+        computerNumber = getRandomNumber();
+
         while (true) {
-            InputRole inputRole = new InputRole();
-            checkGameResult(inputRole.getInputValue());
+            ball = 0;
+            strike = 0;
+            calculateGameResult(inputRole.getInputValue(), computerNumber, outputRole);
+
+            if (!outputRole.isStrike(strike)) {
+                continue;
+            }
+
+            if (outputRole.restartResult()) {
+                computerNumber = getRandomNumber();
+                continue;
+            }
             return;
         }
     }
@@ -27,25 +44,21 @@ public class GameRole {
         return randomNumber;
     }
 
-    private static void checkGameResult(String input) {
-        int ball = 0;
-        int strike = 0;
-        String computerNumber = getRandomNumber();
+    private static void calculateGameResult(String input, String computerNumber, OutputRole outputRole) {
 
-        for (int i = 0; i < input.length(); i++) {
+
+        for (int i = 0; i < computerNumber.length(); i++) {
             char number = computerNumber.charAt(i);
             if (number == input.charAt(i)) {
                 strike++;
                 continue;
             }
-            if (input.contains(String.valueOf(number))){
+            if (input.contains(String.valueOf(number))) {
                 ball++;
             }
         }
-        System.out.println("computerNumber = " + computerNumber);
-        System.out.println("input = " + input);
-        System.out.println("strike = " + strike);
-        System.out.println("ball = " + ball);
+        outputRole.printResult(strike, ball);
+
 
     }
 
