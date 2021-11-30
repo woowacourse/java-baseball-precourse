@@ -19,4 +19,29 @@ public class Computer {
 			}
 		}
 	}
+
+	public void countScore(List<Integer> playerInput) {
+		countStrike(playerInput);
+		countBall(playerInput);
+	}
+
+	private void countStrike(List<Integer> playerInput) {
+		int count = 0;
+		for (int i = 0; i < Constants.DIGIT_LENGTH; i++) {
+			if (playerInput.get(i).equals(this.randomGeneratedNumber.get(i))) {
+				count += 1;
+			}
+		}
+		this.strike = count;
+	}
+
+	private void countBall(List<Integer> playerInput) {
+		int count = 0;
+		for (int i = 0; i < Constants.DIGIT_LENGTH; i++) {
+			if (this.randomGeneratedNumber.contains(playerInput.get(i))) {
+				count += 1;
+			}
+		}
+		this.ball = (count - this.strike);
+	}
 }
