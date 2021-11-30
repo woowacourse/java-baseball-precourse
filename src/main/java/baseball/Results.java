@@ -28,16 +28,40 @@ public class Results {
 	}
 
 	private Answer getAnswer(){
-		long strikeNum = count(Hint.STRIKE);
+		long strikeNum = countHint(Hint.STRIKE);
 		if(strikeNum==3){
 			return Answer.CORRECT;
 		}
 		return Answer.INCORRECT;
 	}
 
-	private long count(Hint hint){
+	private long countHint(Hint hint){
 		return hints.stream()
 			.filter(h-> h == hint)
 			.count();
+	}
+
+	private boolean isNothing(){
+		long count = countHint(Hint.NOTHING);
+		return count == 3;
+	}
+
+	@Override
+	public String toString() {
+		if(isNothing()){
+			return Hint.NOTHING.getTag();
+		}
+		long countStrike = countHint(Hint.STRIKE);
+		long countBall = countHint(Hint.BALL);
+		if(countStrike==0){
+			return countBall+Hint.BALL.getTag();
+		} else if(countBall==0){
+			return countStrike+Hint.STRIKE.getTag();
+		}
+		return countBall + Hint.BALL.getTag() + " " + countStrike + Hint.STRIKE.getTag();
+	}
+
+	public boolean isCorrect(){
+		return answer.isCorrect();
 	}
 }
