@@ -6,6 +6,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Application {
+    private final static String INPUTORDER = "숫자를 입력하세요 : ";
+    private final static String WRONGINPUT = "조건에 맞는 수를 입력해주세요.";
+    private final static String RESTARTQUESTION = "게임을 새로 시작하시려면 1, 종료하려면 2를 입력하세요.";
+    private final static String RESTARTGAME = "게임을 재시작합니다.";
+    private final static String ENDGAME = "게임을 종료합니다.";
+    private final static String ANSWER = "answer :";
+
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
         try {
@@ -22,7 +29,7 @@ public class Application {
         int[] computerNumbers = new int[3];
 
         makeComputerNumbers(computerNumbers);
-        System.out.print("숫자를 입력하세요 : ");
+        System.out.print(INPUTORDER);
 
         while (strikeCount != 3) {
             int N = View.input();
@@ -47,27 +54,27 @@ public class Application {
             computerNumbers[1] = Randoms.pickNumberInRange(1, 9);
             computerNumbers[2] = Randoms.pickNumberInRange(1, 9);
         }
-        System.out.println("answer :" + computerNumbers[0] + computerNumbers[1] + computerNumbers[2]);
+        System.out.println(ANSWER + computerNumbers[0] + computerNumbers[1] + computerNumbers[2]);
     }
 
     public static void inputNumbers(int[] computerNumbers, int N) {
         if (computerNumbers[0] == computerNumbers[1] || computerNumbers[0] == computerNumbers[2] || computerNumbers[1] == computerNumbers[2]) {
-            throw new IllegalArgumentException("조건에 맞는 수를 입력해주세요.");
+            throw new IllegalArgumentException(WRONGINPUT);
         }
 
         if (N > 999 || N < 123) {
-            throw new IllegalArgumentException("조건에 맞는 수를 입력해주세요.");
+            throw new IllegalArgumentException(WRONGINPUT);
         }
     }
 
     public static void restart() throws IOException {
-        System.out.println("게임을 새로 시작하시려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(RESTARTQUESTION);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         int reGameQuestion = Integer.parseInt(bufferedReader.readLine());
 
         if (reGameQuestion == 1) {
-            System.out.println("게임을 재시작합니다.");
+            System.out.println(RESTARTGAME);
 
             try {
                 startGame();
@@ -77,7 +84,7 @@ public class Application {
         }
 
         if (reGameQuestion == 2) {
-            System.out.println("게임을 종료합니다.");
+            System.out.println(ENDGAME);
         }
     }
 
