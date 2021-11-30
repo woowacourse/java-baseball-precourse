@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class GameHelper {
+    private static final int RESTART_CODE = 1;
+    private static final int EXIT_CODE = 2;
 
     public static List<Integer> generateNumbers(){
         List<Integer> numberList = new ArrayList<Integer>();
@@ -25,6 +27,12 @@ public class GameHelper {
     public static void play(List<Integer> generateNumbers){
         String inputString = getUserInput();
         String result = compare(inputString, generateNumbers);
+        System.out.println(result);
+        if(result.equals("3스트라이크")){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
+        play(generateNumbers);
         return;
     };
 
@@ -93,5 +101,17 @@ public class GameHelper {
             return (balls + "볼");
         }
         return (balls+"볼 "+strikes+"스트라이크");
+    };
+
+    public static int isContinue(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputNumber = Console.readLine();
+        if(inputNumber.equals("1")){
+            return RESTART_CODE;
+        }
+        if(inputNumber.equals("2")) {
+            return EXIT_CODE;
+        }
+        throw new IllegalArgumentException("1 또는 2를 입력해주세요");
     };
 }

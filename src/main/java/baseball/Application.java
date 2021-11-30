@@ -9,7 +9,7 @@ public class Application {
         while(true){
             List<Integer> numberList = GameHelper.generateNumbers();
             GameHelper.play(numberList);
-            playingStatus++;
+            playingStatus = GameHelper.isContinue();
             if(playingStatus==2){
                 break;
             }
