@@ -17,11 +17,7 @@ public class Balls {
 		this.list = convertNumbersToBalls(list);
 	}
 
-	public List<Ball> getList() {
-		return list;
-	}
-
-	public static List<Ball> convertNumbersToBalls(List<Integer> numbers) {
+	private static List<Ball> convertNumbersToBalls(List<Integer> numbers) {
 		List<Ball> result = new ArrayList<>();
 		for (int number : numbers) {
 			result.add(new Ball(number));
@@ -41,4 +37,9 @@ public class Balls {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public List<Ball> getList() {
+		return list;
+	}
+
 }

@@ -16,9 +16,9 @@ public class Application {
 		while (game.isPlay()) {
 			// 사용자 입력
 			View.input();
-			String input = Console.readLine();
-			System.out.println(input);
-			Balls user = new Balls(convertStringToNumberList(input));
+			Balls user = new Balls(convertStringToNumberList(
+				Console.readLine())
+			);
 			// 힌트 출력
 			Hint hint = game.compare(user);
 			View.hint(hint);

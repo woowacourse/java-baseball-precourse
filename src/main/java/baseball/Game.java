@@ -26,7 +26,6 @@ public class Game {
 		validateInput(input);
 		if (input.equals(END)) {
 			isPlay = false;
-			return;
 		}
 	}
 

@@ -15,8 +15,7 @@ public class BallsTest {
 	@DisplayName("숫자 리스트를 Ball 리스트로 변환")
 	@Test
 	void convertNumbersToBalls() {
-		List<Integer> numbers = Arrays.asList(1, 2, 3);
-		Balls actual = new Balls(numbers);
+		Balls actual = new Balls(Arrays.asList(1, 2, 3));
 		List<Ball> expected = new ArrayList<>();
 		expected.add(new Ball(1));
 		expected.add(new Ball(2));
