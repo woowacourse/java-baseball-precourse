@@ -11,6 +11,6 @@ public class Application {
         do {
             ArrayList<String> randomNumber = Computer.makeRandom();
             baseBallGame.start(randomNumber);
-        } while(baseBallGame.restart());
+        } while (baseBallGame.restart());
     }
 }

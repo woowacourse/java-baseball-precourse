@@ -10,7 +10,7 @@ public class Computer {
     public static ArrayList<String> makeRandom() {
         ArrayList<String> numbers = new ArrayList<>();
 
-        while(true) {
+        while (true) {
             String number = String.valueOf(Randoms.pickNumberInRange(1, 9));
 
             if (!numbers.contains(number)) {

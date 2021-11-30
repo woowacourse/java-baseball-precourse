@@ -20,11 +20,11 @@ public class BaseBallGame {
     public void validate(String input) {
         HashSet<Character> storeNumber = new HashSet<>();
 
-        if(input.length() != INPUT_SIZE_LIMIT) {
+        if (input.length() != INPUT_SIZE_LIMIT) {
             throw new IllegalArgumentException();
         }
 
-        for(int i = 0; i < input.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {
             if (storeNumber.contains(input.charAt(i))) {
                 throw new IllegalArgumentException();
             }
@@ -49,7 +49,7 @@ public class BaseBallGame {
         OutputView outputView = new OutputView(point.getStrike(), point.getBall(), randomNumber);
         System.out.println(outputView.display());
 
-        if(point.getStrike() != STRIKE) {
+        if (point.getStrike() != STRIKE) {
             start(randomNumber);
         }
     }
@@ -58,10 +58,10 @@ public class BaseBallGame {
         int ballCount = 0;
         int strikeCount = 0;
 
-        for(int i = 0; i < input.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {
             if (randomNumber.get(i).equals(String.valueOf(input.charAt(i)))) {
                 strikeCount ++;
-            } else if(randomNumber.contains(String.valueOf(input.charAt(i)))) {
+            } else if (randomNumber.contains(String.valueOf(input.charAt(i)))) {
                 ballCount ++;
             }
         }
@@ -72,9 +72,9 @@ public class BaseBallGame {
         System.out.println(RESTART_MESSAGE);
         input = Console.readLine();
 
-        if(input.equals(START)) {
+        if (input.equals(START)) {
             return true;
-        } else if(input.equals(END)) {
+        } else if (input.equals(END)) {
             System.out.println(END_MESSAGE);
             return false;
         } else {
