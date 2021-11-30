@@ -15,7 +15,7 @@ public class Player {
 	private static List<Integer> inputNumbers;
 
 	public static List<Integer> getNumber() {
-		System.out.println("숫자를 입력해주세요 : ");
+		System.out.print("숫자를 입력해주세요 : ");
 		String input = Console.readLine();
 		validateInput(input);
 		inputNumbers = convertStringToIntegerList(input);
