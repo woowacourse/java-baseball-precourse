@@ -1,6 +1,6 @@
-package baseball;
+package baseball.model;
 
-import baseball.modules.RandomNumberPicker;
+import baseball.utils.RandomNumberPicker;
 
 public class Computer {
 

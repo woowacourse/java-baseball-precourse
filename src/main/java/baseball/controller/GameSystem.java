@@ -1,6 +1,8 @@
-package baseball;
+package baseball.controller;
 
-import baseball.modules.ResultCalculator;
+import baseball.model.Computer;
+import baseball.model.User;
+import baseball.utils.ResultCalculator;
 import baseball.view.ResultView;
 
 public class GameSystem {

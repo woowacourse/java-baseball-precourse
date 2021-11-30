@@ -1,6 +1,6 @@
-package baseball;
+package baseball.model;
 
-import baseball.modules.InputValidator;
+import baseball.utils.InputValidator;
 import baseball.view.InputView;
 
 public class User {
