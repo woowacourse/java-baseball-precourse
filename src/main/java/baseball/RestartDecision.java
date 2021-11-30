@@ -17,7 +17,7 @@ public enum RestartDecision {
 		if (decisionNumber == END.decisionNumber) {
 			return END;
 		}
-		throw new IllegalArgumentException("입력은 1 혹은 2 여야 합니다.");
+		throw new IllegalArgumentException("입력은 1혹은 2여야 합니다.");
 	}
 
 	public boolean isRestart() {

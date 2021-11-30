@@ -7,11 +7,14 @@ import java.util.List;
 
 public class GameInput {
 
+	private static final String DECIDE_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+	private static final String BALL_PREDICT_MESSAGE = "숫자를 입력해주세요 : ";
+
 	private GameInput() {
 	}
 
 	public static RestartDecision readRestartDecision() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		System.out.println(DECIDE_RESTART_MESSAGE);
 		try {
 			return RestartDecision.from(readInt());
 		} catch (Exception e) {
@@ -20,7 +23,7 @@ public class GameInput {
 	}
 
 	public static Balls readBalls() {
-		System.out.print("숫자를 입력해주세요 : ");
+		System.out.print(BALL_PREDICT_MESSAGE);
 		try {
 			return new Balls(readBallList());
 		} catch (Exception e) {
