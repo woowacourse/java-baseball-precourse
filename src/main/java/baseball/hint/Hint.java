@@ -52,4 +52,26 @@ public class Hint {
             return true;
         return false;
     }
+
+    public boolean isEnd() {
+        if(strike == 3)
+            return true;
+        return false;
+    }
+
+    // ball이 있는지 확인
+    public boolean hasBall() {
+        return ball > 0;
+    }
+    // strike가 있는지 확인
+    public boolean hasStrike() {
+        return strike > 0;
+    }
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
 }

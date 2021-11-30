@@ -19,17 +19,35 @@ public class Player implements Valid {
 
     // 사용자로부터 숫자를 입력받는다.
     // 예외 처리 진행해야함.
-    public int read() {
+    public int playRead() {
         // IO 처리 추가 후에 구현
         String input = Console.readLine();
         return filtrate(input);
     }
 
-    public int filtrate(String input) {
-        // 예외 (1) : 숫자가 아닌 입력값이 들어온 경우
+    public int endRead() {
+        String input = Console.readLine();
+        catchNotDigit(input);
+        int i = Integer.parseInt(input);
+        if(notOneOrTwo(i))
+            throw new IllegalArgumentException(ErrorCode.NOT_ONE_OR_TWO.getContent());
+        return i;
+    }
+
+    private void catchNotDigit(String input) {
         for(char c : input.toCharArray()) {
             distinguish(c);
         }
+    }
+
+    private boolean notOneOrTwo(int input) {
+        if(input != 1 && input != 2)
+            return true;
+        return false;
+    }
+    public int filtrate(String input) {
+        // 예외 (1) : 숫자가 아닌 입력값이 들어온 경우
+        catchNotDigit(input);
 
         int i = Integer.parseInt(input);
         // 예외 (2) : 세자리의 수가 아닌 경우

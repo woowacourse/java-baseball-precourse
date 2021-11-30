@@ -34,6 +34,8 @@ public class Game {
             player.setPitchSet(getPitchSet(target));
             hint = new Hint(computer.getPitchSet(), player.getPitchSet());
 
+            print(hint);
+            finished = checkEnd(hint.isEnd());
         }
     }
 
@@ -50,4 +52,46 @@ public class Game {
 
         return pitchSet;
     }
+
+    private void print(Hint hint) {
+        // 볼이 있으면 우선 출력해준다. ex) 1볼
+        if(hint.hasBall()) {
+            System.out.print(hint.getBall() + PrintValue.BALL.getContent() + " ");
+
+            // 스트라이크가 있으면 출력해준다. ex) 1볼 1스트라이크
+            if (hint.hasStrike())
+                System.out.print(hint.getStrike() + PrintValue.STRIKE.getContent());
+
+            System.out.println();
+            return ;
+        }
+
+        // 스트라이크가 있으면 출력해준다. ex) 1스트라이크
+        if (hint.hasStrike()) {
+            System.out.println(hint.getStrike() + PrintValue.STRIKE.getContent());
+            return ;
+        }
+
+        System.out.println(PrintValue.NOTHING.getContent());
+    }
+
+
+    private boolean checkEnd(boolean result) {
+        if(result) {
+            System.out.print(PrintValue.FINISH.getContent());
+            return askEnd();
+        }
+        return false;
+    }
+
+    private boolean askEnd() {
+        System.out.println(PrintValue.ASK_END.getContent());
+        int i = player.endRead();
+        if(i == 2) {
+            playing = false;
+        }
+        return true;
+
+    }
+
 }
