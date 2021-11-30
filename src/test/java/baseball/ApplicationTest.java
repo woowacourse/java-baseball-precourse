@@ -64,7 +64,7 @@ class ApplicationTest extends NsTest {
         int count = 0;
 
         for (int i = target.getRangeBegin(); i <= target.getRangeEnd(); i++) {
-            if (target.isContained((char)(i + '0')) > -1) {
+            if (target.find((char)(i + '0')) > -1) {
                 count++;
             }
         }

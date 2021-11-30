@@ -32,7 +32,7 @@ public class Target {
         int strike = 0;
 
         for (int u = 0; u < length; u++) {
-            int index = isContained(userNumber.charAt(u));
+            int index = find(userNumber.charAt(u));
 
             if (index < 0) {
                 //index가 -1인 경우는 숫자가 없는 경우이다.
@@ -45,7 +45,7 @@ public class Target {
         return new int[] {ball, strike};
     }
 
-    public int isContained(char ch) {
+    public int find(char ch) {
         for (int i = 0; i < length; i++) {
             if (targetNumber.charAt(i) == ch) {
                 return i;

@@ -39,14 +39,14 @@ public class Application {
         }
     }
 
-    static void printResultOfInput(int[] ballsAndStrikes) {
-        if (ballsAndStrikes[Target.BALL] > 0) {
-            System.out.print(ballsAndStrikes[Target.BALL] + "볼 ");
+    static void printResultOfInput(int[] result) {
+        if (result[Target.BALL] > 0) {
+            System.out.print(result[Target.BALL] + "볼 ");
         }
-        if (ballsAndStrikes[Target.STRIKE] > 0) {
-            System.out.print(ballsAndStrikes[Target.STRIKE] + "스트라이크");
+        if (result[Target.STRIKE] > 0) {
+            System.out.print(result[Target.STRIKE] + "스트라이크");
         }
-        if (ballsAndStrikes[Target.BALL] == 0 && ballsAndStrikes[Target.STRIKE] == 0) {
+        if (result[Target.BALL] == 0 && result[Target.STRIKE] == 0) {
             System.out.print("낫싱");
         }
         System.out.println();
