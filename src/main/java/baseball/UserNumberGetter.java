@@ -7,7 +7,7 @@ public class UserNumberGetter {
 	private static final int MIN_NUMBER = 1;
 	private static final int MAX_NUMBER = 9;
 
-	private int[] userNumber = {0,};
+	private int[] userNumber = new int[3];
 
 	UserNumberGetter() {}
 
@@ -64,7 +64,7 @@ public class UserNumberGetter {
 		for(int i = 0; i < userStringNumber.length(); i++){
 			char checkChar = userStringNumber.charAt(i);
 
-			if(checkChar<'1'||checkChar>'9'){
+			if(checkChar<'1' || checkChar>'9'){
 				return false;
 			}
 		}

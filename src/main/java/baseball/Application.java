@@ -9,13 +9,16 @@ public class Application {
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
 
-        RandomNumGenerator randomNumber = new RandomNumGenerator();
-        int[] computerNumber = randomNumber.getNumber();
+
 
         boolean gameOver = false;
         int playBall = 1;
 
         while(playBall != gameSet) {
+
+            RandomNumGenerator randomNumber = new RandomNumGenerator();
+            int[] computerNumber = randomNumber.getNumber();
+
             while (!gameOver) {
 
                 UserNumberGetter userNumbergetter = new UserNumberGetter();
@@ -27,19 +30,21 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            String userGameInput = Console.readLine();
+            String userGameInput = Console.readLine();;
+            System.out.println(userGameInput);
+
 
             if(userGameInput.length() != 1){
                 throw new IllegalArgumentException();
             }
 
-            playBall = userGameInput.charAt(1);
+            playBall = Character.getNumericValue(userGameInput.charAt(0));
 
-            if(playBall != 1 && playBall != 2){
+            if((playBall != 1) && (playBall != 2)){
                 throw new IllegalArgumentException();
             }
 
-
+            gameOver = false;
         }
 
 
