@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class Game {
 
     Computer computer;
@@ -14,5 +16,8 @@ public class Game {
 
         System.out.print("숫자를 입력해주세요 : ");
         String[] inputFromUser = player.guessDeck();
+
+        Validator validator = new Validator();
+        List<Integer> playerExpectDeck = validator.validatePlayerInput(inputFromUser);
     }
 }
