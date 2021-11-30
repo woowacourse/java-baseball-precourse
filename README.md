@@ -27,10 +27,10 @@
     1. 게임 시작 기능
 
     2. 게임 종료 기능
-      2-1. 비정상 게임 종료
-            -> IllegalArgumentException 발생 후 종료
 
     3. 게임 재시작 / 종료 기능
+        3-1. 비정상 게임 종료
+            -> IllegalArgumentException 발생 후 종료
 
     4. 게임 진행 기능
 
