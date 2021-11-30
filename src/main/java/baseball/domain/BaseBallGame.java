@@ -3,7 +3,7 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import baseball.vo.Point;
+import baseball.domain.vo.Point;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 

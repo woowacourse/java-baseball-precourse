@@ -6,7 +6,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import baseball.vo.Point;
+import baseball.domain.vo.Point;
 import baseball.view.OutputView;
 
 class BaseBallGameTest {

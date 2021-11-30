@@ -1,4 +1,4 @@
-package baseball.vo;
+package baseball.domain.vo;
 
 public class Point {
     private int strike;
