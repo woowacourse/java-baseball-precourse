@@ -7,6 +7,7 @@ import baseball.pitch.Pitch;
 import baseball.player.Player;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Game {
@@ -18,29 +19,21 @@ public class Game {
     public void play() {
         while(playing) {
             computer = new Computer();
-            doAsk(computer);
+            // 생성된 난수 리스트를 통해 컴퓨터의 Pitch 집합을 생성한다.
+            computer.setPitchSet(getPitchSet(computer.getNumberList()));
+            ask();
         }
     }
 
-    private void doAsk(Computer computer) {
-        if(computer.duplicate(computer.getNumber()))
-            return ;
-        if(computer.hasZero(computer.getNumber()))
-            return ;
-        if(!computer.inRange(computer.getNumber()))
-            return ;
-        computer.setPitchSet(getPitchSet(computer.getNumber()));
-        ask();
-    }
     private void ask() {
         player = new Player();
         boolean finished = false;
-
         while(!finished) {
             // try catch 해야할지?
             System.out.print(PrintValue.START.getContent());
-            int target = player.playRead();
-            player.setPitchSet(getPitchSet(target));
+            player.input();
+            // 사용자로부터 입력받은 문자(숫자)를 통해 Pitch 집합을 생성한다.
+            player.setPitchSet(getPitchSet(player.getNumberList()));
             hint = new Hint(computer.getPitchSet(), player.getPitchSet());
 
             print(hint);
@@ -48,13 +41,13 @@ public class Game {
         }
     }
 
-    public Set<Pitch> getPitchSet(String s) {
+    public Set<Pitch> getPitchSet(List<Integer> list) {
         // 각 자리수별 만들 Pitch를 담을 집합 자료구조이다.
         Set<Pitch> pitchSet = new HashSet<>();
 
         // 각 자리 index를 돌면서 Pitch를 생성하고, 집합 자료구조에 넣어준다.
         for(int i=0; i<3; i++) {
-            pitchSet.add(new Pitch(i + 1, s.toCharArray()[i]));
+            pitchSet.add(new Pitch(i + 1, list.get(i)));
         }
 
         return pitchSet;

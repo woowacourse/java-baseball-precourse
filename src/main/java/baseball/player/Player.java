@@ -5,6 +5,7 @@ import baseball.pitch.Pitch;
 import baseball.valid.Valid;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -12,15 +13,19 @@ public class Player implements Valid {
     private final List<Integer> numberList;
 
     public Player() {
-        numberList = fillList(playRead());
+        numberList = new ArrayList<>();
     }
 
-    private List<Integer> fillList(String s) {
+    public String input() {
+        return fillList(playRead());
+    }
+
+    private String fillList(String s) {
         // 사용자로부터 입력받은 3자리수를 각 자리수 별로 리스트에 넣어준다.
         for(char c : s.toCharArray()) {
             numberList.add(c - '0');
         }
-        return numberList;
+        return s;
     }
 
     private Set<Pitch> pitchSet;
@@ -85,5 +90,9 @@ public class Player implements Valid {
     private void distinguish(char c) {
         if(!Character.isDigit(c))
             throw new IllegalArgumentException(ErrorCode.FOUND_NOT_DIGIT.getContent());
+    }
+
+    public List<Integer> getNumberList() {
+        return numberList;
     }
 }
