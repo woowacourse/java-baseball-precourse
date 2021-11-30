@@ -28,10 +28,10 @@ public class Application {
 		private void startGame() {
 			answer = new ArrayList<>();
 			for (int i = 0; i < 3; i++) {
-				int randomNum = Randoms.pickNumberInRange(1, 9);
-				while (checkIsDuplicated(randomNum)) {
+				int randomNum;
+				do {
 					randomNum = Randoms.pickNumberInRange(1, 9);
-				}
+				} while (checkIsDuplicated(randomNum));
 				answer.add(randomNum);
 			}
 		}
@@ -45,7 +45,7 @@ public class Application {
 			return output;
 		}
 
-		private void validateInput(List<Integer> lst) throws IllegalArgumentException {
+		private void validateInput(List<Integer> lst) {
 			if (lst.size() != 3) {
 				throw new IllegalArgumentException();
 			}
@@ -107,7 +107,7 @@ public class Application {
 			}
 		}
 
-		private void restartOrExit() throws IllegalArgumentException {
+		private void restartOrExit() {
 			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 			String reply = Console.readLine();
 			if (reply.equals("1")) {
