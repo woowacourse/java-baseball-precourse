@@ -11,7 +11,7 @@ import model.constants.StrikeStatus;
 
 public class BaseBallGame implements GameUI {
 	private GameDataInterface gameDataInterface;
-	private BaseBallAnswer baseBallAnswer = new BaseBallAnswer();
+	private BaseBallAnswer baseBallAnswer;
 	private CountingStatus currentCount;
 	public BaseBallGame() {
 		gameDataInterface = new GameData();
@@ -19,6 +19,7 @@ public class BaseBallGame implements GameUI {
 
 	@Override
 	public void startGame() {
+		baseBallAnswer = new BaseBallAnswer();
 		baseBallAnswer.makeAnswer();
 		while (true) {
 			if (gameDataInterface.getGameMode() == GameMode.progressing) {
@@ -29,8 +30,11 @@ public class BaseBallGame implements GameUI {
 			if (gameDataInterface.getGameMode() == GameMode.askingMode) {
 				printEndMessage();
 				receiveUserMode();
-				baseBallAnswer.makeAnswer();
+				if(gameDataInterface.getGameMode() == GameMode.ending) break;
+				//baseBallAnswer.makeAnswer();
 				currentCount = new CountingStatus();
+				baseBallAnswer.cleanAnswerArray();
+				baseBallAnswer.makeAnswer();
 			}
 
 			if (gameDataInterface.getGameMode() == GameMode.ending) {

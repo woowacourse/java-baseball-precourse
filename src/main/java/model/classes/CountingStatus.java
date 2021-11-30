@@ -3,7 +3,6 @@ package model.classes;
 import static model.constants.ConstantsForGame.*;
 
 import model.constants.BallStatus;
-import model.constants.GameMode;
 import model.constants.StrikeStatus;
 
 public class CountingStatus {
@@ -41,7 +40,7 @@ public class CountingStatus {
 
 	private String toStringFromCountingStatus() {
 		if (ballStatus == BallStatus.zero && strikeStatus == StrikeStatus.zero) {
-			return NOTHING_STATMENT;
+			return NOTHING_STATEMENT;
 		} else if(ballStatus == BallStatus.zero) {
 			return "" + toIntByStrikeStatus() + STRIKE_STATEMENT;
 		} else if (strikeStatus == StrikeStatus.zero) {

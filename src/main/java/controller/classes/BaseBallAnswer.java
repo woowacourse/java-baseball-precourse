@@ -18,15 +18,43 @@ public class BaseBallAnswer {
 
 	public BaseBallAnswer() {
 		initCheckingList();
+		cleanAnswerArray();
+	}
+
+	public void cleanAnswerArray() {
+		// for (int i = 0; i < answerArray.size(); i++) {
+		// 	answerArray.remove(i);
+		// }
+		answerArray = new ArrayList<>(3);
 	}
 
 	public void makeAnswer() {
-		answerArray = pickUniqueNumbersInRange(1, 9, 3);
+		int[] checkDuplication = {0,0,0,0,0,0,0,0,0,0};
+		int duplicationCount = 0;
+
+		while(duplicationCount < 3) {
+			int tmpRandom = pickNumberInRange(1,9);
+			if(checkDuplication[tmpRandom] == 0) {
+				makeAnswerArray(tmpRandom);
+				//answerArray.add(tmpRandom);
+				duplicationCount++;
+				checkDuplication[tmpRandom] = 1;
+			}
+		}
+		//answerArray = pickUniqueNumbersInRange(1, 9, 3);
 		initCheckingList();
 		refreshAnswer();
-		//System.out.println(answerArray);
+		System.out.println(answerArray);
 	}
-
+	private void makeAnswerArray(int randomNumber) {
+		answerArray.add(randomNumber);
+		if (answerArray.size() > 3) {
+			for(int i = 0; i < answerArray.size(); i++) {
+				answerArray.remove(i);
+			}
+			answerArray.add(randomNumber);
+		}
+	}
 	public String getAnswer() {
 		return answer;
 	}
