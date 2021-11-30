@@ -20,8 +20,8 @@ public class GameResult {
 		setResult();
 	}
 
-	public boolean endGame() {
-		return strikeScore == END;
+	public boolean compareNumber() {
+		return strikeScore != END;
 	}
 
 	public void setResult() {

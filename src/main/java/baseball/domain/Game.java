@@ -23,7 +23,7 @@ public class Game {
 		this.gameProgress = gameProgressParsed;
 	}
 
-	public boolean proceedGame() {
+	public boolean continueGame() {
 		return this.gameProgress == GAME_RUN;
 	}
 }
