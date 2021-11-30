@@ -32,7 +32,7 @@ public class NumberBaseballRound {
 	}
 
 	private Hint predictByUserInput(NumberBallSet randomNumbers) {
-		return Hint.compareNumberBallSets(randomNumbers, generateUserNumbers());
+		return Hint.generateHintByComparison(randomNumbers, generateUserNumbers());
 	}
 
 	private NumberBallSet generateUserNumbers() {

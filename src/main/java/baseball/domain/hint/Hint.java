@@ -15,10 +15,9 @@ public class Hint {
 		this.collect = collect;
 	}
 
-	public static Hint compareNumberBallSets(NumberBallSet users, NumberBallSet randoms) {
+	public static Hint generateHintByComparison(NumberBallSet users, NumberBallSet randoms) {
 		Map<HintType, Integer> collect = createEmptyMap();
-		Map<HintType, Integer> compare = users.compare(randoms);
-		compare.forEach((k, v) -> collect.merge(k, v, Integer::sum));
+		users.compare(randoms).forEach((k, v) -> collect.merge(k, v, Integer::sum));
 		return new Hint(collect);
 	}
 

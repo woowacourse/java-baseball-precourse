@@ -15,7 +15,7 @@ class HintTest {
 		NumberBallSet numberBallSetA = NumberBallSet.generateFromInput("123");
 		NumberBallSet numberBallSetB = NumberBallSet.generateFromInput("456");
 		// when
-		Hint hint = Hint.compareNumberBallSets(numberBallSetA, numberBallSetB);
+		Hint hint = Hint.generateHintByComparison(numberBallSetA, numberBallSetB);
 		// then
 		Assertions.assertFalse(hint.isAnswer());
 		Assertions.assertEquals(hint.giveHint(), "낫싱");
@@ -28,7 +28,7 @@ class HintTest {
 		NumberBallSet numberBallSetA = NumberBallSet.generateFromInput("123");
 		NumberBallSet numberBallSetB = NumberBallSet.generateFromInput("156");
 		// when
-		Hint hint = Hint.compareNumberBallSets(numberBallSetA, numberBallSetB);
+		Hint hint = Hint.generateHintByComparison(numberBallSetA, numberBallSetB);
 		// then
 		Assertions.assertFalse(hint.isAnswer());
 		Assertions.assertEquals(hint.giveHint(), "1스트라이크");
@@ -41,7 +41,7 @@ class HintTest {
 		NumberBallSet numberBallSetA = NumberBallSet.generateFromInput("123");
 		NumberBallSet numberBallSetB = NumberBallSet.generateFromInput("451");
 		// when
-		Hint hint = Hint.compareNumberBallSets(numberBallSetA, numberBallSetB);
+		Hint hint = Hint.generateHintByComparison(numberBallSetA, numberBallSetB);
 		// then
 		Assertions.assertFalse(hint.isAnswer());
 		Assertions.assertEquals(hint.giveHint(), "1볼");
@@ -54,7 +54,7 @@ class HintTest {
 		NumberBallSet numberBallSetA = NumberBallSet.generateFromInput("123");
 		NumberBallSet numberBallSetB = NumberBallSet.generateFromInput("421");
 		// when
-		Hint hint = Hint.compareNumberBallSets(numberBallSetA, numberBallSetB);
+		Hint hint = Hint.generateHintByComparison(numberBallSetA, numberBallSetB);
 		// then
 		Assertions.assertFalse(hint.isAnswer());
 		Assertions.assertEquals(hint.giveHint(), "1볼 1스트라이크");
@@ -67,7 +67,7 @@ class HintTest {
 		NumberBallSet numberBallSetA = NumberBallSet.generateFromInput("123");
 		NumberBallSet numberBallSetB = NumberBallSet.generateFromInput("123");
 		// when
-		Hint hint = Hint.compareNumberBallSets(numberBallSetA, numberBallSetB);
+		Hint hint = Hint.generateHintByComparison(numberBallSetA, numberBallSetB);
 		// then
 		Assertions.assertTrue(hint.isAnswer());
 		Assertions.assertEquals(hint.giveHint(), "3스트라이크");
