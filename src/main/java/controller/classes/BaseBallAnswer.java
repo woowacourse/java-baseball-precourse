@@ -24,6 +24,7 @@ public class BaseBallAnswer {
 		answerArray = pickUniqueNumbersInRange(1, 9, 3);
 		initCheckingList();
 		refreshAnswer();
+		//System.out.println(answerArray);
 	}
 
 	public String getAnswer() {
@@ -33,7 +34,7 @@ public class BaseBallAnswer {
 	public CountingStatus calculateStatus(String userAnswer) {
 		int ballCount = 0;
 		int strikeCount = 0;
-		int[] userCheckingArray = getArraryFromString(userAnswer);
+		int[] userCheckingArray = getArrayFromString(userAnswer);
 		for (int i = 0; i < userCheckingArray.length; i++) {
 			if (checkingList[userCheckingArray[i]] == 0) {
 				continue;
@@ -46,7 +47,7 @@ public class BaseBallAnswer {
 		return new CountingStatus(getBallsFromInt(ballCount), getStrikesFromInt(strikeCount));
 	}
 
-	private int[] getArraryFromString(String formatString) {
+	private int[] getArrayFromString(String formatString) {
 		int[] array = Arrays.stream(formatString.substring(0, formatString.length()).split("")).map(String::trim).mapToInt(Integer::parseInt).toArray();
 		return array;
 	}

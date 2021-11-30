@@ -12,6 +12,16 @@ public class GameData implements GameDataInterface {
 	private String answerOfComputer;
 
 	@Override
+	public GameMode getGameMode() {
+		return gameMode;
+	}
+
+	@Override
+	public void setGameMode(GameMode gameMode) {
+		this.gameMode = gameMode;
+	}
+
+	@Override
 	public void inputUserAnswer() {
 		answerOfUserInput = readLine();
 		if (answerOfUserInput.length() != 3) {

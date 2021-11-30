@@ -26,6 +26,14 @@ public class CountingStatus {
 		this.strikeStatus = strikeStatus;
 	}
 
+	public BallStatus getBallStatus() {
+		return ballStatus;
+	}
+
+	public StrikeStatus getStrikeStatus() {
+		return strikeStatus;
+	}
+
 	@Override
 	public String toString() {
 		return toStringFromCountingStatus();
@@ -34,6 +42,10 @@ public class CountingStatus {
 	private String toStringFromCountingStatus() {
 		if (ballStatus == BallStatus.zero && strikeStatus == StrikeStatus.zero) {
 			return NOTHING_STATMENT;
+		} else if(ballStatus == BallStatus.zero) {
+			return "" + toIntByStrikeStatus() + STRIKE_STATEMENT;
+		} else if (strikeStatus == StrikeStatus.zero) {
+			return "" + toIntByBallStatus() + BALL_STATEMENT;
 		}
 		return "" +
 			toIntByBallStatus() +
