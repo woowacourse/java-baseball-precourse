@@ -14,27 +14,33 @@ public class Hint {
 	private int ballCounts;
 
 	public Hint(int[] answer, int[] randomNumbers) {
-		createStrikeHint(answer, randomNumbers);
-		createBallHint(answer, randomNumbers);
+		initiateCount();
+		createHint(answer, randomNumbers);
 	}
 
-	private void createStrikeHint(int[] answer, int[] randomNumbers) {
-		strikeCounts = 0;
+	private void initiateCount() {
+		strikeCounts = ZERO_COUNT;
+		ballCounts = ZERO_COUNT;
+	}
+
+	private void createHint(int[] answer, int[] randomNumbers) {
 		for (int i = 0; i < BASEBALL_GAME_BALL_COUNT; i++) {
-			if (answer[i] == randomNumbers[i]) {
-				strikeCounts++;
-			}
+			isStrikeCounts(i, answer, randomNumbers);
+			isBallCounts(i, answer, randomNumbers);
 		}
 	}
 
-	private void createBallHint(int[] answer, int[] randomNumbers) {
-		ballCounts = 0;
-		for (int i = 0; i < BASEBALL_GAME_BALL_COUNT; i++) {
-			int number = answer[i];
-			if (Arrays.stream(randomNumbers).anyMatch(randomNumber -> randomNumber == number)
-				&& randomNumbers[i] != number) {
-				ballCounts++;
-			}
+	private void isStrikeCounts(int i, int[] answer, int[] randomNumbers) {
+		if (answer[i] == randomNumbers[i]) {
+			strikeCounts++;
+		}
+	}
+
+	private void isBallCounts(int i, int[] answer, int[] randomNumbers) {
+		int number = answer[i];
+		if (Arrays.stream(randomNumbers).anyMatch(randomNumber -> randomNumber == number)
+			&& randomNumbers[i] != number) {
+			ballCounts++;
 		}
 	}
 
