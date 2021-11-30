@@ -8,7 +8,7 @@ import baseball.utils.AnswerGenerator;
 
 public class BaseBallGame {
 	private boolean running;
-	List<Integer> answer;
+	Answer answer;
 
 	public BaseBallGame() {
 		this.running = true;
@@ -28,13 +28,13 @@ public class BaseBallGame {
 		}
 
 		System.out.println(answer.toString());
-		
+
 		Report report = new Report(guessNumbers);
 		return report.getReport();
 
 	}
 
-	private GuessNumbers createGuessNumbers(String guess, List<Integer> answer) {
+	private GuessNumbers createGuessNumbers(String guess, Answer answer) {
 		List<GuessNumber> guessNumbers = new ArrayList<>();
 
 		for (int i = 0; i < guess.length(); i++) {

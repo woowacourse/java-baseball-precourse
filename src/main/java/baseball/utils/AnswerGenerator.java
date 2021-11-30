@@ -7,16 +7,26 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import baseball.model.Answer;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class AnswerGenerator {
-	public static List<Integer> generate() {
-		Set<Integer> answer = new LinkedHashSet<>();
-		while (answer.size() < NUMBER_LENGTH) {
-			int raandomNumber = Randoms.pickNumberInRange(1, 9);
-			answer.add(raandomNumber);
+	public static Answer generate() {
+		return createAnswer();
+	}
+
+	private static Answer createAnswer() {
+		return new Answer(generateNonDuplicateNumbers());
+	}
+
+	private static List<Integer> generateNonDuplicateNumbers() {
+		Set<Integer> randomNumbers = new LinkedHashSet<>();
+		while (randomNumbers.size() < ANSWER_LENGTH) {
+			int raandomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+			randomNumbers.add(raandomNumber);
 		}
-		return new ArrayList<>(answer);
+
+		return new ArrayList<>(randomNumbers);
 	}
 
 }

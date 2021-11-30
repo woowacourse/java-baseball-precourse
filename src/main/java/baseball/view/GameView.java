@@ -11,8 +11,7 @@ public class GameView {
 
 	public String askGuess() {
 		System.out.print(ASK_GUESS_MESSAGE);
-		String input = Console.readLine();
-		return input;
+		return Console.readLine();
 	}
 
 	public void printResult(String report) {
@@ -22,8 +21,7 @@ public class GameView {
 
 	public String askRestart() {
 		System.out.println(ASK_RESTART_MESSAGE);
-		String input = Console.readLine();
-		return input;
+		return Console.readLine();
 	}
 
 }
