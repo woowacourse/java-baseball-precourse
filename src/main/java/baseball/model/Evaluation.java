@@ -1,12 +1,20 @@
 package baseball.model;
 
+import static baseball.constants.GameConfig.*;
+
 import java.util.List;
 
-public class GuessNumbers {
+public class Evaluation {
 	private List<GuessNumber> guessNumbers;
+	private Answer answer;
 
-	public GuessNumbers(List<GuessNumber> guessNumbers) {
+	public Evaluation(List<GuessNumber> guessNumbers, Answer answer) {
 		this.guessNumbers = guessNumbers;
+		this.answer = answer;
+	}
+
+	public boolean isCorrect() {
+		return countStrike() == MAX_STRIKE;
 	}
 
 	public boolean isNothing() {
@@ -24,7 +32,7 @@ public class GuessNumbers {
 	public int countStrike() {
 		int count = 0;
 		for (GuessNumber guessNumber : guessNumbers) {
-			if (guessNumber.isStrike()) {
+			if (guessNumber.isStrike(answer)) {
 				count++;
 			}
 		}
@@ -34,7 +42,7 @@ public class GuessNumbers {
 	public int countBall() {
 		int count = 0;
 		for (GuessNumber guessNumber : guessNumbers) {
-			if (guessNumber.isBall()) {
+			if (guessNumber.isBall(answer)) {
 				count++;
 			}
 		}

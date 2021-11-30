@@ -3,20 +3,18 @@ package baseball.model;
 public class GuessNumber {
 	private int idx;
 	private int val;
-	private String result;
 
-	public GuessNumber(int idx, int val, String result) {
+	public GuessNumber(int idx, int val) {
 		this.idx = idx;
 		this.val = val;
-		this.result = result;
 	}
 
-	public boolean isStrike() {
-		return result.equals("STRIKE");
+	public boolean isStrike(Answer answer) {
+		return answer.contains(val) && answer.indexOf(val) == idx;
 	}
 
-	public boolean isBall() {
-		return result.equals("BALL");
+	public boolean isBall(Answer answer) {
+		return answer.contains(val) && answer.indexOf(val) != idx;
 	}
 
 }
