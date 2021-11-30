@@ -20,6 +20,21 @@ public class Computer {
 		}
 	}
 
+	public void printScore() {
+		if (this.strike == 0 && this.ball == 0) {
+			System.out.println(Constants.RESULT_NOTHING);
+		} else if (this.strike != 0 && this.ball == 0) {
+			System.out.println(this.strike + Constants.RESULT_STRIKE);
+			if (this.strike == Constants.DIGIT_LENGTH) {
+				System.out.println(Constants.RESULT_GAME_OVER);
+			}
+		} else if (this.strike == 0) {
+			System.out.println(this.ball + Constants.RESULT_BALL);
+		} else {
+			System.out.println(this.ball + Constants.RESULT_BALL + " " + this.strike + Constants.RESULT_STRIKE);
+		}
+	}
+
 	public void countScore(List<Integer> playerInput) {
 		countStrike(playerInput);
 		countBall(playerInput);
