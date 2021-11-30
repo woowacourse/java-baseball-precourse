@@ -20,8 +20,8 @@ class StartEndButtonTest {
         String tooLongInput = "12";
         setInput(tooLongInput);
         assertAll(
-                () ->  assertThat(tooLongInput.length()).isGreaterThan(NUMBER_OF_DIGITS_OF_START_END_BUTTON),
-                () ->  assertThatThrownBy(startEndButton::getInput).isInstanceOf(IllegalArgumentException.class)
+                () -> assertThat(tooLongInput.length()).isGreaterThan(NUMBER_OF_DIGITS_OF_START_END_BUTTON),
+                () -> assertThatThrownBy(startEndButton::getInput).isInstanceOf(IllegalArgumentException.class)
         );
     }
 
