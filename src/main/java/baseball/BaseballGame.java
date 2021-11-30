@@ -6,28 +6,39 @@ public class BaseballGame {
 
 	private String answer;
 	private String guessAnswer;
-	private boolean isGameOngoing;
+	private boolean onGoing;
 
 	BaseballGame() {
 		answer = "";
 		guessAnswer = "";
-		isGameOngoing = false;
 	}
 
-	public boolean playBaseballGameWithComputer(Player player) {
+	public void runBaseballGame(Player player) {
+		do {
+			playBaseballGameWithComputer(player);
+		} while (askPlayerContinueGame(player));
+		player.giveMessage(BaseballGameConstants.END_GAME_MESSAGE);
+	}
+
+	private void playBaseballGameWithComputer(Player player) {
 		makeRandomBaseballGameAnswer();
-		isGameOngoing = true;
-		while (!getBaseballGameHint().equals(BaseballGameConstants.END_CONDITION)) {
+		String hint;
+		do {
 			askBaseballGameAnswerToPlayer(player);
+			hint = getBaseballGameHint();
+			player.giveMessage(hint + "\n");
+		} while (!hint.equals(BaseballGameConstants.END_CONDITION));
+		player.giveMessage(BaseballGameConstants.GAME_SUCCESS_MESSAGE + " " + BaseballGameConstants.END_GAME_MESSAGE);
+	}
+
+	private void askBaseballGameAnswerToPlayer(Player player) throws IllegalArgumentException {
+		guessAnswer = player.askQuestionAndGetAnswer(BaseballGameConstants.QUESTION_ASK_ANSWER);
+		if (!checkBaseballGameAnswerFormatRules(guessAnswer)) {
+			throw new IllegalArgumentException();
 		}
-		isGameOngoing = false;
-		return askPlayerContinueGame(player);
 	}
 
 	private void makeRandomBaseballGameAnswer() {
-		if (isGameOngoing) {
-			return;
-		}
 		answer = "";
 		while (!checkBaseballGameAnswerFormatRules(answer)) {
 			answer = Integer.toString(camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(111, 999));
@@ -48,13 +59,6 @@ public class BaseballGame {
 			return strikeNum + "스트라이크";
 		}
 		return ballNum + "볼 " + strikeNum + "스트라이크";
-	}
-
-	private void askBaseballGameAnswerToPlayer(Player player) throws IllegalArgumentException {
-		guessAnswer = player.askQuestionAndGetAnswer(BaseballGameConstants.QUESTION_ASK_ANSWER);
-		if (!checkBaseballGameAnswerFormatRules(guessAnswer)) {
-			throw new IllegalArgumentException();
-		}
 	}
 
 	private boolean askPlayerContinueGame(Player player) throws IllegalArgumentException {
