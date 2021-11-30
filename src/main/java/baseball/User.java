@@ -34,12 +34,12 @@ public class User {
     }
 
     private void checkContainsZero(String input) {
-        if (ContainsZERO(input)) {
+        if (ContainsZero(input)) {
             throw new IllegalArgumentException(ERROR);
         }
     }
 
-    private boolean ContainsZERO(String input) {
+    private boolean ContainsZero(String input) {
 
         return input.contains(ZERO);
     }
