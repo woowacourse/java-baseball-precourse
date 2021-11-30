@@ -15,6 +15,19 @@ public class Player {
 		return Arrays.stream(playerInput.split("")).map(Integer::parseInt).collect(Collectors.toList());
 	}
 
+	public boolean wantRestart() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		int restartFlag = Integer.parseInt(Console.readLine());
+		validateRestartFlag(restartFlag);
+		return restartFlag == 1;
+	}
+
+	private void validateRestartFlag(int restartFlag) {
+		if (restartFlag != 1 && restartFlag != 2) {
+			throw new IllegalArgumentException("restart flag must be 1 or 2");
+		}
+	}
+
 	private void validateLength(String playerInput) {
 		if (playerInput.length() != 3) {
 			throw new IllegalArgumentException("length of player input must be 3");
