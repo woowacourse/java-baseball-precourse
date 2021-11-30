@@ -17,30 +17,30 @@ public class BaseBallGame {
     public final String END = "2";
     private String input;
 
-    public void validate(String input){
+    public void validate(String input) {
         HashSet<Character> storeNumber = new HashSet<>();
 
-        if(input.length() != INPUT_SIZE_LIMIT){
+        if(input.length() != INPUT_SIZE_LIMIT) {
             throw new IllegalArgumentException();
         }
 
         for(int i = 0; i < input.length(); i++) {
-            if (storeNumber.contains(input.charAt(i))){
+            if (storeNumber.contains(input.charAt(i))) {
                 throw new IllegalArgumentException();
             }
             storeNumber.add(input.charAt(i));
 
-            if (!Character.isDigit(input.charAt(i))){
+            if (!Character.isDigit(input.charAt(i))) {
                 throw new IllegalArgumentException();
             }
 
-            if (input.charAt(i) == '0'){
+            if (input.charAt(i) == '0') {
                 throw new IllegalArgumentException();
             }
         }
     }
 
-    public void start(ArrayList<String> randomNumber){
+    public void start(ArrayList<String> randomNumber) {
         System.out.print(INPUT_MESSAGE);
         input = Console.readLine();
 
@@ -49,35 +49,35 @@ public class BaseBallGame {
         OutputView outputView = new OutputView(point.getStrike(), point.getBall(), randomNumber);
         System.out.println(outputView.display());
 
-        if(point.getStrike() != STRIKE){
+        if(point.getStrike() != STRIKE) {
             start(randomNumber);
         }
     }
 
-    public Point compare(ArrayList<String> randomNumber, String input){
+    public Point compare(ArrayList<String> randomNumber, String input) {
         int ballCount = 0;
         int strikeCount = 0;
 
         for(int i = 0; i < input.length(); i++) {
-            if (randomNumber.get(i).equals(String.valueOf(input.charAt(i)))){
+            if (randomNumber.get(i).equals(String.valueOf(input.charAt(i)))) {
                 strikeCount ++;
-            } else if(randomNumber.contains(String.valueOf(input.charAt(i)))){
+            } else if(randomNumber.contains(String.valueOf(input.charAt(i)))) {
                 ballCount ++;
             }
         }
         return new Point(strikeCount, ballCount);
     }
 
-    public boolean restart(){
+    public boolean restart() {
         System.out.println(RESTART_MESSAGE);
         input = Console.readLine();
 
-        if(input.equals(START)){
+        if(input.equals(START)) {
             return true;
         } else if(input.equals(END)) {
             System.out.println(END_MESSAGE);
             return false;
-        } else{
+        } else {
             throw new IllegalArgumentException();
         }
     }

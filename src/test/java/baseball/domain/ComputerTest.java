@@ -10,7 +10,7 @@ class ComputerTest {
 
     //3자리의 수가 맞는지 확인 및 중복된 숫자가 없는지 확인
     @Test
-    public void 랜덤_수_생성(){
+    public void 랜덤_수_생성() {
         Computer computer = new Computer();
         ArrayList<String> strings = computer.makeRandom();
 

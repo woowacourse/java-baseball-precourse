@@ -8,7 +8,7 @@ import baseball.domain.Computer;
 public class Application {
     public static void main(String[] args) {
         BaseBallGame baseBallGame = new BaseBallGame();
-        do{
+        do {
             ArrayList<String> randomNumber = Computer.makeRandom();
             baseBallGame.start(randomNumber);
         } while(baseBallGame.restart());

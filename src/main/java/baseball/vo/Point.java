@@ -9,11 +9,11 @@ public class Point {
         this.ball = ball;
     }
 
-    public int getStrike(){
+    public int getStrike() {
         return strike;
     }
 
-    public int getBall(){
+    public int getBall() {
         return ball;
     }
 }

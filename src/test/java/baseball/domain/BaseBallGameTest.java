@@ -13,21 +13,21 @@ class BaseBallGameTest {
 
     //사용자 입력 예외 처리 확인
     @Test
-    public void 사용자_입력(){
+    public void 사용자_입력() {
         BaseBallGame baseBallGame = new BaseBallGame();
 
-        try{
+        try {
             String input = "123";
             baseBallGame.validate(input);
         }
-        catch (IllegalArgumentException e){
+        catch (IllegalArgumentException e) {
             System.out.println("e.getMessage() = " + e.getMessage());
         }
     }
 
     //정답과 사용자의 입력 비교 값 확인
     @Test
-    public void 정답_입력_비교(){
+    public void 정답_입력_비교() {
         BaseBallGame baseBallGame = new BaseBallGame();
 
         ArrayList<String> randomNumber1 = new ArrayList<>(Arrays.asList("1", "2", "3"));
@@ -42,7 +42,7 @@ class BaseBallGameTest {
 
     //결과 값 확인
     @Test
-    public void 게임_결과_출력(){
+    public void 게임_결과_출력() {
         BaseBallGame baseBallGame = new BaseBallGame();
 
         //정답이 홀수인 경우 낫싱 출력
