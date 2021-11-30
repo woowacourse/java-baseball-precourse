@@ -21,7 +21,7 @@ public class BaseballGame {
 			computer.generateComputerRandomNum();
 			while (!result.getExit()) {
 				System.out.println(BASEBALL_GAME_INPUT_MESSAGE);
-				result.compareNum(computer.getComputermNum(), user.inputNum());
+				result.compareNum(computer.getComputerNum(), user.inputNum());
 				result.printResult();
 			}
 			System.out.println(BASEBALL_GAME_RESTART_MESSAGE);

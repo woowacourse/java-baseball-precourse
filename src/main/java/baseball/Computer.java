@@ -26,7 +26,7 @@ public class Computer {
 		return computerNum.contains(tempNum);
 	}
 
-	protected ArrayList<Integer> getComputermNum() {
+	protected ArrayList<Integer> getComputerNum() {
 		return computerNum;
 	}
 }
