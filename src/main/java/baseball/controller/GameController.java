@@ -1,23 +1,27 @@
 package baseball.controller;
 
 import baseball.service.GameService;
+import baseball.view.GameInputView;
 
 public class GameController {
     private final GameService gameService;
+    private final GameInputView gameInputView;
 
     public GameController() {
         gameService = new GameService();
+        gameInputView = new GameInputView();
     }
 
     public void run() {
-        while(gameService.checkWhetherToPlay()) {
+        while (gameService.checkWhetherToPlay()) {
             gamePlay();
             askGameReplay();
         }
     }
 
     private void gamePlay() {
-        // ToDo: 1. 사용자 숫자 입력 2. 결과 출력 3. 정답이면 게임 종료
+        // ToDo: 2. 결과 출력 3. 정답이면 게임 종료
+        int[] playerAnswer = gameInputView.inputAnswer();
     }
 
     private void askGameReplay() {
