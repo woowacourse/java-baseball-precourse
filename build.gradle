@@ -17,4 +17,10 @@ test {
     useJUnitPlatform()
 }
 
+// build.gradle 한글깨짐 수정
+compileJava.options.encoding = 'UTF-8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
