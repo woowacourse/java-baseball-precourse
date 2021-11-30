@@ -31,13 +31,13 @@ public class PitchTest {
     void 두_Pitch가_같은지_검증() {
         Pitch pitch = new Pitch(1, 1);
         // 같은 index, 같은 value는 true
-        assertThat(pitch.isSame(new Pitch(1, 1))).isTrue();
+        assertThat(pitch.isStrike(new Pitch(1, 1))).isTrue();
         // 같은 index, 다른 value는 false
-        assertThat(pitch.isSame(new Pitch(1, 2))).isFalse();
+        assertThat(pitch.isStrike(new Pitch(1, 2))).isFalse();
         // 다른 index, 같은 value는 true
-        assertThat(pitch.isSame(new Pitch(2, 1))).isFalse();
+        assertThat(pitch.isStrike(new Pitch(2, 1))).isFalse();
         // index, value 모두 다름
-        assertThat(pitch.isSame(new Pitch(2, 2))).isFalse();
+        assertThat(pitch.isStrike(new Pitch(2, 2))).isFalse();
     }
 
     @Test
@@ -68,21 +68,6 @@ public class PitchTest {
         assertThat(result).isFalse();
 
         result = pitch.isStrike(new Pitch(2, 1));
-        assertThat(result).isFalse();
-    }
-
-    @Test
-    @DisplayName("낫싱 판별")
-    void 낫싱_판별() {
-        // 인덱스와 값 모두 다르면 낫싱이다.
-        result = pitch.isNothing(new Pitch(2, 2));
-        assertThat(result).isTrue();
-
-        // 그렇지 않으면 전부 낫싱이 아니다.
-        result = pitch.isNothing(new Pitch(1, 1));
-        assertThat(result).isFalse();
-
-        result = pitch.isNothing(new Pitch(2, 1));
         assertThat(result).isFalse();
     }
 }

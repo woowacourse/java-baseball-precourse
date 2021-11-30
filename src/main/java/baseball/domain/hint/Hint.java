@@ -41,11 +41,6 @@ public class Hint {
         return 0;
     }
 
-    // 사용자의 모든 Pitch가 Nothing이어야지 해당 숫자는 nothing 이다.
-    private boolean validNothing(Pitch pitch, Set<Pitch> playerSet) {
-        return playerSet.stream().allMatch(p -> p.isNothing(pitch));
-    }
-
     // for test, 테스트 중에ㅔ 두 힌트가 같은지 판별하기 위해 추가한 메서드
     public boolean isSame(Hint target) {
         if(strike == target.strike && ball == target.ball)
@@ -67,6 +62,7 @@ public class Hint {
     public boolean hasStrike() {
         return strike > 0;
     }
+
     public int getBall() {
         return ball;
     }

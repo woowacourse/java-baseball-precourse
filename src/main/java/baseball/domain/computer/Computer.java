@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class Computer implements Valid {
+public class Computer {
     private final List<Integer> numberList;
     private final boolean[] dup;
     private final int RAN_MIN = 1;
     private final int RAN_MAX = 9;
+
     private Set<Pitch> pitchSet;
 
     public Computer() {
@@ -22,18 +23,19 @@ public class Computer implements Valid {
             fillList(Randoms.pickNumberInRange(RAN_MIN, RAN_MAX));
     }
 
-    private void fillList(int i) {
+    private void fillList(int num) {
         // 기존에 입력받은 값이면 다시 난수 생성
-        while(dup[i]) {
-            i = Randoms.pickNumberInRange(RAN_MIN, RAN_MAX);
+        while(dup[num]) {
+            num = Randoms.pickNumberInRange(RAN_MIN, RAN_MAX);
         }
-        numberList.add(i);
-        dup[i] = true;
+        numberList.add(num);
+        dup[num] = true;
     }
 
     public void setPitchSet(Set<Pitch> pitchSet) {
         this.pitchSet = pitchSet;
     }
+
     public Set<Pitch> getPitchSet() {
         return pitchSet;
     }

@@ -1,6 +1,5 @@
 package baseball.domain.player;
 
-import baseball.finalstring.error.ErrorCode;
 import baseball.domain.pitch.Pitch;
 import baseball.domain.valid.Valid;
 import camp.nextstep.edu.missionutils.Console;
@@ -8,6 +7,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import static baseball.finalstring.error.ErrorCode.*;
 
 public class Player implements Valid {
     private List<Integer> numberList;
@@ -17,12 +18,12 @@ public class Player implements Valid {
         return fillList(playRead());
     }
 
-    private String fillList(String s) {
+    private String fillList(String input) {
         // 사용자로부터 입력받은 3자리수를 각 자리수 별로 리스트에 넣어준다.
-        for(char c : s.toCharArray()) {
+        for(char c : input.toCharArray()) {
             numberList.add(c - '0');
         }
-        return s;
+        return input;
     }
 
     private Set<Pitch> pitchSet;
@@ -30,6 +31,7 @@ public class Player implements Valid {
     public void setPitchSet(Set<Pitch> pitchSet) {
         this.pitchSet = pitchSet;
     }
+
     public Set<Pitch> getPitchSet() {
         return pitchSet;
     }
@@ -38,55 +40,58 @@ public class Player implements Valid {
     // 예외 처리 진행해야함.
     public String playRead() {
         // IO 처리 추가 후에 구현
-        String input = Console.readLine();
-        return filtrate(input);
+        return filtrate(Console.readLine());
     }
 
+    // 게임 실행이 완료되고 재 실행 여부를 물어보는 질문에 대한 I/O 처리이다.
     public int endRead() {
         String input = Console.readLine();
         catchNotDigit(input);
-        int i = Integer.parseInt(input);
-        if(notOneOrTwo(i))
-            throw new IllegalArgumentException(ErrorCode.NOT_ONE_OR_TWO.getContent());
-        return i;
+        int restart = Integer.parseInt(input);
+        if(notOneOrTwo(restart))
+            throw new IllegalArgumentException(NOT_ONE_OR_TWO.getContent());
+        return restart;
     }
 
-    private void catchNotDigit(String input) {
-        for(char c : input.toCharArray()) {
-            distinguish(c);
-        }
-    }
-
-    private boolean notOneOrTwo(int input) {
-        if(input != 1 && input != 2)
-            return true;
-        return false;
-    }
+    // 사용자의 입력에 대해 예외상황을 필터링 하기 위한 처리이다.
     public String filtrate(String input) {
         // 예외 (1) : 숫자가 아닌 입력값이 들어온 경우
         catchNotDigit(input);
 
         // 예외 (2) : 세자리의 수가 아닌 경우
         if(!inRange(input)) {
-            throw new IllegalArgumentException(ErrorCode.NOT_IN_RANGE.getContent());
+            throw new IllegalArgumentException(NOT_IN_RANGE.getContent());
         }
 
         // 예외 (3) : 숫자 내 중복된 수가 존재하는 경우
         if(duplicate(input)) {
-            throw new IllegalArgumentException(ErrorCode.IS_DUPLICATE.getContent());
+            throw new IllegalArgumentException(IS_DUPLICATE.getContent());
         }
 
         // 예외 (4) : 숫자 내 0이 존재하는 경우
         if(hasZero(input)) {
-            throw new IllegalArgumentException(ErrorCode.HAS_ZERO.getContent());
+            throw new IllegalArgumentException(HAS_ZERO.getContent());
         }
 
         return input;
     }
 
+    // 숫자가 아닌 문자가 있는 경우
+    private void catchNotDigit(String input) {
+        for(char c : input.toCharArray()) {
+            distinguish(c);
+        }
+    }
+
+    // 게임 재 실행 여부를 확인할 때 1 혹은 2 값을 검증한다.
+    private boolean notOneOrTwo(int input) {
+        return input != 1 && input != 2;
+    }
+
+    // 각 문자가 숫자가 아닌 다른 문자인지 확인하고, 아니면 예외를 발생한다.
     private void distinguish(char c) {
         if(!Character.isDigit(c))
-            throw new IllegalArgumentException(ErrorCode.FOUND_NOT_DIGIT.getContent());
+            throw new IllegalArgumentException(FOUND_NOT_DIGIT.getContent());
     }
 
     public List<Integer> getNumberList() {
