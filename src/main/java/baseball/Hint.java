@@ -11,7 +11,6 @@ import java.util.Map;
 public class Hint {
 
 	private Map<BallType, Integer> hint = new HashMap<>();
-	private Balls computer;
 
 	{
 		hint.put(STRIKE, 0);
@@ -19,25 +18,26 @@ public class Hint {
 		hint.put(NOTHING, 0);
 	}
 
-	public Hint(Balls balls) {
-		this.computer = balls;
+	public Hint(Balls computer, Balls user) {
+		compare(computer, user);
 	}
 
-	public BallType getType(Ball ball, int position) {
-		List<Ball> balls = computer.getList();
-		if (balls.get(position).equals(ball)) {
+	public BallType getType(Balls computer, Ball ball, int position) {
+		List<Ball> computerBallList = computer.getList();
+		if (computerBallList.get(position)
+			.equals(ball)) {
 			return STRIKE;
 		}
-		if (balls.contains(ball)) {
+		if (computerBallList.contains(ball)) {
 			return BALL;
 		}
 		return NOTHING;
 	}
 
-	public void setHint(Balls user) {
+	public void compare(Balls computer, Balls user) {
 		List<Ball> userBallList = user.getList();
 		for (int i = 0; i < userBallList.size(); i++) {
-			BallType type = getType(userBallList.get(i), i);
+			BallType type = getType(computer, userBallList.get(i), i);
 			hint.replace(type, hint.get(type) + 1);
 		}
 	}

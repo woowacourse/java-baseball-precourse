@@ -19,8 +19,7 @@ public class Application {
 			String input = Console.readLine();
 			Balls user = new Balls(convertStringToNumberList(input));
 			// 힌트 출력
-			Hint hint = new Hint(game.getComputer());
-			hint.setHint(user);
+			Hint hint = new Hint(game.getComputer(), user);
 			View.hint(hint);
 			// 힌트에 따라 게임 진행
 			if (!game.checkhint(hint)) {
