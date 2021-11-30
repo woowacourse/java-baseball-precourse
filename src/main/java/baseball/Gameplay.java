@@ -25,5 +25,12 @@ public class Gameplay {
             if(computer.BallStrikeNum(playerNum))
                 break;
         }
+
+        computer.PrintRestartMSG();
+
+        if(player.InputRestart() == 1){
+            Play();
+        }
+
     }
 }
