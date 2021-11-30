@@ -11,12 +11,16 @@ public class Game {
 	private Balls computer;
 
 	public Game(List<Integer> computer) {
+		setComputer(computer);
+	}
+
+	public void setComputer(List<Integer> computer) {
 		this.computer = new Balls(computer);
 	}
 
-    public Hint compare(Balls user) {
-	    return new Hint(computer, user);
-    }
+	public Hint compare(Balls user) {
+		return new Hint(computer, user);
+	}
 
 	public void choicePlay(String input) {
 		validateInput(input);
@@ -25,8 +29,6 @@ public class Game {
 			return;
 		}
 	}
-
-	// 컴퓨터 재설정
 
 	public boolean isPlay() {
 		return isPlay;
