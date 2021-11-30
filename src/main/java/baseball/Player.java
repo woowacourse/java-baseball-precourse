@@ -8,16 +8,6 @@ public class Player {
 
 	public int[] inputNumber = new int[Computer.NUMBER_SIZE];
 
-	public boolean scanRestartNumber() {
-		String inputNumber = Console.readLine();
-		if (inputNumber.equals(RESTART_ONE)) {
-			return true;
-		} else if (inputNumber.equals(RESTART_TWO)) {
-			return false;
-		}
-		throw new IllegalArgumentException();
-	}
-
 	public int getInputNumber(int index) {
 		return inputNumber[index];
 	}
@@ -26,16 +16,20 @@ public class Player {
 		this.inputNumber[index] = eachNumber;
 	}
 
+	public boolean isNumber(String inputNumber) {
+		for (int i = 0; i < Computer.NUMBER_SIZE; i++) {
+			if (!Character.isDigit(inputNumber.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public int toIntNumber(String inputNumber) {
-		if (inputNumber.length() != Computer.NUMBER_SIZE) {
+		if (!isNumber(inputNumber) || inputNumber.length() != Computer.NUMBER_SIZE) {
 			throw new IllegalArgumentException();
 		}
-		try {
-			int number = Integer.parseInt(inputNumber);
-			return number;
-		} catch (Exception e) {
-			throw new IllegalArgumentException();
-		}
+		return Integer.parseInt(inputNumber);
 	}
 
 	public void scanInputNumber() {
@@ -46,16 +40,20 @@ public class Player {
 		isValidInput();
 	}
 
+	public boolean scanRestartNumber() {
+		String inputNumber = Console.readLine();
+		if (inputNumber.equals(RESTART_ONE)) {
+			return true;
+		} else if (inputNumber.equals(RESTART_TWO)) {
+			return false;
+		}
+		throw new IllegalArgumentException();
+	}
+
 	public void saveInputNumber(int inputNumber) {
 		setInputNumber(Application.HUNDREDS_NUMBER, inputNumber / 100);
 		setInputNumber(Application.TENS_NUMBER, (inputNumber % 100) / 10);
 		setInputNumber(Application.ONES_NUMBER, inputNumber % 10);
-	}
-
-	public void isValidInput() throws IllegalArgumentException {
-		if (hasDuplicateNumber() || hasZero()) {
-			throw new IllegalArgumentException();
-		}
 	}
 
 	public boolean hasDuplicateNumber() {
@@ -74,5 +72,11 @@ public class Player {
 			}
 		}
 		return false;
+	}
+
+	public void isValidInput() throws IllegalArgumentException {
+		if (hasDuplicateNumber() || hasZero()) {
+			throw new IllegalArgumentException();
+		}
 	}
 }
