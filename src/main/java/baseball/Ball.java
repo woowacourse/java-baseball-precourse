@@ -1,16 +1,10 @@
 package baseball;
 
-import static java.util.stream.Collectors.*;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.IntStream;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Ball {
-
-	private static final List<Ball> RANDOM_BALLS = initRandomBalls();
 
 	private int number;
 
@@ -19,15 +13,8 @@ public class Ball {
 		this.number = number;
 	}
 
-	public static List<Ball> getRandomBallsSizeOf(int size) {
-		Collections.shuffle(RANDOM_BALLS);
-		return new ArrayList<>(RANDOM_BALLS.subList(0, size));
-	}
-
-	private static List<Ball> initRandomBalls() {
-		return IntStream.rangeClosed(1, 9)
-			.mapToObj(Ball::new)
-			.collect(toList());
+	public static Ball createRandomBall() {
+		return new Ball(Randoms.pickNumberInRange(1, 9));
 	}
 
 	private void checkRange(int number) {

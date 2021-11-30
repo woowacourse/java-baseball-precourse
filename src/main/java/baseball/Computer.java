@@ -5,7 +5,7 @@ public class Computer {
 	private Balls answerBalls;
 
 	public void determineAnswerBalls() {
-		this.answerBalls = Balls.generateRandomBalls();
+		this.answerBalls = Balls.createRandomBalls();
 	}
 
 	public GameResult compareBalls(Balls predictionBalls) {
