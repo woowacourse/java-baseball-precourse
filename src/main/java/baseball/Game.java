@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Game {
 
     private final static int DIGIT = 3;
-    private final static int CORRECT_NOTING = 0;
+    private final static int CORRECT_NOTHING = 0;
 
     public int run() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
@@ -25,15 +25,20 @@ public class Game {
             int ball = result.getBall();
             int strike = result.getStrike();
 
-            if (ball == CORRECT_NOTING && strike == CORRECT_NOTING) {
+            if (ball == CORRECT_NOTHING && strike == CORRECT_NOTHING) {
                 printer.printResultNoting();
             }
 
-            if (ball != CORRECT_NOTING) {
+            if (ball != CORRECT_NOTHING && strike != CORRECT_NOTHING) {
                 printer.printResultBall(ball);
             }
 
-            if (strike != CORRECT_NOTING) {
+            if (ball != CORRECT_NOTHING && strike == CORRECT_NOTHING) {
+                printer.printResultBall(ball);
+                System.out.println();
+            }
+
+            if (strike != CORRECT_NOTHING) {
                 printer.printResultStrike(strike);
             }
 
