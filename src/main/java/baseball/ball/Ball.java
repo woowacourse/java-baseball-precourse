@@ -22,12 +22,14 @@ public class Ball {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o)
+	public boolean equals(Object obj) {
+		if (this == obj) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (obj == null || getClass() != obj.getClass()) {
 			return false;
-		Ball ball = (Ball)o;
+		}
+		Ball ball = (Ball)obj;
 		return position == ball.position && value == ball.value;
 	}
 }
