@@ -1,11 +1,13 @@
 package baseball.computer;
 
+import baseball.error.ErrorCode;
 import baseball.pitch.Pitch;
+import baseball.valid.Valid;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Set;
 
-public class Computer {
+public class Computer implements Valid {
     private final int num;
     private final int RAN_MIN = 100;
     private final int RAN_MAX = 999;
@@ -23,4 +25,5 @@ public class Computer {
     public int getNumber() {
         return num;
     }
+
 }

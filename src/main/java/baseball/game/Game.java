@@ -18,11 +18,20 @@ public class Game {
     public void play() {
         while(playing) {
             computer = new Computer();
-            computer.setPitchSet(getPitchSet(computer.getNumber()));
-            ask();
+            doAsk(computer);
         }
     }
 
+    private void doAsk(Computer computer) {
+        if(computer.duplicate(computer.getNumber()))
+            return ;
+        if(computer.hasZero(computer.getNumber()))
+            return ;
+        if(!computer.inRange(computer.getNumber()))
+            return ;
+        computer.setPitchSet(getPitchSet(computer.getNumber()));
+        ask();
+    }
     private void ask() {
         player = new Player();
         boolean finished = false;
