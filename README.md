@@ -24,15 +24,14 @@
 
 #### 게임 시작, 종료 및 진행 - BaseballGame 클래스
 
-    1. 게임 시작 기능 - startGame()
+    1. 게임 시작 / 종료 기능
+        -> startGame()
 
-    2. 게임 종료 기능 
+    2. 게임 재시작 / 종료 기능 
+        -> decideRestartGame()
 
-    3. 게임 재시작 / 종료 기능 - decideRestartGame ()
-        3-1. 비정상 게임 종료
-            -> IllegalArgumentException 발생 후 종료
-
-    4. 게임 진행 기능 - progressGame()
+    3. 게임 진행 기능
+        -> progressGame()
 
 ### Package : Util
 
@@ -56,7 +55,7 @@
         -> inputAnswerNumber()
         
     2. 랜덤으로 입력받은 각각의 숫자를 하나의 문자열로 합치는 기능
-        -> connectAnswerNumbers)_
+        -> connectAnswerNumbers()
 
     3. 중복숫자를 확인하는 기능
         -> checkDuplicateAnswerNumber()
@@ -79,7 +78,7 @@
         -> validateRestartNumber() 
 
     4. 스트라이크, 볼 판정하는 기능
-        -> countStrikeBall
+        -> countStrikeBall()
 
     5. 유저가 추측한 답의 스트라이크, 볼 개수를 세는 기능
         -> addStrikeBall()
