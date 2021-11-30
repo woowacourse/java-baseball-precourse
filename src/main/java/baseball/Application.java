@@ -143,4 +143,12 @@ class Result {
     public void addBall() {
         ball ++;
     }
+
+    @Override
+    public String toString() {
+        if (strike == 0 && ball == 0) return "낫싱";
+        if (ball == 0) return strike + "스트라이크";
+        if (strike == 0) return ball + "볼";
+        return ball + "볼 " + strike + "스트라이크";
+    }
 }
