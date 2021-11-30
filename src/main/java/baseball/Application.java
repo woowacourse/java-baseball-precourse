@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -22,6 +23,8 @@ public class Application {
         while (gameStatus != END_GAME_VALUE) {
             game.start();
             playGame();
+
+            gameStatus = restartGame();
         }
     }
 
@@ -38,6 +41,11 @@ public class Application {
         } while (!result.isStrikeOut());
 
         System.out.println(GAME_ENDING_OUTPUT);
+    }
+
+    private static int restartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return getRestartInput();
     }
 
     private static List<Integer> getPlayerInput() {
