@@ -14,4 +14,7 @@ public class GameView {
 		return input;
 	}
 
+	public void printResult(String report) {
+		System.out.println(report);
+	}
 }

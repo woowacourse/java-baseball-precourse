@@ -9,6 +9,10 @@ public class GuessNumbers {
 		this.guessNumbers = guessNumbers;
 	}
 
+	public boolean isNothing() {
+		return !hasStrike() && !hasBall();
+	}
+
 	public boolean hasStrike() {
 		return countStrike() > 0;
 	}

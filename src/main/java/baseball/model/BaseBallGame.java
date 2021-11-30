@@ -19,13 +19,12 @@ public class BaseBallGame {
 		return running;
 	}
 
-	public void evaluate(String guess) {
+	public String evaluate(String guess) {
 		validateInput(guess);
-
-		int strikeCount = 0;
-		int ballCount = 0;
-
 		GuessNumbers guessNumbers = createGuessNumbers(guess, answer);
+
+		Report report = new Report(guessNumbers);
+		return report.getReport();
 	}
 
 	private GuessNumbers createGuessNumbers(String guess, List<Integer> answer) {

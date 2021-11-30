@@ -15,7 +15,8 @@ public class GameController {
 	public void start() {
 		while (baseBallGame.isRunning()) {
 			String guess = gameView.askGuess();
-			baseBallGame.evaluate(guess);
+			String report = baseBallGame.evaluate(guess);
+			gameView.printResult(report);
 		}
 	}
 }
