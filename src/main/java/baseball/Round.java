@@ -48,7 +48,7 @@ public class Round {
 				break;
 			}
 		}
-		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 	}
 	
 	//print hint: 볼/스트라이크/낫싱 출력함수
