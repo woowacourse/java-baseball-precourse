@@ -5,21 +5,23 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
 public class BaseballGame {
-    public static int[] answer = new RandomAnswer().generate();;
+    private static int[] answer = new RandomAnswer().generate();
 
     public void start() {
         System.out.println(Constants.GAME_START_MSG);
+
         while (true) {
             playGame();
 
-            System.out.println(Constants.GAME_RESTART_MSG);
+            System.out.println(Constants.GAME_RESTART_OR_STOP_MSG);
+
             if (!restartOrStop()) {
                 break;
             }
         }
     }
 
-    public void playGame() {
+    private void playGame() {
         while (true) {
             System.out.print(Constants.INPUT_NUMBER_MSG);
             String userInput = UserInputValidator.check(Console.readLine());
@@ -34,10 +36,12 @@ public class BaseballGame {
         }
     }
 
-    public int countBalls(String userInput) {
+    private int countBalls(String userInput) {
         int balls = 0;
-        for (int i=0; i<answer.length; i++) {
+
+        for (int i = 0; i<Constants.ANSWER_LENGTH; i++) {
             int target = Character.getNumericValue(userInput.charAt(i));
+
             if (answer[i] != target && Arrays.stream(answer).anyMatch(e -> e == target)) {
                 balls++;
             }
@@ -45,10 +49,12 @@ public class BaseballGame {
         return balls;
     }
 
-    public int countStrikes(String userInput) {
+    private int countStrikes(String userInput) {
         int strikes = 0;
-        for (int i=0; i<answer.length; i++) {
+
+        for (int i = 0; i<Constants.ANSWER_LENGTH; i++) {
             int target = Character.getNumericValue(userInput.charAt(i));
+
             if (answer[i] == target) {
                 strikes++;
             }
@@ -56,29 +62,35 @@ public class BaseballGame {
         return strikes;
     }
 
-    public boolean stopGame(int strikes) {
+    private boolean stopGame(int strikes) {
         return strikes == Constants.ANSWER_LENGTH;
     }
     
-    public String resultMessage(int balls, int strikes) {
+    private String resultMessage(int balls, int strikes) {
         String message = "";
+
         if (balls != 0) {
            message += Integer.toString(balls) + Constants.BALL;
         }
+
         if (!message.equals("")) {
             message += " ";
         }
+
         if (strikes != 0) {
             message += Integer.toString(strikes) + Constants.STRIKE;
         }
+
         if (balls == 0 && strikes == 0) {
             message = Constants.NOTHING;
         }
+
         return message;
     }
 
-    public boolean restartOrStop() {
+    private boolean restartOrStop() {
         String userInput = Console.readLine();
+
         if (userInput.equals(Constants.RESTART)) {
             answer = new RandomAnswer().generate();
             return true;
