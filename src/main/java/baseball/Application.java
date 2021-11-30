@@ -7,9 +7,9 @@ import baseball.view.GameView;
 public class Application {
 	public static void main(String[] args) {
 		BaseBallGame baseBallGame = new BaseBallGame();
-		GameView gameview = new GameView();
+		GameView gameView = new GameView();
 
-		GameController gameController = new GameController(baseBallGame, gameview);
+		GameController gameController = new GameController(baseBallGame, gameView);
 		gameController.start();
 	}
 }

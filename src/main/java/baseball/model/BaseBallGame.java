@@ -1,13 +1,14 @@
 package baseball.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
+import java.util.List;
 
 import baseball.utils.AnswerGenerator;
 
 public class BaseBallGame {
 	private boolean running;
-	Set<Integer> answer;
+	List<Integer> answer;
 
 	public BaseBallGame() {
 		this.running = true;
@@ -20,7 +21,33 @@ public class BaseBallGame {
 
 	public void evaluate(String guess) {
 		validateInput(guess);
-		// TODO: 평가
+
+		int strikeCount = 0;
+		int ballCount = 0;
+
+		GuessNumbers guessNumbers = createGuessNumbers(guess, answer);
+	}
+
+	private GuessNumbers createGuessNumbers(String guess, List<Integer> answer) {
+		List<GuessNumber> guessNumbers = new ArrayList<>();
+
+		for (int i = 0; i < guess.length(); i++) {
+			guessNumbers.add(createGuessNumber(i, guess.charAt(i) - '0'));
+		}
+
+		return new GuessNumbers(guessNumbers);
+	}
+
+	private GuessNumber createGuessNumber(int idx, int val) {
+		if (answer.contains(val) && answer.indexOf(val) == idx) {
+			return new GuessNumber(idx, val, "STRIKE");
+		}
+
+		if (answer.contains(val)) {
+			return new GuessNumber(idx, val, "BALL");
+		}
+
+		return new GuessNumber(idx, val, "WRONG");
 	}
 
 	private void validateInput(String input) {
