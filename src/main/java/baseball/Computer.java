@@ -20,6 +20,21 @@ public class Computer {
 		}
 	}
 
+	public void printScore() {
+		if (this.strike == 0 && this.ball == 0) {
+			System.out.println("낫싱");
+		} else if (this.strike != 0 && this.ball == 0) {
+			System.out.println(this.strike + "스트라이크");
+			if (this.strike == 3) {
+				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			}
+		} else if (this.strike == 0) {
+			System.out.println(this.ball + "볼");
+		} else {
+			System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
+		}
+	}
+
 	public void countScore(List<Integer> playerInput) {
 		countStrike(playerInput);
 		countBall(playerInput);
