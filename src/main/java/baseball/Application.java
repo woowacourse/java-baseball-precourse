@@ -12,12 +12,11 @@ import java.util.stream.Collectors;
 public class Application {
     private static final int START_GAME_VALUE = 1;
     private static final int END_GAME_VALUE = 2;
-    private static final String PLAYER_INPUT_PATTERN = "^[0-9]{3}+$";
-    private static final String RESTART_INPUT_PATTERN = "^[1-2]$";
 
     private static final String GAME_ENDING_OUTPUT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     private static final Game game = new Game();
+    private static final InputManager inputManager = new InputManager();
 
     public static void main(String[] args) {
         int gameStatus = START_GAME_VALUE;
@@ -35,7 +34,7 @@ public class Application {
         Result result;
 
         do {
-            playerInput = getPlayerInput();
+            playerInput = InputManager.getPlayerInput();
 
             result = game.tryBaseball(playerInput);
             System.out.println(result.toString());
@@ -47,10 +46,15 @@ public class Application {
 
     private static int restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return getRestartInput();
+        return InputManager.getRestartInput();
     }
+}
 
-    private static List<Integer> getPlayerInput() {
+class InputManager {
+    private static final String PLAYER_INPUT_PATTERN = "^[0-9]{3}+$";
+    private static final String RESTART_INPUT_PATTERN = "^[1-2]$";
+
+    public static List<Integer> getPlayerInput() {
         String input = Console.readLine();
         validatePlayerInput(input);
 
@@ -65,7 +69,7 @@ public class Application {
         }
     }
 
-    private static int getRestartInput() {
+    public static int getRestartInput() {
         String input = Console.readLine();
         validateRestartInput(input);
 
