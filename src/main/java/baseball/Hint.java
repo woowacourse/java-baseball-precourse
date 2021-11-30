@@ -11,11 +11,6 @@ public enum Hint implements Comparable<Hint> {
 		this.name = name;
 	}
 
-	//view에서 사용을 위한 getter
-	public String getName() {
-		return name;
-	}
-
 	public boolean isBall() {
 		return this == BALL;
 	}

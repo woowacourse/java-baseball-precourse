@@ -1,10 +1,16 @@
 package baseball;
 
+import static java.lang.String.*;
+
 import java.util.Objects;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Ball {
+
+	private static final int NUMBER_MIN = 1;
+	private static final int NUMBER_MAX = 9;
+	private static final String RANGE_ERROR = format("Ball 은 %d 이상 %d 이하여야 합니다.", NUMBER_MIN, NUMBER_MAX);
 
 	private int number;
 
@@ -14,12 +20,12 @@ public class Ball {
 	}
 
 	public static Ball createRandomBall() {
-		return new Ball(Randoms.pickNumberInRange(1, 9));
+		return new Ball(Randoms.pickNumberInRange(NUMBER_MIN, NUMBER_MAX));
 	}
 
 	private void checkRange(int number) {
-		if (number < 1 || number > 9) {
-			throw new IllegalArgumentException("Ball 은 1 이상 9 이하여야 합니다.");
+		if (number < NUMBER_MIN || number > NUMBER_MAX) {
+			throw new IllegalArgumentException(RANGE_ERROR);
 		}
 	}
 
