@@ -19,8 +19,7 @@ class BaseBallGameTest {
         try {
             String input = "123";
             baseBallGame.validate(input);
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("e.getMessage() = " + e.getMessage());
         }
     }
