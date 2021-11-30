@@ -1,7 +1,17 @@
 package baseball;
 
 public class BaseballGame {
+
+	private Computer computer;
+
+	protected BaseballGame() {
+		this.computer = new Computer();
+	}
+
 	protected void startGame() {
-		System.out.println("게임 시작");
+		while(true) {
+			computer.generateComputerRandomNum();
+			System.out.println(computer.getComputermNum());
+		}
 	}
 }
