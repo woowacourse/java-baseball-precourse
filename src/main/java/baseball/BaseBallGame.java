@@ -4,7 +4,6 @@ import static utils.Constant.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
 public class BaseBallGame {
@@ -14,14 +13,14 @@ public class BaseBallGame {
 		FINISHED
 	}
 
-	private ArrayList<Integer> answerNumberList;
-	private ArrayList<Integer> inputNumberList;
+	private int[] answerNumbers;
+	private int[] inputNumbers;
 	private Score score;
 	private GameStatus gameStatus;
 
 	public BaseBallGame() {
-		answerNumberList = new ArrayList<>();
-		inputNumberList = new ArrayList<>();
+		answerNumbers = new int[GAME_NUMBER_LENGTH];
+		inputNumbers = new int[GAME_NUMBER_LENGTH];
 		score = new Score();
 		gameStatus = GameStatus.READY;
 	}
@@ -48,9 +47,8 @@ public class BaseBallGame {
 			if (!Validator.checkInputNumber(inputNumberString)) {
 				throw new IllegalArgumentException();
 			}
-			inputNumberList = getIntegerArrayListFromString(inputNumberString);
-
-			String scoreString = score.getScoreOfNumbers(answerNumberList, inputNumberList);
+			setInputNumberListFromString(inputNumberString);
+			String scoreString = score.getScoreOfNumbers(answerNumbers, inputNumbers);
 			OutputView.printGameScore(scoreString);
 			if (scoreString.equals(THREE_STRIKE)) {
 				OutputView.printAnswerMessage();
@@ -59,13 +57,10 @@ public class BaseBallGame {
 		}
 	}
 
-	private ArrayList<Integer> getIntegerArrayListFromString(String str) {
-		ArrayList<Integer> tmp = new ArrayList<>();
-		for (int i = 0; i < str.length(); i++) {
-			int num = Character.getNumericValue(str.charAt(i));
-			tmp.add(num);
+	private void setInputNumberListFromString(String str) {
+		for (int i = 0; i < GAME_NUMBER_LENGTH; i++) {
+			inputNumbers[i] = Character.getNumericValue(str.charAt(i));
 		}
-		return tmp;
 	}
 
 	private void setGameStatus(String command) {
@@ -81,18 +76,20 @@ public class BaseBallGame {
 	}
 
 	private void initializeRound() {
-		inputNumberList.clear();
 		score.initializeScore();
 	}
 
 	private void makeAnswerNumber() {
-		answerNumberList.clear();
 		LinkedHashSet<Integer> tmp = new LinkedHashSet<>();
 		while (tmp.size() < GAME_NUMBER_LENGTH) {
 			int randomNum = Randoms.pickNumberInRange(MIN_GAME_NUMBER, MAX_GAME_NUMBER);
 			tmp.add(randomNum);
 		}
-		answerNumberList.addAll(tmp);
+		int idx = 0;
+		for (int num : tmp) {
+			answerNumbers[idx] = num;
+			idx++;
+		}
 	}
 
 }

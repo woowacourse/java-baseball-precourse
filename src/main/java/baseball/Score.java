@@ -18,17 +18,26 @@ public class Score {
 		ball = 0;
 	}
 
-	public String getScoreOfNumbers(ArrayList<Integer> answerNumberList, ArrayList<Integer> targetNumberList) {
+	public String getScoreOfNumbers(int[] answerNumbers, int[] targetNumbers) {
 		for (int i = 0; i < GAME_NUMBER_LENGTH; i++) {
-			if (answerNumberList.get(i).equals(targetNumberList.get(i))) {
+			if (answerNumbers[i] == targetNumbers[i]) {
 				strike++;
 				continue;
 			}
-			if (answerNumberList.contains(targetNumberList.get(i))) {
+			if (isContainNumbers(targetNumbers[i], answerNumbers)) {
 				ball++;
 			}
 		}
 		return getScoreToString();
+	}
+
+	private boolean isContainNumbers(int targetNumber, int[] numbers) {
+		for (int i = 0; i < GAME_NUMBER_LENGTH; i++) {
+			if (numbers[i] == targetNumber) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private String getScoreToString() {
