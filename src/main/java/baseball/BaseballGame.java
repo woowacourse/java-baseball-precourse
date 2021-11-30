@@ -14,7 +14,7 @@ public class BaseballGame {
         while(true){
             List<Integer> numberList = computer.generateNumbers();
             play(player, numberList);
-            playingStatus = isContinue();
+            playingStatus = player.isContinue();
             if(playingStatus==2){
                 break;
             }
@@ -31,18 +31,6 @@ public class BaseballGame {
         }
         play(player, generateNumbers);
         return;
-    };
-
-    public static int isContinue(){
-        System.out.println(SystemMessage.CONTINUE_QUESTION);
-        String inputNumber = Console.readLine();
-        if(inputNumber.equals("1")){
-            return SystemMessage.RESTART_CODE;
-        }
-        if(inputNumber.equals("2")) {
-            return SystemMessage.EXIT_CODE;
-        }
-        throw new IllegalArgumentException(SystemMessage.CONTINUE_INPUT_ERROR);
     };
 
     public static String compare(List<Integer> inputString, List<Integer> generateNumber){

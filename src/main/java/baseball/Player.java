@@ -15,4 +15,9 @@ public class Player {
         return inputList;
     };
 
+    public static int isContinue(){
+        System.out.println(SystemMessage.CONTINUE_QUESTION);
+        String inputNumber = Console.readLine();
+        return Validation.isContinueInputValid(inputNumber);
+    };
 }

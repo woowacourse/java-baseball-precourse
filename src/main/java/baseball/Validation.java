@@ -39,4 +39,14 @@ public class Validation {
             throw new IllegalArgumentException(SystemMessage.INPUT_NUMERIC_ERROR);
         }
     }
+
+    public static int isContinueInputValid(String inputNumber){
+        if(inputNumber.equals("1")){
+            return SystemMessage.RESTART_CODE;
+        }
+        if(inputNumber.equals("2")) {
+            return SystemMessage.EXIT_CODE;
+        }
+        throw new IllegalArgumentException(SystemMessage.CONTINUE_INPUT_ERROR);
+    };
 }
