@@ -1,11 +1,7 @@
 package baseball;
 
-import static baseball.StringUtil.BALL;
 import static baseball.StringUtil.NUMBER_OF_DIGITS_OF_NUMBER;
-import static baseball.StringUtil.STRIKE;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 public class GivenNumbers {
@@ -17,23 +13,20 @@ public class GivenNumbers {
         givenNumbersArray = givenNumbersSet.toArray(new Integer[NUMBER_OF_DIGITS_OF_NUMBER]);
     }
 
-    public Map<String, Integer> operate(Integer[] inputNumber) {
+    public GameResult calculateGameResult(Integer[] inputNumber) {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < inputNumber.length; i++) {
             int number = inputNumber[i];
-            if(isStrike(number, i)) {
+            if (isStrike(number, i)) {
                 strike++;
                 continue;
             }
-            if(isBall(number)) {
+            if (isBall(number)) {
                 ball++;
             }
         }
-        HashMap<String, Integer> result = new HashMap<>();
-        result.put(STRIKE, strike);
-        result.put(BALL, ball);
-        return result;
+        return new GameResult(strike, ball);
     }
 
     private boolean isStrike(int number, int index) {

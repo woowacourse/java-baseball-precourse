@@ -1,27 +1,19 @@
 package baseball;
 
-import static baseball.StringUtil.BALL;
 import static baseball.StringUtil.END;
-import static baseball.StringUtil.NUMBER_OF_DIGITS_OF_NUMBER;
-import static baseball.StringUtil.STRIKE;
-
-import java.util.Map;
 
 import baseball.inputmanager.InputManger;
 import baseball.inputmanager.StartEndButton;
 import baseball.inputmanager.UserGuessedNumberManager;
 
 public class BaseBallGame {
-    private static final String STRIKE_TO_PRINT = "스트라이크";
-    private static final String BALL_TO_PRINT = "볼";
-    private static final String NOTHING = "낫싱";
     private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String NUMBER_REQUEST_MESSAGE = "숫자를 입력해 주세요 : ";
     private static final String START_END_BUTTON = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final InputManger<Integer[]> userGuessedNumberManager = new UserGuessedNumberManager();
     private static final InputManger<Integer> startEndButton = new StartEndButton();
 
-    private Map<String, Integer> result;
+    private GameResult result;
     private boolean end = false;
 
     public void start() {
@@ -35,49 +27,19 @@ public class BaseBallGame {
         GivenNumbers givenNumbers = new GivenNumbers();
         do {
             printNumberRequestMessage();
-            result = givenNumbers.operate((Integer[]) userGuessedNumberManager.getInput());
-            printGameResult();
-        } while (!checkAllNumbersMatch());
+            result = givenNumbers.calculateGameResult((Integer[]) userGuessedNumberManager.getInput());
+            System.out.println(result.toPrint());
+        } while (!checkThreeStrike());
     }
 
     private boolean checkUserWantToEnd() {
         System.out.println(GAME_END);
         System.out.println(START_END_BUTTON);
-        if(startEndButton.getInput() == END){
-            return true;
-        };
-        return false;
+        return startEndButton.getInput() == END;
     }
 
-    private boolean checkAllNumbersMatch() {
-        return result.get(STRIKE) == NUMBER_OF_DIGITS_OF_NUMBER;
-    }
-
-    private void printGameResult() {
-        StringBuilder resultStringBuilder = makeResultToStringBuilder();
-        if (resultStringBuilder.length() == 0) {
-            System.out.println(NOTHING);
-            return;
-        }
-        System.out.println(resultStringBuilder.toString());
-    }
-
-    private StringBuilder makeResultToStringBuilder() {
-        StringBuilder stringBuilder = new StringBuilder();
-        int strike = result.get(STRIKE);
-        int ball = result.get(BALL);
-        if (ball > 0) {
-            stringBuilder.append(ball);
-            stringBuilder.append(BALL_TO_PRINT);
-        }
-        if (strike > 0) {
-            if (stringBuilder.length() > 0) {
-                stringBuilder.append(" ");
-            }
-            stringBuilder.append(strike);
-            stringBuilder.append(STRIKE_TO_PRINT);
-        }
-        return stringBuilder;
+    private boolean checkThreeStrike() {
+        return result.isThreeStrike();
     }
 
     private void printNumberRequestMessage() {
