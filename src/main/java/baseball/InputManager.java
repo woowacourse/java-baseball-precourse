@@ -8,10 +8,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 class InputManager {
-    private static final String PLAYER_INPUT_PATTERN = "^[0-9]{3}+$";
-    private static final String RESTART_INPUT_PATTERN = "^[1-2]$";
 
-    public static List<Integer> getPlayerInput() {
+    public List<Integer> getPlayerInput() {
         String input = Console.readLine();
         validatePlayerInput(input);
 
@@ -20,20 +18,22 @@ class InputManager {
         return Arrays.stream(splitInput).map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    private static void validatePlayerInput(String input) {
+    private void validatePlayerInput(String input) {
+        String PLAYER_INPUT_PATTERN = "^[0-9]{3}+$";
         if (!Pattern.matches(PLAYER_INPUT_PATTERN, input)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static int getRestartInput() {
+    public int getRestartInput() {
         String input = Console.readLine();
         validateRestartInput(input);
 
         return Integer.parseInt(input);
     }
 
-    private static void validateRestartInput(String input) {
+    private void validateRestartInput(String input) {
+        String RESTART_INPUT_PATTERN = "^[1-2]$";
         if (!Pattern.matches(RESTART_INPUT_PATTERN, input)) {
             throw new IllegalArgumentException();
         }
