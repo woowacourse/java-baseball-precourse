@@ -7,6 +7,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 	private List<Integer> randomGeneratedNumber;
+	private int strike;
+	private int ball;
 
 	public void generateRandomNumber() {
 		randomGeneratedNumber = new ArrayList<>();
@@ -16,5 +18,30 @@ public class Computer {
 				this.randomGeneratedNumber.add(digit);
 			}
 		}
+	}
+
+	public void countScore(List<Integer> playerInput) {
+		countStrike(playerInput);
+		countBall(playerInput);
+	}
+
+	private void countStrike(List<Integer> playerInput) {
+		int count = 0;
+		for (int i = 0; i < 3; i++) {
+			if (playerInput.get(i).equals(this.randomGeneratedNumber.get(i))) {
+				count += 1;
+			}
+		}
+		this.strike = count;
+	}
+
+	private void countBall(List<Integer> playerInput) {
+		int count = 0;
+		for (int i = 0; i < 3; i++) {
+			if (this.randomGeneratedNumber.contains(playerInput.get(i))) {
+				count += 1;
+			}
+		}
+		this.ball = (count - this.strike);
 	}
 }
