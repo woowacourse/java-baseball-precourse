@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.model.Report;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
@@ -14,9 +15,8 @@ public class GameView {
 		return Console.readLine();
 	}
 
-	public void printResult(String report) {
-		System.out.println(report);
-
+	public void printReport(Report report) {
+		System.out.println(report.getReport());
 	}
 
 	public String askRestart() {
