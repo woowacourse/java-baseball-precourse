@@ -1,8 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import constant.SystemMessage;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
