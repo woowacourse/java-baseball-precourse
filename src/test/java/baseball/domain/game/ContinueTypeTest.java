@@ -12,9 +12,9 @@ class ContinueTypeTest {
 		// given
 		String input = "1";
 		// when
-		boolean b = ContinueType.toBeContinued(input);
+		boolean isContinue = ContinueType.toBeContinued(input);
 		// then
-		Assertions.assertTrue(b);
+		Assertions.assertTrue(isContinue);
 	}
 
 	@Test
@@ -22,9 +22,9 @@ class ContinueTypeTest {
 	public void testContinueWithTwo() throws Exception {
 		String input = "2";
 		// when
-		boolean b = ContinueType.toBeContinued(input);
+		boolean isContinue = ContinueType.toBeContinued(input);
 		// then
-		Assertions.assertFalse(b);
+		Assertions.assertFalse(isContinue);
 	}
 
 	@Test

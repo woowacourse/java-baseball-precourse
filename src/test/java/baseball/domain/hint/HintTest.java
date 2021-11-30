@@ -11,7 +11,7 @@ class HintTest {
 	@Test
 	@DisplayName("숫자가 하나도 일치하지 않으면 낫싱을 표시해야 한다")
 	public void testHintNothing() throws Exception {
-	    // given
+		// given
 		NumberBallSet numberBallSetA = NumberBallSet.generateFromInput("123");
 		NumberBallSet numberBallSetB = NumberBallSet.generateFromInput("456");
 		// when
