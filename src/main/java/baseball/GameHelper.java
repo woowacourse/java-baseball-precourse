@@ -24,7 +24,7 @@ public class GameHelper {
 
     public static void play(List<Integer> generateNumbers){
         String inputString = getUserInput();
-        compare(inputString, generateNumbers);
+        String result = compare(inputString, generateNumbers);
         return;
     };
 
@@ -48,7 +48,7 @@ public class GameHelper {
             });
     };
 
-    public static void compare(String inputString, List<Integer> generateNumber){
+    public static String compare(String inputString, List<Integer> generateNumber){
         List<Integer> parsedInputList = parseStringToList(inputString);
         int[] inputArray = getArray(parsedInputList);
         int[] generateArray = getArray(generateNumber);
@@ -64,7 +64,7 @@ public class GameHelper {
                 balls++;
             }
         }
-        return;
+        return getResult(strikes, balls);
     };
 
     public static List<Integer> parseStringToList(String inputString){
@@ -80,5 +80,18 @@ public class GameHelper {
         Arrays.fill(resultArray, -1);
         IntStream.range(0,3).forEach(idx->resultArray[inputList.get(idx)] = idx);
         return resultArray;
+    };
+
+    private static String getResult(int strikes, int balls){
+        if(strikes==0 && balls==0){
+            return ("낫싱");
+        }
+        if(balls==0){
+            return (strikes + "스트라이크");
+        }
+        if(strikes==0){
+            return (balls + "볼");
+        }
+        return (balls+"볼 "+strikes+"스트라이크");
     };
 }
