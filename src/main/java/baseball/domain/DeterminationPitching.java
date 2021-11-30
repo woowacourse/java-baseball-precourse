@@ -1,6 +1,6 @@
-package baseball;
+package baseball.domain;
 
-enum DeterminationPitching {
+public enum DeterminationPitching {
     STRIKE("스트라이크"),
     BALL("볼"),
     NOTHING("낫싱");
@@ -11,7 +11,8 @@ enum DeterminationPitching {
         this.determinationPitching = determinationPitching;
     }
 
-    String determinePitching() {
+    public String determinePitching() {
         return this.determinationPitching;
     }
+
 }

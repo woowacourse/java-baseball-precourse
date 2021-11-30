@@ -1,6 +1,6 @@
-package baseball;
+package baseball.domain;
 
-enum Messages {
+public enum Messages {
     COLLECT_ANSWER_MESSAGE("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
     RESTART_OR_NOT_MESSAGE("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
     INPUT_NUMBER_MESSAGE("숫자를 입력해주세요 : "),
@@ -12,7 +12,8 @@ enum Messages {
         this.messages = messages;
     }
 
-    String printMessages() {
+    public String printMessages() {
         return this.messages;
     }
+
 }
