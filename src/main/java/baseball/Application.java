@@ -1,6 +1,6 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
@@ -9,33 +9,16 @@ public class Application {
 
         Computer computer = new Computer(numberGenerator);
         InputValidator inputValidator = new InputValidator();
+        Game game = new Game(computer, inputValidator);
 
         do {
-            playGame(computer, inputValidator);
+            game.playGame();
         } while (checkRestartGame(inputValidator));
-    }
-
-    public static void playGame(Computer computer, InputValidator inputValidator) {
-        String answer = computer.generateAnswer();
-        do {
-            System.out.print(GameConstant.INPUT_MESSAGE);
-            String input = readLine();
-
-            inputValidator.validateGameNumberInput(input);
-
-            BaseballGame game = new BaseballGame(answer, input);
-            game.printGameResult();
-
-            if (game.isGameOver()) {
-                System.out.println(GameConstant.GAME_OVER_MESSAGE);
-                break;
-            }
-        } while (true);
     }
 
     private static boolean checkRestartGame(InputValidator inputValidator) {
         System.out.println(GameConstant.RESTART_MESSAGE);
-        String input = readLine();
+        String input = Console.readLine();
 
         inputValidator.validateRestartGameInput(input);
         return input.equals(GameConstant.RE_GAME);

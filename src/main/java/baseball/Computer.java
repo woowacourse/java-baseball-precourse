@@ -2,7 +2,6 @@ package baseball;
 
 public class Computer {
 
-
     private final NumberGenerator numberGenerator;
 
     public Computer(NumberGenerator numberGenerator) {
