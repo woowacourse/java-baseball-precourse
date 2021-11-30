@@ -21,7 +21,8 @@ public class GameTest {
     @Test
     @DisplayName("입력한 수를 Pitch 집합으로 변환")
     void 입력한_수의_Pitch_추출() {
-        Set<Pitch> pitchSet = game.getPitchSet(123);
+        String s = "123";
+        Set<Pitch> pitchSet = game.getPitchSet(s);
         int size = pitchSet.size();
         // 정상적으로
         assertThat(size).isEqualTo(3);

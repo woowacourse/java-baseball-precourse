@@ -11,7 +11,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HintTest {
-    private Game game;
+    private Game game = new Game();
     private Set<Pitch> computerSet;
     private Set<Pitch> playerSet;
     private int strike;
@@ -19,9 +19,10 @@ public class HintTest {
 
     @BeforeEach
     void init() {
-        computerSet = game.getPitchSet(123);
-        playerSet = game.getPitchSet(132);
-        game = new Game();
+        String computerNum = "123";
+        String playerNum = "132";
+        computerSet = game.getPitchSet(computerNum);
+        playerSet = game.getPitchSet(playerNum);
         strike = 0;
         ball = 0;
     }
