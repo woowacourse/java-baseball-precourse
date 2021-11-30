@@ -22,7 +22,8 @@ public class BaseballGame {
 
     public static void play(Player player, List<Integer> generateNumbers){
         List<Integer> inputList = player.getUserInput();
-        String result = compare(inputList, generateNumbers);
+        int[] compareResult = compare(inputList, generateNumbers);
+        String result = getResult(compareResult[0], compareResult[1]);
         System.out.println(result);
         if(result.equals(SystemMessage.THREE_STRIKE)){
             System.out.println(SystemMessage.ALL_STRIKE);
@@ -32,11 +33,10 @@ public class BaseballGame {
         return;
     };
 
-    public static String compare(List<Integer> inputString, List<Integer> generateNumber){
+    public static int[] compare(List<Integer> inputString, List<Integer> generateNumber){
         int[] inputArray = Utils.getArray(inputString);
         int[] generateArray = Utils.getArray(generateNumber);
-        int[] compareResult = Utils.compareTwoArray(inputArray, generateArray);
-        return getResult(compareResult[0], compareResult[1]);
+        return Utils.compareTwoArray(inputArray, generateArray);
     };
 
     private static String getResult(int strikes, int balls){
