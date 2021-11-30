@@ -26,7 +26,7 @@ public class Player {
 	}
 
 	public int toIntNumber(String inputNumber) {
-		if (!isNumber(inputNumber) || inputNumber.length() != Computer.NUMBER_SIZE) {
+		if ( inputNumber.length() != Computer.NUMBER_SIZE || !isNumber(inputNumber)) {
 			throw new IllegalArgumentException();
 		}
 		return Integer.parseInt(inputNumber);

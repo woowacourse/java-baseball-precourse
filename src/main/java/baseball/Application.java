@@ -32,7 +32,7 @@ public class Application {
 	}
 
 	public void countBall() {
-		if (player.getInputNumber(HUNDREDS_NUMBER) == computer.getRandomNumber(ONES_NUMBER)
+		if (player.getInputNumber(HUNDREDS_NUMBER) == computer.getRandomNumber(TENS_NUMBER)
 			|| player.getInputNumber(HUNDREDS_NUMBER) == computer.getRandomNumber(ONES_NUMBER)) {
 			computer.addBall();
 		}
