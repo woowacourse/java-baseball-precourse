@@ -8,8 +8,7 @@ import java.util.Set;
 public class BaseBallInputValidator {
 	public boolean checkUserInput(String userInput) {
 		return isRightLength(userInput, NUMBER_LENGTH) && isAllDigit(userInput) && isRightNumberRange(userInput)
-			&& isNotDuplicate(
-			userInput);
+			&& isNotDuplicate(userInput);
 	}
 
 	public boolean checkUserInputStatus(String userInputStatus) {
