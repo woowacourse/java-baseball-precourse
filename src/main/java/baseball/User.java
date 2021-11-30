@@ -20,8 +20,7 @@ public class User {
 	}
 
 	public static boolean isContinue() {
-		String input = getNumber(STATE.END_STATE);
-		int nextStep = Integer.parseInt(input) - 1;
+		int nextStep = Integer.parseInt(getNumber(STATE.END_STATE)) - 1;
 		STATE nextState = STATE.values()[nextStep];
 
 		if (nextState == STATE.GAME_STATE) {
