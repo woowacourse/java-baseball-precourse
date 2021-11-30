@@ -1,15 +1,13 @@
-package baseball.domain;
+package baseball.Controller;
 
+import baseball.domain.RandomNumber;
+import baseball.domain.UserNumber;
+import baseball.view.Viewer;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import static baseball.util.Constant.*;
 
 public class Controller {
-    private static final int NUMBER_SIZE = 3;
-    private static final String END_SIGN = "2";
-    private static final String REPLAY_SIGN = "1";
     private RandomNumber randomNumber;
     private UserNumber userNumber;
     private boolean endFlag = false;
@@ -42,8 +40,8 @@ public class Controller {
     }
 
     public void compareNumbers() {
-        int strike = 0;
-        int ball = 0;
+        int strike = ZERO;
+        int ball = ZERO;
         for (int i = 0; i < NUMBER_SIZE; i++) {
             int randomNum = randomNumber.getByIndex(i);
             int userNum = userNumber.getByIndex(i);

@@ -1,8 +1,6 @@
 package baseball;
 
-import baseball.domain.Controller;
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.Controller.Controller;
 
 public class Application {
     public static void main(String[] args) {

@@ -4,9 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 
+import static baseball.util.Constant.*;
+
 public class RandomNumber {
     private ArrayList<Integer> numbers;
-    private static final int NUMBER_SIZE = 3;
 
     public RandomNumber() {
         numbers = new ArrayList<>();
@@ -19,7 +20,7 @@ public class RandomNumber {
 
     private void createRandomNumber() {
         while (numbers.size() != NUMBER_SIZE) {
-            int num = Randoms.pickNumberInRange(1, 9);
+            int num = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!numbers.contains(num)) {
                 numbers.add(num);
             }

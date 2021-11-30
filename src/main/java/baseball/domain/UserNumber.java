@@ -1,13 +1,14 @@
 package baseball.domain;
 
+import baseball.view.Viewer;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 
+import static baseball.util.Constant.*;
+
 public class UserNumber {
     private ArrayList<Integer> numbers;
-    private static final int NUMBER_SIZE = 3;
-    private static final char ASCII_ZERO = '0';
 
     public UserNumber() {
         numbers = new ArrayList<>();
@@ -22,13 +23,13 @@ public class UserNumber {
         Viewer.inputNumber();
         String userInput = Console.readLine();
         if (userInput.length() != NUMBER_SIZE) {
-            throw new IllegalArgumentException("3자리의 숫자를 입력해주세요!");
+            throw new IllegalArgumentException(INVALID_INPUT_LENGTH_MESSAGE);
         }
         for (char num : userInput.toCharArray()) {
             if (!Character.isDigit(num)) {
-                throw new IllegalArgumentException("숫자를 입력해주세요!");
+                throw new IllegalArgumentException(INVALID_INPUT_TYPE_MESSAGE);
             } else if (numbers.contains(num - ASCII_ZERO)) {
-                throw new IllegalArgumentException("중복되지 않게 숫자를 입력해주세요!");
+                throw new IllegalArgumentException(INVALID_INPUT_DUPLICATED_MESSAGE);
             }
             numbers.add(num - ASCII_ZERO);
         }
