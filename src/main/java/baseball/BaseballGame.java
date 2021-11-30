@@ -1,12 +1,12 @@
-package baseball.controller;
+package baseball;
+
+import java.util.Map;
 
 import baseball.domain.DeterminationPitching;
 import baseball.utils.Computer;
 import baseball.utils.Game;
 import baseball.utils.User;
 import baseball.view.GameDisplay;
-
-import java.util.Map;
 
 public class BaseballGame {
 
@@ -16,7 +16,6 @@ public class BaseballGame {
 
     private void progressGame() {
         String answer = Computer.makeAnswerNumber();
-
         GameDisplay.printInputMessage();
 
         String guessNumber = User.inputGuessNumber();
@@ -39,7 +38,10 @@ public class BaseballGame {
         GameDisplay.printCorrectAnswerMessage();
         GameDisplay.printRestartOrNotMessage();
 
-        if (Game.decideRestartGame()) {
+        String restartOrNotNumber = User.inputRestartOrNotNumber();
+        Game.validateRestartNumber(restartOrNotNumber);
+
+        if (Game.decideRestartGame(restartOrNotNumber)) {
             progressGame();
         }
 

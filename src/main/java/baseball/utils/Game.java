@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,18 +10,7 @@ public class Game {
     private static final String RESTART_SIGNAL = "1";
     private static final String SPACE = " ";
     private static final int FOUL = 0;
-
-    public static boolean decideRestartGame() {
-        boolean decide = false;
-
-        String restartOrNotNumber = User.inputRestartOrNotNumber();
-
-        if (restartOrNotNumber.equals(RESTART_SIGNAL)) {
-            decide = true;
-        }
-
-        return decide;
-    }
+    private static final String RESTART_NUMBER_REGEX = "^[1-2]{1}$";
 
     public static boolean checkCorrect(final String answer, final String guessAnswer) {
         return answer.equals(guessAnswer);
@@ -52,6 +41,18 @@ public class Game {
         return ball + String.valueOf(DeterminationPitching.BALL.determinePitching());
     }
 
+    public static boolean decideRestartGame(final String restartOrNotNumber) {
+        return restartOrNotNumber.equals(RESTART_SIGNAL);
+    }
+
+    public static void validateRestartNumber(final String restartOrNotNumber) {
+
+        if (!restartOrNotNumber.matches(RESTART_NUMBER_REGEX)) {
+            throw new IllegalArgumentException();
+        }
+
+    }
+
     public static Map<String, Integer> countStrikeBall(final String answer, final String guessNumber) {
         final Map<String, Integer> strikeBallCount = new HashMap<>();
 
@@ -66,6 +67,7 @@ public class Game {
             } else if (strikeBall == 2) {
                 ball = addStrikeBall(strike, ball, strikeBall);
             }
+
         }
 
         strikeBallCount.put(String.valueOf(DeterminationPitching.STRIKE), strike);
@@ -77,9 +79,11 @@ public class Game {
     private static int addStrikeBall(int strike, int ball, final int strikeBall) {
         if (strikeBall == 1) {
             strike++;
+
             return strike;
         } else if (strikeBall == 2) {
             ball++;
+
             return ball;
         }
 

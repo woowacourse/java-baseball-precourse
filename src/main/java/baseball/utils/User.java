@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.utils;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class User {
 
-    private static final String REGEX = "^[1-9]{3}$";
+    private static final String GUESS_NUMBER_REGEX = "^[1-9]{3}$";
 
     public static String inputRestartOrNotNumber() {
         return Console.readLine();
@@ -18,9 +18,11 @@ public class User {
     }
 
     public static void validateGuessNumber(final String inputGuessNumber) {
-        if (!inputGuessNumber.matches(REGEX) || checkDuplicateGuessNumber(inputGuessNumber)) {
+
+        if (!inputGuessNumber.matches(GUESS_NUMBER_REGEX) || checkDuplicateGuessNumber(inputGuessNumber)) {
             throw new IllegalArgumentException();
         }
+
     }
 
     private static boolean checkDuplicateGuessNumber(final String inputGuessNumber) {
