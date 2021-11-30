@@ -19,48 +19,4 @@ public class Computer {
 			}
 		}
 	}
-
-	public boolean isGameOver() {
-		return this.strike == 3;
-	}
-
-	public void printScore() {
-		if (this.strike == 0 && this.ball == 0) {
-			System.out.println(Constants.RESULT_NOTHING);
-		} else if (this.strike != 0 && this.ball == 0) {
-			System.out.println(this.strike + Constants.RESULT_STRIKE);
-			if (this.strike == Constants.DIGIT_LENGTH) {
-				System.out.println(Constants.RESULT_GAME_OVER);
-			}
-		} else if (this.strike == 0) {
-			System.out.println(this.ball + Constants.RESULT_BALL);
-		} else {
-			System.out.println(this.ball + Constants.RESULT_BALL + " " + this.strike + Constants.RESULT_STRIKE);
-		}
-	}
-
-	public void countScore(List<Integer> playerInput) {
-		countStrike(playerInput);
-		countBall(playerInput);
-	}
-
-	private void countStrike(List<Integer> playerInput) {
-		int count = 0;
-		for (int i = 0; i < Constants.DIGIT_LENGTH; i++) {
-			if (playerInput.get(i).equals(this.randomGeneratedNumber.get(i))) {
-				count += 1;
-			}
-		}
-		this.strike = count;
-	}
-
-	private void countBall(List<Integer> playerInput) {
-		int count = 0;
-		for (int i = 0; i < Constants.DIGIT_LENGTH; i++) {
-			if (this.randomGeneratedNumber.contains(playerInput.get(i))) {
-				count += 1;
-			}
-		}
-		this.ball = (count - this.strike);
-	}
 }
