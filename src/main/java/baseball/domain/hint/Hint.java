@@ -11,7 +11,7 @@ public class Hint {
 
 	private Map<HintType, Integer> collect;
 
-	public Hint(Map<HintType, Integer> collect) {
+	private Hint(Map<HintType, Integer> collect) {
 		this.collect = collect;
 	}
 
