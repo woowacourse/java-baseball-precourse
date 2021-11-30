@@ -12,21 +12,21 @@ public class GivenNumbers {
     public final Set<Integer> givenNumbersSet;
     public final Integer[] givenNumbersArray;
 
-    public GivenNumbers(Set<Integer> givenNumbersSet) {
-        this.givenNumbersSet = givenNumbersSet;
+    public GivenNumbers() {
+        this.givenNumbersSet = RandomNumberFactory.generate();
         givenNumbersArray = givenNumbersSet.toArray(new Integer[NUMBER_OF_DIGITS_OF_NUMBER]);
     }
 
     public Map<String, Integer> operate(Integer[] inputNumber) {
-        Integer strike = 0;
-        Integer ball = 0;
+        int strike = 0;
+        int ball = 0;
         for (int i = 0; i < inputNumber.length; i++) {
-            Integer number = inputNumber[i];
-            if (number.equals(givenNumbersArray[i])) {
+            int number = inputNumber[i];
+            if(isStrike(number, i)) {
                 strike++;
                 continue;
             }
-            if (givenNumbersSet.contains(number)) {
+            if(isBall(number)) {
                 ball++;
             }
         }
@@ -34,5 +34,13 @@ public class GivenNumbers {
         result.put(STRIKE, strike);
         result.put(BALL, ball);
         return result;
+    }
+
+    private boolean isStrike(int number, int index) {
+        return number == givenNumbersArray[index];
+    }
+
+    private boolean isBall(Integer number) {
+        return givenNumbersSet.contains(number);
     }
 }

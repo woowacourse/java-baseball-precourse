@@ -32,7 +32,7 @@ public class BaseBallGame {
     }
 
     private void play() {
-        GivenNumbers givenNumbers = new GivenNumbers(RandomNumberFactory.generate());
+        GivenNumbers givenNumbers = new GivenNumbers();
         do {
             printNumberRequestMessage();
             result = givenNumbers.operate((Integer[]) userGuessedNumberManager.getInput());
