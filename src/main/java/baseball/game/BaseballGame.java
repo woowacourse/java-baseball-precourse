@@ -51,7 +51,6 @@ public class BaseballGame {
     private boolean continueGame() {
         try {
             printMessage(SystemMessage.CORRECT_ANSWER_NEXT_MESSAGE.getMessage());
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String validContinuePlayerInput = validation.isValidContinueInput(Console.readLine());
             return isContinue(validContinuePlayerInput);
         } catch (IllegalArgumentException e) {

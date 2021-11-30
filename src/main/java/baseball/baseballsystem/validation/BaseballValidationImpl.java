@@ -1,5 +1,7 @@
 package baseball.baseballsystem.validation;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class BaseballValidationImpl implements Validation {
@@ -8,7 +10,8 @@ public class BaseballValidationImpl implements Validation {
 
     private static final Pattern isNumericPattern = Pattern.compile("^[1-9]*$");
 
-    private BaseballValidationImpl() {}
+    private BaseballValidationImpl() {
+    }
 
     public static BaseballValidationImpl getInstance() {
         return VALIDATION_IMPL;
@@ -16,10 +19,22 @@ public class BaseballValidationImpl implements Validation {
 
     @Override
     public String isValidInput(final String input) {
-        if (isLimitedLength(input) && isNumeric(input)) {
+        if (isLimitedLength(input) && isNumeric(input) && isDuplicateNumber(input)) {
             return input;
         } else {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isDuplicateNumber(final String input) {
+        Set<Integer> set = new HashSet<>();
+        for (int inedx = 0; inedx < input.length(); inedx++) {
+            set.add(input.charAt(inedx) - '0');
+        }
+        if (set.size() == 3) {
+            return true;
+        } else {
+            return false;
         }
     }
 
