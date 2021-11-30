@@ -1,5 +1,7 @@
 # 미션 - 숫자 야구 게임
 
+### [1주차 구현을 마치고 고민한 사항들](https://github.com/Hyunta/TIL/blob/master/%EC%9A%B0%ED%85%8C%EC%BD%94/1%EC%A3%BC%EC%B0%A8%20%ED%9B%84%EA%B8%B0.md)
+
 ## ✔구현할 기능 목록
 
 - Random한 3자리 숫자 생성:
