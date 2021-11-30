@@ -21,4 +21,5 @@ public class SystemMessage {
     public static final String INPUT_LENGTH_ERROR = "길이가 3이어야합니다.";
     public static final String CONTINUE_INPUT_ERROR = "1 또는 2를 입력해주세요";
     public static final String INPUT_ZERO_ERROR = "0을 입력할 수 없습니다.";
+    public static final String INPUT_NOT_UNIQUE = "중복된 값을 입력할 수 없습니다";
 }

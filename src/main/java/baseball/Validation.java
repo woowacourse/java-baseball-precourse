@@ -2,6 +2,8 @@ package baseball;
 
 import constant.SystemMessage;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 public class Validation {
@@ -9,6 +11,7 @@ public class Validation {
     public static void inputCheck(String inputString) {
         lengthCheck(inputString);
         isValidNumberInput(inputString);
+        isUniqueNumber(inputString);
     };
 
     public static boolean lengthCheck(String inputString){
@@ -49,4 +52,15 @@ public class Validation {
         }
         throw new IllegalArgumentException(SystemMessage.CONTINUE_INPUT_ERROR);
     };
+
+    public static void isUniqueNumber(String inputString){
+        Set<String> numberSet = new HashSet<String>();
+        String[] inputArray = inputString.split("");
+        for(String elem: inputArray){
+            if(numberSet.contains(elem)){
+                throw new IllegalArgumentException(SystemMessage.INPUT_NOT_UNIQUE);
+            }
+        }
+        return;
+    }
 }
