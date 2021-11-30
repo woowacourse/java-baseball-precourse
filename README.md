@@ -11,38 +11,56 @@
    5-1. 종료 값을 입력 받으면, 게임을 종료합니다.<br>
    5-2. 재개 값을 입력 받으면, 1번으로 이동해 위 내용을 반복합니다.
 
-## 🚀 기능
+## ✔ 클래스
+### Application
+- BaseballGame game
 
-    
-- 게임 시작 시, 생성한 랜덤 값과 사용자에게 입력받은 입력 값을 비교하여 비교 결과를 반환합니다.
-    - 정답을 맞추기 위해선 정답과 사용자의 입력 값을 비교하는 과정이 필수적으로 수반되야 합니다. 이에 반복적으로 실행되는 해당 기능을 함수화하였습니다.
+- main(String[])
 
-- 사용자에게 입력 받은 값, 혹은 랜덤으로 생성한 값에 중복이 없는지 검사합니다.
-- 수를 각각의 자릿수 별로 배열에 담아 반환합니다.
-    - 각 자릿수의 비교과정을 용이하기 위해, 랜덤으로 생성한 수와 사용자에게 입력 받은 수를 각 자릿수 별로 배열에 담는 과정이 필요한데, <br> 
-      해당 과정은 아래에 상황에서 반복적으로 호출이 필요한 기능이기 때문에 기능을 함수화하였습니다.
-      ```
-        - 사용자에게 새로운 수를 입력 받을 떄
-        - 사용자가 게임을 재게할 때  
-      ```
-- 비교 결과에 대한 값을 출력합니다.
+### BaseballGame
+`Role: 게임 진행 클래스`
 
-<br>
+- boolean restart
+- boolean isCorrect
+- Computer computer
+- Player player
 
-### ⌨️ 입력
+- play()
+- getPlayerInput(String)
+- compareComputerWithPlayer(int[], int[])
+- setRestart()
+- getRestart()
+- manageResult()
 
-1. 3자리의 수를 입력받습니다. 
-2. 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수를 입력받습니다.
+### Numbers
+`Role: 수 관리 클래스`
 
-### 🖥 출력
+- isValidNumber(int[])
+- convertNumberToArray(int)
+- checkDuplicatedNumbers(int[])
+- checkNotInZero(int[])
 
-1. 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시합니다.
+### Computer extends Numbers
+`Role: 사용자와 플레이하는 컴퓨터 클래스`
 
-### 💻 예외
+- int[] randomValue
 
-[입력] <br>
-1-1. 사용자가 입력한 값에 중복된 수가 있을 경우
-<br>
-1-2. 사용자가 입력한 값이 입력 범위를 넘어서는 경우 (예) 1234, 000
+- generateValidRandom()
+- generateRandom()
 
-2-1. 1과 2가 아닌 다른 값을 입력하는 경우
+### Player extends Numbers
+`Role: 게임하는 사용자 클래스`
+
+- int[] inputValue
+
+- setInputValue(int)
+- isValidNumber()
+
+### InvalidInputException
+`Role: 잘못된 입력에 대한 에러 처리 클래스`
+
+only use constructor through overriding
+
+1. 사용자가 입력한 값이 입력 범위를 넘어서는 경우 (예) 1234, 000
+2. 사용자가 입력한 값에 중복된 수나 0이 있을 경우
+3. (게임 재게 여부 입력 시)1과 2가 아닌 다른 값을 입력하는 경우
