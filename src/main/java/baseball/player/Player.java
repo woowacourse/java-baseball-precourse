@@ -5,9 +5,24 @@ import baseball.pitch.Pitch;
 import baseball.valid.Valid;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
 import java.util.Set;
 
 public class Player implements Valid {
+    private final List<Integer> numberList;
+
+    public Player() {
+        numberList = fillList(playRead());
+    }
+
+    private List<Integer> fillList(String s) {
+        // 사용자로부터 입력받은 3자리수를 각 자리수 별로 리스트에 넣어준다.
+        for(char c : s.toCharArray()) {
+            numberList.add(c - '0');
+        }
+        return numberList;
+    }
+
     private Set<Pitch> pitchSet;
 
     public void setPitchSet(Set<Pitch> pitchSet) {
@@ -19,7 +34,7 @@ public class Player implements Valid {
 
     // 사용자로부터 숫자를 입력받는다.
     // 예외 처리 진행해야함.
-    public int playRead() {
+    public String playRead() {
         // IO 처리 추가 후에 구현
         String input = Console.readLine();
         return filtrate(input);
@@ -45,27 +60,26 @@ public class Player implements Valid {
             return true;
         return false;
     }
-    public int filtrate(String input) {
+    public String filtrate(String input) {
         // 예외 (1) : 숫자가 아닌 입력값이 들어온 경우
         catchNotDigit(input);
 
-        int i = Integer.parseInt(input);
         // 예외 (2) : 세자리의 수가 아닌 경우
-        if(!inRange(i)) {
+        if(!inRange(input)) {
             throw new IllegalArgumentException(ErrorCode.NOT_IN_RANGE.getContent());
         }
 
         // 예외 (3) : 숫자 내 중복된 수가 존재하는 경우
-        if(duplicate(i)) {
+        if(duplicate(input)) {
             throw new IllegalArgumentException(ErrorCode.IS_DUPLICATE.getContent());
         }
 
         // 예외 (4) : 숫자 내 0이 존재하는 경우
-        if(hasZero(i)) {
+        if(hasZero(input)) {
             throw new IllegalArgumentException(ErrorCode.HAS_ZERO.getContent());
         }
 
-        return i;
+        return input;
     }
 
     private void distinguish(char c) {

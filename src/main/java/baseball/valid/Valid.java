@@ -5,9 +5,7 @@ import java.util.Map;
 
 public interface Valid {
     // 입력된 숫자 내에 중복되는 숫자들이 있는지 확인한다.
-    default boolean duplicate(int i) {
-        // 입력받은 숫자를 하나씩 확인하기 위해 문자로 변환한다.
-        String s = String.valueOf(i);
+    default boolean duplicate(String s) {
         // 중복을 확인하기 위해 Map 자료구조를 활용한다.
         Map<Character, Integer> map = new HashMap<>();
 
@@ -22,15 +20,15 @@ public interface Valid {
     }
 
     // 입력된 숫자가 3자리 수 범위 내에 있는지 확인한다.
-    default boolean inRange(int i) {
+    default boolean inRange(String s) {
+        int i = Integer.parseInt(s);
         if(i < 100 || i > 999)
             return false;
         return true;
     }
 
     // 입력된 숫자에 0이 포함되어 있는지 확인한다.
-    default boolean hasZero(int i) {
-        String s = String.valueOf(i);
+    default boolean hasZero(String s) {
         if(s.indexOf('0') != -1)
             return true;
         return false;
