@@ -28,7 +28,12 @@ public class OutputRole {
     }
 
     public boolean isStrike(int strikeNumber) {
-        return strikeNumber == 3;
+        if (strikeNumber == 3) {
+            System.out.println(SUCCESS_MISSIOLN);
+            return true;
+        }
+
+        return false;
     }
 
     private boolean checkNothing(int strike, int ball) {
@@ -43,7 +48,6 @@ public class OutputRole {
             return true;
         }
         if (input.equals(EXIT_COMMAND)) {
-            System.out.println(SUCCESS_MISSIOLN);
             return false;
         }
 
