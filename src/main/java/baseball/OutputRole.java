@@ -37,7 +37,10 @@ public class OutputRole {
     }
 
     private boolean checkNothing(int strike, int ball) {
-        return strike <= 0 && ball <= 0;
+        if (strike == 0 && ball == 0) {
+            return true;
+        }
+        return false;
     }
 
 
