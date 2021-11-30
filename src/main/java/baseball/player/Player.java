@@ -10,13 +10,10 @@ import java.util.List;
 import java.util.Set;
 
 public class Player implements Valid {
-    private final List<Integer> numberList;
-
-    public Player() {
-        numberList = new ArrayList<>();
-    }
+    private List<Integer> numberList;
 
     public String input() {
+        numberList = new ArrayList<>();
         return fillList(playRead());
     }
 
