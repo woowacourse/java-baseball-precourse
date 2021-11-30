@@ -9,7 +9,7 @@ public class Computer {
 	}
 
 	public GameResult compareBalls(Balls predictionBalls) {
-		predictionBalls.totalReward(predictionBalls);
-		return new GameResult(strike, ball - strike);
+		answerBalls.totalReward(predictionBalls);
+		return new GameResult();
 	}
 }

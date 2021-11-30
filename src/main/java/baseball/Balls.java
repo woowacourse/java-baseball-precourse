@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,6 +16,10 @@ public class Balls {
 
 	public static Balls generateRandomBalls() {
 		return new Balls(Ball.getRandomBallsSizeOf(3));
+	}
+
+	public void totalReward(Balls predictionBalls) {
+		predictionBalls.
 	}
 
 	private void checkSize(List<Ball> balls) {
