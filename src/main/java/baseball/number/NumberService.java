@@ -38,7 +38,7 @@ public class NumberService {
     private boolean isNotZero(int[] num) {
         if (num[0] == 0
                 || num[1] == 0
-                || num[0] == 0) {
+                || num[2] == 0) {
             return false;
         }
         return checkOverlappedNum(num);
