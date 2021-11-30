@@ -18,7 +18,7 @@ public class BaseballGame {
 		Hint hint;
 		computer.determineAnswerBalls();
 		do {
-			String predictionBalls = Player.predictBalls();
+			Balls predictionBalls = Player.predictBalls();
 			hint = computer.compareBalls(predictionBalls);
 			GameOutput.printHint(hint);
 		} while (!isGameEnd(hint));

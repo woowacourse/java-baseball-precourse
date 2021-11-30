@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,6 +13,10 @@ public class Balls {
 		checkSize(balls);
 		checkDuplicated(balls);
 		this.balls = balls;
+	}
+
+	public static Balls generateRandomBalls() {
+		return new Balls(Ball.getRandomBallsSizeOf(3));
 	}
 
 	private void checkSize(List<Ball> balls) {
