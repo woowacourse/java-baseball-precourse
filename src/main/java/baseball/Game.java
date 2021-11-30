@@ -4,7 +4,7 @@ public class Game {
 	private static final int LENGTH_NUMBER = 3;
 	private static final int MAX_STRIKE = 3;
 	private static final String END_MESSAGE = "승리\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-	private static final String NEXT_MESSAGE = "개임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+	private static final int GAME_STATE = 0;
 
 	public static void runGame() {
 		String numberComputer = Computer.generateNumber();
@@ -13,14 +13,12 @@ public class Game {
 		int[] score;
 
 		while (strikeCount != MAX_STRIKE) {
-			numberUser = User.getNumber();
+			numberUser = User.getNumber(STATE.GAME_STATE);
 			score = getScore(numberComputer, numberUser);
 			System.out.println(printMessage(score));
 			strikeCount = score[0];
 		}
 		System.out.println(END_MESSAGE);
-		System.out.println(NEXT_MESSAGE);
-
 		if (User.isContinue()) {
 			runGame();
 		}

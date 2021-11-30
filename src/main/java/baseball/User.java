@@ -6,25 +6,29 @@ import camp.nextstep.edu.missionutils.Console;
 public class User {
 	private static final int NUMBER_LENGTH = 3;
 	private static final String USER_INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요: ";
+	private static final String NEXT_STEP_MESSAGE = "개임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	private static final int NEW_GAME = 1;
 	private static final int END_GAME = 2;
 
-	public static String getNumber() {
-		System.out.println(USER_INPUT_NUMBER_MESSAGE);
-		String userNumber = Console.readLine();
+	public static String getNumber(STATE userState) {
+		System.out.println(userMessage(userState));
+		String input = Console.readLine();
+		UserNumber userNumber = new UserNumber(input, userState);
 
-		isDigit(userNumber);
-		isMatchLength(userNumber);
-		isOverlap(userNumber);
-		isContainZero(userNumber);
+		return userNumber.userNumber;
+	}
 
-		return userNumber;
+	public static String userMessage(STATE userState) {
+		if (userState == STATE.END_STATE) {
+			return NEXT_STEP_MESSAGE;
+		}
+		return USER_INPUT_NUMBER_MESSAGE;
 	}
 
 	public static boolean isContinue() {
-		String input = Console.readLine();
-		isDigit(input);
+		String input = getNumber(STATE.END_STATE);
 		int nextStep = Integer.parseInt(input);
+
 		if (nextStep == NEW_GAME) {
 			return true;
 		}
@@ -32,41 +36,6 @@ public class User {
 			return false;
 		}
 		throw new IllegalArgumentException();
-	}
-
-	private static boolean isDigit(String number) {
-		try {
-			Integer.parseInt(number);
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException();
-		}
-		return true;
-	}
-
-	private static boolean isMatchLength(String number) {
-		if (number.length() != NUMBER_LENGTH) {
-			throw new IllegalArgumentException();
-		}
-		return true;
-	}
-
-	private static boolean isOverlap(String number) {
-		char[] userNumber = number.toCharArray();
-
-		if (userNumber[0] == userNumber[1] || userNumber[0] == userNumber[2] || userNumber[1] == userNumber[2]) {
-			throw new IllegalArgumentException();
-		}
-		return true;
-	}
-
-	private static boolean isContainZero(String number) {
-		String zero = Character.toString('0');
-
-		if (number.contains(zero)) {
-			throw new IllegalArgumentException();
-		}
-		return true;
-
 	}
 
 }
