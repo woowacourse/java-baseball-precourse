@@ -12,6 +12,12 @@ public class Input {
         return userInput;
     }
 
+    public static boolean inputEndNumber() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String value = Console.readLine();
+        return isValidateEndNumber(value);
+    }
+
     public static void isValidateUserNumber(String userInput) {
         if (userInput.length() != 3) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
