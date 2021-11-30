@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.constants.GameConfig.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +23,11 @@ public class BaseBallGame {
 	}
 
 	public String evaluate(String guess) {
-		inputValidator.validate(guess);
+		inputValidator.validateGuess(guess);
 		GuessNumbers guessNumbers = createGuessNumbers(guess, answer);
 
-		if (guessNumbers.countStrike() == 3) {
-			this.running = false;
+		if (guessNumbers.countStrike() == MAX_STRIKE) {
+			endGame();
 		}
 
 		Report report = new Report(guessNumbers);
@@ -55,14 +57,29 @@ public class BaseBallGame {
 		return new GuessNumber(idx, val, "WRONG");
 	}
 
-	public void setRunning(String input) {
-		if (input.equals("1")) {
-			this.answer = AnswerGenerator.generate();
-			this.running = true;
+	public void setRunning(String flag) {
+		inputValidator.validateFlag(flag);
+
+		if (flag.equals(RESTART_FLAG)) {
+			restart();
 		}
+	}
 
-		// TODO : validation
+	private void restart() {
+		resetAnswer();
+		restartGame();
+	}
 
+	private void resetAnswer() {
+		this.answer = AnswerGenerator.generate();
+	}
+
+	private void restartGame() {
+		this.running = true;
+	}
+
+	private void endGame() {
+		this.running = false;
 	}
 
 }

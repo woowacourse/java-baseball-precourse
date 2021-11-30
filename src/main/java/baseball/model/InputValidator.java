@@ -10,11 +10,12 @@ public class InputValidator {
 	private static final String LENGTH_ERROR_MESSAGE = "세 자리 수를 입력해주세요.";
 	private static final String DUPLICATION_ERROR_MESSAGE = "세 자리 수를 입력해주세요.";
 
-	InputValidator() {
+	private static final String FLAG_TYPE_ERROR_MESSAGE = "1과 2만 입력할 수 있습니다";
 
+	InputValidator() {
 	}
 
-	public void validate(String input) {
+	public void validateGuess(String input) {
 		validateRange(input);
 		validateLength(input);
 		validateDuplication(input);
@@ -43,6 +44,19 @@ public class InputValidator {
 		if (hashSet.size() != ANSWER_LENGTH) {
 			throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
 		}
+	}
 
+	public void validateFlag(String flag) {
+		if (!isRestartFlag(flag) && !isEndFlag(flag)) {
+			throw new IllegalArgumentException(FLAG_TYPE_ERROR_MESSAGE);
+		}
+	}
+
+	private boolean isRestartFlag(String flag) {
+		return flag.equals(RESTART_FLAG);
+	}
+
+	private boolean isEndFlag(String flag) {
+		return flag.equals(END_FLAG);
 	}
 }
