@@ -1,11 +1,36 @@
 package baseball.game;
 
+import baseball.PrintValue;
+import baseball.computer.Computer;
+import baseball.hint.Hint;
 import baseball.pitch.Pitch;
+import baseball.player.Player;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class Game {
+    private Computer computer;
+    private Player player;
+    private Hint hint;
+    private boolean playing = true;
+
+    public void play() {
+        while(playing) {
+            ask();
+        }
+    }
+    private void ask() {
+        boolean finished = false;
+
+        while(!finished) {
+            // try catch 해야할지?
+            System.out.print(PrintValue.START.getContent());
+            int target = player.playRead();
+
+        }
+    }
+
     public Set<Pitch> getPitchSet(int num) {
         // 각 자리수별 만들 Pitch를 담을 집합 자료구조이다.
         Set<Pitch> pitchSet = new HashSet<>();
