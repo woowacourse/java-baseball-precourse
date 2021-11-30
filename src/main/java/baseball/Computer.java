@@ -14,12 +14,15 @@ public class Computer {
 	
 	public void init() {
 		genRandomNumber();
+		for(int i:ranNumList) {
+			System.out.print(i);
+		}System.out.println();
 	}
 	
 	//generate random numbers > ranNumList
 	private void genRandomNumber() {
 		ranNumList= new ArrayList<>();
-		while(ranNumList.size()<=NUMBER_DIGIT) {
+		while(ranNumList.size()<NUMBER_DIGIT) {
 			int num= (pickNumberInRange(1, 9));
 			if(!ranNumList.contains(num)) {
 				ranNumList.add(num);
@@ -49,7 +52,5 @@ public class Computer {
 		}
 		return cnt_Ball;
 	}
-	
-	
 
 }
