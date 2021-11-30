@@ -4,14 +4,17 @@ import baseball.model.Hint;
 import baseball.service.GameService;
 import baseball.util.AnswerRange;
 import baseball.view.GameInputView;
+import baseball.view.GameOutputView;
 
 public class GameController {
     private final GameService gameService;
     private final GameInputView gameInputView;
+    private final GameOutputView gameOutputView;
 
     public GameController() {
         gameService = new GameService();
         gameInputView = new GameInputView();
+        gameOutputView = new GameOutputView();
     }
 
     public void run() {
@@ -22,7 +25,7 @@ public class GameController {
     }
 
     private void gamePlay() {
-        // ToDo: 2. 결과 출력 3. 정답이면 게임 종료
+        // ToDo: 3. 정답이면 게임 종료
         gameService.createComputerAnswer();
 
         while (true) {
@@ -30,7 +33,7 @@ public class GameController {
             gameService.guessAnswer(playerAnswer);
 
             Hint hint = gameService.getHintForAnswer();
-            System.out.println("볼 : " + hint.getBall() + " 스트라이크 : " + hint.getStrike());
+            gameOutputView.outputAnswerResult(hint.getStrike(), hint.getBall());
 
             if (hint.getStrike() == AnswerRange.DIGIT) {
                 break;
