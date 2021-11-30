@@ -55,13 +55,33 @@ public class Application {
 
     }
 
+    public void validation(String inputNumber) {
+        String range = "123456789";
+        String include = "";
+        if (inputNumber.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        for (int i=0; i<3; i++) {
+            if (!range.contains(inputNumber.substring(i,i+1))) {
+                throw new IllegalArgumentException();
+            } else if (include.contains(inputNumber.substring(i,i+1))) {
+                throw new IllegalArgumentException();
+            } else {
+                include += inputNumber.substring(i,i+1);
+            }
+
+        }
+    }
+
     public static void main(String[] args) {
         Application application = new Application();
         application.makeAnswer();
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
+        application.validation(inputNumber);
         String result = application.check(inputNumber);
         System.out.println(result);
+
 
 
 
