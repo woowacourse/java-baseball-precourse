@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import constant.SystemMessage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,8 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class GameHelper {
-    private static final int RESTART_CODE = 1;
-    private static final int EXIT_CODE = 2;
+
 
     public static List<Integer> generateNumbers(){
         List<Integer> numberList = new ArrayList<Integer>();
@@ -29,7 +29,7 @@ public class GameHelper {
         String result = compare(inputString, generateNumbers);
         System.out.println(result);
         if(result.equals("3스트라이크")){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(SystemMessage.ALL_STRIKE);
             return;
         }
         play(generateNumbers);
@@ -37,7 +37,7 @@ public class GameHelper {
     };
 
     public static String getUserInput(){
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.println(SystemMessage.INPUT_QUESTION);
         String inputString = Console.readLine();
         inputCheck(inputString);
         return inputString;
@@ -45,13 +45,13 @@ public class GameHelper {
 
     private static void inputCheck(String inputString) {
         if(inputString.length()!=3){
-            throw new IllegalArgumentException("길이가 3이어야합니다.");
+            throw new IllegalArgumentException(SystemMessage.INPUT_LENGTH_ERROR);
         }
         IntStream
             .range(0,inputString.length())
             .forEach(index -> {
                 if(!Character.isDigit(inputString.charAt(index))){
-                    throw new IllegalArgumentException("숫자를 입력해주세요.");
+                    throw new IllegalArgumentException(SystemMessage.INPUT_NUMERIC_ERROR);
                 }
             });
     };
@@ -92,26 +92,26 @@ public class GameHelper {
 
     private static String getResult(int strikes, int balls){
         if(strikes==0 && balls==0){
-            return ("낫싱");
+            return (SystemMessage.NOTHING);
         }
         if(balls==0){
-            return (strikes + "스트라이크");
+            return (strikes + SystemMessage.STRIKE);
         }
         if(strikes==0){
-            return (balls + "볼");
+            return (balls + SystemMessage.BALL);
         }
-        return (balls+"볼 "+strikes+"스트라이크");
+        return (balls+SystemMessage.BALL+' '+strikes+ SystemMessage.STRIKE);
     };
 
     public static int isContinue(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(SystemMessage.CONTINUE_QUESTION);
         String inputNumber = Console.readLine();
         if(inputNumber.equals("1")){
-            return RESTART_CODE;
+            return SystemMessage.RESTART_CODE;
         }
         if(inputNumber.equals("2")) {
-            return EXIT_CODE;
+            return SystemMessage.EXIT_CODE;
         }
-        throw new IllegalArgumentException("1 또는 2를 입력해주세요");
+        throw new IllegalArgumentException(SystemMessage.CONTINUE_INPUT_ERROR);
     };
 }
