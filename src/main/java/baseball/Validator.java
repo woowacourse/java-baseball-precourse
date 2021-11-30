@@ -9,6 +9,7 @@ public class Validator {
     private final static int END = 2;
     private final static int DIGIT = 3;
     private final static String NUMBER_PATTERN = "[+-]?\\d*(\\.\\d+)?";
+    private final static String WRONG_INPUT_MESSAGE = "입력값이 올바르지 않습니다.";
 
     private String input;
 
@@ -18,7 +19,7 @@ public class Validator {
         boolean isNumber = this.input.matches(NUMBER_PATTERN);
 
         if (!isNumber || isContainsZero() || isContainsDuplicatedNumber() || !isCorrectDigit()) {
-            throw new IllegalArgumentException("입력값이 올바르지 않습니다.");
+            throw new IllegalArgumentException(WRONG_INPUT_MESSAGE);
         }
     }
 
@@ -26,7 +27,7 @@ public class Validator {
         boolean isNumber = this.input.matches(NUMBER_PATTERN);
 
         if (!isNumber && (Integer.parseInt(input) != START || Integer.parseInt(input) != END)) {
-            throw new IllegalArgumentException("입력값이 올바르지 않습니다.");
+            throw new IllegalArgumentException(WRONG_INPUT_MESSAGE);
         }
     }
 
