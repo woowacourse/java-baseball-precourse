@@ -18,15 +18,18 @@ public class NumberComparator {
 	}
 
 	public void printResult() {
+		String hint = "";
 		if (balls != ZERO) {
-			System.out.print(balls + "볼 ");
+			hint += balls + "볼 ";
 		}
 		if (strikes != ZERO) {
-			System.out.print(strikes + "스트라이크 ");
+			hint += strikes + "스트라이크 ";
 		}
 		if (balls == ZERO && strikes == ZERO) {
-			System.out.print("낫싱");
+			hint += "낫싱";
 		}
+		System.out.println(hint);
+
 		if (strikes == NUMBER_LENGTH) {
 			System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		}
