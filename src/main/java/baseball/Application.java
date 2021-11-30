@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
 
     String answer = "";
+    String playGame = "1";
 
     public void makeAnswer() {
         this.answer = "";
@@ -16,10 +17,10 @@ public class Application {
             answerArray[i] = i+1;
         }
         for (int i=0; i<3; i++) {
-            randomNumber = Randoms.pickNumberInRange(0,8);
+            randomNumber = Randoms.pickNumberInRange(1,9);
             temp = answerArray[i];
-            answerArray[i] = answerArray[randomNumber];
-            answerArray[randomNumber] = temp;
+            answerArray[i] = answerArray[randomNumber-1];
+            answerArray[randomNumber-1] = temp;
         }
         for (int i=0; i<3; i++) {
             this.answer += answerArray[i];
@@ -76,22 +77,23 @@ public class Application {
     public static void main(String[] args) {
         Application application = new Application();
         application.makeAnswer();
-        System.out.print("숫자를 입력해주세요 : ");
-        String inputNumber = Console.readLine();
-        application.validation(inputNumber);
-        String result = application.check(inputNumber);
-        System.out.println(result);
 
+        while (application.playGame.equals("1")) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputNumber = Console.readLine();
+            application.validation(inputNumber);
+            String result = application.check(inputNumber);
+            System.out.println(result);
 
+            if (result.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                application.playGame = Console.readLine();
+                application.makeAnswer();
+            }
 
-
-        /*
-        System.out.println("test");
-        Application test = new Application();
-        for (int i=0; i<10; i++) {
-            test.makeAnswer();
-            System.out.println(test.answer);
         }
-         */
+        System.out.println("게임 종료");
+
     }
 }
