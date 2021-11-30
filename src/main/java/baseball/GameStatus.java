@@ -13,8 +13,8 @@ public class GameStatus {
         String gameResult = "";
 
         if (strikeNum == Constant.ZERO && ballNum == Constant.ZERO) gameResult += SystemMessage.NOTHING;
-        if (ballNum > Constant.ZERO) gameResult = gameResult + ballNum + SystemMessage.BALL + " ";
-        if (strikeNum > Constant.ZERO) gameResult = gameResult + strikeNum + SystemMessage.STRIKE;
+        if (ballNum > Constant.ZERO) gameResult += ballNum + SystemMessage.BALL + " ";
+        if (strikeNum > Constant.ZERO) gameResult += strikeNum + SystemMessage.STRIKE;
 
         return removeBlankAtEnd(gameResult);
     }
