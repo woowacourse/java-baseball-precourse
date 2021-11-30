@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -69,7 +70,22 @@ class Game {
     }
 
     public Result tryBaseball(List<Integer> playerNumbers) {
-        return new Result(1, 1);
+        Result result = new Result(0,0);
+
+        for (int i = 0; i < playerNumbers.size(); i++) {
+            if (answer.isStrike(i, playerNumbers.get(i))) {
+                result.addStrike();
+
+                continue;
+            }
+
+            if (answer.isBall(playerNumbers.get(i))) {
+                result.addBall();
+            }
+        }
+
+
+        return result;
     }
 }
 
@@ -81,6 +97,8 @@ class Answer {
     }
 
     private void initAnswer() {
+        numbers = new ArrayList<>();
+
         for (int i = 0; i < 3; i++) {
             numbers.add(getUniqueNumber());
         }
@@ -95,6 +113,14 @@ class Answer {
             if (!numbers.contains(number)) return number;
         }
     }
+
+    public boolean isStrike(int idx, int number) {
+        return numbers.get(idx) == number;
+    }
+
+    public boolean isBall(int number) {
+        return numbers.contains(number);
+    }
 }
 
 class Result {
@@ -108,5 +134,13 @@ class Result {
 
     public boolean isStrikeOut() {
         return strike == 3;
+    }
+
+    public void addStrike() {
+        strike ++;
+    }
+
+    public void addBall() {
+        ball ++;
     }
 }
