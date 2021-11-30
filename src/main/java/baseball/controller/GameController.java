@@ -17,6 +17,11 @@ public class GameController {
 			String guess = gameView.askGuess();
 			String report = baseBallGame.evaluate(guess);
 			gameView.printResult(report);
+
+			if (!baseBallGame.isRunning()) {
+				String input = gameView.askRestart();
+				baseBallGame.setRunning(input);
+			}
 		}
 	}
 }

@@ -23,8 +23,15 @@ public class BaseBallGame {
 		validateInput(guess);
 		GuessNumbers guessNumbers = createGuessNumbers(guess, answer);
 
+		if (guessNumbers.countStrike() == 3) {
+			this.running = false;
+		}
+
+		System.out.println(answer.toString());
+		
 		Report report = new Report(guessNumbers);
 		return report.getReport();
+
 	}
 
 	private GuessNumbers createGuessNumbers(String guess, List<Integer> answer) {
@@ -65,6 +72,16 @@ public class BaseBallGame {
 				System.out.println("정답은 서로 다른 세 자리 수입니다.");
 			}
 		}
+	}
+
+	public void setRunning(String input) {
+		if (input.equals("1")) {
+			this.answer = AnswerGenerator.generate();
+			this.running = true;
+		}
+
+		// TODO : validation
+
 	}
 
 }
