@@ -15,8 +15,16 @@ public class GameRole {
     }
 
     public static String getRandomNumber() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        return numbers.toString().replaceAll("[^0-9]", "");
+        String randomNumber = "";
+
+        while (randomNumber.length() != 3) {
+            String randomChar = String.valueOf(Randoms.pickNumberInRange(1, 9));
+            if (!randomNumber.contains(randomChar)) {
+                randomNumber = randomNumber.concat(randomChar);
+            }
+        }
+
+        return randomNumber;
     }
 
     private static void checkGameResult(String input) {
