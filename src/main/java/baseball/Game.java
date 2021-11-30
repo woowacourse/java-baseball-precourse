@@ -3,8 +3,6 @@ package baseball;
 public class Game {
 	private static final int LENGTH_NUMBER = 3;
 	private static final int MAX_STRIKE = 3;
-	private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-	private static final int GAME_STATE = 0;
 
 	public static void runGame() {
 		String numberComputer = Computer.generateNumber();
@@ -18,7 +16,7 @@ public class Game {
 			System.out.println(printMessage(score));
 			strikeCount = score[0];
 		}
-		System.out.println(END_MESSAGE);
+		System.out.println(MESSAGE.END_MESSAGE);
 		if (User.isContinue()) {
 			runGame();
 		}

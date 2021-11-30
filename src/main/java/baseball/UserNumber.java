@@ -5,10 +5,9 @@ public class UserNumber {
 	private static final int NUMBER_LENGTH = 3;
 	public String userNumber;
 
-	public UserNumber(String input,STATE userState) {
+	public UserNumber(String input, STATE userState) {
 		isDigit(input);
-		if (userState == STATE.GAME_STATE)
-		{
+		if (userState == STATE.GAME_STATE) {
 			isMatchLength(input);
 			isContainZero(input);
 			isOverlap(input);
