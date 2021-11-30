@@ -10,7 +10,7 @@ public class Computer {
 	private static final int MAX_NUMBER_SIZE = 3;
 	private static final int MIN_NUMBER = 1;
 	private static final int MAX_NUMBER = 9;
-	private BaseballNumber baseballNumber;
+	private final BaseballNumber baseballNumber;
 
 	public Computer() {
 		ArrayList<Integer> numbers = new ArrayList<>();
@@ -18,7 +18,7 @@ public class Computer {
 		while (numbers.size() < MAX_NUMBER_SIZE) {
 			numbers.add(makeRandomNumber(numbers));
 		}
-		
+
 		this.baseballNumber = new BaseballNumber(
 			new ArrayList<>(numbers
 				.stream()

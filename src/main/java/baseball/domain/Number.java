@@ -2,22 +2,20 @@ package baseball.domain;
 
 public class Number {
 
+	private static final String NUMBER_ERROR = "1에서 9까지의 숫자를 입력해주세요.";
+
 	private static final int MIN = 1;
 	private static final int MAX = 9;
-	private int no;
+	private final int no;
 
 	public Number(int no) {
 		if (no < MIN || MAX < no) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(NUMBER_ERROR);
 		}
 		this.no = no;
 	}
 
 	public int getNo() {
 		return no;
-	}
-
-	public boolean sameNumber(int no) {
-		return this.no == no;
 	}
 }

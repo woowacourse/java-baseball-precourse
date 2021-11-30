@@ -40,6 +40,7 @@ public class BaseballController {
 
 	public static boolean compareNumber(Computer computer, UserInput userInput) {
 		GameResult gameResult = new GameResult(computer, userInput);
+		gameResult.setResult();
 		OutputView.printHint(gameResult.getHint());
 
 		return gameResult.compareNumber();

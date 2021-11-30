@@ -2,26 +2,20 @@ package baseball.domain;
 
 public class GameResult {
 
-	private static final int END = 3;
+	private static final int ALL = 3;
 	private static final int NONE = 0;
 	private static final String BALL_HINT = "볼";
 	private static final String STRIKE_HINT = "스트라이크";
 	private static final String ZERO_HINT = "낫싱";
 
-	private Computer computer;
-	private UserInput userInput;
+	private final Computer computer;
+	private final UserInput userInput;
 	private long strikeScore;
 	private long ballScore;
 
 	public GameResult(Computer computer, UserInput userInput) {
 		this.computer = computer;
 		this.userInput = userInput;
-
-		setResult();
-	}
-
-	public boolean compareNumber() {
-		return strikeScore != END;
 	}
 
 	public void setResult() {
@@ -49,4 +43,9 @@ public class GameResult {
 
 		return hint.toString();
 	}
+
+	public boolean compareNumber() {
+		return strikeScore != ALL;
+	}
+
 }
