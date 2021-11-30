@@ -28,7 +28,6 @@ public class Player {
     }
 
     public static boolean isContinue() {
-        System.out.println(SystemMessage.GAME_END_MESSAGE);
         System.out.println(SystemMessage.RESTART_SELECT_MESSAGE);
         String input = Console.readLine();
         if (Validator.isValidateChoice(input)) return input.equals(Constant.CHOICE_ONE);
