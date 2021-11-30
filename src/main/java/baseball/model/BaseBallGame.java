@@ -1,21 +1,19 @@
 package baseball.model;
 
-import static baseball.constants.GameConfig.*;
-
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import baseball.utils.AnswerGenerator;
 
 public class BaseBallGame {
-	private boolean running;
 	Answer answer;
+	InputValidator inputValidator;
+	private boolean running;
 
 	public BaseBallGame() {
-		this.running = true;
 		this.answer = AnswerGenerator.generate();
+		this.inputValidator = new InputValidator();
+		this.running = true;
 	}
 
 	public boolean isRunning() {
@@ -23,14 +21,12 @@ public class BaseBallGame {
 	}
 
 	public String evaluate(String guess) {
-		validateInput(guess);
+		inputValidator.validate(guess);
 		GuessNumbers guessNumbers = createGuessNumbers(guess, answer);
 
 		if (guessNumbers.countStrike() == 3) {
 			this.running = false;
 		}
-
-		System.out.println(answer.toString());
 
 		Report report = new Report(guessNumbers);
 		return report.getReport();
@@ -57,38 +53,6 @@ public class BaseBallGame {
 		}
 
 		return new GuessNumber(idx, val, "WRONG");
-	}
-
-	private void validateInput(String input) {
-		validateRange(input);
-		validateLength(input);
-		validateDuplication(input);
-	}
-
-	private void validateRange(String input) {
-		String pattern = "[1-9]+";
-
-		if (!input.matches(pattern)) {
-			throw new IllegalArgumentException("각 자리 수는 1이상 9이하의 정수입니다.");
-		}
-	}
-
-	private void validateLength(String input) {
-		if (input.length() != ANSWER_LENGTH) {
-			throw new IllegalArgumentException("세 자리 수를 입력해주세요.");
-		}
-	}
-
-	private void validateDuplication(String input) {
-		Set<Character> hashSet = new HashSet<>();
-		for (char numChar : input.toCharArray()) {
-			hashSet.add(numChar);
-		}
-
-		if (hashSet.size() != ANSWER_LENGTH) {
-			throw new IllegalArgumentException("서로 다른 세 자리 수를 입력해주세요.");
-		}
-
 	}
 
 	public void setRunning(String input) {
