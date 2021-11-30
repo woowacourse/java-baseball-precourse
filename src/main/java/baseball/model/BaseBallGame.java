@@ -1,8 +1,11 @@
 package baseball.model;
 
+import static baseball.constants.GameConfig.*;
+
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import baseball.utils.AnswerGenerator;
 
@@ -57,21 +60,35 @@ public class BaseBallGame {
 	}
 
 	private void validateInput(String input) {
-		String pattern = "[1-9]{3}";
+		validateRange(input);
+		validateLength(input);
+		validateDuplication(input);
+	}
+
+	private void validateRange(String input) {
+		String pattern = "[1-9]+";
 
 		if (!input.matches(pattern)) {
-			throw new IllegalArgumentException("세 자리의 숫자를 입력해야 합니다.");
+			throw new IllegalArgumentException("각 자리 수는 1이상 9이하의 정수입니다.");
+		}
+	}
+
+	private void validateLength(String input) {
+		if (input.length() != ANSWER_LENGTH) {
+			throw new IllegalArgumentException("세 자리 수를 입력해주세요.");
+		}
+	}
+
+	private void validateDuplication(String input) {
+		Set<Character> hashSet = new HashSet<>();
+		for (char numChar : input.toCharArray()) {
+			hashSet.add(numChar);
 		}
 
-		HashMap<Character, Integer> hashMap = new HashMap<>();
-		for (char numChar : input.toCharArray()) {
-			hashMap.put(numChar, hashMap.getOrDefault(numChar, 0) + 1);
+		if (hashSet.size() != ANSWER_LENGTH) {
+			throw new IllegalArgumentException("서로 다른 세 자리 수를 입력해주세요.");
 		}
-		for (int num : hashMap.values()) {
-			if (num > 1) {
-				System.out.println("정답은 서로 다른 세 자리 수입니다.");
-			}
-		}
+
 	}
 
 	public void setRunning(String input) {
