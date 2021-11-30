@@ -18,7 +18,7 @@ public class Application {
 		// 2를입력받을 때 까지 게임을 계속한다
 		while (end == 1) {
 			computer = new Computer();
-			game(computer, user, umpire);
+			playGame(computer, user, umpire);
 			umpire.init();
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -27,7 +27,7 @@ public class Application {
 	}
 
 	// 게임을 하는 메소드
-	private static void game(Computer computer, User user, Umpire umpire) {
+	private static void playGame(Computer computer, User user, Umpire umpire) {
 		while (!umpire.isEnd()) {
 			umpire.init();
 			user.getInput();
