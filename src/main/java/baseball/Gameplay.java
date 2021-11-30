@@ -13,6 +13,8 @@ public class Gameplay {
 
     //게임 플레이하는 함수
     public void Play() {
+        GameSetting();
 
+        computer.RandomNum(); //랜덤 숫자 생성
     }
 }
