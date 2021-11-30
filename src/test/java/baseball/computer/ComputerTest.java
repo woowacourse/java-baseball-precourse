@@ -17,6 +17,6 @@ public class ComputerTest {
     @Test
     @DisplayName("난수 생성")
     void 난수_생성() {
-        assertThat(computer.getNumber()).isInstanceOf(Integer.class);
+        assertThat(computer.getNumberList().size()).isEqualTo(3);
     }
 }
