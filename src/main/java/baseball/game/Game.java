@@ -14,10 +14,9 @@ public class Game {
 
         // 각 자리 index를 돌면서 Pitch를 생성하고, 집합 자료구조에 넣어준다.
         for(int i=0; i<3; i++) {
-            pitchSet.add(new Pitch(num + 1, numStr.charAt(i) -'0'));
+            pitchSet.add(new Pitch(i + 1, numStr.charAt(i) -'0'));
         }
 
         return pitchSet;
     }
-
 }
