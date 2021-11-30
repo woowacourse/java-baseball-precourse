@@ -17,7 +17,7 @@ public class Random {
             i = i + 1;
         } while (i < 3);
 
-        System.out.println(Arrays.toString(computerNumber).replaceAll("[^0-9]",""));
+        
         return Arrays.toString(computerNumber).replaceAll("[^0-9]", "");
     }
 
