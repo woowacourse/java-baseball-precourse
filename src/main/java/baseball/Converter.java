@@ -3,6 +3,9 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * 타입을 변환합니다.
+ */
 public class Converter {
     // 입력값을 잘라 리스트에 넣는다.
     public static List<Integer> toList(String inputString){
