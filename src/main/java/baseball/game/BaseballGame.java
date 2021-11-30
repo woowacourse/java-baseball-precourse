@@ -15,10 +15,6 @@ public class BaseballGame {
 	ResultViewer resultViewer = new ResultViewer();
 	Player player = new Player();
 
-	public BaseballGame() {
-
-	}
-
 	public void startGame() {
 		while (true) {
 			String computerBall = computer.createRandomBalls();
@@ -28,7 +24,6 @@ public class BaseballGame {
 				System.out.println(Constant.FINISH_GAME_MESSAGE);
 				break;
 			}
-
 		}
 	}
 
@@ -37,7 +32,6 @@ public class BaseballGame {
 			String validatedUserAnswer = player.readUserAnswer();
 			int ballCnt = computer.checkBallCnt(computerBall, validatedUserAnswer);
 			int strikeCnt = computer.checkStrikeCnt(computerBall, validatedUserAnswer);
-
 			System.out.println(resultViewer.showResult(strikeCnt, ballCnt));
 
 			if (strikeCnt == 3) {
