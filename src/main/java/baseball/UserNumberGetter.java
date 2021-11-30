@@ -4,8 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class UserNumberGetter {
 	private static final int NUM_LENGTH = 3;
-	private static final int MIN_NUMBER = 1;
-	private static final int MAX_NUMBER = 9;
 
 	private int[] userNumber = new int[3];
 

@@ -22,7 +22,7 @@ public class RandomNumGenerator {
 		while (currentNumber < NUM_LENGTH) {
 			int temp = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 
-			if(validateRandomNumber(currentNumber, temp) == true){
+			if(validateRandomNumber(currentNumber, temp)){
 				randomNumber[currentNumber] = temp;
 				currentNumber++;
 			}
