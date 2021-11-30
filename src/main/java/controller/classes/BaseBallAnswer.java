@@ -22,41 +22,33 @@ public class BaseBallAnswer {
 	}
 
 	public void cleanAnswerArray() {
-		// for (int i = 0; i < answerArray.size(); i++) {
-		// 	answerArray.remove(i);
-		// }
 		answerArray = new ArrayList<>(3);
 	}
 
 	public void makeAnswer() {
-		int[] checkDuplication = {0,0,0,0,0,0,0,0,0,0};
+		int[] checkDuplication = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		int duplicationCount = 0;
 
-		while(duplicationCount < 3) {
-			int tmpRandom = pickNumberInRange(1,9);
-			if(checkDuplication[tmpRandom] == 0) {
+		while (duplicationCount < 3) {
+			int tmpRandom = pickNumberInRange(1, 9);
+			if (checkDuplication[tmpRandom] == 0) {
 				makeAnswerArray(tmpRandom);
-				//answerArray.add(tmpRandom);
 				duplicationCount++;
 				checkDuplication[tmpRandom] = 1;
 			}
 		}
-		//answerArray = pickUniqueNumbersInRange(1, 9, 3);
 		initCheckingList();
 		refreshAnswer();
-		System.out.println(answerArray);
 	}
+
 	private void makeAnswerArray(int randomNumber) {
 		answerArray.add(randomNumber);
 		if (answerArray.size() > 3) {
-			for(int i = 0; i < answerArray.size(); i++) {
+			for (int i = 0; i < answerArray.size(); i++) {
 				answerArray.remove(i);
 			}
 			answerArray.add(randomNumber);
 		}
-	}
-	public String getAnswer() {
-		return answer;
 	}
 
 	public CountingStatus calculateStatus(String userAnswer) {
@@ -76,7 +68,10 @@ public class BaseBallAnswer {
 	}
 
 	private int[] getArrayFromString(String formatString) {
-		int[] array = Arrays.stream(formatString.substring(0, formatString.length()).split("")).map(String::trim).mapToInt(Integer::parseInt).toArray();
+		int[] array = Arrays.stream(formatString.substring(0, formatString.length()).split(""))
+			.map(String::trim)
+			.mapToInt(Integer::parseInt)
+			.toArray();
 		return array;
 	}
 
@@ -94,8 +89,7 @@ public class BaseBallAnswer {
 	}
 
 	private StrikeStatus getStrikesFromInt(int StrikeStatusInt) {
-		//return
-		if(StrikeStatusInt == 0) {
+		if (StrikeStatusInt == 0) {
 			return StrikeStatus.zero;
 		} else if (StrikeStatusInt == 1) {
 			return StrikeStatus.one;
@@ -108,7 +102,7 @@ public class BaseBallAnswer {
 	}
 
 	private BallStatus getBallsFromInt(int BallStatusInt) {
-		if(BallStatusInt == 0) {
+		if (BallStatusInt == 0) {
 			return BallStatus.zero;
 		} else if (BallStatusInt == 1) {
 			return BallStatus.one;

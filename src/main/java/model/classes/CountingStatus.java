@@ -13,6 +13,7 @@ public class CountingStatus {
 		this.ballStatus = ballStatus;
 		this.strikeStatus = strikeStatus;
 	}
+
 	public CountingStatus() {
 		this.ballStatus = BallStatus.zero;
 		this.strikeStatus = StrikeStatus.zero;
@@ -21,6 +22,7 @@ public class CountingStatus {
 	public void setBallStatus(BallStatus ballStatus) {
 		this.ballStatus = ballStatus;
 	}
+
 	public void setStrikeStatus(StrikeStatus strikeStatus) {
 		this.strikeStatus = strikeStatus;
 	}
@@ -41,7 +43,7 @@ public class CountingStatus {
 	private String toStringFromCountingStatus() {
 		if (ballStatus == BallStatus.zero && strikeStatus == StrikeStatus.zero) {
 			return NOTHING_STATEMENT;
-		} else if(ballStatus == BallStatus.zero) {
+		} else if (ballStatus == BallStatus.zero) {
 			return "" + toIntByStrikeStatus() + STRIKE_STATEMENT;
 		} else if (strikeStatus == StrikeStatus.zero) {
 			return "" + toIntByBallStatus() + BALL_STATEMENT;

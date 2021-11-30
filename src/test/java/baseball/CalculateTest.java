@@ -4,12 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import controller.classes.BaseBallAnswer;
-import model.constants.StrikeStatus;
 
 public class CalculateTest extends NsTest {
 	@Override
 	protected void runMain() {
-		Application.main(new String[]{});
+		Application.main(new String[] {});
 	}
 
 	@Test

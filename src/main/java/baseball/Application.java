@@ -1,10 +1,5 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Randoms.*;
-
-import java.util.Arrays;
-
-import controller.classes.BaseBallGame;
 import view.GameConsole;
 import view.classes.Game;
 
