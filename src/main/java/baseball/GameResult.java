@@ -4,6 +4,9 @@ import java.util.List;
 
 public class GameResult {
 
+	private static final int EXIST_COUNT_MIN = 0;
+	private static final int GAME_END_STRIKE_COUNT = 3;
+
 	private List<Hint> hints;
 
 	public GameResult(List<Hint> hints) {
@@ -24,15 +27,15 @@ public class GameResult {
 	}
 
 	public boolean isPlayerWin() {
-		return countStrike() == 3;
+		return countStrike() == GAME_END_STRIKE_COUNT;
 	}
 
 	public boolean hasBall() {
-		return countBall() > 0;
+		return countBall() > EXIST_COUNT_MIN;
 	}
 
 	public boolean hasStrike() {
-		return countStrike() > 0;
+		return countStrike() > EXIST_COUNT_MIN;
 	}
 
 	public boolean isNothing() {
