@@ -3,36 +3,32 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    static String gameStatus;
+	static String gameStatus;
+	static ThreeDifferentDigits answer = new ThreeDifferentDigits();
 
-    public static void main(String[] args) {
-        gameStatus = "1";
-        while (gameStatus.equals("1")) {
-            input3Digits();
-        }
-    }
+	public static void main(String[] args) {
+		gameStatus = "1";
+		while (gameStatus.equals("1")) {
+			Round.input3Digits(answer);
+		}
+	}
 
-    static Referee referee = new Referee();
-    static ThreeDifferentDigits answer = new ThreeDifferentDigits();
+	static void continueGame() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-    static void input3Digits(){
-        System.out.print("숫자를 입력해 주세요 : ");
+		String input = Console.readLine();
 
-        String input = Console.readLine();
+		CheckException.isRightCommand(input);
 
-        CheckException.is3DigitValid(input);
+		// 가능하면 종료되기 위해, 먼저 종료선언 함.
+		gameStatus = "2";
+		if (input.equals("1")) {
+			newGame();
+		}
+	}
 
-        referee.judge(answer.getDigits(), input.split(""));
-    }
-
-    static void continueGame(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-        CheckException.isRightCommand(input);
-        gameStatus = "2";
-        if (input.equals("1")){
-            gameStatus = "1";
-            answer = new ThreeDifferentDigits();
-        }
-    }
+	static void newGame() {
+		gameStatus = "1";
+		answer = new ThreeDifferentDigits();
+	}
 }
