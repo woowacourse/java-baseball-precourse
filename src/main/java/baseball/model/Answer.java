@@ -1,13 +1,16 @@
-package baseball.vo;
+package baseball.model;
+
+import baseball.vo.ResultBall;
+import baseball.vo.UserBall;
 
 import java.util.List;
 
-public class AnswerBall {
+public class Answer {
 
     private List<Integer> answer;
     private boolean isTrying = true;
 
-    public AnswerBall(List<Integer> newQuiz) {
+    public Answer(List<Integer> newQuiz) {
         this.answer = newQuiz;
     }
 
