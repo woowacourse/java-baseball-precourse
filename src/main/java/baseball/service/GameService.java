@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.model.Game;
+import baseball.model.Hint;
 import baseball.model.Player;
 import baseball.util.GamePlayType;
 
@@ -9,6 +10,10 @@ public class GameService {
 
     public GameService() {
         game = new Game();
+    }
+
+    public void createComputerAnswer() {
+        game.getComputer().createAnswer();
     }
 
     public boolean checkWhetherToPlay() {
@@ -29,5 +34,15 @@ public class GameService {
 
     public void guessAnswer(int[] answer) {
         game.getPlayer().updateAnswer(answer);
+    }
+
+    public Hint getHintForAnswer() {
+        Hint hint = game.getHint();
+        int[] computerAnswer = game.getComputer().getAnswer();
+        int[] playerAnswer = game.getPlayer().getAnswer();
+
+        hint.compareAnswer(computerAnswer, playerAnswer);
+
+        return hint;
     }
 }

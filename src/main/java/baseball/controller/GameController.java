@@ -1,6 +1,8 @@
 package baseball.controller;
 
+import baseball.model.Hint;
 import baseball.service.GameService;
+import baseball.util.AnswerRange;
 import baseball.view.GameInputView;
 
 public class GameController {
@@ -21,8 +23,19 @@ public class GameController {
 
     private void gamePlay() {
         // ToDo: 2. 결과 출력 3. 정답이면 게임 종료
-        int[] playerAnswer = gameInputView.inputAnswer();
-        gameService.guessAnswer(playerAnswer);
+        gameService.createComputerAnswer();
+
+        while (true) {
+            int[] playerAnswer = gameInputView.inputAnswer();
+            gameService.guessAnswer(playerAnswer);
+
+            Hint hint = gameService.getHintForAnswer();
+            System.out.println("볼 : " + hint.getBall() + " 스트라이크 : " + hint.getStrike());
+
+            if (hint.getStrike() == AnswerRange.DIGIT) {
+                break;
+            }
+        }
     }
 
     private void askGameReplay() {
