@@ -1,7 +1,14 @@
 package baseball;
 
+import utils.BaseballUtils;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
     public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
+        boolean isRestarted;
+        do {
+            isRestarted = BaseballRunner.run();;
+        }while (isRestarted);
+
     }
 }
