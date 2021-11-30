@@ -12,4 +12,8 @@ public enum Hint {
 	public String getTag() {
 		return tag;
 	}
+
+	public boolean isStrike(){
+		return this == Hint.STRIKE;
+	}
 }

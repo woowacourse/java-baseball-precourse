@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import baseball.type.Hint;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Numbers {
@@ -35,6 +36,20 @@ public class Numbers {
 			numbers.add(number);
 		}
 		return new Numbers(numbers);
+	}
+
+	public Hint getHint(Number number, int index){
+		int findIdx = numbers.indexOf(number);
+		if(findIdx==index){
+			return Hint.STRIKE;
+		} else if(findIdx==-1){
+			return Hint.BALL;
+		}
+		return Hint.BALL;
+	}
+
+	public List<Number> getNumbers(){
+		return new ArrayList<>(numbers);
 	}
 
 	private static void validateStringLength(String value){
