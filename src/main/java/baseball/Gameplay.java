@@ -19,8 +19,11 @@ public class Gameplay {
 
         computer.RandomNum(); //랜덤 숫자 생성
 
-        computer.PrintNumMSG();
-        ArrayList<Integer> playerNum = player.InputNum();
-        
+        while(true) {
+            computer.PrintNumMSG();
+            ArrayList<Integer> playerNum = player.InputNum();
+            if(computer.BallStrikeNum(playerNum))
+                break;
+        }
     }
 }
