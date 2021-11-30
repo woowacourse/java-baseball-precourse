@@ -12,21 +12,26 @@
 ### Computer: 컴퓨터
 - 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 생성
 - 볼, 스트라이크 카운팅
-- 유효성 검사
-  - 길이가 3자리 인지
-  - 중복된 숫자가 있는지
 
 ### Game
+- 라운드 시작
+  - 메시지 출력
+  - 라운드 실행
 - 재시작/종료 숫자 검사
   - 1 이면 재시작
   - 2 이면 종료
+- 유효성 검사(regame/exit_game = 1 or 2)
+  - 숫자 이외의 문자가 있는지 확인
+  - 길이가 2이상 인지
 
 ### Round
 - 메시지 출력
   - `숫자를 입력해주세요`
+- 힌트 출력(prtHint)
   - `x볼 x스트라이크`/`x볼`/`x스트라이크`
   - `낫싱`
   - `3개의 숫자를 모두 맞히셨습니다! 게임 종료`
+- 문자열 정수 리스트로 바꾸기(toIntegerList)
 - 숫자 유효성 검사
   - 길이가 3자리 인지
   - 숫자 이외의 문자가 있는지 확인
@@ -39,21 +44,21 @@
 
 ## ✅ 요구사항 점검
 ### 기능 요구사항
-- [ ] Hint가 잘 동작한다.(스트라이크/볼/낫싱)
-- [ ] 사용자가 입력을 잘못한 경우 `IllegalArgumentException` 발생 시킨 후 종료
-- [ ] 게임을 종료한 후 재시작/완전종료 선택할 수 있다.
+- [x] Hint가 잘 동작한다.(스트라이크/볼/낫싱)
+- [x] 사용자가 입력을 잘못한 경우 `IllegalArgumentException` 발생 시킨 후 종료
+- [x] 게임을 종료한 후 재시작/완전종료 선택할 수 있다.
 
 ### 프로그래밍 요구사항
-- [ ] 프로그램의 실행 시작점은 `Application`의 `main()`
-- [ ] 3항 연산자를 사용하지 않는다.
-- [ ] depth가 2이하
-- [ ] 프로그램 구현을 완료했을 때, `src/test/java` 디렉터리의 `ApplicationTest`에 있는 모든 테스트 케이스가 성공했는가
+- [x] 프로그램의 실행 시작점은 `Application`의 `main()`
+- [x] 3항 연산자를 사용하지 않는다.
+- [x] depth가 2이하
+- [x] 프로그램 구현을 완료했을 때, `src/test/java` 디렉터리의 `ApplicationTest`에 있는 모든 테스트 케이스가 성공했는가
 
 ### 과제 제출 전( 0점 방지 )
-- [ ] 터미널에서 `java -version` 실행해서 JDK 버전 8인지 확인
-- [ ] Eclipse에서 JDK, JRE 버전 8인지 확인
-- [ ] JDK가 제공하는 Random, Scanner API 대신 `capm.nextstep.edu.missionutills`의 Randoms, Console API 사용
-- [ ] 윈도우 사용자의 경우 터미널에서 `gradlew.bat clean test` 실행 시 모든 테스트가 통과되는지 확인
+- [x] 터미널에서 `java -version` 실행해서 JDK 버전 8인지 확인
+- [x] Eclipse에서 JDK, JRE 버전 8인지 확인
+- [x] JDK가 제공하는 Random, Scanner API 대신 `capm.nextstep.edu.missionutills`의 Randoms, Console API 사용
+- [x] 윈도우 사용자의 경우 터미널에서 `gradlew.bat clean test` 실행 시 모든 테스트가 통과되는지 확인
 
 <br>
 
