@@ -15,6 +15,19 @@ public class Player {
 		return Arrays.stream(playerInput.split("")).map(Integer::parseInt).collect(Collectors.toList());
 	}
 
+	public boolean wantRestart() {
+		System.out.println(Constants.ENTER_RESTART_FLAG);
+		int restartFlag = Integer.parseInt(Console.readLine());
+		validateRestartFlag(restartFlag);
+		return restartFlag == Constants.RESTART;
+	}
+
+	private void validateRestartFlag(int restartFlag) {
+		if (restartFlag != Constants.RESTART && restartFlag != Constants.END_GAME) {
+			throw new IllegalArgumentException(Constants.ERROR_RESTART_FLAG);
+		}
+	}
+
 	private void validateLength(String playerInput) {
 		if (playerInput.length() != Constants.DIGIT_LENGTH) {
 			throw new IllegalArgumentException(Constants.ERROR_VALIDATE_LENGTH);
