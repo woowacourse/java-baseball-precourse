@@ -3,7 +3,7 @@ package baseball;
 public class Game {
 	private static final int LENGTH_NUMBER = 3;
 	private static final int MAX_STRIKE = 3;
-	private static final String END_MESSAGE = "승리\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+	private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 	private static final int GAME_STATE = 0;
 
 	public static void runGame() {
