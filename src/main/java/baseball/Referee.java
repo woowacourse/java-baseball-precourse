@@ -20,6 +20,17 @@ public class Referee {
         callResult();
     }
 
+    public boolean checkStrikeOut() {
+
+        if (strike.equals(3)) {
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+
+        return false;
+    }
+
     private void countBallsAndStrikes(List<Integer> playerExpectDeck) {
 
         for (int i = 0; i < 3; i++) {

@@ -14,13 +14,19 @@ public class Game {
 
     public void playGame() {
 
-        System.out.print("숫자를 입력해주세요 : ");
-        String[] inputFromUser = player.guessDeck();
+        boolean strikeOut;
 
-        Validator validator = new Validator();
-        List<Integer> playerExpectDeck = validator.validatePlayerInput(inputFromUser);
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            String[] inputFromUser = player.guessDeck();
 
-        Referee referee = new Referee(computer.getDeck());
-        referee.judgePlayerDeck(playerExpectDeck);
+            Validator validator = new Validator();
+            List<Integer> playerExpectDeck = validator.validatePlayerInput(inputFromUser);
+
+            Referee referee = new Referee(computer.getDeck());
+            referee.judgePlayerDeck(playerExpectDeck);
+
+            strikeOut = referee.checkStrikeOut();
+        } while (!strikeOut);
     }
 }
