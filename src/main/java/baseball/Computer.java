@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class Computer {
 
 	private Balls answerBalls;
@@ -9,7 +11,7 @@ public class Computer {
 	}
 
 	public GameResult compareBalls(Balls predictionBalls) {
-		answerBalls.totalReward(predictionBalls);
-		return new GameResult();
+		List<Hint> hints = answerBalls.compareWith(predictionBalls);
+		return new GameResult(hints);
 	}
 }

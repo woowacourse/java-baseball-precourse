@@ -1,34 +1,38 @@
 package baseball;
 
+import java.util.List;
+
 public class GameResult {
 
-	private int strikeCount;
-	private int ballCount;
+	private List<Hint> hints;
 
-	public GameResult(int strikeCount, int ballCount) {
-		this.strikeCount = strikeCount;
-		this.ballCount = ballCount;
+	public GameResult(List<Hint> hints) {
+		this.hints = hints;
 	}
 
 	//view에서 출력을 위한 getter
-	public int getBallCount() {
-		return ballCount;
+	public long countBall() {
+		return hints.stream()
+			.filter(Hint::isBall)
+			.count();
 	}
 
-	public int getStrikeCount() {
-		return strikeCount;
+	public long countStrike() {
+		return hints.stream()
+			.filter(Hint::isStrike)
+			.count();
 	}
 
 	public boolean isPlayerWin() {
-		return strikeCount == 3;
+		return countStrike() == 3;
 	}
 
 	public boolean hasBall() {
-		return ballCount > 0;
+		return countBall() > 0;
 	}
 
 	public boolean hasStrike() {
-		return strikeCount > 0;
+		return countStrike() > 0;
 	}
 
 	public boolean isNothing() {

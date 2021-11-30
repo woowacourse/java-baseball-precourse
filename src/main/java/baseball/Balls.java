@@ -38,4 +38,23 @@ public class Balls {
 			throw new IllegalArgumentException("Ball의 숫자는 중복될 수 없습니다");
 		}
 	}
+
+	public List<Hint> compareWith(Balls otherBalls) {
+		List<Hint> hints = new ArrayList<>();
+		for (int position = 0; position < 3; position++) {
+			Hint hint = otherBalls.getHintsFrom(position, balls.get(position));
+			hints.add(hint);
+		}
+		return hints;
+	}
+
+	private Hint getHintsFrom(int position, Ball otherBall) {
+		if (balls.get(position).equals(otherBall)) {
+			return Hint.STRIKE;
+		}
+		if (balls.contains(otherBall)) {
+			return Hint.BALL;
+		}
+		return Hint.NOTHING;
+	}
 }

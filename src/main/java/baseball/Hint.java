@@ -15,4 +15,12 @@ public enum Hint implements Comparable<Hint> {
 	public String getName() {
 		return name;
 	}
+
+	public boolean isBall() {
+		return this == BALL;
+	}
+
+	public boolean isStrike() {
+		return this == STRIKE;
+	}
 }
