@@ -13,6 +13,7 @@ public enum MessageType {
     ERROR_OUT_OF_RANGE("[입력 에러] 1부터 9까지의 숫자만 입력해야 합니다. 게임 종료"),
     ERROR_NOT_NUMBER("[입력 에러] 숫자만 입력해야 합니다. 게임 종료"),
     ERROR_NOT_DUPLICATE("[입력 에러] 각 자리의 숫자는 중복될 수 없습니다. 게임 종료"),
+    ERROR_NOT_ONE_DIGIT("[입력 에러] 1개의 숫자만 입력해야 합니다. 게임 종료"),
     ERROR_ONE_OR_TWO("[입력 에러] 1 혹은 2 중에서의 숫자만 입력해야 합니다. 게임 종료");
 
     private final String message;

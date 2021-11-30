@@ -27,4 +27,13 @@ public class GameInputView {
 
         return answer;
     }
+
+    public int inputAskReplay() {
+        System.out.println(MessageType.INPUT_ASK_REPLAY.getMessage());
+        String input = Console.readLine();
+
+        inputValidator.validateInputReplay(input);
+
+        return Integer.parseInt(input);
+    }
 }

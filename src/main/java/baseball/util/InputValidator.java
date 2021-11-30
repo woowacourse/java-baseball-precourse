@@ -6,15 +6,24 @@ public class InputValidator {
     }
 
     public void validateInputAnswer(String input) {
-        validateDigit(input);
+        validateDigit(input, AnswerRange.DIGIT);
         validateNumber(input);
         validateRange(input);
         validateDuplicateNumber(input);
     }
 
-    private void validateDigit(String input) {
-        if (input.length() != AnswerRange.DIGIT) {
-            throw new IllegalArgumentException(MessageType.ERROR_NOT_THREE_DIGIT.getMessage());
+    public void validateInputReplay(String input) {
+        validateDigit(input, 1);
+        validateOneOrTwo(input);
+    }
+
+    private void validateDigit(String input, int digit) {
+        if (input.length() != digit) {
+            if (digit == 1) {
+                throw new IllegalArgumentException(MessageType.ERROR_NOT_ONE_DIGIT.getMessage());
+            } else {
+                throw new IllegalArgumentException(MessageType.ERROR_NOT_THREE_DIGIT.getMessage());
+            }
         }
     }
 
@@ -47,6 +56,14 @@ public class InputValidator {
             }
 
             duplicateCheck[number] = true;
+        }
+    }
+
+    private void validateOneOrTwo(String input) {
+        int number = input.charAt(0) - '0';
+
+        if (!(number == 1 || number == 2)) {
+            throw new IllegalArgumentException(MessageType.ERROR_ONE_OR_TWO.getMessage());
         }
     }
 }

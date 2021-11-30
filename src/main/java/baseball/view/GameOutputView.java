@@ -19,4 +19,8 @@ public class GameOutputView {
                     + " " + strike + MessageType.OUTPUT_RESULT_STRIKE.getMessage());
         }
     }
+
+    public void outputCorrectAnswer() {
+        System.out.println(MessageType.OUTPUT_CORRECT_ANSWER.getMessage());
+    }
 }
