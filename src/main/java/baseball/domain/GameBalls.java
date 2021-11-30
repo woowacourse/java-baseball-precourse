@@ -1,28 +1,14 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 
 public class GameBalls {
 
     public static final int NUMBEROFBALLS = 3;
-    private Ball[] sequence;
+    protected Ball[] sequence;
 
-    public GameBalls() {
+    protected GameBalls() {
         this.sequence = new Ball[NUMBEROFBALLS];
-        boolean[] isUsedNumber = new boolean[10];
-
-        int index = 0;
-        while (index != NUMBEROFBALLS) {
-            int pickNumberInRange = Randoms.pickNumberInRange(1, 9);
-            if (isUsedNumber[pickNumberInRange]) {
-                continue;
-            }
-
-            this.sequence[index] = new Ball(pickNumberInRange);
-            isUsedNumber[pickNumberInRange] = true;
-            index++;
-        }
     }
 
     public GameBalls(String userInput) throws IllegalArgumentException {

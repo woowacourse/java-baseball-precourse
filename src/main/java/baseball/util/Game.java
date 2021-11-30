@@ -1,5 +1,6 @@
 package baseball.util;
 
+import baseball.domain.Computer;
 import baseball.domain.GameBalls;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -7,7 +8,7 @@ public class Game {
 
     public Game() {
         while (true) {
-            GameBalls computer = new GameBalls();
+            GameBalls computer = new Computer();
             guessComputerBalls(computer);
 
             GameGuidePrinter.gameFinish();
