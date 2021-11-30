@@ -13,14 +13,14 @@ public class Game {
     }
 
     public void playGame() {
-        String answer = computer.generateAnswer();
+        String target = computer.generateTargetNumber();
         do {
             System.out.print(GameConstant.INPUT_MESSAGE);
             String input = Console.readLine();
 
             inputValidator.validateGameNumberInput(input);
 
-            Baseball baseball = new Baseball(answer, input);
+            Baseball baseball = new Baseball(target, input);
             printGameResult(baseball);
 
             if (isGameOver(baseball)) {

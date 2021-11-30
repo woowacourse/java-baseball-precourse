@@ -8,7 +8,7 @@ public class Computer {
         this.numberGenerator = numberGenerator;
     }
 
-    public String generateAnswer() {
+    public String generateTargetNumber() {
         return numberGenerator.generateNumber(GameConstant.NUMBER_LENGTH);
     }
 }

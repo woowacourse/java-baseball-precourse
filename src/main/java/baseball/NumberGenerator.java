@@ -23,12 +23,12 @@ public class NumberGenerator {
         return randomNumberSet;
     }
 
-    private String convertSetToString(Set<Integer> numberSet) {
-        StringBuilder numberString = new StringBuilder();
-        for (Integer number : numberSet) {
-            numberString.append(number);
+    private String convertSetToString(Set<Integer> targetNumberSet) {
+        StringBuilder builder = new StringBuilder();
+        for (Integer number : targetNumberSet) {
+            builder.append(number);
         }
 
-        return numberString.toString();
+        return builder.toString();
     }
 }
