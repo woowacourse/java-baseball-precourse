@@ -21,4 +21,9 @@ public class Computer {
             count++;
         }
     }
+
+    public List<Integer> getDeck() {
+
+        return this.deck;
+    }
 }

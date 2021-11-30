@@ -19,5 +19,8 @@ public class Game {
 
         Validator validator = new Validator();
         List<Integer> playerExpectDeck = validator.validatePlayerInput(inputFromUser);
+
+        Referee referee = new Referee(computer.getDeck());
+        referee.judgePlayerDeck(playerExpectDeck);
     }
 }
