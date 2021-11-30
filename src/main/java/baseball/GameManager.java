@@ -11,10 +11,14 @@ public class GameManager {
 	public GameManager() {
 		answerGenerator = new AnswerGenerator();
 		inputManager = new InputManager();
+		// GameManager 객체 생성 시, 정답을 생성하여 markingManager 객체 생성
 		int[] answerArray = answerGenerator.generateAnswerArray();
 		markingManager = new MarkingManager(answerArray);
 	}
 
+	/**
+	 * 게임 시작
+	 */
 	public void start() {
 		while (true) {
 			guess();
@@ -28,11 +32,18 @@ public class GameManager {
 		}
 	}
 
+	/**
+	 * 게임 재시작, 새로운 정답을 생성하여 markingManager 객체에 set
+	 */
 	public void restart() {
 		int[] newAnswerArray = answerGenerator.generateAnswerArray();
 		markingManager.setAnswerArray(newAnswerArray);
 	}
 
+	/**
+	 * 게임 플레이어가 답을 추측할 수 있도록 함
+	 * @throws IllegalArgumentException 잘못된 답을 입력할 경우
+	 */
 	public void guess() throws IllegalArgumentException {
 		while (true) {
 			try {
@@ -41,8 +52,7 @@ public class GameManager {
 				markingManager.mark(guessArray);
 				break;
 			} catch (WrongGuessException e) {
-				;
-				// 반복
+				; // 반복
 			}
 		}
 	}
