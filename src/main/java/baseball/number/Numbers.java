@@ -17,9 +17,9 @@ public class Numbers {
 		numbers = new ArrayList<>(numberSet);
 	}
 
-	public static Numbers create(){
+	public static Numbers create() {
 		Set<Number> numbers = new LinkedHashSet<>();
-		while(numbers.size()<DIGIT) {
+		while (numbers.size() < DIGIT) {
 			int num = Randoms.pickNumberInRange(Number.MIN, Number.MAX);
 			Number number = Number.valueOf(num);
 			numbers.add(number);
@@ -27,7 +27,7 @@ public class Numbers {
 		return new Numbers(numbers);
 	}
 
-	public static Numbers from(String value){
+	public static Numbers from(String value) {
 		validateStringLength(value);
 		Set<Number> numbers = new LinkedHashSet<>();
 		char[] numberChars = value.toCharArray();
@@ -38,29 +38,29 @@ public class Numbers {
 		return new Numbers(numbers);
 	}
 
-	public Hint getHint(Number number, int index){
+	private static void validateStringLength(String value) {
+		if (value.length() != DIGIT) {
+			throw new IllegalArgumentException("문자열의 길이가 3보다 크거나 작을 수 없습니다.");
+		}
+	}
+
+	private static void validateDuplicate(Set<Number> numbers) {
+		if (numbers.size() != DIGIT) {
+			throw new IllegalArgumentException("중복된 수가 존재합니다.");
+		}
+	}
+
+	public Hint getHint(Number number, int index) {
 		int findIdx = numbers.indexOf(number);
-		if(findIdx==index){
+		if (findIdx == index) {
 			return Hint.STRIKE;
-		} else if(findIdx==-1){
+		} else if (findIdx == -1) {
 			return Hint.NOTHING;
 		}
 		return Hint.BALL;
 	}
 
-	public List<Number> getNumbers(){
+	public List<Number> getNumbers() {
 		return new ArrayList<>(numbers);
-	}
-
-	private static void validateStringLength(String value){
-		if(value.length()!=DIGIT){
-			throw new IllegalArgumentException("문자열의 길이가 3보다 크거나 작을 수 없습니다.");
-		}
-	}
-
-	private static void validateDuplicate(Set<Number> numbers){
-		if(numbers.size()!=DIGIT){
-			throw new IllegalArgumentException("중복된 수가 존재합니다.");
-		}
 	}
 }

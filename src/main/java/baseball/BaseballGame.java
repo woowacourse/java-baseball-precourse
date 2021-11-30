@@ -14,12 +14,12 @@ public class BaseballGame {
 		this.status = GameStatus.OPERATION;
 	}
 
-	public static BaseballGame create(){
+	public static BaseballGame create() {
 		return new BaseballGame();
 	}
 
-	public void start(){
-		while(this.status != GameStatus.EXIT){
+	public void start() {
+		while (this.status != GameStatus.EXIT) {
 			String input = InputProcessor.readValue();
 			Numbers player = Numbers.from(input);
 			Results results = Results.of(this.computer, player);
@@ -28,19 +28,19 @@ public class BaseballGame {
 		}
 	}
 
-	private void validateEnd(Results results){
-		if(results.isCorrect()){
+	private void validateEnd(Results results) {
+		if (results.isCorrect()) {
 			OutputProcessor.printCorrect();
 			GameStatus status = InputProcessor.readGameStatus();
 			changeStatus(status);
 		}
 	}
 
-	private void changeStatus(GameStatus gameStatus){
-		if(gameStatus==GameStatus.RESTART){
+	private void changeStatus(GameStatus gameStatus) {
+		if (gameStatus == GameStatus.RESTART) {
 			this.computer = Numbers.create();
 			this.status = GameStatus.OPERATION;
-		} else if(gameStatus == GameStatus.EXIT){
+		} else if (gameStatus == GameStatus.EXIT) {
 			this.status = GameStatus.EXIT;
 		}
 	}

@@ -12,28 +12,28 @@ public class Number {
 		this.number = number;
 	}
 
-	public static Number valueOf(char ch){
+	public static Number valueOf(char ch) {
 		int number = convertToNumeric(ch);
 		return new Number(number);
 	}
 
-	public static Number valueOf(int n){
+	public static Number valueOf(int n) {
 		return new Number(n);
 	}
 
-	private static int convertToNumeric(char ch){
+	private static int convertToNumeric(char ch) {
 		validateDigit(ch);
 		return Character.getNumericValue(ch);
 	}
 
-	private static void validateDigit(char ch){
-		if(!Character.isDigit(ch)){
+	private static void validateDigit(char ch) {
+		if (!Character.isDigit(ch)) {
 			throw new IllegalArgumentException("숫자를 제외한 문자는 허용되지 않습니다.");
 		}
 	}
 
-	private static void validateNumber(int n){
-		if(n<MIN||n>MAX){
+	private static void validateNumber(int n) {
+		if (n < MIN || n > MAX) {
 			throw new IllegalArgumentException("숫자의 범위를 초과했습니다.");
 		}
 	}
@@ -45,10 +45,12 @@ public class Number {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (!(o instanceof Number))
+		}
+		if (!(o instanceof Number)) {
 			return false;
+		}
 		Number n = (Number)o;
 		return this.number == n.number;
 	}
