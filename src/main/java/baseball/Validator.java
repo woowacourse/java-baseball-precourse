@@ -17,6 +17,11 @@ public class Validator {
         return playerExpectDeck;
     }
 
+    public void validateRetryInput(String retryInput) {
+
+        checkRetryOneOrTwo(retryInput);
+    }
+
     private void checkSize(String[] inputFromUser) {
 
         if (inputFromUser.length != 3) {
@@ -72,4 +77,16 @@ public class Validator {
         return playerExpectDeck.contains(number);
     }
 
+    private void checkRetryOneOrTwo(String retryInput) {
+
+        if (!isOneOrTwo(retryInput)) {
+
+            throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
+        }
+    }
+
+    private boolean isOneOrTwo(String retryInput) {
+
+        return retryInput.equals("1") || retryInput.equals("2");
+    }
 }
