@@ -14,9 +14,6 @@ public class Computer {
 	
 	public void init() {
 		genRandomNumber();
-		for(int i:ranNumList) {
-			System.out.print(i);
-		}System.out.println();
 	}
 	
 	//generate random numbers > ranNumList
