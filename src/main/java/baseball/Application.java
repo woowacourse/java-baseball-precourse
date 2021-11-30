@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class Application {
     private static final int START_GAME_VALUE = 1;
     private static final int END_GAME_VALUE = 2;
+    private static final String PLAYER_INPUT_PATTERN = "^[0-9]{3}+$";
 
     private static final String GAME_ENDING_OUTPUT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
@@ -50,19 +51,23 @@ public class Application {
 
     private static List<Integer> getPlayerInput() {
         String input = Console.readLine();
-        String[] splitInput = input.split("");
+        validatePlayerInput(input);
 
-        validatePlayerInput(splitInput);
+        String[] splitInput = input.split("");
 
         return Arrays.stream(splitInput).map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    private static void validatePlayerInput(String[] inputs) {
-        if (inputs.length != 3) throw new IllegalArgumentException();
-
-        for (String input : inputs) {
-            if (Character.isDigit(input.charAt(0))) throw new IllegalArgumentException();
+    private static void validatePlayerInput(String input) {
+        if (!Pattern.matches(PLAYER_INPUT_PATTERN, input)) {
+            throw new IllegalArgumentException();
         }
+    }
+
+    private static int getRestartInput() {
+        String input = Console.readLine();
+
+        return Integer.parseInt(input);
     }
 }
 
