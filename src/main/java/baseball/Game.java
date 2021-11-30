@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class PlayBall {
+public class Game {
 
     public static void play(int[] generatedNumbers) {
         String guessResult;

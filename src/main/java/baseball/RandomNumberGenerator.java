@@ -22,9 +22,9 @@ public class RandomNumberGenerator {
     }
 
     private static boolean isDuplicated(int[] pickedNumbers, int index, int newPick) {
-        boolean isDuplicated=false;
+        boolean isDuplicated = false;
         for (int i = 0; i < index; i++) {
-            isDuplicated=(pickedNumbers[i] == newPick);
+            isDuplicated = (pickedNumbers[i] == newPick);
         }
         return isDuplicated;
     }
