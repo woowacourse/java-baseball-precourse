@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Player {
 	public List<Integer> getPlayerInputNum() {
-		System.out.print("숫자를 입력하세요: ");
+		System.out.print(Constants.ENTER_THREE_DIGIT);
 		String playerInput = Console.readLine();
 		validateLength(playerInput);
 		validateDupNumber(playerInput);
@@ -16,31 +16,31 @@ public class Player {
 	}
 
 	public boolean wantRestart() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		System.out.println(Constants.ENTER_RESTART_FLAG);
 		int restartFlag = Integer.parseInt(Console.readLine());
 		validateRestartFlag(restartFlag);
-		return restartFlag == 1;
+		return restartFlag == Constants.RESTART;
 	}
 
 	private void validateRestartFlag(int restartFlag) {
-		if (restartFlag != 1 && restartFlag != 2) {
-			throw new IllegalArgumentException("restart flag must be 1 or 2");
+		if (restartFlag != Constants.RESTART && restartFlag != Constants.END_GAME) {
+			throw new IllegalArgumentException(Constants.ERROR_RESTART_FLAG);
 		}
 	}
 
 	private void validateLength(String playerInput) {
-		if (playerInput.length() != 3) {
-			throw new IllegalArgumentException("length of player input must be 3");
+		if (playerInput.length() != Constants.DIGIT_LENGTH) {
+			throw new IllegalArgumentException(Constants.ERROR_VALIDATE_LENGTH);
 		}
 	}
 
 	private void validateDupNumber(String playerInput) {
 		if (playerInput.charAt(0) == playerInput.charAt(1)) {
-			throw new IllegalArgumentException("player input must be different each other");
+			throw new IllegalArgumentException(Constants.ERROR_DUPLICATE_NUM);
 		} else if (playerInput.charAt(0) == playerInput.charAt(2)) {
-			throw new IllegalArgumentException("player input must be different each other");
+			throw new IllegalArgumentException(Constants.ERROR_DUPLICATE_NUM);
 		} else if (playerInput.charAt(1) == playerInput.charAt(2)) {
-			throw new IllegalArgumentException("player input must be different each other");
+			throw new IllegalArgumentException(Constants.ERROR_DUPLICATE_NUM);
 		}
 	}
 }

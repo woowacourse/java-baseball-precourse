@@ -12,8 +12,8 @@ public class Computer {
 
 	public void generateRandomNumber() {
 		randomGeneratedNumber = new ArrayList<>();
-		while (this.randomGeneratedNumber.size() < 3) {
-			int digit = Randoms.pickNumberInRange(1, 9);
+		while (this.randomGeneratedNumber.size() < Constants.DIGIT_LENGTH) {
+			int digit = Randoms.pickNumberInRange(Constants.LOWER_BOUND, Constants.UPPER_BOUND);
 			if (!this.randomGeneratedNumber.contains(digit)) {
 				this.randomGeneratedNumber.add(digit);
 			}
@@ -26,16 +26,16 @@ public class Computer {
 
 	public void printScore() {
 		if (this.strike == 0 && this.ball == 0) {
-			System.out.println("낫싱");
+			System.out.println(Constants.RESULT_NOTHING);
 		} else if (this.strike != 0 && this.ball == 0) {
-			System.out.println(this.strike + "스트라이크");
-			if (this.strike == 3) {
-				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			System.out.println(this.strike + Constants.RESULT_STRIKE);
+			if (this.strike == Constants.DIGIT_LENGTH) {
+				System.out.println(Constants.RESULT_GAME_OVER);
 			}
 		} else if (this.strike == 0) {
-			System.out.println(this.ball + "볼");
+			System.out.println(this.ball + Constants.RESULT_BALL);
 		} else {
-			System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
+			System.out.println(this.ball + Constants.RESULT_BALL + " " + this.strike + Constants.RESULT_STRIKE);
 		}
 	}
 
@@ -46,7 +46,7 @@ public class Computer {
 
 	private void countStrike(List<Integer> playerInput) {
 		int count = 0;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < Constants.DIGIT_LENGTH; i++) {
 			if (playerInput.get(i).equals(this.randomGeneratedNumber.get(i))) {
 				count += 1;
 			}
@@ -56,7 +56,7 @@ public class Computer {
 
 	private void countBall(List<Integer> playerInput) {
 		int count = 0;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < Constants.DIGIT_LENGTH; i++) {
 			if (this.randomGeneratedNumber.contains(playerInput.get(i))) {
 				count += 1;
 			}
