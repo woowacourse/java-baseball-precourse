@@ -1,10 +1,21 @@
 package baseball.player;
 
 import baseball.error.ErrorCode;
+import baseball.pitch.Pitch;
 import baseball.valid.Valid;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Set;
+
 public class Player implements Valid {
+    private Set<Pitch> pitchSet;
+
+    public void setPitchSet(Set<Pitch> pitchSet) {
+        this.pitchSet = pitchSet;
+    }
+    public Set<Pitch> getPitchSet() {
+        return pitchSet;
+    }
 
     // 사용자로부터 숫자를 입력받는다.
     // 예외 처리 진행해야함.

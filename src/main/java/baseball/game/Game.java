@@ -17,16 +17,22 @@ public class Game {
 
     public void play() {
         while(playing) {
+            computer = new Computer();
+            computer.setPitchSet(getPitchSet(computer.getNumber()));
             ask();
         }
     }
+
     private void ask() {
+        player = new Player();
         boolean finished = false;
 
         while(!finished) {
             // try catch 해야할지?
             System.out.print(PrintValue.START.getContent());
             int target = player.playRead();
+            player.setPitchSet(getPitchSet(target));
+            hint = new Hint(computer.getPitchSet(), player.getPitchSet());
 
         }
     }
