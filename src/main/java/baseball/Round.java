@@ -55,15 +55,18 @@ public class Round {
 	
 	//print hint: 볼/스트라이크/낫싱 출력함수
 	private void prtHint() {
+		StringBuilder sb= new StringBuilder();
 		if(cnt_ball!=0) { //볼 있음
-			System.out.printf(cnt_ball+"볼 ");
+			sb.append(cnt_ball+"볼 ");
 		}
 		if(cnt_strike!=0) { //스트라이크 있음
-			System.out.println(cnt_strike+"스트라이크");
+			sb.append(cnt_strike+"스트라이크");
 		}
 		if(cnt_strike==0&&cnt_ball==0){ //낫싱
 			System.out.println("낫싱");
+			return;
 		}
+		System.out.println(sb.toString());
 	}
 	
 	//userInput str to Integer List
