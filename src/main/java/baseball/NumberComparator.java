@@ -55,4 +55,8 @@ public class NumberComparator {
 		}
 		return false;
 	}
+
+	public boolean getResult() {
+		return strikes == NUMBER_LENGTH;
+	}
 }
