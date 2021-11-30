@@ -22,6 +22,10 @@ public class Game {
 		return false;
 	}
 
+    public Hint compare(Balls user) {
+	    return new Hint(computer, user);
+    }
+
 	public void choicePlay(String input) {
 		validateInput(input);
 		if (input.equals(END)) {
