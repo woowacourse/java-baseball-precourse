@@ -4,4 +4,5 @@ public enum GameMode {
 	progressing ,
 	ending ,
 	askingMode,
+	restart,
 }

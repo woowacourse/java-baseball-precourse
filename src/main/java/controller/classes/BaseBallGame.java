@@ -13,6 +13,7 @@ public class BaseBallGame implements GameUI {
 	private GameDataInterface gameDataInterface;
 	private BaseBallAnswer baseBallAnswer;
 	private CountingStatus currentCount;
+
 	public BaseBallGame() {
 		gameDataInterface = new GameData();
 	}
@@ -21,7 +22,10 @@ public class BaseBallGame implements GameUI {
 	public void startGame() {
 		baseBallAnswer = new BaseBallAnswer();
 		baseBallAnswer.makeAnswer();
-		while (true) {
+		while (gameDataInterface.getGameMode() != GameMode.ending) {
+			if (gameDataInterface.getGameMode() == GameMode.restart) {
+				refreshGame();
+			}
 			if (gameDataInterface.getGameMode() == GameMode.progressing) {
 				receiveUserAnswer();
 				setCurrentCount(baseBallAnswer.calculateStatus(gameDataInterface.getAnswerOfUserInput()));
@@ -30,15 +34,7 @@ public class BaseBallGame implements GameUI {
 			if (gameDataInterface.getGameMode() == GameMode.askingMode) {
 				printEndMessage();
 				receiveUserMode();
-				if(gameDataInterface.getGameMode() == GameMode.ending) break;
-				//baseBallAnswer.makeAnswer();
-				currentCount = new CountingStatus();
-				baseBallAnswer.cleanAnswerArray();
-				baseBallAnswer.makeAnswer();
-			}
-
-			if (gameDataInterface.getGameMode() == GameMode.ending) {
-				break;
+				continue;
 			}
 			setGameState();
 		}
@@ -48,25 +44,33 @@ public class BaseBallGame implements GameUI {
 		System.out.print(ASKING_STATEMENT);
 		gameDataInterface.inputUserAnswer();
 	}
+
 	private void receiveUserMode() {
 		System.out.println(ASKING_GAME_MODE_STATEMENT);
 		gameDataInterface.setGameMode();
 	}
+
 	private void printResult() {
 		System.out.println(currentCount);
 	}
+
 	private void printEndMessage() {
 		System.out.println(ENDING_STATEMENT);
 	}
+
 	private void refreshGame() {
-		//gameDataInterface.setAnswerOfComputer();
+		currentCount = new CountingStatus();
+		baseBallAnswer.cleanAnswerArray();
+		baseBallAnswer.makeAnswer();
+		gameDataInterface.setGameMode(GameMode.progressing);
 	}
+
 	private void setCurrentCount(CountingStatus countingStatus) {
 		currentCount = countingStatus;
 	}
 
 	private void setGameState() {
-		if(currentCount.getStrikeStatus() == StrikeStatus.three) {
+		if (currentCount.getStrikeStatus() == StrikeStatus.three) {
 			gameDataInterface.setGameMode(GameMode.askingMode);
 		}
 	}

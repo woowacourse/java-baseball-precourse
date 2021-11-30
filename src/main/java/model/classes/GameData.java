@@ -48,7 +48,7 @@ public class GameData implements GameDataInterface {
 
 	private GameMode defineGameModeFromInteger(int integer) {
 		if (integer == 1) {
-			return GameMode.progressing;
+			return GameMode.restart;
 		} else if (integer == 2) {
 			return GameMode.ending;
 		} else {
