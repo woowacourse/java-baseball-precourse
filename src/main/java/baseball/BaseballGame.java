@@ -9,6 +9,12 @@ public class BaseballGame {
 		this.computer = new Computer();
 	}
 
+	public void start() {
+		do {
+			play();
+		} while (player.wantRestart());
+	}
+
 	public void play() {
 		computer.generateRandomNumber();
 		do {
