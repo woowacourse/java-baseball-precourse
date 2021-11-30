@@ -9,12 +9,13 @@ public class OutputRole {
     private static final String BALL = "볼 ";
     private static final String SUCCESS_MISSIOLN = "3개의 숫자를 모두 맞히셨습니다! 게임 종료 ";
     private static final String RESTART_INSTRUCTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String RESTART_COMMAND = "1";
+    private static final String EXIT_COMMAND = "2";
 
 
-    public boolean printResult(int strikeNumber, int ballNumber) {
+    public void printResult(int strikeNumber, int ballNumber) {
         if (checkNothing(strikeNumber, ballNumber)) {
-            System.out.println(NOTHING);
-            return false;
+            System.out.print(NOTHING);
         }
         if (ballNumber > 0) {
             System.out.print(ballNumber + BALL);
@@ -23,13 +24,14 @@ public class OutputRole {
             System.out.print(strikeNumber + STRIKE);
         }
         System.out.println();
+
+    }
+
+    public boolean isStrike(int strikeNumber) {
         if (strikeNumber == 3) {
-            System.out.println(SUCCESS_MISSIOLN);
-            allowRestart();
+            return true;
         }
         return false;
-
-
     }
 
     private boolean checkNothing(int strike, int ball) {
@@ -37,13 +39,14 @@ public class OutputRole {
     }
 
 
-    private boolean allowRestart(){
+    public boolean restartResult() {
         System.out.println(RESTART_INSTRUCTION);
         String input = Console.readLine();
-        if (input.equals("1")) {
+        if (input.equals(RESTART_COMMAND)) {
             return true;
         }
-        if (input.equals("2")) {
+        if (input.equals(EXIT_COMMAND)) {
+            System.out.println(SUCCESS_MISSIOLN);
             return false;
         }
 
