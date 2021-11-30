@@ -38,11 +38,18 @@ public class BaseballGame {
 		}
 	}
 
-	private void makeRandomBaseballGameAnswer() {
-		answer = "";
-		while (!checkBaseballGameAnswerFormatRules(answer)) {
-			answer = Integer.toString(camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(111, 999));
+	private String generateThreeDigitNum() {
+		StringBuilder stringBucket = new StringBuilder();
+		for (int i = 0; i < BaseballGameConstants.LENGTH_RULE; ++i) {
+			stringBucket.append(camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(1, 9));
 		}
+		return stringBucket.toString();
+	}
+
+	private void makeRandomBaseballGameAnswer() {
+		do {
+			answer = generateThreeDigitNum();
+		} while (!checkBaseballGameAnswerFormatRules(answer));
 	}
 
 	private String getBaseballGameHint() {
