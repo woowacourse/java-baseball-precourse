@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -9,6 +10,7 @@ public class Computer {
 	private final Integer BASEBALL_GAME_NUMBER_RANGE_START = 1;
 	private final Integer BASEBALL_GAME_NUMBER_RANGE_END = 9;
 	private final Integer EMPTY_NUMBER = -1;
+	private final Integer NOT_FOUND = -1;
 
 	private int[] randomNumbers;
 	private Hint hint;
@@ -18,8 +20,8 @@ public class Computer {
 		do {
 			int number = Randoms.pickNumberInRange(BASEBALL_GAME_NUMBER_RANGE_START,
 				BASEBALL_GAME_NUMBER_RANGE_END);
-			insertNumberToRandomNumbers(number, getNextIndexRandomNumbers());
-		} while (getNextIndexRandomNumbers() < BASEBALL_GAME_BALL_COUNT);
+			insertNumberToRandomNumbers(number, nextEmptyIndexInRandomNumbers());
+		} while (isEmptySpaceInRandomNumbers());
 	}
 
 	private void initiateEmptyRandomNumbers() {
@@ -29,13 +31,14 @@ public class Computer {
 		}
 	}
 
-	private Integer getNextIndexRandomNumbers() {
-		for (int i = 0; i < BASEBALL_GAME_BALL_COUNT; i++) {
-			if (randomNumbers[i] == EMPTY_NUMBER) {
-				return i;
-			}
-		}
-		return BASEBALL_GAME_BALL_COUNT;
+	private Integer nextEmptyIndexInRandomNumbers() {
+		return IntStream.range(0, BASEBALL_GAME_BALL_COUNT).
+			filter(i -> randomNumbers[i] == EMPTY_NUMBER).
+			findFirst().orElse(NOT_FOUND);
+	}
+
+	private Boolean isEmptySpaceInRandomNumbers() {
+		return Arrays.stream(randomNumbers).anyMatch(randomNumber -> randomNumber == EMPTY_NUMBER);
 	}
 
 	private void insertNumberToRandomNumbers(int number, int index) {
