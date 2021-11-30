@@ -46,7 +46,7 @@ public class User {
 		return n <= Const.MAX_ANSWER_VALUE && n >= Const.MIN_ANSWER_VALUE;
 	}
 
-	private static boolean isDuplicateNumber(String inputText, int index) {
+	private boolean isDuplicateNumber(String inputText, int index) {
 		String prevNums = inputText.substring(0, index);
 		String nowNum = Character.toString(inputText.charAt(index));
 		return prevNums.contains(nowNum);
