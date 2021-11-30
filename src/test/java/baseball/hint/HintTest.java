@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,8 +21,8 @@ public class HintTest {
 
     @BeforeEach
     void init() {
-        String computerNum = "123";
-        String playerNum = "132";
+        List<Integer> computerNum = Arrays.asList(1, 2, 3);
+        List<Integer> playerNum = Arrays.asList(1, 3, 2);
         computerSet = game.getPitchSet(computerNum);
         playerSet = game.getPitchSet(playerNum);
         strike = 0;
