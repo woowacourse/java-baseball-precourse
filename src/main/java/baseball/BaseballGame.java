@@ -21,6 +21,7 @@ public class BaseballGame {
 			List<Integer> playerNumbers = player.getNumber();
 			NumberComparator comparator = new NumberComparator(computerNumbers, playerNumbers);
 			comparator.compare();
+			comparator.printResult();
 			correct = comparator.getResult();
 		}
 	}
