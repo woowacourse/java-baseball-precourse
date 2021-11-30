@@ -1,10 +1,8 @@
 package baseball;
 
-public class GameResult {
-    private static final String STRIKE_TO_PRINT = "스트라이크";
-    private static final String BALL_TO_PRINT = "볼";
-    private static final String NOTHING = "낫싱";
+import static baseball.StringUtil.*;
 
+public class GameResult {
     private final int strike;
     private final int ball;
 

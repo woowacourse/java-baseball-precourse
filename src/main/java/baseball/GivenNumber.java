@@ -1,16 +1,16 @@
 package baseball;
 
-import static baseball.StringUtil.NUMBER_OF_DIGITS_OF_NUMBER;
+import static baseball.StringUtil.NUMBER_OF_DIGITS_OF_GAME_NUMBER;
 
 import java.util.Set;
 
-public class GivenNumbers {
-    public final Set<Integer> givenNumbersSet;
-    public final Integer[] givenNumbersArray;
+public class GivenNumber {
+    public final Set<Integer> givenNumberSet;
+    public final Integer[] givenNumberArray;
 
-    public GivenNumbers() {
-        this.givenNumbersSet = RandomNumberFactory.generate();
-        givenNumbersArray = givenNumbersSet.toArray(new Integer[NUMBER_OF_DIGITS_OF_NUMBER]);
+    public GivenNumber() {
+        this.givenNumberSet = RandomNumberFactory.generate();
+        givenNumberArray = givenNumberSet.toArray(new Integer[NUMBER_OF_DIGITS_OF_GAME_NUMBER]);
     }
 
     public GameResult calculateGameResult(Integer[] inputNumber) {
@@ -30,10 +30,10 @@ public class GivenNumbers {
     }
 
     private boolean isStrike(int number, int index) {
-        return number == givenNumbersArray[index];
+        return number == givenNumberArray[index];
     }
 
     private boolean isBall(Integer number) {
-        return givenNumbersSet.contains(number);
+        return givenNumberSet.contains(number);
     }
 }

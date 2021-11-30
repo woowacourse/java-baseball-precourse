@@ -1,16 +1,13 @@
 package baseball;
 
-import static baseball.StringUtil.END;
+import static baseball.StringUtil.*;
 
+import baseball.inputmanager.GuessedNumberManager;
 import baseball.inputmanager.InputManger;
 import baseball.inputmanager.StartEndButton;
-import baseball.inputmanager.UserGuessedNumberManager;
 
 public class BaseBallGame {
-    private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String NUMBER_REQUEST_MESSAGE = "숫자를 입력해 주세요 : ";
-    private static final String START_END_BUTTON = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final InputManger<Integer[]> userGuessedNumberManager = new UserGuessedNumberManager();
+    private static final InputManger<Integer[]> guessedNumberManager = new GuessedNumberManager();
     private static final InputManger<Integer> startEndButton = new StartEndButton();
 
     private GameResult result;
@@ -19,30 +16,38 @@ public class BaseBallGame {
     public void start() {
         while (!end) {
             play();
-            end = checkUserWantToEnd();
+            printGameEndMessage();
+            end = isUserWantToEnd();
         }
     }
 
     private void play() {
-        GivenNumbers givenNumbers = new GivenNumbers();
+        GivenNumber givenNumber = new GivenNumber();
         do {
             printNumberRequestMessage();
-            result = givenNumbers.calculateGameResult((Integer[]) userGuessedNumberManager.getInput());
-            System.out.println(result.toPrint());
-        } while (!checkThreeStrike());
+            result = givenNumber.calculateGameResult((Integer[]) guessedNumberManager.getInput());
+            printGameResult();
+        } while (!isThreeStrike());
     }
 
-    private boolean checkUserWantToEnd() {
-        System.out.println(GAME_END);
-        System.out.println(START_END_BUTTON);
-        return startEndButton.getInput() == END;
+    private boolean isUserWantToEnd() {
+        return startEndButton.getInput() == END_BUTTON;
     }
 
-    private boolean checkThreeStrike() {
+    private boolean isThreeStrike() {
         return result.isThreeStrike();
     }
 
     private void printNumberRequestMessage() {
         System.out.print(NUMBER_REQUEST_MESSAGE);
+    }
+
+    private void printGameResult() {
+        System.out.println(result.toPrint());
+    }
+
+    private void printGameEndMessage() {
+        System.out.println(GAME_END_MESSAGE);
+        System.out.println(START_END_BUTTON_MESSAGE);
     }
 }

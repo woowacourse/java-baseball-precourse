@@ -11,13 +11,13 @@ import org.junit.jupiter.api.Test;
 
 class UserGuessedNumberTest {
     private final InputStream standardIn = System.in;
-    private final UserGuessedNumberManager userGuessedNumberManager = new UserGuessedNumberManager();
+    private final GuessedNumberManager guessedNumberManager = new GuessedNumberManager();
 
     @Test
     void 사용자가_입력한_수를_int배열로_리턴() {
         String input = "465";
         setInput(input);
-        Integer[] result = userGuessedNumberManager.getInput();
+        Integer[] result = guessedNumberManager.getInput();
         assertThat(result).isEqualTo(new Integer[] {4, 6, 5});
     }
 
@@ -25,14 +25,14 @@ class UserGuessedNumberTest {
     void 사용자가_입력한_수가_글자수가_틀리면_예외_발생() {
         String tooLongInput = "1234";
         setInput(tooLongInput);
-        assertThatThrownBy(userGuessedNumberManager::getInput).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(guessedNumberManager::getInput).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 사용자가_입력한_수가_1에서_9의_숫자가_아니면_예외_발생() {
         String specialCharacterInput = "!62";
         setInput(specialCharacterInput);
-        assertThatThrownBy(userGuessedNumberManager::getInput).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(guessedNumberManager::getInput).isInstanceOf(IllegalArgumentException.class);
     }
 
     @AfterEach
@@ -43,5 +43,4 @@ class UserGuessedNumberTest {
     private void setInput(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
     }
-
 }

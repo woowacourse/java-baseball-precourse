@@ -21,5 +21,4 @@ class GameResultTest {
         GameResult gameResult = new GameResult(strike, ball);
         assertThat(gameResult.toPrint()).isEqualTo("2볼 1스트라이크");
     }
-
 }
