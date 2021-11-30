@@ -13,7 +13,6 @@ public class Game {
         Validator validator = new Validator();
 
         String randomNumber = String.valueOf(randomNumberGenerator.makeRandomNumber(DIGIT));
-        System.out.println(randomNumber);
         Result result = new Result(randomNumber);
 
         while (true) {
