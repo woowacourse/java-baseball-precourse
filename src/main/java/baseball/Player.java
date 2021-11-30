@@ -29,7 +29,7 @@ public class Player {
 	}
 
 	private static void validateInput(String input) {
-		if (validateLength(input) || validateValue(input) || validateDuplication(input)) {
+		if (!validateLength(input) || !validateValue(input) || !validateDuplication(input)) {
 			throw new IllegalArgumentException();
 		}
 	}
