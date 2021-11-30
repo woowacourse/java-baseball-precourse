@@ -21,4 +21,25 @@ public class Game {
         }
         return sb.toString();
     }
+
+    public boolean checkNumber(String check) {
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computerNumber.charAt(i) == check.charAt(i)) {
+                strike++;
+                continue;
+            }
+            if (computerNumber.contains(check.charAt(i) + "")) {
+                ball++;
+            }
+        }
+        printResult(ball, strike);
+
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
 }
