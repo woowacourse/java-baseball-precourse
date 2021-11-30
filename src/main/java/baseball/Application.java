@@ -1,8 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class Application {
@@ -10,7 +12,7 @@ public class Application {
 		//TODO: 숫자 야구 게임 구현
 
 		// 게임 시작
-		Game game = new Game();
+		Game game = new Game(createRandomNumberList());
 		while (game.isPlay()) {
 			// 사용자 입력
 			View.input();
@@ -27,6 +29,14 @@ public class Application {
 			View.success();
 			game.choicePlay(Console.readLine());
 		}
+	}
+
+	public static List<Integer> createRandomNumberList() {
+		LinkedHashSet<Integer> numberSet = new LinkedHashSet<>();
+		while (numberSet.size() < Balls.SIZE) {
+			numberSet.add(Randoms.pickNumberInRange(Ball.MIN_VALUE, Ball.MAX_VALUE));
+		}
+		return new ArrayList<>(numberSet);
 	}
 
 	public static List<Integer> convertStringToNumberList(String input) {

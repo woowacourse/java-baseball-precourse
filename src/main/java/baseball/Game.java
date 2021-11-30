@@ -1,10 +1,6 @@
 package baseball;
 
-    import camp.nextstep.edu.missionutils.Randoms;
-
-    import java.util.ArrayList;
-    import java.util.LinkedHashSet;
-    import java.util.List;
+import java.util.List;
 
 public class Game {
 
@@ -14,14 +10,8 @@ public class Game {
     private boolean play = true;
     private Balls computer;
 
-    public Game() {
-        computer = new Balls(createRandomNumberList());
-    }
-
-    public void validateInput(String input) {
-        if (!(input.equals(START)) && !(input.equals(END))) {
-            throw new IllegalArgumentException();
-        }
+    public Game(List<Integer> computer) {
+        this.computer = new Balls(computer);
     }
 
     public boolean checkhint(Hint hint) {
@@ -37,8 +27,9 @@ public class Game {
             play = false;
             return;
         }
-        computer = new Balls(createRandomNumberList());
     }
+
+    // 컴퓨터 재설정
 
     public boolean isPlay() {
         return play;
@@ -48,11 +39,9 @@ public class Game {
         return computer;
     }
 
-    public List<Integer> createRandomNumberList() {
-        LinkedHashSet<Integer> numberSet = new LinkedHashSet<>();
-        while (numberSet.size() < Balls.SIZE) {
-            numberSet.add(Randoms.pickNumberInRange(Ball.MIN_VALUE, Ball.MAX_VALUE));
+    public void validateInput(String input) {
+        if (!(input.equals(START)) && !(input.equals(END))) {
+            throw new IllegalArgumentException();
         }
-        return new ArrayList<>(numberSet);
     }
 }
