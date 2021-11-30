@@ -14,7 +14,7 @@ public class Computer {
 		return balls;
 	}
 
-	public List<Integer> RandomNumberGenerate() {
+	public List<Integer> randomNumberGenerate() {
 		List<Integer> randomNumbers = new ArrayList<>();
 		while (randomNumbers.size() < Constant.BALL_LIST_SIZE) {
 			int number = Randoms.pickNumberInRange(Constant.BALL_MIN_VALUE, Constant.BALL_MAX_VALUE);
@@ -28,7 +28,7 @@ public class Computer {
 	public List<Ball> selectBalls() {
 		balls = new ArrayList<>();
 		int position = 1;
-		for (int generateNumber : RandomNumberGenerate()) {
+		for (int generateNumber : randomNumberGenerate()) {
 			Ball ball = new Ball(position++, generateNumber);
 			balls.add(ball);
 		}

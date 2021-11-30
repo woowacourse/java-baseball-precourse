@@ -20,7 +20,7 @@ public class Game {
 		computer.selectBalls();
 		while (true) {
 			OutputView.numberInputMessageShow();
-			List<Ball> userBalls = player.selectBalls(InputView.StringChangeList());
+			List<Ball> userBalls = player.selectBalls(InputView.stringChangeList());
 			calculate(userBalls);
 			if (referee.allStrikeCheck()) {
 				break;

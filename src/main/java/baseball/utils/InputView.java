@@ -14,7 +14,7 @@ public class InputView {
 		return Console.readLine().trim();
 	}
 
-	public static List<Integer> StringChangeList() {
+	public static List<Integer> stringChangeList() {
 		String[] stringSplits = trimInput().split("");
 		if (stringSplits.length != Constant.BALL_LIST_SIZE) {
 			throw new IllegalArgumentException(Constant.INVALID_NUMBER_COUNT_MESSAGE);
