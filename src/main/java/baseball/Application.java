@@ -32,8 +32,7 @@ public class Application {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < userInput.length(); i++) {
-            if (userInput.charAt(i) - '0' < target.getRangeBegin() ||
-                userInput.charAt(i) - '0' > target.getRangeEnd()) {
+            if (!target.checkWithinRange(userInput.charAt(i))) {
                 throw new IllegalArgumentException();
             }
         }

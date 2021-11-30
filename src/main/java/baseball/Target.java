@@ -54,6 +54,13 @@ public class Target {
         return -1;
     }
 
+    public boolean checkWithinRange(char charNumber) {
+        if ( rangeBegin <= charNumber - '0' && charNumber - '0' <= rangeEnd) {
+            return true;
+        }
+        return false;
+    }
+
     public int getRangeBegin() {
         return this.rangeBegin;
     }
