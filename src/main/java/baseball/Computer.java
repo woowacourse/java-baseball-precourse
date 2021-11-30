@@ -20,6 +20,10 @@ public class Computer {
 		}
 	}
 
+	public boolean isGameOver() {
+		return this.strike == 3;
+	}
+
 	public void printScore() {
 		if (this.strike == 0 && this.ball == 0) {
 			System.out.println("낫싱");
