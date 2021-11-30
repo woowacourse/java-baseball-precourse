@@ -14,4 +14,9 @@ public class User {
 		}
 		return userNum;
 	}
+
+	protected int inputChoice() {
+		String choice  = Console.readLine();
+		return Integer.parseInt(choice);
+	}
 }

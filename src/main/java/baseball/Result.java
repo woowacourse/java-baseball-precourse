@@ -17,6 +17,14 @@ public class Result {
 		this.exit = false;
 	}
 
+	protected void init() {
+		this.strikeCount = 0;
+		this.ballCount = 0;
+		this.nothing = 0;
+		this.resultText = "";
+		this.exit = false;
+	}
+
 	private void initScore() {
 		this.strikeCount = 0;
 		this.ballCount = 0;
