@@ -1,12 +1,12 @@
 package baseball;
 
 class Result {
-    int strike;
-    int ball;
+    private int strike;
+    private int ball;
 
-    public Result(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
+    public Result() {
+        this.strike = 0;
+        this.ball = 0;
     }
 
     public boolean isStrikeOut() {

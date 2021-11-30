@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 class Game {
-    Answer answer;
+    private Answer answer;
 
     public Game() {
 
@@ -14,7 +14,7 @@ class Game {
     }
 
     public Result tryBaseball(List<Integer> playerNumbers) {
-        Result result = new Result(0, 0);
+        Result result = new Result();
 
         for (int i = 0; i < playerNumbers.size(); i++) {
             if (answer.isStrike(i, playerNumbers.get(i))) {

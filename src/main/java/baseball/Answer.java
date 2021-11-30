@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Answer {
-    List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Answer() {
         initAnswer();
