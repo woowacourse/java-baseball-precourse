@@ -27,7 +27,6 @@
 - 1인 경우 다시 시작
 - 2인 경우 게임 종료
 - 잘못된 입력 받을 경우 `IllegalArgumentException` 예외 발생 후 종료
-
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
