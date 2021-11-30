@@ -8,6 +8,7 @@ public class Application {
         int playingStatus = 1;
         while(true){
             List<Integer> numberList = GameHelper.generateNumbers();
+            GameHelper.play(numberList);
             playingStatus++;
             if(playingStatus==2){
                 break;
