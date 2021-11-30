@@ -5,20 +5,20 @@ daehwan2yo
 ✉️ contact   
 udsward@gmail.com  
 ✏️ last mod  
-2021-11-28  
+2021-11-30  
 
 ## 📕 Summary
 Java 8과 gradle을 기반한 프로젝트로, 주어진 숫자 야구 요구사항에 맞춰 기능을 구현한다.  
 
 ## ✔️ To do
-- [ ] 컴퓨터의 난수 생성하기
-- [ ] 사용자로부터 입력받기
-- [ ] 입력 예외 확인하기
-- [ ] 입력값 비교하기 (볼카운트 판정)
-- [ ] 결과 출력하기
-- [ ] 재실행 여부 확인하기
-- [ ] 입력에 따라 프로그램 종료하기
-- [ ] 예외 처리하기
+- [x] 컴퓨터의 난수 생성하기
+- [x] 사용자로부터 입력받기
+- [x] 입력 예외 확인하기
+- [x] 입력값 비교하기 (볼카운트 판정)
+- [x] 결과 출력하기
+- [x] 재실행 여부 확인하기
+- [x] 입력에 따라 프로그램 종료하기
+- [x] 예외 처리하기
 
 ### 적용해 볼 스킬
 - Functional Programming
@@ -128,8 +128,8 @@ Java 8과 gradle을 기반한 프로젝트로, 주어진 숫자 야구 요구사
 
 
 ## 📎 Class Diagram
-v1 (2021-11-28)  
-![woowa_1week drawio](https://user-images.githubusercontent.com/26921986/143735240-ced6f0dc-cc1c-4e8f-845f-b619a33e6927.png)
+v1 (2021-11-30)  
+![KakaoTalk_Photo_2021-11-30-22-42-58](https://user-images.githubusercontent.com/26921986/144058182-59f3f851-13d6-4860-9c3c-6072eef31174.png)
 
 
 
