@@ -12,9 +12,9 @@ public class Results {
 	private final List<Hint> hints;
 	private final Answer answer;
 
-	private Results(List<Hint> hints, Answer answer) {
+	private Results(List<Hint> hints) {
 		this.hints = hints;
-		this.answer = answer;
+		this.answer = getAnswer();
 	}
 
 	public static Results of(Numbers computer, Numbers player){
@@ -24,17 +24,20 @@ public class Results {
 			Hint hint = computer.getHint(numbers.get(i), i);
 			hints.add(hint);
 		}
-		Answer answer = getAnswer(hints);
-		return new Results(hints,answer);
+		return new Results(hints);
 	}
-	
-	private static Answer getAnswer(List<Hint> hints){
-		long strikeNum = hints.stream()
-			.filter(Hint::isStrike)
-			.count();
+
+	private Answer getAnswer(){
+		long strikeNum = count(Hint.STRIKE);
 		if(strikeNum==3){
 			return Answer.CORRECT;
 		}
 		return Answer.INCORRECT;
+	}
+
+	private long count(Hint hint){
+		return hints.stream()
+			.filter(h-> h == hint)
+			.count();
 	}
 }
