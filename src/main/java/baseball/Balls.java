@@ -49,12 +49,20 @@ public class Balls {
 	}
 
 	private Hint getHintsFrom(int position, Ball otherBall) {
-		if (balls.get(position).equals(otherBall)) {
+		if (containsExactly(position, otherBall)) {
 			return Hint.STRIKE;
 		}
-		if (balls.contains(otherBall)) {
+		if (contains(otherBall)) {
 			return Hint.BALL;
 		}
 		return Hint.NOTHING;
+	}
+
+	private boolean contains(Ball otherBall) {
+		return balls.contains(otherBall);
+	}
+
+	private boolean containsExactly(int position, Ball otherBall) {
+		return balls.get(position).equals(otherBall);
 	}
 }
