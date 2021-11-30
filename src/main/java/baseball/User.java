@@ -3,14 +3,13 @@ package baseball;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static baseball.Message.*;
 import static baseball.Message.ERROR;
+import static baseball.Message.LENGTH_OF_ANSWER;
 
 public class User {
     private static final String ZERO = "0";
     private static final String NUMERIC_FILTER = "[1-9]+";
     private final ArrayList<Integer> userNumbers = new ArrayList<>();
-
 
     public User(String input) {
         checkInputNumber(input);

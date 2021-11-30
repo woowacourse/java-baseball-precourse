@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 import static baseball.Message.*;
-import static baseball.Message.NOTHING;
 
 public class BaseballGame {
 
@@ -18,7 +17,6 @@ public class BaseballGame {
             user = input();
         } while (!numberCheck(computer.getAnswer(), user.getUserNumbers()));
     }
-
 
     public User input() {
         System.out.println(INPUT_NUMBERS);
@@ -68,6 +66,4 @@ public class BaseballGame {
         }
         return ball;
     }
-
-
 }
