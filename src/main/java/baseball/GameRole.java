@@ -5,12 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class GameRole {
     private static int ball;
     private static int strike;
-    private static String computerNumber;
 
     public static void startGame() {
         InputRole inputRole = new InputRole();
         OutputRole outputRole = new OutputRole();
-        computerNumber = getRandomNumber();
+        String computerNumber = getRandomNumber();
 
         while (true) {
             ball = 0;
