@@ -13,19 +13,21 @@ public class Hint {
 		}
 	}
 
-	public String getHintMessage() {
+	public void printHintMessage() {
 		List<String> sList = new ArrayList<>();
 
-		if (this.ball == 0 && this.strike == 0)
-			return Const.NOTHING;
-
+		if (this.ball == 0 && this.strike == 0) {
+			System.out.println(Const.NOTHING);
+			return;
+		}
+		
 		if (this.ball != 0)
 			sList.add(ball + Const.BALL);
 
 		if (this.strike != 0)
 			sList.add(strike + Const.STRIKE);
 
-		return String.join(" ", sList);
+		System.out.println(String.join(" ", sList));
 	}
 
 	public boolean isAllStrike() {

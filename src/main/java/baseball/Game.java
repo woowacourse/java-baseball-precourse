@@ -9,15 +9,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Game {
 
 	public static void play() {
-		List<Integer> answerNumber = generateAnswer();
+		Computer computer = new Computer();
 
 		boolean running = true;
 		do {
 			System.out.print(Const.INPUT_MESSAGE);
-			List<Integer> inputNumber = getInputNumber();
+			User user = new User();
+			user.readInputNumber();
 
-			Hint hint = new Hint(answerNumber, inputNumber);
-			System.out.println(hint.getHintMessage());
+			Hint hint = new Hint(computer.getAnswerNumber(), user.getInputNumber());
+			hint.printHintMessage();
 
 			if (hint.isAllStrike())
 				running = false;
@@ -36,65 +37,5 @@ public class Game {
 			return false;
 
 		throw new IllegalArgumentException();
-	}
-
-	private static List<Integer> generateAnswer() {
-		List<Integer> answer = new ArrayList<>();
-		for (int i = 0; i < Const.ANSWER_SIZE; i++) {
-			insertUniqueNumber(answer);
-		}
-
-		return answer;
-	}
-
-	private static void insertUniqueNumber(List<Integer> answer) {
-		int r = Randoms.pickNumberInRange(Const.MIN_ANSWER_VALUE, Const.MAX_ANSWER_VALUE);
-
-		if (!answer.contains(r)) {
-			answer.add(r);
-			return;
-		}
-
-		insertUniqueNumber(answer);
-	}
-
-	private static boolean isCorrectInput(String inputText) {
-		if (inputText.length() != Const.ANSWER_SIZE) // 길이가 3이 아님
-			return false;
-
-		for (int i = 0; i < inputText.length(); i++) {
-			if (!isSingleDigit(inputText, i)) // 1~9 숫자가 아님
-				return false;
-
-			if (isDuplicateNumber(inputText, i)) // 숫자 중복
-				return false;
-		}
-
-		return true;
-	}
-
-	private static boolean isSingleDigit(String inputText, int index) {
-		int n = Character.getNumericValue(inputText.charAt(index));
-		return n <= Const.MAX_ANSWER_VALUE && n >= Const.MIN_ANSWER_VALUE;
-	}
-
-	private static boolean isDuplicateNumber(String inputText, int index) {
-		String prevNums = inputText.substring(0, index);
-		String nowNum = Character.toString(inputText.charAt(index));
-		return prevNums.contains(nowNum);
-	}
-
-	private static List<Integer> getInputNumber() {
-		List<Integer> result = new ArrayList<>();
-
-		String inputNumber = Console.readLine();
-
-		if (!isCorrectInput(inputNumber))
-			throw new IllegalArgumentException();
-
-		for (int i = 0; i < inputNumber.length(); i++)
-			result.add(Character.getNumericValue(inputNumber.charAt(i)));
-
-		return result;
 	}
 }
