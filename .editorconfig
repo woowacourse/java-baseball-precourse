@@ -11,9 +11,6 @@ end_of_line = lf
 # [newline-eof]
 insert_final_newline = true
 
-[*.bat]
-end_of_line = crlf
-
 [*.java]
 # [indentation-tab]
 indent_style = tab
