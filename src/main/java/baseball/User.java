@@ -6,8 +6,6 @@ import camp.nextstep.edu.missionutils.Console;
 public class User {
 	private static final String USER_INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요: ";
 	private static final String NEXT_STEP_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
-	private static final int NEW_GAME = 1;
-	private static final int END_GAME = 2;
 
 	public static String getNumber(STATE userState) {
 		System.out.print(userMessage(userState));
@@ -26,12 +24,13 @@ public class User {
 
 	public static boolean isContinue() {
 		String input = getNumber(STATE.END_STATE);
-		int nextStep = Integer.parseInt(input);
+		int nextStep = Integer.parseInt(input) - 1;
+		STATE nextState = STATE.values()[nextStep];
 
-		if (nextStep == NEW_GAME) {
+		if (nextState == STATE.GAME_STATE) {
 			return true;
 		}
-		if (nextStep == END_GAME) {
+		if (nextState == STATE.END_STATE) {
 			return false;
 		}
 		throw new IllegalArgumentException();
