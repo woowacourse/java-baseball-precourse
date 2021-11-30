@@ -11,18 +11,18 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
 
     @Test
-    void ê²Œìž„ì¢…ë£Œ_í›„_ìž¬ì‹œìž‘() {
+    void °ÔÀÓÁ¾·á_ÈÄ_Àç½ÃÀÛ() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("ë‚«ì‹±", "3ìŠ¤íŠ¸ë¼ì´í¬", "1ë³¼ 1ìŠ¤íŠ¸ë¼ì´í¬", "3ìŠ¤íŠ¸ë¼ì´í¬", "ê²Œìž„ ì¢…ë£Œ");
+                    assertThat(output()).contains("³´½Ì", "3½ºÆ®¶óÀÌÅ©", "1º¼ 1½ºÆ®¶óÀÌÅ©", "3½ºÆ®¶óÀÌÅ©", "°ÔÀÓ Á¾·á");
                 },
                 1, 3, 5, 5, 8, 9
         );
     }
 
     @Test
-    void ì˜ˆì™¸_í…ŒìŠ¤íŠ¸() {
+    void ¿¹¿Ü_Å×½ºÆ®() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)

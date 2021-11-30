@@ -1,7 +1,141 @@
 package baseball;
 
+
+import java.util.HashSet;
+import java.util.Set;
+
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 public class Application {
+	
+	static int ball = 0, strike = 0; 
+	
+
     public static void main(String[] args) {
-        //TODO: ìˆ«ì ì•¼êµ¬ ê²Œì„ êµ¬í˜„
+    	int trigger = 1;
+    	while(trigger == 1) {
+    		if(trigger == 1) {
+        		//»õ°ÔÀÓ
+        		gameStart();
+        		trigger= result.Reset();
+        		
+        	}
+    		if(trigger ==2) {
+        		//Á¦ÀÓÁ¾·á
+        		System.out.println("°ÔÀÓ Á¾·á");
+        	}
+//    		else {
+//    			throw new IllegalArgumentException("Àß¸øµÈ ÀÔ·Â°ª ÀÔ´Ï´Ù.");
+//    		}
+    	}
+    		
+    }
+    
+    
+    //°ÔÀÓ ½ºÅ¸Æ®
+    static void gameStart() {
+    	ball = 0; strike = 0;
+    	String n = RandomNumber.threeNum();
+    	System.out.println(n);
+    
+    	//»ç¿ëÀÚ ÀÔ·Â
+    	while (strike !=3) {
+    		ball=0; strike=0;
+	    	String g = GuessNumber.input();
+	    	
+	    	for(int i = 0; i < 3; i ++) {
+	    		countBall(n,g,i);
+	    		countStrike(n,g,i);
+	    	}
+	    	//°á°úÃâ·ÂÇÏ±â 
+	    	result.output(ball, strike);
+    	}	
+    	
+    }
+    
+ 
+    //º¼ Ä«¿îÆ®
+    static void countBall(String n ,String g, int idx) {	
+    	if(n.charAt(idx)!=g.charAt(idx) && g.contains(Character.toString(n.charAt(idx)))){
+    		ball++;
+    	}
+    }
+   
+    //½ºÆ®¶óÀÌÅ© Ä«¿îÆ®
+    static void countStrike(String n ,String g, int idx) {	
+    	if(n.charAt(idx)==g.charAt(idx)){
+    		strike++;
+    	}
+    }
+    
+  
+}
+ 
+
+
+
+class RandomNumber{
+    	//ÄÄÇ»ÅÍ°¡ 3ÀÚ¸® ¸¸µé±â
+    	static final int[] n =new int[3];
+    	static final int startNum = 1;
+    	static final int endNum = 9;
+    	static final int cnt = 0;
+    	
+    	static String threeNum() {
+    		 //Áßº¹¹æÁö¿ë
+        	Set<Integer> set = new HashSet<>();
+       	
+        	while(set.size() <3) {
+	    		set.add(Randoms.pickNumberInRange(startNum, endNum));
+        	}
+        	
+        	StringBuilder strB = new StringBuilder();
+        	set.forEach(strB::append);
+        	//¹®ÀÚ¿­·Î ¸®ÅÏ
+        	return strB.toString(); 
     }
 }
+
+
+
+class GuessNumber{
+	
+	static String input() {
+	System.out.print("¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä :");
+	String read = Console.readLine();
+		if(read.length() !=3) {
+	        throw new IllegalArgumentException("Àß¸øµÈ ÀÔ·Â°ª ÀÔ´Ï´Ù.");
+		}
+	return read;
+	}
+}
+
+
+
+
+class result{
+	static void output(int ball, int strike) {
+		if(ball != 0 ) {
+	    	System.out.print(ball + "º¼");
+	    	if(strike == 0){
+	    		System.out.println();}
+		}
+		if(strike != 0) {
+	    	System.out.println(strike + "½ºÆ®¶óÀÌÅ©");  	
+
+		}
+		if(ball==0 && strike==0 ) {
+	    	System.out.println("³´½Ì");  	
+		}
+		if(strike == 3) { 	
+	    	System.out.println("3°³ÀÇ ¼ıÀÚ¸¦ ¸ğµÎ ¸ÂÈ÷¼Ì½À´Ï´Ù! °ÔÀÓ Á¾·á");  
+		}
+	}
+	static int Reset() {
+		System.out.println("°ÔÀÓÀ» »õ·Î ½ÃÀÛÇÏ·Á¸é 1, Á¾·áÇÏ·Á¸é 2¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		String goStop = Console.readLine();
+		return Integer.valueOf(goStop);
+	}
+}
+//±ê Å×½ºÆ®
+  
