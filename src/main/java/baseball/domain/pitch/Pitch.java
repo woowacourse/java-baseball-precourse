@@ -1,4 +1,4 @@
-package baseball.pitch;
+package baseball.domain.pitch;
 
 public class Pitch {
     private final int index;

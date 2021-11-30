@@ -1,4 +1,4 @@
-package baseball.error;
+package baseball.finalstring.error;
 
 public enum ErrorCode {
     FOUND_NOT_DIGIT("숫자 외 다른 문자가 입력되었습니다."),

@@ -1,10 +1,10 @@
-package baseball.game;
+package baseball.domain.game;
 
-import baseball.PrintValue;
-import baseball.computer.Computer;
-import baseball.hint.Hint;
-import baseball.pitch.Pitch;
-import baseball.player.Player;
+import baseball.finalstring.PrintValue;
+import baseball.domain.computer.Computer;
+import baseball.domain.hint.Hint;
+import baseball.domain.pitch.Pitch;
+import baseball.domain.player.Player;
 
 import java.util.HashSet;
 import java.util.List;

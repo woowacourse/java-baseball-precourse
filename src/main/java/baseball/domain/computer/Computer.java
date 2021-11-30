@@ -1,7 +1,7 @@
-package baseball.computer;
+package baseball.domain.computer;
 
-import baseball.pitch.Pitch;
-import baseball.valid.Valid;
+import baseball.domain.pitch.Pitch;
+import baseball.domain.valid.Valid;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;

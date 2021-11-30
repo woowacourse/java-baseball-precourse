@@ -1,8 +1,8 @@
-package baseball.player;
+package baseball.domain.player;
 
-import baseball.error.ErrorCode;
-import baseball.pitch.Pitch;
-import baseball.valid.Valid;
+import baseball.finalstring.error.ErrorCode;
+import baseball.domain.pitch.Pitch;
+import baseball.domain.valid.Valid;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;

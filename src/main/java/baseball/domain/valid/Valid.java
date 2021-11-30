@@ -1,4 +1,4 @@
-package baseball.valid;
+package baseball.domain.valid;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,6 +1,6 @@
-package baseball.hint;
+package baseball.domain.hint;
 
-import baseball.pitch.Pitch;
+import baseball.domain.pitch.Pitch;
 
 import java.util.Set;
 

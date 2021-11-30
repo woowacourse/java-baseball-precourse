@@ -1,4 +1,4 @@
-package baseball.player;
+package baseball.domain.player;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

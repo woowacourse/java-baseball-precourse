@@ -1,4 +1,4 @@
-package baseball;
+package baseball.finalstring;
 
 public enum PrintValue {
 
