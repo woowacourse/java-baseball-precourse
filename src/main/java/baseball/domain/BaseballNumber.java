@@ -7,9 +7,9 @@ import java.util.stream.IntStream;
 
 public class BaseballNumber {
 
-	private final static int SIZE = 3;
-	private final static String SIZE_ERROR = "1에서 9까지의 임의의 수 3개의 숫자를 입력해주세요.";
-	private final static String DUPLICATE_ERROR = "서로 다른 임의의 수 3개를 입력해주세요.";
+	private static final int SIZE = 3;
+	private static final String SIZE_ERROR = "1에서 9까지의 임의의 수 3개의 숫자를 입력해주세요.";
+	private static final String DUPLICATE_ERROR = "서로 다른 임의의 수 3개를 입력해주세요.";
 
 	private final List<Number> baseballNumber;
 
@@ -43,13 +43,9 @@ public class BaseballNumber {
 	}
 
 	public Long sameNumberLocation(BaseballNumber compareNumber) {
-		long count = 0;
-
-		count = IntStream.range(0, baseballNumber.size())
+		return IntStream.range(0, baseballNumber.size())
 			.filter(i -> compareNumber.baseballNumber.get(i).getNo() == baseballNumber.get(i).getNo())
 			.count();
-
-		return count;
 	}
 
 	public long containsNumber(BaseballNumber compareNumber) {
