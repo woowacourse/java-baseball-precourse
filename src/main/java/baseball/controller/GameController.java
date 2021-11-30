@@ -22,6 +22,7 @@ public class GameController {
     private void gamePlay() {
         // ToDo: 2. 결과 출력 3. 정답이면 게임 종료
         int[] playerAnswer = gameInputView.inputAnswer();
+        gameService.guessAnswer(playerAnswer);
     }
 
     private void askGameReplay() {

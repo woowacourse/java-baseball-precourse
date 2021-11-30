@@ -26,4 +26,8 @@ public class GameService {
             throw new IllegalArgumentException();
         }
     }
+
+    public void guessAnswer(int[] answer) {
+        game.getPlayer().updateAnswer(answer);
+    }
 }

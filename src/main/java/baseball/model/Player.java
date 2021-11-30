@@ -18,8 +18,8 @@ public class Player {
         return gamePlayType;
     }
 
-    public void guessAnswer() {
-        // ToDo: 정답 추측
+    public void updateAnswer(int[] answer) {
+        this.answer = answer;
     }
 
     public void updateGamePlayType(GamePlayType gamePlayType) {
