@@ -1,5 +1,6 @@
-package baseball;
+package baseball.game;
 
+import baseball.baseballsystem.SystemMessage;
 import baseball.baseballsystem.validation.InputValidationRule;
 import baseball.baseballsystem.validation.BaseballValidationImpl;
 import baseball.baseballsystem.judgement.JudgementService;
@@ -35,12 +36,12 @@ public class BaseballGame {
         try {
             Computer computer = new Computer();
             do {
-                System.out.print("숫자를 입력해주세요 : ");
+                printMessage(SystemMessage.NUMBER_INPUT_MESSAGE.getMessage());
                 String validPlayerInput = validation.isValidInput(Console.readLine());
                 Player player = new Player(validPlayerInput);
                 JudgementResultDto resultDto = judgementService.matchTheNumbers(player, computer);
                 isCorrect = resultDto.isCorrectAnswer();
-                System.out.println(resultDto.getResultMessage());
+                printMessage(resultDto.getResultMessage());
             } while (!isCorrect);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
@@ -49,6 +50,7 @@ public class BaseballGame {
 
     private boolean continueGame() {
         try {
+            printMessage(SystemMessage.CORRECT_ANSWER_NEXT_MESSAGE.getMessage());
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String validContinuePlayerInput = validation.isValidContinueInput(Console.readLine());
             return isContinue(validContinuePlayerInput);
@@ -63,5 +65,9 @@ public class BaseballGame {
         } else {
             return NO;
         }
+    }
+
+    private void printMessage(final String message) {
+        System.out.println(message);
     }
 }
