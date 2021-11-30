@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+ * 게임을 진행하는 역할을 수행합니다.
+ */
 public class Controller {
     private static final String REQUEST_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String RESTART_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
