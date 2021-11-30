@@ -20,4 +20,5 @@ public class GameDisplay {
     public static void printHintMessage(final String hintMessage) {
         System.out.println(hintMessage);
     }
+
 }

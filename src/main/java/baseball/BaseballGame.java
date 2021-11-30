@@ -10,11 +10,11 @@ import baseball.view.GameDisplay;
 
 public class BaseballGame {
 
-    public void startGame() {
+    public static void startGame() {
         progressGame();
     }
 
-    private void progressGame() {
+    private static void progressGame() {
         String answer = Computer.makeAnswerNumber();
         GameDisplay.printInputMessage();
 

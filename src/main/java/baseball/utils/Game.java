@@ -16,17 +16,17 @@ public class Game {
         return answer.equals(guessAnswer);
     }
 
-    public static String writeHintMessage(final int strike, final int ball) {
+    public static String writeHintMessage(final int strikeCount, final int ballCount) {
 
-        if ((strike == 0) && (ball > 0)) {
-            return appendBallHintMessage(ball);
-        } else if ((strike > 0) && (ball == 0)) {
-            return appendStrikeHintMessage(strike);
-        } else if ((strike == 0) && (ball == 0)) {
+        if ((strikeCount == 0) && (ballCount > 0)) {
+            return appendBallHintMessage(ballCount);
+        } else if ((strikeCount > 0) && (ballCount == 0)) {
+            return appendStrikeHintMessage(strikeCount);
+        } else if ((strikeCount == 0) && (ballCount == 0)) {
             return appendNothingHintMessage();
         }
 
-        return appendBallHintMessage(ball) + SPACE + appendStrikeHintMessage(strike);
+        return appendBallHintMessage(ballCount) + SPACE + appendStrikeHintMessage(strikeCount);
     }
 
     private static String appendNothingHintMessage() {
