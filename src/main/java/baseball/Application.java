@@ -56,7 +56,7 @@ public class Application {
 
     }
 
-    public void validation(String inputNumber) {
+    public void verifyNumber(String inputNumber) {
         String range = "123456789";
         String include = "";
         if (inputNumber.length() != 3) {
@@ -74,6 +74,23 @@ public class Application {
         }
     }
 
+    public String verifyPlayGame() {
+        String range = "12";
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String play = Console.readLine();
+        while (!(play.equals("1") || play.equals("2"))) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            play = Console.readLine();
+            if (play.length() != 1) {
+                continue;
+            }
+            if (!range.contains(play)) {
+                continue;
+            }
+        }
+        return play;
+    }
+
     public static void main(String[] args) {
         Application application = new Application();
         application.makeAnswer();
@@ -81,14 +98,13 @@ public class Application {
         while (application.playGame.equals("1")) {
             System.out.print("숫자를 입력해주세요 : ");
             String inputNumber = Console.readLine();
-            application.validation(inputNumber);
+            application.verifyNumber(inputNumber);
             String result = application.check(inputNumber);
             System.out.println(result);
 
             if (result.equals("3스트라이크")) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                application.playGame = Console.readLine();
+                application.playGame = application.verifyPlayGame();
                 application.makeAnswer();
             }
 
