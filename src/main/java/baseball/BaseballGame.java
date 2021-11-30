@@ -6,7 +6,6 @@ public class BaseballGame {
 
 	private String answer;
 	private String guessAnswer;
-	private boolean onGoing;
 
 	BaseballGame() {
 		answer = "";
@@ -70,9 +69,9 @@ public class BaseballGame {
 
 	private boolean askPlayerContinueGame(Player player) throws IllegalArgumentException {
 		String reply = player.askQuestionAndGetAnswer(BaseballGameConstants.QUESTION_ASK_CONTINUE_GAME);
-		if (reply.equals("1")) {
+		if (reply.equals(BaseballGameConstants.CONTINUE_GAME)) {
 			return true;
-		} else if (reply.equals("2")) {
+		} else if (reply.equals(BaseballGameConstants.STOP_GAME)) {
 			return false;
 		}
 		throw new IllegalArgumentException();

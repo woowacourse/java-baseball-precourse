@@ -8,4 +8,6 @@ public class BaseballGameConstants {
 	static final String END_CONDITION = "3스트라이크";
 	static final String GAME_SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다!";
 	static final String END_GAME_MESSAGE = "게임 종료\n";
+	static final String CONTINUE_GAME = "1";
+	static final String STOP_GAME = "2";
 }
