@@ -13,7 +13,7 @@ public class Application {
         while(true){
             List<Integer> randomNumber = new ArrayList<>(3);
 
-            //1. 컴퓨터1가 랜덤 숫자를 정한다
+            //1. 컴퓨터가 랜덤 숫자를 정한다
             randomNumber = startGame();
 
             //2. 플레이어가 숫자게임을 시작한다.
@@ -50,17 +50,16 @@ public class Application {
             String input;
             System.out.print("숫자를 입력해주세요 : ");
             input = Console.readLine();
-
-            //+ 사용자가 잘못된 값을 입력할 경우 예외 발생 후 종료
-            validateNumber(input);
-
             List<Integer> playerNumber = new ArrayList<>(3);
             for (int i = 0; i < 3; i++) {
                 int num = Character.getNumericValue(input.charAt(i));
                 playerNumber.add(num);
             }
 
-            // 2. 숫자를 확인한다
+            //+ 사용자가 잘못된 값을 입력할 경우 예외 발생 후 종료
+            validateNumber(input);
+
+            // 2. 숫자를 확인한다 (정답이면 종료)
             if(checkNum(randomNumber, playerNumber)==true) break;
             else continue;
         }
