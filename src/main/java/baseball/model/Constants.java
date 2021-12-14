@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 public class Constants {
     // 메시지 관련 메시지
@@ -16,12 +16,15 @@ public class Constants {
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
     public static final String NOTHING = "낫싱";
+    public static final String BLANK = " ";
 
-    // RandomAnswer().generate()
-    public static final int startInclusive = 1;
-    public static final int endInclusive = 9;
+    // 정답 생성 관련 상수
+    public static final int STARTINCLUSIVE = 1;
+    public static final int ENDINCLUSIVE = 9;
 
-    // restartOrExit()
-    public static final String RESTART = "1";
+    // continueOrExit()
+    public static final String CONTINUE = "1";
     public static final String EXIT = "2";
+
+    public static final String INPUT_VALIDATE_PATTERN = "^[1-9]{3}$";
 }
