@@ -22,6 +22,6 @@ public class OutputView {
     }
 
     public static void printErrorMsg(Exception e) {
-
+        System.out.println(e.getMessage());
     }
 }

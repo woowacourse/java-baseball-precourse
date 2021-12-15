@@ -31,8 +31,8 @@ public class Controller {
                 isThreeStrikes = refree.checkThreeStrikes(gameResultMap);
                 String gameResultMsg = refree.makeGameResultMsg(gameResultMap);
                 OutputView.printResultMsg(gameResultMsg);
-            } catch (IllegalArgumentException e) {
-                OutputView.printErrorMsg(e);
+            } catch (IllegalArgumentException iae) {
+                throw iae;
             }
         }
         OutputView.printEndMsg();
