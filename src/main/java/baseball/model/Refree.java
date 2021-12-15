@@ -10,8 +10,9 @@ import java.util.regex.Pattern;
 
 public class Refree {
 
-    public List<Integer> askPlayerAnswer(String playerInput) {
+    public List<Integer> askPlayerAnswer(String playerInput) throws IllegalArgumentException{
         inputValidate(playerInput);
+
         List<Integer> playerAnswer = new ArrayList<>();
 
         for (String digit : playerInput.split("")) {
@@ -21,10 +22,10 @@ public class Refree {
         return playerAnswer;
     }
 
-    private void inputValidate(String playerInput) {
+    private void inputValidate(String playerInput){
         boolean regex = Pattern.matches(INPUT_VALIDATE_PATTERN, playerInput);
         if (!regex) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_ERROR_MSG);
         }
     }
 
@@ -39,9 +40,6 @@ public class Refree {
 
     private int countStrikes(List<Integer> playerAnswer, List<Integer> gameAnswer) {
         int strikes = 0;
-
-        System.out.println(playerAnswer);
-        System.out.println(gameAnswer);
 
         for (int i = 0; i < gameAnswer.size(); i++) {
             if (gameAnswer.get(i) == playerAnswer.get(i)) {
@@ -81,6 +79,6 @@ public class Refree {
         if (gameResultMap.get(STRIKE) == 0 && gameResultMap.get(BALL) != 0) {
             return ballsMsg;
         }
-        return strikesMsg + BLANK + ballsMsg;
+        return ballsMsg + BLANK + strikesMsg;
     }
 }
