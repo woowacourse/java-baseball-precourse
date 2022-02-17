@@ -28,15 +28,14 @@ public class User {
     public void startGame() {
         Computer computer = new Computer();
         computerAnswer = computer.getAnswer();
-        inputNum();
+        inputNum(Input.userNumber());
     }
 
-    public void inputNum() {
+    public void inputNum(String userNumber) {
         System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
 
         for (int i = 0; i < 3; i++) {
-            userAnswer[i] = input.charAt(i) - '0';
+            userAnswer[i] = userNumber.charAt(i) - '0';
         }
 //        System.out.println("[[ Cheat Version ]]");
         System.out.println("Computer Answer :: " + computerAnswer[0]+""+computerAnswer[1]+""+computerAnswer[2]);
@@ -57,7 +56,7 @@ public class User {
     private void gameStatus() {
         if (printScore() == CORRECT) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String restartInput = Console.readLine();
+            String restartInput = Input.restartGame();
 
             if (restartInput == RESTART_GAME) {
 
@@ -65,7 +64,7 @@ public class User {
                 return;
             }
         } else {
-            inputNum();
+            inputNum(Input.userNumber());
         }
     }
 
