@@ -50,11 +50,11 @@ public class User {
     private void gameStatus() {
         if (gameOver() == Output.GAME_FINISH) {
             Output.requestRestart();
-            String restartInput = Input.restartGame();
+            String gameAgain = Input.restartGame();
 
-            if (restartInput == RESTART_GAME) {
+            if (gameAgain == RESTART_GAME) {
 
-            } else if (restartInput == TERMINATE_GAME) {
+            } else if (gameAgain == TERMINATE_GAME) {
                 return;
             }
         } else {
