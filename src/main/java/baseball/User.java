@@ -9,14 +9,6 @@ public class User {
     private int strike;
     private int ball;
 
-    /**
-     * "Scope" 를 생각해보는 것도 좋을거 같다.
-     *
-     * computerAnswer _ 정답을 맞출 때까지
-     *
-     * userAnswer / strike / ball _ 이번 답 입력까지
-     *
-     */
     public User() {
         userAnswer = new int[3];
     }
@@ -62,7 +54,7 @@ public class User {
         }
     }
 
-    private void checkDigit(int i, int j) { // 00 01 02 11 12 22
+    private void checkDigit(int i, int j) {
         if (computerAnswer[i] == userAnswer[j]) {
             if (i == j) {
                 ++strike;
