@@ -22,9 +22,12 @@ public class User {
      *
      */
     public User() {
+        userAnswer = new int[3];
+    }
+
+    public void startGame() {
         Computer computer = new Computer();
         computerAnswer = computer.getAnswer();
-        userAnswer = new int[3];
         inputNum();
     }
 
