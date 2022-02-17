@@ -52,7 +52,7 @@ public class User {
     }
 
     private void gameStatus() {
-        if (printScore() == CORRECT) {
+        if (gameOver() == CORRECT) {
             Output.requestRestart();
             String restartInput = Input.restartGame();
 
@@ -76,22 +76,15 @@ public class User {
         }
     }
 
-    private int printScore() {
-        if (ball == 0 && strike == 0) {
-            System.out.println(Output.SCORE_NOTHING);
-            return INCORRECT;
-        } else if (strike == 3) {
-            System.out.println(strike + Output.SCORE_STRIKE);
+    private int result(int ball, int strike) {
+        Output.scoreResult(ball, strike);
+        return strike;
+    }
+
+    private int gameOver() {
+        if (result(ball, strike) == 3) {
             return CORRECT;
-        } else if (ball == 0) {
-            System.out.println(strike + Output.SCORE_STRIKE);
-            return INCORRECT;
-        } else if (strike == 0) {
-            System.out.println(ball + Output.SCORE_BALL);
-            return INCORRECT;
-        } else {
-            System.out.println(ball + Output.SCORE_BALL + strike + Output.SCORE_STRIKE);
-            return INCORRECT;
         }
+        return INCORRECT;
     }
 }

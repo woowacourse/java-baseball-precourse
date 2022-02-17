@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 public class Output {
 
@@ -20,6 +19,16 @@ public class Output {
     public static void requestRestart() {
         System.out.println(GAME_OVER);
         System.out.println(ASK_FOR_MORE_GAME);
+    }
+
+    public static void scoreResult(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            System.out.println(SCORE_NOTHING);
+        } else if (ball == 0) {
+            System.out.println(strike + SCORE_STRIKE);
+        } else if (strike == 0) {
+            System.out.println(ball + SCORE_BALL);
+        }
     }
 
     public static void cheatVersion(int[] answer) {
