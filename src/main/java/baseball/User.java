@@ -32,12 +32,11 @@ public class User {
     }
 
     public void inputNum(String userNumber) {
-        System.out.print("숫자를 입력해주세요 : ");
 
         for (int i = 0; i < 3; i++) {
             userAnswer[i] = userNumber.charAt(i) - '0';
         }
-//        System.out.println("[[ Cheat Version ]]");
+        System.out.println("[[ Cheat Version ]]");
         System.out.println("Computer Answer :: " + computerAnswer[0]+""+computerAnswer[1]+""+computerAnswer[2]);
         digitBingo();
     }
@@ -55,7 +54,7 @@ public class User {
 
     private void gameStatus() {
         if (printScore() == CORRECT) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            Output.requestRestart();
             String restartInput = Input.restartGame();
 
             if (restartInput == RESTART_GAME) {
@@ -80,19 +79,19 @@ public class User {
 
     private int printScore() {
         if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
+            System.out.println(Output.SCORE_NOTHING);
             return INCORRECT;
         } else if (strike == 3) {
-            System.out.println(strike +"스트라이크");
+            System.out.println(strike + Output.SCORE_STRIKE);
             return CORRECT;
         } else if (ball == 0) {
-            System.out.println(strike +"스트라이크");
+            System.out.println(strike + Output.SCORE_STRIKE);
             return INCORRECT;
         } else if (strike == 0) {
-            System.out.println(ball + "볼 ");
+            System.out.println(ball + Output.SCORE_BALL);
             return INCORRECT;
         } else {
-            System.out.println(ball + "볼 " + strike +"스트라이크");
+            System.out.println(ball + Output.SCORE_BALL + strike + Output.SCORE_STRIKE);
             return INCORRECT;
         }
     }
