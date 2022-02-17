@@ -36,8 +36,7 @@ public class User {
         for (int i = 0; i < 3; i++) {
             userAnswer[i] = userNumber.charAt(i) - '0';
         }
-        System.out.println("[[ Cheat Version ]]");
-        System.out.println("Computer Answer :: " + computerAnswer[0]+""+computerAnswer[1]+""+computerAnswer[2]);
+        Output.cheatVersion(computerAnswer);
         digitBingo();
     }
 

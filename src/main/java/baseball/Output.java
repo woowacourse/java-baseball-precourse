@@ -1,13 +1,14 @@
 package baseball;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class Output {
 
     private static final String REQUEST_USER_NUMBER = "숫자를 입력해주세요 : ";
     private static final String GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String ASK_FOR_MORE_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final String CHEAT_VERSION_ANSWER = "[[ Cheat Version ]] \n Computer Answer :: ";
+    private static final String CHEAT_VERSION_ANSWER = "[[ Cheat Version ]] \nComputer Answer :: ";
     public static final String SCORE_NOTHING = "낫싱 ";
     public static final String SCORE_BALL = "볼 ";
     public static final String SCORE_STRIKE = "스트라이크 ";
@@ -23,7 +24,6 @@ public class Output {
 
     public static void cheatVersion(int[] answer) {
         System.out.println(CHEAT_VERSION_ANSWER + Arrays.toString(answer));
-
     }
 
 }
