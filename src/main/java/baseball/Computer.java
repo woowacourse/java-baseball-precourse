@@ -7,16 +7,20 @@ import java.util.List;
 
 public class Computer {
 
-    private char[] answer;
+    private int[] answer;
 
     public Computer() {
         List<Integer> numberList = makeList();
-        answer = new char[3];
+        answer = new int[3];
+        chooseAnswer(numberList);
+    }
 
+    private void chooseAnswer(List<Integer> numberList) {
         for (int i = 0; i < 3; i++) {
             int randomNum = Randoms.pickNumberInList(numberList);
-            numberList.remove(randomNum - 1);
-            answer[i] = (char) (randomNum + '0');
+            int deleteIndex = numberList.indexOf(randomNum);
+            numberList.remove(deleteIndex);
+            answer[i] = randomNum;
         }
     }
 
@@ -25,6 +29,11 @@ public class Computer {
         for (int i = 1; i < 10; i++) {
             randomList.add(i);
         }
+
         return randomList;
+    }
+
+    public int[] getAnswer() {
+        return answer;
     }
 }
