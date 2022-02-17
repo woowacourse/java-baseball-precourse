@@ -1,13 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class User {
 
     private int[] userAnswer;
     private int[] computerAnswer;
-    private final int CORRECT = 777;
-    private final int INCORRECT = 444;
     private final String RESTART_GAME = "1";
     private final String TERMINATE_GAME = "2";
     private int strike;
@@ -52,7 +48,7 @@ public class User {
     }
 
     private void gameStatus() {
-        if (gameOver() == CORRECT) {
+        if (gameOver() == Output.GAME_FINISH) {
             Output.requestRestart();
             String restartInput = Input.restartGame();
 
@@ -82,9 +78,9 @@ public class User {
     }
 
     private int gameOver() {
-        if (result(ball, strike) == 3) {
-            return CORRECT;
+        if (result(ball, strike) == Output.GAME_FINISH) {
+            return Output.GAME_FINISH;
         }
-        return INCORRECT;
+        return Output.GAME_CONTINUE;
     }
 }

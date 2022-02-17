@@ -11,6 +11,8 @@ public class Output {
     public static final String SCORE_NOTHING = "낫싱 ";
     public static final String SCORE_BALL = "볼 ";
     public static final String SCORE_STRIKE = "스트라이크 ";
+    public static final int GAME_CONTINUE = -1;
+    public static final int GAME_FINISH = 3;
 
     public static void requestUserNumber() {
         System.out.print(REQUEST_USER_NUMBER);
