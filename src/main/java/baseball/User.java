@@ -44,7 +44,7 @@ public class User {
             String gameAgain = Input.restartGame();
 
             if (gameAgain == RESTART_GAME) {
-
+                startGame();
             } else if (gameAgain == TERMINATE_GAME) {
                 return;
             }
