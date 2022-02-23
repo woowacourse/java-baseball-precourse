@@ -16,24 +16,23 @@ public class User {
     public void startGame() {
         Computer computer = new Computer();
         computerAnswer = computer.getAnswer();
-        inputNum(Input.userNumber());
+        createUserAnswer(Input.userNumber());
     }
 
-    public void inputNum(String userNumber) {
-
+    public void createUserAnswer(String userNumber) {
         for (int i = 0; i < 3; i++) {
             userAnswer[i] = userNumber.charAt(i) - '0';
         }
         Output.cheatVersion(computerAnswer);
-        digitBingo();
+        playBalls();
     }
 
-    private void digitBingo() {
+    private void playBalls() {
         strike = 0;
         ball = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                checkDigit(i, j);
+                getScore(i, j);
             }
         }
         gameStatus();
@@ -50,11 +49,11 @@ public class User {
                 return;
             }
         } else {
-            inputNum(Input.userNumber());
+            createUserAnswer(Input.userNumber());
         }
     }
 
-    private void checkDigit(int i, int j) {
+    private void getScore(int i, int j) {
         if (computerAnswer[i] == userAnswer[j]) {
             if (i == j) {
                 ++strike;
