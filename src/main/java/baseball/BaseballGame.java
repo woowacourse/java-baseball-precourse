@@ -18,8 +18,8 @@ public class BaseballGame {
     }
 
     public List<Integer> makeRandomNumber() {
-        List<Integer> randomNumList = Randoms.pickUniqueNumbersInRange(NUMBER_RANGE_START, NUMBER_RANGE_END, HOW_MANY_RANDOM_NUMBERS);
-        return randomNumList;
+        List<Integer> answerList = Randoms.pickUniqueNumbersInRange(NUMBER_RANGE_START, NUMBER_RANGE_END, HOW_MANY_RANDOM_NUMBERS);
+        return answerList;
     }
 
     public boolean correct(int[] grade) {
@@ -30,17 +30,22 @@ public class BaseballGame {
         int strike = 0;
         int ball = 0;
         Set<Integer> ballCandidates = new HashSet<>();
+        ballCandidates.addAll(answerList);
 
         for (int i = 0; i < DIGIT_NUMBER; ++i) {
             if (answerList.get(i) == playerAnswer.get(i)) {
                 ++strike;
+                ballCandidates.remove(answerList.get(i));
                 continue;
             }
-            ballCandidates.add(answerList.get(i));
-            if (ballCandidates.contains(playerAnswer.get(i))) {
+            if (ballCandidates.remove(playerAnswer.get(i))) {
                 ++ball;
             }
         }
+
+        Output playerOutput = new Output();
+        playerOutput.printScore(strike, ball);
+
         return new int[]{strike, ball};
     }
 }
