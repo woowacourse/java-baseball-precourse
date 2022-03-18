@@ -11,8 +11,10 @@ public class GameManager {
     public boolean playGame(BaseballGame baseballGame) {
         List<Integer> answer = baseballGame.makeRandomNumber();
         Player player = new Player();
-        while (!baseballGame.correct()) {
-            baseballGame.gradeAnswer(player.submitAnswer());
+
+        int[] grade = baseballGame.gradeAnswer(answer, player.submitAnswer());
+        while (!baseballGame.correct(grade)) {
+            grade = baseballGame.gradeAnswer(answer, player.submitAnswer());
         }
         return player.askForMore();
     }
