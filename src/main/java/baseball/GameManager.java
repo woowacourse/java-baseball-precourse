@@ -9,13 +9,17 @@ public class GameManager {
     }
 
     public boolean playGame(BaseballGame baseballGame) {
-        List<Integer> answer = baseballGame.makeRandomNumber();
         Player player = new Player();
+        List<Integer> playerAnswer = player.submitAnswer();
 
-        int[] grade = baseballGame.gradeAnswer(answer, player.submitAnswer());
+        List<Integer> answer = baseballGame.makeRandomNumber();
+        int[] grade = baseballGame.gradeAnswer(answer, playerAnswer);
+
         while (!baseballGame.correct(grade)) {
-            grade = baseballGame.gradeAnswer(answer, player.submitAnswer());
+            playerAnswer = player.submitAnswer();
+            grade = baseballGame.gradeAnswer(answer, playerAnswer);
         }
+
         return player.askForMore();
     }
 }
