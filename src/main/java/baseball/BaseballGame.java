@@ -12,6 +12,7 @@ public class BaseballGame {
     private final int NUMBER_RANGE_START = 1;
     private final int NUMBER_RANGE_END = 9;
     private final int DIGIT_NUMBER = 3;
+    private final int WINNER = 3;
 
     public BaseballGame() {
 
@@ -56,6 +57,6 @@ public class BaseballGame {
     }
 
     public boolean threeStrike(Grade grade) {
-        return grade.getStrike() == 3;
+        return grade.getStrike() == WINNER;
     }
 }
