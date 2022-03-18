@@ -10,7 +10,7 @@ public class GameManager {
         player = new Player();
     }
 
-    public void playGame(BaseballGame baseballGame) {
+    public boolean playGame(BaseballGame baseballGame) {
         List<Integer> playerAnswer = player.submitAnswer();
 
         List<Integer> answer = baseballGame.makeRandomNumber();
@@ -20,9 +20,6 @@ public class GameManager {
             playerAnswer = player.submitAnswer();
             grade = baseballGame.gradeAnswer(answer, playerAnswer);
         }
-
-        while (player.askForMore()) {
-            playGame(new BaseballGame());
-        }
+        return player.askForMore();
     }
 }
