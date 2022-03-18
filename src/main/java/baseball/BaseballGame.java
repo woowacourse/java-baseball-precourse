@@ -40,16 +40,13 @@ public class BaseballGame {
     public int[] gradeAnswer(List<Integer> answerList, List<Integer> playerAnswer) {
         int strike = 0;
         int ball = 0;
-        Set<Integer> ballCandidates = new HashSet<>();
-        ballCandidates.addAll(answerList);
 
         for (int i = 0; i < DIGIT_NUMBER; ++i) {
             if (answerList.get(i) == playerAnswer.get(i)) {
                 ++strike;
-                ballCandidates.remove(answerList.get(i));
                 continue;
             }
-            if (ballCandidates.remove(playerAnswer.get(i))) {
+            if (answerList.contains(playerAnswer.get(i))) {
                 ++ball;
             }
         }
