@@ -1,28 +1,31 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Input {
 
     private final int AGAIN = 1;
-    private Scanner in;
     
     public Input() {
-        in = new Scanner(System.in);
     }
 
     public List<Integer> inputPlayerAnswer() {
-        List<Integer> playerAnswer = new ArrayList<>();
+        String playerAnswer = Console.readLine();
+
+        List<Integer> playerAnswerList = new ArrayList<>();
         for (int i = 0; i < 3; ++i) {
-            playerAnswer.add(in.nextInt());
+            int num = playerAnswer.charAt(i) - '0';
+            playerAnswerList.add(num);
         }
-        return playerAnswer;
+        return playerAnswerList;
     }
 
     public boolean anotherRound() {
-        int playerDecision = in.nextInt();
-        return playerDecision == AGAIN;
+        String num = Console.readLine();
+        int playerResponse = num.charAt(0);
+        return playerResponse == AGAIN;
     }
 }
