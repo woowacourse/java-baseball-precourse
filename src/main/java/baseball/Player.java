@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 public class Player {
 
+    private final int AGAIN = 1;
+    private final int TERMINATE = 2;
+
     public Player() {
 
     }
@@ -20,6 +23,8 @@ public class Player {
     }
 
     public boolean askForMore() {
-        return false;
+        Scanner in = new Scanner(System.in);
+        int decision = in.nextInt();
+        return decision == AGAIN;
     }
 }
