@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,7 +11,6 @@ public class BaseballGame {
 
     private final int NUMBER_RANGE_START = 0;
     private final int NUMBER_RANGE_END = 9;
-    private final int HOW_MANY_RANDOM_NUMBERS = 3;
     private final int DIGIT_NUMBER = 3;
 
     public BaseballGame() {
@@ -18,7 +18,18 @@ public class BaseballGame {
     }
 
     public List<Integer> makeRandomNumber() {
-        List<Integer> answerList = Randoms.pickUniqueNumbersInRange(NUMBER_RANGE_START, NUMBER_RANGE_END, HOW_MANY_RANDOM_NUMBERS);
+        int answer = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
+        List<Integer> answerList = new ArrayList<>();
+        Set<Integer> answerSet = new HashSet<>();
+
+        while (answerSet.size() < DIGIT_NUMBER) {
+            if (answerSet.contains(answer)) {
+                answer = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
+            } else {
+                answerSet.add(answer);
+                answerList.add(answer);
+            }
+        }
         return answerList;
     }
 
@@ -45,6 +56,9 @@ public class BaseballGame {
 
         Output playerOutput = new Output();
         playerOutput.printScore(strike, ball);
+
+        System.out.println("===Cheat Code===");
+        System.out.println(answerList.toString());
 
         return new int[]{strike, ball};
     }
