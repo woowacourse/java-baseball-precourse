@@ -54,8 +54,7 @@ public class BaseballGame {
         Output playerOutput = new Output();
         playerOutput.printScore(strike, ball);
 
-        System.out.println("===Cheat Code===");
-        System.out.println(answerList.toString());
+        System.out.println("===Cheat Code : " + answerList.toString());
 
         return new int[]{strike, ball};
     }
