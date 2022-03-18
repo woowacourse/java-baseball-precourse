@@ -33,11 +33,11 @@ public class BaseballGame {
         return answerList;
     }
 
-    public boolean correct(int[] grade) {
-        return grade[0] == 3;
+    public boolean correct(Grade grade) {
+        return grade.getStrike() == 3;
     }
 
-    public int[] gradeAnswer(List<Integer> answerList, List<Integer> playerAnswer) {
+    public Grade gradeAnswer(List<Integer> answerList, List<Integer> playerAnswer) {
         int strike = 0;
         int ball = 0;
 
@@ -54,8 +54,8 @@ public class BaseballGame {
         Output playerOutput = new Output();
         playerOutput.printScore(strike, ball);
 
-        System.out.println("===Cheat Code : " + answerList.toString());
+//        System.out.println("===Cheat Code : " + answerList.toString());
 
-        return new int[]{strike, ball};
+        return new Grade(strike, ball);
     }
 }
