@@ -28,16 +28,13 @@ public class Output {
     public void printScore(int strike, int ball) {
         if (strike != 0 && ball != 0) {
             sb.append(ball + BALL).append(SPACE).append(strike + STRIKE);
-            System.out.println(sb);
         } else if (strike != 0 && ball == 0) {
             sb.append(strike + STRIKE);
-            System.out.println(sb);
         } else if (ball != 0 && strike == 0) {
             sb.append(ball + BALL);
-            System.out.println(sb);
         } else {
             sb.append(NOTHING);
-            System.out.println(sb);
         }
+        System.out.println(sb);
     }
 }
