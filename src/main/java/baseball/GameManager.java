@@ -4,12 +4,13 @@ import java.util.List;
 
 public class GameManager {
 
-    public GameManager() {
+    private Player player;
 
+    public GameManager() {
+        player = new Player();
     }
 
-    public boolean playGame(BaseballGame baseballGame) {
-        Player player = new Player();
+    public void playGame(BaseballGame baseballGame) {
         List<Integer> playerAnswer = player.submitAnswer();
 
         List<Integer> answer = baseballGame.makeRandomNumber();
@@ -20,6 +21,8 @@ public class GameManager {
             grade = baseballGame.gradeAnswer(answer, playerAnswer);
         }
 
-        return player.askForMore();
+        while (player.askForMore()) {
+            playGame(new BaseballGame());
+        }
     }
 }
