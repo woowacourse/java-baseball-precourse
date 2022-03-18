@@ -14,9 +14,9 @@ public class GameManager {
         List<Integer> playerAnswer = player.submitAnswer();
 
         List<Integer> answer = baseballGame.makeRandomNumber();
-        int[] grade = baseballGame.gradeAnswer(answer, playerAnswer);
+        Grade grade = baseballGame.gradeAnswer(answer, playerAnswer);
 
-        while (!baseballGame.correct(grade)) {
+        while (!baseballGame.threeStrike(grade)) {
             playerAnswer = player.submitAnswer();
             grade = baseballGame.gradeAnswer(answer, playerAnswer);
         }
