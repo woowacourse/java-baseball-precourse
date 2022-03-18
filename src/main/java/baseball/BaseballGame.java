@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class BaseballGame {
 
-    private final int NUMBER_RANGE_START = 0;
+    private final int NUMBER_RANGE_START = 1;
     private final int NUMBER_RANGE_END = 9;
     private final int DIGIT_NUMBER = 3;
 
