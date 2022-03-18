@@ -25,7 +25,7 @@ public class Input {
 
     public boolean anotherRound() {
         String num = Console.readLine();
-        int playerResponse = num.charAt(0);
+        int playerResponse = num.charAt(0) - '0';
         return playerResponse == AGAIN;
     }
 }
