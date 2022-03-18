@@ -11,7 +11,7 @@ public class GameManager {
     public boolean playGame(BaseballGame baseballGame) {
         List<Integer> answer = baseballGame.makeRandomNumber();
         Player player = new Player();
-        while (!baseballGame.collect()) {
+        while (!baseballGame.correct()) {
             baseballGame.gradeAnswer(player.submitAnswer());
         }
         return player.askForMore();
