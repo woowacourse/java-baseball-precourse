@@ -10,6 +10,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import baseball.model.Computer;
+import baseball.play.Validation;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
 class ApplicationTest extends NsTest {
@@ -50,9 +51,7 @@ class ApplicationTest extends NsTest {
 	}
 	
 	private void allValidation(String inputNumber) {
-		validation1(inputNumber);
-		validation2(stringToInt(inputNumber));
-		validation3(stringToInt(inputNumber));
+		Validation.numberCheck(inputNumber);
 	}
 	
 	private void validation1(String strNumber) {

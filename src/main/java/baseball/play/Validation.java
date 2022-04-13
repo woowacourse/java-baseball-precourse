@@ -4,28 +4,19 @@ import baseball.util.GameUtil;
 
 public class Validation {
 	
-//	public enum Validateion {
-//		SUCCESS,
-//		FAIL
-//	}
-	
-	public static boolean intToStringCheck(String strNumber) {
+	public static ValidType numberCheck(String strInputNumber) {
+		int number;
 		try {
-			Integer.parseInt(strNumber);
-		} catch (Exception e) {
-			e.printStackTrace();
+			number = Integer.parseInt(strInputNumber);
+		} catch (NumberFormatException e) {
+			return ValidType.TYPE_NO_MATCH;
 		}
-		return true;
-	}
-	
-	public static boolean numberCheck(int userNumber) {
-		if (GameUtil.getNumberLength(userNumber) != 3) {
-			throw new IllegalArgumentException();	
+		if (GameUtil.getNumberLength(number) != 3) {
+			return ValidType.DIGIT_NO_MATCH;
 		} 
-		if (userNumber < 1) {
-			throw new IllegalArgumentException();
+		if (number < 1) {
+			return ValidType.LESS_THAN_ZERO;
 		}
-		
-		return true;
+		return ValidType.SUCCESS;
 	}
 }
