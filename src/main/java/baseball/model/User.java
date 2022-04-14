@@ -2,12 +2,13 @@ package baseball.model;
 
 public class User {
 
-	private int number;
+	private final String[] numbers;
 	
-//	public void setNumber(int inputNumber) {
-//		if (!Validation.numberCheck(inputNumber)) {
-//			throw new IllegalArgumentException();
-//		}
-//		this.number = inputNumber;
-//	}
+	public User(String inputNumber) {
+		this.numbers = inputNumber.split("");
+	}
+
+	public String[] getNumbers() {
+		return this.numbers;
+	}
 }

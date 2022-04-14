@@ -4,14 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
-	private int number;
-	
-	public int getNumber() {
-		return this.number;
-	}
+	private final String number;
 	
 	public Computer() {
-		this.number = Randoms.pickNumberInRange(0, 999);
+		this.number = String.valueOf(Randoms.pickNumberInRange(0, 999));
 	}
 	
+	public String getNumber() {
+		return this.number;
+	}
 }
