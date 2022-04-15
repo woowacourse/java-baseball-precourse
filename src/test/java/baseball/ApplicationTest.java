@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import baseball.util.GameUtil;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -76,7 +77,7 @@ class ApplicationTest extends NsTest {
 		}
 	}
 	private void digitNoMatch(int number) {
-		if (getNumberLength(number) != 3) {
+		if (GameUtil.getNumberLength(number) != 3) {
 			throw new IllegalArgumentException();	
 		}
 	}
@@ -103,11 +104,6 @@ class ApplicationTest extends NsTest {
 		}
 	}
 
-	private int getNumberLength(int number) {
-		return String.valueOf(number).length();
-	}
-	
-	
 	@Test 
 	void 컴퓨터숫자와_던진볼_스크라이크_체크() {
 		String inputNumber = "123";
