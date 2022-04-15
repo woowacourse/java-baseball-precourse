@@ -28,4 +28,16 @@ public class StringTest {
         //then
         assertThat(splitString).containsExactly("1");
     }
+
+    @Test
+    void 괄호제거_테스트() {
+        //given
+        String string = "(1,2)";
+
+        //when
+        String replaceString = string.substring(string.indexOf("(")+1 , string.indexOf(")"));
+
+        //then
+        assertThat(replaceString).isEqualTo("1,2");
+    }
 }
