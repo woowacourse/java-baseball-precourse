@@ -3,38 +3,58 @@ package baseball.play;
 import baseball.util.GameUtil;
 
 public class Validation {
-	
-	public enum ValidType {
-		SUCCESS,
-		TYPE_NO_MATCH,
-		DIGIT_NO_MATCH,
-		LESS_THAN_ZERO,
-		DUPLICATION_NUMBER, //TODO:
-		
-		FAIL
+
+	public Validation(String number) {
+		numberCheck(number);
+	}
+
+	public void numberCheck(String strNumber) {
+		typeNoMatch(strNumber);
+		prohibitZero(strNumber);
+		duplicateNumber(strNumber);
+		int number = Integer.parseInt(strNumber);
+		digitNoMatch(number);
+		minimumNumberCheck(number);
 	}
 	
-	public static ValidType numberCheck(String strInputNumber) {
-		int number;
+	public void typeNoMatch(String strNumber) {
 		try {
-			number = Integer.parseInt(strInputNumber);
+			Integer.parseInt(strNumber);
 		} catch (NumberFormatException e) {
-			return ValidType.TYPE_NO_MATCH;
+			throw new IllegalArgumentException();
 		}
-		if (GameUtil.getNumberLength(number) != 3) {
-			return ValidType.DIGIT_NO_MATCH;
-		} 
-		if (number < 1) {
-			return ValidType.LESS_THAN_ZERO;
-		}
-		
-		return ValidType.SUCCESS;
 	}
-	
-	
-	
-	
-	
-	
-	
+
+	public void prohibitZero(String strNumber) {
+		if (strNumber.contains("0")) {
+			throw new IllegalArgumentException();
+		}
+	}
+	public void duplicateNumber(String strNumber) {
+		String[] numbers = strNumber.split("");
+
+		for(int i = 0; i < numbers.length; i++) {
+			if (strNumber.indexOf(numbers[i]) !=
+					strNumber.lastIndexOf(numbers[i])) {
+				//예외
+				throw new IllegalArgumentException();
+			}
+		}
+	}
+	public void digitNoMatch(int number) {
+		if (GameUtil.getNumberLength(number) != 3) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	public void minimumNumberCheck(int number) {
+		if (number < 1) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+
+
+
+
 }

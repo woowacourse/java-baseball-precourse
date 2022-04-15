@@ -33,72 +33,72 @@ class ApplicationTest extends NsTest {
 	void 문자열_인트타입_변환테스트() {
 		String strNumber = "";
 		Assertions.assertThatIllegalArgumentException()
-		.isThrownBy(() -> validation1(strNumber));
+		.isThrownBy(() -> typeNoMatch(strNumber));
 	}
 	
 	@Test 
 	void 자릿수_예외_테스트() {
 		int inputNumber = 0;
 		Assertions.assertThatIllegalArgumentException()
-			.isThrownBy(() -> validation2(inputNumber));
+			.isThrownBy(() -> digitNoMatch(inputNumber));
 	}
 	
 	@Test
 	void 양수값체크_테스트() {
 		int inputNumber = -111;
 		Assertions.assertThatIllegalArgumentException()
-		.isThrownBy(() -> validation3(inputNumber));
+		.isThrownBy(() -> minimumNumberCheck(inputNumber));
 	}
 	
 	@Test
 	void 중복된_숫자입력() {
 		String inputNumber = "113";
 		Assertions.assertThatIllegalArgumentException()
-		.isThrownBy(() -> validation4(inputNumber));
+		.isThrownBy(() -> duplicateNumber(inputNumber));
 	}
 	
 	@Test
 	void 숫자0은_안되도록() {
 		String inputNumber = "123";
 		Assertions.assertThatIllegalArgumentException()
-		.isThrownBy(() -> validation5(inputNumber));
+		.isThrownBy(() -> prohibitZero(inputNumber));
 	}
 	
 	private void allValidation(String inputNumber) {
-		Validation.numberCheck(inputNumber);
+		new Validation(inputNumber);
 	}
 	
-	private void validation1(String strNumber) {
+	private void typeNoMatch(String strNumber) {
 		try {
 			Integer.parseInt(strNumber);
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException();
 		}
 	}
-	private void validation2(int number) {
+	private void digitNoMatch(int number) {
 		if (getNumberLength(number) != 3) {
 			throw new IllegalArgumentException();	
 		}
 	}
-	private void validation3(int number) {
+	private void minimumNumberCheck(int number) {
 		if (number < 1) {
 			throw new IllegalArgumentException();
 		}
 	}
-	private void validation4(String inputNumber) {
+	private void duplicateNumber(String inputNumber) {
 		String[] numbers = inputNumber.split("");
-		
-		for(int i = 0; i < numbers.length; i++) {
-			if (inputNumber.indexOf(numbers[i]) !=
-			inputNumber.lastIndexOf(numbers[i])) {
+
+		for (String number : numbers) {
+			if (inputNumber.indexOf(number) !=
+					inputNumber.lastIndexOf(number)) {
 				//예외
 				throw new IllegalArgumentException();
 			}
 		}
 	}
 	
-	private void validation5(String inputNumber) {
-		if (inputNumber.indexOf("0") != -1) {
+	private void prohibitZero(String inputNumber) {
+		if (inputNumber.contains("0")) {
 			throw new IllegalArgumentException();
 		}
 	}
@@ -137,18 +137,6 @@ class ApplicationTest extends NsTest {
 			}
 		}
 	}
-	
-	
-    @Test
-    void 게임종료_후_재시작() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-                },
-                1, 3, 5, 5, 8, 9
-        );
-    }
 
     @Test
     void 예외_테스트() {
