@@ -50,14 +50,14 @@
 타자와 투수를 구성해주는 야구 게임 모델
 
 - 생성자
-  - [ ] 타자만 초기화 시켜주면 될듯
+  - [x] 타자만 초기화 시켜주면 될듯
 - 내부 구조
-  - [ ] 타자 하나 가진다.
+  - [x] 타자 하나 가진다.
 - 예상 인터페이스
-  - [ ] restart()
-  - [ ] nextPitch(String) -> PitchingResult
-    - [ ] 게임이 이미 끝난경우 -> `IllegalStateException`
-  - [ ] isGameEnd()
+  - [x] restart()
+  - [x] mount(String) -> PitchingResult
+  - [x] mount(Pitcher) -> PitchingResult
+    - [x] 게임이 이미 끝난경우 -> `IllegalStateException`
 
 ---
 
