@@ -26,21 +26,21 @@
 수를 던지는 투수(사용자)
 
 - 생성자(String)
-  - [ ] 문자열을 받아서 파싱
-  - [ ] 예외 처리 : 3자리, 서로 다른 수, 0~9 -> `IllegalArgumentException`
+  - [x] 문자열을 받아서 파싱
+  - [x] 예외 처리 : 3자리, 서로 다른 수, 0~9 -> `IllegalArgumentException`
 - 내부 구조
-  - [ ] 순서가 있어야하고 3 고정 크기니까 배열로 두는게 편하려나? 아님 `LinkedHashSet`?
+  - [x] 리스트~~순서가 있어야하고 3 고정 크기니까 배열로 두는게 편하려나? 아님 `LinkedHashSet`?~~
 - 예상 인터페이스
-  - [ ] +play(Hitter) -> PitchingResult
+  - [x] +play(Hitter) -> PitchingResult
 
 #### Pitcher.PitchingResult
 
 투수의 플레이 결과
 
 - 생성자(List<HittingResult>)
-  - [ ] HittingResult 에 따라 결과를 기록
-  - [ ] 예외 처리 : 3 개 이상 올 수 없다 -> `IllegaArgumentExcetpion`
+  - [x] HittingResult 에 따라 결과를 기록
+  - [x] 예외 처리 : 3 개 이상 올 수 없다 -> `IllegaArgumentExcetpion`
 - 예상 인터페이스
-  - [ ] toString() 으로 문자열 만들까... 뷰의 역할이긴한데 편의성으루,,,
+  - ~~[ ] toString() 으로 문자열 만들까... 뷰의 역할이긴한데 편의성으루,,,~~
 
 ---
