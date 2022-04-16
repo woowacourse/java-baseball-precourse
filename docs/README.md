@@ -44,3 +44,27 @@
   - ~~[ ] toString() 으로 문자열 만들까... 뷰의 역할이긴한데 편의성으루,,,~~
 
 ---
+
+### BaseBallGame
+
+타자와 투수를 구성해주는 야구 게임 모델
+
+- 생성자
+  - [ ] 타자만 초기화 시켜주면 될듯
+- 내부 구조
+  - [ ] 타자 하나 가진다.
+- 예상 인터페이스
+  - [ ] restart()
+  - [ ] nextPitch(String) -> PitchingResult
+    - [ ] 게임이 이미 끝난경우 -> `IllegalStateException`
+  - [ ] isGameEnd()
+
+---
+
+## 뷰 컨트롤러 느낌
+
+---
+
+### BaseBallGamePlay
+
+그냥 진행로직 전부 때려박자
