@@ -14,7 +14,6 @@ public class Computer {
     private static final int RANDOM_END_NUMBER = 9;
 
     public void computerNumberSetup() {
-
         while (computerNumbers.size() < COMPUTER_SIZE) {
             createComputerNumber();
         }

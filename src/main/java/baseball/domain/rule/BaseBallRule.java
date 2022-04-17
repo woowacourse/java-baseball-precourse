@@ -27,15 +27,11 @@ public class BaseBallRule {
     }
 
     public void compareBall(List<Integer> computerNumbers, List<Integer> userNumbers) {
-
         strikeCount = isStrike(computerNumbers, userNumbers);
         ballCount = isBall(computerNumbers, userNumbers, strikeCount);
-
-
     }
 
     public int isStrike(List<Integer> computerNumbers, List<Integer> userNumbers) {
-
         for (int index = 0; index < computerNumbers.size(); index++) {
             isEqualPosition(computerNumbers, userNumbers, index);
         }
@@ -50,7 +46,6 @@ public class BaseBallRule {
     }
 
     public int isBall(List<Integer> computerNumbers, List<Integer> userNumbers, int strikeCount) {
-
         int correctedCount = matchedCount(computerNumbers, userNumbers);
         return correctedCount - strikeCount;
     }

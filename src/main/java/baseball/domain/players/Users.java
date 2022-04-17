@@ -7,7 +7,6 @@ public class Users {
     private static final int USER_INPUT_LIMIT_LENGTH = 3;
 
     public boolean isValidNumber(String userInputMessage) {
-
         if (userInputMessage.length() != USER_INPUT_LIMIT_LENGTH) {
             return false;
         }
