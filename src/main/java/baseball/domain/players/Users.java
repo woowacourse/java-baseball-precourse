@@ -1,5 +1,8 @@
 package baseball.domain.players;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Users {
 
     private int corretCount;
@@ -7,15 +10,27 @@ public class Users {
     private static final int USER_INPUT_LIMIT_LENGTH = 3;
 
     public boolean isValidNumber(String userInputMessage) {
-        if (userInputMessage.length() != USER_INPUT_LIMIT_LENGTH) {
-            return false;
+        if (userInputMessage.split("").length != USER_INPUT_LIMIT_LENGTH) {
+            throw new IllegalArgumentException();
         }
 
         if (!isOneToNineRangeNumber(userInputMessage)) {
-            return false;
+            throw new IllegalArgumentException();
+        }
+
+        if(!isDuplicated(userInputMessage)) {
+            throw new IllegalArgumentException();
         }
 
         return true;
+    }
+
+    private boolean isDuplicated(String userInputMessage) {
+        Set<Character> duplicatedCheckSet = new HashSet<>();
+        for (char ch : userInputMessage.toCharArray()) {
+            duplicatedCheckSet.add(ch);
+        }
+        return userInputMessage.length() == duplicatedCheckSet.size();
     }
 
     private boolean isOneToNineRangeNumber(String userInputMessage) {

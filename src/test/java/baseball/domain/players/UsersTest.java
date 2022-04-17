@@ -39,11 +39,9 @@ class UsersTest {
         // given
         String input = "12";
 
-        // when
-        boolean isValidNumber = users.isValidNumber(input);
-
         //then
-        assertThat(isValidNumber).isFalse();
+        assertThatThrownBy(() -> users.isValidNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("유저는 정상적인 숫자를 입력한다")

@@ -4,10 +4,10 @@ import java.util.List;
 
 public class BaseBallRule {
 
-    private int matchedNumberCount = 0;
+    private int matchedNumberCount;
 
-    private int strikeCount = 0;
-    private int ballCount = 0;
+    private int strikeCount;
+    private int ballCount;
 
     public int matchedCount(List<Integer> computerNumbers, List<Integer> userNumbers) {
         for (int index = 0; index < computerNumbers.size(); index++) {
@@ -30,6 +30,7 @@ public class BaseBallRule {
         strikeCount = isStrike(computerNumbers, userNumbers);
         ballCount = isBall(computerNumbers, userNumbers, strikeCount);
     }
+
 
     public int isStrike(List<Integer> computerNumbers, List<Integer> userNumbers) {
         for (int index = 0; index < computerNumbers.size(); index++) {

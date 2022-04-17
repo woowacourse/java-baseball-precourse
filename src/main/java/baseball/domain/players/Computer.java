@@ -8,12 +8,13 @@ import java.util.Objects;
 
 public class Computer {
 
-    private List<Integer> computerNumbers = new ArrayList<>();
+    private List<Integer> computerNumbers;
     private static final int COMPUTER_SIZE = 3;
     private static final int RANDOM_START_NUMBER = 1;
     private static final int RANDOM_END_NUMBER = 9;
 
     public void computerNumberSetup() {
+        computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < COMPUTER_SIZE) {
             createComputerNumber();
         }
