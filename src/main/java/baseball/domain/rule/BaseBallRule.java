@@ -4,9 +4,12 @@ import java.util.List;
 
 public class BaseBallRule {
 
-    int matchedNumberCount = 0;
+    private int matchedNumberCount = 0;
 
-    public int correctCount(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    private int strikeCount = 0;
+    private int ballCount = 0;
+
+    public int matchedCount(List<Integer> computerNumbers, List<Integer> userNumbers) {
         for (int index = 0; index < computerNumbers.size(); index++) {
             isContainNumber(computerNumbers, userNumbers, index);
         }
@@ -23,4 +26,40 @@ public class BaseBallRule {
         return computer.get(placedIndex) == number;
     }
 
+    public void compareBall(List<Integer> computerNumbers, List<Integer> userNumbers) {
+
+        strikeCount = isStrike(computerNumbers, userNumbers);
+        ballCount = isBall(computerNumbers, userNumbers, strikeCount);
+
+
+    }
+
+    public int isStrike(List<Integer> computerNumbers, List<Integer> userNumbers) {
+
+        for (int index = 0; index < computerNumbers.size(); index++) {
+            isEqualPosition(computerNumbers, userNumbers, index);
+        }
+
+        return strikeCount;
+    }
+
+    private void isEqualPosition(List<Integer> computerNumbers, List<Integer> userNumbers, int index) {
+        if (equalPostion(computerNumbers, index, userNumbers.get(index))) {
+            strikeCount++;
+        }
+    }
+
+    public int isBall(List<Integer> computerNumbers, List<Integer> userNumbers, int strikeCount) {
+
+        int correctedCount = matchedCount(computerNumbers, userNumbers);
+        return correctedCount - strikeCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
 }
