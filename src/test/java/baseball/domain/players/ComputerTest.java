@@ -30,7 +30,7 @@ class ComputerTest {
 
     @DisplayName("컴퓨터의_숫자는_모두 양수다")
     @ParameterizedTest
-    @ValueSource(ints = {0 ,1, 2})
+    @ValueSource(ints = {0, 1, 2})
     void 컴퓨터의_숫자는_모두_양수다(int input) {
 
         // then

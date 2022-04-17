@@ -15,7 +15,7 @@ public class Computer {
 
     public void computerNumberSetup() {
 
-        while(computerNumbers.size() < COMPUTER_SIZE) {
+        while (computerNumbers.size() < COMPUTER_SIZE) {
             createComputerNumber();
         }
     }
@@ -26,7 +26,7 @@ public class Computer {
     }
 
     private void isContain(int number) {
-        if(!computerNumbers.contains(number)) {
+        if (!computerNumbers.contains(number)) {
             computerNumbers.add(number);
         }
     }
