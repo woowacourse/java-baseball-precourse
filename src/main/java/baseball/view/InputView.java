@@ -1,17 +1,17 @@
 package baseball.view;
 
+import baseball.domain.constants.ConstantsMessages;
+import baseball.domain.constants.ConstantsNumbers;
 import baseball.domain.players.Computer;
 import baseball.domain.players.Users;
 import baseball.domain.rule.BaseBallRule;
+import baseball.domain.rule.ReStartRule;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputView {
-
-    private static final String INPUT_MESSAGES = "숫자를 입력해 주세요 : ";
-    private static final int GAME_FINISH_MATCHED_NUMBER = 3;
 
     OutputView outputView = new OutputView();
     List<Integer> userNumbers;
@@ -25,9 +25,8 @@ public class InputView {
             BaseBallRule baseBallRule = new BaseBallRule();
             printBaseBallCount(computer, userNumbers, baseBallRule);
             result = baseBallRule.getStrikeCount();
-        } while (result != GAME_FINISH_MATCHED_NUMBER);
-
-        isFinished();
+        } while (result != ConstantsNumbers.GAME_FINISH_MATCHED_NUMBER);
+        isReplay();
     }
 
     private List<Integer> setUpUserNumbers() {
@@ -39,12 +38,17 @@ public class InputView {
         outputView.printCompareCountMessage(computer, userNumbers, baseBallRule);
     }
 
-    private void isFinished() {
+    private void isReplay() {
         outputView.printFinishMessageAndAnswerReplay();
+
+        ReStartRule reStartRule = new ReStartRule();
+        if(reStartRule.isRestart(Console.readLine())) {
+            run();
+        }
     }
 
     private String gameInitMessage() {
-        System.out.print(INPUT_MESSAGES);
+        System.out.print(ConstantsMessages.INPUT_MESSAGES);
         String inputNumbers = Console.readLine();
         return inputNumbers;
     }
