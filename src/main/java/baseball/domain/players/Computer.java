@@ -13,6 +13,12 @@ public class Computer {
     private static final int RANDOM_START_NUMBER = 1;
     private static final int RANDOM_END_NUMBER = 9;
 
+    public static Computer getComputer() {
+        Computer computer = new Computer();
+        computer.computerNumberSetup();
+        return computer;
+    }
+
     public void computerNumberSetup() {
         computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < COMPUTER_SIZE) {

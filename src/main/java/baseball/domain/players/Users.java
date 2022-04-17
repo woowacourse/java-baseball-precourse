@@ -10,6 +10,11 @@ public class Users {
     private static final int USER_INPUT_LIMIT_LENGTH = 3;
 
     public boolean isValidNumber(String userInputMessage) {
+        validateNumber(userInputMessage);
+        return true;
+    }
+
+    private void validateNumber(String userInputMessage) {
         if (userInputMessage.split("").length != USER_INPUT_LIMIT_LENGTH) {
             throw new IllegalArgumentException();
         }
@@ -18,11 +23,9 @@ public class Users {
             throw new IllegalArgumentException();
         }
 
-        if(!isDuplicated(userInputMessage)) {
+        if (!isDuplicated(userInputMessage)) {
             throw new IllegalArgumentException();
         }
-
-        return true;
     }
 
     private boolean isDuplicated(String userInputMessage) {
@@ -37,7 +40,7 @@ public class Users {
         corretCount = 0;
 
         for (int i = 0; i < userInputMessage.length(); i++) {
-            isDigitNumber(userInputMessage, i);
+            isDigitNumber(userInputMessage);
         }
 
         if (corretCount == 3) {
@@ -47,7 +50,7 @@ public class Users {
         return false;
     }
 
-    private boolean isDigitNumber(String userInputMessage, int i) {
+    private boolean isDigitNumber(String userInputMessage) {
         if (userInputMessage.matches(NUMBER_REGEX_EXCEPT_ZERO)) {
             corretCount++;
             return true;
