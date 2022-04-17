@@ -1,5 +1,6 @@
 package baseball.domain.players;
 
+import baseball.domain.constants.ConstantsNumbers;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -9,9 +10,6 @@ import java.util.Objects;
 public class Computer {
 
     private List<Integer> computerNumbers;
-    private static final int COMPUTER_SIZE = 3;
-    private static final int RANDOM_START_NUMBER = 1;
-    private static final int RANDOM_END_NUMBER = 9;
 
     public static Computer getComputer() {
         Computer computer = new Computer();
@@ -21,17 +19,13 @@ public class Computer {
 
     public void computerNumberSetup() {
         computerNumbers = new ArrayList<>();
-        while (computerNumbers.size() < COMPUTER_SIZE) {
+        while (computerNumbers.size() < ConstantsNumbers.COMPUTER_SIZE) {
             createComputerNumber();
         }
     }
 
     private void createComputerNumber() {
-        int number = Randoms.pickNumberInRange(RANDOM_START_NUMBER, RANDOM_END_NUMBER);
-        isContain(number);
-    }
-
-    private void isContain(int number) {
+        int number = Randoms.pickNumberInRange(ConstantsNumbers.RANDOM_START_NUMBER, ConstantsNumbers.RANDOM_END_NUMBER);
         if (!computerNumbers.contains(number)) {
             computerNumbers.add(number);
         }
