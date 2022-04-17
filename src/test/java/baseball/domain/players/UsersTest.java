@@ -1,6 +1,5 @@
-package baseball.view;
+package baseball.domain.players;
 
-import baseball.domain.players.Users;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
