@@ -9,23 +9,26 @@ import java.util.Objects;
 public class Computer {
 
     private List<Integer> computerNumbers = new ArrayList<>();
+    private static final int COMPUTER_SIZE = 3;
+    private static final int RANDOM_START_NUMBER = 1;
+    private static final int RANDOM_END_NUMBER = 9;
 
     public void computerNumberSetup() {
 
-        while(computerNumbers.size() < 3) {
-            int number = Randoms.pickNumberInRange(1, 10);
-            if(isContain(number)) {
-                continue;
-            }
+        while(computerNumbers.size() < COMPUTER_SIZE) {
+            createComputerNumber();
         }
     }
 
-    private boolean isContain(int number) {
-        if(computerNumbers.contains(number)) {
-           return true;
+    private void createComputerNumber() {
+        int number = Randoms.pickNumberInRange(RANDOM_START_NUMBER, RANDOM_END_NUMBER);
+        isContain(number);
+    }
+
+    private void isContain(int number) {
+        if(!computerNumbers.contains(number)) {
+            computerNumbers.add(number);
         }
-        computerNumbers.add(number);
-        return false;
     }
 
     public List<Integer> getComputerNumbers() {
