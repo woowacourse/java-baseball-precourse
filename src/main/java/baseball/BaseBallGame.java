@@ -8,7 +8,19 @@ public class BaseBallGame {
 	}
 
 	public void play() {
-		Balls userBalls = makeUserBalls();
+		game();
+	}
+
+	public void game() {
+		Balls comBalls;
+		Result result;
+		comBalls = Balls.makeRandomBalls();
+		do {
+			printUserInputMessage();
+			result = Result.checkBalls(makeUserBalls(), comBalls);
+			printResult(result);
+		} while (!result.isAllStrikes());
+
 	}
 
 	private Balls makeUserBalls() {
@@ -36,6 +48,14 @@ public class BaseBallGame {
 
 	private String getUserInput() {
 		return readLine();
+	}
+
+	private void printUserInputMessage() {
+		System.out.print("숫자를 입력해주세요 : ");
+	}
+
+	private void printResult(Result result) {
+		System.out.println(result.getResultMessage());
 	}
 
 	private Boolean checkUserInputLength(String str) {
