@@ -1,5 +1,13 @@
+plugins {
+    id 'org.ec4j.editorconfig' version '0.0.3'
+    id 'checkstyle'
+    id 'java'
+}
+
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
+
 
 version = '1.0.0'
 sourceCompatibility = 1.8
@@ -8,6 +16,22 @@ repositories {
     maven { url 'https://jitpack.io' }
     mavenCentral()
 }
+
+
+editorconfig {
+    excludes = ['build']
+}
+
+check.dependsOn editorconfigCheck
+
+
+checkstyle {
+    maxWarnings = 0
+    configFile = file("${rootDir}/naver-checkstyle-rules.xml")
+    configProperties = ["suppressionFile": "${rootDir}/naver-checkstyle-suppressions.xml"]
+    toolVersion = "10.3.4"
+}
+
 
 dependencies {
     implementation('com.github.woowacourse-projects:mission-utils:1.0.0')
