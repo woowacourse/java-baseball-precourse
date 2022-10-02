@@ -56,6 +56,22 @@ public class Result {
 		return false;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		Result result;
+		if (obj instanceof Result) {
+			result = (Result)obj;
+		} else {
+			throw new ClassCastException(this.getClass().getName() + " 객체 끼리만 비교가 가능합니다.");
+		}
+
+		return compareStrikeAndBall(result);
+	}
+
+	private boolean compareStrikeAndBall(Result result) {
+		return this.strike.equals(result.strike) && this.ball.equals(result.ball);
+	}
+
 	private boolean isNothing() {
 		return strike == 0 && ball == 0;
 	}
