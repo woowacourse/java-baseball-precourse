@@ -58,13 +58,7 @@ public class Result {
 
 	@Override
 	public boolean equals(Object obj) {
-		Result result;
-		if (obj instanceof Result) {
-			result = (Result)obj;
-		} else {
-			throw new ClassCastException(this.getClass().getName() + " 객체 끼리만 비교가 가능합니다.");
-		}
-
+		Result result = (Result)obj;
 		return compareStrikeAndBall(result);
 	}
 

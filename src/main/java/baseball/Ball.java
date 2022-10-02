@@ -20,12 +20,7 @@ public class Ball {
 
 	@Override
 	public boolean equals(Object obj) {
-		Ball ball;
-		if (obj instanceof Ball) {
-			ball = (Ball)obj;
-		} else {
-			throw new ClassCastException(this.getClass().getName() + " 객체 끼리만 비교가 가능합니다.");
-		}
+		Ball ball = (Ball)obj;
 		return this.number.equals(ball.number);
 	}
 
