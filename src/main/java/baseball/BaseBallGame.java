@@ -25,7 +25,6 @@ public class BaseBallGame {
 			result = Result.checkBalls(makeUserBalls(), comBalls);
 			printResult(result);
 		} while (!result.isAllStrikes());
-
 	}
 
 	private Balls makeUserBalls() {
@@ -40,19 +39,16 @@ public class BaseBallGame {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
 		return userBalls;
 	}
 
 	private Boolean reGame() {
 		String input = "";
-
 		while (invalidInput(input)) {
 			printCheckRestartMessage();
 			input = getUserInput();
 		}
-
 		printCheckRestartExceptionMessage();
 		return input.equals(CONTINUE);
 	}
