@@ -8,7 +8,16 @@ public class BaseBallGame {
 	}
 
 	public void play() {
-		String userInput = getUserInput();
+		Balls userBalls = makeUserBalls();
+	}
+
+	private Balls makeUserBalls() {
+		Balls userBalls = null;
+		while (userBalls == null) {
+			// todo 사용자 볼 생성 예외처리
+			userBalls = Balls.stringToBalls(getUserInput());
+		}
+		return userBalls;
 	}
 
 	private String getUserInput() {
