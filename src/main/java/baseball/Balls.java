@@ -38,6 +38,14 @@ public class Balls {
 		}
 	}
 
+	public Ball get(int index) {
+		return balls.get(index);
+	}
+
+	public boolean contains(Ball ball) {
+		return this.balls.contains(ball);
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		Balls balls;
