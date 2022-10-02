@@ -45,7 +45,7 @@ public class Result {
 		if (isBall()) {
 			return ball + BALL;
 		}
-		return strike + STRIKE + " " + ball + BALL;
+		return ball + BALL + " " + strike + STRIKE;
 	}
 
 	public boolean isAllStrikes() {
