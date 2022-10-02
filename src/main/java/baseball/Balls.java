@@ -53,4 +53,8 @@ public class Balls {
 	public String toString() {
 		return Arrays.toString(this.balls.toArray());
 	}
+
+	public int getSize() {
+		return this.balls.size();
+	}
 }
