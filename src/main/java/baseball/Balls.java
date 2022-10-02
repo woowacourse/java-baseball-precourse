@@ -31,6 +31,16 @@ public class Balls {
 		return new Balls(balls);
 	}
 
+	public static Balls stringToBalls(String str) {
+		char[] chars = str.toCharArray();
+		List<Ball> balls = new ArrayList<>();
+
+		for (char ch : chars) {
+			balls.add(new Ball(ch));
+		}
+		return new Balls(balls);
+	}
+
 	private void validate(List<Ball> balls) {
 		Set<Ball> ballSet = new HashSet<>(balls);
 		if (ballSet.size() != BALLS_COUNT) {
