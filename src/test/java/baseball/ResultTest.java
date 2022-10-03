@@ -35,6 +35,15 @@ public class ResultTest {
 	}
 
 	@Test
+	void checkOneStrikeOneBallResult() {
+		// given
+		Balls userBalls = makeBalls(1, 2, 3);
+		Balls comBalls = makeBalls(1, 3, 4);
+		assertEquals(new Result(1, 1),
+			Result.checkBalls(comBalls, userBalls));
+	}
+
+	@Test
 	void checkNothingResult() {
 		// given
 		Balls userBalls = makeBalls(1, 2, 3);
