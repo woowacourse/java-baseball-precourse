@@ -12,4 +12,8 @@ public class Ball {
     public boolean contains(int x){
         return this.ball.contains(x);
     }
+
+    public void ex(){
+
+    }
 }
