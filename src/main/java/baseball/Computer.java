@@ -10,11 +10,14 @@ public class Computer {
     public String makeBalls() {
         balls = new Ball();
         String answer = "";
-        List<String> list = balls.ball;
+        List<Integer> list = balls.ball;
         while (list.size() != 3) {
             int a = Randoms.pickNumberInRange(1, 9);
             if(!balls.contains(a))
-            list.add(String.valueOf(a));
+            list.add(a);
+        }
+        for(int i=0;i<list.size();i++){
+            answer+=String.valueOf(list.get(i));
         }
         return answer;
     }

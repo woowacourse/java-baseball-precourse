@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ball {
-    public List<String>ball = new ArrayList<>();
+    public List<Integer>ball = new ArrayList<>();
 
     public Ball(){
     }
