@@ -12,5 +12,8 @@ public class Game {
     public void restart(){
 
     }
+    public void validate(){
+
+    }
 }
 
