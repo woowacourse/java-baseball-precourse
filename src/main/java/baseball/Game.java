@@ -50,6 +50,7 @@ public class Game {
     public void validate(){
         //1.숫자의 범위(1~9), 2.겹치지 않게 두 개로 나눠야 함.
     }
+
     //check 함수 - 스트라잌, 볼 체크 strike,ball 만들어서 하나씩 올림
     //nothing 함수 - strike, ball 둘다 0이면
     //print함수 - 결과 출력
