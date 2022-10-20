@@ -13,7 +13,4 @@ public class Ball {
         return this.ball.contains(x);
     }
 
-    public void ex(){
-
-    }
 }
