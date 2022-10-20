@@ -14,6 +14,9 @@ public class Game {
     Ball comBalls;
     Ball humanBalls;
 
+    int Strike =0;
+    int Ball = 0;
+
     public Game() {
     }
     public static void play(){
@@ -49,6 +52,9 @@ public class Game {
     }
     public void validate(){
         //1.숫자의 범위(1~9), 2.겹치지 않게 두 개로 나눠야 함.
+    }
+    public void check(){
+
     }
 
     //check 함수 - 스트라잌, 볼 체크 strike,ball 만들어서 하나씩 올림
