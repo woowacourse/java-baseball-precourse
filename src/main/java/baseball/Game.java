@@ -33,26 +33,25 @@ public class Game {
         return false;
     }
     public void makeComBalls() {
-        List<Integer> list = comBalls.ball;
+        List<String> list = comBalls.ball;
         while (list.size() != 3) {
-            int a = Randoms.pickNumberInRange(1, 9);
+            String a = String.valueOf(Randoms.pickNumberInRange(1, 9));
             if(!comBalls.contains(a))
                 list.add(a);
         }
         comBalls= (Ball) list;
     }
     public void makeHumanBalls(){
-        List<Integer> list = humanBalls.ball;
-        while (list.size() != 3) {
-            int a = Integer.parseInt(Console.readLine());
-           //validate만들어야함
-        }
+        List<String> list = humanBalls.ball;
+            String a = readLine();
+            if(humanBalls.validate(a)){
+
+            }//validate만들어야함
+
         humanBalls= (Ball) list;
 
     }
-    public void validate(){
-        //1.숫자의 범위(1~9), 2.겹치지 않게 두 개로 나눠야 함.
-    }
+
     public void check(){
 
     }
