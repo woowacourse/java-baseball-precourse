@@ -19,20 +19,26 @@ public class Game {
 
     public Game() {
     }
-    public static void play(){
+
+    public void play(){
         do {
             start();
         }
         while(restart());
     }
-    public static void start(){
 
+    public void start(){
+        comBalls = makeComBalls();
+        humanBalls = makeHumanBalls();
     }
+
     public static boolean restart(){
-
-        return false;
+        String a = readLine();
+        if(a.equals("1")) return true;
+        else return false;
     }
-    public void makeComBalls() {
+
+    public Ball makeComBalls() {
         List<String> list = comBalls.ball;
         while (list.size() != 3) {
             String a = String.valueOf(Randoms.pickNumberInRange(1, 9));
@@ -40,16 +46,27 @@ public class Game {
                 list.add(a);
         }
         comBalls= (Ball) list;
+        return comBalls;
     }
-    public void makeHumanBalls(){
+
+    public Ball makeHumanBalls(){
         List<String> list = humanBalls.ball;
-            String a = readLine();
+        String a = "";
+        while(a.equals("")){
+            System.out.print("숫자를 입력해주세요 : ");
+            a=readLine();
             if(humanBalls.validate(a)){
-
-            }//validate만들어야함
-
-        humanBalls= (Ball) list;
-
+                String [] tmp = a.split("");
+                for(int i=0;i<3;i++){
+                    list.add(tmp[i]);
+                }
+                humanBalls= (Ball) list;
+            }
+            else{
+                makeHumanBalls();
+            }
+        }
+        return  humanBalls;
     }
 
     public void check(){
