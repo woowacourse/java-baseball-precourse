@@ -124,7 +124,17 @@
 <br>
 
 ---
+## 📝 기능 목록
+* 출력화면 구성
+* 사용자로부터 입력받기
+* 사용자 입력 유효성 확인하기
+* 컴퓨터 난수 생성
+* 게임 진행 상황 확인
+* 게임 실행
 
+<br>
+
+---
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
