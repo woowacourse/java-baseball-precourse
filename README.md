@@ -125,6 +125,18 @@
 
 ---
 
+## 기능 목록
+- 컴퓨터는 1~9까지의 서로 다른 임의의 수 3개 선택
+- 사용자가 서로 다른 숫자 3개 입력
+- 사용자가 입력한 수에 대한 예외 처리
+- 입력한 숫자에 대한 결과 출력
+- 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임 종료
+- 게임 종료 후 게임을 다시 시작 or 완전 종료 선택
+
+<br>
+
+---
+
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
