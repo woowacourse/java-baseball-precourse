@@ -17,6 +17,7 @@ public class Application {
                 List<Integer> user = initUserNumbers();
                 isUserInputEnd = isCheckLists(computer, user);
             }
+            isGameEnd = isGameExit();
         }
     }
 
@@ -87,5 +88,19 @@ public class Application {
             }
         }
         return count;
+    }
+
+    public static boolean isGameExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String exitStr = Console.readLine();
+        checkGameExitStr(exitStr);
+        return exitStr.equals("2");
+    }
+
+    private static void checkGameExitStr(String str) {
+        if (str.equals("1") || str.equals("2")) {
+            return;
+        }
+        throw new IllegalArgumentException();
     }
 }
