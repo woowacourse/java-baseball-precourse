@@ -9,8 +9,15 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> computer = initComputerNumbers();
-        List<Integer> user = initUserNumbers();
+        boolean isGameEnd = false;
+        while (!isGameEnd) {
+            List<Integer> computer = initComputerNumbers();
+            boolean isUserInputEnd = false;
+            while (!isUserInputEnd) {
+                List<Integer> user = initUserNumbers();
+                isUserInputEnd = isCheckLists(computer, user);
+            }
+        }
     }
 
     private static List<Integer> initComputerNumbers() {
@@ -41,5 +48,44 @@ public class Application {
                 .count();
         if (count != 3)
             throw new IllegalArgumentException();
+    }
+
+    private static boolean isCheckLists(List<Integer> computer, List<Integer> user) {
+        int strike = strike(computer, user);
+        int ball = ball(computer, user);
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return false;
+        }
+        if (ball == 0) {
+            System.out.printf("%d스트라이크\n", strike);
+            return strike == 3;
+        }
+        if (strike == 0) {
+            System.out.printf("%d볼\n", ball);
+            return false;
+        }
+        System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+        return false;
+    }
+
+    private static int strike(List<Integer> computer, List<Integer> user) {
+        int count = 0;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static int ball(List<Integer> computer, List<Integer> user) {
+        int count = 0;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i))) {
+                count++;
+            }
+        }
+        return count;
     }
 }
