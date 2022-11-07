@@ -25,9 +25,21 @@ public class Application {
     }
 
     private static List<Integer> initUserNumbers() {
-        return Console.readLine()
+        String userNumberStr = Console.readLine();
+        checkUserNumberStr(userNumberStr);
+        return userNumberStr
                 .chars()
                 .mapToObj(c -> c - '0')
                 .collect(Collectors.toList());
+    }
+
+    private static void checkUserNumberStr(String userNumberStr) {
+        if (userNumberStr.length() != 3)
+            throw new IllegalArgumentException();
+        long count = userNumberStr.chars()
+                .filter(c -> '0' <= c && c <= '9')
+                .count();
+        if (count != 3)
+            throw new IllegalArgumentException();
     }
 }
