@@ -33,6 +33,7 @@ public class Application {
     }
 
     private static List<Integer> initUserNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
         String userNumberStr = Console.readLine();
         checkUserNumberStr(userNumberStr);
         return userNumberStr
