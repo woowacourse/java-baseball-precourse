@@ -1,23 +1,26 @@
 package baseball;
 
-import java.util.Random;
 import java.util.Scanner;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Application {
+
+    private static final int startInclusive = 1;
+    private static final int endInclusive = 10;
 
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
 
         Scanner sc = new Scanner(System.in);
-        Random rd = new Random();
 
         //게임 전체 진행
         while (true) {
             //랜덤한 수 생성
             int[] question = new int[3];
-            question[0] = rd.nextInt(9) + 1;
-            question[1] = rd.nextInt(9) + 1;
-            question[2] = rd.nextInt(9) + 1;
+            question[0] = Randoms.pickNumberInRange(startInclusive, endInclusive);
+            question[1] = Randoms.pickNumberInRange(startInclusive, endInclusive);
+            question[2] = Randoms.pickNumberInRange(startInclusive, endInclusive);
 
             //답변 제시
             while (true) {
