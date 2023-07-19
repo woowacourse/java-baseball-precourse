@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Application {
+
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
 
@@ -24,7 +25,6 @@ public class Application {
 
                 String answer = sc.nextLine();
 
-
                 //3자리가 아닌 수를 입력하면 예외 발생
                 if (answer.length() !=3) {
                     throw new IllegalArgumentException("3자리 수를 입력해주세요.");
@@ -37,19 +37,9 @@ public class Application {
                     answerArray[i] = Integer.parseInt(answerStrings[i]);
                 }
 
-                int strike = 0;
-                int ball = 0;
-
-                //문제와 답변의 일치 여부 판단
-                for (int i = 0; i < question.length; i++) {
-                    int j = (i + 1) % question.length;
-                    int k = (i + 2) % question.length;
-                    if (question[i] == answerArray[i]) {
-                        strike++;
-                    } else if (question[i] == answerArray[j] || question[i] == answerArray[k]) {
-                        ball++;
-                    }
-                }
+                int[] result = compareCorrectAnswer(question, answerArray);
+                int strike = result[0];
+                int ball = result[1];
 
                 //일치 여부에 따른 결과 출력
                 if (strike != 0 && ball == 0) {
@@ -77,5 +67,24 @@ public class Application {
                 break;
             }
         }
+    }
+
+    //문제와 답변의 일치 여부 판단
+    private static int[] compareCorrectAnswer(int[] question, int[] answerArray) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < question.length; i++) {
+            int j = (i + 1) % answerArray.length;
+            int k = (i + 2) % answerArray.length;
+
+            if (question[i] == answerArray[i]) {
+                strike++;
+            } else if (question[i] == answerArray[j] || question[i] == answerArray[k]) {
+                ball++;
+            }
+        }
+
+        return new int[] {strike, ball};
     }
 }
