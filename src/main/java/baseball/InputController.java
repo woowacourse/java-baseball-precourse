@@ -10,19 +10,16 @@ import static baseball.constants.InputConstants.*;
 
 public class InputController {
 
-    public static boolean isValidInput(String input){
+    public static boolean isValidInput(String input) {
         HashSet<Character> set = new HashSet<>();
         if (input.length() != NUMBER_LENGTH) {
-            System.out.println(INVALID_LENGTH);
-            return false;
+            throw new IllegalArgumentException(INVALID_LENGTH);
         }
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (input.charAt(i) < (char)(MIN_NUMBER + '0') || input.charAt(i) > (char)(MAX_NUMBER + '0')) {
-                System.out.println(INVALID_NUMBER);
-                return false;
+                throw new IllegalArgumentException(INVALID_NUMBER);
             } else if (!set.add(input.charAt(i))) {
-                System.out.println(DUPLICATED_NUMBER);
-                return false;
+                throw new IllegalArgumentException(DUPLICATED_NUMBER);
             }
         }
         return true;
