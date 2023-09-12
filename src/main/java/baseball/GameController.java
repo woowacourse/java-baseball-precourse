@@ -30,12 +30,13 @@ public class GameController {
         System.out.println(RESTART_MESSAGE);
         try {
             input = InputController.getRestart();
+            if (input.equals("1")) {
+                run();
+            } else {
+                System.out.println(END_MESSAGE);
+            }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-        }
-        if (input.equals("1")) {
-            run();
-        } else {
             System.out.println(END_MESSAGE);
         }
     }
