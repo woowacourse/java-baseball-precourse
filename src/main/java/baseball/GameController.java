@@ -45,12 +45,7 @@ public class GameController {
         System.out.println(START_MESSAGE);
         initGame();
         do {
-            try {
-                System.out.print(INPUT_MESSAGE);
-                input = InputController.getInput();
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
+            input = InputController.getInput();
         } while (!playGame());
         askRestart();
     }
