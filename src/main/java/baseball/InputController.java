@@ -5,32 +5,35 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
 
 import static baseball.constants.ErrorMessages.*;
+import static baseball.constants.GameMessages.INPUT_MESSAGE;
 import static baseball.constants.InputConstants.*;
 
 public class InputController {
 
-    public static boolean isValidInput(String input) throws IllegalArgumentException {
+    public static boolean isValidInput(String input){
         HashSet<Character> set = new HashSet<>();
         if (input.length() != NUMBER_LENGTH) {
-            throw new IllegalArgumentException(INVALID_LENGTH);
+            System.out.println(INVALID_LENGTH);
+            return false;
         }
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (input.charAt(i) < (char)(MIN_NUMBER + '0') || input.charAt(i) > (char)(MAX_NUMBER + '0')) {
-                throw new IllegalArgumentException(INVALID_NUMBER);
+                System.out.println(INVALID_NUMBER);
+                return false;
             } else if (!set.add(input.charAt(i))) {
-                throw new IllegalArgumentException(DUPLICATED_NUMBER);
+                System.out.println(DUPLICATED_NUMBER);
+                return false;
             }
         }
         return true;
     }
 
-    public static String getInput() throws IllegalArgumentException {
+    public static String getInput() {
+        System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
-        try {
-           if (isValidInput(input))
-               return input;
-        } catch (IllegalArgumentException e) {
-           throw new IllegalArgumentException(e.getMessage());
+        while (!isValidInput(input)) {
+            System.out.print(INPUT_MESSAGE);
+            input = Console.readLine();
         }
         return input;
     }
