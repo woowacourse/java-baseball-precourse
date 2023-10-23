@@ -24,5 +24,20 @@ public class Number {
             randomNumber.add(num);
         }
     }
+    public static void getUserNumber() {
+        userNumber = Console.readLine();
 
+    }
+    public static void isValidLength(String s){
+        if(s.length() != 3) {
+            throw new IllegalArgumentException("세자리 수보다 크거나 작음");
+        }
+    }
+    public static void printNumber() {
+        getRandomNumber();
+        getUserNumber();
+        isValidLength(userNumber);
+        System.out.println(randomNumber);
+        System.out.println(userNumber);
+    }
 }
