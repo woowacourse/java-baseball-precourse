@@ -1,10 +1,12 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static constants.BaseballMessage.USER_INPUT_MESSAGE;
 
 
 public class Number {
@@ -27,12 +29,33 @@ public class Number {
         }
     }
 
+    private static List<Integer> userNumber = new ArrayList<>();
 
+    public static void getUserNumber() {
+        System.out.println(USER_INPUT_MESSAGE);
+        String userInput = Console.readLine();
+
+        isThreeNumbers(userInput);
+        userInputToUserNumber(userInput);
+        System.out.println(userNumber);
+    }
+    private static void userInputToUserNumber(String userInput) {
+        for (int i = 0; i < 3; i++) {
+            userNumber.add(Character.getNumericValue(userInput.charAt(i)));
+        }
+    }
+
+    private static boolean isThreeNumbers(String numbers) {
+        if (numbers.length() > 3) {
+            return true;
+        }
+        return false;
+    }
 
 
     public static void start() {
         getRandomNumber();
-        BaseBallPlayer baseBallPlayer = new BaseBallPlayer();
-        BaseBallPlayer.getUserNumber();
+        getUserNumber();
+        System.out.println(randomNumber);
     }
 }
