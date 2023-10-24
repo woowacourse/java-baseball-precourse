@@ -2,8 +2,9 @@ package baseball;
 
 import static constants.BaseballMessage.*;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-
+import java.util.regex.Pattern;
 
 
 public class BaseBallPlay {
@@ -18,6 +19,20 @@ public class BaseBallPlay {
         if(strike == 3) {
             System.out.println(GAME_SUCCESS_MESSAGE);
         }
+    }
+
+    private String inputRestartOrExit() {
+        System.out.println(GAME_RESTART_OR_END_MESSAGE);
+        String endMessage = Console.readLine();
+        if(!isSelectMessage(endMessage)) {
+            throw new IllegalArgumentException();
+        }
+        return endMessage;
+    }
+
+    private boolean isSelectMessage(String input) {
+        Pattern pattern = Pattern.compile("[1-2]");
+        return pattern.matcher(input).matches();
     }
 
     private String correctAnswerCheck (int strike, int ball) {
