@@ -3,8 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static constants.BaseballMessage.USER_INPUT_MESSAGE;
 
@@ -31,18 +32,38 @@ public class Number {
 
     private static List<Integer> userNumber = new ArrayList<>();
 
-    public static void getUserNumber() {
+    public static List<Integer> getUserNumber() {
         System.out.println(USER_INPUT_MESSAGE);
         String userInput = Console.readLine();
 
-        isThreeNumbers(userInput);
+        if(!isValidInput(userInput)) {
+            throw new IllegalArgumentException();
+        }
         userInputToUserNumber(userInput);
         System.out.println(userNumber);
+
+        return stringToList(userInput);
     }
+
+    private static List<Integer> stringToList(String str) {
+        return Arrays.stream(str.split("")).map(Integer::parseInt).collect(Collectors.toCollection(ArrayList::new));
+    }
+
     private static void userInputToUserNumber(String userInput) {
         for (int i = 0; i < 3; i++) {
             userNumber.add(Character.getNumericValue(userInput.charAt(i)));
         }
+    }
+    private static boolean isValidInput(String userInput) {
+        return userInput.length() == 3 && hasNoDuplicateDigits(userInput) && isNumeric(userInput);
+    }
+
+    private static boolean hasNoDuplicateDigits(String input) {
+        Set<Character> digitSet = new TreeSet<>();
+        for (char c : input.toCharArray()) {
+            digitSet.add(c);
+        }
+        return digitSet.size() == 3;
     }
 
     private static boolean isThreeNumbers(String numbers) {
@@ -52,6 +73,17 @@ public class Number {
         return true;
     }
 
+    private static boolean isNumeric(String str) {
+        return str.matches("^[0-9]+$");
+    }
+
+    private static boolean isDuplicate(String userInput){
+        Set<Character> set = new HashSet<>();
+        for(char num : userInput.toCharArray()) {
+            set.add(num);
+        }
+        return set.size() == userInput.length();
+    }
 
     public static void start() {
         getRandomNumber();
