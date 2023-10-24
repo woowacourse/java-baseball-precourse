@@ -31,10 +31,11 @@ public class BaseBallPlay {
         System.out.println(correctAnswerCheck(strike, ball));
         if(strike == 3) {
             System.out.println(GAME_SUCCESS_MESSAGE);
+            setRestartOrExit();
         }
     }
 
-    private String inputRestartOrExit() {
+    private static String inputRestartOrExit() {
         System.out.println(GAME_RESTART_OR_END_MESSAGE);
         String endMessage = Console.readLine();
         if(!isSelectMessage(endMessage)) {
@@ -43,7 +44,7 @@ public class BaseBallPlay {
         return endMessage;
     }
 
-    private void setRestartOrExit() {
+    private static void setRestartOrExit() {
         String endpoint = inputRestartOrExit();
         if(endpoint.equals(1)) {
             computer = Number.setComputerRandomNumbers();
@@ -52,7 +53,7 @@ public class BaseBallPlay {
         endFlag = true;
     }
 
-    private boolean isSelectMessage(String input) {
+    private static boolean isSelectMessage(String input) {
         Pattern pattern = Pattern.compile("[1-2]");
         return pattern.matcher(input).matches();
     }
