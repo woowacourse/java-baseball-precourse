@@ -16,9 +16,17 @@ public class BaseBallPlay {
     private List<Integer> player = new ArrayList<>();
     private boolean endFlag = false;
 
-    private void printAnswerCheck(List<Integer> answer, List<Integer> input) {
-        int strike = countStrike(answer, input);
-        int ball = countBall(answer, input);
+    public void gameStart() {
+        computer = Number.setComputerRandomNumbers();
+        while (!endFlag) {
+            player = Number.getUserNumber();
+            printAnswerCheck(computer, player);
+        }
+    }
+
+    private void printAnswerCheck(List<Integer> computer, List<Integer> player) {
+        int strike = countStrike(computer, player);
+        int ball = countBall(computer, player);
 
         System.out.println(correctAnswerCheck(strike, ball));
         if(strike == 3) {
