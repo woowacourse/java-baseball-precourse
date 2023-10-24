@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static constants.BaseballMessage.USER_INPUT_MESSAGE;
@@ -12,10 +11,7 @@ import static constants.BaseballMessage.USER_INPUT_MESSAGE;
 
 public class Number {
     private static List<Integer> randomNumber = new ArrayList<>();
-    private static Integer continueOrNot;
-    private static Integer strike;
-    private static Integer ball;
-    private static Integer num;
+
 
     public static List<Integer> setComputerRandomNumbers() {
         Set<Integer> NumberSet = new HashSet<>();
@@ -26,11 +22,6 @@ public class Number {
         return new ArrayList<>(NumberSet);
     }
 
-    public static void numberDuplication(Integer num) {
-        if (!randomNumber.contains(num)) {
-            randomNumber.add(num);
-        }
-    }
 
     private static List<Integer> userNumber = new ArrayList<>();
 
