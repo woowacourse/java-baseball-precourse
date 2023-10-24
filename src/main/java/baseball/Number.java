@@ -17,11 +17,13 @@ public class Number {
     private static Integer ball;
     private static Integer num;
 
-    private static void getRandomNumber() {
-        while (randomNumber.size() < 3) {
-            num = Randoms.pickNumberInRange(1, 9);
-            numberDuplication(num);
+    public static List<Integer> setComputerRandomNumbers() {
+        Set<Integer> NumberSet = new HashSet<>();
+        while (NumberSet.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            NumberSet.add(randomNumber);
         }
+        return new ArrayList<>(NumberSet);
     }
 
     public static void numberDuplication(Integer num) {
@@ -66,27 +68,14 @@ public class Number {
         return digitSet.size() == 3;
     }
 
-    private static boolean isThreeNumbers(String numbers) {
-        if (numbers.length() != 3) {
-            return false;
-        }
-        return true;
-    }
 
     private static boolean isNumeric(String str) {
         return str.matches("^[0-9]+$");
     }
 
-    private static boolean isDuplicate(String userInput){
-        Set<Character> set = new HashSet<>();
-        for(char num : userInput.toCharArray()) {
-            set.add(num);
-        }
-        return set.size() == userInput.length();
-    }
 
     public static void start() {
-        getRandomNumber();
+        setComputerRandomNumbers();
         getUserNumber();
         System.out.println(randomNumber);
     }
