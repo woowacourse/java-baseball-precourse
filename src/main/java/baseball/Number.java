@@ -10,7 +10,6 @@ import static constants.BaseballMessage.USER_INPUT_MESSAGE;
 
 
 public class Number {
-    private static List<Integer> randomNumber = new ArrayList<>();
 
 
     public static List<Integer> setComputerRandomNumbers() {
