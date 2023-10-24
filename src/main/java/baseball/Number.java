@@ -46,10 +46,10 @@ public class Number {
     }
 
     private static boolean isThreeNumbers(String numbers) {
-        if (numbers.length() > 3) {
-            return true;
+        if (numbers.length() != 3) {
+            return false;
         }
-        return false;
+        return true;
     }
 
 
