@@ -3,6 +3,8 @@ package baseball;
 import static constants.BaseballMessage.*;
 
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -10,6 +12,9 @@ import java.util.regex.Pattern;
 public class BaseBallPlay {
 
     StringBuilder checkMessage = new StringBuilder();
+    private List<Integer> computer = new ArrayList<>();
+    private List<Integer> player = new ArrayList<>();
+    private boolean endFlag = false;
 
     private void printAnswerCheck(List<Integer> answer, List<Integer> input) {
         int strike = countStrike(answer, input);
@@ -28,6 +33,15 @@ public class BaseBallPlay {
             throw new IllegalArgumentException();
         }
         return endMessage;
+    }
+
+    private void setRestartOrExit() {
+        String endpoint = inputRestartOrExit();
+        if(endpoint.equals(1)) {
+            computer = Number.setComputerRandomNumbers();
+            return;
+        }
+        endFlag = true;
     }
 
     private boolean isSelectMessage(String input) {
