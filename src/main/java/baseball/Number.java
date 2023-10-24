@@ -73,10 +73,4 @@ public class Number {
         return str.matches("^[0-9]+$");
     }
 
-
-    public static void start() {
-        setComputerRandomNumbers();
-        getUserNumber();
-        System.out.println(randomNumber);
-    }
 }

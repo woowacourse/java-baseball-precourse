@@ -11,12 +11,12 @@ import java.util.regex.Pattern;
 
 public class BaseBallPlay {
 
-    StringBuilder checkMessage = new StringBuilder();
-    private List<Integer> computer = new ArrayList<>();
-    private List<Integer> player = new ArrayList<>();
-    private boolean endFlag = false;
+    static StringBuilder checkMessage = new StringBuilder();
+    private static List<Integer> computer = new ArrayList<>();
+    private static List<Integer> player = new ArrayList<>();
+    private static boolean endFlag = false;
 
-    public void gameStart() {
+    public static void gameStart() {
         computer = Number.setComputerRandomNumbers();
         while (!endFlag) {
             player = Number.getUserNumber();
@@ -24,7 +24,7 @@ public class BaseBallPlay {
         }
     }
 
-    private void printAnswerCheck(List<Integer> computer, List<Integer> player) {
+    private static void printAnswerCheck(List<Integer> computer, List<Integer> player) {
         int strike = countStrike(computer, player);
         int ball = countBall(computer, player);
 
@@ -57,7 +57,7 @@ public class BaseBallPlay {
         return pattern.matcher(input).matches();
     }
 
-    private String correctAnswerCheck (int strike, int ball) {
+    private static String correctAnswerCheck(int strike, int ball) {
 
         if(strike != 0) {
             if(ball != 0) {
@@ -71,27 +71,27 @@ public class BaseBallPlay {
         return MessageNothingAppend();
     }
 
-    private String MessageBallStrikeAppend(int ball,int strike){
+    private static String MessageBallStrikeAppend(int ball, int strike){
         checkMessage.append(ball).append(BALL).append(strike).append(STRIKE).append("\n");
         return checkMessage.toString();
     }
 
-    private String MessageBallAppend(int ball){
+    private static String MessageBallAppend(int ball){
         checkMessage.append(ball).append(BALL).append("\n");
         return checkMessage.toString();
     }
 
-    private String MessageStrikeAppend(int strike){
+    private static String MessageStrikeAppend(int strike){
         checkMessage.append(strike).append(STRIKE).append("\n");
         return checkMessage.toString();
     }
 
-    private String MessageNothingAppend(){
+    private static String MessageNothingAppend(){
         checkMessage.append(NOTHING);
         return checkMessage.toString();
     }
 
-    private int countStrike(List<Integer> answer, List<Integer> userinput) {
+    private static int countStrike(List<Integer> answer, List<Integer> userinput) {
         int strike = 0;
         for (int idx = 0; idx < answer.size(); idx++) {
             if(answer.get(idx).equals(userinput.get(idx))) {
@@ -101,7 +101,7 @@ public class BaseBallPlay {
         return strike;
     }
 
-    private int countBall(List<Integer> answer, List<Integer> userinput) {
+    private static int countBall(List<Integer> answer, List<Integer> userinput) {
         int ballcount = 0;
         for(int idx = 0; idx < answer.size(); idx++) {
             if(!answer.get(idx).equals(userinput.get(idx)) && userinput.contains(answer.get(idx))) {
