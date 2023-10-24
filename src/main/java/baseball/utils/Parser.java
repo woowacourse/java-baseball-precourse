@@ -33,4 +33,4 @@ public class Parser {
             return '0' <= input.charAt(i) && input.charAt(i) <= '9';
         }
     }
-}
+
