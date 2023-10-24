@@ -10,7 +10,17 @@ public class BaseBallPlay {
 
     StringBuilder checkMessage = new StringBuilder();
 
-    private String Correctanswercheck (int strike, int ball) {
+    private void printAnswerCheck(List<Integer> answer, List<Integer> input) {
+        int strike = countStrike(answer, input);
+        int ball = countBall(answer, input);
+
+        System.out.println(correctAnswerCheck(strike, ball));
+        if(strike == 3) {
+            System.out.println(GAME_SUCCESS_MESSAGE);
+        }
+    }
+
+    private String correctAnswerCheck (int strike, int ball) {
 
         if(strike != 0) {
             if(ball != 0) {
