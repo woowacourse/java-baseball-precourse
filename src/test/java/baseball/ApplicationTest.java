@@ -1,74 +1,28 @@
 package baseball;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-public class ApplicationTest {
-    Number number = new Number();
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+class ApplicationTest extends NsTest {
     @Test
-    void boolean_세자리수_이상_입력_받았을_경우_false_반환()
-            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = Number.class.getDeclaredMethod("isThreeDigits", String.class);
-        method.setAccessible(true);
-
-        String input = "1342";
-        boolean expected = false;
-
-        boolean result = (boolean) method.invoke(number, input);
-        assertThat(result).isEqualTo(expected);
-    }
-
-    @Test
-    void boolean_입력받은_숫자가_숫자가_아닌_경우_false_반환()
-            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = Number.class.getDeclaredMethod("isNumeric", String.class);
-        method.setAccessible(true);
-
-        String input = "13ㄱ2";
-        boolean expected = false;
-
-        boolean result = (boolean) method.invoke(number, input);
-        assertThat(result).isEqualTo(expected);
-    }
-
-    @Test
-    void boolean_중복된_숫자를_입력받은_경우_false_반환()
-            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = Number.class.getDeclaredMethod("hasNoDuplicateDigits", String.class);
-        method.setAccessible(true);
-
-        String input = "133";
-        boolean expected = false;
-
-        boolean result = (boolean) method.invoke(number, input);
-        assertThat(result).isEqualTo(expected);
-    }
-
-    @Test
-    void boolean_유효하지_않는_숫자를_입력받은_경우_오류_발생()
-            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = Number.class.getDeclaredMethod("isValidInput", String.class);
-        method.setAccessible(true);
-
-        String notNumber = "12ㄱ";
-        String notThreeDigitsNumber = "12345";
-        String duplicateNumber = "122";
-
-        boolean expected = false;
-
-        boolean result = (boolean) method.invoke(number, notNumber);
-        assertThat(result).isEqualTo(expected);
-
-        result = (boolean) method.invoke(number, notThreeDigitsNumber);
-        assertThat(result).isEqualTo(expected);
-
-        result = (boolean) method.invoke(number, duplicateNumber);
-        assertThat(result).isEqualTo(expected);
+    void 게임종료_후_재시작() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "135", "1", "597", "589", "2");
+                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
     }
 
 
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
+    }
 }
