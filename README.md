@@ -35,6 +35,20 @@
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 - 아래의 프로그래밍 실행 결과 예시와 동일하게 입력과 출력이 이루어져야 한다.
 
+기능요구사항정리
+-숫자야구게임을 담당하는 Game class 제작
+- 사용자로부터 입력 받기
+public List<Integer> GetUser()
+
+- 랜덤으로 세자리수의 수 생성
+public List<Integer> GetComputer()
+
+- 볼, 스트라이크 판단 후 결과 반환
+public List<Integer> checkResult
+
+- 볼, 스트라이크 결과 입력 후 모니터 출력 혹은 게임 재시작
+public int printResult
+
 <br>
 
 ## ✍🏻 입출력 요구사항
