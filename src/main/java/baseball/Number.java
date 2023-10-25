@@ -31,7 +31,7 @@ public class Number {
         if(!isValidInput(userInput)) {
             throw new IllegalArgumentException();
         }
-        userInputToUserNumber(userInput);
+
         return stringToList(userInput);
     }
 
@@ -39,11 +39,7 @@ public class Number {
         return Arrays.stream(str.split("")).map(Integer::parseInt).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private static void userInputToUserNumber(String userInput) {
-        for (int i = 0; i < 3; i++) {
-            userNumber.add(Character.getNumericValue(userInput.charAt(i)));
-        }
-    }
+
     private static boolean isValidInput(String userInput) {
         return userInput.length() == 3 && hasNoDuplicateDigits(userInput) && isNumeric(userInput);
     }
