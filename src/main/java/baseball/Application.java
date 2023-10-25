@@ -35,5 +35,15 @@ public class Application {
             throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
         }
     }
-
+    public static String generateNumber() {
+        StringBuilder target_number = new StringBuilder();
+        target_number.append(Randoms.pickNumberInRange(1, 9));
+        for (int i = 0; i < 2; i++) {
+            int new_number = Randoms.pickNumberInRange(1, 9);
+            do {
+                target_number.append(new_number);
+            } while (target_number.indexOf(Integer.toString(new_number)) == -1);
+        }
+        return target_number.toString();
+    }
 }
