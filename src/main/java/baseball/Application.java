@@ -28,7 +28,13 @@ public class Application {
     }
     public static String input(int length) {
         String str = Console.readLine();
-        boolean matches = str.matches("[0-9]{" + length + "}+");
+        boolean matches;
+        if (length == 3) {
+            matches = str.matches("[0-9]{3}");
+        } else {
+            matches = str.matches("[1-2]{1}");
+        }
+
         if (matches) {
             return str;
         } else {
@@ -39,10 +45,11 @@ public class Application {
         StringBuilder target_number = new StringBuilder();
         target_number.append(Randoms.pickNumberInRange(1, 9));
         for (int i = 0; i < 2; i++) {
-            int new_number = Randoms.pickNumberInRange(1, 9);
-            do {
-                target_number.append(new_number);
-            } while (target_number.indexOf(Integer.toString(new_number)) == -1);
+            String new_number = Integer.toString(Randoms.pickNumberInRange(1, 9));
+            while (target_number.indexOf(new_number) != -1){
+                new_number = Integer.toString(Randoms.pickNumberInRange(1, 9));
+            }
+            target_number.append(new_number);
         }
         return target_number.toString();
     }
