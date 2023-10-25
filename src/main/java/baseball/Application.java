@@ -1,5 +1,8 @@
-import java.util.Scanner;
-import java.util.Random;
+//api 사용 전 자바 기본 라이브러리 이용한 입력
+package baseball;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
