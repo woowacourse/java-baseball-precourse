@@ -1,9 +1,14 @@
 package baseball;
 
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static constants.BaseballMessage.USER_INPUT_MESSAGE;
@@ -22,7 +27,6 @@ public class Number {
     }
 
 
-    private static List<Integer> userNumber = new ArrayList<>();
 
     public static List<Integer> getUserNumber() {
         System.out.println(USER_INPUT_MESSAGE);
@@ -41,20 +45,29 @@ public class Number {
 
 
     private static boolean isValidInput(String userInput) {
-        return userInput.length() == 3 && hasNoDuplicateDigits(userInput) && isNumeric(userInput);
+        if(!hasNoDuplicateDigits(userInput) || !isNumeric(userInput) || !isThreeDigits(userInput)) {
+            return false;
+        }
+        return true;
     }
 
     private static boolean hasNoDuplicateDigits(String input) {
-        Set<Character> digitSet = new TreeSet<>();
-        for (char c : input.toCharArray()) {
-            digitSet.add(c);
+        Set<Character> set = new HashSet<>();
+        for(char num : input.toCharArray()) {
+            set.add(num);
         }
-        return digitSet.size() == 3;
+        return set.size() == input.length();
     }
 
 
     private static boolean isNumeric(String str) {
-        return str.matches("^[0-9]+$");
+        String pattern = "^[0-9]*$";
+        return Pattern.matches(pattern, str);
     }
-
+    private static boolean isThreeDigits(String input) {
+        if(input.length() != 3) {
+            return false;
+        }
+        return true;
+    }
 }
