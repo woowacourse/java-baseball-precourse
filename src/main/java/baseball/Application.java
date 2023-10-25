@@ -4,14 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-
     static class Game{
         private static final int GAME_COUNT = 3;
-
         int[] computer_num = new int[GAME_COUNT];
         int[] user_num = new int[GAME_COUNT];
         int strike, ball, computer_size;
-
         /**
          * 숫자 야구 게임을 관리하는 Game class의 Constructor
          * 게임을 시작하고, 사용자가 새로운 게임을 시작할지 여부를 확인한다.
@@ -104,14 +101,14 @@ public class Application {
          * 사용자가 입력한 숫자와 컴퓨터의 숫자를 비교하여
          * strike와 ball값을 계산하는 메소드
          *
-         * @param check_num 확인할 숫자
-         * @param loc       숫자의 위치
+         * @param num   확인할 숫자
+         * @param loc   숫자의 위치
          */
-        private void checkUserInput(int check_num, int loc){
+        private void checkUserInput(int num, int loc){
             for (int i = 0; i < GAME_COUNT; ++i) {
-                if (check_num == computer_num[i] && loc == i)
+                if (num == computer_num[i] && loc == i)
                     strike++;
-                else if (check_num == computer_num[i])
+                else if (num == computer_num[i])
                     ball++;
             }
         }
@@ -151,7 +148,6 @@ public class Application {
                 return false;
         }
     }
-
     public static void main(String[] args) {
         new Game();
     }
