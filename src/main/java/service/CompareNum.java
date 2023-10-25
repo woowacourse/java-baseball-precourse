@@ -12,15 +12,15 @@ public class CompareNum {
 		}
 		return result;
 	}
-	
-    public int countStrike(List<Integer> computer, List<Integer> user){
-        int strike = 0;
-        for(int i = 0; i < user.size(); i++){
-            if(computer.get(i) == user.get(i)){
-                strike += 1;
-            }
-        }
-        return strike;
-    }
-    
+
+	public int countStrike(List<Integer> computer, List<Integer> user){
+		int strike = 0;
+		for(int i = 0; i < user.size(); i++){
+			if(computer.get(i) == user.get(i)){
+				strike += 1;
+			}
+		}
+		return strike;
+	}
+
 }
