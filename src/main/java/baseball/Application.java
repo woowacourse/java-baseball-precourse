@@ -30,7 +30,7 @@ public class Application {
         String str = Console.readLine();
         boolean matches;
         if (length == 3) {
-            matches = str.matches("[0-9]{3}");
+            matches = str.matches("[1-9]{3}");
         } else {
             matches = str.matches("[1-2]{1}");
         }
