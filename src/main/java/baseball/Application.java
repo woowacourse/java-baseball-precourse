@@ -1,18 +1,19 @@
-//api 사용 전 자바 기본 라이브러리 이용한 입력
 package baseball;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+//import java.util.Scanner;
+//import java.util.Random;
+
 public class Application {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            playGame(scanner);
+            playGame();
 
             System.out.println("게임을 다시 시작하려면 1, 종료하려면 2를 입력하세요: ");
-            int choice = scanner.nextInt();
+            int choice = Integer.parseInt(readLine());
             if (choice == 2) {
                 break;
             }
@@ -21,7 +22,7 @@ public class Application {
         System.out.println("게임 종료. 감사합니다!");
     }
 
-    private static void playGame(Scanner scanner) {
+    private static void playGame() {
         Random random = new Random();
         int[] computerNumbers = generateRandomNumbers();
         int[] userNumbers;
@@ -31,7 +32,7 @@ public class Application {
 
         while (true) {
             System.out.print("3자리 숫자를 입력하세요: ");
-            int input = scanner.nextInt();
+            int input = Integer.parseInt(readLine());
             userNumbers = parseUserInput(input);
 
             if (!isValidInput(userNumbers)) {
@@ -71,10 +72,11 @@ public class Application {
     }
 
     private static int[] parseUserInput(int input) {
-        int[] numbers = new int[3];
-        numbers[2] = input % 10;
-        numbers[1] = (input / 10) % 10;
-        numbers[0] = input / 100;
+        
+        int n = Randoms.pickNumberInRange(1, 9);
+        numbers[2] = n % 10;
+        numbers[1] = (n / 10) % 10;
+        numbers[0] = n / 100;
         return numbers;
     }
 
