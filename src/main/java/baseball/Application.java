@@ -3,17 +3,14 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Objects;
-
 public class Application {
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
         String computer_number = generateNumber();
-
         do {
             System.out.print("숫자를 입력해주세요 : ");
-            String s = input(3);
-            Score score = check(computer_number, s);
+            String str = input(3);
+            Score score = check(computer_number, str);
             print(score);
             if (score.correct) {
                 computer_number = restart();
@@ -35,11 +32,10 @@ public class Application {
             matches = str.matches("[1-2]{1}");
         }
 
-        if (matches) {
-            return str;
-        } else {
+        if (!matches) {
             throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
         }
+        return str;
     }
     public static String generateNumber() {
         StringBuilder target_number = new StringBuilder();
@@ -92,7 +88,7 @@ public class Application {
     public static String restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String s = input(1);
-        if (Objects.equals(s, "1")) {
+        if (s.equals("1")) {
             return generateNumber();
         }
         return "1000";
