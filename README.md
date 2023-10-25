@@ -154,5 +154,5 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 	- 몇 볼 몇 스트라이크인지 출력하는 역할
 	- 만약 3스트라이크라면 게임 종료 안내문을 출력하는 역할도 수행
 - restart 메소드
-- 	- 인자 없음
+ 	- 인자 없음
 	- 게임 재시작 유무를 판별하는 역할
