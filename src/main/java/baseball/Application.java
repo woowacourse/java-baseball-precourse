@@ -65,4 +65,20 @@ public class Application {
         }
         return score;
     }
+
+    public static void print(Score score) {
+        if (score.ball == 0 && score.strike == 0) {
+            System.out.println("낫싱");
+        }
+        else if (score.strike == 0) {
+            System.out.println(score.ball + "볼");
+        } else if (score.ball == 0) {
+            System.out.println(score.strike + "스트라이크");
+        } else {
+            System.out.println(score.ball + "볼 " + score.strike + "스트라이크");
+        }
+        if (score.correct) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
 }
