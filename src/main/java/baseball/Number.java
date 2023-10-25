@@ -32,8 +32,6 @@ public class Number {
             throw new IllegalArgumentException();
         }
         userInputToUserNumber(userInput);
-        System.out.println(userNumber);
-
         return stringToList(userInput);
     }
 
