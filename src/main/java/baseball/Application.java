@@ -3,9 +3,6 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-//import java.util.Scanner;
-//import java.util.Random;
-
 public class Application {
     public static void main(String[] args) {
 
@@ -23,7 +20,6 @@ public class Application {
     }
 
     private static void playGame() {
-        Random random = new Random();
         int[] computerNumbers = generateRandomNumbers();
         int[] userNumbers;
         int attempts = 0;
@@ -60,23 +56,23 @@ public class Application {
     private static int[] generateRandomNumbers() {
         int[] numbers = new int[3];
         for (int i = 0; i < 3; i++) {
-            numbers[i] = (int) (Math.random() * 9) + 1;
+            int n = pickNumberInRange(1, 9);
             for (int j = 0; j < i; j++) {
-                if (numbers[i] == numbers[j]) {
+                if (n == numbers[j]) {
                     i--;
                     break;
                 }
             }
+            numbers[i] = n;
         }
         return numbers;
     }
 
     private static int[] parseUserInput(int input) {
-        
-        int n = Randoms.pickNumberInRange(1, 9);
-        numbers[2] = n % 10;
-        numbers[1] = (n / 10) % 10;
-        numbers[0] = n / 100;
+        int[] numbers = new int[3];
+        numbers[2] = input % 10;
+        numbers[1] = (input / 10) % 10;
+        numbers[0] = input / 100;
         return numbers;
     }
 
