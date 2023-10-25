@@ -46,4 +46,23 @@ public class Application {
         }
         return target_number.toString();
     }
+    public static Score check(String target, String inputNum) {
+        Score score = new Score();
+
+        for (int i = 0; i < 3; i++) {
+            char char1 = target.charAt(i);
+            char char2 = inputNum.charAt(i);
+            if (char1 == char2) {
+                score.strike += 1;
+            }
+            else if (target.indexOf(char2) != -1){
+                score.ball += 1;
+            }
+        }
+
+        if (score.strike == 3) {
+            score.correct = true;
+        }
+        return score;
+    }
 }
