@@ -128,3 +128,31 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+## ✍🏻 구현할 기능 목록
+- Score 클래스
+	- int ball -> 볼의 개수
+	- int strike -> 스트라이크의 개수
+	- boolean correct -> 정답 유무
+- input 메소드
+	- 인자
+		- int length -> 입력될 문자열의 길이를 나타내는 것으로, 숫자 입력시 3, 게임 재시작 유무를 판명할 시 1로 설정된다
+	- 사용자로부터 입력을 받음
+	- 잘못된 입력이 들어올 경우 IllegalArgumentException를 발생시킴
+- generateNumber 메소드
+	- 인자 없음
+	- 컴퓨터가 가질 중복되지 않는 3자리 숫자를 생성
+- check 메소드
+	- 인자
+		- String target -> 컴퓨터가 가진 3자리 숫자
+		- String inputNum -> 사용자가 입력한 3자리 숫자
+	- 몇 볼 몇 스트라이크인지 판명하는 역할
+	- Score 클래스의 값은 여기서만 변경 가능
+- print 메소드
+	- 인자
+		- Score score -> check 메소드에서 변경된 Score 클래스
+	- 몇 볼 몇 스트라이크인지 출력하는 역할
+	- 만약 3스트라이크라면 게임 종료 안내문을 출력하는 역할도 수행
+- restart 메소드
+- 	- 인자 없음
+	- 게임 재시작 유무를 판별하는 역할
