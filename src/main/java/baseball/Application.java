@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 
-
     static class Game{
         private static final int GAME_COUNT = 3;
 
@@ -30,7 +29,7 @@ public class Application {
          */
         private void play(){
             computer_size = 0;
-            computerNumSet();
+            setComputerNum();
 
             while(true){
                 userInput();
@@ -57,7 +56,7 @@ public class Application {
         /**
          * 컴퓨터의 숫자를 생성하고 중복을 피하기 위해 확인하는 메소드
          */
-        private void computerNumSet(){
+        private void setComputerNum(){
             for(; computer_size < GAME_COUNT; computer_size++){
                 computer_num[computer_size] = Randoms.pickNumberInRange(1, 9);
                 if(checkComputerNum(computer_num[computer_size]))
@@ -105,7 +104,7 @@ public class Application {
          * 사용자가 입력한 숫자와 컴퓨터의 숫자를 비교하여
          * strike와 ball값을 계산하는 메소드
          *
-         * @param chech_num 확인할 숫자
+         * @param check_num 확인할 숫자
          * @param loc       숫자의 위치
          */
         private void checkUserInput(int check_num, int loc){
