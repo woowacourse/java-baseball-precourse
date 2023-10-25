@@ -26,4 +26,14 @@ public class Application {
         int strike = 0;
         boolean correct = false;
     }
+    public static String input(int length) {
+        String str = Console.readLine();
+        boolean matches = str.matches("[0-9]{" + length + "}+");
+        if (matches) {
+            return str;
+        } else {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        }
+    }
+
 }
