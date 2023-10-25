@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -12,7 +15,7 @@ public class Application {
     }
 
     private static void playNumberBaseballGame() {
-        Scanner scanner = new Scanner(System.in);
+        Console scanner = new Console(System.in);
         System.out.println("숫자 야구 게임을 시작합니다. 1부터 9까지 서로 다른 숫자로 이루어진 3자리 수를 맞춰보세요.");
 
         while (true) {
@@ -21,7 +24,7 @@ public class Application {
 
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
-                String input = scanner.nextLine();
+                String input = scanner.readLine();
 
                 if (input.length() != 3 || !input.matches("[1-9]+")) {
                     System.out.println("잘못된 입력입니다. 1부터 9까지 서로 다른 3자리 숫자를 입력하세요.");
@@ -56,8 +59,8 @@ public class Application {
             }
 
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-            int playAgain = scanner.nextInt();
-            scanner.nextLine();
+            int playAgain = scanner.readLine();
+            scanner.readLine();
 
             if (playAgain==2) {
                 System.out.println("게임을 종료합니다.");
@@ -72,11 +75,11 @@ public class Application {
 
     private static List<Integer> generateRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        for (int i = 1; i <= 9; i++) {
-            numbers.add(i);
-        }
-        Collections.shuffle(numbers);
-        return numbers.subList(0, 3);
+        int n = Randoms.pickNumberInRange(1, 100);
+        numbers.add(n / 100); // 백의 자리 숫자
+        numbers.add((n % 100) / 10); // 십의 자리 숫자
+        numbers.add(n % 10); // 일의 자리 숫자
+        return numbers
     }
 }
 
