@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 public class BaseBallPlay {
 
+
     static StringBuilder checkMessage = new StringBuilder();
     private static List<Integer> computer = new ArrayList<>();
     private static List<Integer> player = new ArrayList<>();
@@ -46,7 +47,7 @@ public class BaseBallPlay {
 
     private static void setRestartOrExit() {
         String endpoint = inputRestartOrExit();
-        if(endpoint.equals(1)) {
+        if(endpoint.equals("1")) {
             computer = Number.setComputerRandomNumbers();
             return;
         }
@@ -78,17 +79,17 @@ public class BaseBallPlay {
     }
 
     private static String MessageBallAppend(int ball){
-        checkMessage.append(ball).append(BALL).append("\n");
+        checkMessage.append(ball).append(BALL);
         return checkMessage.toString();
     }
 
     private static String MessageStrikeAppend(int strike){
-        checkMessage.append(strike).append(STRIKE).append("\n");
+        checkMessage.append(strike).append(STRIKE);
         return checkMessage.toString();
     }
 
     private static String MessageNothingAppend(){
-        checkMessage.append(NOTHING).append("\n");
+        checkMessage.append(NOTHING);
         return checkMessage.toString();
     }
 
