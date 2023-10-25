@@ -9,6 +9,7 @@ public class Application {
         int[] computer_num = new int[GAME_COUNT];
         int[] user_num = new int[GAME_COUNT];
         int strike, ball, computer_size;
+
         /**
          * 숫자 야구 게임을 관리하는 Game class의 Constructor
          * 게임을 시작하고, 사용자가 새로운 게임을 시작할지 여부를 확인한다.
@@ -89,9 +90,9 @@ public class Application {
         private void postResult(){
             if(ball != 0 && strike != 0)
                 System.out.println(ball + "볼 " + strike + "스트라이크");
-            else if(ball != 0 && strike == 0)
+            else if(ball != 0)
                 System.out.println(ball + "볼");
-            else if(ball == 0 && strike != 0)
+            else if(strike != 0)
                 System.out.println(strike + "스트라이크");
             else
                 System.out.println("낫싱");
@@ -142,10 +143,7 @@ public class Application {
             if(!request.equals("1") && !request.equals("2"))
                 throw new IllegalArgumentException();
 
-            if(request.equals("1"))
-                return true;
-            else
-                return false;
+            return request.equals("1");
         }
     }
     public static void main(String[] args) {
