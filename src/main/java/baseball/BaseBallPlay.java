@@ -62,12 +62,12 @@ public class BaseBallPlay {
 
         if(strike != 0) {
             if(ball != 0) {
-                MessageBallStrikeAppend(ball,strike);
+                return MessageBallStrikeAppend(ball,strike);
             }
-            MessageStrikeAppend(strike);
+            return MessageStrikeAppend(strike);
         }
         if(ball != 0) {
-            MessageBallAppend(ball);
+            return MessageBallAppend(ball);
         }
         return MessageNothingAppend();
     }
@@ -88,7 +88,7 @@ public class BaseBallPlay {
     }
 
     private static String MessageNothingAppend(){
-        checkMessage.append(NOTHING);
+        checkMessage.append(NOTHING).append("\n");
         return checkMessage.toString();
     }
 
