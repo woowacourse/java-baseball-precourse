@@ -19,3 +19,7 @@ bin/
 *.iws
 *.iml
 *.ipr
+
+
+### MAC ###
+.DS_Store
