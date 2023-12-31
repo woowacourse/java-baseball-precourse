@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("유저가 숫자가 아닌 값을 입력했을 경우")
     void 유저_숫자이외의입력_예외_테스트(){
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> new Game().isRange("a23"))
@@ -43,6 +45,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("유저가 3글자가 아닌 값을 입력했을 경우")
     void 유저_숫자길이입력_예외_테스트(){
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> new Game().isLength("1243"))
@@ -51,6 +54,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("유저가 중복된 숫자를 입력했을 경우")
     void 유저_숫자중복입력_예외_테스트(){
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> new Game().isDuplicate("112"))
@@ -59,6 +63,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("컴퓨터가 중복된 숫자를 생성했을 경우")
     void 컴퓨터_숫자생성_테스트(){
         List<Integer> computerNum = new Game().getComputerNum();
 
@@ -67,6 +72,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("게임의 볼 개수 테스트")
     void 게임_볼_검증테스트(){
         List<Integer> computerNum = new ArrayList<>(Arrays.asList(1, 2, 3));
         List<Integer> userNum = new ArrayList<>(Arrays.asList(2, 1, 9));
@@ -75,6 +81,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("게임의 스트라이크 개수 테스트")
     void 게임_스트라이크_검증테스트(){
         List<Integer> computerNum = new ArrayList<>(Arrays.asList(1, 2, 3));
         List<Integer> userNum = new ArrayList<>(Arrays.asList(1, 2, 9));
@@ -83,6 +90,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("게임의 볼과 스트라이크 개수 테스트")
     void 게임_볼_스트라이크_검증테스트(){
         List<Integer> computerNum = new ArrayList<>(Arrays.asList(1, 2, 3));
         List<Integer> userNum = new ArrayList<>(Arrays.asList(1, 3, 9));
