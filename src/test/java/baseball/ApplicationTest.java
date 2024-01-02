@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -37,49 +39,71 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("유저가 숫자가 아닌 값을 입력했을 경우")
-    void 유저_숫자이외의입력_예외_테스트(){
+    void 유저_숫자이외의입력_예외_테스트() throws NoSuchMethodException{
 
         //given
+        Game game = new Game();
+        Method method = game.getClass().getDeclaredMethod("isRange", String.class);
+        method.setAccessible(true);
+
         String test = "a23";
 
         //when
 
         //then
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> new Game().isRange(test))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        try {
+            method.invoke(game, test);
+        } catch (IllegalAccessException e){
+            e.printStackTrace();
+        } catch (InvocationTargetException e){
+            assertThat(e.getCause().getMessage()).isEqualTo("1~9 범위의 숫자가 아닙니다.");
+        }
     }
 
     @Test
     @DisplayName("유저가 3글자가 아닌 값을 입력했을 경우")
-    void 유저_숫자길이입력_예외_테스트(){
+    void 유저_숫자길이입력_예외_테스트() throws NoSuchMethodException {
 
         //given
+        Game game = new Game();
+        Method method = game.getClass().getDeclaredMethod("isLength", String.class);
+        method.setAccessible(true);
+
         String test = "1234";
 
         //when
 
         //then
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> new Game().isLength(test))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        try {
+            method.invoke(game, test);
+        } catch (IllegalAccessException e){
+            e.printStackTrace();
+        } catch (InvocationTargetException e){
+            assertThat(e.getCause().getMessage()).isEqualTo("3개의 숫자가 아닙니다.");
+        }
     }
 
     @Test
     @DisplayName("유저가 중복된 숫자를 입력했을 경우")
-    void 유저_숫자중복입력_예외_테스트(){
+    void 유저_숫자중복입력_예외_테스트() throws NoSuchMethodException{
+
         //given
+        Game game = new Game();
+        Method method = game.getClass().getDeclaredMethod("isDuplicate", String.class);
+        method.setAccessible(true);
+
         String test = "112";
 
         //when
 
         //then
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> new Game().isDuplicate(test))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        try {
+            method.invoke(game, test);
+        } catch (IllegalAccessException e){
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            assertThat(e.getCause().getMessage()).isEqualTo("중복되는 숫자를 입력했습니다.");
+        }
     }
 
     @Test
