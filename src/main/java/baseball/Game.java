@@ -23,14 +23,14 @@ public class Game {
     }
 
     //(1) [유저] 예외처리 - 3개가 아닌경우
-    public static void isLength(String num){
+    private static void isLength(String num){
         if(num.length() != 3){
             throw new IllegalArgumentException("3개의 숫자가 아닙니다.");
         }
     }
 
     //(2) [유저] 예외처리 - 중복되는 숫자가 있을 경우
-    public static void isDuplicate(String num) {
+    private static void isDuplicate(String num) {
         Set<Character> set = new HashSet<>();
 
         for(int i = 0; i < num.length(); i++){
@@ -43,7 +43,7 @@ public class Game {
     }
 
     //(3) [유저] 예외처리 - 1~9가 아닐 경우
-    public List<Integer> isRange(String num){
+    private List<Integer> isRange(String num){
         List<Integer>userNum = new ArrayList<>();
 
         for(int i = 0; i <3; i++){
