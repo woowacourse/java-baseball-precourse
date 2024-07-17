@@ -1,10 +1,8 @@
 package baseball;
 
-
 import camp.nextstep.edu.missionutils.Randoms;
 import jdk.jfr.internal.tool.Main;
 
-// 범위 입력해야된다
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -112,18 +110,5 @@ public class Computer {
         // 게임 종료시 처리 로직 필요
         return sb.toString();
     }
-
-
-    // input 처리
-//    public String run(){
-//
-//        return "";
-//    }
-
-
-
-
-
-
 
 }
