@@ -164,6 +164,8 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
            5. Map 사용 볼, 스트라이크 순으로 반환한다
    3. 계산하라 메세지 구현 
       1. 낫싱, 3스트라이크 처리
-      2. 문제 종료 처리 - 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
+   2. Application 개암사작기능 - gameStart()
+      1. 입력처리
+      2. 문제 종료 처리(exitOrRestart) - 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
          1. 입력 에러 발생시 -> 어플리케이션 전체 종료 : 게임 종료랑 같은..건가??
-         2. 3스트라이크 발생시? 
+         2. 3스트라이크 발생시 - 1 받으면 다시 시작한다 

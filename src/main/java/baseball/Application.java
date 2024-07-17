@@ -63,16 +63,42 @@ public class Application {
 //        String result= cm.calculate(userInput);
 //        System.out.println(result);
 
-        int value = exitOrRestart("게임 종료");
-        System.out.println(value);
+        // 5. exitOrRestart
+//        int value = exitOrRestart("게임 종료");
+//        System.out.println(value);
 
+        // 6. gameStart()
+
+        gameStart();
+
+    }
+
+    public static void gameStart(){
+        Computer baseBall = new Computer();
+        baseBall.customComputerRandomNumber(new int[]{1,2,3});
+
+        // 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
+        int exitcheck = -1;
+        while(exitcheck<1){
+            // 입력문
+            // 숫자를 입력해주세요 :  (???)
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputString = readLine();
+            String result = baseBall.calculate(inputString);
+            System.out.println(result);
+
+            exitcheck = exitOrRestart(result);
+        }
+        if(exitcheck == 1){
+            gameStart();
+        }
     }
 
 
     // 종료 로직
     public static int exitOrRestart(String result){
         if(result.contains("게임 종료")){
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println("게임을 새로 시작하력려면 1, 종료하려면 2를 입력하세요.");
             String commandString = readLine();
             if(commandString.equals("1")){
                 // 다시시작 // 함수 윗부분으로 가야된다
