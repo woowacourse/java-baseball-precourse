@@ -12,7 +12,9 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Computer {
     private static final int numberLength = 3;
-    private static List<Integer> computerRandomNumbers= new ArrayList<>();
+    private final String strike = "스트라이크";
+    private final String ball = "볼";
+    private List<Integer> computerRandomNumbers;
 
     public Computer(){
         computerRandomNumbers = setComputerRandomNumber();
@@ -30,6 +32,15 @@ public class Computer {
     public List<Integer> computerRandom(){
         return computerRandomNumbers;
     }
+
+    public void customComputerRandomNumber(int[] input){
+        computerRandomNumbers.clear();
+        for(int i : input){
+            computerRandomNumbers.add(i);
+        }
+    }
+
+
 
     // 입력을 검사하는 기능
     public List<Integer> takeUserInput(String userInput){
@@ -54,7 +65,33 @@ public class Computer {
         return splitUserInput;
     }
 
+
+
     // 볼, 스트라이크, 낫싱 게산후 결과 반환
+    public Map<String, Integer>  userInputResult(List<Integer> stringMapToInteger){
+        Map<String, Integer> result = new HashMap<>();
+
+        for(int i = 0; i<numberLength; i++){
+            if(stringMapToInteger.get(i).equals(computerRandomNumbers.get(i))){
+                result.put(strike, result.getOrDefault(strike,0)+1);
+            }else if(computerRandomNumbers.contains(stringMapToInteger.get(i))){
+                result.put(ball, result.getOrDefault(ball,0)+1);
+            }
+        }
+
+
+        return result;
+    }
+
+
+
+
+//    public String run(){
+//
+//        return "";
+//    }
+
+
 
 
 
