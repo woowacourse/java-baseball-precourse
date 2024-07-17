@@ -147,7 +147,7 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 
 ### 메세지 파악
 1. 메시지
-  1. 사용자 -> 컴퓨터 : 숫자 계산해라
+  1. 사용자 -> 컴퓨터 : 숫자야구 계산해라
 # 메서드 흐름
 1. 계산하라 이전에 숫자를 입력 받고 클래스에 넘겨 주는 느낌으로 하자
 2. 계산하라 (숫자) - calculate
@@ -165,5 +165,5 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
    3. 계산하라 메세지 구현 
       1. 낫싱, 3스트라이크 처리
       2. 문제 종료 처리 - 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
-         2. 입력 에러 발생시 -> 어플리케이션 전체 종료 : 게임 종료랑 같은..건가??
-         3. 3스트라이크 발생시 
+         1. 입력 에러 발생시 -> 어플리케이션 전체 종료 : 게임 종료랑 같은..건가??
+         2. 3스트라이크 발생시? 

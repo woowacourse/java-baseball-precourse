@@ -82,15 +82,8 @@ public class Computer {
         return result;
     }
 
-    public void exitOrRestart(){
-        //
-
-    }
-
 
     public String calculate(String userInput){
-        // 여기서 에러 뱉으면 게임 종료해야된다
-        // 종료하고 다시 시작도 만들어야된다
         List<Integer> stringMapToInteger = takeUserInput(userInput);
 
         Map<String, Integer> strikeBallResult = userInputResult(stringMapToInteger);
