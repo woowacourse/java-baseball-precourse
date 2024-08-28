@@ -128,3 +128,23 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+## 구현할 기능 목록
+Computer
+- 3자리 난수 생성
+
+Player
+- 사용자 3자리수 숫자 input
+- 게임 재시작 여부 input
+
+CompareNumber
+- 사용자 숫자 입력 후 정답과 비교
+- 힌트 출력
+- 3 Strike인 경우 게임 종료
+
+Game
+- 게임 실행
+- 게임 재시작 및 종료
+
+InputException
+- 예외 관리(플레이어가 세자리 숫자를 입력하지 않은 경우, 동일한 숫자를 입력한 경우, 1~9 범위 외 숫자를 입력하는 경우, 게임 종료 시 1 또는 2를 입력하지 않았을 경우)
