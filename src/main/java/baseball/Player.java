@@ -10,9 +10,16 @@ public class Player {
 		return input;
 	}
 
-	private void validateInput(String input) {
-		if (input.length() != 3 || !input.matches("[1-9]{3}")) {
-			throw new IllegalArgumentException("잘못된 입력입니다. 1부터 9까지의 3자리 숫자를 입력하세요.");
+	public void validateInput(String input) {
+		if (input.length() != 3) {
+			throw new IllegalArgumentException("입력은 반드시 3자리 숫자여야 합니다.");
+		}
+		if (!input.matches("[1-9]{3}")) {
+			throw new IllegalArgumentException("입력은 1에서 9까지의 숫자로만 이루어져야 합니다.");
+		}
+		if (input.chars().distinct().count() != 3) {
+			throw new IllegalArgumentException("입력은 서로 다른 숫자여야 합니다.");
 		}
 	}
+
 }
