@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-	private final Computer computer = new Computer();
+	private Computer computer;
 	private final Player player = new Player();
 	private final Judge judge = new Judge();
 
@@ -11,14 +11,21 @@ public class Game {
 		boolean isPlaying = true;
 
 		while (isPlaying) {
-			String input = player.getInput();
-			String result = judge.calculateResult(input, computer.getNumbers());
-			System.out.println(result);
+			computer = new Computer();
+			boolean isSolved = false;
 
-			if ("3스트라이크".equals(result)) {
-				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-				isPlaying = restart();
+			while (!isSolved) {
+				String input = player.getInput();
+				String result = judge.calculateResult(input, computer.getNumbers());
+				System.out.println(result);
+
+				if ("3스트라이크".equals(result)) {
+					System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+					isSolved = true;
+				}
 			}
+
+			isPlaying = restart();
 		}
 	}
 
