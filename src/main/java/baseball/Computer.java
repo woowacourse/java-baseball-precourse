@@ -14,4 +14,8 @@ public class Computer {
         int[] numbers = answerGenerator.generate();
         this.answer = new SecretAnswer(numbers);
     }
+
+    public JudgeResult judge(int[] userInput) {
+        return answer.compareWith(userInput);
+    }
 }
