@@ -18,26 +18,42 @@ public class GameManager {
 
     public void start() {
         while(true) {
-            computer.initialize();
-            outputHandler.printStartMessage();
+            initialize();
+            play();
 
-            while(true) {
-                outputHandler.printNumberInputMessage();
-                int[] input = inputHandler.readUserEstimation();
-                JudgeResult result = computer.judge(input);
-                outputHandler.printJudgeResult(result);
-                if(result.isCorrect()) {
-                    outputHandler.printWinningMessage();
-                    break;
-                }
-            }
-
-            outputHandler.printSelectStartOrExitMessage();
-            int decision = inputHandler.readGameExitDecision();
-            if(decision == 2) {
+            int decision = askRestart();
+            if(exitIsSelected(decision)) {
                 outputHandler.printExitMessage();
+                return;
+            }
+        }
+    }
+
+    private void initialize() {
+        computer.initialize();
+        outputHandler.printStartMessage();
+    }
+
+    private void play() {
+        while(true) {
+            outputHandler.printNumberInputMessage();
+            int[] input = inputHandler.readUserEstimation();
+
+            JudgeResult result = computer.judge(input);
+            outputHandler.printJudgeResult(result);
+            if(result.isCorrect()) {
+                outputHandler.printWinningMessage();
                 break;
             }
         }
+    }
+
+    private int askRestart() {
+        outputHandler.printSelectStartOrExitMessage();
+        return inputHandler.readGameExitDecision();
+    }
+
+    private static boolean exitIsSelected(int decision) {
+        return decision == 2;
     }
 }
