@@ -13,4 +13,8 @@ public class OutputHandler {
     public void printRestartMessage() {
         System.out.println(OutputMessage.RESTART_MESSAGE);
     }
+
+    public void printJudgeResult(JudgeResult judgeResult) {
+        System.out.println(judgeResult.getResultMessage());
+    }
 }
