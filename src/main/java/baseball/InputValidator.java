@@ -7,7 +7,7 @@ public class InputValidator {
 
     public void validateUserEstimation(String input) {
         if(input.length() != USER_ESTIMATION_LENGTH) {
-            throw new IllegalArgumentException(ErrorCode.INVALID_INPUT_LENGTH.getMessage());
+            throw new IllegalArgumentException(ErrorCode.INVALID_ESTIMATION_INPUT_LENGTH.getMessage());
         }
 
         if(!input.matches(USER_ESTIMATION_REGEX)) {

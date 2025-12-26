@@ -33,7 +33,7 @@ class InputValidatorTest {
         //when //then
         assertThatThrownBy(() -> inputValidator.validateUserEstimation(userInput))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage(ErrorCode.INVALID_INPUT_LENGTH.getMessage());
+            .hasMessage(ErrorCode.INVALID_ESTIMATION_INPUT_LENGTH.getMessage());
     }
 
     @DisplayName("숫자가 아닌 문자를 포함한 유저 예측 인풋은 검증에 실패한다.")
