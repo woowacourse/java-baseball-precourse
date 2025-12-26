@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.io.InputHandler;
+import baseball.io.OutputHandler;
+
 public class GameManager {
 
     private static final int EXIT_CODE = 2;

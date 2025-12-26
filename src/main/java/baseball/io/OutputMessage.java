@@ -1,4 +1,4 @@
-package baseball;
+package baseball.io;
 
 public enum OutputMessage {
     NUMBER_INPUT_MESSAGE("숫자를 입력해 주세요 : "),

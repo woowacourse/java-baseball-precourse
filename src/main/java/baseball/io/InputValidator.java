@@ -1,4 +1,6 @@
-package baseball;
+package baseball.io;
+
+import baseball.ErrorCode;
 
 public class InputValidator {
 

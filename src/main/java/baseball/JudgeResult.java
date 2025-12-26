@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.io.OutputMessage;
+
 public class JudgeResult {
 
     public static final String BALL_SUFFIX = "볼";
