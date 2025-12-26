@@ -10,10 +10,19 @@ public class InputHandler {
         this.inputValidator = new InputValidator();
     }
 
-    public String readUserEstimation() {
+    public int[] readUserEstimation() {
         String input = Console.readLine();
         inputValidator.validateUserEstimation(input);
 
-        return input;
+        return convertToArray(input);
+    }
+
+    private int[] convertToArray(String input) {
+        int[] numberArray = new int[input.length()];
+        for(int i = 0; i < input.length(); i++) {
+            numberArray[i] = Integer.parseInt(String.valueOf(input.charAt(i)));
+        }
+
+        return numberArray;
     }
 }
