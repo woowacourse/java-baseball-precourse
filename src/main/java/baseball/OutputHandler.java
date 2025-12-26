@@ -6,12 +6,12 @@ public class OutputHandler {
         System.out.println(OutputMessage.NUMBER_INPUT_MESSAGE.getMessage());
     }
 
-    public void printEndingMessage() {
-        System.out.println(OutputMessage.ENDING_MESSAGE.getMessage());
+    public void printWinningMessage() {
+        System.out.println(OutputMessage.WINNING_MESSAGE.getMessage());
     }
 
-    public void printRestartMessage() {
-        System.out.println(OutputMessage.RESTART_MESSAGE.getMessage());
+    public void printSelectStartOrExitMessage() {
+        System.out.println(OutputMessage.SELECT_START_OR_EXIT_MESSAGE.getMessage());
     }
 
     public void printJudgeResult(JudgeResult judgeResult) {
