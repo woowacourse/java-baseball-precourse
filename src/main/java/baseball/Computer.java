@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.vo.JudgeResult;
+import baseball.vo.SecretAnswer;
+
 public class Computer {
 
     private final AnswerGenerator answerGenerator;

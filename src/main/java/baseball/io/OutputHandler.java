@@ -1,6 +1,6 @@
 package baseball.io;
 
-import baseball.JudgeResult;
+import baseball.vo.JudgeResult;
 
 public class OutputHandler {
 

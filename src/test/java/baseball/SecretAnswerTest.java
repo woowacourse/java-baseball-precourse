@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.vo.JudgeResult;
+import baseball.vo.SecretAnswer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

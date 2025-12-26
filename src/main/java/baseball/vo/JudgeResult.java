@@ -1,4 +1,4 @@
-package baseball;
+package baseball.vo;
 
 import baseball.io.OutputMessage;
 

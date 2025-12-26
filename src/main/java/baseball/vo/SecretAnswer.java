@@ -1,4 +1,4 @@
-package baseball;
+package baseball.vo;
 
 import java.util.ArrayList;
 import java.util.Arrays;

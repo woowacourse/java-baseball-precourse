@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.io.InputHandler;
 import baseball.io.OutputHandler;
+import baseball.vo.JudgeResult;
 
 public class GameManager {
 
