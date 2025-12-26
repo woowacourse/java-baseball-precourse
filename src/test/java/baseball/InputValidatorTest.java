@@ -48,4 +48,55 @@ class InputValidatorTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(ErrorCode.CONTAINS_INVALID_CHARACTER.getMessage());
     }
+
+    @DisplayName("재시작 여부는 한 개의 숫자로 이루어진 문자열이다.")
+    @Test
+    void validate_game_exit_decision_pass() {
+        //given
+        String userInput = "1";
+        InputValidator inputValidator = new InputValidator();
+
+        //when //then
+        assertThatCode(() -> inputValidator.validateGameExitDecision(userInput))
+            .doesNotThrowAnyException();
+    }
+
+    @DisplayName("길이가 1이 아닌 재시작 여부 인풋은 검증에 실패한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"", "12"})
+    void validate_game_exit_decision_fail_invalid_length(String userInput) {
+        //given
+        InputValidator inputValidator = new InputValidator();
+
+        //when //then
+        assertThatThrownBy(() -> inputValidator.validateGameExitDecision(userInput))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ErrorCode.INVALID_GAME_EXIT_DECISION.getMessage());
+    }
+
+    @DisplayName("숫자로가 아닌 여부 인풋은 검증에 실패한다.")
+    @Test
+    void validate_game_exit_decision_fail_invalid_character() {
+        //given
+        String userInput = "a";
+        InputValidator inputValidator = new InputValidator();
+
+        //when //then
+        assertThatThrownBy(() -> inputValidator.validateGameExitDecision(userInput))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ErrorCode.INVALID_GAME_EXIT_DECISION.getMessage());
+    }
+
+    @DisplayName("1또는 2가 아닌 여부 인풋은 검증에 실패한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "3"})
+    void validate_game_exit_decision_fail_invalid_number(String userInput) {
+        //given
+        InputValidator inputValidator = new InputValidator();
+
+        //when //then
+        assertThatThrownBy(() -> inputValidator.validateGameExitDecision(userInput))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ErrorCode.INVALID_GAME_EXIT_DECISION.getMessage());
+    }
 }
