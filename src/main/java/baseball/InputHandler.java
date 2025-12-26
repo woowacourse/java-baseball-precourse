@@ -17,6 +17,13 @@ public class InputHandler {
         return convertToArray(input);
     }
 
+    public int readGameExitDecision() {
+        String input = Console.readLine();
+        inputValidator.validateGameExitDecision(input);
+
+        return Integer.parseInt(input);
+    }
+
     private int[] convertToArray(String input) {
         int[] numberArray = new int[input.length()];
         for(int i = 0; i < input.length(); i++) {
