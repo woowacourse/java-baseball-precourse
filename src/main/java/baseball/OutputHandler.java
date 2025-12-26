@@ -17,4 +17,12 @@ public class OutputHandler {
     public void printJudgeResult(JudgeResult judgeResult) {
         System.out.println(judgeResult.getResultMessage());
     }
+
+    public void printStartMessage() {
+        System.out.println(OutputMessage.START_MESSAGE.getMessage());
+    }
+
+    public void printExitMessage() {
+        System.out.println(OutputMessage.EXIT_MESSAGE.getMessage());
+    }
 }
