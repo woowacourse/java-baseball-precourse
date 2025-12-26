@@ -4,7 +4,7 @@ public class JudgeResult {
 
     public static final String BALL_SUFFIX = "볼";
     public static final String STRIKE_SUFFIX = "스트라이크";
-    
+
     private int strikeCount;
     private int ballCount;
 
@@ -15,6 +15,10 @@ public class JudgeResult {
 
     public static JudgeResult of(int strikeCount, int ballCount) {
         return new JudgeResult(strikeCount, ballCount);
+    }
+
+    public boolean isCorrect() {
+        return strikeCount == 3;
     }
 
     public int getStrikeCount() {
@@ -30,7 +34,16 @@ public class JudgeResult {
             return OutputMessage.NOTHING_MESSAGE.getMessage();
         }
 
-        return ballCount + BALL_SUFFIX + " " + strikeCount + STRIKE_SUFFIX;
+        String message = "";
+        if(ballCount > 0) {
+            message += ballCount + BALL_SUFFIX + " ";
+        }
+
+        if(strikeCount > 0) {
+            message += strikeCount + STRIKE_SUFFIX;
+        }
+
+        return message;
     }
 
     private boolean isNothing() {
