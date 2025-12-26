@@ -2,6 +2,8 @@ package baseball;
 
 public class GameManager {
 
+    private static final int EXIT_CODE = 2;
+
     private final Computer computer;
     private final InputHandler inputHandler;
     private final OutputHandler outputHandler;
@@ -54,6 +56,6 @@ public class GameManager {
     }
 
     private static boolean exitIsSelected(int decision) {
-        return decision == 2;
+        return decision == EXIT_CODE;
     }
 }
